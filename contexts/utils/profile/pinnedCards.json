@@ -1,0 +1,34 @@
+[
+  {
+    "id": 12,
+    "link": "#",
+    "base": "complete",
+    "title": "Completed a course",
+    "desc": "Intro to UX Design: building digital technologies",
+    "checklist": [
+      "Learned  the basics of coding",
+      "Learned to incoporate technology into designs"
+    ]
+  },
+  {
+    "id": 13,
+    "link": "#",
+    "base": "chapter-lead",
+    "title": "Became a chapter lead",
+    "desc": "Silicon valley Engineers",
+    "desc2": "Plato Alto Chapter, San Francisco",
+    "checklist": ["Was in charge of everyone in the chapter"]
+  },
+  {
+    "id": 14,
+    "link": "#",
+    "base": "new-job",
+    "title": "Got a new job",
+    "desc": "Joined MPA as a UX design intern",
+    "checklist": [
+      "Had to make website pages",
+      "Learned to use Figma",
+      "Worked in two week sprints"
+    ]
+  }
+]

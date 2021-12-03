@@ -1,0 +1,345 @@
+.wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  padding: 4em;
+  display: none;
+  background: rgba(0, 0, 0, 0.701);
+  z-index: 10000;
+  color: black;
+}
+
+.wrapper.hide {
+  display: none;
+}
+
+.wrapper.show {
+  display: flex;
+}
+
+.container {
+  width: 100%;
+  max-width: 64em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  border-radius: 0.5em;
+  overflow: hidden;
+  background: white;
+  position: relative;
+}
+
+.imageContainer {
+  flex: 30%;
+  height: 100%;
+}
+
+.imageContainerMobile {
+  width: 100%;
+  height: 4em;
+  display: none;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+}
+
+.detailsContainer {
+  flex: 70%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.close {
+  width: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5em;
+  color: white;
+  background: #151371;
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  font-size: 0.75em;
+  border-radius: 0.3em;
+  cursor: pointer;
+  transition: all 100ms;
+}
+
+.close:hover {
+  background: #0b0b3d;
+  color: white;
+}
+
+.profile {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 1em 2em 1em 3em;
+  border-bottom: 1px solid gray;
+}
+
+.profile .picture {
+  width: 5em;
+  height: 5em;
+  border-radius: 50%;
+  box-shadow: 0 0 2px 2px rgb(228, 228, 228);
+  margin-right: 0.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile img {
+  width: 100%;
+  height: 100%;
+}
+
+
+.profile i {
+  transform: scale(3);
+}
+
+.profile .name {
+  flex: 1;
+}
+
+.profile .name .value {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.details {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 1em;
+  overflow: auto;
+}
+
+.about {
+  flex: 60%;
+  position: relative;
+  padding: 0 2em;
+}
+
+.catName {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  width: auto;
+  border-radius: 0.1em;
+  padding: 0.1em 0.5em;
+  color: #FFC700;
+  background: #FFF7DA;
+  border: 1px solid rgba(255, 199, 0, 0.2);
+  backdrop-filter: blur(30px);
+  border-radius: 10px;
+}
+
+.eventName {
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-bottom: 1em;
+}
+
+.eventTitle {
+  font-weight: bold;
+  margin-bottom: 1em;
+}
+
+.eventContent {
+  font-size: 0.85em;
+  text-overflow: clip;
+}
+
+.other {
+  flex: 40%;
+  height: 100%;
+  padding: 0 2em;
+}
+
+.eventType {
+  width: 100%;
+  margin-bottom: 4em;
+}
+
+.typeName {
+  background: linear-gradient(105deg, #fe19be, #fecc19 );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  font-size: calc(0.65em + 1vmax);
+}
+
+.typeDate,
+.createdDate {
+  font-weight: bold;
+}
+
+.approvalContainer {
+  width: 100%;
+  margin-bottom: 2em;
+}
+
+.rejectionContainer {
+  width: 100%;
+}
+
+.rejectionContainer * {
+  width: 100%;
+}
+
+.rejectionLabel {
+  color: red;
+  padding: 0 0.5em;
+  margin-bottom: 0.5em;
+}
+
+.rejectionText {
+  background: white;
+  min-height: 6em;
+  border-radius: 0.5em;
+  padding: 0.5em;
+  border: 1px solid black;
+}
+
+.rejectionText:focus {
+  outline: none;
+  border: 2px solid #ff0068;
+  color: black;
+  background: white;
+}
+
+.rejectActionWrapper,
+.approveActionWrapper {
+  margin-top: 1em;
+}
+
+.rejectActionContainer,
+.approveActionContainer {
+  width: 100%;
+  font-size: 0.85rem;
+  color: white;
+  padding: 0.5em;
+  margin-bottom: 1em;
+}
+
+.rejectActionContainer {
+  background: #CC2626;
+}
+
+.approveActionContainer {
+  background: #00AA4F;
+}
+
+.actionButton {
+  width: 100%;
+  border: 1px solid #151371;
+  color: #151371;
+  text-align: center;
+  padding: 0.2em;
+}
+
+.actionButton:hover {
+  color: white;
+  background: #151371;
+  cursor: pointer;
+}
+
+.statusAction {
+  width: 100%;
+  text-align: center;
+}
+
+.rejectButton, 
+.approveButton {
+  display: inline-block;
+  width: 12em;
+  padding: 0.3em 0;
+  color: white;
+  cursor: pointer;
+}
+
+.approveButton {
+  background: #00AA4F;
+  margin-top: 4em;
+}
+.approveButton:hover {
+  background: #007537;
+}
+
+.rejectButton {
+  background:  #CC2626;
+  margin-bottom: 2em;
+}
+.rejectButton:hover {
+  background: #b82626;
+}
+
+
+
+
+
+@media screen and (max-width: 1024px) {
+  .imageContainer {
+    display: none;
+  }
+  
+  .imageContainerMobile {
+    display: flex;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .wrapper {
+    padding: 1em;
+  }
+  .details {
+    flex-direction: column;
+    height: auto;
+    justify-content: flex-start;
+  }
+
+  .about, .other {
+    width: 100%;
+    padding: 0.5em;
+  }
+
+  .profile {
+    padding: 0.5em;
+  }
+
+  .profile .picture {
+    height: 2.5em;
+    width: 2.5em;
+    margin-right: 1em;
+  }
+
+  .profile i {
+    transform: scale(2);
+  }
+
+  .profile .name .value {
+    font-size: 0.85rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .wrapper {
+    padding: 0.5em;
+  }
+}

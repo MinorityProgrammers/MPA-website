@@ -1,0 +1,54 @@
+.container {
+    position: absolute;
+    z-index: 10;
+    bottom: 3em;
+    left: 2em;
+    background: white;
+    padding: 1em;
+    border-radius: 0.5em;
+}
+
+.heading {
+    font-size: 1.4rem;
+    color: #151371;
+    font-weight: 500;
+    margin-bottom: 0.5em;
+}
+
+.iconAndName {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 0.5em;
+}
+
+.name {
+    text-transform: capitalize;
+}
+
+.icon {
+    margin-right: 1em;
+}
+
+.icon > img {
+    width: 100%;
+    height: auto;
+}
+
+@media screen and (max-width: 480px) {
+    .container {
+        bottom: 0.5em;
+        left: 1em;
+        padding: 0.5em;
+        border-radius: 0.3em;
+    }
+
+    .heading {
+        font-size: 1rem;
+    }
+
+    .iconAndName {
+        margin-bottom: 0.25em;
+        font-size: 0.8rem;
+    }
+}

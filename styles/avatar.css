@@ -1,0 +1,63 @@
+.avatar-component {
+    background: white;margin-top: 30px;margin-bottom: 30px; max-width: 100vw;width: auto !important; min-height: 60vh; height: auto !important; border-radius: 10px;
+    display: inline-flex;align-items: center;justify-content: center;flex-wrap: wrap;
+}
+h1 {
+    width: 100%; margin-bottom: 0;display: flex;align-items: center;justify-content: center;font-size: 2.5em;font-style: sans-serif;color: white;
+}
+.Button__Component {
+    width: 80%;padding: 20px;height: auto;
+}
+.cta__Btn {
+    padding: 1em 1.5em;margin: 5px;cursor: pointer;background: white;outline: none;border-radius: 6px;font-size: 12;font-weight: 300; border: 3px solid rgb(20, 20, 71);
+}
+.cta__Btn:hover {
+    background: rgb(20, 20, 71); color: white; transition: 0.3s ease;
+}
+#download {
+    padding: 1em 2em;margin: 3px;font-size: 16px;font-weight: 300;cursor: pointer;border-radius: 6px;outline: none;margin-top: 20px;
+}
+.download__Btn1{
+    background: rgb(20, 20, 71);color: white;border: none;
+}
+.download__Btn2 {
+    background:ghostwhite;border:none;
+}
+.download__ {
+    margin: 5px; width: 100%; display: flex;align-items: center;justify-content: center;flex-wrap: wrap;
+}
+.select__options {
+    width: auto; height:auto;padding: 20px;margin-right: 20px;
+}
+.hair__ , .eyeBrow__select, .eyeType__selection, .clotheType__selection,.skinColor__selection,.mouth__selection,.clotheColor,.facial__selection,.accessory_selection,.hairColor__selector{
+    width:100%;padding: 10px;display: flex;align-items: center;justify-content: space-around;background: rgb(217, 217, 226);border-radius: 4px;margin-bottom: 5px;
+}
+.select,option {
+    padding: 10px;width: 200px;border: none;outline: none;background:none;color: rgb(87, 85, 85);font-size: 16px;font-weight: 300;font-family: sans-serif;border-radius: 4px;
+}
+
+.select:hover {
+    background: ghostwhite;transition: 0.3s ease;
+}
+label {
+    font-size: 15px;font-family: sans-serif;font-weight: 400;letter-spacing: 1.5px;
+}
+.AvatarBackground {
+    height: inherit;padding: 20px;border-radius: 10px;display: block; text-align: center;display: flex;flex-flow: column;align-items: center;
+    justify-content: center;
+}
+.color__picker {
+    margin-bottom: 30px;width: 100%;
+}
+.hairColor__Component {
+    display: flex;align-items: center;justify-content: center;
+}
+
+.color {width: 33px;height: 33px; padding: 5px;border-radius: 100%;margin: 5px;outline: none;border: none;}
+#red {background: red;}
+#blonde{background: #F0E2B6;}
+#blondeGolden{background: #ccaa55}
+#brown{background: #964B00}
+#blondeDark{background: #654321}
+#pastlePink{background: #dea5a4}
+#silverGray {background: #777777}

@@ -1,0 +1,63 @@
+[
+    {
+        "id":1,
+        "design":"Design",
+        "develop": "Develop",
+        "img":"",
+        "createdOn":"Mar 25",
+        "sDes":"Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "flag":"pink",
+        "more":{
+            "border":"pink",
+            "daysToVote":"2 days left to vote ",
+            "approval": "Approved",
+            "progress":90
+        }
+    },
+    {
+        "id":2,
+        "design":"Design",
+        "develop": "Develop",
+        "img":"",
+        "createdOn":"Mar 25",
+        "sDes":"Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "flag":"pink",
+        "more":{
+            "border":"pink",
+            "daysToVote":"2 days left to vote ",
+            "approval": "Approved",
+            "progress":90
+        }
+    },
+    {
+        "id":3,
+        "design":"Design",
+        "develop": "Develop",
+        "img":"",
+        "createdOn":"Mar 25",
+        "sDes":"Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "flag":"pink",
+        "more":{
+            "border":"pink",
+            "daysToVote":"2 days left to vote ",
+            "approval": "Approved",
+            "progress":90
+        }
+    },
+    {
+        "id":4,
+        "design":"Design",
+        "develop": "Develop",
+        "img":"",
+        "createdOn":"Mar 25",
+        "sDes":"Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "flag":"pink",
+        "more":{
+            "border":"pink",
+            "daysToVote":"2 days left to vote ",
+            "approval": "Approved",
+            "progress":90
+        }
+    }
+   
+]

@@ -1,0 +1,135 @@
+.wrapper {
+  width: 100%;
+  max-width: 22em;
+}
+
+.container {
+  width: 100%;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 1em;
+  border: 1px solid rgb(190, 193, 204);
+  border-radius: 0.5em;
+  background: #f7f7f7;
+  overflow: hidden;
+  position: relative;
+}
+
+.popupContainer {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 2em;
+  z-index: 10;
+  border-radius: 0.5em;
+}
+
+.popupContainer.show {
+  display: flex;
+}
+
+.popupContainer.hide {
+  display: none;
+}
+
+.imageContainerWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.imageContainer {
+  width: 5em;
+  height: 5em;
+  border-radius: 50%;
+  margin-bottom: 1em;
+  border: 1px solid white;
+  overflow: hidden;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+}
+
+.detailsContainer {
+  width: 100%;
+  margin-bottom: 1em;
+}
+
+.userName > span,
+.name > span {
+  display: inline-block;
+  width: 6em;
+  font-size: 0.85em;
+}
+
+.otherInfo {
+  width: 100%;
+  text-align: center;
+}
+
+.otherInfo .title {
+  position: relative;
+  display: inline-block;
+  padding: 0 1em;
+  margin-bottom: 2em;
+}
+
+.otherInfo .title::before {
+  position: absolute;
+  content: "";
+  width: 40%;
+  height: 4px;
+  -webkit-background-clip: text;
+  background-clip: text;
+  background: linear-gradient(
+    104.61deg,
+    #ff00b8 2.65%,
+    #ff655b 51.83%,
+    #ffc700 100%
+  );
+  color: transparent;
+  bottom: -0.5em;
+  left: 0;
+}
+
+.mentorship {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1em;
+  padding: 0 1em;
+}
+
+.mentee,
+.mentor {
+  color: rgb(197, 197, 197);
+  padding: 0.3em 1em;
+}
+
+.isMentee,
+.isMentor {
+  border-radius: 0.25em;
+  border: 1px solid #ff0068;
+  color: black;
+}
+
+.role {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1em;
+}
+
+.mentorship,
+.role,
+.detailsContainer {
+  background: white;
+  padding: 0.5em;
+}

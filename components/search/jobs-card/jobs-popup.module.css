@@ -1,0 +1,190 @@
+.container {
+  width: 100%;
+  height: 80vh;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 1em;
+  border: 1px solid rgb(190, 193, 204);
+  border-radius: 0.5em;
+  background: white;
+  overflow: hidden;
+  position: relative;
+  cursor: unset;
+  animation: enter 250ms forwards;
+  position: sticky;
+  top: 5em;
+}
+
+@keyframes enter {
+  from{
+    transform: translate(-10px, -10px);
+  }
+  to {
+    transform: translate(0, 0);
+  }
+}
+
+
+.header {
+  padding-bottom: 0.5em;
+  border-bottom: 1px solid gray;
+  font-size: 1rem;
+  position: relative;
+}
+
+.applyButton {
+  border: 1px solid #151371;
+  color: #151371;
+  transition: all 150ms ;
+  padding: 0.5em 1.5em;
+  border-radius: 1.5em;
+  margin: 0.5em;
+  cursor: pointer;
+}
+
+.applyButton:hover {
+  color: white;
+  background: #151371;
+}
+
+.link {
+  cursor: pointer;
+  margin-left: 0.5em;
+  color:rgb(66, 66, 66);
+  display: inline-block;
+}
+
+.closePopup {
+  background: rgb(235, 236, 240);
+  color: black;
+  border-radius: 50%;
+  position: absolute;
+  top: 0em;
+  right: 0em;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 50ms;
+  width: 1.7em;
+  height: 1.7em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.closePopup:hover {
+ font-size: 1.02rem;
+}
+
+.main {
+  width: 100%;
+  height: 20em;
+  overflow-y: auto;
+  padding: 0.5em;
+}
+
+.title {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-bottom: 0.3em;
+}
+
+.remote {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  margin-left: 3em;
+  font-size: 1rem;
+}
+
+.remote::before {
+  content: '';
+  position: absolute;
+  width: 0.5em;
+  height: 0.5em;
+  background: black;
+  border-radius: 50%;
+  left: -1em;
+}
+
+.amountPaid {
+  margin: 0.5em 0;
+  font-weight: 500;
+}
+
+.highlight {
+  margin-bottom: 1em;
+}
+
+.expand {
+  overflow: unset;
+  text-overflow: unset;
+  white-space: unset;
+}
+
+.listStyle {
+  display: inline-block;
+  margin-right: 0.5em;
+  width: 0.4em;
+  height: 0.4em;
+  border-radius: 50%;
+}
+
+.circle {
+  border: 2px solid grey;
+}
+
+.disc {
+  border: 2px solid grey;
+}
+
+.sect {
+  margin-bottom: 1em;
+}
+
+.sect_ {
+  margin-bottom: 0.5em;
+}
+
+.sectTitle {
+  margin-bottom: 0.5em;
+  font-weight: 500;
+}
+
+.sectTitle_ {
+  font-size: 1rem;
+  margin-bottom: 0;
+}
+
+.sectText {
+  font-size: 1rem;
+}
+
+.active {
+  position: absolute;
+  top: 1em;
+  right: 4em;
+  font-size: 1rem;
+  background: #d3d3db;
+  padding: 0 0.5em;
+  border-radius: 0.2em;
+}
+ 
+.is {
+  color: green;
+}
+.not {
+  color: #da2727;
+}
+
+@media screen and (max-width: 768px) {
+  .active {
+    top: unset;
+    bottom: 0em;
+    right: 2em;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 21.5em;
+  }
+}

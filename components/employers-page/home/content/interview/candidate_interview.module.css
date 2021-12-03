@@ -1,0 +1,32 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  padding-top: 1rem;
+  background-color: #fdfafa;
+  box-shadow: 2px 1px 10px rgba(69, 63, 63, 0.2);
+  height: max-content;
+}
+
+.header {
+  padding-left: 2rem;
+}
+.header > h1 {
+  font-size: 1.4rem;
+  font-weight: bold;
+  font-family: "Red Hat Display", sans-serif;
+  color: black;
+}
+
+.header > span {
+  font-size: 0.8rem;
+  color: black;
+  font-family: "Red Hat Display", sans-serif;
+  font-weight: 400;
+}
+
+.horizontal {
+  width: 82.5%;
+  margin: 0 auto;
+  margin-top: 1rem;
+  border: 0.5px solid black;
+}

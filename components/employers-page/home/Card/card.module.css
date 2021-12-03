@@ -1,0 +1,49 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 1rem;
+  /* position: absolute; */
+  border-radius: 1rem;
+  margin: 1.2rem 1.2rem;
+  background-color: white;
+  box-shadow: 1px 1px 1px rgba(69, 63, 63, 0.2);
+}
+
+.title > h3 {
+  font-weight: 600;
+  font-family: "Red Hat Display", sans-serif;
+  font-size: 1rem;
+  color: black;
+}
+
+.title > span {
+  font-weight: 300;
+  font-size: 0.8rem;
+  font-family: "Red Hat Display", sans-serif;
+  color: gray;
+}
+
+.horizontal {
+  width: auto;
+  color: gray;
+  /* border: 0.5px solid gray; */
+}
+
+.footer {
+  display: flex;
+  align-items: space-between;
+  justify-content: space-between;
+  flex-direction: row;
+  padding-top: 0.5rem;
+}
+
+.f_span {
+  font-size: 0.75rem;
+  color: gray;
+}
+
+.s_span {
+  font-size: 0.75rem;
+  color: rgba(255, 56, 133, 1);
+  text-decoration: underline;
+}

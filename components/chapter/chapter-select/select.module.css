@@ -1,0 +1,63 @@
+.selectContainer {
+    /* flex: 1 1 auto; */
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    position: relative;
+    z-index: 10;
+}
+
+.selectHeading {
+    width: auto;
+    background: #FFC700;
+    color: #151371;
+    border-radius: 0.2em;
+    cursor: pointer;
+    padding: 0.3em 1.5em;
+    text-transform: capitalize;
+    z-index: 5;
+}
+
+.selectList {
+    height: auto;
+    max-height: 0;
+    position: absolute;
+    right: 0;
+    top: 2.2em;
+    white-space: nowrap;    
+    transition: all 1s ease-in-out;
+    overflow: hidden;
+}
+
+.selectList.toggle {
+    max-height: 20em;
+    border-bottom: 3px solid #00000e;
+}
+
+.selectItem {
+    width: auto;
+    min-width: 6em;
+    cursor: pointer;
+    background: #151371;
+    color: white;
+    padding: 0.2em 2em;
+    text-transform: capitalize;
+}
+
+.selectItem:hover {
+    background: #0d0c4b;
+}
+
+
+@media screen and (max-width: 480px) {
+    .selectHeading {
+        padding: 0.1em 1em;
+        font-size: 14px;
+    }
+
+    .selectItem {
+        /* padding: 0.2em 1em; */
+        font-size: 0.9rem;
+    }
+}

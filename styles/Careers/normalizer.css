@@ -1,0 +1,43 @@
+*{
+	margin:0;
+	padding:0;
+	list-style-type:none;
+	text-decoration:none;
+}
+
+.careers-wrapper {
+  margin:0 auto;
+  max-width:1320px;
+  padding:0 15px;
+}
+
+@media screen and (max-width: 1399px) {
+	.careers-wrapper{
+		max-width:1140px;
+	} 
+}
+
+@media screen and (max-width: 1199px) {
+	.careers-wrapper{
+		max-width:960px;
+	} 
+}
+
+@media screen and (max-width: 991px) {
+	.careers-wrapper{
+		max-width:720px;
+	} 
+}
+
+@media screen and (max-width: 767px) {
+	.careers-wrapper{
+		max-width:540px;
+	} 
+}
+
+@media screen and (max-width: 575px) {
+	.careers-wrapper{
+		max-width:auto;
+	} 
+}
+

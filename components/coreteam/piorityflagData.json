@@ -1,0 +1,18 @@
+[
+    {
+        "id": 1,
+        "flagName": "Ergent"
+    },
+    {
+        "id": 2,
+        "flagName": "High"
+    },
+    {
+        "id": 3,
+        "flagName": "Normal"
+    },
+    {
+        "id": 4,
+        "flagName": "Low"
+    }
+]

@@ -1,0 +1,27 @@
+[
+    {
+        "id": 1,
+        "name": "Messi",
+        "image": "https://i.im.ge/2021/07/14/2qt6M.th.png"
+    },
+    {
+        "id": 2,
+        "name": "Naymar",
+        "image": "https://i.im.ge/2021/07/14/2qt6M.th.png"
+    },
+    {
+        "id": 3,
+        "name": "Dibala",
+        "image": "https://i.im.ge/2021/07/14/2qt6M.th.png"
+    },
+    {
+        "id": 4,
+        "name": "Kaka",
+        "image": "https://i.im.ge/2021/07/14/2qt6M.th.png"
+    },
+    {
+        "id": 5,
+        "name": "Ronaldo",
+        "image": "https://i.im.ge/2021/07/14/2qt6M.th.png"
+    }
+]

@@ -1,0 +1,305 @@
+#join {
+  padding: 70px 0px;
+  background: linear-gradient(
+    104.61deg,
+    #ff00b8 2.65%,
+    #ff655b 51.83%,
+    #ffc700 100%
+  );
+}
+
+.title {
+  color: #fff;
+  font-weight: 500;
+  font-size: 30px;
+}
+
+.desc {
+  color: #fff;
+  font-weight: 300;
+}
+
+.card-container {
+  background: rgb(20 20 113 / 0.7);
+  padding: 50px;
+  border-radius: 15px;
+  margin-top: 50px;
+}
+
+.card-head {
+  color: #fff;
+  font-weight: 400;
+  font-size: 25px;
+}
+
+.card-desc {
+  color: #fff;
+  font-weight: 200;
+  font-size: 14px;
+}
+
+.bar-container {
+  display: flex;
+  justify-content: space-between;
+  min-height: 80px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+.join-navbar {
+  min-width: 100%;
+  justify-content: right;
+  align-items: flex-end;
+  float: left;
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
+  background-color: yellow;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.hero-container h1 {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 46px;
+  line-height: 61px;
+  display: flex;
+  align-items: center;
+  color: #ffffff;
+  margin-top: 30px;
+}
+.hero-container p {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 200;
+  font-size: 25px;
+  line-height: 37px;
+  color: #ffffff;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  margin-top: 30px;
+}
+.join-hero-section {
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    linear-gradient(163.54deg, #ff00b8 11.4%, #151371 107.27%);
+}
+.join-hero-section .hero-container {
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  display: flex;
+  margin: 40px 0px;
+  margin-top: 70px;
+}
+.join-hero-section .hero-container.join-hero-btn {
+  display: flex;
+  justify-content: space-between;
+}
+.btn-join-mpa {
+  width: 155px;
+  height: 40px;
+  left: 800px;
+  background: #ffc700;
+  box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.25);
+  border-radius: 40px;
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 19px;
+  color: #151371;
+}
+.btn-join-login {
+  width: 156px;
+  height: 40px;
+  left: 1009px;
+  background: rgba(255, 0, 184, 0.33);
+  box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.25);
+  border-radius: 40px;
+  font-family: Red Hat Display;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 19px;
+  color: #ffffff;
+  margin: 60px 20px;
+  bottom: 0%;
+}
+.highlight-mpa-programs h1 {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 46px;
+  line-height: 61px;
+  text-align: center;
+  color: #000000;
+  align-self: center;
+}
+.join-head-container {
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  text-align: center;
+  margin: 50px 60px;
+}
+.join-head-container .join-head-icon {
+  padding: 20px;
+  background-color: #151371;
+  color: white;
+  font-size: 40px;
+  border-radius: 5px;
+}
+.join-mpa-programs {
+  background: #f2f2f2;
+}
+.join-mpa-programs .card {
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  text-align: center;
+}
+.mpa-joinpage-btns {
+  width: 200px;
+  height: 40px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin: 20px 0px 25px 20px;
+  background: #151371;
+  box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.25);
+  border-radius: 40px;
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 19px;
+  color: #fffdfd;
+}
+.mpa-joinpage-btns-2 {
+  width: 157;
+  height: 40px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin: 20px 0px 25px 20px;
+  background: #151371;
+  box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.25);
+  border-radius: 40px;
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 19px;
+  color: #fffdfd;
+}
+.join-mpa-programs .card .card-body h4 {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 28px;
+  line-height: 20px;
+  color: #000000;
+}
+.join-mpa-programs .card .card-body p {
+  width: 242px;
+  height: 48px;
+  left: 143px;
+  top: 1637px;
+  font-family: Zilla Slab;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 19px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+.join-mpa-programs .card .card-body button {
+  justify-content: center;
+  align-items: center;
+}
+.first {
+  width: 1%;
+}
+
+.second {
+  width: 99%;
+  display: flex;
+  align-items: center;
+  background: #fff;
+  padding-left: 20px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.second:hover .maintext {
+  background: #333;
+  color: #ffc700;
+}
+
+.second:hover .icon {
+  color: #fff;
+}
+
+.second:hover {
+  background: #333;
+}
+
+.bar-content {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 30px;
+}
+
+.bar-head {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.maintext {
+  color: #141471;
+  font-size: 18px;
+}
+
+.subtext {
+  font-size: 12px;
+}
+.icon {
+  font-size: 25px;
+  color: #141471;
+}
+
+.image {
+  width: 30px;
+}
+
+.second:hover .roundedArea > svg *,
+.roundedArea {
+  fill: #ffffff;
+}
+
+@media (max-width: 770px) {
+  .title {
+    font-size: 25px;
+  }
+
+  .card-container {
+    padding: 40px 25px;
+  }
+
+  .card-head {
+    font-size: 16px;
+  }
+
+  .card-text {
+    line-height: 16px;
+  }
+  .bar-content {
+    padding: 0px 10px;
+  }
+  .bar-head {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

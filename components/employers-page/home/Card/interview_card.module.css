@@ -1,0 +1,67 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 1rem;
+  border-radius: 1rem;
+  margin: 1.2rem 1.2rem;
+  justify-content: space-between;
+  align-items: space-between;
+  background-color: white;
+  box-shadow: 1px 1px 1px rgba(69, 63, 63, 0.2);
+}
+
+.head {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: space-between;
+}
+
+.head img {
+  width: 50px;
+  height: 50px;
+  /* border: 1px solid gray; */
+  border-radius: 50%;
+  float: left;
+  margin-left: 1rem;
+}
+
+.footer {
+  display: flex;
+  align-items: space-between;
+  justify-content: space-between;
+  flex-direction: row;
+  padding-top: 0.5rem;
+}
+
+.horizontal {
+  width: auto;
+  color: gray;
+  /* border: 0.5px solid gray; */
+  margin-top: 0.7rem;
+}
+
+.identity {
+  margin-right: 4rem;
+}
+
+.identity h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: "Red Hat Display", sans-serif;
+  color: black;
+}
+
+.identity span {
+  font-size: 0.8rem;
+  font-family: "Red Hat Display", sans-serif;
+}
+
+.date {
+  font-size: 0.7rem;
+  font-family: "Red Hat Display", sans-serif;
+}
+.time {
+  font-size: 0.7rem;
+  font-family: "Red Hat Display", sans-serif;
+}

@@ -1,0 +1,135 @@
+.btn--go {
+  background-color: #fff !important;
+  background: #fff !important;
+  color: #151371;
+}
+.consultancy__title--h1 {
+  font-size: 2rem;
+  color: #fff;
+  text-align: center;
+  border-bottom: 2px solid #fff;
+  padding-bottom: 2px;
+}
+.consultancy__type--card {
+  text-align: center;
+  margin-top: 2rem;
+}
+.consultancy__type--card > p {
+  color: #fff;
+  margin-top: 0.5rem;
+}
+.consultancy__logo--image {
+  background-color: #fff;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  /* border: 1px solid #151371; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  text-align: center;
+  justify-self: center;
+  margin: 0 auto;
+  /* z-index: 10; */
+}
+.consultancy__logo--image img {
+  width: 50px;
+  height: 50px;
+  object-fit: fill;
+  /* z-index: 5; */
+}
+.consultancy__logo--image::before {
+  content: "";
+  position: absolute;
+  right: -5px;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  /* background-color: #fff; */
+  border: 1px solid #151371;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.6s ease;
+  /* z-index: 1; */
+}
+.consultancyBTN--Login {
+  color: #ffffff !important;
+  font-weight: bold;
+}
+.consultancyBTN--getQuote {
+  font-weight: bold;
+  width: 150px;
+}
+.consultancy--registered__header {
+  display: flex;
+  align-items: center;
+}
+.consultancy---user__image {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+}
+.consultancy---user__image img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+}
+.consultancy--user__detail {
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 1.25rem;
+  margin-left: 1rem;
+}
+.consultancy--user__detail p {
+  font-size: 1rem;
+}
+.consultancy--registered__body {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 25px;
+  margin: 2rem 0;
+}
+.consultancy--user__projects {
+  background: linear-gradient(
+    0deg,
+    #ffffff -50.4%,
+    rgba(255, 255, 255, 0) 95.3%
+  );
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 2rem 1rem;
+}
+.consultancy--user__projects img {
+  width: 150px;
+  height: 150px;
+  object-fit: fill;
+}
+.consultancy--user__projects h1 {
+  margin-top: 1rem;
+  background: #151371;
+  border-radius: 10px;
+  padding:6px 12px;
+  width:120px;
+  text-align: center;
+  color: #fff;
+  cursor: pointer;
+}
+.consultancy--logo {
+    position: relative;
+}
+.consultancy--coolicon {
+    position:absolute;
+    width:35px !important;
+    height:35px !important;
+    top: 0 !important;
+    right: 2%;
+}
+.consultancy--auth__popup {
+  position:fixed;
+  top: 20px;
+  right:33%;
+  z-index: 1000;
+}

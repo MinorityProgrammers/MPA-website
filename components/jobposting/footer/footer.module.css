@@ -1,0 +1,38 @@
+.footer {
+  background: linear-gradient(
+    90.17deg,
+    #ff2d90 -31.21%,
+    #ff6759 31.65%,
+    #ff7c46 73.4%,
+    #fec104 107.58%
+  );
+}
+
+.text_white {
+  color: white;
+}
+
+.button1 {
+  padding: 0.6rem 2.1rem;
+  margin-right: 1rem;
+  border-radius: 2.5rem;
+  border: 1px solid #ffffff;
+  color: white;
+  box-sizing: border-box;
+  font-family: "Red Hat Display", sans-serif;
+}
+
+.button2 {
+  padding: 0.6rem 2.1rem;
+  /* margin 0; */
+  border-radius: 2.5rem;
+  border: 1px solid #ffffff;
+  outline: none;
+  color: white;
+  box-sizing: border-box;
+  font-family: "Red Hat Display", sans-serif;
+}
+
+#white_link > li > a {
+  color: white;
+}

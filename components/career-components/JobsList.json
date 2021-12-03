@@ -1,0 +1,166 @@
+[
+    {
+        "id": "1",
+        "job_title":"Front End Developer",
+        "company_id":"Minority Programmers Association",
+        "pay": "$40,000",
+        "location":{
+            "city": "Chicago",
+            "state": "Illinois",
+           "zipCode": 60625
+        },
+        "job_description": "We’re looking for an experienced Front End Developer to build the next generation of digital tools in support of our company’s strategic objectives. As a member of our scrum team the role requires an agile engineering mentality, patience and persistence to solve complex problems, ability to get things done quickly but thoughtfully, and strong engineering skills.",
+        "additional_compensation": "401k, Company Stock",
+        "benefits": "Medical, dental",
+        "job_type": "Full-Time",
+        "job_industry": "Technology",
+        "weekly_hours":"40",
+        "min_requirements": [
+            {"skill":"React", "years":1}
+        ],
+        "remote": true,
+        "is_deleted":false,
+        "created_at":"4/12/2021",
+        "updated_at":"4/12/2021",
+        "hiring_urgency":"TBD"
+    },
+    {
+        "id": "2",
+        "job_title":"Back End Developer",
+        "company_id":"Minority Programmers Association",
+        "pay": "$50,000",
+        "location":{
+            "city": "Harrisonburg",
+            "state": "Virginia",
+           "zipCode": 60625
+        },
+        "job_description": "We are looking for a back-end or full stack developer who is passionate about architecting and implementing scalable systems to join our team.",
+        "additional_compensation": "401k, Company Stock",
+        "benefits": "Medical, dental",
+        "job_type": "Part-Time",
+        "job_industry": "Technology",
+        "weekly_hours":"20",
+        "min_requirements": [
+            {"skill":"Node","years":2},
+            {"skill":"SQL", "years":1}
+        ],
+        "remote": false,
+        "is_deleted":false,
+        "created_at":"4/12/2021",
+        "updated_at":"4/12/2021",
+        "hiring_urgency":"TBD"
+    },
+    {
+        "id": "3",
+        "job_title":"QA Analyst",
+        "company_id":"Minority Programmers Association",
+        "pay": "$45,000",
+        "location":{
+            "city": "Chicago",
+            "state": "Illinois",
+           "zipCode": 60625
+        },
+        "job_description": "We’re looking for an experienced Front End Developer to build the next generation of digital tools in support of our company’s strategic objectives. As a member of our scrum team the role requires an agile engineering mentality, patience and persistence to solve complex problems, ability to get things done quickly but thoughtfully, and strong engineering skills.",
+        "additional_compensation": "401k, Company Stock",
+        "benefits": "Medical, dental",
+        "job_type": "Full-Time",
+        "job_industry": "Technology",
+        "weekly_hours":"40",
+        "min_requirements": [
+            "HTML",
+            "CSS",
+            "Javascript",
+            "React",
+            "Nextjs"
+        ],
+        "remote": "true",
+        "is_deleted":false,
+        "created_at":"4/12/2021",
+        "updated_at":"4/12/2021",
+        "hiring_urgency":"TBD"
+    },
+    {
+        "id": "4",
+        "job_title":"Senior Software Engineer",
+        "company_id":"Tesla",
+        "pay": "$45,000",
+        "location":{
+            "city": "Fremont",
+            "state": "California",
+           "zipCode": 94538
+        },
+        "job_description": "We are looking for a back-end or full stack developer who is passionate about architecting and implementing scalable systems to join our team.",
+        "additional_compensation": "401k, Company Stock",
+        "benefits": "Medical, dental",
+        "job_type": "Internship",
+        "job_industry": "Technology",
+        "weekly_hours":"20",
+        "min_requirements": [
+            "Node",
+            "SQL",
+            "Express"
+        ],
+        "remote": false,
+        "is_deleted":false,
+        "created_at":"4/12/2021",
+        "updated_at":"4/12/2021",
+        "hiring_urgency":"TBD"
+    },{
+        "id": "5",
+        "job_title":"UI/UX Designer",
+        "company_id":"Apple",
+        "pay": "$45,000",
+        "location":{
+            "city": "Houston",
+            "state": "Texas",
+           "zipCode": 77019
+        },
+        "job_description": "We’re looking for an experienced Front End Developer to build the next generation of digital tools in support of our company’s strategic objectives. As a member of our scrum team the role requires an agile engineering mentality, patience and persistence to solve complex problems, ability to get things done quickly but thoughtfully, and strong engineering skills.",
+        "additional_compensation": "401k, Company Stock",
+        "benefits": "Medical, dental",
+        "job_type": "Contract",
+        "job_industry": "Technology",
+        "weekly_hours":"40",
+        "min_requirements": [
+            "HTML",
+            "CSS",
+            "Javascript",
+            "React",
+            "Nextjs"
+        ],
+        "remote": true,
+        "is_deleted":false,
+        "created_at":"6/1/2020",
+        "updated_at":"2/13/2021",
+        "hiring_urgency":"TBD"
+    },
+    {
+        "id": "6",
+        "job_title":"Cloud Architect",
+        "company_id":"Minority Programmers Association",
+        "pay": "$100,000",
+        "location":{
+            "city": "Harrisonburg",
+            "state": "Virginia",
+           "zipCode": 60625
+        },
+        "job_description": "We are looking for a back-end or full stack developer who is passionate about architecting and implementing scalable systems to join our team.",
+        "additional_compensation": "401k, Company Stock",
+        "benefits": "Medical, dental",
+        "job_type": "Part-Time",
+        "job_industry": "Technology",
+        "weekly_hours":"20",
+        "min_requirements": [
+            "Node",
+            "SQL",
+            "Express"
+        ],
+        "remote": false,
+        "is_deleted":false,
+        "created_at":"4/12/2021",
+        "updated_at":"4/12/2021",
+        "hiring_urgency":"TBD"
+    }
+
+]
+

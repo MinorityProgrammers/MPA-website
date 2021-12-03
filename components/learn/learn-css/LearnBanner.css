@@ -1,0 +1,22 @@
+.learnBanner-image{
+    background-image: url("../../../public/assets/images//learn-page/learnBanner.png");
+    height: 468px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50%;
+}
+
+.learnBanner{
+    padding-top: 6rem;
+}
+
+@media (min-width: 1200px){
+    .learnBanner-details h1{
+        font-size: 2.5rem;
+    }
+}
+@media (max-width: 1199px){
+    .learnBanner-details h1{
+        font-size: 1.8rem;
+    }
+}

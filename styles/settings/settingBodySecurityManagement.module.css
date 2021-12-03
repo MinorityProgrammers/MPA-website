@@ -1,0 +1,28 @@
+.managementContent {
+  margin-bottom: 2vw;
+}
+
+.btn {
+  color: white;
+  cursor: pointer;
+  border-radius: 0.5vw;
+  font-size: 1.3vw;
+  font-weight: bold;
+  margin-top: 2vw;
+  padding: 1vw 0;
+  text-align: center;
+}
+.deactivate {
+  background-color: #ffc700;
+  color: #000;
+}
+.delete {
+  background-color: #ea2e2e;
+  color: #fff;
+}
+
+.btnWrapper p {
+  color: white;
+  font-size: 0.9vw;
+  text-align: center;
+}

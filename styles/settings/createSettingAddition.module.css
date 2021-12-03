@@ -1,0 +1,44 @@
+.cpSkillsContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+@media screen and (max-width: 900px) {
+  .cpSkillsContainer {
+    margin-bottom: 20px;
+  }
+}
+
+.cpSkill {
+  background-color: white;
+  color: black;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0.5vw 1vw;
+  margin-right: 1vw;
+  margin-bottom: 1vw;
+  font-size: 14px;
+  border-radius: 22px;
+}
+.cpSkill svg {
+  color: #151371;
+  font-size: 16px;
+  margin-left: 5px;
+}
+
+.bgcpSkill {
+  background-color: #151371;
+  color: white;
+}
+
+.bgcpSkill svg {
+  color: white;
+}
+
+
+.deleteSkill {
+  cursor: pointer;
+}

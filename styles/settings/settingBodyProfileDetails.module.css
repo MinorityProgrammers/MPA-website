@@ -1,0 +1,13 @@
+.profileDetailsContent {
+  margin-bottom: 2vw;
+}
+
+.addBtn {
+  color: white;
+  font-size: 1.5vw;
+  width: 10%;
+}
+
+.addBtn:focus {
+  outline: none;
+}

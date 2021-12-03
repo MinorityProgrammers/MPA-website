@@ -1,0 +1,433 @@
+/* .formWrapper * {
+  transition: all 0.3s;
+} */
+
+.formWrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4em;
+  border-radius: 0.5em;
+}
+
+.formContainer {
+  width: 100%;
+  max-width: 64em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 0.5em;
+  background-color: white;
+  position: relative;
+}
+
+.title {
+  width: 100%;
+  padding: 1em;
+  text-align: center;
+  background-color:#151371;
+  color: white;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  border-top-left-radius: 0.5em;
+  border-top-right-radius: 0.5em;
+}
+
+.form {
+  width: 100%;
+  min-height: 20em;
+  padding: 3em 8em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.buttonWrapper {
+  width: 100%;
+  padding: 0 1em;
+}
+
+.buttonContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  margin-bottom: 2em;
+}
+
+.button {
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+}
+
+.next > *, .prev > * {
+  transition: all 650ms cubic-bezier(0.19, 1, 0.22, 1) ;
+}
+
+
+.next:hover > *{
+  transform: translateX(0.2rem);
+}
+
+
+.prev:hover > *{
+  transform: translateX(-0.2rem);
+}
+
+.next {
+  right: 0;
+  border-radius: 0.2em;
+  color: #151371;
+  background-color: #ffa500;
+  padding: 0.3em 0.8em;
+  text-transform: capitalize;
+}
+
+.prev {
+  left: 0;
+  color: #151371;
+  text-transform: capitalize;
+}
+
+.stepperWrapper {
+  width: 100%;
+  max-width: 28em;
+  margin-bottom: 4em;
+}
+
+.stepperContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.stepperLine {
+  flex: 1 1 auto;
+  height: 2px;
+}
+
+.stepperButtons {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.stepperButton {
+  width: 20px;
+  height: 20px;
+  font-size: 0.8rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.thankyouSection {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 6em;
+  min-height: 24rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #151371;
+  text-transform: uppercase;
+}
+
+.question {
+  width: 100%;
+  margin-bottom: 2em;
+}
+
+.inputFeedback {
+  color: #f356c7;
+  margin-top: 0.5em;
+}
+
+.submitFeedbackWrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(77, 75, 75, 0.2);
+  position: absolute;
+  border-radius: 0.5em;
+  z-index: 50;
+}
+
+.submitFeedback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 2em;
+  border-radius: 0.5em;
+  background: white;
+}
+
+.submitErrorTitle {
+  width: 100%;
+  text-align: center;
+  padding: 0.5em;
+  background: #f5deee;
+  margin-bottom: 1em;
+}
+
+/* .submitErrorMessage {
+
+} */
+
+.errorClose {
+  margin-top: 1em;
+  width: 100%;
+  border-radius: 0.2em;
+  color: #151371;
+  border: 1px solid #151371;
+  text-align: center;
+  cursor: pointer;
+  padding: 4px;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.select {
+  width: 80%;
+}
+
+.select * {
+  z-index: 10;
+}
+
+.emailInput,
+.phoneInput {
+  width: 60%;
+  border: 1px solid gray;
+  background: white;
+  color: black;
+  font-size: 1rem;
+  padding: 0.2em 0.5em;
+  border-radius: 4px;
+  margin-bottom: 1em;
+}
+
+.emailInput:focus,
+.phoneInput:focus {
+  outline: auto #ee8ad2;
+  border: none;
+  border-radius: 4px;
+}
+
+.numberInput {
+  width: 6em;
+  background: white;
+  color: black;
+  font-size: 1.2rem;
+  padding: 0.2em 0.5em;
+  border: 1px solid gray;
+  border-radius: 0.1em;
+}
+
+.numberInput:focus {
+  outline: auto #ee8ad2;
+  border: none;
+  border-radius: 10px;
+}
+
+.textareaInput {
+  resize: none;
+  width: 100%;
+  height: 6em;
+  border-radius: 0.2em;
+  background: white;
+  color: black;
+  padding: 0.5em;
+  font-size: 1rem;
+  border: 1px solid gray;
+}
+
+.textareaInput:focus {
+  outline: 2px solid rgb(255, 192, 203, 0.5);
+  border: 1px solid #f356c7;
+  color: black;
+  background: white;
+  font-size: 1rem;
+}
+
+.textInput {
+  width: 60%;
+  border-radius: 0.2em;
+  background: white;
+  color: black;
+  padding: 0.5em;
+  font-size: 1rem;
+  border: 1px solid gray;
+}
+
+.textInput:focus {
+  outline: 2px solid rgb(255, 192, 203, 0.5);
+  border: 1px solid #f356c7;
+  color: black;
+  background: white;
+  font-size: 1rem;
+}
+
+.label{
+  font-size: 1rem;
+  font-weight: 400;
+  margin-bottom: 1em;
+  color: #151371;
+  display: block;
+}
+
+.innerLabel {
+  color: #151371;
+  font-size: 0.9rem;
+  font-weight: 400;
+  margin-bottom: 0.5em;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.radio {
+  width: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1em;
+  position: relative;
+  background: white;
+  width: 1px;
+  height: 1px;
+}
+
+.radio::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: white;
+  border-radius: 50%;
+}
+
+.radio::before {
+  content: '';
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border: 1px solid #151371;
+  border-radius: 50%;
+}
+
+.radio:checked::after {
+  background: #ffa500;
+}
+
+.submit {
+  position: absolute;
+  right: 0;
+  border-radius: 0.2em;
+  background: #151371;
+  color: white;
+  padding: 0.5em 1.4em;
+  transition: background 0.3s;
+}
+
+.submit:hover {
+  background: rgb(21, 19, 113, 0.8);
+}
+
+
+@media screen and (max-width: 1024px) {
+  .formContainer {
+    max-width: 48em;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .formContainer {
+    max-width: 36em;
+  }
+  .form {
+    padding: 3em 2em ;
+  }
+  .radio {
+    margin-right: 2em;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .formWrapper {
+    margin-bottom: 2em;
+  }
+  .formContainer {
+    max-width: 100%;
+  }
+  .formInput {
+    padding: 2em;
+  }
+  .form {
+    min-height: 12em;
+    padding: 1em;
+  }
+  .stepperWrapper {
+    padding: 0 2em;
+  }
+  .buttonWrapper {
+    margin-bottom: 2em;
+  }
+  .radio {
+    margin-right: 4em;
+  }
+  .emailInput,
+  .phoneInput {
+    width: 80%;
+  }
+  .submitFeedback {
+    font-size: 12px;
+    padding: 1em;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .title {
+    padding: 0.5em;
+    font-size: 0.8rem;
+  }
+  .formInput {
+    padding: 2em 1em;
+  }
+  .textInput {
+    width: 100%;
+  }
+  .label {
+    font-size: 0.8rem;
+  }
+  .stepperButton > div {
+    font-size: 0.6rem;
+    width: 12px;
+    height: 12px;  
+    font-weight: 500;
+  }
+  .stepperLine {
+    height: 0.05em;
+  }
+  .emailInput,
+  .phoneInput {
+    width: 100%;
+  }
+}
+

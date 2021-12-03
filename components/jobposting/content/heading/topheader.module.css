@@ -1,0 +1,30 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0;
+}
+
+.header {
+  color: black;
+  font-family: "Red Hat Display", sans-serif;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  font-weight: bold;
+}
+
+.options {
+  display: flex;
+  align-items: center;
+  max-width: 80vw;
+  justify-content: space-between;
+}
+
+.header_searchbar {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  color: black;
+  font-weight: bold;
+}

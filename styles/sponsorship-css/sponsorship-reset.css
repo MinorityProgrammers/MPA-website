@@ -1,0 +1,43 @@
+/* RESET CSS */
+.sponsor-page-wrapper {
+  line-height: 1;
+}
+
+.sponsor-page-wrapper a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.sponsor-page-wrapper ol,
+.sponsor-page-wrapper ul {
+  list-style: none;
+}
+
+.sponsor-page-wrapper div,
+.sponsor-page-wrapper span,
+.sponsor-page-wrapper h1,
+.sponsor-page-wrapper h2,
+.sponsor-page-wrapper h3,
+.sponsor-page-wrapper h4,
+.sponsor-page-wrapper h5,
+.sponsor-page-wrapper h6,
+.sponsor-page-wrapper p,
+.sponsor-page-wrapper a,
+.sponsor-page-wrapper img,
+.sponsor-page-wrapper ol,
+.sponsor-page-wrapper ul,
+.sponsor-page-wrapper li,
+.sponsor-page-wrapper fieldset,
+.sponsor-page-wrapper form,
+.sponsor-page-wrapper label,
+.sponsor-page-wrapper legend,
+.sponsor-page-wrapper table,
+.sponsor-page-wrapper caption {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* END RESET CSS */

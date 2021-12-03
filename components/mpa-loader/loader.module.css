@@ -1,0 +1,33 @@
+.loaderContainer {
+  width: auto;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.loader {
+  width: 1em;
+  height: 1em;
+  background: black;
+  margin-left: 0.3em;
+  animation: swing 550ms infinite both ease-in-out;
+}
+
+.loader:nth-child(1) {
+  margin-left: 0;
+}
+
+.loader:nth-child(2){
+  animation-delay: 0.2s;
+}
+
+@keyframes swing {
+  0%, 100% {
+    transform: translateY(-20px);
+  }
+  50% {
+    transform: translateY(0);
+  }
+}
+

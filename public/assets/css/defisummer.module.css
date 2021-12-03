@@ -1,0 +1,257 @@
+@import url("https://fonts.googleapis.com/css2?family=Irish+Grover&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&display=swap");
+.body {
+  width: 100%;
+  height: 133em;
+  color: rgba(240, 235, 216, 255);
+  background-color: currentColor;
+  overflow: auto;
+  font-family: "Irish Grover", cursive;
+  display: grid;
+  grid-template-columns: 1fr 50rem 1fr;
+  font-size: 1rem;
+}
+.imagewrap {
+  position: relative;
+  width: 100%;
+  height: fit-content;
+}
+.imagewrap > img {
+  width: 100%;
+  object-fit: contain;
+  object-position: center bottom;
+}
+.dateText {
+  position: absolute;
+  width: 100%;
+  height: 80%;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+.dateText > div {
+  text-align: center;
+  width: 100%;
+  color: currentColor;
+  font-size: 2.5em;
+  letter-spacing: 0.05em;
+  opacity: 0.6;
+}
+.oceanImage {
+  background-color: #55c2f6;
+  background-image: url("https://www.defisummer.org/static/media/about.f1e83908.svg");
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.article {
+  position: absolute;
+
+  height: 20em;
+  top: 25em;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.containHeader {
+  width: 100%;
+  height: 10em;
+  position: relative;
+
+  /* background-color: cyan; */
+  display: flex;
+}
+.wrapArticle {
+  width: 80%;
+}
+.containHeader > img {
+  width: 10em;
+  height: 10em;
+}
+.containHeader > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+
+  font-size: 7.5em;
+  margin-bottom: 0.25em;
+  box-sizing: border-box;
+  color: white;
+  -webkit-text-stroke: 1px #55c2f6;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  text-shadow: 0 5px 3px rgba(0, 0, 0, 0.5);
+  text-transform: uppercase;
+}
+.containBottomText {
+  width: 100%;
+  position: absolute;
+  top: 85%;
+  left: 0;
+  color: rgba(31, 31, 31);
+  display: flex;
+  justify-content: space-between;
+
+  box-sizing: border-box;
+  align-items: flex-end;
+}
+.containBottomText > span:first-child {
+  font-size: 2em;
+}
+.containBottomText > span:last-child {
+  line-height: 1em;
+  text-transform: uppercase;
+  font-size: 4em;
+}
+.allBtns {
+  width: 100%;
+  display: flex;
+  gap: 1em;
+  margin-top: 4em;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.allBtns > a {
+  width: calc(50% - 1em);
+}
+.allBtns > a > button {
+  padding: 0.8em;
+  width: 100%;
+  border-radius: 1em;
+  color: white;
+  text-transform: capitalize;
+  transition: 0.3s ease-out;
+  outline: none;
+  font-size: 1.2em;
+}
+.allBtns > a:nth-of-type(1) > button {
+  background-color: #55c2f6;
+}
+.allBtns > a:nth-of-type(1) > button:hover {
+  transition: 0.3s ease-in;
+  background-color: #7cd5ff;
+}
+.allBtns > a:nth-of-type(2) > button {
+  background-color: rgb(28, 139, 207);
+}
+.allBtns > a:nth-of-type(2) > button:hover {
+  transition: 0.3s ease-in;
+  background-color: rgb(64, 152, 207);
+}
+.allBtns > a:nth-of-type(3) > button {
+  background-color: #e54b4a;
+}
+.allBtns > a:nth-of-type(3) > button:hover {
+  background-color: #e66f6f;
+}
+
+.wrapItem {
+  margin-top: 2em;
+  color: rgba(31, 31, 31);
+}
+.wrapHeader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2em;
+}
+.wrapHeader > h3 {
+  font-size: 3em;
+}
+.left {
+  margin-left: 0.8em;
+}
+.right {
+  margin-right: 0.8em;
+}
+.wrapHeader > div {
+  height: 0;
+  width: 8em;
+  border-top: 0.3em solid rgba(31, 31, 31);
+}
+.left,
+.right {
+  position: relative;
+  font-size: 1.5em;
+}
+.left > div,
+.right > div {
+  position: absolute;
+  top: 0.2em;
+  text-align: center;
+}
+.wrapSeminarItems {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.keynotes {
+  display: flex;
+}
+.seminarItem,
+.sponsorWrap {
+  width: 90%;
+  font-size: 2em;
+}
+.smallerHeader {
+  font-size: 2em !important;
+}
+.keynotes_section_1 {
+  width: 80%;
+}
+.keynotes_section_2 {
+  width: 20%;
+}
+.section_1_line_1,
+.section_2_line_1,
+.section_2_line_2 {
+  font-size: 2em;
+}
+.section_1_line_2 {
+  font-size: 1.2em;
+}
+.sponsorWrap {
+  width: 90%;
+}
+.sponsorWrap > h3 {
+  font-family: "Inter", sans-serif;
+  color: rgb(31, 31, 31);
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+.sponsorWrap > div {
+  margin-top: 1em;
+}
+.sponsorWrap > div > div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.35em;
+}
+.sponsorWrap > div img {
+  height: 1.5em;
+  object-fit: contain;
+}
+.wrapSponsorsSection {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 2em;
+}
+@media (max-width: 810px) {
+  .oceanImage {
+    width: 0%;
+    height: 0;
+  }
+  .body {
+    display: block;
+    font-size: 2vw;
+    margin: 0 !important;
+  }
+  .sponsorWrap > div > div {
+    justify-content: space-between;
+  }
+}

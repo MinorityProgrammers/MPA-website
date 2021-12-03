@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,OAAO,CAAC,wGAAI;AAEZ,AAAA,aAAa,CACb;EACI,UAAU,EAAE,KAAK;EACjB,UAAU,EAAE,WAAW;EACvB,UAAU,EAAE,oEAAoE;EAChF,OAAO,EAAE,IAAI;EACb,OAAO,EAAE,IAAI;EACb,WAAW,EAAE,MAAM;EACnB,eAAe,EAAE,MAAM;CAC1B",
+    "sources": [
+        "mentorship.scss"
+    ],
+    "names": [],
+    "file": "mentorship.css"
+}

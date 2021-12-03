@@ -1,0 +1,32 @@
+.careers-main {
+    background-image: linear-gradient(to right, var(--mpa-pink),var(--mpa-navy));
+    padding:40px 0;
+    position:relative;
+}
+
+.careers-main-container {
+    
+}
+
+.careers-main-container-all {
+    border:solid 4px var(--mpa-navy);
+    background:white;
+    border-radius:8px;
+}
+
+.careers-main-container-tabs {
+    display:grid;
+    grid-template-columns:auto auto;
+    margin-left:10px;
+    width:110px;
+}
+
+.careers-main-container-tabs-tab {
+    background:var(--mpa-navy);
+    color:white;
+    padding:5px 25px;
+    border-radius:10px 10px 0px 0px;
+}
+
+
+

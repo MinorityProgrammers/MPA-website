@@ -1,0 +1,146 @@
+.wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    margin-top: 8em;
+    width: 100%;
+    height: 32em;
+    padding-top: 10em;
+    padding-left: 16em;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+}
+
+.arrowBackWrapper {
+    position: absolute;
+    top: 2em;
+    left: 6em;
+}
+
+.arrowBackContainer {
+    width: auto;
+    border: 1px solid #151371;
+    padding: 0.3em 2em;
+    border-radius: 0.3em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.arrowBack {
+    font-size: 1.5em;
+    color: #151371;
+    transition: all 0.1s;
+}
+
+.arrowBackContainer:hover .arrowBack{
+    transform: translateX(-4px);
+}
+
+
+
+.heading {
+    width: auto;
+    display: inline-block;
+}
+
+.title {
+    width: 100%;
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 0.2em;
+    color: #151371;
+}
+
+.text {
+    width: 100%;
+    text-align: center;
+    font-size: 1.2rem;
+    color: #151371;
+}
+
+@media screen and (max-width: 1024px) {
+    .container {
+        height: 28em;
+        padding-top: 8em;
+        padding-left: 12em;    
+    }
+
+    .arrowBackWrapper {
+        top: 1.5em;
+        left: 2.5em;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        height: 20em;    
+        padding-top: 6em;
+        padding-left: 8em;
+    }
+    .arrowBackWrapper {
+        top: 1em;
+        left: 2em;
+    }
+    
+    .arrowBackContainer {
+        padding: 0.1em 2em;
+    }
+
+    .title {
+        font-size: 1.4rem;
+    }
+    .text {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .container {
+        height: 16em;    
+        padding-top: 4em;
+        padding-left: 2em;
+    }
+
+    .arrowBackWrapper {
+        position: absolute;
+        top: 0.5em;
+        left: 1em;
+    }
+    
+    .arrowBackContainer {
+        padding: 0 1em;
+    }
+    
+    .arrowBack {
+        font-size: 1em;
+    }
+
+    
+}
+
+@media screen and (max-width: 320px) {
+    .container {
+        height: 10em;    
+        padding-top: 2em;
+        padding-left: 0;
+        padding-right: 2em;
+    }
+
+    .heading {
+        width: 100%;
+    }
+
+    .title {
+        font-size: 0.9rem;
+    }
+    .text {
+        font-size: 0.7rem;
+    }
+}

@@ -1,0 +1,212 @@
+
+
+*{
+    --mpa-navy:#151371;
+    --mpa-pink:#FF00B8;
+    --mpa-yellow:#FFC700;
+}
+
+.companyDetails {
+    background:linear-gradient(to right,var(--mpa-navy),var(--mpa-pink));
+    padding:40px;
+    color:black;
+    
+}
+
+.companyDetails-wrapper {
+    background:rgba(255,255,255,.6);
+    max-width:900px;
+    margin: 80px auto;
+    border-radius: 30px;
+    overflow:hidden;
+}
+
+.companyDetails-container {
+    padding:50px 125px ;
+}
+
+.companyDetails-container-nav >a{
+    background:var(--mpa-navy);
+    color:white;
+    padding:30px 40px;
+    font-weight:bold;
+    display:flex;
+    
+}
+
+.companyDetails-container-nav >a >svg {
+    margin-right:10px;
+    cursor:pointer;
+}
+
+.companyDetails-container-nav >a >span {
+    color:white;
+}
+
+.companyDetails-container-info {
+    width:450px;
+    margin:auto;
+    padding-bottom:24px;
+    
+}
+
+.companyDetails-container-info-name{
+    font-size:40px;
+    font-weight:bold;
+    text-align:center;
+}
+
+.companyDetails-container-info-relationship{
+    text-align: center;
+    margin-bottom:24px;
+    color:var(--mpa-navy);
+}
+
+.companyDetails-container-info-extra {
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: space-between;
+}
+
+.companyDetails-container-info-extra-links {
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.companyDetails-container-info-extra-links-btn {
+    
+}
+
+.companyDetails-container-info-extra-links-btn >button{
+    background:var(--mpa-pink);
+    color:white;
+    padding:10px 15px;
+    font-size:14px;
+    display:flex;
+    align-items: center;
+}
+
+.companyDetails-container-info-extra-links-btn >button:focus {
+    outline:none;
+}
+
+.companyDetails-container-info-extra-links-btn >button >svg {
+    height:14px;
+    width:14px;
+    margin-left:10px;
+}
+
+.companyDetails-container-info-extra-links-social {
+    display: flex;
+}
+
+.companyDetails-container-info-extra-links-social >a {
+    margin-right:5px;
+}
+
+.companyDetails-container-info-extra-links-social >svg {
+    object-fit:contain;
+    height:32px;
+    width:32px;
+    
+}
+
+.companyDetails-container-info-extra-links-info {
+    display:flex;
+    flex-direction: column;
+    font-size:14px;
+}
+
+.companyDetails-container-info-extra-logo-img{
+    height:140px;
+    width:140px;
+    background:blue;
+}
+
+.companyDetails-container-diversity{
+    padding:24px 0;
+    border-top:solid 1px var(--mpa-navy);
+    border-bottom:solid 1px var(--mpa-navy);
+}
+
+.companyDetails-container-specialties {
+    padding:24px 0;
+    border-bottom:solid 1px var(--mpa-navy);
+}
+
+.companyDetails-container-specialties >h3 {
+    text-align: center;
+    font-size:18px;
+    font-weight:bold;
+    color:var(--mpa-navy);
+    margin-bottom:4px;
+}
+
+.companyDetails-container-specialties-list {
+    display:flex;
+    justify-content: center;
+    flex-wrap:wrap;
+}
+
+.companyDetails-container-specialties-list >div{
+    display:flex;
+    align-items: center;
+    padding:0 30px;
+}
+
+.companyDetails-container-specialties-list >div >svg {
+    height:16px;
+}
+
+.companyDetails-container-description {
+ padding-top:24px;
+}
+
+.companyDetails-container-description-title{
+    font-size:24px;
+    font-weight:bold;
+    text-align: center;
+    margin-bottom:10px;
+}
+
+.companyDetails-container-description-paragraph{
+    text-indent:20px;
+}
+
+.companyDetails-container-type {
+    margin-top:24px;
+    color:var(--mpa-navy);
+}
+
+@media screen and (max-width: 767px) {
+    .companyDetails-wrapper {
+        max-width:540px;
+    }
+
+    .companyDetails-container {
+        padding:20px 20px ;
+    }
+
+    .companyDetails-container-info {
+        width:auto;
+    }
+
+    .companyDetails-container-info-name{
+        font-size:24px;
+    }
+
+    .companyDetails-container-info-extra {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .companyDetails-container-info-extra-logo {
+        margin-top:20px;
+    }
+
+    .companyDetails-container-info-extra-links-social {
+        margin:5px 0;
+    }
+    
+}

@@ -1,0 +1,25 @@
+.env.local
+
+/node_modules
+package-lock.json
+.env
+.next
+components/.Ds_Store
+
+.yarn.lock
+.vscode
+
+yarn-error.log
+
+*.icloud
+* 2.js
+* 2.png
+* 2.map
+* 2.scss
+* 2.css
+* 2.json
+*report
+*.lock
+
+report.*
+.DS_Store

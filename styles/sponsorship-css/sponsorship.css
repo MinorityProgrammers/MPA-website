@@ -1,0 +1,566 @@
+@import url("./sponsorship-reset.css");
+@import url("https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;700&display=swap");
+
+/* apply fonts */
+.sponsor-page-wrapper h1,
+.sponsor-page-wrapper h2,
+.sponsor-page-wrapper h3,
+.sponsor-page-wrapper h4,
+.sponsor-checkout-wrapper h1,
+.sponsor-checkout-wrapper h2,
+.sponsor-checkout-wrapper h3,
+.sponsor-checkout-wrapper h4,
+.sponsor-card-wrapper h1,
+.sponsor-card-wrapper h2,
+.sponsor-card-wrapper h3,
+.sponsor-card-wrapper h4 {
+  font-family: "Red Hat Display", sans-serif;
+}
+.sponsor-page-wrapper div,
+.sponsor-checkout-wrapper div,
+.sponsor-card-wrapper div {
+  font-family: "Red Hat Display", sans-serif;
+}
+/* end of fonts apply */
+
+/* ----------------------------------------------------------- */
+/* STYLING SPONSORSHIP, SPONSORSHIP CHECKOUT, SPONSORSHIP CARD */
+/* ----------------------------------------------------------- */
+
+/* STYLING SPONSORSHIP ____________________________________________________*/
+.sponsor-page-wrapper {
+  background: linear-gradient(180deg, #9b58a6 0%, #151371 100%);
+  padding: 4.5vw 0 25px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.sponsor-page {
+  color: white;
+  width: 90%;
+}
+
+/* Top */
+.sponsor-page .sp-top {
+  margin: 70px 0 176px 0;
+}
+
+.sponsor-page .sp-head-text {
+  margin-bottom: 7vw;
+  width: 63%;
+}
+.sponsor-page .sp-head-text h1 {
+  font-size: 3vw;
+  font-weight: bold;
+  margin: 10vw 0 4vw 0;
+}
+.sponsor-page .sp-head-text p {
+  font-weight: 500;
+  font-size: 1.2vw;
+}
+
+.sponsor-page .sp-top .sp-t-imgs {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 36%;
+}
+.sponsor-page .sp-top .sp-t-imgs .img-earth-bg {
+  width: 100%;
+}
+.sponsor-page .sp-top .sp-t-imgs .img-earth {
+  position: absolute;
+  top: 19%;
+  right: 12%;
+  width: 55%;
+}
+
+.sponsor-page .sp-top .sp-t-footer-icons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5vw;
+}
+
+.sponsor-page .sp-top .sp-t-footer-icons .fis {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  width: 47.5%;
+}
+.sponsor-page .sp-top .sp-t-footer-icons .fis:last-child {
+  top: calc(5.5vw + 10px);
+}
+
+@media only screen and (max-width: 768px) {
+  .sponsor-page .sp-top .sp-t-footer-icons {
+    flex-direction: column;
+  }
+  .sponsor-page .sp-top .sp-t-footer-icons .fis {
+    width: 100%;
+  }
+}
+
+.sponsor-page .sp-top .sp-t-footer-icons .fis .ti-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 13%;
+}
+.sponsor-page .sp-top .sp-t-footer-icons .fis .ti-wrapper .ti-icon {
+  background: #ffc700;
+}
+.sponsor-page .sp-top .sp-t-footer-icons .fis .ti-wrapper .ti-name {
+  font-size: 0.9vw;
+  margin-top: 10px;
+  text-align: center;
+}
+/* End of Top */
+
+/* Middle */
+.sponsor-page .sp-middle .sp-cards {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 48px;
+}
+
+.sponsor-page .sp-middle .sp-cards .m-card {
+  cursor: pointer;
+  display: inline-block;
+  background-color: #9957a6;
+  border-radius: 2.5vw;
+  vertical-align: bottom;
+  width: 20vw;
+}
+
+.sponsor-page .sp-middle .sp-cards .m-card:nth-child(2) {
+  margin: 0 40px;
+}
+.sponsor-page .sp-middle .sp-cards .m-card:last-child .c-body {
+  padding: 1vw 3vw;
+}
+
+.sponsor-page .sp-middle .sp-cards .m-card .c-header {
+  position: relative;
+  background-color: #ffc700;
+  color: #26245f;
+  border-radius: 2.5vw;
+  height: 10vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.sponsor-page .sp-middle .sp-cards .m-card .mi-icon {
+  cursor: default;
+  position: absolute;
+  top: -4vw;
+}
+.sponsor-page .sp-middle .sp-cards .m-card .c-header h3 {
+  font-size: 1.5vw;
+  font-weight: bold;
+  margin-top: 1vw;
+}
+.sponsor-page .sp-middle .sp-cards .m-card .c-header h4 {
+  font-size: 2.5vw;
+  font-weight: bold;
+  margin-top: 1vw;
+}
+.sponsor-page .sp-middle .sp-cards .m-card .c-body {
+  box-sizing: border-box;
+  padding: 3vw;
+}
+.sponsor-page .sp-middle .sp-cards .m-card .c-body ul {
+  list-style-type: disc !important;
+  font-size: 1vw;
+}
+
+@media only screen and (max-width: 768px) {
+  .sponsor-page .sp-middle .sp-cards .m-cards-wrapper {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+
+  .sponsor-page .sp-middle .sp-cards .m-card {
+    display: block;
+    margin: 0;
+    width: 55vw;
+  }
+  .sponsor-page .sp-middle .sp-cards .m-card:not(:last-child) {
+    margin-bottom: 48px;
+  }
+  .sponsor-page .sp-middle .sp-cards .m-card:nth-child(2) {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .sponsor-page .sp-middle .sp-cards .m-card:last-child .c-body {
+    padding: 3vw;
+  }
+
+  .sponsor-page .sp-middle .sp-cards .m-card .c-header h3 {
+    font-size: 3vw;
+  }
+  .sponsor-page .sp-middle .sp-cards .m-card .c-header h4 {
+    font-size: 4vw;
+  }
+  .sponsor-page .sp-middle .sp-cards .m-card .c-body ul {
+    font-size: 2vw;
+  }
+
+  .sponsor-page .sp-middle .sp-cards .m-card .c-body ul li {
+    margin: 1.5vw 0;
+  }
+}
+/* End of Middle */
+
+/* Bottom */
+.sponsor-page .sp-bottom {
+  margin-top: 5vw;
+}
+.sponsor-page .sp-bottom .sp-tier {
+  background-color: white;
+  border-radius: 5.5vw;
+  padding: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.sponsor-page .sp-bottom .sp-tier a {
+  cursor: pointer;
+  height: 80px;
+  margin-right: 5vw;
+  margin-bottom: 50px;
+}
+.sponsor-page .sp-bottom .sp-tier a:hover {
+  opacity: 0.5;
+}
+.sponsor-page .sp-bottom .sp-tier a:last-child {
+  margin-bottom: 0;
+}
+.sponsor-page .sp-bottom .sp-tier img {
+  height: 100%;
+}
+
+@media only screen and (max-width: 768px) {
+  .sponsor-page .sp-bottom .sp-tier {
+    padding: 15px;
+  }
+  .sponsor-page .sp-bottom .sp-tier a {
+    height: 50px;
+  }
+}
+/* End of Bottom */
+
+/* COMMON */
+.sponsor-page .d-flex {
+  display: flex;
+}
+.sponsor-page .f-a-center {
+  align-items: center;
+}
+.sponsor-page .f-j-center {
+  justify-content: center;
+}
+.sponsor-page .inline-block {
+  display: inline-block;
+}
+.sponsor-page .f-width {
+  width: 100% !important;
+}
+.sponsor-page .bg-white {
+  background-color: #fff;
+}
+
+.sponsor-page .sp-btn {
+  cursor: pointer;
+  background-color: #ff00b8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2vw;
+  width: 10vw;
+  height: 4vw;
+  margin-bottom: 48px;
+}
+.sponsor-page .sp-btn:hover {
+  background-color: white;
+  box-sizing: border-box;
+  border: 1px solid #ff00b8;
+  color: #ff00b8;
+}
+
+.sponsor-page .sp-icon {
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 5.5vw;
+  height: 5.5vw;
+}
+.sponsor-page .sp-icon img {
+  max-height: 65%;
+}
+/* END OF COMMON */
+
+/* END OF STYLING SPONSORSHIP ____________________________________________________*/
+
+/* STYLING SPONSORSHIP CHECKOUT ____________________________________________________*/
+.sponsor-checkout-wrapper {
+  position: relative;
+  font-family: "Red Hat Display", sans-serif;
+  letter-spacing: 0.03em;
+  background: linear-gradient(180deg, #9b58a6 0%, #151371 100%);
+  padding: 250px 0 25px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.sponsor-checkout-wrapper .checkout-card-icons {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  width: 72%;
+}
+.sponsor-checkout-wrapper .checkout-card-icons img {
+  height: 8vw;
+}
+.mirror-img {
+  transform: scale(-1, 1);
+}
+
+.sponsor-checkout-wrapper .checkout {
+  color: white;
+  width: 40%;
+}
+
+.sponsor-checkout-wrapper .checkout .checkout-head h1 {
+  color: #ffc700;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 2.5vw;
+  letter-spacing: 0.2vw;
+  text-align: center;
+}
+
+.sponsor-checkout-wrapper .checkout form {
+  position: relative;
+  background: #9957a6;
+  margin: 2vw 0 200px 0;
+  padding: 2vw 5vw;
+}
+
+.sponsor-checkout-wrapper .checkout form label {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 0.85vw;
+  width: 100%;
+}
+.sponsor-checkout-wrapper .checkout form label input,
+.sponsor-checkout-wrapper .checkout form label select,
+.sponsor-checkout-wrapper .checkout form label textarea {
+  width: 100%;
+  color: white;
+  padding: 0 5px;
+  background: #af73bb;
+  height: 2.5vw;
+  margin: 1vw 0 2vw 0;
+}
+.sponsor-checkout-wrapper .checkout form input:focus,
+.sponsor-checkout-wrapper .checkout form select:focus,
+.sponsor-checkout-wrapper .checkout form textarea:focus {
+  outline: none;
+}
+.sponsor-checkout-wrapper .checkout form select {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+.sponsor-checkout-wrapper .checkout form textarea {
+  min-height: 10vh;
+  padding-top: 5px !important;
+}
+
+@media only screen and (max-width: 768px) {
+  .sponsor-checkout-wrapper .checkout form textarea {
+    height: 5vh !important;
+  }
+}
+.sponsor-checkout-wrapper .checkout form input[type="submit"] {
+  font-weight: 700;
+  letter-spacing: 0.1rem;
+  position: absolute;
+  top: 110%;
+  left: 40%;
+  background-color: #ff00b8;
+  color: white;
+  width: 13vw;
+  height: 4.3vw;
+}
+/* END OF STYLING SPONSORSHIP CHECKOUT ____________________________________________________*/
+
+/* STYLING SPONSORSHIP CARD ____________________________________________________*/
+.sponsor-card-wrapper {
+  position: relative;
+  font-family: "Red Hat Display", sans-serif;
+  letter-spacing: 0.03em;
+  background: linear-gradient(180deg, #9b58a6 0%, #151371 100%);
+  padding: 250px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.sponsor-card-wrapper .sponsor-card {
+  color: white;
+  width: 50%;
+}
+
+.sponsor-card-wrapper .sponsor-card h1 {
+  font-weight: bold;
+  font-size: 1.4vw;
+  letter-spacing: 0.03em;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.sponsor-card-wrapper .sponsor-card form .sponsor-card-and-total {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.sponsor-card-wrapper .sponsor-card form .sponsor-ccd-wrapper {
+  width: 60%;
+}
+
+.sponsor-card-wrapper .sponsor-card form .sponsor-ccd {
+  background: #9957a6;
+  border-radius: 2vw;
+  padding: 15px 50px;
+  margin: 50px 0 0 0;
+  width: 100%;
+}
+
+.sponsor-card-wrapper .sponsor-card form .sponsor-ccd,
+.sponsor-card-wrapper .sponsor-card form .sponsor-ccd label {
+  text-decoration: underline;
+}
+.sponsor-card-wrapper .sponsor-card form legend {
+  font-size: 1.2vw;
+  font-weight: 500;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.sponsor-card-wrapper .sponsor-card form label {
+  font-size: 1vw;
+  font-weight: 500;
+  width: 100%;
+}
+
+.sponsor-card-wrapper .sponsor-card form .sponsor-ccd label input {
+  appearance: none;
+  border-radius: 0.5vw;
+  width: 100%;
+  color: white;
+  padding: 0 5px;
+  background: #af73bb;
+  height: 40px;
+  margin: 10px 0 5px 0;
+}
+.sponsor-card-wrapper .sponsor-card form label input:focus {
+  outline: none;
+}
+.sponsor-card-wrapper .sponsor-card form label input::-webkit-outer-spin-button,
+.sponsor-card-wrapper
+  .sponsor-card
+  form
+  label
+  input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.sponsor-card-wrapper .sponsor-card form label input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.sponsor-card-wrapper .sponsor-card form h4 {
+  font-weight: 500;
+  margin-top: 15px;
+}
+
+.sponsor-card-wrapper .sponsor-card form .exp-data {
+  display: flex;
+  justify-content: space-between;
+}
+
+.sponsor-card-wrapper .sponsor-card form .exp-data label {
+  font-weight: normal;
+  width: 30%;
+}
+
+.sponsor-card-wrapper .sponsor-card form .exp-data input {
+  width: 100%;
+}
+
+.sponsor-card-wrapper .sponsor-card .ccd-save-btn {
+  cursor: pointer;
+  border: 1.5px solid #9957a6;
+  font-weight: 500;
+  letter-spacing: 0.1vw;
+  text-decoration: none !important;
+  text-align: center;
+  margin-top: 50px;
+  padding: 10px 0;
+  width: 100%;
+}
+.sponsor-card-wrapper .sponsor-card .ccd-save-btn:hover {
+  background-color: #9957a6;
+}
+.sponsor-card-wrapper .sponsor-card .ccd-save-active {
+  background-color: #9957a6;
+}
+
+.sponsor-card-wrapper .sponsor-card .sponsor-payment-total {
+  border-left: 2px solid white;
+  font-weight: bold;
+  padding: 5%;
+  margin: -10% 0 0 50px;
+}
+.sponsor-card-wrapper .sponsor-card .sponsor-payment-total h3 {
+  font-size: larger;
+}
+.sponsor-card-wrapper .sponsor-card .sponsor-payment-total h4 {
+  font-size: xx-large;
+}
+
+.sponsor-card-wrapper .sponsor-card .ccd-agree-submit {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  bottom: -40%;
+  left: 30%;
+}
+
+.sponsor-card-wrapper .sponsor-card .ccd-agree-submit label {
+  display: block;
+  font-size: 1.2vw;
+  text-align: center;
+}
+.sponsor-card-wrapper .sponsor-card .ccd-agree-submit input {
+  margin-right: 10px;
+}
+
+.sponsor-card-wrapper .sponsor-card .ccd-agree-submit input[type="submit"] {
+  font-weight: 700;
+  letter-spacing: 0.1rem;
+  background-color: #ff00b8;
+  color: white;
+  width: 150px;
+  height: 50px;
+  margin-top: 25px;
+}
+
+.sponsor-card-wrapper .sponsor-card .ccd-agree-submit a {
+  color: #2397d8;
+}
+/* END OF STYLING SPONSORSHIP CARD ____________________________________________________*/

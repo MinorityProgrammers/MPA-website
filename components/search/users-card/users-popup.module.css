@@ -1,0 +1,217 @@
+.container {
+  width: 100%;
+  height: 80vh;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 1em;
+  border: 1px solid rgb(190, 193, 204);
+  border-radius: 0.5em;
+  background: #f7f7f7;
+  overflow: hidden;
+  position: relative;
+  cursor: unset;
+  animation: enter 250ms forwards;
+  position: sticky;
+  top: 5em;
+  padding: 1em;
+}
+
+@keyframes enter {
+  from{
+    transform: translate(-10px, -10px);
+  }
+  to {
+    transform: translate(0, 0);
+  }
+}
+
+.info {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 1em;
+  padding: 0 1em;
+}
+
+.imagePlaceholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: gray;
+}
+
+.imageContainer {
+  width: 5em;
+  height: 5em;
+  border-radius: 50%;
+  margin-right: 2em;
+  border: 1px solid #f7f7f7;
+  overflow: hidden;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+}
+
+.detailsContainer {
+  flex: 1;
+}
+
+.title {
+  font-weight: 500;
+}
+
+.otherInfo > .title {
+  margin-bottom: 0.5em;
+}
+
+.name {
+  margin-bottom: 0.5em;
+}
+
+.userName > span,
+.name > span {
+  display: inline-block;
+  width: 6em;
+  font-size: 0.85rem;
+}
+
+.otherInfo {
+  width: 100%;
+  text-align: left;
+  height: 20em;
+  overflow: auto;
+}
+
+.otherInfo > .title {
+  position: relative;
+  display: inline-block;
+  padding: 0 1em;
+  margin-bottom: 2em;
+}
+
+.otherInfo > .title::before {
+  position: absolute;
+  content: '';
+  width: 40%;
+  height: 4px;
+  -webkit-background-clip: text;
+  background-clip: text;
+  background: linear-gradient(
+    104.61deg,
+    #ff00b8 2.65%,
+    #ff655b 51.83%,
+    #ffc700 100%
+  );
+  color: transparent;
+  bottom: -0.5em;
+  left: 0;
+}
+
+.mentorship {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1em;
+  padding: 0 1em;
+}
+
+.mentee,
+.mentor {
+  color: gray;
+  padding: 0.3em 1em;
+}
+
+.isMentee,
+.isMentor {
+  border-radius: 0.25em;
+  border: 1px solid #ff0068;
+  color: black;
+}
+
+.programmingSkills,
+.skills,
+.role {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 0 1em;
+  margin-bottom: 1em;
+  background: white;
+}
+
+.passion {
+  width: 100%;
+}
+
+.passion > .title {
+  margin-bottom: 1em;
+}
+
+.passion > .values{
+  margin-left: 4em;
+}
+
+.passion > .values > span {
+  display: inline-block;
+  margin-right: 1em;
+}
+
+
+.info,
+.programmingSkills,
+.skills,
+.role,
+.passion,
+.mentorship {
+  background: white;
+  padding: 1em;
+}
+
+.closePopup {
+  background: rgb(235, 236, 240);
+  color: #151371;
+  border-radius: 50%;
+  position: absolute;
+  top: 0em;
+  right: 0em;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 50ms;
+  width: 1.7em;
+  height: 1.7em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.closePopup:hover {
+ font-size: 1.02rem;
+}
+
+
+@media screen and (max-width: 480px) {
+  .info {
+    align-items: flex-start;
+  }
+
+  .imageContainer {
+    width: 3em;
+    height: 3em;
+  }
+
+  .userName,
+  .name {
+    font-size: 1rem;
+  }
+
+  .passion > .values{
+    margin-left: 1em;
+  }
+}

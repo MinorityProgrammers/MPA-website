@@ -1,0 +1,140 @@
+.jobs-main-filters {
+}
+.jobFilters {
+  display: flex;
+  justify-content: flex-start;
+}
+
+* {
+  --ft_base: "Red Hat Display";
+}
+
+.job-filter-item {
+  position: relative;
+  margin: 12px 20px;
+}
+
+.job-filter-item-title {
+  color: black;
+  padding: 3px 12px;
+
+  border-radius: 10px;
+}
+
+.job-filter-item-title:focus {
+  outline: none;
+}
+
+.job-filter-item-title > span {
+  color: black;
+  font-size: 12px;
+  margin-bottom: 2px;
+  margin-left: 8px;
+}
+
+.job-filter-item-form {
+  padding: 12px;
+  display: none;
+  position: absolute;
+  background: white;
+  box-shadow: 0 0 12px grey;
+  z-index: 2;
+  color: black;
+}
+
+.job-filter-item-form-list {
+}
+
+.job-filter-item-form-list li {
+  white-space: nowrap;
+}
+
+.job-filter-item-form-options {
+  margin-top: 10px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.job-filter-item-form-options > button {
+  white-space: nowrap;
+  padding: 5px 16px;
+}
+
+.job-filter-item-form-options-cancel {
+  margin-right: 6px;
+}
+
+.job-filter-item-form-options-cancel:hover {
+  background: var(--mpa-pink);
+  color: white;
+}
+
+.job-filter-item-form-options-update {
+  background-color: var(--mpa-navy);
+  color: white;
+}
+
+.job-filter-item-form-options-update:focus {
+  outline: none;
+}
+
+input[type="checkbox"] {
+  margin-right: 6px;
+}
+
+.input__style {
+  color: black;
+  border: 1px solid var(--mpa-pink);
+  background-color: var(--mpa-pink);
+}
+
+.filters-open-btn {
+  display: none;
+  background: rgb(235, 235, 235);
+  color: black;
+  padding: 10px;
+  margin-left: 1.2rem;
+  margin-top: 12px;
+}
+
+.remote-item {
+  padding: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.remote-label {
+  color: black;
+  font-weight: bold;
+  margin: 0;
+  margin-right: 10px;
+}
+
+@media screen and (max-width: 767px) {
+  .filters-open-btn {
+    display: block;
+    position: absolute;
+  }
+  .job-search-filter {
+    margin-left: 0;
+    float: none;
+  }
+
+  .jobFilters {
+    flex-direction: column;
+    position: relative;
+    display: none;
+  }
+
+  .job-filter-item {
+    margin-left: 0;
+  }
+
+  .job-filter-item-form-options {
+    flex-direction: column-reverse;
+  }
+}
+
+.remote__check {
+  border: 1px solid var(--mpa-pink);
+}

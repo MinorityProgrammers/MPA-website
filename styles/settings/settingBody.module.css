@@ -1,0 +1,58 @@
+.detailSettings {
+  position: relative;
+  margin: 3.5vh 0;
+  overflow: hidden;
+  width: 50%;
+}
+
+.detailSettings h1 {
+  color: white;
+}
+
+.settingHeader {
+  color: white;
+  font-size: 1.5vw;
+  border-bottom: 2px solid #afafb3;
+  font-weight: 900;
+  padding: 0 0 2vh 2vw;
+}
+
+.settingContent {
+  height: 82%;
+  overflow-y: scroll;
+  padding: 0 2vw;
+}
+
+.footerButtons {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  left: 5%;
+  bottom: 0;
+  height: 7%;
+  width: 90%;
+}
+
+.footerButtons button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5vw;
+  color: white;
+  font-size: 1.2vw;
+  font-weight: bold;
+  white-space: normal;
+  width: 45%;
+  padding: 1vw 0;
+}
+.footerButtons button:focus {
+  outline: none;
+}
+
+.footerButtons button.danger {
+  background-color: #ea2e2e;
+}
+
+.footerButtons button.success {
+  background-color: #00aa4f;
+}

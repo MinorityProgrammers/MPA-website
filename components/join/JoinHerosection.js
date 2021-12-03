@@ -1,0 +1,46 @@
+import React from "react";
+import ApplyIcon, {
+  BuildIcon,
+  JoinIcon,
+  MentorIcon,
+  StartIcon,
+  HoldhandIcon,
+} from "./svg/icons";
+import Link from "next/link";
+
+function JoinHerosection(props) {
+  return (
+    <div className="row hero-container">
+      <div className="col-md-6">
+        <img
+          src="./assets/images/join/Rectangle 94.png"
+          className="img-fluid"
+          alt=""
+        />
+      </div>
+      <div className="col-md-6">
+        <h1>Code, Culture, Commiunity</h1>
+        <p>
+          We are an international network of developers{" "}
+          <span style={{ color: "#FFC700" }}>unifying together</span> to build
+          socially impactful products & spread STEM education to marginalized
+          communities.
+        </p>
+        <div className="join-hero-btn">
+          <Link href="/auth">
+            <button type="button" className="btn-join-mpa">
+              Join MPA
+            </button>
+          </Link>
+          <Link href="/auth">
+            <button type="button" className="btn-join-login">
+              Log In
+            </button>
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default JoinHerosection;

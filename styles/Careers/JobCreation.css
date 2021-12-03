@@ -1,0 +1,56 @@
+.create-new-job-page {
+    background:linear-gradient(to bottom right, #151371 50%, #FF00B8);
+}
+
+.company-name {
+    word-wrap:break-word;
+}
+
+.job-create-form {
+    backdrop-filter:blur(8px);
+}
+
+.jobType-label {
+  position:relative;
+}
+
+.jobType-checkbox {
+    opacity:0;
+}
+
+.jobType-checkbox:checked ~ .jobType-custom-checkbox:before{
+    display:block;
+}
+
+.jobType-custom-checkbox:after{
+    content:"";
+    height:13px;
+    width:13px; 
+    border:solid 1px white;
+    background:transparent;   
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    left:0;
+}
+
+.jobType-custom-checkbox:before {
+    display:none;
+    content:"";
+    position:absolute;
+    height:12px;
+    width:6px;
+    border-bottom: solid 2px white;
+    border-right:solid 2px white;
+    top:3px;
+    left:5px;
+    transform: rotateZ(40deg);
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+  }
+
+input[type="time"]::-webkit-calendar-picker-indicator {
+    filter:invert(1);
+}

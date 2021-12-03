@@ -1,0 +1,116 @@
+.wrapper {
+    background: white;
+    margin-bottom: 1em;
+    clip-path: polygon(0% 0%, 97% 0, 100% 50%, 97% 100%, 0% 100%);
+    padding: 0.3em;
+    padding-right: 0.5em;
+}
+
+.effect {
+    width: 0%;
+    height: 100%;
+    transition: width 2s cubic-bezier(0,.48,.2,1.21);
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.effect1 {
+    background: #c4018c;
+}
+.effect2 {
+    background: #c29802;
+}
+
+.wrapper:hover .effect {
+    width: 100%;
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1em 2em;
+    clip-path: polygon(0% 0%, 97.5% 0, 100% 50%, 97.5% 100%, 0% 100%);
+    z-index: 5;
+}
+
+.container.grad2{
+    background: linear-gradient(90deg, #FF00B8 0%, rgba(0, 0, 0, 0.979) 7.56%, rgba(65, 1, 46, 0.74) 66.26%, rgba(138, 2, 99, 0.548) 126.52%);
+}
+
+.container.grad1 {
+    background: linear-gradient(90deg, #FFC700 0%, rgba(0, 0, 0, 0.979) 7.56%, rgba(65, 61, 1, 2.34) 73.09%, rgba(0, 0, 0, 0.579) 126.52%);
+}
+
+.number {
+    margin-right: 2em;
+}
+
+.nameAndLocation {
+    flex: 1 1 auto;
+    word-wrap: break-word;
+}
+
+.amount,
+.name {
+    color: #FFC700;
+}
+
+.number,
+.points,
+.pts,
+.location,
+.time {
+    color: white;
+}
+
+.timeAndPoints {
+    width: auto;
+}
+
+.points {
+    font-size: 10px;
+}
+
+.pts {
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    .wrapper {
+        padding: 0.3em;
+    }
+
+    .container {
+        padding: 1em;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .nameAndLocation,
+    .timeAndPoints,
+    .number {
+        font-size: 12px;
+    }
+    .number {
+        margin-right: 1em;
+    }
+    .wrapper {
+        padding: 0.2em 0.3em;
+    }
+
+    .points {
+        display: none;
+    }
+    .pts {
+        display: inline-block;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .number {
+        margin-right: 0.5em;
+    }
+}

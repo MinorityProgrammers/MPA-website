@@ -1,0 +1,11 @@
+/* .container > section{
+    border: 5px solid red;
+} */
+
+.consultancyForm {
+    width: 100%;
+    padding: 0;
+    margin: 15vh auto 5vh;
+    border: 5px solid red;
+    font-size: 1.1rem;
+}

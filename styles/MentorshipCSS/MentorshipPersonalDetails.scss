@@ -1,0 +1,42 @@
+// hide calendar icon on input date
+input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+}
+
+// dropdown
+.rmsc {
+    --rmsc-main: none !important;
+    --rmsc-hover: #E5F6FF !important;
+    --rmsc-selected: #E5F6FF !important;
+    --rmsc-border: none !important;
+    --rmsc-gray: #aaa;
+    --rmsc-bg: #fff;
+    --rmsc-p: 10px; /* Spacing */
+    --rmsc-radius: 4px; /* Radius */
+    --rmsc-h: 28px !important; /* Height */
+    .dropdown-heading
+    {
+      padding: 0 !important;
+      cursor: pointer !important;
+      .dropdown-heading-value 
+      {
+         width: 200px;
+         color: #333333;
+         line-height: 1.75rem;
+      }
+    }
+  }
+
+  // Select
+  
+.css-zi8048-ReactDropdownSelect
+{
+    border:none !important;
+    min-height:0px !important;
+    padding: 0 !important;
+    color: #333333;
+    line-height: 1.75rem;
+    box-shadow: none !important;
+}

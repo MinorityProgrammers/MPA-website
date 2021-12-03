@@ -1,0 +1,23 @@
+.root {
+  display: grid;
+  grid-template-columns: repeat(3, 2fr);
+  column-gap: 1.5rem;
+  padding-left: 5rem;
+  height: fit-content;
+}
+
+.footer {
+  display: flex;
+  float: right;
+  margin-top: 2rem;
+}
+
+.footer button {
+  color: black;
+  background-color: #f8eeee;
+  border-radius: 20px;
+  padding: 0.5rem 0.9rem;
+  font-family: "Red Hat Display", sans-serif;
+  font-weight: 450;
+  font-size: 0.8rem;
+}

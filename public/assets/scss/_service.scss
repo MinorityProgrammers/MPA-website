@@ -1,0 +1,1305 @@
+@import url("https://fonts.googleapis.com/css2?family=Red+Hat+Display&family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;700;900&display=swap");
+:root {
+  --consultancyPageColor: #fff;
+  --consultancyPlaceholderColor: #00000066;
+  --consultancyInputColor: rgb(74, 74, 74);
+  --keepinUpBorderLine: 3px;
+  --sizeOfKeepingUpItems: 2.5rem;
+  --KeepingUpFontSize: 1rem;
+  --bottonMarginBottom: 2.5rem;
+  --actualBottonMarginBottom: calc(
+    (var(--sizeOfKeepingUpItems) / 2) + var(--bottonMarginBottom)
+  );
+  --errorRed: rgb(253, 65, 65);
+  --successGreen: rgb(0, 153, 0);
+  --optionHeight: 3rem;
+  --maximumOptionPerScrollable: 4;
+  --transparentNavy: #1515653b;
+  --boxShadow: 0 5px 10px 0.5px rgba(0, 0, 0, 0.2);
+  --customTagBackgroundColor: #f8fafce5;
+  --questionsWidth: 32rem;
+  --inputPad: 0.35rem 0.5rem;
+  --page5BorderRadius: 5px;
+  --page5LineHeight: 24px;
+  --absolute-image-width: 20px;
+  --absolute-image-height: 13.33px;
+  --absolute-image-container-width: 40px;
+  --inputWithIconPad: 8px;
+  --bkgCircleSize: 200px;
+  --wireframe1Pad: 2vw;
+}
+.fixed-help-div {
+  position: fixed;
+  bottom: 6vmin;
+  right: 6vmin;
+  z-index: 500;
+  background: #ffffff;
+  box-shadow: 4px 8px 16px rgba(0, 0, 0, 0.5);
+  padding: 12px 24px;
+  border-radius: 25px;
+  transition: 0.15s ease-in;
+  color: var(--mpa-pink);
+  a {
+    background: linear-gradient(
+      105.98deg,
+      #ff00b8 2.86%,
+      #ff655b 74.8%,
+      #ffc700 145.27%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 900;
+    font-size: 24px;
+  }
+}
+.fixed-help-div:hover {
+  transition: 0.15s ease-out;
+  transform: translateY(-0.5rem);
+}
+.service {
+  width: 100%;
+  height: auto;
+  margin: 8vh auto 0;
+  font-family: "Red Hat Display", sans-serif;
+  // text-transform: capitalize;
+
+  &_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    height: auto;
+    background-image: linear-gradient(to right, #ff03b5, #fec402);
+    padding: 1vh;
+    animation: fadeIn 0.3s;
+  }
+
+  img {
+    margin: 0 auto 2vh;
+    width: 85%;
+    height: auto;
+  }
+
+  &_block {
+    min-width: 80%;
+    height: auto;
+
+    h1 {
+      color: var(--consultancyPageColor);
+      font-size: 4vw;
+      font-weight: 700;
+    }
+
+    h5 {
+      width: 60%;
+      margin-left: 17%;
+      margin-top: 2%;
+      color: var(--consultancyPageColor);
+      font-size: 1.5vw;
+      text-align: center;
+    }
+
+    button {
+      width: 50%;
+      height: auto;
+      margin: 2vh auto;
+      padding: 1.2vh;
+      background-color: #151565;
+      color: var(--consultancyPageColor);
+      font-size: 1.2vw;
+      outline: none;
+    }
+  }
+
+  &_buttons,
+  &_page8Btns {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  &_buttons {
+    justify-content: center;
+  }
+  &_buttons button:nth-of-type(1) {
+    margin-right: 1rem;
+  }
+  &_buttons button:only-child {
+    margin-right: 0;
+  }
+  &_leftbutton {
+    width: 40%;
+    height: 2vw;
+  }
+
+  &_rightbutton {
+    width: 40%;
+    height: 2vw;
+  }
+
+  &_page8Btns {
+    width: 30%;
+  }
+
+  &_page8Btns > button {
+    width: 10%;
+    height: 2vw;
+  }
+
+  #submitBtn {
+    width: 60%;
+    height: 2vw;
+    font-size: 1.5rem;
+  }
+
+  &_input {
+    background-color: var(--consultancyPageColor);
+    outline: none;
+    width: 100%;
+    height: auto;
+    margin: 1vh auto;
+    padding: 1vh;
+    font-size: 1.2rem;
+    border: 1px solid var(--consultancyPageColor);
+    border-radius: 5px;
+  }
+  &_input::placeholder {
+    color: var(--consultancyPlaceholderColor);
+  }
+  &_input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+}
+
+.errorEle {
+  margin: 5px auto;
+  text-align: right;
+  width: 100%;
+  animation: fadeIn 0.3s;
+}
+.errorEle > h4 {
+  color: white;
+  margin: 0;
+  font-size: 0.8rem;
+  letter-spacing: 0.8px;
+  text-transform: none;
+}
+
+.error,
+.success {
+  transition: 0.3s;
+
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  box-sizing: border-box;
+  box-shadow: var(--boxShadow);
+
+  color: white;
+}
+.error {
+  background-color: rgba(255, 176, 176, 0.5);
+  border-bottom: 5px solid var(--errorRed);
+}
+.success {
+  background-color: rgba(215, 255, 215, 0.5);
+  border-bottom: 5px solid var(--successGreen);
+  color: var(--consultancyInputColor);
+}
+// input,
+// select,
+// textarea {
+//   transition: 0.3s;
+//   color: var(--consultancyInputColor);
+
+//   font-size: 1vw;
+// }
+
+// textarea:focus {
+//   color: var(--consultancyPageColor);
+//   font-size: 1vw;
+// }
+#selectCustomTag {
+  color: var(--mpa-navy);
+  max-height: 100%;
+  display: flex;
+  width: 100%;
+
+  .selectDisplay {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+    span {
+      overflow: hidden;
+      white-space: nowrap;
+    }
+  }
+  .customSelectTag {
+    letter-spacing: 0.1rem;
+    width: 100%;
+    box-sizing: border-box;
+
+    background: var(--customTagBackgroundColor);
+    font-family: "Red Hat Display";
+
+    color: currentcolor;
+    font-weight: 700;
+    border-radius: 5px;
+    z-index: 2;
+    position: relative;
+    flex-shrink: 0;
+  }
+  .angle-icon {
+    font-size: 2rem;
+
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  .optionsContainer {
+    width: 100%;
+    background: var(--customTagBackgroundColor);
+    max-height: calc(var(--optionHeight) * var(--maximumOptionPerScrollable));
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    overflow: auto;
+
+    opacity: 1;
+    transition: 0.2s;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    box-shadow: var(--boxShadow);
+  }
+  .select-border-bottom {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  .up {
+    transform: rotate(180deg);
+    animation: up 0.3s;
+  }
+  .down {
+    animation: up 0.3s reverse;
+  }
+  .option-item {
+    font-weight: normal;
+    // display: flex;
+
+    // flex-direction: column;
+    // justify-content: center;
+    padding: 0 0.5rem;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.3s;
+    height: var(--optionHeight);
+
+    // margin: auto 0;
+    span {
+      display: block;
+      transform: translateY(50%);
+      white-space: nowrap;
+      overflow: hidden;
+      margin: auto;
+      text-overflow: ellipsis;
+    }
+  }
+  .selected-option-item {
+    // -webkit-text-stroke: 1px;
+    background-color: currentcolor;
+    cursor: pointer;
+    span {
+      color: var(--customTagBackgroundColor);
+    }
+  }
+  .option-item:hover {
+    background-color: var(--transparentNavy);
+    transition: 0.3s;
+  }
+  .questionOption {
+    margin-bottom: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.1rem;
+    text-transform: none;
+    font-size: 1.2rem;
+  }
+  .optionsContainer::-webkit-scrollbar {
+    width: 5px;
+  }
+  .optionsContainer::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+  .optionsContainer::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0);
+  }
+  .hideDropDown {
+    opacity: 0;
+    overflow: hidden;
+    transition: 0.2s;
+    visibility: hidden;
+  }
+  .invert-colors {
+    .selectDisplay {
+      span {
+        color: var(--consultancyPageColor);
+      }
+    }
+    .customSelectTag {
+      background: currentcolor;
+    }
+    .angle-icon {
+      color: var(--consultancyPageColor) !important;
+    }
+    .optionsContainer {
+      background: currentcolor;
+    }
+    .select-border-bottom {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    }
+
+    .selected-option-item {
+      color: currentcolor;
+      background-color: var(--consultancyPageColor);
+    }
+    .option-item > span {
+      color: var(--consultancyPageColor);
+    }
+    .option-item:hover {
+      background-color: rgba(255, 255, 255, 0.4);
+    }
+
+    .optionsContainer::-webkit-scrollbar-thumb {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+    .optionsContainer::-webkit-scrollbar-track {
+      background-color: rgba(255, 255, 255, 0);
+    }
+  }
+}
+.questions {
+  max-width: 90%;
+  width: var(--questionsWidth);
+  height: auto;
+  margin: 2vh auto;
+  padding: 1.3vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+
+  .checkboxWrapper {
+    width: 100%;
+    background-color: var(--customTagBackgroundColor);
+    padding: 1rem;
+    box-sizing: border-box;
+  }
+  .row {
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    overflow: hidden;
+    margin: 0.5rem 1rem;
+  }
+  .row-label {
+    color: #151371;
+    font-weight: 500;
+  }
+  .checkbox {
+    width: 1rem;
+    height: 1rem;
+    border: 1px solid #ff00b8;
+    box-sizing: border-box;
+    background-color: var(--consultancyPageColor);
+    margin-right: 1rem;
+    display: flex;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+  }
+  .checkVisible,
+  .checkInvisible {
+    color: #ff00b8;
+    -webkit-text-stroke: 1px var(--consultancyPageColor);
+    font-size: 0.8rem;
+    transition: 0.3s;
+  }
+  .checkInvisible {
+    color: var(--consultancyPageColor);
+  }
+  @keyframes up {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(180deg);
+    }
+  }
+
+  h2 {
+    color: var(--consultancyPageColor);
+    font-size: 3vw;
+    font-weight: 700;
+    text-transform: none;
+  }
+
+  h6 {
+    width: 60%;
+    color: var(--consultancyPageColor);
+    font-size: 1.5vw;
+  }
+  .keepingUpLine {
+    width: 100%;
+    max-width: var(--questionsWidth);
+
+    height: var(--keepinUpBorderLine);
+    background-color: #b9515d;
+
+    position: relative;
+  }
+  .keepingUpItemContainer {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    height: fit-content;
+
+    top: calc(
+      ((var(--keepinUpBorderLine) / 2)) - (var(--sizeOfKeepingUpItems) / 2)
+    );
+  }
+  .keepingUpStep {
+    font-size: var(--KeepingUpFontSize);
+    line-height: var(--KeepingUpFontSize);
+    width: var(--sizeOfKeepingUpItems);
+    height: var(--sizeOfKeepingUpItems);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+
+    font-family: "Red Hat Display";
+    color: var(--consultancyPageColor);
+    background: #c55060;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  .selectedStep {
+    background-color: var(--mpa-navy);
+  }
+  label {
+    width: 100%;
+    height: auto;
+    margin: 3vh 0 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--consultancyPageColor);
+    font-family: "Roboto", sans-serif;
+  }
+  &_calendar {
+    margin: 1vh auto;
+    width: 50%;
+    padding: 5px;
+    background-color: #151565;
+    color: var(--consultancyPageColor);
+  }
+  button {
+    background-color: #151565;
+    color: var(--consultancyPageColor);
+    margin-top: 5rem;
+    padding: 1rem;
+    font-size: 1.2rem;
+    height: fit-content;
+    line-height: 1.2rem;
+    border-radius: 4px;
+    margin-bottom: var(--actualBottonMarginBottom);
+  }
+}
+#page6 {
+  width: 100%;
+  .questions {
+    width: 70%;
+  }
+  .page6-container {
+    padding: 48px;
+    box-sizing: border-box;
+    width: 100%;
+    background: var(--consultancyPageColor);
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    box-sizing: border-box;
+    h1 {
+      color: var(--mpa-navy);
+      font-size: calc(1rem + 0.5vw);
+      font-weight: 700;
+      line-height: 28px;
+      text-align: center;
+      margin-top: 0;
+      margin-bottom: 38px;
+      span {
+        color: var(--mpa-pink);
+      }
+    }
+  }
+  @media (max-width: 700px) {
+    .questions {
+      width: 90%;
+    }
+  }
+}
+
+.contain-options {
+  margin: 0 auto;
+  width: 90%;
+  text-align: left;
+  label {
+    margin-top: 0;
+    // font-weight: 500;
+  }
+  .wrap {
+    display: flex;
+  }
+  input[type="radio"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    padding: 3px;
+
+    background-clip: content-box;
+    border: 1px solid #ff00b8;
+    background-color: #e7e6e7;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-right: 8px;
+  }
+  .margin-top {
+    margin-top: 18px;
+  }
+
+  /* appearance for checked radiobutton */
+  input[type="radio"]:checked {
+    background-color: #ff00b8;
+  }
+}
+
+.inline-block {
+  display: inline-block;
+  .wrap {
+    width: fit-content;
+    position: relative;
+    height: fit-content;
+  }
+  input[type="date" i] {
+    align-items: center;
+    display: -webkit-inline-flex;
+    font-family: monospace;
+    cursor: default;
+    overflow: hidden;
+    appearance: unset;
+  }
+  .rep-info {
+    font-size: 1rem;
+    width: 30rem;
+    padding: var(--inputWithIconPad);
+    background: #eeeeee;
+    border: 1px solid #9a9a9a;
+    box-sizing: border-box;
+    margin-top: 0.2rem;
+    padding-left: var(--absolute-image-container-width);
+  }
+  .rep-info::placeholder {
+    font-size: calc(0.5rem + 0.5vw);
+  }
+
+  label {
+    color: #151371;
+    font-family: "Red Hat Display";
+    font-size: calc(0.65rem + 0.35vw);
+    font-style: normal;
+    font-weight: 200;
+    line-height: 21px;
+    letter-spacing: 0.03em;
+    text-align: left;
+  }
+  .bold {
+    font-weight: bold;
+  }
+  .absolute-image {
+    position: absolute;
+    object-fit: contain;
+    width: var(--absolute-image-width);
+    height: var(--absolute-image-height);
+
+    top: calc((100% - var(--absolute-image-height)) / 2);
+    left: calc(
+      (var(--absolute-image-container-width) - var(--absolute-image-width)) / 2
+    );
+  }
+}
+#page10,
+#page11 {
+  --page10-border: 1px solid #c7c7c7;
+  .questions {
+    width: 60%;
+  }
+
+  .contain-agree {
+    display: flex;
+    margin-top: 2rem;
+    input {
+      width: 15px;
+      height: 15px;
+      filter: grayscale(0.6);
+    }
+    label {
+      margin: 0;
+    }
+    #agree {
+      color: #000000;
+      font-family: "Red Hat Display";
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 19px;
+      letter-spacing: 0.03em;
+      text-align: left;
+    }
+    #agree:hover {
+      cursor: pointer;
+      color: #ff00b8;
+    }
+  }
+
+  .payment-header {
+    font-family: "Red Hat Display";
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 21px;
+    letter-spacing: 0.03em;
+    text-align: left;
+    color: #0000009e;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  .body {
+    box-sizing: border-box;
+    padding: 30px;
+    width: 100%;
+    background-color: var(--consultancyPageColor);
+    text-align: center;
+    font-family: "Red Hat Display";
+    font-size: 16px;
+    color: #3c3c3c;
+    font-weight: 700;
+    line-height: 21px;
+    letter-spacing: 0.03em;
+  }
+  th:nth-child(1) {
+    width: 80%;
+
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 21px;
+    letter-spacing: 0.03em;
+    color: #808080;
+
+    border-right: var(--page10-border);
+    @media (max-width: 800px) {
+      width: 70%;
+    }
+  }
+
+  th:nth-child(1) {
+    padding: 8px 20px;
+  }
+  td:nth-child(1) {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 21px;
+    letter-spacing: 0.03em;
+    color: #000000a6;
+  }
+  tr:nth-child(1) {
+    border-top: var(--page10-border);
+  }
+  tr:nth-last-child(1) {
+    border-top: var(--page10-border);
+    border-bottom: var(--page10-border);
+    th:nth-child(1) {
+      padding: 2px 20px;
+
+      font-size: 20px;
+
+      font-weight: 900;
+      line-height: 26px;
+    }
+    th:nth-child(2) {
+      padding: 2px 20px;
+      padding-right: 0;
+
+      font-size: 20px;
+      font-weight: 900;
+      line-height: 26px;
+      letter-spacing: 0.03em;
+    }
+  }
+  table {
+    font-family: "Red Hat Display";
+    margin-top: 40px;
+    text-align: right;
+    width: 100%;
+  }
+  @media (max-width: 900px) {
+    .questions {
+      width: 80%;
+    }
+  }
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  box-sizing: border-box;
+}
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+.edit-payment-options {
+  margin-left: 0;
+
+  label {
+    width: 100%;
+    color: #0000009e;
+    font-family: "Red Hat Display";
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 21px;
+    letter-spacing: 0.03em;
+    text-align: left;
+    display: flex;
+    flex-direction: row;
+    min-height: 40px;
+
+    align-items: flex-start;
+    div {
+      height: 100%;
+    }
+    img {
+      height: 1rem;
+      object-fit: cover;
+
+      width: 40px;
+      margin: 0;
+      margin-right: 1rem;
+    }
+  }
+}
+.contain-label-second-part {
+  display: flex;
+  font-size: 1rem;
+  font-weight: 500;
+}
+#page5 {
+  width: 100%;
+
+  .questions {
+    width: 70%;
+  }
+  .getting-help {
+    color: var(--mpa-navy);
+    cursor: pointer;
+  }
+  .space1,
+  .space2 {
+    width: 50%;
+    padding: 2rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    label {
+      font-size: 1rem;
+      font-weight: 700;
+      margin: 1rem 0;
+      text-align: left;
+      letter-spacing: 0.1rem;
+    }
+  }
+
+  .page5-input,
+  .page5-textarea {
+    border: 2px solid rgba(255, 255, 255, 0.9);
+    outline: none;
+    width: 100%;
+    background-color: var(--consultancyPageColor);
+    box-sizing: border-box;
+    border-radius: var(--page5BorderRadius);
+    padding: var(--inputPad);
+    border: 2px solid rgba(255, 255, 255, 0.9);
+    font-size: 1rem;
+    line-height: var(--page5LineHeight);
+    color: var(--consultancyInputColor);
+  }
+  .uniform-input {
+    padding: var(--inputPad);
+    background: var(--consultancyPageColor);
+    line-height: var(--page5LineHeight);
+    border-radius: var(--page5BorderRadius);
+    margin-top: 1rem;
+    display: flex;
+    overflow: auto;
+    border: 2px solid rgba(255, 255, 255, 0.9);
+    width: 100%;
+  }
+  .uniform-input:nth-of-type(1) {
+    margin-top: 0;
+  }
+  .uniform-input::-webkit-scrollbar {
+    height: 0;
+  }
+  .contain-tags {
+    width: fit-content;
+    display: flex;
+  }
+  .contain-tags div {
+    background: linear-gradient(165.39deg, #ff00b8 -13.73%, #151371 98.55%);
+    font-family: "Red Hat Display";
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 24px;
+    color: var(--consultancyPageColor);
+    padding: 2px 8px;
+    // padding-right: 40px;
+    margin-right: 0.5rem;
+    border-radius: var(--page5BorderRadius);
+    text-transform: none;
+  }
+  .contain-tags div span:nth-child(1) {
+    margin-right: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  .contain-tags div span:nth-child(2) {
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  // .contain-tags div span:nth-child(2):hover {
+  //   transition: 0.3s;
+  //   color: rgba(210, 210, 210);
+  // }
+  .tags-input {
+    outline: none;
+    width: 100%;
+    flex-shrink: 0;
+    font-size: 1rem;
+  }
+  .small-width {
+    width: 10rem;
+  }
+  .page5-textarea {
+    flex-grow: 1;
+
+    resize: none;
+  }
+
+  .flex-row {
+    display: flex;
+    width: 100%;
+  }
+  @media (max-width: 900px) {
+    .flex-row {
+      flex-direction: column !important;
+    }
+    .space1,
+    .space2 {
+      width: 100%;
+    }
+    .space1 {
+      aspect-ratio: 667/398;
+      padding-bottom: 0;
+      label {
+        margin-top: 0;
+      }
+    }
+    .questions {
+      width: 90%;
+    }
+  }
+}
+#page11 {
+  font-family: "Red Hat Display";
+  color: #282828;
+  .body {
+    .wrap-pad {
+      padding-left: 6rem;
+      padding-right: 6rem;
+    }
+  }
+  @media (max-width: 800px) {
+    .body {
+      .wrap-pad {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+    }
+    h1 {
+      word-break: break-all;
+    }
+  }
+  .response-time {
+    font-style: normal;
+    font-weight: 500;
+    font-size: calc(0.6rem + 0.4vw);
+    text-align: left;
+    .bold {
+      font-weight: 700;
+    }
+  }
+  h1 {
+    font-size: 50px;
+
+    font-weight: 700;
+    line-height: 66px;
+    text-align: center;
+    color: #0d7442;
+    vertical-align: center;
+    margin-bottom: 53px;
+
+    img {
+      width: 50px;
+      margin: 0;
+      display: inline-block;
+      margin-right: 28px;
+      object-fit: contain;
+    }
+  }
+  .thank-you,
+  .payment-detail {
+    font-weight: bold;
+    font-size: calc(1.5rem + 0.5vw);
+    line-height: 42px;
+    text-align: center;
+    color: var(--mpa-navy);
+
+    .pink {
+      color: var(--mpa-pink);
+    }
+  }
+  .payment-detail {
+    margin-top: 7px;
+    font-weight: 500;
+    font-size: calc(1rem + 0.5vw);
+    line-height: 26px;
+    color: #282828;
+  }
+  .thank-you > span {
+    border-bottom: 0.1px solid black;
+  }
+  .response-info {
+    font-family: "Red Hat Display";
+
+    font-weight: 500;
+    font-size: calc(1rem + 0.6vw);
+    line-height: 29px;
+
+    margin-top: 65px;
+    border: 1px solid var(--mpa-navy);
+    padding: 20px;
+    border-radius: 8px;
+    box-sizing: border-box;
+    margin-bottom: 85px;
+    .blue {
+      font-weight: 700;
+      font-size: 26px;
+      color: var(--mpa-navy);
+    }
+    button {
+      margin: 0;
+      margin-top: 26px;
+      margin-bottom: 8px;
+      color: var(--consultancyPageColor);
+      font-weight: 500;
+      font-size: calc(1rem + 0.7vw);
+      line-height: 97.69%;
+      background-color: var(--mpa-navy);
+      padding: 12px 24px;
+      box-shadow: 2px 4px 8px 0px #00000040;
+    }
+  }
+}
+#wireframe1 {
+  width: 100%;
+  font-family: "Red Hat Display";
+  color: #3c3c3c;
+
+  .questions {
+    width: 70%;
+  }
+  .body {
+    box-sizing: border-box;
+    padding: var(--wireframe1Pad);
+    width: 100%;
+    background-color: var(--consultancyPageColor);
+    text-align: center;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 21px;
+    letter-spacing: 0.03em;
+    position: relative;
+    isolation: isolate;
+    .bkgCircle,
+    .bkgCircle-onTop {
+      width: var(--bkgCircleSize);
+      background-color: var(--consultancyPageColor);
+      height: var(--bkgCircleSize);
+      border-radius: 50%;
+      position: absolute;
+      top: calc((var(--bkgCircleSize) / 2) * -1);
+      left: calc((100% - var(--bkgCircleSize)) / 2);
+      z-index: -1;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+    .bkgCircle-onTop {
+      z-index: 0;
+      background-color: transparent;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        z-index: 1000;
+      }
+    }
+  }
+
+  .inner-body {
+    padding: var(--wireframe1Pad);
+    padding-top: calc((var(--bkgCircleSize) / 2) - var(--wireframe1Pad) + 10px);
+    border: 1px solid var(--mpa-navy);
+    box-sizing: border-box;
+
+    header {
+      font-size: 38px;
+      font-weight: 400;
+      line-height: 50px;
+      letter-spacing: 0em;
+      margin-bottom: 30px;
+      span {
+        color: var(--mpa-navy);
+        font-weight: 900;
+      }
+    }
+    article {
+      // font-size: 25px;
+      font-size: calc(0.5rem + 1vw);
+      font-weight: 200;
+      line-height: calc(1rem + 1vw);
+    }
+    button {
+      margin-top: 20px;
+      margin-bottom: 20px;
+      box-shadow: 2px 4px 8px 0px #00000040;
+    }
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@media (max-width: 700px) {
+  :root {
+    --bkgCircleSize: 120px;
+  }
+}
+@media (max-width: 1200px) {
+  .service {
+    &_block {
+      width: 100%;
+
+      h1 {
+        font-size: 2.5rem;
+      }
+
+      h5 {
+        font-size: 1rem;
+      }
+
+      button {
+        font-size: 1rem;
+      }
+    }
+
+    &_buttons {
+      width: 50%;
+    }
+    &_leftbutton {
+      width: 45%;
+      height: 4vw;
+    }
+
+    &_rightbutton {
+      width: 45%;
+      height: 4vw;
+    }
+
+    &_page8Btns {
+      width: 50%;
+    }
+
+    &_page8Btns > #leftsubmitBtn {
+      min-width: 20%;
+      height: 4vw;
+    }
+
+    &_page8Btns > #submitBtn {
+      height: 4vw;
+    }
+  }
+
+  .questions {
+    h2 {
+      font-size: 2.5rem;
+    }
+  }
+}
+.blurBkg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: inherit;
+  background-attachment: fixed;
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.1s;
+  z-index: 500;
+  .centered-blur-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+.hide-overflow {
+  overflow: hidden;
+}
+.overlay-card {
+  max-width: 654px;
+  width: 80%;
+
+  border: 2px solid rgba(21, 19, 113, 0.6);
+  box-sizing: border-box;
+
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.18);
+  border-radius: 20px;
+  padding: 30px;
+  background-color: var(--mpa-navy);
+  .inner-section {
+    border: 1px solid var(--mpa-pink);
+    padding: 70px;
+    color: var(--consultancyPageColor);
+    ul {
+      // width: 80%;
+      margin-left: 2rem;
+    }
+    li {
+      list-style: disc;
+    }
+    .contain-buttons {
+      margin-top: 30px;
+      display: flex;
+      justify-content: space-evenly;
+      button {
+        font-weight: 900;
+        font-family: "Red Hat Display";
+        font-style: normal;
+        font-size: 20px;
+        line-height: 97.69%;
+        padding: 10px 16px;
+        box-shadow: 2px 4px 8px 0px #00000040;
+        border-radius: 6px;
+        transition: 0.3s;
+      }
+      button:hover {
+        transition: 0.3s;
+        transform: scale(1.1);
+      }
+      .btn-1 {
+        background-color: var(--mpa-pink);
+        color: var(--consultancyPageColor);
+      }
+      .btn-1-plus-select {
+        width: 70%;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+      .btn-1-plus-select:hover {
+        transform: none;
+      }
+      .btn-2 {
+        background-color: var(--consultancyPageColor);
+        color: var(--mpa-pink);
+      }
+    }
+    @media (max-width: 700px) {
+      .contain-buttons {
+        flex-direction: column;
+      }
+      .btn-2 {
+        margin-top: 1rem;
+      }
+    }
+  }
+}
+.popup {
+  display: none;
+  visibility: hidden;
+  width: 70vw;
+  height: 50vh;
+  background-color: #151371;
+  z-index: 1;
+  position: absolute;
+  color: #ffff;
+  border-radius: 20px;
+  padding: 2%;
+}
+#pop-btn {
+  margin: 0px;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+}
+.show {
+  visibility: visible;
+  display: block;
+}
+@media (max-width: 1000px) {
+  .popup {
+    width: 90vw;
+    height: 900px;
+  }
+}
+@media (max-width: 900px) {
+  :root {
+    --sizeOfKeepingUpItems: 5vw;
+    --KeepingUpFontSize: 2vw;
+  }
+}

@@ -1,0 +1,24 @@
+.notificationsContent {
+  margin-bottom: 2vw;
+}
+
+.notificationsContent h5,
+.notificationsContent h6 {
+  color: white;
+  font-size: 1.3vw;
+  font-weight: bold;
+  margin: 2vw 0;
+}
+.notificationsContent h6 {
+  font-size: 1.2vw;
+}
+
+.inputWrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.inputWrapper img {
+  width: 3.5vw;
+  height: 3.5vw;
+}

@@ -1,0 +1,36 @@
+.saved {
+  cursor: not-allowed !important;
+}
+.Demo__some-network__share-button:not(:first-child) {
+  margin-left: 10px;
+}
+.Demo__some-network__share-button {
+  outline: none !important;
+}
+.event-status-yes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color:green;
+  padding: 5px 15px;
+  color: #fff;
+  border-radius:10px;
+}
+.event-status-yes-detail {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color:green;
+  padding: 5px 15px;
+  color: #fff;
+  border-radius:10px;
+}
+.event-status-red{
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color:red;
+  padding: 5px 15px;
+  color: #fff;
+  border-radius:10px;
+}

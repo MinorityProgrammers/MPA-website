@@ -1,0 +1,209 @@
+.settingsContainer {
+  font-family: "Red Hat Display", sans-serif;
+  background: linear-gradient(
+    104.61deg,
+    #ff00b8 2.65%,
+    #ff655b 51.83%,
+    #ffc700 100%
+  );
+  display: flex;
+  justify-content: center;
+  padding-top: 60px;
+}
+
+.accountSettings {
+  background-color: white;
+  border-radius: 1vw;
+  display: flex;
+  margin: 60px 0;
+  height: 80vh;
+  width: 90%;
+}
+
+.settingsNavigation {
+  width: 34%;
+}
+
+.settingsNavigation h1,
+.settingsNavigation h2 {
+  color: #151371;
+}
+
+.settingsNavigation .userDataHeader {
+  display: flex;
+  margin: 3.5vh 0 4vh 3vw;
+}
+
+.settingsNavigation .userDataHeader .imgDiv {
+  margin-right: 5%;
+  width: 30%;
+  height: 30%;
+}
+
+.settingsNavigation .userDataHeader .imgDiv img {
+  cursor: pointer;
+  border-radius: 100%;
+  width: 100%;
+  height: 100%;
+}
+
+.settingsNavigation .userDataHeader .textDiv {
+  align-self: flex-end;
+  margin-right: 10%;
+  width: 55%;
+}
+.settingsNavigation .userDataHeader .textDiv h3 {
+  color: black;
+  font-size: 1.5vw;
+  font-weight: bold;
+  text-transform: capitalize;
+  word-wrap: break-word;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.settingsNavigation .userDataHeader .textDiv h4 {
+  margin: 0.2vw 0;
+  color: #676565;
+  font-size: 1.2vw;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.settingsNavigation .userDataHeader .textDiv p {
+  display: block;
+  color: #393b97;
+  font-size: 1.2vw;
+  font-weight: 900;
+}
+.settingsNavigation .userDataHeader .textDiv p span {
+  cursor: pointer;
+}
+
+.settingsNavigation nav {
+  color: #151371;
+  font-weight: 700;
+  margin-bottom: 3.5vw;
+}
+
+.settingsNavigation nav .navHeader {
+  font-size: 1.5vw;
+}
+.settingsNavigation nav .navHeader.activeLi {
+  background-color: #151371;
+  color: white;
+}
+.settingsNavigation nav .navHeader.activeLi h2 {
+  border-top: none !important;
+  border-bottom: none !important;
+  background-color: #151371;
+  color: white;
+}
+
+.settingsNavigation nav .navHeader h1 {
+  border-bottom: 2px solid #afafb3;
+  font-weight: 900;
+  text-align: center;
+  padding-bottom: 1vw;
+}
+.settingsNavigation nav .navHeader:nth-child(odd) h2 {
+  border-top: 2px solid #afafb3;
+  border-bottom: 2px solid #afafb3;
+}
+.settingsNavigation nav .navHeader:first-child h2 {
+  border-top: none;
+}
+.settingsNavigation nav .navHeader h2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1vw 0 1vw 3vw;
+  margin-right: 2vw;
+}
+.settingsNavigation nav .navHeader h2 span {
+  cursor: pointer;
+}
+.settingsNavigation nav .navHeader h2 .icon {
+  background-color: #151371;
+  border-radius: 1.5vh;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 4vh;
+  height: 4vh;
+}
+.settingsNavigation nav .navHeader h2 .icon img {
+  width: 60%;
+  height: 60%;
+}
+.settingsNavigation nav .navHeader h2 .arrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  width: 2.5vh;
+  height: 2.5vh;
+}
+.settingsNavigation nav .navHeader h2 .arrow img {
+  cursor: pointer;
+  width: 150%;
+  height: 150%;
+  margin-top: 15%;
+}
+
+.specificSettings {
+  background-color: #151371;
+  border-radius: 1vw;
+  display: flex;
+  width: 66%;
+}
+
+@media only screen and (max-width: 768px) {
+  .settingsNavigation {
+    width: 11%;
+  }
+  .specificSettings {
+    width: 89%;
+  }
+  .settingsNavigation .userDataHeader {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: 0;
+  }
+  .settingsNavigation .userDataHeader > div {
+    text-align: center;
+    width: 100%;
+  }
+  .settingsNavigation .userDataHeader .imgDiv {
+    margin: 0 0 5% 0;
+    width: 60%;
+  }
+  .settingsNavigation .userDataHeader .textDiv {
+    align-self: auto;
+    margin-right: 0;
+    width: 40%;
+  }
+  .settingsNavigation .userDataHeader .textDiv h4 {
+    max-height: 25vw;
+    overflow-y: scroll;
+    word-break: break-all;
+  }
+  .settingsNavigation nav ul li h2 {
+    justify-content: center !important;
+    padding: 2vw 0 !important;
+    margin-right: 0 !important;
+  }
+  .settingsNavigation nav ul li h2 .icon {
+    width: 5vw !important;
+    height: 5vw !important;
+  }
+  .settingsNavigation nav ul li h2 span,
+  .settingsNavigation nav ul li h2 .arrow {
+    display: none !important;
+  }
+}

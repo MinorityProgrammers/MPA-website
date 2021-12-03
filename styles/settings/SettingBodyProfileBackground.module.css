@@ -1,0 +1,56 @@
+.backgroundContent {
+  margin-bottom: 2vw;
+}
+
+.backgroundContent .css-1uccc91-singleValue {
+  font-size: 1vw;
+}
+
+.backgroundContent h5 {
+  color: white;
+  font-size: 1.3vw;
+  font-weight: bold;
+  margin: 2vw 0;
+}
+
+.backgroundContent h6 {
+  color: white;
+  font-size: 1.2vw;
+  margin: 2vw 0 1vw 0;
+}
+
+.sMultiInputContainer {
+  background-color: white;
+  border-radius: 1vw;
+  padding: 1rem 2.2vw 0.5rem 2.2vw;
+}
+
+.sMultiInputContainer label {
+  border: 0.15vw solid #81868a;
+  border-radius: 0.3vw;
+}
+
+.mIAdds {
+  display: flex;
+}
+
+.btnWrap {
+  width: 20%;
+}
+.addBtn {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5vw;
+  background-color: #151371;
+  color: white;
+  font-size: 1.2vw;
+  padding: 0 0.5vw;
+  height: calc(100% - 0.5rem);
+  width: 100%;
+}
+
+.addBtn:focus {
+  outline: none;
+}

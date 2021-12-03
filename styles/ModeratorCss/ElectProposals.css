@@ -1,0 +1,254 @@
+.moderator-area {
+  background: linear-gradient(
+    104.61deg,
+    #ff00b8 2.65%,
+    #ff655b 51.83%,
+    #ffc700
+  );
+}
+.elect-proposal {
+  height: auto;
+  padding: 20px 0;
+  object-fit: cover;
+}
+
+.banner {
+  background-color: rgba(255, 255, 255, 0.8) !important;
+  margin-top: 100px;
+}
+.user-img {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+.p-notification-banner {
+  background: rgba(0, 0, 0, 0.8);
+  margin-top: 100px;
+}
+.core-notification-banner {
+  background: black;
+  margin-top: 100px;
+}
+
+.p-notification-banner,
+.core-notification-banner,
+.banner {
+  height: 350px;
+  width: 100%;
+  padding: 20px 0;
+}
+.ch-pro h2 {
+  color: #151371;
+  font-size: 2em;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.ch-pro img {
+  margin-left: 5.5rem;
+  margin-bottom: -0.8rem;
+}
+.ch-pro p {
+  color: #282828;
+}
+.notify h2,
+.notify p {
+  color: #ffffff;
+}
+.notify h2 {
+  position: relative;
+}
+.notify img {
+  margin-left: 20%;
+}
+.notify-img img {
+  margin-left: 35%;
+  display: inline-block;
+  object-fit: contain;
+}
+.proposals-area,
+.other-proposals-area {
+  padding: 20px;
+  margin: 50px auto;
+}
+.proposals-area {
+  background: rgba(21, 19, 113, 0.7);
+}
+.other-proposals-area {
+  background: rgba(0, 0, 0, 0.35);
+}
+.elected-proposals-area {
+  background: rgba(40, 40, 40, 0.9);
+  padding: 40px;
+  margin: 50px auto;
+}
+.single-proposal {
+  border-top: 6px solid #ff00b8;
+}
+.elected-proposal {
+  border-left: 6px solid #ff00b8;
+}
+.s-p-title h3 {
+  color: #151371;
+}
+.s-p-title p,
+.views-replies p {
+  color: #282828;
+}
+.count p,
+.info p {
+  color: rgba(0, 0, 0, 0.4);
+  font-size: 0.875rem;
+}
+.count p strong,
+.info p strong {
+  color: #282828;
+  font-size: 1rem;
+}
+
+.count p svg,
+.inc-dec-p p svg {
+  font-size: 2rem;
+  display: inline-block;
+  cursor: pointer;
+}
+.description p {
+  color: #444444;
+}
+.s-p-description p .view-p-btn {
+  color: #151371;
+  border: 1px solid #151371;
+  border-radius: 5px;
+  padding: 5px 15px;
+}
+.elect-p-btn {
+  background-color: #151371;
+  color: #fff;
+  border: 1px solid #151371;
+  border-radius: 5px;
+  padding: 5px 15px;
+}
+
+.s-p-title-right h3 {
+  color: #ff00b8;
+  font-size: 1.5rem;
+}
+.elected p span {
+  color: #ff00b8;
+}
+.palnnedTask {
+  background: linear-gradient(
+    180deg,
+    rgba(21, 19, 113, 0.6) 0%,
+    rgba(0, 0, 0, 0.18) 100%
+  );
+  padding: 5px;
+  width: 32%;
+  margin: 0 4px;
+}
+.palnnedTask-title {
+  background: #151371;
+  text-transform: capitalize;
+  text-align: center;
+  padding: 10px 30px;
+  border-top: 4px solid #fff;
+}
+.palnnedTask-title h3 {
+  color: #fff;
+  font-size: 1.5rem;
+}
+.task-card {
+  background-image: url("/assets/images/moderator/card-bg.png");
+  background-size: 100% 100%;
+  padding: 5px;
+}
+.task-container {
+  display: flex;
+  margin: 0 auto;
+}
+.palnnedTask {
+}
+.task-des p {
+  color: #151371;
+  font-size: 0.7rem;
+}
+.task-date .flag {
+  margin-right: 10px;
+}
+.task-date .pink svg {
+  color: #ff00b8;
+}
+.task-date .yellow svg {
+  color: rgba(255, 199, 0, 1);
+}
+.more-option p:first-child {
+  font-size: 12px;
+}
+.more-option p svg {
+  margin-top: 3px;
+}
+.design {
+  background-image: url("/assets/images/moderator/design.png");
+  background-size: 100% 100%;
+  padding: 5px 10px;
+}
+.develop {
+  background-image: url("/assets/images/moderator/develop.png");
+  background-size: 100% 100%;
+  padding: 5px 10px;
+}
+.progress_indicator p {
+  font-size: 2rem;
+}
+.progress_indicator p:nth-child(2) {
+  color: #ff00b8;
+}
+.progress_indicator p:nth-child(3) {
+  color: rgba(255, 199, 0, 1);
+}
+.progress_indicator p:nth-child(4) {
+  color: #00a3ff;
+}
+
+/* Pagination _______________ */
+.page-link {
+  cursor: pointer;
+  color: #ff00b8;
+}
+.d-flex-wrp {
+  display: flex;
+  flex-wrap: wrap;
+}
+@media only screen and (max-width: 708px) {
+  .res-t p {
+    font-size: 25px;
+  }
+  .notify-img img {
+    height: 200px;
+  }
+  @media only screen and (max-width: 576px) {
+    .res-t p {
+      font-size: 20px;
+    }
+    .notify-img img {
+      height: 150px;
+    }
+  }
+  @media only screen and (max-width: 482px) {
+    .res-t p {
+      font-size: 15px;
+    }
+  }
+  @media only screen and (max-width: 474px) {
+    .mr-t {
+      margin-top: 20px;
+    }
+    .notify-img img {
+      height: 120px;
+    }
+  }
+  @media only screen and (max-width: 388px) {
+    .res-t p {
+      font-size: 12px;
+    }
+  }
+}

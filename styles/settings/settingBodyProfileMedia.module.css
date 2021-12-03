@@ -1,0 +1,20 @@
+.mediaContent {
+  margin-bottom: 2vw;
+}
+
+.mediaContent h5 {
+  color: white;
+  font-size: 1.3vw;
+  font-weight: bold;
+  margin: 2vw 0;
+}
+
+.inputWrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.inputWrapper img {
+  width: 3.5vw;
+  height: 3.5vw;
+}

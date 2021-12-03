@@ -1,0 +1,17 @@
+/* Hide scrollbar for Chrome, Safari and Opera */
+.matches::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.matches {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+.message:hover .active-bar {
+  display: block;
+}
+/*# sourceMappingURL=MentorshipAppSideBar.css.map */

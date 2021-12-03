@@ -1,0 +1,157 @@
+@import url("https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,400;0,700;1,400&display=swap");
+.home-section {
+  min-height: 811px;
+  max-height: -webkit-fit-content;
+  max-height: -moz-fit-content;
+  max-height: fit-content;
+  background: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    color-stop(-0.69%, #ff00b8),
+    color-stop(50.18%, #ff655b),
+    to(#ffc700)
+  );
+  background: linear-gradient(
+    90deg,
+    #ff00b8 -0.69%,
+    #ff655b 50.18%,
+    #ffc700 100%
+  );
+  padding: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+/*# sourceMappingURL=mentorship.css.map */
+
+.section__mentorshipProgram {
+  background: linear-gradient(
+    104.61deg,
+    #ff00b8 2.65%,
+    #ff655b 51.83%,
+    #ffc700 100%
+  );
+  padding: 25px 0;
+}
+
+/* MentorshipHome Component style */
+
+.mentorshipProgram__image {
+  width: 20px;
+}
+.signup__program {
+  background: linear-gradient(
+    270deg,
+    #151371 37.54%,
+    rgba(21, 19, 113, 0) 82.06%
+  );
+  border-radius: 20px 20px 20px 0px;
+  padding: 5rem;
+  /* height: 485px;
+    display: flex;
+    align-items: center;
+    justify-content: center; */
+}
+.start__matching {
+  background: linear-gradient(
+    89.82deg,
+    #ffffff 32.74%,
+    rgba(255, 255, 255, 0) 93.35%
+  );
+  opacity: 0.8;
+  border-radius: 20px;
+  padding: 5rem;
+}
+
+.mentorship__SUPIMG {
+  height: 300px;
+  width: 300px;
+  border-radius: 50%;
+}
+.msnumIMG {
+  height: 90px;
+  width: 90px;
+  border-radius: 50%;
+}
+
+.mentorship__SUP {
+  position: relative;
+}
+.msnum {
+  position: absolute;
+  top: 0;
+}
+
+.mshipProgram__w_list h1 {
+  margin-bottom: 14px;
+  font-size: 46px;
+  font-weight: bold;
+  color: #fff;
+}
+.mshipProgram__w_list ul {
+  color: #fff;
+  font-size: 20px;
+}
+.mshipProgram__b_list h1{
+  margin-bottom: 14px;
+  font-size: 46px;
+  font-weight: bold;
+  color: #151371;
+}
+.mshipProgram__b_list ul {
+  color: #151371;
+  font-size: 20px;
+}
+
+.mentorshipBTN{
+  color: #151371;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+.mentorshipP-header {
+  background-image: url(/assets/images/mentorPHero.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+}
+.mtb-mpa{
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+
+.myButton {
+	box-shadow: 0px 10px 14px -7px #ff655b 51.83%;
+	background:linear-gradient(to bottom, #151371 5%, #3937aa 100%);
+	background-color:#151371;;
+	border-radius:8px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:20px;
+	font-weight:bold;
+	padding:13px 32px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #5856cc;;
+}
+.myButton:hover {
+	background:linear-gradient(to bottom, #284db3 5%,#3f3d94  100%);
+	background-color:#2c2a8d;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+.big__font{
+  font-size: 70px;
+}
+

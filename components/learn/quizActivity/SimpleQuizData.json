@@ -1,0 +1,54 @@
+{
+    "content": {
+        "questions": [
+            {
+                "question": "How can you access the state of a component from inside of a member function?",
+                "options": ["this.state", "this.prototype.stateValue", "this.values", "this.getState()"],
+                "answer": "this.state",
+                "feedback": "Lorraine Hansberry's (1930–1965) play opened in 1959 to critical acclaim and was a huge success. The play is about a black family who faces racism when moving into an all-white suburb. The play is drawn from a similar experience in Hansberry’s early life.",
+                "moreUrl": "https://interactive.wttw.com/dusable-to-obama/hansberrys-victory"
+            },
+            {
+                "question": "ReactJS is developed by _____?",
+                "options": ["Facebook", "Google", "Amazon", "Apple"],
+                "answer": "Facebook",
+                "feedback": "The athletes who would become Harlem Globetrotters first played together as students at Wendell Phillips High School on the south side of Chicago. Later, they played as a team under the banner of the South Side's Giles Post of the American Legion and then as the Savoy Big Five before taking on their current name. The team was based in Chicago for 50 years, from 1926 through 1976.",
+                "moreUrl": "https://interactive.wttw.com/dusable-to-obama/harlem-globetrotters"
+            },
+            {
+                "question": "Which of the following concepts is/are key to ReactJS?",
+                "options": ["Component-oriented design", "Event delegation model", "Both of the above"],
+                "answer": "Both of the above",
+                "feedback": "Thomas Andrew Dorsey (1899–1993) is widely known as the father of gospel music. The prolific composer wrote more than 1,000 songs, and created an uniquely American musical art form.",
+                "moreUrl": "https://interactive.wttw.com/dusable-to-obama/dorseys-gospel"
+            },
+            {
+                "question": "What are the advantages of React JS?",
+                "options": [ "Cool parts of React is the virtual DOM", "It’s Easier to Write with JSX", "All of the above"],
+                "answer": "All of the above",
+                "feedback": "Congresswoman Shirley Chisholm ran for the Democratic nomination in 1972; political activist Lenora Fulani ran in 1988 and was the first African-American independent, as well as the first female presidential candidate on the ballot in all 50 states; and Senator Carol Moseley-Braun kicked off her Democratic presidential campaign in 2003 by saying, \"It's time to take the 'men only' sign off the White House door.\"",
+                "moreUrl": "https://interactive.wttw.com/dusable-to-obama/carol-moseley-braun"
+            },
+            {
+                "question": "What is the testing library most often associated with React?",
+                "options": ["Mocha", "Chai", "Jest", "Sinon"],
+                "answer": "Jest",
+                "feedback": "Oscar De Priest, U.S. representative from Illinois, was the first African-American elected to Congress in the 20th century, ending a 28-year absence of black representatives.",
+                "moreUrl": "https://interactive.wttw.com/dusable-to-obama/carol-moseley-braun"
+            },
+            {
+                "question": "What is the name of the tool used to take JSX and turn it into createElement calls?",
+                "options": ["JSX Editor", "Babel", "Browser Buddy", "ReactDOM"],
+                "answer": "Babel",
+                "feedback": "In 1934, Nat King Cold won a talent competition sponosored by the <em>Chicago Defender</em>. He and other competition winners were awarded turkeys for Thanksgiving. Nat King Cole was part of Chicago's Black renaissance.",
+                "moreUrl": "https://interactive.wttw.com/dusable-to-obama/dorseys-gospel"
+            },
+            {
+                "question": "What can you use to handle code splitting?",
+                "options": ["React.memo", "React.split", "React.fallback", "React.lazy"],
+                "answer": "React.lazy",
+                "feedback": "Gwendolyn Brooks (1917–2000) is a jewel in Chicago’s literary history. She was a writer best known for her poetry describing life in the South Side community in which she lived."
+            }
+          ]
+    }
+}

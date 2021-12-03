@@ -1,0 +1,434 @@
+.cp-container {
+  position: relative;
+  /* top: 120px; */
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 1000px;
+  height: 80vh;
+  border-radius: 20px;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+}
+/* sidebar styles */
+.cp-sidebar {
+  background-color: #2a232b;
+  width: 35%;
+  border-radius: 20px 0 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cp-sidebar li {
+  font-size: x-large;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 20px;
+  height: 10vh;
+  color: white;
+}
+.cp-sidebar li.head-li p {
+  cursor: default;
+  background: linear-gradient(to left, #ff00b8 0%, #ff655b 50.8%, #ffc700 100%);
+  background: -webkit-linear-gradient(
+    to left,
+    #ff00b8 0%,
+    #ff655b 50.8%,
+    #ffc700 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+.cp-border {
+  position: absolute;
+  display: block;
+  height: 100%;
+  border-left: 2px solid #ff655b;
+  transform: translateX(-50%);
+  left: 0;
+}
+.cp-dot {
+  position: absolute;
+  display: block;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  background-color: #ff655b;
+  left: 0;
+  transform: translateX(-50%);
+}
+.cp-dotActive {
+  background-color: #f102b4;
+  border: 2px solid white;
+  box-sizing: content-box;
+}
+.cp-yellow {
+  background-color: yellow;
+}
+.cp-sidebar li:first-child .cp-border {
+  height: 50%;
+  bottom: 0;
+}
+.cp-sidebar li:last-child .cp-border {
+  height: 50%;
+  top: 0;
+}
+
+/* body styles */
+.cp-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 65%;
+  border-radius: 0 20px 20px 0;
+  padding: 40px;
+  z-index: 1;
+}
+.cp-close {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  font-size: 20px;
+}
+.cp-top {
+  width: 100%;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.cp-top-border {
+  border-bottom: 1px solid #676565;
+}
+.cp-top h1 {
+  font-size: 26px;
+  font-weight: bold;
+  color: black;
+}
+.cp-top h2 {
+  font-size: 24px;
+  color: black;
+}
+.cp-form {
+  width: 100%;
+  padding: 20px 0px;
+  overflow-y: scroll;
+  z-index: 100;
+}
+.cp-form h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: black;
+}
+.cp-form .cp-formFlex button,
+.cp-form .cp-downloadButtonsContainer button {
+  background-color: #690065;
+  color: white;
+  padding: 10px 20px;
+  width: fit-content;
+  margin-top: 20px;
+  border-radius: 22px;
+}
+.cp-formFlex {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+.cp-formGrid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+.cp-multiInputContainer {
+  width: 100%;
+  min-height: 130px;
+}
+.cp-multiInput {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  padding-right: 10px;
+}
+/* input stylings */
+.cp-input {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  max-width: 100%;
+  margin-bottom: 0;
+  border-radius: 10px;
+  padding: 10px;
+  border: 4px solid #eaeaea;
+  height: fit-content;
+}
+
+.create--profile .cp-body .cp-formGrid .color-picker-toggle {
+  display: flex;
+  justify-content: center;
+}
+.create--profile
+  .cp-body
+  .cp-formGrid
+  .color-picker-toggle
+  .cpt-btn {
+  cursor: pointer;
+  display: inline-block;
+  color: #fff;
+  border-radius: 1vw;
+  font-weight: bold;
+  padding: 0.2vw 1vw;
+}
+.create--profile .cp-body .cp-formGrid .cp-input:first-child .react-color {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+.create--profile .cp-body .cp-formGrid .avatarReplace {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cp-highlight {
+  border: 4px solid #151371;
+}
+.cp-multiInput > .cp-input {
+  margin-right: 10px;
+  width: 100%;
+}
+.cp-multiInput > button {
+  margin-top: 0px;
+  height: 80px;
+  padding: 10px 30px;
+}
+.cp-multiInput > button:active,
+.cp-multiInput > button:focus,
+.cp-multiInput > button:hover {
+  outline: none;
+}
+.cp-formGrid > .cp-input {
+  margin: 10px;
+  margin-bottom: 13px;
+}
+.cp-formGrid > .cp-input:nth-child(2n) {
+  margin-right: 0;
+}
+.cp-formGrid > .cp-input:nth-child(2n + 1) {
+  margin-left: 0;
+}
+.cp-input input {
+  outline: none;
+  color: black;
+  font-size: medium;
+  height: 24px;
+}
+.cp-input p {
+  width: 100%;
+}
+.cp-input .cp-required {
+  color: red;
+}
+.cp-warning {
+  color: red;
+}
+/* react-select styling */
+.cp-input div[class*="control"] {
+  border: none;
+  box-shadow: none;
+  min-height: fit-content;
+}
+.cp-input span[class*="indicatorSeparator"] {
+  display: none;
+}
+.cp-input div[class*="ValueContainer"] {
+  padding: 0px;
+}
+.cp-input div[class*="ValueContainer"] div[class*="Input"] {
+  margin: 0;
+  padding: 0;
+}
+.cp-input div[class*="indicatorContainer"] {
+  padding: 0;
+}
+/* Download Buttons */
+.cp-downloadButtonsContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.create--profile .cp-container .cp-downloadButtonsContainer {
+  grid-column: span 2;
+  flex-direction: row;
+  justify-content: space-around;
+}
+/* skills + passions values */
+.cp-skillsContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.cp-skill {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px 20px;
+  margin-right: 10px;
+  margin-bottom: 5px;
+  background-color: #501c00;
+  color: white;
+  font-size: 14px;
+  border-radius: 22px;
+}
+.cp-skill svg {
+  font-size: 16px;
+  margin-left: 5px;
+}
+
+/* navigation buttons */
+.cp-navButtonsContainer {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+.cp-navButton {
+  background-color: #3c3b88;
+  padding: 10px 20px;
+  color: white;
+}
+.cp-navButton:nth-child(2) {
+  margin-left: 40px;
+}
+
+/* submit */
+.cp-submit {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cp-submitButton {
+  background-color: #690065;
+  color: white;
+  padding: 10px 20px;
+  width: fit-content;
+  margin-top: 20px;
+  border-radius: 22px;
+}
+.cp-formGrid1 {
+  display: flex;
+  justify-content: center !important;
+  flex-direction: column;
+  text-align: center;
+  width: 60%;
+}
+.cp__done--btn > .cp-navButton {
+  background: #00aa4f;
+  width: 150px;
+}
+.cp__profile--done {
+  display: flex;
+  justify-content: center;
+}
+.cp__profile--container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.cp-formGrid1 > p {
+  padding-top: 15px;
+}
+.react-datepicker__input-container input {
+  width: 100%;
+  padding: 8px 10px;
+  color: black;
+}
+.cp-stepProgressItem p {
+  cursor: pointer;
+}
+.cp-stepProgressItem:last-child p {
+  cursor: default;
+}
+
+.create--profile {
+  padding: 130px 0 60px;
+}
+.delete-skill {
+  cursor: pointer;
+}
+.cp-username {
+  max-width: 300px;
+  width: 100%;
+}
+.cp-usernameSuggestions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-top: 10px;
+}
+.cp-usernameSuggestions p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0px 10px;
+  margin: 5px;
+  background-color: #eaeaea;
+  color: black;
+  height: 40px;
+  border-radius: 25px;
+}
+@media screen and (max-width: 900px) {
+  .cp-formGrid {
+    grid-template-columns: 100%;
+  }
+  .cp-formGrid > .cp-input {
+    margin: 0;
+    margin-top: 10px;
+  }
+  .cp-multiInputContainer {
+    min-height: 250px;
+  }
+  .cp-multiInput {
+    flex-direction: column;
+  }
+  .cp-multiInput > .cp-input {
+    margin-bottom: 10px;
+  }
+  .cp-multiInput > button {
+    margin-bottom: 10px;
+    width: 100%;
+    height: fit-content;
+  }
+  .cp-skillsContainer {
+    margin-bottom: 20px;
+  }
+  .create--profile .cp-container .cp-downloadButtonsContainer {
+    grid-column: span 1;
+    flex-direction: column;
+  }
+}
+@media screen and (max-width: 550px) {
+  .cp-sidebar {
+    display: none;
+  }
+  .cp-body {
+    width: 100%;
+  }
+}

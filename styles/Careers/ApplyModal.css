@@ -1,0 +1,122 @@
+.applyModal {
+    
+    color:white;
+    position:absolute;
+    width:100%;
+    height:100%;
+    z-index:5;
+    left:0; 
+    top:0;
+}
+
+.applyModal-overlay {
+    background:black;
+    opacity:.8;
+    position:absolute;
+    height:100%;
+    width:100%;
+    z-index:6;
+    top:0;
+}
+
+.applyModal-content {
+    
+    color:var(--mpa-navy);
+    position:relative;
+    z-index:8;
+    
+    margin-top:40px;
+}
+
+.applyModal-content-box {
+    max-width:600px;
+    background:white;
+    margin:auto;
+    position: relative;
+    padding:40px;
+}
+
+.closeApplyModal {
+    position:absolute;
+    right:0;
+    top:0;
+    padding:18px;
+    line-height:1em;
+    cursor:pointer;
+}
+
+.applyModal-content-box-heading {
+    text-align:center;
+    font-size:28px;
+    margin-bottom:24px;
+}
+
+.applyModal-content-box-heading >div:nth-child(2){
+    font-weight:bold;
+}
+
+.applyModal-content-box-heading >div:nth-child(4){
+    font-weight:bold;
+}
+
+.applyModal-content-box-form-name{
+    display:flex;
+    margin:10px 0;
+}
+
+.applyModal-content-box-form-name-names{
+    font-weight:bold;
+}
+
+.applyModal-content-box-form-resume {
+    margin:26px 0 10px;
+    
+}
+
+.applyModal-content-box-form-resume-label {
+    cursor:pointer;
+    color:var(--mpa-navy);
+    display: inline-flex;
+    border:solid 1px var(--mpa-navy);
+    padding:6px 12px;
+}
+
+.applyModal-content-box-form-resume-logo {
+    height:20px;
+    margin-right:6px;
+}
+
+.applyModal-content-box-form-resume-text {
+    color: var(--mpa-pink);
+}
+
+.applyModal-content-box-form-reqs-heading {
+    font-size:20px;
+    font-weight:bold;
+    text-align: center;
+}
+
+.applyModal-content-box-form-reqs-req {
+    margin:10px 0;
+}
+
+.applyModal-content-box-form-reqs-req-label {
+    margin-right:6px;
+}
+
+.applyModal-content-box-form-reqs-req-input {
+    border:1px solid black;
+    width:80px;
+    text-align: center;
+}
+
+.applyModal-content-box-form-submit {
+    text-align: center;
+}
+
+.applyModal-content-box-form-submit-btn {
+    background:var(--mpa-navy);
+    padding:5px 10px;
+    margin-top:24px;
+    color:white;
+}

@@ -1,0 +1,828 @@
+.minority__earned__page__wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  margin-top: 96px;
+}
+
+/* HEADER SECTION */
+.minority__earned {
+  width: 1200px;
+  height: 144px;
+  background: linear-gradient(
+    87.05deg,
+    rgba(0, 0, 0, 0) 2.5%,
+    rgba(0, 0, 0, 0.15) 48.74%,
+    rgba(0, 0, 0, 0) 96.32%
+  );
+  margin-bottom: 24px;
+  margin-top: 80px;
+}
+
+.minority__earned p {
+  font-size: 30px;
+  color: #fff;
+  line-height: 29px;
+  font-family: "Red Hat Display", sans-serif;
+}
+
+.minority__earned__header__text {
+  font-size: 51px;
+  color: #fff;
+  font-family: "Red Hat Display", sans-serif;
+  font-weight: bold;
+  line-height: 67px;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  text-transform: uppercase;
+}
+
+/* ACTION SECTION */
+.minority__earned__actions {
+  width: 1200px;
+  /* min-height: 768px; */
+  height: auto;
+  border: 2px solid #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 62px 0px 30px 0px;
+  margin-bottom: 48px;
+  position: relative;
+}
+
+.minority__earned__actions.small {
+  width: 1200px;
+  /* min-height: 768px; */
+  height: auto;
+  padding: 62px 0px;
+}
+
+.minority__earned__actions .sort {
+  align-self: flex-end;
+  padding: 0 82px 0 82px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.minority__earned__actions .sort select {
+  color: #282828;
+}
+
+.minority__earned__actions .sort .filter__buttons .btn {
+  background: #fff;
+  color: #ff00b8;
+  margin-right: 10px;
+  transition: 0.15s all;
+}
+
+.minority__earned__actions .sort .filter__buttons .btn.active {
+  background: #282828;
+  color: #fff;
+}
+
+.minority__earned__actions .sort .filter__buttons .btn.active:hover {
+  background: #282828;
+  color: #fff;
+}
+
+.minority__earned__actions .sort .filter__buttons .btn:hover {
+  background: #e9ecef;
+}
+
+.minority__earned__actions .sort option:disabled {
+  font-weight: bold;
+}
+
+.minority__earned__action__outer {
+  background: #000;
+  border: 4px solid white;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  margin-bottom: 56px;
+}
+
+.minority__earned__action {
+  width: 1024px;
+  height: 112px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+  font-family: "Red Hat Display", sans-serif;
+}
+
+.minority__earned__action .left-side {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 75%;
+}
+
+.minority__earned__action .icon {
+  height: 30px;
+  width: auto;
+  margin-right: 40px;
+  margin-left: 40px;
+}
+
+.minority__earned__action
+  .icon[src="./assets/images/minority-earned/mentorship.svg"],
+.minority__earned__action
+  .icon[src="./assets/images/minority-earned/chapter.svg"] {
+  height: 50px;
+}
+
+.minority__earned__action .name {
+  color: #ffc700;
+  font-size: 28.5px;
+  line-height: 31.69px;
+  font-weight: 500;
+}
+
+.minority__earned__action .date {
+  color: #fff;
+  font-size: 20px;
+  line-height: 19.54px;
+  font-weight: 500;
+}
+
+.minority__earned__action .title {
+  text-align: left;
+  width: 100%;
+}
+
+.minority__earned__action .right-side {
+  display: flex;
+  position: relative;
+}
+
+.minority__earned__action .right-side i {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-40%);
+  font-size: 20px;
+  margin-right: 30px;
+}
+
+.minority__earned__action .number__of__pts {
+  color: #ffc700;
+  font-size: 28.5px;
+  line-height: 31.69px;
+  font-weight: 400;
+  margin-right: 5px;
+}
+
+.minority__earned__action .points {
+  color: #fff;
+  font-size: 20px;
+  line-height: 19.54px;
+  font-weight: 500;
+  margin-right: 80px;
+}
+
+/* Background for odd actions */
+.minority__earned__action__outer:nth-child(odd) > .minority__earned__action {
+  background: linear-gradient(
+    90deg,
+    #ff00b8 0%,
+    rgba(255, 0, 184, 0) 7.56%,
+    rgba(255, 0, 184, 0.3) 66.26%,
+    rgba(255, 0, 184, 0) 126.52%
+  );
+}
+
+/* Background for even actions */
+.minority__earned__action__outer:nth-child(even) > .minority__earned__action {
+  background: linear-gradient(
+    90deg,
+    #ffc700 0%,
+    rgba(255, 199, 0, 0) 7.56%,
+    rgba(255, 199, 0, 0.3) 66.26%,
+    rgba(255, 199, 0, 0) 126.52%
+  );
+}
+
+.minority__earned__actions .page-link {
+  cursor: pointer;
+  color: #ff00b8;
+}
+
+/* Change bootstrap active class color for pagination */
+#__next
+  > div
+  > div
+  > div:nth-child(1)
+  > div
+  > div.minority__earned__actions
+  > nav
+  > ul
+  > li.page-item.active
+  > span {
+  background-color: #282828;
+  border-color: #282828;
+}
+
+.minority__earned__actions .no__data {
+  color: #fff;
+}
+
+.minority__earned__actions .no__data h1 {
+  text-align: left;
+  font-size: 40px;
+}
+
+.minority__earned__actions p {
+  font-size: 20px;
+}
+
+/* PROPSAL SECTION */
+.proposal__box__container {
+  width: 1200px;
+  height: 240px;
+  display: flex;
+  position: relative;
+  margin-bottom: 184px;
+}
+
+.proposal__box__container .proposal {
+  width: 486px;
+  height: 240px;
+  background: #151371;
+  border: 2px solid #e3e3e3;
+  border-right: 0;
+  box-sizing: border-box;
+}
+
+.proposal__box__container .net {
+  width: 714px;
+  height: 240px;
+  left: 486px;
+  background: #e3e3e3;
+}
+
+.proposal__box__container .binary__numbers {
+  position: absolute;
+  left: 22px;
+  top: 17px;
+}
+
+.back__to__proposals {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.back__to__proposals .proposal__text {
+  height: 49px;
+  font-size: 24px;
+  color: #fff;
+  font-family: "Red Hat Display", sans-serif;
+  line-height: 26.68px;
+  font-weight: 400;
+}
+
+.back__to__proposals .proposal__text .bold {
+  font-weight: 700;
+}
+
+.back__to__proposals .go__back {
+  background: #e3e3e3;
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.25);
+  border-radius: 6px;
+  width: 92px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.back__to__proposals .go__back i {
+  color: #151371;
+  margin: 0px 7px 0px 0px;
+}
+
+.back__to__proposals .go__back .go__back__text {
+  font-family: "Red Hat Display", sans-serif;
+  font-weight: 700;
+  color: #151371;
+  line-height: 19.54px;
+  font-size: 20px;
+}
+
+.proposal__box__container .net .line {
+  position: absolute;
+  top: 160px;
+  width: 714px;
+  height: 0px;
+  border: 1px solid #000000;
+}
+
+.proposal__box__container .net .earned {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  height: 160px;
+  margin-right: 79px;
+}
+
+.proposal__box__container .net p {
+  font-family: "Red Hat Display", sans-serif;
+  font-size: 20px;
+  color: #282828;
+  line-height: 22.24px;
+  margin-bottom: 13px;
+}
+
+.proposal__box__container .net .earned p:last-of-type {
+  margin-bottom: 0px;
+}
+
+.proposal__box__container .net span {
+  font-weight: 700;
+}
+
+.proposal__box__container .net .earned .light__purple {
+  color: #68669f;
+}
+
+.proposal__box__container .net .earned .pink {
+  color: #ff00b8;
+}
+
+.proposal__box__container .net .earned .purple {
+  color: #151371;
+}
+
+.proposal__box__container .net .total__earned {
+  height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  margin-right: 79px;
+}
+
+.proposal__box__container .net .total__earned p {
+  margin-bottom: 0px;
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 26.68px;
+  color: #151371;
+}
+
+/* MEDIA QUERIES */
+@media only screen and (max-width: 1200px) {
+  /* HEADER */
+  .minority__earned {
+    width: 900px;
+  }
+
+  /* ACTION SECTION */
+  .minority__earned__actions {
+    width: 900px;
+  }
+
+  .minority__earned__actions.small {
+    width: 900px;
+  }
+
+  .minority__earned__actions .no__data {
+    width: 85%;
+  }
+
+  .minority__earned__action {
+    width: 756px;
+  }
+
+  .minority__earned__action .name {
+    font-size: 25px;
+  }
+
+  .minority__earned__action .date {
+    font-size: 18px;
+  }
+
+  .minority__earned__action .number__of__pts {
+    font-size: 25px;
+  }
+
+  .minority__earned__action .points {
+    font-size: 18px;
+  }
+
+  .minority__earned__actions .sort {
+    padding: 0 68px 0 68px;
+    height: 30px;
+  }
+
+  .minority__earned__actions .sort select {
+    width: 100px;
+    font-size: 15px;
+  }
+
+  /* PROPOSAL SECTION */
+  .proposal__box__container {
+    width: 900px;
+  }
+
+  .proposal__box__container .proposal {
+    width: 365px;
+  }
+
+  .proposal__box__container .net {
+    width: 535px;
+  }
+
+  .proposal__box__container .net .earned {
+    margin-right: 60px;
+  }
+
+  .proposal__box__container .net .total__earned {
+    margin-right: 60px;
+  }
+
+  .proposal__box__container .net .line {
+    width: 535px;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  /* HEADER */
+  .minority__earned {
+    width: 750px;
+  }
+
+  /* ACTION SECTION */
+  .minority__earned__actions {
+    width: 750px;
+  }
+
+  .minority__earned__actions.small {
+    width: 750px;
+  }
+
+  .minority__earned__actions .no__data h1 {
+    font-size: 35px;
+  }
+
+  .minority__earned__actions .no__data {
+    width: 85%;
+  }
+
+  .minority__earned__action
+    .icon[src="./assets/images/minority-earned/mentorship.svg"],
+  .minority__earned__action
+    .icon[src="./assets/images/minority-earned/chapter.svg"] {
+    height: 40px;
+  }
+
+  .minority__earned__action {
+    width: 630px;
+  }
+
+  .minority__earned__action .name {
+    font-size: 22px;
+  }
+
+  .minority__earned__action .date {
+    font-size: 16px;
+  }
+
+  .minority__earned__action .number__of__pts {
+    font-size: 22px;
+  }
+
+  .minority__earned__action .points {
+    font-size: 16px;
+  }
+
+  .minority__earned__actions .sort {
+    padding: 0 56px 0 56px;
+  }
+
+  /* PROPOSAL SECTION */
+  .proposal__box__container {
+    width: 750px;
+  }
+
+  .proposal__box__container .proposal {
+    width: 300px;
+  }
+
+  .proposal__box__container .net {
+    width: 450px;
+  }
+
+  .proposal__box__container .net .earned {
+    margin-right: 40px;
+  }
+
+  .proposal__box__container .net .total__earned {
+    margin-right: 40px;
+  }
+
+  .proposal__box__container .net .line {
+    width: 450px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  /* HEADER */
+  .minority__earned {
+    width: 575px;
+  }
+
+  .minority__earned p {
+    font-size: 22px;
+  }
+
+  .minority__earned__header__text {
+    font-size: 45px;
+  }
+
+  .minority__earned__actions.small {
+    width: 575px;
+  }
+
+  .minority__earned__actions .no__data h1 {
+    font-size: 26px;
+  }
+
+  .minority__earned__actions .no__data p {
+    font-size: 16px;
+  }
+
+  /* ACTION SECTION */
+  .minority__earned__actions {
+    width: 575px;
+  }
+
+  .minority__earned__action {
+    width: 490px;
+  }
+
+  .minority__earned__action .left-side {
+    width: 75%;
+  }
+
+  .minority__earned__action .icon {
+    margin-left: 20px;
+  }
+
+  .minority__earned__action .right-side {
+    width: 25%;
+    margin-right: 25px;
+  }
+
+  .minority__earned__action .right-side i {
+    margin-right: -25px;
+  }
+
+  .minority__earned__action .points {
+    margin-right: 50px;
+  }
+
+  .minority__earned__actions .sort {
+    padding: 0 38.5px 0 38.5px;
+  }
+
+  /* PROPOSAL SECTION */
+  .proposal__box__container {
+    width: 575px;
+  }
+
+  .proposal__box__container .proposal {
+    width: 233px;
+  }
+
+  .proposal__box__container .net {
+    width: 342px;
+    left: 233px;
+  }
+
+  .proposal__box__container .binary__numbers {
+    left: 10px;
+  }
+
+  .back__to__proposals .proposal__text {
+    text-align: center;
+    font-size: 18px;
+  }
+
+  .back__to__proposals .go__back .go__back__text {
+    font-size: 18px;
+  }
+
+  .proposal__box__container .net .earned {
+    margin-right: 10px;
+  }
+
+  .proposal__box__container .net p {
+    font-size: 16px;
+  }
+
+  .proposal__box__container .net .total__earned {
+    margin-right: 10px;
+  }
+
+  .proposal__box__container .net .total__earned p {
+    font-size: 22px;
+  }
+
+  .proposal__box__container .net .line {
+    width: 342px;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  /* HEADER */
+  .minority__earned {
+    width: 100%;
+  }
+
+  .minority__earned p {
+    font-size: 20px;
+  }
+
+  /* ACTION SECTION */
+  .minority__earned__actions {
+    width: 90%;
+  }
+
+  .minority__earned__actions .actions {
+    width: 85%;
+  }
+
+  .minority__earned__action__outer {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .minority__earned__action {
+    width: 100%;
+  }
+
+  .minority__earned__action .left-side {
+    width: 70%;
+  }
+
+  .minority__earned__action .right-side {
+    width: 30%;
+  }
+
+  .minority__earned__action .icon {
+    margin: 0px 15px 0px 15px;
+  }
+
+  .minority__earned__action .name {
+    font-size: 20px;
+  }
+
+  .minority__earned__action .date {
+    font-size: 14px;
+  }
+
+  .minority__earned__action .right-side {
+    padding-left: 10px;
+  }
+
+  .minority__earned__action .number__of__pts {
+    font-size: 20px;
+  }
+
+  .minority__earned__action .points {
+    font-size: 14px;
+  }
+
+  .minority__earned__actions .sort {
+    width: 85%;
+    padding: 0;
+    align-self: auto;
+  }
+
+  .minority__earned__actions.small {
+    width: 90%;
+  }
+
+  .minority__earned__actions .no__data h1 {
+    font-size: 24px;
+  }
+
+  .minority__earned__actions .no__data p {
+    font-size: 14px;
+  }
+
+  /* PROPOSAL SECTION */
+  .proposal__box__container {
+    width: 90%;
+  }
+
+  .proposal__box__container .proposal {
+    width: 40%;
+  }
+
+  .proposal__box__container .net {
+    width: 60%;
+    left: 40%;
+  }
+
+  .back__to__proposals .proposal__text {
+    text-align: center;
+    font-size: 20px;
+    height: 80px;
+  }
+
+  .back__to__proposals .go__back .go__back__text {
+    font-size: 18px;
+  }
+
+  .proposal__box__container .net .earned {
+    margin-right: 10px;
+  }
+
+  .proposal__box__container .net p {
+    width: 100%;
+    text-align: right;
+    font-size: 13px;
+  }
+
+  .proposal__box__container .net .total__earned {
+    margin-right: 10px;
+  }
+
+  .proposal__box__container .net .total__earned p {
+    font-size: 22px;
+  }
+
+  .proposal__box__container .net .line {
+    width: 60%;
+  }
+}
+
+@media only screen and (max-width: 475px) {
+  /* HEADER */
+  .minority__earned p {
+    font-size: 15px;
+  }
+
+  .minority__earned__header__text {
+    font-size: 35px;
+  }
+
+  /* ACTION SECTION */
+  .minority__earned__action .icon {
+    margin-left: 20px;
+    height: 20px;
+  }
+
+  .minority__earned__action
+    .icon[src="./assets/images/minority-earned/mentorship.svg"],
+  .minority__earned__action
+    .icon[src="./assets/images/minority-earned/chapter.svg"] {
+    height: 30px;
+  }
+
+  .minority__earned__action .name {
+    font-size: 16px;
+  }
+
+  .minority__earned__action .date {
+    font-size: 14px;
+  }
+
+  .minority__earned__action .number__of__pts {
+    font-size: 16px;
+  }
+
+  .minority__earned__action .points {
+    font-size: 12px;
+  }
+
+  .minority__earned__actions nav {
+    width: 85%;
+  }
+
+  .minority__earned__actions nav ul {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* PROPOSAL SECTION */
+  .proposal__box__container .net .total__earned p {
+    font-size: 16px;
+  }
+
+  .proposal__box__container .net p {
+    font-size: 12px;
+  }
+}

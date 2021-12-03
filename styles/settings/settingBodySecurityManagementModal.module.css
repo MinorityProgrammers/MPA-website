@@ -1,0 +1,81 @@
+.modalWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.3);
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: 99;
+}
+
+.modalADD {
+  color: black;
+  background-color: #fff;
+  border-radius: 1vw;
+  box-shadow: 1vw 2vw 2vw -2vw #000;
+  font-weight: bold;
+  width: 60vw;
+  padding: 1.5vw 3vw;
+}
+
+.modalADD h1 {
+  color: #000;
+  font-size: 3vw;
+  text-align: center;
+  margin: 1.5vw 0;
+}
+
+.modalADD p {
+  font-size: 1.5vw;
+}
+
+.modalADD textarea {
+  background-color: #c4c4c4;
+  border: 0.1vw solid #8a8a8a;
+  border-radius: 0.3vw;
+  padding: 0.2vw;
+  min-height: 15vh;
+  max-height: 30vh;
+  width: 100%;
+}
+.modalADD textarea:focus {
+  outline: none;
+}
+
+.actionBtns {
+  display: flex;
+  justify-content: space-between;
+  margin: 1.5vw 0;
+}
+.btn {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5vw;
+  text-transform: capitalize;
+  height: 5vh;
+  width: 47%;
+}
+.goBack {
+  background-color: #151371;
+  color: white;
+}
+.deactivate {
+  background-color: #ffc700;
+  color: #000;
+}
+.delete {
+  background-color: #ea2e2e;
+  color: white;
+}
+
+.ps span.note {
+  color: #ffc700;
+}
+.ps span.warn {
+  color: #ea2e2e;
+}

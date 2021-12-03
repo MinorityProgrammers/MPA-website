@@ -1,0 +1,68 @@
+.specificSettingsNavigation {
+  border-right: 2px solid #c4c4c4;
+  width: 50%;
+}
+
+.specificSettingsNavigation nav {
+  color: white;
+  font-weight: 700;
+  margin: 3.5vh 0 3.5vh 0;
+}
+
+.specificSettingsNavigation nav .navHeader {
+  font-size: 1.5vw;
+}
+.specificSettingsNavigation nav .navHeader.activeLi h2 {
+  color: white;
+  opacity: 1;
+}
+
+.specificSettingsNavigation nav .navHeader h1 {
+  color: white;
+  border-bottom: 2px solid #afafb3;
+  font-weight: 900;
+  padding: 0 0 2vh 2vw;
+}
+.specificSettingsNavigation nav .navHeader .h2wrapper {
+  border-bottom: 2px solid #afafb3;
+  margin-left: 2vw;
+}
+.specificSettingsNavigation nav .navHeader h2 {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  opacity: 0.4;
+  padding: 1vw 1vw 1vw 0;
+}
+.specificSettingsNavigation nav .navHeader h2 span {
+  cursor: pointer;
+}
+.specificSettingsNavigation nav .navHeader h2 .icon {
+  background-color: white;
+  border-radius: 1.5vh;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 4vh;
+  height: 4vh;
+}
+.specificSettingsNavigation nav .navHeader h2 .icon img {
+  width: 60%;
+  height: 60%;
+}
+.specificSettingsNavigation nav .navHeader h2 .arrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  width: 2.5vh;
+  height: 2.5vh;
+}
+.specificSettingsNavigation nav .navHeader h2 .arrow img {
+  cursor: pointer;
+  width: 150%;
+  height: 150%;
+  margin-top: 15%;
+}

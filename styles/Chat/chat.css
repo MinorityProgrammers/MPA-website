@@ -1,0 +1,366 @@
+#chat {
+  padding-top: 110px;
+  background: linear-gradient(
+    104.61deg,
+    #ff00b8 2.65%,
+    #ff655b 51.83%,
+    #ffc700 100%
+  );
+  width: 100vw; 
+  height:100vh; 
+  display: flex;
+}
+
+/* First column, contains the chats */
+.chat-menu {
+  flex:3.5;
+  background-color:white;
+  padding-top:20px;
+  border-right:1px solid #C4C4C4;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-menu-btn-container {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+}
+
+.chat-menu-btn {
+  width: 80px;
+  height: 40px;
+  border: 1px solid #676565;
+  border-radius: 10px;
+  margin-left: 3%;
+  color: #676565;
+}
+
+.chat-menu-newchat-btn {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  margin-right: 3%;
+  margin-left:auto;
+  background: #c4c4c4;
+  cursor: pointer;
+}
+
+.newchat-pen {
+  color:white;
+  display:flex; 
+  justify-content:center; 
+  align-items:center;
+  font-size: 22px;
+  width: inherit;
+  height:inherit;
+}
+
+.chat-menu-input {
+  align-self: center;
+  width: 95%; 
+  font-size: 18px;
+  padding: 5px 10px;
+  border-radius: 10px;
+  border: 2px solid #C4C4C4;
+  color:#000000;
+}
+
+.conversation-container {
+  overflow-y: scroll;
+  margin-top:5px;
+  display:flex;
+  flex-direction: column;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.conversation-container::-webkit-scrollbar {
+  display: none;
+}
+
+
+/* Second column, contains the messages */
+.chat-box {
+  /* flex:5.5;  */
+  display:flex; 
+  flex-direction:column; 
+  background-color:white;
+  border-right:1px solid #C4C4C4;
+}
+
+.chat-header {
+  height: 100px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom:1px solid #C4C4C4;
+}
+
+.chat-header-img {
+  width:60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-left: 40px;
+}
+
+.chat-header-name {
+  font-size: 20px;
+  color: #000000;
+  margin-left:30px;
+  cursor:default;
+}
+
+.chat-expand-box {
+  margin-left: auto;
+  margin-right:40px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.chat-expand-info {
+  font-size: 16px;
+  color: #151371;
+  margin-right:10px;
+}
+
+.chat-expand-arrow {
+  font-size: 20px;
+  color:#151371;
+}
+
+.chat-box-top {
+  height: 90%;
+  overflow-y: scroll;
+}
+
+.chat-box-bottom {
+  display:flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.chat-input {
+  width: 80%;
+  height: 60px;
+  border: 2px solid #C4C4C4;
+  border-radius: 10px;
+  padding: 5px 10px;
+  color:black;
+}
+
+.chat-submit-button {
+  width: 70px;
+  height: 40px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #C4C4C4;
+  color: black;
+}
+
+/* Third column, chat information  */
+.chat-info {
+  flex:3; 
+  background-color:white; 
+  display:flex; 
+  flex-direction:column;
+}
+
+.chat-info-hide-box {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+  cursor:pointer;
+}
+
+.chat-info-hide {
+  margin-left: 10px;
+  color: #151371;
+}
+
+.chat-info-img {
+  margin-top: 20px;
+  width: 10vw;
+  height: 10vw;
+  border-radius: 50%;
+  object-fit: cover;
+  align-self: center;
+}
+
+.chat-info-name {
+  font-size:18px; 
+  color:#000000; 
+  font-weight: 700;
+  align-self:center;
+}
+
+.chat-info-btn-container {
+  display: flex;
+  color:white;
+  margin-top: 20px;
+  justify-content: center;
+}
+
+.chat-info-icons {
+  background-color: grey;
+  border-radius: 50%;
+  height:25px;
+  width:25px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.chat-info-blocked-btn{
+  margin-left:25px;
+  border-radius:20px;
+  background-color: red;
+  color:white;
+  padding:2px 10px;
+  cursor:pointer;
+  font-size: 16px;
+}
+
+/* popup css */
+.chat-popup-container {
+  border-radius: 10px;
+  position: absolute;
+  padding:40px;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  border: 1px solid #C4C4C4;
+  background-color: #FFFFFF;
+}
+
+.chat-popup-btn-container {
+  display:flex;
+  flex-direction: row;
+  margin-top: 20px;
+  justify-content: center;
+}
+
+.chat-popup-confirm-btn {
+  background-color: #EA2E2E;
+  border-radius: 5px;
+  padding: 10px;
+  cursor:pointer;
+  color: #FFFFFF;
+}
+
+.chat-popup-cancel-btn {
+  margin-left: 20px;
+  background-color: #C4C4C4;
+  border-radius: 5px;
+  border: 1px solid #C4C4C4;
+  padding:10px;
+  cursor:pointer;
+  color:#000000;
+}
+
+.user-search-container{
+  display:flex;
+  flex-direction: row;
+  width: 100%;
+  /* margin:10px 10px 0px 10px; */
+  gap:20px;
+}
+
+.create-chat-btn-box{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width:80%;
+}
+
+/* conversation css */
+.conversation {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 15px 10px;
+}
+
+.conversation:hover {
+  background-color: #f1f1f1;
+}
+
+.conversation-img {
+  width:40px;
+  height:40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 20px;
+}
+
+.conversation-brief {
+  font-weight: 500;
+  color: #000000;
+}
+
+.conversation-blocked-btn {
+  margin-left: 20px;
+  padding: 5px 10px;
+  border: 1px solid #151371;
+  color:#151371;
+  border-radius: 5px;
+}
+
+.conversation-accept-btn {
+  margin-left: 20px;
+  padding: 5px 10px;
+  background-color: #00AA4F;
+  color: #FFFFFF;
+  border-radius: 5px;
+}
+
+/* message css */
+.own-message, .message {
+  display: flex;
+  flex-direction: column;
+  margin-top:15px;
+}
+
+.own-message {
+  margin-right: 5px;
+  align-items: flex-end;
+}
+
+.message {
+  margin-left: 5px;
+  align-items: flex-start;
+}
+
+.message-icon {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 5px;
+  align-self: flex-end;
+}
+
+.message-top {
+  padding:10px;
+  border-radius: 10px;
+  color:#000000;
+  max-width: 60%; 
+}
+
+.own-message .message-top {
+  background-color: #FFC205;
+}
+
+.message .message-top {
+  background-color: #F4BAA3;
+}
+
+.message-bottom {
+  font-size: 12px;
+  margin-top: 5px;
+}

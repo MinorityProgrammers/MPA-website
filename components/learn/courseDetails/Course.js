@@ -1,0 +1,45 @@
+import React, { useEffect, useState }  from 'react';
+import CourseSidebar from '../../../components/learn/courseDetails/CourseSidebar';
+import MainCourseInfo from '../../../components/learn/courseDetails/MainCourseInfo';
+import { useRouter } from 'next/router';
+import axios from 'axios';
+
+const Course = ({userInfo, course, modules}) => {
+    const [userModules, setUserModules] = useState([]);
+    const router = useRouter();
+    const {courseId} = router.query;
+
+    if (!courseId) {
+        return null;
+    }
+
+    useEffect(() => {
+        const userToken = JSON.parse(localStorage.getItem('userInfo'))['token'];
+        axios.get(`https://koinstreet-learn-api.herokuapp.com/api/v1/learn/${courseId}/userModules`, {
+            headers: {
+                'Authorization': `Bearer ${userToken}`,
+            }
+        })
+        .then(res => {
+            setUserModules(res.data.data);
+        })
+    }, [courseId])
+
+    return (
+        <>
+            <div className="courses-details banner-bg">
+                <div className="row" style={{backgroundColor: "#151371"}}>
+                    <div className="col-12 col-md-3 pr-0 scroll-sidebar">
+                        <CourseSidebar course={course} courseId={courseId} modules={modules} userModules={userModules} />
+                    </div>
+                    <div className="col-12 col-md-9 pl-0">
+                        <MainCourseInfo courseId={courseId} userInfo={userInfo} modules={modules} userModules={userModules} />
+                    </div>
+                </div>
+            </div>
+        </>
+    );
+};
+
+
+export default Course;

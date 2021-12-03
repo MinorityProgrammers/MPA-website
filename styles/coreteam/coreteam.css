@@ -1,0 +1,328 @@
+
+.task-in{
+    margin: 0 auto;
+}
+.test{
+    background-color:white;
+    width: 75%;
+}
+.page-gradient{
+   background: linear-gradient(
+      104.61deg
+      ,#ff00b8 2.65%,#ff655b 51.83%,#ffc700);
+      height: auto;
+      padding: 20px 0;
+}
+.gradient{
+   background: linear-gradient(
+      104.61deg
+      ,#ff00b8 2.65%,#ff655b 51.83%,#ffc700);
+
+}
+.move-task{
+   background: rgba(255, 255, 255, 0.6);
+   width: 95%;
+}
+
+
+ 
+ .banner{
+    /* background-color: rgba(255, 255, 255, 0.8); */
+    background: rgba(0, 0, 0, 0.8);
+mix-blend-mode: normal;
+     height: 350px;
+     width: 100%;
+     padding: 20px 0;
+ }
+ 
+ .banner-left{
+    color: white;
+  
+    font-size: 2em;
+    font-weight: 600;
+ }
+ .banner-left img{
+    margin-left: 8rem;
+    margin-bottom: -.8rem;
+ }
+
+ .proposals-area{
+    padding: 20px;
+    margin: 50px auto;
+    background: rgba(21, 19, 113, 0.7);
+ }
+ .card-border{
+    border-top: 6px solid palevioletred;
+ }
+ .voted{
+   background: rgba(21, 19, 113, 0.7);
+   mix-blend-mode: normal;
+ }
+ .grdient-btn{
+    background: linear-gradient(103.85deg, #FF00B8 2.54%, #FF655B 58.76%, #FFC700 113.82%);
+   
+ }
+ .green-btn{
+    background: #151371;
+ }
+ .parsonal-title{
+    color:  #151371;
+    font-weight: bold;
+ }
+ .day-left{
+    color: #FF20C1;
+ }
+ .approved{
+    background: rgba(102, 102, 102, 0.6);
+    mix-blend-mode: normal;
+ }
+ .approved-icon{
+   background: #FF00B8;
+ }
+ .rejected{
+    background: rgba(0, 0, 0, 0.5);
+    mix-blend-mode: normal;
+ }
+ .new{
+   background: linear-gradient(89.68deg, rgba(255, 255, 255, 0) 0.11%, rgba(255, 255, 255, 0.4) 3.97%, rgba(255, 255, 255, 0.4) 11.3%, rgba(255, 255, 255, 0.2) 26.93%, rgba(255, 255, 255, 0) 99.72%);
+   color: #241976;
+
+ }
+ .hr-line{
+    height: 2px;
+    width: 75%;
+ }
+
+
+.design {
+   background: #FFA6E6;
+   color: #fff;
+   font-size: 18px;
+   line-height: 27px;
+   font-weight: 400;
+
+   padding: 0px 2px 0 2px;
+   position: relative;
+   text-transform: uppercase;
+   width: auto;
+   height: 25px;
+   /* margin-left: 10px; */
+   display: inline-block;
+   top: -10px;
+}
+.design::before {
+   border-color: transparent #FFA6E6;
+   position: absolute;
+   right: -8px;
+   top: 0px;
+   border-style: solid;
+   border-width: 13px 0px 12px 8px;
+   content: "";
+}
+.feature {
+   background: #DEDEEB;
+   color: #151371;
+   font-size: 15px;
+   /* line-height: 27px; */
+   font-weight: 200;
+
+   padding: 0px 2px 0 2px;
+   position: relative;
+   text-transform: uppercase;
+   width: auto;
+   height: 25px;
+   /* margin-left: 10px; */
+   display: inline-block;
+   top: -10px;
+}
+.feature::before {
+   border-color: transparent #DEDEEB;
+   position: absolute;
+   right: -8px;
+   top: 0px;
+   border-style: solid;
+   border-width: 13px 0px 12px 8px;
+   content: "";
+}
+
+
+/* notification card css */
+
+.customCard{
+   background: linear-gradient(180deg, rgba(21, 19, 113, 0.6) 0%, rgba(0, 0, 0, 0.18) 100%);
+   padding: 10px;
+}
+.customCard-title{
+   background: #151371;
+   text-transform: capitalize;
+   text-align: center;
+   padding: 10px 30px;
+   border-top: 4px solid #fff;
+}
+.customCard-title h3{
+   color: #fff;
+   font-size: 1.5rem;
+ 
+}
+.task-card{
+   padding: 10px;
+}
+
+
+.p-notification-banner{
+background: rgba(0, 0, 0, 0.8);
+margin-top: 100px;
+}
+.p-notification-banner, .banner{
+height: 350px;
+width: 100%;
+padding: 20px 0;
+}
+.ch-pro h2{
+color: #151371;
+font-size: 2em;
+font-weight: 600;
+text-transform: uppercase;
+}
+.ch-pro img{
+margin-left: 5.5rem;
+margin-bottom: -.8rem;
+}
+.ch-pro p{
+color: #282828;
+}
+.notify h2, .notify p{
+color:#ffffff;
+}
+.notify h2{
+position: relative;
+}
+.notify img{
+margin-left: 20%;
+}
+.notify-img img{
+margin-left: 35%;
+display: inline-block;
+}
+.bg-All-card{
+   background: linear-gradient(180deg, rgba(21, 19, 113, 0.6) 0%, rgba(0, 0, 0, 0.18) 100%);
+}
+.palnnedTask{
+background: linear-gradient(180deg, rgba(21, 19, 113, 0.6) 0%, rgba(0, 0, 0, 0.18) 100%);
+padding: 10px;
+}
+.palnnedTask-title{
+background: #151371;
+text-transform: capitalize;
+text-align: center;
+padding: 10px 30px;
+border-top: 4px solid #fff;
+}
+.palnnedTask-title h3{
+color: #fff;
+font-size: 1.5rem;
+
+}
+.task-card{
+background-color: #fff;
+padding: 10px;
+}
+.task-des p{
+color: #151371;
+font-size: .7rem;
+}
+.task-date .flag{
+margin-right: 10px;
+}
+.task-date .pink svg{
+color: #FF00B8;
+}
+.task-date .yellow svg{
+color: rgba(255, 199, 0, 1);
+}
+
+.design-shape{
+background-image: url('/assets/images/coreteamimg/design.png');
+background-size: 100% 100%;
+padding: 5px 8px;
+}
+.develop-shape{
+background-image: url('/assets/images/coreteamimg/develop.png');
+background-size: 100% 100%;
+padding: 5px 8px;
+}
+.more-option{
+   font-size: 10px;
+}
+
+
+/* check-css */
+.dropdown-content {
+  /* display: none; */
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {background-color: #ddd;}
+/* modal---csss */
+/* .modal {
+   transition: opacity 0.25s ease;
+ }
+ .modal-active {
+   overflow-x: hidden;
+   overflow-y: visible !important;
+ } */
+
+/* --------search-css----- */
+
+.course-search-form:before {
+    content: "\f002";
+    color: #0d47a1;
+    font-family: Font Awesome\ 5 Free;
+    font-size: 20px;
+    font-weight: 900;
+    height: 100%;
+    width: 9%;
+    left: inherit !important;
+    line-height: 60px;
+    right: 0;
+    position: absolute;
+    text-align: center; }
+
+
+.course-search-form input {
+    background: #fff;
+    border: none;
+    border-radius: 5px;
+    color: #0d47a1;
+    font-size: 16px;
+    line-height: 17px;
+    margin: 0;
+    padding: 1.125em 5em 1.125em 1em;
+    width: 100%; }
+
+.course-search-form input[type="submit"] {
+      background: transparent;
+      cursor: pointer;
+      font-size: 0;
+      height: 100%;
+      padding: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 9%; }
+
+
+.course-search-form {
+  position: relative; }

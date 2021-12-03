@@ -1,0 +1,82 @@
+.wrapper {
+  width: 100%;
+  max-width: 22em;
+}
+
+.container {
+  width: 100%;
+  min-height: 20em;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 1em;
+  border: 1px solid rgb(190, 193, 204);
+  border-radius: 0.5em;
+  background: white;
+  overflow: hidden;
+  position: relative;
+}
+
+.title {
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+
+.container:hover .title {
+  text-decoration: underline;
+}
+
+.popupContainer {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 2em;
+  z-index: 10;
+  border-radius: 0.5em;
+}
+
+.popupContainer.show {
+  display: flex;
+
+}
+
+.popupContainer.hide {
+  display: none;
+}
+
+.list {
+  width: 100%;
+  font-size: 1rem;
+  margin-left: 0.5em;
+  margin-bottom: 0.25em;
+}
+
+.listStyle {
+  display: inline-block;
+  margin-right: 0.5em;
+  width: 0.4em;
+  height: 0.4em;
+  border-radius: 50%;
+}
+
+.circle {
+  border: 2px solid grey;
+}
+
+.disc {
+  border: 2px solid grey;
+}
+
+.easyapply {
+  margin-bottom: 1em;
+  font-size: 1rem;
+}
+
+@media screen and (max-width: 768px) {  
+  .popupContainer {
+    padding: 0.5em;
+  }
+}

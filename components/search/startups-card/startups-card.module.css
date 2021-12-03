@@ -1,0 +1,103 @@
+.container {
+  width: 100%;
+  max-width: 22em;
+  height: 20em;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 1em;
+  border: 1px solid rgb(190, 193, 204);
+  border-radius: 0.5em;
+  background: white;
+  overflow: hidden;
+  position: relative;
+}
+
+.name_image {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 1em;
+}
+
+.imageContainer {
+  width: 3em;
+  height: 3em;
+  background: rgb(233, 233, 233);
+  padding: 0.5em;
+  margin-right: 2em;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.name {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.about {
+  margin-bottom: 1em;
+  color: rgb(59, 59, 59);
+}
+
+.fundContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5em;
+}
+
+.fundTitle {
+  font-weight: 500;
+}
+
+.fundRaised {
+  font-weight: 500;
+  margin-bottom: 1em;
+}
+
+.fundRate {
+  color: rgb(59, 59, 59);
+}
+
+.fundBar {
+  width: 100%;
+  margin-bottom: 1.5em;
+  border-radius: 1em;
+  height: 1em;
+  background: rgb(243, 239, 239);
+  overflow: hidden;
+  padding: 1px;
+}
+
+.reading {
+  width: 70%;
+  background: linear-gradient(
+    104.61deg,
+    #ff00b8 2.65%,
+    #ff655b 51.83%,
+    #ffc700 100%
+  );
+  height: 100%;
+  border-radius: 1em;
+}
+
+.more {
+  width: 100%;
+  padding: 0.5em;
+  text-align: center;
+  border-radius: 0.3em;
+  border: 1px solid #151371;
+  color: #151371;
+  transition: all 150ms;
+}
+
+.more:hover {
+  background: #151371;
+  color: white;
+}

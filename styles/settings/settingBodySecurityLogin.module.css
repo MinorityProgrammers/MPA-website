@@ -1,0 +1,22 @@
+.loginContent {
+  margin-bottom: 2vw;
+}
+
+.loginContent h5 {
+  color: white;
+  font-size: 1.3vw;
+  font-weight: bold;
+  margin: 2.5vh 0;
+}
+.loginContent h5 span {
+  cursor: pointer;
+}
+
+.loginContent label p {
+  font-weight: normal;
+}
+
+/* .ualWrap {
+}
+.cpWrap {
+} */

@@ -1,0 +1,50 @@
+[
+    {
+        "id":1,
+        "title":"Proposal Title",
+        "type": "Enhancement",
+        "category":"Incubator",
+        "border": "pink",
+        "createdBy":"Username",
+        "createdOn":"Mar 25",
+        "replies":58,
+        "views":74,
+        "voteCount": 3
+    },
+    {
+        "id":2,
+        "title":"Proposal Title",
+        "type": "Enhancement",
+        "category":"Incubator",
+        "border": "blue",
+        "createdBy":"Username",
+        "createdOn":"Mar 25",
+        "replies":58,
+        "views":74,
+        "voteCount":5
+    },
+    {
+        "id":3,
+        "title":"Proposal Title",
+        "type": "Enhancement",
+        "category":"Incubator",
+        "border": "purple",
+        "createdBy":"Username",
+        "createdOn":"Mar 25",
+        "replies":58,
+        "views":74,
+        "voteCount": 12
+    },
+    {
+        "id":4,
+        "title":"Proposal Title",
+        "type": "Enhancement",
+        "category":"Incubator",
+        "border": "red",
+        "createdBy":"Username",
+        "createdOn":"Mar 25",
+        "replies":58,
+        "views":74,
+        "voteCount": 17
+    }
+]

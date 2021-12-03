@@ -1,0 +1,38 @@
+.container {
+    position: relative;
+}
+
+.container:hover .overlay {
+    border-top: 2px solid white;
+    border-right: 2px solid white;
+    transform: translate(2px, -2px);
+}
+
+.container > img {
+    width: 100%;
+    height: auto;
+}
+
+.name {
+    width: 100%;
+    padding: 1em 0;
+    background: #FF00B8;
+    text-align: center;
+    color: white;
+    z-index: 5;
+}
+
+.overlay {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transition: all 0.2s;
+    background: transparent;
+}
+
+@media screen and (max-width: 480px) {
+    .name {
+        font-size: 10px;
+        padding: 1em 0;
+    }
+}

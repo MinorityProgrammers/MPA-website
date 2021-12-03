@@ -1,0 +1,58 @@
+[
+    {
+        "id": 1,
+        "title": "Proposal Title",
+        "type": "Enhancement",
+        "Category": "Incubator",
+        "img": "",
+        "createdBy": "Username",
+        "createdOn": "Mar 25",
+        "replies": 58,
+        "views": 74,
+        "count": 267,
+        "description": "Details about proposal - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ornare ullamcorper tellus, vel euismod odio posuere ut. Quisque quis lacinia tortor. Donec auctor consectetur nibh, eu varius mi porta nec. Quisque ultricies odio vitae nibh malesuada tristique vel sed leo. Donec egestas, urna eu auctor ultricies, massa lorem pellentesque quam, vitae congue urna quam ultricies ex.",
+        "border": "pink"
+    },
+    {
+        "id": 2,
+        "title": "Proposal Title",
+        "type": "Enhancement",
+        "Category": "Incubator",
+        "img": "",
+        "createdBy": "Username",
+        "createdOn": "Mar 25",
+        "replies": 58,
+        "views": 74,
+        "count": 267,
+        "description": "Details about proposal - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ornare ullamcorper tellus, vel euismod odio posuere ut. Quisque quis lacinia tortor. Donec auctor consectetur nibh, eu varius mi porta nec. Quisque ultricies odio vitae nibh malesuada tristique vel sed leo. Donec egestas, urna eu auctor ultricies, massa lorem pellentesque quam, vitae congue urna quam ultricies ex.",
+        "border": "blue"
+    },
+    {
+        "id": 3,
+        "title": "Proposal Title",
+        "type": "Enhancement",
+        "Category": "Incubator",
+        "img": "",
+        "createdBy": "Username",
+        "createdOn": "Mar 25",
+        "replies": 58,
+        "views": 74,
+        "count": 267,
+        "description": "Details about proposal - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ornare ullamcorper tellus, vel euismod odio posuere ut. Quisque quis lacinia tortor. Donec auctor consectetur nibh, eu varius mi porta nec. Quisque ultricies odio vitae nibh malesuada tristique vel sed leo. Donec egestas, urna eu auctor ultricies, massa lorem pellentesque quam, vitae congue urna quam ultricies ex.",
+        "border": "orange"
+    },
+    {
+        "id": 4,
+        "title": "Proposal Title",
+        "type": "Enhancement",
+        "Category": "Incubator",
+        "img": "",
+        "createdBy": "Username",
+        "createdOn": "Mar 25",
+        "replies": 58,
+        "views": 74,
+        "count": 267,
+        "description": "Details about proposal - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ornare ullamcorper tellus, vel euismod odio posuere ut. Quisque quis lacinia tortor. Donec auctor consectetur nibh, eu varius mi porta nec. Quisque ultricies odio vitae nibh malesuada tristique vel sed leo. Donec egestas, urna eu auctor ultricies, massa lorem pellentesque quam, vitae congue urna quam ultricies ex.",
+        "border": "lightPink"
+    }
+]

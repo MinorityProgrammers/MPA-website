@@ -1,0 +1,8 @@
+@import './normalizer.css';
+
+*{
+    --mpa-navy:#151371;
+    --mpa-pink:#FF00B8;
+    --mpa-yellow:#FFC700;
+}
+

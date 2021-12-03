@@ -1,0 +1,43 @@
+.root {
+  width: 74vw;
+  margin: 3rem 5rem 1.7rem 5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.title h1 {
+  font-size: 1.9rem;
+  margin-top: 0.2rem;
+  font-family: "Red Hat Display", sans-serif;
+  font-weight: 700;
+  color: black;
+}
+
+.search {
+  float: right;
+  position: relative;
+}
+
+.search > input {
+  border-radius: 1rem;
+  border: 2px solid pink;
+  width: 20rem;
+  display: inline-block;
+  height: 43px;
+  font-family: "Red Hat Display", sans-serif;
+  padding: 1rem 1rem 1rem 2.5rem;
+  font-size: 0.8rem;
+}
+
+.search input:focus {
+  outline: none;
+}
+
+.search > i {
+  left: 15px;
+  margin-left: 0.2rem;
+  position: absolute;
+  margin-top: 0.85rem;
+  color: rgb(221, 214, 214);
+}

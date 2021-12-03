@@ -1,0 +1,524 @@
+{
+    "interns": [
+        {
+            "id": 1,
+            "title": "Software Engineering Internship Tracks",
+            "all": [
+                {
+                    "id":1,
+                    "title": "React",
+                    "subTitle":"Software Developer - ReactJS",
+                    "requiredAll": [
+                        {"text":"Generate reports on project statuses and thoroughly track on ClickUp (project management tool)"},
+                        {"text":"Identify, record, and document thoroughly"},
+                        {"text":"Track bugs"},
+                        {"text":"Liaise with internal teams (e.g. developers and product managers) to identify system requirements"},
+                        {"text":"15-20 weekly hours (with the ability to make synchronous daily standup meetings)  for at least a 3-month commitment"}
+                    ],
+                    "requiredOwn":[
+                        {"text":"Work alongside a team of developers to code UIs using React.js"},
+                        {"text":"Optimizing web pages for maximum speed and scalability"},
+                        {"text":"Ensuring user experience determines design choices"},
+                        {"text":"Design, develop, and test mobile and web applications"},
+                        {"text":"Develop wireframes and prototypes on applications such as Figma"},
+                        {"text":"Build reusable code and libraries for future use"},
+                        {"text":"Accurately translate user and business needs into functional frontend code"},
+                        {"text":"Maintaining brand consistency throughout the design"},
+                        {"text":"Connect front end functionality with the backend"},
+                        {"text":"Maintenance of web applications"}
+                    ]
+                },
+                {
+                    "id":2,
+                    "title": "Mern",
+                    "subTitle":"Software Developer - Mern",
+                    "requiredAll":[
+                        {"text":"Generate reports on project statuses and thoroughly track on ClickUp (project management tool)"},
+                        {"text":"Identify, record, and document thoroughly"},
+                        {"text":"Track bugs"},
+                        {"text":"Liaise with internal teams (e.g. developers and product managers) to identify system requirements"},
+                        {"text":"15-20 weekly hours (with the ability to make synchronous daily standup meetings)  for at least a 3-month commitment"}
+                    ],
+                    "requiredOwn":[
+                        {"text":"Work alongside a team of developers to code UI's"},
+                        {"text":"Design, develop, and test mobile and web applications"},
+                        {"text":"Build reusable code and libraries for future use"},
+                        {"text":"Accurately translate user and business needs into functional frontend and backend code"},
+                        {"text":"Design database schema based on stakeholder requirements"},
+                        {"text":"The design, development, and deployment of web applications"},
+                        {"text":"Maintenance of web applications"},
+                        {"text":"Create REST APIs with Express "}
+                    ]
+                },
+                {
+                    "id":3,
+                    "title": "Software QA Engineer",
+                    "subTitle":"Software Developer - QA Engineer",
+                    "requiredAll":[
+                        {"text":"Generate reports on project statuses and thoroughly track on ClickUp (project management tool)"},
+                        {"text":"Identify, record, and document thoroughly"},
+                        {"text":"Track bugs"},
+                        {"text":"Liaise with internal teams (e.g. developers and product managers) to identify system requirements"},
+                        {"text":"15-20 weekly hours (with the ability to make synchronous daily standup meetings)  for at least a 3-month commitment"}
+                    ],
+                    "requiredOwn":[
+                        {"text":"Review requirements, specifications, and technical design documents to provide timely, and meaningful feedback"},
+                        {"text":"Create detailed, comprehensive, and well-structured test plans, and test cases"},
+                        {"text":"Estimate, prioritize, plan, and coordinate testing activities"},
+                        {"text":"Design, develop, and execute automation scripts using open source tools"},
+                        {"text":"Identify, record, document thoroughly, and track bugs"},
+                        {"text":"Perform thorough regression testing when bugs are resolved"},
+                        {"text":"Develop and apply testing processes for new, and existing products to meet client needs"},
+                        {"text":"Liaise with internal teams (e.g. developers and product managers) to identify system requirements"},
+                        {"text":"Monitor debugging process results"},
+                        {"text":"Investigate the causes of non-conforming software and train users to implement solutions"},
+                        {"text":"Track quality assurance metrics, like defect densities, and open defect counts"},
+                        {"text":"Stay up-to-date with new testing tools and test strategies"}
+                    ]
+                },
+                {
+                    "id":4,
+                    "title": "Frontend Developer",
+                    "subTitle":"Software Developer - Frontend",
+                    "requiredAll":[
+                        {"text":"Generate reports on project statuses and thoroughly track on ClickUp (project management tool)"},
+                        {"text":"Identify, record, and document thoroughly"},
+                        {"text":"Track bugs"},
+                        {"text":"Liaise with internal teams (e.g. developers and product managers) to identify system requirements"},
+                        {"text":"15-20 weekly hours (with the ability to make synchronous daily standup meetings)  for at least a 3-month commitment"}
+                    ],
+                    "requiredOwn":[
+                        {"text":"Work alongside a team of developers to code UI's"},
+                        {"text":"Optimizing web pages for maximum speed and scalability"},
+                        {"text":"Ensuring user experience determines design choices"},
+                        {"text":"Design, develop, and test mobile and web applications"},
+                        {"text":"Develop wireframes and prototypes on applications such as Figma"},
+                        {"text":"Build reusable code and libraries for future use"},
+                        {"text":"Accurately translate user and business needs into functional frontend  code"},
+                        {"text":"Utilizing a variety of markup languages to write web pages."},
+                        {"text":"Maintaining brand consistency throughout the design"},
+                        {"text":"Connect front end functionality with the backend"},
+                        {"text":"Work alongside a team of developers to code UI's"},
+                        {"text":"Maintenance of web applications"}
+                    ]
+                },
+                {
+                    "id":5,
+                    "title": "Web Developer",
+                    "subTitle":"Software Developer - Web",
+                    "requiredAll":[
+                        {"text":"Generate reports on project statuses and thoroughly track on ClickUp (project management tool)"},
+                        {"text":"Identify, record, and document thoroughly"},
+                        {"text":"Track bugs"},
+                        {"text":"Liaise with internal teams (e.g. developers and product managers) to identify system requirements"},
+                        {"text":"15-20 weekly hours (with the ability to make synchronous daily standup meetings)  for at least a 3-month commitment"}
+                    ],
+                    "requiredOwn":[
+                        {"text":"This position requires a strong commitment to User Experience expressed through the expert use of HTML5/CSS3, JavaScript (ES6), ReactJS, & MongoDB"},
+                        {"text":"Design, development, and deployment of web applications"},
+                        {"text":"Maintenance of web applications"},
+                        {"text":"Generate reports on project statuses and thoroughly track on ClickUp (project management tool)"},
+                        {"text":"Identify, record, document thoroughly, and track bugs"},
+                        {"text":"Liaise with internal teams (e.g. developers, and product managers) to identify system requirements"}
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "title": "UI/UX Design Internship Tracks",
+            "all": [
+                {
+                    "id":6,
+                    "title": "Graphic Designer",
+                    "subTitle":"Software Developer - Graphic Designer",
+                    "requiredAll": [
+                        {"text":"Generate reports on project statuses and thoroughly track on ClickUp (project management tool)"},
+                        {"text":"Identify, record, and document thoroughly"},
+                        {"text":"Track bugs"},
+                        {"text":"Liaise with internal teams (e.g. developers and product managers) to identify system requirements"},
+                        {"text":"15-20 weekly hours (with the ability to make synchronous daily standup meetings)  for at least a 3-month commitment"}
+                    ],
+                    "requiredOwn":[
+                        {"text":"Have a working knowledge of Photoshop, Illustrator, InDesign.Figma,  Photography, and video editing are a plus"},
+                        {"text":"Create concept and design Marketing material that includes but is not limited to catalogs, mailers and printed material, emails, web assets, and advertising"},
+                        {"text":"Create UX/UI wireframing, website design, marketing advertisements and updates"},
+                        {"text":"Generate design assets that include but are not limited to; business cards, HR documents, product logo development, and product labels"},
+                        {"text":"Conceptualize and design branding material"},
+                        {"text":"Be able to handle administrative and clerical duties"},
+                        {"text":"Maintain a strong understanding of MinorityProgrammers’ products and services"},
+                        {"text":"Interact with internal MinorityProgrammers developers "}
+                    ]
+                },
+                {
+                    "id":7,
+                    "title": "Web Developer",
+                    "subTitle":"Software Developer - Web Designer",
+                    "requiredAll":[
+                        {"text":"Generate reports on project statuses and thoroughly track on ClickUp (project management tool)"},
+                        {"text":"Identify, record, and document thoroughly"},
+                        {"text":"Track bugs"},
+                        {"text":"Liaise with internal teams (e.g. developers and product managers) to identify system requirements"},
+                        {"text":"15-20 weekly hours (with the ability to make synchronous daily standup meetings)  for at least a 3-month commitment"}
+                    ],
+                    "requiredOwn":[
+                        {"text":"This position requires a strong commitment to User Experience expressed through the expert use of HTML5/CSS3, JavaScript (ES6), ReactJS, & MongoDB"},
+                        {"text":"Design, development, and deployment of web applications"},
+                        {"text":"Maintenance of web applications"},
+                        {"text":"Generate reports on project statuses and thoroughly track on ClickUp (project management tool)"},
+                        {"text":"Identify, record, document thoroughly, and track bugs"},
+                        {"text":"Liaise with internal teams (e.g. developers, and product managers) to identify system requirements"}
+                    ]
+                },
+                {
+                    "id":8,
+                    "title": "Software QA Engineer",
+                    "subTitle":"Software Developer - Software QA Engineer",
+                    "requiredAll":[
+                        {"text":"Generate reports on project statuses and thoroughly track on ClickUp (project management tool)"},
+                        {"text":"Identify, record, and document thoroughly"},
+                        {"text":"Track bugs"},
+                        {"text":"Liaise with internal teams (e.g. developers and product managers) to identify system requirements"},
+                        {"text":"15-20 weekly hours (with the ability to make synchronous daily standup meetings)  for at least a 3-month commitment"}
+                    ],
+                    "requiredOwn":[
+                        {"text":"Review requirements, specifications, and technical design documents to provide timely, and meaningful feedback"},
+                        {"text":"Create detailed, comprehensive, and well-structured test plans, and test cases"},
+                        {"text":"Estimate, prioritize, plan, and coordinate testing activities"},
+                        {"text":"Design, develop, and execute automation scripts using open source tools"},
+                        {"text":"Identify, record, document thoroughly, and track bugs"},
+                        {"text":"Perform thorough regression testing when bugs are resolved"},
+                        {"text":"Develop and apply testing processes for new, and existing products to meet client needs"},
+                        {"text":"Liaise with internal teams (e.g. developers and product managers) to identify system requirements"},
+                        {"text":"Monitor debugging process results"},
+                        {"text":"Investigate the causes of non-conforming software and train users to implement solutions"},
+                        {"text":"Track quality assurance metrics, like defect densities, and open defect counts"},
+                        {"text":"Stay up-to-date with new testing tools and test strategies"}
+                    ]
+                },
+                {
+                    "id":9,
+                    "title": "Project Manager",
+                    "subTitle":"Software Developer - Project Manager",
+                    "requiredAll":[
+                        {"text":"Generate reports on project statuses and thoroughly track on ClickUp (project management tool)"},
+                        {"text":"Identify, record, and document thoroughly"},
+                        {"text":"Track bugs"},
+                        {"text":"Liaise with internal teams (e.g. developers and product managers) to identify system requirements"},
+                        {"text":"15-20 weekly hours (with the ability to make synchronous daily standup meetings)  for at least a 3-month commitment"}
+                    ],
+                    "requiredOwn":[
+                        {"text":"Ensure that all projects are delivered on -time, within scope, and within budget"},
+                        {"text":"Develop a detailed project plan to monitor and track progress"},
+                        {"text":"Perform risk management to minimize project risks"},
+                        {"text":"Create and maintain comprehensive project documentation"},
+                        {"text":"Liaise with internal teams (e.g. developers and product managers) to identify system requirements "},
+                        {"text":"Report and escalate to management as needed"},
+                        {"text":"Track project performance, specifically to analyze the successful completion of short and long-term goals"},
+                        {"text":"Utilize industry best practices, techniques, and standards throughout the entire project execution"},
+                        {"text":"Develop spreadsheets, diagrams, and process maps to document needs"}
+                    ]
+                },
+                {
+                    "id":10,
+                    "title": "Web Developer",
+                    "subTitle":"Software Developer - Web Engineer",
+                    "requiredAll":[
+                        {"text":"Generate reports on project statuses and thoroughly track on ClickUp (project management tool)"},
+                        {"text":"Identify, record, and document thoroughly"},
+                        {"text":"Track bugs"},
+                        {"text":"Liaise with internal teams (e.g. developers and product managers) to identify system requirements"},
+                        {"text":"15-20 weekly hours (with the ability to make synchronous daily standup meetings)  for at least a 3-month commitment"}
+                    ],
+                    "requiredOwn":[
+                        {"text":"This position requires a strong commitment to User Experience expressed through the expert use of HTML5/CSS3, JavaScript (ES6), ReactJS, & MongoDB"},
+                        {"text":"Design, development, and deployment of web applications"},
+                        {"text":"Maintenance of web applications"},
+                        {"text":"Generate reports on project statuses and thoroughly track on ClickUp (project management tool)"},
+                        {"text":"Identify, record, document thoroughly, and track bugs"},
+                        {"text":"Liaise with internal teams (e.g. developers, and product managers) to identify system requirements"}
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "title": "Business Internship Tracks",
+            "all": [
+                {
+                    "id":11,
+                    "title": "Grant Research",
+                    "subTitle":"Grant Research",
+                    "requiredAll": [
+                        {"text":"Generate reports on project statuses and thoroughly track on ClickUp (project management tool)"},
+                        {"text":"Identify, record, and document thoroughly"},
+                        {"text":"Track bugs"},
+                        {"text":"Liaise with internal teams (e.g. developers and product managers) to identify system requirements"},
+                        {"text":"15-20 weekly hours (with the ability to make synchronous daily standup meetings)  for at least a 3-month commitment"}
+                    ],
+                    "requiredOwn":[
+                        {"text":"Drafting proposals"},
+                        {"text":"A daily search for funding opportunities"},
+                        {"text":"Call/email granting organizations to confirm eligibility"},
+                        {"text":"Managing your time using our internal Project Management System"},
+                        {"text":"Drafting letters of inquiry"},
+                        {"text":"Maintain current records in database and in electronic files, including grant tracking and reporting."},
+                        {"text":"Learn how to research and write effective grant and investment applications"},
+                        {"text":"Provide market feedback to the company’s leadership team regarding new tactics to aiding the business sector"},
+                        {"text":"Respond to different forms of digital communication as needed"},
+                        {"text":"Work with biweekly quotas"},
+                        {"text":"Develop and use content to share with prospects(testimonials, newsletters, blogs, proposals, etc.)"},
+                        {"text":"Be able to handle administrative and clerical duties"},
+                        {"text":"Help polish existing materials and establish best practice systems for the Minority Programmers Association"},
+                        {"text":"Research market trends and create new opportunities"},
+                        {"text":"Maintain a strong understanding of Minority Programmers Association’s products and services."},
+                        {"text":"Assist with managing internal marketing data, analytics, and document prep tasks"}
+                    ]
+                },
+                {
+                    "id":12,
+                    "title": "Human Resources",
+                    "subTitle":"Human Resources",
+                    "requiredAll":[
+                        {"text":"Generate reports on project statuses and thoroughly track on ClickUp (project management tool)"},
+                        {"text":"Identify, record, and document thoroughly"},
+                        {"text":"Track bugs"},
+                        {"text":"Liaise with internal teams (e.g. developers and product managers) to identify system requirements"},
+                        {"text":"15-20 weekly hours (with the ability to make synchronous daily standup meetings)  for at least a 3-month commitment"}
+                    ],
+                    "requiredOwn":[
+                        {"text":"Supporting the team with coordination and research for HR initiatives and projects as well as data entry and analysis."},
+                        {"text":"Working alongside HR Business Partners as well as HR Generalists to support our customers by assessing their needs and developing solutions."},
+                        {"text":"Providing recruiting support and coordination as required."},
+                        {"text":"Assisting in the preparation of team meetings and events. Recording meeting notes and action items as necessary."},
+                        {"text":"Conduct research in support of HR laws and best practices."},
+                        {"text":"Respond to employee inquiries"},
+                        {"text":"Conduct employment verifications"},
+                        {"text":"Providing organizational communications support for the HR team, including creating and editing materials to inform and educate employees."},
+                        {"text":"Assisting in creating and documenting processes and procedures for the HR team and employees to follow."},
+                        {"text":"Provide feedback to the company’s leadership team regarding new tactics to aiding the business sector."},
+                        {"text":"Attend and coordinate employee engagement activities."},
+                        {"text":"Respond to different forms of digital communication as needed."},
+                        {"text":"Work with biweekly quotas"},
+                        {"text":"Be able to handle administrative and clerical duties"},
+                        {"text":"Help polish existing materials and establish best practice systems for the Minority Programmers Association."},
+                        {"text":"Maintain a strong understanding of Minority Programmers Association’s products and services."},
+                        {"text":"Assist with managing internal marketing data, analytics, and document prep tasks"},
+                        {"text":"Interact with internal Minority Programmers teams."}
+                    ]
+                },
+                {
+                    "id":13,
+                    "title": "Diversity, Equity, & Inclusion",
+                    "subTitle":"Diversity, Equity, & Inclusion",
+                    "requiredAll":[
+                        {"text":"Generate reports on project statuses and thoroughly track on ClickUp (project management tool)"},
+                        {"text":"Identify, record, and document thoroughly"},
+                        {"text":"Track bugs"},
+                        {"text":"Liaise with internal teams (e.g. developers and product managers) to identify system requirements"},
+                        {"text":"15-20 weekly hours (with the ability to make synchronous daily standup meetings)  for at least a 3-month commitment"}
+                    ],
+                    "requiredOwn":[
+                        {"text":"Investigate sources to generate business leads"},
+                        {"text":"Develop and maintain resources of Diversity & Inclusion training."},
+                        {"text":"Provide market feedback to the company’s leadership team regarding new tactics to aiding the business sector."},
+                        {"text":"Respond to different forms of digital communication as needed"},
+                        {"text":"Work with biweekly quotas"},
+                        {"text":"Develop and use content to share with prospects(testimonials, newsletters, blogs, proposals, etc.)"},
+                        {"text":"Stay on top of industry hot topics and trends to help design viral marketing strategies."},
+                        {"text":"Help distribute marketing materials"},
+                        {"text":"Be able to handle administrative and clerical duties."},
+                        {"text":"Develop new business and recruitment areas for our team to explore."},
+                        {"text":"Help polish existing materials and establish best practice systems for the Minority Programmers Association."},
+                        {"text":"Research market & social trends and create new opportunities."},
+                        {"text":"Maintain a strong understanding of Minority Programmers Association’s products and services."},
+                        {"text":"Assist with managing internal marketing data, analytics, and document prep tasks"},
+                        {"text":"Interact with internal Minority Programmers teams."},
+                        {"text":"Train employees on diversity and inclusion best practices."}
+
+                    ]
+                },
+                {
+                    "id":14,
+                    "title": "Digital Marketing",
+                    "subTitle":"Digital Marketing",
+                    "requiredAll":[
+                        {"text":"Generate reports on project statuses and thoroughly track on ClickUp (project management tool)"},
+                        {"text":"Identify, record, and document thoroughly"},
+                        {"text":"Track bugs"},
+                        {"text":"Liaise with internal teams (e.g. developers and product managers) to identify system requirements"},
+                        {"text":"15-20 weekly hours (with the ability to make synchronous daily standup meetings)  for at least a 3-month commitment"}
+                    ],
+                    "requiredOwn":[
+                        {"text":"Laser focuses on generating leads for particular customer segments."},
+                        {"text":"Develop digital marketing strategy by studying economic indicators, tracking changes in supply and demand, identifying customers and their current and future needs, and monitoring the competition."},
+                        {"text":"Plans and executes web, SEO/SEM, database marketing, email, social media, and display advertising campaigns."},
+                        {"text":"Design, build, and maintain Minority Programmers social media presence."},
+                        {"text":"Contribute to marketing effectiveness by identifying short-term and long-range issues that must be addressed."},
+                        {"text":"Measure and report performance of all digital marketing campaigns and assesses against goals (ROI and KPIs)."},
+                        {"text":"Brainstorm new and creative growth strategies through digital marketing."},
+                        {"text":"Develop and use content to share with prospects(testimonials, newsletters, blogs, proposals, etc.)"},
+                        {"text":"Respond to different forms of digital communication as needed"},
+                        {"text":"Work with biweekly quotas"},
+                        {"text":"Plan, execute, and measure experiments and conversion tests."},
+                        {"text":"Stay on top of industry hot topics and trends to help design viral marketing strategies."},
+                        {"text":"Help distribute marketing materials"},
+                        {"text":"Be able to handle administrative and clerical duties."},
+                        {"text":"Develop new sales areas for our team to explore"},
+                        {"text":"Help polish existing materials and establish best practice systems for Minority Programmers Association."},
+                        {"text":"Research market trends and create new opportunities"},
+                        {"text":"Maintain a strong understanding of MPA’s products and services."},
+                        {"text":"Assist with managing internal sales marketing data, analytics, and document prep tasks"},
+                        {"text":"Utilizes strong analytical ability to evaluate end-to-end customer experience across multiple channels and customer touch points."},
+                        {"text":"Identifies critical conversion points and drop off points and optimizes user funnels."},
+                        {"text":"Collaborates with internal Minority Programmers teams to create landing pages and optimize user experience."}
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "title": "Blockchain Internship Tracks",
+            "all": [
+                {
+                    "id":15,
+                    "title": "Data Science",
+                    "subTitle":"Data Science",
+                    "requiredAll": [
+                        {"text":"Generate reports on project statuses and thoroughly track on ClickUp (project management tool)"},
+                        {"text":"Identify, record, and document thoroughly"},
+                        {"text":"Track bugs"},
+                        {"text":"Liaise with internal teams (e.g. developers and product managers) to identify system requirements"},
+                        {"text":"15-20 weekly hours (with the ability to make synchronous daily standup meetings)  for at least a 3-month commitment"}
+                    ],
+                    "requiredOwn":[
+                        {"text":"Assess advanced data science tools to prepare summaries"},
+                        {"text":"Develop scripts and use APIs to mine data for analysis"},
+                        {"text":"Create interactive data portals"},
+                        {"text":"Exploring large data sets for relationships, insights, and anomalies"},
+                        {"text":"Explore machine learning modes"},
+                        {"text":"Experience with data analysis including data modeling/representation such as XML/JSON"},
+                        {"text":"Contribute research to public reports"},
+                        {"text":"Liaise with internal teams (e.g. developers and product managers) to identify system requirements"}
+                    ]
+                },
+                {
+                    "id":16,
+                    "title": "Investment Analyst",
+                    "subTitle":"Investment Analyst",
+                    "requiredAll":[
+                        {"text":"Generate reports on project statuses and thoroughly track on ClickUp (project management tool)"},
+                        {"text":"Identify, record, and document thoroughly"},
+                        {"text":"Track bugs"},
+                        {"text":"Liaise with internal teams (e.g. developers and product managers) to identify system requirements"},
+                        {"text":"15-20 weekly hours (with the ability to make synchronous daily standup meetings)  for at least a 3-month commitment"}
+                    ],
+                    "requiredOwn":[
+                        {"text":"Examine and assess economic and market trends, earnings prospects, financial statements and various other indicators and factors to determine suitable investment strategies"},
+                        {"text":"Collect information, perform research, and analyze assets, such as stocks, bonds, currencies, cryptocurrencies, and commodities. "},
+                        {"text":"Critically examine decision making processes for executing past trade and investments"},
+                        {"text":"Compile advisory reports and make informed recommendations on new investment opportunities and funds that could enhance portfolios"},
+                        {"text":"Present and summarize findings to fund managers, investment analysts, and senior management"},
+                        {"text":"Develop complex financial models and analyzse legal documents"},
+                        {"text":"Perform data mining as well as develop models to assist operational refinements."},
+                        {"text":"Report and escalate to management as needed"},
+                        {"text":"Track portfolio performance, specifically to analyze the successful completion of short and long-term goals"},
+                        {"text":"Develop spreadsheets, diagrams and process maps to document needs"}
+                    ]
+                },
+                {
+                    "id":17,
+                    "title": "Grant Researcher",
+                    "subTitle":"Grant Researcher",
+                    "requiredAll":[
+                        {"text":"Generate reports on project statuses and thoroughly track on ClickUp (project management tool)"},
+                        {"text":"Identify, record, and document thoroughly"},
+                        {"text":"Track bugs"},
+                        {"text":"Liaise with internal teams (e.g. developers and product managers) to identify system requirements"},
+                        {"text":"15-20 weekly hours (with the ability to make synchronous daily standup meetings)  for at least a 3-month commitment"}
+                    ],
+                    "requiredOwn":[
+                        {"text":"Drafting proposals"},
+                        {"text":"A daily search for funding opportunities"},
+                        {"text":"Call/email granting organizations to confirm eligibility"},
+                        {"text":"Managing your time using our internal Project Management System"},
+                        {"text":"Drafting letters of inquiry"},
+                        {"text":"Maintain current records in database and in electronic files, including grant tracking and reporting."},
+                        {"text":"Learn how to research and write effective grant and investment applications"},
+                        {"text":"Provide market feedback to the company’s leadership team regarding new tactics to aiding the business sector"},
+                        {"text":"Respond to different forms of digital communication as needed"},
+                        {"text":"Work with biweekly quotas"},
+                        {"text":"Develop and use content to share with prospects(testimonials, newsletters, blogs, proposals, etc.)"},
+                        {"text":"Be able to handle administrative and clerical duties"},
+                        {"text":"Help polish existing materials and establish best practice systems for the Minority Programmers Association"},
+                        {"text":"Research market trends and create new opportunities"},
+                        {"text":"Maintain a strong understanding of Minority Programmers Association’s products and services."},
+                        {"text":"Assist with managing internal marketing data, analytics, and document prep tasks"}
+                    ]
+                },
+                {
+                    "id":18,
+                    "title": "Human Resources",
+                    "subTitle":"Human Resources",
+                    "requiredAll":[
+                        {"text":"Generate reports on project statuses and thoroughly track on ClickUp (project management tool)"},
+                        {"text":"Identify, record, and document thoroughly"},
+                        {"text":"Track bugs"},
+                        {"text":"Liaise with internal teams (e.g. developers and product managers) to identify system requirements"},
+                        {"text":"15-20 weekly hours (with the ability to make synchronous daily standup meetings)  for at least a 3-month commitment"}
+                    ],
+                    "requiredOwn":[
+                        {"text":"Supporting the team with coordination and research for HR initiatives and projects as well as data entry and analysis."},
+                        {"text":"Working alongside HR Business Partners as well as HR Generalists to support our customers by assessing their needs and developing solutions."},
+                        {"text":"Providing recruiting support and coordination as required."},
+                        {"text":"Assisting in the preparation of team meetings and events. Recording meeting notes and action items as necessary."},
+                        {"text":"Conduct research in support of HR laws and best practices."},
+                        {"text":"Respond to employee inquiries"},
+                        {"text":"Conduct employment verifications"},
+                        {"text":"Providing organizational communications support for the HR team, including creating and editing materials to inform and educate employees."},
+                        {"text":"Assisting in creating and documenting processes and procedures for the HR team and employees to follow."},
+                        {"text":"Provide feedback to the company’s leadership team regarding new tactics to aiding the business sector."},
+                        {"text":"Attend and coordinate employee engagement activities."},
+                        {"text":"Respond to different forms of digital communication as needed."},
+                        {"text":"Work with biweekly quotas"},
+                        {"text":"Be able to handle administrative and clerical duties"},
+                        {"text":"Help polish existing materials and establish best practice systems for the Minority Programmers Association."},
+                        {"text":"Maintain a strong understanding of Minority Programmers Association’s products and services."},
+                        {"text":"Assist with managing internal marketing data, analytics, and document prep tasks"},
+                        {"text":"Interact with internal Minority Programmers teams."}
+                    ]
+                },
+                {
+                    "id":19,
+                    "title": "Business Development",
+                    "subTitle":"Business Development",
+                    "requiredAll":[
+                        {"text":"Generate reports on project statuses and thoroughly track on ClickUp (project management tool)"},
+                        {"text":"Identify, record, and document thoroughly"},
+                        {"text":"Track bugs"},
+                        {"text":"Liaise with internal teams (e.g. developers and product managers) to identify system requirements"},
+                        {"text":"15-20 weekly hours (with the ability to make synchronous daily standup meetings)  for at least a 3-month commitment"}
+                    ],
+                    "requiredOwn":[
+                        {"text":"Develop and maintain a prospecting database for potential new businesses."},
+                        {"text":"Provide market feedback to the company’s leadership team regarding new tactics to aid the business sector."},
+                        {"text":"Respond to different forms of digital communication as needed."},
+                        {"text":"Work with biweekly quotas"},
+                        {"text":"Develop and use content to share with prospects(testimonials, newsletters, blogs, proposals, etc.)"},
+                        {"text":"Stay on top of industry hot topics and trends to help design viral marketing strategies."},
+                        {"text":"Help distribute marketing materials"},
+                        {"text":"Be able to handle administrative and clerical duties"},
+                        {"text":"Develop new business areas for our team to explore"},
+                        {"text":"Help polish existing materials and establish best practice systems for the Minority Programmers Association."},
+                        {"text":"Research market trends and create new opportunities."},
+                        {"text":"Maintain a strong understanding of Minority Programmers Association’s products and services."},
+                        {"text":"Assist with managing internal marketing data, analytics, and document prep tasks."},
+                        {"text":"Interact with internal Minority Programmers teams."},
+                        {"text":"Train additional sales teams"}
+                    ]
+                }
+            ]
+        }
+        
+    ]
+}

@@ -1,0 +1,207 @@
+.companiesMain {
+    padding:24px;
+    position:relative;
+}
+
+.companiesMain-search-heading {
+    color:#333333;
+    font-size:24px;
+    font-weight:bold;
+}
+
+.companiesMain-search-inputs {
+    padding:12px;
+    border:solid 1px #DDDDDD;
+    box-shadow: 0px 5px 5px #afafaf;
+    display:grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(2,1fr);
+    margin-top:16px;
+    box-sizing:border-box;
+    grid-column-gap:20px;
+}
+
+.companiesMain-search-inputs input {
+    border:solid 1px var(--mpa-navy);
+    border-radius:5px;
+    padding:5px;
+    padding-left:20px;
+    color:black;
+    font-weight:bold;
+}
+
+.companiesMain-search-inputs input::placeholder {
+    color:var(--mpa-navy);
+    font-weight:bold;
+    opacity:.8;
+}
+
+.companiesMain-search-inputs button {
+    display:block;
+    grid-column:1/4;
+    background:var(--mpa-navy);
+    width:130px;
+    justify-self: center;
+    padding:10px 0px;
+    box-sizing: content-box;
+    border-radius: 10px;
+    margin-top:16px;
+    color:white;
+    font-weight:bold;
+    letter-spacing: .4px;
+}
+
+
+.companiesMain-options {
+    display:flex;
+    margin:20px 0;
+    color:black;
+}
+
+.companiesMain-options-sort {
+    margin-left:12px;
+}
+
+.companies-main-container {
+    max-width:900px;
+    margin:auto;
+    padding:24px;
+}
+
+.company-stub {
+    background:white;
+    display:grid;
+    grid-template-columns: auto 1fr 125px;
+    grid-column-gap: 20px;
+    padding:20px;
+    margin:20px 0;
+    color:black;
+    box-shadow:0 0 10px var(--mpa-navy);
+    border-radius:16px;
+    cursor:pointer;
+}
+
+.company-stub-box1-logo {
+    height:100px;
+    width:100px;
+    background:rgb(212, 212, 212);
+}
+
+.company-stub-box1-logo >svg {
+    max-height:100%;
+    max-width:100%;
+    object-fit: contain;
+}
+
+.company-stub-box2-name {
+    font-weight:bold;
+}
+
+.company-stub-box2-description {
+    margin:20px 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+
+.company-stub-box3-diversity {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    background:var(--mpa-navy);
+    padding:8px;
+    color:white;
+    overflow: hidden;
+    border-radius: 12px;
+    font-weight:bold;
+    margin-top:10px;
+}
+
+.company-stub-box3-diversity::after {
+    content:"";
+    position:absolute;
+    height:100%;
+    width:50%;
+    background:var(--mpa-pink);
+    top:-50%;
+    left:calc(100% - 5px);
+    transform:rotate(-45deg);
+}
+
+
+
+.company-stub-box3-diversity-score {
+    color:var(--mpa-yellow);
+    position:relative;
+    padding-top:2px;
+    margin-top:2px;
+}
+
+.company-stub-box3-diversity-score::before {
+    content:"";
+    height:1.5px;
+    width:100%;
+    position:absolute;
+    background:var(--mpa-pink);
+    top:0;
+    left:50%;
+    transform: translateX(-50%);
+}
+
+@media screen and (max-width: 991px) {
+    .companiesMain-search-inputs {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4,1fr);
+        grid-row-gap:16px;
+        grid-column-gap:0;
+    }
+
+    .companiesMain-search-inputs button {
+        grid-column:1/2;
+    }
+
+    .companiesMain-search-inputs button:focus {
+        outline:none;
+    }
+
+    .companiesMain-search-inputs input {
+        width:100%;
+        max-width:400px;
+        margin:0 auto;
+    }
+
+    
+}
+
+@media screen and (max-width: 575px) {
+    .company-stub-box2-description {
+        display:none;
+    }
+
+    .company-stub {
+        grid-template-columns: 1fr;
+        grid-template-rows:repeat(3,auto);
+        justify-items: center;
+    }
+
+    .company-stub-box1-logo{
+        margin:auto;
+    }
+
+    .company-stub-box2{
+        padding:12px 0;
+        margin:12px 0;
+        border-width:2px 0px;
+        border-color:rgb(238, 238, 238);
+        border-style: solid;
+        
+    }
+
+    .company-stub >div {
+        text-align: center;
+    }
+}

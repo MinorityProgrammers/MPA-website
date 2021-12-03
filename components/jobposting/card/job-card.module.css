@@ -1,0 +1,74 @@
+.root {
+  padding: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #e3e3e3;
+  overflow-y: auto;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-bottom: 1.2rem;
+  box-shadow: 1px 1px 1px rgba(69, 63, 63, 0.2);
+}
+
+.header h1 {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  color: black;
+  font-weight: bold;
+}
+
+.header h6 {
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.footer {
+  display: flex;
+  padding-top: 0.9rem;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.footer button {
+  text-decoration: underline;
+  color: rgba(255, 56, 133, 1);
+  padding-left: 1.5rem;
+}
+
+.table__pagination {
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  margin-top: 20px;
+}
+
+/* .table__pagination-item ~ .table__pagination-item {
+  margin-left: 10px;
+}
+
+.table__pagination-item {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  justify-content: center;
+} */
+
+/* .table__pagination-item.active,
+.table__pagination-item.active:hover {
+  background-color: var(--mpa-pink);
+  color: white;
+  font-weight: 600;
+}
+
+.table__pagination-item:hover {
+  color: white;
+  background-color: pink;
+} */

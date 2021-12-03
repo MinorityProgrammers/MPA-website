@@ -1,0 +1,68 @@
+.appliedMain-header {
+    font-size:32px;
+    text-align: center;
+    font-weight:bold;
+    color:black;
+}
+
+
+.saved-job-stub {
+    background:white;
+    box-shadow:0 0 10px var(--mpa-navy);
+    border-radius:16px;
+    padding:20px;
+    cursor:pointer;
+    margin:20px 0;
+    box-sizing:border-box;
+}
+
+.saved-job-stub-header {
+    color:black;
+}
+
+.saved-job-stub-title {
+    line-height:1em;
+    font-size:18px;
+    font-weight:bolder;
+}
+
+.saved-job-stub-company {
+    line-height:1em;
+}
+
+.saved-job-stub-location {
+    line-height:16px;
+    font-size:14px;
+}
+
+.saved-job-stub-description {
+    margin:20px 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.saved-job-stub-description:before {
+    content:"";
+    height:10px;
+    width:10px;
+    background:red;
+}
+
+.saved-job-stub-footer {
+    display:flex;
+    font-weight:bolder;
+}
+
+.saved-job-stub-postDate {
+    font-size:14px;
+}
+
+.saved-job-stub-saveLink {
+    color:red;
+    margin-left:20px;
+    font-size:14px;
+    text-decoration: underline;
+}

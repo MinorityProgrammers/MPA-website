@@ -1,0 +1,155 @@
+.container {
+    width: 100%;
+    max-width: 20em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1em;
+    background: #F8FAFC;    
+    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.18);
+    border-radius: 20px;    
+    border: 2px solid transparent; 
+    border-image-source: linear-gradient(104.61deg, #FF00B8 2.65%, #FF655B 51.83%, #FFC700 100%);
+}
+
+.logo {
+    width: 6em;
+    height: 3em;
+    margin-bottom: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo > img {
+    width: 50%;
+    height: auto;
+}
+
+.name {
+    font-weight: bold;
+    margin-bottom: 1em;
+    text-align: center;
+    color: black;
+}
+
+.description {
+    text-align: center;
+    font-size: 0.8rem;
+    margin-bottom: 1em;
+}
+
+.dateAndType,
+.leaderAndSize {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1em;
+    padding: 0 2em;
+}
+
+.dateAndType > div,
+.leaderAndSize > div {
+    width: 100%;
+}
+
+.title {
+    font-size: 12px;
+}
+
+.end {
+    text-align: end;
+}
+
+.joinButton {
+    padding: 0.3em 1.5em;
+    border-radius: 0.3em;
+    background: #FF00B8;
+    color: white;
+    margin-bottom: 1.5em;
+    margin-top: 1em;
+    transition: all 100ms ease-out;
+    cursor: pointer;
+}
+
+.joinButton:hover {
+    transform: scale(1.05);
+}
+
+.icons {
+    margin-bottom: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon {
+    margin-left: 0.5em;
+}
+
+@media screen and (max-width: 480px) {
+    .container {
+        width: 100%;
+        max-width: 20em;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: white;
+        padding: 1em;
+        border-radius: 1em;
+    }
+    
+    .logo {
+        width: 4em;
+        height: 2em;
+        margin-bottom: 0.5em;
+    }
+    
+    .name {
+        font-weight: bold;
+        margin-bottom: 0.5em;
+        text-align: center;
+        font-size: 12px;
+    }
+    
+    .description {
+        text-align: center;
+        font-size: 0.8rem;
+        margin-bottom: 0.5em;
+        font-size: 12px;
+    }
+    
+    .dateAndType,
+    .leaderAndSize {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 0.5em;
+        padding: 0 0.5em;
+    }
+    
+    .dateAndType > div,
+    .leaderAndSize > div {
+        width: 100%;
+        font-size: 12px;
+    }
+    
+    .title {
+        font-size: 10px;
+    }
+    
+    .end {
+        text-align: end;
+    }
+    
+    .joinButton {
+        padding: 0.3em 1.5em;
+        border-radius: 0.3em;
+    }
+    
+    .icons {
+        margin-bottom: 0.5em;
+    }    
+}

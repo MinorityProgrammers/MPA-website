@@ -1,0 +1,95 @@
+import { Fragment, useEffect, useRef } from "react";
+import ErrorPrint from "../errorPrint";
+
+function Checkboxes({
+  checkboxes,
+  setCheckboxes,
+  checkBoxLabels,
+  questionStr,
+  minimumCheckBoxes = 1,
+  defaultValue,
+}) {
+  const invalidSymbol = useRef(undefined);
+
+  const options = useRef([
+    ...(function () {
+      const arr = [];
+      for (let i = 0; i < checkBoxLabels.length; i++) {
+        const bool = defaultValue
+          ? defaultValue.indexOf(checkBoxLabels[i]) === -1
+            ? false
+            : true
+          : false;
+        const obj = { label: checkBoxLabels[i], checked: bool };
+        arr.push(obj);
+      }
+      return arr;
+    })(),
+  ]);
+  function validateSubmission(validList) {
+    setCheckboxes([questionStr, validList]);
+  }
+  useEffect(() => {
+    if (defaultValue) {
+      validateSubmission(defaultValue);
+    }
+  }, []);
+  const validateCheckBox = () => {
+    let checkedCheckboxes = options.current
+      .filter((checkbox) => {
+        if (checkbox.checked) {
+          return true;
+        }
+        return false;
+      })
+      .map((checkbox) => {
+        return checkbox.label;
+      });
+
+    if (checkboxes === null) {
+      invalidSymbol.current = checkboxes;
+    }
+    if (checkedCheckboxes.length < minimumCheckBoxes) {
+      setCheckboxes(invalidSymbol.current);
+    } else {
+      validateSubmission(checkedCheckboxes);
+    }
+  };
+
+  return (
+    <Fragment>
+      <div className={"checkboxWrapper"}>
+        {options.current.map((checkbox, index) => {
+          return (
+            <div className={"row"} key={index}>
+              <div
+                className="checkbox"
+                onClick={() => {
+                  options.current[index].checked =
+                    !options.current[index].checked;
+                  validateCheckBox();
+                }}
+              >
+                <i
+                  className={
+                    "fa fa-check " +
+                    `${checkbox.checked ? "checkVisible" : "checkInvisible"}`
+                  }
+                  aria-hidden="true"
+                ></i>
+              </div>
+              <div className="row-label">{checkbox.label}</div>
+            </div>
+          );
+        })}
+      </div>
+      {checkboxes === null ? (
+        <ErrorPrint
+          errors={[`You must select at least ${minimumCheckBoxes} checkbox(s)`]}
+        />
+      ) : null}
+    </Fragment>
+  );
+}
+
+export default Checkboxes;

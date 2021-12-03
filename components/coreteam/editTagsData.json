@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "tagName": "bug"
+    },
+    {
+        "id": 2,
+        "tagName": "design"
+    },
+    {
+        "id": 3,
+        "tagName": "enhancement"
+    },
+    {
+        "id": 4,
+        "tagName": "feature"
+    },
+    {
+        "id": 5,
+        "tagName": "research"
+    }
+]

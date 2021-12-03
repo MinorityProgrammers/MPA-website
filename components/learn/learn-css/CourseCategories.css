@@ -1,0 +1,210 @@
+.courses{
+    background-color: #151371;
+    color: white;
+}
+.search-input{
+    border: 1px solid #D3D3D3 !important;
+    border-top-left-radius: 4px !important;
+    border-bottom-left-radius: 4px !important;
+}
+.learn-filter{
+    height: calc(1.5em + .75rem + 2px);
+    padding: 0px;
+    line-height: 1.5;
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    transition: .15s ease-in-out;
+    outline: none;
+}
+.dropdown-toggle::after{
+    color: gray !important;
+}
+.my-courses::after {
+    content: "";
+    width: 65%;
+    height: 2px;
+    border: 1px solid #FFFFFF;
+    margin-left: 32px;
+    margin-right: auto;
+    margin-top: 1.4rem;
+    border-radius: 5px;
+}
+.courses-info .slick-next{
+    top: -13.8%;
+    right: 4.5%;
+}
+.courses-info .slick-prev{
+    left: 91%;
+    top: -13.8%;
+}
+.banner-btn{
+    background-image: linear-gradient(to right, #FF00B8 2.65%, #FF655B 51.83%, #FFC700 100%);
+    border-radius: 4px;
+    border: none;
+    color: white;
+    transition: all .3s ease;
+}
+.banner-btn:hover{
+    background-image: linear-gradient(to left, #FF00B8 2.65%, #FF655B 51.83%, #FFC700 100%) !important;
+    color: white;
+}
+.progress-bar{
+    background-image: linear-gradient(270deg,#ff00b8 2.65%,#ff655b 51.83%,#ffc700) !important;
+}
+.btn-outline-white{
+    color: #fff !important;
+    border: 1px solid #fff;
+    font-size: 14px;
+    line-height: 24px;
+    transition: all .3s ease;
+}
+.btn-outline-white:hover{
+    background-image: linear-gradient(#FF00B8 2.65%, #FF655B 51.83%, #FFC700 100%);
+    color: white !important;
+}
+.earn-rate{
+    padding-bottom: 1px;
+}
+.earn-rate img{
+    width: 10px;
+    height: 10px;
+}
+.course-name{
+    font-size: 1.75rem;
+}
+.course-des{
+    font-size: 17px;
+    font-weight: 300 !important;
+}
+.module-rate span{
+    font-size: 17px;
+    font-weight: 300 !important;
+}
+
+.course-specific-info ul li{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.course-specific-info .user-enroll {
+    background-image: linear-gradient(to top right, #FFC700 2.65%, #ff975b 51.83%,  #FF655B 100%);
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
+    padding: 5px 10px;
+    font-size: 18px;
+}
+.course-specific-info button{
+    border-radius: 30px !important;
+}
+.course-specific-info .modal-center{
+    cursor: pointer;
+    transition: all .3s ease;
+}
+.course-specific-info .modal-center:hover{
+    color: #545353;
+}
+.search-items .search-input{
+    font-size: 15px !important;
+    padding: 18px !important;
+    color: #000;
+    font-weight: 400;
+    min-width: 87%;
+}
+.search-items .course-search{
+    height: calc(1.5em + .75rem + 2px);
+    padding: 0px;
+    line-height: 1.5;
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: 0px;
+    transition: .15s ease-in-out;
+    outline: none;
+} 
+
+.options-type .course-search,
+.learn-filter{
+    color: #151371;
+    font-weight: 500;
+    font-size: 15px;
+    /* width: 130px; */
+    cursor: pointer;
+}
+.courseCategory-title{
+    font-size: 30px;
+}
+.learnSearch-btn button{
+    color: #585858;
+}
+.courses-items,
+.course-weeks{
+    transition: all .3s ease !important;
+}
+.courses-items:hover{
+    -webkit-transform: scale(1.025);
+    transform: scale(1.025);
+}
+
+.course-weeks:hover{
+    -webkit-transform: scale(1.015);
+    transform: scale(1.015);
+}
+
+@media (min-width: 769px){
+    .recommended-courses .slick-track,
+    .user-courses .slick-track,
+    .featured-courses .slick-track{
+        width: auto !important;
+    }
+    .FRCourses .slick-prev{
+        left: 91%;
+        top: -17.5%;
+    }
+    .FRCourses .slick-next{
+        top: -17.5%;
+        right: 4.5%;
+    }
+}
+
+@media (max-width: 767px){
+    .my-courses h1{
+        font-size: 27px;
+    }
+    .my-courses::after{
+        width: 48%;
+        margin-top: 1rem;
+    }
+    .courses-info .slick-prev {
+        left: 83%;
+        top: -15%;
+    }
+    .courses-info .slick-next{
+        top: -15%;
+    }
+    .learn-items ul li{
+        margin-bottom: 1rem;
+    }
+    .FRCourses .slick-prev {
+        left: 88%;
+        top: -17.5%;
+    }
+    .FRCourses .slick-next {
+        top: -17.5%;
+        right: -0.5%;
+    }
+    .courseCategory-title{
+        font-size: 25px;
+    }
+    .learnSearch-btn{
+        display: none !important;
+    }
+}
+
+@media (max-width: 575px){
+    .options-type .course-search{
+        width: 80px !important;
+    }
+}

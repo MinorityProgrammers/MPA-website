@@ -1,0 +1,60 @@
+.userContent {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  word-wrap: break-word;
+}
+
+.userContent .imgDiv {
+  position: relative;
+  margin-top: 1.2vw;
+  width: 60%;
+  height: 60%;
+}
+.userContent .imgDiv img {
+  border-radius: 100%;
+  width: 100%;
+  height: 100%;
+}
+
+.userContent img.editIcon {
+  cursor: pointer;
+  position: absolute;
+  width: 25%;
+  height: 25%;
+  top: 70%;
+  right: -5%;
+}
+
+.userContent h5 {
+  color: white;
+  font-weight: bold;
+  font-size: 2vw;
+  text-align: center;
+  text-transform: capitalize;
+  margin: 1.2vw 0;
+  width: 100%;
+}
+
+.userDetails {
+  width: 100%;
+  display: flex;
+  font-size: 1vw;
+}
+
+.userDetails nav {
+  width: 30%;
+}
+
+.userDetails nav li,
+.userDetails div li {
+  margin-bottom: 0.5vw;
+}
+.userDetails div {
+  margin-left: 2vw;
+  width: 70%;
+}
+.userDetails div a:hover {
+  color: white;
+}

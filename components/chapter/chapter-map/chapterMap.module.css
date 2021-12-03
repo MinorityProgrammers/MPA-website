@@ -1,0 +1,176 @@
+.wrapper {
+    width: 100%;
+    display: flex;    
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding-bottom: 4rem;
+    position: relative;
+}
+
+.resetButtonContainer {
+    width: auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.resetButton {
+    width: auto;
+    background: #FFC700;
+    color: #151371;
+    cursor: pointer;
+    padding: 0.2em 1.5em;
+    border-radius: 0.2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+}
+
+.tag {
+    position: absolute;
+    text-align: end;
+    left: 0;
+    top: 0;
+    width: 15%;
+    padding: 0.5em;
+    background: rgb(21, 19, 113, 0.1);
+    border-bottom: 2px solid white;
+    color: white;
+  }
+
+.headingContainer {
+    width: 100%;
+    max-width: 64rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 2em;
+    color: white;
+}
+
+.title {
+    font-size: 1.4rem;
+    text-align: center;
+}
+
+.text {
+    text-align: center;
+    margin-bottom: 2em;
+}
+
+.navbar {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    z-index: 10;
+}
+
+.navbar > div{
+    margin-left: 2em;
+}
+
+.mapContainer {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+}
+
+.mapHeading {
+    width: 16em;
+    background: rgb(0, 0, 0, 0.5);
+    color: white;
+    position: absolute;
+    top: 60px;
+    right: 11.4px;
+    z-index: 1;
+    display: flex;
+    padding: 0.6em;
+    justify-content: space-between;
+}
+
+.modal {
+    background: rgb(0, 0, 0, 0.1);
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+@media screen and (max-width: 1024px) {
+    .headingContainer {
+        max-width: 48em;
+    }
+    .navbar {
+        justify-content: space-evenly;
+    }
+    .navbar > div {
+        margin: 0;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .mapContainer {
+        max-width: 36em;
+    }
+    .headingContainer {
+        max-width: 36em;
+        padding: 0 0.5em;
+    }
+    .resetButtonContainer{
+        width: 100%;
+        justify-content: flex-start;
+    }
+    .navbar {
+        flex-wrap: wrap;
+    }
+    .navbar > div{
+        margin-bottom: 0.5em;
+    }
+    .mapHeading {
+        width: 12em;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .tag {
+        width: 10%;
+        font-size: 10px;
+        padding: 0.3em;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .wrapper {
+        padding-right: 0.5em;
+        padding-left: 0.5em;
+    }
+    
+    .mapContainer {
+        height: 28em;
+    }
+    .title {
+        font-size: 1rem;
+    }
+    .text {
+        font-size: 0.8rem;
+        padding: 0 3em;
+    }
+    .modal {
+        padding: 0.5em;
+    }
+    .mapHeading {
+        width: auto;
+    }
+    .mapHeading > div:first-child{
+        display: none;
+    }
+}

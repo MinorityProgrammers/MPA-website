@@ -1,0 +1,181 @@
+.body {
+  min-height: 100vh;
+  margin: 0;
+}
+
+.secondGradientBkg {
+  width: 100%;
+}
+.centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.column {
+  flex-direction: column;
+}
+.largeImage {
+  width: 100%;
+  height: 30rem;
+
+  background: url("/assets/images/icons/career_landing/large.jpg");
+  background-position: center top;
+  background-size: cover;
+  font-family: "Red Hat Display";
+}
+.largeImageArticle {
+  width: 90%;
+  color: white;
+  text-align: center;
+}
+.largeImageArticle p {
+  font-size: calc(1rem + 0.3vw);
+  font-weight: 700;
+}
+.largeImageArticle h1 {
+  margin-bottom: 16px;
+  letter-spacing: 0.05em;
+  font-size: calc(3rem + 3vw);
+  font-weight: 900;
+}
+.restOfBody {
+  padding: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-image: linear-gradient(50deg, var(--mpa-navy), var(--mpa-pink));
+}
+@media (max-width: 600px) {
+  .restOfBody {
+    padding: 3.5rem;
+  }
+}
+.btnWrap {
+  filter: none !important;
+  display: flex;
+  justify-content: space-between;
+}
+.btnWrap button {
+  font-family: "Red Hat Display";
+  font-size: calc(1rem + 0.5vw);
+  font-weight: 700;
+  color: rgba(21, 19, 113, 1);
+  background-color: white;
+  border-radius: 0.5rem;
+  width: 47%;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  transition: 0.3s;
+}
+.btnWrap button:hover {
+  transition: 0.3s;
+  background-color: rgb(241, 240, 240);
+}
+.btnWrap button:only-child {
+  width: 50%;
+  margin: auto;
+}
+@media (max-width: 714px) {
+  .btnWrap {
+    flex-direction: column;
+
+    align-items: center;
+  }
+  .btnWrap button {
+    width: 100%;
+  }
+  .btnWrap button:nth-of-type(2) {
+    margin-top: 1rem;
+  }
+}
+/* career header category */
+
+.category {
+  width: 60rem;
+  max-width: 100%;
+  border-radius: 1rem;
+
+  height: max-content;
+  position: relative;
+  margin-top: 3rem;
+  filter: drop-shadow(6px 6px 8px rgba(0, 0, 0, 0.3));
+}
+.category:nth-of-type(1) {
+  margin-top: 0;
+}
+.category > .imageSection {
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  border-radius: inherit;
+  height: 10rem;
+  overflow: hidden;
+}
+.category > .imageSection > img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.gradientBkg {
+  border-radius: inherit;
+
+  width: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0) 0,
+    rgba(255, 255, 255, 0.255214) 5rem,
+    rgba(255, 255, 255, 0.584073) 7rem,
+    #ffffff 10rem,
+    #ffffff
+  );
+  min-height: 100%;
+}
+.gradientBkg > div {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  padding: 2.5rem;
+
+  padding-top: 10rem;
+  box-sizing: border-box;
+}
+.gradientBkg > div > h1 {
+  font-family: "Red Hat Display";
+  font-size: calc(2rem + 1.5vw);
+  font-weight: 900;
+  color: rgba(21, 19, 113, 1);
+  margin-bottom: 0.5rem;
+}
+.gradientBkg > div > p {
+  font-family: "Red Hat Display";
+  font-size: calc(1rem + 0.3vw);
+  font-weight: 500;
+  color: rgba(0, 0, 0, 1);
+}
+.arrow {
+  --size_of_arrow: 5rem;
+  width: var(--size_of_arrow);
+  height: var(--size_of_arrow);
+  position: absolute;
+  top: calc((100% - var(--size_of_arrow)) / 2);
+  right: calc((var(--size_of_arrow) / 2) * -1);
+  color: white;
+  font-size: 3rem;
+  background-color: var(--mpa-navy);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.3s;
+}
+.arrow:hover {
+  transition: 0.3s;
+  opacity: 0.9;
+}

@@ -1,0 +1,108 @@
+.headerWrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background: linear-gradient(90deg, #ff00b8 0%, #ff655b 50.8%, #ffc700 100%);
+  padding-top: 8em;
+}
+
+.headerContainer {
+  padding-right: 2em;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(90deg, rgb(0, 0, 0, 0.8), hsla(0, 96%, 69%, 0.05));
+}
+
+.textWrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -4em;
+}
+
+.textContainer {
+  text-align: center;
+}
+
+.icon {
+  width: 20em; 
+  right: 0;
+}
+
+.mainText {
+  font-size: 2.5rem;
+}
+
+.subText {
+  font-size: 1.8rem;
+}
+
+@media screen and (max-width: 1024px) {
+  .mainText {
+    font-size: 2rem;
+  }
+  .subText {
+    font-size: 1.4rem;
+  }
+  .icon {
+    width: 16em;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .headerWrapper {
+    padding-top: 6em;
+  }
+  .textWrapper {
+    margin-top: -2em;
+  }
+
+  .mainText {
+    font-size: 1.6rem;
+  }
+  .subText {
+    font-size: 1.2rem;
+  }
+  .icon {
+    width: 12em;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .textWrapper {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+  .headerContainer {
+    padding-right: 1rem;
+  }
+  .mainText {
+    font-size: 1.2rem;
+  }
+  .subText {
+    font-size: 1rem;
+  }
+  .icon {
+    width: 8em;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .headerContainer {
+    padding-right: 0.5em;
+  }
+  .textContainer{
+    width: 10em;
+  }
+  .mainText {
+    font-size: 0.8rem;
+  }
+  .subText {
+    font-size: 0.6rem;
+  }
+}

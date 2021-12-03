@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,iDAAiD;AACjD,AAAA,QAAQ,AAAA,mBAAmB,CAC3B;EACI,OAAO,EAAE,IAAI;CAChB;;AAED,6CAA6C;AAC7C,AAAA,QAAQ,CACR;EACA,kBAAkB,EAAE,IAAI;EAAG,iBAAiB;EAC5C,eAAe,EAAE,IAAI;EAAG,aAAa;CACpC;;AAED,AAIQ,QAJA,AAEH,MAAM,CAEH,WAAW,CACX;EACI,OAAO,EAAE,KAAK;CACjB",
+    "sources": [
+        "MentorshipAppSideBar.scss"
+    ],
+    "names": [],
+    "file": "MentorshipAppSideBar.css"
+}
