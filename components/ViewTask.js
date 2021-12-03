@@ -114,7 +114,7 @@ const ViewTask = () => {
     };
   }, []);
   // handlePriority function sent to TaskStatus component as props to set the priority flag
-  const handlePriority = () => { };
+  const handlePriority = () => {};
 
   return (
     <div className="tw-grid tw-grid-cols-3">
