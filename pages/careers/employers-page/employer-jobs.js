@@ -1,5 +1,4 @@
 import React, { useState, useRef, Fragment } from "react";
-import PageHeader from "../../../components/PageHeader";
 import SidebarTwo from "../../../components/SidebarTwo";
 import links from "../../../contexts/utils/links";
 import { useDetectOutsideClick } from "../../../components/UseDetectOutsideClick";

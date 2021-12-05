@@ -1,13 +1,11 @@
-import ReactPaginate from "react-paginate";
-
-import { Fragment, useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
+import { Fragment } from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
+import ReactPaginate from "react-paginate";
 import links from "../../contexts/utils/links";
-
-import CareersMainComponent from "../../components/career-components/CareersMainComponent";
 import { JobsFilters } from "../../components/career-components/JobsFilters.js";
-import Loader from "../../components/Loader";
+import CareersMainComponent from "../../components/career-components/CareersMainComponent";
 import LoadingSkeleton from "../../components/career-components/LoadingSkeleton.js";
 import Layout from "../../components/Layout";
 import { successToast, errorToast } from "../../contexts/utils/toasts";
@@ -40,6 +38,7 @@ const JobsMain = function (props) {
       setHide(true);
     }, 60000);
   }
+
   const [currentJob, changeCurrentJob] = useState({});
   const [savedJobs, setSavedJobs] = useState([]);
   const [appliedJobs, setAppliedJobs] = useState([]);
@@ -60,14 +59,6 @@ const JobsMain = function (props) {
   const [activeJobIndex, setActiveJobIndex] = useState(0);
   const descriptionInput = useRef();
 
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  const openModal = () => {
-    if (window.innerWidth <= 550) setShowModal(!showModal);
-  };
-
   const fetchData = () => {
     setLoading(true);
     fetch("https://koinstreet-learn-api.herokuapp.com/api/v1/job")
@@ -75,18 +66,18 @@ const JobsMain = function (props) {
       .then((response) => {
         setJobs(response.data);
         setAllJobs(response.data);
+
         // check if the views is mobile or desktop to display "current view job"
         if (window.innerWidth <= 991) {
           changeCurrentJob(null);
         } else {
           changeCurrentJob(response.data[0]);
         }
-        // console.log(response.data);
+
         setTimeout(() => {
           // TO TEST LOADING SKELETON COMMENT OUT setLoading(false);
           setLoading(false);
           setLoadingReq(true);
-          // console.log("message", response.data);
         }, 1);
       })
       .catch((error) => console.log(error));
@@ -100,8 +91,6 @@ const JobsMain = function (props) {
     )
       .then((response) => response.json())
       .then((response) => {
-        // setAllJobs(response.data)
-        console.log("response", response);
         if (response.data.length >= 1) {
           if (window.innerWidth <= 991) {
             changeCurrentJob(null);
@@ -112,13 +101,9 @@ const JobsMain = function (props) {
           }
         } else {
           changeCurrentJob(null);
-          setJobs(null);
+          setJobs([]);
         }
         setLoading(false);
-        // setTimeout(() => {
-        //   setLoading(false);
-        //   setLoadingReq(true);
-        // }, 1);
       });
   };
 
@@ -203,6 +188,7 @@ const JobsMain = function (props) {
       document.getElementsByClassName(
         "jobs-main-container-list"
       )[0].style.display = "block";
+
       document.getElementsByClassName(
         "jobs-main-container-single"
       )[0].style.display = "block";
@@ -245,8 +231,6 @@ const JobsMain = function (props) {
       "block";
     document.getElementsByClassName("jobs-main-filters")[0].style.display =
       "block";
-    // document.getElementsByClassName("jobsMain-perPage")[0].style.display =
-    //   "block";
     document.getElementsByClassName(
       "jobs-main-container-single"
     )[0].style.display = "none";
@@ -257,8 +241,7 @@ const JobsMain = function (props) {
   }
 
   function openFilterForm(btn) {
-    // if the form is open, close it and return
-    // console.log(window.getComputedStyle(btn.nextSibling).display)
+    //if the form is open, close it and return
     if (window.getComputedStyle(btn.nextSibling).display == "block") {
       btn.nextSibling.style.display = "none";
       return;
@@ -279,13 +262,13 @@ const JobsMain = function (props) {
     typeof window !== "undefined"
       ? window.localStorage.getItem("jwtToken")
       : null;
+
   const userInfo =
     typeof window !== "undefined"
       ? window.localStorage.getItem("userInfo")
       : null;
 
   const saveJob = (job) => {
-    console.log(job);
     axios
       .post(
         "https://koinstreet-learn-api.herokuapp.com/api/v1/savejob",
@@ -299,12 +282,10 @@ const JobsMain = function (props) {
         }
       )
       .then((response) => {
-        console.log("Saved", response);
         successToast("Job Saved Successfully!");
         fetchSavedJobs();
       })
       .catch((err) => {
-        console.error(err);
         setLoading(false);
         errorToast("Job not saved, something went wrong, please contact us.");
       });
@@ -312,8 +293,6 @@ const JobsMain = function (props) {
 
   const fetchSavedJobs = () => {
     if (token) {
-      // setLoading(true)
-
       axios
         .get(
           "https://koinstreet-learn-api.herokuapp.com/api/v1/savejob/userjobs",
@@ -326,7 +305,6 @@ const JobsMain = function (props) {
         .then((response) => {
           setSavedJobs(response.data.data);
           setLoading(false);
-          console.log("Saved Jobs", response);
         });
     }
   };
@@ -347,7 +325,6 @@ const JobsMain = function (props) {
         .then((response) => {
           setAppliedJobs(response.data.data);
           setLoading(false);
-          console.log("Applied Jobs", response.data);
         });
     }
   };
@@ -366,21 +343,15 @@ const JobsMain = function (props) {
 
   const authPlease = () => {
     errorToast("Please, Sign in your account and after save and apply jobs.");
-    // if (!token) {
-    //   setLoading(true);
-    //   setTimeout(() => {
-    //     setLoading(false);
-    //   }, 100);
-    // }
   };
 
   const pageCount = Math.ceil(jobs?.length / 5);
   const jobsPerPage = 5;
   const pagesVisited = pageNumber * jobsPerPage;
 
-  // jobStubs will be fetched from database and then map... the fetch will have ALL query parameters(search description, search location, filters, jobs per page, current page)
+  //jobStubs will be fetched from database and then map... the fetch will have ALL query parameters(search description, search location, filters, jobs per page, current page)
   const jobStubs =
-    jobs != null ? (
+    jobs?.length > 0 ? (
       jobs.slice(pagesVisited, pagesVisited + jobsPerPage).map((job, idx) => (
         <div
           className={idx == activeJobIndex ? "job-stub active" : "job-stub"}
@@ -452,19 +423,11 @@ const JobsMain = function (props) {
     inputSearchSubmit(e);
   };
 
-  const onEmptySearchFields = () => {
-    console.log("User typed: ", descriptionInput.current.value);
-    if (!descriptionInput.current.value) {
-      delete queryObj.description;
-      router.push({ query: queryObj });
-      filterJobs();
-    }
-  };
-
   const changePage = ({ selected }) => {
     setPageNumber(selected);
   };
 
+  // renders jsx elements (page contents)
   return (
     <CareersMainComponent
       jobsOn
@@ -512,7 +475,6 @@ const JobsMain = function (props) {
                     type="search"
                     name="description"
                     ref={descriptionInput}
-                    // onChange={() => onEmptySearchFields()}
                     placeholder="Search job description"
                   />
                   <button
@@ -533,7 +495,7 @@ const JobsMain = function (props) {
                 <div className="jobs-main-container-list">
                   {jobStubs}
                   <div className="jobs-paginator">
-                    {jobs !== [] && (
+                    {jobs.length > 0 && (
                       <ReactPaginate
                         previousLabel="<"
                         nextLabel=">"
@@ -550,7 +512,7 @@ const JobsMain = function (props) {
                 </div>
                 {/* CURRENT JOB NOT SHOWN WHILE IN MOBILE VIEW */}
                 <div
-                  className=" right-grid jobs-main-container-single"
+                  className="right-grid jobs-main-container-single"
                   style={{ display: currentJob == null && "none" }}
                 >
                   {currentJob != null && (
@@ -582,10 +544,6 @@ const JobsMain = function (props) {
                                 <button
                                   onClick={() => {
                                     toggleModalView(true);
-                                    console.log(
-                                      "the current job is",
-                                      currentJob
-                                    );
                                   }}
                                   className="current-job-view-box1-jobInfo-postSave-apply"
                                 >
@@ -623,11 +581,8 @@ const JobsMain = function (props) {
                                   {currentJob.min_requirements
                                     ? currentJob.min_requirements.map(
                                         (skill, index) => (
-                                          <ul>
-                                            <li
-                                              key={index}
-                                              className="list-style-square"
-                                            >
+                                          <ul key={index}>
+                                            <li className="list-style-square">
                                               <span>
                                                 {skill.years}{" "}
                                                 {skill.years == 1

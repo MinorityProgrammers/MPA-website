@@ -1,60 +1,61 @@
-import Link from 'next/link';
-import { useEffect, useState, Fragment } from 'react';
-import classes from '../../public/assets/css/career.module.css';
-import LoginPage from '../consultancy/helperFiles/login-page';
-import Category from './careerExplainerHelper/category';
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import styles from "../../public/assets/css/career.module.css";
+import LoginPage from "../consultancy/helperFiles/login-page";
+import Category from "./careerExplainerHelper/category";
 
-const CareerExplainer = function ({
-  data,
-  setClickRegister,
-  active,
-  clickRegister,
-  navBarRef,
-}) {
-  const allSections = [
-    {
-      innerText:
-        'Find the company that better fit for you according to your skills, passions,experience, etc',
-      header: 'Search Companies',
-      src: '/assets/images/icons/career_landing/search_companies.png',
-      redirectTo: '/careers/companies',
-    },
-    {
-      innerText:
-        "Diversity & Inclusion are more important than ever. The Minority Programmers Association uses a metric that lets future employees know companies' organization and which actionable items to improve their diversity & inclusion practices. As an employee of a company you can rate and provide us the Diversity Score information.",
-      header: 'Improve Diversity Score',
-      src: '/assets/images/icons/career_landing/improve_diversity_score.png',
-      redirectTo: '/careers',
-    },
-    {
-      innerText:
-        'Apply for the perfect job for you based on title, location, remote vs in-person, etc. check the recommendations based on your interests.',
-      header: 'Apply for Jobs',
-      src: '/assets/images/icons/career_landing/apply_for_jobs.png',
-      redirectTo: '/careers',
-    },
-  ];
+const allSections = [
+  {
+    innerText:
+      "Find the company that better fit for you according to your skills, passions,experience, etc",
+    header: "Search Companies",
+    src: "/assets/images/icons/career_landing/search_companies.png",
+    redirectTo: "/careers/companies",
+  },
+  {
+    innerText:
+      "Diversity & Inclusion are more important than ever. The Minority Programmers Association uses a metric that lets future employees know companies' organization and which actionable items to improve their diversity & inclusion practices. As an employee of a company you can rate and provide us the Diversity Score information.",
+    header: "Improve Diversity Score",
+    src: "/assets/images/icons/career_landing/improve_diversity_score.png",
+    redirectTo: "/careers",
+  },
+  {
+    innerText:
+      "Apply for the perfect job for you based on title, location, remote vs in-person, etc. check the recommendations based on your interests.",
+    header: "Apply for Jobs",
+    src: "/assets/images/icons/career_landing/apply_for_jobs.png",
+    redirectTo: "/careers",
+  },
+];
+
+// component's function
+const CareerExplainer = (props) => {
+  const { data, setClickRegister, active, clickRegister, navBarRef } = props;
+
   const [marginTop, setMarginTop] = useState(0);
+
   useEffect(() => {
     if (navBarRef.current && window) {
       const currHeight = parseInt(
-        window.getComputedStyle(navBarRef.current).height,
+        window.getComputedStyle(navBarRef.current).height
       );
-      if (typeof currHeight === 'number' && currHeight > marginTop) setMarginTop((prev) => `${currHeight}px`);
+      if (typeof currHeight === "number" && currHeight > marginTop)
+        setMarginTop((prev) => `${currHeight}px`);
     }
   }, []);
+
   return (
     <>
-      <div className={classes.body}>
+      <div className={styles.body}>
         <div
-          className={classes.secondGradientBkg}
+          className={styles.secondGradientBkg}
           style={{ paddingTop: marginTop }}
         >
           <div
-            className={`${classes.largeImage} ${classes.centered} ${classes.column}`}
+            className={`${styles.largeImage} ${styles.centered} ${styles.column}`}
           >
             <article
-              className={`${classes.largeImageArticle} ${classes.centered} ${classes.column}`}
+              className={`${styles.largeImageArticle} ${styles.centered} ${styles.column}`}
             >
               <h1>Careers</h1>
               <p>
@@ -63,19 +64,21 @@ const CareerExplainer = function ({
               </p>
             </article>
           </div>
-          <div className={classes.restOfBody}>
-            {allSections.map((category, index) => (
-              <Category
-                key={index}
-                innerText={category.innerText}
-                header={category.header}
-                src={category.src}
-                redirectTo={category.redirectTo}
-                data={data}
-                setClickRegister={setClickRegister}
-              />
-            ))}
-            <div className={`${classes.category} ${classes.btnWrap}`}>
+          <div className={styles.restOfBody}>
+            {allSections.map((category, index) => {
+              return (
+                <Category
+                  key={index}
+                  innerText={category.innerText}
+                  header={category.header}
+                  src={category.src}
+                  redirectTo={category.redirectTo}
+                  data={data}
+                  setClickRegister={setClickRegister}
+                />
+              );
+            })}
+            <div className={`${styles.category} ${styles.btnWrap}`}>
               {data === null ? (
                 <button
                   onClick={() => {
@@ -84,8 +87,11 @@ const CareerExplainer = function ({
                 >
                   Sign In
                 </button>
-              ) : <Link href="/careers/saved-jobs"><button>Verify Employment</button></Link>}
-
+              ) : (
+                <Link href="/careers/saved-jobs">
+                  <button>Verify Employment</button>
+                </Link>
+              )}
             </div>
           </div>
         </div>

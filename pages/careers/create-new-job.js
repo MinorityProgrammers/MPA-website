@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import JobCreation from "../../components/career-components/JobCreation.js";
 import Layout from "../../components/Layout.js";
 import Footer from "../../components/Footer.js";
@@ -12,6 +12,7 @@ const CreateNewJob = function () {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef(null);
   const [hide, setHide] = useDetectOutsideClick(dropdownRef, false);
+
   const handleClick = () => {
     setHide(!hide);
   };
@@ -20,11 +21,13 @@ const CreateNewJob = function () {
       setHide(true);
     }, 60000);
   }
+
   function getTodaysDate() {
     const todaysDate = new Date().toString().split(" ").slice(1, 4).join(" ");
     return todaysDate;
   }
   getTodaysDate();
+
   return (
     <div className="create-new-job">
       <Layout>
@@ -45,7 +48,7 @@ const CreateNewJob = function () {
                   COMPANY NAME FROM EMAIL
                 </div>
                 <div>
-                  Todays Date:
+                  Todays Date:{" "}
                   <span className="tw-font-bold">{getTodaysDate()}</span>
                 </div>
               </div>

@@ -1,5 +1,5 @@
-import { useEffect, useRef } from 'react';
-import { useRouter } from 'next/router';
+import { useEffect, useRef } from "react";
+import { useRouter } from "next/router";
 
 export var JobsFilters = function ({
   submitForm,
@@ -19,16 +19,16 @@ export var JobsFilters = function ({
 
   useEffect(() => {
     if (showModal) {
-      document.body.style.overflow = 'scroll';
+      document.body.style.overflow = "scroll";
     }
     return () => {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = "unset";
     };
   }, [showModal]);
 
   // closes form when cancel is clicked
   function closeForm(btn) {
-    btn.parentNode.parentNode.style.display = 'none';
+    btn.parentNode.parentNode.style.display = "none";
   }
 
   const router = useRouter();
@@ -36,32 +36,32 @@ export var JobsFilters = function ({
   // toggles the filters options/buttons when the "filter" button is clicked on small screens
   function openFilters() {
     if (
-      window.getComputedStyle(document.querySelector('.jobFilters')).display
-      == 'none'
+      window.getComputedStyle(document.querySelector(".jobFilters")).display ==
+      "none"
     ) {
-      document.querySelector('.jobFilters').style.display = 'flex';
+      document.querySelector(".jobFilters").style.display = "flex";
     } else if (
-      window.getComputedStyle(document.querySelector('.jobFilters')).display
-      == 'flex'
+      window.getComputedStyle(document.querySelector(".jobFilters")).display ==
+      "flex"
     ) {
-      document.querySelector('.jobFilters').style.display = 'none';
+      document.querySelector(".jobFilters").style.display = "none";
     }
     setShowModal(true);
   }
 
   // show filters when screen size gets bigger than 767px
   function assureFiltersOpen() {
-    document.querySelector('.jobFilters');
+    document.querySelector(".jobFilters");
     if (window.innerWidth > 768) {
-      document.querySelector('.jobFilters').style.display = 'flex';
+      document.querySelector(".jobFilters").style.display = "flex";
     } else if (window.innerWidth < 768) {
-      document.querySelector('.jobFilters').style.display = 'none';
+      document.querySelector(".jobFilters").style.display = "none";
     }
   }
 
   // only allow one checkbox to be selected per filter
   function checkboxesOff(e) {
-    for (const i of e.target.parentNode.parentNode.querySelectorAll('li')) {
+    for (const i of e.target.parentNode.parentNode.querySelectorAll("li")) {
       if (i.childNodes[0].value != e.target.value) {
         i.childNodes[0].checked = false;
       }
@@ -70,16 +70,16 @@ export var JobsFilters = function ({
 
   // add window event listener to toggle "Filters" button on and off
   useEffect(() => {
-    window.addEventListener('resize', assureFiltersOpen);
-    return () => window.removeEventListener('resize', assureFiltersOpen);
+    window.addEventListener("resize", assureFiltersOpen);
+    return () => window.removeEventListener("resize", assureFiltersOpen);
   }, []);
 
   const resetFilter = () => {
-    filter.job_type = '';
-    filter.date_posted = '';
-    filter.remote = '';
-    filter.pay = '';
-    filter.job_industry = '';
+    filter.job_type = "";
+    filter.date_posted = "";
+    filter.remote = "";
+    filter.pay = "";
+    filter.job_industry = "";
 
     delete queryObj.pay;
     delete queryObj.date_posted;
@@ -89,7 +89,7 @@ export var JobsFilters = function ({
 
     router.push({ query: queryObj });
 
-    document.querySelectorAll('li input').forEach((input) => {
+    document.querySelectorAll("li input").forEach((input) => {
       input.checked = false;
     });
 
@@ -98,9 +98,7 @@ export var JobsFilters = function ({
     fetchData();
   };
 
-  // tw-col-end-13 tw-bg-profileDark tw-col-start-1 lg:tw-col-start-3  tw-row-start-2  tw-row-end-4 tw-p-3
-
-  // MODAL
+  //MODAL
 
   // filters-open-btn
   return (
@@ -108,7 +106,7 @@ export var JobsFilters = function ({
       <button className="filters-open-btn " onClick={openFilters}>
         <i
           className="fas fa-sort-amount-down"
-          style={{ color: '#ff4fcd', fontSize: '2rem' }}
+          style={{ color: "#ff4fcd", fontSize: "2rem" }}
         />
       </button>
       <div className="jobFilters">
@@ -118,11 +116,11 @@ export var JobsFilters = function ({
             className="job-filter-item-title "
             onClick={(e) => openFilterForm(e.currentTarget)}
           >
-            {filter.date_posted == '0'
-              ? 'Date Posted'
+            {filter.date_posted == "0"
+              ? "Date Posted"
               : `Past ${filter.date_posted
-                .charAt(0)
-                .toUpperCase()}${filter.date_posted.slice(1)}`}
+                  .charAt(0)
+                  .toUpperCase()}${filter.date_posted.slice(1)}`}
             <span>&#9660;</span>
           </button>
           <div className="job-filter-item-form">
@@ -203,7 +201,7 @@ export var JobsFilters = function ({
             className="job-filter-item-title "
             onClick={(e) => openFilterForm(e.currentTarget)}
           >
-            {filter.job_industry == '' ? 'Industry' : filter.job_industry}
+            {filter.job_industry == "" ? "Industry" : filter.job_industry}
             <span>&#9660;</span>
           </button>
           <div className="job-filter-item-form">
@@ -272,7 +270,7 @@ export var JobsFilters = function ({
             className="job-filter-item-title "
             onClick={(e) => openFilterForm(e.currentTarget)}
           >
-            {filter.pay == '' ? 'Pay' : `${filter.pay}+`}
+            {filter.pay == "" ? "Pay" : `${filter.pay}+`}
             <span>&#9660;</span>
           </button>
           <div className="job-filter-item-form">
@@ -353,7 +351,7 @@ export var JobsFilters = function ({
             className="job-filter-item-title "
             onClick={(e) => openFilterForm(e.currentTarget)}
           >
-            {filter.job_type == '' ? 'Job Type' : filter.job_type}
+            {filter.job_type == "" ? "Job Type" : filter.job_type}
             <span>&#9660;</span>
           </button>
           <div className="job-filter-item-form">
@@ -476,23 +474,23 @@ export var JobsFilters = function ({
           />
         </div>
         <div className="job-filter-item">
-          {filter.pay != ''
-            || filter.job_type != ''
-            || filter.date_posted != ''
-            || filter.remote != ''
-            || filter.job_industry != '' ? (
-
-              <button className="job-filter-reset" onClick={() => resetFilter()}>
-                Clear
-              </button>
-
-            ) : (
-
-              <button className="job-filter-reset" style={{ display: 'none' }} onClick={() => resetFilter()}>
-                Clear
-              </button>
-
-            )}
+          {filter.pay != "" ||
+          filter.job_type != "" ||
+          filter.date_posted != "" ||
+          filter.remote != "" ||
+          filter.job_industry != "" ? (
+            <button className="job-filter-reset" onClick={() => resetFilter()}>
+              Clear
+            </button>
+          ) : (
+            <button
+              className="job-filter-reset"
+              style={{ display: "none" }}
+              onClick={() => resetFilter()}
+            >
+              Clear
+            </button>
+          )}
         </div>
       </div>
     </>
