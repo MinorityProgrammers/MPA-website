@@ -1,9 +1,9 @@
-import React from "react";
-import Swiper from "react-id-swiper";
-import "swiper/css/swiper.css";
-import BrandCard from "./BrandCard";
+import React from 'react';
+import Swiper from 'react-id-swiper';
+import 'swiper/css/swiper.css';
+import BrandCard from './BrandCard';
 
-const BrandsOne = () => {
+const BrandsOne = function () {
   const params = {
     slidesPerView: 5,
     loop: true,
@@ -33,21 +33,21 @@ const BrandsOne = () => {
 
   const Brands = [
     {
-      brandLink: "https://www.accenture.com/",
-      imgSrc: "assets/images/accenture.png",
+      brandLink: 'https://www.accenture.com/',
+      imgSrc: 'assets/images/accenture.png',
     },
-    { brandLink: "https://www.cgi.com/en", imgSrc: "assets/images/cgi.png" },
+    { brandLink: 'https://www.cgi.com/en', imgSrc: 'assets/images/cgi.png' },
     {
-      brandLink: "https://www.captechconsulting.com/",
-      imgSrc: "assets/images/caotech.png",
-    },
-    {
-      brandLink: "https://www.jmu.edu/cise/cs/",
-      imgSrc: "assets/images/jmucs.png",
+      brandLink: 'https://www.captechconsulting.com/',
+      imgSrc: 'assets/images/caotech.png',
     },
     {
-      brandLink: "https://www.jmu.edu/cob/",
-      imgSrc: "assets/images/jmucob.png",
+      brandLink: 'https://www.jmu.edu/cise/cs/',
+      imgSrc: 'assets/images/jmucs.png',
+    },
+    {
+      brandLink: 'https://www.jmu.edu/cob/',
+      imgSrc: 'assets/images/jmucob.png',
     },
   ];
 

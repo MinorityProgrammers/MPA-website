@@ -1,9 +1,9 @@
-import React from "react";
-import AllyCard from "./AllyCard";
-import Swiper from "react-id-swiper";
-import "swiper/css/swiper.css";
+import React from 'react';
+import Swiper from 'react-id-swiper';
+import AllyCard from './AllyCard';
+import 'swiper/css/swiper.css';
 
-const BrandsTwo = () => {
+const BrandsTwo = function () {
   const params = {
     slidesPerView: 5,
     loop: true,
@@ -33,20 +33,20 @@ const BrandsTwo = () => {
 
   const AllyTile = [
     {
-      allyLink: "https://mason360.gmu.edu/bam/",
-      imgSrc: "assets/images/brand-1-1.png",
+      allyLink: 'https://mason360.gmu.edu/bam/',
+      imgSrc: 'assets/images/brand-1-1.png',
     },
     {
-      allyLink: "https://www.encode.club/",
-      imgSrc: "assets/images/encodeclub1.jpg",
+      allyLink: 'https://www.encode.club/',
+      imgSrc: 'assets/images/encodeclub1.jpg',
     },
-    { allyLink: "https://aisnet.org/", imgSrc: "assets/images/ais.png" },
-    { allyLink: "https://devpost.com/", imgSrc: "assets/images/devpost.png" },
+    { allyLink: 'https://aisnet.org/', imgSrc: 'assets/images/ais.png' },
+    { allyLink: 'https://devpost.com/', imgSrc: 'assets/images/devpost.png' },
     {
-      allyLink: "https://thelastmile.org/",
-      imgSrc: "assets/images/lastmile.png",
+      allyLink: 'https://thelastmile.org/',
+      imgSrc: 'assets/images/lastmile.png',
     },
-    { allyLink: "https://blockchainedu.org/", imgSrc: "assets/images/ben.png" },
+    { allyLink: 'https://blockchainedu.org/', imgSrc: 'assets/images/ben.png' },
   ];
 
   return (

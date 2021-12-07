@@ -1,15 +1,15 @@
-import React, { useState, useEffect, useContext } from "react";
-import { GlobalContext } from "../../contexts/provider";
-import { updateProfile } from "../../contexts/actions/profile/updateProfile";
-import FormData from "form-data";
-import { all } from "../../contexts/utils/settings/settingsInputFields";
-import styles from "../../styles/settings/SettingBodyProfileBackground.module.css";
-import { useRouter } from "next/router";
-import CreateSettingInput from "./CreateSettingInput";
-import CreateSettingAddition from "./CreateSettingAddition";
-import SettingBody from "./SettingBody";
+import React, { useState, useEffect, useContext } from 'react';
+import FormData from 'form-data';
+import { useRouter } from 'next/router';
+import { GlobalContext } from '../../contexts/provider';
+import { updateProfile } from '../../contexts/actions/profile/updateProfile';
+import { all } from '../../contexts/utils/settings/settingsInputFields';
+import styles from '../../styles/settings/SettingBodyProfileBackground.module.css';
+import CreateSettingInput from './CreateSettingInput';
+import CreateSettingAddition from './CreateSettingAddition';
+import SettingBody from './SettingBody';
 
-function SettingBodyProfileBackground({ settingsPage, data, userID }) {
+const SettingBodyProfileBackground = function ({ settingsPage, data, userID }) {
   const router = useRouter();
 
   const inputFields = [
@@ -23,7 +23,7 @@ function SettingBodyProfileBackground({ settingsPage, data, userID }) {
   const initialInputState = {};
 
   inputFields.forEach(
-    (field) => (initialInputState[field.name] = "")
+    (field) => (initialInputState[field.name] = ''),
     // ex. {someInputFieldName: "inputFieldValue", ...}
   );
 
@@ -31,7 +31,7 @@ function SettingBodyProfileBackground({ settingsPage, data, userID }) {
 
   useEffect(() => {
     inputFields.forEach(
-      (field) => (initialInputState[field.name] = data?.[field.name] || "")
+      (field) => (initialInputState[field.name] = data?.[field.name] || ''),
     );
 
     setInputStates(initialInputState);
@@ -41,28 +41,26 @@ function SettingBodyProfileBackground({ settingsPage, data, userID }) {
   const {
     profileDispatch,
     profileState: {
-      profile: { profileLoading, profileError, profileData, profileIsUpdated },
+      profile: {
+        profileLoading, profileError, profileData, profileIsUpdated,
+      },
     },
   } = useContext(GlobalContext);
 
   const formData = new FormData();
   Object.keys(inputStates).forEach((inputName) => {
-    Array.isArray(inputStates[inputName]) &&
-      inputStates[inputName].map((item) => formData.append(inputName, item));
+    Array.isArray(inputStates[inputName])
+      && inputStates[inputName].map((item) => formData.append(inputName, item));
   });
 
   const handleChange = (name, value) => {
-    setInputStates({ ...inputStates, [name]: value.length ? value : [""] });
+    setInputStates({ ...inputStates, [name]: value.length ? value : [''] });
   };
 
   // Get multiple values from multiple input fields within the same parent element
-  const getFieldValues = (element, names) => {
-    return names.map((name) => {
-      return element.parentNode.parentNode.parentNode.querySelector(
-        `input[name='${name}']`
-      );
-    });
-  };
+  const getFieldValues = (element, names) => names.map((name) => element.parentNode.parentNode.parentNode.querySelector(
+    `input[name='${name}']`,
+  ));
   // get values from input fields within same parent and add it as an array element to state
   const handleAdd = (e, names, reset) => {
     const fieldValues = getFieldValues(e.target, names);
@@ -70,9 +68,9 @@ function SettingBodyProfileBackground({ settingsPage, data, userID }) {
     const prevValues = inputStates[name];
     const value = Array.from(fieldValues)
       .map((fieldValue) => fieldValue.value)
-      .join(" - ");
-    value !== " - " && !/^[ \- ]/.test(value) && !/[ \- ]$/.test(value) && handleChange(name, [...new Set([...prevValues, value])]);
-    const addedText = document.querySelectorAll(".css-1uccc91-singleValue");
+      .join(' - ');
+    value !== ' - ' && !/^[ \- ]/.test(value) && !/[ \- ]$/.test(value) && handleChange(name, [...new Set([...prevValues, value])]);
+    const addedText = document.querySelectorAll('.css-1uccc91-singleValue');
     addedText.forEach((singleText) => {
       singleText.textContent = reset;
     });
@@ -134,13 +132,11 @@ function SettingBodyProfileBackground({ settingsPage, data, userID }) {
                 <div className={styles.btnWrap}>
                   <div
                     className={styles.addBtn}
-                    onClick={(e) =>
-                      handleAdd(
-                        e,
-                        [all.softSkillsField.name, all.proficiencyField.name],
-                        ""
-                      )
-                    }
+                    onClick={(e) => handleAdd(
+                      e,
+                      [all.softSkillsField.name, all.proficiencyField.name],
+                      '',
+                    )}
                   >
                     Add
                   </div>
@@ -185,16 +181,14 @@ function SettingBodyProfileBackground({ settingsPage, data, userID }) {
                 <div className={styles.btnWrap}>
                   <div
                     className={styles.addBtn}
-                    onClick={(e) =>
-                      handleAdd(
-                        e,
-                        [
-                          all.programmingLanguagesField.name,
-                          all.proficiencyField.name,
-                        ],
-                        ""
-                      )
-                    }
+                    onClick={(e) => handleAdd(
+                      e,
+                      [
+                        all.programmingLanguagesField.name,
+                        all.proficiencyField.name,
+                      ],
+                      '',
+                    )}
                   >
                     Add
                   </div>
@@ -229,7 +223,7 @@ function SettingBodyProfileBackground({ settingsPage, data, userID }) {
                 <div className={styles.btnWrap}>
                   <div
                     className={styles.addBtn}
-                    onClick={(e) => handleAdd(e, [all.passionsField.name], "")}
+                    onClick={(e) => handleAdd(e, [all.passionsField.name], '')}
                   >
                     Add
                   </div>
@@ -249,6 +243,6 @@ function SettingBodyProfileBackground({ settingsPage, data, userID }) {
       </div>
     </SettingBody>
   );
-}
+};
 
 export default SettingBodyProfileBackground;

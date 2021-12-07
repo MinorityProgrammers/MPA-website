@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-const TeamTab = () => {
+const TeamTab = function () {
   return (
     <section className="team-tab">
       <div className="container">
@@ -22,16 +22,16 @@ const TeamTab = () => {
                       <div className="team-tab__right">
                         <div className="team-tab__social">
                           <a href="#">
-                            <i className="fab fa-twitter"></i>
+                            <i className="fab fa-twitter" />
                           </a>
                           <a href="#">
-                            <i className="fab fa-facebook-square"></i>
+                            <i className="fab fa-facebook-square" />
                           </a>
                           <a href="#">
-                            <i className="fab fa-pinterest-p"></i>
+                            <i className="fab fa-pinterest-p" />
                           </a>
                           <a href="#">
-                            <i className="fab fa-instagram"></i>
+                            <i className="fab fa-instagram" />
                           </a>
                         </div>
                       </div>
@@ -46,42 +46,45 @@ const TeamTab = () => {
                         <div className="progress-one__top">
                           <h3 className="progress-one__title">English</h3>
                           <h3 className="progress-one__percent">
-                            <span className="counter">98</span>%
+                            <span className="counter">98</span>
+                            %
                           </h3>
                         </div>
                         <div className="progress-one__bar">
                           <span
-                            style={{ width: `98%` }}
+                            style={{ width: '98%' }}
                             className="wow slideInLeft"
-                          ></span>
+                          />
                         </div>
                       </div>
                       <div className="progress-one__single">
                         <div className="progress-one__top">
                           <h3 className="progress-one__title">French</h3>
                           <h3 className="progress-one__percent">
-                            <span className="counter">64</span>%
+                            <span className="counter">64</span>
+                            %
                           </h3>
                         </div>
                         <div className="progress-one__bar">
                           <span
-                            style={{ width: `64%` }}
+                            style={{ width: '64%' }}
                             className="wow slideInLeft"
-                          ></span>
+                          />
                         </div>
                       </div>
                       <div className="progress-one__single">
                         <div className="progress-one__top">
                           <h3 className="progress-one__title">Spanish</h3>
                           <h3 className="progress-one__percent">
-                            <span className="counter">34</span>%
+                            <span className="counter">34</span>
+                            %
                           </h3>
                         </div>
                         <div className="progress-one__bar">
                           <span
-                            style={{ width: `34%` }}
+                            style={{ width: '34%' }}
                             className="wow slideInLeft"
-                          ></span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -114,16 +117,16 @@ const TeamTab = () => {
                       <div className="team-tab__right">
                         <div className="team-tab__social">
                           <a href="#">
-                            <i className="fab fa-twitter"></i>
+                            <i className="fab fa-twitter" />
                           </a>
                           <a href="#">
-                            <i className="fab fa-facebook-square"></i>
+                            <i className="fab fa-facebook-square" />
                           </a>
                           <a href="#">
-                            <i className="fab fa-pinterest-p"></i>
+                            <i className="fab fa-pinterest-p" />
                           </a>
                           <a href="#">
-                            <i className="fab fa-instagram"></i>
+                            <i className="fab fa-instagram" />
                           </a>
                         </div>
                       </div>
@@ -138,42 +141,45 @@ const TeamTab = () => {
                         <div className="progress-one__top">
                           <h3 className="progress-one__title">English</h3>
                           <h3 className="progress-one__percent">
-                            <span className="counter">98</span>%
+                            <span className="counter">98</span>
+                            %
                           </h3>
                         </div>
                         <div className="progress-one__bar">
                           <span
-                            style={{ width: `98%` }}
+                            style={{ width: '98%' }}
                             className="wow slideInLeft"
-                          ></span>
+                          />
                         </div>
                       </div>
                       <div className="progress-one__single">
                         <div className="progress-one__top">
                           <h3 className="progress-one__title">French</h3>
                           <h3 className="progress-one__percent">
-                            <span className="counter">64</span>%
+                            <span className="counter">64</span>
+                            %
                           </h3>
                         </div>
                         <div className="progress-one__bar">
                           <span
-                            style={{ width: `64%` }}
+                            style={{ width: '64%' }}
                             className="wow slideInLeft"
-                          ></span>
+                          />
                         </div>
                       </div>
                       <div className="progress-one__single">
                         <div className="progress-one__top">
                           <h3 className="progress-one__title">Spanish</h3>
                           <h3 className="progress-one__percent">
-                            <span className="counter">34</span>%
+                            <span className="counter">34</span>
+                            %
                           </h3>
                         </div>
                         <div className="progress-one__bar">
                           <span
-                            style={{ width: `34%` }}
+                            style={{ width: '34%' }}
                             className="wow slideInLeft"
-                          ></span>
+                          />
                         </div>
                       </div>
                     </div>

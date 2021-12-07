@@ -1,21 +1,21 @@
-import React, { useState, useEffect, useContext } from "react";
-import { GlobalContext } from "../../contexts/provider";
-import { updateProfileJSON } from "../../contexts/actions/profile/updateProfileJSON";
-import FormData from "form-data";
-import { all } from "../../contexts/utils/settings/settingsInputFields";
-import styles from "../../styles/settings/settingBodyProfileDetails.module.css";
-import { useRouter } from "next/router";
-import CreateSettingInput from "./CreateSettingInput";
-import CreateSettingAddition from "./CreateSettingAddition";
-import SettingBody from "./SettingBody";
-import { findUserNames } from "../../helpers/userNames";
+import React, { useState, useEffect, useContext } from 'react';
+import FormData from 'form-data';
+import { useRouter } from 'next/router';
+import { GlobalContext } from '../../contexts/provider';
+import { updateProfileJSON } from '../../contexts/actions/profile/updateProfileJSON';
+import { all } from '../../contexts/utils/settings/settingsInputFields';
+import styles from '../../styles/settings/settingBodyProfileDetails.module.css';
+import CreateSettingInput from './CreateSettingInput';
+import CreateSettingAddition from './CreateSettingAddition';
+import SettingBody from './SettingBody';
+import { findUserNames } from '../../helpers/userNames';
 
-function SettingBodyProfileDetails({ settingsPage, data, userID }) {
+const SettingBodyProfileDetails = function ({ settingsPage, data, userID }) {
   const [usernames, setUsernames] = useState([]);
   const router = useRouter();
 
   useEffect(() => {
-    fetch("https://koinstreet-learn-api.herokuapp.com/api/v1/user")
+    fetch('https://koinstreet-learn-api.herokuapp.com/api/v1/user')
       .then((response) => response.json())
       .then((data) => {
         setUsernames(findUserNames(data.data));
@@ -36,7 +36,7 @@ function SettingBodyProfileDetails({ settingsPage, data, userID }) {
   const initialInputState = {};
 
   inputFields.forEach(
-    (field) => (initialInputState[field.name] = "")
+    (field) => (initialInputState[field.name] = ''),
     // ex. {someInputFieldName: "inputFieldValue", ...}
   );
 
@@ -44,13 +44,11 @@ function SettingBodyProfileDetails({ settingsPage, data, userID }) {
 
   useEffect(() => {
     inputFields.forEach(
-      (field) =>
-        (initialInputState[field.name] =
-          field.name === "birthday"
-            ? data?.birthday
-              ? new Date(data.birthday)
-              : ""
-            : data?.[field.name] || "")
+      (field) => (initialInputState[field.name] = field.name === 'birthday'
+        ? data?.birthday
+          ? new Date(data.birthday)
+          : ''
+        : data?.[field.name] || ''),
     );
 
     setInputStates(initialInputState);
@@ -60,7 +58,9 @@ function SettingBodyProfileDetails({ settingsPage, data, userID }) {
   const {
     profileDispatch,
     profileState: {
-      profile: { profileLoading, profileError, profileData, profileIsUpdated },
+      profile: {
+        profileLoading, profileError, profileData, profileIsUpdated,
+      },
     },
   } = useContext(GlobalContext);
 
@@ -71,7 +71,7 @@ function SettingBodyProfileDetails({ settingsPage, data, userID }) {
   // get value from select field within same parent and add it as an array element to state
   const handleAdd = (e, name, reset) => {
     const value = e.target.parentNode.querySelector(
-      ".css-1uccc91-singleValue"
+      '.css-1uccc91-singleValue',
     )?.textContent;
 
     if (value) {
@@ -80,7 +80,7 @@ function SettingBodyProfileDetails({ settingsPage, data, userID }) {
       handleChange(name, [...new Set([...prevValues, value])]);
 
       const addedText = (e.target.parentNode.querySelector(
-        ".css-1uccc91-singleValue"
+        '.css-1uccc91-singleValue',
       ).textContent = reset);
     }
   };
@@ -88,10 +88,10 @@ function SettingBodyProfileDetails({ settingsPage, data, userID }) {
   const handleSubmit = () => {
     Object.keys(inputStates).forEach((inputName) => {
       // let value;
-      if (inputName === "firstName" && inputStates[inputName] === "") {
-        inputStates[inputName] = data?.firstName ? data.firstName : "";
-      } else if (inputName === "lastName" && inputStates[inputName] === "") {
-        inputStates[inputName] = data?.lastName ? data.lastName : "";
+      if (inputName === 'firstName' && inputStates[inputName] === '') {
+        inputStates[inputName] = data?.firstName ? data.firstName : '';
+      } else if (inputName === 'lastName' && inputStates[inputName] === '') {
+        inputStates[inputName] = data?.lastName ? data.lastName : '';
       }
     });
 
@@ -130,7 +130,7 @@ function SettingBodyProfileDetails({ settingsPage, data, userID }) {
             all.nationalityField,
             all.ethnicityField,
           ].map((field, key) => {
-            if (field.name === "Ethnicity") {
+            if (field.name === 'Ethnicity') {
               return (
                 <div key={key}>
                   <CreateSettingInput
@@ -145,7 +145,7 @@ function SettingBodyProfileDetails({ settingsPage, data, userID }) {
                   />
                   <button
                     className={styles.addBtn}
-                    onClick={(e) => handleAdd(e, field.name, "")}
+                    onClick={(e) => handleAdd(e, field.name, '')}
                   >
                     Add
                   </button>
@@ -159,29 +159,28 @@ function SettingBodyProfileDetails({ settingsPage, data, userID }) {
                   )}
                 </div>
               );
-            } else {
-              return (
-                <CreateSettingInput
-                  name={field.name}
-                  type={field.type}
-                  label={field.label}
-                  options={field.options}
-                  required={field.required}
-                  halfWidth={field.halfWidth}
-                  rightSpaced={field.rightSpaced}
-                  value={inputStates[field.name]}
-                  setValue={(value) => {
-                    handleChange(field.name, value);
-                  }}
-                  key={key}
-                />
-              );
             }
+            return (
+              <CreateSettingInput
+                name={field.name}
+                type={field.type}
+                label={field.label}
+                options={field.options}
+                required={field.required}
+                halfWidth={field.halfWidth}
+                rightSpaced={field.rightSpaced}
+                value={inputStates[field.name]}
+                setValue={(value) => {
+                  handleChange(field.name, value);
+                }}
+                key={key}
+              />
+            );
           })
         }
       </div>
     </SettingBody>
   );
-}
+};
 
 export default SettingBodyProfileDetails;

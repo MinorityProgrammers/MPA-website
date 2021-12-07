@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-const SubscribeOne = () => {
+const SubscribeOne = function () {
   return (
     <section className="mailchimp-one">
       <div className="container">
@@ -8,7 +8,7 @@ const SubscribeOne = () => {
           <div className="col-lg-6">
             <div className="mailchimp-one__content">
               <div className="mailchimp-one__icon">
-                <i className="kipso-icon-email"></i>
+                <i className="kipso-icon-email" />
               </div>
               <h2 className="mailchimp-one__title">
                 Keep updated with our newsletter!
@@ -27,7 +27,7 @@ const SubscribeOne = () => {
                   Subscribe
                 </button>
               </form>
-              <div className="mc-form__response"></div>
+              <div className="mc-form__response" />
             </div>
           </div>
         </div>

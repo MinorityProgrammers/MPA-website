@@ -1,15 +1,15 @@
-import { useState, useEffect } from "react";
-import Select from "react-select";
+import { useState, useEffect } from 'react';
+import Select from 'react-select';
 
-let options = [
-  { value: "user1", label: "user1" },
-  { value: "user2", label: "user2" },
-  { value: "user3", label: "user3" },
+const options = [
+  { value: 'user1', label: 'user1' },
+  { value: 'user2', label: 'user2' },
+  { value: 'user3', label: 'user3' },
 ];
 
 let loggedInUser;
-const CreateTask = () => {
-  const [description, setDescription] = useState("");
+const CreateTask = function () {
+  const [description, setDescription] = useState('');
   const [open, setOpen] = useState(false);
   const [openDefinition, setOpenDefinition] = useState(false);
   const [openSubTask, setOpenSubTask] = useState(false);
@@ -36,7 +36,7 @@ const CreateTask = () => {
   };
 
   const handleExpand = () => {
-    console.log("you have assigned to the task");
+    console.log('you have assigned to the task');
   };
   const handleUpload = () => {
     const readyTask = {
@@ -44,9 +44,9 @@ const CreateTask = () => {
       selectedValue,
     };
     useEffect(() => {
-      fetch("/upload-task", {
-        method: "POST",
-        header: { "content-type": "application/json" },
+      fetch('/upload-task', {
+        method: 'POST',
+        header: { 'content-type': 'application/json' },
         body: JSON.stringify({ readyTask }),
       })
         .then((res) => res.json())
@@ -59,7 +59,7 @@ const CreateTask = () => {
     <div className="tw-m-10 tw-p-10">
       <div className="tw-bg-white tw-p-10 tw-border-blue-900 tw-border-l-4 tw-border-r-4">
         <div className="tw-flex tw-m-4 tw-ml-16">
-          <p className="tw-h-4 tw-mr-6 tw-mt-2 tw-w-4 tw-rounded-full tw-bg-yellow-400"></p>
+          <p className="tw-h-4 tw-mr-6 tw-mt-2 tw-w-4 tw-rounded-full tw-bg-yellow-400" />
           <h1 className="tw-text-2xl tw-font-bold tw-text-black tw-tracking-wider">
             TYPE TASK NAME HERE
           </h1>
@@ -119,17 +119,13 @@ const CreateTask = () => {
                   <img
                     onClick={handleExpand}
                     src={
-                      loggedInUser
-                        ? loggedInUser
-                        : "/assets/images/project/people.png"
+                      loggedInUser || '/assets/images/project/people.png'
                     }
                     className="tw-h-8 tw-w-8 tw-place-self-center tw-cursor-pointer tw--mt-18 tw-ml-2 tw-mb-1"
                   />
                   <img
                     src={
-                      loggedInUser
-                        ? loggedInUser
-                        : "/assets/images/project/people.png"
+                      loggedInUser || '/assets/images/project/people.png'
                     }
                     className="tw-h-8 tw-w-8 tw-place-self-center tw--mt-3 tw-ml-2 tw-mb-1"
                   />
@@ -163,7 +159,7 @@ const CreateTask = () => {
                 />
               </div>
             )}
-            <div></div>
+            <div />
           </div>
           <div className="tw-flex-col tw-text-black">
             <div className="tw-flex">
@@ -182,7 +178,7 @@ const CreateTask = () => {
                 />
               </div>
             )}
-            <div></div>
+            <div />
           </div>
         </div>
         <div className="tw-ml-16">
@@ -196,7 +192,7 @@ const CreateTask = () => {
           />
         </div>
         <div className="tw-flex tw-justify-between">
-          <div></div>
+          <div />
           <div className="tw-mr-16 tw-p-16">
             <button
               onClick={handleUpload}

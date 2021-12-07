@@ -1,20 +1,20 @@
-import React, { useState, useRef, useEffect } from "react";
-import HomepageNav from "../components/HomepageNav";
-import Footer from "../components/Footer";
-import { useDetectOutsideClick } from "../components/UseDetectOutsideClick";
-import Layout from "../components/Layout";
-import SidebarTwo from "../components/SidebarTwo";
-import links from "../contexts/utils/links";
-import CareerExplainer from "../components/career-components/CareerExplainer";
+import React, { useState, useRef, useEffect } from 'react';
+import HomepageNav from '../components/HomepageNav';
+import Footer from '../components/Footer';
+import { useDetectOutsideClick } from '../components/UseDetectOutsideClick';
+import Layout from '../components/Layout';
+import SidebarTwo from '../components/SidebarTwo';
+import links from '../contexts/utils/links';
+import CareerExplainer from '../components/career-components/CareerExplainer';
 
-const Career = () => {
+const Career = function () {
   const [open, setOpen] = useState(false);
   const [data, setData] = useState([]);
   const dropdownRef = useRef(null);
   const [clickRegister, setClickRegister] = useState(false);
   const [active, setActive] = useState(false);
   const [hide, setHide] = useDetectOutsideClick(dropdownRef, false);
-  let navBarRef = useRef();
+  const navBarRef = useRef();
   const handleClick = () => {
     setHide(!hide);
   };
@@ -37,14 +37,14 @@ const Career = () => {
           open={open}
           setOpen={setOpen}
           setData={setData}
-          page={"CareerPage"}
+          page="CareerPage"
           navBarRef={navBarRef}
         />
         <SidebarTwo
           open={open}
           setOpen={setOpen}
           links={links}
-          active={"Home"}
+          active="Home"
           handleClick={handleClick}
         />
         <section

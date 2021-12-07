@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-const Footer = () => {
+const Footer = function () {
   function scrollTop() {
     window.scrollTo(0, 0);
   }
@@ -29,7 +29,7 @@ const Footer = () => {
                         <a href="/learn-page">Learn</a>
                       </li>
                       <li>
-                        <a href="https://www.defisummer.org" target="_blank">
+                        <a href="https://www.defisummer.org" target="_blank" rel="noreferrer">
                           DefiSummer
                         </a>
                       </li>
@@ -85,7 +85,8 @@ const Footer = () => {
         <div className="site-footer__bottom">
           <div className="container">
             <p className="site-footer__copy">
-              &copy; Copyright 2021 by{" "}
+              &copy; Copyright 2021 by
+              {' '}
               <a href="#">Minority Programmers Association</a>
             </p>
             <div className="site-footer__social">
@@ -93,49 +94,54 @@ const Footer = () => {
                 onClick={scrollTop}
                 className="scroll-to-target site-footer__scroll-top"
               >
-                <i className="kipso-icon-top-arrow"></i>
+                <i className="kipso-icon-top-arrow" />
               </div>
-              <a href="https://twitter.com/minorityprogram" target="_blank">
-                <i className="fab fa-twitter"></i>
+              <a href="https://twitter.com/minorityprogram" target="_blank" rel="noreferrer">
+                <i className="fab fa-twitter" />
               </a>
               <a
                 href="https://www.facebook.com/MinorityProgrammers"
                 target="_blank"
+                rel="noreferrer"
               >
-                <i className="fab fa-facebook-square"></i>
+                <i className="fab fa-facebook-square" />
               </a>
               <a
                 href="https://linkedin.com/company/minority-programmers/"
                 target="_blank"
+                rel="noreferrer"
               >
-                <i className="fab fa-linkedin"></i>
+                <i className="fab fa-linkedin" />
               </a>
               <a
                 href="https://www.instagram.com/minorityprogrammers/"
                 target="_blank"
+                rel="noreferrer"
               >
-                <i className="fab fa-instagram"></i>
+                <i className="fab fa-instagram" />
               </a>
               <a
                 href="https://www.reddit.com/r/MinorityProgrammers"
                 target="_blank"
+                rel="noreferrer"
               >
-                <i className="fab fa-reddit"></i>
+                <i className="fab fa-reddit" />
               </a>
-              <a href="https://github.com/MinorityProgrammers/" target="_blank">
-                <i className="fab fa-github"></i>
+              <a href="https://github.com/MinorityProgrammers/" target="_blank" rel="noreferrer">
+                <i className="fab fa-github" />
               </a>
               <a
                 href="https://youtube.com/c/minorityprogrammers"
                 target="_blank"
+                rel="noreferrer"
               >
-                <i className="fab fa-youtube"></i>
+                <i className="fab fa-youtube" />
               </a>
-              <a href="https://medium.com/minority-programmers" target="_blank">
-                <i className="fab fa-medium"></i>
+              <a href="https://medium.com/minority-programmers" target="_blank" rel="noreferrer">
+                <i className="fab fa-medium" />
               </a>
-              <a href="https://t.me/minorityprogrammers" target="_blank">
-                <i className="fab fa-telegram"></i>
+              <a href="https://t.me/minorityprogrammers" target="_blank" rel="noreferrer">
+                <i className="fab fa-telegram" />
               </a>
             </div>
           </div>
@@ -143,7 +149,7 @@ const Footer = () => {
       </footer>
 
       <div className="search-popup">
-        <div className="search-popup__overlay custom-cursor__overlay search-overlay"></div>
+        <div className="search-popup__overlay custom-cursor__overlay search-overlay" />
         <div className="search-popup__inner">
           <form action="#" className="search-popup__form">
             <input
@@ -152,10 +158,10 @@ const Footer = () => {
               placeholder="Type here to Search...."
             />
             <button type="submit">
-              <i className="kipso-icon-magnifying-glass"></i>
+              <i className="kipso-icon-magnifying-glass" />
             </button>
             <div className="cancel">
-              <i className="fas fa-times-circle"></i>
+              <i className="fas fa-times-circle" />
             </div>
           </form>
         </div>

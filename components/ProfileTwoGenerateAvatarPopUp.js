@@ -1,13 +1,16 @@
-import React, { useState, useEffect, useContext } from "react";
-import ReactDOM from "react-dom";
-import FileSaver from "file-saver";
-import CreateProfileForm from "./CreateProfile/CreateProfileForm";
-import CreateProfileInput from "./CreateProfile/CreateProfileInput";
+import React, { useState, useEffect, useContext } from 'react';
+import ReactDOM from 'react-dom';
+import FileSaver from 'file-saver';
 import {
   AiFillCloseCircle,
   AiOutlineArrowLeft,
   AiOutlineArrowRight,
-} from "react-icons/ai";
+} from 'react-icons/ai';
+import Avatar from 'avataaars';
+import { CirclePicker } from 'react-color';
+import { useRouter } from 'next/router';
+import CreateProfileForm from './CreateProfile/CreateProfileForm';
+import CreateProfileInput from './CreateProfile/CreateProfileInput';
 import {
   topTypeField,
   accessoriesTypeField,
@@ -20,25 +23,22 @@ import {
   skinColorField,
   hairColorField,
   backgroundColorField,
-} from "../contexts/utils/avatarFields";
-import Avatar from "avataaars";
-import { CirclePicker } from "react-color";
-import { GlobalContext } from "../contexts/provider";
-import { updateProfile } from "../contexts/actions/profile/updateProfile";
-import { all } from "../contexts/utils/profileInputFields1";
-import { useRouter } from "next/router";
+} from '../contexts/utils/avatarFields';
+import { GlobalContext } from '../contexts/provider';
+import { updateProfile } from '../contexts/actions/profile/updateProfile';
+import { all } from '../contexts/utils/profileInputFields1';
 
-const ProfileTwoGenerateAvatarPopUp = ({
+const ProfileTwoGenerateAvatarPopUp = function ({
   loggedInUserData,
   userID,
   setGenerateAvatarPopUp,
-}) => {
+}) {
   const router = useRouter();
 
   const settingsSubPage = router.pathname.substring(
-    router.pathname.lastIndexOf("/") + 1
+    router.pathname.lastIndexOf('/') + 1,
   );
-  
+
   const [state, setState] = useState({
     avatarOptions: {
       topType: JSON.parse(loggedInUserData.avatarOptions[0]).topType,
@@ -64,16 +64,16 @@ const ProfileTwoGenerateAvatarPopUp = ({
   };
   const handleColorChange = (name, value) => {
     const colors = {
-      "#a55728": "Auburn",
-      "#2c1b18": "Black",
-      "#b58143": "Blonde",
-      "#d6b370": "BlondeGolden",
-      "#724133": "Brown",
-      "#4a312c": "BrownDark",
-      "#f59797": "PastelPink",
-      "#ecdcbf": "Platinum",
-      "#c93305": "Red",
-      "#e8e1e1": "SilverGray",
+      '#a55728': 'Auburn',
+      '#2c1b18': 'Black',
+      '#b58143': 'Blonde',
+      '#d6b370': 'BlondeGolden',
+      '#724133': 'Brown',
+      '#4a312c': 'BrownDark',
+      '#f59797': 'PastelPink',
+      '#ecdcbf': 'Platinum',
+      '#c93305': 'Red',
+      '#e8e1e1': 'SilverGray',
     };
     handleAvatarChange(name, colors[value] || value);
   };
@@ -85,23 +85,23 @@ const ProfileTwoGenerateAvatarPopUp = ({
   };
   const onDownloadSVG = () => {
     const data = getSVG();
-    const svg = new Blob([data], { type: "image/svg+xml" });
-    FileSaver.saveAs(svg, "avataaars.svg");
+    const svg = new Blob([data], { type: 'image/svg+xml' });
+    FileSaver.saveAs(svg, 'avataaars.svg');
   };
-  //ref https://stackoverflow.com/a/57154306
+  // ref https://stackoverflow.com/a/57154306
   const svgUrlToPng = (svgUrl, callback) => {
-    const svgImage = document.createElement("img");
+    const svgImage = document.createElement('img');
     svgImage.style.opacity = 0;
-    svgImage.style.position = "fixed";
+    svgImage.style.position = 'fixed';
     svgImage.style.top = 0;
     document.body.appendChild(svgImage);
     svgImage.onload = function () {
-      const canvas = document.createElement("canvas");
+      const canvas = document.createElement('canvas');
       canvas.width = svgImage.clientWidth;
       canvas.height = svgImage.clientHeight;
-      const canvasCtx = canvas.getContext("2d");
+      const canvasCtx = canvas.getContext('2d');
       canvasCtx.drawImage(svgImage, 0, 0);
-      const imgData = canvas.toDataURL("image/png");
+      const imgData = canvas.toDataURL('image/png');
       callback(imgData);
       // document.body.removeChild(imgPreview);
     };
@@ -109,17 +109,17 @@ const ProfileTwoGenerateAvatarPopUp = ({
   };
   const onDownloadPNG = () => {
     const data = getSVG();
-    const svg = new Blob([data], { type: "image/svg+xml" });
+    const svg = new Blob([data], { type: 'image/svg+xml' });
     const svgURL = URL.createObjectURL(svg);
     svgUrlToPng(svgURL, (imgData) => {
-      FileSaver.saveAs(imgData, "avataaars.png");
+      FileSaver.saveAs(imgData, 'avataaars.png');
     });
   };
 
   // handle change for avatar fields
   useEffect(() => {
     const data = getSVG();
-    const svg = new Blob([data], { type: "image/svg+xml" });
+    const svg = new Blob([data], { type: 'image/svg+xml' });
     const svgURL = URL.createObjectURL(svg);
     svgUrlToPng(svgURL, (imgData) => {
       setState((prevState) => ({
@@ -133,23 +133,25 @@ const ProfileTwoGenerateAvatarPopUp = ({
   const {
     profileDispatch,
     profileState: {
-      profile: { profileLoading, profileError, profileData, profileIsUpdated },
+      profile: {
+        profileLoading, profileError, profileData, profileIsUpdated,
+      },
     },
   } = useContext(GlobalContext);
 
   // console.log(state)
   const handleSubmit = () => {
     const formData = new FormData();
-    formData.append("avatarOptions", JSON.stringify(state.avatarOptions));
-    formData.append("profilePicture", state.profilePicture);
+    formData.append('avatarOptions', JSON.stringify(state.avatarOptions));
+    formData.append('profilePicture', state.profilePicture);
     // submit all data
     updateProfile(userID, formData)(profileDispatch);
   };
 
   const submitData = () => {
-    //update userData
+    // update userData
     const data = getSVG();
-    const svg = new Blob([data], { type: "image/svg+xml" });
+    const svg = new Blob([data], { type: 'image/svg+xml' });
     const svgURL = URL.createObjectURL(svg);
     setState((prevState) => ({
       ...prevState,
@@ -159,7 +161,7 @@ const ProfileTwoGenerateAvatarPopUp = ({
     setGenerateAvatarPopUp(false);
     // console.log(settingsSubPage, "submit and redirect");
     router.push(`/user/${loggedInUserData.userName}`);
-    settingsSubPage === "[username]" && router.reload();
+    settingsSubPage === '[username]' && router.reload();
   };
 
   // console.log(JSON.parse(loggedInUserData.avatarOptions[0]))
@@ -170,7 +172,7 @@ const ProfileTwoGenerateAvatarPopUp = ({
       <AiFillCloseCircle
         className="cp-close"
         onClick={() => setGenerateAvatarPopUp(false)}
-        style={{ cursor: "pointer" }}
+        style={{ cursor: 'pointer' }}
       />
       <div className="cp-top">
         <h1>Ready to make your avatar?</h1>
@@ -178,36 +180,36 @@ const ProfileTwoGenerateAvatarPopUp = ({
       </div>
       <CreateProfileForm>
         <div className="cp-formGrid">
-            <CreateProfileInput
-              name={backgroundColorField.name}
-              type={backgroundColorField.type}
-              label={backgroundColorField.label}
-              options={backgroundColorField.options}
-              required={backgroundColorField.required}
-              value={state.avatarOptions[backgroundColorField.name]}
-              setValue={(value) => handleColorChange(backgroundColorField.name, value)}
-              />
+          <CreateProfileInput
+            name={backgroundColorField.name}
+            type={backgroundColorField.type}
+            label={backgroundColorField.label}
+            options={backgroundColorField.options}
+            required={backgroundColorField.required}
+            value={state.avatarOptions[backgroundColorField.name]}
+            setValue={(value) => handleColorChange(backgroundColorField.name, value)}
+          />
           <div className="avatarReplace">
             <Avatar
               style={{
-                width: "250px",
-                height: "250px",
-                background: state.avatarOptions.backgroundColor || "#fff",
-                borderRadius: "100%",
+                width: '250px',
+                height: '250px',
+                background: state.avatarOptions.backgroundColor || '#fff',
+                borderRadius: '100%',
               }}
               ref={(ref) => (avatarRef = ref)}
               {...state.avatarOptions}
             />
           </div>
-            <CreateProfileInput
-              name={hairColorField.name}
-              type={hairColorField.type}
-              label={hairColorField.label}
-              options={hairColorField.options}
-              required={hairColorField.required}
-              value={state.avatarOptions[hairColorField.name]}
-              setValue={(value) => handleColorChange(hairColorField.name, value)}
-            />
+          <CreateProfileInput
+            name={hairColorField.name}
+            type={hairColorField.type}
+            label={hairColorField.label}
+            options={hairColorField.options}
+            required={hairColorField.required}
+            value={state.avatarOptions[hairColorField.name]}
+            setValue={(value) => handleColorChange(hairColorField.name, value)}
+          />
           {[
             topTypeField,
             accessoriesTypeField,

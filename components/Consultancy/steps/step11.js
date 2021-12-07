@@ -1,32 +1,31 @@
-import { useEffect } from "react";
-import { Fragment } from "react";
-import BlurBackground from "../helperFiles/blurBackground";
-import NeedHelp from "../helperFiles/needHelp";
-import OverlayCard from "../helperFiles/overlayCard";
-import QuestionContainer from "../helperFiles/questionContainer";
+import { useEffect, Fragment } from 'react';
+import BlurBackground from '../helperFiles/blurBackground';
+import NeedHelp from '../helperFiles/needHelp';
+import OverlayCard from '../helperFiles/overlayCard';
+import QuestionContainer from '../helperFiles/questionContainer';
 
-function Page11({
+const Page11 = function ({
   step,
   localStorageConsultancyKey,
   localStorageStepKey,
   setstep,
   setQuestions,
 }) {
-  const paymentReceived = "$XX.00";
-  const projectId = "XXALD4";
-  const transactionId = "58";
-  const date = new Date().toLocaleDateString().replaceAll("/", ".");
+  const paymentReceived = '$XX.00';
+  const projectId = 'XXALD4';
+  const transactionId = '58';
+  const date = new Date().toLocaleDateString().replaceAll('/', '.');
   useEffect(() => {
     window.localStorage.removeItem(localStorageStepKey);
     window.localStorage.removeItem(localStorageConsultancyKey);
   }, []);
   return (
-    <Fragment>
+    <>
       <QuestionContainer
         marginBottom="1rem"
         step={step}
         id="page11"
-        keepingUpMarginTop={"5rem"}
+        keepingUpMarginTop="5rem"
       >
         <div className="body">
           <div className="wrap-pad">
@@ -36,30 +35,46 @@ function Page11({
             </h1>
             <section className="thank-you">
               <span>
-                <span className="pink">Thank you!</span> Your payment of{" "}
-                {paymentReceived} has been received.
+                <span className="pink">Thank you!</span>
+                {' '}
+                Your payment of
+                {' '}
+                {paymentReceived}
+                {' '}
+                has been received.
               </span>
             </section>
             <section className="payment-detail">
-              Project ID: {projectId} / Transaction ID: #{transactionId} / Date:{" "}
+              Project ID:
+              {' '}
+              {projectId}
+              {' '}
+              / Transaction ID: #
+              {transactionId}
+              {' '}
+              / Date:
+              {' '}
               {date}
             </section>
             <article className="response-info">
               <div>
-                {" "}
-                Please allow upto <span className="blue">
+                {' '}
+                Please allow upto
+                {' '}
+                <span className="blue">
                   5 business days
-                </span>{" "}
+                </span>
+                {' '}
                 for an MPA project manager to take charge of your project. You
                 will be notified and he will be in touch with you.
               </div>
               <a href="/">
                 <button
                   style={{
-                    marginRight: "2rem",
-                    color: "var(--mpa-navy)",
-                    background: "white",
-                    border: "1px solid var(--mpa-navy)",
+                    marginRight: '2rem',
+                    color: 'var(--mpa-navy)',
+                    background: 'white',
+                    border: '1px solid var(--mpa-navy)',
                   }}
                 >
                   Back to Home
@@ -79,14 +94,17 @@ function Page11({
             </article>
           </div>
           <div className="response-time">
-            *Project Managers generally take{" "}
-            <span className="bold">1-2 weeks</span> to prepare a quote.
+            *Project Managers generally take
+            {' '}
+            <span className="bold">1-2 weeks</span>
+            {' '}
+            to prepare a quote.
           </div>
         </div>
       </QuestionContainer>
 
       <NeedHelp />
-    </Fragment>
+    </>
   );
-}
+};
 export default Page11;

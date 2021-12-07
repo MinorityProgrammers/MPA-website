@@ -1,13 +1,14 @@
-import Layout from "../components/Layout";
-import NotFound from "../components/404";
-import React, { useState, useRef } from "react";
-import HomepageNav from "../components/HomepageNav";
-import { useDetectOutsideClick } from "../components/UseDetectOutsideClick";
-import Footer from "../components/Footer";
-const NotFoundPage = () => {
+import React, { useState, useRef } from 'react';
+import Layout from '../components/Layout';
+import NotFound from '../components/404';
+import HomepageNav from '../components/HomepageNav';
+import { useDetectOutsideClick } from '../components/UseDetectOutsideClick';
+import Footer from '../components/Footer';
+
+const NotFoundPage = function () {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef(null);
-  let navBarRef = useRef();
+  const navBarRef = useRef();
   const [hide, setHide] = useDetectOutsideClick(dropdownRef, true);
 
   if (hide == false) {
@@ -26,7 +27,7 @@ const NotFoundPage = () => {
             background: `linear-gradient(
             104.61deg
             , #FF00B8 2.65%, #FF655B 51.83%, #FFC700 100%);`,
-            boxShadow: "0 4px 16px rgba(0,0,0,0.3)",
+            boxShadow: '0 4px 16px rgba(0,0,0,0.3)',
           }}
           navBarRef={navBarRef}
         />

@@ -1,57 +1,59 @@
-import { useState, useRef, useEffect } from "react";
-import TagInput from "../helperFiles/customInputTags/tagInput";
-import QuestionContainer from "../helperFiles/questionContainer";
-import { useDefaultValue } from "../helperFiles/getDefaultValue";
-import addQuestion from "../helperFiles/addQuestion";
-import ErrorPrint from "../helperFiles/errorPrint";
+import { useState, useRef, useEffect } from 'react';
+import TagInput from '../helperFiles/customInputTags/tagInput';
+import QuestionContainer from '../helperFiles/questionContainer';
+import { useDefaultValue } from '../helperFiles/getDefaultValue';
+import addQuestion from '../helperFiles/addQuestion';
+import ErrorPrint from '../helperFiles/errorPrint';
 
-function Page5({ step, setstep, questions, setQuestions }) {
+const Page5 = function ({
+  step, setstep, questions, setQuestions,
+}) {
   const minimumChar = 150;
-  //get default values
+  // get default values
   const defaultProjectDetail = useDefaultValue(questions, step, 0);
   const defaultInspitation = useDefaultValue(questions, step, 1);
   const defaultTags = useDefaultValue(questions, step, 2);
   console.log(defaultProjectDetail, defaultTags, defaultTags);
-  //all question
-  const question1 = "Project details";
-  const question2 = "Any inspiration websites?";
-  const question3 = "Any preferred tech stack?";
-  const question3Placeholder1 = "Please enter to add front end tag.";
-  const question3Placeholder2 = "Please enter to add development tag.";
-  const question3Placeholder3 = "Please enter to add back end tag.";
-  const question3Placeholder4 = "Please enter to add UI UX tag.";
-  const question3Placeholder5 = "Please enter to add blockchain tag.";
-  //references for the inputs
+  // all question
+  const question1 = 'Project details';
+  const question2 = 'Any inspiration websites?';
+  const question3 = 'Any preferred tech stack?';
+  const question3Placeholder1 = 'Please enter to add front end tag.';
+  const question3Placeholder2 = 'Please enter to add development tag.';
+  const question3Placeholder3 = 'Please enter to add back end tag.';
+  const question3Placeholder4 = 'Please enter to add UI UX tag.';
+  const question3Placeholder5 = 'Please enter to add blockchain tag.';
+  // references for the inputs
   const projectDetails = useRef();
   const inspirationLink = useRef();
-  //should print error message?
+  // should print error message?
   const [errorMessage, setErrorMessage] = useState(undefined);
-  //states for my tag inputs
+  // states for my tag inputs
   const [listOfTagsA, updateListOfTagsA] = useState(
-    defaultTags ? defaultTags[0] : []
+    defaultTags ? defaultTags[0] : [],
   );
   const [listOfTagsB, updateListOfTagsB] = useState(
-    defaultTags ? defaultTags[1] : []
+    defaultTags ? defaultTags[1] : [],
   );
   const [listOfTagsC, updateListOfTagsC] = useState(
-    defaultTags ? defaultTags[2] : []
+    defaultTags ? defaultTags[2] : [],
   );
   const [listOfTagsD, updateListOfTagsD] = useState(
-    defaultTags ? defaultTags[3] : []
+    defaultTags ? defaultTags[3] : [],
   );
   const [listOfTagsE, updateListOfTagsE] = useState(
-    defaultTags ? defaultTags[4] : []
+    defaultTags ? defaultTags[4] : [],
   );
 
   function addToQuestion() {
     addQuestion(setQuestions, step, [
       {
         question: question1,
-        answer: projectDetails.current ? projectDetails.current.value : "",
+        answer: projectDetails.current ? projectDetails.current.value : '',
       },
       {
         question: question2,
-        answer: inspirationLink.current ? inspirationLink.current.value : "",
+        answer: inspirationLink.current ? inspirationLink.current.value : '',
       },
       {
         question: question3,
@@ -65,19 +67,19 @@ function Page5({ step, setstep, questions, setQuestions }) {
       },
     ]);
   }
-  //error messsage reporting
+  // error messsage reporting
   function setInvalidMessage() {
     setErrorMessage([
       `This field must have a minimum of ${
-        minimumChar -
-        (projectDetails.current ? projectDetails.current.value.length : 0)
+        minimumChar
+        - (projectDetails.current ? projectDetails.current.value.length : 0)
       } character(s)`,
     ]);
   }
   function ValidateCompulsoryMessage() {
     return (
-      projectDetails.current &&
-      projectDetails.current.value.length >= minimumChar
+      projectDetails.current
+      && projectDetails.current.value.length >= minimumChar
     );
   }
   function nextPage() {
@@ -97,7 +99,7 @@ function Page5({ step, setstep, questions, setQuestions }) {
       }
     }
   }
-  //end of error message reporting
+  // end of error message reporting
   function prevPage() {
     addToQuestion();
     setstep((prev) => prev - 1);
@@ -118,18 +120,21 @@ function Page5({ step, setstep, questions, setQuestions }) {
     >
       <div className="flex-row">
         <section className="space1">
-          <label htmlFor="page5-textarea">* {question1}</label>
+          <label htmlFor="page5-textarea">
+            *
+            {question1}
+          </label>
           <textarea
             id="page5-textarea"
             className="page5-textarea"
             placeholder="Briefly explain your project idea."
             ref={projectDetails}
-            defaultValue={defaultProjectDetail ? defaultProjectDetail : ""}
+            defaultValue={defaultProjectDetail || ''}
             onChange={(e) => {
               addToQuestion();
               onChange(e);
             }}
-          ></textarea>
+          />
           {errorMessage ? <ErrorPrint errors={errorMessage} /> : null}
         </section>
         <section className="space2">
@@ -140,12 +145,12 @@ function Page5({ step, setstep, questions, setQuestions }) {
             type="text"
             id="page5-input"
             ref={inspirationLink}
-            defaultValue={defaultInspitation ? defaultInspitation : ""}
+            defaultValue={defaultInspitation || ''}
             onChange={(e) => {
               addToQuestion();
             }}
           />
-          <label htmlFor="" style={{ marginTop: "2rem" }}>
+          <label htmlFor="" style={{ marginTop: '2rem' }}>
             {question3}
           </label>
           {/* all tag input */}
@@ -189,5 +194,5 @@ function Page5({ step, setstep, questions, setQuestions }) {
       </div>
     </QuestionContainer>
   );
-}
+};
 export default Page5;

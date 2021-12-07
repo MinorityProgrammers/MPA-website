@@ -1,12 +1,15 @@
-import React from "react";
+import React from 'react';
 
-const BlogThree = () => {
+const BlogThree = function () {
   return (
     <section className="blog-one  blog-one__home-two">
       <div className="container">
         <div className="block-title text-center">
           <h2 className="block-title__title">
-            Our latest news <br />& articles
+            Our latest news
+            {' '}
+            <br />
+            & articles
           </h2>
         </div>
         <div className="row">
@@ -15,7 +18,7 @@ const BlogThree = () => {
               <div className="blog-one__image">
                 <img src="/assets/images/blog-1-1.jpg" alt="" />
                 <a className="blog-one__plus" href="news-details.html">
-                  <i className="kipso-icon-plus-symbol"></i>
+                  <i className="kipso-icon-plus-symbol" />
                 </a>
               </div>
               <div className="blog-one__content text-center">
@@ -26,7 +29,7 @@ const BlogThree = () => {
                     title="Posted On Jan 19"
                     href="#"
                   >
-                    <i className="fa fa-calendar-alt"></i>
+                    <i className="fa fa-calendar-alt" />
                   </a>
                   <a
                     data-toggle="tooltip"
@@ -34,7 +37,7 @@ const BlogThree = () => {
                     title="No Comments"
                     href="#"
                   >
-                    <i className="fa fa-comments"></i>
+                    <i className="fa fa-comments" />
                   </a>
                   <a
                     data-toggle="tooltip"
@@ -42,7 +45,7 @@ const BlogThree = () => {
                     title="Posted By Admin"
                     href="#"
                   >
-                    <i className="fa fa-user"></i>
+                    <i className="fa fa-user" />
                   </a>
                 </div>
                 <h2 className="blog-one__title">
@@ -62,7 +65,7 @@ const BlogThree = () => {
               <div className="blog-one__image">
                 <img src="/assets/images/blog-1-2.jpg" alt="" />
                 <a className="blog-one__plus" href="news-details.html">
-                  <i className="kipso-icon-plus-symbol"></i>
+                  <i className="kipso-icon-plus-symbol" />
                 </a>
               </div>
               <div className="blog-one__content text-center">
@@ -73,7 +76,7 @@ const BlogThree = () => {
                     title="Posted On Jan 19"
                     href="#"
                   >
-                    <i className="fa fa-calendar-alt"></i>
+                    <i className="fa fa-calendar-alt" />
                   </a>
                   <a
                     data-toggle="tooltip"
@@ -81,7 +84,7 @@ const BlogThree = () => {
                     title="No Comments"
                     href="#"
                   >
-                    <i className="fa fa-comments"></i>
+                    <i className="fa fa-comments" />
                   </a>
                   <a
                     data-toggle="tooltip"
@@ -89,7 +92,7 @@ const BlogThree = () => {
                     title="Posted By Admin"
                     href="#"
                   >
-                    <i className="fa fa-user"></i>
+                    <i className="fa fa-user" />
                   </a>
                 </div>
                 <h2 className="blog-one__title">
@@ -111,7 +114,7 @@ const BlogThree = () => {
               <div className="blog-one__image">
                 <img src="/assets/images/blog-1-3.jpg" alt="" />
                 <a className="blog-one__plus" href="news-details.html">
-                  <i className="kipso-icon-plus-symbol"></i>
+                  <i className="kipso-icon-plus-symbol" />
                 </a>
               </div>
               <div className="blog-one__content text-center">
@@ -122,7 +125,7 @@ const BlogThree = () => {
                     title="Posted On Jan 19"
                     href="#"
                   >
-                    <i className="fa fa-calendar-alt"></i>
+                    <i className="fa fa-calendar-alt" />
                   </a>
                   <a
                     data-toggle="tooltip"
@@ -130,7 +133,7 @@ const BlogThree = () => {
                     title="No Comments"
                     href="#"
                   >
-                    <i className="fa fa-comments"></i>
+                    <i className="fa fa-comments" />
                   </a>
                   <a
                     data-toggle="tooltip"
@@ -138,7 +141,7 @@ const BlogThree = () => {
                     title="Posted By Admin"
                     href="#"
                   >
-                    <i className="fa fa-user"></i>
+                    <i className="fa fa-user" />
                   </a>
                 </div>
                 <h2 className="blog-one__title">
@@ -146,7 +149,7 @@ const BlogThree = () => {
                     Learn in our bootcamp, incubator, accelerator programs
                   </a>
                 </h2>
-                <p className="blog-one__text"></p>
+                <p className="blog-one__text" />
                 <a href="news-details.html" className="blog-one__link">
                   Learn Today
                 </a>

@@ -1,8 +1,8 @@
-import { useEffect } from "react";
-import Buttons from "./buttons";
-import KeepingUpWithStep from "./keepingUpWithStep";
+import { useEffect } from 'react';
+import Buttons from './buttons';
+import KeepingUpWithStep from './keepingUpWithStep';
 
-function QuestionContainer({
+const QuestionContainer = function ({
   children,
   left,
   right,
@@ -11,8 +11,8 @@ function QuestionContainer({
   minus,
   step,
   style,
-  className = "",
-  id = "",
+  className = '',
+  id = '',
   customPlusText,
   keepingUpMarginTop,
 }) {
@@ -34,7 +34,7 @@ function QuestionContainer({
   return (
     <div
       className={`service_container ${className}`}
-      style={{ ...style, marginTop: "2rem" }}
+      style={{ ...style, marginTop: '2rem' }}
       id={id}
     >
       <div className="questions">
@@ -51,5 +51,5 @@ function QuestionContainer({
       </div>
     </div>
   );
-}
+};
 export default QuestionContainer;

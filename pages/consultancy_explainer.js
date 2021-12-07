@@ -1,12 +1,12 @@
-import React, { useState, useRef, useEffect } from "react";
-import HomepageNav from "../components/HomepageNav";
-import ConsultancyHero from "../components/Consultancy/ConsultancyHero";
-import ConsultancyHomeExplainer from "../components/Consultancy/ConsultancyHomeExplainer";
-import Footer from "../components/Footer";
-import { useDetectOutsideClick } from "../components/UseDetectOutsideClick";
-import Layout from "../components/Layout";
-import SidebarTwo from "../components/SidebarTwo";
-import links from "../contexts/utils/links";
+import React, { useState, useRef, useEffect } from 'react';
+import HomepageNav from '../components/HomepageNav';
+import ConsultancyHero from '../components/Consultancy/ConsultancyHero';
+import ConsultancyHomeExplainer from '../components/Consultancy/ConsultancyHomeExplainer';
+import Footer from '../components/Footer';
+import { useDetectOutsideClick } from '../components/UseDetectOutsideClick';
+import Layout from '../components/Layout';
+import SidebarTwo from '../components/SidebarTwo';
+import links from '../contexts/utils/links';
 
 const consultancy = () => {
   const [open, setOpen] = useState(false);
@@ -38,13 +38,13 @@ const consultancy = () => {
           open={open}
           setOpen={setOpen}
           setData={setData}
-          page={"MentorshipProgram"}
+          page="MentorshipProgram"
         />
         <SidebarTwo
           open={open}
           setOpen={setOpen}
           links={links}
-          active={"Home"}
+          active="Home"
           handleClick={handleClick}
         />
         <ConsultancyHero />

@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-const CourseCatThree = () => {
+const CourseCatThree = function () {
   return (
     <section className="course-category-three">
       <img
@@ -11,7 +11,9 @@ const CourseCatThree = () => {
       <div className="container">
         <div className="block-title">
           <h2 className="block-title__title">
-            Browse online <br />
+            Browse online
+            {' '}
+            <br />
             course categories
           </h2>
         </div>

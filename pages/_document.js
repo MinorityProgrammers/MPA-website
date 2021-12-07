@@ -1,4 +1,6 @@
-import Document, { Html, Head, Main, NextScript } from "next/document";
+import Document, {
+  Html, Head, Main, NextScript,
+} from 'next/document';
 
 export default class MyDocument extends Document {
   render() {
@@ -47,7 +49,7 @@ export default class MyDocument extends Document {
               </iframe>
           `,
             }}
-          ></noscript>
+          />
           <script
             dangerouslySetInnerHTML={{
               __html: ` window.watsonAssistantChatOptions = {
@@ -62,7 +64,7 @@ export default class MyDocument extends Document {
               document.head.appendChild(t);
             });`,
             }}
-          ></script>
+          />
           <Main />
           <NextScript />
         </body>

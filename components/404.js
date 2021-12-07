@@ -1,14 +1,13 @@
-import React from "react";
-import Link from "next/link";
-import { useEffect } from "react";
-import { useRouter } from "next/router";
+import React, { useEffect } from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
-const NotFound = () => {
+const NotFound = function () {
   const router = useRouter();
-  //Redirects to homepage after 3 sec.
+  // Redirects to homepage after 3 sec.
   useEffect(() => {
     const timer = setTimeout(() => {
-      router.push("/");
+      router.push('/');
     }, 5000);
     return () => clearTimeout(timer);
   }, []);
@@ -24,7 +23,7 @@ const NotFound = () => {
           </p>
           <p
             className="small-404-text"
-            style={{ marginBottom: "0.5rem", fontWeight: "bold" }}
+            style={{ marginBottom: '0.5rem', fontWeight: 'bold' }}
           >
             Error code: 404
           </p>

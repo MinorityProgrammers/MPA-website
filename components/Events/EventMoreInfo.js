@@ -1,307 +1,327 @@
 import React, { useState, useEffect } from 'react';
-import Link from 'next/link'
-import { useRouter } from 'next/router'
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 import Moment from 'moment';
 import axios from 'axios';
-import { successToast, errorToast } from '../../contexts/utils/toasts'
 import {
   EmailShareButton,
   FacebookShareButton,
   LinkedinShareButton,
   TelegramShareButton,
   TwitterShareButton,
-  WhatsappShareButton
-} from "react-share";
+  WhatsappShareButton,
+} from 'react-share';
+import { successToast, errorToast } from '../../contexts/utils/toasts';
 
-const EventMoreInfo = (props) => {
-  const router = useRouter()
-  const { clickRegister, setClickRegister, active, userData, token, attended, userSavedEvents, allsavedEvents, createEventData, eventDateTime, allEvent,getUserSavedEvents } = props;
-  const [loading, setLoading] = useState(false)
-  const [selectedEvent, setSelectedEvent] = useState([])
-  let dateNow = Date.now();
-  let eventTime = new Date(props.data.time).getTime()
+const EventMoreInfo = function (props) {
+  const router = useRouter();
+  const {
+    clickRegister, setClickRegister, active, userData, token, attended, userSavedEvents, allsavedEvents, createEventData, eventDateTime, allEvent, getUserSavedEvents,
+  } = props;
+  const [loading, setLoading] = useState(false);
+  const [selectedEvent, setSelectedEvent] = useState([]);
+  const dateNow = Date.now();
+  const eventTime = new Date(props.data.time).getTime();
 
-  console.log("props eventInfo", props.data)
-  console.log("allEvent eventInfo", allEvent)
-  console.log("userSavedEvents from EventMoreInfo", userSavedEvents)
+  console.log('props eventInfo', props.data);
+  console.log('allEvent eventInfo', allEvent);
+  console.log('userSavedEvents from EventMoreInfo', userSavedEvents);
 
   const shareUrl = `${props.data.eventLink}`;
   const title = `${props.data.eventName}`;
 
-
-  const eventStatus = userSavedEvents.filter(user => user.event_id?._id === props.data._id).map(x => (
+  const eventStatus = userSavedEvents.filter((user) => user.event_id?._id === props.data._id).map((x) => (
     <li className="event-status-yes">{x.attending}</li>
-  ))
+  ));
 
-  const Capitalize = (str) => {
-    return str.charAt(0).toUpperCase() + str.slice(1);
-  };
+  const Capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
 
   // Check saveEvents to change label
   const checkSaveEvent = (val) => {
-    if (val === "Register") {
+    if (val === 'Register') {
       for (let i = 0; i < userSavedEvents.length; i++) {
-        if (userSavedEvents[i].event_id?._id === props.data._id || userSavedEvents !== null && attended.attending === "yes") {
-          //console.log("cancel", userSavedEvents[i]._id)
-          return <button className="button_action" onClick={(e) => cancelRegister(e, userSavedEvents[i]._id, token)}>Cancel Registration</button>
+        if (userSavedEvents[i].event_id?._id === props.data._id || userSavedEvents !== null && attended.attending === 'yes') {
+          // console.log("cancel", userSavedEvents[i]._id)
+          return <button className="button_action" onClick={(e) => cancelRegister(e, userSavedEvents[i]._id, token)}>Cancel Registration</button>;
         }
       }
-    } else if (val === "attendance") {
+    } else if (val === 'attendance') {
       for (let i = 0; i < userSavedEvents.length; i++) {
-        if (userSavedEvents[i].event_id._id === props.data._id || userSavedEvents !== null && attended.attending === "yes") {
-          //console.log("true attendance", userSavedEvents[i].event_id._id)
-          return <p>{" "}</p>
+        if (userSavedEvents[i].event_id._id === props.data._id || userSavedEvents !== null && attended.attending === 'yes') {
+          // console.log("true attendance", userSavedEvents[i].event_id._id)
+          return <p>{' '}</p>;
         }
       }
     }
-  }
+  };
 
   const checkRegister = (e, status) => {
     e.preventDefault();
     if (clickRegister === false && active === false) {
-      setClickRegister(true)
-      //console.log("event card", clickRegister)
+      setClickRegister(true);
+      // console.log("event card", clickRegister)
     } else if (active === true && userData !== null) {
-      setLoading(true)
+      setLoading(true);
       axios.post('https://koinstreet-learn-api.herokuapp.com/api/v1/saveEvent', {
         event_id: props.data._id,
         user_id: userData._id,
-        attending: `${status}`
+        attending: `${status}`,
       }, {
         headers: {
           'Content-Type': 'application/json',
-          'Accept': 'application/json',
-          'Authorization': `Bearer ${token}`,
+          Accept: 'application/json',
+          Authorization: `Bearer ${token}`,
         },
       })
-        .then(res => {
-          console.log("register:", res)
-          setLoading(false)
-          successToast("You are registered!")
-          getUserSavedEvents()
+        .then((res) => {
+          console.log('register:', res);
+          setLoading(false);
+          successToast('You are registered!');
+          getUserSavedEvents();
           // setTimeout("location.reload(true);", 2000);
         })
-        .catch(err => {
-          console.log(err)
-          setLoading(false)
-          errorToast("Something went wrong, please contact us.")
-        })
+        .catch((err) => {
+          console.log(err);
+          setLoading(false);
+          errorToast('Something went wrong, please contact us.');
+        });
     }
-  }
+  };
 
   const cancelRegister = (e, eventId, token) => {
     e.preventDefault();
     if (clickRegister === false && active === false) {
-      setClickRegister(true)
-      //console.log("event card", clickRegister)
+      setClickRegister(true);
+      // console.log("event card", clickRegister)
     } else if (active === true && userData !== null) {
       axios.delete(`https://koinstreet-learn-api.herokuapp.com/api/v1/saveEvent/${eventId}`, {
         headers: {
           'Content-Type': 'application/json',
-          'Accept': 'application/json',
-          'Authorization': `Bearer ${token}`,
+          Accept: 'application/json',
+          Authorization: `Bearer ${token}`,
         },
       })
-        .then(res => {
-          console.log("cancel:", res)
-          setLoading(false)
-          successToast("removed event")
-          getUserSavedEvents()
+        .then((res) => {
+          console.log('cancel:', res);
+          setLoading(false);
+          successToast('removed event');
+          getUserSavedEvents();
           // setTimeout("location.reload(true);", 2000);
         })
-        .catch(err => {
-          console.log(err)
-          setLoading(false)
-          errorToast("Something went wrong, please contact us.")
-        })
+        .catch((err) => {
+          console.log(err);
+          setLoading(false);
+          errorToast('Something went wrong, please contact us.');
+        });
     }
-  }
+  };
 
   const getSelectedEvent = () => {
     for (let i = 0; i < userSavedEvents.length; i++) {
       if (userSavedEvents[i].event_id?._id === props.data._id) {
-        setSelectedEvent(userSavedEvents[i])
+        setSelectedEvent(userSavedEvents[i]);
       }
     }
-    return selectedEvent
-  }
+    return selectedEvent;
+  };
 
   const changeStatusApi = (e, token, savedEventId, eventId, userId, attendingStatus) => {
-    e.preventDefault()
-    let data = {
+    e.preventDefault();
+    const data = {
       event_id: eventId,
       user_id: userId,
-      attending: `${attendingStatus}`
-    }
-    console.log(savedEventId, eventId, userId, attendingStatus)
+      attending: `${attendingStatus}`,
+    };
+    console.log(savedEventId, eventId, userId, attendingStatus);
     axios.patch(`https://koinstreet-learn-api.herokuapp.com/api/v1/saveEvent/${savedEventId}`, data, {
       headers: {
         'Content-Type': 'application/json',
-        'Accept': 'application/json',
-        'Authorization': `Bearer ${token}`,
+        Accept: 'application/json',
+        Authorization: `Bearer ${token}`,
       },
     })
-      .then(res => {
-        console.log("Changed status", res)
-        setLoading(false)
-        successToast(`Attending status: ${attendingStatus}`)
-        getUserSavedEvents()
+      .then((res) => {
+        console.log('Changed status', res);
+        setLoading(false);
+        successToast(`Attending status: ${attendingStatus}`);
+        getUserSavedEvents();
         // setTimeout("location.reload(true);", 2000);
       })
-      .catch(err => {
-        console.log(err.response.data)
-        setLoading(false)
-        errorToast(`Cannot change status to ${attendingStatus} Something went wrong, please contact us.`)
-      })
-  }
+      .catch((err) => {
+        console.log(err.response.data);
+        setLoading(false);
+        errorToast(`Cannot change status to ${attendingStatus} Something went wrong, please contact us.`);
+      });
+  };
 
   useEffect(() => {
-    let isMount = true
-    getSelectedEvent()
+    let isMount = true;
+    getSelectedEvent();
     return () => {
-      isMount = false
-    }
-  }, [])
+      isMount = false;
+    };
+  }, []);
 
-  //console.log("selectedevent", selectedEvent)
+  // console.log("selectedevent", selectedEvent)
 
   const changeStatus = (e, event, status) => {
     e.preventDefault();
     if (clickRegister === false && active === false) {
-      setClickRegister(true)
+      setClickRegister(true);
     } else if (active === true && userData !== null) {
-      if (!userSavedEvents.includes(event) && status !== "no") {
-        checkRegister(e, "yes")
+      if (!userSavedEvents.includes(event) && status !== 'no') {
+        checkRegister(e, 'yes');
       }
       if (userSavedEvents.includes(event)) {
         if (status === 'yes') {
-          changeStatusApi(e, token, event._id, props.data._id, userData._id, status)
+          changeStatusApi(e, token, event._id, props.data._id, userData._id, status);
         } else if (status === 'no') {
-          cancelRegister(e, event._id, token)
+          cancelRegister(e, event._id, token);
         } else if (status === 'maybe') {
-          changeStatusApi(e, token, event._id, props.data._id, userData._id, status)
+          changeStatusApi(e, token, event._id, props.data._id, userData._id, status);
         }
       }
     }
-  }
+  };
 
   let count = 0;
   const totalAttendees = (eventId) => {
     for (let i = 0; i < allsavedEvents.length; i++) {
       if (allsavedEvents[i].event_id !== null) {
-        if (allsavedEvents[i].attending === "yes" && allsavedEvents[i].event_id._id === eventId) {
-          count++
+        if (allsavedEvents[i].attending === 'yes' && allsavedEvents[i].event_id._id === eventId) {
+          count++;
         }
       }
     }
-    return count
-  }
+    return count;
+  };
 
-  let label
-  let exportButton
-  let catName
-  let Virtual
+  let label;
+  let exportButton;
+  let catName;
+  let Virtual;
   if (props.data.catName.label) {
-    catName = props.data.catName.label
-  }
-  else {
-    catName = props.data.catName
-
+    catName = props.data.catName.label;
+  } else {
+    catName = props.data.catName;
   }
   if (props.data.Virtual.label) {
-    Virtual = props.data.Virtual.value
+    Virtual = props.data.Virtual.value;
+  } else {
+    Virtual = props.data.Virtual;
   }
-  else {
-    Virtual = props.data.Virtual
-  }
-  const labelTitle = catName.toLowerCase()
+  const labelTitle = catName.toLowerCase();
   if (labelTitle == 'lecture' || labelTitle == 'webinar') {
-    label = <p className="about_header-label about_header-label-first">
-      {Capitalize(catName)}
-    </p>
-    exportButton = <button className="eventmoreinfo_export eventmoreinfo_export-first">Export Event To Calendar</button>
-  }
-  else if (labelTitle == 'workshop' || labelTitle == 'conference') {
-    label = <p className="about_header-label about_header-label-second">
-      {Capitalize(catName)}
-    </p>
-    exportButton = <button className="eventmoreinfo_export eventmoreinfo_export-second">Export Event To Calendar</button>
-  }
-  else if (labelTitle == 'hackathon') {
-    label = <p className="about_header-label about_header-label-third">
-      {Capitalize(catName)}
-    </p>
-    exportButton = <button className="eventmoreinfo_export eventmoreinfo_export-third">Export Event To Calendar</button>
-  }
-  else if (labelTitle == 'incubator' || labelTitle == 'accelerator') {
-    label = <p className="about_header-label about_header-label-fourth">
-      {Capitalize(catName)}
-    </p>
-    exportButton = <button className="eventmoreinfo_export eventmoreinfo_export-fourth">Export Event To Calendar</button>
-  }
-
-  const getEventDetailPhoto = () => {
-    return allEvent.filter(e => e._id === props.data._id).map(n => (
-      <img src={n.host.profilePicture ? n.host.profilePicture : "https://github.com/MinorityProgrammers/mpa-avatars/blob/main/avatars/mysteryAvatar.png?raw=true"} style={{
-        borderRadius: "50%",
-        width: "100px",
-        height: "100px",
-        objectFit: "cover",
-        marginRight: "20px"
-      }} />
-    ))
+    label = (
+      <p className="about_header-label about_header-label-first">
+        {Capitalize(catName)}
+      </p>
+    );
+    exportButton = <button className="eventmoreinfo_export eventmoreinfo_export-first">Export Event To Calendar</button>;
+  } else if (labelTitle == 'workshop' || labelTitle == 'conference') {
+    label = (
+      <p className="about_header-label about_header-label-second">
+        {Capitalize(catName)}
+      </p>
+    );
+    exportButton = <button className="eventmoreinfo_export eventmoreinfo_export-second">Export Event To Calendar</button>;
+  } else if (labelTitle == 'hackathon') {
+    label = (
+      <p className="about_header-label about_header-label-third">
+        {Capitalize(catName)}
+      </p>
+    );
+    exportButton = <button className="eventmoreinfo_export eventmoreinfo_export-third">Export Event To Calendar</button>;
+  } else if (labelTitle == 'incubator' || labelTitle == 'accelerator') {
+    label = (
+      <p className="about_header-label about_header-label-fourth">
+        {Capitalize(catName)}
+      </p>
+    );
+    exportButton = <button className="eventmoreinfo_export eventmoreinfo_export-fourth">Export Event To Calendar</button>;
   }
 
-  const getEventDetailName = () => {
-    return allEvent.filter(e => e._id === props.data._id).map(n => (
-      <><p>{n.host.fistName}</p><p> {n.host.lastName}</p></>
-    ))
-  }
+  const getEventDetailPhoto = () => allEvent.filter((e) => e._id === props.data._id).map((n) => (
+    <img
+      src={n.host.profilePicture ? n.host.profilePicture : 'https://github.com/MinorityProgrammers/mpa-avatars/blob/main/avatars/mysteryAvatar.png?raw=true'}
+      style={{
+        borderRadius: '50%',
+        width: '100px',
+        height: '100px',
+        objectFit: 'cover',
+        marginRight: '20px',
+      }}
+    />
+  ));
+
+  const getEventDetailName = () => allEvent.filter((e) => e._id === props.data._id).map((n) => (
+    <>
+      <p>{n.host.fistName}</p>
+      <p>
+        {' '}
+        {n.host.lastName}
+      </p>
+    </>
+  ));
 
   Moment.locale('en');
 
   return (
     <div className="eventinfo">
-      {props.data.host ?
-        <div className="eventmoreinfo_shadow" onClick={() => props.handleMoreInfo()}>
-        </div>
-        :
-        <div className="eventmoreinfo_shadow">
-        </div>
-      }
+      {props.data.host
+        ? <div className="eventmoreinfo_shadow" onClick={() => props.handleMoreInfo()} />
+        : (
+          <div className="eventmoreinfo_shadow" />
+        )}
 
       <div className="eventmoreinfo_container ">
         <div className="eventmoreinfo_container_left">
           <img src={props.data.EventPicture} alt="Event Picture" />
         </div>
         <div className="eventmoreinfo_container_right">
-          {props.data.host &&
-            <i className="close_icon fas fa-times" id="closeicon" onClick={() => props.handleMoreInfo()} ></i>
-          }
+          {props.data.host
+            && <i className="close_icon fas fa-times" id="closeicon" onClick={() => props.handleMoreInfo()} />}
           <div className="header">
-            {props.data.host ? <div className="host_details">
-              {props.data.host.profilePicture ? <img src={props.data.host.profilePicture ? props.data.host.profilePicture : "https://github.com/MinorityProgrammers/mpa-avatars/blob/main/avatars/mysteryAvatar.png?raw=true"} alt="Host Avatar" /> : getEventDetailPhoto()}
+            {props.data.host ? (
+              <div className="host_details">
+                {props.data.host.profilePicture ? <img src={props.data.host.profilePicture ? props.data.host.profilePicture : 'https://github.com/MinorityProgrammers/mpa-avatars/blob/main/avatars/mysteryAvatar.png?raw=true'} alt="Host Avatar" /> : getEventDetailPhoto()}
 
-              <div className="host_title">
-                <h4>Host</h4>
-                {props.data.host.firstName ? <p>{props.data.host.firstName} {props.data.host.lastName}</p> : getEventDetailName()}
-                {/* <p>{props.data.host.firstName} {props.data.host.lastName}</p> */}
+                <div className="host_title">
+                  <h4>Host</h4>
+                  {props.data.host.firstName ? (
+                    <p>
+                      {props.data.host.firstName}
+                      {' '}
+                      {props.data.host.lastName}
+                    </p>
+                  ) : getEventDetailName()}
+                  {/* <p>{props.data.host.firstName} {props.data.host.lastName}</p> */}
+                </div>
               </div>
-            </div> : <div className="host_details">
-              <img src={userData.profilePicture ? userData.profilePicture : "https://github.com/MinorityProgrammers/mpa-avatars/blob/main/avatars/mysteryAvatar.png?raw=true"} alt="Host Avatar" />
-              <div className="host_title">
-                <h4>Host</h4>
-                <p>{userData.firstName ? userData.firstName : props.data.host.fistName} {userData.lastName ? userData.lastName : props.data.host.lastName}</p>
+            ) : (
+              <div className="host_details">
+                <img src={userData.profilePicture ? userData.profilePicture : 'https://github.com/MinorityProgrammers/mpa-avatars/blob/main/avatars/mysteryAvatar.png?raw=true'} alt="Host Avatar" />
+                <div className="host_title">
+                  <h4>Host</h4>
+                  <p>
+                    {userData.firstName ? userData.firstName : props.data.host.fistName}
+                    {' '}
+                    {userData.lastName ? userData.lastName : props.data.host.lastName}
+                  </p>
+                </div>
               </div>
-            </div>}
-            {createEventData.step === 2 ? "" :
+            )}
+            {createEventData.step === 2 ? '' : (
               <div className="buttons">
-                {Virtual == "true" ? <p>Virtual Event</p> : <p>In-Person Event</p>}
-                {eventTime < dateNow ? <button className="button_action"><Link href={props.data.actionLink}><a target="_blank">Watch Webinar</a></Link></button> : <span>
-                  {userData !== null ? checkSaveEvent("Register") : <button className="button_action" onClick={(e) => checkRegister(e, "yes")}>{props.data.callToAction}</button>}
-                  {userData !== null && !checkSaveEvent("Register") ? <button className="button_action" onClick={(e) => checkRegister(e, "yes")}>{props.data.callToAction}</button> : ""}
-                </span>}
-              </div>}
+                {Virtual == 'true' ? <p>Virtual Event</p> : <p>In-Person Event</p>}
+                {eventTime < dateNow ? <button className="button_action"><Link href={props.data.actionLink}><a target="_blank">Watch Webinar</a></Link></button> : (
+                  <span>
+                    {userData !== null ? checkSaveEvent('Register') : <button className="button_action" onClick={(e) => checkRegister(e, 'yes')}>{props.data.callToAction}</button>}
+                    {userData !== null && !checkSaveEvent('Register') ? <button className="button_action" onClick={(e) => checkRegister(e, 'yes')}>{props.data.callToAction}</button> : ''}
+                  </span>
+                )}
+              </div>
+            )}
           </div>
           <hr />
           <div className="body">
@@ -309,26 +329,37 @@ const EventMoreInfo = (props) => {
               <div className="about_header">
                 <h1>{props.data.eventName}</h1>
                 {label}
-                {eventStatus && <div className="event-status">
+                {eventStatus && (
+                <div className="event-status">
                   {eventStatus}
-                </div>}
+                </div>
+                )}
               </div>
               <div className="about_body">
                 <h3>About event</h3>
                 <p>{props.data.EventDescription}</p>
               </div>
             </div>
-            <div className="sidebar" style={{ marginTop: "0px" }}>
+            <div className="sidebar" style={{ marginTop: '0px' }}>
               <span>Local Time</span>
               <h3>{Moment(props.data.time).format('LLL')}</h3>
-              <p className="attending">{totalAttendees(props.data._id)} {totalAttendees(props.data._id) > 2 ? "people" : "person"} {eventTime < dateNow ? "attended" : "attending"}</p>
-              {eventTime < dateNow || createEventData.step === 2 ? "" : <>
-                <h3>Will you be attending?</h3>
-                <div className="option_buttons">
-                  <button className={selectedEvent.attending === "yes" ? "focus" : ""} onClick={(e) => changeStatus(e, selectedEvent, "yes")}>Yes</button>
-                  <button className={selectedEvent.attending === "no" ? "focus" : ""} onClick={(e) => changeStatus(e, selectedEvent, "no")}>No</button>
-                  <button className={selectedEvent.attending === "maybe" ? "focus" : ""} onClick={(e) => changeStatus(e, selectedEvent, "maybe")}> Maybe</button>
-                </div></>}
+              <p className="attending">
+                {totalAttendees(props.data._id)}
+                {' '}
+                {totalAttendees(props.data._id) > 2 ? 'people' : 'person'}
+                {' '}
+                {eventTime < dateNow ? 'attended' : 'attending'}
+              </p>
+              {eventTime < dateNow || createEventData.step === 2 ? '' : (
+                <>
+                  <h3>Will you be attending?</h3>
+                  <div className="option_buttons">
+                    <button className={selectedEvent.attending === 'yes' ? 'focus' : ''} onClick={(e) => changeStatus(e, selectedEvent, 'yes')}>Yes</button>
+                    <button className={selectedEvent.attending === 'no' ? 'focus' : ''} onClick={(e) => changeStatus(e, selectedEvent, 'no')}>No</button>
+                    <button className={selectedEvent.attending === 'maybe' ? 'focus' : ''} onClick={(e) => changeStatus(e, selectedEvent, 'maybe')}> Maybe</button>
+                  </div>
+                </>
+              )}
 
               <h3>Share event</h3>
               <div className="share_event">
@@ -337,14 +368,14 @@ const EventMoreInfo = (props) => {
                   title={title}
                   className="Demo__some-network__share-button"
                 >
-                  <i className="fab fa-twitter"></i>
+                  <i className="fab fa-twitter" />
                 </TwitterShareButton>
                 <TelegramShareButton
                   url={shareUrl}
                   title={title}
                   className="Demo__some-network__share-button"
                 >
-                  <i className="fab fa-telegram"></i>
+                  <i className="fab fa-telegram" />
                 </TelegramShareButton>
 
                 <FacebookShareButton
@@ -352,10 +383,10 @@ const EventMoreInfo = (props) => {
                   quote={title}
                   className="Demo__some-network__share-button"
                 >
-                  <i className="fab fa-facebook"></i>
+                  <i className="fab fa-facebook" />
                 </FacebookShareButton>
                 <LinkedinShareButton url={shareUrl} className="Demo__some-network__share-button">
-                  <i className="fab fa-linkedin"></i>
+                  <i className="fab fa-linkedin" />
                 </LinkedinShareButton>
                 <WhatsappShareButton
                   url={shareUrl}
@@ -363,7 +394,7 @@ const EventMoreInfo = (props) => {
                   separator=":: "
                   className="Demo__some-network__share-button"
                 >
-                  <i className="fab fa-whatsapp"></i>
+                  <i className="fab fa-whatsapp" />
                 </WhatsappShareButton>
                 <EmailShareButton
                   url={shareUrl}
@@ -371,26 +402,26 @@ const EventMoreInfo = (props) => {
                   body="body"
                   className="Demo__some-network__share-button"
                 >
-                  <i className="fas fa-envelope"></i>
+                  <i className="fas fa-envelope" />
                 </EmailShareButton>
               </div>
-              {userData && eventTime > dateNow && createEventData.step !== 2 ? exportButton : ""}
+              {userData && eventTime > dateNow && createEventData.step !== 2 ? exportButton : ''}
             </div>
           </div>
-          {props.data.host ? <div></div> :
+          {props.data.host ? <div /> : (
             <div className="bottom">
               <div className="buttons">
 
                 <button onClick={() => props.handleMoreInfo()}>Edit</button>
-                <button onClick={props.handleCreateEventData("step")}>Submit Event</button>
+                <button onClick={props.handleCreateEventData('step')}>Submit Event</button>
               </div>
             </div>
-          }
+          )}
         </div>
       </div>
-    </div >
+    </div>
 
   );
-}
+};
 
 export default EventMoreInfo;

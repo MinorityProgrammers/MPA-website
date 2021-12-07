@@ -1,6 +1,6 @@
-import Skeleton from "react-loading-skeleton";
+import Skeleton from 'react-loading-skeleton';
 
-const FeaturedCardSkeleton = () => {
+const FeaturedCardSkeleton = function () {
   return (
     <div className="item">
       <div className="card card__container">
@@ -34,10 +34,10 @@ const FeaturedCardSkeleton = () => {
             className="d-flex flex-row justify-content-between"
             style={{ paddingRight: 0, paddingLeft: 0, marginLeft: 0 }}
           >
-            <div style={{ width: "45%" }}>
+            <div style={{ width: '45%' }}>
               <Skeleton height={40} />
             </div>
-            <div style={{ width: "45%" }}>
+            <div style={{ width: '45%' }}>
               <Skeleton height={40} />
             </div>
           </div>

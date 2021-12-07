@@ -1,6 +1,6 @@
-import styles from "./candidate_card.module.css";
+import styles from './candidate_card.module.css';
 
-const CandidateCard = ({ name, description, image }) => {
+const CandidateCard = function ({ name, description, image }) {
   return (
     <div className={styles.root}>
       <div className={styles.title}>
@@ -11,7 +11,7 @@ const CandidateCard = ({ name, description, image }) => {
       <div className={styles.side_image}>
         <img
           className={styles.image}
-          src={image ? image : "/assets/images/profile.jpg"}
+          src={image || '/assets/images/profile.jpg'}
           alt={name}
         />
       </div>

@@ -1,6 +1,6 @@
-import Link from "next/link";
+import Link from 'next/link';
 
-const HomepageBuyMinority = () => {
+const HomepageBuyMinority = function () {
   return (
     <div className="homepage__buy">
       <div className="heading__number mt-5 mb-5">
@@ -11,14 +11,20 @@ const HomepageBuyMinority = () => {
           <div className="content-buy">
             <div className="heading-buy mb-5">
               <h2 className="title-buy text_white">
-                Buy $MINORITY <br /> FAIR LAUNCH
+                Buy $MINORITY
+                {' '}
+                <br />
+                {' '}
+                FAIR LAUNCH
               </h2>
             </div>
             <div className="link__container-buy">
               <Link href="#/register">
                 <a>
                   <div className="link-buy">
-                    LEARN MORE <i className="fas fa-caret-down"></i>
+                    LEARN MORE
+                    {' '}
+                    <i className="fas fa-caret-down" />
                   </div>
                 </a>
               </Link>
@@ -30,7 +36,7 @@ const HomepageBuyMinority = () => {
               src="./assets/images/buy-$minority.png"
             />
           </div>
-          <div className="bg__layer-buy"></div>
+          <div className="bg__layer-buy" />
         </div>
       </div>
     </div>

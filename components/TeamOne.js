@@ -1,12 +1,14 @@
-import React from "react";
+import React from 'react';
 
-const TeamOne = () => {
+const TeamOne = function () {
   return (
     <section className="team-one team-one__become-teacher">
       <div className="container">
         <div className="block-title text-center">
           <h2 className="block-title__title">
-            Meet the best <br />
+            Meet the best
+            {' '}
+            <br />
             teachers
           </h2>
         </div>
@@ -27,16 +29,16 @@ const TeamOne = () => {
               </div>
               <div className="team-one__social">
                 <a href="#">
-                  <i className="fab fa-twitter"></i>
+                  <i className="fab fa-twitter" />
                 </a>
                 <a href="#">
-                  <i className="fab fa-facebook-square"></i>
+                  <i className="fab fa-facebook-square" />
                 </a>
                 <a href="#">
-                  <i className="fab fa-pinterest-p"></i>
+                  <i className="fab fa-pinterest-p" />
                 </a>
                 <a href="#">
-                  <i className="fab fa-instagram"></i>
+                  <i className="fab fa-instagram" />
                 </a>
               </div>
             </div>
@@ -57,16 +59,16 @@ const TeamOne = () => {
               </div>
               <div className="team-one__social">
                 <a href="#">
-                  <i className="fab fa-twitter"></i>
+                  <i className="fab fa-twitter" />
                 </a>
                 <a href="#">
-                  <i className="fab fa-facebook-square"></i>
+                  <i className="fab fa-facebook-square" />
                 </a>
                 <a href="#">
-                  <i className="fab fa-pinterest-p"></i>
+                  <i className="fab fa-pinterest-p" />
                 </a>
                 <a href="#">
-                  <i className="fab fa-instagram"></i>
+                  <i className="fab fa-instagram" />
                 </a>
               </div>
             </div>
@@ -87,16 +89,16 @@ const TeamOne = () => {
               </div>
               <div className="team-one__social">
                 <a href="#">
-                  <i className="fab fa-twitter"></i>
+                  <i className="fab fa-twitter" />
                 </a>
                 <a href="#">
-                  <i className="fab fa-facebook-square"></i>
+                  <i className="fab fa-facebook-square" />
                 </a>
                 <a href="#">
-                  <i className="fab fa-pinterest-p"></i>
+                  <i className="fab fa-pinterest-p" />
                 </a>
                 <a href="#">
-                  <i className="fab fa-instagram"></i>
+                  <i className="fab fa-instagram" />
                 </a>
               </div>
             </div>
@@ -117,16 +119,16 @@ const TeamOne = () => {
               </div>
               <div className="team-one__social">
                 <a href="#">
-                  <i className="fab fa-twitter"></i>
+                  <i className="fab fa-twitter" />
                 </a>
                 <a href="#">
-                  <i className="fab fa-facebook-square"></i>
+                  <i className="fab fa-facebook-square" />
                 </a>
                 <a href="#">
-                  <i className="fab fa-pinterest-p"></i>
+                  <i className="fab fa-pinterest-p" />
                 </a>
                 <a href="#">
-                  <i className="fab fa-instagram"></i>
+                  <i className="fab fa-instagram" />
                 </a>
               </div>
             </div>

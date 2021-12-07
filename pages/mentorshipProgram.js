@@ -1,13 +1,13 @@
-import React, { useRef, useState, useEffect } from "react";
-import HomepageNav from "../components/HomepageNav";
-import Layout from "../components/Layout";
-import SidebarTwo from "../components/SidebarTwo";
-import links from "../contexts/utils/links";
-import { useDetectOutsideClick } from "../components/UseDetectOutsideClick";
-import MentorshipProgramHero from "../components/MentorshipProgramHero";
-import MentorshipProgramHome from "../components/MentorshipProgramHome";
-import Footer from "../components/Footer";
-import ComingSoon from "../components/ComingSoon";
+import React, { useRef, useState, useEffect } from 'react';
+import HomepageNav from '../components/HomepageNav';
+import Layout from '../components/Layout';
+import SidebarTwo from '../components/SidebarTwo';
+import links from '../contexts/utils/links';
+import { useDetectOutsideClick } from '../components/UseDetectOutsideClick';
+import MentorshipProgramHero from '../components/MentorshipProgramHero';
+import MentorshipProgramHome from '../components/MentorshipProgramHome';
+import Footer from '../components/Footer';
+import ComingSoon from '../components/ComingSoon';
 
 const mentorshipProgram = () => {
   const [open, setOpen] = useState(false);
@@ -38,13 +38,13 @@ const mentorshipProgram = () => {
         open={open}
         setOpen={setOpen}
         setData={setData}
-        page={"MentorshipProgram"}
+        page="MentorshipProgram"
       />
       <SidebarTwo
         open={open}
         setOpen={setOpen}
         links={links}
-        active={"Home"}
+        active="Home"
         handleClick={handleClick}
       />
       {hide == false && <ComingSoon closeClick={handleClick} />}

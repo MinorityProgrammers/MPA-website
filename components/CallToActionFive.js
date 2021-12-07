@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-const CallToActionFive = () => {
+const CallToActionFive = function () {
   return (
     <section className="cta-five">
       <img
@@ -34,14 +34,16 @@ const CallToActionFive = () => {
         alt=""
       />
       <div className="cta-five__bubble-1">
-        <i className="fas fa-rocket"></i>
+        <i className="fas fa-rocket" />
       </div>
       <div className="cta-five__bubble-2">
-        <i className="fas fa-bolt"></i>
+        <i className="fas fa-bolt" />
       </div>
       <div className="container text-center">
         <h2 className="cta-five__title">
-          Start growing with <br />
+          Start growing with
+          {' '}
+          <br />
           the community
         </h2>
         <p className="cta-five__text">

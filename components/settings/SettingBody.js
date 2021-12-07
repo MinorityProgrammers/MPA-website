@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import styles from "../../styles/settings/settingBody.module.css";
-import { useRouter } from "next/router";
-import { getSpecificSettingsLayoutNavigationList } from "../../helpers/getSpecificSettingsLayoutNavigationList";
+import React, { useState } from 'react';
+import { useRouter } from 'next/router';
+import styles from '../../styles/settings/settingBody.module.css';
+import { getSpecificSettingsLayoutNavigationList } from '../../helpers/getSpecificSettingsLayoutNavigationList';
 
-function SettingBody({
+const SettingBody = function ({
   settingsPage,
   children,
   closeProfileSetup,
@@ -12,11 +12,10 @@ function SettingBody({
   const router = useRouter();
 
   const settingsSubPage = router.pathname.substring(
-    router.pathname.lastIndexOf("/") + 1
+    router.pathname.lastIndexOf('/') + 1,
   );
 
-  const settingsNameAndList =
-    getSpecificSettingsLayoutNavigationList(settingsPage);
+  const settingsNameAndList = getSpecificSettingsLayoutNavigationList(settingsPage);
 
   return (
     <div className={styles.detailSettings}>
@@ -24,7 +23,7 @@ function SettingBody({
         <h1>
           {
             settingsNameAndList?.content?.find(
-              (dataObj) => dataObj.subPath === settingsSubPage
+              (dataObj) => dataObj.subPath === settingsSubPage,
             )?.name
           }
         </h1>
@@ -32,17 +31,17 @@ function SettingBody({
       <div
         className={styles.settingContent}
         style={
-          settingsSubPage === "my-wallet" ||
-          settingsSubPage === "votes" ||
-          settingsSubPage === "management"
-            ? { height: "94%" }
+          settingsSubPage === 'my-wallet'
+          || settingsSubPage === 'votes'
+          || settingsSubPage === 'management'
+            ? { height: '94%' }
             : {}
         }
       >
         {children}
-        {settingsSubPage !== "my-wallet" &&
-          settingsSubPage !== "votes" &&
-          settingsSubPage !== "management" && (
+        {settingsSubPage !== 'my-wallet'
+          && settingsSubPage !== 'votes'
+          && settingsSubPage !== 'management' && (
             <div className={styles.footerButtons}>
               <button
                 className={styles.danger}
@@ -63,10 +62,10 @@ function SettingBody({
                 Save Changes
               </button>
             </div>
-          )}
+        )}
       </div>
     </div>
   );
-}
+};
 
 export default SettingBody;

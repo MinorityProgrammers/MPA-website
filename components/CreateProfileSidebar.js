@@ -1,13 +1,13 @@
-import React, { useState } from "react";
-import { all } from "../../contexts/utils/profileInputFields1";
+import React, { useState } from 'react';
+import { all } from '../../contexts/utils/profileInputFields1';
 
-const CreateProfileSidebar = ({
+const CreateProfileSidebar = function ({
   state,
   stepNames,
   setStep,
   activeStep,
   setActiveStep,
-}) => {
+}) {
   // const step = activeStep
   // const allInputFields1 = [
   //     all.firstNameField,
@@ -84,10 +84,10 @@ const CreateProfileSidebar = ({
       <ul className="cp-stepProgress">
         {steps.map((step, key) => (
           <li className="cp-stepProgressItem" key={key}>
-            <span className="cp-border"></span>
+            <span className="cp-border" />
             <div
-              className={`cp-dot ${step == activeStep ? "cp-dotActive" : ""}`}
-            ></div>
+              className={`cp-dot ${step == activeStep ? 'cp-dotActive' : ''}`}
+            />
             <p>{stepNames[step]}</p>
             {/* <p onClick={()=>changeHandler(step)}>{stepNames[step]}</p> */}
           </li>

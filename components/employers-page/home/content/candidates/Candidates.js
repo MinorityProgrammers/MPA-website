@@ -1,30 +1,30 @@
-import { useEffect, useState } from "react";
-import styles from "./candidate.module.css";
-import CandidateCard from "../../../home/Card/CandidateCard";
-import axios from "axios";
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import styles from './candidate.module.css';
+import CandidateCard from '../../Card/CandidateCard';
 
 const candidate = [
-  { name: "Michael Montgometry", description: "Front End Developer" },
-  { name: "Michael Montgometry", description: "Front End Developer" },
-  { name: "Michael Montgometry", description: "Front End Developer" },
-  { name: "Michael Montgometry", description: "Front End Developer" }
+  { name: 'Michael Montgometry', description: 'Front End Developer' },
+  { name: 'Michael Montgometry', description: 'Front End Developer' },
+  { name: 'Michael Montgometry', description: 'Front End Developer' },
+  { name: 'Michael Montgometry', description: 'Front End Developer' },
 ];
 
-const Candidates = ({ load }) => {
+const Candidates = function ({ load }) {
   const [candidates, setCandidates] = useState([]);
   useEffect(() => {
-    const userToken = window.localStorage.getItem("jwtToken");
+    const userToken = window.localStorage.getItem('jwtToken');
     if (userToken !== null) {
       axios
         .get(
-          "https://koinstreet-learn-api.herokuapp.com/api/v1/job/candidates",
+          'https://koinstreet-learn-api.herokuapp.com/api/v1/job/candidates',
           {
             headers: {
-              Authorization: `Bearer ${userToken}`
-            }
-          }
+              Authorization: `Bearer ${userToken}`,
+            },
+          },
         )
-        .then(res => setCandidates(res.data.data));
+        .then((res) => setCandidates(res.data.data));
     }
   }, []);
 

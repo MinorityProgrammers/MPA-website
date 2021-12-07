@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import CountUp from "react-countup";
-import VisibilitySensor from "react-visibility-sensor";
+import React, { Component } from 'react';
+import CountUp from 'react-countup';
+import VisibilitySensor from 'react-visibility-sensor';
 
 class DiversityTraining extends Component {
   constructor() {
@@ -9,6 +9,7 @@ class DiversityTraining extends Component {
       startCounter: false,
     };
   }
+
   onVisibilityChange = (isVisible) => {
     if (isVisible) {
       this.setState({ startCounter: true });
@@ -48,7 +49,8 @@ class DiversityTraining extends Component {
               alt=""
             />
             <h2 className="cta-six__title">
-              More than{" "}
+              More than
+              {' '}
               <span className="counter">
                 <VisibilitySensor
                   onChange={this.onVisibilityChange}
@@ -56,7 +58,8 @@ class DiversityTraining extends Component {
                 >
                   <CountUp end={this.state.startCounter ? 9 : 0} />
                 </VisibilitySensor>
-              </span>{" "}
+              </span>
+              {' '}
               Companies trained
             </h2>
           </div>

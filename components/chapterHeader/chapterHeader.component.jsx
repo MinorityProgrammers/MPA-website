@@ -1,5 +1,6 @@
 import styles from './chapterHeader.module.css';
-const ChapterHeader = () => {
+
+const ChapterHeader = function () {
   return (
     <div className={`${styles.headerWrapper}`}>
       <div className={styles.headerContainer}>
@@ -12,10 +13,7 @@ const ChapterHeader = () => {
         <img className={styles.icon} src="/assets/images/chapter-globe.svg" alt="globe" />
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default ChapterHeader;
-
-
-

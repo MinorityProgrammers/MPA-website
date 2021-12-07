@@ -1,15 +1,15 @@
-import React, { useState, useRef } from "react";
-import Layout from "../components/Layout";
-import HomepageNav from "../components/HomepageNav";
-import Footer from "../components/Footer";
-import SidebarTwo from "../components/SidebarTwo";
-import links from "../contexts/utils/links";
-import { useDetectOutsideClick } from "../components/UseDetectOutsideClick";
-import JoinHerosection from "../components/join/JoinHerosection";
-import MpaPrograms from "../components/join/MpaProgramsHighlight";
-import JoinCard from "../components/join/JoinCard";
+import React, { useState, useRef } from 'react';
+import Layout from '../components/Layout';
+import HomepageNav from '../components/HomepageNav';
+import Footer from '../components/Footer';
+import SidebarTwo from '../components/SidebarTwo';
+import links from '../contexts/utils/links';
+import { useDetectOutsideClick } from '../components/UseDetectOutsideClick';
+import JoinHerosection from '../components/join/JoinHerosection';
+import MpaPrograms from '../components/join/MpaProgramsHighlight';
+import JoinCard from '../components/join/JoinCard';
 
-const JoinPage = () => {
+const JoinPage = function () {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef(null);
   const [hide, setHide] = useDetectOutsideClick(dropdownRef, true);
@@ -32,7 +32,7 @@ const JoinPage = () => {
                 open={open}
                 setOpen={setOpen}
                 links={links}
-                active={"Home"}
+                active="Home"
                 handleClick={handleClick}
               />
             </div>

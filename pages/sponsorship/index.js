@@ -1,38 +1,38 @@
-import SponsorshipMain from "../../components/sponsorship/SponsorshipMain";
-import SponsorshipCheckout from "../../components/sponsorship/SponsorshipCheckout";
-import SponsorshipCard from "../../components/sponsorship/SponsorshipCard";
-import Sponsorship from "./Sponsorship";
-import { useState } from "react";
+import { useState } from 'react';
+import SponsorshipMain from '../../components/sponsorship/SponsorshipMain';
+import SponsorshipCheckout from '../../components/sponsorship/SponsorshipCheckout';
+import SponsorshipCard from '../../components/sponsorship/SponsorshipCard';
+import Sponsorship from './Sponsorship';
 
-const SponsorshipPage = (props) => {
-  const [SponsorshipDisplay, setSponsorshipDisplay] = useState("sponsorship");
+const SponsorshipPage = function (props) {
+  const [SponsorshipDisplay, setSponsorshipDisplay] = useState('sponsorship');
 
-  const [organization, setOrganization] = useState("");
-  const [sponsorshipOption, setSponsorshipOption] = useState("");
-  const [email, setEmail] = useState("");
-  const [countryOption, setCountryOption] = useState("");
-  const [textarea, setTextarea] = useState("");
+  const [organization, setOrganization] = useState('');
+  const [sponsorshipOption, setSponsorshipOption] = useState('');
+  const [email, setEmail] = useState('');
+  const [countryOption, setCountryOption] = useState('');
+  const [textarea, setTextarea] = useState('');
 
-  const [cardNumber, setCardNumber] = useState("");
-  const [expMonth, setExpMonth] = useState("");
-  const [expYear, setExpYear] = useState("");
-  const [cardCVC, setCardCVC] = useState("");
+  const [cardNumber, setCardNumber] = useState('');
+  const [expMonth, setExpMonth] = useState('');
+  const [expYear, setExpYear] = useState('');
+  const [cardCVC, setCardCVC] = useState('');
   const [sponsorCardSaving, setSponsorCardSaving] = useState(false);
   const [termsAgreed, setTermsAgreed] = useState(false);
 
   const handleMCardClick = (minorityCard) => {
     setSponsorshipOption(minorityCard);
-    setSponsorshipDisplay("checkout");
+    setSponsorshipDisplay('checkout');
   };
 
   const displaySponsorshipPage = () => {
-    setSponsorshipDisplay("sponsorship");
+    setSponsorshipDisplay('sponsorship');
   };
   const displayCheckout = () => {
-    setSponsorshipDisplay("checkout");
+    setSponsorshipDisplay('checkout');
   };
   const displayCard = () => {
-    setSponsorshipDisplay("card");
+    setSponsorshipDisplay('card');
   };
 
   const handleOrganizationInput = (event) => {
@@ -56,17 +56,17 @@ const SponsorshipPage = (props) => {
   };
 
   const handleCardNumberInput = (event) => {
-    let CCNum = event.target.value.split("-").join("");
+    let CCNum = event.target.value.split('-').join('');
 
     if (!CCNum.length) {
-      setCardNumber("");
+      setCardNumber('');
     } else if (CCNum.length > 16) {
       CCNum = CCNum.slice(0, CCNum.length - 1)
-        .match(new RegExp(".{1,4}", "g"))
-        ?.join("-");
+        .match(new RegExp('.{1,4}', 'g'))
+        ?.join('-');
       setCardNumber(CCNum);
     } else if (!/\D+/.test(CCNum)) {
-      CCNum = CCNum.match(new RegExp(".{1,4}", "g"))?.join("-");
+      CCNum = CCNum.match(new RegExp('.{1,4}', 'g'))?.join('-');
       setCardNumber(CCNum);
     }
   };
@@ -92,16 +92,16 @@ const SponsorshipPage = (props) => {
   const handleSponsorCardSubmit = (event) => {
     event.preventDefault();
 
-    setOrganization("");
-    setSponsorshipOption("");
-    setEmail("");
-    setCountryOption("");
-    setTextarea("");
+    setOrganization('');
+    setSponsorshipOption('');
+    setEmail('');
+    setCountryOption('');
+    setTextarea('');
 
-    setCardNumber("");
-    setExpMonth("");
-    setExpYear("");
-    setCardCVC("");
+    setCardNumber('');
+    setExpMonth('');
+    setExpYear('');
+    setCardCVC('');
     setTermsAgreed(false);
 
     displaySponsorshipPage();
@@ -109,12 +109,12 @@ const SponsorshipPage = (props) => {
 
   return (
     <SponsorshipMain>
-      {SponsorshipDisplay === "sponsorship" ? (
+      {SponsorshipDisplay === 'sponsorship' ? (
         <Sponsorship
           displayCheckout={displayCheckout}
           handleMCardClick={handleMCardClick}
         />
-      ) : SponsorshipDisplay === "checkout" ? (
+      ) : SponsorshipDisplay === 'checkout' ? (
         <SponsorshipCheckout
           organization={organization}
           sponsorshipOption={sponsorshipOption}
@@ -128,7 +128,7 @@ const SponsorshipPage = (props) => {
           handleTextarea={handleTextarea}
           handleCheckoutSubmit={handleCheckoutSubmit}
         />
-      ) : SponsorshipDisplay === "card" ? (
+      ) : SponsorshipDisplay === 'card' ? (
         <SponsorshipCard
           sponsorshipOption={sponsorshipOption}
           cardNumber={cardNumber}

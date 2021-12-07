@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-const CallToActionFour = () => {
+const CallToActionFour = function () {
   return (
     <section className="cta-four">
       <img
@@ -16,7 +16,9 @@ const CallToActionFour = () => {
       <div className="container text-center">
         <div className="block-title">
           <h2 className="block-title__title">
-            We’ve got the best talent <br />
+            We’ve got the best talent
+            {' '}
+            <br />
             across all IT specializations
           </h2>
         </div>

@@ -1,7 +1,7 @@
-import { Fragment } from "react";
+import { Fragment } from 'react';
 
 const dummyFunction = () => {};
-function Buttons({
+const Buttons = function ({
   left,
   right,
   marginTop,
@@ -31,11 +31,11 @@ function Buttons({
           style={marginTop ? { marginTop } : {}}
         >
           <span>
-            {customPlusText ? customPlusText : <Fragment>&#8594;</Fragment>}
+            {customPlusText || <>&#8594;</>}
           </span>
         </button>
       ) : null}
     </div>
   );
-}
+};
 export default Buttons;

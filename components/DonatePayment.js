@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { PayPalButtons } from "@paypal/react-paypal-js";
-import DonateStripeModal from "./DonateStripeModal";
+import React, { useState } from 'react';
+import { PayPalButtons } from '@paypal/react-paypal-js';
+import DonateStripeModal from './DonateStripeModal';
 
-const DonatePayment = ({
+const DonatePayment = function ({
   amount,
   count,
   setCount,
@@ -14,7 +14,7 @@ const DonatePayment = ({
   onApprove,
   succeeded,
   createSubscription,
-}) => {
+}) {
   const [showModal, setShowModal] = useState(false);
   // modal for stripe
   const openModal = () => {
@@ -25,8 +25,9 @@ const DonatePayment = ({
     <>
       <div className="step__payment">
         <h2 className="step__payment-amount">
-          ${amount}
-          {monthly === true ? "/month" : ""}
+          $
+          {amount}
+          {monthly === true ? '/month' : ''}
         </h2>
         <h2
           className="step__payment-change"
@@ -37,7 +38,9 @@ const DonatePayment = ({
           disabled={count < 2}
         >
           <p>
-            <i className="far fa-edit"></i> Change amount
+            <i className="far fa-edit" />
+            {' '}
+            Change amount
           </p>
         </h2>
       </div>
@@ -87,11 +90,11 @@ const DonatePayment = ({
           {monthly === false ? (
             <PayPalButtons
               style={{
-                color: "white",
-                shape: "rect",
-                label: "pay",
+                color: 'white',
+                shape: 'rect',
+                label: 'pay',
                 tagline: false,
-                layout: "horizontal",
+                layout: 'horizontal',
               }}
               createOrder={createOrder}
               onApprove={onApprove}
@@ -104,7 +107,7 @@ const DonatePayment = ({
                 currency="USD"
                 createSubscription={createSubscription}
                 style={{
-                  label: "subscribe",
+                  label: 'subscribe',
                 }}
                 fundingSource={paypal.FUNDING.PAYPAL}
               />
@@ -137,7 +140,7 @@ const DonatePayment = ({
           </button>
         </div>
       ) : (
-        ""
+        ''
       )}
     </>
   );

@@ -1,20 +1,20 @@
-import CareersMainComponent from '../../components/career-components/CareersMainComponent.js';
-import React, {Component} from 'react';
+import React, { Component, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
+import CareersMainComponent from '../../components/career-components/CareersMainComponent.js';
 
-
-const CareersPage = () => {
-    let router = useRouter();
-    useEffect(()=>{
-            router.push('/careers/jobs')
-        },
-        [])
-    return (
-        <div className="careers">
-            Redirecting to Companies Section
-        </div>
-    );
+const CareersPage = function () {
+  const router = useRouter();
+  useEffect(
+    () => {
+      router.push('/careers/jobs');
+    },
+    [],
+  );
+  return (
+    <div className="careers">
+      Redirecting to Companies Section
+    </div>
+  );
 };
 
 export default CareersPage;

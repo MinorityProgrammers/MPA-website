@@ -1,8 +1,8 @@
-import React from "react";
-import Swiper from "react-id-swiper";
-import "swiper/css/swiper.css";
+import React from 'react';
+import Swiper from 'react-id-swiper';
+import 'swiper/css/swiper.css';
 
-const CourseOne = () => {
+const CourseOne = function () {
   const params = {
     slidesPerView: 3,
     loop: true,
@@ -13,7 +13,7 @@ const CourseOne = () => {
       disableOnInteraction: false,
     },
     pagination: {
-      el: ".swiper-pagination",
+      el: '.swiper-pagination',
       clickable: true,
     },
 
@@ -45,7 +45,7 @@ const CourseOne = () => {
             </h2>
           </div>
         </div>
-        <div className="course-one__top-title__curve"></div>
+        <div className="course-one__top-title__curve" />
       </section>
 
       <section className="course-one course-one__teacher-details home-one">
@@ -56,7 +56,7 @@ const CourseOne = () => {
                 <div className="course-one__single color-1">
                   <div className="course-one__image">
                     <img src="/assets/images/course-1-1.jpg" alt="" />
-                    <i className="far fa-heart"></i>
+                    <i className="far fa-heart" />
                   </div>
                   <div className="course-one__content">
                     <a href="#" className="course-one__category">
@@ -64,7 +64,9 @@ const CourseOne = () => {
                     </a>
                     <div className="course-one__admin">
                       <img src="/assets/images/team-1-1.jpg" alt="" />
-                      by <a href="/teacher-details">MinorityProgrammers</a>
+                      by
+                      {' '}
+                      <a href="/teacher-details">MinorityProgrammers</a>
                     </div>
                     <h2 className="course-one__title">
                       <a href="/course-details">#ClimateHacks Hackathon</a>
@@ -72,7 +74,8 @@ const CourseOne = () => {
 
                     <div className="course-one__meta">
                       <a href="/course-details">
-                        <i className="far fa-clock"></i>Sat April 24 - Sun April
+                        <i className="far fa-clock" />
+                        Sat April 24 - Sun April
                         25, 2021
                       </a>
                     </div>
@@ -87,7 +90,7 @@ const CourseOne = () => {
                 <div className="course-one__single color-1">
                   <div className="course-one__image">
                     <img src="/assets/images/course-1-1.jpg" alt="" />
-                    <i className="far fa-heart"></i>
+                    <i className="far fa-heart" />
                   </div>
                   <div className="course-one__content">
                     <a href="#" className="course-one__category">
@@ -95,7 +98,9 @@ const CourseOne = () => {
                     </a>
                     <div className="course-one__admin">
                       <img src="/assets/images/team-1-1.jpg" alt="" />
-                      by <a href="/teacher-details">MinorityProgrammers</a>
+                      by
+                      {' '}
+                      <a href="/teacher-details">MinorityProgrammers</a>
                     </div>
                     <h2 className="course-one__title">
                       <a href="/course-details">#ElectionHackathon</a>
@@ -103,11 +108,14 @@ const CourseOne = () => {
 
                     <div className="course-one__meta">
                       <a href="/course-details">
-                        <i className="far fa-clock"></i>Sat April 24 - Sun April
+                        <i className="far fa-clock" />
+                        Sat April 24 - Sun April
                         25, 2021
                       </a>
                       <a href="/course-details">
-                        <i className="far fa-folder-open"></i> 50 Participants
+                        <i className="far fa-folder-open" />
+                        {' '}
+                        50 Participants
                       </a>
                       <a href="/course-details">Free</a>
                     </div>

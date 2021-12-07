@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-const CreateTaskFooter = () => {
+const CreateTaskFooter = function () {
   return (
     <div className="tw-grid tw-grid-cols-1">
       <div className="tw-bg-white tw-bg-opacity-40 tw-text-center tw-m-4 tw-h-56 tw-mb-16 tw-w-8/12 tw-place-self-center tw-p-16">

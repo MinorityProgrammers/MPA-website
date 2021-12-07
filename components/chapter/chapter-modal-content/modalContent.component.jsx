@@ -1,44 +1,43 @@
-import styles from './modalContent.module.css';
-import { FiFacebook } from "react-icons/fi";
+import { FiFacebook, FiTwitter, FiInstagram } from 'react-icons/fi';
 import { useState, useEffect } from 'react';
-import { FiTwitter } from "react-icons/fi";
-import { FiInstagram } from "react-icons/fi";
-import { IoPaperPlaneOutline } from "react-icons/io5";
-import { VscGithubAlt } from "react-icons/vsc";
+import { IoPaperPlaneOutline } from 'react-icons/io5';
+import { VscGithubAlt } from 'react-icons/vsc';
 import axios from 'axios';
+import styles from './modalContent.module.css';
 import { errorToast, successToast } from '../../../contexts/utils/toasts';
 
-const ModalContent = ({ token, location, description, chapter_leader, chapter_type, member_size, date_founded, setActive, _id, userJoinRequests }) => {
-
+const ModalContent = function ({
+  token, location, description, chapter_leader, chapter_type, member_size, date_founded, setActive, _id, userJoinRequests,
+}) {
   const handleJoin = () => {
     if (token) {
       axios.post('https://koinstreet-learn-api.herokuapp.com/api/v1/joinChapter', {
-        "chapterLocation_id": _id
+        chapterLocation_id: _id,
       }, {
         headers: {
-          "Authorization": `Bearer ${token}`,
-        }
+          Authorization: `Bearer ${token}`,
+        },
       })
-        .then(response => {
+        .then((response) => {
           successToast('You have successfully joined a chapter');
-          setTimeout("location.reload(true);", 2000);
+          setTimeout('location.reload(true);', 2000);
         })
-        .catch(err => {
+        .catch((err) => {
           try {
-            errorToast(err.response.data.data.message.msg)
+            errorToast(err.response.data.data.message.msg);
           } catch (error) {
-            errorToast("Network Error")
+            errorToast('Network Error');
           }
         });
     } else {
-      errorToast("Please login to continue");
+      errorToast('Please login to continue');
     }
-  }
+  };
 
   return (
     <div onMouseOver={() => { }} onMouseOut={() => { }} className={styles.container}>
       <div className={styles.logo}>
-        <img src='/assets/images/mp_gradient_rock.svg' alt="logo" />
+        <img src="/assets/images/mp_gradient_rock.svg" alt="logo" />
       </div>
       <div className={styles.name}>{location}</div>
       <div className={styles.description}>{description}</div>
@@ -72,7 +71,7 @@ const ModalContent = ({ token, location, description, chapter_leader, chapter_ty
         <VscGithubAlt className={styles.icon} />
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default ModalContent;

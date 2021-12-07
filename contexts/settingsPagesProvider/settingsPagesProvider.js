@@ -1,12 +1,11 @@
-import React, { useState, createContext } from "react";
+import React, { useState, createContext } from 'react';
 
 export const uprContext = createContext();
 
 // settings pages provider
 
-export const SettingsPagesProvider = ({ children }) => {
-  const [updatePasswordRedirection, setUpdatePasswordRedirection] =
-    useState(false);
+export var SettingsPagesProvider = function ({ children }) {
+  const [updatePasswordRedirection, setUpdatePasswordRedirection] = useState(false);
 
   return (
     <uprContext.Provider

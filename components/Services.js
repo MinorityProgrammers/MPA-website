@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-const Services = () => {
+const Services = function () {
   return (
     <section className="cta-four">
       <img

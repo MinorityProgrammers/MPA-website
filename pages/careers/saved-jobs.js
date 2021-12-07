@@ -1,18 +1,17 @@
-import CareersMainComponent from "../../components/career-components/CareersMainComponent";
 import { useState } from 'react';
-import Saved from "../../components/career-components/Saved";
-import Applied from "../../components/career-components/Applied";
+import CareersMainComponent from '../../components/career-components/CareersMainComponent';
+import Saved from '../../components/career-components/Saved';
+import Applied from '../../components/career-components/Applied';
 
-
-const SavedJobs = () => {
-  const [currentView, changeCurrentView] = useState("saved");
+const SavedJobs = function () {
+  const [currentView, changeCurrentView] = useState('saved');
 
   function loadApplied() {
-    changeCurrentView("applied")
+    changeCurrentView('applied');
   }
 
   function loadSaved() {
-    changeCurrentView("saved")
+    changeCurrentView('saved');
   }
 
   return (
@@ -28,13 +27,13 @@ const SavedJobs = () => {
           <button onClick={loadApplied}>Applied</button>
         </div>
         <div>
-          {currentView == "saved" && <Saved />}
-          {currentView == "applied" && <Applied />}
+          {currentView == 'saved' && <Saved />}
+          {currentView == 'applied' && <Applied />}
         </div>
       </div>
     </CareersMainComponent>
 
-  )
-}
+  );
+};
 
 export default SavedJobs;

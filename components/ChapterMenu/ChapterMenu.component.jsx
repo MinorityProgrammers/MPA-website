@@ -1,6 +1,6 @@
 import styles from './ChapterMenu.module.css';
 
-const ChapterMenu = ({ userData, active }) => {
+const ChapterMenu = function ({ userData, active }) {
   return (
     <div className={styles.menuWrapper}>
       <div className={styles.menuContainer}>
@@ -69,8 +69,7 @@ const ChapterMenu = ({ userData, active }) => {
         </section>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default ChapterMenu;
-

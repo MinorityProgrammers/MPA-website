@@ -1,10 +1,10 @@
-import React from "react";
-import TaskNameHeader from "./TaskNameHeader";
-import Footer from "../../components/Footer";
+import React from 'react';
+import TaskNameHeader from './TaskNameHeader';
+import Footer from '../Footer';
 // import TaskNameDescription from "./TaskNameDescription";
-import TaskNameDescription from "./TaskNameDescription";
+import TaskNameDescription from './TaskNameDescription';
 
-const TaskName = () => {
+const TaskName = function () {
   return (
     <div className=" page-gradient">
       <div className="tw-container tw-mx-auto">

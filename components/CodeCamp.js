@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import CountUp from "react-countup";
-import VisibilitySensor from "react-visibility-sensor";
+import React, { Component } from 'react';
+import CountUp from 'react-countup';
+import VisibilitySensor from 'react-visibility-sensor';
 
 class CodeCamp extends Component {
   constructor() {
@@ -62,11 +62,11 @@ class CodeCamp extends Component {
                 </VisibilitySensor>
               </p>
               <div className="about-one__review-stars">
-                <i className="fas fa-star"></i>
-                <i className="fas fa-star"></i>
-                <i className="fas fa-star"></i>
-                <i className="fas fa-star"></i>
-                <i className="fas fa-star"></i>
+                <i className="fas fa-star" />
+                <i className="fas fa-star" />
+                <i className="fas fa-star" />
+                <i className="fas fa-star" />
+                <i className="fas fa-star" />
               </div>
               <p className="about-one__review-text">students love us</p>
             </div>

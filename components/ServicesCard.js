@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react';
 
-const ServicesCard = (props) => {
+const ServicesCard = function (props) {
   return (
     <div className="item">
       <div className={props.item.classNameOne}>
         <div className="course-category-two__icon">
-          <i className={props.item.icon}></i>
+          <i className={props.item.icon} />
         </div>
         <h3 className="course-category-two__title">
           <a href={props.item.serviceLink}>{props.item.tileName}</a>

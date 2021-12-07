@@ -1,24 +1,22 @@
- import React from "react";
-import { useEffect } from "react";
-import { useState } from "react";
-import electProposal from "./electProposal.json";
-import { RiFlag2Fill } from "react-icons/ri";
-import { BsThreeDotsVertical } from "react-icons/bs";
-import { useDrag, useDrop } from "react-dnd";
+import React, { useEffect, useState } from 'react';
+import { RiFlag2Fill } from 'react-icons/ri';
+import { BsThreeDotsVertical } from 'react-icons/bs';
+import { useDrag, useDrop } from 'react-dnd';
+import electProposal from './electProposal.json';
 
-const TaskStatusDnD = () => {
+const TaskStatusDnD = function () {
   const [proposals, setProposals] = useState(() => electProposal);
   const [list, setList] = useState([]);
 
   const [{ isOver }, addToListRef] = useDrop({
-    accept: "proposal",
+    accept: 'proposal',
     collect: (monitor) => ({
       isOver: !!monitor.isOver(),
     }),
   });
 
   const [{ isOver: isProposalOver }, removeFromListRef] = useDrop({
-    accept: "list",
+    accept: 'list',
     collect: (monitor) => ({
       isOver: !!monitor.isOver(),
     }),
@@ -26,11 +24,9 @@ const TaskStatusDnD = () => {
 
   const movePlayer = (item) => {
     console.log(item);
-    if (item && item.type === "proposal") {
+    if (item && item.type === 'proposal') {
       setList((_list) => [...list, proposals[item.index]]);
-      setProposals((_proposals) =>
-        _proposals.filter((_, idx) => idx !== item.index)
-      );
+      setProposals((_proposals) => _proposals.filter((_, idx) => idx !== item.index));
     } else {
       setProposals((_proposals) => [..._proposals, list[item.index]]);
       setList((_list) => _list.filter((_, idx) => idx !== item.index));
@@ -103,7 +99,7 @@ const TaskStatusDnD = () => {
               <h3>Completed Task</h3>
             </div>
 
-            <div className="tw-grid  tw-grid-cols-2 tw-mt-4"></div>
+            <div className="tw-grid  tw-grid-cols-2 tw-mt-4" />
           </div>
         </div>
       </div>
@@ -111,7 +107,9 @@ const TaskStatusDnD = () => {
   );
 };
 
-const ProposalList = ({ id, sDes, flag, index, boardType, onDropPlayer }) => {
+const ProposalList = function ({
+  id, sDes, flag, index, boardType, onDropPlayer,
+}) {
   const [{ isDragging }, dragRef] = useDrag({
     item: {
       type: boardType,

@@ -1,8 +1,8 @@
-import React from "react";
-import Swiper from "react-id-swiper";
-import "swiper/css/swiper.css";
+import React from 'react';
+import Swiper from 'react-id-swiper';
+import 'swiper/css/swiper.css';
 
-const CourseCatTwo = () => {
+const CourseCatTwo = function () {
   const params = {
     slidesPerView: 5,
     loop: true,
@@ -39,7 +39,7 @@ const CourseCatTwo = () => {
               <div className="item">
                 <div className="course-category-two__single color-1">
                   <div className="course-category-two__icon">
-                    <i className="kipso-icon-desktop"></i>
+                    <i className="kipso-icon-desktop" />
                   </div>
                   <h3 className="course-category-two__title">
                     <a href="#">IT & Software</a>
@@ -49,7 +49,7 @@ const CourseCatTwo = () => {
               <div className="item">
                 <div className="course-category-two__single color-2">
                   <div className="course-category-two__icon">
-                    <i className="kipso-icon-web-programming"></i>
+                    <i className="kipso-icon-web-programming" />
                   </div>
                   <h3 className="course-category-two__title">
                     <a href="#">Development</a>
@@ -59,7 +59,7 @@ const CourseCatTwo = () => {
               <div className="item">
                 <div className="course-category-two__single color-3">
                   <div className="course-category-two__icon">
-                    <i className="kipso-icon-music-player"></i>
+                    <i className="kipso-icon-music-player" />
                   </div>
                   <h3 className="course-category-two__title">
                     <a href="#">Music</a>
@@ -69,7 +69,7 @@ const CourseCatTwo = () => {
               <div className="item">
                 <div className="course-category-two__single color-4">
                   <div className="course-category-two__icon">
-                    <i className="kipso-icon-camera"></i>
+                    <i className="kipso-icon-camera" />
                   </div>
                   <h3 className="course-category-two__title">
                     <a href="#">Photography</a>
@@ -79,7 +79,7 @@ const CourseCatTwo = () => {
               <div className="item">
                 <div className="course-category-two__single color-5">
                   <div className="course-category-two__icon">
-                    <i className="kipso-icon-targeting"></i>
+                    <i className="kipso-icon-targeting" />
                   </div>
                   <h3 className="course-category-two__title">
                     <a href="#">Marketing</a>
@@ -89,7 +89,7 @@ const CourseCatTwo = () => {
               <div className="item">
                 <div className="course-category-two__single color-6">
                   <div className="course-category-two__icon">
-                    <i className="kipso-icon-health"></i>
+                    <i className="kipso-icon-health" />
                   </div>
                   <h3 className="course-category-two__title">
                     <a href="#">Health & Fitness</a>
@@ -99,7 +99,7 @@ const CourseCatTwo = () => {
               <div className="item">
                 <div className="course-category-two__single color-1">
                   <div className="course-category-two__icon">
-                    <i className="kipso-icon-desktop"></i>
+                    <i className="kipso-icon-desktop" />
                   </div>
                   <h3 className="course-category-two__title">
                     <a href="#">IT & Software</a>
@@ -109,7 +109,7 @@ const CourseCatTwo = () => {
               <div className="item">
                 <div className="course-category-two__single color-2">
                   <div className="course-category-two__icon">
-                    <i className="kipso-icon-web-programming"></i>
+                    <i className="kipso-icon-web-programming" />
                   </div>
                   <h3 className="course-category-two__title">
                     <a href="#">Development</a>
@@ -119,7 +119,7 @@ const CourseCatTwo = () => {
               <div className="item">
                 <div className="course-category-two__single color-3">
                   <div className="course-category-two__icon">
-                    <i className="kipso-icon-music-player"></i>
+                    <i className="kipso-icon-music-player" />
                   </div>
                   <h3 className="course-category-two__title">
                     <a href="#">Music</a>
@@ -129,7 +129,7 @@ const CourseCatTwo = () => {
               <div className="item">
                 <div className="course-category-two__single color-4">
                   <div className="course-category-two__icon">
-                    <i className="kipso-icon-camera"></i>
+                    <i className="kipso-icon-camera" />
                   </div>
                   <h3 className="course-category-two__title">
                     <a href="#">Photography</a>
@@ -139,7 +139,7 @@ const CourseCatTwo = () => {
               <div className="item">
                 <div className="course-category-two__single color-1">
                   <div className="course-category-two__icon">
-                    <i className="kipso-icon-desktop"></i>
+                    <i className="kipso-icon-desktop" />
                   </div>
                   <h3 className="course-category-two__title">
                     <a href="#">IT & Software</a>
@@ -149,7 +149,7 @@ const CourseCatTwo = () => {
               <div className="item">
                 <div className="course-category-two__single color-2">
                   <div className="course-category-two__icon">
-                    <i className="kipso-icon-web-programming"></i>
+                    <i className="kipso-icon-web-programming" />
                   </div>
                   <h3 className="course-category-two__title">
                     <a href="#">Development</a>
@@ -159,7 +159,7 @@ const CourseCatTwo = () => {
               <div className="item">
                 <div className="course-category-two__single color-3">
                   <div className="course-category-two__icon">
-                    <i className="kipso-icon-music-player"></i>
+                    <i className="kipso-icon-music-player" />
                   </div>
                   <h3 className="course-category-two__title">
                     <a href="#">Music</a>
@@ -169,7 +169,7 @@ const CourseCatTwo = () => {
               <div className="item">
                 <div className="course-category-two__single color-4">
                   <div className="course-category-two__icon">
-                    <i className="kipso-icon-camera"></i>
+                    <i className="kipso-icon-camera" />
                   </div>
                   <h3 className="course-category-two__title">
                     <a href="#">Photography</a>
@@ -179,7 +179,7 @@ const CourseCatTwo = () => {
               <div className="item">
                 <div className="course-category-two__single color-5">
                   <div className="course-category-two__icon">
-                    <i className="kipso-icon-targeting"></i>
+                    <i className="kipso-icon-targeting" />
                   </div>
                   <h3 className="course-category-two__title">
                     <a href="#">Marketing</a>

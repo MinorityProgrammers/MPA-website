@@ -1,17 +1,17 @@
-import { useState } from "react";
-import Select from "../customInputTags/select";
-import QuestionContainer from "../questionContainer";
-import { useDefaultValue } from "../getDefaultValue";
-import addQuestion from "../addQuestion";
+import { useState } from 'react';
+import Select from '../customInputTags/select';
+import QuestionContainer from '../questionContainer';
+import { useDefaultValue } from '../getDefaultValue';
+import addQuestion from '../addQuestion';
 
-function SelectTemplate({
+const SelectTemplate = function ({
   step,
   setstep,
   questions,
   setQuestions,
   options = [],
   secondOptions,
-  question1 = "",
+  question1 = '',
 }) {
   const defaultValueSelected = useDefaultValue(questions, step, 0);
   const defaultSecondValueSelected = useDefaultValue(questions, step, 1);
@@ -21,15 +21,16 @@ function SelectTemplate({
   const [secondSelected, setSecondSelected] = useState(undefined);
 
   function pageFourQuestion() {
-    if (secondOptions)
+    if (secondOptions) {
       addQuestion(setQuestions, step, [
         { question: selected[0], answer: selected[1] },
         { question: secondSelected[0], answer: secondSelected[1] },
       ]);
-    else
+    } else {
       addQuestion(setQuestions, step, [
         { question: selected[0], answer: selected[1] },
       ]);
+    }
   }
   function shouldSave() {
     let bool = selected instanceof Array;
@@ -90,5 +91,5 @@ function SelectTemplate({
       </Select>
     </QuestionContainer>
   );
-}
+};
 export default SelectTemplate;

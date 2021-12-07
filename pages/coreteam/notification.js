@@ -1,18 +1,16 @@
-import Notification from "../../components/coreteam/Notification";
-import React from "react";
+import React from 'react';
+import Notification from '../../components/coreteam/Notification';
 
-import Footer from "../../components/Footer";
-import HomepageNav from "../../components/HomepageNav";
-import Layout from "../../components/Layout";
+import Footer from '../../components/Footer';
+import HomepageNav from '../../components/HomepageNav';
+import Layout from '../../components/Layout';
 
-const notificaton = () => {
-  return (
-    <Layout>
-      <HomepageNav />
-      <Notification />
-      <Footer />
-    </Layout>
-  );
-};
+const notificaton = () => (
+  <Layout>
+    <HomepageNav />
+    <Notification />
+    <Footer />
+  </Layout>
+);
 
 export default notificaton;

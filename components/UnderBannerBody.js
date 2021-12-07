@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react';
 
-const UnderBannerBody = (props) => {
-  let text = props.text;
+const UnderBannerBody = function (props) {
+  const { text } = props;
 
   return (
-    <div class="below-banner-text">
+    <div className="below-banner-text">
       <p>{text}</p>
     </div>
   );

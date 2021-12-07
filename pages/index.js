@@ -1,26 +1,26 @@
-import React, { useState, useRef, useEffect } from "react";
-import Layout from "../components/Layout";
-import HomepageNav from "../components/HomepageNav";
-import Footer from "../components/Footer";
-import HomepageHeader from "../components/HomepageHeader";
-import HomepageAbout from "../components/HomepageAbout";
-import HomepageApp from "../components/HomepageApp";
-import HomepageCore from "../components/HomepageCore";
-import HomepageWave from "../components/HomepageWave";
-import HomepageTeam from "../components/HomepageTeam";
-import HomepageTestimonials from "../components/HomepageTestimonials";
-import HomepageDonate from "../components/HomepageDonate";
-import SidebarTwo from "../components/SidebarTwo";
-import links from "../contexts/utils/links";
-import ComingSoon from "../components/ComingSoon";
-import { useDetectOutsideClick } from "../components/UseDetectOutsideClick";
-import MpaBuilder from "../components/mpa-builder/builder";
+import React, { useState, useRef, useEffect } from 'react';
+import Layout from '../components/Layout';
+import HomepageNav from '../components/HomepageNav';
+import Footer from '../components/Footer';
+import HomePageNewTopSection from '../components/HomePageNewTopSection';
+import HomepageAbout from '../components/HomepageAbout';
+import HomepageApp from '../components/HomepageApp';
+import HomepageCore from '../components/HomepageCore';
+import HomepageWave from '../components/HomepageWave';
+import HomepageTeam from '../components/HomepageTeam';
+import HomepageTestimonials from '../components/HomepageTestimonials';
+import HomepageDonate from '../components/HomepageDonate';
+import SidebarTwo from '../components/SidebarTwo';
+import links from '../contexts/utils/links';
+import ComingSoon from '../components/ComingSoon';
+import { useDetectOutsideClick } from '../components/UseDetectOutsideClick';
+import MpaBuilder from '../components/mpa-builder/builder';
 
-const HomepageFour = () => {
+const HomepageFour = function () {
   const [open, setOpen] = useState(false);
   const [builder, setBuilder] = useState(true);
   const [mount, setMount] = useState(false);
-  const [showWelcomeScreen, setScreen] = useState("false");
+  const [showWelcomeScreen, setScreen] = useState('false');
 
   useEffect(() => {
     const timerId = setTimeout(() => {
@@ -32,7 +32,7 @@ const HomepageFour = () => {
   useEffect(() => {
     setMount(true);
     setScreen(window.sessionStorage.showWelcomeScreen);
-    window.sessionStorage.showWelcomeScreen = "false";
+    window.sessionStorage.showWelcomeScreen = 'false';
   }, []);
 
   const dropdownRef = useRef(null);
@@ -50,22 +50,22 @@ const HomepageFour = () => {
     <Layout pageTitle="MPA | Home">
       {mount && (
         <div>
-          {builder && showWelcomeScreen !== "false" ? (
+          {builder && showWelcomeScreen !== 'false' ? (
             <MpaBuilder />
           ) : (
-            <React.Fragment>
-              <HomepageNav open={open} setOpen={setOpen} page={"Home"} />
+            <>
+              <HomepageNav open={open} setOpen={setOpen} page="Home" />
               <SidebarTwo
                 open={open}
                 setOpen={setOpen}
                 links={links}
-                active={"Home"}
+                active="Home"
                 handleClick={handleClick}
               />
               {hide == false && <ComingSoon closeClick={handleClick} />}
-              <HomepageHeader />
+              <HomePageNewTopSection />
               <HomepageAbout />
-              {/* <HomepageBuyMinority />*/}
+              {/* <HomepageBuyMinority /> */}
               <HomepageApp />
               <HomepageCore />
               <HomepageWave />
@@ -73,7 +73,7 @@ const HomepageFour = () => {
               <HomepageTestimonials />
               <HomepageDonate />
               <Footer />
-            </React.Fragment>
+            </>
           )}
         </div>
       )}

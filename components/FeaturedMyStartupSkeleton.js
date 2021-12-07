@@ -1,15 +1,15 @@
-import FeaturedMyCardSkeleton from "./FeaturedMyCardSkeleton";
-import Swiper from "react-id-swiper";
+import Swiper from 'react-id-swiper';
+import FeaturedMyCardSkeleton from './FeaturedMyCardSkeleton';
 
-const FeaturedMyStartupSkeleton = () => {
+const FeaturedMyStartupSkeleton = function () {
   const params = {
     slidesPerView: 4,
     loop: true,
     speed: 700,
     spaceBetween: 0,
     navigation: {
-      nextEl: 4 ? ".swiper-button-next" : "",
-      prevEl: 4 ? ".swiper-button-prev" : "",
+      nextEl: 4 ? '.swiper-button-next' : '',
+      prevEl: 4 ? '.swiper-button-prev' : '',
     },
     autoplay: {
       delay: 3000,
@@ -41,29 +41,27 @@ const FeaturedMyStartupSkeleton = () => {
     },
   };
   return (
-    <>
-      <section className="featured__wrapper">
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-3 col-md-12 featured__text">
-              <h2 className="featured__title">My Startups</h2>
-              <p className="featured__subtitle">
-                These are startups you have some shares in
-              </p>
-            </div>
-            <div className="col-lg-9 col-md-12 d-flex align-items-center justify-content-center ">
-              <Swiper {...params} grabCursor={true}>
-                <FeaturedMyCardSkeleton />
-                <FeaturedMyCardSkeleton />
-                <FeaturedMyCardSkeleton />
-                <FeaturedMyCardSkeleton />
-                <FeaturedMyCardSkeleton />
-              </Swiper>
-            </div>
+    <section className="featured__wrapper">
+      <div className="container">
+        <div className="row">
+          <div className="col-lg-3 col-md-12 featured__text">
+            <h2 className="featured__title">My Startups</h2>
+            <p className="featured__subtitle">
+              These are startups you have some shares in
+            </p>
+          </div>
+          <div className="col-lg-9 col-md-12 d-flex align-items-center justify-content-center ">
+            <Swiper {...params} grabCursor>
+              <FeaturedMyCardSkeleton />
+              <FeaturedMyCardSkeleton />
+              <FeaturedMyCardSkeleton />
+              <FeaturedMyCardSkeleton />
+              <FeaturedMyCardSkeleton />
+            </Swiper>
           </div>
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 };
 

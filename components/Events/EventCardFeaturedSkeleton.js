@@ -1,7 +1,7 @@
-import react from "react";
-import ContentLoader from "react-content-loader";
+import react from 'react';
+import ContentLoader from 'react-content-loader';
 
-const EventCardFeaturedSkeleton = () => {
+const EventCardFeaturedSkeleton = function () {
   return (
 
     <div className="eventcard_container">
@@ -22,11 +22,11 @@ const EventCardFeaturedSkeleton = () => {
           <rect x="380" y="220" rx="6" ry="6" width="330" height="140" />
           {/* RIGHT BUTTON SKELETON */}
           <rect x="380" y="370" rx="6" ry="6" width="330" height="140" />
-        </ContentLoader >
+        </ContentLoader>
       </div>
     </div>
 
-  )
+  );
 };
 
 export default EventCardFeaturedSkeleton;

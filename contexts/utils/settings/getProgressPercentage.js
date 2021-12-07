@@ -53,15 +53,15 @@ export const getProgressPercentage = (data) => {
     !!data?.DribbleLink,
     !!data?.ClickupLink,
 
-    !!data?.passions?.length &&
-      (data.passions.length === 1 ? data.passions[0] !== "" : true),
+    !!data?.passions?.length
+      && (data.passions.length === 1 ? data.passions[0] !== '' : true),
 
-    !!data?.softSkills?.length &&
-      (data.softSkills.length === 1 ? data.softSkills[0] !== "" : true),
+    !!data?.softSkills?.length
+      && (data.softSkills.length === 1 ? data.softSkills[0] !== '' : true),
 
-    !!data?.programmingSkills?.length &&
-      (data.programmingSkills.length === 1
-        ? data.programmingSkills[0] !== ""
+    !!data?.programmingSkills?.length
+      && (data.programmingSkills.length === 1
+        ? data.programmingSkills[0] !== ''
         : true),
 
     !!data?.educationLevel,
@@ -73,6 +73,6 @@ export const getProgressPercentage = (data) => {
   ];
 
   return Math.round(
-    (datasInBool.filter((data) => data).length * 100) / userProfileDatas.length
+    (datasInBool.filter((data) => data).length * 100) / userProfileDatas.length,
   );
 };

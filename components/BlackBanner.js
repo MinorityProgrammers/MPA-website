@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 
-const LegalBanner = (props) => {
-  let title = props.title;
-  let subtitle = props.subtitle;
-  let bannerImgLink = props.bannerImgLink;
+const LegalBanner = function (props) {
+  const { title } = props;
+  const { subtitle } = props;
+  const { bannerImgLink } = props;
   return (
     <section className="vote-section">
       <div className="vote-bg">

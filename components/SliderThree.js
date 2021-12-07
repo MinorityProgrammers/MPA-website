@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-const SliderThree = () => {
+const SliderThree = function () {
   return (
     <section className="slider-three">
       <img
@@ -45,7 +45,7 @@ const SliderThree = () => {
               <form action="#" className="slider-three__search">
                 <input type="text" placeholder="Search courses" />
                 <button type="submit">
-                  <i className="kipso-icon-magnifying-glass"></i>
+                  <i className="kipso-icon-magnifying-glass" />
                 </button>
               </form>
             </div>

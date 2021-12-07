@@ -1,7 +1,7 @@
-import { getNativeByChain } from "../helpers/networks";
-import { useMoralisDapp } from "../MoralisDappProvider/MoralisDappProvider";
-import { useEffect, useMemo, useState } from "react";
-import { useMoralis, useMoralisWeb3Api, useMoralisWeb3ApiCall } from "react-moralis";
+import { useEffect, useMemo, useState } from 'react';
+import { useMoralis, useMoralisWeb3Api, useMoralisWeb3ApiCall } from 'react-moralis';
+import { getNativeByChain } from './networks';
+import { useMoralisDapp } from '../MoralisDappProvider/MoralisDappProvider';
 
 export const useNativeBalance = (options) => {
   const { account } = useMoralisWeb3Api();
@@ -34,5 +34,7 @@ export const useNativeBalance = (options) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
 
-  return { getBalance, balance, nativeName, error, isLoading };
+  return {
+    getBalance, balance, nativeName, error, isLoading,
+  };
 };

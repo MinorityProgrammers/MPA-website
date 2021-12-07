@@ -1,20 +1,22 @@
-import React, { useEffect, useState, useContext, useRef } from "react";
-import Layout from "../../components/Layout";
-import HomepageNav from "../../components/HomepageNav";
-import SidebarTwo from "../../components/SidebarTwo";
-import { GlobalContext } from "../../contexts/provider";
-import { LOGOUT_USER } from "../../contexts/actions/actionTypes";
-import { getProfile } from "../../contexts/actions/profile/getProfile";
-import links from "../../contexts/utils/links";
-import Footer from "../../components/Footer";
-import ComingSoon from "../../components/ComingSoon";
-import { useDetectOutsideClick } from "../../components/UseDetectOutsideClick";
-import { useRouter } from "next/router";
-import decode from "jwt-decode";
-import styles from "../../styles/settings/settingsLayout.module.css";
-import { style } from "dom-helpers";
+import React, {
+  useEffect, useState, useContext, useRef,
+} from 'react';
+import { useRouter } from 'next/router';
+import decode from 'jwt-decode';
+import { style } from 'dom-helpers';
+import Layout from '../Layout';
+import HomepageNav from '../HomepageNav';
+import SidebarTwo from '../SidebarTwo';
+import { GlobalContext } from '../../contexts/provider';
+import { LOGOUT_USER } from '../../contexts/actions/actionTypes';
+import { getProfile } from '../../contexts/actions/profile/getProfile';
+import links from '../../contexts/utils/links';
+import Footer from '../Footer';
+import ComingSoon from '../ComingSoon';
+import { useDetectOutsideClick } from '../UseDetectOutsideClick';
+import styles from '../../styles/settings/settingsLayout.module.css';
 
-function SettingsLayout({ setData, children, settingsPage }) {
+const SettingsLayout = function ({ setData, children, settingsPage }) {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef(null);
   const [hide, setHide] = useDetectOutsideClick(dropdownRef, false);
@@ -40,7 +42,7 @@ function SettingsLayout({ setData, children, settingsPage }) {
   // grab a token from local storage so as user info
   useEffect(() => {
     // console.log(window.localStorage.getItem("jwtToken"));
-    if (window.localStorage.getItem("jwtToken")) {
+    if (window.localStorage.getItem('jwtToken')) {
       getProfile(setUserData)(profileDispatch);
     }
   }, []);
@@ -54,13 +56,13 @@ function SettingsLayout({ setData, children, settingsPage }) {
   //   }, []);
 
   useEffect(() => {
-    const token = window.localStorage.getItem("jwtToken");
-    const userInfo = window.localStorage.getItem("userInfo");
+    const token = window.localStorage.getItem('jwtToken');
+    const userInfo = window.localStorage.getItem('userInfo');
 
     if (token == null || userInfo == {}) {
-      router.push(`/auth`);
+      router.push('/auth');
     } else if (userData?.isUpdated === false) {
-      router.push(`/create-profile`);
+      router.push('/create-profile');
     }
   }, [userData]);
 
@@ -71,30 +73,25 @@ function SettingsLayout({ setData, children, settingsPage }) {
   }
 
   const handleLogout = () => {
-    localStorage.removeItem("userInfo");
-    localStorage.removeItem("jwtToken");
+    localStorage.removeItem('userInfo');
+    localStorage.removeItem('jwtToken');
     authDispatch({
       type: LOGOUT_USER,
     });
-    window.location.href = "/";
+    window.location.href = '/';
   };
 
   useEffect(() => {
-    const token =
-      typeof window !== "undefined"
-        ? window.localStorage.getItem("jwtToken")
-        : null;
+    const token = typeof window !== 'undefined'
+      ? window.localStorage.getItem('jwtToken')
+      : null;
     if (token) {
       const decodedToken = decode(token);
       if (decodedToken.exp * 1000 < new Date().getTime()) handleLogout();
     }
   }, []);
 
-  const toTitleCase = (str) => {
-    return str?.replace(/\w\S*/g, function (txt) {
-      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-    });
-  };
+  const toTitleCase = (str) => str?.replace(/\w\S*/g, (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
 
   // console.log(userData);
   // console.log(children);
@@ -110,7 +107,7 @@ function SettingsLayout({ setData, children, settingsPage }) {
         open={open}
         setOpen={setOpen}
         links={links}
-        active={"Home"}
+        active="Home"
         handleClick={handleClick}
       />
       {hide == false && <ComingSoon closeClick={handleClick} />}
@@ -120,7 +117,7 @@ function SettingsLayout({ setData, children, settingsPage }) {
             <div className={styles.userDataHeader}>
               <div className={styles.imgDiv}>
                 <img
-                  src={userData?.profilePicture || "/assets/images/profile.png"}
+                  src={userData?.profilePicture || '/assets/images/profile.png'}
                   alt="avatar"
                   onClick={() => router.push(`/user/${userData?.userName}`)}
                 />
@@ -128,13 +125,13 @@ function SettingsLayout({ setData, children, settingsPage }) {
               <div className={styles.textDiv}>
                 <h3>
                   {userData?.firstName && userData?.lastName
-                    ? userData?.firstName + " " + userData?.lastName
-                    : "no name"}
+                    ? `${userData?.firstName} ${userData?.lastName}`
+                    : 'no name'}
                 </h3>
                 <h4>
                   {userData?.userName
-                    ? "@" + userData?.userName
-                    : "no username"}
+                    ? `@${userData?.userName}`
+                    : 'no username'}
                 </h4>
                 <p>
                   <span onClick={() => handleLogout()}>Logout</span>
@@ -145,7 +142,7 @@ function SettingsLayout({ setData, children, settingsPage }) {
               <div className={styles.navHeader}>
                 <h1
                   style={
-                    settingsPage === "overview" ? { borderBottom: "none" } : {}
+                    settingsPage === 'overview' ? { borderBottom: 'none' } : {}
                   }
                 >
                   Account Settings
@@ -154,40 +151,40 @@ function SettingsLayout({ setData, children, settingsPage }) {
               <ul>
                 <li
                   className={`${styles.navHeader} ${
-                    settingsPage === "overview" && styles.activeLi
+                    settingsPage === 'overview' && styles.activeLi
                   }`}
                 >
                   <h2
                     style={{
-                      borderBottom: settingsPage === "profile" && "none",
+                      borderBottom: settingsPage === 'profile' && 'none',
                     }}
                   >
                     <div className={styles.icon}>
                       <img
                         src="../../assets/images/settings/overview.svg"
                         alt="overview icon"
-                        onClick={() => router.push("/settings/overview")}
+                        onClick={() => router.push('/settings/overview')}
                       />
                     </div>
-                    <span onClick={() => router.push("/settings/overview")}>
+                    <span onClick={() => router.push('/settings/overview')}>
                       Settings Overview
                     </span>
                     <div className={styles.arrow}>
                       <img
                         src={
-                          settingsPage === "overview"
-                            ? "../../assets/images/settings/arrow-white.svg"
-                            : "../../assets/images/settings/arrow.svg"
+                          settingsPage === 'overview'
+                            ? '../../assets/images/settings/arrow-white.svg'
+                            : '../../assets/images/settings/arrow.svg'
                         }
                         alt="arrow icon"
-                        onClick={() => router.push("/settings/overview")}
+                        onClick={() => router.push('/settings/overview')}
                       />
                     </div>
                   </h2>
                 </li>
                 <li
                   className={`${styles.navHeader} ${
-                    settingsPage === "profile" && styles.activeLi
+                    settingsPage === 'profile' && styles.activeLi
                   }`}
                 >
                   <h2>
@@ -195,66 +192,66 @@ function SettingsLayout({ setData, children, settingsPage }) {
                       <img
                         src="../../assets/images/settings/profile.svg"
                         alt="profile icon"
-                        onClick={() => router.push("/settings/profile/details")}
+                        onClick={() => router.push('/settings/profile/details')}
                       />
                     </div>
                     <span
-                      onClick={() => router.push("/settings/profile/details")}
+                      onClick={() => router.push('/settings/profile/details')}
                     >
                       Profile
                     </span>
                     <div className={styles.arrow}>
                       <img
                         src={
-                          settingsPage === "profile"
-                            ? "../../assets/images/settings/arrow-white.svg"
-                            : "../../assets/images/settings/arrow.svg"
+                          settingsPage === 'profile'
+                            ? '../../assets/images/settings/arrow-white.svg'
+                            : '../../assets/images/settings/arrow.svg'
                         }
                         alt="arrow icon"
-                        onClick={() => router.push("/settings/profile/details")}
+                        onClick={() => router.push('/settings/profile/details')}
                       />
                     </div>
                   </h2>
                 </li>
                 <li
                   className={`${styles.navHeader} ${
-                    settingsPage === "security" && styles.activeLi
+                    settingsPage === 'security' && styles.activeLi
                   }`}
                 >
                   <h2
                     style={{
-                      borderTop: settingsPage === "profile" && "none",
-                      borderBottom: settingsPage === "wallet" && "none",
+                      borderTop: settingsPage === 'profile' && 'none',
+                      borderBottom: settingsPage === 'wallet' && 'none',
                     }}
                   >
                     <div className={styles.icon}>
                       <img
                         src="../../assets/images/settings/security.svg"
                         alt="security icon"
-                        onClick={() => router.push("/settings/security/login")}
+                        onClick={() => router.push('/settings/security/login')}
                       />
                     </div>
                     <span
-                      onClick={() => router.push("/settings/security/login")}
+                      onClick={() => router.push('/settings/security/login')}
                     >
                       Security & Login
                     </span>
                     <div className={styles.arrow}>
                       <img
                         src={
-                          settingsPage === "security"
-                            ? "../../assets/images/settings/arrow-white.svg"
-                            : "../../assets/images/settings/arrow.svg"
+                          settingsPage === 'security'
+                            ? '../../assets/images/settings/arrow-white.svg'
+                            : '../../assets/images/settings/arrow.svg'
                         }
                         alt="arrow icon"
-                        onClick={() => router.push("/settings/security/login")}
+                        onClick={() => router.push('/settings/security/login')}
                       />
                     </div>
                   </h2>
                 </li>
                 <li
                   className={`${styles.navHeader} ${
-                    settingsPage === "wallet" && styles.activeLi
+                    settingsPage === 'wallet' && styles.activeLi
                   }`}
                 >
                   <h2>
@@ -262,66 +259,56 @@ function SettingsLayout({ setData, children, settingsPage }) {
                       <img
                         src="../../assets/images/settings/wallet.svg"
                         alt="wallet icon"
-                        onClick={() =>
-                          router.push("/settings/wallet/my-wallet")
-                        }
+                        onClick={() => router.push('/settings/wallet/my-wallet')}
                       />
                     </div>
                     <span
-                      onClick={() => router.push("/settings/wallet/my-wallet")}
+                      onClick={() => router.push('/settings/wallet/my-wallet')}
                     >
                       Wallet
                     </span>
                     <div className={styles.arrow}>
                       <img
                         src={
-                          settingsPage === "wallet"
-                            ? "../../assets/images/settings/arrow-white.svg"
-                            : "../../assets/images/settings/arrow.svg"
+                          settingsPage === 'wallet'
+                            ? '../../assets/images/settings/arrow-white.svg'
+                            : '../../assets/images/settings/arrow.svg'
                         }
                         alt="arrow icon"
-                        onClick={() =>
-                          router.push("/settings/wallet/my-wallet")
-                        }
+                        onClick={() => router.push('/settings/wallet/my-wallet')}
                       />
                     </div>
                   </h2>
                 </li>
                 <li
                   className={`${styles.navHeader} ${
-                    settingsPage === "notifications" && styles.activeLi
+                    settingsPage === 'notifications' && styles.activeLi
                   }`}
                 >
                   <h2
-                    style={{ borderTop: settingsPage === "wallet" && "none" }}
+                    style={{ borderTop: settingsPage === 'wallet' && 'none' }}
                   >
                     <div className={styles.icon}>
                       <img
                         src="../../assets/images/settings/notifications.svg"
                         alt="notifications icon"
-                        onClick={() =>
-                          router.push("/settings/notifications/notifications")
-                        }
+                        onClick={() => router.push('/settings/notifications/notifications')}
                       />
                     </div>
                     <span
-                      onClick={() =>
-                        router.push("/settings/notifications/notifications")
-                      }
+                      onClick={() => router.push('/settings/notifications/notifications')}
                     >
                       Notifications
                     </span>
                     <div className={styles.arrow}>
                       <img
                         src={
-                          settingsPage === "notifications"
-                            ? "../../assets/images/settings/arrow-white.svg"
-                            : "../../assets/images/settings/arrow.svg"
+                          settingsPage === 'notifications'
+                            ? '../../assets/images/settings/arrow-white.svg'
+                            : '../../assets/images/settings/arrow.svg'
                         }
                         alt="arrow icon"
-                        onClick={() =>
-                          router.push("/settings/notifications/notifications")
-                        }
+                        onClick={() => router.push('/settings/notifications/notifications')}
                       />
                     </div>
                   </h2>
@@ -330,7 +317,7 @@ function SettingsLayout({ setData, children, settingsPage }) {
             </nav>
           </div>
           <div className={styles.specificSettings}>
-            {settingsPage === "overview"
+            {settingsPage === 'overview'
               ? children
               : [children && children[0], children && children[1]]}
           </div>
@@ -339,6 +326,6 @@ function SettingsLayout({ setData, children, settingsPage }) {
       <Footer />
     </Layout>
   );
-}
+};
 
 export default SettingsLayout;

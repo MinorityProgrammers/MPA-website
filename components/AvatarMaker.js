@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-const AvatarMaker = () => {
+const AvatarMaker = function () {
   return (
     <section id="avatar" className="cta-four">
       <img
@@ -18,11 +18,19 @@ const AvatarMaker = () => {
           <div className="col-lg-6">
             <div className="countdown-one__content">
               <h2 className="countdown-one__title block-title__title">
-                {" "}
-                Join <br /> Blockchain <br /> with your NFT
+                {' '}
+                Join
+                {' '}
+                <br />
+                {' '}
+                Blockchain
+                {' '}
+                <br />
+                {' '}
+                with your NFT
               </h2>
               <p className="countdown-one__tag-line">Create your own avatar!</p>
-              <div></div>
+              <div />
             </div>
             <br />
             <br />
@@ -33,8 +41,8 @@ const AvatarMaker = () => {
           </div>
           <iframe
             src="https://avatarmaker.com/"
-            style={({ height: `600px` }, { width: `600px` })}
-          ></iframe>
+            style={({ height: '600px' }, { width: '600px' })}
+          />
           <br />
           <br />
         </div>

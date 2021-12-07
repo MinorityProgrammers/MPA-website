@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-const BecomeTeacher = () => {
+const BecomeTeacher = function () {
   return (
     <section className="become-teacher">
       <div className="container">
@@ -54,7 +54,7 @@ const BecomeTeacher = () => {
                   Apply For It
                 </button>
               </form>
-              <div className="result text-center"></div>
+              <div className="result text-center" />
             </div>
           </div>
         </div>

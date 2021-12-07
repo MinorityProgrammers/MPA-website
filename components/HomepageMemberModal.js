@@ -1,6 +1,6 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect } from 'react';
 
-const HomepageMemberModal = ({ showModal, setShowModal, selectedMember }) => {
+const HomepageMemberModal = function ({ showModal, setShowModal, selectedMember }) {
   const modalRef = useRef();
 
   const closeModal = (e) => {
@@ -11,10 +11,10 @@ const HomepageMemberModal = ({ showModal, setShowModal, selectedMember }) => {
 
   useEffect(() => {
     if (showModal) {
-      document.body.style.overflow = "hidden";
+      document.body.style.overflow = 'hidden';
     }
     return () => {
-      document.body.style.overflow = "unset";
+      document.body.style.overflow = 'unset';
     };
   }, [showModal]);
 
@@ -33,7 +33,7 @@ const HomepageMemberModal = ({ showModal, setShowModal, selectedMember }) => {
               src={
                 selectedMember.AvatarLink !== null
                   ? selectedMember.AvatarLink
-                  : "https://github.com/MinorityProgrammers/mpa-avatars/blob/main/avatars/mysteryAvatar.png?raw=true"
+                  : 'https://github.com/MinorityProgrammers/mpa-avatars/blob/main/avatars/mysteryAvatar.png?raw=true'
               }
               alt={selectedMember.Employee}
               className="member__modal-img"
@@ -44,13 +44,13 @@ const HomepageMemberModal = ({ showModal, setShowModal, selectedMember }) => {
               {/* Social media links still under construction */}
               <div className="member__modal-social">
                 <a>
-                  <i className="fab fa-linkedin-in"></i>
+                  <i className="fab fa-linkedin-in" />
                 </a>
                 <a>
-                  <i className="fab fa-github"></i>
+                  <i className="fab fa-github" />
                 </a>
                 <a>
-                  <i className="fab fa-twitter"></i>
+                  <i className="fab fa-twitter" />
                 </a>
               </div>
             </div>
@@ -58,7 +58,7 @@ const HomepageMemberModal = ({ showModal, setShowModal, selectedMember }) => {
               className="member__btn-close"
               onClick={() => setShowModal((prev) => !prev)}
             >
-              <i className="fas fa-times"></i>
+              <i className="fas fa-times" />
             </button>
           </div>
         </>

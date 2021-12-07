@@ -1,15 +1,13 @@
-import { FaSortUp } from "react-icons/fa";
-import { FaSortDown } from "react-icons/fa";
-import Link from "next/link";
-import approvedproposal from "../components/ProjectManager/approvedproposal.json";
-import { useState } from "react";
-import { useEffect } from "react";
+import { FaSortUp, FaSortDown } from 'react-icons/fa';
+import Link from 'next/link';
+import { useState, useEffect } from 'react';
+import approvedproposal from './ProjectManager/approvedproposal.json';
 
 // Currently using JSON data for dynamic loading
 // After completing backend JSON should be removed and Proposals data will be loading-
 //  through getStaticProps function instead of useEffect hooks
 export const getStaticProps = async () => {
-  const res = await fetch("http://localhost:3000/getProposalsdata");
+  const res = await fetch('http://localhost:3000/getProposalsdata');
   const data = await res.json();
 
   return {
@@ -19,7 +17,7 @@ export const getStaticProps = async () => {
   };
 };
 
-const ApprovedProposals = () => {
+const ApprovedProposals = function () {
   const [proposals, setProposals] = useState([]);
   const [votes, setVotes] = useState(0);
   // This votes should ve post to database as API and will be shown on page loading from DB through API
@@ -28,14 +26,14 @@ const ApprovedProposals = () => {
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:3000/addVote", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
+    fetch('http://localhost:3000/addVote', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(votes),
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("saved to server");
+        console.log('saved to server');
       })
       .catch((error) => {
         console.error(error);
@@ -54,10 +52,14 @@ const ApprovedProposals = () => {
             </h1>
             <div className="tw-flex sm:tw-grid  sm:tw-grid-cols-1">
               <h1 className="tw-text-red-700 md:tw-m-2 tw-m-2 sm:tw-text-sm sm:tw-font-bold">
-                Type: {proposal.type}
+                Type:
+                {' '}
+                {proposal.type}
               </h1>
               <h1 className="tw-text-red-700 md:tw-m-2 tw-m-2 sm:tw-text-sm sm:tw-font-bold">
-                Category: {proposal.category}
+                Category:
+                {' '}
+                {proposal.category}
               </h1>
             </div>
             <div className="tw-flex">

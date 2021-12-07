@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 class CallToActionThree extends Component {
   render() {
@@ -25,17 +25,17 @@ class CallToActionThree extends Component {
                 </p>
                 <div className="cta-three__single-wrap">
                   <div className="cta-three__single">
-                    <i className="kipso-icon-strategy"></i>
+                    <i className="kipso-icon-strategy" />
                     <p className="cta-three__single-text">
                       Professional Courses
                     </p>
                   </div>
                   <div className="cta-three__single">
-                    <i className="kipso-icon-human-resources"></i>
+                    <i className="kipso-icon-human-resources" />
                     <p className="cta-three__single-text">Expert Teachers</p>
                   </div>
                   <div className="cta-three__single">
-                    <i className="kipso-icon-training"></i>
+                    <i className="kipso-icon-training" />
                     <p className="cta-three__single-text">
                       Onboarding/Training
                     </p>

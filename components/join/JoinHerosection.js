@@ -1,14 +1,14 @@
-import React from "react";
+import React from 'react';
+import Link from 'next/link';
 import ApplyIcon, {
   BuildIcon,
   JoinIcon,
   MentorIcon,
   StartIcon,
   HoldhandIcon,
-} from "./svg/icons";
-import Link from "next/link";
+} from './svg/icons';
 
-function JoinHerosection(props) {
+const JoinHerosection = function (props) {
   return (
     <div className="row hero-container">
       <div className="col-md-6">
@@ -21,8 +21,11 @@ function JoinHerosection(props) {
       <div className="col-md-6">
         <h1>Code, Culture, Commiunity</h1>
         <p>
-          We are an international network of developers{" "}
-          <span style={{ color: "#FFC700" }}>unifying together</span> to build
+          We are an international network of developers
+          {' '}
+          <span style={{ color: '#FFC700' }}>unifying together</span>
+          {' '}
+          to build
           socially impactful products & spread STEM education to marginalized
           communities.
         </p>
@@ -41,6 +44,6 @@ function JoinHerosection(props) {
       </div>
     </div>
   );
-}
+};
 
 export default JoinHerosection;

@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from "react";
-import ReactPaginate from "react-paginate";
-import FeaturedCard from "../components/FeaturedCard";
-import { Form } from "react-bootstrap";
+import React, { useState, useEffect } from 'react';
+import ReactPaginate from 'react-paginate';
+import { Form } from 'react-bootstrap';
+import FeaturedCard from './FeaturedCard';
 
-const FeaturedUpcoming = ({ data, setClickRegister, userData, allfunded }) => {
+const FeaturedUpcoming = function ({
+  data, setClickRegister, userData, allfunded,
+}) {
   const [pageNumber, setPageNumber] = useState(0);
   const [loading, setLoading] = useState(false);
   const [search, setSearch] = useState();
@@ -32,9 +34,7 @@ const FeaturedUpcoming = ({ data, setClickRegister, userData, allfunded }) => {
   const changePage = ({ selected }) => {
     setPageNumber(selected);
   };
-  const filterNames = ({ name }) => {
-    return name.toLowerCase().indexOf(search.toLowerCase()) !== -1;
-  };
+  const filterNames = ({ name }) => name.toLowerCase().indexOf(search.toLowerCase()) !== -1;
 
   useEffect(() => {
     if (!search) return setSearchResults(data);
@@ -43,58 +43,56 @@ const FeaturedUpcoming = ({ data, setClickRegister, userData, allfunded }) => {
   }, [search]);
 
   return (
-    <>
-      <section className="featured__wrapper pb-5" id="all-startups">
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-12 featured__text">
-              <h2 className="featured__title">All Startups</h2>
-              <Form.Control
-                className="search__bar"
-                placeholder="Search Startup"
-                onChange={(e) => setSearch(e.target.value)}
-              />
-              <p className="featured__subtitle">
-                These visionary companies and disruptors are on their journey to
-                change the world.
-              </p>
-            </div>
+    <section className="featured__wrapper pb-5" id="all-startups">
+      <div className="container">
+        <div className="row">
+          <div className="col-lg-12 featured__text">
+            <h2 className="featured__title">All Startups</h2>
+            <Form.Control
+              className="search__bar"
+              placeholder="Search Startup"
+              onChange={(e) => setSearch(e.target.value)}
+            />
+            <p className="featured__subtitle">
+              These visionary companies and disruptors are on their journey to
+              change the world.
+            </p>
+          </div>
 
-            {!data ? (
-              <div className="container text-center mt-3 mb-3 featured__card-empty">
-                <h1 className="featured__card-title mb-3">
-                  There is no startup yet.
+          {!data ? (
+            <div className="container text-center mt-3 mb-3 featured__card-empty">
+              <h1 className="featured__card-title mb-3">
+                There is no startup yet.
                 </h1>
-                <div className="btn__container">
-                  <a href="#" className="button btn-filled sm">
+              <div className="btn__container">
+                <a href="#" className="button btn-filled sm">
                     Start your own Startup
                   </a>
-                </div>
               </div>
-            ) : (
-              <>
-                {displayStartups}
-                <ReactPaginate
-                  previousLabel={"Previous"}
-                  nextLabel={"Next"}
+            </div>
+          ) : (
+            <>
+              {displayStartups}
+              <ReactPaginate
+                  previousLabel="Previous"
+                  nextLabel="Next"
                   marginPagesDisplayed={0}
                   pageRangeDisplayed={2}
-                  breakLabel={"..."}
-                  breakClassName={"break-me"}
+                  breakLabel="..."
+                  breakClassName="break-me"
                   pageCount={pageCount}
                   onPageChange={changePage}
-                  containerClassName={"paginationBttns"}
-                  previousLinkClassName={"previousBttn"}
-                  nextLinkClassName={"nextBttn"}
-                  disabledClassName={"paginationDisabled"}
-                  activeClassName={"paginationActive"}
+                  containerClassName="paginationBttns"
+                  previousLinkClassName="previousBttn"
+                  nextLinkClassName="nextBttn"
+                  disabledClassName="paginationDisabled"
+                  activeClassName="paginationActive"
                 />
-              </>
-            )}
-          </div>
+            </>
+          )}
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 };
 export default FeaturedUpcoming;

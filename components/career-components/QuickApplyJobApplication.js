@@ -1,37 +1,35 @@
-import React, { useState, useRef, useEffect } from "react";
-import { successToast, notificationToast } from "../../contexts/utils/toasts";
-import axios from "axios";
-import FormData from "form-data";
-import { useRouter } from "next/router";
+import React, { useState, useRef, useEffect } from 'react';
+import axios from 'axios';
+import FormData from 'form-data';
+import { useRouter } from 'next/router';
+import { successToast, notificationToast } from '../../contexts/utils/toasts';
 
-const QuickApplyJobApplication = ({
+const QuickApplyJobApplication = function ({
   job,
   open,
   closeModal,
   data,
-  getAppliedJobs
-}) => {
+  getAppliedJobs,
+}) {
   const router = useRouter();
-  const userInfo =
-    typeof window !== "undefined"
-      ? window.localStorage.getItem("userInfo")
-      : null;
-  const token =
-    typeof window !== "undefined"
-      ? window.localStorage.getItem("jwtToken")
-      : null;
+  const userInfo = typeof window !== 'undefined'
+    ? window.localStorage.getItem('userInfo')
+    : null;
+  const token = typeof window !== 'undefined'
+    ? window.localStorage.getItem('jwtToken')
+    : null;
 
   const userDataFromLS = JSON.parse(userInfo)?.user;
   const [quickApp, setQuickApp] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    country: "",
-    state: "",
-    city: "",
-    jobTitle: "",
-    company: "",
-    coverLetter: ""
+    firstName: '',
+    lastName: '',
+    email: '',
+    country: '',
+    state: '',
+    city: '',
+    jobTitle: '',
+    company: '',
+    coverLetter: '',
   });
 
   const [resume, setResume] = useState(null);
@@ -43,19 +41,19 @@ const QuickApplyJobApplication = ({
 
   const modalRef = useRef();
 
-  const clickOutsideFunction = e => {
+  const clickOutsideFunction = (e) => {
     if (modalRef.current === e.target) {
       closeModal(false);
     }
   };
-  const handleChange = e => {
+  const handleChange = (e) => {
     setQuickApp({
       ...quickApp,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
-  const handleResumeInput = e => {
+  const handleResumeInput = (e) => {
     const file = e.target.files[0];
     if (file == null) {
       setResumeSizeWarning(false);
@@ -66,7 +64,7 @@ const QuickApplyJobApplication = ({
       setResume(file);
     }
   };
-  const handleAdditionalInput = e => {
+  const handleAdditionalInput = (e) => {
     const file = e.target.files[0];
     if (file == null) {
       setAdditionalSizeWarning(false);
@@ -79,20 +77,20 @@ const QuickApplyJobApplication = ({
   };
 
   const formData = new FormData();
-  formData.append("firstName", quickApp.firstName || "");
-  formData.append("lastName", quickApp.lastName || "");
-  formData.append("email", quickApp.email || "");
-  formData.append("country", quickApp.country || "");
-  formData.append("city", quickApp.city || "");
-  formData.append("state", quickApp.state || "");
-  formData.append("jobTitle", quickApp.jobTitle || "");
-  formData.append("company", quickApp.company || "");
-  formData.append("coverLetter", quickApp.coverLetter || "");
-  formData.append("resume", resume || "");
-  formData.append("additional", additional || "");
-  formData.append("job_id", job?._id || "");
+  formData.append('firstName', quickApp.firstName || '');
+  formData.append('lastName', quickApp.lastName || '');
+  formData.append('email', quickApp.email || '');
+  formData.append('country', quickApp.country || '');
+  formData.append('city', quickApp.city || '');
+  formData.append('state', quickApp.state || '');
+  formData.append('jobTitle', quickApp.jobTitle || '');
+  formData.append('company', quickApp.company || '');
+  formData.append('coverLetter', quickApp.coverLetter || '');
+  formData.append('resume', resume || '');
+  formData.append('additional', additional || '');
+  formData.append('job_id', job?._id || '');
 
-  const submitHandler = e => {
+  const submitHandler = (e) => {
     e.preventDefault();
     // if (token) {
     //     fetch('https://koinstreet-learn-api.herokuapp.com/api/v1/easyApply', {
@@ -109,21 +107,21 @@ const QuickApplyJobApplication = ({
     // }
     axios
       .post(
-        "https://koinstreet-learn-api.herokuapp.com/api/v1/easyApply",
+        'https://koinstreet-learn-api.herokuapp.com/api/v1/easyApply',
         formData,
         {
           headers: {
-            Authorization: `Bearer ${token}`
-          }
-        }
+            Authorization: `Bearer ${token}`,
+          },
+        },
       )
-      .then(result => {
+      .then((result) => {
         successToast(`Applied ${job.job_title} position Successfully!`);
         getAppliedJobs();
         console.log(res);
       })
-      .catch(error => {
-        console.error("Error:", error);
+      .catch((error) => {
+        console.error('Error:', error);
       });
 
     closeModal();
@@ -134,7 +132,7 @@ const QuickApplyJobApplication = ({
       ref={modalRef}
       onClick={clickOutsideFunction}
       className="tw-z-50 tw-absolute tw-ml-auto tw-mr-auto tw-w-full tw-h-auto tw-bg-black tw-bg-opacity-50 tw--mt-10"
-      style={open ? { display: "block" } : { display: "none" }}
+      style={open ? { display: 'block' } : { display: 'none' }}
     >
       <div className="tw-bg-white tw-w-11/12 2xl:tw-w-3/6 tw-ml-auto tw-mr-auto tw-mt-36 tw-mb-10 tw-rounded-2xl tw-text-darkGray">
         <div className="tw-bg-gradient-to-r tw-from-purple-700 tw-to-yellow-300 tw-mb-4 tw-pb-1 tw-rounded-t-2xl">
@@ -154,14 +152,16 @@ const QuickApplyJobApplication = ({
                 src={
                   userDataFromLS.profilePicture
                     ? userDataFromLS.profilePicture
-                    : "/assets/images/profile.png"
+                    : '/assets/images/profile.png'
                 }
                 alt="User's Avatar"
                 className="quickAppAvatar tw-rounded-full tw-mr-10 sm:tw-mr-0 sm:tw-mb-4"
               />
               <div>
                 <h1 className="tw-font-bold tw-text-4xl tw-mb-1">
-                  {userDataFromLS.firstName} {userDataFromLS.lastName}
+                  {userDataFromLS.firstName}
+                  {' '}
+                  {userDataFromLS.lastName}
                 </h1>
                 <p className="tw-text-yellow-200 tw-mb-1">
                   {userDataFromLS.location}
@@ -171,7 +171,9 @@ const QuickApplyJobApplication = ({
           )}
 
           <p className="tw-mb-1">
-            <span className="tw-text-pink-400">*</span> Required Fields
+            <span className="tw-text-pink-400">*</span>
+            {' '}
+            Required Fields
           </p>
           <form
             onSubmit={submitHandler}
@@ -184,15 +186,17 @@ const QuickApplyJobApplication = ({
                   className="tw-pb-4 tw-font-medium tw-w-6/12 tw-pr-4 sm:tw-pr-0 sm:tw-w-full"
                   htmlFor="firstName"
                 >
-                  <span className="tw-text-pink-400">*</span> First Name
-                  <br></br>
+                  <span className="tw-text-pink-400">*</span>
+                  {' '}
+                  First Name
+                  <br />
                   <input
                     className="tw-h-10 tw-p-3 tw-mt-1 tw-border-2 tw-border-gray-500 tw-bg-gray-200 tw-w-full"
                     id="firstName"
                     type="text"
                     name="firstName"
                     value={quickApp.firstName}
-                    placeholder={userDataFromLS ? userDataFromLS.firstName : ""}
+                    placeholder={userDataFromLS ? userDataFromLS.firstName : ''}
                     onChange={handleChange}
                     required
                   />
@@ -202,14 +206,17 @@ const QuickApplyJobApplication = ({
                   className="tw-pb-4 tw-font-medium tw-w-6/12 tw-pl-4 sm:tw-pl-0 sm:tw-w-full"
                   htmlFor="lastName"
                 >
-                  <span className="tw-text-pink-400">*</span> Last Name<br></br>
+                  <span className="tw-text-pink-400">*</span>
+                  {' '}
+                  Last Name
+                  <br />
                   <input
                     className="tw-h-10 tw-p-3 tw-mt-1 tw-border-2 tw-border-gray-500 tw-bg-gray-200 tw-w-full"
                     id="lastName"
                     type="text"
                     name="lastName"
                     value={quickApp.lastName}
-                    placeholder={userDataFromLS ? userDataFromLS.lastName : ""}
+                    placeholder={userDataFromLS ? userDataFromLS.lastName : ''}
                     onChange={handleChange}
                     required
                   />
@@ -221,14 +228,17 @@ const QuickApplyJobApplication = ({
                   className="tw-pb-4 tw-font-medium tw-w-6/12 tw-pr-4 sm:tw-pr-0 sm:tw-w-full"
                   htmlFor="email"
                 >
-                  <span className="tw-text-pink-400">*</span> Email<br></br>
+                  <span className="tw-text-pink-400">*</span>
+                  {' '}
+                  Email
+                  <br />
                   <input
                     className="tw-h-10 tw-p-3 tw-mt-1 tw-border-2 tw-border-gray-500 tw-bg-gray-200 tw-w-full"
                     id="email"
                     type="text"
                     name="email"
                     value={quickApp.email}
-                    placeholder={userDataFromLS ? userDataFromLS.email : ""}
+                    placeholder={userDataFromLS ? userDataFromLS.email : ''}
                     onChange={handleChange}
                     required
                   />
@@ -238,7 +248,10 @@ const QuickApplyJobApplication = ({
                   className="tw-pb-4 tw-font-medium tw-w-6/12 tw-pl-4 sm:tw-pl-0 sm:tw-w-full"
                   htmlFor="country"
                 >
-                  <span className="tw-text-pink-400">*</span> Country<br></br>
+                  <span className="tw-text-pink-400">*</span>
+                  {' '}
+                  Country
+                  <br />
                   <input
                     className="tw-h-10 tw-p-3 tw-mt-1 tw-border-2 tw-border-gray-500 tw-bg-gray-200 tw-w-full"
                     id="country"
@@ -256,7 +269,10 @@ const QuickApplyJobApplication = ({
                   className="tw-pb-4 tw-font-medium tw-w-6/12 tw-pr-4 sm:tw-pr-0 sm:tw-w-full"
                   htmlFor="state"
                 >
-                  <span className="tw-text-pink-400">*</span> State<br></br>
+                  <span className="tw-text-pink-400">*</span>
+                  {' '}
+                  State
+                  <br />
                   <input
                     className="tw-h-10 tw-p-3 tw-mt-1 tw-border-2 tw-border-gray-500 tw-bg-gray-200 tw-w-full"
                     id="state"
@@ -272,7 +288,10 @@ const QuickApplyJobApplication = ({
                   className="tw-pb-4 tw-font-medium tw-w-6/12 tw-pl-4 sm:tw-pl-0 sm:tw-w-full"
                   htmlFor="city"
                 >
-                  <span className="tw-text-pink-400">*</span> City<br></br>
+                  <span className="tw-text-pink-400">*</span>
+                  {' '}
+                  City
+                  <br />
                   <input
                     className="tw-h-10 tw-p-3 tw-mt-1 tw-border-2 tw-border-gray-500 tw-bg-gray-200 tw-w-full"
                     id="city"
@@ -295,7 +314,8 @@ const QuickApplyJobApplication = ({
                   className="tw-pb-4 tw-font-medium tw-w-6/12 tw-pr-4 sm:tw-pr-0 sm:tw-w-full"
                   htmlFor="jobTitle"
                 >
-                  Job Title<br></br>
+                  Job Title
+                  <br />
                   <input
                     className="tw-h-10 tw-p-3 tw-mt-1 tw-border-2 tw-border-gray-500 tw-bg-gray-200 tw-w-full"
                     id="jobTitle"
@@ -310,7 +330,8 @@ const QuickApplyJobApplication = ({
                   className="tw-pb-4 tw-font-medium tw-w-6/12 tw-pl-4 sm:tw-pl-0 sm:tw-w-full"
                   htmlFor="company"
                 >
-                  Company<br></br>
+                  Company
+                  <br />
                   <input
                     className="tw-h-10 tw-p-3 tw-mt-1 tw-border-2 tw-border-gray-500 tw-bg-gray-200 tw-w-full"
                     id="company"
@@ -327,7 +348,8 @@ const QuickApplyJobApplication = ({
               className="tw-pb-4 tw-font-medium tw-w-full"
               htmlFor="coverLetter"
             >
-              Cover Letter<br></br>
+              Cover Letter
+              <br />
               <textarea
                 className="tw-h-10 tw-p-3 tw-mt-1 tw-border-2 tw-border-gray-500 tw-bg-gray-200 tw-w-full tw-h-40 tw-text-darkGray"
                 id="coverLetter"
@@ -340,8 +362,10 @@ const QuickApplyJobApplication = ({
 
             <div className="tw-flex tw-flex-col tw-mb-4">
               <h3 className="tw-text-lg tw-mb-1 tw-font-medium">
-                {" "}
-                <span className="tw-text-pink-400">*</span> Upload Your Resume
+                {' '}
+                <span className="tw-text-pink-400">*</span>
+                {' '}
+                Upload Your Resume
               </h3>
               <input
                 className="quickApplyUpload"

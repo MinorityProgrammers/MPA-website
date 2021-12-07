@@ -1,13 +1,13 @@
-import Layout from "../components/Layout";
-import React, { useState, useRef } from "react";
-import HomepageNav from "../components/HomepageNav";
-import { useDetectOutsideClick } from "../components/UseDetectOutsideClick";
-import Footer from "../components/Footer";
-import links from "../contexts/utils/links";
-import { InlineWidget } from "react-calendly";
-import SidebarTwo from "../components/SidebarTwo";
+import React, { useState, useRef } from 'react';
+import { InlineWidget } from 'react-calendly';
+import Layout from '../components/Layout';
+import HomepageNav from '../components/HomepageNav';
+import { useDetectOutsideClick } from '../components/UseDetectOutsideClick';
+import Footer from '../components/Footer';
+import links from '../contexts/utils/links';
+import SidebarTwo from '../components/SidebarTwo';
 
-const Partner = () => {
+const Partner = function () {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef(null);
   const [hide, setHide] = useDetectOutsideClick(dropdownRef, true);
@@ -21,16 +21,16 @@ const Partner = () => {
   }
   return (
     <Layout pageTitle="MPA - Partner">
-      <HomepageNav open={open} setOpen={setOpen} page={"Partner"} />
+      <HomepageNav open={open} setOpen={setOpen} page="Partner" />
       <SidebarTwo
         open={open}
         setOpen={setOpen}
         links={links}
-        active={"Home"}
+        active="Home"
         handleClick={handleClick}
       />
-      <div class="calendly-wrapper tw-py-20">
-        <div className="tw-mt-5"></div>
+      <div className="calendly-wrapper tw-py-20">
+        <div className="tw-mt-5" />
         <InlineWidget url="https://calendly.com/minorityprogrammers/partnership" />
       </div>
       <Footer />

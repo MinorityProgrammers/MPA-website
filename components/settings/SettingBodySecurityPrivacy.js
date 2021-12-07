@@ -1,14 +1,14 @@
-import React, { useState, useEffect, useContext } from "react";
-import { GlobalContext } from "../../contexts/provider";
-import { updateProfile } from "../../contexts/actions/profile/updateProfile";
-import FormData from "form-data";
-import { all } from "../../contexts/utils/settings/settingsInputFields";
-import styles from "../../styles/settings/settingBodySecurityPrivacy.module.css";
-import { useRouter } from "next/router";
-import CreateSettingInput from "./CreateSettingInput";
-import SettingBody from "./SettingBody";
+import React, { useState, useEffect, useContext } from 'react';
+import FormData from 'form-data';
+import { useRouter } from 'next/router';
+import { GlobalContext } from '../../contexts/provider';
+import { updateProfile } from '../../contexts/actions/profile/updateProfile';
+import { all } from '../../contexts/utils/settings/settingsInputFields';
+import styles from '../../styles/settings/settingBodySecurityPrivacy.module.css';
+import CreateSettingInput from './CreateSettingInput';
+import SettingBody from './SettingBody';
 
-function SettingBodySecurityPrivacy({ settingsPage, data, userID }) {
+const SettingBodySecurityPrivacy = function ({ settingsPage, data, userID }) {
   const router = useRouter();
 
   const inputFields = [
@@ -21,7 +21,7 @@ function SettingBodySecurityPrivacy({ settingsPage, data, userID }) {
   const initialInputState = {};
 
   inputFields.forEach(
-    (field) => (initialInputState[field.name] = "")
+    (field) => (initialInputState[field.name] = ''),
     // ex. {someInputFieldName: "inputFieldValue", ...}
   );
 
@@ -29,7 +29,7 @@ function SettingBodySecurityPrivacy({ settingsPage, data, userID }) {
 
   useEffect(() => {
     inputFields.forEach(
-      (field) => (initialInputState[field.name] = data?.[field.name] || "")
+      (field) => (initialInputState[field.name] = data?.[field.name] || ''),
     );
 
     setInputStates(initialInputState);
@@ -39,7 +39,9 @@ function SettingBodySecurityPrivacy({ settingsPage, data, userID }) {
   const {
     profileDispatch,
     profileState: {
-      profile: { profileLoading, profileError, profileData, profileIsUpdated },
+      profile: {
+        profileLoading, profileError, profileData, profileIsUpdated,
+      },
     },
   } = useContext(GlobalContext);
 
@@ -83,26 +85,24 @@ function SettingBodySecurityPrivacy({ settingsPage, data, userID }) {
             all.birthdayVisibilityField,
             all.locationVisibilityField,
             all.emailVisibilityField,
-          ].map((field, key) => {
-            return (
-              <CreateSettingInput
-                name={field.name}
-                type={field.type}
-                label={field.label}
-                options={field.options}
-                required={field.required}
-                value={inputStates[field.name]}
-                setValue={(value) => {
-                  handleChange(field.name, value);
-                }}
-                key={key}
-              />
-            );
-          })
+          ].map((field, key) => (
+            <CreateSettingInput
+              name={field.name}
+              type={field.type}
+              label={field.label}
+              options={field.options}
+              required={field.required}
+              value={inputStates[field.name]}
+              setValue={(value) => {
+                handleChange(field.name, value);
+              }}
+              key={key}
+            />
+          ))
         }
       </div>
     </SettingBody>
   );
-}
+};
 
 export default SettingBodySecurityPrivacy;

@@ -5,8 +5,8 @@ import {
   LOGIN_LOADING,
   LOGIN_SUCCESS,
   LOGIN_ERROR,
-  LOGOUT_USER
-} from "../actions/actionTypes";
+  LOGOUT_USER,
+} from '../actions/actionTypes';
 
 // auth reducer body
 
@@ -59,5 +59,3 @@ export const auth = (state, { payload, type }) => {
       return state;
   }
 };
-
-

@@ -1,30 +1,32 @@
-import React, { useContext, useState, useEffect } from "react";
-import { AiOutlineClose } from "react-icons/ai";
-import { RiArrowDropDownLine } from "react-icons/ri";
-import { storeThree, storeTwo, storeOne } from "../contexts/utils/fields";
-import { updateProfile } from "../contexts/actions/profile/updateProfile";
-import { GlobalContext } from "../contexts/provider";
-import FormData from "form-data";
-import "react-toastify/dist/ReactToastify.css";
+import React, { useContext, useState, useEffect } from 'react';
+import { AiOutlineClose } from 'react-icons/ai';
+import { RiArrowDropDownLine } from 'react-icons/ri';
+import FormData from 'form-data';
+import { storeThree, storeTwo, storeOne } from '../contexts/utils/fields';
+import { updateProfile } from '../contexts/actions/profile/updateProfile';
+import { GlobalContext } from '../contexts/provider';
+import 'react-toastify/dist/ReactToastify.css';
 
-const UpdateProfileTwo = ({ open = true, setOpen = () => {}, userData }) => {
+const UpdateProfileTwo = function ({ open = true, setOpen = () => {}, userData }) {
   const {
     profileDispatch,
     profileState: {
-      profile: { profileLoading, profileError, profileData, profileIsUpdated },
+      profile: {
+        profileLoading, profileError, profileData, profileIsUpdated,
+      },
     },
   } = useContext(GlobalContext);
   useEffect(() => {
     if (open == true) {
-      document.getElementById("up-modal").classList.add("up-modal");
-      document.getElementById("up-modal").classList.remove("up-hide-modal");
-      document.getElementById("up-overlay").classList.add("up-overlay");
-      document.getElementById("up-overlay").classList.remove("up-hide-overlay");
+      document.getElementById('up-modal').classList.add('up-modal');
+      document.getElementById('up-modal').classList.remove('up-hide-modal');
+      document.getElementById('up-overlay').classList.add('up-overlay');
+      document.getElementById('up-overlay').classList.remove('up-hide-overlay');
     } else {
-      document.getElementById("up-modal").classList.add("up-hide-modal");
-      document.getElementById("up-modal").classList.remove("up-modal");
-      document.getElementById("up-overlay").classList.add("up-hide-overlay");
-      document.getElementById("up-overlay").classList.remove("up-overlay");
+      document.getElementById('up-modal').classList.add('up-hide-modal');
+      document.getElementById('up-modal').classList.remove('up-modal');
+      document.getElementById('up-overlay').classList.add('up-hide-overlay');
+      document.getElementById('up-overlay').classList.remove('up-overlay');
     }
   });
   useEffect(() => {
@@ -44,51 +46,51 @@ const UpdateProfileTwo = ({ open = true, setOpen = () => {}, userData }) => {
     setNewBio(userData.bio);
   }, [userData]);
 
-  const [newFirstName, setNewFirstName] = useState(userData.firstName || "");
-  const [newlastName, setNewLastName] = useState(userData.lastName || "");
-  const [newEmail, setNewEmail] = useState(userData.email || "");
+  const [newFirstName, setNewFirstName] = useState(userData.firstName || '');
+  const [newlastName, setNewLastName] = useState(userData.lastName || '');
+  const [newEmail, setNewEmail] = useState(userData.email || '');
   const [newPhoneNumber, setNewPhoneNumber] = useState(
-    userData.phoneNumber || ""
+    userData.phoneNumber || '',
   );
-  const [newLocation, setNewLocation] = useState(userData.location || "");
-  const [newBirthDate, setNewBirthDate] = useState(userData.birthday || "");
+  const [newLocation, setNewLocation] = useState(userData.location || '');
+  const [newBirthDate, setNewBirthDate] = useState(userData.birthday || '');
   const [newNationality, setNewNationality] = useState(
-    userData.Nationality || ""
+    userData.Nationality || '',
   );
-  const [newEthnicity, setNewEthnicity] = useState(userData.Ethnicity || "");
-  const [newGender, setNewGender] = useState(userData.Gender || "");
+  const [newEthnicity, setNewEthnicity] = useState(userData.Ethnicity || '');
+  const [newGender, setNewGender] = useState(userData.Gender || '');
 
-  const [newGithub, setNewGithub] = useState(userData.GithubLink || "");
-  const [newLinkedin, setNewLinkedin] = useState(userData.LinkedinLink || "");
-  const [newMedium, setNewMedium] = useState(userData.MediumLink || "");
-  const [newFacebook, setNewFacebook] = useState(userData.FacebookLink || "");
+  const [newGithub, setNewGithub] = useState(userData.GithubLink || '');
+  const [newLinkedin, setNewLinkedin] = useState(userData.LinkedinLink || '');
+  const [newMedium, setNewMedium] = useState(userData.MediumLink || '');
+  const [newFacebook, setNewFacebook] = useState(userData.FacebookLink || '');
 
   const [newBio, setNewBio] = useState(userData.bio);
 
   const formData = new FormData();
-  formData.append("firstName", newFirstName || userData.firstName || "");
-  formData.append("lastName", newlastName || userData.lastName || "");
-  formData.append("email", newEmail || userData.email || "");
-  formData.append("phoneNumber", newPhoneNumber || userData.phoneNumber || "");
-  formData.append("location", newLocation || userData.location || "");
-  formData.append("birthday", newBirthDate || "");
-  formData.append("Nationality", newNationality || userData.Nationality || "");
-  formData.append("Ethnicity", newEthnicity || userData.Ethnicity || "");
-  formData.append("Gender", newGender || userData.Gender || "");
+  formData.append('firstName', newFirstName || userData.firstName || '');
+  formData.append('lastName', newlastName || userData.lastName || '');
+  formData.append('email', newEmail || userData.email || '');
+  formData.append('phoneNumber', newPhoneNumber || userData.phoneNumber || '');
+  formData.append('location', newLocation || userData.location || '');
+  formData.append('birthday', newBirthDate || '');
+  formData.append('Nationality', newNationality || userData.Nationality || '');
+  formData.append('Ethnicity', newEthnicity || userData.Ethnicity || '');
+  formData.append('Gender', newGender || userData.Gender || '');
 
-  formData.append("GithubLink", newGithub || userData.GithubLink || "");
-  formData.append("LinkedinLink", newLinkedin || userData.LinkedinLink || "");
-  formData.append("MediumLink", newMedium || userData.MediumLink || "");
-  formData.append("FacebookLink", newFacebook || userData.FacebookLink || "");
+  formData.append('GithubLink', newGithub || userData.GithubLink || '');
+  formData.append('LinkedinLink', newLinkedin || userData.LinkedinLink || '');
+  formData.append('MediumLink', newMedium || userData.MediumLink || '');
+  formData.append('FacebookLink', newFacebook || userData.FacebookLink || '');
 
-  formData.append("bio", newBio || userData.bio || "");
+  formData.append('bio', newBio || userData.bio || '');
 
   const [submit, setSubmit] = useState(false);
 
   useEffect(() => {
     if (profileData && submit && !profileError) {
       setTimeout(() => {
-        window.location.href = "/dashboard/user/singleProfile";
+        window.location.href = '/dashboard/user/singleProfile';
         setSubmit(false);
       }, 3000);
     }
@@ -121,75 +123,75 @@ const UpdateProfileTwo = ({ open = true, setOpen = () => {}, userData }) => {
 
   const personalInfo = [
     {
-      name: "firstName",
-      label: "First Name",
-      type: "text",
+      name: 'firstName',
+      label: 'First Name',
+      type: 'text',
       value: newFirstName,
       setValue: setNewFirstName,
       edit: true,
     },
     {
-      name: "lastName",
-      label: "Last Name",
-      type: "text",
+      name: 'lastName',
+      label: 'Last Name',
+      type: 'text',
       value: newlastName,
       setValue: setNewLastName,
       edit: true,
     },
     {
-      name: "email",
-      label: "Email",
-      type: "email",
+      name: 'email',
+      label: 'Email',
+      type: 'email',
       value: newEmail,
       setValue: setNewEmail,
       edit: true,
     },
     {
-      name: "phone",
-      label: "Phone",
-      type: "text",
+      name: 'phone',
+      label: 'Phone',
+      type: 'text',
       value: newPhoneNumber,
       setValue: setNewPhoneNumber,
       edit: true,
     },
     {
-      name: "location",
-      label: "Location",
-      type: "text",
+      name: 'location',
+      label: 'Location',
+      type: 'text',
       value: newLocation,
       setValue: setNewLocation,
       edit: true,
     },
     {
-      name: "birthdate",
-      label: "Birthdate",
-      type: "date",
+      name: 'birthdate',
+      label: 'Birthdate',
+      type: 'date',
       value: newBirthDate,
       setValue: setNewBirthDate,
       edit: false,
     },
     {
-      name: "nationality",
-      label: "Nationality",
-      type: "list",
+      name: 'nationality',
+      label: 'Nationality',
+      type: 'list',
       list: storeTwo(),
       value: newNationality,
       setValue: setNewNationality,
       edit: true,
     },
     {
-      name: "ethnicity",
-      label: "Ethnicity",
-      type: "list",
+      name: 'ethnicity',
+      label: 'Ethnicity',
+      type: 'list',
       list: storeOne(),
       value: newEthnicity,
       setValue: setNewEthnicity,
       edit: true,
     },
     {
-      name: "gender",
-      label: "Gender",
-      type: "list",
+      name: 'gender',
+      label: 'Gender',
+      type: 'list',
       list: storeThree(),
       value: newGender,
       setValue: setNewGender,
@@ -199,25 +201,25 @@ const UpdateProfileTwo = ({ open = true, setOpen = () => {}, userData }) => {
 
   const socialMedia = [
     {
-      name: "linkedin",
-      label: "Linkedin",
-      type: "text",
+      name: 'linkedin',
+      label: 'Linkedin',
+      type: 'text',
       value: newLinkedin,
       setValue: setNewLinkedin,
       edit: true,
     },
     {
-      name: "github",
-      label: "Github",
-      type: "text",
+      name: 'github',
+      label: 'Github',
+      type: 'text',
       value: newGithub,
       setValue: setNewGithub,
       edit: true,
     },
     {
-      name: "facebook",
-      label: "Facebook",
-      type: "text",
+      name: 'facebook',
+      label: 'Facebook',
+      type: 'text',
       value: newFacebook,
       setValue: setNewFacebook,
       edit: true,
@@ -242,12 +244,12 @@ const UpdateProfileTwo = ({ open = true, setOpen = () => {}, userData }) => {
                   <div className="up-social" key={id}>
                     <label htmlFor={field.name}>{field.label}</label>
                     <div className="up-input">
-                      {field.type == "list" ? (
+                      {field.type == 'list' ? (
                         <div className="up-select-container">
                           <select
                             name={field.name}
                             className="up-select"
-                            value={field.value || ""}
+                            value={field.value || ''}
                             onChange={(e) => {
                               field.setValue(e.target.value);
                             }}
@@ -266,7 +268,7 @@ const UpdateProfileTwo = ({ open = true, setOpen = () => {}, userData }) => {
                           name={field.name}
                           placeholder={field.label}
                           type={field.type}
-                          value={field.value || ""}
+                          value={field.value || ''}
                           readOnly={!field.edit}
                           onChange={(e) => {
                             field.setValue(e.target.value);
@@ -292,7 +294,7 @@ const UpdateProfileTwo = ({ open = true, setOpen = () => {}, userData }) => {
                         name={field.name}
                         placeholder={field.label}
                         type={field.type}
-                        value={field.value || ""}
+                        value={field.value || ''}
                         onChange={(e) => {
                           field.setValue(e.target.value);
                         }}
@@ -315,7 +317,7 @@ const UpdateProfileTwo = ({ open = true, setOpen = () => {}, userData }) => {
                     console.log(userData);
                     console.log(newBio);
                   }}
-                ></textarea>
+                />
               </div>
             </div>
             <div className="up-modal-section">
@@ -331,7 +333,7 @@ const UpdateProfileTwo = ({ open = true, setOpen = () => {}, userData }) => {
           </form>
         </div>
       </div>
-      <div id="up-overlay" className="up-hide-overlay" onClick={setOpen}></div>
+      <div id="up-overlay" className="up-hide-overlay" onClick={setOpen} />
     </div>
   );
 };

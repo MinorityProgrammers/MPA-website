@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-const Chapter = () => {
+const Chapter = function () {
   return (
     <div id="chapter" className="cta-two">
       <div className="container-fluid">
@@ -9,7 +9,7 @@ const Chapter = () => {
             <div className="cta-two__single">
               <div className="cta-two__icon">
                 <span>
-                  <i className="kipso-icon-placeholder"></i>
+                  <i className="kipso-icon-placeholder" />
                 </span>
               </div>
               <div className="cta-two__content">
@@ -22,6 +22,7 @@ const Chapter = () => {
                   href="https://docs.google.com/forms/d/e/1FAIpQLSdmfHMGP4dS6_90RuzpenDkif7casdzLerA5pQtS_qvS9BqLQ/viewform?embedded=true"
                   target="_blank"
                   className="thm-btn cta-two__btn"
+                  rel="noreferrer"
                 >
                   Find a Course
                 </a>
@@ -33,7 +34,7 @@ const Chapter = () => {
             <div className="cta-two__single">
               <div className="cta-two__icon">
                 <span>
-                  <i className="kipso-icon-human-resources"></i>
+                  <i className="kipso-icon-human-resources" />
                 </span>
               </div>
               <div className="cta-two__content">
@@ -46,6 +47,7 @@ const Chapter = () => {
                   href="https://docs.google.com/forms/d/e/1FAIpQLSdmfHMGP4dS6_90RuzpenDkif7casdzLerA5pQtS_qvS9BqLQ/viewform?embedded=true"
                   target="_blank"
                   className="thm-btn cta-two__btn"
+                  rel="noreferrer"
                 >
                   Next Steps
                 </a>

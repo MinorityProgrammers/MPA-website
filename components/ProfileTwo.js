@@ -1,29 +1,26 @@
-import React, { useState, useEffect, useCallback } from "react";
-import listItems from "../contexts/utils/profile/listItems.json";
-import pinnedCards from "../contexts/utils/profile/pinnedCards.json";
-import unpinnedCards from "../contexts/utils/profile/unpinnedCards.json";
-import projectCards from "../contexts/utils/profile/projectCards.json";
-import coursesCards from "../contexts/utils/profile/coursesCards.json";
-import { FaFacebook } from "react-icons/fa";
-import { FaLinkedin } from "react-icons/fa";
-import { FaGithub } from "react-icons/fa";
-import { FaGoogle } from "react-icons/fa";
-import { FaFigma } from "react-icons/fa";
-import { FaDribbble } from "react-icons/fa";
-import { HiOutlinePencil } from "react-icons/hi";
-import jwt from "jsonwebtoken";
-import ProfileTwoGenerateAvatarPopUp from "../components/ProfileTwoGenerateAvatarPopUp";
-import { getProgressPercentage } from "../contexts/utils/settings/getProgressPercentage";
-import { getLevelUpTips } from "../contexts/utils/settings/getLevelUpTips";
-import { useRouter } from "next/router";
-import { Tooltip, Button, Modal } from "antd";
-import { useMoralisDapp } from "../MoralisDappProvider/MoralisDappProvider";
-import { useMoralis } from "react-moralis";
+import React, { useState, useEffect, useCallback } from 'react';
+import {
+  FaFacebook, FaLinkedin, FaGithub, FaGoogle, FaFigma, FaDribbble,
+} from 'react-icons/fa';
+import { HiOutlinePencil } from 'react-icons/hi';
+import jwt from 'jsonwebtoken';
+import { useRouter } from 'next/router';
+import { Tooltip, Button, Modal } from 'antd';
+import { useMoralis } from 'react-moralis';
+import ProfileTwoGenerateAvatarPopUp from './ProfileTwoGenerateAvatarPopUp';
+import { getProgressPercentage } from '../contexts/utils/settings/getProgressPercentage';
+import { getLevelUpTips } from '../contexts/utils/settings/getLevelUpTips';
+import { useMoralisDapp } from '../MoralisDappProvider/MoralisDappProvider';
+import coursesCards from '../contexts/utils/profile/coursesCards.json';
+import projectCards from '../contexts/utils/profile/projectCards.json';
+import unpinnedCards from '../contexts/utils/profile/unpinnedCards.json';
+import pinnedCards from '../contexts/utils/profile/pinnedCards.json';
+import listItems from '../contexts/utils/profile/listItems.json';
 
 function countDown(mintedURL) {
   let secondsToGo = 30;
   const modal = Modal.success({
-    title: "Successfully minted Your profile",
+    title: 'Successfully minted Your profile',
     content: `Checkout your minted profile metadata ${mintedURL}`,
   });
   const timer = setInterval(() => {
@@ -35,108 +32,108 @@ function countDown(mintedURL) {
   }, secondsToGo * 1000);
 }
 
-const ProfileTwo = ({ userData, isLoggedIn, ownsProfile }) => {
+const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
   const keywords = [
     {
       id: 1,
-      title: "Defi",
+      title: 'Defi',
     },
     {
       id: 2,
-      title: "Adventure",
+      title: 'Adventure',
     },
     {
       id: 3,
-      title: "Bitcoin mining",
+      title: 'Bitcoin mining',
     },
     {
       id: 4,
-      title: "Flutter",
+      title: 'Flutter',
     },
     {
       id: 5,
-      title: "Solidity",
+      title: 'Solidity',
     },
     {
       id: 6,
-      title: "Web development",
+      title: 'Web development',
     },
     {
       id: 7,
-      title: "Machine Learning",
+      title: 'Machine Learning',
     },
   ];
 
   const badges = [
     {
       id: 18,
-      badge_img: "/assets/images/profile/star1g.png",
+      badge_img: '/assets/images/profile/star1g.png',
     },
     {
       id: 19,
-      badge_img: "/assets/images/profile/star1.png",
+      badge_img: '/assets/images/profile/star1.png',
     },
     {
       id: 20,
-      badge_img: "/assets/images/profile/star2.png",
+      badge_img: '/assets/images/profile/star2.png',
     },
     {
       id: 21,
-      badge_img: "/assets/images/profile/star2b.png",
+      badge_img: '/assets/images/profile/star2b.png',
     },
     {
       id: 22,
-      badge_img: "/assets/images/profile/star3.png",
+      badge_img: '/assets/images/profile/star3.png',
     },
   ];
 
   const [generateAvatarPopUp, setGenerateAvatarPopUp] = useState(false);
   const [socialLinks, setSocialLinks] = useState([]);
-  const [userID, setUserID] = useState("");
+  const [userID, setUserID] = useState('');
   const [psArrowUp, setPsArrowUp] = useState(false);
 
   const [experienceCards, setExperienceCards] = useState([
     {
       cardId: 1,
-      jobImg: "/assets/images/profile/exp-microsoft.png",
-      jobTitle: "Product Designer at Microsoft",
-      date: "June 2021 - Present • 4 mos",
-      location: "Remote",
+      jobImg: '/assets/images/profile/exp-microsoft.png',
+      jobTitle: 'Product Designer at Microsoft',
+      date: 'June 2021 - Present • 4 mos',
+      location: 'Remote',
     },
     {
       cardId: 2,
-      jobImg: "/assets/images/profile/exp-mp.png",
-      jobTitle: "Product Designer at Microsoft",
-      date: "March - June 2021 • 3 mos",
-      location: "Remote",
+      jobImg: '/assets/images/profile/exp-mp.png',
+      jobTitle: 'Product Designer at Microsoft',
+      date: 'March - June 2021 • 3 mos',
+      location: 'Remote',
     },
   ]);
   const [expAddMode, setExpAddMode] = useState(false);
   const [expEditMode, setExpEditMode] = useState(false);
-  const [uploadedExpImg, setUploadedExpImg] = useState("");
-  const [expJobTitleInput, setExpJobTitleInput] = useState("");
-  const [expDateInput, setExpDateInput] = useState("");
-  const [expLocationInput, setExpLocationInput] = useState("");
+  const [uploadedExpImg, setUploadedExpImg] = useState('');
+  const [expJobTitleInput, setExpJobTitleInput] = useState('');
+  const [expDateInput, setExpDateInput] = useState('');
+  const [expLocationInput, setExpLocationInput] = useState('');
   const { walletAddress } = useMoralisDapp();
   const [educationCards, setEducationCards] = useState([
     {
       cardId: 3,
-      eduImg: "/assets/images/profile/exp-florida-uni.png",
-      eduTitle: "University of Florida",
-      date: "Sept 2017 - June 2021",
-      location: "Bachelor’s degree, Computer Science",
+      eduImg: '/assets/images/profile/exp-florida-uni.png',
+      eduTitle: 'University of Florida',
+      date: 'Sept 2017 - June 2021',
+      location: 'Bachelor’s degree, Computer Science',
     },
   ]);
   const [eduAddMode, setEduAddMode] = useState(false);
   const [eduEditMode, setEduEditMode] = useState(false);
-  const [uploadedEduImg, setUploadedEduImg] = useState("");
-  const [eduTitleInput, setEduTitleInput] = useState("");
-  const [eduDateInput, setEduDateInput] = useState("");
-  const [eduLocationInput, setEduLocationInput] = useState("");
-  const [copyText, setCopyText] = useState("Click to copy");
+  const [uploadedEduImg, setUploadedEduImg] = useState('');
+  const [eduTitleInput, setEduTitleInput] = useState('');
+  const [eduDateInput, setEduDateInput] = useState('');
+  const [eduLocationInput, setEduLocationInput] = useState('');
+  const [copyText, setCopyText] = useState('Click to copy');
   const [isMinting, setIsMinting] = useState(false);
   const [doneMinting, setDoneMinting] = useState(false);
-  const [mintedURL, setMintedURl] = useState("");
+  const [mintedURL, setMintedURl] = useState('');
 
   const router = useRouter();
   const { Moralis } = useMoralis();
@@ -145,44 +142,44 @@ const ProfileTwo = ({ userData, isLoggedIn, ownsProfile }) => {
     const allSocials = [
       {
         id: 101,
-        name: "FacebookLink",
-        url: "",
-        slink: <FaFacebook style={{ fill: "url(#pink-gradient)" }} />,
+        name: 'FacebookLink',
+        url: '',
+        slink: <FaFacebook style={{ fill: 'url(#pink-gradient)' }} />,
       },
       {
         id: 102,
-        name: "LinkedinLink",
-        url: "",
-        slink: <FaLinkedin style={{ fill: "url(#pink-gradient)" }} />,
+        name: 'LinkedinLink',
+        url: '',
+        slink: <FaLinkedin style={{ fill: 'url(#pink-gradient)' }} />,
       },
       {
         id: 103,
-        name: "GithubLink",
-        url: "",
-        slink: <FaGithub style={{ fill: "url(#pink-gradient)" }} />,
+        name: 'GithubLink',
+        url: '',
+        slink: <FaGithub style={{ fill: 'url(#pink-gradient)' }} />,
       },
       {
         id: 104,
-        name: "GoogleLink",
-        url: "",
-        slink: <FaGoogle style={{ fill: "url(#pink-gradient)" }} />,
+        name: 'GoogleLink',
+        url: '',
+        slink: <FaGoogle style={{ fill: 'url(#pink-gradient)' }} />,
       },
       {
         id: 105,
-        name: "FigmaLink",
-        url: "",
-        slink: <FaFigma style={{ fill: "url(#pink-gradient)" }} />,
+        name: 'FigmaLink',
+        url: '',
+        slink: <FaFigma style={{ fill: 'url(#pink-gradient)' }} />,
       },
       {
         id: 106,
-        name: "DribbleLink",
-        url: "",
-        slink: <FaDribbble style={{ fill: "url(#pink-gradient)" }} />,
+        name: 'DribbleLink',
+        url: '',
+        slink: <FaDribbble style={{ fill: 'url(#pink-gradient)' }} />,
       },
       {
         id: 107,
-        name: "ClickupLink",
-        url: "",
+        name: 'ClickupLink',
+        url: '',
         slink: (
           <img src="/assets/images/profile/si-clickup.svg" alt="si-clickup" />
         ),
@@ -191,8 +188,8 @@ const ProfileTwo = ({ userData, isLoggedIn, ownsProfile }) => {
 
     const socials = [];
 
-    userData &&
-      allSocials.map((social) => {
+    userData
+      && allSocials.map((social) => {
         userData[social.name] && socials.push(social);
       });
 
@@ -201,8 +198,8 @@ const ProfileTwo = ({ userData, isLoggedIn, ownsProfile }) => {
 
   useEffect(() => {
     if (isLoggedIn && ownsProfile) {
-      const token = window.localStorage.getItem("jwtToken");
-      const userInfo = window.localStorage.getItem("userInfo");
+      const token = window.localStorage.getItem('jwtToken');
+      const userInfo = window.localStorage.getItem('userInfo');
       if (!(token == null) || !(userInfo == null)) {
         setUserID(jwt.decode(token).id);
       }
@@ -218,7 +215,7 @@ const ProfileTwo = ({ userData, isLoggedIn, ownsProfile }) => {
   const downloadProfilePDF = () => {};
 
   const copyWallet = () => {
-    setCopyText("Copied");
+    setCopyText('Copied');
     navigator.clipboard.writeText(walletAddress);
   };
 
@@ -227,10 +224,10 @@ const ProfileTwo = ({ userData, isLoggedIn, ownsProfile }) => {
   };
   const completeExpAdd = () => {
     if (
-      uploadedExpImg &&
-      expJobTitleInput &&
-      expDateInput &&
-      expLocationInput
+      uploadedExpImg
+      && expJobTitleInput
+      && expDateInput
+      && expLocationInput
     ) {
       const newCard = {
         cardId: Math.floor(Math.random() * 100000),
@@ -240,32 +237,28 @@ const ProfileTwo = ({ userData, isLoggedIn, ownsProfile }) => {
         location: expLocationInput,
       };
 
-      document.getElementsByClassName("exp-data-warn")?.[0]?.remove();
+      document.getElementsByClassName('exp-data-warn')?.[0]?.remove();
       setExperienceCards((currentCards) => [...currentCards, newCard]);
       clearExpAdd();
-    } else {
-      if (!document.getElementsByClassName("exp-data-warn")?.[0]) {
-        let el = document.getElementById("add-exp-fields");
-        el.insertAdjacentHTML(
-          "afterend",
-          '<div class="exp-data-warn tw-ml-4 tw-mb-3 tw-self-end tw-text-red-500 tw-font-bold">Please add an image and fill in all fields</div>'
-        );
-      }
+    } else if (!document.getElementsByClassName('exp-data-warn')?.[0]) {
+      const el = document.getElementById('add-exp-fields');
+      el.insertAdjacentHTML(
+        'afterend',
+        '<div class="exp-data-warn tw-ml-4 tw-mb-3 tw-self-end tw-text-red-500 tw-font-bold">Please add an image and fill in all fields</div>',
+      );
     }
   };
   const clearExpAdd = () => {
-    document.getElementsByClassName("exp-data-warn")?.[0]?.remove();
-    setUploadedExpImg("");
-    setExpJobTitleInput("");
-    setExpDateInput("");
-    setExpLocationInput("");
+    document.getElementsByClassName('exp-data-warn')?.[0]?.remove();
+    setUploadedExpImg('');
+    setExpJobTitleInput('');
+    setExpDateInput('');
+    setExpLocationInput('');
     setExpAddMode(false);
   };
   const removeExp = (expId) => {
     experienceCards.length === 1 && setExpEditMode(false);
-    setExperienceCards((prevCards) =>
-      prevCards.filter((card) => card.cardId !== expId)
-    );
+    setExperienceCards((prevCards) => prevCards.filter((card) => card.cardId !== expId));
   };
 
   const handleEduImgUpload = (file) => {
@@ -281,38 +274,34 @@ const ProfileTwo = ({ userData, isLoggedIn, ownsProfile }) => {
         location: eduLocationInput,
       };
 
-      document.getElementsByClassName("edu-data-warn")?.[0]?.remove();
+      document.getElementsByClassName('edu-data-warn')?.[0]?.remove();
       setEducationCards((currentCards) => [...currentCards, newCard]);
       clearEduAdd();
-    } else {
-      if (!document.getElementsByClassName("edu-data-warn")?.[0]) {
-        let el = document.getElementById("add-edu-fields");
-        el.insertAdjacentHTML(
-          "afterend",
-          '<div class="edu-data-warn tw-ml-4 tw-mb-3 tw-self-end tw-text-red-500 tw-font-bold">Please add an image and fill in all fields</div>'
-        );
-      }
+    } else if (!document.getElementsByClassName('edu-data-warn')?.[0]) {
+      const el = document.getElementById('add-edu-fields');
+      el.insertAdjacentHTML(
+        'afterend',
+        '<div class="edu-data-warn tw-ml-4 tw-mb-3 tw-self-end tw-text-red-500 tw-font-bold">Please add an image and fill in all fields</div>',
+      );
     }
   };
   const clearEduAdd = () => {
-    document.getElementsByClassName("edu-data-warn")?.[0]?.remove();
-    setUploadedEduImg("");
-    setEduTitleInput("");
-    setEduDateInput("");
-    setEduLocationInput("");
+    document.getElementsByClassName('edu-data-warn')?.[0]?.remove();
+    setUploadedEduImg('');
+    setEduTitleInput('');
+    setEduDateInput('');
+    setEduLocationInput('');
     setEduAddMode(false);
   };
   const removeEdu = (eduId) => {
     educationCards.length === 1 && setEduEditMode(false);
-    setEducationCards((prevCards) =>
-      prevCards.filter((card) => card.cardId !== eduId)
-    );
+    setEducationCards((prevCards) => prevCards.filter((card) => card.cardId !== eduId));
   };
 
   // console.log(userData);
 
   const onMint = async () => {
-    const file = new Moralis.File("avatar.png", {
+    const file = new Moralis.File('avatar.png', {
       base64: userData.profilePicture,
     });
     setIsMinting(true);
@@ -321,14 +310,14 @@ const ProfileTwo = ({ userData, isLoggedIn, ownsProfile }) => {
       if (file.ipfs()) {
         const metadata = {
           name: `${userData.firstName} ${userData.lastName}`,
-          image: file.ipfs() || "",
-          description: userData?.bio || "",
+          image: file.ipfs() || '',
+          description: userData?.bio || '',
           attributes: userData.avatarOptions,
         };
 
         const JsonFormat = JSON.stringify(metadata);
 
-        const mintedMetadata = new Moralis.File("metadata.json", {
+        const mintedMetadata = new Moralis.File('metadata.json', {
           base64: btoa(JsonFormat),
         });
         await mintedMetadata.saveIPFS();
@@ -346,16 +335,16 @@ const ProfileTwo = ({ userData, isLoggedIn, ownsProfile }) => {
   };
 
   const clickOutsideAvatarPopup = useCallback((e) => {
-    if (e.target.className === "avatar-popup-wrap") {
+    if (e.target.className === 'avatar-popup-wrap') {
       setGenerateAvatarPopUp(false);
-      window.removeEventListener("click", clickOutsideAvatarPopup);
+      window.removeEventListener('click', clickOutsideAvatarPopup);
     }
   }, []);
 
   useEffect(() => {
     generateAvatarPopUp
-      ? window.addEventListener("click", clickOutsideAvatarPopup)
-      : window.removeEventListener("click", clickOutsideAvatarPopup);
+      ? window.addEventListener('click', clickOutsideAvatarPopup)
+      : window.removeEventListener('click', clickOutsideAvatarPopup);
   }, [generateAvatarPopUp]);
 
   return (
@@ -392,7 +381,7 @@ const ProfileTwo = ({ userData, isLoggedIn, ownsProfile }) => {
               <div className="avatar">
                 <img
                   className="tw-h-330px tw-w-full tw-rounded-2xl"
-                  src={userData?.profilePicture || "/assets/images/profile.png"}
+                  src={userData?.profilePicture || '/assets/images/profile.png'}
                   alt="avatar"
                 />
                 {isLoggedIn && ownsProfile && (
@@ -411,16 +400,16 @@ const ProfileTwo = ({ userData, isLoggedIn, ownsProfile }) => {
             <div className="user-data-area">
               <div
                 className="tw-flex tw-bg-white tw-p-4 tw-rounded-md tw-flex-wrap"
-                style={{ height: "100%" }}
+                style={{ height: '100%' }}
               >
                 <div className="user lg:tw-w-5/5 md:tw-w-5/5 xl:tw-2/5">
                   <div className="user-title">
                     <h3 className="tw-text-2xl tw-font-bold">
-                      {userData?.firstName + " " + userData?.lastName}
+                      {`${userData?.firstName} ${userData?.lastName}`}
                       <small className="tw-font-medium tw-text-gray-300 tw-text-base">
                         {userData?.userName
-                          ? "@" + userData?.userName
-                          : "no username"}
+                          ? `@${userData?.userName}`
+                          : 'no username'}
                       </small>
                     </h3>
                     <p className="tw-text-sm tw-text-gray-500">
@@ -456,7 +445,7 @@ const ProfileTwo = ({ userData, isLoggedIn, ownsProfile }) => {
                             className="tw-h-5 tw-animate-spin"
                           />
                         ) : (
-                          "Mint profile"
+                          'Mint profile'
                         )}
                       </Button>
                     )}
@@ -466,7 +455,7 @@ const ProfileTwo = ({ userData, isLoggedIn, ownsProfile }) => {
                     <div className="sl-wrap">
                       <div>
                         {socialLinks.map((link) => (
-                          <a key={link.id} href={link.url || "#"}>
+                          <a key={link.id} href={link.url || '#'}>
                             <span className="social">{link.slink}</span>
                           </a>
                         ))}
@@ -477,9 +466,7 @@ const ProfileTwo = ({ userData, isLoggedIn, ownsProfile }) => {
                             <div>
                               <span
                                 className="note"
-                                onClick={() =>
-                                  router.push("/settings/profile/media")
-                                }
+                                onClick={() => router.push('/settings/profile/media')}
                               >
                                 Please Add Social Links...
                               </span>
@@ -487,17 +474,15 @@ const ProfileTwo = ({ userData, isLoggedIn, ownsProfile }) => {
                           )}
                           <div className="pencil tw-cursor-pointer">
                             <HiOutlinePencil
-                              style={{ fontSize: "1.5rem" }}
-                              onClick={() =>
-                                router.push("/settings/profile/media")
-                              }
+                              style={{ fontSize: '1.5rem' }}
+                              onClick={() => router.push('/settings/profile/media')}
                             />
                           </div>
                         </div>
                       )}
                     </div>
                     <div className="cw-wrap">
-                      {isLoggedIn && ownsProfile  && walletAddress && (
+                      {isLoggedIn && ownsProfile && walletAddress && (
                         <Tooltip placement="top" title={copyText}>
                           <div
                             className="copy-wallet"
@@ -520,41 +505,38 @@ const ProfileTwo = ({ userData, isLoggedIn, ownsProfile }) => {
                     <p className="tw-font-bold">Passions & Skills</p>
 
                     <p className="all-skills tw-flex tw-justify-start  tw-flex-wrap ">
-                      {userData?.passions?.length &&
-                      !(
-                        userData.passions.length === 1 &&
-                        userData.passions[0] === ""
+                      {userData?.passions?.length
+                      && !(
+                        userData.passions.length === 1
+                        && userData.passions[0] === ''
                       ) ? (
-                        userData.passions.map(
-                          (passion, index) =>
-                            passion && (
+                          userData.passions.map(
+                            (passion, index) => passion && (
                               <span
                                 key={index}
                                 className="tw-inline-block tw-px-2 tw-py-1 tw-mr-1 tw-text-xs tw-text-gray-500 tw-border-gray-500 tw-mb-1 tw-rounded-md tw-border"
                               >
                                 {passion}
                               </span>
-                            )
-                        )
-                      ) : (
-                        <span
-                          className="note"
-                          onClick={() =>
-                            isLoggedIn &&
-                            ownsProfile &&
-                            router.push("/settings/profile/background")
-                          }
-                          style={
+                            ),
+                          )
+                        ) : (
+                          <span
+                            className="note"
+                            onClick={() => isLoggedIn
+                            && ownsProfile
+                            && router.push('/settings/profile/background')}
+                            style={
                             isLoggedIn && ownsProfile
-                              ? { cursor: "pointer" }
-                              : { cursor: "default" }
+                              ? { cursor: 'pointer' }
+                              : { cursor: 'default' }
                           }
-                        >
-                          {isLoggedIn && ownsProfile
-                            ? "Please Add Passions..."
-                            : "N/A"}
-                        </span>
-                      )}
+                          >
+                            {isLoggedIn && ownsProfile
+                              ? 'Please Add Passions...'
+                              : 'N/A'}
+                          </span>
+                        )}
                     </p>
                   </div>
 
@@ -573,7 +555,7 @@ const ProfileTwo = ({ userData, isLoggedIn, ownsProfile }) => {
                           </a>
                         ))
                       ) : (
-                        <span className="note" style={{ cursor: "default" }}>
+                        <span className="note" style={{ cursor: 'default' }}>
                           N/A
                         </span>
                       )}
@@ -612,7 +594,7 @@ const ProfileTwo = ({ userData, isLoggedIn, ownsProfile }) => {
                         <div className="tw-grid sm:tw-block lg:tw-grid xl:tw-block tw-items-start">
                           <div className="pinned-item">
                             <p className="tw-text-left tw-leading-6 tw-flex tw-text-sm tw-font-medium tw-text-current tw-font-bold ">
-                              <span className={`circle ${pinitem.base}`}></span>
+                              <span className={`circle ${pinitem.base}`} />
                               {pinitem.title}
                             </p>
                             <h3>{pinitem.desc}</h3>
@@ -623,7 +605,7 @@ const ProfileTwo = ({ userData, isLoggedIn, ownsProfile }) => {
                               {pinitem.checklist.map((item, index) => (
                                 <div
                                   className="chk-step tw-inline-block tw-px-2 tw-py-1 tw-rounded-md tw-my-1 tw-mr-1 tw-bg-white tw-text-black tw-text-xs tw-font-bold"
-                                  key={"0" + index + pinitem.id}
+                                  key={`0${index}${pinitem.id}`}
                                 >
                                   {item}
                                 </div>
@@ -669,28 +651,30 @@ const ProfileTwo = ({ userData, isLoggedIn, ownsProfile }) => {
           </div>
         </section>
 
-        {getProgressPercentage(userData) &&
-          getProgressPercentage(userData) < 100 && (
+        {getProgressPercentage(userData)
+          && getProgressPercentage(userData) < 100 && (
             <section className="tw-mb-8 tw-container ">
               <div className="profile-strength tw-p-6  tw-rounded-md tw-grid tw-grid-flow-row tw-auto-rows-max">
                 <div
                   className={`${
                     !psArrowUp
-                      ? `hover:tw-bg-light-blue-500 hover:tw-border-transparent hover:tw-shadow-lg `
-                      : "tw-shadow-lg tw-bg-light-blue-500"
+                      ? 'hover:tw-bg-light-blue-500 hover:tw-border-transparent hover:tw-shadow-lg '
+                      : 'tw-shadow-lg tw-bg-light-blue-500'
                   }tw-group tw-block tw-rounded-lg tw-p-4 tw-border-gray-300 tw-border tw-bg-white`}
                 >
                   <h2 className="tw-relative tw-text-xl tw-font-bold tw-mb-3 tw-text-black">
-                    Profile Strength:{" "}
+                    Profile Strength:
+                    {' '}
                     <span className="tw-font-medium tw-mr-4">
                       {`${
                         getProgressPercentage(userData) <= 33
-                          ? "Low"
+                          ? 'Low'
                           : getProgressPercentage(userData) <= 66
-                          ? "Intermediate"
-                          : "High"
+                            ? 'Intermediate'
+                            : 'High'
                       }`}
-                    </span>{" "}
+                    </span>
+                    {' '}
                     {`${getProgressPercentage(userData)}%`}
                     <span
                       className="ps-arrow tw-absolute tw-top-0 tw-right-0 tw-text-xs tw-cursor-pointer"
@@ -698,9 +682,9 @@ const ProfileTwo = ({ userData, isLoggedIn, ownsProfile }) => {
                     >
                       <img
                         src={`/assets/images/profile/${
-                          psArrowUp ? "arrow-up" : "arrow-down"
+                          psArrowUp ? 'arrow-up' : 'arrow-down'
                         }.svg`}
-                        alt={`arrow ${psArrowUp ? "up" : "down"}`}
+                        alt={`arrow ${psArrowUp ? 'up' : 'down'}`}
                       />
                     </span>
                   </h2>
@@ -711,8 +695,8 @@ const ProfileTwo = ({ userData, isLoggedIn, ownsProfile }) => {
                     >
                       <div
                         className="progress-fill"
-                        style={{ width: getProgressPercentage(userData) + "%" }}
-                      ></div>
+                        style={{ width: `${getProgressPercentage(userData)}%` }}
+                      />
                     </div>
                     <div className="pb-tick tw-h-6 tw-rounded-md">
                       <img
@@ -737,7 +721,9 @@ const ProfileTwo = ({ userData, isLoggedIn, ownsProfile }) => {
                             className="il-step tw-cursor-pointer tw-inline-block tw-px-2 tw-py-1 tw-rounded-md tw-m-2"
                             onClick={() => router.push(missingData.route)}
                           >
-                            Add a {`${missingData.name}`}
+                            Add a
+                            {' '}
+                            {`${missingData.name}`}
                           </div>
                         ))}
                     </div>
@@ -745,7 +731,7 @@ const ProfileTwo = ({ userData, isLoggedIn, ownsProfile }) => {
                 )}
               </div>
             </section>
-          )}
+        )}
 
         <section className="tw-mb-8 tw-container ">
           <div className="pp-card-area pp-projects tw-p-6  tw-rounded-md tw-grid tw-grid-flow-row tw-auto-rows-max">
@@ -789,7 +775,7 @@ const ProfileTwo = ({ userData, isLoggedIn, ownsProfile }) => {
                             {pCard.checklist.map((item, index) => (
                               <div
                                 className="chk-step tw-inline-block tw-px-2 tw-py-1 tw-rounded-md tw-my-1 tw-mr-1 tw-bg-white tw-text-black tw-text-xs tw-font-bold"
-                                key={"0" + index + pCard.id}
+                                key={`0${index}${pCard.id}`}
                               >
                                 {item}
                               </div>
@@ -890,26 +876,26 @@ const ProfileTwo = ({ userData, isLoggedIn, ownsProfile }) => {
                         setExpEditMode(!expEditMode);
                       }}
                     >
-                      <HiOutlinePencil style={{ fontSize: "1.5rem" }} />
+                      <HiOutlinePencil style={{ fontSize: '1.5rem' }} />
                     </div>
                   </span>
                 )}
               </h2>
 
               <div className="exp-edu-content">
-                {!!!experienceCards?.length && (
+                {!experienceCards?.length && (
                   <div className="no-content">
                     <h3>No Experience to Display</h3>
                   </div>
                 )}
 
-                {!!experienceCards?.length &&
-                  experienceCards.map((card, idx) => (
+                {!!experienceCards?.length
+                  && experienceCards.map((card, idx) => (
                     <div
                       className={`add-exp-edu tw-relative tw-flex tw-items-center tw-mb-4 ${
                         !(idx === experienceCards?.length - 1)
-                          ? "tw-border-b border-gray-500"
-                          : ""
+                          ? 'tw-border-b border-gray-500'
+                          : ''
                       }`}
                       key={idx}
                     >
@@ -943,9 +929,9 @@ const ProfileTwo = ({ userData, isLoggedIn, ownsProfile }) => {
                     </div>
                   ))}
 
-                {isLoggedIn &&
-                  ownsProfile &&
-                  (!experienceCards?.length || !expEditMode) && (
+                {isLoggedIn
+                  && ownsProfile
+                  && (!experienceCards?.length || !expEditMode) && (
                     <div
                       id="add-exp-fields"
                       className="add-exp-edu tw-flex tw-items-center"
@@ -960,14 +946,12 @@ const ProfileTwo = ({ userData, isLoggedIn, ownsProfile }) => {
                               type="file"
                               name="image"
                               id="upload-exp-image"
-                              onChange={(e) =>
-                                handleExpImgUpload(e.target.files[0])
-                              }
+                              onChange={(e) => handleExpImgUpload(e.target.files[0])}
                             />
                             <img
                               src={
-                                uploadedExpImg ||
-                                "/assets/images/profile/add-image.svg"
+                                uploadedExpImg
+                                || '/assets/images/profile/add-image.svg'
                               }
                               alt="add image"
                               className="tw-w-full"
@@ -989,9 +973,7 @@ const ProfileTwo = ({ userData, isLoggedIn, ownsProfile }) => {
                             placeholder="Job Title"
                             className="tw-block tw-rounded tw-px-2 tw-font-bold tw-w-full"
                             value={expJobTitleInput}
-                            onChange={(e) =>
-                              setExpJobTitleInput(e.target.value)
-                            }
+                            onChange={(e) => setExpJobTitleInput(e.target.value)}
                           />
                           <input
                             type="text"
@@ -1005,9 +987,7 @@ const ProfileTwo = ({ userData, isLoggedIn, ownsProfile }) => {
                             placeholder="Location"
                             className="tw-block tw-rounded tw-px-2 tw-w-full"
                             value={expLocationInput}
-                            onChange={(e) =>
-                              setExpLocationInput(e.target.value)
-                            }
+                            onChange={(e) => setExpLocationInput(e.target.value)}
                           />
                         </div>
                       ) : (
@@ -1035,7 +1015,7 @@ const ProfileTwo = ({ userData, isLoggedIn, ownsProfile }) => {
                         </>
                       )}
                     </div>
-                  )}
+                )}
               </div>
             </div>
           </div>
@@ -1054,26 +1034,26 @@ const ProfileTwo = ({ userData, isLoggedIn, ownsProfile }) => {
                         setEduEditMode(!eduEditMode);
                       }}
                     >
-                      <HiOutlinePencil style={{ fontSize: "1.5rem" }} />
+                      <HiOutlinePencil style={{ fontSize: '1.5rem' }} />
                     </div>
                   </span>
                 )}
               </h2>
 
               <div className="exp-edu-content">
-                {!!!educationCards?.length && (
+                {!educationCards?.length && (
                   <div className="no-content">
                     <h3>No Education to Display</h3>
                   </div>
                 )}
 
-                {!!educationCards?.length &&
-                  educationCards.map((card, idx) => (
+                {!!educationCards?.length
+                  && educationCards.map((card, idx) => (
                     <div
                       className={`add-exp-edu tw-relative tw-flex tw-items-center tw-mb-4 ${
                         !(idx === educationCards?.length - 1)
-                          ? "tw-border-b border-gray-500"
-                          : ""
+                          ? 'tw-border-b border-gray-500'
+                          : ''
                       }`}
                       key={idx}
                     >
@@ -1107,9 +1087,9 @@ const ProfileTwo = ({ userData, isLoggedIn, ownsProfile }) => {
                     </div>
                   ))}
 
-                {isLoggedIn &&
-                  ownsProfile &&
-                  (!educationCards?.length || !eduEditMode) && (
+                {isLoggedIn
+                  && ownsProfile
+                  && (!educationCards?.length || !eduEditMode) && (
                     <div
                       id="add-edu-fields"
                       className="add-exp-edu tw-flex tw-items-center"
@@ -1124,14 +1104,12 @@ const ProfileTwo = ({ userData, isLoggedIn, ownsProfile }) => {
                               type="file"
                               name="image"
                               id="upload-edu-image"
-                              onChange={(e) =>
-                                handleEduImgUpload(e.target.files[0])
-                              }
+                              onChange={(e) => handleEduImgUpload(e.target.files[0])}
                             />
                             <img
                               src={
-                                uploadedEduImg ||
-                                "/assets/images/profile/add-image.svg"
+                                uploadedEduImg
+                                || '/assets/images/profile/add-image.svg'
                               }
                               alt="add image"
                               className="tw-w-full"
@@ -1167,9 +1145,7 @@ const ProfileTwo = ({ userData, isLoggedIn, ownsProfile }) => {
                             placeholder="Degree Awarded"
                             className="tw-block tw-rounded tw-px-2 tw-w-full"
                             value={eduLocationInput}
-                            onChange={(e) =>
-                              setEduLocationInput(e.target.value)
-                            }
+                            onChange={(e) => setEduLocationInput(e.target.value)}
                           />
                         </div>
                       ) : (
@@ -1197,7 +1173,7 @@ const ProfileTwo = ({ userData, isLoggedIn, ownsProfile }) => {
                         </>
                       )}
                     </div>
-                  )}
+                )}
               </div>
             </div>
           </div>

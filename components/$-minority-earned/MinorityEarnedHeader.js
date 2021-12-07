@@ -1,8 +1,6 @@
-import React from 'react'
+import React from 'react';
 
-const MinorityEarnedHeader = () => {
-
-
+const MinorityEarnedHeader = function () {
   return (
     <div className="minority__earned d-flex flex-column justify-content-center align-items-center">
 
@@ -10,7 +8,7 @@ const MinorityEarnedHeader = () => {
       <p className="">Check your $ Minority earned through different actions.</p>
 
     </div>
-  )
-}
+  );
+};
 
-export default MinorityEarnedHeader
+export default MinorityEarnedHeader;

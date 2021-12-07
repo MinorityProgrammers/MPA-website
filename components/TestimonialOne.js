@@ -1,8 +1,8 @@
-import React from "react";
-import Swiper from "react-id-swiper";
-import "swiper/css/swiper.css";
+import React from 'react';
+import Swiper from 'react-id-swiper';
+import 'swiper/css/swiper.css';
 
-const TestimonialOne = () => {
+const TestimonialOne = function () {
   const params = {
     slidesPerView: 3,
     loop: true,
@@ -13,7 +13,7 @@ const TestimonialOne = () => {
       disableOnInteraction: false,
     },
     pagination: {
-      el: ".swiper-pagination",
+      el: '.swiper-pagination',
       clickable: true,
     },
 
@@ -39,7 +39,9 @@ const TestimonialOne = () => {
       <div className="container">
         <div className="block-title text-center">
           <h2 className="block-title__title">
-            What our students <br />
+            What our students
+            {' '}
+            <br />
             have to say
           </h2>
         </div>

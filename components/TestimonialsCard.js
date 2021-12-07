@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-const TestimonialsCard = (props) => {
+const TestimonialsCard = function (props) {
   return (
     <div className="item">
       <div className="testimonials-one__single">

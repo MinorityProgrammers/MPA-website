@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import ModalVideo from "react-modal-video";
+import React, { Component } from 'react';
+import ModalVideo from 'react-modal-video';
 
 class VideoOne extends Component {
   constructor() {
@@ -26,8 +26,12 @@ class VideoOne extends Component {
             <div className="col-lg-6 d-flex align-items-end">
               <div className="video-one__content">
                 <h2 className="video-one__title">
-                  Take a tour dolor <br />
-                  sit amet, consect <br />
+                  Take a tour dolor
+                  {' '}
+                  <br />
+                  sit amet, consect
+                  {' '}
+                  <br />
                   etur elit
                 </h2>
                 <a href="#" className="thm-btn video-one__btn">
@@ -45,7 +49,7 @@ class VideoOne extends Component {
                   onClose={() => this.setState({ isOpen: false })}
                 />
                 <div onClick={this.openModal} className="video-one__popup">
-                  <i className="fas fa-play"></i>
+                  <i className="fas fa-play" />
                 </div>
               </div>
             </div>

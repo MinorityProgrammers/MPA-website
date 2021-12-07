@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-const CourseDetails = () => {
+const CourseDetails = function () {
   return (
     <section className="course-details">
       <div className="container">
@@ -9,7 +9,9 @@ const CourseDetails = () => {
             <div className="course-details__content">
               <p className="course-details__author">
                 <img src="/assets/images/team-1-1.jpg" alt="" />
-                by <a href="#">Addie Walters</a>
+                by
+                {' '}
+                <a href="#">Addie Walters</a>
               </p>
 
               <div className="course-details__top">
@@ -19,11 +21,11 @@ const CourseDetails = () => {
                   </h2>
                   <div className="course-one__stars">
                     <span className="course-one__stars-wrap">
-                      <i className="fa fa-star"></i>
-                      <i className="fa fa-star"></i>
-                      <i className="fa fa-star"></i>
-                      <i className="fa fa-star"></i>
-                      <i className="fa fa-star"></i>
+                      <i className="fa fa-star" />
+                      <i className="fa fa-star" />
+                      <i className="fa fa-star" />
+                      <i className="fa fa-star" />
+                      <i className="fa fa-star" />
                     </span>
                     <span className="course-one__count">4.8</span>
                     <span className="course-one__stars-count">250</span>
@@ -37,7 +39,7 @@ const CourseDetails = () => {
               </div>
               <div className="course-one__image">
                 <img src="/assets/images/course-d-1.jpg" alt="" />
-                <i className="far fa-heart"></i>
+                <i className="far fa-heart" />
               </div>
 
               <ul
@@ -127,9 +129,10 @@ const CourseDetails = () => {
                     <li>
                       <div className="course-details__curriculum-list-left">
                         <div className="course-details__meta-icon video-icon">
-                          <i className="fas fa-play"></i>
+                          <i className="fas fa-play" />
                         </div>
-                        <a href="#">Introduction to Editing</a>{" "}
+                        <a href="#">Introduction to Editing</a>
+                        {' '}
                         <span>Preview</span>
                       </div>
                       <div className="course-details__curriculum-list-right">
@@ -139,9 +142,11 @@ const CourseDetails = () => {
                     <li>
                       <div className="course-details__curriculum-list-left">
                         <div className="course-details__meta-icon video-icon">
-                          <i className="fas fa-play"></i>
+                          <i className="fas fa-play" />
                         </div>
-                        <a href="#">Overview of Editing</a> <span>Preview</span>
+                        <a href="#">Overview of Editing</a>
+                        {' '}
+                        <span>Preview</span>
                       </div>
                       <div className="course-details__curriculum-list-right">
                         10 minutes
@@ -150,7 +155,7 @@ const CourseDetails = () => {
                     <li>
                       <div className="course-details__curriculum-list-left">
                         <div className="course-details__meta-icon file-icon">
-                          <i className="fas fa-folder"></i>
+                          <i className="fas fa-folder" />
                         </div>
                         <a href="#">Basic Editing Technology</a>
                       </div>
@@ -158,7 +163,7 @@ const CourseDetails = () => {
                     <li>
                       <div className="course-details__curriculum-list-left">
                         <div className="course-details__meta-icon quiz-icon">
-                          <i className="fas fa-comment"></i>
+                          <i className="fas fa-comment" />
                         </div>
                         <a href="#">Quiz</a>
                       </div>
@@ -184,7 +189,7 @@ const CourseDetails = () => {
                     <li>
                       <div className="course-details__curriculum-list-left">
                         <div className="course-details__meta-icon video-icon">
-                          <i className="fas fa-play"></i>
+                          <i className="fas fa-play" />
                         </div>
                         <a href="#">Introduction to Editing</a>
                         <span>Preview</span>
@@ -196,7 +201,7 @@ const CourseDetails = () => {
                     <li>
                       <div className="course-details__curriculum-list-left">
                         <div className="course-details__meta-icon file-icon">
-                          <i className="fas fa-folder"></i>
+                          <i className="fas fa-folder" />
                         </div>
                         <a href="#">Basic Editing Technology</a>
                       </div>
@@ -204,7 +209,7 @@ const CourseDetails = () => {
                     <li>
                       <div className="course-details__curriculum-list-left">
                         <div className="course-details__meta-icon quiz-icon">
-                          <i className="fas fa-comment"></i>
+                          <i className="fas fa-comment" />
                         </div>
                         <a href="#">Quiz</a>
                       </div>
@@ -227,7 +232,7 @@ const CourseDetails = () => {
                             Excellent
                           </p>
                           <div className="course-details__progress-bar">
-                            <span style={{ width: `95%` }}></span>
+                            <span style={{ width: '95%' }} />
                           </div>
                           <p className="course-details__progress-count">5</p>
                         </div>
@@ -236,7 +241,7 @@ const CourseDetails = () => {
                             Very Good
                           </p>
                           <div className="course-details__progress-bar">
-                            <span style={{ width: `65%` }}></span>
+                            <span style={{ width: '65%' }} />
                           </div>
                           <p className="course-details__progress-count">2</p>
                         </div>
@@ -245,7 +250,7 @@ const CourseDetails = () => {
                             Average
                           </p>
                           <div className="course-details__progress-bar">
-                            <span style={{ width: `33%` }}></span>
+                            <span style={{ width: '33%' }} />
                           </div>
                           <p className="course-details__progress-count">1</p>
                         </div>
@@ -253,9 +258,9 @@ const CourseDetails = () => {
                           <p className="course-details__progress-text">Poor</p>
                           <div className="course-details__progress-bar">
                             <span
-                              style={{ width: `0%` }}
+                              style={{ width: '0%' }}
                               className="no-bubble"
-                            ></span>
+                            />
                           </div>
                           <p className="course-details__progress-count">0</p>
                         </div>
@@ -265,9 +270,9 @@ const CourseDetails = () => {
                           </p>
                           <div className="course-details__progress-bar">
                             <span
-                              style={{ width: `0%` }}
+                              style={{ width: '0%' }}
                               className="no-bubble"
-                            ></span>
+                            />
                           </div>
                           <p className="course-details__progress-count">0</p>
                         </div>
@@ -277,11 +282,11 @@ const CourseDetails = () => {
                       <div className="course-details__review-box">
                         <p className="course-details__review-count">4.6</p>
                         <div className="course-details__review-stars">
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star-half"></i>
+                          <i className="fas fa-star" />
+                          <i className="fas fa-star" />
+                          <i className="fas fa-star" />
+                          <i className="fas fa-star" />
+                          <i className="fas fa-star-half" />
                         </div>
                         <p className="course-details__review-text">
                           30 reviews
@@ -304,11 +309,11 @@ const CourseDetails = () => {
                               26 July, 2019
                             </p>
                             <div className="course-details__comment-stars">
-                              <i className="fa fa-star"></i>
-                              <i className="fa fa-star"></i>
-                              <i className="fa fa-star"></i>
-                              <i className="fa fa-star"></i>
-                              <i className="fa fa-star star-disabled"></i>
+                              <i className="fa fa-star" />
+                              <i className="fa fa-star" />
+                              <i className="fa fa-star" />
+                              <i className="fa fa-star" />
+                              <i className="fa fa-star star-disabled" />
                             </div>
                           </div>
                         </div>
@@ -334,11 +339,11 @@ const CourseDetails = () => {
                               26 July, 2019
                             </p>
                             <div className="course-details__comment-stars">
-                              <i className="fa fa-star"></i>
-                              <i className="fa fa-star"></i>
-                              <i className="fa fa-star"></i>
-                              <i className="fa fa-star star-disabled"></i>
-                              <i className="fa fa-star star-disabled"></i>
+                              <i className="fa fa-star" />
+                              <i className="fa fa-star" />
+                              <i className="fa fa-star" />
+                              <i className="fa fa-star star-disabled" />
+                              <i className="fa fa-star star-disabled" />
                             </div>
                           </div>
                         </div>
@@ -354,11 +359,13 @@ const CourseDetails = () => {
                   <form action="#" className="course-details__comment-form">
                     <h2 className="course-details__title">Add a review</h2>
                     <p className="course-details__comment-form-text">
-                      Rate this Course? <a href="#" className="fas fa-star"></a>
-                      <a href="#" className="fas fa-star"></a>
-                      <a href="#" className="fas fa-star"></a>
-                      <a href="#" className="fas fa-star"></a>
-                      <a href="#" className="fas fa-star"></a>
+                      Rate this Course?
+                      {' '}
+                      <a href="#" className="fas fa-star" />
+                      <a href="#" className="fas fa-star" />
+                      <a href="#" className="fas fa-star" />
+                      <a href="#" className="fas fa-star" />
+                      <a href="#" className="fas fa-star" />
                     </p>
                     <div className="row">
                       <div className="col-lg-6">
@@ -366,7 +373,7 @@ const CourseDetails = () => {
                         <input type="text" placeholder="Email Address" />
                       </div>
                       <div className="col-lg-12">
-                        <textarea placeholder="Write Message"></textarea>
+                        <textarea placeholder="Write Message" />
                         <button
                           type="submit"
                           className="thm-btn course-details__comment-form-btn"
@@ -392,39 +399,51 @@ const CourseDetails = () => {
             <div className="course-details__meta">
               <a href="#" className="course-details__meta-link">
                 <span className="course-details__meta-icon">
-                  <i className="far fa-clock"></i>
+                  <i className="far fa-clock" />
                 </span>
-                Durations: <span>10 hours</span>
+                Durations:
+                {' '}
+                <span>10 hours</span>
               </a>
               <a href="#" className="course-details__meta-link">
                 <span className="course-details__meta-icon">
-                  <i className="far fa-folder-open"></i>
+                  <i className="far fa-folder-open" />
                 </span>
-                Lectures: <span>6</span>
+                Lectures:
+                {' '}
+                <span>6</span>
               </a>
               <a href="#" className="course-details__meta-link">
                 <span className="course-details__meta-icon">
-                  <i className="far fa-user-circle"></i>
+                  <i className="far fa-user-circle" />
                 </span>
-                Students: <span>Max 4</span>
+                Students:
+                {' '}
+                <span>Max 4</span>
               </a>
               <a href="#" className="course-details__meta-link">
                 <span className="course-details__meta-icon">
-                  <i className="fas fa-play"></i>
+                  <i className="fas fa-play" />
                 </span>
-                Video: <span>8 hours</span>
+                Video:
+                {' '}
+                <span>8 hours</span>
               </a>
               <a href="#" className="course-details__meta-link">
                 <span className="course-details__meta-icon">
-                  <i className="far fa-flag"></i>
+                  <i className="far fa-flag" />
                 </span>
-                Skill Level: <span>Advanced</span>
+                Skill Level:
+                {' '}
+                <span>Advanced</span>
               </a>
               <a href="#" className="course-details__meta-link">
                 <span className="course-details__meta-icon">
-                  <i className="far fa-bell"></i>
+                  <i className="far fa-bell" />
                 </span>
-                Language: <span>English</span>
+                Language:
+                {' '}
+                <span>English</span>
               </a>
             </div>
             <div className="course-details__list">
@@ -435,17 +454,19 @@ const CourseDetails = () => {
                 </div>
                 <div className="course-details__list-content">
                   <a className="course-details__list-author" href="#">
-                    by <span>Lydia Byrd</span>
+                    by
+                    {' '}
+                    <span>Lydia Byrd</span>
                   </a>
                   <h3>
                     <a href="#">Marketing strategies</a>
                   </h3>
                   <div className="course-details__list-stars">
-                    <i className="fas fa-star"></i>
-                    <i className="fas fa-star"></i>
-                    <i className="fas fa-star"></i>
-                    <i className="fas fa-star"></i>
-                    <i className="fas fa-star"></i>
+                    <i className="fas fa-star" />
+                    <i className="fas fa-star" />
+                    <i className="fas fa-star" />
+                    <i className="fas fa-star" />
+                    <i className="fas fa-star" />
                     <span>4.8</span>
                   </div>
                 </div>
@@ -456,17 +477,19 @@ const CourseDetails = () => {
                 </div>
                 <div className="course-details__list-content">
                   <a className="course-details__list-author" href="#">
-                    by <span>Lydia Byrd</span>
+                    by
+                    {' '}
+                    <span>Lydia Byrd</span>
                   </a>
                   <h3>
                     <a href="#">Marketing strategies</a>
                   </h3>
                   <div className="course-details__list-stars">
-                    <i className="fas fa-star"></i>
-                    <i className="fas fa-star"></i>
-                    <i className="fas fa-star"></i>
-                    <i className="fas fa-star"></i>
-                    <i className="fas fa-star"></i>
+                    <i className="fas fa-star" />
+                    <i className="fas fa-star" />
+                    <i className="fas fa-star" />
+                    <i className="fas fa-star" />
+                    <i className="fas fa-star" />
                     <span>4.8</span>
                   </div>
                 </div>
@@ -477,17 +500,19 @@ const CourseDetails = () => {
                 </div>
                 <div className="course-details__list-content">
                   <a className="course-details__list-author" href="#">
-                    by <span>Lydia Byrd</span>
+                    by
+                    {' '}
+                    <span>Lydia Byrd</span>
                   </a>
                   <h3>
                     <a href="#">Marketing strategies</a>
                   </h3>
                   <div className="course-details__list-stars">
-                    <i className="fas fa-star"></i>
-                    <i className="fas fa-star"></i>
-                    <i className="fas fa-star"></i>
-                    <i className="fas fa-star"></i>
-                    <i className="fas fa-star"></i>
+                    <i className="fas fa-star" />
+                    <i className="fas fa-star" />
+                    <i className="fas fa-star" />
+                    <i className="fas fa-star" />
+                    <i className="fas fa-star" />
                     <span>4.8</span>
                   </div>
                 </div>

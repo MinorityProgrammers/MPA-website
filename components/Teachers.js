@@ -1,7 +1,7 @@
-import React from "react";
-import Link from "next/link";
+import React from 'react';
+import Link from 'next/link';
 
-const Teachers = () => {
+const Teachers = function () {
   return (
     <section className="team-one team-page">
       <div className="container">
@@ -24,7 +24,7 @@ const Teachers = () => {
               </div>
               <div className="team-one__social">
                 <a href="#">
-                  <i className="fab fa-linkedin"></i>
+                  <i className="fab fa-linkedin" />
                 </a>
               </div>
             </div>
@@ -50,13 +50,13 @@ const Teachers = () => {
               </div>
               <div className="team-one__social">
                 <a href="#">
-                  <i className="fab fa-twitter"></i>
+                  <i className="fab fa-twitter" />
                 </a>
                 <a href="#">
-                  <i className="fab fa-facebook-square"></i>
+                  <i className="fab fa-facebook-square" />
                 </a>
                 <a href="#">
-                  <i className="fab fa-instagram"></i>
+                  <i className="fab fa-instagram" />
                 </a>
               </div>
             </div>
@@ -77,16 +77,16 @@ const Teachers = () => {
               </div>
               <div className="team-one__social">
                 <a href="#">
-                  <i className="fab fa-twitter"></i>
+                  <i className="fab fa-twitter" />
                 </a>
                 <a href="#">
-                  <i className="fab fa-facebook-square"></i>
+                  <i className="fab fa-facebook-square" />
                 </a>
                 <a href="#">
-                  <i className="fab fa-pinterest-p"></i>
+                  <i className="fab fa-pinterest-p" />
                 </a>
                 <a href="#">
-                  <i className="fab fa-instagram"></i>
+                  <i className="fab fa-instagram" />
                 </a>
               </div>
             </div>
@@ -109,16 +109,16 @@ const Teachers = () => {
               </div>
               <div className="team-one__social">
                 <a href="#">
-                  <i className="fab fa-twitter"></i>
+                  <i className="fab fa-twitter" />
                 </a>
                 <a href="#">
-                  <i className="fab fa-facebook-square"></i>
+                  <i className="fab fa-facebook-square" />
                 </a>
                 <a href="#">
-                  <i className="fab fa-pinterest-p"></i>
+                  <i className="fab fa-pinterest-p" />
                 </a>
                 <a href="#">
-                  <i className="fab fa-instagram"></i>
+                  <i className="fab fa-instagram" />
                 </a>
               </div>
             </div>
@@ -141,16 +141,16 @@ const Teachers = () => {
               </div>
               <div className="team-one__social">
                 <a href="#">
-                  <i className="fab fa-twitter"></i>
+                  <i className="fab fa-twitter" />
                 </a>
                 <a href="#">
-                  <i className="fab fa-facebook-square"></i>
+                  <i className="fab fa-facebook-square" />
                 </a>
                 <a href="#">
-                  <i className="fab fa-pinterest-p"></i>
+                  <i className="fab fa-pinterest-p" />
                 </a>
                 <a href="#">
-                  <i className="fab fa-instagram"></i>
+                  <i className="fab fa-instagram" />
                 </a>
               </div>
             </div>
@@ -173,16 +173,16 @@ const Teachers = () => {
               </div>
               <div className="team-one__social">
                 <a href="#">
-                  <i className="fab fa-twitter"></i>
+                  <i className="fab fa-twitter" />
                 </a>
                 <a href="#">
-                  <i className="fab fa-facebook-square"></i>
+                  <i className="fab fa-facebook-square" />
                 </a>
                 <a href="#">
-                  <i className="fab fa-pinterest-p"></i>
+                  <i className="fab fa-pinterest-p" />
                 </a>
                 <a href="#">
-                  <i className="fab fa-instagram"></i>
+                  <i className="fab fa-instagram" />
                 </a>
               </div>
             </div>
@@ -205,16 +205,16 @@ const Teachers = () => {
               </div>
               <div className="team-one__social">
                 <a href="#">
-                  <i className="fab fa-twitter"></i>
+                  <i className="fab fa-twitter" />
                 </a>
                 <a href="#">
-                  <i className="fab fa-facebook-square"></i>
+                  <i className="fab fa-facebook-square" />
                 </a>
                 <a href="#">
-                  <i className="fab fa-pinterest-p"></i>
+                  <i className="fab fa-pinterest-p" />
                 </a>
                 <a href="#">
-                  <i className="fab fa-instagram"></i>
+                  <i className="fab fa-instagram" />
                 </a>
               </div>
             </div>
@@ -237,16 +237,16 @@ const Teachers = () => {
               </div>
               <div className="team-one__social">
                 <a href="#">
-                  <i className="fab fa-twitter"></i>
+                  <i className="fab fa-twitter" />
                 </a>
                 <a href="#">
-                  <i className="fab fa-facebook-square"></i>
+                  <i className="fab fa-facebook-square" />
                 </a>
                 <a href="#">
-                  <i className="fab fa-pinterest-p"></i>
+                  <i className="fab fa-pinterest-p" />
                 </a>
                 <a href="#">
-                  <i className="fab fa-instagram"></i>
+                  <i className="fab fa-instagram" />
                 </a>
               </div>
             </div>

@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
-import Select, { components } from "react-select";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import styles from "../../styles/settings/createSettingInput.module.css";
-import { useRouter } from "next/router";
+import React, { useState, useEffect } from 'react';
+import Select, { components } from 'react-select';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import { useRouter } from 'next/router';
+import styles from '../../styles/settings/createSettingInput.module.css';
 
-const CreateSettingInput = ({
+const CreateSettingInput = function ({
   label,
   type,
   name,
@@ -17,7 +17,7 @@ const CreateSettingInput = ({
   halfWidth,
   rightSpaced,
   leftSpaced,
-}) => {
+}) {
   const router = useRouter();
 
   const handleChange = (e) => {
@@ -27,31 +27,28 @@ const CreateSettingInput = ({
     }
   };
 
-  const handleSwitchChange = () => {
-    return setValue
-      ? {
-          value: options.find((option) => option.label == value),
-          onChange: (e) => {
-            setValue(e.value);
-          },
-        }
-      : {};
-  };
+  const handleSwitchChange = () => (setValue
+    ? {
+      value: options.find((option) => option.label == value),
+      onChange: (e) => {
+        setValue(e.value);
+      },
+    }
+    : {});
 
-  const reactSelectKey =
-    router.pathname.substring(router.pathname.lastIndexOf("/") + 1) +
-    "-select-key-" +
-    Math.floor(Math.random() * 10);
+  const reactSelectKey = `${router.pathname.substring(router.pathname.lastIndexOf('/') + 1)
+  }-select-key-${
+    Math.floor(Math.random() * 10)}`;
 
   switch (type) {
-    case "select":
-      const DropdownIndicator = (props) => {
+    case 'select':
+      var DropdownIndicator = function (props) {
         return (
           <components.DropdownIndicator {...props}>
             <img
               src="../../assets/images/settings/arrow-down.svg"
               alt="dropdown icon"
-              style={{ height: "1vw" }}
+              style={{ height: '1vw' }}
             />
           </components.DropdownIndicator>
         );
@@ -59,12 +56,12 @@ const CreateSettingInput = ({
       const selectStyles = {
         indicatorSeparator: (base) => ({
           ...base,
-          display: "none",
+          display: 'none',
         }),
         control: (base) => ({
           ...base,
           border: 0,
-          boxShadow: "none",
+          boxShadow: 'none',
         }),
       };
       return (
@@ -72,22 +69,22 @@ const CreateSettingInput = ({
           className={`${
             halfWidth
               ? styles.halfInputLabel
-              : name === "Ethnicity"
-              ? styles.ethnInputLabel + " " + styles.rightSpaced
-              : name === "proficiency"
-              ? styles.profPassInputLabel + " " + styles.rightSpaced
-              : styles.inputLabel
-          } ${halfWidth && rightSpaced ? styles.rightSpaced : ""}`}
+              : name === 'Ethnicity'
+                ? `${styles.ethnInputLabel} ${styles.rightSpaced}`
+                : name === 'proficiency'
+                  ? `${styles.profPassInputLabel} ${styles.rightSpaced}`
+                  : styles.inputLabel
+          } ${halfWidth && rightSpaced ? styles.rightSpaced : ''}`}
         >
           {![
-            "proficiency",
-            "passions",
-            "softSkills",
-            "programmingSkills",
+            'proficiency',
+            'passions',
+            'softSkills',
+            'programmingSkills',
           ].includes(name) && (
             <p>
               {label}
-              {required ? <span className="cp-required">*</span> : ""}
+              {required ? <span className="cp-required">*</span> : ''}
             </p>
           )}
           <Select
@@ -99,28 +96,28 @@ const CreateSettingInput = ({
             styles={selectStyles}
             id={reactSelectKey}
             instanceId={reactSelectKey}
-            placeholder={placeholder || "Select..."}
+            placeholder={placeholder || 'Select...'}
           />
         </label>
       );
-    case "date":
+    case 'date':
       return (
         <label
           className={`${
             halfWidth ? styles.halfInputLabel : styles.inputLabel
-          } ${halfWidth && rightSpaced ? styles.rightSpaced : ""}`}
+          } ${halfWidth && rightSpaced ? styles.rightSpaced : ''}`}
         >
           <p>
             {label}
-            {required ? <span className="cp-required">*</span> : ""}
+            {required ? <span className="cp-required">*</span> : ''}
           </p>
           <DatePicker
             minDate={
-              (name === "birthday" && new Date(1950, 0, 1)) ||
-              (name === "enteredHighSchoolYear" && new Date(1968, 0, 1)) ||
-              (name === "expectedGraduationYear" && new Date(1970, 0, 1))
+              (name === 'birthday' && new Date(1950, 0, 1))
+              || (name === 'enteredHighSchoolYear' && new Date(1968, 0, 1))
+              || (name === 'expectedGraduationYear' && new Date(1970, 0, 1))
             }
-            maxDate={name === "birthday" && new Date(2010, 11, 31)}
+            maxDate={name === 'birthday' && new Date(2010, 11, 31)}
             className="datepicker"
             value={value}
             selected={value}
@@ -133,23 +130,23 @@ const CreateSettingInput = ({
           />
         </label>
       );
-    case "textarea":
+    case 'textarea':
       return (
         <label className={styles.inputLabel}>
           <p>
             {label}
-            {required ? <span className="cp-required">*</span> : ""}
+            {required ? <span className="cp-required">*</span> : ''}
           </p>
           <textarea
             name={name}
             onChange={handleChange}
             autoComplete="off"
             placeholder="Describe your favorite code..."
-            value={value || ""}
+            value={value || ''}
           />
         </label>
       );
-    case "radio":
+    case 'radio':
       return (
         <div className={styles.radioWrap}>
           <h5>{label}</h5>
@@ -157,23 +154,23 @@ const CreateSettingInput = ({
             <div className={styles.visibility} onClick={() => setValue(true)}>
               <div
                 className={
-                  styles.radioBtn + " " + (value ? styles.checkedRadioBtn : "")
+                  `${styles.radioBtn} ${value ? styles.checkedRadioBtn : ''}`
                 }
-              ></div>
+              />
               <span>Public</span>
             </div>
             <div className={styles.visibility} onClick={() => setValue(false)}>
               <div
                 className={
-                  styles.radioBtn + " " + (!value ? styles.checkedRadioBtn : "")
+                  `${styles.radioBtn} ${!value ? styles.checkedRadioBtn : ''}`
                 }
-              ></div>
+              />
               <span>Private</span>
             </div>
           </div>
         </div>
       );
-    case "checkbox":
+    case 'checkbox':
       return (
         <div
           className={styles.inputCheckboxLabel}
@@ -182,14 +179,14 @@ const CreateSettingInput = ({
           <img
             src={
               value
-                ? "../../assets/images/settings/checked.svg"
-                : "../../assets/images/settings/unchecked.svg"
+                ? '../../assets/images/settings/checked.svg'
+                : '../../assets/images/settings/unchecked.svg'
             }
-            alt={`${value ? "check" : "uncheck"} icon`}
+            alt={`${value ? 'check' : 'uncheck'} icon`}
           />
           <p>
             {label}
-            {required ? <span className="cp-required">*</span> : ""}
+            {required ? <span className="cp-required">*</span> : ''}
           </p>
         </div>
       );
@@ -199,38 +196,38 @@ const CreateSettingInput = ({
           className={`${
             halfWidth ? styles.halfInputLabel : styles.inputLabel
           } ${
-            name === "passions"
-              ? styles.profPassInputLabel + " " + styles.rightSpaced
-              : " "
-          } ${halfWidth && rightSpaced ? styles.rightSpaced : " "} ${
-            leftSpaced ? styles.leftSpaced : " "
+            name === 'passions'
+              ? `${styles.profPassInputLabel} ${styles.rightSpaced}`
+              : ' '
+          } ${halfWidth && rightSpaced ? styles.rightSpaced : ' '} ${
+            leftSpaced ? styles.leftSpaced : ' '
           } ${
-            name === "userName"
-              ? "securityLoginPasswordInput"
-              : name === "email"
-              ? "securityEmailInput"
-              : " "
+            name === 'userName'
+              ? 'securityLoginPasswordInput'
+              : name === 'email'
+                ? 'securityEmailInput'
+                : ' '
           }`}
         >
-          {!leftSpaced &&
-            ![
-              "proficiency",
-              "passions",
-              "softSkills",
-              "programmingSkills",
+          {!leftSpaced
+            && ![
+              'proficiency',
+              'passions',
+              'softSkills',
+              'programmingSkills',
             ].includes(name) && (
               <p>
                 {label}
-                {required ? <span className="cp-required">*</span> : ""}
+                {required ? <span className="cp-required">*</span> : ''}
               </p>
-            )}
+          )}
           <input
             type={type}
             name={name}
             value={value}
             onChange={handleChange}
             autoComplete="off"
-            placeholder={placeholder || ""}
+            placeholder={placeholder || ''}
           />
         </label>
       );

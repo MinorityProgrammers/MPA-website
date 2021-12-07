@@ -1,10 +1,10 @@
-import { useState } from "react";
-import styles from "./content.module.css";
-import Jobs from "./jobs/Jobs";
-import Candidates from "./candidates/Candidates";
-import Interview from "./interview/Interview";
+import { useState } from 'react';
+import styles from './content.module.css';
+import Jobs from './jobs/Jobs';
+import Candidates from './candidates/Candidates';
+import Interview from './interview/Interview';
 
-const EmployerContent = () => {
+const EmployerContent = function () {
   const [load, setLoad] = useState(3);
 
   const loadmore = () => {

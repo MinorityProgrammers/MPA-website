@@ -7,7 +7,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'redhat': ['Red Hat Display', 'ui-serif'],
+        redhat: ['Red Hat Display', 'ui-serif'],
       },
       backgroundColor: {
         main: '#269DF8',
@@ -20,13 +20,13 @@ module.exports = {
         hoverDark: '#171c28',
         profileDark: '#151565',
         activeOrange: '#FF655B',
-        "#F9F9F9": "#F9F9F9",
+        '#F9F9F9': '#F9F9F9',
         '#EAEFF2': '#EAEFF2',
       },
       gradientColorStops: {
-        'FFC700': '#FFC700',
-        'FF655B': '#FF655B',
-        'FF00B8': '#FF00B8',
+        FFC700: '#FFC700',
+        FF655B: '#FF655B',
+        FF00B8: '#FF00B8',
       },
       textColor: {
         NavDark: '#151565',
@@ -37,16 +37,16 @@ module.exports = {
 
       },
       gradientColorStops: {
-        'FFC700': '#FFC700',
-        'FF655B': '#FF655B',
-        'FF00B8': '#FF00B8',
+        FFC700: '#FFC700',
+        FF655B: '#FF655B',
+        FF00B8: '#FF00B8',
       },
       boxShadow: {
         'md-top': '0 -4px 6px -1px rgba(0, 0, 0, 0.1), 0 -2px 4px -1px rgba(0, 0, 0, 0.06)',
-        'mentor': '0 25px 50px -12px rgba(0, 0, 0, 1)',
-        'mentorAppButton': '0px 0px 5px 2px rgba(0, 0, 0, 0.3)',
-        'mentorAppMessagesInner': ' inset 0px 5px 20px 1px rgba(0, 0, 0, 0.25)',
-        'mentorAppMessagesOuter': ' 0px 5px 20px 1px rgba(0, 0, 0, 0.25)',
+        mentor: '0 25px 50px -12px rgba(0, 0, 0, 1)',
+        mentorAppButton: '0px 0px 5px 2px rgba(0, 0, 0, 0.3)',
+        mentorAppMessagesInner: ' inset 0px 5px 20px 1px rgba(0, 0, 0, 0.25)',
+        mentorAppMessagesOuter: ' 0px 5px 20px 1px rgba(0, 0, 0, 0.25)',
       },
       colors: {
         main: '#FF00B8',
@@ -56,7 +56,7 @@ module.exports = {
         main: '#269df8',
         line: '#FF00B8',
         surface: '#eff6fc',
-        '#B9BCC1': "#B9BCC1",
+        '#B9BCC1': '#B9BCC1',
       },
       gridTemplateRows: {
         main: '4.5em auto 3em',
@@ -85,7 +85,7 @@ module.exports = {
 
       },
       minHeight: {
-        '600px': '600px'
+        '600px': '600px',
       },
       height: {
         '660px': '660px',
@@ -94,13 +94,13 @@ module.exports = {
         '240px': '240px',
         '140px': '140px',
         '50px': '50px',
-        'inherit': 'inherit',
+        inherit: 'inherit',
         '61%': '61.08786610878661%',
-        '49%': '49.16317991631799%'
+        '49%': '49.16317991631799%',
       },
       maxHeight: {
         s: '90vh',
-        'fitContent': 'fit-content',
+        fitContent: 'fit-content',
       },
       inset: (theme, { negative }) => ({
         auto: 'auto',
@@ -124,12 +124,12 @@ module.exports = {
       // 'md': '768px',
       // 'lg': '992px',
       // 'xl': '1200px',
-      'sm': { 'max': '576px' },
-      'md': { 'max': '767px' },
-      'lg': { 'max': '991px' },
-      'xl': { 'max': '1199px' },
-      '2xl': { 'min': '1200px' },
-    }
+      sm: { max: '576px' },
+      md: { max: '767px' },
+      lg: { max: '991px' },
+      xl: { max: '1199px' },
+      '2xl': { min: '1200px' },
+    },
 
   },
   variants: {
@@ -148,11 +148,11 @@ module.exports = {
         modifySelectors(
           ({ className }) => {
             const eClassName = e(`label-checked${separator}${className}`); // escape class
-            const yourSelector = 'input[type="radio"]'; //  input selector. 
+            const yourSelector = 'input[type="radio"]'; //  input selector.
             return `${yourSelector}:checked ~ .${eClassName}`; // ~ - CSS selector for siblings
-          }
-        )
-      })
+          },
+        );
+      });
     }),
   ],
-}
+};

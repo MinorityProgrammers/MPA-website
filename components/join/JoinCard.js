@@ -1,13 +1,13 @@
-import React, { useState, useContext, useEffect } from "react";
-import { useRouter } from "next/router";
-import Link from "next/link";
-import { errorToast } from "../../contexts/utils/toasts";
-import { GlobalContext } from "../../contexts/provider";
+import React, { useState, useContext, useEffect } from 'react';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
+import { errorToast } from '../../contexts/utils/toasts';
+import { GlobalContext } from '../../contexts/provider';
 
-const JoinCard = () => {
+const JoinCard = function () {
   const router = useRouter();
   // Auth States
-  const [active, setActive] = useState("");
+  const [active, setActive] = useState('');
   const [userData, setUserData] = useState([]);
 
   const {
@@ -18,8 +18,8 @@ const JoinCard = () => {
   } = useContext(GlobalContext);
 
   useEffect(() => {
-    const token = window.localStorage.getItem("jwtToken");
-    const userInfo = window.localStorage.getItem("userInfo");
+    const token = window.localStorage.getItem('jwtToken');
+    const userInfo = window.localStorage.getItem('userInfo');
 
     if (token == null || userInfo == {}) {
       setUserData(null);
@@ -37,16 +37,16 @@ const JoinCard = () => {
 
   const handleStart = () => {
     if (active) {
-      router.push(`chapter/start-a-chapter`);
+      router.push('chapter/start-a-chapter');
     } else {
-      errorToast("Please login to continue");
+      errorToast('Please login to continue');
     }
   };
   return (
     <>
       <div
         className="card m-5 justify-content-between"
-        style={{ width: "19rem" }}
+        style={{ width: '19rem' }}
       >
         <img
           src="./assets/images/join/mpa-chapter.png"
@@ -70,7 +70,7 @@ const JoinCard = () => {
 
           <button
             type="button"
-            style={{ color: "#151371" }}
+            style={{ color: '#151371' }}
             className="mpa-joinpage-btns-2 bg-warning"
             onClick={handleStart}
           >
@@ -79,7 +79,7 @@ const JoinCard = () => {
         </span>
       </div>
 
-      <div className="card m-5 align-items-center" style={{ width: "19rem" }}>
+      <div className="card m-5 align-items-center" style={{ width: '19rem' }}>
         <img
           src="./assets/images/join/mpa-startup.png"
           className="card-img-top"
@@ -98,7 +98,7 @@ const JoinCard = () => {
         </Link>
       </div>
 
-      <div className="card m-5 align-items-center" style={{ width: "19rem" }}>
+      <div className="card m-5 align-items-center" style={{ width: '19rem' }}>
         <img
           src="./assets/images/join/mpa-intern.png"
           className="card-img-top"
@@ -116,7 +116,7 @@ const JoinCard = () => {
           </button>
         </Link>
       </div>
-      <div className="card m-5 align-items-center" style={{ width: "19rem" }}>
+      <div className="card m-5 align-items-center" style={{ width: '19rem' }}>
         <img
           src="./assets/images/join/mpa-mentor.png"
           className="card-img-top"
@@ -135,7 +135,7 @@ const JoinCard = () => {
           </button>
         </Link>
       </div>
-      <div className="card m-5 align-items-center" style={{ width: "19rem" }}>
+      <div className="card m-5 align-items-center" style={{ width: '19rem' }}>
         <img
           src="./assets/images/join/meet-president.png"
           className="card-img-top"
@@ -144,9 +144,10 @@ const JoinCard = () => {
         <div className="card-body">
           <h4 className="card-title">Meet the President</h4>
           <p className="card-text">
-            {" "}
+            {' '}
             Unsure how to get involved? Schedule a a one-on-one video chat with
-            MPA president Shot Khan and learn how to get started.{" "}
+            MPA president Shot Khan and learn how to get started.
+            {' '}
           </p>
         </div>
         <Link href="https://calendly.com/minorityprogrammers/join?month=2021-09">
@@ -157,7 +158,7 @@ const JoinCard = () => {
           </a>
         </Link>
       </div>
-      <div className="card m-5 align-items-center" style={{ width: "19rem" }}>
+      <div className="card m-5 align-items-center" style={{ width: '19rem' }}>
         <img
           src="./assets/images/join/mpa-discord.png"
           className="card-img-top"

@@ -1,14 +1,14 @@
-import React, { useState, useEffect, Fragment } from "react";
-import styles from "./job-card.module.css";
+import React, { useState, useEffect, Fragment } from 'react';
+import styles from './job-card.module.css';
 
-const JobCard = ({
+const JobCard = function ({
   limit,
   body,
   savejob,
   buttonClick,
   cardClick,
-  pageNumber
-}) => {
+  pageNumber,
+}) {
   const initDataShow = limit && body ? body.slice(0, Number(limit)) : body;
   const [jobs, setJobs] = useState(initDataShow);
 
@@ -17,32 +17,32 @@ const JobCard = ({
 
   const displayedUsers = jobs
     .slice(pagesVisited, pagesVisited + jobsPerPage)
-    .map((item, index) => {
-      return (
-        <div>
-          {body && (
-            <div
-              key={index}
-              onClick={e => cardClick(e, item, index)}
-              className={styles.root}
-            >
-              <div className={styles.header}>
-                <h1 className="job-stub-title">{item.job_title}</h1>
-                <div className="job-stub-company">
-                  {item?.companyId?.company_name}
-                </div>
-              </div>
-              <div className={styles.footer}>
-                <span>
-                  Posted: {new Date(item.updatedAt).toDateString().substr(3)}
-                </span>
-                <button onClick={() => buttonClick(item)}>{savejob}</button>
-              </div>
+    .map((item, index) => (
+      <div>
+        {body && (
+        <div
+          key={index}
+          onClick={(e) => cardClick(e, item, index)}
+          className={styles.root}
+        >
+          <div className={styles.header}>
+            <h1 className="job-stub-title">{item.job_title}</h1>
+            <div className="job-stub-company">
+              {item?.companyId?.company_name}
             </div>
-          )}
+          </div>
+          <div className={styles.footer}>
+            <span>
+              Posted:
+              {' '}
+              {new Date(item.updatedAt).toDateString().substr(3)}
+            </span>
+            <button onClick={() => buttonClick(item)}>{savejob}</button>
+          </div>
         </div>
-      );
-    });
+        )}
+      </div>
+    ));
 
   // const [dataShow, setDataShow] = useState(initDataShow);
   // const [currPage, setCurrPage] = useState(1);
@@ -94,7 +94,7 @@ const JobCard = ({
 
   // let maxPage = Math.ceil(body.length / limit);
 
-  return <Fragment>{displayedUsers}</Fragment>;
+  return <>{displayedUsers}</>;
 };
 
 export default JobCard;

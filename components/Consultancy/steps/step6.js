@@ -1,42 +1,46 @@
-import { useRef, useState, useEffect, Fragment } from "react";
-import addQuestion from "../helperFiles/addQuestion";
-import { useDefaultValue } from "../helperFiles/getDefaultValue";
-import QuestionContainer from "../helperFiles/questionContainer";
-import ErrorPrint from "../helperFiles/errorPrint";
-import BlurBackground from "../helperFiles/blurBackground";
-import OverlayCard from "../helperFiles/overlayCard";
-import InputWithIcon from "../helperFiles/customInputTags/inputWithIcon";
+import {
+  useRef, useState, useEffect, Fragment,
+} from 'react';
+import addQuestion from '../helperFiles/addQuestion';
+import { useDefaultValue } from '../helperFiles/getDefaultValue';
+import QuestionContainer from '../helperFiles/questionContainer';
+import ErrorPrint from '../helperFiles/errorPrint';
+import BlurBackground from '../helperFiles/blurBackground';
+import OverlayCard from '../helperFiles/overlayCard';
+import InputWithIcon from '../helperFiles/customInputTags/inputWithIcon';
 
 const defaultRadio = 2;
 const options = [
-  "Delegate review and approval to your representative.",
-  "Delegate review and approval to the MPA Project Manager.",
-  "No, I prefer reviewing tasks on my own.",
+  'Delegate review and approval to your representative.',
+  'Delegate review and approval to the MPA Project Manager.',
+  'No, I prefer reviewing tasks on my own.',
 ];
-function Page6({ step, setstep, questions, setQuestions }) {
+const Page6 = function ({
+  step, setstep, questions, setQuestions,
+}) {
   const [showConfirmation, setShowConfirmation] = useState(0);
 
-  //get default values
+  // get default values
   const defaultValue = useDefaultValue(questions, step, 0);
-  //inputs
+  // inputs
   const selectedOption = useRef(
     defaultValue.selectedOption !== undefined
       ? options.indexOf(defaultValue.selectedOption)
-      : defaultRadio
+      : defaultRadio,
   );
 
   const fullname = useRef();
   const mpa_identity = useRef();
   const needs_input = useRef();
-  //error
+  // error
   const errorMsgDefault = [[], []];
   const [errorMsg, setErrorMsg] = useState(errorMsgDefault);
 
-  //add new question
+  // add new question
   function addToQuestion() {
     addQuestion(setQuestions, step, [
       {
-        question: "Would you like to delegate review?",
+        question: 'Would you like to delegate review?',
         answer: {
           selectedOption: options[selectedOption.current],
           otherInfo: [fullname.current.value, mpa_identity.current.value],
@@ -44,32 +48,31 @@ function Page6({ step, setstep, questions, setQuestions }) {
       },
     ]);
   }
-  //create an error message based on the string in the input field
+  // create an error message based on the string in the input field
   function checksForInputs(string, errorIndex) {
     setErrorMsg((prev) => {
       const prevArr = [...prev];
-      if (string.length === 0)
-        prevArr[errorIndex].push("This field cannot be left empty");
+      if (string.length === 0) prevArr[errorIndex].push('This field cannot be left empty');
       else prevArr[errorIndex] = [];
 
       return prevArr;
     });
   }
-  //run a function when the needs_input reference is defined
+  // run a function when the needs_input reference is defined
   function checkInputChanges(fxn = () => {}) {
     if (needs_input.current.checked) {
       fxn();
     }
   }
-  //validate the first input
+  // validate the first input
   function validateTextOne() {
     checksForInputs(fullname.current.value, 0);
   }
-  //validate the second input
+  // validate the second input
   function validateTextTwo() {
     checksForInputs(mpa_identity.current.value, 1);
   }
-  //when radio input changes
+  // when radio input changes
   function onChangeRadio(index) {
     selectedOption.current = index;
     if (needs_input.current) {
@@ -82,52 +85,52 @@ function Page6({ step, setstep, questions, setQuestions }) {
       }
     }
   }
-  //when a text input changes
+  // when a text input changes
   function onChangeText(fxn) {
     if (needs_input.current) {
       checkInputChanges(fxn);
     }
   }
 
-  //navigate to next page
+  // navigate to next page
   function nextPage() {
-    //if inputs are invalid, submission should be voided for the first radio
+    // if inputs are invalid, submission should be voided for the first radio
     if (errorMsg[0].length === 0 && errorMsg[1].length === 0) {
       if (selectedOption.current === 0) {
         setShowConfirmation(1);
       }
     }
-    //add second radio to the question and submit
+    // add second radio to the question and submit
     if (selectedOption.current === 2) {
       addToQuestion();
       setstep((prev) => prev + 1);
     }
-    //add third radio to the question and submit
+    // add third radio to the question and submit
     if (selectedOption.current === 1) {
       setShowConfirmation(2);
     }
   }
-  //return to prev page
+  // return to prev page
   function prevPage() {
     addToQuestion();
     setstep((prev) => prev - 1);
   }
-  //remove overflow blockage on body
+  // remove overflow blockage on body
   function overflow() {
-    document.body.classList.remove("hide-overflow");
+    document.body.classList.remove('hide-overflow');
   }
-  //agree to the terms
+  // agree to the terms
   function agree() {
     overflow();
     addToQuestion();
     setstep((prev) => prev + 1);
   }
-  //edit choices
+  // edit choices
   function makeChanges() {
     overflow();
     setShowConfirmation(0);
   }
-  //Ensure that using default value does not cause incorrect passage
+  // Ensure that using default value does not cause incorrect passage
   useEffect(() => {
     onChangeRadio(selectedOption.current);
   }, []);
@@ -145,7 +148,7 @@ function Page6({ step, setstep, questions, setQuestions }) {
     </div>
   );
   return (
-    <Fragment>
+    <>
       <QuestionContainer
         left
         right
@@ -159,8 +162,15 @@ function Page6({ step, setstep, questions, setQuestions }) {
           {/* page header */}
           <h1>
             You have the option to delegate the review and approval of task
-            increments to the <span>PM who send you the quote</span> or{" "}
-            <span>a representative you trust!</span> This person would need a
+            increments to the
+            {' '}
+            <span>PM who send you the quote</span>
+            {' '}
+            or
+            {' '}
+            <span>a representative you trust!</span>
+            {' '}
+            This person would need a
             MPA account.
           </h1>
           {/* checkbox option 1 */}
@@ -195,7 +205,7 @@ function Page6({ step, setstep, questions, setQuestions }) {
                     onChangeText(e);
                   }}
                   defaultValue={
-                    defaultValue.otherInfo ? defaultValue.otherInfo[0] : ""
+                    defaultValue.otherInfo ? defaultValue.otherInfo[0] : ''
                   }
                   validationMethod={validateTextOne}
                   label="*Full Name"
@@ -214,7 +224,7 @@ function Page6({ step, setstep, questions, setQuestions }) {
                     onChangeText(e);
                   }}
                   defaultValue={
-                    defaultValue.otherInfo ? defaultValue.otherInfo[1] : ""
+                    defaultValue.otherInfo ? defaultValue.otherInfo[1] : ''
                   }
                   validationMethod={validateTextTwo}
                   marginTop
@@ -276,7 +286,7 @@ function Page6({ step, setstep, questions, setQuestions }) {
         <BlurBackground>
           <OverlayCard>
             {showConfirmation === 1 ? (
-              <Fragment>
+              <>
                 * If you delegate the task approval and subsequent release of
                 payment to your Project Manager -
                 <ul>
@@ -293,19 +303,19 @@ function Page6({ step, setstep, questions, setQuestions }) {
                   </li>
                 </ul>
                 {buttons}
-              </Fragment>
+              </>
             ) : (
-              <Fragment>
+              <>
                 * If you delegate the task approval and subsequent release of
                 payment to a representative of your choice, you would be at the
                 risk of having lesser control over the outcome of your project.
                 {buttons}
-              </Fragment>
+              </>
             )}
           </OverlayCard>
         </BlurBackground>
       ) : null}
-    </Fragment>
+    </>
   );
-}
+};
 export default Page6;
