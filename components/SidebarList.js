@@ -1,9 +1,11 @@
-import React from "react";
-import { AiOutlineDashboard, AiOutlineDown } from "react-icons/ai";
-import { BiKey } from "react-icons/bi";
-import { BsChevronRight } from "react-icons/bs";
+import React from 'react';
+import { AiOutlineDashboard, AiOutlineDown } from 'react-icons/ai';
+import { BiKey } from 'react-icons/bi';
+import { BsChevronRight } from 'react-icons/bs';
 
-function SidebarList({ title, target, subTarget, sidebar, dark, setSidebar }) {
+const SidebarList = function ({
+  title, target, subTarget, sidebar, dark, setSidebar,
+}) {
   return (
     <article className="tw-pl-2">
       <div className="tw-my-2 tw-mx-1 tw-font-bold">
@@ -16,16 +18,16 @@ function SidebarList({ title, target, subTarget, sidebar, dark, setSidebar }) {
               href="#link"
               className={`${
                 sidebar
-                  ? "tw-bg-hover tw-transition tw-duration-500 tw-ease-in-out tw-transform"
-                  : ""
+                  ? 'tw-bg-hover tw-transition tw-duration-500 tw-ease-in-out tw-transform'
+                  : ''
               } tw-flex tw-justify-between ${
                 dark
-                  ? "hover:tw-bg-hover tw-transition tw-duration-500 tw-ease-in-out tw-transform"
-                  : "hover:tw-bg-hover tw-transition tw-duration-500 tw-ease-in-out tw-transform"
-              }  ${dark && sidebar ? "tw-bg-profileDark" : ""}   ${
+                  ? 'hover:tw-bg-hover tw-transition tw-duration-500 tw-ease-in-out tw-transform'
+                  : 'hover:tw-bg-hover tw-transition tw-duration-500 tw-ease-in-out tw-transform'
+              }  ${dark && sidebar ? 'tw-bg-profileDark' : ''}   ${
                 !dark && sidebar
-                  ? "tw-bg-hover tw-transition tw-duration-500 tw-ease-in-out tw-transform"
-                  : ""
+                  ? 'tw-bg-hover tw-transition tw-duration-500 tw-ease-in-out tw-transform'
+                  : ''
               }   tw-p-2`}
             >
               <div className="tw-flex">
@@ -38,7 +40,7 @@ function SidebarList({ title, target, subTarget, sidebar, dark, setSidebar }) {
                 <div>
                   <AiOutlineDown
                     className={`${
-                      sidebar ? "tw-block " : "tw-hidden"
+                      sidebar ? 'tw-block ' : 'tw-hidden'
                     } tw-text-sm tw-mt-1  tw-mx-2 tw-font-bold`}
                     onClick={() => setSidebar(!sidebar)}
                   />
@@ -47,14 +49,14 @@ function SidebarList({ title, target, subTarget, sidebar, dark, setSidebar }) {
                 <div>
                   <BsChevronRight
                     className={`${
-                      sidebar ? "tw-hidden " : "tw-block"
+                      sidebar ? 'tw-hidden ' : 'tw-block'
                     } tw-text-sm tw-mt-1 tw-mx-2 tw-font-bold`}
                     onClick={() => setSidebar(!sidebar)}
                   />
                 </div>
               )}
             </div>
-            <div className={`${!sidebar ? "tw-hidden " : "tw-block"}`}>
+            <div className={`${!sidebar ? 'tw-hidden ' : 'tw-block'}`}>
               <div className="tw-flex tw-justify-between tw-my-2">
                 <a href="/" className="tw-flex tw-text-gray-200">
                   <div>
@@ -70,6 +72,6 @@ function SidebarList({ title, target, subTarget, sidebar, dark, setSidebar }) {
       </div>
     </article>
   );
-}
+};
 
 export default SidebarList;

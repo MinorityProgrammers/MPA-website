@@ -1,13 +1,11 @@
-import { RiFlag2Fill } from "react-icons/ri";
-import { BsThreeDotsVertical } from "react-icons/bs";
-import { FaSortUp } from "react-icons/fa";
-import { FaSortDown } from "react-icons/fa";
-import Link from "next/link";
-import taskNotification from "../../components/ProjectManager/taskNotification.json";
-import { useState } from "react";
-import { useEffect } from "react";
+import { RiFlag2Fill } from 'react-icons/ri';
+import { BsThreeDotsVertical } from 'react-icons/bs';
+import { FaSortUp, FaSortDown } from 'react-icons/fa';
+import Link from 'next/link';
+import { useState, useEffect } from 'react';
+import taskNotification from './taskNotification.json';
 
-const TaskNotification = () => {
+const TaskNotification = function () {
   const [notifications, setNotifications] = useState([]);
 
   useEffect(() => {
@@ -19,7 +17,7 @@ const TaskNotification = () => {
         <h1 className="tw-col-span-1 tw-font-bold tw-text-3xl tw-text-center tw-text-blue-800">
           NEW
         </h1>
-        <h1 className="tw-col-span-11 tw-border-t-2 tw-mt-4 tw-align-middle tw-border-blue-800"></h1>
+        <h1 className="tw-col-span-11 tw-border-t-2 tw-mt-4 tw-align-middle tw-border-blue-800" />
       </div>
       <div className="tw-grid tw-grid-cols-2">
         <div className="tw-grid tw-grid-cols-1 tw-bg-black tw-bg-opacity-25 tw-m-8 tw-rounded-b-lg">
@@ -54,7 +52,7 @@ const TaskNotification = () => {
                       </p>
                     </div>
                   </div>
-                  <div></div>
+                  <div />
                 </div>
 
                 <div className="tw-flex tw-justify-between tw-mt-2">
@@ -109,7 +107,7 @@ const TaskNotification = () => {
                       </p>
                     </div>
                   </div>
-                  <div></div>
+                  <div />
                 </div>
 
                 <div className="tw-flex tw-justify-between tw-mt-2">
@@ -137,7 +135,7 @@ const TaskNotification = () => {
         <h1 className="tw-col-span-1 tw-font-bold tw-text-3xl tw-text-center tw-text-blue-800">
           NEW
         </h1>
-        <h1 className="tw-col-span-11 tw-border-t-2 tw-mt-4 tw-align-middle tw-border-blue-800"></h1>
+        <h1 className="tw-col-span-11 tw-border-t-2 tw-mt-4 tw-align-middle tw-border-blue-800" />
       </div>
       <div className="tw-grid  tw-grid-cols-2">
         <div className="tw-grid tw-grid-cols-1 tw-bg-black tw-bg-opacity-25 tw-m-8 tw-rounded-b-lg">
@@ -172,7 +170,7 @@ const TaskNotification = () => {
                       </p>
                     </div>
                   </div>
-                  <div></div>
+                  <div />
                 </div>
 
                 <div className="tw-flex tw-justify-between tw-mt-2">
@@ -227,7 +225,7 @@ const TaskNotification = () => {
                       </p>
                     </div>
                   </div>
-                  <div></div>
+                  <div />
                 </div>
 
                 <div className="tw-flex tw-justify-between tw-mt-2">

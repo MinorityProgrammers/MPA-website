@@ -1,11 +1,10 @@
-import styles from './toolkitHeader.module.css';
 import Link from 'next/link';
+import styles from './toolkitHeader.module.css';
 
-const ToolkitHeader = () => {
-
+const ToolkitHeader = function () {
   const bgImage = {
-    backgroundImage: `url(/assets/images/chapter/toolkit.png)`,
-  }
+    backgroundImage: 'url(/assets/images/chapter/toolkit.png)',
+  };
 
   return (
     <div className={styles.wrapper}>
@@ -14,7 +13,7 @@ const ToolkitHeader = () => {
           <Link href="/chapter">
             <a>
               <div className={styles.arrowBackContainer}>
-                <i className={`${styles.arrowBack} fas fa-long-arrow-alt-left`}></i>
+                <i className={`${styles.arrowBack} fas fa-long-arrow-alt-left`} />
               </div>
             </a>
           </Link>
@@ -25,7 +24,7 @@ const ToolkitHeader = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default ToolkitHeader;

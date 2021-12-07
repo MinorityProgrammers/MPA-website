@@ -1,6 +1,8 @@
-import React from "react";
+import React from 'react';
 
-function DashboardInputs({ holder, setNew, New, name }) {
+const DashboardInputs = function ({
+  holder, setNew, New, name,
+}) {
   return (
     <div className="tw-flex tw-flex-row tw-h-10 tw-bg-white tw-items-center tw-rounded tw-my-3 tw-shadow-xl tw-w-10/12 inp">
       <input
@@ -15,6 +17,6 @@ function DashboardInputs({ holder, setNew, New, name }) {
       />
     </div>
   );
-}
+};
 
 export default DashboardInputs;

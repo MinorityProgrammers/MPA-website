@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react';
 
-const CallToActionOne = () => {
+const CallToActionOne = function () {
   return (
     <section
       className="cta-one cta-one__home-one"
-      style={{ backgroundImage: `url(assets/images/cta-bg-1-1.jpg)` }}
+      style={{ backgroundImage: 'url(assets/images/cta-bg-1-1.jpg)' }}
     >
       <div className="container">
         <h2 className="cta-one__title">

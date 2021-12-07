@@ -1,4 +1,4 @@
-function SponsorshipCheckout({
+const SponsorshipCheckout = function ({
   organization,
   sponsorshipOption,
   email,
@@ -16,26 +16,26 @@ function SponsorshipCheckout({
       <div className="checkout-card-icons">
         <img
           src={
-            sponsorshipOption === "ally"
-              ? "assets/images/sponsorship/ally.svg"
-              : sponsorshipOption === "friend"
-              ? "assets/images/sponsorship/friend.svg"
-              : sponsorshipOption === "mafia"
-              ? "assets/images/sponsorship/mafia.png"
-              : "assets/images/sponsorship/ally.svg"
+            sponsorshipOption === 'ally'
+              ? 'assets/images/sponsorship/ally.svg'
+              : sponsorshipOption === 'friend'
+                ? 'assets/images/sponsorship/friend.svg'
+                : sponsorshipOption === 'mafia'
+                  ? 'assets/images/sponsorship/mafia.png'
+                  : 'assets/images/sponsorship/ally.svg'
           }
           alt="ally icon"
         />
         <img
-          className={sponsorshipOption === "friend" ? "mirror-img" : undefined}
+          className={sponsorshipOption === 'friend' ? 'mirror-img' : undefined}
           src={
-            sponsorshipOption === "ally"
-              ? "assets/images/sponsorship/ally.svg"
-              : sponsorshipOption === "friend"
-              ? "assets/images/sponsorship/friend.svg"
-              : sponsorshipOption === "mafia"
-              ? "assets/images/sponsorship/mafia.png"
-              : "assets/images/sponsorship/friend.svg"
+            sponsorshipOption === 'ally'
+              ? 'assets/images/sponsorship/ally.svg'
+              : sponsorshipOption === 'friend'
+                ? 'assets/images/sponsorship/friend.svg'
+                : sponsorshipOption === 'mafia'
+                  ? 'assets/images/sponsorship/mafia.png'
+                  : 'assets/images/sponsorship/friend.svg'
           }
           alt="ally icon"
         />
@@ -43,13 +43,13 @@ function SponsorshipCheckout({
       <div className="checkout">
         <div className="checkout-head">
           <h1>
-            {sponsorshipOption === "ally"
-              ? "MINORITY ALLY"
-              : sponsorshipOption === "friend"
-              ? "MINORITY FRIEND"
-              : sponsorshipOption === "mafia"
-              ? "MINORITY MAFIA"
-              : "SPONSORSHIP"}
+            {sponsorshipOption === 'ally'
+              ? 'MINORITY ALLY'
+              : sponsorshipOption === 'friend'
+                ? 'MINORITY FRIEND'
+                : sponsorshipOption === 'mafia'
+                  ? 'MINORITY MAFIA'
+                  : 'SPONSORSHIP'}
           </h1>
         </div>
         <form onSubmit={handleCheckoutSubmit}>
@@ -319,6 +319,6 @@ function SponsorshipCheckout({
       </div>
     </div>
   );
-}
+};
 
 export default SponsorshipCheckout;

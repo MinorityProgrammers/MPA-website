@@ -1,5 +1,5 @@
-import NextAuth from "next-auth";
-import Providers from "next-auth/providers";
+import NextAuth from 'next-auth';
+import Providers from 'next-auth/providers';
 
 // const options = {
 //   providers: [
@@ -69,7 +69,7 @@ export default NextAuth({
   },
   debug: true,
   pages: {
-    error: "/auth", // Error code passed in query string as ?error=
+    error: '/auth', // Error code passed in query string as ?error=
   },
   callbacks: {
     async session(session, user) {

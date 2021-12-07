@@ -1,60 +1,55 @@
-import { useEffect } from "react";
-import { useRouter } from "next/router";
-import { Provider } from "next-auth/client";
-import * as ga from "../ga";
-import "../node_modules/react-modal-video/scss/modal-video.scss";
-import "tailwindcss/tailwind.css";
-import "toastify-js/src/toastify.css";
-import "antd/dist/antd.css";
-import "../styles/main.scss";
-import "../styles/MentorshipCSS/MentorshipAppSideBar.css";
-import "../styles/MentorshipCSS/MentorshipAppSwipeCards.css";
-import "../styles/MentorshipCSS/MentorshipPersonalDetailsDropDown.css";
-import "../styles/MentorshipCSS/MentorshipPersonalDetails.css";
-import "../styles/MentorshipCSS/MentorshipPersonalDetailsDropDown.css";
-import "../styles/MentorshipCSS/MentorshipPersonalDetailsDropDown.css";
-import "../styles/MentorshipCSS/MentorshipRegister.css";
-import "../components/join/join.css";
-import "../styles/PresaleCss/index.css";
-import "../components/join/joinNavbar.css";
-import "../styles/MentorshipCSS/mentorship.css";
-import { PayPalScriptProvider } from "@paypal/react-paypal-js";
-import "../styles/incubator-css/incubator.css";
-import { GlobalProvider } from "../contexts/provider";
-import { SettingsPagesProvider } from "../contexts/settingsPagesProvider/settingsPagesProvider";
-import "../styles/main.scss";
-import "../styles/Careers/index.css";
-import "../styles/SidebarCSS/sidebar.css";
-import "../styles/ProfileCSS/profile.css";
-import "../styles/ProfileCSS/updateProfile.css";
-import "../public/assets/scss/_service.scss";
-import "../styles/ChapterCSS/chapter.css";
-import "../styles/ToolkitCSS/toolkit.css";
-import "../styles/JoinCSS/join.css";
-import "../styles/sponsorship-css/sponsorship.css";
-import "../styles/$-Minority-Earned/style.css";
-import "../components/learn/learn-css/LearnBanner.css";
-import "../components/learn/learn-css/CourseCategories.css";
-import "../components/learn/learn-css/MyCourses.css";
-import "../components/learn/learn-css/FeaturedCourses.css";
-import "../components/learn/courseDetails/coursesDetails.css";
-import "../styles/iframes/swap.css";
-import "../public/assets/scss/_event.scss";
-import "../public/assets/scss/_service.scss";
-import "../styles/QuickJobApply/QuickApplyJobApplication.css";
-import "../styles/ChapterCSS/chapter.css";
-import "../styles/Chat/chat.css";
-import "../components/learn/quizActivity/SimpleQuiz.scss";
-import "../components/vote-components/vote.css";
-import "../components/Consultancy/Consultancy.css";
-import "../components/Internship/Internship.css";
-import "../styles/ProfileCSS/create-profile.css";
-import "../styles/Events/Event.css";
-import "../components/Faucet/faucet.css";
-import "../styles/ModeratorCss/ElectProposals.css";
-import "../styles/coreteam/coreteam.css";
-import { MoralisProvider } from "react-moralis";
-import { MoralisDappProvider } from "../MoralisDappProvider/MoralisDappProvider";
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
+import { Provider } from 'next-auth/client';
+import { PayPalScriptProvider } from '@paypal/react-paypal-js';
+import * as ga from '../ga';
+import '../node_modules/react-modal-video/scss/modal-video.scss';
+import 'tailwindcss/tailwind.css';
+import 'toastify-js/src/toastify.css';
+import 'antd/dist/antd.css';
+import '../styles/main.scss';
+import '../styles/MentorshipCSS/MentorshipAppSideBar.css';
+import '../styles/MentorshipCSS/MentorshipAppSwipeCards.css';
+import '../styles/MentorshipCSS/MentorshipPersonalDetailsDropDown.css';
+import '../styles/MentorshipCSS/MentorshipPersonalDetails.css';
+import '../styles/MentorshipCSS/MentorshipRegister.css';
+import '../components/join/join.css';
+import '../styles/PresaleCss/index.css';
+import '../components/join/joinNavbar.css';
+import '../styles/MentorshipCSS/mentorship.css';
+import '../styles/incubator-css/incubator.css';
+import { GlobalProvider } from '../contexts/provider';
+import { SettingsPagesProvider } from '../contexts/settingsPagesProvider/settingsPagesProvider';
+import '../styles/Careers/index.css';
+import '../styles/SidebarCSS/sidebar.css';
+import '../styles/ProfileCSS/profile.css';
+import '../styles/ProfileCSS/updateProfile.css';
+import '../public/assets/scss/_service.scss';
+import '../styles/ChapterCSS/chapter.css';
+import '../styles/ToolkitCSS/toolkit.css';
+import '../styles/JoinCSS/join.css';
+import '../styles/sponsorship-css/sponsorship.css';
+import '../styles/$-Minority-Earned/style.css';
+import '../components/learn/learn-css/LearnBanner.css';
+import '../components/learn/learn-css/CourseCategories.css';
+import '../components/learn/learn-css/MyCourses.css';
+import '../components/learn/learn-css/FeaturedCourses.css';
+import '../components/learn/courseDetails/coursesDetails.css';
+import '../styles/iframes/swap.css';
+import '../public/assets/scss/_event.scss';
+import '../styles/QuickJobApply/QuickApplyJobApplication.css';
+import '../styles/Chat/chat.css';
+import '../components/learn/quizActivity/SimpleQuiz.scss';
+import '../components/vote-components/vote.css';
+import '../components/Consultancy/Consultancy.css';
+import '../components/Internship/Internship.css';
+import '../styles/ProfileCSS/create-profile.css';
+import '../styles/Events/Event.css';
+import '../components/Faucet/faucet.css';
+import '../styles/ModeratorCss/ElectProposals.css';
+import '../styles/coreteam/coreteam.css';
+import { MoralisProvider } from 'react-moralis';
+import { MoralisDappProvider } from '../MoralisDappProvider/MoralisDappProvider';
 
 const APP_ID = process.env.REACT_APP_MORALIS_APPLICATION_ID;
 const SERVER_URL = process.env.REACT_APP_MORALIS_SERVER_URL;
@@ -68,10 +63,10 @@ export default function MyApp({ Component, pageProps }) {
       ga.pageview(url);
     };
 
-    router.events.on("routeChangeComplete", handleRouteChange);
+    router.events.on('routeChangeComplete', handleRouteChange);
 
     return () => {
-      router.events.off("routeChangeComplete", handleRouteChange);
+      router.events.off('routeChangeComplete', handleRouteChange);
     };
   }, [router.events]);
 
@@ -80,7 +75,7 @@ export default function MyApp({ Component, pageProps }) {
       <MoralisDappProvider>
         <Provider session={pageProps.session}>
           <PayPalScriptProvider
-            options={{ "client-id": process.env.PAYPAL_CLIENT_ID }}
+            options={{ 'client-id': process.env.PAYPAL_CLIENT_ID }}
           >
             <GlobalProvider>
               <SettingsPagesProvider>

@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-const Faq = () => {
+const Faq = function () {
   return (
     <section className="faq-one">
       <div className="container">
@@ -65,7 +65,7 @@ const Faq = () => {
           </div>
           <div
             className="col-lg-6"
-            style={{ paddingBottom: `0px`, borderBottom: `0px none` }}
+            style={{ paddingBottom: '0px', borderBottom: '0px none' }}
           >
             <div className="faq-one__single">
               <div className="faq-one__icon">
@@ -83,7 +83,7 @@ const Faq = () => {
           </div>
           <div
             className="col-lg-6"
-            style={{ paddingBottom: `0px`, borderBottom: `0px none` }}
+            style={{ paddingBottom: '0px', borderBottom: '0px none' }}
           >
             <div className="faq-one__single">
               <div className="faq-one__icon">

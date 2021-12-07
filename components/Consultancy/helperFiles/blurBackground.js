@@ -1,13 +1,13 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef } from 'react';
 
-function BlurBackground({ children }) {
+const BlurBackground = function ({ children }) {
   useEffect(() => {
-    document.body.classList.add("hide-overflow");
+    document.body.classList.add('hide-overflow');
   }, []);
   return (
     <div className="blurBkg">
       <div className="centered-blur-body">{children}</div>
     </div>
   );
-}
+};
 export default BlurBackground;

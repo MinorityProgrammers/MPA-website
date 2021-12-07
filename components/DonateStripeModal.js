@@ -1,14 +1,14 @@
-import React, { useRef, useState } from "react";
-import { loadStripe } from "@stripe/stripe-js";
-import { Elements } from "@stripe/react-stripe-js";
-import DonateStripeForm from "../components/DonateStripeForm";
+import React, { useRef, useState } from 'react';
+import { loadStripe } from '@stripe/stripe-js';
+import { Elements } from '@stripe/react-stripe-js';
+import DonateStripeForm from './DonateStripeForm';
 
 const stripePromise = loadStripe(process.env.STRIPE_PUBLISHABLE_KEY);
 
-const DonateStripModal = ({ showModal, setShowModal, amount }) => {
+const DonateStripModal = function ({ showModal, setShowModal, amount }) {
   const modalRef = useRef();
   const [isDone, setIsDone] = useState(false);
-  const [name, setName] = useState("");
+  const [name, setName] = useState('');
   const [checkoutError, setCheckoutError] = useState();
   const [checkoutSuccess, setCheckoutSuccess] = useState();
 
@@ -21,7 +21,10 @@ const DonateStripModal = ({ showModal, setShowModal, amount }) => {
             <div className="donate__modal-content">
               {!isDone ? (
                 <>
-                  <h3>Donation Amount: ${amount}</h3>
+                  <h3>
+                    Donation Amount: $
+                    {amount}
+                  </h3>
                   <Elements stripe={stripePromise}>
                     <DonateStripeForm
                       setIsDone={setIsDone}
@@ -37,14 +40,20 @@ const DonateStripModal = ({ showModal, setShowModal, amount }) => {
               ) : (
                 <div className="stripe-donated">
                   <p className="donated-success">Donate successful!</p>
-                  <p>Hi, {name}</p>
+                  <p>
+                    Hi,
+                    {name}
+                  </p>
                   <p>Thank you for your contribution</p>
                   <hr className="mt-2 mb-2" />
                   <p>Details of donation:</p>
                   <div className="stripe-details">
                     <div className="stripe-detail">
                       <p className="stripe-detail-topic">Amount:</p>
-                      <p>${amount}</p>
+                      <p>
+                        $
+                        {amount}
+                      </p>
                     </div>
                     <div className="stripe-detail">
                       <p className="stripe-detail-topic">Payment method:</p>
@@ -59,13 +68,13 @@ const DonateStripModal = ({ showModal, setShowModal, amount }) => {
               )}
             </div>
             {isDone ? (
-              ""
+              ''
             ) : (
               <button
                 className="donate__btn-close"
                 onClick={() => setShowModal((prev) => !prev)}
               >
-                <i className="fas fa-times"></i>
+                <i className="fas fa-times" />
               </button>
             )}
           </div>

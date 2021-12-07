@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import ModalVideo from "react-modal-video";
+import React, { Component } from 'react';
+import ModalVideo from 'react-modal-video';
 
 export default class VideoTwo extends Component {
   constructor() {
@@ -26,7 +26,9 @@ export default class VideoTwo extends Component {
             <div className="col-lg-7">
               <div className="video-two__content">
                 <h2 className="video-two__title">
-                  Minority Programmers <br />
+                  Minority Programmers
+                  {' '}
+                  <br />
                   mission is to bring diversity through STEM education and
                   innovation.
                 </h2>
@@ -44,7 +46,7 @@ export default class VideoTwo extends Component {
                   onClose={() => this.setState({ isOpen: false })}
                 />
                 <div onClick={this.openModal} className="video-two__popup">
-                  <i className="fa fa-play"></i>
+                  <i className="fa fa-play" />
                 </div>
               </div>
             </div>

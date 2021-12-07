@@ -1,4 +1,4 @@
-const ProposalHeader = () => {
+const ProposalHeader = function () {
   return (
     <div className="mycompaniesMain tw-flex tw-justify-around tw-p-6 tw-items-center sm:tw-grid sm:tw-grid-cols-1">
       <div>

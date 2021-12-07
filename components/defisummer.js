@@ -1,13 +1,15 @@
-import { useEffect, useState } from "react";
-import classes from "../public/assets/css/defisummer.module.css";
+import { useEffect, useState } from 'react';
+import classes from '../public/assets/css/defisummer.module.css';
 
-const Defisummer = ({ navBarRef }) => {
-  let { day, month, date, startTime, endTime } = {
-    day: "Thursday",
-    month: "August",
+const Defisummer = function ({ navBarRef }) {
+  const {
+    day, month, date, startTime, endTime,
+  } = {
+    day: 'Thursday',
+    month: 'August',
     date: 26,
-    startTime: "11am",
-    endTime: "4pm",
+    startTime: '11am',
+    endTime: '4pm',
   };
   const [margin, setMargin] = useState(0);
   useEffect(() => {
@@ -15,23 +17,21 @@ const Defisummer = ({ navBarRef }) => {
       setMargin(parseInt(window.getComputedStyle(navBarRef.current).height));
     }
   }, [navBarRef]);
-  const keynotes = (big_header, small_header, time) => {
-    return (
-      <div className={classes.keynotes}>
-        <div className={classes.keynotes_section_1}>
-          <div className={classes.section_1_line_1}>{big_header}</div>
-          <div className={classes.section_1_line_2}>{small_header}</div>
-        </div>
-        <div className={classes.keynotes_section_2}>
-          <div className={classes.section_2_line_1}>{time}</div>
-          <div className={classes.section_2_line_2}>EST</div>
-        </div>
+  const keynotes = (big_header, small_header, time) => (
+    <div className={classes.keynotes}>
+      <div className={classes.keynotes_section_1}>
+        <div className={classes.section_1_line_1}>{big_header}</div>
+        <div className={classes.section_1_line_2}>{small_header}</div>
       </div>
-    );
-  };
+      <div className={classes.keynotes_section_2}>
+        <div className={classes.section_2_line_1}>{time}</div>
+        <div className={classes.section_2_line_2}>EST</div>
+      </div>
+    </div>
+  );
   return (
     <div className={classes.body} style={{ marginTop: margin }}>
-      <div className={classes.oceanImage}></div>
+      <div className={classes.oceanImage} />
       <div className={classes.imagewrap}>
         <img
           src="/assets/images/icons/defisummer/AbdelRahman1.png"
@@ -61,6 +61,7 @@ const Defisummer = ({ navBarRef }) => {
                 href="https://forms.gle/P9acazhZEzGh3apDA"
                 target="_blank"
                 referrerPolicy="no-referrer"
+                rel="noreferrer"
               >
                 <button>Signup as a speaker</button>
               </a>
@@ -69,6 +70,7 @@ const Defisummer = ({ navBarRef }) => {
                 href="https://forms.gle/P9acazhZEzGh3apDA"
                 target="_blank"
                 referrerPolicy="no-referrer"
+                rel="noreferrer"
               >
                 <button>Pre-Register</button>
               </a>
@@ -77,6 +79,7 @@ const Defisummer = ({ navBarRef }) => {
                 href="https://forms.gle/P9acazhZEzGh3apDA"
                 target="_blank"
                 referrerPolicy="no-referrer"
+                rel="noreferrer"
               >
                 <button>Go to live - event</button>
               </a>
@@ -98,9 +101,9 @@ const Defisummer = ({ navBarRef }) => {
             {/* second section */}
             <div className={classes.wrapItem}>
               <div className={classes.wrapHeader}>
-                <div className={classes.right}></div>
+                <div className={classes.right} />
                 <h3 className={classes.smallerHeader}>[Panels]</h3>
-                <div className={classes.left}></div>
+                <div className={classes.left} />
               </div>
               <div className={classes.wrapSeminarItems}>
                 <div className={classes.seminarItem}>
@@ -127,25 +130,25 @@ const Defisummer = ({ navBarRef }) => {
             {/* third section */}
             <div className={classes.wrapItem}>
               <div className={classes.wrapHeader}>
-                <div className={classes.right}></div>
+                <div className={classes.right} />
                 <h3>Keynotes</h3>
               </div>
 
               {keynotes(
-                "Future of Asset Management",
-                "w/ Founder of Enzyme, Finance Mona El Isa",
-                "3:00PM"
+                'Future of Asset Management',
+                'w/ Founder of Enzyme, Finance Mona El Isa',
+                '3:00PM',
               )}
 
               {keynotes(
-                "Future of Yield Maximizing",
-                "w/ Founder of Idle, Finance",
-                "3:20PM"
+                'Future of Yield Maximizing',
+                'w/ Founder of Idle, Finance',
+                '3:20PM',
               )}
               {keynotes(
-                "Future of Global Banking",
-                "w/ Founder of Steller Development Foundation",
-                "3:40PM"
+                'Future of Global Banking',
+                'w/ Founder of Steller Development Foundation',
+                '3:40PM',
               )}
             </div>
             <div className={classes.wrapSponsorsSection}>
@@ -180,7 +183,7 @@ const Defisummer = ({ navBarRef }) => {
           </div>
         </article>
       </div>
-      <div className={classes.oceanImage}></div>
+      <div className={classes.oceanImage} />
     </div>
   );
 };

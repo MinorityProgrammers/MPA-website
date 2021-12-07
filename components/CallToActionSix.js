@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import CountUp from "react-countup";
-import VisibilitySensor from "react-visibility-sensor";
+import React, { Component } from 'react';
+import CountUp from 'react-countup';
+import VisibilitySensor from 'react-visibility-sensor';
 
 class CallToActionSix extends Component {
   constructor() {
@@ -9,6 +9,7 @@ class CallToActionSix extends Component {
       startCounter: false,
     };
   }
+
   onVisibilityChange = (isVisible) => {
     if (isVisible) {
       this.setState({ startCounter: true });
@@ -37,7 +38,8 @@ class CallToActionSix extends Component {
           <div className="cta-six__right">
             <img src="/assets/images/fact-1-2.jpg" alt="" />
             <h2 className="cta-six__title">
-              More than{" "}
+              More than
+              {' '}
               <span className="counter">
                 <VisibilitySensor
                   onChange={this.onVisibilityChange}
@@ -45,7 +47,8 @@ class CallToActionSix extends Component {
                 >
                   <CountUp end={this.state.startCounter ? 7840 : 0} />
                 </VisibilitySensor>
-              </span>{" "}
+              </span>
+              {' '}
               students are registered
             </h2>
           </div>

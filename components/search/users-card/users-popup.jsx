@@ -1,10 +1,12 @@
-import styles from './users-popup.module.css';
 import { useState } from 'react';
+import styles from './users-popup.module.css';
 
-const UsersPopup = ({ data, togglePopup }) => {
+const UsersPopup = function ({ data, togglePopup }) {
   const [isImage, setImage] = useState(false);
 
-  const { profilePicture, firstName, lastName, role, skills, passions, programmingSkills, userName, isMentor, isMentee } = data;
+  const {
+    profilePicture, firstName, lastName, role, skills, passions, programmingSkills, userName, isMentor, isMentee,
+  } = data;
 
   return (
     <div className={styles.container}>
@@ -12,17 +14,25 @@ const UsersPopup = ({ data, togglePopup }) => {
       <div className={styles.info}>
         <div className={styles.imageContainer}>
           {
-            !isImage ? <div className={styles.imagePlaceholder}><i className="fas fa-user"></i></div> : null
+            !isImage ? <div className={styles.imagePlaceholder}><i className="fas fa-user" /></div> : null
           }
           <img style={{ display: isImage ? 'inline-block' : 'hidden' }} className={styles.image} src={profilePicture} onLoad={() => setImage(true)} alt="user" />
         </div>
         <div className={styles.detailsContainer}>
           <div className={styles.title}>Details</div>
-          <div className={styles.name}><span>Full Name: </span> {lastName + " " + firstName}</div>
-          <div className={styles.userName}><span>Username: </span> {userName}</div>
+          <div className={styles.name}>
+            <span>Full Name: </span>
+            {' '}
+            {`${lastName} ${firstName}`}
+          </div>
+          <div className={styles.userName}>
+            <span>Username: </span>
+            {' '}
+            {userName}
+          </div>
         </div>
 
-        <i onClick={() => togglePopup(false)} className={`${styles.closePopup} fas fa-times`}></i>
+        <i onClick={() => togglePopup(false)} className={`${styles.closePopup} fas fa-times`} />
       </div>
 
       <div className={styles.otherInfo}>
@@ -72,7 +82,7 @@ const UsersPopup = ({ data, togglePopup }) => {
 
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default UsersPopup;

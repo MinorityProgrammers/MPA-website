@@ -1,18 +1,20 @@
-import React, { useEffect, useContext, useRef, useState } from "react";
-import { useRouter } from "next/router";
-import Link from "next/link";
-import { useDetectOutsideClick } from "./UseDetectOutsideClick";
-import HomepageNavLogin from "./HomepageNavLogin";
-import Card from "./login-signup/card";
-import { GlobalContext } from "../contexts/provider";
+import React, {
+  useEffect, useContext, useRef, useState,
+} from 'react';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
+import { useDetectOutsideClick } from './UseDetectOutsideClick';
+import HomepageNavLogin from './HomepageNavLogin';
+import Card from './login-signup/card';
+import { GlobalContext } from '../contexts/provider';
 
-const MentorshipProgramHome = ({
+const MentorshipProgramHome = function ({
   data,
   onCloseMobileMenu,
   active,
   clickRegister,
   setClickRegister,
-}) => {
+}) {
   const router = useRouter();
 
   // const {
@@ -43,7 +45,7 @@ const MentorshipProgramHome = ({
                 Register
               </a>
             ) : (
-              " "
+              ' '
             )}
           </div>
         </div>
@@ -70,15 +72,15 @@ const MentorshipProgramHome = ({
               <ul className="">
                 <h1> - Sign Up Program</h1>
                 <li>
-                  {" "}
+                  {' '}
                   - REGISTER for a Minority Programmers Association account.
                 </li>
                 <li>
-                  {" "}
+                  {' '}
                   - SIGN UP, have access to training and growth opportunities.
                 </li>
                 <li>
-                  {" "}
+                  {' '}
                   - Being part of the Mentorship Program offers guidance to
                   SUCCESS
                 </li>
@@ -95,13 +97,14 @@ const MentorshipProgramHome = ({
                 <h1>Start Matching</h1>
                 <li> - Tell us about your GOALS and needs.</li>
                 <li>
-                  {" "}
+                  {' '}
                   - CHOOSE from the mentoring suggestions made by machine
                   learning.
                 </li>
                 <li>
-                  {" "}
-                  - Choose a mentorship track & start CHAT with your match.{" "}
+                  {' '}
+                  - Choose a mentorship track & start CHAT with your match.
+                  {' '}
                 </li>
               </ul>
             </div>
@@ -147,7 +150,7 @@ const MentorshipProgramHome = ({
               <ul className="">
                 <h1>Start Program</h1>
                 <li>
-                  {" "}
+                  {' '}
                   - Define ACTIVITIES and schedule with your mentor or mentee
                 </li>
                 <li> - You can use the LEARNING resources</li>
@@ -165,12 +168,12 @@ const MentorshipProgramHome = ({
                 <h1>Gain $MINORITY</h1>
 
                 <li>
-                  {" "}
+                  {' '}
                   - Mentor and mentee will receive REWARDS based on successful
                   homework completion.
                 </li>
                 <li>
-                  {" "}
+                  {' '}
                   - An evaluation will be carried out by both parties on the
                   COMMITMENT of their counterparts, during and after the task.
                 </li>
@@ -258,7 +261,7 @@ const MentorshipProgramHome = ({
               onClick={() => {
                 setClickRegister(false);
               }}
-            ></div>
+            />
             <div id="create_event-container" className="create_event-container">
               <Card />
             </div>
@@ -267,10 +270,10 @@ const MentorshipProgramHome = ({
               onClick={() => {
                 setClickRegister(false);
               }}
-            ></i>
+            />
           </div>
         ) : (
-          ""
+          ''
         )}
       </div>
     </section>

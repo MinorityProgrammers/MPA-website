@@ -1,10 +1,10 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-import Layout from "../components/Layout";
-import Footer from "../components/Footer";
-import HomepageNav from "../components/HomepageNav";
-import MentorshipAppSwipeCards from "../components/MentorshipAppSwipeCards";
-import MentorshipAppSideBar from "../components/MentorshipAppSideBar";
+import Layout from '../components/Layout';
+import Footer from '../components/Footer';
+import HomepageNav from '../components/HomepageNav';
+import MentorshipAppSwipeCards from '../components/MentorshipAppSwipeCards';
+import MentorshipAppSideBar from '../components/MentorshipAppSideBar';
 
 export class mentorshipApp extends Component {
   state = {
@@ -15,113 +15,113 @@ export class mentorshipApp extends Component {
     swipeCards: [
       {
         id: 1,
-        url: "https://icatcare.org/app/uploads/2018/07/Thinking-of-getting-a-cat.png",
-        name: "Oleg Nosyrev",
-        occupation: "Frontend Developer",
-        company: "MPA",
-        country: "USA",
+        url: 'https://icatcare.org/app/uploads/2018/07/Thinking-of-getting-a-cat.png',
+        name: 'Oleg Nosyrev',
+        occupation: 'Frontend Developer',
+        company: 'MPA',
+        country: 'USA',
         description:
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium quaerat eius provident nesciunt distinctio quasi unde iure quis repellat porro, accusamus assumenda perferendis beatae tenetur aliquid animi sint est veritatis voluptatem quo? Itaque voluptas quam officiis quaerat cupiditate ex dolorum?",
+          'Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium quaerat eius provident nesciunt distinctio quasi unde iure quis repellat porro, accusamus assumenda perferendis beatae tenetur aliquid animi sint est veritatis voluptatem quo? Itaque voluptas quam officiis quaerat cupiditate ex dolorum?',
       },
       {
         id: 2,
-        url: "https://www.rochesterfirst.com/wp-content/uploads/sites/66/2019/09/cat.jpg",
-        name: "Monica Hall",
-        occupation: "Frontend Developer",
-        company: "MPA",
-        country: "USA",
+        url: 'https://www.rochesterfirst.com/wp-content/uploads/sites/66/2019/09/cat.jpg',
+        name: 'Monica Hall',
+        occupation: 'Frontend Developer',
+        company: 'MPA',
+        country: 'USA',
         description:
-          "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vero eum corrupti quasi, quas libero eos!",
+          'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vero eum corrupti quasi, quas libero eos!',
       },
       {
         id: 3,
-        url: "https://images.reference.com/amg-cms-reference-images/media/cats-look-like_c942b88f95e4db21.jpg?width=740&height=420&fit=crop&format=pjpg",
-        name: "Jared Dunn",
-        occupation: "Frontend Developer",
-        company: "MPA",
-        country: "USA",
+        url: 'https://images.reference.com/amg-cms-reference-images/media/cats-look-like_c942b88f95e4db21.jpg?width=740&height=420&fit=crop&format=pjpg',
+        name: 'Jared Dunn',
+        occupation: 'Frontend Developer',
+        company: 'MPA',
+        country: 'USA',
         description:
-          "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vero eum corrupti quasi, quas libero eos!",
+          'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vero eum corrupti quasi, quas libero eos!',
       },
       {
         id: 4,
-        url: "https://s01.sgp1.cdn.digitaloceanspaces.com/article/51036-cwobnirfka-1580816618.jpeg",
-        name: "Dinesh Chugtai",
-        occupation: "Frontend Developer",
-        company: "MPA",
-        country: "USA",
+        url: 'https://s01.sgp1.cdn.digitaloceanspaces.com/article/51036-cwobnirfka-1580816618.jpeg',
+        name: 'Dinesh Chugtai',
+        occupation: 'Frontend Developer',
+        company: 'MPA',
+        country: 'USA',
         description:
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium quaerat eius provident nesciunt distinctio quasi unde iure quis repellat porro, accusamus assumenda perferendis beatae tenetur aliquid animi sint est veritatis voluptatem quo? Itaque voluptas quam officiis quaerat cupiditate ex dolorum?Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium quaerat eius provident nesciunt distinctio quasi unde iure quis repellat porro, accusamus assumenda perferendis beatae tenetur aliquid animi sint est veritatis voluptatem quo? Itaque voluptas quam officiis quaerat cupiditate ex dolorum?Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque, nulla. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsam, est? Iusto voluptatem ab quae esse itaque quibusdam ipsam fuga!",
+          'Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium quaerat eius provident nesciunt distinctio quasi unde iure quis repellat porro, accusamus assumenda perferendis beatae tenetur aliquid animi sint est veritatis voluptatem quo? Itaque voluptas quam officiis quaerat cupiditate ex dolorum?Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium quaerat eius provident nesciunt distinctio quasi unde iure quis repellat porro, accusamus assumenda perferendis beatae tenetur aliquid animi sint est veritatis voluptatem quo? Itaque voluptas quam officiis quaerat cupiditate ex dolorum?Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque, nulla. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsam, est? Iusto voluptatem ab quae esse itaque quibusdam ipsam fuga!',
       },
     ],
     matchedPeople: [
       {
         id: 5,
-        url: "https://i.pinimg.com/originals/33/32/6d/33326dcddbf15c56d631e374b62338dc.jpg",
-        name: "Shot Code",
-        company: "MPA",
-        occupation: "Frontend Developer",
-        country: "USA",
+        url: 'https://i.pinimg.com/originals/33/32/6d/33326dcddbf15c56d631e374b62338dc.jpg',
+        name: 'Shot Code',
+        company: 'MPA',
+        occupation: 'Frontend Developer',
+        country: 'USA',
         description:
-          "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vero eum corrupti quasi, quas libero eos!",
-        matchedTimestamp: "2:10 PM 4/20/2021",
+          'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vero eum corrupti quasi, quas libero eos!',
+        matchedTimestamp: '2:10 PM 4/20/2021',
         messages: [
           {
             id: 1,
             read: true,
 
-            message: "Good Morning!",
-            messageTimeStamp: "9:32 AM EST 4/20/2021",
+            message: 'Good Morning!',
+            messageTimeStamp: '9:32 AM EST 4/20/2021',
           },
           {
             id: 2,
             read: false,
 
-            message: "I will be your Mentor!😊",
-            messageTimeStamp: "9:34 AM EST 4/20/2021",
+            message: 'I will be your Mentor!😊',
+            messageTimeStamp: '9:34 AM EST 4/20/2021',
           },
           {
             id: 3,
             read: true,
 
             message: "Let's start coding👩‍💻",
-            messageTimeStamp: "9:59 AM EST 4/20/2021",
+            messageTimeStamp: '9:59 AM EST 4/20/2021',
           },
         ],
         toDo: [],
       },
       {
         id: 7,
-        url: "https://d25tv1xepz39hi.cloudfront.net/2016-07-16/files/cat-sample_1313.jpg",
-        name: "Oleg N",
-        company: "MPA",
-        occupation: "Data Science",
-        country: "USA",
+        url: 'https://d25tv1xepz39hi.cloudfront.net/2016-07-16/files/cat-sample_1313.jpg',
+        name: 'Oleg N',
+        company: 'MPA',
+        occupation: 'Data Science',
+        country: 'USA',
         description:
-          "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vero eum corrupti quasi, quas libero eos!",
-        matchedTimestamp: "5:10 PM 4/20/2021",
+          'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vero eum corrupti quasi, quas libero eos!',
+        matchedTimestamp: '5:10 PM 4/20/2021',
         messages: [
           {
             id: 1,
             fromId: 7,
             new: false,
-            message: "Good Morning!",
-            messageTimeStamp: "9:32 AM EST 4/20/2021",
+            message: 'Good Morning!',
+            messageTimeStamp: '9:32 AM EST 4/20/2021',
           },
           {
             id: 2,
             fromId: 7,
             new: false,
-            message: "Are you ready to code?",
-            messageTimeStamp: "9:34 AM EST 4/20/2021",
+            message: 'Are you ready to code?',
+            messageTimeStamp: '9:34 AM EST 4/20/2021',
           },
         ],
         toDo: [
           {
             id: 2,
             fromId: 7,
-            message: "Code the mentor page",
-            messageTimeStamp: "9:32 AM EST 4/20/2021",
+            message: 'Code the mentor page',
+            messageTimeStamp: '9:32 AM EST 4/20/2021',
           },
         ],
       },
@@ -161,7 +161,7 @@ export class mentorshipApp extends Component {
 
   updateSwipeCards = (character) => {
     const copyswipeCards = this.state.swipeCards.filter(
-      (person) => person !== character
+      (person) => person !== character,
     );
     this.setState({
       swipeCards: copyswipeCards,
@@ -169,8 +169,8 @@ export class mentorshipApp extends Component {
   };
 
   undoLastSwipe = (character) => {
-    let copyswipeCards = this.state.swipeCards;
-    let copylikedList = this.state.likedList;
+    const copyswipeCards = this.state.swipeCards;
+    const copylikedList = this.state.likedList;
     if (copylikedList.includes(character)) {
       copylikedList.pop();
     }
@@ -183,20 +183,22 @@ export class mentorshipApp extends Component {
   };
 
   redirect = () => {
-    window.location.href = "/auth";
+    window.location.href = '/auth';
   };
 
   componentDidMount() {
-    const token = window.localStorage.getItem("jwtToken");
-    const userInfo = window.localStorage.getItem("userInfo");
+    const token = window.localStorage.getItem('jwtToken');
+    const userInfo = window.localStorage.getItem('userInfo');
 
     if (token == null || userInfo == {}) {
       this.redirect();
     }
   }
+
   render() {
-    const { likedList, swipeCards, matchedPeople, step, openedChatCharacter } =
-      this.state;
+    const {
+      likedList, swipeCards, matchedPeople, step, openedChatCharacter,
+    } = this.state;
 
     const values = {
       likedList,

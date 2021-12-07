@@ -1,14 +1,14 @@
-import React, { useState } from "react";
-import Layout from "../components/Layout";
-import HomepageNav from "../components/HomepageNav";
-import Chats from "../components/Chats";
+import React, { useState } from 'react';
+import Layout from '../components/Layout';
+import HomepageNav from '../components/HomepageNav';
+import Chats from '../components/Chats';
 
-const Chat = () => {
+const Chat = function () {
   const [data, setData] = useState([]);
 
   return (
     <Layout pageTitle="MPA - Chats">
-      <HomepageNav setData={setData} page={"Chat"} />
+      <HomepageNav setData={setData} page="Chat" />
       <Chats data={data} />
     </Layout>
   );

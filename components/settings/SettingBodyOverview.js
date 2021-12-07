@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useContext } from "react";
-import { GlobalContext } from "../../contexts/provider";
-import styles from "../../styles/settings/settingBodyOverview.module.css";
-import { useRouter } from "next/router";
-import { uprContext } from "../../contexts/settingsPagesProvider/settingsPagesProvider";
-import { getProgressPercentage } from "../../contexts/utils/settings/getProgressPercentage";
+import React, { useState, useEffect, useContext } from 'react';
+import { useRouter } from 'next/router';
+import { GlobalContext } from '../../contexts/provider';
+import styles from '../../styles/settings/settingBodyOverview.module.css';
+import { uprContext } from '../../contexts/settingsPagesProvider/settingsPagesProvider';
+import { getProgressPercentage } from '../../contexts/utils/settings/getProgressPercentage';
 
-function SettingBodyOverview({ data }) {
+const SettingBodyOverview = function ({ data }) {
   const router = useRouter();
 
   const { setUpdatePasswordRedirection } = useContext(uprContext);
@@ -16,76 +16,75 @@ function SettingBodyOverview({ data }) {
   const completeRedirection = () => {
     if (
       !(
-        !!data?.firstName &&
-        !!data?.lastName &&
-        !!data?.birthday &&
-        !!data?.Gender &&
-        !!data?.phoneNumber &&
-        !!data?.location &&
-        !!data?.Nationality &&
-        !!data?.Ethnicity.length
+        !!data?.firstName
+        && !!data?.lastName
+        && !!data?.birthday
+        && !!data?.Gender
+        && !!data?.phoneNumber
+        && !!data?.location
+        && !!data?.Nationality
+        && !!data?.Ethnicity.length
       )
     ) {
-      router.push("/settings/profile/details");
+      router.push('/settings/profile/details');
     } else if (!(!!data?.bio && !!data?.primaryLanguage)) {
-      router.push("/settings/profile/overview");
+      router.push('/settings/profile/overview');
     } else if (
       !(
-        !!data?.FacebookLink &&
-        !!data?.LinkedinLink &&
-        !!data?.GithubLink &&
-        !!data?.GoogleLink &&
-        !!data?.FigmaLink &&
-        !!data?.DribbleLink &&
-        !!data?.ClickupLink
+        !!data?.FacebookLink
+        && !!data?.LinkedinLink
+        && !!data?.GithubLink
+        && !!data?.GoogleLink
+        && !!data?.FigmaLink
+        && !!data?.DribbleLink
+        && !!data?.ClickupLink
       )
     ) {
-      router.push("/settings/profile/media");
+      router.push('/settings/profile/media');
     } else if (
       !(
-        !!data?.passions.length &&
-        (data.passions.length === 1 ? data.passions[0] !== "" : true) &&
-        !!data?.softSkills.length &&
-        (data.softSkills.length === 1 ? data.softSkills[0] !== "" : true) &&
-        !!data?.programmingSkills.length &&
-        (data.programmingSkills.length === 1
-          ? data.programmingSkills[0] !== ""
+        !!data?.passions.length
+        && (data.passions.length === 1 ? data.passions[0] !== '' : true)
+        && !!data?.softSkills.length
+        && (data.softSkills.length === 1 ? data.softSkills[0] !== '' : true)
+        && !!data?.programmingSkills.length
+        && (data.programmingSkills.length === 1
+          ? data.programmingSkills[0] !== ''
           : true)
       )
     ) {
-      router.push("/settings/profile/background");
+      router.push('/settings/profile/background');
     } else if (
       !(
-        !!data?.educationLevel &&
-        !!data?.schoolName &&
-        !!data?.enteredHighSchoolYear &&
-        !!data?.expectedGraduationYear &&
-        !!data?.studentStatus &&
-        !!data?.degree
+        !!data?.educationLevel
+        && !!data?.schoolName
+        && !!data?.enteredHighSchoolYear
+        && !!data?.expectedGraduationYear
+        && !!data?.studentStatus
+        && !!data?.degree
       )
     ) {
-      router.push("/settings/profile/education");
+      router.push('/settings/profile/education');
     }
   };
 
   const copyToClipboard = (link) => {
-    const el = document.createElement("textarea");
+    const el = document.createElement('textarea');
     el.value = link;
-    el.style.position = "absolute";
-    el.style.height = "0.1px";
-    el.style.width = "0.1px";
-    el.style.left = "-100px";
-    el.style.top = "-100px";
-    el.style.opacity = "0";
+    el.style.position = 'absolute';
+    el.style.height = '0.1px';
+    el.style.width = '0.1px';
+    el.style.left = '-100px';
+    el.style.top = '-100px';
+    el.style.opacity = '0';
     document.body.appendChild(el);
 
-    const selected =
-      document.getSelection().rangeCount > 0
-        ? document.getSelection().getRangeAt(0)
-        : false;
+    const selected = document.getSelection().rangeCount > 0
+      ? document.getSelection().getRangeAt(0)
+      : false;
 
     el.select();
-    document.execCommand("copy");
+    document.execCommand('copy');
 
     document.body.removeChild(el);
 
@@ -96,14 +95,14 @@ function SettingBodyOverview({ data }) {
   };
 
   const copied = (haveLink) => {
-    const el = document.getElementsByClassName("overviewContentSpanWrap");
+    const el = document.getElementsByClassName('overviewContentSpanWrap');
 
     if (!el[0].hasChildNodes()) {
-      el[0].style.backgroundColor = haveLink ? "#00aa4f" : "#fb3f4a";
+      el[0].style.backgroundColor = haveLink ? '#00aa4f' : '#fb3f4a';
 
-      const spanEl = document.createElement("span");
-      spanEl.style.padding = ".2vw .3vw";
-      spanEl.innerText = haveLink ? "Link Copied" : "No link";
+      const spanEl = document.createElement('span');
+      spanEl.style.padding = '.2vw .3vw';
+      spanEl.innerText = haveLink ? 'Link Copied' : 'No link';
 
       el[0].appendChild(spanEl);
 
@@ -122,13 +121,13 @@ function SettingBodyOverview({ data }) {
               <circle
                 style={{
                   strokeDashoffset: `calc(220 - (220 * ${getProgressPercentage(
-                    data
+                    data,
                   )}) / 100)`,
                 }}
                 cx="35"
                 cy="35"
                 r="35"
-              ></circle>
+              />
             </svg>
             <h6>
               {getProgressPercentage(data)}
@@ -169,7 +168,7 @@ function SettingBodyOverview({ data }) {
               <div className={styles.info}>
                 <div className={styles.infoKey}>Email</div>
                 <div className={styles.infoValue}>
-                  <a target="_blank" href={`mailto:${data.email}`}>
+                  <a target="_blank" href={`mailto:${data.email}`} rel="noreferrer">
                     {data.email}
                   </a>
                 </div>
@@ -180,7 +179,10 @@ function SettingBodyOverview({ data }) {
                   <a
                     target="_blank"
                     href={`https://minorityprogrammers.com/user/${data?.userName}`}
-                  >{`https://minorityprogrammers.com/user/${data?.userName}`}</a>
+                    rel="noreferrer"
+                  >
+                    {`https://minorityprogrammers.com/user/${data?.userName}`}
+                  </a>
                 </div>
               </div>
             </div>
@@ -188,10 +190,10 @@ function SettingBodyOverview({ data }) {
               <div className={styles.uCRwrapper}>
                 <div className={styles.imgDiv}>
                   <img
-                    src={data?.profilePicture || "/assets/images/profile.png"}
+                    src={data?.profilePicture || '/assets/images/profile.png'}
                     alt="avatar"
                     className={styles.avatarImage}
-                    onClick={() => router.push("/settings/profile/overview")}
+                    onClick={() => router.push('/settings/profile/overview')}
                   />
                   <img
                     src="../../assets/images/settings/edit-avatar.svg"
@@ -199,7 +201,7 @@ function SettingBodyOverview({ data }) {
                     className={styles.editIcon}
                   />
                 </div>
-                <h6>{data.firstName + " " + data.lastName}</h6>
+                <h6>{`${data.firstName} ${data.lastName}`}</h6>
               </div>
             </div>
           </div>
@@ -218,18 +220,18 @@ function SettingBodyOverview({ data }) {
               <div
                 className="overviewContentSpanWrap"
                 style={{
-                  position: "absolute",
-                  backgroundColor: "#00aa4f",
-                  borderRadius: ".5vw",
-                  color: "white",
-                  fontSize: ".6vw",
-                  fontWeight: "bold",
-                  top: ".5vw",
-                  right: "7.1vw",
+                  position: 'absolute',
+                  backgroundColor: '#00aa4f',
+                  borderRadius: '.5vw',
+                  color: 'white',
+                  fontSize: '.6vw',
+                  fontWeight: 'bold',
+                  top: '.5vw',
+                  right: '7.1vw',
                 }}
-              ></div>
+              />
               <img
-                src={`../../assets/images/settings/media-facebook.svg`}
+                src="../../assets/images/settings/media-facebook.svg"
                 alt="facebook icon"
                 onClick={() => {
                   copyToClipboard(data?.FacebookLink);
@@ -237,7 +239,7 @@ function SettingBodyOverview({ data }) {
                 }}
               />
               <img
-                src={`../../assets/images/settings/media-linkedin.svg`}
+                src="../../assets/images/settings/media-linkedin.svg"
                 alt="linkedin icon"
                 onClick={() => {
                   copyToClipboard(data?.LinkedinLink);
@@ -245,7 +247,7 @@ function SettingBodyOverview({ data }) {
                 }}
               />
               <img
-                src={`../../assets/images/settings/media-github.svg`}
+                src="../../assets/images/settings/media-github.svg"
                 alt="github icon"
                 onClick={() => {
                   copyToClipboard(data?.GithubLink);
@@ -253,7 +255,7 @@ function SettingBodyOverview({ data }) {
                 }}
               />
               <img
-                src={`../../assets/images/settings/media-google.svg`}
+                src="../../assets/images/settings/media-google.svg"
                 alt="google icon"
                 onClick={() => {
                   copyToClipboard(data?.GoogleLink);
@@ -261,7 +263,7 @@ function SettingBodyOverview({ data }) {
                 }}
               />
               <img
-                src={`../../assets/images/settings/media-figma.svg`}
+                src="../../assets/images/settings/media-figma.svg"
                 alt="figma icon"
                 onClick={() => {
                   copyToClipboard(data?.FigmaLink);
@@ -269,7 +271,7 @@ function SettingBodyOverview({ data }) {
                 }}
               />
               <img
-                src={`../../assets/images/settings/media-dribbble.svg`}
+                src="../../assets/images/settings/media-dribbble.svg"
                 alt="dribbble icon"
                 onClick={() => {
                   copyToClipboard(data?.DribbleLink);
@@ -277,7 +279,7 @@ function SettingBodyOverview({ data }) {
                 }}
               />
               <img
-                src={`../../assets/images/settings/media-clickup.svg`}
+                src="../../assets/images/settings/media-clickup.svg"
                 alt="clickup icon"
                 onClick={() => {
                   copyToClipboard(data?.ClickupLink);
@@ -292,7 +294,7 @@ function SettingBodyOverview({ data }) {
           <div className={styles.updateAccountLogin}>
             <div
               className={styles.username}
-              onClick={() => router.push("/settings/security/login")}
+              onClick={() => router.push('/settings/security/login')}
             >
               <p>Change Username</p>
               <img
@@ -304,7 +306,7 @@ function SettingBodyOverview({ data }) {
               className={styles.password}
               onClick={() => {
                 setUpdatePasswordRedirection(true);
-                router.push("/settings/security/login");
+                router.push('/settings/security/login');
               }}
             >
               <p>Change Password</p>
@@ -324,7 +326,7 @@ function SettingBodyOverview({ data }) {
             <button
               onClick={(e) => {
                 e.preventDefault();
-                router.push("/settings/wallet/my-wallet");
+                router.push('/settings/wallet/my-wallet');
               }}
             >
               Connect Wallet
@@ -336,15 +338,19 @@ function SettingBodyOverview({ data }) {
               <h6>$MINORITY </h6>
               <div className={styles.card}>
                 <div className={styles.amountInfo}>
-                  $MINORITY Earned <div>{`$150`}</div>
+                  $MINORITY Earned
+                  {' '}
+                  <div>$150</div>
                 </div>
                 <div className={styles.amountInfo}>
-                  $MINORITY Balance <div>{`$350`}</div>
+                  $MINORITY Balance
+                  {' '}
+                  <div>$350</div>
                 </div>
                 <div
                   className={styles.addBtn}
                   onClick={() => {
-                    router.push("/settings/wallet/my-wallet");
+                    router.push('/settings/wallet/my-wallet');
                   }}
                 >
                   Add $MINORITY Funds
@@ -355,15 +361,19 @@ function SettingBodyOverview({ data }) {
               <h6>$MPA Tokens </h6>
               <div className={styles.card}>
                 <div className={styles.amountInfo}>
-                  $MPA Tokens Earned <div>{`$35`}</div>
+                  $MPA Tokens Earned
+                  {' '}
+                  <div>$35</div>
                 </div>
                 <div className={styles.amountInfo}>
-                  $MPA Tokens Balance <div>{`$65`}</div>
+                  $MPA Tokens Balance
+                  {' '}
+                  <div>$65</div>
                 </div>
                 <div
                   className={styles.addBtn}
                   onClick={() => {
-                    router.push("/settings/wallet/my-wallet");
+                    router.push('/settings/wallet/my-wallet');
                   }}
                 >
                   Add $MPA Tokens
@@ -374,13 +384,13 @@ function SettingBodyOverview({ data }) {
         </div>
         <div className={`${styles.fItem} ${styles.fINotifications}`}>
           <h5>Notifications</h5>
-          <div className={styles.messages} onClick={() => router.push("/chat")}>
+          <div className={styles.messages} onClick={() => router.push('/chat')}>
             <h6>Messages</h6>
             <div className={styles.inboxCounter}>{0}</div>
           </div>
           <div
             className={styles.notifyMessages}
-            onClick={() => router.push("/settings/notifications/notifications")}
+            onClick={() => router.push('/settings/notifications/notifications')}
           >
             <p>Manage Message Delivery Notifications</p>
             <img
@@ -392,6 +402,6 @@ function SettingBodyOverview({ data }) {
       </div>
     </div>
   );
-}
+};
 
 export default SettingBodyOverview;

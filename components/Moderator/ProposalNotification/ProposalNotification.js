@@ -1,34 +1,24 @@
-import React from "react";
-import { useEffect } from "react";
-import { useState } from "react";
-import axios from "axios";
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import PaginationData from './PaginationData';
-import ApprovedRejected from "./ApprovedRejected.js";
-import Proposal from "./Proposal";
-import Loader from './../../Loader';
-import Pagination from './../ElectProposals/Pagination';
-import electProposal from "../electProposal.json";
+import ApprovedRejected from './ApprovedRejected.js';
+import Proposal from './Proposal';
+import Loader from '../../Loader';
+import Pagination from '../ElectProposals/Pagination';
+import electProposal from '../electProposal.json';
 
-const ProposalNotification = () => {
+const ProposalNotification = function () {
+  const [approvedProposal, setApprovedProposal] = useState({ status: null, data: { data: 0 } });
 
-  const [approvedProposal, setApprovedProposal] = useState ({status: null, data: {data: 0}});
-
-  const [deniedProposal, setDenied] = useState ({status: null, data: {data: 0}});
-
-    // userDeniedProposal ___________________
-
-
- 
+  const [deniedProposal, setDenied] = useState({ status: null, data: { data: 0 } });
 
   // userDeniedProposal ___________________
 
-  
-  //______________________________________________________________________________________________________________________________________________________________________
+  // userDeniedProposal ___________________
 
-// // Function to sort the actions by amount or date
+  // ______________________________________________________________________________________________________________________________________________________________________
 
-
-
+  // // Function to sort the actions by amount or date
 
   return (
 
@@ -57,7 +47,7 @@ const ProposalNotification = () => {
 
         <PaginationData />
 
-{/*  */}
+        {/*  */}
       </div>
 
       <div className="other-proposals-area tw-container  tw-rounded-lg tw-h-50 ">
@@ -70,24 +60,24 @@ const ProposalNotification = () => {
             team.
           </p>
         </div>
-        {/*approvedProposal ______________________  */}
+        {/* approvedProposal ______________________  */}
 
-       <ApprovedRejected api={"https://koinstreet-learn-api.herokuapp.com/api/v1/proposalStatus/approvedProposal" } status="Approved"/>
-       
-{/*approvedProposal ______________________  */}
-   
+        <ApprovedRejected api="https://koinstreet-learn-api.herokuapp.com/api/v1/proposalStatus/approvedProposal" status="Approved" />
+
+        {/* approvedProposal ______________________  */}
+
       </div>
 
       <div className="other-proposals-area tw-container  tw-rounded-lg tw-h-50 ">
         <div className="headline tw-text-center tw-mb-10">
           <h3 className="tw-text-white tw-text-2xl tw-font-bold">
-          Proposals rejected by core team.
+            Proposals rejected by core team.
           </h3>
           <p className="tw-text-white">
-          The following proposals you elected, were rejected by the core team.
+            The following proposals you elected, were rejected by the core team.
           </p>
         </div>
-      <ApprovedRejected api={"https://koinstreet-learn-api.herokuapp.com/api/v1/proposalStatus/userDeniedProposal"} status="Rejected" />
+        <ApprovedRejected api="https://koinstreet-learn-api.herokuapp.com/api/v1/proposalStatus/userDeniedProposal" status="Rejected" />
       </div>
     </section>
   );

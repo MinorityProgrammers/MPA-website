@@ -1,14 +1,16 @@
-import React, { useState, useEffect, useContext } from "react";
-import { GlobalContext } from "../../contexts/provider";
-import { updateProfile } from "../../contexts/actions/profile/updateProfile";
-import FormData from "form-data";
-import { all } from "../../contexts/utils/settings/settingsInputFields";
-import styles from "../../styles/settings/settingBodyProfileOverview.module.css";
-import { useRouter } from "next/router";
-import CreateSettingInput from "./CreateSettingInput";
-import SettingBody from "./SettingBody";
+import React, { useState, useEffect, useContext } from 'react';
+import FormData from 'form-data';
+import { useRouter } from 'next/router';
+import { GlobalContext } from '../../contexts/provider';
+import { updateProfile } from '../../contexts/actions/profile/updateProfile';
+import { all } from '../../contexts/utils/settings/settingsInputFields';
+import styles from '../../styles/settings/settingBodyProfileOverview.module.css';
+import CreateSettingInput from './CreateSettingInput';
+import SettingBody from './SettingBody';
 
-function SettingBodyProfileOverview({ settingsPage, data, userID, setGenerateAvatarPopUp }) {
+const SettingBodyProfileOverview = function ({
+  settingsPage, data, userID, setGenerateAvatarPopUp,
+}) {
   const router = useRouter();
 
   const inputFields = [all.bioField, all.languageField];
@@ -16,7 +18,7 @@ function SettingBodyProfileOverview({ settingsPage, data, userID, setGenerateAva
   const initialInputState = {};
 
   inputFields.forEach(
-    (field) => (initialInputState[field.name] = "")
+    (field) => (initialInputState[field.name] = ''),
     // ex. {someInputFieldName: "inputFieldValue", ...}
   );
 
@@ -24,7 +26,7 @@ function SettingBodyProfileOverview({ settingsPage, data, userID, setGenerateAva
 
   useEffect(() => {
     inputFields.forEach(
-      (field) => (initialInputState[field.name] = data?.[field.name] || "")
+      (field) => (initialInputState[field.name] = data?.[field.name] || ''),
     );
 
     setInputStates(initialInputState);
@@ -34,7 +36,9 @@ function SettingBodyProfileOverview({ settingsPage, data, userID, setGenerateAva
   const {
     profileDispatch,
     profileState: {
-      profile: { profileLoading, profileError, profileData, profileIsUpdated },
+      profile: {
+        profileLoading, profileError, profileData, profileIsUpdated,
+      },
     },
   } = useContext(GlobalContext);
 
@@ -75,7 +79,7 @@ function SettingBodyProfileOverview({ settingsPage, data, userID, setGenerateAva
       <div className={styles.userContent}>
         <div className={styles.imgDiv}>
           <img
-            src={data?.profilePicture || "/assets/images/profile.png"}
+            src={data?.profilePicture || '/assets/images/profile.png'}
             alt="avatar"
           />
           <img
@@ -87,8 +91,8 @@ function SettingBodyProfileOverview({ settingsPage, data, userID, setGenerateAva
         </div>
         <h5>
           {data?.firstName && data?.lastName
-            ? data?.firstName + " " + data?.lastName
-            : "no name"}
+            ? `${data?.firstName} ${data?.lastName}`
+            : 'no name'}
         </h5>
         <ul className={styles.userDetails}>
           <nav>
@@ -100,13 +104,13 @@ function SettingBodyProfileOverview({ settingsPage, data, userID, setGenerateAva
           </nav>
           <div>
             <li>Minority Programmers Assocation</li>
-            <li>{data?.role || ""}</li>
-            <li>{data?.userName || ""}</li>
+            <li>{data?.role || ''}</li>
+            <li>{data?.userName || ''}</li>
             <li>
               {data?.email ? (
                 <a href={`mailto:${data?.email}`}>{data?.email}</a>
               ) : (
-                ""
+                ''
               )}
             </li>
             <li>
@@ -114,10 +118,10 @@ function SettingBodyProfileOverview({ settingsPage, data, userID, setGenerateAva
                 <a
                   href={`https://minorityprogrammers.com/user/${data?.userName}`}
                 >
-                  {"https://minorityprogrammers.com/user/" + data?.userName}
+                  {`https://minorityprogrammers.com/user/${data?.userName}`}
                 </a>
               ) : (
-                ""
+                ''
               )}
             </li>
           </div>
@@ -125,27 +129,25 @@ function SettingBodyProfileOverview({ settingsPage, data, userID, setGenerateAva
       </div>
       {
         // display an input component for each input field
-        [all.bioField, all.languageField].map((field, key) => {
-          return (
-            <CreateSettingInput
-              name={field.name}
-              type={field.type}
-              label={field.label}
-              options={field.options}
-              required={field.required}
-              halfWidth={field.halfWidth}
-              rightSpaced={field.rightSpaced}
-              value={inputStates[field.name]}
-              setValue={(value) => {
-                handleChange(field.name, value);
-              }}
-              key={key}
-            />
-          );
-        })
+        [all.bioField, all.languageField].map((field, key) => (
+          <CreateSettingInput
+            name={field.name}
+            type={field.type}
+            label={field.label}
+            options={field.options}
+            required={field.required}
+            halfWidth={field.halfWidth}
+            rightSpaced={field.rightSpaced}
+            value={inputStates[field.name]}
+            setValue={(value) => {
+              handleChange(field.name, value);
+            }}
+            key={key}
+          />
+        ))
       }
     </SettingBody>
   );
-}
+};
 
 export default SettingBodyProfileOverview;

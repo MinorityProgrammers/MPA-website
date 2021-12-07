@@ -1,6 +1,6 @@
 import React from 'react';
 
-const RecommendedCourseList = ({ course, handleCourseInfo }) => {
+const RecommendedCourseList = function ({ course, handleCourseInfo }) {
   const { earn, name, description } = course;
 
   return (
@@ -8,7 +8,10 @@ const RecommendedCourseList = ({ course, handleCourseInfo }) => {
       <div className="pt-3">
         <div className="earn-rate ml-auto d-flex align-items-center">
           <img src="https://i.ibb.co/Yjpy6PN/dot.png" className="img-fluid ml-2" alt="" />
-          <span className="pl-4">Earn {earn}</span>
+          <span className="pl-4">
+            Earn
+            {earn}
+          </span>
         </div>
       </div>
       <div className="d-pb-1 ml-2">

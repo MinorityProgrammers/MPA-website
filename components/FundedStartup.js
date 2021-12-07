@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-const FundedStartup = () => {
+const FundedStartup = function () {
   return (
     <div>
       <h1>Funded Startup</h1>

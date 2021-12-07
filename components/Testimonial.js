@@ -1,87 +1,89 @@
-import { useCallback, useEffect, useRef, useState } from "react";
-import $ from "jquery";
+import {
+  useCallback, useEffect, useRef, useState,
+} from 'react';
+import $ from 'jquery';
+
 const randomNames = [
-  "James",
-  "Koyer",
-  "Ibukun",
-  "Random",
-  "Human",
-  "Rice",
-  "Chao",
-  "Malin",
-  "Sam",
-  "Hueges",
-  "Tom",
-  "Holland",
-  "jennifer",
-  "Bukola",
-  "Rita",
-  "Stevey",
-  "Leo",
-  "Micheal",
-  "Matt",
-  "Davey",
-  "Lee",
-  "Homie",
-  "Coder",
-  "Creative",
-  "Const",
-  "Timmy",
-  "Femi",
-  "Tobi",
-  "Gamer",
-  "Peter",
-  "Lois",
-  "Lola",
-  "Adeola",
-  "Kane",
-  "Usain",
-  "Biggs",
-  "Oliver",
-  "Naija",
-  "Naomi",
+  'James',
+  'Koyer',
+  'Ibukun',
+  'Random',
+  'Human',
+  'Rice',
+  'Chao',
+  'Malin',
+  'Sam',
+  'Hueges',
+  'Tom',
+  'Holland',
+  'jennifer',
+  'Bukola',
+  'Rita',
+  'Stevey',
+  'Leo',
+  'Micheal',
+  'Matt',
+  'Davey',
+  'Lee',
+  'Homie',
+  'Coder',
+  'Creative',
+  'Const',
+  'Timmy',
+  'Femi',
+  'Tobi',
+  'Gamer',
+  'Peter',
+  'Lois',
+  'Lola',
+  'Adeola',
+  'Kane',
+  'Usain',
+  'Biggs',
+  'Oliver',
+  'Naija',
+  'Naomi',
 ];
 const randomLocation = [
-  "Lagos, Nigeria",
-  "Accra, Ghana",
-  "Tokyo, Japan",
-  "Maryland, United states",
-  "Clarke County, Alabama",
-  "Northwest Arctic Borough, Alaska",
-  "Graham County, Arizona",
-  "Hempstead County, Arkansas",
-  "Kern County, California",
-  "Jefferson County, Colorado",
-  "Sussex County, Delaware",
-  "Hardee County, Florida",
-  "Palm Beach County, Florida",
-  "Gordon County, Georgia",
-  "Maui County, Hawaii",
+  'Lagos, Nigeria',
+  'Accra, Ghana',
+  'Tokyo, Japan',
+  'Maryland, United states',
+  'Clarke County, Alabama',
+  'Northwest Arctic Borough, Alaska',
+  'Graham County, Arizona',
+  'Hempstead County, Arkansas',
+  'Kern County, California',
+  'Jefferson County, Colorado',
+  'Sussex County, Delaware',
+  'Hardee County, Florida',
+  'Palm Beach County, Florida',
+  'Gordon County, Georgia',
+  'Maui County, Hawaii',
 ];
 const randomImages = [
-  "https://minorityprogrammers.com/assets/images/taylor.svg",
-  "https://minorityprogrammers.com/assets/images/SEEF.svg",
-  "https://minorityprogrammers.com/assets/images/sarah.svg",
-  "https://minorityprogrammers.com/assets/images/yixuan.svg",
-  "https://minorityprogrammers.com/assets/images/fahad.svg",
-  "https://minorityprogrammers.com/assets/images/wesley.svg",
-  "https://minorityprogrammers.com/assets/images/Kaleb.svg",
-  "https://minorityprogrammers.com/assets/images/vishal.svg",
-  "https://minorityprogrammers.com/assets/images/Jose.svg",
-  "https://minorityprogrammers.com/assets/images/shengqi.svg",
-  "https://minorityprogrammers.com/assets/images/Yudi.svg",
-  "https://minorityprogrammers.com/assets/images/SEEF.svg",
-  "https://minorityprogrammers.com/assets/images/Bryanna.svg",
+  'https://minorityprogrammers.com/assets/images/taylor.svg',
+  'https://minorityprogrammers.com/assets/images/SEEF.svg',
+  'https://minorityprogrammers.com/assets/images/sarah.svg',
+  'https://minorityprogrammers.com/assets/images/yixuan.svg',
+  'https://minorityprogrammers.com/assets/images/fahad.svg',
+  'https://minorityprogrammers.com/assets/images/wesley.svg',
+  'https://minorityprogrammers.com/assets/images/Kaleb.svg',
+  'https://minorityprogrammers.com/assets/images/vishal.svg',
+  'https://minorityprogrammers.com/assets/images/Jose.svg',
+  'https://minorityprogrammers.com/assets/images/shengqi.svg',
+  'https://minorityprogrammers.com/assets/images/Yudi.svg',
+  'https://minorityprogrammers.com/assets/images/SEEF.svg',
+  'https://minorityprogrammers.com/assets/images/Bryanna.svg',
 ];
-const testimonialText =
-  "Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis voluptatem eveniet delectus hic molestiae saepe expedita rem eum libero excepturi totam odit tempora porro asperiores eius, tempore explicabo reprehenderit culpa.";
+const testimonialText = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis voluptatem eveniet delectus hic molestiae saepe expedita rem eum libero excepturi totam odit tempora porro asperiores eius, tempore explicabo reprehenderit culpa.';
 
-function Testimonials({ homeClass, mode }) {
+const Testimonials = function ({ homeClass, mode }) {
   const [randomTestimony, setRandomTestimony] = useState([]);
   const containerRef = useRef();
   const uniqueKey = useRef(0);
   const interval = useRef();
-  const userCardWidth = useRef(parseInt($("body").css("--testimonialWidth")));
+  const userCardWidth = useRef(parseInt($('body').css('--testimonialWidth')));
 
   function newKey() {
     uniqueKey.current++;
@@ -91,7 +93,7 @@ function Testimonials({ homeClass, mode }) {
   const randomize = useCallback(() => {
     function oneHotEncode(number) {
       let counter = number;
-      let retArr = [];
+      const retArr = [];
       for (let i = 0; i < 5; i++) {
         counter -= 1;
         retArr.push(counter >= 0 ? 1 : Math.abs(counter) < 1 ? 0.5 : 0);
@@ -102,22 +104,21 @@ function Testimonials({ homeClass, mode }) {
     updateArray = updateArray.filter((testimony) => {
       if (testimony.markdown === true) {
         return false;
-      } else {
-        let shouldmarkDown = Math.floor(Math.random() * 2);
-        if (shouldmarkDown) testimony.markdown = true;
-        return true;
       }
+      const shouldmarkDown = Math.floor(Math.random() * 2);
+      if (shouldmarkDown) testimony.markdown = true;
+      return true;
     });
 
     if (updateArray.length <= 10) {
-      let maxRandom = 5;
-      let containerWidth = $(containerRef.current).width();
-      let containerHeight = $(containerRef.current).height();
+      const maxRandom = 5;
+      const containerWidth = $(containerRef.current).width();
+      const containerHeight = $(containerRef.current).height();
 
-      let widthOfCard = userCardWidth.current;
-      let heightOfCard = parseInt($("body").css("--testimonialMaxHeight"));
+      const widthOfCard = userCardWidth.current;
+      const heightOfCard = parseInt($('body').css('--testimonialMaxHeight'));
 
-      let numberOfNew = Math.floor(Math.random() * maxRandom) + 1;
+      const numberOfNew = Math.floor(Math.random() * maxRandom) + 1;
       for (let i = 0; i < numberOfNew; i++) {
         const newObj = {
           firstName:
@@ -147,16 +148,16 @@ function Testimonials({ homeClass, mode }) {
       setRandomTestimony([]);
       randomize();
     };
-    $(window).on("resize", resize);
+    $(window).on('resize', resize);
 
     return () => {
       clearInterval(interval.current);
-      $(window).off("resize", resize);
+      $(window).off('resize', resize);
     };
   }, [randomize]);
 
   return (
-    <div className={`${homeClass.testimonials} ${homeClass[mode + "Mode"]}`}>
+    <div className={`${homeClass.testimonials} ${homeClass[`${mode}Mode`]}`}>
       <h1>Testimonials</h1>
       <div className={homeClass.testimonialsSpace} ref={containerRef}>
         {randomTestimony.map((index) => {
@@ -191,7 +192,8 @@ function Testimonials({ homeClass, mode }) {
                   <div className={homeClass.testimonialCardHeader}>
                     <span className={homeClass.testimonialFirstName}>
                       {firstName}
-                    </span>{" "}
+                    </span>
+                    {' '}
                     <span className={homeClass.testimonialLastName}>
                       {lastName}
                     </span>
@@ -200,7 +202,8 @@ function Testimonials({ homeClass, mode }) {
                 </div>
               </section>
               <section className={homeClass.testimonialsLocation}>
-                <i className="fa fa-map-marker" aria-hidden="true"></i>&emsp;
+                <i className="fa fa-map-marker" aria-hidden="true" />
+&emsp;
                 {location}
               </section>
               <section className={homeClass.testimonialsRating}>
@@ -211,7 +214,7 @@ function Testimonials({ homeClass, mode }) {
                         <i
                           className={`fa fa-star ${homeClass.testimonialStar}`}
                           key={index}
-                        ></i>
+                        />
                       );
                     }
                     if (star === 0) {
@@ -220,7 +223,7 @@ function Testimonials({ homeClass, mode }) {
                           className={`fa fa-star-o ${homeClass.testimonialStar}`}
                           key={index}
                           aria-hidden="true"
-                        ></i>
+                        />
                       );
                     }
                     if (star === 0.5) {
@@ -229,10 +232,10 @@ function Testimonials({ homeClass, mode }) {
                           className={`fa fa-star-half-o ${homeClass.testimonialStar}`}
                           key={index}
                           aria-hidden="true"
-                        ></i>
+                        />
                       );
                     }
-                    return <span></span>;
+                    return <span />;
                   })}
                 </div>
               </section>
@@ -242,5 +245,5 @@ function Testimonials({ homeClass, mode }) {
       </div>
     </div>
   );
-}
+};
 export default Testimonials;

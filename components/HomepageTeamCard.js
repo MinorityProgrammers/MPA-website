@@ -1,18 +1,16 @@
-import React from "react";
+import React from 'react';
 
-const HomepageTeamCard = ({ member }) => {
+const HomepageTeamCard = function ({ member }) {
   return (
-    <>
-      <img
-        src={
+    <img
+      src={
           member.AvatarLink !== null
             ? member.AvatarLink
-            : "https://github.com/MinorityProgrammers/mpa-avatars/blob/main/avatars/mysteryAvatar.png?raw=true"
+            : 'https://github.com/MinorityProgrammers/mpa-avatars/blob/main/avatars/mysteryAvatar.png?raw=true'
         }
-        className="rounded-circle mx-auto d-block"
-        alt={member.Employee}
-      />
-    </>
+      className="rounded-circle mx-auto d-block"
+      alt={member.Employee}
+    />
   );
 };
 

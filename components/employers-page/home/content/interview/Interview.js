@@ -1,39 +1,43 @@
-import styles from "./candidate_interview.module.css";
-import InterviewCard from "../../Card/InterviewCard";
+import styles from './candidate_interview.module.css';
+import InterviewCard from '../../Card/InterviewCard';
 
 const interviewItem = [
   {
-    name: "Michael Montgometry",
-    description: "Front End Developer",
-    date: "Mon, August 9",
-    time: "11:30am EST"
+    name: 'Michael Montgometry',
+    description: 'Front End Developer',
+    date: 'Mon, August 9',
+    time: '11:30am EST',
   },
   {
-    name: "Michael Montgometry",
-    description: "Front End Developer",
-    date: "Mon, August 9",
-    time: "11:30am EST"
+    name: 'Michael Montgometry',
+    description: 'Front End Developer',
+    date: 'Mon, August 9',
+    time: '11:30am EST',
   },
   {
-    name: "Michael Montgometry",
-    description: "Front End Developer",
-    date: "Mon, August 9",
-    time: "11:30am EST"
+    name: 'Michael Montgometry',
+    description: 'Front End Developer',
+    date: 'Mon, August 9',
+    time: '11:30am EST',
   },
   {
-    name: "Michael Montgometry",
-    description: "Front End Developer",
-    date: "Mon, August 9",
-    time: "11:30am EST"
-  }
+    name: 'Michael Montgometry',
+    description: 'Front End Developer',
+    date: 'Mon, August 9',
+    time: '11:30am EST',
+  },
 ];
 
-const Interview = ({ scheduled }) => {
+const Interview = function ({ scheduled }) {
   return (
     <div className={styles.root}>
       <div className={styles.header}>
         <h1>Interview schedule</h1>
-        <span>({scheduled}) scheduled</span>
+        <span>
+          (
+          {scheduled}
+          ) scheduled
+        </span>
       </div>
       <div>
         <hr className={styles.horizontal} />

@@ -1,9 +1,9 @@
-import React from "react";
-import ServicesCard from "../components/ServicesCard";
-import Swiper from "react-id-swiper";
-import "swiper/css/swiper.css";
+import React from 'react';
+import Swiper from 'react-id-swiper';
+import ServicesCard from './ServicesCard';
+import 'swiper/css/swiper.css';
 
-const ServicesTiles = () => {
+const ServicesTiles = function () {
   const params = {
     slidesPerView: 5,
     loop: true,
@@ -33,40 +33,40 @@ const ServicesTiles = () => {
 
   const ServicesTile = [
     {
-      classNameOne: "course-category-two__single color-1",
-      icon: "kipso-icon-manager",
-      serviceLink: "/services#education",
-      tileName: "Mentorship",
+      classNameOne: 'course-category-two__single color-1',
+      icon: 'kipso-icon-manager',
+      serviceLink: '/services#education',
+      tileName: 'Mentorship',
     },
     {
-      classNameOne: "course-category-two__single color-2",
-      icon: "kipso-icon-knowledge",
-      serviceLink: "/services#education",
-      tileName: "Education",
+      classNameOne: 'course-category-two__single color-2',
+      icon: 'kipso-icon-knowledge',
+      serviceLink: '/services#education',
+      tileName: 'Education',
     },
     {
-      classNameOne: "course-category-two__single color-3",
-      icon: "kipso-icon-strategy",
-      serviceLink: "/services#consultacy",
-      tileName: "Consultancy",
+      classNameOne: 'course-category-two__single color-3',
+      icon: 'kipso-icon-strategy',
+      serviceLink: '/services#consultacy',
+      tileName: 'Consultancy',
     },
     {
-      classNameOne: "course-category-two__single color-4",
-      icon: "kipso-icon-email",
-      serviceLink: "/services#onboarding",
-      tileName: "Job Placement",
+      classNameOne: 'course-category-two__single color-4',
+      icon: 'kipso-icon-email',
+      serviceLink: '/services#onboarding',
+      tileName: 'Job Placement',
     },
     {
-      classNameOne: "course-category-two__single color-5",
-      icon: "kipso-icon-training",
-      serviceLink: "/services#training",
-      tileName: "Career Development",
+      classNameOne: 'course-category-two__single color-5',
+      icon: 'kipso-icon-training',
+      serviceLink: '/services#training',
+      tileName: 'Career Development',
     },
     {
-      classNameOne: "course-category-two__single color-6",
-      icon: "kipso-icon-programming",
-      serviceLink: "/services#onboarding",
-      tileName: "Software Products",
+      classNameOne: 'course-category-two__single color-6',
+      icon: 'kipso-icon-programming',
+      serviceLink: '/services#onboarding',
+      tileName: 'Software Products',
     },
   ];
 

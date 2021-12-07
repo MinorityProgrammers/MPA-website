@@ -1,18 +1,16 @@
-import ViewTask from "../../components/ViewTask";
-import ViewTaskHeader from "../../components/ViewTaskHeader";
-import Layout from "../../components/Layout";
-import Footer from "../../components/Footer";
+import ViewTask from '../../components/ViewTask';
+import ViewTaskHeader from '../../components/ViewTaskHeader';
+import Layout from '../../components/Layout';
+import Footer from '../../components/Footer';
 
-const viewTask = () => {
-  return (
-    <Layout pageTitle="View-Task">
-      <div className="proposal-bg">
-        <ViewTaskHeader />
-        <ViewTask />
-        <Footer />
-      </div>
-    </Layout>
-  );
-};
+const viewTask = () => (
+  <Layout pageTitle="View-Task">
+    <div className="proposal-bg">
+      <ViewTaskHeader />
+      <ViewTask />
+      <Footer />
+    </div>
+  </Layout>
+);
 
 export default viewTask;

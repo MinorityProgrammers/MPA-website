@@ -1,12 +1,14 @@
-import { useState } from "react";
-import { timeago } from "../helpers/timeago";
+import { useState } from 'react';
+import { timeago } from '../helpers/timeago';
 
 // commented out copy and delete for now (still has inline css from developing/testing)
 // const copyMessage = () => {
 //   console.log('copied');
 // }
 
-const ChatMessage = ({ user, message, own, deleteMessage }) => {
+const ChatMessage = function ({
+  user, message, own, deleteMessage,
+}) {
   // const [isHovering, setIsHovering] = useState(false);
   return own ? (
     // <div className="own-message" onMouseOver={()=>setIsHovering(true)} onMouseOut={()=> setIsHovering(false)}>
@@ -31,11 +33,11 @@ const ChatMessage = ({ user, message, own, deleteMessage }) => {
     // <div className="message"  onMouseOver={()=>setIsHovering(true)} onMouseOut={()=> setIsHovering(false)}>
     //   <div style={{display:'flex',flexDirection:'row', alignItems:'center'}}>
     <div className="message">
-      <div style={{ display: "flex", flexDirection: "row", width: "100%" }}>
+      <div style={{ display: 'flex', flexDirection: 'row', width: '100%' }}>
         <img
           className="message-icon"
           alt="profile picture"
-          src={user.profilePicture || `../../assets/images/profile.png`}
+          src={user.profilePicture || '../../assets/images/profile.png'}
         />
         <div className="message-top">
           {/* Image from sender?? */}

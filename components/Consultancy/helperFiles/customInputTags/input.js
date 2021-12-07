@@ -1,28 +1,28 @@
-import { Fragment } from "react";
-import ErrorPrint from "../errorPrint";
+import { Fragment } from 'react';
+import ErrorPrint from '../errorPrint';
 
-//undefined ---> the input was just initialized
-//[] ---> the input is incorrect
-//string ---> the input is correct
+// undefined ---> the input was just initialized
+// [] ---> the input is incorrect
+// string ---> the input is correct
 
-function Input({
+const Input = function ({
   inputValue,
   handleInputChange,
-  inputType = "text",
-  placeholder = "Please enter text",
+  inputType = 'text',
+  placeholder = 'Please enter text',
   defaultValue,
 }) {
   return (
-    <Fragment>
+    <>
       <input
         type={inputType}
         name="idea"
-        className={`${"service_input"} ${
+        className={`${'service_input'} ${
           inputValue === undefined
-            ? ""
+            ? ''
             : inputValue instanceof Array
-            ? "error"
-            : "success"
+              ? 'error'
+              : 'success'
         }`}
         defaultValue={defaultValue}
         placeholder={placeholder}
@@ -30,7 +30,7 @@ function Input({
         autoFocus
       />
       {inputValue instanceof Array ? <ErrorPrint errors={inputValue} /> : null}
-    </Fragment>
+    </>
   );
-}
+};
 export default Input;

@@ -1,15 +1,15 @@
-import { useState, useRef, useEffect } from "react";
-import Link from "next/link";
-import Layout from "../Layout.js";
-import Footer from "../Footer.js";
-import ApplyModal from "./QuickApplyJobApplication";
-import HomepageNav from "../HomepageNav";
-import SidebarTwo from "../SidebarTwo";
-import links from "../../contexts/utils/links";
-import ComingSoon from "../ComingSoon";
-import { useDetectOutsideClick } from "../UseDetectOutsideClick";
+import { useState, useRef, useEffect } from 'react';
+import Link from 'next/link';
+import Layout from '../Layout.js';
+import Footer from '../Footer.js';
+import ApplyModal from './QuickApplyJobApplication';
+import HomepageNav from '../HomepageNav';
+import SidebarTwo from '../SidebarTwo';
+import links from '../../contexts/utils/links';
+import ComingSoon from '../ComingSoon';
+import { useDetectOutsideClick } from '../UseDetectOutsideClick';
 
-const CareersMainComponent = props => {
+const CareersMainComponent = function (props) {
   const [open, setOpen] = useState(false);
   const [data, setData] = useState([]);
   const dropdownRef = useRef(null);

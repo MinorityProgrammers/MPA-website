@@ -10,12 +10,12 @@ import { IoLocationOutline } from 'react-icons/io5';
 import { useHistory } from 'react-router';
 import { AiFillHome } from 'react-icons/ai';
 
-const Profile = ({ setOpen, setNotice, setLog,user}) => {
-
-
+const Profile = function ({
+  setOpen, setNotice, setLog, user,
+}) {
   return (
     <div
-      className={`tw-bg-surface tw-text-gray-800 tw-col-end-13 tw-col-start-1 lg:tw-col-start-3 tw-p-2   tw-row-start-2  tw-row-end-4 p-3`}
+      className="tw-bg-surface tw-text-gray-800 tw-col-end-13 tw-col-start-1 lg:tw-col-start-3 tw-p-2   tw-row-start-2  tw-row-end-4 p-3"
       onClick={() => setOpen(false)}
     >
       <div className="tw-flex tw-justify-between">
@@ -27,20 +27,22 @@ const Profile = ({ setOpen, setNotice, setLog,user}) => {
           <span>
             <AiFillHome className="tw-text-primary-200 tw-mr-1 mt-1 " />
           </span>
-          /<span className="tw-mx-1">user</span>/
+          /
+          <span className="tw-mx-1">user</span>
+          /
           <span className="tw-mx-1">Profile</span>
         </div>
       </div>
       <div
-        className={`tw-bg-white tw-shadow-md  tw-rounded-md `}
+        className="tw-bg-white tw-shadow-md  tw-rounded-md "
       >
         <ToastContainer autoClose={2000} />
         <div className="">
           <div className="tw-relative">
-            <img src='../../assets/images/back.jpg' alt="Profile background" className="tw-w-full tw-h-60 tw-rounded-t-md" />
+            <img src="../../assets/images/back.jpg" alt="Profile background" className="tw-w-full tw-h-60 tw-rounded-t-md" />
             <div className="tw-absolute tw-bottom-8 tw-inset-x-1/3 sm:tw-inset-x-1/3 md:tw-inset-x-2/4">
               <img
-                src={user.profilePicture || `../../assets/images/profile.png`} 
+                src={user.profilePicture || '../../assets/images/profile.png'}
                 alt="profile"
                 className=" tw-h-24 tw-w-24 md:tw-h-28 md:tw-w-28  tw-ml-4  tw-object-cover tw-rounded-full  tw-border-surface tw-border-8
                 "
@@ -63,16 +65,18 @@ const Profile = ({ setOpen, setNotice, setLog,user}) => {
               <div className="tw-flex-col tw-flex tw-mt-2 tw-items-center tw-justify-center md:tw-justify-start  md:tw-items-start md:tw-my-2  ">
                 <div className="tw-flex tw-my-3">
                   <span>
-                    <MdDateRange className="tw-text-primary-200"/>
+                    <MdDateRange className="tw-text-primary-200" />
                   </span>
                   <span className="tw-text-xs tw-text-primary-200 tw-ml-3">Birth date</span>
                 </div>
-                <span className="tw-text-gray-500 tw-w-full md:tw-w-5/6 ">{user.birthday || "N/A"}</span>
+                <span className="tw-text-gray-500 tw-w-full md:tw-w-5/6 ">{user.birthday || 'N/A'}</span>
               </div>
               <div className="tw-flex-col tw-flex tw-justify-center tw-items-center tw-mt-3 md:tw-justify-start md:tw-items-start  md:tw-relative  ">
                 <div className="tw-flex ">
                   <span className="md:tw-text-2xl md:tw-absolute tw-text-gray-600  tw--left-2 tw-bottom-2 tw-pr-4 ">
-                    {user.firstName}{' '}{user.lastName}
+                    {user.firstName}
+                    {' '}
+                    {user.lastName}
                   </span>
                 </div>
                 <span className="tw-text-primary-200 md:tw-left-3  md:tw-absolute tw-mr-4 md:tw-mr-0 md:tw-ml-5">
@@ -84,23 +88,27 @@ const Profile = ({ setOpen, setNotice, setLog,user}) => {
               <div className="tw-flex-col tw-flex tw-items-center tw-justify-center md:tw-justify-start  md:tw-items-start tw-my-2">
                 <div className="tw-flex tw-my-3">
                   <span>
-                    <MdPermContactCalendar className="tw-text-primary-200"/>
+                    <MdPermContactCalendar className="tw-text-primary-200" />
                   </span>
                   <span className="tw-text-xs tw-text-primary-200 tw-ml-3">Contact</span>
                 </div>
                 <span className="tw-text-gray-500 tw-w-full md:tw-w-5/6 ">
-                  {user.phoneNumber || "N/A"}
+                  {user.phoneNumber || 'N/A'}
                 </span>
-              </div>{' '}
+              </div>
+              {' '}
               <div className="tw-flex-col tw-flex tw-items-center tw-justify-center md:tw-justify-start  md:tw-items-start tw-my-2">
                 <div className="tw-flex tw-my-3">
                   <span>
-                    <IoLocationOutline className="tw-text-primary-200"/>
+                    <IoLocationOutline className="tw-text-primary-200" />
                   </span>
                   <span className="tw-text-xs tw-text-primary-200 tw-ml-3">Location</span>
                 </div>
                 <span className=" tw-text-gray-500  tw-w-full md:tw-w-5/6  ">
-                  {user.location || "N/A"} / {user.Nationality || "N/A"}
+                  {user.location || 'N/A'}
+                  {' '}
+                  /
+                  {user.Nationality || 'N/A'}
                 </span>
               </div>
             </div>
@@ -116,7 +124,8 @@ const Profile = ({ setOpen, setNotice, setLog,user}) => {
                 <a href="#fb">
                   <FiTwitter className="hover:tw-text-primary-200 tw-text-xl" />
                 </a>
-              </li>{' '}
+              </li>
+              {' '}
               <li className="tw-ml-8">
                 <a href="#fb">
                   <FiInstagram className="hover:tw-text-primary-200 tw-text-xl" />
@@ -139,19 +148,23 @@ const Profile = ({ setOpen, setNotice, setLog,user}) => {
       </div>
 
       <div
-        className={`tw-bg-white tw-rounded-md tw-shadow-md tw-mt-4 `}
+        className="tw-bg-white tw-rounded-md tw-shadow-md tw-mt-4 "
       >
         <div className="tw-m-4 tw-py-4 tw-border-b  tw-flex tw-items-center tw-border-gray-200 ">
           <img
-            src={user.profilePicture || `../../assets/images/profile.png`} 
+            src={user.profilePicture || '../../assets/images/profile.png'}
             alt="profile"
             className="tw-h-20   tw-object-cover tw-rounded-full tw-w-20 tw-border-surface tw-border-8"
           />
-          <span className="tw-ml-2 tw-text-sm">{user.firstName}{' '}{user.lastName}</span>
+          <span className="tw-ml-2 tw-text-sm">
+            {user.firstName}
+            {' '}
+            {user.lastName}
+          </span>
         </div>
         <div className="tw-m-4 tw-py-4">
           <h1 className="tw-text-main tw-py-4 ">Bio</h1>
-          <p className="tw-text-sm tw-leading-6 tw-w-11/12">{user.bio || "N/A"}</p>
+          <p className="tw-text-sm tw-leading-6 tw-w-11/12">{user.bio || 'N/A'}</p>
         </div>
       </div>
     </div>

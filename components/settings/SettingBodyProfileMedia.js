@@ -1,14 +1,14 @@
-import React, { useState, useEffect, useContext } from "react";
-import { GlobalContext } from "../../contexts/provider";
-import { updateProfile } from "../../contexts/actions/profile/updateProfile";
-import FormData from "form-data";
-import { all } from "../../contexts/utils/settings/settingsInputFields";
-import styles from "../../styles/settings/settingBodyProfileMedia.module.css";
-import { useRouter } from "next/router";
-import CreateSettingInput from "./CreateSettingInput";
-import SettingBody from "./SettingBody";
+import React, { useState, useEffect, useContext } from 'react';
+import FormData from 'form-data';
+import { useRouter } from 'next/router';
+import { GlobalContext } from '../../contexts/provider';
+import { updateProfile } from '../../contexts/actions/profile/updateProfile';
+import { all } from '../../contexts/utils/settings/settingsInputFields';
+import styles from '../../styles/settings/settingBodyProfileMedia.module.css';
+import CreateSettingInput from './CreateSettingInput';
+import SettingBody from './SettingBody';
 
-function SettingBodyProfileMedia({ settingsPage, data, userID }) {
+const SettingBodyProfileMedia = function ({ settingsPage, data, userID }) {
   const router = useRouter();
 
   const inputFields = [
@@ -24,7 +24,7 @@ function SettingBodyProfileMedia({ settingsPage, data, userID }) {
   const initialInputState = {};
 
   inputFields.forEach(
-    (field) => (initialInputState[field.name] = "")
+    (field) => (initialInputState[field.name] = ''),
     // ex. {someInputFieldName: "inputFieldValue", ...}
   );
 
@@ -32,7 +32,7 @@ function SettingBodyProfileMedia({ settingsPage, data, userID }) {
 
   useEffect(() => {
     inputFields.forEach(
-      (field) => (initialInputState[field.name] = data?.[field.name] || "")
+      (field) => (initialInputState[field.name] = data?.[field.name] || ''),
     );
 
     setInputStates(initialInputState);
@@ -42,7 +42,9 @@ function SettingBodyProfileMedia({ settingsPage, data, userID }) {
   const {
     profileDispatch,
     profileState: {
-      profile: { profileLoading, profileError, profileData, profileIsUpdated },
+      profile: {
+        profileLoading, profileError, profileData, profileIsUpdated,
+      },
     },
   } = useContext(GlobalContext);
 
@@ -92,36 +94,34 @@ function SettingBodyProfileMedia({ settingsPage, data, userID }) {
             all.FigmaLinkField,
             all.DribbbleLinkField,
             all.ClickupLinkField,
-          ].map((field, key) => {
-            return (
-              <div className={styles.inputWrapper} key={key}>
-                <img
-                  src={`../../assets/images/settings/media-${field.label
-                    .split(" ")[0]
-                    .toLocaleLowerCase()}.svg`}
-                  alt={`${field.label.split(" ")[0].toLocaleLowerCase()} icon`}
-                />
-                <CreateSettingInput
-                  name={field.name}
-                  type={field.type}
-                  label={field.label}
-                  options={field.options}
-                  required={field.required}
-                  halfWidth={field.halfWidth}
-                  rightSpaced={field.rightSpaced}
-                  leftSpaced={field.leftSpaced}
-                  value={inputStates[field.name]}
-                  setValue={(value) => {
-                    handleChange(field.name, value);
-                  }}
-                />
-              </div>
-            );
-          })
+          ].map((field, key) => (
+            <div className={styles.inputWrapper} key={key}>
+              <img
+                src={`../../assets/images/settings/media-${field.label
+                  .split(' ')[0]
+                  .toLocaleLowerCase()}.svg`}
+                alt={`${field.label.split(' ')[0].toLocaleLowerCase()} icon`}
+              />
+              <CreateSettingInput
+                name={field.name}
+                type={field.type}
+                label={field.label}
+                options={field.options}
+                required={field.required}
+                halfWidth={field.halfWidth}
+                rightSpaced={field.rightSpaced}
+                leftSpaced={field.leftSpaced}
+                value={inputStates[field.name]}
+                setValue={(value) => {
+                  handleChange(field.name, value);
+                }}
+              />
+            </div>
+          ))
         }
       </div>
     </SettingBody>
   );
-}
+};
 
 export default SettingBodyProfileMedia;

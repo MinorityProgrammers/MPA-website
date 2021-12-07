@@ -1,30 +1,30 @@
-import { useEffect, useState, useRef } from "react";
-import Select from "../customInputTags/select";
-import QuestionContainer from "../questionContainer";
-import { useDefaultValue } from "../getDefaultValue";
-import addQuestion from "../addQuestion";
+import { useEffect, useState, useRef } from 'react';
+import Select from '../customInputTags/select';
+import QuestionContainer from '../questionContainer';
+import { useDefaultValue } from '../getDefaultValue';
+import addQuestion from '../addQuestion';
 
-//structure of childRenderInfo
-//--->renderWhenOptionIs = 0
-//--->answerToInput = ''
-//--->validationFxn = ()=>{}
+// structure of childRenderInfo
+// --->renderWhenOptionIs = 0
+// --->answerToInput = ''
+// --->validationFxn = ()=>{}
 
 const default_childRenderInfo = {
   renderWhenOptionIs: 0,
-  answerToInput: "",
+  answerToInput: '',
   validateChild: () => {},
   onStart: () => {},
   childChanged: false,
 };
 
-function SelectTemplate({
+const SelectTemplate = function ({
   step,
   setstep,
   questions,
   setQuestions,
   options = [],
   secondOptions,
-  question1 = "",
+  question1 = '',
   children,
   childRenderInfo = default_childRenderInfo,
 }) {
@@ -37,11 +37,11 @@ function SelectTemplate({
 
   function childFound() {
     return (
-      children &&
-      Number.isInteger(childRenderInfo.renderWhenOptionIs) &&
-      selected &&
-      childRenderInfo.renderWhenOptionIs ===
-        (selected[1] ? options.indexOf(selected[1]) : -1)
+      children
+      && Number.isInteger(childRenderInfo.renderWhenOptionIs)
+      && selected
+      && childRenderInfo.renderWhenOptionIs
+        === (selected[1] ? options.indexOf(selected[1]) : -1)
     );
   }
   const childStarted = useRef(false);
@@ -58,23 +58,25 @@ function SelectTemplate({
   function pageFourQuestion() {
     function defineAnswers() {
       const answers = [];
-      //first answer
+      // first answer
       answers.push({
-        question: selected ? selected[0] : "",
-        answer: selected ? selected[1] : "",
+        question: selected ? selected[0] : '',
+        answer: selected ? selected[1] : '',
       });
-      //if we have a second input
-      if (secondOptions)
+      // if we have a second input
+      if (secondOptions) {
         answers.push({
-          question: secondSelected ? secondSelected[0] : "",
-          answer: secondSelected ? secondSelected[1] : "",
+          question: secondSelected ? secondSelected[0] : '',
+          answer: secondSelected ? secondSelected[1] : '',
         });
-      //if child, add answer of child
-      if (childFound())
+      }
+      // if child, add answer of child
+      if (childFound()) {
         answers.push({
-          question: selected ? selected[0] : "",
+          question: selected ? selected[0] : '',
           answer: childRenderInfo.answerToInput,
         });
+      }
       return answers;
     }
     addQuestion(setQuestions, step, defineAnswers());
@@ -84,12 +86,13 @@ function SelectTemplate({
     if (secondOptions) {
       bool = bool && secondSelected instanceof Array;
     }
-    if (childFound())
+    if (childFound()) {
       try {
         bool = bool && childRenderInfo.validateChild();
       } catch (e) {
         bool = false;
       }
+    }
 
     return bool;
   }
@@ -121,7 +124,7 @@ function SelectTemplate({
       <label
         htmlFor="budget"
         className="questionOption"
-        style={{ marginBottom: "2rem" }}
+        style={{ marginBottom: '2rem' }}
       >
         {question1}
       </label>
@@ -149,7 +152,7 @@ function SelectTemplate({
                 : -1
             }
             colorScheme={{
-              selectedFontColor: "var(--mpa-navy)",
+              selectedFontColor: 'var(--mpa-navy)',
             }}
           />
         ) : null}
@@ -157,5 +160,5 @@ function SelectTemplate({
       {childFound() ? children : null}
     </QuestionContainer>
   );
-}
+};
 export default SelectTemplate;

@@ -1,51 +1,44 @@
-
-import CareersMainComponent from "../../components/career-components/CareersMainComponent";
-import CompaniesList from '../../components/career-components/CompaniesList.json';
 import { useRouter } from 'next/router';
-import { useEffect, useRef, useState } from "react";
-import CompanySkeleton from "../../components/career-components/CompanyLoadingSkeleton";
-
+import { useEffect, useRef, useState } from 'react';
+import CareersMainComponent from '../../components/career-components/CareersMainComponent';
+import CompaniesList from '../../components/career-components/CompaniesList.json';
+import CompanySkeleton from '../../components/career-components/CompanyLoadingSkeleton';
 
 export async function getServerSideProps(context) {
   return {
     props: {
-      query: context.query
-    }
+      query: context.query,
+    },
 
-  }
+  };
 }
 
-
-const CompaniesMain = (props) => {
-
-  const [companies, setCompanies] = useState([])
-  const [loading, setLoading] = useState(true)
-  const nameRef = useRef()
-  const diversityScoreRef = useRef()
-  const locationRef = useRef()
-
+const CompaniesMain = function (props) {
+  const [companies, setCompanies] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const nameRef = useRef();
+  const diversityScoreRef = useRef();
+  const locationRef = useRef();
 
   useEffect(() => {
-    fetchCompanies()
-  }, [])
-
+    fetchCompanies();
+  }, []);
 
   const fetchCompanies = () => {
-
     fetch('https://koinstreet-learn-api.herokuapp.com/api/v1/company')
-      .then(response => response.json())
+      .then((response) => response.json())
       .then((response) => {
-        setCompanies(response.data)
+        setCompanies(response.data);
         setTimeout(() => {
-          setLoading(false)
-        }, 1000)
-      })
-  }
+          setLoading(false);
+        }, 1000);
+      });
+  };
 
   const router = useRouter();
-  let companyLoadingSkeleton
+  let companyLoadingSkeleton;
 
-  let companyStubs = companies.map((company) =>
+  const companyStubs = companies.map((company) => (
     <a href={`/careers/companies/company?id=${company._id}`} key={company._id}>
       <div className="company-stub" key={company.id}>
         <div className="company-stub-box1">
@@ -89,126 +82,126 @@ const CompaniesMain = (props) => {
         </div>
       </div>
     </a>
-  )
+  ));
 
-  let totalCount = 102;
-  let perPage = 10;
-  let totalPages = Math.ceil(102 / perPage); //11
+  const totalCount = 102;
+  const perPage = 10;
+  const totalPages = Math.ceil(102 / perPage); // 11
 
   function makePages() {
-    let totPages = totalPages;
+    const totPages = totalPages;
 
-    let queryObj = { ...props.query };
-    let page = queryObj.page;
-    let pageArray = [];
+    const queryObj = { ...props.query };
+    const { page } = queryObj;
+    const pageArray = [];
 
     if (page) {
-      pageArray.push(page)
+      pageArray.push(page);
 
-      //push page to first placeholder if page number is greater than 1 and there are more than one pages
+      // push page to first placeholder if page number is greater than 1 and there are more than one pages
       if (page > 1) {
-        pageArray.unshift(1)
+        pageArray.unshift(1);
       }
 
-      //push page to second placeholder if page number is less than the last page
+      // push page to second placeholder if page number is less than the last page
       if (page < totPages) {
-        pageArray.push(totPages)
+        pageArray.push(totPages);
       }
     } else {
       pageArray.push(1);
       if (totPages > 1) {
-        pageArray.push(totPages)
+        pageArray.push(totPages);
       }
     }
     return pageArray.map((page) => {
       let currPage;
       if (!props.query.page) {
-        currPage = 1
+        currPage = 1;
       } else {
-        currPage = props.query.page
+        currPage = props.query.page;
       }
 
       return (
-        <a key={page} style={currPage == page ? { background: "#151371" } : {}}><button style={currPage == page ? { color: "white" } : {}} onClick={() => pageSelector(page)}>{page}</button></a>
-      )
-    })
+        <a key={page} style={currPage == page ? { background: '#151371' } : {}}><button style={currPage == page ? { color: 'white' } : {}} onClick={() => pageSelector(page)}>{page}</button></a>
+      );
+    });
   }
 
   function pageSelector(page) {
-    console.log(page)
-    let queryObj = { ...props.query }
+    console.log(page);
+    const queryObj = { ...props.query };
     if (page == 1 && queryObj.page) {
       delete queryObj.page;
     } else if (page != 1) {
       queryObj.page = page;
     }
 
-    router.push({ query: queryObj })
+    router.push({ query: queryObj });
   }
 
   function nextButton() {
-    let queryObj = { ...props.query };
+    const queryObj = { ...props.query };
     if (!queryObj.page) {
       queryObj.page = 2;
     } else {
       queryObj.page = Number(queryObj.page) + 1;
-      console.log(typeof queryObj.page)
+      console.log(typeof queryObj.page);
     }
 
-    router.push({ query: queryObj })
+    router.push({ query: queryObj });
   }
 
   function prevButton() {
-    console.log("prev")
-    let queryObj = { ...props.query };
+    console.log('prev');
+    const queryObj = { ...props.query };
     if (queryObj.page == 2) {
       delete queryObj.page;
     } else {
       queryObj.page = Number(queryObj.page) - 1;
     }
 
-    router.push({ query: queryObj })
+    router.push({ query: queryObj });
   }
 
   const formSubmit = (e) => {
-    e.preventDefault()
-    let queryObj = {}
-    let blank = true
+    e.preventDefault();
+    const queryObj = {};
+    let blank = true;
     if (nameRef.current.value) {
-      queryObj.company = nameRef.current.value
-      blank = false
-      setCompanies(companies.filter(company => company.company_name.toLowerCase().includes(nameRef.current.value)))
+      queryObj.company = nameRef.current.value;
+      blank = false;
+      setCompanies(companies.filter((company) => company.company_name.toLowerCase().includes(nameRef.current.value)));
     }
 
     if (diversityScoreRef.current.value) {
-      queryObj.score = diversityScoreRef.current.value
-      blank = false
-      setCompanies(companies.filter(company => company.diversity_score == (diversityScoreRef.current.value)))
+      queryObj.score = diversityScoreRef.current.value;
+      blank = false;
+      setCompanies(companies.filter((company) => company.diversity_score == (diversityScoreRef.current.value)));
     }
 
     if (locationRef.current.value) {
-      queryObj.location = locationRef.current.value
-      blank = false
-      setCompanies(companies.filter(company => company.headquarter.toLowerCase().includes(locationRef.current.value)))
+      queryObj.location = locationRef.current.value;
+      blank = false;
+      setCompanies(companies.filter((company) => company.headquarter.toLowerCase().includes(locationRef.current.value)));
     }
 
     if (!blank) {
-      router.push({ query: queryObj })
+      router.push({ query: queryObj });
     } else {
-      delete queryObj.company
-      delete queryObj.score
-      delete queryObj.location
-      router.push({ query: queryObj })
-      fetchCompanies()
+      delete queryObj.company;
+      delete queryObj.score;
+      delete queryObj.location;
+      router.push({ query: queryObj });
+      fetchCompanies();
     }
-  }
+  };
 
   return (
     <CareersMainComponent>
       <div className="companiesMain">
         <div className="companiesMain-search">
           <h2 className="companiesMain-search-heading">Search For Companies</h2>
-          <form className="companiesMain-search-inputs" action="/careers/companies" onSubmit={e => formSubmit(e)}>
+          <form className="companiesMain-search-inputs" action="/careers/companies" onSubmit={(e) => formSubmit(e)}>
             <input name="company_name" type="search" placeholder="Search by Name" ref={nameRef} />
             <input name="diversity_score" type="search" placeholder="Diversity Score" ref={diversityScoreRef} />
             <input name="location" type="search" placeholder="City, State, or Zip Code" ref={locationRef} />
@@ -219,40 +212,42 @@ const CompaniesMain = (props) => {
           {/* LOADING SKELETON HERE */}
           {
             loading
-              ?
-              <>
-                <CompanySkeleton />
-                <CompanySkeleton />
-                <CompanySkeleton />
-                <CompanySkeleton />
-              </>
-              :
-              <>
-                <div className="companiesMain-options">
-                  <div>{`${companies.length} Results`}</div>
-                  <div className="companiesMain-options-sort">
-                    <span>Sort by:</span>
-                    <select>
-                      <option>Newest</option>
-                    </select>
-                  </div>
-                </div>
-                <div>
-                  {companyStubs}
-                  <div className="jobs-paginator">
-                    <a><button className="jobs-paginator-btn" disabled={props.query.page ? false : true} onClick={prevButton}>{"<"}</button></a>
-                    <div className="jobs-paginator-numbers">
-                      {makePages()}
+              ? (
+                <>
+                  <CompanySkeleton />
+                  <CompanySkeleton />
+                  <CompanySkeleton />
+                  <CompanySkeleton />
+                </>
+              )
+              : (
+                <>
+                  <div className="companiesMain-options">
+                    <div>{`${companies.length} Results`}</div>
+                    <div className="companiesMain-options-sort">
+                      <span>Sort by:</span>
+                      <select>
+                        <option>Newest</option>
+                      </select>
                     </div>
-                    <a><button className="jobs-paginator-btn" disabled={props.query.page == totalPages ? true : false} onClick={nextButton}>{">"}</button></a>
                   </div>
-                </div>
-              </>
+                  <div>
+                    {companyStubs}
+                    <div className="jobs-paginator">
+                      <a><button className="jobs-paginator-btn" disabled={!props.query.page} onClick={prevButton}>{'<'}</button></a>
+                      <div className="jobs-paginator-numbers">
+                        {makePages()}
+                      </div>
+                      <a><button className="jobs-paginator-btn" disabled={props.query.page == totalPages} onClick={nextButton}>{'>'}</button></a>
+                    </div>
+                  </div>
+                </>
+              )
           }
         </div>
       </div>
     </CareersMainComponent>
-  )
-}
+  );
+};
 
 export default CompaniesMain;

@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import Modal from "../components/login-signup/modal/index";
+import React, { Component } from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import Modal from './login-signup/modal/index';
 
 class NavOne extends Component {
   constructor() {
@@ -11,18 +11,19 @@ class NavOne extends Component {
       displayModal: false,
     };
   }
-  componentDidMount() {
-    window.addEventListener("scroll", this.handleScroll);
 
-    //Mobile Menu
+  componentDidMount() {
+    window.addEventListener('scroll', this.handleScroll);
+
+    // Mobile Menu
     this.mobileMenu();
 
-    //Search Toggle
+    // Search Toggle
     this.serachButton();
   }
 
   componentWillUnmount() {
-    window.removeEventListener("scroll", this.handleScroll);
+    window.removeEventListener('scroll', this.handleScroll);
   }
 
   handleScroll = () => {
@@ -38,32 +39,31 @@ class NavOne extends Component {
   };
 
   mobileMenu = () => {
-    //Mobile Menu Toggle
-    let mainNavToggler = document.querySelector(".menu-toggler");
-    let mainNav = document.querySelector(".main-navigation");
+    // Mobile Menu Toggle
+    const mainNavToggler = document.querySelector('.menu-toggler');
+    const mainNav = document.querySelector('.main-navigation');
 
-    mainNavToggler.addEventListener("click", function () {
-      mainNav.style.display =
-        mainNav.style.display != "block" ? "block" : "none";
+    mainNavToggler.addEventListener('click', () => {
+      mainNav.style.display = mainNav.style.display != 'block' ? 'block' : 'none';
     });
   };
 
   serachButton = () => {
-    let searchToggle = document.querySelector(".search-toggle");
-    let searchPopup = document.querySelector(".search-popup");
-    let searchClose = document.querySelector(".cancel");
-    let searchOverlay = document.querySelector(".search-overlay");
+    const searchToggle = document.querySelector('.search-toggle');
+    const searchPopup = document.querySelector('.search-popup');
+    const searchClose = document.querySelector('.cancel');
+    const searchOverlay = document.querySelector('.search-overlay');
 
     // searchToggle.addEventListener("click", function () {
     //     searchPopup.classList.add('active');
     // });
 
-    searchClose.addEventListener("click", function () {
-      searchPopup.classList.remove("active");
+    searchClose.addEventListener('click', () => {
+      searchPopup.classList.remove('active');
     });
 
-    searchOverlay.addEventListener("click", function () {
-      searchPopup.classList.remove("active");
+    searchOverlay.addEventListener('click', () => {
+      searchPopup.classList.remove('active');
     });
   };
 
@@ -72,7 +72,7 @@ class NavOne extends Component {
       <header className="site-header site-header__header-one ">
         <nav
           className={`navbar navbar-expand-lg navbar-light header-navigation stricky ${
-            this.state.sticky ? "stricked-menu stricky-fixed" : ""
+            this.state.sticky ? 'stricked-menu stricky-fixed' : ''
           }`}
         >
           <div className="container clearfix">
@@ -89,20 +89,20 @@ class NavOne extends Component {
               </Link>
               <div className="header__social">
                 <a href="https://twitter.com/minorityprogram">
-                  <i className="fab fa-twitter"></i>
+                  <i className="fab fa-twitter" />
                 </a>
                 <a href="https://www.facebook.com/MinorityProgrammers">
-                  <i className="fab fa-facebook-square"></i>
+                  <i className="fab fa-facebook-square" />
                 </a>
                 <a href="https://linkedin.com/company/minority-programmers/">
-                  <i className="fab fa-linkedin"></i>
+                  <i className="fab fa-linkedin" />
                 </a>
                 <a href="https://www.instagram.com/minorityprogrammers/">
-                  <i className="fab fa-instagram"></i>
+                  <i className="fab fa-instagram" />
                 </a>
               </div>
               <button className="menu-toggler">
-                <span className="kipso-icon-menu"></span>
+                <span className="kipso-icon-menu" />
               </button>
             </div>
             <div className="main-navigation">
@@ -132,16 +132,16 @@ class NavOne extends Component {
                                         <li><Link href="/principle-diversity"><a>Diversity in STEM</a></Link></li>
                                         <li><Link href="/services#education"><a>Software Engineering</a></Link></li>
                                         <li><Link href="/services#training"><a>Interdisciplinary Learning</a></Link></li>
-                                        <li><Link href="/services#onboarding"><a>Project Based Learning</a></Link></li> 
+                                        <li><Link href="/services#onboarding"><a>Project Based Learning</a></Link></li>
                                         <li><Link href="/services#consultancy"><a>Activating Passions</a></Link></li>
                                         <li><Link href="/services#education"><a>Training/Onboarding</a></Link></li>
                                         <li><Link href="/services#training"><a>Job Placement</a></Link></li>
-                                        <li><Link href="/services#onboarding"><a>Entrepreneurship</a></Link></li> 
+                                        <li><Link href="/services#onboarding"><a>Entrepreneurship</a></Link></li>
                                         <li><Link href="/services#consultancy"><a>Innovation</a></Link></li>
                                         <li><Link href="/services#education"><a>Professional Development</a></Link></li>
                                         <li><Link href="/services#training"><a>Sense of Community</a></Link></li>
-                                        <li><Link href="/services#onboarding"><a>Mentorship</a></Link></li> 
-                                        <li><Link href="/services#onboarding"><a>Humanitarian Focused</a></Link></li> 
+                                        <li><Link href="/services#onboarding"><a>Mentorship</a></Link></li>
+                                        <li><Link href="/services#onboarding"><a>Humanitarian Focused</a></Link></li>
                                     </ul>
                                 </li> */}
                 <li id="events-nav">
@@ -192,8 +192,9 @@ class NavOne extends Component {
                 href="https://discord.gg/zGBrEd7UCn"
                 target="_blank"
                 className="header__search-btn search-popup__toggler search-toggle"
+                rel="noreferrer"
               >
-                <i className="kipso-icon-human-resources"></i>
+                <i className="kipso-icon-human-resources" />
               </a>
             </div>
           </div>
@@ -201,13 +202,13 @@ class NavOne extends Component {
         <div className="site-header__decor">
           <div className="site-header__decor-row">
             <div className="site-header__decor-single">
-              <div className="site-header__decor-inner-1"></div>
+              <div className="site-header__decor-inner-1" />
             </div>
             <div className="site-header__decor-single">
-              <div className="site-header__decor-inner-2"></div>
+              <div className="site-header__decor-inner-2" />
             </div>
             <div className="site-header__decor-single">
-              <div className="site-header__decor-inner-3"></div>
+              <div className="site-header__decor-inner-3" />
             </div>
           </div>
         </div>

@@ -1,48 +1,48 @@
-import styles from './chapters-card.module.css';
-import { FiFacebook } from "react-icons/fi";
-import { FiTwitter } from "react-icons/fi";
-import { FiInstagram } from "react-icons/fi";
-import { IoPaperPlaneOutline } from "react-icons/io5";
-import { VscGithubAlt } from "react-icons/vsc";
+import { FiFacebook, FiTwitter, FiInstagram } from 'react-icons/fi';
+import { IoPaperPlaneOutline } from 'react-icons/io5';
+import { VscGithubAlt } from 'react-icons/vsc';
 import axios from 'axios';
 import Moment from 'moment';
+import styles from './chapters-card.module.css';
 
 import { errorToast, successToast } from '../../../contexts/utils/toasts';
 
 Moment.locale('en');
 
-const ChaptersCard = ({ data, token, userJoinRequests }) => {
-  const { location, description, chapter_leader, chapter_type, member_size, date_founded, _id } = data;
+const ChaptersCard = function ({ data, token, userJoinRequests }) {
+  const {
+    location, description, chapter_leader, chapter_type, member_size, date_founded, _id,
+  } = data;
 
   const handleJoin = () => {
     if (token) {
       axios.post('https://koinstreet-learn-api.herokuapp.com/api/v1/joinChapter', {
-        "chapterLocation_id": _id
+        chapterLocation_id: _id,
       }, {
         headers: {
-          "Authorization": `Bearer ${token}`,
-        }
+          Authorization: `Bearer ${token}`,
+        },
       })
-        .then(response => {
+        .then((response) => {
           successToast('You have successfully joined a chapter');
-          setTimeout("location.reload(true);", 2000);
+          setTimeout('location.reload(true);', 2000);
         })
-        .catch(err => {
+        .catch((err) => {
           try {
-            errorToast(err.response.data.data.message.msg)
+            errorToast(err.response.data.data.message.msg);
           } catch (error) {
-            errorToast("Network Error")
+            errorToast('Network Error');
           }
         });
     } else {
-      errorToast("Please login to continue");
+      errorToast('Please login to continue');
     }
-  }
+  };
 
   return (
     <div className={styles.container}>
       <div className={styles.logo}>
-        <img src='/assets/images/mp_gradient_rock.svg' alt="logo" />
+        <img src="/assets/images/mp_gradient_rock.svg" alt="logo" />
       </div>
       <div className={styles.name}>{typeof (location) !== 'object' && location}</div>
       <div className={styles.description}>{description}</div>
@@ -67,8 +67,8 @@ const ChaptersCard = ({ data, token, userJoinRequests }) => {
         </div>
       </div>
       {
-        !userJoinRequests ?
-          <div onClick={handleJoin} className={styles.joinButton}>Join</div>
+        !userJoinRequests
+          ? <div onClick={handleJoin} className={styles.joinButton}>Join</div>
           : !userJoinRequests.includes(_id) ? <div onClick={handleJoin} className={styles.joinButton}>Join</div> : <div className={styles.joinButton}>Cancel Request</div>
       }
       <div className={styles.icons}>
@@ -79,7 +79,7 @@ const ChaptersCard = ({ data, token, userJoinRequests }) => {
         <VscGithubAlt className={styles.icon} />
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default ChaptersCard;

@@ -1,19 +1,21 @@
 import { useState } from 'react';
+import Moment from 'moment';
 import styles from './events-card.module.css';
 import EventsPopup from './events-popup';
-import Moment from 'moment';
 
 Moment.locale('en');
 
-const EventsCard = ({ data }) => {
+const EventsCard = function ({ data }) {
   const [popup, togglePopup] = useState(false);
   const [isImage, setImage] = useState(false);
 
-  const { EventPicture, eventStatus, eventName, catName, Virtual, eventLink, EventDescription, time } = data;
+  const {
+    EventPicture, eventStatus, eventName, catName, Virtual, eventLink, EventDescription, time,
+  } = data;
 
   const handleClick = () => {
-    togglePopup(true)
-  }
+    togglePopup(true);
+  };
 
   return (
     <div className={styles.wrapper}>
@@ -24,7 +26,7 @@ const EventsCard = ({ data }) => {
       <div onClick={handleClick} className={styles.container}>
         <div className={styles.imageContainer}>
           {
-            !isImage ? <div className={styles.imagePlaceholder}></div> : null
+            !isImage ? <div className={styles.imagePlaceholder} /> : null
           }
           <img style={{ display: isImage ? 'inline-block' : 'hidden' }} className={styles.image} src={EventPicture} onLoad={() => setImage(true)} alt="event-banner" />
           <div className={styles.catName}>{catName}</div>
@@ -34,7 +36,7 @@ const EventsCard = ({ data }) => {
         <div className={styles.mode}>{Virtual ? 'Virtual' : 'In-person'}</div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default EventsCard;

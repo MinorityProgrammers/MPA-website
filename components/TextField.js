@@ -1,6 +1,8 @@
-import { useField } from "formik";
+import { useField } from 'formik';
 
-const TextField = ({ label, alertStyle, textStyle, ...props }) => {
+const TextField = function ({
+  label, alertStyle, textStyle, ...props
+}) {
   const [field, meta] = useField(props);
 
   return (

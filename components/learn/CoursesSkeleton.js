@@ -1,10 +1,10 @@
 import React from 'react';
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 import RecommendedCoursesListSkeleton from './RecommendedCoursesListSkeleton';
 
-const CoursesSkeleton = (props) => {
+const CoursesSkeleton = function (props) {
   const coursesLength = 4;
 
   const conditionalInfinite = {
@@ -19,18 +19,18 @@ const CoursesSkeleton = (props) => {
         breakpoint: 991,
         settings: {
           slidesToShow: 2,
-          infinite: coursesLength > 2
-        }
+          infinite: coursesLength > 2,
+        },
       },
       {
         breakpoint: 768,
         settings: {
           slidesToShow: 1,
-          infinite: coursesLength >= 1
-        }
-      }
-    ]
-  }
+          infinite: coursesLength >= 1,
+        },
+      },
+    ],
+  };
 
   return (
     <div>

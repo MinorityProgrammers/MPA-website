@@ -1,19 +1,18 @@
-import React, { useState } from "react";
-import Layout from "../components/Layout";
-import HomepageNav from "../components/HomepageNav";
-import BlackBanner from "../components/BlackBanner";
-import Footer from "../components/Footer";
-import SidebarTwo from "../components/SidebarTwo";
-import links from "../contexts/utils/links";
+import React, { useState } from 'react';
+import Layout from '../components/Layout';
+import HomepageNav from '../components/HomepageNav';
+import BlackBanner from '../components/BlackBanner';
+import Footer from '../components/Footer';
+import SidebarTwo from '../components/SidebarTwo';
+import links from '../contexts/utils/links';
 
-const TokenomicsPage = () => {
+const TokenomicsPage = function () {
   const [open, setOpen] = useState(false);
-  const bannerImgLink =
-    "https://raw.githubusercontent.com/MinorityProgrammers/graphics/f75b343d4eadc38bf1c6e27f3614329385eb4604/transactional%20burn%20tax.svg";
+  const bannerImgLink = 'https://raw.githubusercontent.com/MinorityProgrammers/graphics/f75b343d4eadc38bf1c6e27f3614329385eb4604/transactional%20burn%20tax.svg';
   return (
     <Layout pageTitle="$MINORITY Tokenomics">
-      <HomepageNav open={open} setOpen={setOpen} page={"Tokenomics"} />
-      <SidebarTwo open={open} setOpen={setOpen} links={links} active={"Home"} />
+      <HomepageNav open={open} setOpen={setOpen} page="Tokenomics" />
+      <SidebarTwo open={open} setOpen={setOpen} links={links} active="Home" />
       <BlackBanner
         title="$MINORITY Tokenomics"
         subtitle="%MINORITY Token Allocations."
@@ -22,7 +21,7 @@ const TokenomicsPage = () => {
       <iframe
         className="legal-frame"
         src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRih2lxPJmVGM9NB76xjOe6JX_2JVCE-1NPZnsGXaikOpFnHkWPSnnJT6iLcDr_AiobRvknX2jzHihN/pubhtml?widget=true&amp;headers=false"
-      ></iframe>
+      />
       <Footer />
     </Layout>
   );

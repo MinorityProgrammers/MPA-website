@@ -1,17 +1,16 @@
-import React from "react";
-import { useRouter } from "next/router";
-import styles from "../../styles/settings/specificSettingsLayoutNavigation.module.css";
-import { getSpecificSettingsLayoutNavigationList } from "../../helpers/getSpecificSettingsLayoutNavigationList";
+import React from 'react';
+import { useRouter } from 'next/router';
+import styles from '../../styles/settings/specificSettingsLayoutNavigation.module.css';
+import { getSpecificSettingsLayoutNavigationList } from '../../helpers/getSpecificSettingsLayoutNavigationList';
 
-function SettingsLayout({ settingsPage }) {
+const SettingsLayout = function ({ settingsPage }) {
   const router = useRouter();
 
   const settingsSubPage = router.pathname.substring(
-    router.pathname.lastIndexOf("/") + 1
+    router.pathname.lastIndexOf('/') + 1,
   );
 
-  const settingsNameAndList =
-    getSpecificSettingsLayoutNavigationList(settingsPage);
+  const settingsNameAndList = getSpecificSettingsLayoutNavigationList(settingsPage);
   return (
     <div className={styles.specificSettingsNavigation}>
       <nav>
@@ -32,19 +31,15 @@ function SettingsLayout({ settingsPage }) {
                     <img
                       src={setting.icon}
                       alt={`${setting.name} icon`}
-                      onClick={() =>
-                        router.push(
-                          `/settings/${settingsPage}/${setting.subPath}`
-                        )
-                      }
+                      onClick={() => router.push(
+                        `/settings/${settingsPage}/${setting.subPath}`,
+                      )}
                     />
                   </div>
                   <span
-                    onClick={() =>
-                      router.push(
-                        `/settings/${settingsPage}/${setting.subPath}`
-                      )
-                    }
+                    onClick={() => router.push(
+                      `/settings/${settingsPage}/${setting.subPath}`,
+                    )}
                   >
                     {setting.name}
                   </span>
@@ -52,11 +47,9 @@ function SettingsLayout({ settingsPage }) {
                     <img
                       src="../../assets/images/settings/arrow-white.svg"
                       alt="arrow icon"
-                      onClick={() =>
-                        router.push(
-                          `/settings/${settingsPage}/${setting.subPath}`
-                        )
-                      }
+                      onClick={() => router.push(
+                        `/settings/${settingsPage}/${setting.subPath}`,
+                      )}
                     />
                   </div>
                 </h2>
@@ -67,6 +60,6 @@ function SettingsLayout({ settingsPage }) {
       </nav>
     </div>
   );
-}
+};
 
 export default SettingsLayout;

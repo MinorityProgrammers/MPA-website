@@ -1,19 +1,21 @@
-import Events from "../components/events-proposal/events-component/events-component";
-import React, { useState, useRef, useEffect, useContext } from "react";
-import { GlobalContext } from "../contexts/provider";
-import HomepageNav from "../components/HomepageNav";
-import Layout from "../components/Layout";
-import Footer from "../components/Footer";
-import SidebarTwo from "../components/SidebarTwo";
-import links from "../contexts/utils/links";
-import { useDetectOutsideClick } from "../components/UseDetectOutsideClick";
-import ComingSoon from "../components/ComingSoon";
+import React, {
+  useState, useRef, useEffect, useContext,
+} from 'react';
+import Events from '../components/events-proposal/events-component/events-component';
+import { GlobalContext } from '../contexts/provider';
+import HomepageNav from '../components/HomepageNav';
+import Layout from '../components/Layout';
+import Footer from '../components/Footer';
+import SidebarTwo from '../components/SidebarTwo';
+import links from '../contexts/utils/links';
+import { useDetectOutsideClick } from '../components/UseDetectOutsideClick';
+import ComingSoon from '../components/ComingSoon';
 
 const events = () => {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState(false);
   const [clickRegister, setClickRegister] = useState(false);
-  const [token, setToken] = useState("");
+  const [token, setToken] = useState('');
   const dropdownRef = useRef(null);
   const [userData, setUserData] = useState([]);
   const [hide, setHide] = useDetectOutsideClick(dropdownRef, false);
@@ -35,8 +37,8 @@ const events = () => {
   } = useContext(GlobalContext);
 
   useEffect(() => {
-    const token = window.localStorage.getItem("jwtToken");
-    const userInfo = window.localStorage.getItem("userInfo");
+    const token = window.localStorage.getItem('jwtToken');
+    const userInfo = window.localStorage.getItem('userInfo');
 
     if (token == null || userInfo == {}) {
       setUserData(null);
@@ -54,14 +56,14 @@ const events = () => {
           <HomepageNav
             open={open}
             setOpen={setOpen}
-            page={"Events"}
+            page="Events"
             setToken={setToken}
           />
           <SidebarTwo
             open={open}
             setOpen={setOpen}
             links={links}
-            active={"Home"}
+            active="Home"
             handleClick={handleClick}
           />
           {hide == false && <ComingSoon closeClick={handleClick} />}

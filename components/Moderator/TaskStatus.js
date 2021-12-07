@@ -1,11 +1,9 @@
-import React from "react";
-import { useEffect } from "react";
-import { useState } from "react";
-import electProposal from "./electProposal.json";
-import { RiFlag2Fill } from "react-icons/ri";
-import { BsThreeDotsVertical } from "react-icons/bs";
+import React, { useEffect, useState } from 'react';
+import { RiFlag2Fill } from 'react-icons/ri';
+import { BsThreeDotsVertical } from 'react-icons/bs';
+import electProposal from './electProposal.json';
 
-const TaskStatus = () => {
+const TaskStatus = function () {
   const [proposals, setProposals] = useState([]);
 
   useEffect(() => {
@@ -76,7 +74,7 @@ const TaskStatus = () => {
   );
 };
 
-const ProposalList = ({ id, sDes, flag }) => {
+const ProposalList = function ({ id, sDes, flag }) {
   return (
     <div className="task-card tw-col-span-1 tw-mr-2 tw-mb-2">
       <div className="task-des tw-flex">

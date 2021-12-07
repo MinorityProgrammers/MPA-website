@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-const CallToActionTwo = () => {
+const CallToActionTwo = function () {
   return (
     <div className="cta-two">
       <div className="container-fluid">
@@ -9,14 +9,17 @@ const CallToActionTwo = () => {
             <div className="cta-two__single">
               <div className="cta-two__icon">
                 <span>
-                  <i className="kipso-icon-professor"></i>
+                  <i className="kipso-icon-professor" />
                 </span>
               </div>
               <div className="cta-two__content">
                 <h2 className="cta-two__title">Become an teacher</h2>
                 <p className="cta-two__text">
-                  There are many variations of passages of lore available but{" "}
-                  <br /> the majority have suffered alteration in some form.
+                  There are many variations of passages of lore available but
+                  {' '}
+                  <br />
+                  {' '}
+                  the majority have suffered alteration in some form.
                 </p>
                 <a href="#" className="thm-btn cta-two__btn">
                   Start Teaching
@@ -28,14 +31,17 @@ const CallToActionTwo = () => {
             <div className="cta-two__single">
               <div className="cta-two__icon">
                 <span>
-                  <i className="kipso-icon-knowledge"></i>
+                  <i className="kipso-icon-knowledge" />
                 </span>
               </div>
               <div className="cta-two__content">
                 <h2 className="cta-two__title">Join our community</h2>
                 <p className="cta-two__text">
-                  There are many variations of passages of lore available but{" "}
-                  <br /> the majority have suffered alteration in some form.
+                  There are many variations of passages of lore available but
+                  {' '}
+                  <br />
+                  {' '}
+                  the majority have suffered alteration in some form.
                 </p>
                 <a href="#" className="thm-btn cta-two__btn">
                   Start Learning

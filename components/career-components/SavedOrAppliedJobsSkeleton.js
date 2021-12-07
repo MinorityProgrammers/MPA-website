@@ -1,6 +1,6 @@
 import Skeleton from 'react-loading-skeleton';
 
-const SavedOrAppliedJobSkeleton = () => {
+const SavedOrAppliedJobSkeleton = function () {
   return (
     <div className="saved-job-stub">
       <div className="saved-job-stub-header">
@@ -14,7 +14,7 @@ const SavedOrAppliedJobSkeleton = () => {
         <Skeleton className="saved-job-stub-saveLink" />
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default SavedOrAppliedJobSkeleton;

@@ -1,16 +1,17 @@
-import styles from './jobs-card.module.css';
 import { useState } from 'react';
+import styles from './jobs-card.module.css';
 import JobsPopup from './jobs-popup';
 
-const JobsCard = ({ data }) => {
+const JobsCard = function ({ data }) {
   const [popup, togglePopup] = useState(false);
 
-  const { easy_apply, job_title, location, pay, job_type, companyId: { company_name } } = data;
-
+  const {
+    easy_apply, job_title, location, pay, job_type, companyId: { company_name },
+  } = data;
 
   const handleClick = () => {
-    togglePopup(true)
-  }
+    togglePopup(true);
+  };
 
   return (
     <div className={styles.wrapper}>
@@ -43,7 +44,7 @@ const JobsCard = ({ data }) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default JobsCard;

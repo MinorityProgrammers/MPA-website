@@ -1,7 +1,7 @@
-import React from "react";
-import Program from "../components/Program";
+import React from 'react';
+import Program from './Program';
 
-const Entrepreneur = () => {
+const Entrepreneur = function () {
   return (
     <section id="onboarding" className="pricing-one pricing-page ">
       <div className="container">

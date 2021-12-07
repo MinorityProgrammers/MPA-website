@@ -1,7 +1,7 @@
-import React from "react";
-import Link from "next/link";
+import React from 'react';
+import Link from 'next/link';
 
-const Courses = () => {
+const Courses = function () {
   return (
     <section className="course-one course-page">
       <div className="container">
@@ -10,7 +10,7 @@ const Courses = () => {
             <div className="course-one__single">
               <div className="course-one__image">
                 <img src="/assets/images/course-1-1.jpg" alt="" />
-                <i className="far fa-heart"></i>
+                <i className="far fa-heart" />
               </div>
               <div className="course-one__content">
                 <a href="#" className="course-one__category">
@@ -23,11 +23,14 @@ const Courses = () => {
                 </h2>
                 <div className="course-one__meta">
                   <a href="/course-details">
-                    <i className="far fa-clock"></i>Sunday April 24 - Saturday
+                    <i className="far fa-clock" />
+                    Sunday April 24 - Saturday
                     April 25, 2021
                   </a>
                   <a href="/course-details">
-                    <i className="far fa-folder-open"></i> 6 Lectures
+                    <i className="far fa-folder-open" />
+                    {' '}
+                    6 Lectures
                   </a>
                   <a href="/course-details">Free</a>
                 </div>
@@ -41,7 +44,7 @@ const Courses = () => {
             <div className="course-one__single">
               <div className="course-one__image">
                 <img src="/assets/images/course-1-1.jpg" alt="" />
-                <i className="far fa-heart"></i>
+                <i className="far fa-heart" />
               </div>
               <div className="course-one__content">
                 <a href="#" className="course-one__category">
@@ -54,11 +57,14 @@ const Courses = () => {
                 </h2>
                 <div className="course-one__meta">
                   <a href="/course-details">
-                    <i className="far fa-clock"></i>Sunday April 24 - Saturday
+                    <i className="far fa-clock" />
+                    Sunday April 24 - Saturday
                     April 25, 2021
                   </a>
                   <a href="/course-details">
-                    <i className="far fa-folder-open"></i> 6 Lectures
+                    <i className="far fa-folder-open" />
+                    {' '}
+                    6 Lectures
                   </a>
                   <a href="/course-details">Free</a>
                 </div>
@@ -72,7 +78,7 @@ const Courses = () => {
             <div className="course-one__single">
               <div className="course-one__image">
                 <img src="/assets/images/course-1-3.jpg" alt="" />
-                <i className="far fa-heart"></i>
+                <i className="far fa-heart" />
               </div>
               <div className="course-one__content">
                 <a href="#" className="course-one__category">
@@ -80,7 +86,8 @@ const Courses = () => {
                 </a>
                 <div className="course-one__admin">
                   <img src="/assets/images/team-1-3.jpg" alt="" />
-                  by{" "}
+                  by
+                  {' '}
                   <Link href="/teacher-details">
                     <a>Ruth Becker</a>
                   </Link>
@@ -92,21 +99,25 @@ const Courses = () => {
                 </h2>
                 <div className="course-one__stars">
                   <span className="course-one__stars-wrap">
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star"></i>
+                    <i className="fa fa-star" />
+                    <i className="fa fa-star" />
+                    <i className="fa fa-star" />
+                    <i className="fa fa-star" />
+                    <i className="fa fa-star" />
                   </span>
                   <span className="course-one__count">4.8</span>
                   <span className="course-one__stars-count">250</span>
                 </div>
                 <div className="course-one__meta">
                   <a href="/course-details">
-                    <i className="far fa-clock"></i> 10 Hours
+                    <i className="far fa-clock" />
+                    {' '}
+                    10 Hours
                   </a>
                   <a href="/course-details">
-                    <i className="far fa-folder-open"></i> 6 Lectures
+                    <i className="far fa-folder-open" />
+                    {' '}
+                    6 Lectures
                   </a>
                   <a href="/course-details">$18</a>
                 </div>
@@ -120,7 +131,7 @@ const Courses = () => {
             <div className="course-one__single">
               <div className="course-one__image">
                 <img src="/assets/images/course-1-4.jpg" alt="" />
-                <i className="far fa-heart"></i>
+                <i className="far fa-heart" />
               </div>
               <div className="course-one__content">
                 <a href="#" className="course-one__category">
@@ -128,7 +139,8 @@ const Courses = () => {
                 </a>
                 <div className="course-one__admin">
                   <img src="/assets/images/team-1-4.jpg" alt="" />
-                  by{" "}
+                  by
+                  {' '}
                   <Link href="/teacher-details">
                     <a>Ernest Rodriquez</a>
                   </Link>
@@ -140,21 +152,25 @@ const Courses = () => {
                 </h2>
                 <div className="course-one__stars">
                   <span className="course-one__stars-wrap">
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star"></i>
+                    <i className="fa fa-star" />
+                    <i className="fa fa-star" />
+                    <i className="fa fa-star" />
+                    <i className="fa fa-star" />
+                    <i className="fa fa-star" />
                   </span>
                   <span className="course-one__count">4.8</span>
                   <span className="course-one__stars-count">250</span>
                 </div>
                 <div className="course-one__meta">
                   <a href="/course-details">
-                    <i className="far fa-clock"></i> 10 Hours
+                    <i className="far fa-clock" />
+                    {' '}
+                    10 Hours
                   </a>
                   <a href="/course-details">
-                    <i className="far fa-folder-open"></i> 6 Lectures
+                    <i className="far fa-folder-open" />
+                    {' '}
+                    6 Lectures
                   </a>
                   <a href="/course-details">$18</a>
                 </div>
@@ -168,7 +184,7 @@ const Courses = () => {
             <div className="course-one__single">
               <div className="course-one__image">
                 <img src="/assets/images/course-1-5.jpg" alt="" />
-                <i className="far fa-heart"></i>
+                <i className="far fa-heart" />
               </div>
               <div className="course-one__content">
                 <a href="#" className="course-one__category">
@@ -176,7 +192,8 @@ const Courses = () => {
                 </a>
                 <div className="course-one__admin">
                   <img src="/assets/images/team-1-5.jpg" alt="" />
-                  by{" "}
+                  by
+                  {' '}
                   <Link href="/teacher-details">
                     <a>Isabella Stanley</a>
                   </Link>
@@ -188,21 +205,25 @@ const Courses = () => {
                 </h2>
                 <div className="course-one__stars">
                   <span className="course-one__stars-wrap">
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star"></i>
+                    <i className="fa fa-star" />
+                    <i className="fa fa-star" />
+                    <i className="fa fa-star" />
+                    <i className="fa fa-star" />
+                    <i className="fa fa-star" />
                   </span>
                   <span className="course-one__count">4.8</span>
                   <span className="course-one__stars-count">250</span>
                 </div>
                 <div className="course-one__meta">
                   <a href="/course-details">
-                    <i className="far fa-clock"></i> 10 Hours
+                    <i className="far fa-clock" />
+                    {' '}
+                    10 Hours
                   </a>
                   <a href="/course-details">
-                    <i className="far fa-folder-open"></i> 6 Lectures
+                    <i className="far fa-folder-open" />
+                    {' '}
+                    6 Lectures
                   </a>
                   <a href="/course-details">$18</a>
                 </div>
@@ -216,7 +237,7 @@ const Courses = () => {
             <div className="course-one__single">
               <div className="course-one__image">
                 <img src="/assets/images/course-1-6.jpg" alt="" />
-                <i className="far fa-heart"></i>
+                <i className="far fa-heart" />
               </div>
               <div className="course-one__content">
                 <a href="#" className="course-one__category">
@@ -224,7 +245,8 @@ const Courses = () => {
                 </a>
                 <div className="course-one__admin">
                   <img src="/assets/images/team-1-6.jpg" alt="" />
-                  by{" "}
+                  by
+                  {' '}
                   <Link href="/teacher-details">
                     <a>Katherine Collins</a>
                   </Link>
@@ -236,21 +258,25 @@ const Courses = () => {
                 </h2>
                 <div className="course-one__stars">
                   <span className="course-one__stars-wrap">
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star"></i>
+                    <i className="fa fa-star" />
+                    <i className="fa fa-star" />
+                    <i className="fa fa-star" />
+                    <i className="fa fa-star" />
+                    <i className="fa fa-star" />
                   </span>
                   <span className="course-one__count">4.8</span>
                   <span className="course-one__stars-count">250</span>
                 </div>
                 <div className="course-one__meta">
                   <a href="/course-details">
-                    <i className="far fa-clock"></i> 10 Hours
+                    <i className="far fa-clock" />
+                    {' '}
+                    10 Hours
                   </a>
                   <a href="/course-details">
-                    <i className="far fa-folder-open"></i> 6 Lectures
+                    <i className="far fa-folder-open" />
+                    {' '}
+                    6 Lectures
                   </a>
                   <a href="/course-details">$18</a>
                 </div>
@@ -263,7 +289,7 @@ const Courses = () => {
         </div>
         <div className="post-pagination">
           <a href="#">
-            <i className="fa fa-angle-double-left"></i>
+            <i className="fa fa-angle-double-left" />
           </a>
           <a className="active" href="#">
             1
@@ -272,7 +298,7 @@ const Courses = () => {
           <a href="#">3</a>
           <a href="#">4</a>
           <a href="#">
-            <i className="fa fa-angle-double-right"></i>
+            <i className="fa fa-angle-double-right" />
           </a>
         </div>
       </div>

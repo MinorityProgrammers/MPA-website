@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import CountUp from "react-countup";
-import VisibilitySensor from "react-visibility-sensor";
+import React, { Component } from 'react';
+import CountUp from 'react-countup';
+import VisibilitySensor from 'react-visibility-sensor';
 
 class AboutOne extends Component {
   constructor() {
@@ -27,7 +27,9 @@ class AboutOne extends Component {
         <div className="container text-center">
           <div className="block-title text-center">
             <h2 className="block-title__title">
-              Let’s study with <br />
+              Let’s study with
+              {' '}
+              <br />
               expert instructors
             </h2>
           </div>
@@ -51,11 +53,11 @@ class AboutOne extends Component {
                 </VisibilitySensor>
               </p>
               <div className="about-one__review-stars">
-                <i className="fas fa-star"></i>
-                <i className="fas fa-star"></i>
-                <i className="fas fa-star"></i>
-                <i className="fas fa-star"></i>
-                <i className="fas fa-star"></i>
+                <i className="fas fa-star" />
+                <i className="fas fa-star" />
+                <i className="fas fa-star" />
+                <i className="fas fa-star" />
+                <i className="fas fa-star" />
               </div>
               <p className="about-one__review-text">students love us</p>
             </div>
@@ -65,7 +67,11 @@ class AboutOne extends Component {
             the majority have
             <br />
             suffered alteration in some form, by injected humour words which
-            don't look even slightly <br /> believable. Lorem Ipsn gravida nibh
+            don't look even slightly
+            {' '}
+            <br />
+            {' '}
+            believable. Lorem Ipsn gravida nibh
             vel velit auctor aliquetn auci elit cons.
           </p>
           <a href="#" className="thm-btn about-one__btn">

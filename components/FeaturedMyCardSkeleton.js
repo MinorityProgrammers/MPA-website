@@ -1,6 +1,6 @@
-import Skeleton from "react-loading-skeleton";
+import Skeleton from 'react-loading-skeleton';
 
-const FeaturedMyCardSkeleton = () => {
+const FeaturedMyCardSkeleton = function () {
   return (
     <div className="item" style={{ borderRadius: 20 }}>
       <div className="card card__container">

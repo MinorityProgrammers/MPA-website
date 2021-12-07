@@ -1,7 +1,7 @@
-import React from "react";
-import styles from "./footer.module.css";
+import React from 'react';
+import styles from './footer.module.css';
 
-const Footer = () => {
+const Footer = function () {
   return (
     <div className={styles.footer}>
       <footer className="">
@@ -29,7 +29,7 @@ const Footer = () => {
                         <a href="learn#mpu">Learn</a>
                       </li>
                       <li>
-                        <a href="https://www.defisummer.org" target="_blank">
+                        <a href="https://www.defisummer.org" target="_blank" rel="noreferrer">
                           DefiSummer
                         </a>
                       </li>
@@ -42,7 +42,7 @@ const Footer = () => {
                   <h2 className="footer-widget__title">Explore</h2>
                   <div className="footer-widget__link-wrap">
                     <ul
-                      className={`list-unstyled footer-widget__link-list`}
+                      className="list-unstyled footer-widget__link-list"
                       id={styles.white_link}
                     >
                       <li>

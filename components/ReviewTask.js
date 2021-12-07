@@ -1,10 +1,10 @@
-import { MdArrowDropDown } from "react-icons/md";
-import { CgAttachment } from "react-icons/cg";
-import { GrEmoji } from "react-icons/gr";
-import { BiMessageRounded } from "react-icons/bi";
-import { IoIosMail } from "react-icons/io";
+import { MdArrowDropDown } from 'react-icons/md';
+import { CgAttachment } from 'react-icons/cg';
+import { GrEmoji } from 'react-icons/gr';
+import { BiMessageRounded } from 'react-icons/bi';
+import { IoIosMail } from 'react-icons/io';
 
-const ReviewTask = () => {
+const ReviewTask = function () {
   return (
     <div className="tw-grid tw-grid-cols-1 tw-mb-16">
       <div className="tw-w-11/12 tw-place-self-center tw-mt-32 tw-shadow-2xl">
@@ -13,7 +13,8 @@ const ReviewTask = () => {
             <div className="tw-flex tw-justify-evenly">
               <p className="tw-text-black tw-m-2">In</p>
               <p className="tw-m-2">
-                Category<span className="tw-text-black">{">"}</span>
+                Category
+                <span className="tw-text-black">{'>'}</span>
                 <span>Subcategory </span>
               </p>
               <p className="tw-mt-2 tw-ml-2 tw-text-black">For </p>
@@ -95,7 +96,7 @@ const ReviewTask = () => {
       </div>
       <div className="tw-w-11/12 tw-place-self-center">
         <div className="tw-shadow-inner tw-bg-gray-100 shadow-lg">
-          <div class="tw-grid tw-grid-flow-col tw-grid-cols-2 tw-gap-4 tw-justify-between">
+          <div className="tw-grid tw-grid-flow-col tw-grid-cols-2 tw-gap-4 tw-justify-between">
             <div className=" tw-overflow-y-auto tw-h-48 ">
               <div>
                 <h1 className=" text-center">Task Description</h1>
@@ -116,7 +117,7 @@ const ReviewTask = () => {
                 </div>
                 <div className=" tw-flex tw-justify-center  ">
                   <button className="tw-bg-white shadow tw-p-2">
-                    {" "}
+                    {' '}
                     Show More
                   </button>
                 </div>
@@ -131,7 +132,7 @@ const ReviewTask = () => {
                     <path
                       d="M20.6428 0H5.35712C2.39991 0.00351562 0.00351562 2.39991 0 5.35712V20.6428C0.00351562 23.6 2.39991 25.9964 5.35712 25.9999H20.6428C23.6 25.9964 25.9964 23.6 25.9999 20.6428V5.35712C25.9964 2.39991 23.6 0.00351562 20.6428 0ZM18.3571 14.0714H14.0714V18.3571C14.0714 18.9489 13.5917 19.4286 13 19.4286C12.4082 19.4286 11.9285 18.9489 11.9285 18.3571V14.0714H7.64285C7.0511 14.0714 6.5714 13.5917 6.5714 13C6.5714 12.4082 7.0511 11.9285 7.64285 11.9285H11.9286V7.64285C11.9286 7.0511 12.4083 6.5714 13 6.5714C13.5918 6.5714 14.0714 7.0511 14.0714 7.64285V11.9286H18.3571C18.9489 11.9286 19.4286 12.4083 19.4286 13C19.4286 13.5918 18.9488 14.0714 18.3571 14.0714Z"
                       fill="#FF00B8"
-                      fill-opacity="0.6"
+                      fillOpacity="0.6"
                     />
                   </svg>
                   <h3>Add Subtask</h3>
@@ -151,17 +152,17 @@ const ReviewTask = () => {
               <div>
                 <div className="tw-bg-gray-200 tw-h-48 tw-p-3 tw-m-3  ">
                   <div className="tw-flex tw-items-center tw-justify-start tw-gap-2">
-                    <div className="tw-bg-gray-400 tw-h-2 tw-w-2"></div>
+                    <div className="tw-bg-gray-400 tw-h-2 tw-w-2" />
 
                     <p>Checklist Point 1</p>
                   </div>
                   <div className="tw-flex tw-items-center tw-justify-start tw-gap-2">
-                    <div className="tw-bg-gray-400 tw-h-2 tw-w-2"></div>
+                    <div className="tw-bg-gray-400 tw-h-2 tw-w-2" />
 
                     <p>Checklist Point 1</p>
                   </div>
                   <div className="tw-flex tw-items-center tw-justify-start tw-gap-2">
-                    <div className="tw-bg-gray-400 tw-h-2 tw-w-2"></div>
+                    <div className="tw-bg-gray-400 tw-h-2 tw-w-2" />
 
                     <p>Checklist Point 1</p>
                   </div>
@@ -173,7 +174,7 @@ const ReviewTask = () => {
         {/* Down part ------------ */}
         <hr />
         <div className="tw-shadow-inner tw-h-5/6 tw-bg-gray-100 shadow-lg">
-          <div class="tw-grid tw-grid-flow-col tw-grid-cols-2 tw-gap-4 tw-justify-between ">
+          <div className="tw-grid tw-grid-flow-col tw-grid-cols-2 tw-gap-4 tw-justify-between ">
             <div className=" tw-overflow-y-auto tw-h-32 tw-mt-4">
               <div>
                 <h1 className=" text-center">Task Status Updates</h1>
@@ -214,7 +215,7 @@ const ReviewTask = () => {
                       />
                     </svg>
                     <IoIosMail size="30px" />
-                    <h3 class="tw-border-2  tw-border-black tw-ml-3 text-center tw-p-1 tw-text-green-900 rounded">
+                    <h3 className="tw-border-2  tw-border-black tw-ml-3 text-center tw-p-1 tw-text-green-900 rounded">
                       Comment
                     </h3>
                   </div>
@@ -231,7 +232,11 @@ const ReviewTask = () => {
               SEND TASK BACK TO CORE TEAM
             </h1>
             <p className="tw-text-white tw-text-sm tw-font-thin tw-text-center">
-              Send the task back to core team if the task <br /> doesnt meet
+              Send the task back to core team if the task
+              {' '}
+              <br />
+              {' '}
+              doesnt meet
               definition of done.
             </p>
             <p>
@@ -242,9 +247,9 @@ const ReviewTask = () => {
           </div>
         </div>
         <div className="tw-grid tw-grid-cols-1">
-          <div className="tw-border-l-2 tw-place-self-center tw-h-24 tw-mt-4 tw-border-black"></div>
+          <div className="tw-border-l-2 tw-place-self-center tw-h-24 tw-mt-4 tw-border-black" />
           <div className="tw-place-self-center tw-text-black">Or</div>
-          <div className="tw-border-l-2 tw-place-self-center tw-h-24 tw-mb-4 tw-border-black"></div>
+          <div className="tw-border-l-2 tw-place-self-center tw-h-24 tw-mb-4 tw-border-black" />
         </div>
         <div className="tw-bg-white tw-bg-opacity-40 tw-border-2 tw-border-black tw-col-span-5 tw-text-center tw-mt-8 tw-m-1 tw-h-56 tw-mb-16 tw-w-10/12 tw-place-self-center tw-p-16">
           <div className="tw-items-center tw-pb-10">
@@ -253,7 +258,9 @@ const ReviewTask = () => {
             </h1>
             <p className="tw-text-black tw-text-sm tw-font-thin tw-text-center">
               Notify users that the proposal moved to completed stage,
-              <br /> once task has been checked to satisfy DOD.
+              <br />
+              {' '}
+              once task has been checked to satisfy DOD.
             </p>
             <p>
               <button className="tw-text-white tw-rounded tw-h-8 tw-w-24 tw-mt-4 tw-bg-blue-700">

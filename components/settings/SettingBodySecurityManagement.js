@@ -1,15 +1,15 @@
-import React, { useState, useEffect, useContext } from "react";
-import { GlobalContext } from "../../contexts/provider";
-import { updateProfile } from "../../contexts/actions/profile/updateProfile";
-import FormData from "form-data";
-import { all } from "../../contexts/utils/settings/settingsInputFields";
-import styles from "../../styles/settings/settingBodySecurityManagement.module.css";
-import { useRouter } from "next/router";
-import SettingBody from "./SettingBody";
-import SettingBodySecurityManagementModal from "./SettingBodySecurityManagementModal";
+import React, { useState, useEffect, useContext } from 'react';
+import FormData from 'form-data';
+import { useRouter } from 'next/router';
+import { GlobalContext } from '../../contexts/provider';
+import { updateProfile } from '../../contexts/actions/profile/updateProfile';
+import { all } from '../../contexts/utils/settings/settingsInputFields';
+import styles from '../../styles/settings/settingBodySecurityManagement.module.css';
+import SettingBody from './SettingBody';
+import SettingBodySecurityManagementModal from './SettingBodySecurityManagementModal';
 
-function SettingBodySecurityManagement({ settingsPage, data, userID }) {
-  const [modal, openModal] = useState("");
+const SettingBodySecurityManagement = function ({ settingsPage, data, userID }) {
+  const [modal, openModal] = useState('');
   const router = useRouter();
 
   const goBack = () => {
@@ -24,7 +24,7 @@ function SettingBodySecurityManagement({ settingsPage, data, userID }) {
 
   return (
     <SettingBody settingsPage={settingsPage} data={data} userID={userID}>
-      {(modal === "deactivate" || modal === "delete") && (
+      {(modal === 'deactivate' || modal === 'delete') && (
         <SettingBodySecurityManagementModal
           modal={modal}
           goBack={goBack}
@@ -36,7 +36,7 @@ function SettingBodySecurityManagement({ settingsPage, data, userID }) {
         <div className={styles.btnWrapper}>
           <div
             className={`${styles.btn} ${styles.deactivate}`}
-            onClick={() => openModal("deactivate")}
+            onClick={() => openModal('deactivate')}
           >
             Deactivate Account
           </div>
@@ -47,7 +47,7 @@ function SettingBodySecurityManagement({ settingsPage, data, userID }) {
         <div className={styles.btnWrapper}>
           <div
             className={`${styles.btn} ${styles.delete}`}
-            onClick={() => openModal("delete")}
+            onClick={() => openModal('delete')}
           >
             Delete Account
           </div>
@@ -56,6 +56,6 @@ function SettingBodySecurityManagement({ settingsPage, data, userID }) {
       </div>
     </SettingBody>
   );
-}
+};
 
 export default SettingBodySecurityManagement;

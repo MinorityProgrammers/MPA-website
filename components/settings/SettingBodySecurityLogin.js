@@ -1,17 +1,17 @@
-import React, { useState, useEffect, useContext } from "react";
-import { GlobalContext } from "../../contexts/provider";
-import { updateProfile } from "../../contexts/actions/profile/updateProfile";
-import FormData from "form-data";
-import { all } from "../../contexts/utils/settings/settingsInputFields";
-import styles from "../../styles/settings/settingBodySecurityLogin.module.css";
-import { useRouter } from "next/router";
-import CreateSettingInput from "./CreateSettingInput";
-import SettingBody from "./SettingBody";
-import { uprContext } from "../../contexts/settingsPagesProvider/settingsPagesProvider";
-import { findUserNames } from "../../helpers/userNames";
-import { findUserEmails } from "../../helpers/userEmails";
+import React, { useState, useEffect, useContext } from 'react';
+import FormData from 'form-data';
+import { useRouter } from 'next/router';
+import { GlobalContext } from '../../contexts/provider';
+import { updateProfile } from '../../contexts/actions/profile/updateProfile';
+import { all } from '../../contexts/utils/settings/settingsInputFields';
+import styles from '../../styles/settings/settingBodySecurityLogin.module.css';
+import CreateSettingInput from './CreateSettingInput';
+import SettingBody from './SettingBody';
+import { uprContext } from '../../contexts/settingsPagesProvider/settingsPagesProvider';
+import { findUserNames } from '../../helpers/userNames';
+import { findUserEmails } from '../../helpers/userEmails';
 
-function SettingBodySecurityLogin({ settingsPage, data, userID }) {
+const SettingBodySecurityLogin = function ({ settingsPage, data, userID }) {
   const router = useRouter();
   const [changePassword, setChangePassword] = useState(false);
   const [usernames, setUsernames] = useState([]);
@@ -21,14 +21,13 @@ function SettingBodySecurityLogin({ settingsPage, data, userID }) {
   const [emailWarning, setEmailWarning] = useState(false);
   const [wrongEmailWarning, setWrongEmailWarning] = useState(false);
 
-  const { updatePasswordRedirection, setUpdatePasswordRedirection } =
-    useContext(uprContext);
+  const { updatePasswordRedirection, setUpdatePasswordRedirection } = useContext(uprContext);
   useEffect(() => {
     updatePasswordRedirection && setChangePassword(true);
   }, []);
 
   useEffect(() => {
-    fetch("https://koinstreet-learn-api.herokuapp.com/api/v1/user")
+    fetch('https://koinstreet-learn-api.herokuapp.com/api/v1/user')
       .then((response) => response.json())
       .then((data) => {
         setUsernames(findUserNames(data.data));
@@ -36,8 +35,7 @@ function SettingBodySecurityLogin({ settingsPage, data, userID }) {
       });
   }, []);
 
-  let regEmail =
-    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  const regEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
   const inputFields = [
     all.emailField,
@@ -50,7 +48,7 @@ function SettingBodySecurityLogin({ settingsPage, data, userID }) {
   const initialInputState = {};
 
   inputFields.forEach(
-    (field) => (initialInputState[field.name] = "")
+    (field) => (initialInputState[field.name] = ''),
     // ex. {someInputFieldName: "inputFieldValue", ...}
   );
 
@@ -58,7 +56,7 @@ function SettingBodySecurityLogin({ settingsPage, data, userID }) {
 
   useEffect(() => {
     inputFields.forEach(
-      (field) => (initialInputState[field.name] = data?.[field.name] || "")
+      (field) => (initialInputState[field.name] = data?.[field.name] || ''),
     );
 
     setInputStates(initialInputState);
@@ -68,17 +66,19 @@ function SettingBodySecurityLogin({ settingsPage, data, userID }) {
   const {
     profileDispatch,
     profileState: {
-      profile: { profileLoading, profileError, profileData, profileIsUpdated },
+      profile: {
+        profileLoading, profileError, profileData, profileIsUpdated,
+      },
     },
   } = useContext(GlobalContext);
 
   const formData = new FormData();
   Object.keys(inputStates).forEach((inputName) => {
     let value;
-    if (inputName === "email" && inputStates[inputName] === "") {
-      value = data?.email ? data.email : "";
-    } else if (inputName === "userName" && inputStates[inputName] === "") {
-      value = data?.email ? data.email : "";
+    if (inputName === 'email' && inputStates[inputName] === '') {
+      value = data?.email ? data.email : '';
+    } else if (inputName === 'userName' && inputStates[inputName] === '') {
+      value = data?.email ? data.email : '';
     } else {
       value = inputStates[inputName];
     }
@@ -88,27 +88,27 @@ function SettingBodySecurityLogin({ settingsPage, data, userID }) {
 
   const handleChange = (name, value) => {
     if (
-      name === "userName" &&
-      usernames.includes(value) &&
-      data?.userName !== value &&
-      !(value === "")
+      name === 'userName'
+      && usernames.includes(value)
+      && data?.userName !== value
+      && !(value === '')
     ) {
       toggleUsernameWarning(true);
     } else {
       toggleUsernameWarning(false);
     }
 
-    if (name === "userName" && /[^\w\-]/.test(value)) {
+    if (name === 'userName' && /[^\w\-]/.test(value)) {
       toggleWrongUsernameWarning(true);
     } else {
       toggleWrongUsernameWarning(false);
     }
 
     if (
-      name === "email" &&
-      emails.includes(value) &&
-      data?.email !== value &&
-      !(value === "")
+      name === 'email'
+      && emails.includes(value)
+      && data?.email !== value
+      && !(value === '')
     ) {
       toggleEmailWarning(true);
     } else {
@@ -116,9 +116,9 @@ function SettingBodySecurityLogin({ settingsPage, data, userID }) {
     }
 
     if (
-      name === "email" &&
-      (value.trim().length < 5 ||
-        (value.trim().length >= 5 && !regEmail.test(value.trim())))
+      name === 'email'
+      && (value.trim().length < 5
+        || (value.trim().length >= 5 && !regEmail.test(value.trim())))
     ) {
       toggleWrongEmailWarning(true);
     } else {
@@ -133,33 +133,28 @@ function SettingBodySecurityLogin({ settingsPage, data, userID }) {
       if (!usernameWarning) {
         const warning = "<p class='cp-warning'>Username unavailable</p>";
         document
-          .getElementsByClassName("securityLoginPasswordInput")[0]
-          .insertAdjacentHTML("afterend", warning);
+          .getElementsByClassName('securityLoginPasswordInput')[0]
+          .insertAdjacentHTML('afterend', warning);
         setUsernameWarning(true);
       }
-    } else {
-      if (usernameWarning) {
-        document.getElementsByClassName("cp-warning")[0].remove();
-        setUsernameWarning(false);
-      }
+    } else if (usernameWarning) {
+      document.getElementsByClassName('cp-warning')[0].remove();
+      setUsernameWarning(false);
     }
   };
 
   const toggleWrongUsernameWarning = (on) => {
     if (on) {
       if (!wrongUsernameWarning) {
-        const warning =
-          "<p class='cp-warning'>Wrong username, allowed: letters, numbers and dashes</p>";
+        const warning = "<p class='cp-warning'>Wrong username, allowed: letters, numbers and dashes</p>";
         document
-          .getElementsByClassName("securityLoginPasswordInput")[0]
-          .insertAdjacentHTML("afterend", warning);
+          .getElementsByClassName('securityLoginPasswordInput')[0]
+          .insertAdjacentHTML('afterend', warning);
         setWrongUsernameWarning(true);
       }
-    } else {
-      if (wrongUsernameWarning) {
-        document.getElementsByClassName("cp-warning")[0].remove();
-        setWrongUsernameWarning(false);
-      }
+    } else if (wrongUsernameWarning) {
+      document.getElementsByClassName('cp-warning')[0].remove();
+      setWrongUsernameWarning(false);
     }
   };
 
@@ -168,15 +163,13 @@ function SettingBodySecurityLogin({ settingsPage, data, userID }) {
       if (!emailWarning) {
         const warning = "<p class='cp-warning'>Email unavailable</p>";
         document
-          .getElementsByClassName("securityEmailInput")[0]
-          .insertAdjacentHTML("afterend", warning);
+          .getElementsByClassName('securityEmailInput')[0]
+          .insertAdjacentHTML('afterend', warning);
         setEmailWarning(true);
       }
-    } else {
-      if (emailWarning) {
-        document.getElementsByClassName("cp-warning")[0].remove();
-        setEmailWarning(false);
-      }
+    } else if (emailWarning) {
+      document.getElementsByClassName('cp-warning')[0].remove();
+      setEmailWarning(false);
     }
   };
 
@@ -185,56 +178,54 @@ function SettingBodySecurityLogin({ settingsPage, data, userID }) {
       if (!wrongEmailWarning) {
         const warning = "<p class='cp-warning'>Email is invalid</p>";
         document
-          .getElementsByClassName("securityEmailInput")[0]
-          .insertAdjacentHTML("afterend", warning);
+          .getElementsByClassName('securityEmailInput')[0]
+          .insertAdjacentHTML('afterend', warning);
         setWrongEmailWarning(true);
       }
-    } else {
-      if (wrongEmailWarning) {
-        document.getElementsByClassName("cp-warning")[0].remove();
-        setWrongEmailWarning(false);
-      }
+    } else if (wrongEmailWarning) {
+      document.getElementsByClassName('cp-warning')[0].remove();
+      setWrongEmailWarning(false);
     }
   };
 
   const handleSubmit = () => {
     if (
       // email already exists
-      emails.includes(inputStates?.email) &&
-      data?.email !== inputStates?.email &&
-      !(inputStates?.email === "")
+      emails.includes(inputStates?.email)
+      && data?.email !== inputStates?.email
+      && !(inputStates?.email === '')
     ) {
       toggleEmailWarning(true);
     } else if (
-      inputStates?.email.trim().length < 5 ||
-      (inputStates?.email.trim().length >= 5 &&
-        !regEmail.test(inputStates?.email.trim()))
+      inputStates?.email.trim().length < 5
+      || (inputStates?.email.trim().length >= 5
+        && !regEmail.test(inputStates?.email.trim()))
     ) {
       // email format is wrong
       toggleWrongEmailWarning(true);
     } else if (
       // username already exists
-      usernames.includes(inputStates?.userName) &&
-      data?.userName !== inputStates?.userName &&
-      !(inputStates?.userName === "")
+      usernames.includes(inputStates?.userName)
+      && data?.userName !== inputStates?.userName
+      && !(inputStates?.userName === '')
     ) {
       toggleUsernameWarning(true);
     } else if (/[^\w\-]/.test(inputStates?.userName)) {
       // username contains symbols
       toggleWrongUsernameWarning(true);
     } else if (
-      data?.email === inputStates?.email &&
-      data?.userName === inputStates?.userName
+      data?.email === inputStates?.email
+      && data?.userName === inputStates?.userName
     ) {
       // email and username remains unchanged
       const warning = "<p class='cp-warning'>No changes made to save</p>";
-      if (!document.getElementsByClassName("cp-warning").length) {
+      if (!document.getElementsByClassName('cp-warning').length) {
         document
-          .getElementsByClassName("securityEmailAndUserNameInput")[0]
-          .insertAdjacentHTML("afterend", warning);
+          .getElementsByClassName('securityEmailAndUserNameInput')[0]
+          .insertAdjacentHTML('afterend', warning);
 
         setTimeout(() => {
-          document.getElementsByClassName("cp-warning")[0].remove();
+          document.getElementsByClassName('cp-warning')[0].remove();
         }, 3000);
       }
     } else {
@@ -273,66 +264,62 @@ function SettingBodySecurityLogin({ settingsPage, data, userID }) {
           <h5>Update Account Login</h5>
           {
             // display an input component for each input field
-            [all.emailField, all.usernameField].map((field, key) => {
-              return (
-                <CreateSettingInput
-                  name={field.name}
-                  type={field.type}
-                  label={field.label}
-                  options={field.options}
-                  required={field.required}
-                  halfWidth={field.halfWidth}
-                  rightSpaced={field.rightSpaced}
-                  value={inputStates[field.name]}
-                  setValue={(value) => {
-                    handleChange(field.name, value);
-                  }}
-                  key={key}
-                />
-              );
-            })
+            [all.emailField, all.usernameField].map((field, key) => (
+              <CreateSettingInput
+                name={field.name}
+                type={field.type}
+                label={field.label}
+                options={field.options}
+                required={field.required}
+                halfWidth={field.halfWidth}
+                rightSpaced={field.rightSpaced}
+                value={inputStates[field.name]}
+                setValue={(value) => {
+                  handleChange(field.name, value);
+                }}
+                key={key}
+              />
+            ))
           }
         </div>
         <div className={styles.cpWrap}>
           <h5>
             <span
               onClick={() => {
-                updatePasswordRedirection &&
-                  setUpdatePasswordRedirection(false);
+                updatePasswordRedirection
+                  && setUpdatePasswordRedirection(false);
                 setChangePassword((state) => !state);
               }}
             >
               Change Password
             </span>
           </h5>
-          {changePassword &&
+          {changePassword
             // display an input component for each input field
-            [
+            && [
               all.currentPasswordField,
               all.newPasswordField,
               all.confirmNewPasswordField,
-            ].map((field, key) => {
-              return (
-                <CreateSettingInput
-                  name={field.name}
-                  type={field.type}
-                  label={field.label}
-                  options={field.options}
-                  required={field.required}
-                  halfWidth={field.halfWidth}
-                  rightSpaced={field.rightSpaced}
-                  value={inputStates[field.name]}
-                  setValue={(value) => {
-                    handleChange(field.name, value);
-                  }}
-                  key={key}
-                />
-              );
-            })}
+            ].map((field, key) => (
+              <CreateSettingInput
+                name={field.name}
+                type={field.type}
+                label={field.label}
+                options={field.options}
+                required={field.required}
+                halfWidth={field.halfWidth}
+                rightSpaced={field.rightSpaced}
+                value={inputStates[field.name]}
+                setValue={(value) => {
+                  handleChange(field.name, value);
+                }}
+                key={key}
+              />
+            ))}
         </div>
       </div>
     </SettingBody>
   );
-}
+};
 
 export default SettingBodySecurityLogin;

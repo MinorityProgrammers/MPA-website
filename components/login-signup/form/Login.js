@@ -1,12 +1,12 @@
-import { Formik, Form } from "formik";
-import * as Yup from "yup";
-import { useContext } from "react";
-import { GlobalContext } from "../../../contexts/provider";
-import { login } from "../../../contexts/actions/auth/login";
-import TextField from "../../TextField";
-import styles from "./form.module.css";
+import { Formik, Form } from 'formik';
+import * as Yup from 'yup';
+import { useContext } from 'react';
+import { GlobalContext } from '../../../contexts/provider';
+import { login } from '../../../contexts/actions/auth/login';
+import TextField from '../../TextField';
+import styles from './form.module.css';
 
-const Login = ({ setSubmit }) => {
+const Login = function ({ setSubmit }) {
   const {
     authDispatch,
     authState: {
@@ -31,13 +31,13 @@ const Login = ({ setSubmit }) => {
     <div className={styles.container}>
       <Formik
         initialValues={{
-          email: "",
-          password: "",
+          email: '',
+          password: '',
         }}
         onSubmit={onSubmit}
         validationSchema={Yup.object({
-          email: Yup.string().email("Invalid Email").required("Required"),
-          password: Yup.string().required("Required"),
+          email: Yup.string().email('Invalid Email').required('Required'),
+          password: Yup.string().required('Required'),
         })}
       >
         {({ isSubmitting }) => (
@@ -63,7 +63,7 @@ const Login = ({ setSubmit }) => {
                 type="submit"
                 disabled={isSubmitting}
               >
-                {loading ? "Signing In..." : "Sign In"}
+                {loading ? 'Signing In...' : 'Sign In'}
               </button>
             </div>
           </Form>

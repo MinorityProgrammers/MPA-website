@@ -1,21 +1,21 @@
-import React, { useState, createContext } from "react";
-import { RiFlag2Fill } from "react-icons/ri";
-import { BsThreeDotsVertical } from "react-icons/bs";
+import React, { useState, createContext } from 'react';
+import { RiFlag2Fill } from 'react-icons/ri';
+import { BsThreeDotsVertical } from 'react-icons/bs';
 
 export const UserContext = createContext();
 
-const TaskStatus = ({ item, handlePriority }) => {
+const TaskStatus = function ({ item, handlePriority }) {
   const [creators, setCreators] = useState(false);
   const [open, setOpen] = useState(false);
   const [options, setOptions] = useState(false);
   const [develops, setDevelops] = useState(false);
   const [designs, setDesigns] = useState(false);
-  const [priority, setPriority] = useState("green");
+  const [priority, setPriority] = useState('green');
   const [userCart, setUserCart] = useState([]);
   const [removedUser, setRemovedUser] = useState([]);
   const handleRemoveUser = (id) => {
     const afterRemovedUser = userCart.filter(
-      (removedUser) => removedUser.id !== id
+      (removedUser) => removedUser.id !== id,
     );
     setUserCart(afterRemovedUser);
   };
@@ -40,14 +40,12 @@ const TaskStatus = ({ item, handlePriority }) => {
           </p>
           <div className="tw-grid tw-grid-cols-1">
             <div className="tw-flex">
-              {userCart.length &&
-                userCart.map((user) => {
+              {userCart.length
+                && userCart.map((user) => {
                   <img
                     src={user.img}
                     className="tw-h-6 tw-w-6 tw-rounded-full tw-place-self-center tw-mb-1 tw-mt-2"
-                    onClick={(id) =>
-                      handleRemoveUser(id, setCreators(!creators))
-                    }
+                    onClick={(id) => handleRemoveUser(id, setCreators(!creators))}
                   />;
                 })}
               <img
@@ -80,21 +78,15 @@ const TaskStatus = ({ item, handlePriority }) => {
                 <div className="tw-absolute tw-z-20">
                   <RiFlag2Fill
                     className="tw-text-red-500 tw-m-1 tw-mt-2"
-                    onClick={() =>
-                      handlePriority(setPriority("red"), setOpen(!open))
-                    }
+                    onClick={() => handlePriority(setPriority('red'), setOpen(!open))}
                   />
                   <RiFlag2Fill
                     className="tw-text-pink-500 tw-m-1 tw-mt-2"
-                    onClick={() =>
-                      handlePriority(setPriority("pink"), setOpen(!open))
-                    }
+                    onClick={() => handlePriority(setPriority('pink'), setOpen(!open))}
                   />
                   <RiFlag2Fill
                     className="tw-text-yellow-500 tw-m-1 tw-mt-2"
-                    onClick={() =>
-                      handlePriority(setPriority("yellow"), setOpen(!open))
-                    }
+                    onClick={() => handlePriority(setPriority('yellow'), setOpen(!open))}
                   />
                 </div>
               )}
@@ -146,7 +138,8 @@ const TaskStatus = ({ item, handlePriority }) => {
               className="tw-text-blue-800 tw-text-xs"
               onClick={() => setOptions(!options)}
             >
-              {item.options}More options
+              {item.options}
+              More options
             </p>
             {options && (
               <div className="tw-absolute tw-z-20">

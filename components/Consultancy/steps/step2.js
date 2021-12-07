@@ -1,23 +1,27 @@
-import { useMemo, useState, useRef, useEffect } from "react";
-import addQuestion from "../helperFiles/addQuestion";
-import Input from "../helperFiles/customInputTags/input";
-import { useDefaultValue } from "../helperFiles/getDefaultValue";
-import QuestionContainer from "../helperFiles/questionContainer";
+import {
+  useMemo, useState, useRef, useEffect,
+} from 'react';
+import addQuestion from '../helperFiles/addQuestion';
+import Input from '../helperFiles/customInputTags/input';
+import { useDefaultValue } from '../helperFiles/getDefaultValue';
+import QuestionContainer from '../helperFiles/questionContainer';
 
-function Page2({ step, setstep, questions, setQuestions }) {
+const Page2 = function ({
+  step, setstep, questions, setQuestions,
+}) {
   const defaultValue = useDefaultValue(questions, step, 0);
 
   console.log(defaultValue, questions);
   const [inputValue, setInputValue] = useState(
-    defaultValue ? defaultValue : undefined
+    defaultValue || undefined,
   );
 
-  const questionText = "Tell us about your idea";
-  const list_of_errors = ["You must enter an input"];
+  const questionText = 'Tell us about your idea';
+  const list_of_errors = ['You must enter an input'];
   function nextPage() {
     if (inputValue === undefined) {
       setInputValue(list_of_errors);
-    } else if (typeof inputValue === "string") {
+    } else if (typeof inputValue === 'string') {
       setstep((prev) => prev + 1);
     }
   }
@@ -50,10 +54,10 @@ function Page2({ step, setstep, questions, setQuestions }) {
         handleInputChange={(e) => {
           handleInputChange(e);
         }}
-        placeholder={"Enter the title of this product."}
+        placeholder="Enter the title of this product."
         defaultValue={defaultValue}
       />
     </QuestionContainer>
   );
-}
+};
 export default Page2;

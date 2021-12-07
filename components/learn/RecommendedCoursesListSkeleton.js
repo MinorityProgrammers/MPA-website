@@ -1,7 +1,6 @@
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 
-const RecommendedCoursesListSkeleton = () => {
-
+const RecommendedCoursesListSkeleton = function () {
   return (
     <div className="courses-items px-3 mb-4 mx-2">
       <div className="pt-3">
@@ -17,13 +16,15 @@ const RecommendedCoursesListSkeleton = () => {
       <p className="course-des ml-2 pb-2"><Skeleton height={20} /></p>
 
       <div className="text-center pb-4">
-        <button data-toggle="modal" data-target="#exampleModal"
+        <button
+          data-toggle="modal"
+          data-target="#exampleModal"
         >
           <Skeleton width={70} height={20} />
         </button>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default RecommendedCoursesListSkeleton;

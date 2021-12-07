@@ -1,4 +1,4 @@
-function Page1({ setstep, setClickRegister, data }) {
+const Page1 = function ({ setstep, setClickRegister, data }) {
   return (
     <div className="service_container" id="title">
       <div className="service_icon">
@@ -27,5 +27,5 @@ function Page1({ setstep, setClickRegister, data }) {
       </div>
     </div>
   );
-}
+};
 export default Page1;

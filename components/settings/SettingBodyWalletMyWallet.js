@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useContext } from "react";
-import { useRouter } from "next/router";
-import stylesOverview from "../../styles/settings/settingBodyOverview.module.css";
-import styles from "../../styles/settings/settingBodyWalletMyWallet.module.css";
-import SettingBody from "./SettingBody";
+import React, { useState, useEffect, useContext } from 'react';
+import { useRouter } from 'next/router';
+import stylesOverview from '../../styles/settings/settingBodyOverview.module.css';
+import styles from '../../styles/settings/settingBodyWalletMyWallet.module.css';
+import SettingBody from './SettingBody';
 
-function SettingBodyWalletMyWallet({ settingsPage, data, userID }) {
+const SettingBodyWalletMyWallet = function ({ settingsPage, data, userID }) {
   const handleSubmit = () => {};
 
   const closeProfileSetup = () => {
@@ -15,40 +15,40 @@ function SettingBodyWalletMyWallet({ settingsPage, data, userID }) {
 
   const wallets = [
     {
-      header: "Fortmatic",
-      img: "wallet-fortmatic",
-      alt: "wallet fortmatic",
-      aAddress: "0xa1214a1214b1214c1214f0987",
+      header: 'Fortmatic',
+      img: 'wallet-fortmatic',
+      alt: 'wallet fortmatic',
+      aAddress: '0xa1214a1214b1214c1214f0987',
       actionLink: () => {},
       actionAccount: () => {},
       actionUnlink: () => {},
       isLinked: true,
     },
     {
-      header: "WalletConnect",
-      img: "wallet-connect",
-      alt: "wallet connect",
-      aAddress: "0xa3414a1214b1214c1214f0987",
+      header: 'WalletConnect',
+      img: 'wallet-connect',
+      alt: 'wallet connect',
+      aAddress: '0xa3414a1214b1214c1214f0987',
       actionLink: () => {},
       actionAccount: () => {},
       actionUnlink: () => {},
       isLinked: false,
     },
     {
-      header: "Portis",
-      img: "wallet-portis",
-      alt: "wallet portis",
-      aAddress: "0xa5614a1214b1214c1214f0987",
+      header: 'Portis',
+      img: 'wallet-portis',
+      alt: 'wallet portis',
+      aAddress: '0xa5614a1214b1214c1214f0987',
       actionLink: () => {},
       actionAccount: () => {},
       actionUnlink: () => {},
       isLinked: true,
     },
     {
-      header: "Metamask",
-      img: "wallet-metamask",
-      alt: "wallet metamask",
-      aAddress: "0xa7814a1214b1214c1214f0987",
+      header: 'Metamask',
+      img: 'wallet-metamask',
+      alt: 'wallet metamask',
+      aAddress: '0xa7814a1214b1214c1214f0987',
       actionLink: () => {},
       actionAccount: () => {},
       actionUnlink: () => {},
@@ -130,10 +130,14 @@ function SettingBodyWalletMyWallet({ settingsPage, data, userID }) {
             <h6>$MINORITY </h6>
             <div className={stylesOverview.card}>
               <div className={stylesOverview.amountInfo}>
-                $MINORITY Earned <div>{`$150`}</div>
+                $MINORITY Earned
+                {' '}
+                <div>$150</div>
               </div>
               <div className={stylesOverview.amountInfo}>
-                $MINORITY Balance <div>{`$350`}</div>
+                $MINORITY Balance
+                {' '}
+                <div>$350</div>
               </div>
               <div className={stylesOverview.addBtn}>Add $MINORITY Funds</div>
             </div>
@@ -160,10 +164,14 @@ function SettingBodyWalletMyWallet({ settingsPage, data, userID }) {
             <h6>$MPA Tokens </h6>
             <div className={stylesOverview.card}>
               <div className={stylesOverview.amountInfo}>
-                $MPA Tokens Earned <div>{`$35`}</div>
+                $MPA Tokens Earned
+                {' '}
+                <div>$35</div>
               </div>
               <div className={stylesOverview.amountInfo}>
-                $MPA Tokens Balance <div>{`$65`}</div>
+                $MPA Tokens Balance
+                {' '}
+                <div>$65</div>
               </div>
               <div className={stylesOverview.addBtn}>Add $MPA Tokens</div>
             </div>
@@ -190,6 +198,6 @@ function SettingBodyWalletMyWallet({ settingsPage, data, userID }) {
       </div>
     </SettingBody>
   );
-}
+};
 
 export default SettingBodyWalletMyWallet;

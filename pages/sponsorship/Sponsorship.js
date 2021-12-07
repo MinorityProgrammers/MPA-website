@@ -1,4 +1,4 @@
-function Sponsorship({ displayCheckout, handleMCardClick }) {
+const Sponsorship = function ({ displayCheckout, handleMCardClick }) {
   return (
     <div className="sponsor-page-wrapper">
       <div className="sponsor-page">
@@ -187,7 +187,7 @@ function Sponsorship({ displayCheckout, handleMCardClick }) {
           </div>
           <div className="sp-cards">
             <div className="m-cards-wrapper">
-              <div className="m-card" onClick={() => handleMCardClick("ally")}>
+              <div className="m-card" onClick={() => handleMCardClick('ally')}>
                 <div className="c-header">
                   <div className="sp-icon mi-icon bg-white">
                     <img
@@ -199,7 +199,7 @@ function Sponsorship({ displayCheckout, handleMCardClick }) {
                   <h4>$5000</h4>
                 </div>
                 <div className="c-body">
-                  <ul style={{ listStyleType: "disc" }}>
+                  <ul style={{ listStyleType: 'disc' }}>
                     <li>Listed as Minority Ally on Homepage</li>
                     <li>
                       Top priority search results for job posting, events, and
@@ -211,7 +211,7 @@ function Sponsorship({ displayCheckout, handleMCardClick }) {
               </div>
               <div
                 className="m-card"
-                onClick={() => handleMCardClick("friend")}
+                onClick={() => handleMCardClick('friend')}
               >
                 <div className="c-header">
                   <div className="sp-icon mi-icon bg-white">
@@ -233,7 +233,7 @@ function Sponsorship({ displayCheckout, handleMCardClick }) {
                   </ul>
                 </div>
               </div>
-              <div className="m-card" onClick={() => handleMCardClick("mafia")}>
+              <div className="m-card" onClick={() => handleMCardClick('mafia')}>
                 <div className="c-header">
                   <div className="sp-icon mi-icon bg-white">
                     <img
@@ -362,6 +362,6 @@ function Sponsorship({ displayCheckout, handleMCardClick }) {
       </div>
     </div>
   );
-}
+};
 
 export default Sponsorship;

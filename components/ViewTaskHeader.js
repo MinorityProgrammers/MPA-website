@@ -1,4 +1,4 @@
-const ViewTaskHeader = () => {
+const ViewTaskHeader = function () {
   return (
     <div className="tw-bg-black tw-flex tw-justify-around tw-items-center xs:tw-grid xs:tw-grid-cols-1">
       <div>

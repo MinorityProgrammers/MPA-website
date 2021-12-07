@@ -1,8 +1,9 @@
-import JobStubSkeleton from "./JobStubSkeleton";
-import CurrentJobSkeleton from "./CurrentJobSkeleton";
 import Skeleton from 'react-loading-skeleton';
-const LoadingSkeleton = (props) => {
-  console.log(props.showCurrent)
+import JobStubSkeleton from './JobStubSkeleton';
+import CurrentJobSkeleton from './CurrentJobSkeleton';
+
+const LoadingSkeleton = function (props) {
+  console.log(props.showCurrent);
   return (
     <div className="jobs-main-container">
       {/* LEFT HAND SIDE */}
@@ -16,21 +17,20 @@ const LoadingSkeleton = (props) => {
       {/* RIGHT HAND SIDE */}
       {props.showCurrent ? (
         <>
-          <p ><Skeleton height={50} /></p>
-          <div className="right-grid jobs-main-container-single" style={{ boxShadow: "0 0 7px rgb(162, 144, 147)" }}>
+          <p><Skeleton height={50} /></p>
+          <div className="right-grid jobs-main-container-single" style={{ boxShadow: '0 0 7px rgb(162, 144, 147)' }}>
             <CurrentJobSkeleton />
           </div>
         </>
       )
-        :
-        <>
-          <p ><Skeleton height={50} /></p>
-          <div className="jobs-main-container-single" style={{ display: 'none' }}>
-          </div>
-        </>
-      }
+        : (
+          <>
+            <p><Skeleton height={50} /></p>
+            <div className="jobs-main-container-single" style={{ display: 'none' }} />
+          </>
+        )}
     </div>
-  )
-}
+  );
+};
 
 export default LoadingSkeleton;

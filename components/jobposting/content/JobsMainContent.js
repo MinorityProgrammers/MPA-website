@@ -1,4 +1,4 @@
-const JobsMainContent = props => {
+const JobsMainContent = function (props) {
   return (
     <div className="careers-main">
       <div className="careers-main-container">

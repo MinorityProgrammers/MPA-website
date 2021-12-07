@@ -1,23 +1,25 @@
-import styles from './documents.module.css';
 import { useState, useEffect } from 'react';
+import styles from './documents.module.css';
 
-const Document = ({ title, subtitle, download_link, id }) => {
+const Document = function ({
+  title, subtitle, download_link, id,
+}) {
   const [blob, setBlob] = useState(null);
 
   useEffect(() => {
-    if (!download_link) return
+    if (!download_link) return;
     fetch(download_link, {
       method: 'GET',
     })
-      .then(res => res.blob())
-      .then(blobRes => URL.createObjectURL(blobRes))
-      .then(blobUrl => setBlob(blobUrl));
+      .then((res) => res.blob())
+      .then((blobRes) => URL.createObjectURL(blobRes))
+      .then((blobUrl) => setBlob(blobUrl));
   }, [download_link]);
 
   const isEven = () => {
-    if (parseInt(id) % 2 === 0) return true
-    return false
-  }
+    if (parseInt(id) % 2 === 0) return true;
+    return false;
+  };
 
   return (
     <div className={`${styles.container} ${isEven() ? styles.even : styles.odd}`}>
@@ -31,7 +33,7 @@ const Document = ({ title, subtitle, download_link, id }) => {
         </div>
       </a>
     </div>
-  )
-}
+  );
+};
 
 export default Document;

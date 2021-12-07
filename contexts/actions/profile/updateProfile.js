@@ -1,31 +1,30 @@
-import axiosInstance from "../../../helpers/axiosInstance";
 import axios from 'axios';
-import jwt from 'jsonwebtoken'
+import jwt from 'jsonwebtoken';
+import axiosInstance from '../../../helpers/axiosInstance';
 
 import {
   UPDATE_PROFILE_LOADING,
   UPDATE_PROFILE_SUCCESS,
-  UPDATE_PROFILE_ERROR
-} from "../actionTypes";
-import { successToast, errorToast } from '../../utils/toasts'
+  UPDATE_PROFILE_ERROR,
+} from '../actionTypes';
+import { successToast, errorToast } from '../../utils/toasts';
 
 export const updateProfile = (id, body, token) => (dispatch) => {
   dispatch({
     type: UPDATE_PROFILE_LOADING,
   });
 
-  // axios post request 
+  // axios post request
   const token = window.localStorage.getItem('jwtToken');
 
   axios
     .patch(`https://koinstreet-learn-api.herokuapp.com/api/v1/user/updateProfile/${id}`, body, {
       headers: {
-        "Content-type": "multipart/form-data",
-        "Authorization": `Bearer ${token}`
+        'Content-type': 'multipart/form-data',
+        Authorization: `Bearer ${token}`,
       },
     })
     .then((res) => {
-
       // setting updated user
 
       localStorage.setItem('userInfo', JSON.stringify(res.data.data));
@@ -40,7 +39,7 @@ export const updateProfile = (id, body, token) => (dispatch) => {
       errorToast('failed to update profile');
       dispatch({
         type: UPDATE_PROFILE_ERROR,
-        payload: err.response ? err.response.data : "COULD NOT CONNECT",
+        payload: err.response ? err.response.data : 'COULD NOT CONNECT',
       });
     });
 };

@@ -1,8 +1,8 @@
-import React from "react";
-import StartupLeftBar from "../components/StartupLeftBar";
-import StartupRightBar from "../components/StartupRightBar";
+import React from 'react';
+import StartupLeftBar from './StartupLeftBar';
+import StartupRightBar from './StartupRightBar';
 
-const StartupMainBar = ({ data }) => {
+const StartupMainBar = function ({ data }) {
   return (
     <div className="container">
       <div className="row">

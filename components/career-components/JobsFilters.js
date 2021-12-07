@@ -1,85 +1,85 @@
-import { useEffect, useRef } from "react";
-import { useRouter } from "next/router";
+import { useEffect, useRef } from 'react';
+import { useRouter } from 'next/router';
 
-export const JobsFilters = ({
+export var JobsFilters = function ({
   submitForm,
   openFilterForm,
   filter,
   fetchData,
   queryObj,
   showModal,
-  setShowModal
-}) => {
+  setShowModal,
+}) {
   const remoteCheckbox = useRef();
   const modalRef = useRef();
 
-  const closeModal = e => {
+  const closeModal = (e) => {
     if (modalRef.current === e.target) setShowModal(false);
   };
 
   useEffect(() => {
     if (showModal) {
-      document.body.style.overflow = "scroll";
+      document.body.style.overflow = 'scroll';
     }
     return () => {
-      document.body.style.overflow = "unset";
+      document.body.style.overflow = 'unset';
     };
   }, [showModal]);
 
-  //closes form when cancel is clicked
+  // closes form when cancel is clicked
   function closeForm(btn) {
-    btn.parentNode.parentNode.style.display = "none";
+    btn.parentNode.parentNode.style.display = 'none';
   }
 
   const router = useRouter();
 
-  //toggles the filters options/buttons when the "filter" button is clicked on small screens
+  // toggles the filters options/buttons when the "filter" button is clicked on small screens
   function openFilters() {
     if (
-      window.getComputedStyle(document.querySelector(".jobFilters")).display ==
-      "none"
+      window.getComputedStyle(document.querySelector('.jobFilters')).display
+      == 'none'
     ) {
-      document.querySelector(".jobFilters").style.display = "flex";
+      document.querySelector('.jobFilters').style.display = 'flex';
     } else if (
-      window.getComputedStyle(document.querySelector(".jobFilters")).display ==
-      "flex"
+      window.getComputedStyle(document.querySelector('.jobFilters')).display
+      == 'flex'
     ) {
-      document.querySelector(".jobFilters").style.display = "none";
+      document.querySelector('.jobFilters').style.display = 'none';
     }
     setShowModal(true);
   }
 
-  //show filters when screen size gets bigger than 767px
+  // show filters when screen size gets bigger than 767px
   function assureFiltersOpen() {
-    document.querySelector(".jobFilters");
+    document.querySelector('.jobFilters');
     if (window.innerWidth > 768) {
-      document.querySelector(".jobFilters").style.display = "flex";
+      document.querySelector('.jobFilters').style.display = 'flex';
     } else if (window.innerWidth < 768) {
-      document.querySelector(".jobFilters").style.display = "none";
+      document.querySelector('.jobFilters').style.display = 'none';
     }
   }
 
-  //only allow one checkbox to be selected per filter
+  // only allow one checkbox to be selected per filter
   function checkboxesOff(e) {
-    for (let i of e.target.parentNode.parentNode.querySelectorAll("li")) {
+    for (const i of e.target.parentNode.parentNode.querySelectorAll('li')) {
       if (i.childNodes[0].value != e.target.value) {
         i.childNodes[0].checked = false;
       }
     }
   }
 
-  //add window event listener to toggle "Filters" button on and off
+  // add window event listener to toggle "Filters" button on and off
   useEffect(() => {
-    window.addEventListener("resize", assureFiltersOpen);
-    return () => window.removeEventListener("resize", assureFiltersOpen);
+    window.addEventListener('resize', assureFiltersOpen);
+    return () => window.removeEventListener('resize', assureFiltersOpen);
   }, []);
 
   const resetFilter = () => {
-    filter.job_type = "";
-    filter.date_posted = "";
-    filter.remote = "";
-    filter.pay = "";
-    filter.job_industry = "";
+    filter.job_type = '';
+    filter.date_posted = '';
+    filter.remote = '';
+    filter.pay = '';
+    filter.job_industry = '';
 
     delete queryObj.pay;
     delete queryObj.date_posted;
@@ -89,7 +89,7 @@ export const JobsFilters = ({
 
     router.push({ query: queryObj });
 
-    document.querySelectorAll("li input").forEach(input => {
+    document.querySelectorAll('li input').forEach((input) => {
       input.checked = false;
     });
 
@@ -100,7 +100,7 @@ export const JobsFilters = ({
 
   // tw-col-end-13 tw-bg-profileDark tw-col-start-1 lg:tw-col-start-3  tw-row-start-2  tw-row-end-4 tw-p-3
 
-  //MODAL
+  // MODAL
 
   // filters-open-btn
   return (
@@ -108,18 +108,18 @@ export const JobsFilters = ({
       <button className="filters-open-btn " onClick={openFilters}>
         <i
           className="fas fa-sort-amount-down"
-          style={{ color: "#ff4fcd", fontSize: "2rem" }}
-        ></i>
+          style={{ color: '#ff4fcd', fontSize: '2rem' }}
+        />
       </button>
       <div className="jobFilters">
         <div className="job-filter-item">
           <button
             id="first-item-title"
             className="job-filter-item-title "
-            onClick={e => openFilterForm(e.currentTarget)}
+            onClick={(e) => openFilterForm(e.currentTarget)}
           >
-            {filter.date_posted == "0"
-              ? "Date Posted"
+            {filter.date_posted == '0'
+              ? 'Date Posted'
               : `Past ${filter.date_posted
                 .charAt(0)
                 .toUpperCase()}${filter.date_posted.slice(1)}`}
@@ -132,7 +132,7 @@ export const JobsFilters = ({
                   type="checkbox"
                   name="date_posted"
                   value="0"
-                  onChange={e => {
+                  onChange={(e) => {
                     submitForm(e);
                     checkboxesOff(e);
                   }}
@@ -144,7 +144,7 @@ export const JobsFilters = ({
                   type="checkbox"
                   name="date_posted"
                   value="day"
-                  onChange={e => {
+                  onChange={(e) => {
                     submitForm(e);
                     checkboxesOff(e);
                   }}
@@ -156,7 +156,7 @@ export const JobsFilters = ({
                   type="checkbox"
                   name="date_posted"
                   value="week"
-                  onChange={e => {
+                  onChange={(e) => {
                     submitForm(e);
                     checkboxesOff(e);
                   }}
@@ -168,7 +168,7 @@ export const JobsFilters = ({
                   type="checkbox"
                   name="date_posted"
                   value="month"
-                  onChange={e => {
+                  onChange={(e) => {
                     submitForm(e);
                     checkboxesOff(e);
                   }}
@@ -180,7 +180,7 @@ export const JobsFilters = ({
                   type="checkbox"
                   name="date_posted"
                   value="year"
-                  onChange={e => {
+                  onChange={(e) => {
                     submitForm(e);
                     checkboxesOff(e);
                   }}
@@ -191,7 +191,7 @@ export const JobsFilters = ({
             <div className="job-filter-item-form-options">
               <button
                 className="job-filter-item-form-options-cancel"
-                onClick={e => closeForm(e.currentTarget)}
+                onClick={(e) => closeForm(e.currentTarget)}
               >
                 Cancel
               </button>
@@ -201,9 +201,9 @@ export const JobsFilters = ({
         <div className="job-filter-item">
           <button
             className="job-filter-item-title "
-            onClick={e => openFilterForm(e.currentTarget)}
+            onClick={(e) => openFilterForm(e.currentTarget)}
           >
-            {filter.job_industry == "" ? "Industry" : filter.job_industry}
+            {filter.job_industry == '' ? 'Industry' : filter.job_industry}
             <span>&#9660;</span>
           </button>
           <div className="job-filter-item-form">
@@ -213,7 +213,7 @@ export const JobsFilters = ({
                   type="checkbox"
                   name="job_industry"
                   value="Technology"
-                  onChange={e => {
+                  onChange={(e) => {
                     submitForm(e);
                     checkboxesOff(e);
                   }}
@@ -225,7 +225,7 @@ export const JobsFilters = ({
                   type="checkbox"
                   name="job_industry"
                   value="Health"
-                  onChange={e => {
+                  onChange={(e) => {
                     submitForm(e);
                     checkboxesOff(e);
                   }}
@@ -237,7 +237,7 @@ export const JobsFilters = ({
                   type="checkbox"
                   name="job_industry"
                   value="Education"
-                  onChange={e => {
+                  onChange={(e) => {
                     submitForm(e);
                     checkboxesOff(e);
                   }}
@@ -249,7 +249,7 @@ export const JobsFilters = ({
                   type="checkbox"
                   name="job_industry"
                   value="Consultancy"
-                  onChange={e => {
+                  onChange={(e) => {
                     submitForm(e);
                     checkboxesOff(e);
                   }}
@@ -260,7 +260,7 @@ export const JobsFilters = ({
             <div className="job-filter-item-form-options">
               <button
                 className="job-filter-item-form-options-cancel"
-                onClick={e => closeForm(e.currentTarget)}
+                onClick={(e) => closeForm(e.currentTarget)}
               >
                 Cancel
               </button>
@@ -270,9 +270,9 @@ export const JobsFilters = ({
         <div className="job-filter-item">
           <button
             className="job-filter-item-title "
-            onClick={e => openFilterForm(e.currentTarget)}
+            onClick={(e) => openFilterForm(e.currentTarget)}
           >
-            {filter.pay == "" ? "Pay" : `$${filter.pay}+`}
+            {filter.pay == '' ? 'Pay' : `${filter.pay}+`}
             <span>&#9660;</span>
           </button>
           <div className="job-filter-item-form">
@@ -282,7 +282,7 @@ export const JobsFilters = ({
                   type="checkbox"
                   name="pay"
                   value=""
-                  onChange={e => {
+                  onChange={(e) => {
                     submitForm(e);
                     checkboxesOff(e);
                   }}
@@ -294,7 +294,7 @@ export const JobsFilters = ({
                   type="checkbox"
                   name="pay"
                   value="40000"
-                  onChange={e => {
+                  onChange={(e) => {
                     submitForm(e);
                     checkboxesOff(e);
                   }}
@@ -306,7 +306,7 @@ export const JobsFilters = ({
                   type="checkbox"
                   name="pay"
                   value="60000"
-                  onChange={e => {
+                  onChange={(e) => {
                     submitForm(e);
                     checkboxesOff(e);
                   }}
@@ -318,7 +318,7 @@ export const JobsFilters = ({
                   type="checkbox"
                   name="pay"
                   value="80000"
-                  onChange={e => {
+                  onChange={(e) => {
                     submitForm(e);
                     checkboxesOff(e);
                   }}
@@ -330,7 +330,7 @@ export const JobsFilters = ({
                   type="checkbox"
                   name="pay"
                   value="100000"
-                  onChange={e => {
+                  onChange={(e) => {
                     submitForm(e);
                     checkboxesOff(e);
                   }}
@@ -341,7 +341,7 @@ export const JobsFilters = ({
             <div className="job-filter-item-form-options">
               <button
                 className="job-filter-item-form-options-cancel"
-                onClick={e => closeForm(e.target)}
+                onClick={(e) => closeForm(e.target)}
               >
                 Cancel
               </button>
@@ -351,9 +351,9 @@ export const JobsFilters = ({
         <div className="job-filter-item">
           <button
             className="job-filter-item-title "
-            onClick={e => openFilterForm(e.currentTarget)}
+            onClick={(e) => openFilterForm(e.currentTarget)}
           >
-            {filter.job_type == "" ? "Job Type" : filter.job_type}
+            {filter.job_type == '' ? 'Job Type' : filter.job_type}
             <span>&#9660;</span>
           </button>
           <div className="job-filter-item-form">
@@ -363,7 +363,7 @@ export const JobsFilters = ({
                   type="checkbox"
                   name="job_type"
                   value="Full-Time"
-                  onChange={e => {
+                  onChange={(e) => {
                     submitForm(e);
                     checkboxesOff(e);
                   }}
@@ -375,7 +375,7 @@ export const JobsFilters = ({
                   type="checkbox"
                   name="job_type"
                   value="Part-Time"
-                  onChange={e => {
+                  onChange={(e) => {
                     submitForm(e);
                     checkboxesOff(e);
                   }}
@@ -387,7 +387,7 @@ export const JobsFilters = ({
                   type="checkbox"
                   name="job_type"
                   value="Contract"
-                  onChange={e => {
+                  onChange={(e) => {
                     submitForm(e);
                     checkboxesOff(e);
                   }}
@@ -399,7 +399,7 @@ export const JobsFilters = ({
                   type="checkbox"
                   name="job_type"
                   value="Internship"
-                  onChange={e => {
+                  onChange={(e) => {
                     submitForm(e);
                     checkboxesOff(e);
                   }}
@@ -411,7 +411,7 @@ export const JobsFilters = ({
                   type="checkbox"
                   name="job_type"
                   value="Temporary"
-                  onChange={e => {
+                  onChange={(e) => {
                     submitForm(e);
                     checkboxesOff(e);
                   }}
@@ -423,7 +423,7 @@ export const JobsFilters = ({
                   type="checkbox"
                   name="job_type"
                   value="Seasonal"
-                  onChange={e => {
+                  onChange={(e) => {
                     submitForm(e);
                     checkboxesOff(e);
                   }}
@@ -435,7 +435,7 @@ export const JobsFilters = ({
                   type="checkbox"
                   name="job_type"
                   value="Freelance"
-                  onChange={e => {
+                  onChange={(e) => {
                     submitForm(e);
                     checkboxesOff(e);
                   }}
@@ -447,7 +447,7 @@ export const JobsFilters = ({
                   type="checkbox"
                   name="job_type"
                   value="Volunteer"
-                  onChange={e => {
+                  onChange={(e) => {
                     submitForm(e);
                     checkboxesOff(e);
                   }}
@@ -458,7 +458,7 @@ export const JobsFilters = ({
             <div className="job-filter-item-form-options">
               <button
                 className="job-filter-item-form-options-cancel"
-                onClick={e => closeForm(e.currentTarget)}
+                onClick={(e) => closeForm(e.currentTarget)}
               >
                 Cancel
               </button>
@@ -472,27 +472,27 @@ export const JobsFilters = ({
             type="checkbox"
             name="remote"
             ref={remoteCheckbox}
-            onChange={e => submitForm(e)}
+            onChange={(e) => submitForm(e)}
           />
         </div>
         <div className="job-filter-item">
-          {filter.pay != "" ||
-            filter.job_type != "" ||
-            filter.date_posted != "" ||
-            filter.remote != "" ||
-            filter.job_industry != "" ? (
+          {filter.pay != ''
+            || filter.job_type != ''
+            || filter.date_posted != ''
+            || filter.remote != ''
+            || filter.job_industry != '' ? (
 
-            <button className="job-filter-reset" onClick={() => resetFilter()}>
-              Clear
-            </button>
+              <button className="job-filter-reset" onClick={() => resetFilter()}>
+                Clear
+              </button>
 
-          ) : (
+            ) : (
 
-            <button className="job-filter-reset" style={{ display: "none" }} onClick={() => resetFilter()}>
-              Clear
-            </button>
+              <button className="job-filter-reset" style={{ display: 'none' }} onClick={() => resetFilter()}>
+                Clear
+              </button>
 
-          )}
+            )}
         </div>
       </div>
     </>

@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 // need to redo cancel button to handle reject
 
-const Conversation = ({
+const Conversation = function ({
   conversation,
   currentUser,
   type,
@@ -10,45 +10,49 @@ const Conversation = ({
   unblockfunc,
   acceptfunc,
   rejectfunc,
-}) => {
+}) {
   const user = conversation.users.find((m) => m._id !== currentUser._id);
   let popupfunc;
   let popupmsg;
   let popupconfirm;
-  if (type === "blocked") {
+  if (type === 'blocked') {
     popupfunc = unblockfunc;
     popupmsg = `Are you sure you want to unblock ${user.firstName} ${user.lastName}?`;
-    popupconfirm = "Unblock";
+    popupconfirm = 'Unblock';
   }
-  if (type === "pending") {
+  if (type === 'pending') {
     popupfunc = acceptfunc;
     popupmsg = `Do you want to chat with ${user.firstName} ${user.lastName}?`;
-    popupconfirm = "Accept";
+    popupconfirm = 'Accept';
   }
   const [popup, setPopup] = useState(false);
   const [rejectPopup, setRejectPopup] = useState(false);
   return (
     <div
       className="conversation"
-      style={c == conversation ? { backgroundColor: "#ececec" } : {}}
+      style={c == conversation ? { backgroundColor: '#ececec' } : {}}
     >
       <img
-        src={user.profilePicture || `../../assets/images/profile.png`}
+        src={user.profilePicture || '../../assets/images/profile.png'}
         className="conversation-img"
       />
       {conversation.newMessage ? (
-        <div style={{ display: "flex", flexDirection: "column" }}>
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
           <span className="conversation-brief">
-            {user?.firstName} {user?.lastName}
+            {user?.firstName}
+            {' '}
+            {user?.lastName}
           </span>
-          <span style={{ fontSize: "14px" }}>New Message</span>
+          <span style={{ fontSize: '14px' }}>New Message</span>
         </div>
       ) : (
         <>
           <span className="conversation-brief">
-            {user?.firstName} {user?.lastName}
+            {user?.firstName}
+            {' '}
+            {user?.lastName}
           </span>
-          {type === "blocked" && conversation.blocking_user == currentUser._id && (
+          {type === 'blocked' && conversation.blocking_user == currentUser._id && (
             <div
               className="conversation-blocked-btn"
               onClick={() => setPopup(true)}
@@ -56,13 +60,13 @@ const Conversation = ({
               Unblock
             </div>
           )}
-          {type === "blocked" &&
-            conversation.blocking_user != currentUser._id && (
-              <span style={{ marginLeft: "4px" }}>
+          {type === 'blocked'
+            && conversation.blocking_user != currentUser._id && (
+              <span style={{ marginLeft: '4px' }}>
                 This chat has been blocked
               </span>
-            )}
-          {type === "pending" && conversation.users[0]._id != currentUser._id && (
+          )}
+          {type === 'pending' && conversation.users[0]._id != currentUser._id && (
             <>
               <div
                 className="conversation-accept-btn"
@@ -81,8 +85,8 @@ const Conversation = ({
         </>
       )}
 
-      {type === "pending" && conversation.users[0]._id == currentUser._id && (
-        <span style={{ marginLeft: "4px" }}>Waiting on response</span>
+      {type === 'pending' && conversation.users[0]._id == currentUser._id && (
+        <span style={{ marginLeft: '4px' }}>Waiting on response</span>
       )}
       {rejectPopup && (
         <div className="chat-popup-container">

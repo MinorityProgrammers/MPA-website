@@ -1,92 +1,92 @@
 export const getSpecificSettingsLayoutNavigationList = (settingsPath) => {
   switch (settingsPath) {
-    case "profile":
+    case 'profile':
       return {
-        header: "Profile Settings",
+        header: 'Profile Settings',
         content: [
           {
             id: 1,
-            icon: "../../assets/images/settings/details-icon.svg",
-            name: "Personal Details",
-            subPath: "details",
+            icon: '../../assets/images/settings/details-icon.svg',
+            name: 'Personal Details',
+            subPath: 'details',
           },
           {
             id: 2,
-            icon: "../../assets/images/settings/overview-icon.svg",
-            name: "Profile Overview",
-            subPath: "overview",
+            icon: '../../assets/images/settings/overview-icon.svg',
+            name: 'Profile Overview',
+            subPath: 'overview',
           },
           {
             id: 3,
-            icon: "../../assets/images/settings/media-icon.svg",
-            name: "Additional Media",
-            subPath: "media",
+            icon: '../../assets/images/settings/media-icon.svg',
+            name: 'Additional Media',
+            subPath: 'media',
           },
           {
             id: 4,
-            icon: "../../assets/images/settings/background-icon.svg",
-            name: "Background",
-            subPath: "background",
+            icon: '../../assets/images/settings/background-icon.svg',
+            name: 'Background',
+            subPath: 'background',
           },
           {
             id: 5,
-            icon: "../../assets/images/settings/education-icon.svg",
-            name: "Education",
-            subPath: "education",
+            icon: '../../assets/images/settings/education-icon.svg',
+            name: 'Education',
+            subPath: 'education',
           },
         ],
       };
-    case "security":
+    case 'security':
       return {
-        header: "Security & Privacy Settings",
+        header: 'Security & Privacy Settings',
         content: [
           {
             id: 1,
-            icon: "../../assets/images/settings/details-icon.svg",
-            name: "Account Login",
-            subPath: "login",
+            icon: '../../assets/images/settings/details-icon.svg',
+            name: 'Account Login',
+            subPath: 'login',
           },
           {
             id: 2,
-            icon: "../../assets/images/settings/management-icon.svg",
-            name: "Account Management",
-            subPath: "management",
+            icon: '../../assets/images/settings/management-icon.svg',
+            name: 'Account Management',
+            subPath: 'management',
           },
           {
             id: 3,
-            icon: "../../assets/images/settings/privacy-icon.svg",
-            name: "Privacy",
-            subPath: "privacy",
+            icon: '../../assets/images/settings/privacy-icon.svg',
+            name: 'Privacy',
+            subPath: 'privacy',
           },
         ],
       };
-    case "wallet":
+    case 'wallet':
       return {
-        header: "Wallet Settings",
+        header: 'Wallet Settings',
         content: [
           {
             id: 1,
-            icon: "../../assets/images/settings/wallet-icon.svg",
-            name: "My Wallet",
-            subPath: "my-wallet",
+            icon: '../../assets/images/settings/wallet-icon.svg',
+            name: 'My Wallet',
+            subPath: 'my-wallet',
           },
           {
             id: 2,
-            icon: "../../assets/images/settings/votes-icon.svg",
-            name: "Votes",
-            subPath: "votes",
+            icon: '../../assets/images/settings/votes-icon.svg',
+            name: 'Votes',
+            subPath: 'votes',
           },
         ],
       };
-    case "notifications":
+    case 'notifications':
       return {
-        header: "Notification Settings",
+        header: 'Notification Settings',
         content: [
           {
             id: 1,
-            icon: "../../assets/images/settings/notifications-icon.svg",
-            name: "Notifications",
-            subPath: "notifications",
+            icon: '../../assets/images/settings/notifications-icon.svg',
+            name: 'Notifications',
+            subPath: 'notifications',
           },
         ],
       };

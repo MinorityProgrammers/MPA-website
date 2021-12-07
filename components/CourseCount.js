@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import CountUp from "react-countup";
-import VisibilitySensor from "react-visibility-sensor";
+import React, { Component } from 'react';
+import CountUp from 'react-countup';
+import VisibilitySensor from 'react-visibility-sensor';
 
 class CourseCount extends Component {
   constructor() {
@@ -30,28 +30,30 @@ class CourseCount extends Component {
               <div className="row">
                 <div className="col-md-6">
                   <div className="video-three__fact thm-base-bg">
-                    <i className="kipso-icon-knowledge"></i>
+                    <i className="kipso-icon-knowledge" />
                     <p className="video-three__fact-count counter">
                       <VisibilitySensor
                         onChange={this.onVisibilityChange}
                         delayedCall
                       >
                         <CountUp end={this.state.startCounter ? 3 : 0} />
-                      </VisibilitySensor>{" "}
+                      </VisibilitySensor>
+                      {' '}
                     </p>
                     <p className="video-three__fact-text">Courses</p>
                   </div>
                 </div>
                 <div className="col-md-6">
                   <div className="video-three__fact thm-base-bg-2">
-                    <i className="kipso-icon-professor"></i>
+                    <i className="kipso-icon-professor" />
                     <p className="video-three__fact-count counter">
                       <VisibilitySensor
                         onChange={this.onVisibilityChange}
                         delayedCall
                       >
                         <CountUp end={this.state.startCounter ? 18 : 0} />
-                      </VisibilitySensor>{" "}
+                      </VisibilitySensor>
+                      {' '}
                     </p>
                     <p className="video-three__fact-text">Expert Instructors</p>
                   </div>

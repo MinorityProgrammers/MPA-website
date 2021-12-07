@@ -1,11 +1,13 @@
-import styles from "./interview_card.module.css";
+import styles from './interview_card.module.css';
 
-const InterviewCard = ({ date, time, name, description, image }) => {
+const InterviewCard = function ({
+  date, time, name, description, image,
+}) {
   return (
     <div>
       <div className={styles.root}>
         <div className={styles.head}>
-          <img src={image ? image : "/assets/images/profile.jpg"} />
+          <img src={image || '/assets/images/profile.jpg'} />
           <div className={styles.identity}>
             <h3>{name}</h3>
             <span>{description}</span>

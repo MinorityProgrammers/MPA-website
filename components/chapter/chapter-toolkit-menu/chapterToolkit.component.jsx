@@ -2,7 +2,7 @@ import styles from './chapterToolkit.module.css';
 import { toolkits } from '../data/toolkits';
 import ToolkitItem from '../chapter-toolkit-item/toolkit.component';
 
-const Toolkit = () => {
+const Toolkit = function () {
   return (
     <div className={styles.wrapper}>
       <div className={styles.tag}>02</div>
@@ -11,14 +11,14 @@ const Toolkit = () => {
         <div className={styles.text}>Check out our valuable resources to get insight on our chapters.</div>
         <div className={styles.menu}>
           {
-            toolkits && toolkits.map(toolkit => (
+            toolkits && toolkits.map((toolkit) => (
               <ToolkitItem key={toolkit.slug} {...toolkit} />
             ))
           }
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default Toolkit;

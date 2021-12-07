@@ -1,46 +1,48 @@
-import { useEffect, useState } from "react";
-import Checkboxes from "../helperFiles/customInputTags/checkbox";
-import Select from "../helperFiles/customInputTags/select";
-import QuestionContainer from "../helperFiles/questionContainer";
-import { useDefaultValue } from "../helperFiles/getDefaultValue";
-import addQuestion from "../helperFiles/addQuestion";
+import { useEffect, useState } from 'react';
+import Checkboxes from '../helperFiles/customInputTags/checkbox';
+import Select from '../helperFiles/customInputTags/select';
+import QuestionContainer from '../helperFiles/questionContainer';
+import { useDefaultValue } from '../helperFiles/getDefaultValue';
+import addQuestion from '../helperFiles/addQuestion';
 
-function Page3({ step, setstep, questions, setQuestions }) {
+const Page3 = function ({
+  step, setstep, questions, setQuestions,
+}) {
   const defaultValueSelected = useDefaultValue(questions, step, 0);
   const defaultValueCheckboxes = useDefaultValue(questions, step, 1);
 
   const [selected, setSelected] = useState(undefined);
   const [checkboxes, changeCheckboxValue] = useState(undefined);
   const options = [
-    "Business services",
-    "Creative industries",
-    "Entertainment, Food or Events",
-    "Financial services",
-    "Health & fitness",
-    "Home services",
-    "Retail /consumer goods",
-    "Texhnology / software",
-    "other",
+    'Business services',
+    'Creative industries',
+    'Entertainment, Food or Events',
+    'Financial services',
+    'Health & fitness',
+    'Home services',
+    'Retail /consumer goods',
+    'Texhnology / software',
+    'other',
   ];
   const checkBoxLabels = [
-    "Deployed Product",
-    "UI/UX",
-    "Front End",
-    "Back End",
-    "Product Strategy",
-    "Blockchain",
+    'Deployed Product',
+    'UI/UX',
+    'Front End',
+    'Back End',
+    'Product Strategy',
+    'Blockchain',
   ];
-  const question1 = "What industry will this project operate in?";
-  const question2 = "Tag your project based on type of work needed.";
+  const question1 = 'What industry will this project operate in?';
+  const question2 = 'Tag your project based on type of work needed.';
 
   function pageThreeQuestion() {
     addQuestion(setQuestions, step, [
       {
-        question: selected ? selected[0] : "",
+        question: selected ? selected[0] : '',
         answer: selected ? selected[1] : undefined,
       },
       {
-        question: checkboxes ? checkboxes[0] : "",
+        question: checkboxes ? checkboxes[0] : '',
         answer: checkboxes ? checkboxes[1] : undefined,
       },
     ]);
@@ -90,7 +92,7 @@ function Page3({ step, setstep, questions, setQuestions }) {
       <label
         htmlFor="projectType"
         className="questionOption"
-        style={{ marginTop: "40px" }}
+        style={{ marginTop: '40px' }}
       >
         {question2}
       </label>
@@ -103,5 +105,5 @@ function Page3({ step, setstep, questions, setQuestions }) {
       />
     </QuestionContainer>
   );
-}
+};
 export default Page3;

@@ -1,9 +1,9 @@
-import { useState } from "react";
-import { PayPalButtons } from "@paypal/react-paypal-js";
-import SponsorshipPaymentCompleted from "./SponsorshipPaymentCompleted";
-import SponsorshipPaymentDetails from "./SponsorshipPaymentDetails";
+import { useState } from 'react';
+import { PayPalButtons } from '@paypal/react-paypal-js';
+import SponsorshipPaymentCompleted from './SponsorshipPaymentCompleted';
+import SponsorshipPaymentDetails from './SponsorshipPaymentDetails';
 
-function SponsorshipCard({
+const SponsorshipCard = function ({
   // cardNumber,
   // expMonth,
   // expYear,
@@ -27,47 +27,42 @@ function SponsorshipCard({
   const [billingDetails, setBillingDetails] = useState([]);
   const [payment, setPayment] = useState([]);
 
-  const amount =
-    sponsorshipOption === "ally"
-      ? 5000
-      : sponsorshipOption === "friend"
+  const amount = sponsorshipOption === 'ally'
+    ? 5000
+    : sponsorshipOption === 'friend'
       ? 3000
-      : sponsorshipOption === "mafia"
-      ? 1000
-      : 0;
+      : sponsorshipOption === 'mafia'
+        ? 1000
+        : 0;
 
   // creates one time paypal order
-  const createOrder = (data, actions) => {
-    return actions.order
-      .create({
-        purchase_units: [
-          {
-            amount: {
-              value: amount,
-            },
+  const createOrder = (data, actions) => actions.order
+    .create({
+      purchase_units: [
+        {
+          amount: {
+            value: amount,
           },
-        ],
-        application_context: {
-          shipping_preference: "NO_SHIPPING",
         },
-      })
-      .then((orderID) => {
-        setOrderID(orderID);
-        return orderID;
-      });
-  };
+      ],
+      application_context: {
+        shipping_preference: 'NO_SHIPPING',
+      },
+    })
+    .then((orderID) => {
+      setOrderID(orderID);
+      return orderID;
+    });
 
   // handles when a payment is confirmed for paypal
-  const onApprove = (data, actions) => {
-    return actions.order.capture().then(function (details) {
-      const { purchase_units } = details;
-      setBillingDetails(details);
-      setPayment(purchase_units);
-      setSucceeded(true);
-      setIsDone(true);
-      count++;
-    });
-  };
+  const onApprove = (data, actions) => actions.order.capture().then((details) => {
+    const { purchase_units } = details;
+    setBillingDetails(details);
+    setPayment(purchase_units);
+    setSucceeded(true);
+    setIsDone(true);
+    count++;
+  });
 
   return (
     <div className="sponsor-card-wrapper">
@@ -79,43 +74,39 @@ function SponsorshipCard({
             {!succeeded ? (
               <PayPalButtons
                 style={{
-                  color: "white",
-                  shape: "rect",
-                  label: "pay",
+                  color: 'white',
+                  shape: 'rect',
+                  label: 'pay',
                   tagline: false,
-                  layout: "horizontal",
+                  layout: 'horizontal',
                 }}
                 createOrder={createOrder}
                 onApprove={onApprove}
                 fundingSource={paypal.FUNDING.PAYPAL}
               />
             ) : (
-              <>
-                <SponsorshipPaymentCompleted
-                  sponsorshipOption={sponsorshipOption}
-                  billingDetails={billingDetails}
-                  count={count}
-                  setCount={setCount}
-                  amount={amount}
-                  isDone={isDone}
-                  setIsDone={setIsDone}
-                  succeeded={succeeded}
-                />
-              </>
+              <SponsorshipPaymentCompleted
+                sponsorshipOption={sponsorshipOption}
+                billingDetails={billingDetails}
+                count={count}
+                setCount={setCount}
+                amount={amount}
+                isDone={isDone}
+                setIsDone={setIsDone}
+                succeeded={succeeded}
+              />
             )}
           </>
         ) : null}
         {count === 2 ? (
-          <>
-            <SponsorshipPaymentDetails
-              sponsorshipOption={sponsorshipOption}
-              amount={amount}
-              billingDetails={billingDetails}
-              count={count}
-              setCount={setCount}
-              setIsDone={setIsDone}
-            />
-          </>
+          <SponsorshipPaymentDetails
+            sponsorshipOption={sponsorshipOption}
+            amount={amount}
+            billingDetails={billingDetails}
+            count={count}
+            setCount={setCount}
+            setIsDone={setIsDone}
+          />
         ) : null}
 
         {succeeded ? (
@@ -133,7 +124,7 @@ function SponsorshipCard({
             </button>
           </div>
         ) : (
-          ""
+          ''
         )}
 
         {/* <h1>Almost complete. All we need is your billing information.</h1>
@@ -222,6 +213,6 @@ function SponsorshipCard({
       </div>
     </div>
   );
-}
+};
 
 export default SponsorshipCard;

@@ -1,15 +1,17 @@
-import React, { useState, useEffect, useContext } from "react";
-import Link from "next/link";
-import "react-circular-progressbar/dist/styles.css";
+import React, { useState, useEffect, useContext } from 'react';
+import Link from 'next/link';
+import 'react-circular-progressbar/dist/styles.css';
 import {
   CircularProgressbarWithChildren,
   buildStyles,
-} from "react-circular-progressbar";
-import { GlobalContext } from "../contexts/provider";
-import SidebarNav from "./SidebarNav";
-import { getProfile } from "../contexts/actions/profile/getProfile";
+} from 'react-circular-progressbar';
+import { GlobalContext } from '../contexts/provider';
+import SidebarNav from './SidebarNav';
+import { getProfile } from '../contexts/actions/profile/getProfile';
 
-const SidebarTwo = ({ links, active, open, setOpen, handleClick }) => {
+const SidebarTwo = function ({
+  links, active, open, setOpen, handleClick,
+}) {
   const [userData, setUserData] = useState([]);
   const [sectionStates, setSectionStates] = useState({
     collapseAll: true,
@@ -25,14 +27,12 @@ const SidebarTwo = ({ links, active, open, setOpen, handleClick }) => {
   } = useContext(GlobalContext);
 
   useEffect(() => {
-    const token =
-      typeof window !== "undefined"
-        ? window.localStorage.getItem("jwtToken")
-        : null;
-    const userInfo =
-      typeof window !== "undefined"
-        ? window.localStorage.getItem("userInfo")
-        : null;
+    const token = typeof window !== 'undefined'
+      ? window.localStorage.getItem('jwtToken')
+      : null;
+    const userInfo = typeof window !== 'undefined'
+      ? window.localStorage.getItem('userInfo')
+      : null;
 
     if (token == null || userInfo == {}) {
       setUserData(null);
@@ -44,7 +44,7 @@ const SidebarTwo = ({ links, active, open, setOpen, handleClick }) => {
   const handleCollapseAll = () => {
     setSectionStates((prev) => ({ ...prev, collapseAll: !prev.collapseAll }));
     Object.keys(sectionStates).forEach((title) => {
-      if (title != "collapseAll") {
+      if (title != 'collapseAll') {
         setSectionStates((prev) => ({ ...prev, [title]: prev.collapseAll }));
       }
     });
@@ -58,7 +58,7 @@ const SidebarTwo = ({ links, active, open, setOpen, handleClick }) => {
 
   return (
     <>
-      <div className={open ? "sidebarTwo " : "sidebarTwo hide"}>
+      <div className={open ? 'sidebarTwo ' : 'sidebarTwo hide'}>
         <div className="sidebarHeader relative">
           <Link href="/">
             <div className="progressBarContainer">
@@ -67,16 +67,16 @@ const SidebarTwo = ({ links, active, open, setOpen, handleClick }) => {
                 className="progressBar"
                 styles={buildStyles({
                   rotation: 0.25,
-                  strokeLinecap: "butt",
-                  pathColor: "#FFC700",
-                  trailColor: "#fff",
+                  strokeLinecap: 'butt',
+                  pathColor: '#FFC700',
+                  trailColor: '#fff',
                 })}
               >
                 <img
                   src={
                     userData && userData.profilePicture
                       ? userData.profilePicture
-                      : "/assets/images/profile.png"
+                      : '/assets/images/profile.png'
                   }
                   className="profileImg"
                 />
@@ -84,9 +84,12 @@ const SidebarTwo = ({ links, active, open, setOpen, handleClick }) => {
             </div>
           </Link>
 
-          <h3>Hello, {userData ? userData.firstName : ""}</h3>
+          <h3>
+            Hello,
+            {userData ? userData.firstName : ''}
+          </h3>
           <span className="collapseAll" onClick={handleCollapseAll}>
-            {sectionStates.collapseAll ? "Expand All" : "Collapse All"}
+            {sectionStates.collapseAll ? 'Expand All' : 'Collapse All'}
           </span>
         </div>
         {links.map((section) => (
@@ -103,11 +106,11 @@ const SidebarTwo = ({ links, active, open, setOpen, handleClick }) => {
         ))}
       </div>
       <div
-        className={open ? "overlay" : "overlay hide-overlay"}
+        className={open ? 'overlay' : 'overlay hide-overlay'}
         onClick={() => {
           setOpen(!open);
         }}
-      ></div>
+      />
     </>
   );
 };

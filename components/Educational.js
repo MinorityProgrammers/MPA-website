@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-const Educational = () => {
+const Educational = function () {
   return (
     <div id="education" className="cta-two">
       <div className="container-fluid">
@@ -9,20 +9,23 @@ const Educational = () => {
             <div className="cta-two__single">
               <div className="cta-two__icon">
                 <span>
-                  <i className="kipso-icon-professor"></i>
+                  <i className="kipso-icon-professor" />
                 </span>
               </div>
               <div className="cta-two__content">
                 <h2 className="cta-two__title">Mentorship Program</h2>
                 <p className="cta-two__text">
                   We develop courses, educate and help guide those intersted in
-                  programming. <br />
+                  programming.
+                  {' '}
+                  <br />
                   Stay in touch with a mentor thorughout your journey.
                 </p>
                 <a
                   href="https://discord.gg/zGBrEd7UCn"
                   target="_blank"
                   className="thm-btn cta-two__btn"
+                  rel="noreferrer"
                 >
                   Volunteer Today
                 </a>
@@ -33,7 +36,7 @@ const Educational = () => {
             <div className="cta-two__single">
               <div className="cta-two__icon">
                 <span>
-                  <i className="kipso-icon-knowledge"></i>
+                  <i className="kipso-icon-knowledge" />
                 </span>
               </div>
               <div className="cta-two__content">

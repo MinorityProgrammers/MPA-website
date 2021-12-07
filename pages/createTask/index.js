@@ -1,11 +1,9 @@
-import React from "react";
+import React from 'react';
 
-const index = () => {
-  return (
-    <div>
-      <h1>Create task home</h1>
-    </div>
-  );
-};
+const index = () => (
+  <div>
+    <h1>Create task home</h1>
+  </div>
+);
 
 export default index;

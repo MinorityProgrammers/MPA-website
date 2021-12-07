@@ -1,6 +1,6 @@
-import { Fragment } from "react";
+import { Fragment } from 'react';
 
-function InputWithIcon({
+const InputWithIcon = function ({
   marginTop,
   label,
   placeholder,
@@ -9,7 +9,7 @@ function InputWithIcon({
   defaultValue,
   iconLink,
   validationMethod,
-  color = "var(--mpa-navy)",
+  color = 'var(--mpa-navy)',
   width,
   hideIcon,
   maxLength,
@@ -20,15 +20,15 @@ function InputWithIcon({
   id,
 }) {
   return (
-    <div className="inline-block" style={{ width: width ? width : "80%" }}>
+    <div className="inline-block" style={{ width: width || '80%' }}>
       <label
         htmlFor={id}
-        className={marginTop ? "margin-top" : ""}
+        className={marginTop ? 'margin-top' : ''}
         style={{ color }}
       >
         {label}
       </label>
-      <div className="wrap" style={{ width: "100%" }}>
+      <div className="wrap" style={{ width: '100%' }}>
         {/* the email input */}
         <input
           type={type}
@@ -42,8 +42,8 @@ function InputWithIcon({
           }}
           defaultValue={defaultValue}
           style={{
-            width: "100%",
-            paddingLeft: hideIcon ? "var(--inputWithIconPad)" : "",
+            width: '100%',
+            paddingLeft: hideIcon ? 'var(--inputWithIconPad)' : '',
           }}
           maxLength={maxLength}
           min={min}
@@ -56,5 +56,5 @@ function InputWithIcon({
       </div>
     </div>
   );
-}
+};
 export default InputWithIcon;

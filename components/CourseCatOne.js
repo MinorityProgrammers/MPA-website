@@ -1,8 +1,8 @@
-import React from "react";
-import Swiper from "react-id-swiper";
-import "swiper/css/swiper.css";
+import React from 'react';
+import Swiper from 'react-id-swiper';
+import 'swiper/css/swiper.css';
 
-const CourseCatOne = () => {
+const CourseCatOne = function () {
   const params = {
     slidesPerView: 6,
     loop: true,
@@ -45,7 +45,7 @@ const CourseCatOne = () => {
             <div className="item">
               <div className="course-category-one__single color-1">
                 <div className="course-category-one__icon">
-                  <i className="kipso-icon-desktop"></i>
+                  <i className="kipso-icon-desktop" />
                 </div>
                 <h3 className="course-category-one__title">
                   <a href="#">Diversity in STEM</a>
@@ -55,7 +55,7 @@ const CourseCatOne = () => {
             <div className="item">
               <div className="course-category-one__single color-2">
                 <div className="course-category-one__icon">
-                  <i className="kipso-icon-web-programming"></i>
+                  <i className="kipso-icon-web-programming" />
                 </div>
                 <h3 className="course-category-one__title">
                   <a href="#">Software Engineering</a>
@@ -65,7 +65,7 @@ const CourseCatOne = () => {
             <div className="item">
               <div className="course-category-one__single color-3">
                 <div className="course-category-one__icon">
-                  <i className="kipso-icon-music-player"></i>
+                  <i className="kipso-icon-music-player" />
                 </div>
                 <h3 className="course-category-one__title">
                   <a href="#">Interdisciplinary Learning</a>
@@ -75,7 +75,7 @@ const CourseCatOne = () => {
             <div className="item">
               <div className="course-category-one__single color-4">
                 <div className="course-category-one__icon">
-                  <i className="kipso-icon-camera"></i>
+                  <i className="kipso-icon-camera" />
                 </div>
                 <h3 className="course-category-one__title">
                   <a href="#">Project Based Learning</a>
@@ -85,7 +85,7 @@ const CourseCatOne = () => {
             <div className="item">
               <div className="course-category-one__single color-5">
                 <div className="course-category-one__icon">
-                  <i className="kipso-icon-targeting"></i>
+                  <i className="kipso-icon-targeting" />
                 </div>
                 <h3 className="course-category-one__title">
                   <a href="#">Activating Passions</a>
@@ -95,7 +95,7 @@ const CourseCatOne = () => {
             <div className="item">
               <div className="course-category-one__single color-6">
                 <div className="course-category-one__icon">
-                  <i className="kipso-icon-health"></i>
+                  <i className="kipso-icon-health" />
                 </div>
                 <h3 className="course-category-one__title">
                   <a href="#">Training/Onboarding</a>
@@ -105,7 +105,7 @@ const CourseCatOne = () => {
             <div className="item">
               <div className="course-category-one__single color-1">
                 <div className="course-category-one__icon">
-                  <i className="kipso-icon-desktop"></i>
+                  <i className="kipso-icon-desktop" />
                 </div>
                 <h3 className="course-category-one__title">
                   <a href="#">Job Placement</a>
@@ -115,7 +115,7 @@ const CourseCatOne = () => {
             <div className="item">
               <div className="course-category-one__single color-2">
                 <div className="course-category-one__icon">
-                  <i className="kipso-icon-web-programming"></i>
+                  <i className="kipso-icon-web-programming" />
                 </div>
                 <h3 className="course-category-one__title">
                   <a href="#">Entrepreneurship</a>
@@ -125,7 +125,7 @@ const CourseCatOne = () => {
             <div className="item">
               <div className="course-category-one__single color-3">
                 <div className="course-category-one__icon">
-                  <i className="kipso-icon-music-player"></i>
+                  <i className="kipso-icon-music-player" />
                 </div>
                 <h3 className="course-category-one__title">
                   <a href="#">Innovation</a>
@@ -135,7 +135,7 @@ const CourseCatOne = () => {
             <div className="item">
               <div className="course-category-one__single color-4">
                 <div className="course-category-one__icon">
-                  <i className="kipso-icon-camera"></i>
+                  <i className="kipso-icon-camera" />
                 </div>
                 <h3 className="course-category-one__title">
                   <a href="#">Professional Development</a>
@@ -145,7 +145,7 @@ const CourseCatOne = () => {
             <div className="item">
               <div className="course-category-one__single color-4">
                 <div className="course-category-one__icon">
-                  <i className="kipso-icon-camera"></i>
+                  <i className="kipso-icon-camera" />
                 </div>
                 <h3 className="course-category-one__title">
                   <a href="#">Sense of Community</a>
@@ -155,7 +155,7 @@ const CourseCatOne = () => {
             <div className="item">
               <div className="course-category-one__single color-4">
                 <div className="course-category-one__icon">
-                  <i className="kipso-icon-camera"></i>
+                  <i className="kipso-icon-camera" />
                 </div>
                 <h3 className="course-category-one__title">
                   <a href="#">Mentorship</a>
@@ -165,7 +165,7 @@ const CourseCatOne = () => {
             <div className="item">
               <div className="course-category-one__single color-4">
                 <div className="course-category-one__icon">
-                  <i className="kipso-icon-camera"></i>
+                  <i className="kipso-icon-camera" />
                 </div>
                 <h3 className="course-category-one__title">
                   <a href="#">Humanitarian Focused</a>
