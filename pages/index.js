@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import Layout from "../components/Layout";
 import HomepageNav from "../components/HomepageNav";
 import Footer from "../components/Footer";
-import HomepageHeader from "../components/HomepageHeader";
+import HomePageNewTopSection from "../components/HomePageNewTopSection";
 import HomepageAbout from "../components/HomepageAbout";
 import HomepageApp from "../components/HomepageApp";
 import HomepageCore from "../components/HomepageCore";
@@ -63,7 +63,7 @@ const HomepageFour = () => {
                 handleClick={handleClick}
               />
               {hide == false && <ComingSoon closeClick={handleClick} />}
-              <HomepageHeader />
+              <HomePageNewTopSection />
               <HomepageAbout />
               {/* <HomepageBuyMinority />*/}
               <HomepageApp />

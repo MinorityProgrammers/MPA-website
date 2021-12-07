@@ -7614,7 +7614,7 @@ html {
 /* Hero */
 .homepage__hero {
   position: relative;
-  padding: 120px 0;
+  padding-top: 60px;
   font-family: 'Red Hat Display', sans-serif;
   color: #fff;
   background: linear-gradient(90deg, #ff00b8 0%, #ff655b 50.8%, #ffc700 100%);
@@ -8359,6 +8359,9 @@ html {
 }
 
 @media screen and (max-width: 768px) {
+  .homepage__hero{
+    padding-top: 5px;
+  }
   .popup_bg-core {
     max-width: 36em;
   }
@@ -8369,6 +8372,9 @@ html {
 }
 
 @media screen and (max-width: 480px) {
+  .homepage__hero{
+    padding-top: 5px;
+  }
   .popup_bg-core {
     padding: 1em;
     padding-top: 3em;
@@ -8518,6 +8524,9 @@ html {
 }
 
 @media only screen and (max-width: 375px) {
+  .homepage__hero{
+    padding-top: 5px;
+  }
   .card-body-custom p,
   .card-body-app p {
     font-size: 1rem;
