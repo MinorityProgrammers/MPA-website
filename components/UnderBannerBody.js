@@ -1,13 +1,12 @@
 import React from "react";
 
 const UnderBannerBody = (props) => {
-    let text = props.text;
+  let text = props.text;
 
-    return (
+  return (
     <div class="below-banner-text">
-        <p>{text}</p>
+      <p>{text}</p>
     </div>
-
-    );
+  );
 };
 export default UnderBannerBody;

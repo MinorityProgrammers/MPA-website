@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 const StartupRoadmap = ({
   index,
@@ -10,24 +10,24 @@ const StartupRoadmap = ({
   return (
     <div
       onMouseEnter={() => {
-        setHoverRoadMap(index)
+        setHoverRoadMap(index);
       }}
       onMouseLeave={() => {
-        setHoverRoadMap(-1)
+        setHoverRoadMap(-1);
       }}
-      style={{ marginRight: '10px', position: 'relative' }}
+      style={{ marginRight: "10px", position: "relative" }}
     >
       <div
         style={{
-          textAlign: 'center',
-          backgroundColor: 'var(--mpa-pink)',
-          color: 'white',
+          textAlign: "center",
+          backgroundColor: "var(--mpa-pink)",
+          color: "white",
         }}
       >
         {item.year}
       </div>
       <div
-        style={{ border: '1px solid black', marginTop: '10px', padding: '5px' }}
+        style={{ border: "1px solid black", marginTop: "10px", padding: "5px" }}
       >
         {item.target}
       </div>
@@ -36,44 +36,44 @@ const StartupRoadmap = ({
           {milestones[index] && (
             <div
               style={{
-                border: '1px solid black',
-                marginTop: '10px',
-                padding: '5px',
-                position: 'absolute',
-                backgroundColor: 'white',
-                zIndex: '100',
-                width: '300px',
-                fontSize: '12px',
+                border: "1px solid black",
+                marginTop: "10px",
+                padding: "5px",
+                position: "absolute",
+                backgroundColor: "white",
+                zIndex: "100",
+                width: "300px",
+                fontSize: "12px",
               }}
             >
-              <div style={{ display: 'flex' }}>
-                <div style={{ marginRight: '10px' }}>
-                  <div style={{ fontWeight: 'bold' }}>
+              <div style={{ display: "flex" }}>
+                <div style={{ marginRight: "10px" }}>
+                  <div style={{ fontWeight: "bold" }}>
                     {milestones[index].milestoneName}
                   </div>
                   <div>Launch Day</div>
                 </div>
                 <div>
-                  <div style={{ fontWeight: 'bold' }}>
-                    {' '}
+                  <div style={{ fontWeight: "bold" }}>
+                    {" "}
                     Description of milesone
                   </div>
                   <div>{milestones[index].milestoneDescription}</div>
                 </div>
               </div>
               <div>
-                <div style={{ fontWeight: 'bold' }}>Definition of Done</div>
+                <div style={{ fontWeight: "bold" }}>Definition of Done</div>
                 <div>{milestones[index].definitionOfDone}</div>
               </div>
-              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+              <div style={{ display: "flex", justifyContent: "space-between" }}>
                 <div>
-                  <div style={{ fontWeight: 'bold' }}>
+                  <div style={{ fontWeight: "bold" }}>
                     Est. Date of completion
                   </div>
                   <div>{milestones[index].completionDate}</div>
                 </div>
                 <div>
-                  <div style={{ fontWeight: 'bold' }}>
+                  <div style={{ fontWeight: "bold" }}>
                     % of funding unlocked
                   </div>
                   <div>{milestones[index].fundingUnlocked}</div>
@@ -84,6 +84,6 @@ const StartupRoadmap = ({
         </>
       )}
     </div>
-  )
-}
-export default StartupRoadmap
+  );
+};
+export default StartupRoadmap;

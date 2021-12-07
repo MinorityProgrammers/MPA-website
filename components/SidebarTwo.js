@@ -37,7 +37,6 @@ const SidebarTwo = ({ links, active, open, setOpen, handleClick }) => {
     if (token == null || userInfo == {}) {
       setUserData(null);
     } else {
-      // setUserData(Object.values(JSON.parse(userInfo))[1])
       getProfile(setUserData)(profileDispatch);
     }
   }, [data]);
@@ -45,12 +44,9 @@ const SidebarTwo = ({ links, active, open, setOpen, handleClick }) => {
   const handleCollapseAll = () => {
     setSectionStates((prev) => ({ ...prev, collapseAll: !prev.collapseAll }));
     Object.keys(sectionStates).forEach((title) => {
-      // console.log(title);
-      // console.log(sectionStates[title]);
       if (title != "collapseAll") {
         setSectionStates((prev) => ({ ...prev, [title]: prev.collapseAll }));
       }
-      // console.log(sectionStates[title]);
     });
   };
   const toggleState = (title) => {
@@ -60,7 +56,6 @@ const SidebarTwo = ({ links, active, open, setOpen, handleClick }) => {
     }));
   };
 
-  // console.log("sidebar", userData.firstName)
   return (
     <>
       <div className={open ? "sidebarTwo " : "sidebarTwo hide"}>

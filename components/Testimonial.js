@@ -116,7 +116,7 @@ function Testimonials({ homeClass, mode }) {
 
       let widthOfCard = userCardWidth.current;
       let heightOfCard = parseInt($("body").css("--testimonialMaxHeight"));
-      
+
       let numberOfNew = Math.floor(Math.random() * maxRandom) + 1;
       for (let i = 0; i < numberOfNew; i++) {
         const newObj = {
@@ -142,9 +142,7 @@ function Testimonials({ homeClass, mode }) {
     randomize();
   }, []);
   useEffect(() => {
-    //setinterval
     interval.current = setInterval(randomize, 5000);
-    //resize handler
     const resize = () => {
       setRandomTestimony([]);
       randomize();
