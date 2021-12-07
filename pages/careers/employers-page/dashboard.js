@@ -1,15 +1,15 @@
-import React, { useState, useRef, Fragment } from 'react';
-import PageHeader from '../../../components/PageHeader';
-import SidebarTwo from '../../../components/SidebarTwo';
-import links from '../../../contexts/utils/links';
-import { useDetectOutsideClick } from '../../../components/UseDetectOutsideClick';
-import ComingSoon from '../../../components/ComingSoon';
+import React, { useState, useRef, Fragment } from "react";
+import PageHeader from "../../../components/PageHeader";
+import SidebarTwo from "../../../components/SidebarTwo";
+import links from "../../../contexts/utils/links";
+import { useDetectOutsideClick } from "../../../components/UseDetectOutsideClick";
+import ComingSoon from "../../../components/ComingSoon";
 // components
-import HomepageNav from '../../../components/HomepageNav';
-import Layout from '../../../components/Layout';
-import Content from '../../../components/employers-page/sidenav';
-import Header from '../../../components/employers-page/home/header/Header';
-import EmployerContent from '../../../components/employers-page/home/content';
+import HomepageNav from "../../../components/homepage/HomepageNav";
+import Layout from "../../../components/Layout";
+import Content from "../../../components/employers-page/sidenav";
+import Header from "../../../components/employers-page/home/header/Header";
+import EmployerContent from "../../../components/employers-page/home/content";
 
 const EmployersDashboard = function () {
   const [open, setOpen] = useState(false);

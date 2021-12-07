@@ -1,15 +1,15 @@
-import React, { useState, useRef } from 'react';
-import Footer from '../components/Footer';
-import Layout from '../components/Layout';
-import SidebarTwo from '../components/SidebarTwo';
-import HomepageNav from '../components/HomepageNav';
-import links from '../contexts/utils/links';
-import ComingSoon from '../components/ComingSoon';
-import { useDetectOutsideClick } from '../components/UseDetectOutsideClick';
-import PresaleCountDown from '../components/presale/presaleCountDown';
-import PresaleAmount from '../components/presale/presaleAmount';
-import PresaleHeroSection from '../components/presale/presaleHeroSection.js';
-import PresalePreorder from '../components/presale/presalePreorder';
+import React, { useState, useRef } from "react";
+import Footer from "../components/Footer";
+import Layout from "../components/Layout";
+import SidebarTwo from "../components/SidebarTwo";
+import HomepageNav from "../components/homepage/HomepageNav";
+import links from "../contexts/utils/links";
+import ComingSoon from "../components/ComingSoon";
+import { useDetectOutsideClick } from "../components/UseDetectOutsideClick";
+import PresaleCountDown from "../components/presale/presaleCountDown";
+import PresaleAmount from "../components/presale/presaleAmount";
+import PresaleHeroSection from "../components/presale/presaleHeroSection.js";
+import PresalePreorder from "../components/presale/presalePreorder";
 
 const Presale = function () {
   const [open, setOpen] = useState(false);

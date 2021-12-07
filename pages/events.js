@@ -1,20 +1,18 @@
-import React, {
-  useState, useRef, useEffect, useContext,
-} from 'react';
-import { GlobalContext } from '../contexts/provider';
-import HomepageNav from '../components/HomepageNav';
-import Layout from '../components/Layout';
-import Footer from '../components/Footer';
-import Event from '../components/Events/Event';
-import SidebarTwo from '../components/SidebarTwo';
-import links from '../contexts/utils/links';
-import { useDetectOutsideClick } from '../components/UseDetectOutsideClick';
+import React, { useState, useRef, useEffect, useContext } from "react";
+import { GlobalContext } from "../contexts/provider";
+import HomepageNav from "../components/homepage/HomepageNav";
+import Layout from "../components/Layout";
+import Footer from "../components/Footer";
+import Event from "../components/Events/Event";
+import SidebarTwo from "../components/SidebarTwo";
+import links from "../contexts/utils/links";
+import { useDetectOutsideClick } from "../components/UseDetectOutsideClick";
 
 const events = () => {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState(false);
   const [clickRegister, setClickRegister] = useState(false);
-  const [token, setToken] = useState('');
+  const [token, setToken] = useState("");
   const dropdownRef = useRef(null);
   const [userData, setUserData] = useState([]);
   const [hide, setHide] = useDetectOutsideClick(dropdownRef, false);
@@ -36,8 +34,8 @@ const events = () => {
   } = useContext(GlobalContext);
 
   useEffect(() => {
-    const token = window.localStorage.getItem('jwtToken');
-    const userInfo = window.localStorage.getItem('userInfo');
+    const token = window.localStorage.getItem("jwtToken");
+    const userInfo = window.localStorage.getItem("userInfo");
 
     if (token == null || userInfo == {}) {
       setUserData(null);

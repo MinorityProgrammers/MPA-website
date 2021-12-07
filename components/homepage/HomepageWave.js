@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const HomepageWave = function () {
   return (
@@ -20,15 +20,15 @@ const HomepageWave = function () {
             >
               <div className="card  border-0 rounded-0">
                 <div className="wave__img-left">
-                    <img
-                      src="/assets/images/wave1.svg"
-                      alt=""
-                      className="card-img-top"
-                    />
-                  </div>
+                  <img
+                    src="/assets/images/wave1.svg"
+                    alt=""
+                    className="card-img-top"
+                  />
+                </div>
                 <div className="card-body wave__card-text">
-                    <h1 className="wave__text-title">MINORITY THINK TANK</h1>
-                  </div>
+                  <h1 className="wave__text-title">MINORITY THINK TANK</h1>
+                </div>
               </div>
             </a>
           </div>
@@ -42,22 +42,20 @@ const HomepageWave = function () {
             >
               <div className="card border-0 rounded-0">
                 <div className="gradient__mvc wave__img-right">
-                    <img
-                      className="mvc__svg"
-                      src="/assets/images/mvcicon.svg"
-                      alt=""
-                    />
-                    <img
-                      src="/assets/images/wave2.jpg"
-                      alt=""
-                      className="card-img-top rounded-0"
-                    />
-                  </div>
+                  <img
+                    className="mvc__svg"
+                    src="/assets/images/mvcicon.svg"
+                    alt=""
+                  />
+                  <img
+                    src="/assets/images/wave2.jpg"
+                    alt=""
+                    className="card-img-top rounded-0"
+                  />
+                </div>
                 <div className="card-body wave__card-text">
-                    <h1 className="wave__text-title">
-                      MINORITY VENTURE CAPITAL
-                    </h1>
-                  </div>
+                  <h1 className="wave__text-title">MINORITY VENTURE CAPITAL</h1>
+                </div>
               </div>
             </a>
           </div>
@@ -65,9 +63,8 @@ const HomepageWave = function () {
 
         <div className="wave__text">
           <p>
-            From ideation, to build, to investment, we provide turnkey
-            vertical integration for minorities to deliver products to
-            markets.
+            From ideation, to build, to investment, we provide turnkey vertical
+            integration for minorities to deliver products to markets.
           </p>
         </div>
       </div>

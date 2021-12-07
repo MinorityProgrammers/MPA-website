@@ -1,18 +1,16 @@
-import React, {
-  useEffect, useState, useContext, useRef,
-} from 'react';
-import { useRouter } from 'next/router';
-import NotFoundPage from '../404';
-import Layout from '../../components/Layout';
-import HomepageNav from '../../components/HomepageNav';
-import SidebarTwo from '../../components/SidebarTwo';
-import ProfileTwo from '../../components/ProfileTwo';
-import { GlobalContext } from '../../contexts/provider';
-import { getProfile } from '../../contexts/actions/profile/getProfile';
-import links from '../../contexts/utils/links';
-import Footer from '../../components/Footer';
-import ComingSoon from '../../components/ComingSoon';
-import { useDetectOutsideClick } from '../../components/UseDetectOutsideClick';
+import React, { useEffect, useState, useContext, useRef } from "react";
+import { useRouter } from "next/router";
+import NotFoundPage from "../404";
+import Layout from "../../components/Layout";
+import HomepageNav from "../../components/homepage/HomepageNav";
+import SidebarTwo from "../../components/SidebarTwo";
+import ProfileTwo from "../../components/ProfileTwo";
+import { GlobalContext } from "../../contexts/provider";
+import { getProfile } from "../../contexts/actions/profile/getProfile";
+import links from "../../contexts/utils/links";
+import Footer from "../../components/Footer";
+import ComingSoon from "../../components/ComingSoon";
+import { useDetectOutsideClick } from "../../components/UseDetectOutsideClick";
 
 const User = function ({ user }) {
   const [hiddenProfileValidated, setHiddenProfileValidated] = useState(false);
@@ -25,8 +23,8 @@ const User = function ({ user }) {
 
   useEffect(() => {
     setTimeout(() => {
-      !((isLoggedIn && ownsProfile) || user[0]?.profileVisibility)
-        && setHiddenProfileValidated(true);
+      !((isLoggedIn && ownsProfile) || user[0]?.profileVisibility) &&
+        setHiddenProfileValidated(true);
     }, 2000);
   }, [isLoggedIn, ownsProfile, user]);
 
@@ -46,7 +44,7 @@ const User = function ({ user }) {
 
   // grab a token from local storage so as user info
   useEffect(() => {
-    if (window.localStorage.getItem('jwtToken')) {
+    if (window.localStorage.getItem("jwtToken")) {
       getProfile(setUserData)(profileDispatch);
     }
   }, []);
@@ -54,14 +52,14 @@ const User = function ({ user }) {
   // user is logged in and viewing own profile page
   useEffect(() => {
     setOwnsProfile(
-      userData?.userName === user[0]?.userName
-        || profileData?.userName === user[0]?.userName,
+      userData?.userName === user[0]?.userName ||
+        profileData?.userName === user[0]?.userName
     );
   }, [user, userData, profileData]);
 
   useEffect(() => {
-    const token = window.localStorage.getItem('jwtToken');
-    const userInfo = window.localStorage.getItem('userInfo');
+    const token = window.localStorage.getItem("jwtToken");
+    const userInfo = window.localStorage.getItem("userInfo");
 
     if (token == null || userInfo == {}) {
       setIsLoggedIn(false);
@@ -72,7 +70,7 @@ const User = function ({ user }) {
 
   useEffect(() => {
     if (userData && ownsProfile && userData?.isUpdated === false) {
-      router.push('/create-profile');
+      router.push("/create-profile");
     }
   }, [userData]);
 
@@ -86,8 +84,8 @@ const User = function ({ user }) {
   // console.log(userData, profileData);
   return (
     <Layout pageTitle="Profile">
-      {(isLoggedIn && ownsProfile && user?.[0])
-      || user[0]?.profileVisibility !== false ? (
+      {(isLoggedIn && ownsProfile && user?.[0]) ||
+      user[0]?.profileVisibility !== false ? (
         <>
           <HomepageNav
             setData={setUserData}
@@ -112,11 +110,11 @@ const User = function ({ user }) {
           />
           <Footer />
         </>
-        ) : hiddenProfileValidated ? (
-          <NotFoundPage />
-        ) : (
-          <></>
-        )}
+      ) : hiddenProfileValidated ? (
+        <NotFoundPage />
+      ) : (
+        <></>
+      )}
     </Layout>
   );
 };
@@ -127,7 +125,7 @@ export const getServerSideProps = async (context) => {
   const slug = context.params.username;
 
   const res = await fetch(
-    `https://koinstreet-learn-api.herokuapp.com/api/v1/user/${slug}`,
+    `https://koinstreet-learn-api.herokuapp.com/api/v1/user/${slug}`
   );
   const { data } = await res.json();
 

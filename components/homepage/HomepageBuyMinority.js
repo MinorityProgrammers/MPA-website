@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from "next/link";
 
 const HomepageBuyMinority = function () {
   return (
@@ -11,20 +11,14 @@ const HomepageBuyMinority = function () {
           <div className="content-buy">
             <div className="heading-buy mb-5">
               <h2 className="title-buy text_white">
-                Buy $MINORITY
-                {' '}
-                <br />
-                {' '}
-                FAIR LAUNCH
+                Buy $MINORITY <br /> FAIR LAUNCH
               </h2>
             </div>
             <div className="link__container-buy">
               <Link href="#/register">
                 <a>
                   <div className="link-buy">
-                    LEARN MORE
-                    {' '}
-                    <i className="fas fa-caret-down" />
+                    LEARN MORE <i className="fas fa-caret-down" />
                   </div>
                 </a>
               </Link>
