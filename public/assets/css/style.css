@@ -4,14 +4,14 @@
 * 1. common styles
 */
 
-h1,
+/* h1,
 h2,
 h3,
 h4,
 h5,
 h6{
   color: inherit !important
-}
+} */
 .text-white{
   color: white !important;
 }
@@ -6702,6 +6702,7 @@ html {
 }
 .banner-arrow {
   cursor: pointer;
+  color: #3E385D;
 }
 .countdown-one__list.list-unstyled span {
   font-size: 60px;
@@ -7617,7 +7618,8 @@ html {
   padding-top: 60px;
   font-family: 'Red Hat Display', sans-serif;
   color: #fff;
-  background: linear-gradient(90deg, #ff00b8 0%, #ff655b 50.8%, #ffc700 100%);
+  /* background: linear-gradient(90deg, #ff00b8 0%, #ff655b 50.8%, #ffc700 100%); */
+  background-color: #efefef;
 }
 
 .homepage__hero .container {
@@ -7674,26 +7676,29 @@ html {
   position: relative;
   font-family: 'Red Hat Display', sans-serif;
   color: #fff;
-  background: linear-gradient(90deg, #ff00b8 0%, #ff655b 50.8%, #ffc700 100%);
-  padding: 100px 0;
+  /* background: linear-gradient(90deg, #ff00b8 0%, #ff655b 50.8%, #ffc700 100%); */
+  background-color: #efefef;
+  padding: 60px 0;
 }
 .heading__number {
   font-size: 2rem;
   font-weight: bold;
   margin-left: 6rem;
   position: relative;
+  color: #1e3a8a;
 }
 .heading__number h3::after {
   content: '';
   display: block;
   width: 140px;
   height: 3px;
-  background: #fff;
+  background: #1e3a8a;
   margin-left: -99px;
   /* margin-left: -140px; */
   top: 35px;
   position: absolute;
 }
+
 .heading__title {
   font-size: 1.75rem;
   font-weight: bold;
@@ -7841,8 +7846,8 @@ html {
   align-items: center;
   text-align: center;
   border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.479);
-  color: #fff;
+  background-color: #ccc;
+  color: #3E385D;
   -webkit-transition: all 0.4s ease;
   transition: all 0.4s ease;
   position: absolute;
@@ -7854,7 +7859,9 @@ html {
 .homepage__about
   .homepage-carousel-btn
   [class*='homepage-carousel-btn__']:hover {
-  background-color: rgba(255, 255, 255, 0.692);
+  /* background-color: rgba(255, 255, 255, 0.692); */
+  background-color: #3E385D;
+  color: #fff;
 }
 .homepage__about .homepage-carousel-btn [class*='homepage-carousel-btn__'] i {
   font-size: 22px;
@@ -7873,17 +7880,18 @@ html {
 .homepage__app {
   position: relative;
   font-family: 'Red Hat Display', sans-serif;
-  color: #fff;
-  background: linear-gradient(
+  color: #1e3a8a;
+  /* background: linear-gradient(
       180deg,
       rgba(21, 19, 113, 0) 33.45%,
       #790073 40.16%,
       #151371 95.97%
     ),
     linear-gradient(180deg, rgba(21, 19, 113, 0) 15.23%, #151371 50.66%),
-    linear-gradient(90deg, #ff00b8 -0.69%, #ff655b 50.18%, #ffc700 100%);
+    linear-gradient(90deg, #ff00b8 -0.69%, #ff655b 50.18%, #ffc700 100%); */
+    background: #efefef;
 
-  padding: 100px 0;
+  padding: 60px 0;
 }
 .card__container-app {
   padding-right: 0;
@@ -7934,7 +7942,7 @@ html {
   font-family: 'Red Hat Display', sans-serif;
   color: white;
   position: relative;
-  padding: 100px 0;
+  padding: 60px 0;
 }
 
 .container-buy {
@@ -8067,9 +8075,10 @@ html {
 .homepage__core {
   position: relative;
   font-family: 'Red Hat Display', sans-serif;
-  color: #fff;
-  background: #151371;
-  padding: 100px 0;
+  color: #efefef;
+  /* background: #151371; */
+  background: #fff;
+  padding: 60px 0;
 }
 .card__container-core {
   padding-right: 0;
@@ -8417,9 +8426,9 @@ html {
 .homepage__wave {
   position: relative;
   font-family: 'Red Hat Display', sans-serif;
-  color: #fff;
-  background: #151371;
-  padding: 100px 0;
+  color: #1e3a8a;
+  background: #efefef;
+  padding: 60px 0;
 }
 .wave__img-left,
 .wave__img-right {
@@ -8538,15 +8547,16 @@ html {
   position: relative;
   font-family: 'Red Hat Display', sans-serif;
   color: #fff;
-  background-image: linear-gradient(
+  /* background-image: linear-gradient(
     to top,
     #a85cad,
     #89479e,
     #68338f,
     #452280,
     #151371
-  );
-  padding: 100px 0;
+  ); */
+  background: #efefef;
+  padding: 60px 0;
 }
 .team__homepage-container {
   border-radius: 3px;
@@ -8756,15 +8766,16 @@ html {
   position: relative;
   font-family: 'Red Hat Display', sans-serif;
   color: #fff;
-  background-image: linear-gradient(
+  /* background-image: linear-gradient(
     to bottom,
     #a85cad,
     #89479e,
     #68338f,
     #452280,
     #151371
-  );
-  padding: 100px 0;
+  ); */
+  background: #efefef;
+  padding: 60px 0;
 }
 .heading__title-container {
   display: flex;
@@ -8892,9 +8903,9 @@ html {
 .homepage__donate {
   position: relative;
   font-family: 'Red Hat Display', sans-serif;
-  color: #fff;
-  background: #151371;
-  padding: 100px 0;
+  color: #1e3a8a;
+  background: #efefef;
+  padding: 60px 0;
 }
 .donate__container .donate__container-subtitle {
   font-size: 1.25rem;

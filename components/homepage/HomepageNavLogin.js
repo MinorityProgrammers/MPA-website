@@ -99,7 +99,7 @@ export default function HomepageNavLogin({ onCloseMobileMenu }) {
         <i className="fas fa-times" />
       </button>
       <div className="dropdown-login-icons">
-        <GoogleLogin
+        {/* <GoogleLogin
           clientId={googleClientId}
           render={(renderProps) => (
             <img
@@ -113,6 +113,11 @@ export default function HomepageNavLogin({ onCloseMobileMenu }) {
           onSuccess={handleLoginSuccess}
           onFailure={handleLoginFailure}
           cookiePolicy="single_host_origin"
+        /> */}
+        <img
+          onClick={() => signIn(providers.google.id)}
+          src="./assets/images/login-signup/google.png"
+          alt="icon"
         />
         <div>
           <img
