@@ -83,6 +83,14 @@ const JobsMain = function (props) {
       .catch((error) => console.log(error));
   };
 
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const openModal = () => {
+    if (window.innerWidth <= 550) setShowModal(!showModal);
+  };
+
   const filterJobs = () => {
     setLoading(true);
     setJobs([]);

@@ -1,28 +1,28 @@
-import React, { useState } from 'react';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
-import styles from './sidenav.module.css';
+import React, { useState } from "react";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import styles from "./sidenav.module.css";
 
 const menu = [
   {
-    title: 'HOME',
-    path: '/careers/employers-page/dashboard',
-    class: 'fas fa-home',
+    title: "HOME",
+    path: "/careers/employers-page/dashboard",
+    class: "fas fa-home",
   },
   {
-    title: 'JOBS',
-    path: '/careers/employers-page/employer-jobs',
-    class: 'fas fa-suitcase',
+    title: "JOBS",
+    path: "/careers/employers-page/employer-jobs",
+    class: "fas fa-suitcase",
   },
   {
-    title: 'INBOX',
-    path: '/careers/employers-page/employer',
-    class: 'fas fa-comment-alt',
+    title: "INBOX",
+    path: "/careers/employers-page/employer",
+    class: "fas fa-comment-alt",
   },
   {
-    title: 'CANDIDATES',
-    path: '/careers/employers-page/employer',
-    class: 'fas fa-user-friends',
+    title: "CANDIDATES",
+    path: "/careers/employers-page/employer",
+    class: "fas fa-user-friends",
   },
 ];
 
@@ -34,9 +34,9 @@ const Content = function (props) {
         {menu.map((item, index) => (
           <Link key={index} href={item.path}>
             <div className={styles.home}>
-              <a className={router.pathname === item.path ? styles.active : ''}>
+              <a className={router.pathname === item.path ? styles.active : ""}>
                 <i className={item.class} />
-                <a className={styles.text}>{item.title}</a>
+                <span className={styles.text}>{item.title}</span>
               </a>
             </div>
           </Link>

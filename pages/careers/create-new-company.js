@@ -220,7 +220,7 @@ const CreateNewCompany = function () {
                 <div className="tw-w-full sm:tw-w-1/3 tw-flex tw-flex-col tw-items-center tw-justify-between">
                   <label
                     className="tw-w-44 tw-h-44 tw-border tw-border-1 tw-text-4xl tw-text-white tw-flex tw-flex-col tw-justify-center tw-items-center tw-text-center"
-                    for="company-logo"
+                    htmlFor="company-logo"
                   >
                     <ImgUploadIconSvg />
                   </label>
