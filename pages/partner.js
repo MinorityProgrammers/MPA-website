@@ -1,11 +1,11 @@
-import React, { useState, useRef } from 'react';
-import { InlineWidget } from 'react-calendly';
-import Layout from '../components/Layout';
-import HomepageNav from '../components/HomepageNav';
-import { useDetectOutsideClick } from '../components/UseDetectOutsideClick';
-import Footer from '../components/Footer';
-import links from '../contexts/utils/links';
-import SidebarTwo from '../components/SidebarTwo';
+import React, { useState, useRef } from "react";
+import { InlineWidget } from "react-calendly";
+import Layout from "../components/Layout";
+import HomepageNav from "../components/homepage/HomepageNav";
+import { useDetectOutsideClick } from "../components/UseDetectOutsideClick";
+import Footer from "../components/Footer";
+import links from "../contexts/utils/links";
+import SidebarTwo from "../components/SidebarTwo";
 
 const Partner = function () {
   const [open, setOpen] = useState(false);

@@ -1,23 +1,21 @@
-import React, {
-  useState, useRef, useEffect, useContext,
-} from 'react';
-import HomepageNav from '../../components/HomepageNav';
-import Layout from '../../components/Layout';
-import NavOne from '../../components/NavOne';
-import Footer from '../../components/Footer';
-import Intro from '../../components/chapter/chapter-intro/intro.component';
-import ChapterToolkit from '../../components/chapter/chapter-toolkit-menu/chapterToolkit.component';
-import ChapterMap from '../../components/chapter/chapter-map/chapterMap.component';
-import SidebarTwo from '../../components/SidebarTwo';
-import links from '../../contexts/utils/links';
-import Leaderboard from '../../components/chapter/chapter-leaderboard/leaderboard.component';
-import ChapterWrapper from '../../components/chapter/chapter-wrapper/ChapterWrapper.component';
-import { useDetectOutsideClick } from '../../components/UseDetectOutsideClick';
-import { GlobalContext } from '../../contexts/provider';
+import React, { useState, useRef, useEffect, useContext } from "react";
+import HomepageNav from "../../components/homepage/HomepageNav";
+import Layout from "../../components/Layout";
+import NavOne from "../../components/NavOne";
+import Footer from "../../components/Footer";
+import Intro from "../../components/chapter/chapter-intro/intro.component";
+import ChapterToolkit from "../../components/chapter/chapter-toolkit-menu/chapterToolkit.component";
+import ChapterMap from "../../components/chapter/chapter-map/chapterMap.component";
+import SidebarTwo from "../../components/SidebarTwo";
+import links from "../../contexts/utils/links";
+import Leaderboard from "../../components/chapter/chapter-leaderboard/leaderboard.component";
+import ChapterWrapper from "../../components/chapter/chapter-wrapper/ChapterWrapper.component";
+import { useDetectOutsideClick } from "../../components/UseDetectOutsideClick";
+import { GlobalContext } from "../../contexts/provider";
 
 const index = () => {
   const [open, setOpen] = useState(false);
-  const [active, setActive] = useState('');
+  const [active, setActive] = useState("");
   const [userData, setUserData] = useState([]);
   const [token, setToken] = useState(null);
 
@@ -29,8 +27,8 @@ const index = () => {
   } = useContext(GlobalContext);
 
   useEffect(() => {
-    const token = window.localStorage.getItem('jwtToken');
-    const userInfo = window.localStorage.getItem('userInfo');
+    const token = window.localStorage.getItem("jwtToken");
+    const userInfo = window.localStorage.getItem("userInfo");
 
     if (token == null || userInfo == {}) {
       setUserData(null);
@@ -53,8 +51,19 @@ const index = () => {
   }
   return (
     <Layout pageTitle="Chapter">
-      <HomepageNav open={open} setOpen={setOpen} page="Chapter" setToken={setToken} />
-      <SidebarTwo open={open} setOpen={setOpen} links={links} active="Home" handleClick={handleClick} />
+      <HomepageNav
+        open={open}
+        setOpen={setOpen}
+        page="Chapter"
+        setToken={setToken}
+      />
+      <SidebarTwo
+        open={open}
+        setOpen={setOpen}
+        links={links}
+        active="Home"
+        handleClick={handleClick}
+      />
       <ChapterWrapper>
         <Intro userData={userData} active={active} />
 
@@ -66,7 +75,6 @@ const index = () => {
 
         <Footer />
       </ChapterWrapper>
-
     </Layout>
   );
 };

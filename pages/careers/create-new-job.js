@@ -1,12 +1,12 @@
-import React, { useState, useRef, useEffect } from 'react';
-import JobCreation from '../../components/career-components/JobCreation.js';
-import Layout from '../../components/Layout.js';
-import Footer from '../../components/Footer.js';
-import SidebarTwo from '../../components/SidebarTwo';
-import HomepageNav from '../../components/HomepageNav.js';
-import links from '../../contexts/utils/links';
-import ComingSoon from '../../components/ComingSoon';
-import { useDetectOutsideClick } from '../../components/UseDetectOutsideClick';
+import React, { useState, useRef, useEffect } from "react";
+import JobCreation from "../../components/career-components/JobCreation.js";
+import Layout from "../../components/Layout.js";
+import Footer from "../../components/Footer.js";
+import SidebarTwo from "../../components/SidebarTwo";
+import HomepageNav from "../../components/homepage/HomepageNav.js";
+import links from "../../contexts/utils/links";
+import ComingSoon from "../../components/ComingSoon";
+import { useDetectOutsideClick } from "../../components/UseDetectOutsideClick";
 
 const CreateNewJob = function () {
   const [open, setOpen] = useState(false);
@@ -21,8 +21,7 @@ const CreateNewJob = function () {
     }, 60000);
   }
   function getTodaysDate() {
-    const todaysDate = new Date().toString().split(' ').slice(1, 4)
-      .join(' ');
+    const todaysDate = new Date().toString().split(" ").slice(1, 4).join(" ");
     return todaysDate;
   }
   getTodaysDate();
@@ -30,16 +29,25 @@ const CreateNewJob = function () {
     <div className="create-new-job">
       <Layout>
         <HomepageNav open={open} setOpen={setOpen} page="Job" />
-        <SidebarTwo open={open} setOpen={setOpen} links={links} active="Home" handleClick={handleClick} />
+        <SidebarTwo
+          open={open}
+          setOpen={setOpen}
+          links={links}
+          active="Home"
+          handleClick={handleClick}
+        />
         {hide == false && <ComingSoon closeClick={handleClick} />}
         <div className="create-new-job-page tw-pb-20 tw-pt-2.5 tw-mt-20">
           <div className="tw-container tw-mx-auto">
             <div className="tw-mt-2.5 tw-text-center sm:tw-text-right">
               <div className="tw-inline-flex tw-flex-col tw-text-white tw-border-2 tw-p-2 tw-px-8 tw-rounded-lg tw-mb-20">
-                <div className="company-name tw-inline">COMPANY NAME FROM EMAIL</div>
+                <div className="company-name tw-inline">
+                  COMPANY NAME FROM EMAIL
+                </div>
                 <div>
-                    Todays Date:<span className="tw-font-bold">{getTodaysDate()}</span>
-                  </div>
+                  Todays Date:
+                  <span className="tw-font-bold">{getTodaysDate()}</span>
+                </div>
               </div>
             </div>
             <JobCreation />

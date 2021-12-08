@@ -1,6 +1,10 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect } from "react";
 
-const HomepageMemberModal = function ({ showModal, setShowModal, selectedMember }) {
+const HomepageMemberModal = function ({
+  showModal,
+  setShowModal,
+  selectedMember,
+}) {
   const modalRef = useRef();
 
   const closeModal = (e) => {
@@ -11,10 +15,10 @@ const HomepageMemberModal = function ({ showModal, setShowModal, selectedMember 
 
   useEffect(() => {
     if (showModal) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     }
     return () => {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = "unset";
     };
   }, [showModal]);
 
@@ -33,7 +37,7 @@ const HomepageMemberModal = function ({ showModal, setShowModal, selectedMember 
               src={
                 selectedMember.AvatarLink !== null
                   ? selectedMember.AvatarLink
-                  : 'https://github.com/MinorityProgrammers/mpa-avatars/blob/main/avatars/mysteryAvatar.png?raw=true'
+                  : "https://github.com/MinorityProgrammers/mpa-avatars/blob/main/avatars/mysteryAvatar.png?raw=true"
               }
               alt={selectedMember.Employee}
               className="member__modal-img"

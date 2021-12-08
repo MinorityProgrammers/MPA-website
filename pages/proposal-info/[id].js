@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import Footer from '../../components/Footer';
-import HomepageNav from '../../components/HomepageNav';
-import Layout from '../../components/Layout';
+import React, { useState } from "react";
+import Footer from "../../components/Footer";
+import HomepageNav from "../../components/homepage/HomepageNav";
+import Layout from "../../components/Layout";
 
 const ProposalInfoPage = function () {
   const [open, setOpen] = useState(false);

@@ -1,8 +1,8 @@
-import React, { useState, useRef } from 'react';
-import Layout from '../../components/Layout';
-import Footer from '../../components/Footer';
-import HomepageNav from '../../components/HomepageNav';
-import MyElectedProposal from '../../components/Moderator/myElectedProposal';
+import React, { useState, useRef } from "react";
+import Layout from "../../components/Layout";
+import Footer from "../../components/Footer";
+import HomepageNav from "../../components/homepage/HomepageNav";
+import MyElectedProposal from "../../components/Moderator/myElectedProposal";
 
 const my_elected_proposal = () => (
   <Layout pageTitle="Moderator_Elect Proposals">

@@ -1,17 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import ActivityDetails from '../../../../../../../components/learn/courseDetails/ActivityDetails';
-import Layout from '../../../../../../../components/Layout';
-import HomepageNav from '../../../../../../../components/HomepageNav';
-import Footer from '../../../../../../../components/Footer';
-import SkeletonElement from '../../../../../../../components/learn/SkeletonElement';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import ActivityDetails from "../../../../../../../components/learn/courseDetails/ActivityDetails";
+import Layout from "../../../../../../../components/Layout";
+import HomepageNav from "../../../../../../../components/homepage/HomepageNav";
+import Footer from "../../../../../../../components/Footer";
+import SkeletonElement from "../../../../../../../components/learn/SkeletonElement";
 
 export async function getServerSideProps(context) {
   return {
     props: {
       params: context.params,
     },
-
   };
 }
 
@@ -24,12 +23,12 @@ const ActivityPage = function ({ params }) {
   const [loading, setLoading] = useState(true);
 
   const redirect = () => {
-    window.location.href = '/learn-page';
+    window.location.href = "/learn-page";
   };
 
   useEffect(() => {
-    const token = localStorage.getItem('jwtToken');
-    const userInfo = localStorage.getItem('userInfo');
+    const token = localStorage.getItem("jwtToken");
+    const userInfo = localStorage.getItem("userInfo");
 
     if (token === null || userInfo === {}) {
       redirect();
@@ -42,13 +41,17 @@ const ActivityPage = function ({ params }) {
   }, []);
 
   useEffect(() => {
-    const userToken = JSON.parse(localStorage.getItem('userInfo'));
+    const userToken = JSON.parse(localStorage.getItem("userInfo"));
     if (userToken !== null) {
-      axios.get('https://koinstreet-learn-api.herokuapp.com/api/v1/learn/userCourses', {
-        headers: {
-          Authorization: `Bearer ${userToken.token}`,
-        },
-      })
+      axios
+        .get(
+          "https://koinstreet-learn-api.herokuapp.com/api/v1/learn/userCourses",
+          {
+            headers: {
+              Authorization: `Bearer ${userToken.token}`,
+            },
+          }
+        )
         .then((res) => {
           if (res.data.data.length > 0) {
             setEnrolledCourses(res.data.data);
@@ -60,13 +63,17 @@ const ActivityPage = function ({ params }) {
   }, []);
 
   useEffect(() => {
-    const userToken = JSON.parse(localStorage.getItem('userInfo'));
+    const userToken = JSON.parse(localStorage.getItem("userInfo"));
     if (userToken !== null) {
-      axios.get(`https://koinstreet-learn-api.herokuapp.com/api/v1/course/${courseId}/module`, {
-        headers: {
-          Authorization: `Bearer ${userToken.token}`,
-        },
-      })
+      axios
+        .get(
+          `https://koinstreet-learn-api.herokuapp.com/api/v1/course/${courseId}/module`,
+          {
+            headers: {
+              Authorization: `Bearer ${userToken.token}`,
+            },
+          }
+        )
         .then((res) => {
           setModules(res.data.data);
         });
@@ -74,38 +81,48 @@ const ActivityPage = function ({ params }) {
   }, [courseId]);
 
   useEffect(() => {
-    const userToken = JSON.parse(localStorage.getItem('userInfo'));
+    const userToken = JSON.parse(localStorage.getItem("userInfo"));
     if (userToken !== null) {
-      axios.get(`https://koinstreet-learn-api.herokuapp.com/api/v1/learn/${courseId}/userModules`, {
-        headers: {
-          Authorization: `Bearer ${userToken.token}`,
-        },
-      })
+      axios
+        .get(
+          `https://koinstreet-learn-api.herokuapp.com/api/v1/learn/${courseId}/userModules`,
+          {
+            headers: {
+              Authorization: `Bearer ${userToken.token}`,
+            },
+          }
+        )
         .then((res) => {
           setUserModules(res.data.data);
         });
     }
   }, [courseId]);
 
-  const singleUserModule = userModules?.filter((userModule) => userModule.moduleId._id === moduleId);
+  const singleUserModule = userModules?.filter(
+    (userModule) => userModule.moduleId._id === moduleId
+  );
   const singleUserModuleInfo = singleUserModule[0];
 
   return (
     <Layout pageTitle="Module Details - Minority Programmers Association">
-      {loading === true
-        ? (
-          <>
-            <HomepageNav page="learn-page" setData={setData} />
-            <SkeletonElement />
-          </>
-        )
-        : (
-          <>
-            <HomepageNav page="learn-page" setData={setData} />
-            <ActivityDetails userInfo={data} enrolledCourses={enrolledCourses} modules={modules} singleUserModuleInfo={singleUserModuleInfo} userModules={userModules} />
-            <Footer />
-          </>
-        )}
+      {loading === true ? (
+        <>
+          <HomepageNav page="learn-page" setData={setData} />
+          <SkeletonElement />
+        </>
+      ) : (
+        <>
+          <HomepageNav page="learn-page" setData={setData} />
+          <ActivityDetails
+            userInfo={data}
+            enrolledCourses={enrolledCourses}
+            modules={modules}
+            singleUserModuleInfo={singleUserModuleInfo}
+            userModules={userModules}
+          />
+          <Footer />
+        </>
+      )}
     </Layout>
   );
 };

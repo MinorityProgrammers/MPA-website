@@ -1,10 +1,10 @@
-import React, { useState, useRef } from 'react';
-import Layout from '../components/Layout';
-import Defisummer from '../components/defisummer';
-import HomepageNav from '../components/HomepageNav';
-import { useDetectOutsideClick } from '../components/UseDetectOutsideClick';
+import React, { useState, useRef } from "react";
+import Layout from "../components/Layout";
+import Defisummer from "../components/defisummer";
+import HomepageNav from "../components/homepage/HomepageNav";
+import { useDetectOutsideClick } from "../components/UseDetectOutsideClick";
 
-import Footer from '../components/Footer';
+import Footer from "../components/Footer";
 
 const DefisummerHome = function () {
   const [open, setOpen] = useState(false);
@@ -24,8 +24,8 @@ const DefisummerHome = function () {
         open={open}
         setOpen={setOpen}
         style={{
-          background: 'var(--mpa-navy)',
-          boxShadow: '0 4px 16px rgba(0,0,0,0.3)',
+          background: "var(--mpa-navy)",
+          boxShadow: "0 4px 16px rgba(0,0,0,0.3)",
         }}
         navBarRef={navBarRef}
       />

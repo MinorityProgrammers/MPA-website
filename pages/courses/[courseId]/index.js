@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import Course from '../../../components/learn/courseDetails/Course';
-import Layout from '../../../components/Layout';
-import HomepageNav from '../../../components/HomepageNav';
-import Footer from '../../../components/Footer';
-import SkeletonElement from '../../../components/learn/SkeletonElement';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import Course from "../../../components/learn/courseDetails/Course";
+import Layout from "../../../components/Layout";
+import HomepageNav from "../../../components/homepage/HomepageNav";
+import Footer from "../../../components/Footer";
+import SkeletonElement from "../../../components/learn/SkeletonElement";
 
 export async function getServerSideProps(context) {
   return {
@@ -23,12 +23,12 @@ const CoursePage = function ({ params }) {
   const [loading, setLoading] = useState(true);
 
   const redirect = () => {
-    window.location.href = '/learn-page';
+    window.location.href = "/learn-page";
   };
 
   useEffect(() => {
-    const token = localStorage.getItem('jwtToken');
-    const userInfo = localStorage.getItem('userInfo');
+    const token = localStorage.getItem("jwtToken");
+    const userInfo = localStorage.getItem("userInfo");
 
     if (token === null || userInfo === {}) {
       redirect();
@@ -41,13 +41,17 @@ const CoursePage = function ({ params }) {
   }, []);
 
   useEffect(() => {
-    const userToken = JSON.parse(localStorage.getItem('userInfo'));
+    const userToken = JSON.parse(localStorage.getItem("userInfo"));
     if (userToken !== null) {
-      axios.get('https://koinstreet-learn-api.herokuapp.com/api/v1/learn/userCourses', {
-        headers: {
-          Authorization: `Bearer ${userToken.token}`,
-        },
-      })
+      axios
+        .get(
+          "https://koinstreet-learn-api.herokuapp.com/api/v1/learn/userCourses",
+          {
+            headers: {
+              Authorization: `Bearer ${userToken.token}`,
+            },
+          }
+        )
         .then((res) => {
           if (res.data.data.length > 0) {
             setEnrolledCourses(res.data.data);
@@ -58,7 +62,9 @@ const CoursePage = function ({ params }) {
     }
   }, []);
 
-  const singleCourse = enrolledCourses?.filter((course) => course.courseId._id === courseId);
+  const singleCourse = enrolledCourses?.filter(
+    (course) => course.courseId._id === courseId
+  );
   useEffect(() => {
     singleCourse.forEach((course) => {
       setCourse(course?.courseId);
@@ -66,13 +72,17 @@ const CoursePage = function ({ params }) {
   }, [singleCourse]);
 
   useEffect(() => {
-    const userToken = JSON.parse(localStorage.getItem('userInfo'));
+    const userToken = JSON.parse(localStorage.getItem("userInfo"));
     if (userToken !== null) {
-      axios.get(`https://koinstreet-learn-api.herokuapp.com/api/v1/course/${courseId}/module`, {
-        headers: {
-          Authorization: `Bearer ${userToken.token}`,
-        },
-      })
+      axios
+        .get(
+          `https://koinstreet-learn-api.herokuapp.com/api/v1/course/${courseId}/module`,
+          {
+            headers: {
+              Authorization: `Bearer ${userToken.token}`,
+            },
+          }
+        )
         .then((res) => {
           setModules(res.data.data);
         });
@@ -81,20 +91,18 @@ const CoursePage = function ({ params }) {
 
   return (
     <Layout pageTitle="Course - Minority Programmers Association">
-      {loading === true
-        ? (
-          <>
-            <HomepageNav page="learn-page" setData={setData} />
-            <SkeletonElement />
-          </>
-        )
-        : (
-          <>
-            <HomepageNav page="learn-page" setData={setData} />
-            <Course userInfo={data} course={course} modules={modules} />
-            <Footer />
-          </>
-        )}
+      {loading === true ? (
+        <>
+          <HomepageNav page="learn-page" setData={setData} />
+          <SkeletonElement />
+        </>
+      ) : (
+        <>
+          <HomepageNav page="learn-page" setData={setData} />
+          <Course userInfo={data} course={course} modules={modules} />
+          <Footer />
+        </>
+      )}
     </Layout>
   );
 };

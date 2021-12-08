@@ -1,9 +1,9 @@
-import React, { useState, useContext } from 'react';
-import { GlobalContext } from '../contexts/provider';
-import DonateAmount from './DonateAmount';
-import DonatePayment from './DonatePayment';
-import DonateCompleted from './DonateCompleted';
-import DonateDetails from './DonateDetails';
+import React, { useState, useContext } from "react";
+import { GlobalContext } from "../../contexts/provider";
+import DonateAmount from "../DonateAmount";
+import DonatePayment from "../DonatePayment";
+import DonateCompleted from "../DonateCompleted";
+import DonateDetails from "../DonateDetails";
 
 const HomepageDonate = function () {
   const { amount, donateDispatch } = useContext(GlobalContext);
@@ -13,7 +13,7 @@ const HomepageDonate = function () {
   const [monthly, setMonthly] = useState(false);
 
   const [succeeded, setSucceeded] = useState(false);
-  const [paypalErrorMessage, setPaypalErrorMessage] = useState('');
+  const [paypalErrorMessage, setPaypalErrorMessage] = useState("");
   const [orderID, setOrderID] = useState(false);
   const [billingDetails, setBillingDetails] = useState([]);
   const [payment, setPayment] = useState([]);
@@ -22,29 +22,30 @@ const HomepageDonate = function () {
   const handleValue = (e) => {
     // dispatch
     donateDispatch({
-      type: 'UPDATE_DONATE_AMOUNT',
+      type: "UPDATE_DONATE_AMOUNT",
       amount: e.target.value,
     });
   };
 
   // creates one time paypal order
-  const createOrder = (data, actions) => actions.order
-    .create({
-      purchase_units: [
-        {
-          amount: {
-            value: amount,
+  const createOrder = (data, actions) =>
+    actions.order
+      .create({
+        purchase_units: [
+          {
+            amount: {
+              value: amount,
+            },
           },
+        ],
+        application_context: {
+          shipping_preference: "NO_SHIPPING",
         },
-      ],
-      application_context: {
-        shipping_preference: 'NO_SHIPPING',
-      },
-    })
-    .then((orderID) => {
-      setOrderID(orderID);
-      return orderID;
-    });
+      })
+      .then((orderID) => {
+        setOrderID(orderID);
+        return orderID;
+      });
 
   // create paypal subscription
   const createSubscription = (data, action) => {
@@ -54,29 +55,30 @@ const HomepageDonate = function () {
   };
 
   // handles when a payment is confirmed for paypal
-  const onApprove = (data, actions) => actions.order.capture().then((details) => {
-    const { purchase_units } = details;
-    setBillingDetails(details);
-    setPayment(purchase_units);
-    setSucceeded(true);
-    setIsDone(true);
-    count++;
-  });
+  const onApprove = (data, actions) =>
+    actions.order.capture().then((details) => {
+      const { purchase_units } = details;
+      setBillingDetails(details);
+      setPayment(purchase_units);
+      setSucceeded(true);
+      setIsDone(true);
+      count++;
+    });
   // handles payment errors
   const onError = () => {
-    setPaypalErrorMessage('Something went wrong with your payment');
+    setPaypalErrorMessage("Something went wrong with your payment");
   };
 
   const scrollTo = () => {
     const currentLocation = window.location.href;
-    const hasAnchor = currentLocation.includes('/#');
+    const hasAnchor = currentLocation.includes("/#");
     if (hasAnchor) {
       const anchorId = `${currentLocation.substring(
-        currentLocation.indexOf('#') + 1,
+        currentLocation.indexOf("#") + 1
       )}`;
       const anchor = document.getElementById(anchorId);
       if (anchor) {
-        anchor.scrollIntoView({ behavior: 'smooth' });
+        anchor.scrollIntoView({ behavior: "smooth" });
       }
     }
   };
@@ -103,29 +105,27 @@ const HomepageDonate = function () {
           <div className="row step__header">
             <div
               className={`col step__header-item ${
-                count === 1 ? 'step-active' : ''
-              } ${isDone ? 'step-done' : ''}`}
+                count === 1 ? "step-active" : ""
+              } ${isDone ? "step-done" : ""}`}
             >
               {isDone && amount !== 0 ? (
                 <i className="far fa-check-circle" />
-              ) : null}
-              {' '}
+              ) : null}{" "}
               Amount
             </div>
             <div
               className={`col step__header-item ${
-                count === 2 ? 'step-active' : ''
-              } ${isDone && succeeded ? 'step-done' : ''}`}
+                count === 2 ? "step-active" : ""
+              } ${isDone && succeeded ? "step-done" : ""}`}
             >
               {isDone && succeeded ? (
                 <i className="far fa-check-circle" />
-              ) : null}
-              {' '}
+              ) : null}{" "}
               Payments
             </div>
             <div
               className={`col step__header-item ${
-                count === 3 ? 'step-done' : ''
+                count === 3 ? "step-done" : ""
               }`}
             >
               {isDone && succeeded ? (
@@ -151,27 +151,27 @@ const HomepageDonate = function () {
             <>
               {!succeeded ? (
                 <DonatePayment
-                    amount={amount}
-                    count={count}
-                    setCount={setCount}
-                    isDone={isDone}
-                    setIsDone={setIsDone}
-                    setMonthly={setMonthly}
-                    monthly={monthly}
-                    createOrder={createOrder}
-                    onApprove={onApprove}
-                    createSubscription={createSubscription}
-                  />
+                  amount={amount}
+                  count={count}
+                  setCount={setCount}
+                  isDone={isDone}
+                  setIsDone={setIsDone}
+                  setMonthly={setMonthly}
+                  monthly={monthly}
+                  createOrder={createOrder}
+                  onApprove={onApprove}
+                  createSubscription={createSubscription}
+                />
               ) : (
-                  <DonateCompleted
-                    billingDetails={billingDetails}
-                    count={count}
-                    setCount={setCount}
-                    amount={amount}
-                    isDone={isDone}
-                    setIsDone={setIsDone}
-                    succeeded={succeeded}
-                  />
+                <DonateCompleted
+                  billingDetails={billingDetails}
+                  count={count}
+                  setCount={setCount}
+                  amount={amount}
+                  isDone={isDone}
+                  setIsDone={setIsDone}
+                  succeeded={succeeded}
+                />
               )}
             </>
           ) : null}

@@ -1,14 +1,14 @@
-import React, { useState, useEffect, useRef } from 'react';
-import axios from 'axios';
-import Layout from '../components/Layout';
-import HomepageNav from '../components/HomepageNav';
-import Footer from '../components/Footer';
-import LearnBanner from '../components/learn/LearnBanner';
-import CourseCategories from '../components/learn/CourseCategories';
-import SidebarTwo from '../components/SidebarTwo';
-import links from '../contexts/utils/links';
-import ComingSoon from '../components/ComingSoon';
-import { useDetectOutsideClick } from '../components/UseDetectOutsideClick';
+import React, { useState, useEffect, useRef } from "react";
+import axios from "axios";
+import Layout from "../components/Layout";
+import HomepageNav from "../components/homepage/HomepageNav";
+import Footer from "../components/Footer";
+import LearnBanner from "../components/learn/LearnBanner";
+import CourseCategories from "../components/learn/CourseCategories";
+import SidebarTwo from "../components/SidebarTwo";
+import links from "../contexts/utils/links";
+import ComingSoon from "../components/ComingSoon";
+import { useDetectOutsideClick } from "../components/UseDetectOutsideClick";
 
 const LearnPage = function () {
   const [open, setOpen] = useState(false);
@@ -28,16 +28,16 @@ const LearnPage = function () {
   }
 
   useEffect(() => {
-    const userToken = JSON.parse(localStorage.getItem('userInfo'));
+    const userToken = JSON.parse(localStorage.getItem("userInfo"));
     if (userToken !== null) {
       axios
         .get(
-          'https://koinstreet-learn-api.herokuapp.com/api/v1/learn/userCourses',
+          "https://koinstreet-learn-api.herokuapp.com/api/v1/learn/userCourses",
           {
             headers: {
               Authorization: `Bearer ${userToken.token}`,
             },
-          },
+          }
         )
         .then((res) => {
           setEnrolledCourses(res.data.data);
@@ -47,7 +47,7 @@ const LearnPage = function () {
 
   useEffect(() => {
     axios
-      .get('https://koinstreet-learn-api.herokuapp.com/api/v1/learn/')
+      .get("https://koinstreet-learn-api.herokuapp.com/api/v1/learn/")
       .then((res) => {
         setUsersCourses(res.data.data);
       });
