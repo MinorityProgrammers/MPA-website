@@ -22,8 +22,8 @@ const JoinForm = function () {
             <div className="become-teacher__form">
               <div className="become-teacher__form-top">
                 <h2 className="become-teacher__form-title">
-                      Join MPA
-                                </h2>
+                  Join MPA
+                </h2>
               </div>
               <form action="#" method="POST" className="become-teacher__form-content contact-form-validated">
                 <input type="text" placeholder="Your Name" name="full_name" />
@@ -31,11 +31,11 @@ const JoinForm = function () {
                 <input type="text" placeholder="Phone Number" name="phone_number" />
                 <input type="text" placeholder="Experience" name="experience" />
                 <button
-                      type="submit"
-                      className="thm-btn become-teacher__form-btn"
-                    >
-Join The Network
-                    </button>
+                  type="submit"
+                  className="thm-btn become-teacher__form-btn"
+                >
+                  Join The Network
+                </button>
               </form>
               <div className="result text-center" />
             </div>

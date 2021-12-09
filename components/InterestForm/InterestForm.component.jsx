@@ -226,22 +226,22 @@ const InterestForm = function ({ token }) {
                     <div>
                       <div className={styles.innerLabel}>
                         <input
-            type="radio"
-            name="profession"
-            value="student"
-            className={styles.radio}
-            onChange={handleChange}
-          />
+                          type="radio"
+                          name="profession"
+                          value="student"
+                          className={styles.radio}
+                          onChange={handleChange}
+                        />
                         <span>Student</span>
                       </div>
                       <div className={styles.innerLabel}>
                         <input
-            type="radio"
-            name="profession"
-            value="Professional"
-            className={styles.radio}
-            onChange={(e) => { setValues({ ...values, school: '', level: '' }); handleChange(e); }}
-          />
+                          type="radio"
+                          name="profession"
+                          value="Professional"
+                          className={styles.radio}
+                          onChange={(e) => { setValues({ ...values, school: '', level: '' }); handleChange(e); }}
+                        />
                         <span>Professional</span>
                       </div>
                       {errors.profession && (
@@ -381,13 +381,13 @@ const InterestForm = function ({ token }) {
                     <div>
                       <div className={styles.innerLabel}>
                         <input
-            type="radio"
-            name="contact"
-            value="email"
-            className={styles.radio}
-            onChange={(e) => { setValues({ ...values, email: '', phone: '' }); handleChange(e); }}
-          />
-          Email
+                          type="radio"
+                          name="contact"
+                          value="email"
+                          className={styles.radio}
+                          onChange={(e) => { setValues({ ...values, email: '', phone: '' }); handleChange(e); }}
+                        />
+                        Email
                       </div>
                       {
                       values.contact === 'email'
@@ -406,13 +406,13 @@ const InterestForm = function ({ token }) {
                     }
                       <div className={styles.innerLabel}>
                         <input
-            type="radio"
-            name="contact"
-            value="phone"
-            className={styles.radio}
-            onChange={(e) => { setValues({ ...values, email: '', phone: '' }); handleChange(e); }}
-          />
-          Phone
+                          type="radio"
+                          name="contact"
+                          value="phone"
+                          className={styles.radio}
+                          onChange={(e) => { setValues({ ...values, email: '', phone: '' }); handleChange(e); }}
+                        />
+                        Phone
                       </div>
                       {
                       values.contact === 'phone'
@@ -441,10 +441,10 @@ const InterestForm = function ({ token }) {
                         <i className="fas fa-angle-left" />
                         {' '}
                         Back
-                    </div>
+                      </div>
                       <div style={{ display: sections.section_7 ? 'none' : 'block' }} className={`${styles.button} ${styles.next}`} onClick={handleNext}>
                         Next
-                      <i className="fas fa-angle-right" />
+                        <i className="fas fa-angle-right" />
                       </div>
                       <div style={{ display: sections.section_7 ? 'block' : 'none' }} className={`${styles.button} ${styles.submit}`} onClick={handleSubmit}>Submit</div>
                     </div>

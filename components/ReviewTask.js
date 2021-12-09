@@ -1,3 +1,4 @@
+import React from 'react';
 import { MdArrowDropDown } from 'react-icons/md';
 import { CgAttachment } from 'react-icons/cg';
 import { GrEmoji } from 'react-icons/gr';
@@ -56,14 +57,17 @@ const ReviewTask = function () {
                   <img
                     src="/assets/images/project/clip.png"
                     className="tw-h-6 tw-w-6 tw-place-self-center tw-ml-2 tw-mb-4"
+                    alt="project"
                   />
                   <img
                     src="/assets/images/project/datastack.png"
                     className="tw-h-6 tw-w-6 tw-place-self-center tw-ml-2 tw-mb-4"
+                    alt="project"
                   />
                   <img
                     src="/assets/images/project/riflag.png"
                     className="tw-h-6 tw-w-6 tw-place-self-center tw-ml-2 tw-mb-4"
+                    alt="project"
                   />
                 </div>
               </div>
@@ -116,7 +120,7 @@ const ReviewTask = function () {
                   </div>
                 </div>
                 <div className=" tw-flex tw-justify-center  ">
-                  <button className="tw-bg-white shadow tw-p-2">
+                  <button type="button" className="tw-bg-white shadow tw-p-2">
                     {' '}
                     Show More
                   </button>

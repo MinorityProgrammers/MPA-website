@@ -1,13 +1,13 @@
-import { useRouter } from "next/router";
-import { useState, useRef, useEffect } from "react";
-import CompaniesList from "../../../components/career-components/CompaniesList.json";
-import Layout from "../../../components/Layout";
-import Footer from "../../../components/Footer";
-import HomepageNav from "../../../components/homepage/HomepageNav";
-import SidebarTwo from "../../../components/SidebarTwo";
-import links from "../../../contexts/utils/links";
-import ComingSoon from "../../../components/ComingSoon";
-import { useDetectOutsideClick } from "../../../components/UseDetectOutsideClick";
+import { useRouter } from 'next/router';
+import { useState, useRef, useEffect } from 'react';
+import CompaniesList from '../../../components/career-components/CompaniesList.json';
+import Layout from '../../../components/Layout';
+import Footer from '../../../components/Footer';
+import HomepageNav from '../../../components/homepage/HomepageNav';
+import SidebarTwo from '../../../components/SidebarTwo';
+import links from '../../../contexts/utils/links';
+import ComingSoon from '../../../components/ComingSoon';
+import { useDetectOutsideClick } from '../../../components/UseDetectOutsideClick';
 
 const CompanyDetails = function ({ id }) {
   const [company, setCompany] = useState([]);
@@ -84,8 +84,11 @@ const CompanyDetails = function ({ id }) {
                 {company.company_name}
               </h2>
               <div className="companyDetails-container-info-relationship">
-                <strong>{company.relation_type}</strong> of Minority Programmers
-                Association since{" "}
+                <strong>{company.relation_type}</strong>
+                {' '}
+                of Minority Programmers
+                Association since
+                {' '}
                 <strong>
                   {new Date(company.mpa_relationship_started)
                     .toDateString()
@@ -118,7 +121,7 @@ const CompanyDetails = function ({ id }) {
                       href={
                         company.social_media_links
                           ? company.social_media_links[0].fb
-                          : ""
+                          : ''
                       }
                     >
                       <svg
@@ -193,25 +196,25 @@ const CompanyDetails = function ({ id }) {
               <div className="companyDetails-container-specialties-list">
                 {company.specialties
                   ? company.specialties.map((specialty, idx) => (
-                      <div key={idx}>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="36"
-                          height="26.846"
-                          viewBox="0 0 36 26.846"
-                        >
-                          <path
-                            id="Icon_awesome-check"
-                            data-name="Icon awesome-check"
-                            d="M12.227,30.9.527,19.2a1.8,1.8,0,0,1,0-2.546L3.073,14.1a1.8,1.8,0,0,1,2.546,0L13.5,21.986,30.382,5.1a1.8,1.8,0,0,1,2.546,0L35.473,7.65a1.8,1.8,0,0,1,0,2.546l-20.7,20.7A1.8,1.8,0,0,1,12.227,30.9Z"
-                            transform="translate(0 -4.577)"
-                            fill="#151371"
-                          />
-                        </svg>
-                        <div>{specialty}</div>
-                      </div>
-                    ))
-                  : ""}
+                    <div key={idx}>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="36"
+                        height="26.846"
+                        viewBox="0 0 36 26.846"
+                      >
+                        <path
+                          id="Icon_awesome-check"
+                          data-name="Icon awesome-check"
+                          d="M12.227,30.9.527,19.2a1.8,1.8,0,0,1,0-2.546L3.073,14.1a1.8,1.8,0,0,1,2.546,0L13.5,21.986,30.382,5.1a1.8,1.8,0,0,1,2.546,0L35.473,7.65a1.8,1.8,0,0,1,0,2.546l-20.7,20.7A1.8,1.8,0,0,1,12.227,30.9Z"
+                          transform="translate(0 -4.577)"
+                          fill="#151371"
+                        />
+                      </svg>
+                      <div>{specialty}</div>
+                    </div>
+                  ))
+                  : ''}
               </div>
             </div>
             <div className="companyDetails-container-description">

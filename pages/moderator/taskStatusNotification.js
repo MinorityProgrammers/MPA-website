@@ -1,8 +1,8 @@
-import React, { useState, useRef } from "react";
-import Layout from "../../components/Layout";
-import TaskStatus from "../../components/Moderator/TaskStatus";
-import Footer from "../../components/Footer";
-import HomepageNav from "../../components/homepage/HomepageNav";
+import React, { useState, useRef } from 'react';
+import Layout from '../../components/Layout';
+import TaskStatus from '../../components/Moderator/TaskStatus';
+import Footer from '../../components/Footer';
+import HomepageNav from '../../components/homepage/HomepageNav';
 // import TaskStatusDnD from "../../components/Moderator/TaskStatusDragNdrop";
 
 const taskStatusNotification = () => (

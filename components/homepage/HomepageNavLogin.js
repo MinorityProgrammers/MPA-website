@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useContext } from "react";
-import { useRouter } from "next/router";
+import React, { useState, useEffect, useContext } from 'react';
+import { useRouter } from 'next/router';
 import {
   signIn,
   signOut,
@@ -7,15 +7,15 @@ import {
   getProviders,
   providers,
   getSession,
-} from "next-auth/client";
-import { Formik, Form } from "formik";
-import * as Yup from "yup";
-import { GoogleLogin, GoogleLogout } from "react-google-login";
-import "react-toastify/dist/ReactToastify.css";
-import { GlobalContext } from "../../contexts/provider";
-import { login } from "../../contexts/actions/auth/login";
-import { googleAuth, nextAuth } from "../../contexts/actions/auth/googleAuth";
-import TextField from "../TextField";
+} from 'next-auth/client';
+import { Formik, Form } from 'formik';
+import * as Yup from 'yup';
+import { GoogleLogin, GoogleLogout } from 'react-google-login';
+import 'react-toastify/dist/ReactToastify.css';
+import { GlobalContext } from '../../contexts/provider';
+import { login } from '../../contexts/actions/auth/login';
+import { googleAuth, nextAuth } from '../../contexts/actions/auth/googleAuth';
+import TextField from '../TextField';
 
 export default function HomepageNavLogin({ onCloseMobileMenu }) {
   const router = useRouter();
@@ -35,7 +35,7 @@ export default function HomepageNavLogin({ onCloseMobileMenu }) {
 
   // user redirect
   useEffect(() => {
-    const token = window.localStorage.getItem("jwtToken");
+    const token = window.localStorage.getItem('jwtToken');
     let timerId;
     if (data || token !== null) {
       setLoginSubmit(false);
@@ -94,12 +94,12 @@ export default function HomepageNavLogin({ onCloseMobileMenu }) {
   };
 
   return (
-    <div className={click ? "dropdown-login clicked" : "dropdown-login"}>
+    <div className={click ? 'dropdown-login clicked' : 'dropdown-login'}>
       <button className="dropdown-login-btn-close" onClick={onCloseMobileMenu}>
         <i className="fas fa-times" />
       </button>
       <div className="dropdown-login-icons">
-        <GoogleLogin
+        {/* <GoogleLogin
           clientId={googleClientId}
           render={(renderProps) => (
             <img
@@ -113,6 +113,11 @@ export default function HomepageNavLogin({ onCloseMobileMenu }) {
           onSuccess={handleLoginSuccess}
           onFailure={handleLoginFailure}
           cookiePolicy="single_host_origin"
+        /> */}
+        <img
+          onClick={() => signIn(providers.google.id)}
+          src="./assets/images/login-signup/google.png"
+          alt="icon"
         />
         <div>
           <img
@@ -125,11 +130,9 @@ export default function HomepageNavLogin({ onCloseMobileMenu }) {
           <img
             src="/assets/images/github.svg"
             alt="github icon"
-            onClick={() =>
-              signIn(providers.github.id, {
-                callbackUrl: "https://minorityprogrammers.com/auth",
-              })
-            }
+            onClick={() => signIn(providers.github.id, {
+              callbackUrl: 'https://minorityprogrammers.com/auth',
+            })}
           />
         </div>
         <div>
@@ -143,12 +146,12 @@ export default function HomepageNavLogin({ onCloseMobileMenu }) {
       <div className="login-form mt-2">
         <Formik
           initialValues={{
-            email: "",
-            password: "",
+            email: '',
+            password: '',
           }}
           validationSchema={Yup.object({
-            email: Yup.string().email("Invalid Email").required("Required"),
-            password: Yup.string().required("Required"),
+            email: Yup.string().email('Invalid Email').required('Required'),
+            password: Yup.string().required('Required'),
           })}
           onSubmit={onSubmit}
         >
@@ -182,7 +185,7 @@ export default function HomepageNavLogin({ onCloseMobileMenu }) {
                 type="submit"
                 className="btn btn-warning btn-dropdown-filled"
               >
-                {loading ? "Signing In..." : "Sign In"}
+                {loading ? 'Signing In...' : 'Sign In'}
               </button>
             </Form>
           )}
@@ -211,7 +214,7 @@ HomepageNavLogin.getInitialProps = async (context) => {
 
   if (session && res && session.accessToken) {
     res.writeHead(302, {
-      Location: "/",
+      Location: '/',
     });
     res.end();
     return;

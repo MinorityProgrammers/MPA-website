@@ -724,6 +724,8 @@
   .homepage__testimonials .homepage-carousel-btn [class*=homepage-carousel-btn__]{
     position: static;
     margin: 0 10px;
+    background-color: #ccc;
+    color: #3E385D;
   }
   .homepage__testimonials .homepage-carousel-btn  {
     position: absolute;

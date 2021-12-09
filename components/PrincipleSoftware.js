@@ -45,7 +45,7 @@ const PrincipleSoftware = function () {
             <div className="cta-six__right">
               <h2 className="global-statement__text">
                 We offer a Code-Camp that will further enhance your education in software eingeering where you will learn about the latest tech-stack..
-                            </h2>
+              </h2>
             </div>
           </div>
         </section>

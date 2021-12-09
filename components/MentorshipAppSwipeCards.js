@@ -115,17 +115,17 @@ const MentorshipAppSwipeCards = function (props) {
             <div className="buttons tw-mb-12">
               <div className="tw-w-300px tw-flex tw-justify-between tw-mx-auto">
                 <button id="active_replay_button" className="tw-rounded-full hover:tw-shadow-mentorAppButton tw-bg-white" onClick={() => undoPerson()}>
-                    <img src="/assets/images/Mentorship/replayBtn.png" alt="Replay Button" />
-                  </button>
+                  <img src="/assets/images/Mentorship/replayBtn.png" alt="Replay Button" />
+                </button>
                 <button id="inactive_replay_button" className="tw-rounded-full hover:tw-shadow-mentorAppButton tw-bg-white tw-hidden">
-                    <img src="/assets/images/Mentorship/replayBtnInactive.png" alt="Inactive Replay Button" />
-                  </button>
+                  <img src="/assets/images/Mentorship/replayBtnInactive.png" alt="Inactive Replay Button" />
+                </button>
                 <button className="tw-rounded-full hover:tw-shadow-mentorAppButton tw-bg-white" onClick={() => swipe('right')}>
-                    <img src="/assets/images/Mentorship/likeBtn.png" alt="like Button" />
-                  </button>
+                  <img src="/assets/images/Mentorship/likeBtn.png" alt="like Button" />
+                </button>
                 <button className="tw-rounded-full hover:tw-shadow-mentorAppButton tw-bg-white" onClick={() => swipe('left')}>
-                    <img src="/assets/images/Mentorship/dislikeBtn.png" alt="dislike Button" />
-                  </button>
+                  <img src="/assets/images/Mentorship/dislikeBtn.png" alt="dislike Button" />
+                </button>
               </div>
             </div>
           </div>

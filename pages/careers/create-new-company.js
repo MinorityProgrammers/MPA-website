@@ -1,9 +1,9 @@
-import { useState } from "react";
-import Footer from "../../components/Footer";
-import HomepageNav from "../../components/homepage/HomepageNav";
-import Layout from "../../components/Layout";
-import SidebarTwo from "../../components/SidebarTwo";
-import links from "../../contexts/utils/links";
+import { useState } from 'react';
+import Footer from '../../components/Footer';
+import HomepageNav from '../../components/homepage/HomepageNav';
+import Layout from '../../components/Layout';
+import SidebarTwo from '../../components/SidebarTwo';
+import links from '../../contexts/utils/links';
 
 const CreateNewCompany = function () {
   const [open, setOpen] = useState(false);
@@ -46,32 +46,32 @@ const CreateNewCompany = function () {
                     >
                       <option
                         value="nonprofit"
-                        style={{ background: "#151371" }}
+                        style={{ background: '#151371' }}
                       >
                         Non-Profit
                       </option>
-                      <option value="llc" style={{ background: "#151371" }}>
+                      <option value="llc" style={{ background: '#151371' }}>
                         LLC
                       </option>
-                      <option value="club" style={{ background: "#151371" }}>
+                      <option value="club" style={{ background: '#151371' }}>
                         Club
                       </option>
-                      <option value="c_corp" style={{ background: "#151371" }}>
+                      <option value="c_corp" style={{ background: '#151371' }}>
                         C-Corp
                       </option>
-                      <option value="s_corp" style={{ background: "#151371" }}>
+                      <option value="s_corp" style={{ background: '#151371' }}>
                         S-Corp
                       </option>
-                      <option value="lp" style={{ background: "#151371" }}>
+                      <option value="lp" style={{ background: '#151371' }}>
                         LP
                       </option>
                       <option
                         value="educational"
-                        style={{ background: "#151371" }}
+                        style={{ background: '#151371' }}
                       >
                         Educational
                       </option>
-                      <option value="dao" style={{ background: "#151371" }}>
+                      <option value="dao" style={{ background: '#151371' }}>
                         DAO
                       </option>
                     </select>
@@ -145,25 +145,25 @@ const CreateNewCompany = function () {
                       required
                       className="tw-w-full tw-py-1 tw-px-2 tw-border tw-border-white tw-bg-transparent tw-placeholder-white tw-placeholder-opacity-80 tw-text-white"
                     >
-                      <option name="1" style={{ background: "#151371" }}>
+                      <option name="1" style={{ background: '#151371' }}>
                         1
                       </option>
-                      <option name="2" style={{ background: "#151371" }}>
+                      <option name="2" style={{ background: '#151371' }}>
                         2-10
                       </option>
-                      <option name="11" style={{ background: "#151371" }}>
+                      <option name="11" style={{ background: '#151371' }}>
                         11-50
                       </option>
-                      <option name="501" style={{ background: "#151371" }}>
+                      <option name="501" style={{ background: '#151371' }}>
                         501-1000
                       </option>
-                      <option name="1001" style={{ background: "#151371" }}>
+                      <option name="1001" style={{ background: '#151371' }}>
                         1001-5000
                       </option>
-                      <option name="5001" style={{ background: "#151371" }}>
+                      <option name="5001" style={{ background: '#151371' }}>
                         5001-10,000
                       </option>
-                      <option name="10000" style={{ background: "#151371" }}>
+                      <option name="10000" style={{ background: '#151371' }}>
                         10,000+
                       </option>
                     </select>
@@ -184,17 +184,17 @@ const CreateNewCompany = function () {
                         required
                         className="tw-w-full tw-py-1 tw-px-2 tw-border tw-border-white tw-bg-transparent tw-placeholder-white tw-placeholder-opacity-80 tw-text-white"
                       >
-                        <option style={{ background: "#151371" }}>Art</option>
-                        <option style={{ background: "#151371" }}>
+                        <option style={{ background: '#151371' }}>Art</option>
+                        <option style={{ background: '#151371' }}>
                           Automotive
                         </option>
-                        <option style={{ background: "#151371" }}>
+                        <option style={{ background: '#151371' }}>
                           Medical
                         </option>
-                        <option style={{ background: "#151371" }}>
+                        <option style={{ background: '#151371' }}>
                           Science
                         </option>
-                        <option style={{ background: "#151371" }}>
+                        <option style={{ background: '#151371' }}>
                           Technology
                         </option>
                       </select>
@@ -359,7 +359,7 @@ const CreateNewCompany = function () {
                 method="GET"
                 action="/"
                 className="tw-block tw-mx-auto tw-py-3 tw-px-8 tw-mt-5 tw-text-white tw-font-bold tw-tracking-wide"
-                style={{ background: "#151371" }}
+                style={{ background: '#151371' }}
                 type="submit"
                 value="Create Company"
               />

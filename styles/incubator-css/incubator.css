@@ -62,6 +62,15 @@
   border: none;
 }
 
+.btn-blued {
+  background: #1e3a8a;
+  color: #fff;
+  width: 200px;
+  padding: 1rem;
+  text-align: center;
+  border: none;
+}
+
 .btn-outline {
   background-color: transparent;
   font-size: 0.75rem;

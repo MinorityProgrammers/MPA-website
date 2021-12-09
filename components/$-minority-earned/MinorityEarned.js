@@ -1,14 +1,14 @@
-import React from "react";
-import MinorityEarnedHeader from "./MinorityEarnedHeader";
-import MinorityEarnedActions from "./MinorityEarnedActions";
-import ProposalBox from "./ProposalBox";
+import React from 'react';
+import MinorityEarnedHeader from './MinorityEarnedHeader';
+import MinorityEarnedActions from './MinorityEarnedActions';
+import ProposalBox from './ProposalBox';
 
 const MinorityEarned = function () {
   const styling = {
     background:
-      "linear-gradient(90deg, #FF00B8 0%, #FF655B 50.8%, #FFC700 100%)",
-    height: "auto",
-    display: "flex",
+      'linear-gradient(90deg, #FF00B8 0%, #FF655B 50.8%, #FFC700 100%)',
+    height: 'auto',
+    display: 'flex',
   };
 
   return (

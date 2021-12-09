@@ -1,12 +1,12 @@
-import React, { useState, useRef, useEffect } from "react";
-import JobCreation from "../../components/career-components/JobCreation.js";
-import Layout from "../../components/Layout.js";
-import Footer from "../../components/Footer.js";
-import SidebarTwo from "../../components/SidebarTwo";
-import HomepageNav from "../../components/homepage/HomepageNav.js";
-import links from "../../contexts/utils/links";
-import ComingSoon from "../../components/ComingSoon";
-import { useDetectOutsideClick } from "../../components/UseDetectOutsideClick";
+import React, { useState, useRef, useEffect } from 'react';
+import JobCreation from '../../components/career-components/JobCreation.js';
+import Layout from '../../components/Layout.js';
+import Footer from '../../components/Footer.js';
+import SidebarTwo from '../../components/SidebarTwo';
+import HomepageNav from '../../components/homepage/HomepageNav.js';
+import links from '../../contexts/utils/links';
+import ComingSoon from '../../components/ComingSoon';
+import { useDetectOutsideClick } from '../../components/UseDetectOutsideClick';
 
 const CreateNewJob = function () {
   const [open, setOpen] = useState(false);
@@ -21,7 +21,8 @@ const CreateNewJob = function () {
     }, 60000);
   }
   function getTodaysDate() {
-    const todaysDate = new Date().toString().split(" ").slice(1, 4).join(" ");
+    const todaysDate = new Date().toString().split(' ').slice(1, 4)
+      .join(' ');
     return todaysDate;
   }
   getTodaysDate();

@@ -31,7 +31,7 @@ const StartupTopBar = function ({ data }) {
               <h3 className="top__funds-percentage">
                 {percentFund(data.targetAmount, data.amount)}
                 % complete
-                </h3>
+              </h3>
             </div>
             <h3 className="top__funds-amount">
               $
@@ -44,9 +44,9 @@ const StartupTopBar = function ({ data }) {
                 className="progress-bar progressbar__bg"
                 role="progressbar"
                 style={{
-                    width: `${percentFund(data.targetAmount, data.amount)}%`,
-                    borderRadius: '30px',
-                  }}
+                  width: `${percentFund(data.targetAmount, data.amount)}%`,
+                  borderRadius: '30px',
+                }}
                 aria-valuenow="50"
                 aria-valuemin="0"
                 aria-valuemax="100"

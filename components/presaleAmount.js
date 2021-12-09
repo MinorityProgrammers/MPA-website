@@ -41,12 +41,12 @@ const PresaleAmount = function () {
           REFUND
           <div className="softcap">
             $
-  {softCap}
+            {softCap}
             {' '}
             <br />
             {' '}
             SOFTCAP
-</div>
+          </div>
         </div>
         <div className="hardCap">
           $

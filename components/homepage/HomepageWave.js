@@ -1,13 +1,13 @@
-import React from "react";
+import React from 'react';
 
 const HomepageWave = function () {
   return (
     <section className="homepage__wave">
       <div className="heading__number">
-        <h3 className="text_white">04</h3>
+        <h3 className="tw-text-blue-900">04</h3>
       </div>
       <div className="container">
-        <h2 className="heading__title mt-5 mb-5 text_white">
+        <h2 className="heading__title mt-5 mb-5 tw-text-blue-900">
           &lsaquo;The_minority_wave/&rsaquo;
         </h2>
         <div className="row">
@@ -26,7 +26,7 @@ const HomepageWave = function () {
                     className="card-img-top"
                   />
                 </div>
-                <div className="card-body wave__card-text">
+                <div className="card-body tw-bg-blue-800">
                   <h1 className="wave__text-title">MINORITY THINK TANK</h1>
                 </div>
               </div>
@@ -53,7 +53,7 @@ const HomepageWave = function () {
                     className="card-img-top rounded-0"
                   />
                 </div>
-                <div className="card-body wave__card-text">
+                <div className="card-body tw-bg-blue-800">
                   <h1 className="wave__text-title">MINORITY VENTURE CAPITAL</h1>
                 </div>
               </div>

@@ -131,10 +131,13 @@ const ActivityDetails = function ({
           <div className="banner-bg">
             <div className="player-wrapper">
               <ReactPlayer
-                      url={moduleInfo.url} width="100%" style={{ height: '420px' }} controls
-                      onStart={onStart}
-                      onEnded={handleWatch}
-                    />
+                url={moduleInfo.url}
+                width="100%"
+                style={{ height: '420px' }}
+                controls
+                onStart={onStart}
+                onEnded={handleWatch}
+              />
               {watched && isOpen
                                     && (
                                     <>
@@ -161,10 +164,10 @@ const ActivityDetails = function ({
           <div className="pt-4">
             <div className="menu-items">
               <div className="d-flex justify-content-between mx-5 nextPrev-icons">
-                      <button onClick={() => router.back()}>
-                          <FontAwesomeIcon icon={faArrowLeft} className="icon" />
-                        </button>
-                      {moduleInfo.elementKey !== specificModules.length - 1
+                <button onClick={() => router.back()}>
+                  <FontAwesomeIcon icon={faArrowLeft} className="icon" />
+                </button>
+                {moduleInfo.elementKey !== specificModules.length - 1
                                         && (
                                         <>
                                           {completed === false
@@ -180,30 +183,30 @@ const ActivityDetails = function ({
                                             )}
                                         </>
                                         )}
-                    </div>
+              </div>
 
               <div className="px-md-5 mx-md-5">
-                      <div className="course-weeks px-3 mb-4 mx-2 activityDetails">
-                          <div className="pt-3"><p className={completionStatus === 'completed' ? 'green-activityStatus ml-auto' : 'red-activityStatus ml-auto'}><span>{completionStatus}</span></p></div>
-                          <div className="ml-4 text-white activity-details">
-                              <div className="d-pb-1">
-                                  <h3 className="mt-3 mb-2">{moduleInfo.name}</h3>
-                                </div>
-                              <div className="duration mt-3">
-                                  <span><FontAwesomeIcon icon={faClock} /></span>
-                                  <span className="ml-2">{moduleInfo.duration}</span>
-                                </div>
-                              <div className="mt-5">
-                                  <h4 className="pb-2">Header</h4>
-                                  <p>{moduleInfo.description}</p>
-                                </div>
-                              <div className="mt-5 mb-5 pb-5">
-                                  <h4 className="pb-2">Header</h4>
-                                  <p>{moduleInfo.description}</p>
-                                </div>
-                            </div>
-                        </div>
+                <div className="course-weeks px-3 mb-4 mx-2 activityDetails">
+                  <div className="pt-3"><p className={completionStatus === 'completed' ? 'green-activityStatus ml-auto' : 'red-activityStatus ml-auto'}><span>{completionStatus}</span></p></div>
+                  <div className="ml-4 text-white activity-details">
+                    <div className="d-pb-1">
+                      <h3 className="mt-3 mb-2">{moduleInfo.name}</h3>
                     </div>
+                    <div className="duration mt-3">
+                      <span><FontAwesomeIcon icon={faClock} /></span>
+                      <span className="ml-2">{moduleInfo.duration}</span>
+                    </div>
+                    <div className="mt-5">
+                      <h4 className="pb-2">Header</h4>
+                      <p>{moduleInfo.description}</p>
+                    </div>
+                    <div className="mt-5 mb-5 pb-5">
+                      <h4 className="pb-2">Header</h4>
+                      <p>{moduleInfo.description}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -212,38 +215,38 @@ const ActivityDetails = function ({
           <div className="modal-dialog activity-modal" role="document">
             <div className="modal-content">
               <div className="d-flex flex-column justify-content-center align-items-center">
-                      <h5 className="mt-4 pb-3" id="exampleModalLabel" style={{ fontSize: '25px', fontWeight: '600' }}>Module Completed!</h5>
-                      <div style={{ width: 230, height: 230 }}>
-                          <CircularProgressbarWithChildren
-                              value={completionRate}
-                              strokeWidth={4}
-                              styles={buildStyles({
-                                  pathColor: '#ffc700',
-                                  trailColor: '#B9BCC1',
-                                  strokeLinecap: 'butt',
-                                  rotation: 0.25,
-                                  transition: 'stroke-dashoffset 0.5s ease 0s',
-                                })}
-                            >
-                              {userInfo != null && userInfo.profilePicture
-                                  ? <img src={userInfo.profilePicture} className="img-fluid progress-circle" alt="user-image" />
-                                  : <img src="/assets/images/profile.png" className="img-fluid progress-circle" alt="user-image" />}
-                            </CircularProgressbarWithChildren>
-                          ;
-</div>
-                      <p className="mt-3 mb-4 pb-1" style={{ fontWeight: '500' }}>
-                          <span className="">
-                              {completionRate}
-                              % Completed
-</span>
-                        </p>
-                      <h6 className="pb-2" style={{ fontSize: '18px', fontWeight: '500' }}>You just completed</h6>
-                      <h5 style={{ fontSize: '1.25rem', fontWeight: '700' }}>{moduleInfo.name}</h5>
-                      <button onClick={forwardInfo} data-dismiss="modal" aria-label="Close" className="btn px-5 py-3 banner-btn mt-4 pt-2 font-weight-bold mb-2" style={{ fontSize: '22px' }}>
-                          Go to Next Lesson
-                                    </button>
-                      <p className="pb-4 pt-2" data-dismiss="modal" aria-label="Close" style={{ cursor: 'pointer' }}>Cancel</p>
-                    </div>
+                <h5 className="mt-4 pb-3" id="exampleModalLabel" style={{ fontSize: '25px', fontWeight: '600' }}>Module Completed!</h5>
+                <div style={{ width: 230, height: 230 }}>
+                  <CircularProgressbarWithChildren
+                    value={completionRate}
+                    strokeWidth={4}
+                    styles={buildStyles({
+                      pathColor: '#ffc700',
+                      trailColor: '#B9BCC1',
+                      strokeLinecap: 'butt',
+                      rotation: 0.25,
+                      transition: 'stroke-dashoffset 0.5s ease 0s',
+                    })}
+                  >
+                    {userInfo != null && userInfo.profilePicture
+                      ? <img src={userInfo.profilePicture} className="img-fluid progress-circle" alt="user-image" />
+                      : <img src="/assets/images/profile.png" className="img-fluid progress-circle" alt="user-image" />}
+                  </CircularProgressbarWithChildren>
+                  ;
+                </div>
+                <p className="mt-3 mb-4 pb-1" style={{ fontWeight: '500' }}>
+                  <span className="">
+                    {completionRate}
+                    % Completed
+                  </span>
+                </p>
+                <h6 className="pb-2" style={{ fontSize: '18px', fontWeight: '500' }}>You just completed</h6>
+                <h5 style={{ fontSize: '1.25rem', fontWeight: '700' }}>{moduleInfo.name}</h5>
+                <button onClick={forwardInfo} data-dismiss="modal" aria-label="Close" className="btn px-5 py-3 banner-btn mt-4 pt-2 font-weight-bold mb-2" style={{ fontSize: '22px' }}>
+                  Go to Next Lesson
+                </button>
+                <p className="pb-4 pt-2" data-dismiss="modal" aria-label="Close" style={{ cursor: 'pointer' }}>Cancel</p>
+              </div>
             </div>
           </div>
         </div>

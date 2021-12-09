@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import WeeklyActivities from "../../../../../components/learn/courseDetails/WeeklyActivities";
-import Layout from "../../../../../components/Layout";
-import HomepageNav from "../../../../../components/homepage/HomepageNav";
-import Footer from "../../../../../components/Footer";
-import SkeletonElement from "../../../../../components/learn/SkeletonElement";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import WeeklyActivities from '../../../../../components/learn/courseDetails/WeeklyActivities';
+import Layout from '../../../../../components/Layout';
+import HomepageNav from '../../../../../components/homepage/HomepageNav';
+import Footer from '../../../../../components/Footer';
+import SkeletonElement from '../../../../../components/learn/SkeletonElement';
 
 export async function getServerSideProps(context) {
   return {
@@ -22,12 +22,12 @@ const WeekPage = function ({ params }) {
   const [loading, setLoading] = useState(true);
 
   const redirect = () => {
-    window.location.href = "/learn-page";
+    window.location.href = '/learn-page';
   };
 
   useEffect(() => {
-    const token = localStorage.getItem("jwtToken");
-    const userInfo = localStorage.getItem("userInfo");
+    const token = localStorage.getItem('jwtToken');
+    const userInfo = localStorage.getItem('userInfo');
 
     if (token === null || userInfo === {}) {
       redirect();
@@ -40,16 +40,16 @@ const WeekPage = function ({ params }) {
   }, []);
 
   useEffect(() => {
-    const userToken = JSON.parse(localStorage.getItem("userInfo"));
+    const userToken = JSON.parse(localStorage.getItem('userInfo'));
     if (userToken != null) {
       axios
         .get(
-          "https://koinstreet-learn-api.herokuapp.com/api/v1/learn/userCourses",
+          'https://koinstreet-learn-api.herokuapp.com/api/v1/learn/userCourses',
           {
             headers: {
               Authorization: `Bearer ${userToken.token}`,
             },
-          }
+          },
         )
         .then((res) => {
           if (res.data.data.length > 0) {
@@ -62,7 +62,7 @@ const WeekPage = function ({ params }) {
   }, []);
 
   useEffect(() => {
-    const userToken = JSON.parse(localStorage.getItem("userInfo"));
+    const userToken = JSON.parse(localStorage.getItem('userInfo'));
     if (userToken !== null) {
       axios
         .get(
@@ -71,7 +71,7 @@ const WeekPage = function ({ params }) {
             headers: {
               Authorization: `Bearer ${userToken.token}`,
             },
-          }
+          },
         )
         .then((res) => {
           setModules(res.data.data);
@@ -80,7 +80,7 @@ const WeekPage = function ({ params }) {
   }, [courseId]);
 
   useEffect(() => {
-    const userToken = JSON.parse(localStorage.getItem("userInfo"));
+    const userToken = JSON.parse(localStorage.getItem('userInfo'));
     if (userToken !== null) {
       axios
         .get(
@@ -89,7 +89,7 @@ const WeekPage = function ({ params }) {
             headers: {
               Authorization: `Bearer ${userToken.token}`,
             },
-          }
+          },
         )
         .then((res) => {
           setUserModules(res.data.data);

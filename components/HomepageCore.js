@@ -192,7 +192,7 @@ const HomepageCore = function () {
         <h3 className="tw-text-blue-900">03</h3>
       </div>
       <div className="container">
-        <h2 className="heading__title mt-5 mb-5 tw-text-blue-900">
+        <h2 className="heading__title mt-5 mb-5">
           &lsaquo;Core_principles/&rsaquo;
         </h2>
         <div className="row">
@@ -250,12 +250,7 @@ const HomepageCore = function () {
 export default HomepageCore;
 
 const Popup = function ({
-  image,
-  icon,
-  color,
-  title,
-  description,
-  togglePopup,
+  image, icon, color, title, description, togglePopup,
 }) {
   return (
     <div className="popup_wrapper-core">

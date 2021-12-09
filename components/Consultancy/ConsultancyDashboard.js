@@ -11,9 +11,10 @@ const ConsultancyDashboard = function ({ data }) {
             </div>
             <div className="consultancy--user__detail">
               <h1>
-                Hey, ({data.firstName}
+                Hey, (
+                {data.firstName}
                 )
-</h1>
+              </h1>
               <p>Welcome back the Consultancy Program</p>
             </div>
           </div>

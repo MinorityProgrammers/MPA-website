@@ -123,8 +123,8 @@ const Proposal = function (props) {
               {' '}
               <strong>
                 <Moment format="MMM D" withTitle>
-                    {createdAt}
-                  </Moment>
+                  {createdAt}
+                </Moment>
               </strong>
             </p>
           </div>

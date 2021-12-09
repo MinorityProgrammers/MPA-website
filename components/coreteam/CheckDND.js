@@ -188,35 +188,35 @@ const CheckDND = function () {
             <Droppable droppableId={id} key={id}>
               {(provided, snapshot) => (
                 <div
-                    className="tw-grid  tw-grid-cols-2 tw-mt-4"
-                    {...provided.droppableProps}
-                    ref={provided.innerRef}
-                  >
-                    {column.items.map((item, index) => (
-                        <Draggable
-                            key={item.id}
-                            index={index}
-                            draggableId={item.id}
-                          >
-                            {(provided, snapshot) => (
-                                      <div
-                                          ref={provided.innerRef}
-                                          {...provided.draggableProps}
-                                          {...provided.dragHandleProps}
-                                          className="tw-justify-center"
-                                        >
+                  className="tw-grid  tw-grid-cols-2 tw-mt-4"
+                  {...provided.droppableProps}
+                  ref={provided.innerRef}
+                >
+                  {column.items.map((item, index) => (
+                    <Draggable
+                      key={item.id}
+                      index={index}
+                      draggableId={item.id}
+                    >
+                      {(provided, snapshot) => (
+                        <div
+                          ref={provided.innerRef}
+                          {...provided.draggableProps}
+                          {...provided.dragHandleProps}
+                          className="tw-justify-center"
+                        >
 
-                                          <TestTaskCard
-                                                    item={item}
-                                                    handlePriority={handlePriority}
-                                                  />
+                          <TestTaskCard
+                            item={item}
+                            handlePriority={handlePriority}
+                          />
 
-                                        </div>
-                                    )}
-                          </Draggable>
-                      ))}
-                    {provided.placeholder}
-                  </div>
+                        </div>
+                      )}
+                    </Draggable>
+                  ))}
+                  {provided.placeholder}
+                </div>
               )}
             </Droppable>
           </div>
