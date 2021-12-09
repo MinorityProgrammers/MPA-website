@@ -335,21 +335,21 @@ const Page10 = function ({
               <th>TOTAL</th>
               <td>
                 $
-                  {a}
+                {a}
               </td>
             </tr>
             <tr>
               <th>TAXES</th>
               <td>
                 $
-                  {b}
+                {b}
               </td>
             </tr>
             <tr>
               <th>TOTAL</th>
               <th>
                 $
-                  {c}
+                {c}
               </th>
             </tr>
           </tbody>
@@ -404,60 +404,60 @@ const Page10 = function ({
                 {/* create label for the radio */}
                 <label htmlFor={radio.id} className="bold">
                   {radio.label.map((label, index) => (
-                      <span
-                          key={index}
-                          style={{
-                            width: `${(radio.label.length / 2) * 100}%`,
-                          }}
-                        >
-                          {label}
-                        </span>
-                    ))}
+                    <span
+                      key={index}
+                      style={{
+                        width: `${(radio.label.length / 2) * 100}%`,
+                      }}
+                    >
+                      {label}
+                    </span>
+                  ))}
                 </label>
                 {/* inner hidden text */}
                 {checked === index ? (
                   <div className="grid">
-                      {radio.dependencies.map((dependency, index) => (
-                          <div
-                            style={{
-                              display: 'flex',
-                              flexDirection: 'column',
-                            }}
-                            key={index}
-                          >
-                            <InputWithIcon
-                              id={`paymentOption${index}`}
-                              inputRef={dependency.ref}
-                              onChange={() => {}}
-                              defaultValue=""
-                              label={dependency.label}
-                              placeholder={dependency.placeholder}
-                              iconLink="/assets/images/icons/Group.svg"
-                              marginTop
-                              color="rgba(0, 0, 0, 0.65)"
-                              hideIcon
-                              width="100%"
-                              maxLength={
+                    {radio.dependencies.map((dependency, index) => (
+                      <div
+                        style={{
+                          display: 'flex',
+                          flexDirection: 'column',
+                        }}
+                        key={index}
+                      >
+                        <InputWithIcon
+                          id={`paymentOption${index}`}
+                          inputRef={dependency.ref}
+                          onChange={() => {}}
+                          defaultValue=""
+                          label={dependency.label}
+                          placeholder={dependency.placeholder}
+                          iconLink="/assets/images/icons/Group.svg"
+                          marginTop
+                          color="rgba(0, 0, 0, 0.65)"
+                          hideIcon
+                          width="100%"
+                          maxLength={
                                   dependency.maxLength
                                   && dependency.type === 'tel'
                                     ? dependency.maxLength
                                     : ''
                                 }
-                              type={dependency.type}
-                              onInput={(e) => {
-                                dependency.onInput(e);
-                                if (errors.inputs[index] !== undefined) {
-                                  validateRegularInputs(
-                                    dependency.validationFxn(
-                                      dependency.ref.current.value,
-                                      dependency.correctLength,
-                                    ),
-                                    index,
-                                  );
-                                }
-                              }}
-                            />
-                            {errors.inputs.length > 0
+                          type={dependency.type}
+                          onInput={(e) => {
+                            dependency.onInput(e);
+                            if (errors.inputs[index] !== undefined) {
+                              validateRegularInputs(
+                                dependency.validationFxn(
+                                  dependency.ref.current.value,
+                                  dependency.correctLength,
+                                ),
+                                index,
+                              );
+                            }
+                          }}
+                        />
+                        {errors.inputs.length > 0
                               && errors.inputs[index][0] !== undefined
                               && errors.inputs[index][0] !== '' ? (
                                 <ErrorPrint
@@ -465,10 +465,10 @@ const Page10 = function ({
                                   red
                                   left
                                 />
-                              ) : null}
-                          </div>
-                        ))}
-                    </div>
+                          ) : null}
+                      </div>
+                    ))}
+                  </div>
                 ) : null}
               </div>
             </div>

@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import Swiper from "react-id-swiper";
-import "swiper/css/swiper.css";
+import React, { useState } from 'react';
+import Swiper from 'react-id-swiper';
+import 'swiper/css/swiper.css';
 
 const HomeBanner = function () {
   const [swiper, setSwiper] = useState(null);
@@ -23,13 +23,15 @@ const HomeBanner = function () {
         <Swiper getSwiper={setSwiper}>
           <div
             className="banner-two__slide banner-two__slide-one"
-            style={{ backgroundImage: "url(assets/images/MPA.png)" }}
+            style={{ backgroundImage: 'url(assets/images/MPA.png)' }}
           >
             <div className="container">
               <div className="row no-gutters">
                 <div className="col-xl-12">
                   <h3 className="banner-two__title banner-two__light-color">
-                    Minority Programmers <br />
+                    Minority Programmers
+                    {' '}
+                    <br />
                     Association
                   </h3>
                   <p className="banner-two__tag-line">

@@ -168,104 +168,104 @@ const ElectProposals = function () {
                 >
                   <div className="s-p-title tw-mb-3">
                     <h3 className="tw-text-2xl tw-font-semibold">
-            {' '}
-            {proposal.title ? proposal.title : 'event proposal test'}
-          </h3>
+                      {' '}
+                      {proposal.title ? proposal.title : 'event proposal test'}
+                    </h3>
                     <p>
-            <span className="tw-mr-3">
-                      <strong>Type:</strong>
-                      {' '}
-                      {proposal.type}
-                    </span>
+                      <span className="tw-mr-3">
+                        <strong>Type:</strong>
+                        {' '}
+                        {proposal.type}
+                      </span>
 
-            <span>
-                      <strong>Category:</strong>
-                      {' '}
-                      {proposal.Category ? proposal.Category : 'Incubator'}
-                    </span>
-          </p>
+                      <span>
+                        <strong>Category:</strong>
+                        {' '}
+                        {proposal.Category ? proposal.Category : 'Incubator'}
+                      </span>
+                    </p>
                   </div>
                   <hr />
                   <div className="s-p-user tw-flex tw-justify-between my-1">
                     <div className="info tw-flex tw-self-center">
-            <div className=" tw-mr-3">
-                      <img src={proposal.userId.profilePicture} className="user-img" alt="user" />
+                      <div className=" tw-mr-3">
+                        <img src={proposal.userId.profilePicture} className="user-img" alt="user" />
+                      </div>
+
+                      <div className=" tw-mr-3 -mt-1">
+                        <p>
+                          Created by
+                          {' '}
+                          <br />
+                          {' '}
+                          <strong>{proposal.userId.userName}</strong>
+                        </p>
+                      </div>
+
+                      <div className="">
+                        <p>
+                          Created on
+                          {' '}
+                          <br />
+                          {' '}
+                          <strong>
+
+                            <Moment format="MMM D" withTitle>
+                              {proposal.createdAt}
+                            </Moment>
+
+                          </strong>
+                          {' '}
+
+                        </p>
+                      </div>
                     </div>
-
-            <div className=" tw-mr-3 -mt-1">
-                      <p>
-                        Created by
-                        {' '}
-                        <br />
-                        {' '}
-                        <strong>{proposal.userId.userName}</strong>
-                      </p>
-                    </div>
-
-            <div className="">
-                      <p>
-                        Created on
-                        {' '}
-                        <br />
-                        {' '}
-                        <strong>
-
-                          <Moment format="MMM D" withTitle>
-                            {proposal.createdAt}
-                          </Moment>
-
-                        </strong>
-                        {' '}
-
-                      </p>
-                    </div>
-          </div>
                     <div className="count tw-flex tw-self-center">
-            <div className=" tw-mr-3">
-                      <p>
-                        <strong>{proposal.replies ? proposal.replies : '58'}</strong>
-                        {' '}
-                        <br />
-                        {' '}
-                        Replies
-                      </p>
-                    </div>
+                      <div className=" tw-mr-3">
+                        <p>
+                          <strong>{proposal.replies ? proposal.replies : '58'}</strong>
+                          {' '}
+                          <br />
+                          {' '}
+                          Replies
+                        </p>
+                      </div>
 
-            <div className=" tw-mr-3">
-                      <p>
-                        <strong>{proposal.views ? proposal.views : '75'}</strong>
-                        {' '}
-                        <br />
-                        {' '}
-                        Views
-                      </p>
+                      <div className=" tw-mr-3">
+                        <p>
+                          <strong>{proposal.views ? proposal.views : '75'}</strong>
+                          {' '}
+                          <br />
+                          {' '}
+                          Views
+                        </p>
+                      </div>
+                      <div className=" ">
+                        <p className="tw-flex tw-flex-col">
+                          <FaSortUp />
+                          <strong className="tw--my-3">{proposal.count ? proposal.count : '250'}</strong>
+                          <FaSortDown />
+                        </p>
+                      </div>
                     </div>
-            <div className=" ">
-                      <p className="tw-flex tw-flex-col">
-                        <FaSortUp />
-                        <strong className="tw--my-3">{proposal.count ? proposal.count : '250'}</strong>
-                        <FaSortDown />
-                      </p>
-                    </div>
-          </div>
                   </div>
                   <hr />
                   <div className="s-p-description tw-flex tw-justify-between tw-mt-3">
                     <div className="description tw-w-4/5">
-            <p>{proposal.description}</p>
-          </div>
+                      <p>{proposal.description}</p>
+                    </div>
                     <div className="s-p-view tw-w-1/5 tw-text-center">
-            <p className="tw-mb-5">
-                      <button className="view-p-btn tw-shadow-lg">
-                        View Proposal
-                      </button>
-                    </p>
-            <p>
-                      <button className="elect-p-btn tw-shadow-lg">
-                        Elect Proposal
-                      </button>
-                    </p>
-          </div>
+                      <p className="tw-mb-5">
+                        <button className="view-p-btn tw-shadow-lg">
+                          View Proposal
+                        </button>
+                      </p>
+                      <p>
+                        <button className="elect-p-btn tw-shadow-lg">
+                          Elect Proposal
+                        </button>
+                      </p>
+                    </div>
                   </div>
                 </div>
               ))}

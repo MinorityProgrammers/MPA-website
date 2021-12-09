@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const HomepageTeamCard = function ({ member }) {
   return (
@@ -6,7 +6,7 @@ const HomepageTeamCard = function ({ member }) {
       src={
         member.AvatarLink !== null
           ? member.AvatarLink
-          : "https://github.com/MinorityProgrammers/mpa-avatars/blob/main/avatars/mysteryAvatar.png?raw=true"
+          : 'https://github.com/MinorityProgrammers/mpa-avatars/blob/main/avatars/mysteryAvatar.png?raw=true'
       }
       className="rounded-circle mx-auto d-block"
       alt={member.Employee}

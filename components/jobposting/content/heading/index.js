@@ -355,17 +355,17 @@ const TopHeader = function (props) {
           {userInfo != null ? (
             savedJobsId.includes(job._id) ? (
               <button disabled className="job-stub-saved">
-                  Saved
-                </button>
+                Saved
+              </button>
             ) : (
               <a className="job-stub-saveLink" onClick={() => saveJob(job)}>
-                  Save Job
-                </a>
+                Save Job
+              </a>
             )
           ) : (
             <a className="job-stub-saveLink" onClick={authPlease}>
-                Save Job
-              </a>
+              Save Job
+            </a>
           )}
         </div>
       </div>

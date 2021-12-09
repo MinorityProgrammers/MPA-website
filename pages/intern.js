@@ -1,13 +1,13 @@
-import React, { useState, useRef, useEffect } from "react";
-import HomepageNav from "../components/homepage/HomepageNav";
-import { useDetectOutsideClick } from "../components/UseDetectOutsideClick";
-import Layout from "../components/Layout";
-import Testimonial from "../components/Internship/Testimonial";
-import SidebarTwo from "../components/SidebarTwo";
-import links from "../contexts/utils/links";
-import InternshipHero from "../components/Internship/InternshipHero";
-import InternshipHome from "../components/Internship/InternshipHome";
-import Footer from "../components/Footer";
+import React, { useState, useRef, useEffect } from 'react';
+import HomepageNav from '../components/homepage/HomepageNav';
+import { useDetectOutsideClick } from '../components/UseDetectOutsideClick';
+import Layout from '../components/Layout';
+import Testimonial from '../components/Internship/Testimonial';
+import SidebarTwo from '../components/SidebarTwo';
+import links from '../contexts/utils/links';
+import InternshipHero from '../components/Internship/InternshipHero';
+import InternshipHome from '../components/Internship/InternshipHome';
+import Footer from '../components/Footer';
 
 function consultancy() {
   const [open, setOpen] = useState(false);

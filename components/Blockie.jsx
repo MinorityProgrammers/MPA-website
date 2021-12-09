@@ -1,6 +1,6 @@
-import React from "react";
-import Blockies from "react-blockies";
-import { useMoralisDapp } from "../MoralisDappProvider/MoralisDappProvider";
+import React from 'react';
+import Blockies from 'react-blockies';
+import { useMoralisDapp } from '../MoralisDappProvider/MoralisDappProvider';
 
 const Blockie = function (props) {
   const { walletAddress } = useMoralisDapp();

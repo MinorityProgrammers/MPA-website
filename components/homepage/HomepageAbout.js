@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import Swiper from "react-id-swiper";
-import ModalVideo from "react-modal-video";
-import "swiper/css/swiper.css";
+import React, { useState } from 'react';
+import Swiper from 'react-id-swiper';
+import ModalVideo from 'react-modal-video';
+import 'swiper/css/swiper.css';
 
 const HomepageAbout = function () {
   const [swiper, setSwiper] = useState(null);

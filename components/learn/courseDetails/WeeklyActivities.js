@@ -58,28 +58,28 @@ const WeeklyActivities = function ({ enrolledCourses, modules, userModules }) {
             <div className="pt-5 mx-5 pe-5 ps-md-5 pb-5">
               <div className="week-info mx-5 px-4">
                 <h1 className="mb-4 text-capitalize">
-                    {moduleLevel}
-                    {' '}
-                    level
-</h1>
+                  {moduleLevel}
+                  {' '}
+                  level
+                </h1>
                 <h5 style={{ fontWeight: '600' }}>Progress</h5>
                 <p className="text-center mt-4 pt-2 mb-0">
-                    {completedModules}
-                    /
-{totalModules}
-                  </p>
+                  {completedModules}
+                  /
+                  {totalModules}
+                </p>
                 <div className="progress mt-2 mb-2">
-                    <div className="progress-bar" style={{ width: `${totalPercentage}%` }} role="progressbar" aria-valuenow={totalPercentage} aria-valuemin="0" aria-valuemax="100" />
-                  </div>
+                  <div className="progress-bar" style={{ width: `${totalPercentage}%` }} role="progressbar" aria-valuenow={totalPercentage} aria-valuemin="0" aria-valuemax="100" />
+                </div>
                 <p className="text-center">
-                    {!isNaN(totalPercentage)
+                  {!isNaN(totalPercentage)
                                         && (
                                         <span className="">
                                           {totalPercentage}
                                           % completed
                                         </span>
                                         )}
-                  </p>
+                </p>
               </div>
             </div>
           </div>
@@ -88,12 +88,12 @@ const WeeklyActivities = function ({ enrolledCourses, modules, userModules }) {
             <div className="menu-items">
               <div className="d-flex justify-content-between mx-5 nextPrev-icons">
                 <button onClick={() => router.back()} className="icon">
-                    <FontAwesomeIcon icon={faArrowLeft} />
-                  </button>
+                  <FontAwesomeIcon icon={faArrowLeft} />
+                </button>
                 {specificModules.length === specificUserModules.length && specificUserModules.length !== 0
-                    ? (
-                        <>
-                            {specificUserModules.length === completedModules
+                  ? (
+                    <>
+                      {specificUserModules.length === completedModules
                                             && (
                                             <>
                                               {moduleLevel !== 'advanced' && (
@@ -103,13 +103,13 @@ const WeeklyActivities = function ({ enrolledCourses, modules, userModules }) {
                                               )}
                                             </>
                                             )}
-                          </>
-                    )
-                    : (
-                        <button disabled style={{ pointerEvents: 'none' }}>
-                            <FontAwesomeIcon icon={faArrowRight} />
-                          </button>
-                    )}
+                    </>
+                  )
+                  : (
+                    <button disabled style={{ pointerEvents: 'none' }}>
+                      <FontAwesomeIcon icon={faArrowRight} />
+                    </button>
+                  )}
               </div>
               {
                                 specificModules && specificModules.map((module) => <ActivityList module={module} key={module._id} userModules={userModules} specificUModules={specificUserModules} />)

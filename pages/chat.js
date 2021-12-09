@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import Layout from "../components/Layout";
-import HomepageNav from "../components/homepage/HomepageNav";
-import Chats from "../components/Chats";
+import React, { useState } from 'react';
+import Layout from '../components/Layout';
+import HomepageNav from '../components/homepage/HomepageNav';
+import Chats from '../components/Chats';
 
 const Chat = function () {
   const [data, setData] = useState([]);

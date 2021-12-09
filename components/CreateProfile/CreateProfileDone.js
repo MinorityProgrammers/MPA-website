@@ -49,8 +49,8 @@ const ProfileDone = function ({
             <div className="cp__profile--done">
               <Avatar
                 style={{
-                    width: '250px', height: '250px', background: state[5].avatarOptions.backgroundColor || '#fff', borderRadius: '100%',
-                  }}
+                  width: '250px', height: '250px', background: state[5].avatarOptions.backgroundColor || '#fff', borderRadius: '100%',
+                }}
                 {...state[5].avatarOptions}
               />
             </div>

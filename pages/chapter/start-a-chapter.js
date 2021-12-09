@@ -1,19 +1,21 @@
-import React, { useState, useRef, useEffect, useContext } from "react";
-import Layout from "../../components/Layout";
-import Footer from "../../components/Footer";
-import HomepageNav from "../../components/homepage/HomepageNav";
-import { useDetectOutsideClick } from "../../components/UseDetectOutsideClick";
-import ChapterHeader from "../../components/chapterHeader/chapterHeader.component";
-import ChapterDirectory from "../../components/ChapterDirectory/ChapterDirectory.component";
-import SidebarTwo from "../../components/SidebarTwo";
-import links from "../../contexts/utils/links";
-import { GlobalContext } from "../../contexts/provider";
+import React, {
+  useState, useRef, useEffect, useContext,
+} from 'react';
+import Layout from '../../components/Layout';
+import Footer from '../../components/Footer';
+import HomepageNav from '../../components/homepage/HomepageNav';
+import { useDetectOutsideClick } from '../../components/UseDetectOutsideClick';
+import ChapterHeader from '../../components/chapterHeader/chapterHeader.component';
+import ChapterDirectory from '../../components/ChapterDirectory/ChapterDirectory.component';
+import SidebarTwo from '../../components/SidebarTwo';
+import links from '../../contexts/utils/links';
+import { GlobalContext } from '../../contexts/provider';
 
 const Chapter = function () {
   const [open, setOpen] = useState(false);
-  const [active, setActive] = useState("");
+  const [active, setActive] = useState('');
   const [userData, setUserData] = useState([]);
-  const [token, setToken] = useState("");
+  const [token, setToken] = useState('');
   const dropdownRef = useRef(null);
   const {
     authDispatch,
@@ -23,8 +25,8 @@ const Chapter = function () {
   } = useContext(GlobalContext);
 
   useEffect(() => {
-    const token = window.localStorage.getItem("jwtToken");
-    const userInfo = window.localStorage.getItem("userInfo");
+    const token = window.localStorage.getItem('jwtToken');
+    const userInfo = window.localStorage.getItem('userInfo');
 
     if (token == null || userInfo == {}) {
       setUserData(null);

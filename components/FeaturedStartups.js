@@ -61,28 +61,28 @@ const FeaturedStartups = function ({
             {!data ? (
               <div className="container text-center mt-3 mb-3 featured__card-empty">
                 <h1 className="featured__card-title mb-3">
-                    There is no startup yet.
-                  </h1>
+                  There is no startup yet.
+                </h1>
                 <div className="btn__container">
-                    <a href="#" className="button btn-filled sm">
-                      Start your own Startup
-                    </a>
-                  </div>
+                  <a href="#" className="button btn-filled sm">
+                    Start your own Startup
+                  </a>
+                </div>
               </div>
             ) : (
               <Swiper {...params} grabCursor>
-                  {data.map((d, i) => (
-                    <div className="item" key={i}>
-                      <FeaturedCard
-                        data={d}
-                        key={i}
-                        userData={userData}
-                        setClickRegister={setClickRegister}
-                        allfunded={allfunded}
-                      />
-                    </div>
-                  ))}
-                </Swiper>
+                {data.map((d, i) => (
+                  <div className="item" key={i}>
+                    <FeaturedCard
+                      data={d}
+                      key={i}
+                      userData={userData}
+                      setClickRegister={setClickRegister}
+                      allfunded={allfunded}
+                    />
+                  </div>
+                ))}
+              </Swiper>
             )}
           </div>
         </div>

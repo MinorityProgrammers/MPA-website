@@ -109,39 +109,39 @@ const StartupRightBar = function ({ data }) {
             {data.frontend.length > 0 && (
             <div style={{ flex: '1' }}>
               Front-end
-                  {data.frontend.indexOf('React') != -1 && (
-                    <img src="/assets/images/incubator/react.jpeg" />
-                  )}
+              {data.frontend.indexOf('React') != -1 && (
+              <img src="/assets/images/incubator/react.jpeg" />
+              )}
               {data.frontend.indexOf('Express') != -1 && (
-                    <img src="/assets/images/incubator/express.png" />
-                  )}
+              <img src="/assets/images/incubator/express.png" />
+              )}
             </div>
             )}
             {data.backend.length > 0 && (
             <div style={{ flex: '1' }}>
               Back-end
-                  {data.backend.indexOf('MongoDB') != -1 && (
-                    <img src="/assets/images/incubator/mongodb.png" />
-                  )}
+              {data.backend.indexOf('MongoDB') != -1 && (
+              <img src="/assets/images/incubator/mongodb.png" />
+              )}
               {data.backend.indexOf('node') != -1 && (
-                    <img src="/assets/images/incubator/node.png" />
-                  )}
+              <img src="/assets/images/incubator/node.png" />
+              )}
             </div>
             )}
             {data.uiux.length > 0 && (
             <div style={{ flex: '1' }}>
               UI/UX
-                  {data.uiux.indexOf('figma') != -1 && (
-                    <img src="/assets/images/incubator/figma.png" />
-                  )}
+              {data.uiux.indexOf('figma') != -1 && (
+              <img src="/assets/images/incubator/figma.png" />
+              )}
             </div>
             )}
             {data.deployment.length > 0 && (
             <div style={{ flex: '1' }}>
               Deployment
-                  {data.deployment.indexOf('netlify') != -1 && (
-                    <img src="/assets/images/incubator/netlify.png" />
-                  )}
+              {data.deployment.indexOf('netlify') != -1 && (
+              <img src="/assets/images/incubator/netlify.png" />
+              )}
             </div>
             )}
           </div>
@@ -164,13 +164,13 @@ const StartupRightBar = function ({ data }) {
             <button
               className="market__size"
               onMouseEnter={() => {
-                  setHover(true);
-                }}
+                setHover(true);
+              }}
               onMouseLeave={() => {
-                  setHover(false);
-                }}
+                setHover(false);
+              }}
             >
-                ?
+              ?
             </button>
           </h2>
         </div>
@@ -181,36 +181,36 @@ const StartupRightBar = function ({ data }) {
               <div>
                 <div>TAM - in$USD</div>
                 <div className="tam_sam_som_box">
-                    <span style={{ color: 'black' }}>{data.TAM}</span>
-                  </div>
+                  <span style={{ color: 'black' }}>{data.TAM}</span>
+                </div>
               </div>
             </div>
             <div className="sam">
               <div
                 style={{
-                    flex: '1',
-                    backgroundColor: '#3131ab',
-                    margin: '20px',
-                  }}
+                  flex: '1',
+                  backgroundColor: '#3131ab',
+                  margin: '20px',
+                }}
               >
                 <div>SAM</div>
                 <div className="tam_sam_som_box">
-                    <span style={{ color: 'black' }}>{data.SAM}</span>
-                  </div>
+                  <span style={{ color: 'black' }}>{data.SAM}</span>
+                </div>
               </div>
             </div>
             <div className="sam">
               <div
                 style={{
-                    flex: '1',
-                    backgroundColor: '#3131ab',
-                    margin: '20px',
-                  }}
+                  flex: '1',
+                  backgroundColor: '#3131ab',
+                  margin: '20px',
+                }}
               >
                 <div>SOM</div>
                 <div className="tam_sam_som_box">
-                    <span style={{ color: 'black' }}>{data.SOM}</span>
-                  </div>
+                  <span style={{ color: 'black' }}>{data.SOM}</span>
+                </div>
               </div>
             </div>
           </div>
@@ -219,37 +219,37 @@ const StartupRightBar = function ({ data }) {
           <div className="row container tam-sam-som-info">
             <div style={{ fontWeight: 'bold', color: 'black' }}>
               What is TAM, SAM,SOM?
-                </div>
+            </div>
             <div>
               <span className="tam-sam-som-text">TAM- </span>
               <span>
-                    Total available market. The total market for your product
-                  </span>
+                Total available market. The total market for your product
+              </span>
             </div>
             <div>
               <span className="tam-sam-som-text">SAM-</span>
 
               <span>
-                    Serviceable available market. Subset of you TAM, the portion
-                    of the market you can acquire
-                  </span>
+                Serviceable available market. Subset of you TAM, the portion
+                of the market you can acquire
+              </span>
             </div>
             <div>
               <span className="tam-sam-som-text">SOM-</span>
               <span>
-                    Service Obtainable Market Subset of your SAM that you will
-                    realistically get to use your product
-                  </span>
+                Service Obtainable Market Subset of your SAM that you will
+                realistically get to use your product
+              </span>
             </div>
             <div className="tam-sam-som-buttons">
               <button>Learn more</button>
               <button
-                    onClick={() => {
-                      setHover(false);
-                    }}
-                  >
-                    Got it
-                  </button>
+                onClick={() => {
+                  setHover(false);
+                }}
+              >
+                Got it
+              </button>
             </div>
           </div>
           )}

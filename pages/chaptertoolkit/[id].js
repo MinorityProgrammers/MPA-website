@@ -1,17 +1,17 @@
-import React, { useState, useRef, useEffect } from "react";
-import { useRouter } from "next/router";
-import axios from "axios";
-import HomepageNav from "../../components/homepage/HomepageNav";
-import Footer from "../../components/Footer";
-import Layout from "../../components/Layout";
-import NavOne from "../../components/NavOne";
-import SidebarTwo from "../../components/SidebarTwo";
-import links from "../../contexts/utils/links";
-import ComingSoon from "../../components/ComingSoon";
-import { useDetectOutsideClick } from "../../components/UseDetectOutsideClick";
-import ToolkitContent from "../../components/chapter/chapter-toolkit-content/toolkitContent.component";
-import ToolkitHeader from "../../components/chapter/chapter-toolkit-header/toolkitHeader.component";
-import ChapterWrapper from "../../components/chapter/chapter-wrapper/ChapterWrapper.component";
+import React, { useState, useRef, useEffect } from 'react';
+import { useRouter } from 'next/router';
+import axios from 'axios';
+import HomepageNav from '../../components/homepage/HomepageNav';
+import Footer from '../../components/Footer';
+import Layout from '../../components/Layout';
+import NavOne from '../../components/NavOne';
+import SidebarTwo from '../../components/SidebarTwo';
+import links from '../../contexts/utils/links';
+import ComingSoon from '../../components/ComingSoon';
+import { useDetectOutsideClick } from '../../components/UseDetectOutsideClick';
+import ToolkitContent from '../../components/chapter/chapter-toolkit-content/toolkitContent.component';
+import ToolkitHeader from '../../components/chapter/chapter-toolkit-header/toolkitHeader.component';
+import ChapterWrapper from '../../components/chapter/chapter-wrapper/ChapterWrapper.component';
 
 const ChapterPage = function () {
   const [toolkits, setToolkits] = useState([]);
@@ -21,7 +21,7 @@ const ChapterPage = function () {
 
   useEffect(() => {
     axios
-      .get("https://koinstreet-learn-api.herokuapp.com/api/v1/ChapterToolKit")
+      .get('https://koinstreet-learn-api.herokuapp.com/api/v1/ChapterToolKit')
       .then((res) => res.data)
       .then((msg) => msg.data)
       .then((data) => {
@@ -71,7 +71,7 @@ const ChapterPage = function () {
             className="d-flex justify-content-center align-items-center"
             style={{ height: 400, fontSize: 54 }}
           >
-            <h1 style={{ color: "white" }}>Loading...</h1>
+            <h1 style={{ color: 'white' }}>Loading...</h1>
           </div>
         )}
       </ChapterWrapper>

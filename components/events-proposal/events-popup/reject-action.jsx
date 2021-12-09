@@ -25,7 +25,7 @@ const RejectAction = function ({
                 <div>
                   {' '}
                   By:
-                  {'Shot'}
+                  Shot
                 </div>
                 <div className={styles.reviewedDate}>
                   Date:

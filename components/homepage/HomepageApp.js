@@ -1,13 +1,13 @@
-import React from "react";
+import React from 'react';
 
 const HomepageApp = function () {
   return (
     <section className="homepage__app">
       <div className="heading__number">
-        <h3 className="text_white">02</h3>
+        <h3 className="tw-text-blue-900">02</h3>
       </div>
       <div className="container">
-        <h2 className="heading__title mt-5 mb-5 text_white">
+        <h2 className="heading__title mt-5 mb-5 tw-text-blue-900">
           &lsaquo;Minority_App/&rsaquo;
         </h2>
 
