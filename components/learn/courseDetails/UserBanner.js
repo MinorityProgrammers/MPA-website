@@ -12,16 +12,16 @@ const UserBanner = function ({ course, userInfo, userPercentages }) {
               value={!isNaN(userPercentages) && userPercentages}
               strokeWidth={4}
               styles={buildStyles({
-                  pathColor: '#ffc700',
-                  trailColor: '#B9BCC1',
-                  strokeLinecap: 'butt',
-                  rotation: 0.25,
-                  transition: 'stroke-dashoffset 0.5s ease 0s',
-                })}
+                pathColor: '#ffc700',
+                trailColor: '#B9BCC1',
+                strokeLinecap: 'butt',
+                rotation: 0.25,
+                transition: 'stroke-dashoffset 0.5s ease 0s',
+              })}
             >
               {userInfo != null && userInfo.profilePicture
-                  ? <img src={userInfo.profilePicture} className="img-fluid progress-circle" alt="user-image" />
-                  : <img src="/assets/images/profile.png" className="img-fluid progress-circle" alt="user-image" />}
+                ? <img src={userInfo.profilePicture} className="img-fluid progress-circle" alt="user-image" />
+                : <img src="/assets/images/profile.png" className="img-fluid progress-circle" alt="user-image" />}
             </CircularProgressbarWithChildren>
           </div>
         </div>
@@ -30,10 +30,10 @@ const UserBanner = function ({ course, userInfo, userPercentages }) {
           <div className="user-info">
             {userInfo != null && (
             <h1>
-                  Welcome back,
-                  <br />
-                  {userInfo.firstName}
-                </h1>
+              Welcome back,
+              <br />
+              {userInfo.firstName}
+            </h1>
             )}
             {!isNaN(userPercentages)
                             && (

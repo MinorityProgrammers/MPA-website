@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import Layout from "../components/Layout";
-import HomepageNav from "../components/homepage/HomepageNav";
-import VoteHero from "../components/vote-components/VoteHero";
-import VoteGuide from "../components/vote-components/VoteGuide";
-import Footer from "../components/Footer";
-import SidebarTwo from "../components/SidebarTwo";
-import links from "../contexts/utils/links";
+import React, { useState } from 'react';
+import Layout from '../components/Layout';
+import HomepageNav from '../components/homepage/HomepageNav';
+import VoteHero from '../components/vote-components/VoteHero';
+import VoteGuide from '../components/vote-components/VoteGuide';
+import Footer from '../components/Footer';
+import SidebarTwo from '../components/SidebarTwo';
+import links from '../contexts/utils/links';
 
 const VotePage = function () {
   const [open, setOpen] = useState(false);

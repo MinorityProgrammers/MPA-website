@@ -1,12 +1,12 @@
-import React, { useState, useRef, useEffect } from "react";
-import HomepageNav from "../components/homepage/HomepageNav";
-import ComingSoon from "../components/ComingSoon";
-import { useDetectOutsideClick } from "../components/UseDetectOutsideClick";
-import Layout from "../components/Layout";
-import Footer from "../components/Footer";
-import SidebarTwo from "../components/SidebarTwo";
-import links from "../contexts/utils/links";
-import Consultancy from "../components/consultancy/consultancyHome";
+import React, { useState, useRef, useEffect } from 'react';
+import HomepageNav from '../components/homepage/HomepageNav';
+import ComingSoon from '../components/ComingSoon';
+import { useDetectOutsideClick } from '../components/UseDetectOutsideClick';
+import Layout from '../components/Layout';
+import Footer from '../components/Footer';
+import SidebarTwo from '../components/SidebarTwo';
+import links from '../contexts/utils/links';
+import Consultancy from '../components/Consultancy/consultancy_Home';
 
 const consultancy = () => {
   const [open, setOpen] = useState(false);

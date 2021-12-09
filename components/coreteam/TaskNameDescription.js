@@ -106,26 +106,26 @@ const TaskNameDescription = function () {
               {/* <h1>Task description here</h1> */}
               <form className="tw-bg-gray-200 tw-h-32  tw-relative " onClick={handleTaskDescriptionFormSubmit}>
                 <div className="tw-form-group">
-                    <label htmlFor="exampleFormControlTextarea1">
-                        Task description here
-                                    </label>
-                    <textarea
-                        onBlur={handleText}
-                        class="form-control tw-w-full tw-bg-gray-200"
-                        id="exampleFormControlTextarea1"
-                        name="text"
-                      />
-                  </div>
+                  <label htmlFor="exampleFormControlTextarea1">
+                    Task description here
+                  </label>
+                  <textarea
+                    onBlur={handleText}
+                    className="form-control tw-w-full tw-bg-gray-200"
+                    id="exampleFormControlTextarea1"
+                    name="text"
+                  />
+                </div>
                 <section className="form-group tw-absolute tw-bottom-0 tw-right-0">
-                    <select
-                        className=" tw-bg-white tw-pl-2 tw-text-sm tw-w-40 tw-text-black"
-                        value="Add Attachments"
-                      >
-                        <option value="pending">Add Attachments</option>
-                        <option value="onGoing">OnGing</option>
-                        <option value="done">Done</option>
-                      </select>
-                  </section>
+                  <select
+                    className=" tw-bg-white tw-pl-2 tw-text-sm tw-w-40 tw-text-black"
+                    value="Add Attachments"
+                  >
+                    <option value="pending">Add Attachments</option>
+                    <option value="onGoing">OnGing</option>
+                    <option value="done">Done</option>
+                  </select>
+                </section>
               </form>
               {/* <div className="tw-absolute tw-bottom-0 tw-right-0">
                   <textarea className="tw-text-black tw-bg-gray-400" placeholder="write here " id="description" name="description" rows="4" cols="100">
@@ -142,41 +142,41 @@ const TaskNameDescription = function () {
               {/* </div> */}
               <div className=" tw-flex tw-justify-center  ">
                 <button className="tw-bg-white shadow tw-p-2">
-                    {' '}
-                    Show More
-                                </button>
+                  {' '}
+                  Show More
+                </button>
               </div>
               <div className="tw-flex items-center tw-gap-x-2 tw-ml-4 ">
                 <svg
-                    onClick={() => setSubTaskOpen(!subtaskOpen)}
-                    className="tw-cursor-pointer"
-                    width="23"
-                    height="23"
-                    viewBox="0 0 26 26"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                        d="M20.6428 0H5.35712C2.39991 0.00351562 0.00351562 2.39991 0 5.35712V20.6428C0.00351562 23.6 2.39991 25.9964 5.35712 25.9999H20.6428C23.6 25.9964 25.9964 23.6 25.9999 20.6428V5.35712C25.9964 2.39991 23.6 0.00351562 20.6428 0ZM18.3571 14.0714H14.0714V18.3571C14.0714 18.9489 13.5917 19.4286 13 19.4286C12.4082 19.4286 11.9285 18.9489 11.9285 18.3571V14.0714H7.64285C7.0511 14.0714 6.5714 13.5917 6.5714 13C6.5714 12.4082 7.0511 11.9285 7.64285 11.9285H11.9286V7.64285C11.9286 7.0511 12.4083 6.5714 13 6.5714C13.5918 6.5714 14.0714 7.0511 14.0714 7.64285V11.9286H18.3571C18.9489 11.9286 19.4286 12.4083 19.4286 13C19.4286 13.5918 18.9488 14.0714 18.3571 14.0714Z"
-                        fill="#FF00B8"
-                        fill-opacity="0.6"
-                      />
-                  </svg>
+                  onClick={() => setSubTaskOpen(!subtaskOpen)}
+                  className="tw-cursor-pointer"
+                  width="23"
+                  height="23"
+                  viewBox="0 0 26 26"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M20.6428 0H5.35712C2.39991 0.00351562 0.00351562 2.39991 0 5.35712V20.6428C0.00351562 23.6 2.39991 25.9964 5.35712 25.9999H20.6428C23.6 25.9964 25.9964 23.6 25.9999 20.6428V5.35712C25.9964 2.39991 23.6 0.00351562 20.6428 0ZM18.3571 14.0714H14.0714V18.3571C14.0714 18.9489 13.5917 19.4286 13 19.4286C12.4082 19.4286 11.9285 18.9489 11.9285 18.3571V14.0714H7.64285C7.0511 14.0714 6.5714 13.5917 6.5714 13C6.5714 12.4082 7.0511 11.9285 7.64285 11.9285H11.9286V7.64285C11.9286 7.0511 12.4083 6.5714 13 6.5714C13.5918 6.5714 14.0714 7.0511 14.0714 7.64285V11.9286H18.3571C18.9489 11.9286 19.4286 12.4083 19.4286 13C19.4286 13.5918 18.9488 14.0714 18.3571 14.0714Z"
+                    fill="#FF00B8"
+                    fillOpacity="0.6"
+                  />
+                </svg>
                 <h3>Add Subtask</h3>
 
               </div>
 
               {todos?.map((todo, index) => (
                 <div className="tw-flex tw-items-center tw-gap-x-2 tw-ml-4 tw-my-4">
-                    <SingleSubTask
-                        index={index}
-                        todos={todos}
-                        todo={todo}
-                        key={todo.id}
-                        setTodos={setTodos}
-                      />
-                    {/* <p className="  tw-font-semibold"  >{todo.todo}</p> */}
-                  </div>
+                  <SingleSubTask
+                    index={index}
+                    todos={todos}
+                    todo={todo}
+                    key={todo.id}
+                    setTodos={setTodos}
+                  />
+                  {/* <p className="  tw-font-semibold"  >{todo.todo}</p> */}
+                </div>
               ))}
 
               {
@@ -320,27 +320,27 @@ const TaskNameDescription = function () {
               </div>
               <div className="tw-flex tw-justify-between tw-m-3">
                 <div className="tw-flex tw-gap-x-2">
-                    <CgAttachment size="30px" />
-                    <GrEmoji size="30px" />
-                  </div>
+                  <CgAttachment size="30px" />
+                  <GrEmoji size="30px" />
+                </div>
                 <div className="tw-flex tw-gap-x-2">
-                    <svg
-                        width="23"
-                        height="25"
-                        viewBox="0 0 23 20"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                            d="M3.30729 20H1.69778L2.83587 18.8619C3.44951 18.2483 3.83271 17.4501 3.93573 16.5843C1.30787 14.8598 0 12.3615 0 9.74236C0 4.9104 4.44102 0 11.3962 0C18.7644 0 22.7154 4.51849 22.7154 9.31902C22.7154 14.1512 18.7227 18.6667 11.3962 18.6667C10.1128 18.6667 8.77351 18.4953 7.57782 18.181C6.44596 19.3419 4.91236 20 3.30729 20Z"
-                            fill="#FF00B8"
-                          />
-                      </svg>
-                    <IoIosMail size="30px" />
-                    <h3 className="tw-border-2  tw-border-black tw-ml-3 text-center tw-p-1 tw-text-green-900 rounded">
-                        Comment
-                                    </h3>
-                  </div>
+                  <svg
+                    width="23"
+                    height="25"
+                    viewBox="0 0 23 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M3.30729 20H1.69778L2.83587 18.8619C3.44951 18.2483 3.83271 17.4501 3.93573 16.5843C1.30787 14.8598 0 12.3615 0 9.74236C0 4.9104 4.44102 0 11.3962 0C18.7644 0 22.7154 4.51849 22.7154 9.31902C22.7154 14.1512 18.7227 18.6667 11.3962 18.6667C10.1128 18.6667 8.77351 18.4953 7.57782 18.181C6.44596 19.3419 4.91236 20 3.30729 20Z"
+                      fill="#FF00B8"
+                    />
+                  </svg>
+                  <IoIosMail size="30px" />
+                  <h3 className="tw-border-2  tw-border-black tw-ml-3 text-center tw-p-1 tw-text-green-900 rounded">
+                    Comment
+                  </h3>
+                </div>
               </div>
             </div>
           </div>

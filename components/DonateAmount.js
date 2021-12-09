@@ -10,7 +10,7 @@ const DonateAmount = function ({
 }) {
   return (
     <div className="step__amount">
-      <h2 className="text_white">Choose the amount of your gift:</h2>
+      <h2 className="tw-text-blue-900">Choose the amount of your gift:</h2>
       <div className="row step__amount-items">
         <div className="col-lg-3 col-md-3 col-sm-6 col-custom">
           <button
@@ -99,7 +99,7 @@ const DonateAmount = function ({
       {amount ? (
         <div className="step__button mt-3">
           <button
-            className="button btn-gradient"
+            className="button btn-blued"
             type="submit"
             onClick={() => {
               setCount(count + 1);

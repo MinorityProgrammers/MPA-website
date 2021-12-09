@@ -1,10 +1,10 @@
-import { useState, useRef } from "react";
-import Layout from "../Layout.js";
-import Footer from "../Footer.js";
-import HomepageNav from "../homepage/HomepageNav";
-import SidebarTwo from "../SidebarTwo";
-import links from "../../contexts/utils/links";
-import { useDetectOutsideClick } from "../UseDetectOutsideClick";
+import { useState, useRef } from 'react';
+import Layout from '../Layout.js';
+import Footer from '../Footer.js';
+import HomepageNav from '../homepage/HomepageNav';
+import SidebarTwo from '../SidebarTwo';
+import links from '../../contexts/utils/links';
+import { useDetectOutsideClick } from '../UseDetectOutsideClick';
 
 const SponsorshipMain = function (props) {
   const [open, setOpen] = useState(false);

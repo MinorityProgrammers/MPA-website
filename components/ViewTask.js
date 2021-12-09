@@ -144,18 +144,18 @@ const ViewTask = function () {
                       draggableId={item.id}
                     >
                       {(provided, snapshot) => (
-                          <div
-                            ref={provided.innerRef}
-                            {...provided.draggableProps}
-                            {...provided.dragHandleProps}
-                            className="tw-justify-center"
-                          >
-                            <TaskStatus
-                                item={item}
-                                handlePriority={handlePriority}
-                              />
-                          </div>
-                        )}
+                        <div
+                          ref={provided.innerRef}
+                          {...provided.draggableProps}
+                          {...provided.dragHandleProps}
+                          className="tw-justify-center"
+                        >
+                          <TaskStatus
+                            item={item}
+                            handlePriority={handlePriority}
+                          />
+                        </div>
+                      )}
                     </Draggable>
                   ))}
                   {provided.placeholder}

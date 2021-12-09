@@ -14,11 +14,11 @@ const Onboarding = function () {
                 <h2 className="pricing-one__price">Recruit </h2>
                 <p className="pricing-one__name">Across global chapters</p>
                 <ul className="pricing-one__list list-unstyled">
-                    <li>School students</li>
-                    <li>University graduates</li>
-                    <li>Professional networks</li>
-                    <li>Worldwide chapters</li>
-                  </ul>
+                  <li>School students</li>
+                  <li>University graduates</li>
+                  <li>Professional networks</li>
+                  <li>Worldwide chapters</li>
+                </ul>
                 {/* <a href="#" className="thm-btn pricing-one__btn">Recruit Today</a> */}
                 <p className="pricing-one__tag-line">A pipeline to skilled IT workers</p>
               </div>
@@ -30,10 +30,10 @@ const Onboarding = function () {
                 <h2 className="pricing-one__price">Train </h2>
                 <p className="pricing-one__name">through specialized, hands-on skills training</p>
                 <ul className="pricing-one__list list-unstyled">
-                    <li>Highly ranked CodeCamp</li>
-                    <li>Skills Based Courses</li>
-                    <li>Project-Based Learning</li>
-                  </ul>
+                  <li>Highly ranked CodeCamp</li>
+                  <li>Skills Based Courses</li>
+                  <li>Project-Based Learning</li>
+                </ul>
                 {/* <a href="#" className="thm-btn pricing-one__btn">Train Today</a> */}
                 <p className="pricing-one__tag-line">Train with passionate developers in a diverse community</p>
               </div>
@@ -45,10 +45,10 @@ const Onboarding = function () {
                 <h2 className="pricing-one__price">Onboard </h2>
                 <p className="pricing-one__name">We specialize in onboarding for corporations</p>
                 <ul className="pricing-one__list list-unstyled">
-                    <li>Specialized Training</li>
-                    <li>Corporate Sponsorship</li>
-                    <li>Diverse Talent</li>
-                  </ul>
+                  <li>Specialized Training</li>
+                  <li>Corporate Sponsorship</li>
+                  <li>Diverse Talent</li>
+                </ul>
                 {/* <a href="#" className="thm-btn pricing-one__btn">Save Today</a> */}
                 <p className="pricing-one__tag-line">We equip our developers with skills that fit right into your company!</p>
               </div>

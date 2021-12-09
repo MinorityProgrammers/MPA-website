@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect } from 'react';
 
 const HomepageMemberModal = function ({
   showModal,
@@ -15,10 +15,10 @@ const HomepageMemberModal = function ({
 
   useEffect(() => {
     if (showModal) {
-      document.body.style.overflow = "hidden";
+      document.body.style.overflow = 'hidden';
     }
     return () => {
-      document.body.style.overflow = "unset";
+      document.body.style.overflow = 'unset';
     };
   }, [showModal]);
 
@@ -37,7 +37,7 @@ const HomepageMemberModal = function ({
               src={
                 selectedMember.AvatarLink !== null
                   ? selectedMember.AvatarLink
-                  : "https://github.com/MinorityProgrammers/mpa-avatars/blob/main/avatars/mysteryAvatar.png?raw=true"
+                  : 'https://github.com/MinorityProgrammers/mpa-avatars/blob/main/avatars/mysteryAvatar.png?raw=true'
               }
               alt={selectedMember.Employee}
               className="member__modal-img"

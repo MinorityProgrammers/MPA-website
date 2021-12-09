@@ -33,6 +33,7 @@ module.exports = {
         textGray: '#676565',
         darkGray: '#333333',
         activeOrange: '#FF655B',
+        darkBlue: '3E385D',
         '#222222': '#222222',
 
       },

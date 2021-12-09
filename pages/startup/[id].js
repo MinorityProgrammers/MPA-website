@@ -1,18 +1,18 @@
-import React, { useState } from "react";
-import axios from "axios";
-import { useRouter } from "next/router";
-import Layout from "../../components/Layout";
-import HomepageNav from "../../components/homepage/HomepageNav";
-import StartupTopBar from "../../components/StartupTopBar";
-import StartupMainBar from "../../components/StartupMainBar";
-import Footer from "../../components/Footer";
-import SidebarTwo from "../../components/SidebarTwo";
-import links from "../../contexts/utils/links";
+import React, { useState } from 'react';
+import axios from 'axios';
+import { useRouter } from 'next/router';
+import Layout from '../../components/Layout';
+import HomepageNav from '../../components/homepage/HomepageNav';
+import StartupTopBar from '../../components/StartupTopBar';
+import StartupMainBar from '../../components/StartupMainBar';
+import Footer from '../../components/Footer';
+import SidebarTwo from '../../components/SidebarTwo';
+import links from '../../contexts/utils/links';
 // import datas from '../../helpers/mockData';
 
 export const getStaticPaths = async () => {
   const res = await axios.get(
-    "http://koinstreet-learn-api.herokuapp.com/api/v1/startup/"
+    'http://koinstreet-learn-api.herokuapp.com/api/v1/startup/',
   );
   const data = await res.data.data;
 
@@ -36,7 +36,7 @@ export const getStaticProps = async (context) => {
 
   // Calendly test startup
   const res = await axios.get(
-    "https://koinstreet-learn-api.herokuapp.com/api/v1/startup/60ca4c75620570082453fc34 "
+    'https://koinstreet-learn-api.herokuapp.com/api/v1/startup/60ca4c75620570082453fc34 ',
   );
   const data = await res.data.data;
 

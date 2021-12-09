@@ -27,27 +27,32 @@ const PresalePreorder = function () {
         <div className="some-text">
           <div className="sometext1">
             <div className="title-header">
-                    $MINORITY
-                            </div>
-            The utility token behind the <br />
-            App that supports the <br />
+              $MINORITY
+            </div>
+            The utility token behind the
             {' '}
-            careers of Minority<br />
+            <br />
+            App that supports the
+            {' '}
+            <br />
+            {' '}
+            careers of Minority
+            <br />
             {' '}
             Programmers
-<div className="sometext2">
-  <div className="title-header">
-    $MPA
-  </div>
-  airdropped to $MINORITY
-  {' '}
-  <br />
-  {' '}
-  holderS for voting power
-  <br />
-  {' '}
-  in MPA DAPP
-</div>
+            <div className="sometext2">
+              <div className="title-header">
+                $MPA
+              </div>
+              airdropped to $MINORITY
+              {' '}
+              <br />
+              {' '}
+              holderS for voting power
+              <br />
+              {' '}
+              in MPA DAPP
+            </div>
           </div>
         </div>
         <div className="image-container" />
@@ -65,9 +70,9 @@ const PresalePreorder = function () {
         <div className="token-title">TOKEN THAT GIVES BACK</div>
         <div className="aka">aka “da Secret Sauce”</div>
         <div className="token-text">
-          10% Tax on Each transaction to benefit 
-{' '}
-<br />
+          10% Tax on Each transaction to benefit
+          {' '}
+          <br />
           {' '}
           ECOSYSTEM & token holders
         </div>
@@ -96,67 +101,71 @@ const PresalePreorder = function () {
 
           <div className="testimonial1">
             <div className="inner-container">
-                    <div className="avatar-image" />
-                    <div className="inner-text">
-                        “Minority for a penny?
-                        A Majority get many. <br />
-                        <div className="user-name">
-                            -wise rapper off the street
-                                    </div>
-                      </div>
-                  </div>
+              <div className="avatar-image" />
+              <div className="inner-text">
+                “Minority for a penny?
+                A Majority get many.
+                {' '}
+                <br />
+                <div className="user-name">
+                  -wise rapper off the street
+                </div>
+              </div>
+            </div>
           </div>
 
           <div className="testimonial2">
             <div className="inner-container">
-                    <div className="inner-text">
-                        I can own a minority on-chain. Wait this isn’t slavery right? <br />
-                        <div className="user-name">
-                            -Concerned citizen
-                                    </div>
-                      </div>
-                    <div className="avatar-image2" />
-                  </div>
+              <div className="inner-text">
+                I can own a minority on-chain. Wait this isn’t slavery right?
+                {' '}
+                <br />
+                <div className="user-name">
+                  -Concerned citizen
+                </div>
+              </div>
+              <div className="avatar-image2" />
+            </div>
           </div>
 
           <div className="testimonial1">
             <div className="inner-container">
-                    <div className="avatar-image" />
-                    <div className="inner-text">
-                        I’m a minority, & I be tokin’. I support the movement and what you guys are doing!
-                                    <br />
-                        <div className="user-name">
-                            -Stoner who is confused about career development utility & thinks this is about weed
-                                    </div>
-                      </div>
-                  </div>
+              <div className="avatar-image" />
+              <div className="inner-text">
+                I’m a minority, & I be tokin’. I support the movement and what you guys are doing!
+                <br />
+                <div className="user-name">
+                  -Stoner who is confused about career development utility & thinks this is about weed
+                </div>
+              </div>
+            </div>
           </div>
 
           <div className="testimonial2">
             <div className="inner-container">
-                    <div className="inner-text">
-                        I can learn, start a community, gain mentorship, attend events, get work & get rewarded for it?
-                                    <br />
-                        <div className="user-name">
-                            -Marketing team taking their job a little bit more seriously
-                                    </div>
-                      </div>
-                    <div className="avatar-image2" />
-                  </div>
+              <div className="inner-text">
+                I can learn, start a community, gain mentorship, attend events, get work & get rewarded for it?
+                <br />
+                <div className="user-name">
+                  -Marketing team taking their job a little bit more seriously
+                </div>
+              </div>
+              <div className="avatar-image2" />
+            </div>
           </div>
 
           <div className="testimonial1">
             <div className="inner-container">
-                    <div className="avatar-image" />
-                    <div className="inner-text">
-                        Won’t be the first time  $minority made it to the moon.
-                                    <br />
-                        <div className="user-name">
-                            First black MAN on the moon
-                            there has never been one actually.
-                                    </div>
-                      </div>
-                  </div>
+              <div className="avatar-image" />
+              <div className="inner-text">
+                Won’t be the first time  $minority made it to the moon.
+                <br />
+                <div className="user-name">
+                  First black MAN on the moon
+                  there has never been one actually.
+                </div>
+              </div>
+            </div>
           </div>
 
         </div>

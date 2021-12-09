@@ -46,7 +46,7 @@ const PrincipleDiversity = function () {
             <div className="cta-six__right">
               <h2 className="global-statement__text">
                 We have a global network of STEM learning consisting of different countries throughout the world. Countries such as Nigeria, China, and Ukraine. Be the first to join from your country today.
-                            </h2>
+              </h2>
             </div>
           </div>
         </section>

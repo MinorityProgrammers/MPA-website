@@ -212,7 +212,6 @@ export default function Index() {
   // SOCIAL AUTHENTICATION
   const handleLoginSuccess = (res) => {
     // keep this
-
     googleAuth({ tokenId: res.tokenId })(authDispatch);
   };
 
@@ -269,8 +268,6 @@ export default function Index() {
     }
   }, [session]);
 
-  console.log(session);
-
   return (
     <div className={styles.cardContainer}>
       <ToastContainer limit={3} />
@@ -302,7 +299,7 @@ export default function Index() {
         </div>
         <ul className={styles.socialMedia}>
           <li>
-            <GoogleLogin
+            {/* <GoogleLogin
               clientId={googleClientId}
               render={(renderProps) => (
                 <img
@@ -316,6 +313,11 @@ export default function Index() {
               onSuccess={handleLoginSuccess}
               onFailure={handleLoginFailure}
               cookiePolicy="single_host_origin"
+            /> */}
+            <img
+              onClick={() => signIn(providers.google.id)}
+              src="./assets/images/login-signup/google.png"
+              alt="icon"
             />
           </li>
           <li>

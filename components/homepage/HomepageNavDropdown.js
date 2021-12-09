@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { eventItems } from "../../helpers/dropDownItems";
+import React, { useState } from 'react';
+import { eventItems } from '../../helpers/dropDownItems';
 
 const HomepageNavDropdown = function ({ onCloseMobileMenu }) {
   const [click, setClick] = useState(false);
@@ -8,7 +8,7 @@ const HomepageNavDropdown = function ({ onCloseMobileMenu }) {
   return (
     <ul
       onClick={onCloseMobileMenu}
-      className={click ? "dropdown-menu clicked" : "dropdown-menu"}
+      className={click ? 'dropdown-menu clicked' : 'dropdown-menu'}
     >
       {eventItems.map((item, index) => (
         <li key={index}>
