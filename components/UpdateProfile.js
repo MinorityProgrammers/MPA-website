@@ -13,6 +13,8 @@ import {
   storeTwo,
 } from '../contexts/utils/fields';
 
+import DashboardInputs from './DashboardInputs';
+
 const UpdateForm = function ({
   setOpen, setNotice, setLog, user,
 }) {
