@@ -1,7 +1,7 @@
 import { useEffect, useState, Fragment } from 'react';
 import Wireframe1 from './wireframes/wireframe1';
 // import Card from "../login-signup/card";
-import LoginPage from './helperFiles/login-page';
+import LoginPage from './helperFiles/LoginPage';
 import Page1 from './steps/step1';
 import Page2 from './steps/step2';
 import Page3 from './steps/step3';
