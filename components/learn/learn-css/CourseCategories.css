@@ -50,7 +50,7 @@
     color: white;
 }
 .progress-bar{
-    background-image: linear-gradient(270deg,#ff00b8 2.65%,#ff655b 51.83%,#ffc700) !important;
+    background: #3E385D;
 }
 .btn-outline-white{
     color: #fff !important;

@@ -10,10 +10,7 @@ const IncubatorHero = function () {
     <section className="incubator-wrapper">
       <div className="incubator-header">
         <div className="container">
-          <div className="row">
-            <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12">
-              <img src="/assets/images/incubator-hero2.png" className="incubator__image" />
-            </div>
+          <div className="incubator-center">
             <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 incubator__text">
               <h1 className="incubator__title">
                 Invest directly into minority innovations.
