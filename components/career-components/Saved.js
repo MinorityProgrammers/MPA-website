@@ -1,27 +1,34 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
-import SavedOrAppliedJobSkeleton from "./SavedOrAppliedJobsSkeleton";
-import { successToast } from "../../contexts/utils/toasts";
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { successToast } from '../../contexts/utils/toasts';
+import SavedOrAppliedJobSkeleton from './SavedOrAppliedJobsSkeleton';
 
 const Saved = () => {
   const [savedJobs, setSavedJobs] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const userInfo = typeof window !== 'undefined'
+    ? window.localStorage.getItem('userInfo')
+    : null;
+  const token = typeof window !== 'undefined'
+    ? window.localStorage.getItem('jwtToken')
+    : null;
+
   const fetchData = () => {
     if (token) {
       axios
         .get(
-          "https://koinstreet-learn-api.herokuapp.com/api/v1/savejob/userjobs",
+          'https://koinstreet-learn-api.herokuapp.com/api/v1/savejob/userjobs',
           {
             headers: {
               Authorization: `Bearer ${token}`,
             },
-          }
+          },
         )
-        .then(function (response) {
-          //filter out invalid responses
+        .then((response) => {
+          // filter out invalid responses
           const savedJobsData = response.data.data.filter(
-            (jobInfo) => jobInfo.job_id !== null
+            (jobInfo) => jobInfo.job_id !== null,
           );
           setSavedJobs(savedJobsData);
           setTimeout(setLoading(false), 2000);
@@ -33,14 +40,10 @@ const Saved = () => {
     fetchData();
   }, []);
 
-  const userInfo =
-    typeof window !== "undefined"
-      ? window.localStorage.getItem("userInfo")
-      : null;
-  const token =
-    typeof window !== "undefined"
-      ? window.localStorage.getItem("jwtToken")
-      : null;
+  const deleteJob = (e) => {
+    const x = e.target.parentNode.parentNode;
+    x.style.display = 'none';
+  };
 
   const removeSavedJob = (e, jobID) => {
     deleteJob(e);
@@ -52,17 +55,12 @@ const Saved = () => {
             headers: {
               Authorization: `Bearer ${token}`,
             },
-          }
+          },
         )
-        .then(function () {
-          successToast("Job Removed Successfully!");
+        .then(() => {
+          successToast('Job Removed Successfully!');
         });
     }
-  };
-
-  const deleteJob = (e) => {
-    const x = e.target.parentNode.parentNode;
-    x.style.display = "none";
   };
 
   const savedJobsList = savedJobs.map((job) => (
@@ -77,7 +75,9 @@ const Saved = () => {
       </div>
       <div className="saved-job-stub-footer">
         <div className="saved-job-stub-postDate">
-          Posted: {new Date(job.job_id.updatedAt).toDateString().substr(3)}
+          Posted:
+          {' '}
+          {new Date(job.job_id.updatedAt).toDateString().substr(3)}
         </div>
         <a
           className="saved-job-stub-saveLink"

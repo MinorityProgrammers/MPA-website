@@ -1,15 +1,20 @@
 import { useRouter } from 'next/router';
-import { useState, useRef, useEffect } from 'react';
-import CompaniesList from '../../../components/career-components/CompaniesList.json';
-import Layout from '../../../components/Layout';
+import React, { useEffect, useRef, useState } from 'react';
+import ArrowLeftIconSvg from '../../../components/career-components/svgs/ArrowLeftIconSvg';
+import CheckIconSvg from '../../../components/career-components/svgs/CheckIconSvg';
+import ExternalLinkSquareIconSvg from '../../../components/career-components/svgs/ExternalLinkSquareIconSvg';
+import FacebookSquareIconSvg from '../../../components/career-components/svgs/FacebookSquareIconSvg';
+import InstagramIconSvg from '../../../components/career-components/svgs/InstagramIconSvg';
+import TwitterIconSvg from '../../../components/career-components/svgs/TwitterIconSvg';
+import ComingSoon from '../../../components/ComingSoon';
 import Footer from '../../../components/Footer';
 import HomepageNav from '../../../components/homepage/HomepageNav';
+import Layout from '../../../components/Layout';
 import SidebarTwo from '../../../components/SidebarTwo';
-import links from '../../../contexts/utils/links';
-import ComingSoon from '../../../components/ComingSoon';
 import { useDetectOutsideClick } from '../../../components/UseDetectOutsideClick';
+import links from '../../../contexts/utils/links';
 
-const CompanyDetails = function ({ id }) {
+const CompanyDetails = ({ id }) => {
   const [company, setCompany] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -20,7 +25,7 @@ const CompanyDetails = function ({ id }) {
   const handleClick = () => {
     setHide(!hide);
   };
-  if (hide == false) {
+  if (hide === false) {
     setTimeout(() => {
       setHide(true);
     }, 10000);
@@ -50,7 +55,7 @@ const CompanyDetails = function ({ id }) {
 
   return (
     <Layout>
-      <HomepageNav open={open} setOpen={setOpen} page={"Company"} />
+      <HomepageNav open={open} setOpen={setOpen} page="Company" />
       <SidebarTwo
         open={open}
         setOpen={setOpen}
@@ -58,7 +63,7 @@ const CompanyDetails = function ({ id }) {
         active="Home"
         handleClick={handleClick}
       />
-      {hide == false && <ComingSoon closeClick={handleClick} />}
+      {hide === false && <ComingSoon closeClick={handleClick} />}
       <div className="companyDetails">
         <div className="companyDetails-wrapper tw-mt-10">
           <div className="companyDetails-container-nav">
@@ -88,7 +93,7 @@ const CompanyDetails = function ({ id }) {
               <div className="companyDetails-container-info-extra">
                 <div className="companyDetails-container-info-extra-links">
                   <a className="companyDetails-container-info-extra-links-btn">
-                    <button>
+                    <button type="button">
                       Visit Website
                       <ExternalLinkSquareIconSvg />
                     </button>
@@ -135,12 +140,12 @@ const CompanyDetails = function ({ id }) {
               <div className="companyDetails-container-specialties-list">
                 {company.specialties
                   ? company.specialties.map((specialty, idx) => (
-                      <div key={idx}>
-                        <CheckIconSvg />
-                        <div>{specialty}</div>
-                      </div>
-                    ))
-                  : ""}
+                    <div key={idx}>
+                      <CheckIconSvg />
+                      <div>{specialty}</div>
+                    </div>
+                  ))
+                  : ''}
               </div>
             </div>
             <div className="companyDetails-container-description">

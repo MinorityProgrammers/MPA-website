@@ -1,6 +1,6 @@
-import { useState } from "react";
-import SkillsDiv from "./SkillsDiv";
-import JobGuySvg from "./svgs/JobGuySvg.js";
+import React, { useState } from 'react';
+import SkillsDiv from './SkillsDiv';
+import JobGuySvg from './svgs/JobGuySvg';
 
 const JobCreation = () => {
   const [skillsArray, changeSkillsArray] = useState([]);
@@ -14,13 +14,13 @@ const JobCreation = () => {
     if (skillsArray.length < 15) {
       const newSkillsArray = [...skillsArray, { id: skillsKey }];
       changeSkillsKey(skillsKey + 1);
-      changeSkillsArray((prevState) => [...newSkillsArray]);
+      changeSkillsArray(() => [...newSkillsArray]);
     }
   }
 
-  const jobSkills = skillsArray.map((item, index, array) => (
+  const jobSkills = skillsArray.map((item, index) => (
     <SkillsDiv
-      removeSkill={removeSkill}
+      removeSkill={() => removeSkill}
       key={item.id}
       removerInd={index}
       skill_order={index + 1}
@@ -30,14 +30,16 @@ const JobCreation = () => {
   return (
     <div className="tw-relative">
       <JobGuySvg />
-      <div className="jobCreation-lineArt tw-mb-1 tw-h-2 tw-bg-yellow-500 tw-w-3/5 sm:tw-w-1/2 md:tw-w-2/5 lg:tw-w-1/3 xl:tw-w-3/8 tw-mx-auto tw-rounded-md"></div>
+      <div className="jobCreation-lineArt tw-mb-1 tw-h-2 tw-bg-yellow-500 tw-w-3/5 sm:tw-w-1/2 md:tw-w-2/5 lg:tw-w-1/3 xl:tw-w-3/8 tw-mx-auto tw-rounded-md" />
       <form className="job-create-form tw-w-11/12 sm:tw-w-3/4 md:tw-w-3/5 lg:tw-w-1/2 xl:tw-w-5/12 tw-mx-auto tw-bg-black tw-bg-white tw-bg-opacity-25 tw-p-10 tw-rounded-3xl tw-relative tw-z-10">
         <header className="tw-text-white tw-text-center tw-text-2xl tw-font-bold tw-mb-8">
           Create a New Job
         </header>
         <div className="form-input-group tw-flex tw-flex-col tw-mb-3">
           <label className="tw-text-white tw-text-lg tw-mb-1 tw-font-bold">
-            Job Title <span className="tw-text-xl tw-text-yellow-200">*</span>
+            Job Title
+            {' '}
+            <span className="tw-text-xl tw-text-yellow-200">*</span>
           </label>
           <input
             name="job_title"
@@ -61,7 +63,9 @@ const JobCreation = () => {
 
         <div className="form-input-group tw-flex tw-flex-col tw-mb-3">
           <span className="tw-block tw-text-white lg:tw-text-lg tw-mb-1 tw-font-bold">
-            Job Remote? <span className="tw-text-xl tw-text-yellow-200">*</span>
+            Job Remote?
+            {' '}
+            <span className="tw-text-xl tw-text-yellow-200">*</span>
           </span>
           <div className="tw-flex tw-justify-start tw-flex-wrap">
             <label className="jobType-label tw-text-white tw-mr-5 tw-mb-0">
@@ -69,10 +73,11 @@ const JobCreation = () => {
                 name="remote"
                 required
                 type="radio"
-                value={true}
+                value
                 className="jobType-checkbox tw-mr-1"
               />
-              <span className="jobType-custom-checkbox"></span>Yes
+              <span className="jobType-custom-checkbox" />
+              Yes
             </label>
             <label className="jobType-label tw-text-white tw-mr-5 tw-mb-0">
               <input
@@ -81,14 +86,17 @@ const JobCreation = () => {
                 value={false}
                 className="jobType-checkbox tw-mr-1"
               />
-              <span className="jobType-custom-checkbox"></span>No
+              <span className="jobType-custom-checkbox" />
+              No
             </label>
           </div>
         </div>
 
         <div className="tw-mb-3">
           <label className="tw-text-white tw-text-lg tw-mb-1 tw-font-bold">
-            Industry <span className="tw-text-xl tw-text-yellow-200">*</span>
+            Industry
+            {' '}
+            <span className="tw-text-xl tw-text-yellow-200">*</span>
           </label>
           <div>
             <select
@@ -96,18 +104,20 @@ const JobCreation = () => {
               required
               className="tw-w-full tw-py-1 tw-px-2 tw-border tw-border-white tw-bg-transparent tw-placeholder-white tw-placeholder-opacity-80 tw-text-white"
             >
-              <option style={{ background: "#151371" }}>Art</option>
-              <option style={{ background: "#151371" }}>Automotive</option>
-              <option style={{ background: "#151371" }}>Medical</option>
-              <option style={{ background: "#151371" }}>Science</option>
-              <option style={{ background: "#151371" }}>Technology</option>
+              <option style={{ background: '#151371' }}>Art</option>
+              <option style={{ background: '#151371' }}>Automotive</option>
+              <option style={{ background: '#151371' }}>Medical</option>
+              <option style={{ background: '#151371' }}>Science</option>
+              <option style={{ background: '#151371' }}>Technology</option>
             </select>
           </div>
         </div>
 
         <div className="form-input-group tw-flex tw-flex-col tw-mb-3">
           <span className="tw-block tw-text-white tw-text-lg tw-mb-1 tw-font-bold">
-            Job Type <span className="tw-text-xl tw-text-yellow-200">*</span>
+            Job Type
+            {' '}
+            <span className="tw-text-xl tw-text-yellow-200">*</span>
           </span>
 
           <div>
@@ -115,21 +125,22 @@ const JobCreation = () => {
               name="job_type"
               className="tw-w-full tw-py-1 tw-px-2 tw-border tw-border-white tw-bg-transparent tw-placeholder-white tw-placeholder-opacity-80 tw-text-white"
             >
-              <option style={{ background: "#151371" }}>Full-Time</option>
-              <option style={{ background: "#151371" }}>Part-Time</option>
-              <option style={{ background: "#151371" }}>Contract</option>
-              <option style={{ background: "#151371" }}>Industry</option>
-              <option style={{ background: "#151371" }}>Temporary</option>
-              <option style={{ background: "#151371" }}>Seasonal</option>
-              <option style={{ background: "#151371" }}>Freelance</option>
-              <option style={{ background: "#151371" }}>Volunteer</option>
+              <option style={{ background: '#151371' }}>Full-Time</option>
+              <option style={{ background: '#151371' }}>Part-Time</option>
+              <option style={{ background: '#151371' }}>Contract</option>
+              <option style={{ background: '#151371' }}>Industry</option>
+              <option style={{ background: '#151371' }}>Temporary</option>
+              <option style={{ background: '#151371' }}>Seasonal</option>
+              <option style={{ background: '#151371' }}>Freelance</option>
+              <option style={{ background: '#151371' }}>Volunteer</option>
             </select>
           </div>
         </div>
 
         <div className="form-input-group tw-flex tw-flex-col">
           <label className="tw-text-white tw-text-lg tw-mb-1 tw-font-bold">
-            Job Skills{" "}
+            Job Skills
+            {' '}
             <span className="tw-text-sm tw-font-normal">(Max 15)</span>
           </label>
 
@@ -145,7 +156,8 @@ const JobCreation = () => {
 
         <div className="tw-flex tw-flex-col tw-mb-3">
           <label className="tw-text-white tw-text-lg tw-mb-1 tw-font-bold">
-            Job Description{" "}
+            Job Description
+            {' '}
             <span className="tw-text-xl tw-text-yellow-200">*</span>
           </label>
           <textarea
@@ -154,7 +166,7 @@ const JobCreation = () => {
             rows="6"
             className="tw-text-white focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-yellow-300 tw-py-1 tw-px-2 tw-border tw-border-white tw-bg-transparent tw-placeholder-white tw-placeholder-opacity-80"
             placeholder="Describe the responsibilities and preferred skills for this job"
-          ></textarea>
+          />
         </div>
         <div className="form-input-group tw-flex tw-flex-col tw-mb-3">
           <label className="tw-text-white tw-text-lg tw-mb-1 tw-font-bold">
@@ -169,7 +181,9 @@ const JobCreation = () => {
 
         <div className="form-input-group tw-flex tw-flex-col tw-mb-3">
           <label className="tw-text-white tw-text-lg tw-mb-1 tw-font-bold">
-            Salary <span className="tw-text-xl tw-text-yellow-200">*</span>
+            Salary
+            {' '}
+            <span className="tw-text-xl tw-text-yellow-200">*</span>
           </label>
           <input
             name="pay"
@@ -187,7 +201,8 @@ const JobCreation = () => {
                 value="annually"
                 className="jobType-checkbox tw-mr-1"
               />
-              <span className="jobType-custom-checkbox"></span>Annually
+              <span className="jobType-custom-checkbox" />
+              Annually
             </label>
             <label className="jobType-label tw-text-white tw-mr-5 tw-mb-0">
               <input
@@ -196,7 +211,8 @@ const JobCreation = () => {
                 value="hourly"
                 className="jobType-checkbox tw-mr-1"
               />
-              <span className="jobType-custom-checkbox"></span>Hourly
+              <span className="jobType-custom-checkbox" />
+              Hourly
             </label>
           </div>
         </div>
@@ -210,7 +226,7 @@ const JobCreation = () => {
             rows="6"
             className="tw-text-white focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-yellow-300 tw-py-1 tw-px-2 tw-border tw-border-white tw-bg-transparent tw-placeholder-white tw-placeholder-opacity-80"
             placeholder="List any additional compensation offered"
-          ></textarea>
+          />
         </div>
 
         <div className="tw-flex tw-flex-col tw-mb-3">
@@ -221,7 +237,7 @@ const JobCreation = () => {
             rows="6"
             className="tw-text-white focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-yellow-300 tw-py-1 tw-px-2 tw-border tw-border-white tw-bg-transparent tw-placeholder-white tw-placeholder-opacity-80"
             placeholder="Add benefits, separated by commas"
-          ></textarea>
+          />
         </div>
 
         <div className="form-input-group tw-flex tw-flex-col tw-mb-3">
@@ -239,7 +255,7 @@ const JobCreation = () => {
           method="GET"
           action="/"
           className="tw-block tw-mx-auto tw-py-1 tw-px-8 tw-mt-5 tw-text-white tw-font-bold tw-tracking-wide"
-          style={{ background: "#151371" }}
+          style={{ background: '#151371' }}
           type="submit"
           value="Create Job"
         />

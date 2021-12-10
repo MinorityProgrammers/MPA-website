@@ -1,7 +1,7 @@
-import { useState, useRef } from 'react';
-import Footer from '../Footer.js';
-import ApplyModal from './QuickApplyJobApplication';
+import React, { useRef, useState } from 'react';
+import Footer from '../Footer';
 import { useDetectOutsideClick } from '../UseDetectOutsideClick';
+import ApplyModal from './QuickApplyJobApplication';
 
 const CareersMainComponent = (props) => {
   const [data, setData] = useState([]);
@@ -12,7 +12,7 @@ const CareersMainComponent = (props) => {
     setHide(!hide);
   };
 
-  if (hide == false) {
+  if (hide === false) {
     setTimeout(() => {
       setHide(true);
     }, 60000);

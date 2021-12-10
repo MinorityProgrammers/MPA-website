@@ -1,8 +1,8 @@
-import { useEffect, useRef, useState } from "react";
-import { useRouter } from "next/router";
-import CareersMainComponent from "../../components/career-components/CareersMainComponent";
-import CompanySkeleton from "../../components/career-components/CompanyLoadingSkeleton";
-import MP_IconSvg from "../../components/career-components/svgs/MP_IconSvg";
+import { useRouter } from 'next/router';
+import React, { useEffect, useRef, useState } from 'react';
+import CareersMainComponent from '../../components/career-components/CareersMainComponent';
+import CompanySkeleton from '../../components/career-components/CompanyLoadingSkeleton';
+import MPIconSvg from '../../components/career-components/svgs/MP_IconSvg';
 
 export async function getServerSideProps(context) {
   return {
@@ -20,7 +20,7 @@ const CompaniesMain = (props) => {
   const locationRef = useRef();
 
   const fetchCompanies = () => {
-    fetch("https://koinstreet-learn-api.herokuapp.com/api/v1/company")
+    fetch('https://koinstreet-learn-api.herokuapp.com/api/v1/company')
       .then((response) => response.json())
       .then((response) => {
         setCompanies(response.data);
@@ -35,14 +35,13 @@ const CompaniesMain = (props) => {
   }, []);
 
   const router = useRouter();
-  let companyLoadingSkeleton;
 
   const companyStubs = companies.map((company) => (
     <a href={`/careers/companies/company?id=${company._id}`} key={company._id}>
       <div className="company-stub" key={company.id}>
         <div className="company-stub-box1">
           <div className="company-stub-box1-logo">
-            <MP_IconSvg />
+            <MPIconSvg />
           </div>
           <div className="company-stub-box1-location">
             {company.headquarter}
@@ -68,9 +67,20 @@ const CompaniesMain = (props) => {
     </a>
   ));
 
-  const totalCount = 102;
+  // const totalCount = 102;
   const perPage = 10;
   const totalPages = Math.ceil(102 / perPage); // 11
+
+  function pageSelector(page) {
+    const queryObj = { ...props.query };
+    if (page === 1 && queryObj.page) {
+      delete queryObj.page;
+    } else if (page !== 1) {
+      queryObj.page = page;
+    }
+
+    router.push({ query: queryObj });
+  }
 
   function makePages() {
     const totPages = totalPages;
@@ -82,7 +92,8 @@ const CompaniesMain = (props) => {
     if (page) {
       pageArray.push(page);
 
-      // push page to first placeholder if page number is greater than 1 and there are more than one pages
+      // push page to first placeholder if page number is greater than 1
+      // and there are more than one pages
       if (page > 1) {
         pageArray.unshift(1);
       }
@@ -106,9 +117,10 @@ const CompaniesMain = (props) => {
       }
 
       return (
-        <a key={page} style={currPage == page ? { background: "#151371" } : {}}>
+        <a key={page} style={currPage === page ? { background: '#151371' } : {}}>
           <button
-            style={currPage == page ? { color: "white" } : {}}
+            type="button"
+            style={currPage === page ? { color: 'white' } : {}}
             onClick={() => pageSelector(page)}
           >
             {page}
@@ -118,34 +130,20 @@ const CompaniesMain = (props) => {
     });
   }
 
-  function pageSelector(page) {
-    console.log(page);
-    const queryObj = { ...props.query };
-    if (page == 1 && queryObj.page) {
-      delete queryObj.page;
-    } else if (page != 1) {
-      queryObj.page = page;
-    }
-
-    router.push({ query: queryObj });
-  }
-
   function nextButton() {
     const queryObj = { ...props.query };
     if (!queryObj.page) {
       queryObj.page = 2;
     } else {
       queryObj.page = Number(queryObj.page) + 1;
-      console.log(typeof queryObj.page);
     }
 
     router.push({ query: queryObj });
   }
 
   function prevButton() {
-    console.log("prev");
     const queryObj = { ...props.query };
-    if (queryObj.page == 2) {
+    if (queryObj.page === 2) {
       delete queryObj.page;
     } else {
       queryObj.page = Number(queryObj.page) - 1;
@@ -162,9 +160,9 @@ const CompaniesMain = (props) => {
       queryObj.company = nameRef.current.value;
       blank = false;
       setCompanies(
-        companies.filter((company) =>
-          company.company_name.toLowerCase().includes(nameRef.current.value)
-        )
+        companies.filter(
+          (company) => company.company_name.toLowerCase().includes(nameRef.current.value),
+        ),
       );
     }
 
@@ -173,9 +171,8 @@ const CompaniesMain = (props) => {
       blank = false;
       setCompanies(
         companies.filter(
-          (company) =>
-            company.diversity_score == diversityScoreRef.current.value
-        )
+          (company) => company.diversity_score === diversityScoreRef.current.value,
+        ),
       );
     }
 
@@ -183,9 +180,9 @@ const CompaniesMain = (props) => {
       queryObj.location = locationRef.current.value;
       blank = false;
       setCompanies(
-        companies.filter((company) =>
-          company.headquarter.toLowerCase().includes(locationRef.current.value)
-        )
+        companies.filter(
+          (company) => company.headquarter.toLowerCase().includes(locationRef.current.value),
+        ),
       );
     }
 
@@ -256,21 +253,23 @@ const CompaniesMain = (props) => {
                 <div className="jobs-paginator">
                   <a>
                     <button
+                      type="button"
                       className="jobs-paginator-btn"
                       disabled={!props.query.page}
                       onClick={prevButton}
                     >
-                      {"<"}
+                      {'<'}
                     </button>
                   </a>
                   <div className="jobs-paginator-numbers">{makePages()}</div>
                   <a>
                     <button
+                      type="button"
                       className="jobs-paginator-btn"
-                      disabled={props.query.page == totalPages}
+                      disabled={props.query.page === totalPages}
                       onClick={nextButton}
                     >
-                      {">"}
+                      {'>'}
                     </button>
                   </a>
                 </div>

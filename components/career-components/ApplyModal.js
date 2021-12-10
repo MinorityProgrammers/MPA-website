@@ -1,28 +1,30 @@
-import { useState } from "react";
-import UploadIconSvg from "./svgs/UploadIconSvg";
-import user from "./User.json";
+import React, { useState } from 'react';
+import UploadIconSvg from './svgs/UploadIconSvg';
+import user from './User.json';
 
-export var ApplyModal = function ({ job, open, closeModal, loadingReq }) {
-  const [uploadText, changeUploadtext] = useState("");
+const ApplyModal = ({
+  job, open, closeModal, loadingReq,
+}) => {
+  const [uploadText, changeUploadtext] = useState('');
 
-  const requirements =
-    loadingReq == true && job != null && job.min_requirements
-      ? job.min_requirements.map((skill, idx) => (
-          <div className="applyModal-content-box-form-reqs-req" key={idx}>
-            <label className="applyModal-content-box-form-reqs-req-label">
-              How many years of experience do you have in
-              {skill.skill}?
-            </label>
-            <input
-              className="applyModal-content-box-form-reqs-req-input"
-              name={`years_${skill.skill}`}
-              type="number"
-              min="0"
-              required
-            />
-          </div>
-        ))
-      : "";
+  const requirements = loadingReq === true && job !== null && job.min_requirements
+    ? job.min_requirements.map((skill, idx) => (
+      <div className="applyModal-content-box-form-reqs-req" key={idx}>
+        <label className="applyModal-content-box-form-reqs-req-label">
+          How many years of experience do you have in
+          {skill.skill}
+          ?
+        </label>
+        <input
+          className="applyModal-content-box-form-reqs-req-input"
+          name={`years_${skill.skill}`}
+          type="number"
+          min="0"
+          required
+        />
+      </div>
+    ))
+    : '';
 
   function makeResumeName(e) {
     changeUploadtext(e.target.files[0].name);
@@ -31,10 +33,10 @@ export var ApplyModal = function ({ job, open, closeModal, loadingReq }) {
   return (
     <div
       className="applyModal"
-      style={open ? { display: "flex" } : { display: "none" }}
+      style={open ? { display: 'flex' } : { display: 'none' }}
       onClick={() => {
         closeModal();
-        document.body.style.overflow = "auto";
+        document.body.style.overflow = 'auto';
       }}
     >
       {job != null ? (
@@ -43,7 +45,7 @@ export var ApplyModal = function ({ job, open, closeModal, loadingReq }) {
             className="applyModalClose"
             onClick={() => {
               closeModal();
-              document.body.style.overflow = "auto";
+              document.body.style.overflow = 'auto';
             }}
           >
             X
@@ -64,7 +66,9 @@ export var ApplyModal = function ({ job, open, closeModal, loadingReq }) {
                 Name: &nbsp;
               </label>
               <div className="applyModal-content-box-form-name-names">
-                {user.first_name} {user.last_name}
+                {user.first_name}
+                {' '}
+                {user.last_name}
               </div>
             </div>
 
@@ -85,7 +89,7 @@ export var ApplyModal = function ({ job, open, closeModal, loadingReq }) {
               <input
                 type="file"
                 id="resume"
-                style={{ display: "none" }}
+                style={{ display: 'none' }}
                 onChange={(e) => makeResumeName(e)}
               />
               <div className="applyModal-content-box-form-resume-text">
@@ -104,8 +108,10 @@ export var ApplyModal = function ({ job, open, closeModal, loadingReq }) {
           </form>
         </div>
       ) : (
-        ""
+        ''
       )}
     </div>
   );
 };
+
+export default ApplyModal;

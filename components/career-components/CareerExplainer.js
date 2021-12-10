@@ -1,46 +1,49 @@
-import { useEffect, useState } from "react";
-import Link from "next/link";
-import styles from "../../public/assets/css/career.module.css";
-import LoginPage from "../consultancy/helperFiles/login-page";
-import Category from "./careerExplainerHelper/category";
+import Link from 'next/link';
+import React, { useEffect, useState } from 'react';
+import styles from '../../public/assets/css/career.module.css';
+import LoginPage from '../consultancy/helperFiles/login-page';
+import Category from './careerExplainerHelper/category';
 
 const allSections = [
   {
     innerText:
-      "Find the company that better fit for you according to your skills, passions,experience, etc",
-    header: "Search Companies",
-    src: "/assets/images/icons/career_landing/search_companies.png",
-    redirectTo: "/careers/companies",
+      'Find the company that better fit for you according to your skills, passions,experience, etc',
+    header: 'Search Companies',
+    src: '/assets/images/icons/career_landing/search_companies.png',
+    redirectTo: '/careers/companies',
   },
   {
     innerText:
       "Diversity & Inclusion are more important than ever. The Minority Programmers Association uses a metric that lets future employees know companies' organization and which actionable items to improve their diversity & inclusion practices. As an employee of a company you can rate and provide us the Diversity Score information.",
-    header: "Improve Diversity Score",
-    src: "/assets/images/icons/career_landing/improve_diversity_score.png",
-    redirectTo: "/careers",
+    header: 'Improve Diversity Score',
+    src: '/assets/images/icons/career_landing/improve_diversity_score.png',
+    redirectTo: '/careers',
   },
   {
     innerText:
-      "Apply for the perfect job for you based on title, location, remote vs in-person, etc. check the recommendations based on your interests.",
-    header: "Apply for Jobs",
-    src: "/assets/images/icons/career_landing/apply_for_jobs.png",
-    redirectTo: "/careers",
+      'Apply for the perfect job for you based on title, location, remote vs in-person, etc. check the recommendations based on your interests.',
+    header: 'Apply for Jobs',
+    src: '/assets/images/icons/career_landing/apply_for_jobs.png',
+    redirectTo: '/careers',
   },
 ];
 
 // component's function
 const CareerExplainer = (props) => {
-  const { data, setClickRegister, active, clickRegister, navBarRef } = props;
+  const {
+    data, setClickRegister, active, clickRegister, navBarRef,
+  } = props;
 
   const [marginTop, setMarginTop] = useState(0);
 
   useEffect(() => {
     if (navBarRef.current && window) {
       const currHeight = parseInt(
-        window.getComputedStyle(navBarRef.current).height
+        window.getComputedStyle(navBarRef.current).height,
       );
-      if (typeof currHeight === "number" && currHeight > marginTop)
+      if (typeof currHeight === 'number' && currHeight > marginTop) {
         setMarginTop((prev) => `${currHeight}px`);
+      }
     }
   }, []);
 
@@ -65,22 +68,21 @@ const CareerExplainer = (props) => {
             </article>
           </div>
           <div className={styles.restOfBody}>
-            {allSections.map((category, index) => {
-              return (
-                <Category
-                  key={index}
-                  innerText={category.innerText}
-                  header={category.header}
-                  src={category.src}
-                  redirectTo={category.redirectTo}
-                  data={data}
-                  setClickRegister={setClickRegister}
-                />
-              );
-            })}
+            {allSections.map((category, index) => (
+              <Category
+                key={index}
+                innerText={category.innerText}
+                header={category.header}
+                src={category.src}
+                redirectTo={category.redirectTo}
+                data={data}
+                setClickRegister={setClickRegister}
+              />
+            ))}
             <div className={`${styles.category} ${styles.btnWrap}`}>
               {data === null ? (
                 <button
+                  type="button"
                   onClick={() => {
                     setClickRegister(true);
                   }}
@@ -89,7 +91,7 @@ const CareerExplainer = (props) => {
                 </button>
               ) : (
                 <Link href="/careers/saved-jobs">
-                  <button>Verify Employment</button>
+                  <button type="button">Verify Employment</button>
                 </Link>
               )}
             </div>

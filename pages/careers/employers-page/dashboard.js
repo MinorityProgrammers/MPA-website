@@ -1,17 +1,16 @@
-import React, { useState, useRef, Fragment } from 'react';
-import PageHeader from '../../../components/PageHeader';
-import SidebarTwo from '../../../components/SidebarTwo';
-import links from '../../../contexts/utils/links';
-import { useDetectOutsideClick } from '../../../components/UseDetectOutsideClick';
+import React, { useRef, useState } from 'react';
 import ComingSoon from '../../../components/ComingSoon';
+import EmployerContent from '../../../components/employers-page/home/content';
+import Header from '../../../components/employers-page/home/header/Header';
+import Content from '../../../components/employers-page/sidenav';
 // components
 import HomepageNav from '../../../components/homepage/HomepageNav';
 import Layout from '../../../components/Layout';
-import Content from '../../../components/employers-page/sidenav';
-import Header from '../../../components/employers-page/home/header/Header';
-import EmployerContent from '../../../components/employers-page/home/content';
+import SidebarTwo from '../../../components/SidebarTwo';
+import { useDetectOutsideClick } from '../../../components/UseDetectOutsideClick';
+import links from '../../../contexts/utils/links';
 
-const EmployersDashboard = function () {
+const EmployersDashboard = () => {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef(null);
   const [hide, setHide] = useDetectOutsideClick(dropdownRef, false);
@@ -19,7 +18,7 @@ const EmployersDashboard = function () {
   const handleClick = () => {
     setHide(!hide);
   };
-  if (hide == false) {
+  if (hide === false) {
     setTimeout(() => {
       setHide(true);
     }, 60000);
@@ -37,7 +36,7 @@ const EmployersDashboard = function () {
           active="Home"
           handleClick={handleClick}
         />
-        {hide == false && <ComingSoon closeClick={handleClick} />}
+        {hide === false && <ComingSoon closeClick={handleClick} />}
         <div id="join">
           <div className="container tw-mt-1" />
         </div>

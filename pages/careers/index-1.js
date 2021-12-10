@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
 import { useRouter } from 'next/router';
+import React, { useEffect } from 'react';
 
 const CareersPage = function () {
   const router = useRouter();
   useEffect(() => {
-    router.push("/careers/jobs");
+    router.push('/careers/jobs');
   }, []);
   return <div className="careers">Redirecting to Companies Section</div>;
 };

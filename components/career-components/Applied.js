@@ -1,36 +1,34 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import { successToast } from "../../contexts/utils/toasts";
-import SavedOrAppliedJobSkeleton from "./SavedOrAppliedJobsSkeleton";
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { successToast } from '../../contexts/utils/toasts';
+import SavedOrAppliedJobSkeleton from './SavedOrAppliedJobsSkeleton';
 
 const Applied = () => {
   const [appliedJobs, setAppliedJobs] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const userInfo =
-    typeof window !== "undefined"
-      ? window.localStorage.getItem("userInfo")
-      : null;
-  const token =
-    typeof window !== "undefined"
-      ? window.localStorage.getItem("jwtToken")
-      : null;
+  const userInfo = typeof window !== 'undefined'
+    ? window.localStorage.getItem('userInfo')
+    : null;
+  const token = typeof window !== 'undefined'
+    ? window.localStorage.getItem('jwtToken')
+    : null;
 
   const getAppliedJobs = () => {
     setLoading(true);
     if (token) {
       axios
         .get(
-          "https://koinstreet-learn-api.herokuapp.com/api/v1/easyApply/userApplied",
+          'https://koinstreet-learn-api.herokuapp.com/api/v1/easyApply/userApplied',
           {
             headers: {
               Authorization: `Bearer ${token}`,
             },
-          }
+          },
         )
-        .then(function (response) {
+        .then((response) => {
           const appliedJobsData = response.data.data.filter(
-            (jobInfo) => jobInfo.job_id !== null
+            (jobInfo) => jobInfo.job_id !== null,
           );
           setAppliedJobs(appliedJobsData);
           setLoading(false);
@@ -44,7 +42,7 @@ const Applied = () => {
 
   const deleteJob = (e) => {
     const x = e.target.parentNode.parentNode;
-    x.style.display = "none";
+    x.style.display = 'none';
   };
 
   const removeAppliedJob = (e, jobID) => {
@@ -57,15 +55,15 @@ const Applied = () => {
             headers: {
               Authorization: `Bearer ${token}`,
             },
-          }
+          },
         )
-        .then(function () {
-          successToast("Applied Job Deleted Successfully!");
+        .then(() => {
+          successToast('Applied Job Deleted Successfully!');
         });
     }
   };
 
-  let appliedJobsList = appliedJobs.map((job) => (
+  const appliedJobsList = appliedJobs.map((job) => (
     <div className="saved-job-stub" key={job._id}>
       <div className="saved-job-stub-header">
         <div className="saved-job-stub-title">{job.job_id.job_title}</div>
@@ -77,7 +75,9 @@ const Applied = () => {
       </div>
       <div className="saved-job-stub-footer">
         <div className="saved-job-stub-postDate">
-          Applied: {new Date(job.updatedAt).toDateString().substr(3)}
+          Applied:
+          {' '}
+          {new Date(job.updatedAt).toDateString().substr(3)}
         </div>
         <a
           className="saved-job-stub-saveLink"

@@ -1,11 +1,12 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
+import ImgUploadIconSvg from '../../components/career-components/svgs/ImgUploadIconSvg';
 import Footer from '../../components/Footer';
 import HomepageNav from '../../components/homepage/HomepageNav';
 import Layout from '../../components/Layout';
 import SidebarTwo from '../../components/SidebarTwo';
 import links from '../../contexts/utils/links';
 
-const CreateNewCompany = function () {
+const CreateNewCompany = () => {
   const [open, setOpen] = useState(false);
   return (
     <Layout>
@@ -219,11 +220,9 @@ const CreateNewCompany = function () {
                 <div className="tw-w-full sm:tw-w-1/3 tw-flex tw-flex-col tw-items-center tw-justify-between">
                   <label
                     className="tw-w-44 tw-h-44 tw-border tw-border-1 tw-text-4xl tw-text-white tw-flex tw-flex-col tw-justify-center tw-items-center tw-text-center"
-                    htmlFor="company-logo"
                   >
                     <ImgUploadIconSvg />
                   </label>
-
                   <input
                     type="file"
                     name="logo"
@@ -236,7 +235,8 @@ const CreateNewCompany = function () {
 
               <div className="tw-flex tw-flex-col tw-mb-3">
                 <label className="tw-text-white tw-text-lg tw-mb-1 tw-font-bold">
-                  Company Description{" "}
+                  Company Description
+                  {' '}
                   <span className="tw-text-xl tw-text-yellow-200">*</span>
                 </label>
                 <textarea
@@ -245,7 +245,7 @@ const CreateNewCompany = function () {
                   rows="6"
                   className="tw-text-white focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-yellow-300 tw-py-1 tw-px-2 tw-border tw-border-white tw-bg-transparent tw-placeholder-white tw-placeholder-opacity-80"
                   placeholder="Describe your company."
-                ></textarea>
+                />
               </div>
 
               <div className="tw-grid tw-grid-cols-1 sm:tw-grid-cols-2 tw-gap-x-16">
@@ -333,7 +333,7 @@ const CreateNewCompany = function () {
                     type="checkbox"
                     className="companyType-checkbox tw-mr-1"
                   />
-                  <span className="companyType-custom-checkbox"></span>
+                  <span className="companyType-custom-checkbox" />
                   <span>
                     I am an authorized representative of this
                     company/organization
