@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 import Layout from '../components/Layout';
 import Footer from '../components/Footer';
 import HomepageNav from '../components/homepage/HomepageNav';
-import MentorshipAppSwipeCards from '../components/MentorshipAppSwipeCards';
-import MentorshipAppSideBar from '../components/MentorshipAppSideBar';
+import MentorshipAppSwipeCards from '../components/mentorship/MentorshipAppSwipeCards';
+import MentorshipAppSideBar from '../components/mentorship/MentorshipAppSideBar';
 
 export class mentorshipApp extends Component {
   state = {
@@ -161,7 +161,7 @@ export class mentorshipApp extends Component {
 
   updateSwipeCards = (character) => {
     const copyswipeCards = this.state.swipeCards.filter(
-      (person) => person !== character,
+      (person) => person !== character
     );
     this.setState({
       swipeCards: copyswipeCards,
@@ -196,9 +196,8 @@ export class mentorshipApp extends Component {
   }
 
   render() {
-    const {
-      likedList, swipeCards, matchedPeople, step, openedChatCharacter,
-    } = this.state;
+    const { likedList, swipeCards, matchedPeople, step, openedChatCharacter } =
+      this.state;
 
     const values = {
       likedList,
@@ -209,10 +208,10 @@ export class mentorshipApp extends Component {
     };
     return (
       <div>
-        <Layout pageTitle="MPA - Mentorship App">
+        <Layout pageTitle='MPA - Mentorship App'>
           <HomepageNav />
-          <section className="home-section">
-            <div className="tw-flex lg:tw-hidden tw-font-redhat tw-bg-white tw-bg-opacity-0 tw-h-600px md:tw-h-auto tw-w-1300px tw-rounded-3xl tw-shadow-mentor tw-relative tw-text-black">
+          <section className='home-section'>
+            <div className='tw-flex lg:tw-hidden tw-font-redhat tw-bg-white tw-bg-opacity-0 tw-h-600px md:tw-h-auto tw-w-1300px tw-rounded-3xl tw-shadow-mentor tw-relative tw-text-black'>
               <MentorshipAppSwipeCards
                 handleSwipeRight={this.handleSwipeRight}
                 updateSwipeCards={this.updateSwipeCards}
@@ -229,7 +228,7 @@ export class mentorshipApp extends Component {
                 chatRedirectStep={this.chatRedirectStep}
               />
             </div>
-            <div className="tw-hidden lg:tw-block">
+            <div className='tw-hidden lg:tw-block'>
               <p>
                 The Swiping Application is only available on screens wider than
                 911px

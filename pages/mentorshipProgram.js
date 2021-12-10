@@ -4,8 +4,8 @@ import Layout from '../components/Layout';
 import SidebarTwo from '../components/SidebarTwo';
 import links from '../contexts/utils/links';
 import { useDetectOutsideClick } from '../components/UseDetectOutsideClick';
-import MentorshipProgramHero from '../components/MentorshipProgramHero';
-import MentorshipProgramHome from '../components/MentorshipProgramHome';
+import MentorshipProgramHero from '../components/mentorship/MentorshipProgramHero';
+import MentorshipProgramHome from '../components/mentorship/MentorshipProgramHome';
 import Footer from '../components/Footer';
 import ComingSoon from '../components/ComingSoon';
 
@@ -33,23 +33,23 @@ const mentorshipProgram = () => {
     }
   }, []);
   return (
-    <Layout pageTitle="MPA - Mentorship SignUp">
+    <Layout pageTitle='MPA - Mentorship SignUp'>
       <HomepageNav
         open={open}
         setOpen={setOpen}
         setData={setData}
-        page="MentorshipProgram"
+        page='MentorshipProgram'
       />
       <SidebarTwo
         open={open}
         setOpen={setOpen}
         links={links}
-        active="Home"
+        active='Home'
         handleClick={handleClick}
       />
       {hide == false && <ComingSoon closeClick={handleClick} />}
       <MentorshipProgramHero />
-      <section className="section__mentorshipProgram">
+      <section className='section__mentorshipProgram'>
         <MentorshipProgramHome
           data={data}
           setClickRegister={setClickRegister}

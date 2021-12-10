@@ -2,7 +2,7 @@ import React from 'react';
 import Swiper from 'react-id-swiper';
 import 'swiper/css/swiper.css';
 
-const CourseOne = function () {
+const CourseOne = () => {
   const params = {
     slidesPerView: 3,
     loop: true,
@@ -64,9 +64,7 @@ const CourseOne = function () {
                     </a>
                     <div className="course-one__admin">
                       <img src="/assets/images/team-1-1.jpg" alt="" />
-                      by
-                      {' '}
-                      <a href="/teacher-details">MinorityProgrammers</a>
+                      by <a href="/teacher-details">MinorityProgrammers</a>
                     </div>
                     <h2 className="course-one__title">
                       <a href="/course-details">#ClimateHacks Hackathon</a>
@@ -75,8 +73,7 @@ const CourseOne = function () {
                     <div className="course-one__meta">
                       <a href="/course-details">
                         <i className="far fa-clock" />
-                        Sat April 24 - Sun April
-                        25, 2021
+                        Sat April 24 - Sun April 25, 2021
                       </a>
                     </div>
                     <a href="#" className="course-one__link">
@@ -85,7 +82,6 @@ const CourseOne = function () {
                   </div>
                 </div>
               </div>
-
               <div className="item">
                 <div className="course-one__single color-1">
                   <div className="course-one__image">
@@ -98,24 +94,18 @@ const CourseOne = function () {
                     </a>
                     <div className="course-one__admin">
                       <img src="/assets/images/team-1-1.jpg" alt="" />
-                      by
-                      {' '}
-                      <a href="/teacher-details">MinorityProgrammers</a>
+                      by <a href="/teacher-details">MinorityProgrammers</a>
                     </div>
                     <h2 className="course-one__title">
                       <a href="/course-details">#ElectionHackathon</a>
                     </h2>
-
                     <div className="course-one__meta">
                       <a href="/course-details">
                         <i className="far fa-clock" />
-                        Sat April 24 - Sun April
-                        25, 2021
+                        Sat April 24 - Sun April 25, 2021
                       </a>
                       <a href="/course-details">
-                        <i className="far fa-folder-open" />
-                        {' '}
-                        50 Participants
+                        <i className="far fa-folder-open" /> 50 Participants
                       </a>
                       <a href="/course-details">Free</a>
                     </div>
