@@ -65,7 +65,6 @@ const HomepageFour = function () {
               {hide == false && <ComingSoon closeClick={handleClick} />}
               <HomePageNewTopSection />
               <HomepageAbout />
-              {/* <HomepageBuyMinority /> */}
               <HomepageApp />
               <HomepageCore />
               <HomepageWave />
