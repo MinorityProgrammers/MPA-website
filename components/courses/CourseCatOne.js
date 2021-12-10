@@ -2,7 +2,7 @@ import React from 'react';
 import Swiper from 'react-id-swiper';
 import 'swiper/css/swiper.css';
 
-const CourseCatOne = function () {
+const CourseCatOne = () => {
   const params = {
     slidesPerView: 6,
     loop: true,
