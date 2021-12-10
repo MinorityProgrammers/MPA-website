@@ -4,23 +4,14 @@ import Link from 'next/link';
 import { useDetectOutsideClick } from '../UseDetectOutsideClick';
 import Card from '../login-signup/card';
 
-const MentorshipProgramHome = function ({
+const MentorshipProgramHome = ({
   data,
   onCloseMobileMenu,
   active,
   clickRegister,
   setClickRegister,
-}) {
+}) => {
   const router = useRouter();
-
-  // const {
-  //     authDispatch,
-  //     authState: {
-  //         auth: { loading, error, data },
-  //     },
-  // } = useContext(GlobalContext)
-  // console.log('data is here: ', data);
-
   const [click, setClick] = useState(false);
   const dropdownRef = useRef(null);
   const [isActive, setIsActive] = useDetectOutsideClick(dropdownRef, false);
@@ -28,15 +19,15 @@ const MentorshipProgramHome = function ({
 
   return (
     <section>
-      <div className='container'>
-        <div className='login__reg flex d-flex justify-content-end mb-5 mt-2 pr-5'>
+      <div className="container">
+        <div className="login__reg flex d-flex justify-content-end mb-5 mt-2 pr-5">
           <div>
             {data === null ? (
               <a
                 onClick={() => {
                   setClickRegister(true);
                 }}
-                className='btn mentorshipBTN'
+                className="btn mentorshipBTN"
               >
                 Register
               </a>
@@ -46,26 +37,26 @@ const MentorshipProgramHome = function ({
           </div>
         </div>
 
-        <div className='signup__program'>
-          <div className='row'>
-            <div className='col-lg-4'>
-              <div className='mentorship__SUP'>
+        <div className="signup__program">
+          <div className="row">
+            <div className="col-lg-4">
+              <div className="mentorship__SUP">
                 <img
-                  className='mentorship__SUPIMG'
-                  src='/assets/images/mentorSUP1.png'
-                  alt='mentorSUP'
+                  className="mentorship__SUPIMG"
+                  src="/assets/images/mentorSUP1.png"
+                  alt="mentorSUP"
                 />
               </div>
-              <div className='msnum'>
+              <div className="msnum">
                 <img
-                  className='msnumIMG'
-                  src='/assets/images/num1.png'
-                  alt='num1'
+                  className="msnumIMG"
+                  src="/assets/images/num1.png"
+                  alt="num1"
                 />
               </div>
             </div>
-            <div className='col-lg-8 d-flex align-items-center mshipProgram__w_list'>
-              <ul className=''>
+            <div className="col-lg-8 d-flex align-items-center mshipProgram__w_list">
+              <ul className="">
                 <h1> - Sign Up Program</h1>
                 <li>
                   {' '}
@@ -86,10 +77,10 @@ const MentorshipProgramHome = function ({
         </div>
 
         {/* start matching */}
-        <div className='start__matching'>
-          <div className='row'>
-            <div className='col-lg-8 d-flex align-items-center mshipProgram__b_list'>
-              <ul className=''>
+        <div className="start__matching">
+          <div className="row">
+            <div className="col-lg-8 d-flex align-items-center mshipProgram__b_list">
+              <ul className="">
                 <h1>Start Matching</h1>
                 <li> - Tell us about your GOALS and needs.</li>
                 <li>
@@ -103,19 +94,19 @@ const MentorshipProgramHome = function ({
                 </li>
               </ul>
             </div>
-            <div className='col-lg-4'>
-              <div className='mentorship__SUP'>
+            <div className="col-lg-4">
+              <div className="mentorship__SUP">
                 <img
-                  className='mentorship__SUPIMG'
-                  src='/assets/images/mentorSUP2.png'
-                  alt='mentorSUP'
+                  className="mentorship__SUPIMG"
+                  src="/assets/images/mentorSUP2.png"
+                  alt="mentorSUP"
                 />
               </div>
-              <div className='msnum'>
+              <div className="msnum">
                 <img
-                  className='msnumIMG'
-                  src='/assets/images/num2.png'
-                  alt='num1'
+                  className="msnumIMG"
+                  src="/assets/images/num2.png"
+                  alt="num1"
                 />
               </div>
             </div>
@@ -123,26 +114,26 @@ const MentorshipProgramHome = function ({
         </div>
 
         {/* start Program */}
-        <div className='signup__program'>
-          <div className='row'>
-            <div className='col-lg-4'>
-              <div className='mentorship__SUP'>
+        <div className="signup__program">
+          <div className="row">
+            <div className="col-lg-4">
+              <div className="mentorship__SUP">
                 <img
-                  className='mentorship__SUPIMG'
-                  src='/assets/images/mentorSUP3.png'
-                  alt='mentorSUP'
+                  className="mentorship__SUPIMG"
+                  src="/assets/images/mentorSUP3.png"
+                  alt="mentorSUP"
                 />
               </div>
-              <div className='msnum'>
+              <div className="msnum">
                 <img
-                  className='msnumIMG'
-                  src='/assets/images/num3.png'
-                  alt='num1'
+                  className="msnumIMG"
+                  src="/assets/images/num3.png"
+                  alt="num1"
                 />
               </div>
             </div>
-            <div className='col-lg-8 d-flex align-items-center mshipProgram__w_list'>
-              <ul className=''>
+            <div className="col-lg-8 d-flex align-items-center mshipProgram__w_list">
+              <ul className="">
                 <h1>Start Program</h1>
                 <li>
                   {' '}
@@ -156,10 +147,10 @@ const MentorshipProgramHome = function ({
         </div>
 
         {/* gain */}
-        <div className='start__matching'>
-          <div className='row'>
-            <div className='col-lg-8 d-flex align-items-center mshipProgram__b_list'>
-              <ul className=''>
+        <div className="start__matching">
+          <div className="row">
+            <div className="col-lg-8 d-flex align-items-center mshipProgram__b_list">
+              <ul className="">
                 <h1>Gain $MINORITY</h1>
 
                 <li>
@@ -175,19 +166,19 @@ const MentorshipProgramHome = function ({
                 <li> - Earn $MINORITY tokens for completing tasks.</li>
               </ul>
             </div>
-            <div className='col-lg-4'>
-              <div className='mentorship__SUP'>
+            <div className="col-lg-4">
+              <div className="mentorship__SUP">
                 <img
-                  className='mentorship__SUPIMG'
-                  src='/assets/images/mentorSUP4.png'
-                  alt='mentorSUP'
+                  className="mentorship__SUPIMG"
+                  src="/assets/images/mentorSUP4.png"
+                  alt="mentorSUP"
                 />
               </div>
-              <div className='msnum'>
+              <div className="msnum">
                 <img
-                  className='msnumIMG'
-                  src='/assets/images/num4.png'
-                  alt='num1'
+                  className="msnumIMG"
+                  src="/assets/images/num4.png"
+                  alt="num1"
                 />
               </div>
             </div>
@@ -197,52 +188,52 @@ const MentorshipProgramHome = function ({
         {/*  */}
         {data === null ? (
           <div>
-            <div className='mentor__mentee mt-5'>
-              <div className='row'>
-                <div className='col-lg-6 d-flex justify-content-center'>
+            <div className="mentor__mentee mt-5">
+              <div className="row">
+                <div className="col-lg-6 d-flex justify-content-center">
                   <button
                     onClick={() => {
                       setClickRegister(true);
                     }}
-                    className='btn mentorshipBTN btn-block mb-2'
+                    className="btn mentorshipBTN btn-block mb-2"
                   >
                     Be a Mentor
                   </button>
                 </div>
-                <div className='col-lg-6 d-flex justify-content-center'>
+                <div className="col-lg-6 d-flex justify-content-center">
                   <button
                     onClick={() => {
                       setClickRegister(true);
                     }}
-                    className='btn mentorshipBTN btn-block mb-2'
+                    className="btn mentorshipBTN btn-block mb-2"
                   >
                     Be a Mentee
                   </button>
                 </div>
               </div>
             </div>
-            <div className='mentorshipP__login d-flex justify-content-center mt-4'>
-              <li className='text-light font-weight-bold h4'>
+            <div className="mentorshipP__login d-flex justify-content-center mt-4">
+              <li className="text-light font-weight-bold h4">
                 <a
                   onClick={() => {
                     setClickRegister(true);
                   }}
-                  className='text-light hover:tw-text-white font-weight-bold h4 tw-cursor-pointer'
+                  className="text-light hover:tw-text-white font-weight-bold h4 tw-cursor-pointer"
                 >
                   Register
                 </a>
               </li>
             </div>
-            <div className='d-flex justify-content-center mt-4 mb-5'>
-              <p className='text-light'>
+            <div className="d-flex justify-content-center mt-4 mb-5">
+              <p className="text-light">
                 You Must Be Logged Into MPA for Mentorship Program
               </p>
             </div>
           </div>
         ) : (
-          <div className='mentorshipP__login d-flex justify-content-center mt-4 mb-5'>
-            <Link href='/mentorship'>
-              <button className='font-weight-bold h3 myButton mb-5'>
+          <div className="mentorshipP__login d-flex justify-content-center mt-4 mb-5">
+            <Link href="/mentorship">
+              <button className="font-weight-bold h3 myButton mb-5">
                 Get Started
               </button>
             </Link>
@@ -250,14 +241,14 @@ const MentorshipProgramHome = function ({
         )}
 
         {clickRegister && active ? (
-          <div className='create_event'>
+          <div className="create_event">
             <div
-              className='create_event-shadow'
+              className="create_event-shadow"
               onClick={() => {
                 setClickRegister(false);
               }}
             />
-            <div id='create_event-container' className='create_event-container'>
+            <div id="create_event-container" className="create_event-container">
               <Card />
             </div>
             <i
