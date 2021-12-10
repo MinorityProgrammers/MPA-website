@@ -69,12 +69,14 @@ const LearnPage = function () {
         handleClick={handleClick}
       />
       {hide == false && <ComingSoon closeClick={handleClick} />}
-      <LearnBanner />
-      <CourseCategories
-        user={data}
-        usersCourses={usersCourses}
-        enrolledCourses={enrolledCourses}
-      />
+      {/* <LearnBanner /> */}
+      <div className="tw-pt-20">
+        <CourseCategories
+          user={data}
+          usersCourses={usersCourses}
+          enrolledCourses={enrolledCourses}
+        />
+      </div>
       <Footer />
     </Layout>
   );

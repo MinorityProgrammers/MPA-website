@@ -4,6 +4,7 @@ import { faUsers, faSearch } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import axios from 'axios';
+import { Modal } from 'antd';
 import LoginModal from '../login-signup/card/index.jsx';
 import UserCourses from './UserCourses';
 import RecommendedCourses from './RecommendedCourses';
@@ -20,6 +21,20 @@ const CourseCategories = function ({ user, enrolledCourses, usersCourses }) {
   const [enrolledBtn, setEnrolledBtn] = useState(false);
   const [disable, setDisable] = useState(false);
   const router = useRouter();
+
+  const [isModalVisible, setIsModalVisible] = useState(true);
+
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const handleOk = () => {
+    setIsModalVisible(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
 
   useEffect(() => {
     axios.get('https://koinstreet-learn-api.herokuapp.com/api/v1/course')
@@ -90,7 +105,7 @@ const CourseCategories = function ({ user, enrolledCourses, usersCourses }) {
               <div className="search-items pt-5">
                 <form className="d-flex" onSubmit={handleSubmit}>
                   <div className="input-group">
-                    <input type="text" className="course-search search-input" placeholder="What event are you looking for?" />
+                    <input type="text" className="course-search search-input" placeholder="What course are you looking for?" />
                     <div className="input-group-append learnSearch-btn">
                       <button className="btn bg-white" type="submit"><FontAwesomeIcon icon={faSearch} /></button>
                     </div>
@@ -112,17 +127,17 @@ const CourseCategories = function ({ user, enrolledCourses, usersCourses }) {
             <div className="col-md-3" />
           </div>
           <div className="learn-items mb-5">
-            <ul className="d-md-flex justify-content-center pt-2">
-              <li>
+            <ul className="tw-flex tw-flex-row tw-justify-center tw-pt-2">
+              <li className="tw-bg-blue-900 tw-w-36 tw-text-center tw-p-2 tw-mx-2 tw-rounded-md tw-shadow-lg">
                 <Link href="#">
                   <a className="learn-item-active">
                     MY COURSES
                   </a>
                 </Link>
               </li>
-              <li className="pl-md-5">
+              <li className="menu tw-text-center">
                 <Link href="#">
-                  <a>MY CERTIFICATES</a>
+                  <a className="">MY CERTIFICATES</a>
                 </Link>
               </li>
               {/* <li className="pl-md-5">
@@ -166,17 +181,17 @@ const CourseCategories = function ({ user, enrolledCourses, usersCourses }) {
             {loading
               ? <CoursesSkeleton title="Recommended Courses" />
               : recommendedCourses.length > 0
-              && <RecommendedCourses recommendedCourses={recommendedCourses} handleCourseInfo={handleCourseInfo} />}
+              && <RecommendedCourses showModal={showModal} recommendedCourses={recommendedCourses} handleCourseInfo={handleCourseInfo} />}
 
             {loading
               ? <CoursesSkeleton title="Featured Courses" />
-              : <FeaturedCourses courses={courses} enrolledCourses={enrolledCourses} handleCourseInfo={handleCourseInfo} enrolledBtn={enrolledBtn} />}
+              : <FeaturedCourses showModal={showModal} courses={courses} enrolledCourses={enrolledCourses} handleCourseInfo={handleCourseInfo} enrolledBtn={enrolledBtn} />}
           </div>
 
         </div>
 
         {/* Modal */}
-        <div className="modal fade opacity-modal" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <Modal title="" visible={isModalVisible} onCancel={handleCancel} onOk={handleOk} footer={null} closable={false} wrapClassName="web">
           <div className="modal-dialog activity-modal" role="document">
             <div className="modal-content course-specific-info">
               <div className="d-flex flex-column justify-content-center align-items-center">
@@ -216,11 +231,11 @@ const CourseCategories = function ({ user, enrolledCourses, usersCourses }) {
                     </button>
                   )}
 
-                <p className="pb-4 pt-2 modal-center" data-dismiss="modal" aria-label="Close">Cancel</p>
+                <p className="pb-4 pt-2 modal-center" onClick={() => { handleCancel(); }}>Cancel</p>
               </div>
             </div>
           </div>
-        </div>
+        </Modal>
 
       </div>
 
