@@ -2,6 +2,7 @@
 .weeks-info h5{
     font-size: 1.25rem;
     font-weight: 500;
+    color: #fff;
 }
 .course-sidebar{
     background-color: #151371;
@@ -94,13 +95,11 @@
 .learn-items{
     font-size: 14px;
 }
-.learn-items ul li a{
-    font-weight: 600;
-}
-.learn-items ul li a:hover{
-    color: rgb(204, 203, 203);
-}
-.learn-item-active::after{
+
+/* .learn-items ul li a:hover{
+    color: #1249de;
+} */
+/* .learn-item-active::after{
     content: "";
     width: 100%;
     height: 3px;
@@ -109,7 +108,7 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
-}
+} */
 .menu-items ul{
     display: flex;
 }
@@ -130,12 +129,14 @@
     margin-left: auto;
     margin-right: auto;
 }
-.menu-items ul li a,
-.learn-items ul li a{
-    color: #fff;
+.menu{
+    color: #3E385D;
     text-decoration: none;
+    font-weight: 500;
     transition: .2s;
+    margin-top: 6px;
 }
+
 .menu-items ul li a:hover{
     color: rgb(204, 203, 203);
 }
@@ -146,6 +147,7 @@
     background-position: 50%;
     border-radius: 15px;
     cursor: pointer;
+    padding: 20px 0;
 }
 .course-weeks .progress{
     height: 0.2rem !important;
@@ -173,7 +175,7 @@
 }
 
 .banner-bg{
-    background: linear-gradient(104.61deg, #FF00B8 2.65%, #FF655B 51.83%, #FFC700 100%);
+    background: #151371;
 }
 
 /* WeeklyActivities CSS */
@@ -214,7 +216,7 @@
 
 /* ActivityDetails */
 .activityDetails{
-    border-radius: 35px !important;
+    border-radius: 20px !important;
 }
 .video-js{
     width: 100% !important;
@@ -371,10 +373,10 @@
     .use-image{
         margin-left: 3rem !important;
     }
-    .learn-item-active::after{
+    /* .learn-item-active::after{
         height: 1px;
         border: 1px solid #fff !important;
-    }
+    } */
     .learn-items ul li a{
         font-size: 12px;
     }

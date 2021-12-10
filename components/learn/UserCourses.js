@@ -35,7 +35,7 @@ const UserCourses = function ({ enrolledCourses, user }) {
   return (
     <div>
       <div className="mb-5 pb-3">
-        <div className="course-category d-flex font-weight-bold">
+        <div className="course-category d-flex font-weight-bold tw-justify-center">
           <h1 className="courseCategory-title">My Courses</h1>
         </div>
         <div className={coursesLength > 2 ? 'mt-3 courses-info pt-2' : 'mt-3 courses-info pt-2 user-courses'}>

@@ -35,7 +35,7 @@ const CoursesSkeleton = function (props) {
   return (
     <div>
       <div className="mb-5 pb-3">
-        <div className="course-category d-flex font-weight-bold">
+        <div className="course-category d-flex font-weight-bold tw-justify-center">
           <h1 className="courseCategory-title">{props.title}</h1>
         </div>
         <div className="mt-3 pt-2 FRCourses">

@@ -6731,7 +6731,7 @@ html {
 */
 /* homepage navbar */
 .homepage__header {
-  background: linear-gradient(104.61deg, #FF00B8 2.65%, #FF655B 51.83%, #FFC700 100%);
+  background: #151370;
   position: absolute;
   top: 0;
   left: 0;
@@ -6834,7 +6834,7 @@ html {
 }
 
 .homepage__navbar {
-  background: transparent;
+  background: #16136f;
   height: 70px;
   display: flex;
   align-items: baseline;
@@ -9786,4 +9786,8 @@ html {
   align-items: "center";
   font-size: "15px";
   font-weight: "600";
+}
+
+.slick-prev:before, .slick-next:before{
+  color: #151371 !important;
 }

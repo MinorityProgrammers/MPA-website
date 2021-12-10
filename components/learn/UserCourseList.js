@@ -48,7 +48,7 @@ const UserCoursesList = function ({ enrolledCourse }) {
   const userPercentages = Math.round(completionRate / totalModulesLength);
 
   return (
-    <div className="courses-items px-3 mb-4 mx-2">
+    <div className="courses-items px-3 mb-4 mx-2 tw-bg-white tw-shadow-lg">
       <div className="pt-3">
         <div className="earn-rate ml-auto d-flex align-items-center">
           <img src="https://i.ibb.co/Yjpy6PN/dot.png" className="img-fluid ml-2" alt="" />

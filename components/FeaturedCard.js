@@ -81,7 +81,7 @@ const FeaturedCard = function ({
             </h3>
             <div className="progress" style={{ borderRadius: '30px' }}>
               <div
-                className="progress-bar progressbar__bg"
+                className="tw-bg-gray-700"
                 role="progressbar"
                 style={{
                   width: `${percentFund(data.targetAmount, data.amount)}%`,
