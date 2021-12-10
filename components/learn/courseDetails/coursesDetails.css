@@ -147,6 +147,7 @@
     background-position: 50%;
     border-radius: 15px;
     cursor: pointer;
+    padding: 20px 0;
 }
 .course-weeks .progress{
     height: 0.2rem !important;
@@ -215,7 +216,7 @@
 
 /* ActivityDetails */
 .activityDetails{
-    border-radius: 35px !important;
+    border-radius: 20px !important;
 }
 .video-js{
     width: 100% !important;

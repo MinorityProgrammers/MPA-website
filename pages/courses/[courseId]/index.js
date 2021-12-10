@@ -33,7 +33,7 @@ const CoursePage = function ({ params }) {
     if (token === null || userInfo === {}) {
       redirect();
     }
-    if (modules.length == 0) {
+    if (modules?.length === 0) {
       setTimeout(() => {
         setLoading(false);
       }, 1000);

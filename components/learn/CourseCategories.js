@@ -22,7 +22,7 @@ const CourseCategories = function ({ user, enrolledCourses, usersCourses }) {
   const [disable, setDisable] = useState(false);
   const router = useRouter();
 
-  const [isModalVisible, setIsModalVisible] = useState(true);
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   const showModal = () => {
     setIsModalVisible(true);
@@ -167,12 +167,12 @@ const CourseCategories = function ({ user, enrolledCourses, usersCourses }) {
                   : (
                     <div className="mb-5 pb-3">
                       <div className="course-category d-flex font-weight-bold">
-                        <h1 style={{ fontSize: '30px' }}>My Courses</h1>
+                        <h1 className="tw-text-blue-900" style={{ fontSize: '30px' }}>My Courses</h1>
                       </div>
                       <div className="mt-3 courses-info">
                         {user !== null && user !== undefined
-                          ? <h1>No enrolled courses yet</h1>
-                          : <h1>Login to view your courses</h1>}
+                          ? <h1 className="tw-text-blue-900">No enrolled courses yet</h1>
+                          : <h1 className="tw-text-blue-900">Login to view your courses</h1>}
                       </div>
                     </div>
                   )
@@ -246,7 +246,7 @@ const CourseCategories = function ({ user, enrolledCourses, usersCourses }) {
             <div className="create_event-container">
               <LoginModal />
             </div>
-            <i onClick={() => setIsActive(false)} className="close_icon fas fa-times close-icon" />
+            <i onClick={() => setIsActive(false)} className="close_icon fas fa-times close-icon tw-text-white" />
           </div>
         </div>
       ) : ''}

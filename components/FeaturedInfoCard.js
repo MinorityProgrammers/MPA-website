@@ -8,7 +8,7 @@ const FeaturedInfoCard = function ({ data }) {
       <div className="card-body">
         <div className="card__header mb-2">
           <img src={data.startupImage} className="card__header-logo" />
-          <Link href={`/startup-info/${data._id}`}>
+          <Link href={`/startup/${data._id}`}>
             <h2 className="card__header-title" style={{ cursor: 'pointer' }}>
               {data.name}
             </h2>

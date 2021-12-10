@@ -1,6 +1,5 @@
-import React, { Component, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useRouter } from 'next/router';
-import CareersMainComponent from '../../components/career-components/CareersMainComponent.js';
 
 const CareersPage = function () {
   const router = useRouter();

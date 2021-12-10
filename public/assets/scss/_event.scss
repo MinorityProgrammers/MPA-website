@@ -643,15 +643,15 @@
   }
   .create_event-container {
     position: absolute;
-    top: 50%;
+    top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: white;
+    // background: white;
     width: 85%;
     z-index: 6000;
     height: 95vh;
     border-radius: 20px;
-    overflow-y: scroll;
+    // overflow-y: scroll;
 
     display: flex;
     flex-direction: row;
