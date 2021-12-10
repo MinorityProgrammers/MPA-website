@@ -20,11 +20,17 @@ export class MentorshipQuestion5 extends Component {
           <form className="tw-pb-20">
             {values.isErrorMessage ? (
               <div>
-                <h1 className="tw-font-bold tw-text-black tw-text-5xl tw-mb-2 md:tw-text-center tw-select-none">Description</h1>
-                <span className="tw-text-red-500 tw-select-none tw-m-0">Please type in atleast 10 characters</span>
+                <h1 className="tw-font-bold tw-text-black tw-text-5xl tw-mb-2 md:tw-text-center tw-select-none">
+                  Description
+                </h1>
+                <span className="tw-text-red-500 tw-select-none tw-m-0">
+                  Please type in atleast 10 characters
+                </span>
               </div>
             ) : (
-              <h1 className="tw-font-bold tw-text-black tw-text-5xl tw-mb-8 md:tw-text-center tw-select-none">Description</h1>
+              <h1 className="tw-font-bold tw-text-black tw-text-5xl tw-mb-8 md:tw-text-center tw-select-none">
+                Description
+              </h1>
             )}
             <textarea
               className="tw-w-full tw-text-textGray tw-bg-white tw-py-3 tw-px-3 tw-border-4 tw-border-gray-300 tw-border-opacity-50 tw-rounded-2xl resize-none tw-outline-none"
@@ -32,7 +38,6 @@ export class MentorshipQuestion5 extends Component {
               id="description"
               rows="8"
               placeholder="Type in your bio, your goals and other thoughts..."
-
               onChange={handleChange('description')}
             >
               {values.description}
@@ -41,8 +46,18 @@ export class MentorshipQuestion5 extends Component {
         </div>
         <div className="tw-absolute tw-w-full tw-bottom-12 tw-pr-48 md:tw-pr-20 md:tw-bottom-7 tw-text-center">
           <div className="tw-w-140px tw-mx-auto tw-flex tw-justify-between">
-            <button className="tw-bg-NavDark tw-outline-none tw-rounded-md tw-w-14 tw-mb-8 tw-text-white hover:tw-text-NavDark hover:tw-bg-white tw-duration-500 tw-mx-auto" onClick={this.back}><i className="fas fa-arrow-left tw-text-2xl tw-p-2" /></button>
-            <button className="tw-bg-NavDark tw-outline-none tw-rounded-md tw-w-14 tw-mb-8 tw-text-white hover:tw-text-NavDark hover:tw-bg-white tw-duration-500 tw-mx-auto" onClick={this.continue}><i className="fas fa-arrow-right tw-text-2xl tw-p-2" /></button>
+            <button
+              className="tw-bg-NavDark tw-outline-none tw-rounded-md tw-w-14 tw-mb-8 tw-text-white hover:tw-text-NavDark hover:tw-bg-white tw-duration-500 tw-mx-auto"
+              onClick={this.back}
+            >
+              <i className="fas fa-arrow-left tw-text-2xl tw-p-2" />
+            </button>
+            <button
+              className="tw-bg-NavDark tw-outline-none tw-rounded-md tw-w-14 tw-mb-8 tw-text-white hover:tw-text-NavDark hover:tw-bg-white tw-duration-500 tw-mx-auto"
+              onClick={this.continue}
+            >
+              <i className="fas fa-arrow-right tw-text-2xl tw-p-2" />
+            </button>
           </div>
 
           <span className="tw-block tw-text-center">

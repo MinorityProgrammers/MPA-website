@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import MentorshipQuestion1 from './MentorshipQuestion1';
 import MentorshipQuestion2 from './MentorshipQuestion2';
 import MentorshipQuestion3 from './MentorshipQuestion3';
@@ -12,14 +11,12 @@ export class MentorshipRegister extends Component {
     // starts at 0
     step: 0,
     isErrorMessage: false,
-
     firstName: '',
     lastName: '',
     DOB: '',
     country: [{ label: '', value: '' }],
     levelOfEducation: [{ label: '', value: '' }],
     passions: [],
-
     iAMa: '',
     interest: [],
     learningStyle: [],
@@ -189,9 +186,9 @@ export class MentorshipRegister extends Component {
     switch (step) {
       case 0:
         return (
-          <div className='tw-mt-20'>
-            <section id='MentorshipRegister'>
-              <div className='MentorshipRegister__circle'>
+          <div className="tw-mt-20">
+            <section id="MentorshipRegister">
+              <div className="MentorshipRegister__circle">
                 <h1>Register for Mentorship Program</h1>
               </div>
               <p>You Must Be Logged Into MPA for Mentorship Program</p>
@@ -247,6 +244,7 @@ export class MentorshipRegister extends Component {
           />
         );
       case 6:
+      default:
         return <MentorshipQuestion6 prevStep={this.prevStep} values={values} />;
     }
   }
