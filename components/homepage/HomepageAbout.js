@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import Swiper from "react-id-swiper";
-import ModalVideo from "react-modal-video";
-import "swiper/css/swiper.css";
+import React, { useState } from 'react';
+import Swiper from 'react-id-swiper';
+import ModalVideo from 'react-modal-video';
+import 'swiper/css/swiper.css';
 
 const HomepageAbout = function () {
   const [swiper, setSwiper] = useState(null);
@@ -22,16 +22,16 @@ const HomepageAbout = function () {
   return (
     <section className="homepage__about">
       <div className="heading__number">
-        <h3 className="text_white">01</h3>
+        <h3 className="tw-text-blue-900">01</h3>
       </div>
       <div className="container">
         <Swiper {...params} getSwiper={setSwiper}>
           <div className="heading__container">
             <div className="homepage__about-left">
-              <h2 className="heading__title mt-5 mb-5 text_white">
+              <h2 className="heading__title mt-5 mb-5 tw-text-blue-900">
                 &lsaquo;ABOUT_US/&rsaquo;
               </h2>
-              <p className="lead text_white">
+              <p className="lead tw-text-blue-900">
                 We are an international network of developers unifying together
                 to build socially impactful projects &amp; spread STEM education
                 to marginalized communities.
@@ -44,10 +44,10 @@ const HomepageAbout = function () {
           </div>
           <div className="heading__container">
             <div className="homepage__about-left">
-              <h2 className="heading__title mt-5 mb-5 text_white">
+              <h2 className="heading__title mt-5 mb-5 tw-text-blue-900">
                 &lsaquo;OUR_PEOPLE/&rsaquo;
               </h2>
-              <p className="lead text_white">
+              <p className="lead tw-text-blue-900">
                 We are a place for minorities to come meet friends, gain
                 guidance, and learn relevant IT skills to become a world leader
                 in tech.
@@ -61,10 +61,10 @@ const HomepageAbout = function () {
           </div>
           <div className="heading__container">
             <div className="homepage__about-left">
-              <h2 className="heading__title mt-5 mb-5 text_white">
+              <h2 className="heading__title mt-5 mb-5 tw-text-blue-900">
                 &lsaquo;OUR_VISION/&rsaquo;
               </h2>
-              <p className="lead text_white">
+              <p className="lead tw-text-blue-900">
                 Complete turnkey decentralized vertical integration for scaling
                 minority startups from ideation to large scale businesses using
                 decentralized protocols.
@@ -77,10 +77,10 @@ const HomepageAbout = function () {
           </div>
           <div className="heading__container">
             <div className="homepage__about-left">
-              <h2 className="heading__title mt-5 mb-5 text_white">
+              <h2 className="heading__title mt-5 mb-5 tw-text-blue-900">
                 &lsaquo;FOR_COMPANIES/&rsaquo;
               </h2>
-              <p className="lead text_white">
+              <p className="lead tw-text-blue-900">
                 We are a one-stop-shop for companies to recruit, train, and
                 onboard diverse talent that cares about advancing the community
                 through technology
@@ -93,10 +93,10 @@ const HomepageAbout = function () {
           </div>
           <div className="heading__container">
             <div className="homepage__about-left">
-              <h2 className="heading__title mt-5 mb-5 text_white">
+              <h2 className="heading__title mt-5 mb-5 tw-text-blue-900">
                 &lsaquo;OUR_APP/&rsaquo;
               </h2>
-              <p className="lead text_white">
+              <p className="lead tw-text-blue-900">
                 We are a lifelong community run platform that gives minorities
                 access to opportunities via ideas, resources, mentorship,
                 education, and access to capital

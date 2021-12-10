@@ -128,11 +128,11 @@ const ConsultancyHomeExplainer = function ({
             ? (
               <>
                 <Link href="/consultancy">
-                    <button className="font-weight-bold h3 myButton mb-5 w-100 mr-1 btn--go">Submit Proposal</button>
-                  </Link>
+                  <button className="font-weight-bold h3 myButton mb-5 w-100 mr-1 btn--go">Submit Proposal</button>
+                </Link>
                 <Link href="/consultancy_dashboard">
-                    <button className="font-weight-bold h3 myButton mb-5 w-100 ml-1 btn--go">Go to Projects</button>
-                  </Link>
+                  <button className="font-weight-bold h3 myButton mb-5 w-100 ml-1 btn--go">Go to Projects</button>
+                </Link>
               </>
             )
             : (
@@ -154,7 +154,7 @@ const ConsultancyHomeExplainer = function ({
                 Apply  for our
                 “Board of Project
                 Managers”
-</p>
+              </p>
             </div>
             <div className="col-lg-3 text-center consultancy__type--card">
               <div className="consultancy__logo--image">
@@ -185,15 +185,15 @@ const ConsultancyHomeExplainer = function ({
           ? (
             <div className="create_event">
               <div
-                className="create_event-shadow" onClick={() => {
-                    setClickRegister(false);
-                  }}
-              >
-              </div>
+                className="create_event-shadow"
+                onClick={() => {
+                  setClickRegister(false);
+                }}
+              />
               <div id="create_event-container" className="create_event-container">
                 <Card setClickRegister={setClickRegister} />
               </div>
-              <i className="close_icon fas fa-times close-icon" onClick={() => { setClickRegister(false); }} />
+              <i className="close_icon fas fa-times close-icon tw-text-white" onClick={() => { setClickRegister(false); }} />
             </div>
           )
           : ''}

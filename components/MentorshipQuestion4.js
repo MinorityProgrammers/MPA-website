@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-
-import MultiSelect from 'react-multi-select-component';
+import Select from 'react-select';
 
 export class MentorshipQuestion4 extends Component {
   continue = (e) => {
@@ -82,7 +81,7 @@ export class MentorshipQuestion4 extends Component {
                 Education of the
                 {lookingTitle}
               </label>
-              <MultiSelect
+              <Select
                 className="tw-w-full tw-outline-none tw-text-darkGray tw-text-md"
                 options={educationOptions}
                 name="lookingForEdu"
@@ -99,7 +98,7 @@ export class MentorshipQuestion4 extends Component {
                 Skill Level of the
                 {lookingTitle}
               </label>
-              <MultiSelect
+              <Select
                 className="tw-w-full tw-outline-none tw-text-darkGray tw-text-md"
                 options={skillOptions}
                 name="lookingForExp"
@@ -118,7 +117,7 @@ export class MentorshipQuestion4 extends Component {
                 Availability of the
                 {lookingTitle}
               </label>
-              <MultiSelect
+              <Select
                 className="tw-w-full tw-outline-none tw-text-darkGray tw-text-md"
                 options={availabilityOptions}
                 name="lookingForComm"
@@ -135,7 +134,7 @@ export class MentorshipQuestion4 extends Component {
                 Gender of the
                 {lookingTitle}
               </label>
-              <MultiSelect
+              <Select
                 className="tw-w-full tw-outline-none tw-text-darkGray tw-text-md"
                 options={genderOptions}
                 name="lookingForGender"
@@ -154,7 +153,7 @@ export class MentorshipQuestion4 extends Component {
                 Language of the
                 {lookingTitle}
               </label>
-              <MultiSelect
+              <Select
                 className="tw-w-full tw-outline-none tw-text-darkGray tw-text-md"
                 options={languageOptions}
                 name="lookingForLang"
@@ -171,7 +170,7 @@ export class MentorshipQuestion4 extends Component {
                 Ethnicity of the
                 {lookingTitle}
               </label>
-              <MultiSelect
+              <Select
                 className="tw-w-full tw-outline-none tw-text-darkGray tw-text-md"
                 options={ethnicityOptions}
                 name="lookingForEthnicity"

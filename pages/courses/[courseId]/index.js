@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import Course from "../../../components/learn/courseDetails/Course";
-import Layout from "../../../components/Layout";
-import HomepageNav from "../../../components/homepage/HomepageNav";
-import Footer from "../../../components/Footer";
-import SkeletonElement from "../../../components/learn/SkeletonElement";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import Course from '../../../components/learn/courseDetails/Course';
+import Layout from '../../../components/Layout';
+import HomepageNav from '../../../components/homepage/HomepageNav';
+import Footer from '../../../components/Footer';
+import SkeletonElement from '../../../components/learn/SkeletonElement';
 
 export async function getServerSideProps(context) {
   return {
@@ -23,17 +23,17 @@ const CoursePage = function ({ params }) {
   const [loading, setLoading] = useState(true);
 
   const redirect = () => {
-    window.location.href = "/learn-page";
+    window.location.href = '/learn-page';
   };
 
   useEffect(() => {
-    const token = localStorage.getItem("jwtToken");
-    const userInfo = localStorage.getItem("userInfo");
+    const token = localStorage.getItem('jwtToken');
+    const userInfo = localStorage.getItem('userInfo');
 
     if (token === null || userInfo === {}) {
       redirect();
     }
-    if (modules.length == 0) {
+    if (modules?.length === 0) {
       setTimeout(() => {
         setLoading(false);
       }, 1000);
@@ -41,16 +41,16 @@ const CoursePage = function ({ params }) {
   }, []);
 
   useEffect(() => {
-    const userToken = JSON.parse(localStorage.getItem("userInfo"));
+    const userToken = JSON.parse(localStorage.getItem('userInfo'));
     if (userToken !== null) {
       axios
         .get(
-          "https://koinstreet-learn-api.herokuapp.com/api/v1/learn/userCourses",
+          'https://koinstreet-learn-api.herokuapp.com/api/v1/learn/userCourses',
           {
             headers: {
               Authorization: `Bearer ${userToken.token}`,
             },
-          }
+          },
         )
         .then((res) => {
           if (res.data.data.length > 0) {
@@ -63,7 +63,7 @@ const CoursePage = function ({ params }) {
   }, []);
 
   const singleCourse = enrolledCourses?.filter(
-    (course) => course.courseId._id === courseId
+    (course) => course.courseId._id === courseId,
   );
   useEffect(() => {
     singleCourse.forEach((course) => {
@@ -72,7 +72,7 @@ const CoursePage = function ({ params }) {
   }, [singleCourse]);
 
   useEffect(() => {
-    const userToken = JSON.parse(localStorage.getItem("userInfo"));
+    const userToken = JSON.parse(localStorage.getItem('userInfo'));
     if (userToken !== null) {
       axios
         .get(
@@ -81,7 +81,7 @@ const CoursePage = function ({ params }) {
             headers: {
               Authorization: `Bearer ${userToken.token}`,
             },
-          }
+          },
         )
         .then((res) => {
           setModules(res.data.data);

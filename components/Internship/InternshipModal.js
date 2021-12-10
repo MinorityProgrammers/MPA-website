@@ -83,12 +83,14 @@ const InternshipModal = function ({
                                                           {data ? (
                                                             <Link href="/careers">
                                                               <button className="btn btn-orange mt-3 mb-3">
-                                                                Apply<i className="fas fa-angle-right" />
+                                                                Apply
+                                                                <i className="fas fa-angle-right" />
                                                               </button>
                                                             </Link>
                                                           ) : (
                                                             <button onClick={() => { setClickRegister(true); }} className="btn btn-orange mt-3 mb-3">
-                                                              Apply<i className="fas fa-angle-right" />
+                                                              Apply
+                                                              <i className="fas fa-angle-right" />
                                                             </button>
                                                           )}
                                                         </div>
@@ -106,7 +108,7 @@ const InternshipModal = function ({
                         }
             <button className="btn btn-back" onClick={closeModal}>
               Close
-<i className="fas fa-angle-right" />
+              <i className="fas fa-angle-right" />
             </button>
           </div>
           <FaTimes onClick={closeModal} title="Close" className="close--modal__wrapper" />
@@ -118,14 +120,14 @@ const InternshipModal = function ({
           <div className="create_event">
             <div
               className="create_event-shadow"
-onClick={() => {
-                  setClickRegister(false);
-                }}
-             />
+              onClick={() => {
+                setClickRegister(false);
+              }}
+            />
             <div id="create_event-container" className="create_event-container">
               <Card />
             </div>
-            <i className="close_icon fas fa-times close-icon" onClick={() => { setClickRegister(false); }} />
+            <i className="close_icon fas fa-times close-icon tw-text-white" onClick={() => { setClickRegister(false); }} />
           </div>
         )
         : ''}

@@ -1,12 +1,12 @@
-import React, { useRef, useState } from "react";
-import HomepageNav from "../components/homepage/HomepageNav";
-import Layout from "../components/Layout";
-import SidebarTwo from "../components/SidebarTwo";
-import links from "../contexts/utils/links";
-import ComingSoon from "../components/ComingSoon";
-import { useDetectOutsideClick } from "../components/UseDetectOutsideClick";
-import MinorityEarned from "../components/$-minority-earned/MinorityEarned";
-import Footer from "../components/Footer";
+import React, { useRef, useState } from 'react';
+import HomepageNav from '../components/homepage/HomepageNav';
+import Layout from '../components/Layout';
+import SidebarTwo from '../components/SidebarTwo';
+import links from '../contexts/utils/links';
+import ComingSoon from '../components/ComingSoon';
+import { useDetectOutsideClick } from '../components/UseDetectOutsideClick';
+import MinorityEarned from '../components/$-minority-earned/MinorityEarned';
+import Footer from '../components/Footer';
 
 const MinorityEarnedPage = function () {
   const [open, setOpen] = useState(false);

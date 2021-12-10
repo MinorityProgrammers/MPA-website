@@ -1,18 +1,13 @@
-import { useState, useEffect, useRef } from "react";
-import { useRouter } from "next/router";
-import Layout from "../../../components/Layout";
-import Footer from "../../../components/Footer";
-import HomepageNav from "../../../components/homepage/HomepageNav";
-import SidebarTwo from "../../../components/SidebarTwo";
-import links from "../../../contexts/utils/links";
-import ComingSoon from "../../../components/ComingSoon";
-import { useDetectOutsideClick } from "../../../components/UseDetectOutsideClick";
-import ArrowLeftIconSvg from "../../../components/career-components/svgs/ArrowLeftIconSvg";
-import ExternalLinkSquareIconSvg from "../../../components/career-components/svgs/ExternalLinkSquareIconSvg";
-import FacebookSquareIconSvg from "../../../components/career-components/svgs/FacebookSquareIconSvg";
-import InstagramIconSvg from "../../../components/career-components/svgs/InstagramIconSvg";
-import TwitterIconSvg from "../../../components/career-components/svgs/TwitterIconSvg";
-import CheckIconSvg from "../../../components/career-components/svgs/CheckIconSvg";
+import { useRouter } from 'next/router';
+import { useState, useRef, useEffect } from 'react';
+import CompaniesList from '../../../components/career-components/CompaniesList.json';
+import Layout from '../../../components/Layout';
+import Footer from '../../../components/Footer';
+import HomepageNav from '../../../components/homepage/HomepageNav';
+import SidebarTwo from '../../../components/SidebarTwo';
+import links from '../../../contexts/utils/links';
+import ComingSoon from '../../../components/ComingSoon';
+import { useDetectOutsideClick } from '../../../components/UseDetectOutsideClick';
 
 const CompanyDetails = function ({ id }) {
   const [company, setCompany] = useState([]);
@@ -79,8 +74,11 @@ const CompanyDetails = function ({ id }) {
                 {company.company_name}
               </h2>
               <div className="companyDetails-container-info-relationship">
-                <strong>{company.relation_type}</strong> of Minority Programmers
-                Association since{" "}
+                <strong>{company.relation_type}</strong>
+                {' '}
+                of Minority Programmers
+                Association since
+                {' '}
                 <strong>
                   {new Date(company.mpa_relationship_started)
                     .toDateString()
@@ -100,7 +98,7 @@ const CompanyDetails = function ({ id }) {
                       href={
                         company.social_media_links
                           ? company.social_media_links[0].fb
-                          : ""
+                          : ''
                       }
                     >
                       <FacebookSquareIconSvg />

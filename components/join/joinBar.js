@@ -18,22 +18,22 @@ const JoinBar = function (props) {
               <div className="first" style={{ backgroundColor: props.color }} />
               <div className="second">
                 <div className="image">
-                    {/* <img classname="svg" src={props.icon} alt="Join"/> */}
-                    <a className="roundedArea">
-                        <props.icon />
-                      </a>
-                  </div>
+                  {/* <img classname="svg" src={props.icon} alt="Join"/> */}
+                  <a className="roundedArea">
+                    <props.icon />
+                  </a>
+                </div>
 
                 <div className="bar-content">
-                    <div className="card-text">
-                        <h3 className="maintext">{props.maintext}</h3>
-                        <span className="subtext">{props.subtext}</span>
-                      </div>
-
-                    <div className="icon">
-                        <FaChevronRight />
-                      </div>
+                  <div className="card-text">
+                    <h3 className="maintext">{props.maintext}</h3>
+                    <span className="subtext">{props.subtext}</span>
                   </div>
+
+                  <div className="icon">
+                    <FaChevronRight />
+                  </div>
+                </div>
 
               </div>
 
@@ -47,20 +47,20 @@ const JoinBar = function (props) {
               <div className="image">
 
                 <a className="roundedArea">
-                    <props.icon />
-                  </a>
+                  <props.icon />
+                </a>
 
               </div>
 
               <div className="bar-content">
                 <div className="card-text">
-                    <h3 className="maintext">{props.maintext}</h3>
-                    <span className="subtext">{props.subtext}</span>
-                  </div>
+                  <h3 className="maintext">{props.maintext}</h3>
+                  <span className="subtext">{props.subtext}</span>
+                </div>
 
                 <div className="icon">
-                    <FaChevronRight />
-                  </div>
+                  <FaChevronRight />
+                </div>
               </div>
 
             </div>

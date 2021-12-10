@@ -202,12 +202,14 @@ const Notification = function () {
                                               <p>
                                                 {' '}
                                                 <small>
-                                                    Type :{info.type}
-                                                  </small>
+                                                  Type :
+                                                  {info.type}
+                                                </small>
                                                 {' '}
                                                 <small>
-                                                    Catergory :{info.category ? info.category : 'Incubator'}
-                                                  </small>
+                                                  Catergory :
+                                                  {info.category ? info.category : 'Incubator'}
+                                                </small>
                                               </p>
 
                                             </div>
@@ -219,19 +221,19 @@ const Notification = function () {
                                               <img width="30" height="25" className="tw-mr-2" src={info.userId.profilePicture ? info.userId.profilePicture : '/assets/images/coreteamimg/user.png'} alt="user" />
                                               <div className="tw-mr-3">
                                                 <p className="tw-text-muted">
-                                                    <small>Created by</small>
-                                                    {' '}
-                                                  </p>
+                                                  <small>Created by</small>
+                                                  {' '}
+                                                </p>
                                                 <h4 className="tw-text-black">{info.userId.userName ? info.userId.userName : 'Shot Khan'}</h4>
                                               </div>
                                               <div>
                                                 <p className="tw-text-muted">
-                                                    <small>Created on</small>
-                                                    {' '}
-                                                  </p>
+                                                  <small>Created on</small>
+                                                  {' '}
+                                                </p>
                                                 <Moment format="MMM D" withTitle>
-                                                    {info.createdAt ? info.createdAt : 'Mar 25'}
-                                                  </Moment>
+                                                  {info.createdAt ? info.createdAt : 'Mar 25'}
+                                                </Moment>
                                                 {/* <h4 className="tw-text-black">{info.createdOn ? info.createdOn : "Mar 25"}</h4> */}
                                               </div>
                                             </div>
@@ -261,10 +263,10 @@ const Notification = function () {
                                             </div>
                                             <div className="tw-flex">
                                               <button
-                                                class=" ml-3 tw-text-center tw-p-2 green-btn tw-text-white"
+                                                className=" ml-3 tw-text-center tw-p-2 green-btn tw-text-white"
                                                 onClick={() => approvedProposalsFunction(info)}
                                               >
-Approve
+                                                Approve
                                               </button>
                                               <h3 className="tw-border-2  tw-border-black tw-ml-3 text-center tw-p-2 tw-text-green-900">Disapprove</h3>
                                             </div>
@@ -281,8 +283,8 @@ Approve
                                             <div className="s-p-view tw-w-1/5 tw-text-center ">
                                               <p>
                                                 <Link href={`/proposal-info/${info._id}`}>
-                                                    <a className="grdient-btn tw-rounded tw-p-2 tw-text-white">View Proposal</a>
-                                                  </Link>
+                                                  <a className="grdient-btn tw-rounded tw-p-2 tw-text-white">View Proposal</a>
+                                                </Link>
                                               </p>
 
                                             </div>
@@ -422,75 +424,75 @@ Approve
             <div className="tw-mx-8 tw-flex    gap-10  ">
               <div className="task-card tw-w-1/2 tw-my-6 tw-rounded-bl-lg tw-rounded-br-3xl tw-mr-6">
                 <div className="task-des tw-flex ">
-                    <svg className="tw-mr-2" width="20" height="20" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="4.5" cy="4.5" r="4.5" fill="#FF00B8" />
-                      </svg>
+                  <svg className="tw-mr-2" width="20" height="20" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="4.5" cy="4.5" r="4.5" fill="#FF00B8" />
+                  </svg>
 
-                    <h1 className="tw-mr-3 tw-text-md tw-text-indigo-900 tw-font-semibold">Lorem ipsum dolor sit amet, consecte tur adipiscing elit.</h1>
+                  <h1 className="tw-mr-3 tw-text-md tw-text-indigo-900 tw-font-semibold">Lorem ipsum dolor sit amet, consecte tur adipiscing elit.</h1>
 
-                    <div className="tw-block">
-                        <img src="/assets/images/coreteamimg/user.png" alt="user" className="tw-h-6 tw-w-6  tw-block" />
-                        <div className="gradient tw-rounded-full tw-h-6 tw-w-6 text-center tw-block"><span className="tw-purple-800 te-p-2">LA</span></div>
-                      </div>
+                  <div className="tw-block">
+                    <img src="/assets/images/coreteamimg/user.png" alt="user" className="tw-h-6 tw-w-6  tw-block" />
+                    <div className="gradient tw-rounded-full tw-h-6 tw-w-6 text-center tw-block"><span className="tw-purple-800 te-p-2">LA</span></div>
                   </div>
+                </div>
                 <div className="task-date  tw-flex tw-items-center ">
-                    <p className="">
-                        <RiFlag2Fill className="tw-text-pink-600 tw-mr-2" />
-                      </p>
-                    <p className=" tw-text-center tw-text-sm tw-text-black">
-                        May 27
-                                    </p>
-                  </div>
+                  <p className="">
+                    <RiFlag2Fill className="tw-text-pink-600 tw-mr-2" />
+                  </p>
+                  <p className=" tw-text-center tw-text-sm tw-text-black">
+                    May 27
+                  </p>
+                </div>
                 <div className="tw-flex tw-justify-between  tw-items-center">
-                    <div className="design tw-mt-4">Design</div>
-                    <p className="tw-text-pink-500">21 hours ago</p>
+                  <div className="design tw-mt-4">Design</div>
+                  <p className="tw-text-pink-500">21 hours ago</p>
 
-                  </div>
+                </div>
                 <div className="tw-flex tw-justify-between  tw-items-center ">
-                    <div className="feature tw-w-8 tw-mt-4 ">Develop</div>
-                    <div className="tw-flex tw-items-center">
-                        <p className="tw-text-indigo-900">More Operations</p>
-                        <BsThreeDotsVertical className="tw-text-black" />
-                      </div>
-
+                  <div className="feature tw-w-8 tw-mt-4 ">Develop</div>
+                  <div className="tw-flex tw-items-center">
+                    <p className="tw-text-indigo-900">More Operations</p>
+                    <BsThreeDotsVertical className="tw-text-black" />
                   </div>
+
+                </div>
 
               </div>
 
               <div className="task-card tw-w-1/2 tw-my-6 tw-rounded-bl-lg tw-rounded-br-3xl ">
                 <div className="task-des tw-flex ">
-                    <svg className="tw-mr-2" width="20" height="20" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="4.5" cy="4.5" r="4.5" fill="#FF00B8" />
-                      </svg>
+                  <svg className="tw-mr-2" width="20" height="20" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="4.5" cy="4.5" r="4.5" fill="#FF00B8" />
+                  </svg>
 
-                    <h1 className="tw-mr-3 tw-text-md tw-text-indigo-900 tw-font-semibold">Lorem ipsum dolor sit amet, consecte tur adipiscing elit.</h1>
+                  <h1 className="tw-mr-3 tw-text-md tw-text-indigo-900 tw-font-semibold">Lorem ipsum dolor sit amet, consecte tur adipiscing elit.</h1>
 
-                    <div className="tw-block">
-                        <img src="/assets/images/coreteamimg/user.png" alt="user" className="tw-h-6 tw-w-6  tw-block" />
-                        <div className="gradient tw-rounded-full tw-h-6 tw-w-6 text-center tw-block"><span className="tw-purple-800 te-p-2">LA</span></div>
-                      </div>
+                  <div className="tw-block">
+                    <img src="/assets/images/coreteamimg/user.png" alt="user" className="tw-h-6 tw-w-6  tw-block" />
+                    <div className="gradient tw-rounded-full tw-h-6 tw-w-6 text-center tw-block"><span className="tw-purple-800 te-p-2">LA</span></div>
                   </div>
+                </div>
                 <div className="task-date  tw-flex tw-items-center ">
-                    <p className="">
-                        <RiFlag2Fill className="tw-text-pink-600 tw-mr-2" />
-                      </p>
-                    <p className=" tw-text-center tw-text-sm tw-text-black">
-                        May 27
-                                    </p>
-                  </div>
+                  <p className="">
+                    <RiFlag2Fill className="tw-text-pink-600 tw-mr-2" />
+                  </p>
+                  <p className=" tw-text-center tw-text-sm tw-text-black">
+                    May 27
+                  </p>
+                </div>
                 <div className="tw-flex tw-justify-between  tw-items-center">
-                    <div className="design tw-mt-4">Design</div>
-                    <p className="tw-text-pink-500">21 hours ago</p>
+                  <div className="design tw-mt-4">Design</div>
+                  <p className="tw-text-pink-500">21 hours ago</p>
 
-                  </div>
+                </div>
                 <div className="tw-flex tw-justify-between  tw-items-center ">
-                    <div className="feature tw-w-8 tw-mt-4 ">Develop</div>
-                    <div className="tw-flex tw-items-center">
-                        <p className="tw-text-indigo-900">More Operations</p>
-                        <BsThreeDotsVertical className="tw-text-black" />
-                      </div>
-
+                  <div className="feature tw-w-8 tw-mt-4 ">Develop</div>
+                  <div className="tw-flex tw-items-center">
+                    <p className="tw-text-indigo-900">More Operations</p>
+                    <BsThreeDotsVertical className="tw-text-black" />
                   </div>
+
+                </div>
 
               </div>
 
@@ -514,75 +516,75 @@ Approve
             <div className="tw-mx-8 tw-flex    gap-10  ">
               <div className="task-card tw-w-1/2 tw-my-6 tw-rounded-bl-lg tw-rounded-br-3xl tw-mr-6">
                 <div className="task-des tw-flex ">
-                    <svg className="tw-mr-2" width="20" height="20" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="4.5" cy="4.5" r="4.5" fill="#FF00B8" />
-                      </svg>
+                  <svg className="tw-mr-2" width="20" height="20" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="4.5" cy="4.5" r="4.5" fill="#FF00B8" />
+                  </svg>
 
-                    <h1 className="tw-mr-3 tw-text-md tw-text-indigo-900 tw-font-semibold">Lorem ipsum dolor sit amet, consecte tur adipiscing elit.</h1>
+                  <h1 className="tw-mr-3 tw-text-md tw-text-indigo-900 tw-font-semibold">Lorem ipsum dolor sit amet, consecte tur adipiscing elit.</h1>
 
-                    <div className="tw-block">
-                        <img src="/assets/images/coreteamimg/user.png" alt="user" className="tw-h-6 tw-w-6  tw-block" />
-                        <div className="gradient tw-rounded-full tw-h-6 tw-w-6 text-center tw-block"><span className="tw-purple-800 te-p-2">LA</span></div>
-                      </div>
+                  <div className="tw-block">
+                    <img src="/assets/images/coreteamimg/user.png" alt="user" className="tw-h-6 tw-w-6  tw-block" />
+                    <div className="gradient tw-rounded-full tw-h-6 tw-w-6 text-center tw-block"><span className="tw-purple-800 te-p-2">LA</span></div>
                   </div>
+                </div>
                 <div className="task-date  tw-flex tw-items-center ">
-                    <p className="flag pink">
-                        <RiFlag2Fill className="tw-text-pink-600 tw-mr-2" />
-                      </p>
-                    <p className=" tw-text-center tw-text-sm tw-text-black">
-                        May 27
-                                    </p>
-                  </div>
+                  <p className="flag pink">
+                    <RiFlag2Fill className="tw-text-pink-600 tw-mr-2" />
+                  </p>
+                  <p className=" tw-text-center tw-text-sm tw-text-black">
+                    May 27
+                  </p>
+                </div>
                 <div className="tw-flex tw-justify-between  tw-items-center">
-                    <div className="design tw-mt-4">Design</div>
-                    <p className="tw-text-pink-500">21 hours ago</p>
+                  <div className="design tw-mt-4">Design</div>
+                  <p className="tw-text-pink-500">21 hours ago</p>
 
-                  </div>
+                </div>
                 <div className="tw-flex tw-justify-between  tw-items-center ">
-                    <div className="feature tw-w-8 tw-mt-4 ">Develop</div>
-                    <div className="tw-flex tw-items-center">
-                        <p className="tw-text-indigo-900">More Operations</p>
-                        <BsThreeDotsVertical className="tw-text-black" />
-                      </div>
-
+                  <div className="feature tw-w-8 tw-mt-4 ">Develop</div>
+                  <div className="tw-flex tw-items-center">
+                    <p className="tw-text-indigo-900">More Operations</p>
+                    <BsThreeDotsVertical className="tw-text-black" />
                   </div>
+
+                </div>
 
               </div>
 
               <div className="task-card tw-w-1/2 tw-my-6 tw-rounded-bl-lg tw-rounded-br-3xl ">
                 <div className="task-des tw-flex ">
-                    <svg className="tw-mr-2" width="20" height="20" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="4.5" cy="4.5" r="4.5" fill="#FF00B8" />
-                      </svg>
+                  <svg className="tw-mr-2" width="20" height="20" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="4.5" cy="4.5" r="4.5" fill="#FF00B8" />
+                  </svg>
 
-                    <h1 className="tw-mr-3 tw-text-md tw-text-indigo-900 tw-font-semibold">Lorem ipsum dolor sit amet, consecte tur adipiscing elit.</h1>
+                  <h1 className="tw-mr-3 tw-text-md tw-text-indigo-900 tw-font-semibold">Lorem ipsum dolor sit amet, consecte tur adipiscing elit.</h1>
 
-                    <div className="tw-block">
-                        <img src="/assets/images/coreteamimg/user.png" alt="user" className="tw-h-6 tw-w-6  tw-block" />
-                        <div className="gradient tw-rounded-full tw-h-6 tw-w-6 text-center tw-block"><span className="tw-purple-800 te-p-2">LA</span></div>
-                      </div>
+                  <div className="tw-block">
+                    <img src="/assets/images/coreteamimg/user.png" alt="user" className="tw-h-6 tw-w-6  tw-block" />
+                    <div className="gradient tw-rounded-full tw-h-6 tw-w-6 text-center tw-block"><span className="tw-purple-800 te-p-2">LA</span></div>
                   </div>
+                </div>
                 <div className="task-date  tw-flex tw-items-center ">
-                    <p className="flag pink">
-                        <RiFlag2Fill className="tw-text-pink-600 tw-mr-2" />
-                      </p>
-                    <p className=" tw-text-center tw-text-sm tw-text-black">
-                        May 27
-                                    </p>
-                  </div>
+                  <p className="flag pink">
+                    <RiFlag2Fill className="tw-text-pink-600 tw-mr-2" />
+                  </p>
+                  <p className=" tw-text-center tw-text-sm tw-text-black">
+                    May 27
+                  </p>
+                </div>
                 <div className="tw-flex tw-justify-between  tw-items-center">
-                    <div className="design tw-mt-4">Design</div>
-                    <p className="tw-text-pink-500">21 hours ago</p>
+                  <div className="design tw-mt-4">Design</div>
+                  <p className="tw-text-pink-500">21 hours ago</p>
 
-                  </div>
+                </div>
                 <div className="tw-flex tw-justify-between  tw-items-center ">
-                    <div className="feature tw-w-8 tw-mt-4 ">Develop</div>
-                    <div className="tw-flex tw-items-center">
-                        <p className="tw-text-indigo-900">More Operations</p>
-                        <BsThreeDotsVertical className="tw-text-black" />
-                      </div>
-
+                  <div className="feature tw-w-8 tw-mt-4 ">Develop</div>
+                  <div className="tw-flex tw-items-center">
+                    <p className="tw-text-indigo-900">More Operations</p>
+                    <BsThreeDotsVertical className="tw-text-black" />
                   </div>
+
+                </div>
 
               </div>
 

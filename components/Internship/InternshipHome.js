@@ -78,19 +78,19 @@ const InternshipHome = function ({
               <p>Gain working experience on STEM field</p>
               {data ? (
                 <Link href="/careers_explainer">
-                    <button className="btn btn-orange">
-                        {' '}
-                        <span>Apply</span>
-                        <i className="fas fa-angle-right" />
-                      </button>
-                  </Link>
+                  <button className="btn btn-orange">
+                    {' '}
+                    <span>Apply</span>
+                    <i className="fas fa-angle-right" />
+                  </button>
+                </Link>
               )
                 : (
-                    <button onClick={() => { setClickRegister(true); }} className="btn btn-orange tw-cursor-pointer">
-                        {' '}
-                        <span>Apply</span>
-                        <i className="fas fa-angle-right" />
-                      </button>
+                  <button onClick={() => { setClickRegister(true); }} className="btn btn-orange tw-cursor-pointer">
+                    {' '}
+                    <span>Apply</span>
+                    <i className="fas fa-angle-right" />
+                  </button>
                 )}
 
             </div>
@@ -102,21 +102,21 @@ const InternshipHome = function ({
               <p>Gain working experience on STEM field</p>
               {data ? (
                 <Link href="/volunteer">
-                    <button className="btn btn-orange">
-                        {' '}
-                        <span>Build</span>
-                        {' '}
-                        <i className="fas fa-angle-right" />
-                      </button>
-                  </Link>
+                  <button className="btn btn-orange">
+                    {' '}
+                    <span>Build</span>
+                    {' '}
+                    <i className="fas fa-angle-right" />
+                  </button>
+                </Link>
               )
                 : (
-                    <button onClick={() => { setClickRegister(true); }} className="btn btn-orange tw-cursor-pointer">
-                        {' '}
-                        <span>Build</span>
-                        {' '}
-                        <i className="fas fa-angle-right" />
-                      </button>
+                  <button onClick={() => { setClickRegister(true); }} className="btn btn-orange tw-cursor-pointer">
+                    {' '}
+                    <span>Build</span>
+                    {' '}
+                    <i className="fas fa-angle-right" />
+                  </button>
                 )}
 
             </div>
@@ -128,21 +128,21 @@ const InternshipHome = function ({
               <p>Gain working experience on STEM field</p>
               {data ? (
                 <Link href="/partner">
-                    <button className="btn btn-orange">
-                        {' '}
-                        <span>Hire</span>
-                        {' '}
-                        <i className="fas fa-angle-right" />
-                      </button>
-                  </Link>
+                  <button className="btn btn-orange">
+                    {' '}
+                    <span>Hire</span>
+                    {' '}
+                    <i className="fas fa-angle-right" />
+                  </button>
+                </Link>
               )
                 : (
-                    <button onClick={() => { setClickRegister(true); }} className="btn btn-orange tw-cursor-pointer">
-                        {' '}
-                        <span>Hire</span>
-                        {' '}
-                        <i className="fas fa-angle-right" />
-                      </button>
+                  <button onClick={() => { setClickRegister(true); }} className="btn btn-orange tw-cursor-pointer">
+                    {' '}
+                    <span>Hire</span>
+                    {' '}
+                    <i className="fas fa-angle-right" />
+                  </button>
                 )}
 
             </div>
@@ -258,9 +258,9 @@ const InternshipHome = function ({
               <h1>MPA - Website</h1>
               <div className="about__internship intern__built--video">
                 <div className="img-banner-app">
-                    <img src="/assets/images/Internship/mpa.png" className="heading__img card-img-top rounded-0" />
-                    <button name="play" onClick={() => setOpen(true)} />
-                  </div>
+                  <img src="/assets/images/Internship/mpa.png" className="heading__img card-img-top rounded-0" />
+                  <button name="play" onClick={() => setOpen(true)} />
+                </div>
                 <ModalVideo channel="youtube" isOpen={isOpen} videoId="VZmd8EOj3UA" onClose={() => setOpen(false)} />
               </div>
             </div>
@@ -270,8 +270,8 @@ const InternshipHome = function ({
               </Link>
               <div className="about__internship intern__built--video">
                 <div className="img-banner-app">
-                    <img src="/assets/images/Internship/defisummer.png" alt="" className=" heading__img card-img-top rounded-0" />
-                  </div>
+                  <img src="/assets/images/Internship/defisummer.png" alt="" className=" heading__img card-img-top rounded-0" />
+                </div>
               </div>
 
             </div>
@@ -279,17 +279,17 @@ const InternshipHome = function ({
               <h1>Global Outsourcing - Research </h1>
               <div className="about__internship intern__built--video">
                 <div className="img-banner-app">
-                    <img src="/assets/images/Internship/global.png" alt="" className="heading__img card-img-top rounded-0" />
-                  </div>
+                  <img src="/assets/images/Internship/global.png" alt="" className="heading__img card-img-top rounded-0" />
+                </div>
               </div>
             </div>
             <div className="intern__speciality--card">
               <h1>DefiSummer - Website</h1>
               <div className="about__internship intern__built--video">
                 <div className="img-banner-app">
-                    <img src="/assets/images/Internship/defi.png" className="heading__img card-img-top rounded-0" />
-                    <button name="play" onClick={() => setOpen(true)} />
-                  </div>
+                  <img src="/assets/images/Internship/defi.png" className="heading__img card-img-top rounded-0" />
+                  <button name="play" onClick={() => setOpen(true)} />
+                </div>
                 <ModalVideo channel="youtube" isOpen={isOpen} videoId="VZmd8EOj3UA" onClose={() => setOpen(false)} />
               </div>
             </div>
@@ -297,9 +297,9 @@ const InternshipHome = function ({
               <h1>Coding</h1>
               <div className="about__internship intern__built--video">
                 <div className="img-banner-app">
-                    <img src="/assets/images/Internship/coding.png" className="heading__img card-img-top rounded-0" />
-                    <button name="play" onClick={() => setOpen(true)} />
-                  </div>
+                  <img src="/assets/images/Internship/coding.png" className="heading__img card-img-top rounded-0" />
+                  <button name="play" onClick={() => setOpen(true)} />
+                </div>
                 <ModalVideo channel="youtube" isOpen={isOpen} videoId="VZmd8EOj3UA" onClose={() => setOpen(false)} />
               </div>
             </div>
@@ -307,9 +307,9 @@ const InternshipHome = function ({
               <h1>UX Design</h1>
               <div className="about__internship intern__built--video">
                 <div className="img-banner-app">
-                    <img src="/assets/images/Internship/ui-uxdesign.png" className="heading__img card-img-top rounded-0" />
-                    <button name="play" onClick={() => setOpen(true)} />
-                  </div>
+                  <img src="/assets/images/Internship/ui-uxdesign.png" className="heading__img card-img-top rounded-0" />
+                  <button name="play" onClick={() => setOpen(true)} />
+                </div>
                 <ModalVideo channel="youtube" isOpen={isOpen} videoId="VZmd8EOj3UA" onClose={() => setOpen(false)} />
               </div>
             </div>
@@ -320,10 +320,10 @@ const InternshipHome = function ({
               <h1>
                 The History of Defi Summer-
                 Yudhisitra Fitriansyah
-</h1>
+              </h1>
               <p>
                 “DeFiSummer” came to life during the summer of 2020 after the crypto space saw a huge advantage with liquidity mining and how it brought monetary value and some governance control. The hype created major buzz and everyone was getting into it.
-</p>
+              </p>
             </div>
           </div>
         </div>
@@ -334,14 +334,14 @@ const InternshipHome = function ({
           <div className="create_event">
             <div
               className="create_event-shadow"
-onClick={() => {
-                  setClickRegister(false);
-                }}
-             />
+              onClick={() => {
+                setClickRegister(false);
+              }}
+            />
             <div id="create_event-container" className="create_event-container">
               <Card />
             </div>
-            <i className="close_icon fas fa-times close-icon" onClick={() => { setClickRegister(false); }} />
+            <i className="close_icon fas fa-times close-icon tw-text-white" onClick={() => { setClickRegister(false); }} />
           </div>
         )
         : ''}

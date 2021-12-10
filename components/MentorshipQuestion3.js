@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import MultiSelect from 'react-multi-select-component';
+import Select from 'react-select';
 
 export class MentorshipQuestion3 extends Component {
   continue = (e) => {
@@ -71,7 +71,7 @@ export class MentorshipQuestion3 extends Component {
           <div className="tw-flex tw-flex-row md:tw-flex-col">
             <div className="tw-flex tw-w-6/12 md:tw-w-full tw-flex-initial tw-flex-col tw-text-textGray tw-bg-white input-area tw-py-3 tw-px-3 tw-border-4 tw-border-gray-300 tw-border-opacity-50 tw-rounded-2xl tw-my-2 tw-mr-3 md:tw-mr-0">
               <label className="tw-text-md tw-select-none tw-mb-0.5" htmlFor="interest">My Interests</label>
-              <MultiSelect
+              <Select
                 className="tw-w-full tw-outline-none tw-text-darkGray tw-text-md"
                 options={interestOptions}
                 name="interest"
@@ -85,7 +85,7 @@ export class MentorshipQuestion3 extends Component {
             </div>
             <div className="tw-flex tw-w-6/12 md:tw-w-full tw-flex-initial tw-flex-col  tw-bg-white input-area tw-py-3 tw-px-3 tw-border-4 tw-border-gray-300 tw-border-opacity-50 tw-rounded-2xl tw-my-2 tw-ml-3 md:tw-ml-0">
               <label className="tw-text-md tw-select-none tw-mb-0.5" htmlFor="learningStyle">My learning style</label>
-              <MultiSelect
+              <Select
                 className="tw-w-full tw-outline-none tw-text-darkGray tw-text-md"
                 options={learningStyleOptions}
                 name="learningStyle"
@@ -104,7 +104,7 @@ export class MentorshipQuestion3 extends Component {
                 My personality type
                 <a className="tw-text-blue-300" href="https://www.16personalities.com/" target="_blank" rel="noreferrer">(www.16personalities.com)</a>
               </label>
-              <MultiSelect
+              <Select
                 className="tw-w-full tw-outline-none tw-text-darkGray tw-text-md"
                 options={personalityTypeOptions}
                 name="personlityType"
@@ -145,7 +145,7 @@ export class MentorshipQuestion3 extends Component {
             </div>
             <div className="tw-flex tw-w-6/12 md:tw-w-full tw-flex-initial tw-flex-col  tw-bg-white input-area tw-py-3 tw-px-3 tw-border-4 tw-border-gray-300 tw-border-opacity-50 tw-rounded-2xl tw-my-2 tw-ml-3 md:tw-ml-0">
               <label className="tw-text-md tw-select-none tw-mb-0.5" htmlFor="primaryLang">My primary/secondary language</label>
-              <MultiSelect
+              <Select
                 className="tw-w-full tw-outline-none tw-text-darkGray tw-text-md"
                 options={languageOptions}
                 name="primaryLang"

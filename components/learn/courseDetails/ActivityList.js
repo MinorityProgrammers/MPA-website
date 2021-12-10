@@ -58,14 +58,14 @@ const ActivityList = function ({ module, userModules, specificUModules }) {
             </div>
             <div className="col-md-5 d-flex align-items-center ml-3">
               <div className="d-pb-1">
-                      <h4 className="mt-3 mb-2 text-white" style={{ fontSize: '1.5rem' }}>{name}</h4>
-                    </div>
+                <h4 className="mt-3 mb-2 text-white" style={{ fontSize: '1.5rem' }}>{name}</h4>
+              </div>
             </div>
             <div className="col-md-2">
               <div className="pt-3 pl-4 ml-4 activityStatus">
-                      {userModule.completionStatus === 'uncompleted'
-                          ? <p className="red-status ml-auto">uncompleted</p> : userModule.completionStatus === 'completed' ? <p className="green-status ml-auto">completed</p> : <p className="white-status ml-auto">start</p>}
-                    </div>
+                {userModule.completionStatus === 'uncompleted'
+                  ? <p className="red-status ml-auto">uncompleted</p> : userModule.completionStatus === 'completed' ? <p className="green-status ml-auto">completed</p> : <p className="white-status ml-auto">start</p>}
+              </div>
             </div>
             <div className="col-md-1" />
           </div>

@@ -1,13 +1,13 @@
-import React, { useState, useRef } from "react";
-import { useRouter } from "next/router";
-import HomepageNav from "../components/homepage/HomepageNav";
-import Layout from "../components/Layout";
-import Footer from "../components/Footer";
-import SidebarTwo from "../components/SidebarTwo";
-import { MentorshipRegister } from "../components/MentorshipRegister";
-import links from "../contexts/utils/links";
-import ComingSoon from "../components/ComingSoon";
-import { useDetectOutsideClick } from "../components/UseDetectOutsideClick";
+import React, { useState, useRef } from 'react';
+import { useRouter } from 'next/router';
+import HomepageNav from '../components/homepage/HomepageNav';
+import Layout from '../components/Layout';
+import Footer from '../components/Footer';
+import SidebarTwo from '../components/SidebarTwo';
+import { MentorshipRegister } from '../components/MentorshipRegister';
+import links from '../contexts/utils/links';
+import ComingSoon from '../components/ComingSoon';
+import { useDetectOutsideClick } from '../components/UseDetectOutsideClick';
 
 function mentorship() {
   const [open, setOpen] = useState(false);
@@ -28,7 +28,7 @@ function mentorship() {
   const goback = () => {
     if (data === null) {
       setTimeout(() => {
-        router.push("/mentorshipProgram");
+        router.push('/mentorshipProgram');
       }, 200);
     }
   };

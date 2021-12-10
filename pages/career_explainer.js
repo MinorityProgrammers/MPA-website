@@ -1,11 +1,11 @@
-import React, { useState, useRef, useEffect } from "react";
-import HomepageNav from "../components/homepage/HomepageNav";
-import Footer from "../components/Footer";
-import { useDetectOutsideClick } from "../components/UseDetectOutsideClick";
-import Layout from "../components/Layout";
-import SidebarTwo from "../components/SidebarTwo";
-import links from "../contexts/utils/links";
-import CareerExplainer from "../components/career-components/CareerExplainer";
+import React, { useState, useRef, useEffect } from 'react';
+import HomepageNav from '../components/homepage/HomepageNav';
+import Footer from '../components/Footer';
+import { useDetectOutsideClick } from '../components/UseDetectOutsideClick';
+import Layout from '../components/Layout';
+import SidebarTwo from '../components/SidebarTwo';
+import links from '../contexts/utils/links';
+import CareerExplainer from '../components/career-components/CareerExplainer';
 
 const Career = function () {
   const [open, setOpen] = useState(false);

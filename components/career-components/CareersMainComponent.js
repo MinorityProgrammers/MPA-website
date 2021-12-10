@@ -1,7 +1,7 @@
-import { useState, useRef } from "react";
-import Footer from "../Footer.js";
-import ApplyModal from "./QuickApplyJobApplication";
-import { useDetectOutsideClick } from "../UseDetectOutsideClick";
+import { useState, useRef } from 'react';
+import Footer from '../Footer.js';
+import ApplyModal from './QuickApplyJobApplication';
+import { useDetectOutsideClick } from '../UseDetectOutsideClick';
 
 const CareersMainComponent = (props) => {
   const [data, setData] = useState([]);

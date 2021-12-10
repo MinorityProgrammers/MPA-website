@@ -51,7 +51,9 @@ class NavTwo extends Component {
               <Link href="/">
                 <a className="navbar-brand">
                   <img
-                    src="assets/images/logo-dark.png" className="main-logo" width="128"
+                    src="assets/images/logo-dark.png"
+                    className="main-logo"
+                    width="128"
                     alt="Awesome Image"
                   />
                 </a>
@@ -69,13 +71,13 @@ class NavTwo extends Component {
                     <li><Link href="/index-2"><a>Home 02</a></Link></li>
                     <li><Link href="/index-3"><a>Home 03</a></Link></li>
                     <li>
-                          <a href="#">Header Versions</a>
-                          <ul className="sub-menu">
-                              <li><Link href="/"><a>Header 01</a></Link></li>
-                              <li><Link href="/index-2"><a>Header 02</a></Link></li>
-                              <li><Link href="/index-3"><a>Header 03</a></Link></li>
-                            </ul>
-                        </li>
+                      <a href="#">Header Versions</a>
+                      <ul className="sub-menu">
+                        <li><Link href="/"><a>Header 01</a></Link></li>
+                        <li><Link href="/index-2"><a>Header 02</a></Link></li>
+                        <li><Link href="/index-3"><a>Header 03</a></Link></li>
+                      </ul>
+                    </li>
                   </ul>
                 </li>
                 <li>

@@ -8,7 +8,7 @@ const FeaturedInfoCard = function ({ data }) {
       <div className="card-body">
         <div className="card__header mb-2">
           <img src={data.startupImage} className="card__header-logo" />
-          <Link href={`/startup-info/${data._id}`}>
+          <Link href={`/startup/${data._id}`}>
             <h2 className="card__header-title" style={{ cursor: 'pointer' }}>
               {data.name}
             </h2>
@@ -31,7 +31,7 @@ const FeaturedInfoCard = function ({ data }) {
           </h3>
           <div className="progress" style={{ borderRadius: '30px' }}>
             <div
-              className="progress-bar progressbar__bg"
+              className="tw-bg-gray-700 "
               role="progressbar"
               style={{
                 width: `${percentFund(data.targetAmount, data.amount)}%`,

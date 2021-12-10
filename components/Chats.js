@@ -535,19 +535,19 @@ const Chats = function ({ data }) {
             <div
               key={c._id}
               onClick={() => {
-                  setExpandInfo(false);
-                  if (c.newMessage) {
-                    c.newMessage = false;
-                  }
-                  setCurrentChat(c);
-                }}
+                setExpandInfo(false);
+                if (c.newMessage) {
+                  c.newMessage = false;
+                }
+                setCurrentChat(c);
+              }}
             >
               <Conversation
-                  conversation={c}
-                  currentUser={data}
-                  type="all"
-                  c={currentChat}
-                />
+                conversation={c}
+                currentUser={data}
+                type="all"
+                c={currentChat}
+              />
             </div>
           ))}
         </>
@@ -567,17 +567,17 @@ const Chats = function ({ data }) {
             <div
               key={c._id}
               onClick={() => {
-                  setExpandInfo(false);
-                  setCurrentChat(c);
-                }}
+                setExpandInfo(false);
+                setCurrentChat(c);
+              }}
             >
               <Conversation
-                  conversation={c}
-                  currentUser={data}
-                  type="blocked"
-                  c={currentChat}
-                  unblockfunc={unblockChat}
-                />
+                conversation={c}
+                currentUser={data}
+                type="blocked"
+                c={currentChat}
+                unblockfunc={unblockChat}
+              />
             </div>
           ))}
         </>
@@ -597,18 +597,18 @@ const Chats = function ({ data }) {
             <div
               key={c._id}
               onClick={() => {
-                  setExpandInfo(false);
-                  setCurrentChat(c);
-                }}
+                setExpandInfo(false);
+                setCurrentChat(c);
+              }}
             >
               <Conversation
-                  conversation={c}
-                  currentUser={data}
-                  type="pending"
-                  c={currentChat}
-                  acceptfunc={acceptChat}
-                  rejectfunc={rejectChat}
-                />
+                conversation={c}
+                currentUser={data}
+                type="pending"
+                c={currentChat}
+                acceptfunc={acceptChat}
+                rejectfunc={rejectChat}
+              />
             </div>
           ))}
         </>

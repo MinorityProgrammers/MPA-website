@@ -31,13 +31,14 @@ const SliderOne = function () {
 
               <div className="row no-gutters">
                 <div className="col-xl-12">
-                    <h3 className="banner-one__title banner-one__light-color">
-                        Minority<br />
-                        Programmers Association
-</h3>
-                    <p className="banner-one__tag-line">Code, Culture, Community.</p>
-                    <a href="#join" className="thm-btn banner-one__btn">Join Today</a>
-                  </div>
+                  <h3 className="banner-one__title banner-one__light-color">
+                    Minority
+                    <br />
+                    Programmers Association
+                  </h3>
+                  <p className="banner-one__tag-line">Code, Culture, Community.</p>
+                  <a href="#join" className="thm-btn banner-one__btn">Join Today</a>
+                </div>
               </div>
             </div>
           </div>
@@ -50,13 +51,14 @@ const SliderOne = function () {
 
               <div className="row no-gutters">
                 <div className="col-xl-12">
-                    <h3 className="banner-one__title banner-one__light-color">
-                        Learn<br />
-                        to Code
-</h3>
-                    <p className="banner-one__tag-line">with our international network of developers</p>
-                    <a href="#" className="thm-btn banner-one__btn">Learn More</a>
-                  </div>
+                  <h3 className="banner-one__title banner-one__light-color">
+                    Learn
+                    <br />
+                    to Code
+                  </h3>
+                  <p className="banner-one__tag-line">with our international network of developers</p>
+                  <a href="#" className="thm-btn banner-one__btn">Learn More</a>
+                </div>
               </div>
             </div>
           </div>

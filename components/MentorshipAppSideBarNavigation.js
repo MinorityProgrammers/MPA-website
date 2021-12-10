@@ -27,13 +27,15 @@ const MentorshipAppSideBarNavigation = function (props) {
                 <div id={`matched_id_${index}`} key={`key_${index}`}>
                   <div className="tw-w-full tw-h-full">
                     <div className="tw-w-full tw-px-4 tw-h-1/3 tw-cursor-pointer" onClick={() => { props.chatRedirectStep(character); }}>
-                            <div className="img tw-w-20 tw-h-20">
-                                <img
-                                    className="tw-object-cover
-                                    tw-h-full tw-w-full tw-rounded-full" src={character.url} alt="avatar image"
-                                  />
-                              </div>
-                          </div>
+                      <div className="img tw-w-20 tw-h-20">
+                        <img
+                          className="tw-object-cover
+                                    tw-h-full tw-w-full tw-rounded-full"
+                          src={character.url}
+                          alt="avatar image"
+                        />
+                      </div>
+                    </div>
                   </div>
                 </div>
               ))}
@@ -46,16 +48,16 @@ const MentorshipAppSideBarNavigation = function (props) {
                   <h3 className="tw-text-activeOrange tw-font-bold">Chats</h3>
                   <span className="tw-bg-activeOrange tw-text-white tw-rounded-full tw-flex tw-justify-center tw-items-center tw-w-8 tw-h-8 tw-ml-6">
                     <div className="tw-text-sm tw-font-bold">
-                            {totalChatsNumber < 99 ? totalChatsNumber : '+99'}
-                          </div>
+                      {totalChatsNumber < 99 ? totalChatsNumber : '+99'}
+                    </div>
                   </span>
                 </li>
                 <li className="tw-flex tw-w-160px tw-px-4 tw-py-2" onClick={props.todoStep}>
                   <h3>To-Do</h3>
                   <span className="tw-bg-NavDark tw-text-white tw-rounded-full tw-flex tw-justify-center tw-items-center tw-w-8 tw-h-8 tw-ml-6">
                     <div className="tw-text-sm tw-font-bold">
-                            {totalToDoNumber < 99 ? totalToDoNumber : '+99'}
-                          </div>
+                      {totalToDoNumber < 99 ? totalToDoNumber : '+99'}
+                    </div>
                   </span>
                 </li>
               </ul>
@@ -66,23 +68,25 @@ const MentorshipAppSideBarNavigation = function (props) {
                   <div className="message tw-w-full tw-flex tw-justify-between tw-items-end tw-p-4 tw-h-1/3 tw-cursor-pointer hover:tw-bg-#F9F9F9 hover:tw-shadow-mentorAppMessagesOuter">
                     <div className="active-bar tw-absolute tw-h-full tw-w-2 tw-top-0 tw-left-0 tw-bg-gradient-to-b tw-from-FF00B8 tw-to-FFC700 tw-hidden" />
                     <div className="img tw-w-20 tw-h-20  tw-relative">
-                            <img
-                                className="tw-object-cover tw-rounded-full
-                                                tw-h-full tw-w-full" src={character.url} alt="avatar image"
-                              />
-                            {character.messages[character.messages.length - 1].read ? (
-                                <div className="tw-absolute tw-w-4 tw-h-4 tw-rounded-full tw-border-2 tw-border-white tw--right-2 tw-top-8 tw-bg-activeOrange tw-z-20" />
-                              ) : (
-                                  <div />
-                              )}
-                          </div>
+                      <img
+                        className="tw-object-cover tw-rounded-full
+                                                tw-h-full tw-w-full"
+                        src={character.url}
+                        alt="avatar image"
+                      />
+                      {character.messages[character.messages.length - 1].read ? (
+                        <div className="tw-absolute tw-w-4 tw-h-4 tw-rounded-full tw-border-2 tw-border-white tw--right-2 tw-top-8 tw-bg-activeOrange tw-z-20" />
+                      ) : (
+                        <div />
+                      )}
+                    </div>
                     <div className="text tw-flex-1 tw-px-6 tw-pb-4">
-                            <h4 className="tw-font-medium tw-text-2xl">{character.name}</h4>
-                            <p>{character.messages[character.messages.length - 1].message}</p>
-                          </div>
+                      <h4 className="tw-font-medium tw-text-2xl">{character.name}</h4>
+                      <p>{character.messages[character.messages.length - 1].message}</p>
+                    </div>
                     <div className="timestamp tw-text-gray-400 tw-pb-4">
-                            <p>{character.messages[character.messages.length - 1].messageTimeStamp}</p>
-                          </div>
+                      <p>{character.messages[character.messages.length - 1].messageTimeStamp}</p>
+                    </div>
                   </div>
                 </div>
               ))}
@@ -104,13 +108,15 @@ const MentorshipAppSideBarNavigation = function (props) {
                 <div id={`matched_id_${index}`} key={`key_${index}`}>
                   <div className="tw-w-full tw-h-full">
                     <div className="tw-w-full tw-px-4 tw-h-1/3 tw-cursor-pointer" onClick={() => { props.chatRedirectStep(character); }}>
-                            <div className="img tw-w-20 tw-h-20">
-                                <img
-                                    className="tw-object-cover
-                                    tw-h-full tw-w-full tw-rounded-full" src={character.url} alt="avatar image"
-                                  />
-                              </div>
-                          </div>
+                      <div className="img tw-w-20 tw-h-20">
+                        <img
+                          className="tw-object-cover
+                                    tw-h-full tw-w-full tw-rounded-full"
+                          src={character.url}
+                          alt="avatar image"
+                        />
+                      </div>
+                    </div>
                   </div>
                 </div>
               ))}
@@ -123,16 +129,16 @@ const MentorshipAppSideBarNavigation = function (props) {
                   <h3>Chats</h3>
                   <span className="tw-bg-NavDark tw-text-white tw-rounded-full tw-flex tw-justify-center tw-items-center tw-w-8 tw-h-8 tw-ml-6">
                     <div className="tw-text-sm tw-font-bold">
-                            {totalChatsNumber < 99 ? totalChatsNumber : '+99'}
-                          </div>
+                      {totalChatsNumber < 99 ? totalChatsNumber : '+99'}
+                    </div>
                   </span>
                 </li>
                 <li className="tw-flex tw-w-160px tw-px-4 tw-py-2" onClick={props.todoStep}>
                   <h3 className="tw-text-activeOrange tw-font-bold">To-Do</h3>
                   <span className="tw-bg-activeOrange tw-text-white tw-rounded-full tw-flex tw-justify-center tw-items-center tw-w-8 tw-h-8 tw-ml-6">
                     <div className="tw-text-sm tw-font-bold">
-                            {totalToDoNumber < 99 ? totalToDoNumber : '+99'}
-                          </div>
+                      {totalToDoNumber < 99 ? totalToDoNumber : '+99'}
+                    </div>
                   </span>
                 </li>
               </ul>
@@ -143,20 +149,20 @@ const MentorshipAppSideBarNavigation = function (props) {
 
                   {character.toDo.map((task, id) => (
                     <div key={id} className="tw-relative tw-w-full tw-h-full">
-                            <div className="message tw-w-full tw-flex tw-justify-between tw-items-end tw-p-4 tw-h-1/3 tw-cursor-pointer hover:tw-bg-#F9F9F9 hover:tw-shadow-mentorAppMessagesOuter">
-                                <div className="active-bar tw-absolute tw-h-full tw-w-2 tw-top-0 tw-left-0 tw-bg-gradient-to-b tw-from-FF00B8 tw-to-FFC700 tw-hidden" />
-                                <div className="img tw-w-20 tw-h-20">
-                                    <img className="tw-object-cover tw-rounded-full tw-h-full tw-w-full" src={character.url} alt="avatar image" />
-                                  </div>
-                                <div className="text tw-flex-1 tw-px-6 tw-pb-4">
-                                    <h4 className="tw-font-medium tw-text-2xl">{character.name}</h4>
-                                    <p>{task.message}</p>
-                                  </div>
-                                <div className="timestamp tw-text-gray-400 tw-pb-4">
-                                    <p>{task.messageTimeStamp}</p>
-                                  </div>
-                              </div>
-                          </div>
+                      <div className="message tw-w-full tw-flex tw-justify-between tw-items-end tw-p-4 tw-h-1/3 tw-cursor-pointer hover:tw-bg-#F9F9F9 hover:tw-shadow-mentorAppMessagesOuter">
+                        <div className="active-bar tw-absolute tw-h-full tw-w-2 tw-top-0 tw-left-0 tw-bg-gradient-to-b tw-from-FF00B8 tw-to-FFC700 tw-hidden" />
+                        <div className="img tw-w-20 tw-h-20">
+                          <img className="tw-object-cover tw-rounded-full tw-h-full tw-w-full" src={character.url} alt="avatar image" />
+                        </div>
+                        <div className="text tw-flex-1 tw-px-6 tw-pb-4">
+                          <h4 className="tw-font-medium tw-text-2xl">{character.name}</h4>
+                          <p>{task.message}</p>
+                        </div>
+                        <div className="timestamp tw-text-gray-400 tw-pb-4">
+                          <p>{task.messageTimeStamp}</p>
+                        </div>
+                      </div>
+                    </div>
                   ))}
                 </div>
               ))}

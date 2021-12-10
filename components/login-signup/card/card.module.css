@@ -40,6 +40,7 @@
 .cardLeft h1 {
   font-size: 3.2rem;
   margin-bottom: 2vh;
+  color: #fff;
 }
 .cardLeft p {
   font-size: 1.2rem;
@@ -61,7 +62,6 @@
   margin-top: 8rem;
   background-color: #fff;
   width: 50%;
-  height: 100%;
   padding: 2vh 7vh 0.5vh 7vh;
   display: flex;
   flex-direction: column;

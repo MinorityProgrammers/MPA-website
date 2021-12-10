@@ -12,14 +12,14 @@ import Fortmatic from 'fortmatic';
 import decode from 'jwt-decode';
 import { useMoralis } from 'react-moralis';
 import { BiMenuAltLeft } from 'react-icons/bi';
-import { GlobalContext } from '../../contexts/provider';
-import { LOGOUT_USER } from '../../contexts/actions/actionTypes';
-import { getProfile } from '../../contexts/actions/profile/getProfile';
+import { GlobalContext } from '../contexts/provider';
+import { LOGOUT_USER } from '../contexts/actions/actionTypes';
+import { getProfile } from '../contexts/actions/profile/getProfile';
 import HomepageNavLoggedin from './HomepageNavLoggedin';
 import HomepageNavLogin from './HomepageNavLogin';
-import NativeBalance from '../NativeBalance';
-import Account from '../Account';
-import { useDetectOutsideClick } from '../UseDetectOutsideClick';
+import NativeBalance from './NativeBalance';
+import Account from './Account';
+import { useDetectOutsideClick } from './UseDetectOutsideClick';
 
 let web3Modal;
 let selectedAccount = null;
@@ -139,11 +139,7 @@ async function onDisconnect() {
 }
 
 const HomepageNav = function ({
-  setToken,
-  setData,
-  page,
-  open,
-  setOpen = () => {},
+  setToken, setData, page, open, setOpen = () => {},
 }) {
   const dropdownRef = useRef(null);
   const dropdownMobileRef = useRef(null);
@@ -361,10 +357,10 @@ const HomepageNav = function ({
           <div className="nav__mobile-img">
             <img
               src={
-                userData.profilePicture
-                  ? userData.profilePicture
-                  : '/assets/images/profile.png'
-              }
+                  userData.profilePicture
+                    ? userData.profilePicture
+                    : '/assets/images/profile.png'
+                }
               alt="profile"
               className="rounded-circle mb-3"
             />
@@ -387,12 +383,15 @@ const HomepageNav = function ({
           <a href="/auth">
             <button className="btn btn-pink mr-3 ml-3" onClick={handleClick}>
               Sign in
-            </button>
+              </button>
           </a>
           <p className="mr-3 ml-3">OR</p>
           <a href="/auth">
-            <button className="btn btn-yellow mr-3 ml-3" onClick={handleClick}>
-              Register
+            <button
+              className="btn btn-yellow mr-3 ml-3"
+              onClick={handleClick}
+            >
+                Register
             </button>
           </a>
         </div>
@@ -466,7 +465,7 @@ const HomepageNav = function ({
             <li className="nav-item">
               <div className="nav__mobile-link">
                 Messages
-                <p className="mobile__social msg">2</p>
+                  <p className="mobile__social msg">2</p>
               </div>
             </li>
           </a>
@@ -474,7 +473,7 @@ const HomepageNav = function ({
             <li className="nav-item">
               <div className="nav__mobile-link">
                 Notifications
-                <p className="mobile__social notification">3</p>
+                  <p className="mobile__social notification">3</p>
               </div>
             </li>
           </a>
@@ -491,17 +490,20 @@ const HomepageNav = function ({
           ) : (
             <div>
               <a href="#" className="topbar__connected">
-                <img src="/assets/images/greendot.svg" className="green__dot" />
-                <p> </p>
-                {selectedAccount}
-              </a>
+                  <img
+                    src="/assets/images/greendot.svg"
+                    className="green__dot"
+                  />
+                  <p> </p>
+                  {selectedAccount}
+                </a>
               <a
-                href="#"
-                className="copy__box"
-                onClick={copyWalletAddress(selectedAccount)}
-              >
-                🗐
-              </a>
+                  href="#"
+                  className="copy__box"
+                  onClick={copyWalletAddress(selectedAccount)}
+                >
+                  🗐
+                </a>
             </div>
           )}
         </div>
@@ -519,10 +521,10 @@ const HomepageNav = function ({
     <header
       className="homepage__header"
       style={
-        router.pathname === '/auth'
-          ? { top: '0rem', paddingBottom: '28px' }
-          : {}
-      }
+          router.pathname === '/auth'
+            ? { top: '0rem', paddingBottom: '28px' }
+            : {}
+        }
     >
       {/* immediate solution fix for only /auth page header style */}
       {/* <header className="homepage__header"> */}
@@ -532,52 +534,52 @@ const HomepageNav = function ({
             <li>
               <div className="searchBox tw-text-white">
                 <input
-                  onChange={handleSearch}
-                  value={searchValue}
-                  className={`searchInput tw-text-white ${
-                    searchValue ? 'expand' : ''
-                  }`}
-                  type="text"
-                  name=""
-                  placeholder="Search"
-                />
+                    onChange={handleSearch}
+                    value={searchValue}
+                    className={`searchInput tw-text-white ${
+                      searchValue ? 'expand' : ''
+                    }`}
+                    type="text"
+                    name=""
+                    placeholder="Search"
+                  />
                 <button
-                  type="submit"
-                  onClick={handleSubmit}
-                  className={`searchButton ${searchValue ? 'scale' : ''}`}
-                >
-                  <i className="fas fa-search" />
-                </button>
+                    type="submit"
+                    onClick={handleSubmit}
+                    className={`searchButton ${searchValue ? 'scale' : ''}`}
+                  >
+                    <i className="fas fa-search" />
+                  </button>
               </div>
             </li>
             {userData !== null && userData !== undefined ? (
               <>
                 <li>
-                  <a href="/chat">
-                    <i className="fas fa-envelope" />
-                  </a>
-                </li>
+                    <a href="/chat">
+                      <i className="fas fa-envelope" />
+                    </a>
+                  </li>
                 <li>
-                  <i className="fas fa-user" onClick={onClick} />
+                    <i className="fas fa-user" onClick={onClick} />
+                    {isActive ? (
+                      <HomepageNavLoggedin
+                        onCloseMobileMenu={onClick}
+                        userInfo={userData}
+                      />
+                    ) : (
+                      ''
+                    )}
+                  </li>
+              </>
+            ) : (
+              <li className="topbar__login">
+                  <i aria-hidden className="fas fa-user" onClick={onClick} />
                   {isActive ? (
-                    <HomepageNavLoggedin
-                      onCloseMobileMenu={onClick}
-                      userInfo={userData}
-                    />
+                    <HomepageNavLogin onCloseMobileMenu={onClick} />
                   ) : (
                     ''
                   )}
                 </li>
-              </>
-            ) : (
-              <li className="topbar__login">
-                <i aria-hidden className="fas fa-user" onClick={onClick} />
-                {isActive ? (
-                  <HomepageNavLogin onCloseMobileMenu={onClick} />
-                ) : (
-                  ''
-                )}
-              </li>
             )}
             <li>
               <NativeBalance />
@@ -596,19 +598,19 @@ const HomepageNav = function ({
               >
                 <i className="far fa-check-circle" />
                 Vote
-              </a>
+                </a>
             </li>
           </ul>
         </div>
       </div>
       <nav className={` ${sticky ? 'sticky-menu' : ''}`}>
         {isLogin === true && (
-          <div
-            className="hamburger-icon tw-cursor-pointer"
-            onClick={() => setOpen(!open)}
-          >
-            <BiMenuAltLeft />
-          </div>
+        <div
+          className="hamburger-icon tw-cursor-pointer"
+          onClick={() => setOpen(!open)}
+        >
+          <BiMenuAltLeft />
+        </div>
         )}
 
         <div className="container homepage__navbar">
@@ -624,21 +626,21 @@ const HomepageNav = function ({
               </li>
               {userData !== null && userData !== undefined ? (
                 <li onClick={() => setOpen(!open)}>
-                  <span
-                    className="tw-cursor-pointer"
-                    style={{ fontSize: '1.8rem' }}
-                  >
-                    <BiMenuAltLeft />
-                  </span>
-                </li>
+                    <span
+                      className="tw-cursor-pointer"
+                      style={{ fontSize: '1.8rem' }}
+                    >
+                      <BiMenuAltLeft />
+                    </span>
+                  </li>
               ) : (
                 ''
               )}
 
               <li onClick={onClickMobile}>
                 <i
-                  className={isActiveMobile ? 'fas fa-times' : 'fas fa-bars'}
-                />
+                    className={isActiveMobile ? 'fas fa-times' : 'fas fa-bars'}
+                  />
               </li>
             </ul>
           </div>
@@ -651,20 +653,23 @@ const HomepageNav = function ({
                 className={open ? 'nav-item active-link' : 'nav-item'}
                 onClick={() => setOpen(!open)}
               >
-                <div className="tw-cursor-pointer" style={{ display: 'flex' }}>
-                  <BiMenuAltLeft />
-                  <a>All</a>
-                </div>
+                <div
+                    className="tw-cursor-pointer"
+                    style={{ display: 'flex' }}
+                  >
+                    <BiMenuAltLeft />
+                    <a>All</a>
+                  </div>
               </li>
             ) : (
               ''
             )}
             <li
               className={
-                router.pathname === '/learn-page'
-                  ? 'nav-item active-link'
-                  : 'nav-item'
-              }
+                  router.pathname === '/learn-page'
+                    ? 'nav-item active-link'
+                    : 'nav-item'
+                }
             >
               <Link
                 href="/learn-page"
@@ -676,10 +681,10 @@ const HomepageNav = function ({
             </li>
             <li
               className={
-                router.pathname === '/incubator'
-                  ? 'nav-item active-link'
-                  : 'nav-item'
-              }
+                  router.pathname === '/incubator'
+                    ? 'nav-item active-link'
+                    : 'nav-item'
+                }
             >
               <Link
                 href="/incubator"
@@ -691,10 +696,10 @@ const HomepageNav = function ({
             </li>
             <li
               className={
-                router.pathname === '/mentorshipProgram'
-                  ? 'nav-item active-link'
-                  : 'nav-item'
-              }
+                  router.pathname === '/mentorshipProgram'
+                    ? 'nav-item active-link'
+                    : 'nav-item'
+                }
             >
               <Link
                 href="/mentorshipProgram"
@@ -706,10 +711,10 @@ const HomepageNav = function ({
             </li>
             <li
               className={
-                router.pathname === '/events'
-                  ? 'nav-item active-link'
-                  : 'nav-item'
-              }
+                  router.pathname === '/events'
+                    ? 'nav-item active-link'
+                    : 'nav-item'
+                }
             >
               <Link
                 href="/events"
@@ -721,10 +726,10 @@ const HomepageNav = function ({
             </li>
             <li
               className={
-                router.pathname === '/careers'
-                  ? 'nav-item active-link'
-                  : 'nav-item'
-              }
+                  router.pathname === '/careers'
+                    ? 'nav-item active-link'
+                    : 'nav-item'
+                }
             >
               <Link
                 href="/careers"
@@ -736,10 +741,10 @@ const HomepageNav = function ({
             </li>
             <li
               className={
-                router.pathname === '/consultancy_explainer'
-                  ? 'nav-item active-link'
-                  : 'nav-item'
-              }
+                  router.pathname === '/consultancy_explainer'
+                    ? 'nav-item active-link'
+                    : 'nav-item'
+                }
               onMouseEnter={onMouseEnter}
               onMouseLeave={onMouseLeave}
             >
@@ -753,10 +758,10 @@ const HomepageNav = function ({
             </li>
             <li
               className={
-                router.pathname === '/join'
-                  ? 'nav-item active-link'
-                  : 'nav-item'
-              }
+                  router.pathname === '/join'
+                    ? 'nav-item active-link'
+                    : 'nav-item'
+                }
             >
               <Link
                 href="/join"

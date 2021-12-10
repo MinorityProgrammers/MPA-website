@@ -32,3 +32,19 @@
 .css-yk16xz-control {
   border-color: #fff;
 }
+
+.web {
+   .ant-modal-content {
+     position : relative; 
+    background-color : transparent  !important ; 
+    border : 0 ; 
+    border-radius : 4 px; 
+    background-clip : padding-box; 
+  }
+
+  .ant-modal-body {
+     padding : 0  !important ; 
+    font-size : 0  !important ; 
+    line-height : 1  !important ;
+  }
+}

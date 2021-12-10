@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { useRouter } from "next/router";
+import React, { useEffect } from 'react';
+import { useRouter } from 'next/router';
 
 const CareersPage = function () {
   const router = useRouter();

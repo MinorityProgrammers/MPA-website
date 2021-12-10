@@ -6,6 +6,7 @@ import Select from 'react-select';
 import FormData from 'form-data';
 import { GlobalContext } from '../contexts/provider';
 import { updateProfile } from '../contexts/actions/profile/updateProfile';
+import DashboardInputs from './DashboardInputs';
 import {
   storeOne,
   storeFour,

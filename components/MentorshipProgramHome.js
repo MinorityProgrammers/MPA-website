@@ -1,8 +1,8 @@
-import React, { useRef, useState } from "react";
-import { useRouter } from "next/router";
-import Link from "next/link";
-import { useDetectOutsideClick } from "./UseDetectOutsideClick";
-import Card from "./login-signup/card";
+import React, { useRef, useState } from 'react';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
+import { useDetectOutsideClick } from './UseDetectOutsideClick';
+import Card from './login-signup/card';
 
 const MentorshipProgramHome = function ({
   data,
@@ -41,7 +41,7 @@ const MentorshipProgramHome = function ({
                 Register
               </a>
             ) : (
-              " "
+              ' '
             )}
           </div>
         </div>
@@ -68,15 +68,15 @@ const MentorshipProgramHome = function ({
               <ul className="">
                 <h1> - Sign Up Program</h1>
                 <li>
-                  {" "}
+                  {' '}
                   - REGISTER for a Minority Programmers Association account.
                 </li>
                 <li>
-                  {" "}
+                  {' '}
                   - SIGN UP, have access to training and growth opportunities.
                 </li>
                 <li>
-                  {" "}
+                  {' '}
                   - Being part of the Mentorship Program offers guidance to
                   SUCCESS
                 </li>
@@ -93,13 +93,14 @@ const MentorshipProgramHome = function ({
                 <h1>Start Matching</h1>
                 <li> - Tell us about your GOALS and needs.</li>
                 <li>
-                  {" "}
+                  {' '}
                   - CHOOSE from the mentoring suggestions made by machine
                   learning.
                 </li>
                 <li>
-                  {" "}
-                  - Choose a mentorship track & start CHAT with your match.{" "}
+                  {' '}
+                  - Choose a mentorship track & start CHAT with your match.
+                  {' '}
                 </li>
               </ul>
             </div>
@@ -145,7 +146,7 @@ const MentorshipProgramHome = function ({
               <ul className="">
                 <h1>Start Program</h1>
                 <li>
-                  {" "}
+                  {' '}
                   - Define ACTIVITIES and schedule with your mentor or mentee
                 </li>
                 <li> - You can use the LEARNING resources</li>
@@ -163,12 +164,12 @@ const MentorshipProgramHome = function ({
                 <h1>Gain $MINORITY</h1>
 
                 <li>
-                  {" "}
+                  {' '}
                   - Mentor and mentee will receive REWARDS based on successful
                   homework completion.
                 </li>
                 <li>
-                  {" "}
+                  {' '}
                   - An evaluation will be carried out by both parties on the
                   COMMITMENT of their counterparts, during and after the task.
                 </li>
@@ -261,14 +262,14 @@ const MentorshipProgramHome = function ({
               <Card />
             </div>
             <i
-              className="close_icon fas fa-times close-icon"
+              className="close_icon fas fa-times close-icon tw-text-white"
               onClick={() => {
                 setClickRegister(false);
               }}
             />
           </div>
         ) : (
-          ""
+          ''
         )}
       </div>
     </section>

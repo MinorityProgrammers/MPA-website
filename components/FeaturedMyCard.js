@@ -40,7 +40,7 @@ const FeaturedMyCard = function ({ data }) {
           </h3>
           <div className="progress" style={{ borderRadius: '30px' }}>
             <div
-              className="progress-bar progressbar__bg"
+              className="tw-bg-gray-700 "
               role="progressbar"
               style={{
                 width: `${percentFund(data.targetAmount, data.amount)}%`,
@@ -54,7 +54,7 @@ const FeaturedMyCard = function ({ data }) {
         </div>
 
         <div className="card__button-container">
-          <Link href={`/startup-info/${data._id}`}>
+          <Link href={`/startup/${data._id}`}>
             <a className="button btn-filled">More Info</a>
           </Link>
         </div>

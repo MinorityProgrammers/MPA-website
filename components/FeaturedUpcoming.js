@@ -63,31 +63,31 @@ const FeaturedUpcoming = function ({
             <div className="container text-center mt-3 mb-3 featured__card-empty">
               <h1 className="featured__card-title mb-3">
                 There is no startup yet.
-                </h1>
+              </h1>
               <div className="btn__container">
                 <a href="#" className="button btn-filled sm">
-                    Start your own Startup
-                  </a>
+                  Start your own Startup
+                </a>
               </div>
             </div>
           ) : (
             <>
               {displayStartups}
               <ReactPaginate
-                  previousLabel="Previous"
-                  nextLabel="Next"
-                  marginPagesDisplayed={0}
-                  pageRangeDisplayed={2}
-                  breakLabel="..."
-                  breakClassName="break-me"
-                  pageCount={pageCount}
-                  onPageChange={changePage}
-                  containerClassName="paginationBttns"
-                  previousLinkClassName="previousBttn"
-                  nextLinkClassName="nextBttn"
-                  disabledClassName="paginationDisabled"
-                  activeClassName="paginationActive"
-                />
+                previousLabel="Previous"
+                nextLabel="Next"
+                marginPagesDisplayed={0}
+                pageRangeDisplayed={2}
+                breakLabel="..."
+                breakClassName="break-me"
+                pageCount={pageCount}
+                onPageChange={changePage}
+                containerClassName="paginationBttns"
+                previousLinkClassName="previousBttn"
+                nextLinkClassName="nextBttn"
+                disabledClassName="paginationDisabled"
+                activeClassName="paginationActive"
+              />
             </>
           )}
         </div>

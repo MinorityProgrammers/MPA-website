@@ -1,5 +1,5 @@
 @media (min-width: 768px){
-    .course-category::after {
+    /* .course-category::after {
         content: "";
         width: 50%;
         height: 2px;
@@ -8,5 +8,5 @@
         margin-right: auto;
         margin-top: 1.4rem;
         border-radius: 5px;
-    }
+    } */
 }
