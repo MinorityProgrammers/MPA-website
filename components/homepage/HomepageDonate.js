@@ -1,11 +1,11 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { GlobalContext } from '../../contexts/provider';
 import DonateAmount from '../DonateAmount';
-import DonatePayment from '../DonatePayment';
 import DonateCompleted from '../DonateCompleted';
 import DonateDetails from '../DonateDetails';
+import DonatePayment from '../DonatePayment';
 
-const HomepageDonate = function () {
+const HomepageDonate = () => {
   const { amount, donateDispatch } = useContext(GlobalContext);
   const [isDone, setIsDone] = useState(false);
   const [count, setCount] = useState(1);
@@ -60,7 +60,7 @@ const HomepageDonate = function () {
     setPayment(purchase_units);
     setSucceeded(true);
     setIsDone(true);
-    count++;
+    count++; // Instead of count++ use setCount(count+1)
   });
   // handles payment errors
   const onError = () => {
@@ -148,32 +148,31 @@ const HomepageDonate = function () {
             />
           ) : null}
           {count === 2 ? (
-            <>
-              {!succeeded ? (
-                <DonatePayment
-                  amount={amount}
-                  count={count}
-                  setCount={setCount}
-                  isDone={isDone}
-                  setIsDone={setIsDone}
-                  setMonthly={setMonthly}
-                  monthly={monthly}
-                  createOrder={createOrder}
-                  onApprove={onApprove}
-                  createSubscription={createSubscription}
-                />
-              ) : (
-                <DonateCompleted
-                  billingDetails={billingDetails}
-                  count={count}
-                  setCount={setCount}
-                  amount={amount}
-                  isDone={isDone}
-                  setIsDone={setIsDone}
-                  succeeded={succeeded}
-                />
-              )}
-            </>
+            !succeeded ? (
+              <DonatePayment
+                amount={amount}
+                count={count}
+                setCount={setCount}
+                isDone={isDone}
+                setIsDone={setIsDone}
+                setMonthly={setMonthly}
+                monthly={monthly}
+                createOrder={createOrder}
+                onApprove={onApprove}
+                createSubscription={createSubscription}
+              />
+            ) : (
+              <DonateCompleted
+                billingDetails={billingDetails}
+                count={count}
+                setCount={setCount}
+                amount={amount}
+                isDone={isDone}
+                setIsDone={setIsDone}
+                succeeded={succeeded}
+              />
+            )
+
           ) : null}
           {count === 3 ? (
             <DonateDetails

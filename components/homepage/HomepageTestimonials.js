@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import Swiper from 'react-id-swiper';
 import 'swiper/css/swiper.css';
 
-const HomepageTestimonials = function () {
+const HomepageTestimonials = () => {
   const TestimonialsCollection = [
     {
       id: 1,
@@ -110,6 +110,11 @@ const HomepageTestimonials = function () {
   const [swiper, setSwiper] = useState(null);
   const [currentIndex, updateCurrentIndex] = useState(0);
 
+  const updateIndex = useCallback(
+    () => updateCurrentIndex(swiper.realIndex),
+    [swiper],
+  );
+
   const goNext = () => {
     updateIndex();
     swiper.slideNext();
@@ -119,11 +124,6 @@ const HomepageTestimonials = function () {
     swiper.slidePrev();
     updateIndex();
   };
-
-  const updateIndex = useCallback(
-    () => updateCurrentIndex(swiper.realIndex),
-    [swiper],
-  );
 
   useEffect(() => {
     if (swiper !== null) {

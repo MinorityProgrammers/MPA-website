@@ -22,6 +22,7 @@ module.exports = {
     'no-nested-ternary': 'off',
     'no-param-reassign': ['error', { props: false }],
     'jsx-a11y/no-static-element-interactions': 'off',
+    'linebreak-style': ['error', process.platform === 'win32' ? 'windows' : 'unix'],
     radix: ['error', 'as-needed'],
   },
 };

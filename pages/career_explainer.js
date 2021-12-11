@@ -1,13 +1,13 @@
-import React, { useState, useRef, useEffect } from 'react';
-import HomepageNav from '../components/homepage/HomepageNav';
+import React, { useEffect, useRef, useState } from 'react';
+import CareerExplainer from '../components/career-components/CareerExplainer';
 import Footer from '../components/Footer';
-import { useDetectOutsideClick } from '../components/UseDetectOutsideClick';
+import HomepageNav from '../components/homepage/HomepageNav';
 import Layout from '../components/Layout';
 import SidebarTwo from '../components/SidebarTwo';
+import { useDetectOutsideClick } from '../components/UseDetectOutsideClick';
 import links from '../contexts/utils/links';
-import CareerExplainer from '../components/career-components/CareerExplainer';
 
-const Career = function () {
+const Career = () => {
   const [open, setOpen] = useState(false);
   const [data, setData] = useState([]);
   const dropdownRef = useRef(null);
@@ -18,7 +18,7 @@ const Career = function () {
   const handleClick = () => {
     setHide(!hide);
   };
-  if (hide == false) {
+  if (hide === false) {
     setTimeout(() => {
       setHide(true);
     }, 60000);

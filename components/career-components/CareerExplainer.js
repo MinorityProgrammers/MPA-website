@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import styles from '../../public/assets/css/career.module.css';
-import LoginPage from '../consultancy/helperFiles/login-page';
+import LoginPage from '../Consultancy/helperFiles/LoginPage';
 import Category from './careerExplainerHelper/category';
 
 const allSections = [

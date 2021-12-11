@@ -124,7 +124,7 @@ const CORE_PRINCIPLES = [
   },
 ];
 
-const HomepageCore = function () {
+const HomepageCore = () => {
   const [popupInfo, setPopupInfo] = useState({
     id: '',
     image: '',
@@ -267,7 +267,7 @@ const Popup = function ({
           <div className="popup_content-core">
             <div className="popup_heading-core">
               <div className={`popup_image_container-core ${color}`}>
-                <img className="popup_img-core" src={icon} />
+                <img className="popup_img-core" src={icon} alt="" />
               </div>
               <div className={`popup_title_container-core ${color}`}>
                 <div className="popup_title-core">{title}</div>

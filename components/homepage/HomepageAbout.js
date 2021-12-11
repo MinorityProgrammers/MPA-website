@@ -3,7 +3,7 @@ import Swiper from 'react-id-swiper';
 import ModalVideo from 'react-modal-video';
 import 'swiper/css/swiper.css';
 
-const HomepageAbout = function () {
+const HomepageAbout = () => {
   const [swiper, setSwiper] = useState(null);
   const [isOpen, setOpen] = useState(false);
 
@@ -38,7 +38,7 @@ const HomepageAbout = function () {
               </p>
             </div>
             <div className="homepage__about-right">
-              <img src="/assets/images/globe.svg" className="heading__img" />
+              <img src="/assets/images/globe.svg" className="heading__img" alt="" />
               <button name="play" onClick={() => setOpen(true)} />
             </div>
           </div>
@@ -54,8 +54,8 @@ const HomepageAbout = function () {
               </p>
             </div>
             <div className="homepage__about-right resize">
-              <img src="/assets/images/about2.2.svg" className="heading__img" />
-              <img src="/assets/images/about2.1.svg" className="heading__img" />
+              <img src="/assets/images/about2.2.svg" className="heading__img" alt="" />
+              <img src="/assets/images/about2.1.svg" className="heading__img" alt="" />
               <button name="play" onClick={() => setOpen(true)} />
             </div>
           </div>
@@ -71,7 +71,7 @@ const HomepageAbout = function () {
               </p>
             </div>
             <div className="homepage__about-right">
-              <img src="/assets/images/about4.svg" className="heading__img" />
+              <img src="/assets/images/about4.svg" className="heading__img" alt="" />
               <button name="play" onClick={() => setOpen(true)} />
             </div>
           </div>
@@ -87,7 +87,7 @@ const HomepageAbout = function () {
               </p>
             </div>
             <div className="homepage__about-right">
-              <img src="/assets/images/about5.svg" className="heading__img" />
+              <img src="/assets/images/about5.svg" className="heading__img" alt="" />
               <button name="play" onClick={() => setOpen(true)} />
             </div>
           </div>
@@ -103,7 +103,7 @@ const HomepageAbout = function () {
               </p>
             </div>
             <div className="homepage__about-right resize">
-              <img src="/assets/images/about3.svg" className="heading__img" />
+              <img src="/assets/images/about3.svg" className="heading__img" alt="" />
               <button name="play" onClick={() => setOpen(true)} />
             </div>
           </div>

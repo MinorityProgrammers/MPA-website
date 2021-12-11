@@ -98,8 +98,6 @@ const JobsMain = () => {
     )
       .then((response) => response.json())
       .then((response) => {
-        // setAllJobs(response.data)
-        console.log('response', response);
         if (response.data.length >= 1) {
           if (window.innerWidth <= 991) {
             changeCurrentJob(null);
@@ -327,7 +325,6 @@ const JobsMain = () => {
         .then((response) => {
           setAppliedJobs(response.data.data);
           setLoading(false);
-          console.log('Applied Jobs', response.data);
         });
     }
   };
@@ -429,7 +426,6 @@ const JobsMain = () => {
   };
 
   const onEmptySearchFields = () => {
-    console.log('User typed: ', descriptionInput.current.value);
     if (!descriptionInput.current.value) {
       delete queryObj.description;
       router.push({ query: queryObj });

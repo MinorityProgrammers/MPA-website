@@ -8,7 +8,7 @@ import SidebarTwo from '../../components/SidebarTwo';
 import { useDetectOutsideClick } from '../../components/UseDetectOutsideClick';
 import links from '../../contexts/utils/links';
 
-const CreateNewJob = function () {
+const CreateNewJob = () => {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef(null);
   const [hide, setHide] = useDetectOutsideClick(dropdownRef, false);

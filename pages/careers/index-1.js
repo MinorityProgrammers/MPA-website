@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
 
-const CareersPage = function () {
+const CareersPage = () => {
   const router = useRouter();
   useEffect(() => {
     router.push('/careers/jobs');
