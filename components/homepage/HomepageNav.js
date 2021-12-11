@@ -488,12 +488,7 @@ const HomepageNav = ({
             </div>
           )}
         </div>
-        <div className="mobile__vote-link">
-          <a href="/vote" className="">
-            <i className="far fa-check-circle" />
-            Vote
-          </a>
-        </div>
+
       </div>
     </div>
   );
@@ -509,7 +504,9 @@ const HomepageNav = ({
     >
       {/* immediate solution fix for only /auth page header style */}
       {/* <header className="homepage__header"> */}
-      <div className="homepage__topbar">
+
+      {/*
+<div className="homepage__topbar">
         <div className="container">
           <ul className="topbar__right">
             <li>
@@ -584,6 +581,8 @@ const HomepageNav = ({
           </ul>
         </div>
       </div>
+      <nav className={` ${sticky ? 'sticky-menu' : ''}`}></nav> */}
+
       <nav className={` ${sticky ? 'sticky-menu' : ''}`}>
         {isLogin === true && (
           <div
@@ -750,6 +749,72 @@ const HomepageNav = ({
               </Link>
             </li>
           </ul>
+          <div className="homepage__topbar">
+            <div className="container">
+              <ul className="topbar__right">
+                <li>
+                  <div className="searchBox tw-text-white">
+                    <input
+                      onChange={handleSearch}
+                      value={searchValue}
+                      className="searchInput tw-text-white"
+                  // ${
+                  //   searchValue ? "expand" : ""
+                  // }`}
+                      type="text"
+                      name=""
+                      placeholder="Search..."
+                    />
+                    <button
+                      type="submit"
+                      onClick={handleSubmit}
+                    >
+                      <i className="fas fa-search" />
+                    </button>
+                  </div>
+                </li>
+                <li>
+                  <div className="headerRight">
+                    <Account />
+                  </div>
+                </li>
+                {userData !== null && userData !== undefined ? (
+                  <>
+                    <li>
+                      <a href="/chat">
+                        <i className="fas fa-envelope" />
+                      </a>
+                    </li>
+                    <li>
+                      <i className="fas fa-user-circle" onClick={onClick} />
+
+                      {isActive ? (
+                        <HomepageNavLoggedin
+                          onCloseMobileMenu={onClick}
+                          userInfo={userData}
+                        />
+                      ) : (
+                        ''
+                      )}
+                    </li>
+                  </>
+                ) : (
+                  <li className="topbar__login">
+                    <i aria-hidden className="fas fa-user-circle" onClick={onClick} />
+                    {isActive ? (
+                      <HomepageNavLogin onCloseMobileMenu={onClick} />
+                    ) : (
+                      ''
+                    )}
+                  </li>
+                )}
+                {/* <li>
+              <NativeBalance />
+            </li> */}
+
+              </ul>
+            </div>
+          </div>
         </div>
       </nav>
     </header>
