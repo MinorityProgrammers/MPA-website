@@ -686,11 +686,20 @@ class Event extends Component {
 
           <div className="event_divide">
             <h1>Featured&nbsp;Events</h1>
-            <div />
+            <div className="rule" />
+            <div className="swiper-navigation_container">
+              <div className="swiper-navigation">
+                <div className="swiper-button-prev" />
+                <div className="swiper-button-next" />
+              </div>
+            </div>
           </div>
+            
+            
 
           {/* LOADING SKELETON HERE */}
           <div className="swiper-container">
+            
             {this.state.loading
               ? (
                 <div className="swiper-wrapper" style={{ width: '100%' }}>
@@ -756,17 +765,13 @@ class Event extends Component {
                     </div>
                   )}
 
-            <div className="swiper-navigation_container">
-              <div className="swiper-navigation">
-                <div className="swiper-button-prev" />
-                <div className="swiper-button-next" />
-              </div>
-            </div>
+            
+            
           </div>
 
           <div className="event_divide event_divide_second">
             <h1>Active&nbsp;Events</h1>
-            <div />
+            <div className="rule" />
           </div>
           {/* LOADING SKELETON HERE */}
           <div className="event_container_section">
@@ -814,7 +819,7 @@ class Event extends Component {
 
           <div className="event_divide">
             <h1>Past&nbsp;Events</h1>
-            <div />
+            <div className="rule" />
           </div>
           {/* LOADING SKELETON HERE */}
           <div className="event_container_section">
@@ -864,7 +869,7 @@ class Event extends Component {
           <div className="event_myevent">
             <div className="event_divide">
               <h1>My&nbsp;Events</h1>
-              <div />
+              <div className="rule" />
             </div>
 
             {userData !== null ? (
