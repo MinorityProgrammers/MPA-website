@@ -1,11 +1,5 @@
 #join {
-  padding: 70px 0px;
-  background: linear-gradient(
-    104.61deg,
-    #ff00b8 2.65%,
-    #ff655b 51.83%,
-    #ffc700 100%
-  );
+  padding: 70px;
 }
 
 .title {
@@ -143,7 +137,7 @@
 }
 .join-head-container .join-head-icon {
   padding: 20px;
-  background-color: #151371;
+  background-color: #474bfd;
   color: white;
   font-size: 40px;
   border-radius: 5px;
@@ -162,7 +156,7 @@
   padding-left: 15px;
   padding-right: 15px;
   margin: 20px 0px 25px 20px;
-  background: #151371;
+  background: #474bfd;
   box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.25);
   border-radius: 40px;
   font-family: "Red Hat Display";
@@ -178,7 +172,7 @@
   padding-left: 15px;
   padding-right: 15px;
   margin: 20px 0px 25px 20px;
-  background: #151371;
+  background: #474bfd;
   box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.25);
   border-radius: 40px;
   font-family: "Red Hat Display";

@@ -274,7 +274,7 @@ const EventMoreInfo = function (props) {
           <div className="eventmoreinfo_shadow" />
         )}
 
-      <div className="eventmoreinfo_container ">
+      <div className="eventmoreinfo_container tw-z-50">
         <div className="eventmoreinfo_container_left">
           <img src={props.data.EventPicture} alt="Event Picture" />
         </div>
