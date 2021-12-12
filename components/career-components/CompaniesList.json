@@ -1,56 +1,56 @@
 [
-    {
-        "id": 4,
-        "name": "Minority Programmers Association",
-        "description": "The Minority Programmers Association is an international network of developers unifying together to tackle humanitarian issues with software solutions. We are a professional network, a community of mentor and students, a place to learn relevant IT skills with job placement, a hub for innovation, but most importantly, a family..",
-        "specialties":["Education", "Technology"],
-        "started_at": "1/21/2020",
-        "mpa_relationship_started": "1/21/2020",
-        "relation_type": "Sponsor",
-        "type_company": "non-profit",
-        "size_company": "201-500",
-        "headquarters":"Harrisonburg, VA",
-        "total_dollars_given":5000,
-        "diversity_score": "8",
-        "social_media_links":{
-            "fb":"https://www.facebook.com/MinorityProgrammers"
-        },
-        "website":"https://minorityprogrammers.com/"
+  {
+    "id": 4,
+    "name": "Minority Programmers Association",
+    "description": "The Minority Programmers Association is an international network of developers unifying together to tackle humanitarian issues with software solutions. We are a professional network, a community of mentor and students, a place to learn relevant IT skills with job placement, a hub for innovation, but most importantly, a family..",
+    "specialties": ["Education", "Technology"],
+    "started_at": "1/21/2020",
+    "mpa_relationship_started": "1/21/2020",
+    "relation_type": "Sponsor",
+    "type_company": "non-profit",
+    "size_company": "201-500",
+    "headquarters": "Harrisonburg, VA",
+    "total_dollars_given": 5000,
+    "diversity_score": "8",
+    "social_media_links": {
+      "fb": "https://www.facebook.com/MinorityProgrammers"
     },
-    {
-        "id": 2,
-        "name": "Apple",
-        "description": "The Minority Programmers Association is an international network of developers unifying together to tackle humanitarian issues with software solutions. We are a professional network, a community of mentor and students, a place to learn relevant IT skills with job placement, a hub for innovation, but most importantly, a family..",
-        "specialties":["Science", "Technology"],
-        "started_at": "1/21/2000",
-        "mpa_relationship_started": "1/21/2020",
-        "relation_type": "Sponsor",
-        "type_company": "public company",
-        "size_company": "201-500",
-        "headquarters":"Harrisonburg, VA",
-        "total_dollars_given":5000,
-        "diversity_score": "8",
-        "social_media_links":{
-            "fb":"https://www.facebook.com/MinorityProgrammers"
-        },
-        "website":"https://minorityprogrammers.com/"
+    "website": "https://minorityprogrammers.com/"
+  },
+  {
+    "id": 2,
+    "name": "Apple",
+    "description": "The Minority Programmers Association is an international network of developers unifying together to tackle humanitarian issues with software solutions. We are a professional network, a community of mentor and students, a place to learn relevant IT skills with job placement, a hub for innovation, but most importantly, a family..",
+    "specialties": ["Science", "Technology"],
+    "started_at": "1/21/2000",
+    "mpa_relationship_started": "1/21/2020",
+    "relation_type": "Sponsor",
+    "type_company": "public company",
+    "size_company": "201-500",
+    "headquarters": "Harrisonburg, VA",
+    "total_dollars_given": 5000,
+    "diversity_score": "8",
+    "social_media_links": {
+      "fb": "https://www.facebook.com/MinorityProgrammers"
     },
-    {
-        "id": 3,
-        "name": "Tesla",
-        "description": "The Minority Programmers Association is an international network of developers unifying together to tackle humanitarian issues with software solutions. We are a professional network, a community of mentor and students, a place to learn relevant IT skills with job placement, a hub for innovation, but most importantly, a family..",
-        "specialties":["Science", "Technology"],
-        "started_at": "1/21/2000",
-        "mpa_relationship_started": "1/21/2020",
-        "relation_type": "Sponsor",
-        "type_company": "public company",
-        "size_company": "201-500",
-        "headquarters":"Harrisonburg, VA",
-        "total_dollars_given":5000,
-        "diversity_score": "8",
-        "social_media_links":{
-            "fb":"https://www.facebook.com/MinorityProgrammers"
-        },
-        "website":"https://minorityprogrammers.com/"
-    }
+    "website": "https://minorityprogrammers.com/"
+  },
+  {
+    "id": 3,
+    "name": "Tesla",
+    "description": "The Minority Programmers Association is an international network of developers unifying together to tackle humanitarian issues with software solutions. We are a professional network, a community of mentor and students, a place to learn relevant IT skills with job placement, a hub for innovation, but most importantly, a family..",
+    "specialties": ["Science", "Technology"],
+    "started_at": "1/21/2000",
+    "mpa_relationship_started": "1/21/2020",
+    "relation_type": "Sponsor",
+    "type_company": "public company",
+    "size_company": "201-500",
+    "headquarters": "Harrisonburg, VA",
+    "total_dollars_given": 5000,
+    "diversity_score": "8",
+    "social_media_links": {
+      "fb": "https://www.facebook.com/MinorityProgrammers"
+    },
+    "website": "https://minorityprogrammers.com/"
+  }
 ]

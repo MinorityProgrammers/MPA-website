@@ -1,25 +1,25 @@
-import React, {
-  useState, useEffect, useRef, useContext,
-} from 'react';
-import { useRouter } from 'next/router';
-import { signOut, useSession } from 'next-auth/client';
-import Link from 'next/link';
-import Web3 from 'web3';
-import Web3Modal from 'web3modal';
 import Portis from '@portis/web3';
 import WalletConnectProvider from '@walletconnect/web3-provider';
 import Fortmatic from 'fortmatic';
 import decode from 'jwt-decode';
-import { useMoralis } from 'react-moralis';
+import { signOut, useSession } from 'next-auth/client';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import React, {
+  useContext, useEffect, useRef, useState,
+} from 'react';
 import { BiMenuAltLeft } from 'react-icons/bi';
-import { GlobalContext } from '../../contexts/provider';
+import { useMoralis } from 'react-moralis';
+import Web3 from 'web3';
+import Web3Modal from 'web3modal';
 import { LOGOUT_USER } from '../../contexts/actions/actionTypes';
 import { getProfile } from '../../contexts/actions/profile/getProfile';
+import { GlobalContext } from '../../contexts/provider';
+import Account from '../Account';
+import NativeBalance from '../NativeBalance';
+import { useDetectOutsideClick } from '../UseDetectOutsideClick';
 import HomepageNavLoggedin from './HomepageNavLoggedin';
 import HomepageNavLogin from './HomepageNavLogin';
-import NativeBalance from '../NativeBalance';
-import Account from '../Account';
-import { useDetectOutsideClick } from '../UseDetectOutsideClick';
 
 let web3Modal;
 let selectedAccount = null;
@@ -38,13 +38,10 @@ async function fetchAccountData() {
   // Get a Web3 instance for the wallet
   const web3 = new Web3(provider);
 
-  console.log('Web3 instance is', web3);
-
   // Get list of accounts of the connected wallet
   const accounts = await web3.eth.getAccounts();
 
   // MetaMask does not give you all accounts, only the selected account
-  console.log('Got accounts', accounts);
   selectedAccount = accounts[0];
 }
 
@@ -89,9 +86,6 @@ async function onConnect() {
     disableInjectedProvider: false, // optional. For MetaMask / Brave / Opera.
   });
 
-  console.log('Web3Modal instance is', web3Modal);
-
-  console.log('Opening a dialog', web3Modal);
   try {
     provider = await web3Modal.connect();
   } catch (e) {
@@ -102,27 +96,22 @@ async function onConnect() {
   // Subscribe to accounts change
   provider.on('accountsChanged', (accounts) => {
     fetchAccountData();
-    console.log(selectedAccount);
   });
 
   // Subscribe to chainId change
   provider.on('chainChanged', (chainId) => {
     fetchAccountData();
-    console.log(selectedAccount);
   });
 
   // Subscribe to networkId change
   provider.on('networkChanged', (networkId) => {
     fetchAccountData();
-    console.log(selectedAccount);
   });
 
   await refreshAccountData();
 }
 
 async function onDisconnect() {
-  console.log('Killing the wallet connection', provider);
-
   // TODO: Which providers have close method?
   if (provider.close) {
     await provider.close();
@@ -138,13 +127,13 @@ async function onDisconnect() {
   selectedAccount = null;
 }
 
-const HomepageNav = function ({
+const HomepageNav = ({
   setToken,
   setData,
   page,
   open,
   setOpen = () => {},
-}) {
+}) => {
   const dropdownRef = useRef(null);
   const dropdownMobileRef = useRef(null);
   const searchMobileRef = useRef(null);
@@ -175,7 +164,6 @@ const HomepageNav = function ({
     if (isAuthenticated && !isWeb3Enabled && !isWeb3EnableLoading) {
       setConnect(true);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isAuthenticated, isWeb3Enabled]);
 
   const handleSearch = (e) => {
@@ -197,8 +185,6 @@ const HomepageNav = function ({
       query: { _q: searchValue },
     });
   };
-
-  console.log(session);
 
   const handleConnect = () => {
     enableWeb3();
@@ -231,7 +217,7 @@ const HomepageNav = function ({
       ? window.localStorage.getItem('userInfo')
       : null;
 
-    if (token == null || userInfo == {}) {
+    if (token === null || userInfo === {}) {
       setUserData(null);
       if (
         page === 'MentorshipProgram'
@@ -322,9 +308,7 @@ const HomepageNav = function ({
     setDropdown(false);
   };
 
-  const extendEle = () => {
-    dropdown ? setDropdown(false) : setDropdown(true);
-  };
+  const extendEle = () => (dropdown ? setDropdown(false) : setDropdown(true));
 
   const showSearchIconMobile = () => (
     <div
@@ -341,6 +325,7 @@ const HomepageNav = function ({
           placeholder="Search"
         />
         <button
+          type="button"
           className="mobile-searchButton"
           href="#"
           onClick={onClickSearch}
@@ -374,6 +359,7 @@ const HomepageNav = function ({
             </p>
           </div>
           <button
+            type="button"
             className="btn btn-warning btn-dropdown-filled tw-cursor-pointer"
             onClick={() => {
               handleLogout();
@@ -385,13 +371,13 @@ const HomepageNav = function ({
       ) : (
         <div className="mobile__register">
           <a href="/auth">
-            <button className="btn btn-pink mr-3 ml-3" onClick={handleClick}>
+            <button type="button" className="btn btn-pink mr-3 ml-3" onClick={handleClick}>
               Sign in
             </button>
           </a>
           <p className="mr-3 ml-3">OR</p>
           <a href="/auth">
-            <button className="btn btn-yellow mr-3 ml-3" onClick={handleClick}>
+            <button type="button" className="btn btn-yellow mr-3 ml-3" onClick={handleClick}>
               Register
             </button>
           </a>
@@ -448,9 +434,6 @@ const HomepageNav = function ({
             <div className="nav__mobile-link">
               Consultancy
               <i className="fas fa-chevron-right mobile-arrow" />
-              {/* {dropdown ? <i className="fas fa-chevron-down mobile-arrow"></i> : <i className="fas fa-chevron-right mobile-arrow"></i>} */}
-              {/* dropdown option */}
-              {/* {dropdown && <HomepageNavDropdown onCloseMobileMenu={closeMobileMenu} />} */}
             </div>
           </li>
         </a>
@@ -491,7 +474,7 @@ const HomepageNav = function ({
           ) : (
             <div>
               <a href="#" className="topbar__connected">
-                <img src="/assets/images/greendot.svg" className="green__dot" />
+                <img src="/assets/images/greendot.svg" alt="" className="green__dot" />
                 <p> </p>
                 {selectedAccount}
               </a>
@@ -614,7 +597,7 @@ const HomepageNav = function ({
         <div className="container homepage__navbar">
           <div className="navbar-logo">
             <Link href="/" onClick={closeMobileMenu}>
-              <img src="/assets/images/mpicon.svg" />
+              <img src="/assets/images/mpicon.svg" alt="" />
             </Link>
           </div>
           <div className="mobile-icon">

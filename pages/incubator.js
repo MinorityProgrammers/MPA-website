@@ -1,25 +1,22 @@
-import React, { useState, useRef, useEffect } from 'react';
 import axios from 'axios';
-import { useRouter } from 'next/router';
-import Layout from '../components/Layout';
-import HomepageNav from '../components/homepage/HomepageNav';
-import IncubatorHero from '../components/IncubatorHero';
+import React, { useEffect, useRef, useState } from 'react';
+import ComingSoon from '../components/ComingSoon';
+import LoginPage from '../components/Consultancy/helperFiles/LoginPage';
+import FeaturedAdvice from '../components/FeaturedAdvice';
+import FeaturedMyStartup from '../components/FeaturedMyStartup';
+import FeaturedMyStartupSkeleton from '../components/FeaturedMyStartupSkeleton';
 import FeaturedStartups from '../components/FeaturedStartups';
 // Skeletons
 import FeaturedStartupsSkeleton from '../components/FeaturedStartupsSkeleton';
-import FeaturedMyStartupSkeleton from '../components/FeaturedMyStartupSkeleton';
-import FeaturedUpcomingSkeleton from '../components/FeaturedUpcomingSkeleton';
-
-import FeaturedAdvice from '../components/FeaturedAdvice';
 import FeaturedUpcoming from '../components/FeaturedUpcoming';
-import FeaturedMyStartup from '../components/FeaturedMyStartup';
-import FundedStartup from '../components/FundedStartup';
+import FeaturedUpcomingSkeleton from '../components/FeaturedUpcomingSkeleton';
 import Footer from '../components/Footer';
+import HomepageNav from '../components/homepage/HomepageNav';
+import IncubatorHero from '../components/IncubatorHero';
+import Layout from '../components/Layout';
 import SidebarTwo from '../components/SidebarTwo';
-import links from '../contexts/utils/links';
-import ComingSoon from '../components/ComingSoon';
 import { useDetectOutsideClick } from '../components/UseDetectOutsideClick';
-import LoginPage from '../components/Consultancy/helperFiles/LoginPage';
+import links from '../contexts/utils/links';
 
 const IncubatorPage = function () {
   const [startups, setStartups] = useState([]);

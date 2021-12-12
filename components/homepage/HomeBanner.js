@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Swiper from 'react-id-swiper';
 import 'swiper/css/swiper.css';
 
-const HomeBanner = function () {
+const HomeBanner = () => {
   const [swiper, setSwiper] = useState(null);
 
   const goNext = () => {

@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
 import Papa from 'papaparse';
-import HomepageTeamCard from './HomepageTeamCard';
+import React, { useEffect, useState } from 'react';
 import HomepageMemberModal from './HomepageMemberModal';
+import HomepageTeamCard from './HomepageTeamCard';
 
-const HomepageTeam = function () {
+const HomepageTeam = () => {
   const Departments = [
     {
       id: 1,
@@ -156,7 +156,7 @@ const HomepageTeam = function () {
         <div className="container team__homepage-container tw-shadow-lg">
           <div className="team__item-text pt-3">
             <h2>
-              <button className="btn tw-text-white tw-bg-blue-900 hover:tw-text-white" onClick={getAllMembers}>
+              <button type="button" className="btn tw-text-white tw-bg-blue-900 hover:tw-text-white" onClick={getAllMembers}>
                 All
               </button>
             </h2>
@@ -167,12 +167,13 @@ const HomepageTeam = function () {
                 <div className="team__item-top" key={d.id}>
                   <div className="team__item-bg">
                     <div className="team__item-icon">
-                      <img src="/assets/images/mpicon.svg" />
+                      <img src="/assets/images/mpicon.svg" alt="" />
                     </div>
                   </div>
                   <div className="team__item-text">
                     <h2>
                       <button
+                        type="button"
                         className="btn tw-text-white tw-bg-blue-900 hover:tw-text-white"
                         onClick={() => handleTeam(d, d.id)}
                       >

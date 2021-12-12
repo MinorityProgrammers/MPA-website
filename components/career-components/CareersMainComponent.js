@@ -1,24 +1,24 @@
-import { useState, useRef } from 'react';
-import Footer from '../Footer.js';
-import ApplyModal from './QuickApplyJobApplication';
+import React, { useRef, useState } from 'react';
+import Footer from '../Footer';
 import { useDetectOutsideClick } from '../UseDetectOutsideClick';
+import ApplyModal from './QuickApplyJobApplication';
 
-const CareersMainComponent = function (props) {
-  const [open, setOpen] = useState(false);
+const CareersMainComponent = (props) => {
   const [data, setData] = useState([]);
   const dropdownRef = useRef(null);
   const [hide, setHide] = useDetectOutsideClick(dropdownRef, false);
+
   const handleClick = () => {
     setHide(!hide);
   };
-  if (hide == false) {
+
+  if (hide === false) {
     setTimeout(() => {
       setHide(true);
     }, 60000);
   }
 
   return (
-    // <Layout pageTitle="MPA - Careers">
     <div>
       {props.jobsOn && (
         <ApplyModal
@@ -30,24 +30,8 @@ const CareersMainComponent = function (props) {
           getAppliedJobs={props.getAppliedJobs}
         />
       )}
-      {/* <div className="careers-wrapper" style={{ position: "relative" }}>
-            <div className="careers-main-container tw-mt-20">
-            <div className="careers-main-container-tabs">
-              <Link href="/careers/companies" as="/careers/companies">
-                <button className="careers-main-container-tabs-tab">
-                  Companies
-                </button>
-              </Link>
-              <Link href="/careers">
-                <button className="careers-main-container-tabs-tab">
-                  Jobs
-                </button>
-              </Link>
-            </div> */}
       <div>{props.children}</div>
       <Footer />
-      {/* </div> */}
-      {/* </div> */}
     </div>
   );
 };

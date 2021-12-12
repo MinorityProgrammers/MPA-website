@@ -1,31 +1,34 @@
-import React, { useState, useRef, useEffect } from 'react';
-import JobCreation from '../../components/career-components/JobCreation.js';
-import Layout from '../../components/Layout.js';
-import Footer from '../../components/Footer.js';
-import SidebarTwo from '../../components/SidebarTwo';
-import HomepageNav from '../../components/homepage/HomepageNav.js';
-import links from '../../contexts/utils/links';
+import React, { useRef, useState } from 'react';
+import JobCreation from '../../components/career-components/JobCreation';
 import ComingSoon from '../../components/ComingSoon';
+import Footer from '../../components/Footer';
+import HomepageNav from '../../components/homepage/HomepageNav';
+import Layout from '../../components/Layout';
+import SidebarTwo from '../../components/SidebarTwo';
 import { useDetectOutsideClick } from '../../components/UseDetectOutsideClick';
+import links from '../../contexts/utils/links';
 
-const CreateNewJob = function () {
+const CreateNewJob = () => {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef(null);
   const [hide, setHide] = useDetectOutsideClick(dropdownRef, false);
+
   const handleClick = () => {
     setHide(!hide);
   };
-  if (hide == false) {
+  if (hide === false) {
     setTimeout(() => {
       setHide(true);
     }, 60000);
   }
+
   function getTodaysDate() {
     const todaysDate = new Date().toString().split(' ').slice(1, 4)
       .join(' ');
     return todaysDate;
   }
   getTodaysDate();
+
   return (
     <div className="create-new-job">
       <Layout>
@@ -37,7 +40,7 @@ const CreateNewJob = function () {
           active="Home"
           handleClick={handleClick}
         />
-        {hide == false && <ComingSoon closeClick={handleClick} />}
+        {hide === false && <ComingSoon closeClick={handleClick} />}
         <div className="create-new-job-page tw-pb-20 tw-pt-2.5 tw-mt-20">
           <div className="tw-container tw-mx-auto">
             <div className="tw-mt-2.5 tw-text-center sm:tw-text-right">
@@ -47,6 +50,7 @@ const CreateNewJob = function () {
                 </div>
                 <div>
                   Todays Date:
+                  {' '}
                   <span className="tw-font-bold">{getTodaysDate()}</span>
                 </div>
               </div>

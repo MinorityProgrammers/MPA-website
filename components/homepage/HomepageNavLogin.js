@@ -1,23 +1,17 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { useRouter } from 'next/router';
+import { Form, Formik } from 'formik';
 import {
-  signIn,
-  signOut,
-  useSession,
-  getProviders,
-  providers,
-  getSession,
+  getProviders, getSession, signIn, useSession
 } from 'next-auth/client';
-import { Formik, Form } from 'formik';
-import * as Yup from 'yup';
-import { GoogleLogin, GoogleLogout } from 'react-google-login';
+import { useRouter } from 'next/router';
+import React, { useContext, useEffect, useState } from 'react';
 import 'react-toastify/dist/ReactToastify.css';
-import { GlobalContext } from '../../contexts/provider';
-import { login } from '../../contexts/actions/auth/login';
+import * as Yup from 'yup';
 import { googleAuth, nextAuth } from '../../contexts/actions/auth/googleAuth';
+import { login } from '../../contexts/actions/auth/login';
+import { GlobalContext } from '../../contexts/provider';
 import TextField from '../TextField';
 
-export default function HomepageNavLogin({ onCloseMobileMenu }) {
+const HomepageNavLogin = ({ onCloseMobileMenu }) => {
   const router = useRouter();
   const googleClientId = process.env.CLIENT_ID;
   const [click, setClick] = useState(false);
@@ -48,9 +42,7 @@ export default function HomepageNavLogin({ onCloseMobileMenu }) {
       // window.location.href = '/login'
       setLoginSubmit(false);
     }
-    return () => {
-      timerId && clearTimeout(timerId);
-    };
+    return () => timerId && clearTimeout(timerId);
   }, [data]);
 
   // const { walletAddress, chainId } = useMoralisDapp();
@@ -95,25 +87,10 @@ export default function HomepageNavLogin({ onCloseMobileMenu }) {
 
   return (
     <div className={click ? 'dropdown-login clicked' : 'dropdown-login'}>
-      <button className="dropdown-login-btn-close" onClick={onCloseMobileMenu}>
+      <button type="button" className="dropdown-login-btn-close" onClick={onCloseMobileMenu}>
         <i className="fas fa-times" />
       </button>
       <div className="dropdown-login-icons">
-        {/* <GoogleLogin
-          clientId={googleClientId}
-          render={(renderProps) => (
-            <img
-              src="/assets/images/login-signup/google.png"
-              alt="icon"
-              onClick={renderProps.onClick}
-              disabled={renderProps.disabled}
-            />
-          )}
-          buttonText="Login"
-          onSuccess={handleLoginSuccess}
-          onFailure={handleLoginFailure}
-          cookiePolicy="single_host_origin"
-        /> */}
         <img
           onClick={() => signIn(providers.google.id)}
           src="./assets/images/login-signup/google.png"
@@ -206,7 +183,7 @@ export default function HomepageNavLogin({ onCloseMobileMenu }) {
       </div>
     </div>
   );
-}
+};
 
 HomepageNavLogin.getInitialProps = async (context) => {
   const { req, res } = context;
@@ -225,3 +202,5 @@ HomepageNavLogin.getInitialProps = async (context) => {
     providers: await getProviders(),
   };
 };
+
+export default HomepageNavLogin;

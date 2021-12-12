@@ -1,22 +1,17 @@
-import ReactPaginate from 'react-paginate';
-
-import {
-  Fragment, useState, useEffect, useRef,
-} from 'react';
-import { useRouter } from 'next/router';
 import axios from 'axios';
-import links from '../../contexts/utils/links';
-
+import { useRouter } from 'next/router';
+import React, { useEffect, useRef, useState } from 'react';
+import ReactPaginate from 'react-paginate';
 import CareersMainComponent from '../../components/career-components/CareersMainComponent';
-import { JobsFilters } from '../../components/career-components/JobsFilters.js';
-import Loader from '../../components/Loader';
-import LoadingSkeleton from '../../components/career-components/LoadingSkeleton.js';
-import Layout from '../../components/Layout';
-import { successToast, errorToast } from '../../contexts/utils/toasts';
+import JobsFilters from '../../components/career-components/JobsFilters';
+import LoadingSkeleton from '../../components/career-components/LoadingSkeleton';
+import ComingSoon from '../../components/ComingSoon';
 import HomepageNav from '../../components/homepage/HomepageNav';
+import Layout from '../../components/Layout';
 import SidebarTwo from '../../components/SidebarTwo';
 import { useDetectOutsideClick } from '../../components/UseDetectOutsideClick';
-import ComingSoon from '../../components/ComingSoon.js';
+import links from '../../contexts/utils/links';
+import { errorToast, successToast } from '../../contexts/utils/toasts';
 
 export async function getServerSideProps(context) {
   return {
@@ -26,7 +21,7 @@ export async function getServerSideProps(context) {
   };
 }
 
-const JobsMain = function (props) {
+const JobsMain = () => {
   const [open, setOpen] = useState(false);
   const [modalView, toggleModalView] = useState(false);
   const dropdownRef = useRef(null);
@@ -37,11 +32,12 @@ const JobsMain = function (props) {
   const handleClick = () => {
     setHide(!hide);
   };
-  if (hide == false) {
+  if (hide === false) {
     setTimeout(() => {
       setHide(true);
     }, 60000);
   }
+
   const [currentJob, changeCurrentJob] = useState({});
   const [savedJobs, setSavedJobs] = useState([]);
   const [appliedJobs, setAppliedJobs] = useState([]);
@@ -62,14 +58,6 @@ const JobsMain = function (props) {
   const [activeJobIndex, setActiveJobIndex] = useState(0);
   const descriptionInput = useRef();
 
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  const openModal = () => {
-    if (window.innerWidth <= 550) setShowModal(!showModal);
-  };
-
   const fetchData = () => {
     setLoading(true);
     fetch('https://koinstreet-learn-api.herokuapp.com/api/v1/job')
@@ -77,21 +65,29 @@ const JobsMain = function (props) {
       .then((response) => {
         setJobs(response.data);
         setAllJobs(response.data);
+
         // check if the views is mobile or desktop to display "current view job"
         if (window.innerWidth <= 991) {
           changeCurrentJob(null);
         } else {
           changeCurrentJob(response.data[0]);
         }
-        // console.log(response.data);
+
         setTimeout(() => {
           // TO TEST LOADING SKELETON COMMENT OUT setLoading(false);
           setLoading(false);
           setLoadingReq(true);
-          // console.log("message", response.data);
         }, 1);
       })
       .catch((error) => console.log(error));
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const openModal = () => {
+    if (window.innerWidth <= 550) setShowModal(!showModal);
   };
 
   const filterJobs = () => {
@@ -102,8 +98,6 @@ const JobsMain = function (props) {
     )
       .then((response) => response.json())
       .then((response) => {
-        // setAllJobs(response.data)
-        console.log('response', response);
         if (response.data.length >= 1) {
           if (window.innerWidth <= 991) {
             changeCurrentJob(null);
@@ -114,13 +108,9 @@ const JobsMain = function (props) {
           }
         } else {
           changeCurrentJob(null);
-          setJobs(null);
+          setJobs([]);
         }
         setLoading(false);
-        // setTimeout(() => {
-        //   setLoading(false);
-        //   setLoadingReq(true);
-        // }, 1);
       });
   };
 
@@ -133,12 +123,12 @@ const JobsMain = function (props) {
     }
 
     // closes form
-    if (btn.target.name != 'remote') {
+    if (btn.target.name !== 'remote') {
       btn.target.parentNode.parentNode.parentNode.style.display = 'none';
     }
 
-    if (btn.target.name == 'pay') {
-      if (btn.target.value != '') {
+    if (btn.target.name === 'pay') {
+      if (btn.target.value !== '') {
         queryObj.pay = btn.target.value;
         filter.pay = btn.target.value;
       } else {
@@ -148,8 +138,8 @@ const JobsMain = function (props) {
       router.push({ query: queryObj });
     }
 
-    if (btn.target.name == 'remote') {
-      if (btn.target.checked == true) {
+    if (btn.target.name === 'remote') {
+      if (btn.target.checked === true) {
         queryObj.remote = true;
         filter.remote = true;
       } else {
@@ -159,8 +149,8 @@ const JobsMain = function (props) {
       router.push({ query: queryObj });
     }
 
-    if (btn.target.name == 'job_type') {
-      if (btn.target.checked == true) {
+    if (btn.target.name === 'job_type') {
+      if (btn.target.checked === true) {
         queryObj.job_type = btn.target.value;
         filter.job_type = btn.target.value;
       } else {
@@ -170,8 +160,8 @@ const JobsMain = function (props) {
       router.push({ query: queryObj });
     }
 
-    if (btn.target.name == 'job_industry') {
-      if (btn.target.checked == true) {
+    if (btn.target.name === 'job_industry') {
+      if (btn.target.checked === true) {
         queryObj.job_industry = btn.target.value;
         filter.job_industry = btn.target.value;
       } else {
@@ -181,8 +171,8 @@ const JobsMain = function (props) {
       router.push({ query: queryObj });
     }
 
-    if (btn.target.name == 'date_posted') {
-      if (btn.target.value != '0') {
+    if (btn.target.name === 'date_posted') {
+      if (btn.target.value !== '0') {
         queryObj.date_posted = btn.target.value;
         filter.date_posted = btn.target.value;
       } else {
@@ -211,7 +201,7 @@ const JobsMain = function (props) {
 
       winSize.current = 'large';
     } else if (
-      winSize.current == 'large'
+      winSize.current === 'large'
       && document.querySelector('.jobsMain')
     ) {
       document.getElementsByClassName(
@@ -243,8 +233,6 @@ const JobsMain = function (props) {
   function closeSingle() {
     document.getElementsByClassName('jobsMain-search')[0].style.display = 'block';
     document.getElementsByClassName('jobs-main-filters')[0].style.display = 'block';
-    // document.getElementsByClassName("jobsMain-perPage")[0].style.display =
-    //   "block";
     document.getElementsByClassName(
       'jobs-main-container-single',
     )[0].style.display = 'none';
@@ -256,8 +244,7 @@ const JobsMain = function (props) {
 
   function openFilterForm(btn) {
     // if the form is open, close it and return
-    // console.log(window.getComputedStyle(btn.nextSibling).display)
-    if (window.getComputedStyle(btn.nextSibling).display == 'block') {
+    if (window.getComputedStyle(btn.nextSibling).display === 'block') {
       btn.nextSibling.style.display = 'none';
       return;
     }
@@ -276,12 +263,30 @@ const JobsMain = function (props) {
   const token = typeof window !== 'undefined'
     ? window.localStorage.getItem('jwtToken')
     : null;
+
   const userInfo = typeof window !== 'undefined'
     ? window.localStorage.getItem('userInfo')
     : null;
 
+  const fetchSavedJobs = () => {
+    if (token) {
+      axios
+        .get(
+          'https://koinstreet-learn-api.herokuapp.com/api/v1/savejob/userjobs',
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          },
+        )
+        .then((response) => {
+          setSavedJobs(response.data.data);
+          setLoading(false);
+        });
+    }
+  };
+
   const saveJob = (job) => {
-    console.log(job);
     axios
       .post(
         'https://koinstreet-learn-api.herokuapp.com/api/v1/savejob',
@@ -295,36 +300,13 @@ const JobsMain = function (props) {
         },
       )
       .then((response) => {
-        console.log('Saved', response);
         successToast('Job Saved Successfully!');
         fetchSavedJobs();
       })
       .catch((err) => {
-        console.error(err);
         setLoading(false);
         errorToast('Job not saved, something went wrong, please contact us.');
       });
-  };
-
-  const fetchSavedJobs = () => {
-    if (token) {
-      // setLoading(true)
-
-      axios
-        .get(
-          'https://koinstreet-learn-api.herokuapp.com/api/v1/savejob/userjobs',
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          },
-        )
-        .then((response) => {
-          setSavedJobs(response.data.data);
-          setLoading(false);
-          console.log('Saved Jobs', response);
-        });
-    }
   };
 
   const getAppliedJobs = () => {
@@ -343,7 +325,6 @@ const JobsMain = function (props) {
         .then((response) => {
           setAppliedJobs(response.data.data);
           setLoading(false);
-          console.log('Applied Jobs', response.data);
         });
     }
   };
@@ -362,23 +343,18 @@ const JobsMain = function (props) {
 
   const authPlease = () => {
     errorToast('Please, Sign in your account and after save and apply jobs.');
-    // if (!token) {
-    //   setLoading(true);
-    //   setTimeout(() => {
-    //     setLoading(false);
-    //   }, 100);
-    // }
   };
 
-  const pageCount = Math.ceil(jobs?.length / 5);
+  const pageCount = Math.ceil(jobs && jobs.length / 5);
   const jobsPerPage = 5;
   const pagesVisited = pageNumber * jobsPerPage;
 
-  // jobStubs will be fetched from database and then map... the fetch will have ALL query parameters(search description, search location, filters, jobs per page, current page)
-  const jobStubs = jobs != null ? (
+  // jobStubs will be fetched from database and then map... the fetch will have ALL query parameters
+  // (search description, search location, filters, jobs per page, current page)
+  const jobStubs = jobs?.length > 0 ? (
     jobs.slice(pagesVisited, pagesVisited + jobsPerPage).map((job, idx) => (
       <div
-        className={idx == activeJobIndex ? 'job-stub active' : 'job-stub'}
+        className={idx === activeJobIndex ? 'job-stub active' : 'job-stub'}
         key={idx}
         onClick={(e) => changeJobAndColor(e, job, idx)}
       >
@@ -394,21 +370,23 @@ const JobsMain = function (props) {
             {' '}
             {new Date(job.updatedAt).toDateString().substr(3)}
           </div>
-          {userInfo != null ? (
-            savedJobsId.includes(job._id) ? (
-              <button disabled className="job-stub-saved">
-                Saved
-              </button>
+          {
+            userInfo !== null ? (
+              savedJobsId.includes(job._id) ? (
+                <button type="button" disabled className="job-stub-saved">
+                  Saved
+                </button>
+              ) : (
+                <button type="button" className="job-stub-saveLink" onClick={() => saveJob(job)}>
+                  Save Job
+                </button>
+              )
             ) : (
-              <a className="job-stub-saveLink" onClick={() => saveJob(job)}>
+              <button type="button" className="job-stub-saveLink" onClick={authPlease}>
                 Save Job
-              </a>
+              </button>
             )
-          ) : (
-            <a className="job-stub-saveLink" onClick={authPlease}>
-              Save Job
-            </a>
-          )}
+          }
         </div>
       </div>
     ))
@@ -448,7 +426,6 @@ const JobsMain = function (props) {
   };
 
   const onEmptySearchFields = () => {
-    console.log('User typed: ', descriptionInput.current.value);
     if (!descriptionInput.current.value) {
       delete queryObj.description;
       router.push({ query: queryObj });
@@ -460,6 +437,7 @@ const JobsMain = function (props) {
     setPageNumber(selected);
   };
 
+  // renders jsx elements (page contents)
   return (
     <CareersMainComponent
       jobsOn
@@ -469,211 +447,207 @@ const JobsMain = function (props) {
       loadingReq={loadingReq}
       getAppliedJobs={getAppliedJobs}
     >
-      <>
-        <Layout pageTitle="MPA - Careers">
-          <HomepageNav open={open} setOpen={setOpen} page="Employers Page" />
-          <SidebarTwo
-            open={open}
-            setOpen={setOpen}
-            links={links}
-            active="Home"
-            handleClick={handleClick}
-          />
-          {hide == false && <ComingSoon closeClick={handleClick} />}
-          <div id="join" />
-          <div className="container jobsMain">
-            <div className="jobsMain-search">
-              <div className="container">
-                <h1 className="header_searchbar">Search for Jobs</h1>
-              </div>
-              <div className="options">
-                <div className="jobs-main-filters" onClick={() => openModal()}>
-                  <JobsFilters
-                    submitForm={submitForm}
-                    openFilterForm={openFilterForm}
-                    filter={filter}
-                    fetchData={fetchData}
-                    showModal={showModal}
-                    setShowModal={setShowModal}
-                    queryObj={queryObj}
-                  />
-                </div>
-                <form
-                  className="job-search-filter"
-                  onSubmit={(e) => onFormSubmit(e)}
-                >
-                  <input
-                    className="form-control mx-1"
-                    type="search"
-                    name="description"
-                    ref={descriptionInput}
-                    // onChange={() => onEmptySearchFields()}
-                    placeholder="Search job description"
-                  />
-                  <button
-                    className="search-btn btn btn-warning p-1"
-                    type="submit"
-                  >
-                    Search
-                  </button>
-                </form>
-              </div>
-            </div>
 
-            {/* LOADING SKELETON HERE */}
-            {loading ? (
-              <LoadingSkeleton showCurrent={!(window.innerWidth < 1000)} />
-            ) : (
-              <div className="jobs-main-container">
-                <div className="jobs-main-container-list">
-                  {jobStubs}
-                  <div className="jobs-paginator">
-                    {jobs !== [] && (
-                      <ReactPaginate
-                        previousLabel="<"
-                        nextLabel=">"
-                        pageCount={pageCount}
-                        onPageChange={changePage}
-                        initialPage={0}
-                        containerClassName="paginationBttns"
-                        previousLinkClassName="previousBttn"
-                        nextLinkClassName="paginationDisabled"
-                        activeClassName="activePage"
-                      />
-                    )}
-                  </div>
-                </div>
-                {/* CURRENT JOB NOT SHOWN WHILE IN MOBILE VIEW */}
-                <div
-                  className=" right-grid jobs-main-container-single"
-                  style={{ display: currentJob == null && 'none' }}
+      <Layout pageTitle="MPA - Careers">
+        <HomepageNav open={open} setOpen={setOpen} page="Employers Page" />
+        <SidebarTwo
+          open={open}
+          setOpen={setOpen}
+          links={links}
+          active="Home"
+          handleClick={handleClick}
+        />
+        {hide === false && <ComingSoon closeClick={handleClick} />}
+        <div id="join" />
+        <div className="container jobsMain">
+          <div className="jobsMain-search">
+            <div className="container">
+              <h1 className="header_searchbar">Search for Jobs</h1>
+            </div>
+            <div className="options">
+              <div className="jobs-main-filters" onClick={() => openModal()}>
+                <JobsFilters
+                  submitForm={submitForm}
+                  openFilterForm={openFilterForm}
+                  filter={filter}
+                  fetchData={fetchData}
+                  showModal={showModal}
+                  setShowModal={setShowModal}
+                  queryObj={queryObj}
+                />
+              </div>
+              <form
+                className="job-search-filter"
+                onSubmit={(e) => onFormSubmit(e)}
+              >
+                <input
+                  className="form-control mx-1"
+                  type="search"
+                  name="description"
+                  ref={descriptionInput}
+                  placeholder="Search job description"
+                />
+                <button
+                  className="search-btn btn btn-warning p-1"
+                  type="submit"
                 >
-                  {currentJob != null && (
-                    <>
-                      <div className="current-job__header">
-                        <div className="float-current-job__title">
-                          <h1 className="current-job__title">
-                            {currentJob.job_title}
-                          </h1>
-                          <button
-                            className="close-single-padding jobs-main-container-single-close"
-                            onClick={closeSingle}
-                          >
-                            <i className="fas fa-times" />
-                          </button>
-                          <span>{currentJob.location}</span>
-                        </div>
-                        <div className="apply-button">
-                          <a>
-                            {userInfo != null ? (
-                              appliedJobsId.includes(currentJob._id) ? (
-                                <button
-                                  disabled
-                                  className="current-job-view-box1-jobInfo-postSave-apply applied-btn"
-                                >
-                                  Applied
-                                </button>
-                              ) : (
-                                <button
-                                  onClick={() => {
-                                    toggleModalView(true);
-                                    console.log(
-                                      'the current job is',
-                                      currentJob,
-                                    );
-                                  }}
-                                  className="current-job-view-box1-jobInfo-postSave-apply"
-                                >
-                                  Apply
-                                </button>
-                              )
-                            ) : (
-                              <button
-                                onClick={authPlease}
-                                className="current-job-view-box1-jobInfo-postSave-apply"
-                              >
-                                Apply
-                              </button>
-                            )}
-                          </a>
-                        </div>
-                      </div>
-                      <hr className="current-job__rule" />
-                      <div className="apply__section">
-                        <div className="apply__section-header">
-                          <h2 className="description-header">
-                            Job Description
-                          </h2>
-                        </div>
-                        <span>{currentJob.job_description}</span>
-                        <div>
-                          <hr className="current-job__rule" />
-                          <div>
-                            <h2 className="description-header">
-                              Min Requirements
-                            </h2>
-                            <div>
-                              {loadingReq === true && (
-                                <div>
-                                  {currentJob.min_requirements
-                                    ? currentJob.min_requirements.map(
-                                      (skill, index) => (
-                                        <ul>
-                                          <li
-                                            key={index}
-                                            className="list-style-square"
-                                          >
-                                            <span>
-                                              {skill.years}
-                                              {' '}
-                                              {skill.years == 1
-                                                ? 'year '
-                                                : 'years '}
-                                            </span>
-                                            <span>
-                                              {' '}
-                                              {skill.skill}
-                                            </span>
-                                          </li>
-                                        </ul>
-                                      ),
-                                    )
-                                    : ''}
-                                </div>
-                              )}
-                            </div>
-                          </div>
-                          <div>
-                            <h2 className="description-header">
-                              Additional Information
-                            </h2>
-                            <div className="current-job-view-box5-container">
-                              <div>
-                                <span>Salary</span>
-                                <div>{`${currentJob.pay}`}</div>
-                              </div>
-                              <div>
-                                <span>Job Type</span>
-                                <div>{currentJob.job_type}</div>
-                              </div>
-                              <div>
-                                <span>Remote</span>
-                                <div>
-                                  {currentJob.remote === true ? 'Yes' : 'No'}
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </>
+                  Search
+                </button>
+              </form>
+            </div>
+          </div>
+
+          {/* LOADING SKELETON HERE */}
+          {loading ? (
+            <LoadingSkeleton showCurrent={!(window.innerWidth < 1000)} />
+          ) : (
+            <div className="jobs-main-container">
+              <div className="jobs-main-container-list">
+                {jobStubs}
+                <div className="jobs-paginator">
+                  {jobs.length > 0 && (
+                  <ReactPaginate
+                    previousLabel="<"
+                    nextLabel=">"
+                    pageCount={pageCount}
+                    onPageChange={changePage}
+                    initialPage={0}
+                    containerClassName="paginationBttns"
+                    previousLinkClassName="previousBttn"
+                    nextLinkClassName="paginationDisabled"
+                    activeClassName="activePage"
+                  />
                   )}
                 </div>
               </div>
-            )}
-          </div>
-        </Layout>
-      </>
+              {/* CURRENT JOB NOT SHOWN WHILE IN MOBILE VIEW */}
+              <div
+                className="right-grid jobs-main-container-single"
+                style={{ display: currentJob == null && 'none' }}
+              >
+                {currentJob != null && (
+                <>
+                  <div className="current-job__header">
+                    <div className="float-current-job__title">
+                      <h1 className="current-job__title">
+                        {currentJob.job_title}
+                      </h1>
+                      <button
+                        type="button"
+                        className="close-single-padding jobs-main-container-single-close"
+                        onClick={closeSingle}
+                      >
+                        <i className="fas fa-times" />
+                      </button>
+                      <span>{currentJob.location}</span>
+                    </div>
+                    <div className="apply-button">
+                      <span>
+                        {userInfo != null ? (
+                          appliedJobsId.includes(currentJob._id) ? (
+                            <button
+                              type="button"
+                              disabled
+                              className="current-job-view-box1-jobInfo-postSave-apply applied-btn"
+                            >
+                              Applied
+                            </button>
+                          ) : (
+                            <button
+                              type="button"
+                              onClick={() => {
+                                toggleModalView(true);
+                              }}
+                              className="current-job-view-box1-jobInfo-postSave-apply"
+                            >
+                              Apply
+                            </button>
+                          )
+                        ) : (
+                          <button
+                            type="button"
+                            onClick={authPlease}
+                            className="current-job-view-box1-jobInfo-postSave-apply"
+                          >
+                            Apply
+                          </button>
+                        )}
+                      </span>
+                    </div>
+                  </div>
+                  <hr className="current-job__rule" />
+                  <div className="apply__section">
+                    <div className="apply__section-header">
+                      <h2 className="description-header">
+                        Job Description
+                      </h2>
+                    </div>
+                    <span>{currentJob.job_description}</span>
+                    <div>
+                      <hr className="current-job__rule" />
+                      <div>
+                        <h2 className="description-header">
+                          Min Requirements
+                        </h2>
+                        <div>
+                          {loadingReq === true && (
+                          <div>
+                            {currentJob.min_requirements
+                              ? currentJob.min_requirements.map(
+                                (skill, index) => (
+                                  <ul key={index}>
+                                    <li className="list-style-square">
+                                      <span>
+                                        {skill.years}
+                                        {' '}
+                                        {skill.years === 1
+                                          ? 'year '
+                                          : 'years '}
+                                      </span>
+                                      <span>
+                                        {' '}
+                                        {skill.skill}
+                                      </span>
+                                    </li>
+                                  </ul>
+                                ),
+                              )
+                              : ''}
+                          </div>
+                          )}
+                        </div>
+                      </div>
+                      <div>
+                        <h2 className="description-header">
+                          Additional Information
+                        </h2>
+                        <div className="current-job-view-box5-container">
+                          <div>
+                            <span>Salary</span>
+                            <div>{`${currentJob.pay}`}</div>
+                          </div>
+                          <div>
+                            <span>Job Type</span>
+                            <div>{currentJob.job_type}</div>
+                          </div>
+                          <div>
+                            <span>Remote</span>
+                            <div>
+                              {currentJob.remote === true ? 'Yes' : 'No'}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </>
+                )}
+              </div>
+            </div>
+          )}
+        </div>
+      </Layout>
+
     </CareersMainComponent>
   );
 };

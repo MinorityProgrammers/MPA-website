@@ -1,8 +1,8 @@
-import React, { useState, useContext } from 'react';
+import { signOut } from 'next-auth/client';
 import { useRouter } from 'next/router';
-import { signOut, useSession } from 'next-auth/client';
-import { GlobalContext } from '../../contexts/provider';
+import React, { useContext, useState } from 'react';
 import { LOGOUT_USER } from '../../contexts/actions/actionTypes';
+import { GlobalContext } from '../../contexts/provider';
 
 const HomepageNavLoggedin = function ({ onCloseMobileMenu, userInfo }) {
   const { authDispatch } = useContext(GlobalContext);
@@ -16,14 +16,12 @@ const HomepageNavLoggedin = function ({ onCloseMobileMenu, userInfo }) {
     authDispatch({
       type: LOGOUT_USER,
     });
-    // window.location.href = '/'
-    // router.reload(router.pathname)
     signOut();
   };
 
   return (
     <div className={click ? 'dropdown-login clicked' : 'dropdown-login right'}>
-      <button className="dropdown-login-btn-close" onClick={onCloseMobileMenu}>
+      <button type="button" className="dropdown-login-btn-close" onClick={onCloseMobileMenu}>
         <i className="fas fa-times" />
       </button>
       <p className="mb-3">
@@ -56,6 +54,7 @@ const HomepageNavLoggedin = function ({ onCloseMobileMenu, userInfo }) {
       </div>
       <div className="dropdown-login-button">
         <button
+          type="button"
           className="btn btn-warning btn-dropdown-filled"
           onClick={() => {
             handleLogout();
