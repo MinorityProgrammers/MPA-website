@@ -23,12 +23,9 @@ export class MentorshipQuestion1 extends Component {
             countries.push(country);
           }
         },
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
         (error) => {
-          console.log('lol');
-        },
+          console.log();
+        }
       );
   }
 
@@ -66,14 +63,26 @@ export class MentorshipQuestion1 extends Component {
         <form className="tw-pb-6">
           {values.isErrorMessage ? (
             <div>
-              <h1 className="tw-font-bold tw-text-black tw-text-5xl tw-mb-2 md:tw-text-center tw-select-none">Personal Details</h1>
-              <span className="tw-text-red-500 tw-select-none tw-m-0">Please fill in all the blank fields</span>
+              <h1 className="tw-font-bold tw-text-black tw-text-5xl tw-mb-2 md:tw-text-center tw-select-none">
+                Personal Details
+              </h1>
+              <span className="tw-text-red-500 tw-select-none tw-m-0">
+                Please fill in all the blank fields
+              </span>
             </div>
-
-          ) : (<h1 className="tw-font-bold tw-text-black tw-text-5xl tw-mb-8 md:tw-text-center tw-select-none">Personal Details</h1>)}
+          ) : (
+            <h1 className="tw-font-bold tw-text-black tw-text-5xl tw-mb-8 md:tw-text-center tw-select-none">
+              Personal Details
+            </h1>
+          )}
           <div className="tw-flex tw-flex-row md:tw-flex-col">
             <div className="tw-flex tw-w-6/12 md:tw-w-full tw-flex-initial tw-flex-col  tw-bg-white input-area tw-py-3 tw-px-3 tw-border-4 tw-border-gray-300 tw-border-opacity-50 tw-rounded-2xl tw-my-2 tw-mr-3 md:tw-mr-0">
-              <label className="tw-text-md tw-select-none tw-mb-0.5" htmlFor="firstName">First Name</label>
+              <label
+                className="tw-text-md tw-select-none tw-mb-0.5"
+                htmlFor="firstName"
+              >
+                First Name
+              </label>
               <input
                 className="tw-outline-none tw-text-darkGray tw-text-md"
                 type="text"
@@ -84,7 +93,12 @@ export class MentorshipQuestion1 extends Component {
               />
             </div>
             <div className="tw-flex tw-w-6/12 md:tw-w-full tw-flex-initial tw-flex-col  tw-bg-white input-area tw-py-3 tw-px-3 tw-border-4 tw-border-gray-300 tw-border-opacity-50 tw-rounded-2xl tw-my-2 tw-ml-3 md:tw-ml-0">
-              <label className="tw-text-md tw-select-none tw-mb-0.5" htmlFor="lastName">Last Name</label>
+              <label
+                className="tw-text-md tw-select-none tw-mb-0.5"
+                htmlFor="lastName"
+              >
+                Last Name
+              </label>
               <input
                 className="tw-outline-none tw-text-darkGray tw-text-md"
                 type="text"
@@ -97,9 +111,13 @@ export class MentorshipQuestion1 extends Component {
           </div>
           <div className="tw-flex tw-flex-row md:tw-flex-col">
             <div className="tw-flex tw-w-6/12 md:tw-w-full tw-flex-initial tw-flex-col  tw-bg-white input-area tw-py-3 tw-px-3 tw-border-4 tw-border-gray-300 tw-border-opacity-50 tw-rounded-2xl tw-my-2 tw-mr-3 md:tw-mr-0">
-              <label className="tw-text-md tw-select-none tw-mb-0.5" htmlFor="DOB">Date of Birth</label>
+              <label
+                className="tw-text-md tw-select-none tw-mb-0.5"
+                htmlFor="DOB"
+              >
+                Date of Birth
+              </label>
               <input
-
                 className="tw-outline-none tw-text-darkGray tw-text-md"
                 type="date"
                 name="DOB"
@@ -109,7 +127,12 @@ export class MentorshipQuestion1 extends Component {
               />
             </div>
             <div className="tw-flex tw-w-6/12 md:tw-w-full tw-flex-initial tw-flex-col  tw-bg-white input-area tw-py-3 tw-px-3 tw-border-4 tw-border-gray-300 tw-border-opacity-50 tw-rounded-2xl tw-my-2 tw-ml-3 md:tw-ml-0">
-              <label className="tw-text-md tw-select-none tw-mb-0.5" htmlFor="country">Country</label>
+              <label
+                className="tw-text-md tw-select-none tw-mb-0.5"
+                htmlFor="country"
+              >
+                Country
+              </label>
               <Select
                 className="tw-outline-none tw-text-darkGray tw-text-md"
                 options={countries}
@@ -124,7 +147,12 @@ export class MentorshipQuestion1 extends Component {
           </div>
           <div className="tw-flex tw-flex-row md:tw-flex-col">
             <div className="tw-flex tw-w-6/12 md:tw-w-full tw-flex-initial tw-flex-col tw-text-textGray tw-bg-white input-area tw-py-3 tw-px-3 tw-border-4 tw-border-gray-300 tw-border-opacity-50 tw-rounded-2xl tw-my-2 tw-mr-3 md:tw-mr-0">
-              <label className="tw-text-md tw-select-none tw-mb-0.5" htmlFor="levelOfEducation">Level of Education</label>
+              <label
+                className="tw-text-md tw-select-none tw-mb-0.5"
+                htmlFor="levelOfEducation"
+              >
+                Level of Education
+              </label>
               <Select
                 className="tw-outline-none tw-text-darkGray tw-text-md"
                 options={eduOptions}
@@ -136,7 +164,12 @@ export class MentorshipQuestion1 extends Component {
               />
             </div>
             <div className="tw-flex tw-w-6/12 md:tw-w-full tw-flex-initial tw-flex-col  tw-bg-white input-area tw-py-3 tw-px-3 tw-border-4 tw-border-gray-300 tw-border-opacity-50 tw-rounded-2xl tw-my-2 tw-ml-3 md:tw-ml-0">
-              <label className="tw-text-md tw-select-none tw-mb-0.5" htmlFor="passions">Passions</label>
+              <label
+                className="tw-text-md tw-select-none tw-mb-0.5"
+                htmlFor="passions"
+              >
+                Passions
+              </label>
               <Select
                 className="tw-w-full tw-outline-none tw-text-darkGray tw-text-md"
                 options={passionOptions}
@@ -153,8 +186,18 @@ export class MentorshipQuestion1 extends Component {
         </form>
         <div className="tw-absolute tw-w-full tw-bottom-12 tw-pr-48 md:tw-pr-20 md:tw-bottom-7 tw-text-center">
           <div className="tw-w-140px tw-mx-auto tw-flex tw-justify-between">
-            <button className="tw-bg-NavDark tw-outline-none tw-rounded-md tw-w-14 tw-mb-8 tw-text-white hover:tw-text-NavDark hover:tw-bg-white tw-duration-500 tw-mx-auto tw-select-none" onClick={this.back}><i className="fas fa-arrow-left tw-text-2xl tw-p-2" /></button>
-            <button className="tw-bg-NavDark tw-outline-none tw-rounded-md tw-w-14 tw-mb-8 tw-text-white hover:tw-text-NavDark hover:tw-bg-white tw-duration-500 tw-mx-auto tw-select-none" onClick={this.continue}><i className="fas fa-arrow-right tw-text-2xl tw-p-2" /></button>
+            <button
+              className="tw-bg-NavDark tw-outline-none tw-rounded-md tw-w-14 tw-mb-8 tw-text-white hover:tw-text-NavDark hover:tw-bg-white tw-duration-500 tw-mx-auto tw-select-none"
+              onClick={this.back}
+            >
+              <i className="fas fa-arrow-left tw-text-2xl tw-p-2" />
+            </button>
+            <button
+              className="tw-bg-NavDark tw-outline-none tw-rounded-md tw-w-14 tw-mb-8 tw-text-white hover:tw-text-NavDark hover:tw-bg-white tw-duration-500 tw-mx-auto tw-select-none"
+              onClick={this.continue}
+            >
+              <i className="fas fa-arrow-right tw-text-2xl tw-p-2" />
+            </button>
           </div>
 
           <span className="tw-block tw-text-center tw-select-none">

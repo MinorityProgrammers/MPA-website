@@ -13,7 +13,7 @@ import CallToActionTwo from '../components/CallToActionTwo';
 import CallToActionThree from '../components/CallToActionThree';
 import CallToActionFour from '../components/CallToActionFour';
 import CallToActionFive from '../components/CallToActionFive';
-import Mentorship from '../components/Mentorship';
+import Mentorship from '../components/mentorship/Mentorship';
 import MapJoin from '../components/MapJoin';
 import Chapter from '../components/Chapter';
 import Career from '../components/Career';
@@ -25,7 +25,7 @@ import AvatarMaker from '../components/AvatarMaker';
 
 const AvatarPage = function () {
   return (
-    <Layout pageTitle="Avatar">
+    <Layout pageTitle='Avatar'>
       <NavOne />
       {/* <PageHeader title="Services" /> */}
       {/* <SliderTwo/> */}

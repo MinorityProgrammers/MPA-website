@@ -37,8 +37,7 @@ class CourseCount extends Component {
                         delayedCall
                       >
                         <CountUp end={this.state.startCounter ? 3 : 0} />
-                      </VisibilitySensor>
-                      {' '}
+                      </VisibilitySensor>{' '}
                     </p>
                     <p className="video-three__fact-text">Courses</p>
                   </div>
@@ -52,8 +51,7 @@ class CourseCount extends Component {
                         delayedCall
                       >
                         <CountUp end={this.state.startCounter ? 18 : 0} />
-                      </VisibilitySensor>
-                      {' '}
+                      </VisibilitySensor>{' '}
                     </p>
                     <p className="video-three__fact-text">Expert Instructors</p>
                   </div>

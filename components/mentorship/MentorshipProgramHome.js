@@ -1,26 +1,17 @@
 import React, { useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import { useDetectOutsideClick } from './UseDetectOutsideClick';
-import Card from './login-signup/card';
+import { useDetectOutsideClick } from '../UseDetectOutsideClick';
+import Card from '../login-signup/card';
 
-const MentorshipProgramHome = function ({
+const MentorshipProgramHome = ({
   data,
   onCloseMobileMenu,
   active,
   clickRegister,
   setClickRegister,
-}) {
+}) => {
   const router = useRouter();
-
-  // const {
-  //     authDispatch,
-  //     authState: {
-  //         auth: { loading, error, data },
-  //     },
-  // } = useContext(GlobalContext)
-  // console.log('data is here: ', data);
-
   const [click, setClick] = useState(false);
   const dropdownRef = useRef(null);
   const [isActive, setIsActive] = useDetectOutsideClick(dropdownRef, false);
@@ -99,8 +90,7 @@ const MentorshipProgramHome = function ({
                 </li>
                 <li>
                   {' '}
-                  - Choose a mentorship track & start CHAT with your match.
-                  {' '}
+                  - Choose a mentorship track & start CHAT with your match.{' '}
                 </li>
               </ul>
             </div>
