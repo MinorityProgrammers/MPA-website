@@ -1,10 +1,9 @@
 <div id="top"></div>
 
-<!-- PROJECT LOGO -->
 <br />
 <div align="center">
   <a href="https://github.com/MinorityProgrammers/MPA-website">
-    <img src="mpa-web/public/assets/images/mpcircle.svg" alt="Logo" width="80" height="80">
+    <img src="public/assets/images/mpcircle.svg" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">Minority Programmers Web Application</h3>
