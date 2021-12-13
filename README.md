@@ -1,29 +1,180 @@
-<a href="https://minorityprogrammers.com/">
-    <img src="https://github.com/MinorityProgrammers/graphics/blob/master/MPA-Exec.png?raw=true" alt="MPA Logo logo" title="MPA Web App" align="right" height="60" />
-</a>
+<div id="top"></div>
 
-# Minority Programmers Web Application
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  <a href="https://github.com/MinorityProgrammers/MPA-website">
+    <img src="mpa-web/public/assets/images/mpcircle.svg" alt="Logo" width="80" height="80">
+  </a>
 
-## Minority Programmers Association
+  <h3 align="center">Minority Programmers Web Application</h3>
 
-Wireframe https://www.figma.com/file/a47vM8yGurIjdPNMGK68Fc/MPA-Website?node-id=0%3A1
-Sitemap Planning https://www.gloomaps.com/QhqVqahMN9
+  <p align="center">
+    This README explain what MPA's goals are and how to run this repository locally
+    <br />
+    <a href="https://github.com/MinorityProgrammers/MPA-website"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <a href="https://github.com/MinorityProgrammers/MPA-website">View Demo</a>
+    ·
+    <a href="https://github.com/MinorityProgrammers/MPA-website/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/MinorityProgrammers/MPA-website/issues">Request Feature</a>
+  </p>
+</div>
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/zeit/next.js/tree/canary/packages/create-next-app).
 
+
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#acknowledgments">Acknowledgments</a></li>
+  </ol>
+</details>
+
+
+
+<!-- ABOUT THE PROJECT -->
+## About The Project
+
+[![Product Name Screen Shot][product-screenshot]](https://minorityprogrammers.com/)
+
+<p>
+This project contains the MPA web application. Below are the wireframe and site-map. Click on any of the images to view more </p>
+
+[![Site-map][site-map]](https://www.figma.com/file/a47vM8yGurIjdPNMGK68Fc/MPA-Website?node-id=0%3A1)
+[![Wireframe][wireframe]](https://www.gloomaps.com/QhqVqahMN9)
+
+
+### Built With
+
+The technologies used in this project include:
+
+* [Next.js](https://nextjs.org/)
+* [React.js](https://reactjs.org/)
+* [Solidity](https://docs.soliditylang.org/en/v0.8.10/)
+* [Nodejs](https://nodejs.org/)
+* [Bootstrap](https://getbootstrap.com)
+
+
+<!-- GETTING STARTED -->
 ## Getting Started
 
-First, run the development server:
+This project runs on both Linux, Mac and Windows.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+### Prerequisites
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+You'll need to install the following packages
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+* npm
+  ```sh
+  npm install npm@latest -g
+  ```
+* [git](https://git-scm.com/downloads)
+  
+
+### Installation
+
+_Follow this steps to get the project running on your device_
+
+1. Clone the repo
+   ```sh
+   git clone https://github.com/MinorityProgrammers/MPA-website
+   ```
+2. Install NPM packages
+   ```sh
+   npm install
+   ```
+   or
+   Install Yarn packages
+   ```sh
+   yarn install
+   ```
+3. Start the development server:
+   ```sh
+   npm run dev
+   #or
+   yarn dev
+   ```
+4. Open [http://localhost:3000](http://localhost:3000) within your browser to see the result
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+
+<!-- ROADMAP -->
+## Roadmap
+    
+- [x] Mint ceritficate on course completion
+- [x] Enable job posting
+- [x] Wallet intergration
+- [ ] Mint NFTs within [Discord](https://discord.gg/un4REEm4)
+- [ ] Multi-language Support
+    - [x] English
+    - [ ] Chinese
+
+NB:This isn't the real roadmap. Rather just a placeholder till the proper roadmap is available
+See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a full list of proposed features (and known issues).
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+
+<!-- CONTRIBUTING -->
+## Contributing
+
+To contribute, take the following steps:
+1. Clone the project (`git clone https://github.com/MinorityProgrammers/MPA-website`)
+2. Create your Feature Branch (`git checkout -b YourName/BranchFeature`)
+3. Add and Commit your changes (`git add . && git commit -m 'My commit message`)
+4. Push to your branch (`git push origin YourName/BranchFeature`)
+5. Open a Pull Request (PR)
+6. Notify everyone by send a message describing your Pull Request and the link in the 
+   Discord server inside the `pull-request channel`.
+    * Pull Request message:
+        ```sh
+        Social authentication: https://github.com/MinorityProgrammers/mpa-web/pull/123
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+
+<!-- LICENSE -->
+## License
+
+Distributed under the MIT License. See `LICENSE.txt` for more information.
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+
+<!-- CONTACT -->
+## Contact
+
+Minority Programmers Association - [@minorityprogram](https://twitter.com/minorityprogram) - president@minorityprogrammers.org
+
+Project Link: [https://github.com/MinorityProgrammers/MPA-website](https://github.com/MinorityProgrammers/MPA-website)
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
 
 ## Learn More
 
@@ -39,3 +190,12 @@ You can check out [the Next.js GitHub repository](https://github.com/zeit/next.j
 The easiest way to deploy your Next.js app is to use the [ZEIT Now Platform](https://zeit.co/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+
+<!-- MARKDOWN LINKS & IMAGES -->
+[product-screenshot]: mpa-web/public/assets/images/MPA_landing_page.png
+[site-map]: mpa-web/public/assets/images/site-map.png
+[wireframe]: mpa-web/public/assets/images/Wireframe.png
