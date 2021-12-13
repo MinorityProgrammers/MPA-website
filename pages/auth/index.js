@@ -56,6 +56,7 @@ const Index = function () {
           page="auth"
         />
         <SidebarTwo open={open} setOpen={setOpen} links={links} active="Home" />
+        <div className="join"></div>
         {data !== [] && (
           <>
             {hide == false && <ComingSoon closeClick={handleClick} />}
