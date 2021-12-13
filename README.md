@@ -45,8 +45,8 @@
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#learn-more">Acknowledgments</a></li>
-    <li><a href="#deploy-on-zeit-now">Acknowledgments</a></li>
+    <li><a href="#learn-more">Learn More</a></li>
+    <li><a href="#deploy-on-zeit-now">Deploy on ZEIT</a></li>
   </ol>
 </details>
 
