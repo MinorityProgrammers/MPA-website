@@ -4,8 +4,7 @@
   max-height: -webkit-fit-content;
   max-height: -moz-fit-content;
   max-height: fit-content;
-  background: -webkit-gradient(linear, left top, right top, color-stop(-0.69%, #FF00B8), color-stop(50.18%, #FF655B), to(#FFC700));
-  background: linear-gradient(90deg, #FF00B8 -0.69%, #FF655B 50.18%, #FFC700 100%);
+  background: #ccc;
   padding: 10px;
   display: -webkit-box;
   display: -ms-flexbox;

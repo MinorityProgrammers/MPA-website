@@ -24,10 +24,10 @@ const ConsultancyHomeExplainer = function ({
             {data === null ? <a onClick={() => { setClickRegister(true); }} className="btn consultancyBTN--Login tw-cursor-pointer">Register</a> : ' '}
 
             {data === null
-                            && <a onClick={() => { setClickRegister(true); }} className="btn mentorshipBTN ml-4 consultancyBTN--getQuote">Get Quote</a>}
+                            && <a onClick={() => { setClickRegister(true); }} className="btn mentorshipBTN ml-4 consultancyBTN--getQuote hover:tw-text-white hover:tw-bg-blue-800">Get Quote</a>}
             {data && (
               <Link href="/consultancy">
-                <a className="btn mentorshipBTN ml-4 consultancyBTN--getQuote">Get Quote</a>
+                <a className="btn mentorshipBTN ml-4 consultancyBTN--getQuote hover:tw-text-white hover:tw-bg-blue-800">Get Quote</a>
               </Link>
             )}
           </div>

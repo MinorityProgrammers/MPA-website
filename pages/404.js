@@ -11,7 +11,7 @@ const NotFoundPage = function () {
   const navBarRef = useRef();
   const [hide, setHide] = useDetectOutsideClick(dropdownRef, true);
 
-  if (hide == false) {
+  if (hide === false) {
     setTimeout(() => {
       setHide(true);
     }, 10000);
@@ -23,12 +23,6 @@ const NotFoundPage = function () {
         <HomepageNav
           open={open}
           setOpen={setOpen}
-          style={{
-            background: `linear-gradient(
-            104.61deg
-            , #FF00B8 2.65%, #FF655B 51.83%, #FFC700 100%);`,
-            boxShadow: '0 4px 16px rgba(0,0,0,0.3)',
-          }}
           navBarRef={navBarRef}
         />
         <NotFound navBarRef={navBarRef} />

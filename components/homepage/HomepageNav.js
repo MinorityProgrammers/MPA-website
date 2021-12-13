@@ -207,7 +207,7 @@ const HomepageNav = ({
     authState: {
       auth: { loading, error, data },
     },
-  } = useContext(GlobalContext);
+  } = useContext(GlobalContext || {});
 
   useEffect(() => {
     const token = typeof window !== 'undefined'
