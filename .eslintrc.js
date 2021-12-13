@@ -24,6 +24,7 @@ module.exports = {
     'no-param-reassign': ['error', { props: false }],
     'jsx-a11y/no-static-element-interactions': 'off',
     'linebreak-style': ['error', process.platform === 'win32' ? 'windows' : 'unix'],
+    'react/jsx-no-useless-fragment': 'off',
     radix: ['error', 'as-needed'],
   },
 };
