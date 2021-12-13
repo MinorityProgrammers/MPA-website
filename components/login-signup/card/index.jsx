@@ -271,7 +271,7 @@ export default function Index() {
   return (
     <div className={styles.cardContainer}>
       <ToastContainer limit={3} />
-      <div className={styles.cardLeft}>
+      <div className={`${styles.cardLeft} ${router.pathname.endsWith('/auth') ? 'tw-mt-40' : ''}`}>
         <div className={styles.contentContainer}>
           <div className={styles.cardLeftLogo}>
             <img
@@ -286,7 +286,7 @@ export default function Index() {
           </div>
         </div>
       </div>
-      <div className={styles.cardRight}>
+      <div className={`${styles.cardRight} ${router.pathname.endsWith('/auth') ? 'tw-mt-40' : ''}`}>
         <div className={styles.cardRightText}>
           <h2>{cardText.h2Title}</h2>
           <p>
