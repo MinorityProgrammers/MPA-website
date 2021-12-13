@@ -195,6 +195,6 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
-[product-screenshot]: mpa-web/public/assets/images/MPA_landing_page.png
-[site-map]: mpa-web/public/assets/images/site-map.png
-[wireframe]: mpa-web/public/assets/images/Wireframe.png
+[product-screenshot]: public/assets/images/MPA_landing_page.png
+[site-map]: public/assets/images/site-map.png
+[wireframe]: public/assets/images/Wireframe.png
