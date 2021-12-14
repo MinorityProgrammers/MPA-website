@@ -160,28 +160,30 @@
     display: flex;
     align-items: center;
     &1 {
-      border-color: #151371;
+      border-color: #474bfd;
     }
     &1:hover {
-      background-color: rgba(59, 130, 246, 0.5);
+      background-color: rgba(103, 157, 243, 0.5);
     }
     &2 {
-      border-color: #fe19be;
+      border-color: #474bfd;
     }
         &2:hover {
-      background-color: #fbceee;
+     background-color: rgba(103, 157, 243, 0.5);
+      color:white;
     }
     &3 {
-      border-color: #fecc19;
+      border-color: #474bfd;
     }
     &3:hover{
-      background-color: #FFF7DA;
+      background-color: rgba(103, 157, 243, 0.5);
+      color: white;
     }
     &4 {
-      border-color: #fe19be;
+      border-color: #474bfd;
     }
     &4:hover{
-      background-color: #fbceee;
+      background-color: rgba(103, 157, 243, 0.5);
     }
     div {
       padding: 10px;
