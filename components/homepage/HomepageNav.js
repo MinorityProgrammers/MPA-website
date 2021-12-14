@@ -751,7 +751,7 @@ const HomepageNav = ({
           </ul>
           <div className="">
             <div className="container">
-              <ul className="tw-flex tw-flex-row tw-justify-between tw-w-full tw-my-5">
+              <ul className="tw-flex tw-flex-row tw-justify-between tw-w-full tw-my-8">
                 <li>
                   <div className="tw-flex tw-flex-row tw-w-full tw-border tw-border-gray-700 tw-rounded-md tw-px-4 tw-text-gray-500">
                     <input
