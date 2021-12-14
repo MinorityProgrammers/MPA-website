@@ -23,7 +23,6 @@ const Chats = function ({ data }) {
   const [searchResults, setSearchResults] = useState(null);
   const [tempResults, setTempResults] = useState({});
   const [socketContent, setSocketContent] = useState({});
-  const [otherUsers, setOtherUsers] = useState([]);
 
   const user = data; // user id
   const messageRef = useRef(null);
@@ -161,7 +160,7 @@ const Chats = function ({ data }) {
         const token = window.localStorage.getItem('jwtToken');
         // let res = await axios.get("http://localhost:5000/api/v1/chat/", {
         const res = await axios.get(
-          'http://koinstreet-learn-api.herokuapp.com/api/v1/chat/',
+          `${process.env.BASE_URI}/chat/`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -183,7 +182,7 @@ const Chats = function ({ data }) {
         //   }
         // });
         const res = await axios.get(
-          'http://koinstreet-learn-api.herokuapp.com/api/v1/chat/pending',
+          `${process.env.BASE_URI}/chat/pending`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -205,7 +204,7 @@ const Chats = function ({ data }) {
         //   }
         // });
         const res = await axios.get(
-          'http://koinstreet-learn-api.herokuapp.com/api/v1/chat/block',
+          `${process.env.BASE_URI}/chat/block`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -233,7 +232,7 @@ const Chats = function ({ data }) {
         try {
           const token = window.localStorage.getItem('jwtToken');
           const res = await axios.get(
-            `http://koinstreet-learn-api.herokuapp.com/api/v1/chat_message/${
+            `${process.env.BASE_URI}/chat_message/${
               currentChat._id}`,
             {
               // const res = await axios.get("http://localhost:5000/api/v1/chat_message/" + currentChat._id, {
@@ -265,7 +264,7 @@ const Chats = function ({ data }) {
           //   }
           // });
           const res = await axios.get(
-            `http://koinstreet-learn-api.herokuapp.com/api/v1/chat/search/${
+            `${process.env.BASE_URI}/chat/search/${
               chatSearch}`,
             {
               headers: {
@@ -313,7 +312,7 @@ const Chats = function ({ data }) {
       // })
       await axios
         .put(
-          'http://koinstreet-learn-api.herokuapp.com/api/v1/chat/block',
+          `${process.env.BASE_URI}/chat/block`,
           body,
           {
             headers: {
@@ -357,7 +356,7 @@ const Chats = function ({ data }) {
       const body = { chatid: chat._id };
       const token = window.localStorage.getItem('jwtToken');
       await axios
-        .put('http://koinstreet-learn-api.herokuapp.com/api/v1/chat/', body, {
+        .put(`${process.env.BASE_URI}/chat/`, body, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -397,7 +396,7 @@ const Chats = function ({ data }) {
       // })
       await axios
         .delete(
-          `http://koinstreet-learn-api.herokuapp.com/api/v1/chat/${chat._id}`,
+          `${process.env.BASE_URI}/chat/${chat._id}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -438,7 +437,7 @@ const Chats = function ({ data }) {
       // })
       await axios
         .put(
-          'http://koinstreet-learn-api.herokuapp.com/api/v1/chat/block',
+          `${process.env.BASE_URI}/chat/block`,
           body,
           {
             headers: {
@@ -493,7 +492,7 @@ const Chats = function ({ data }) {
       //   }
       // });
       const res = await axios.post(
-        'http://koinstreet-learn-api.herokuapp.com/api/v1/chat_message/',
+        `${process.env.BASE_URI}/chat_message/`,
         message,
         {
           headers: {

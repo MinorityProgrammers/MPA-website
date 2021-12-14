@@ -47,7 +47,7 @@ const IncubatorPage = function () {
   useEffect(() => {
     const token = window.localStorage.getItem('jwtToken');
     axios
-      .get('https://koinstreet-learn-api.herokuapp.com/api/v1/startup/')
+      .get(`${process.env.BASE_URI}/startup/`)
       .then((res) => {
         setStartups(res.data.data);
       })
@@ -55,7 +55,7 @@ const IncubatorPage = function () {
         if (token) {
           return axios
             .get(
-              ' https://koinstreet-learn-api.herokuapp.com/api/v1/funded/userFunded',
+              `${process.env.BASE_URI}/funded/userFunded`,
               {
                 headers: {
                   Authorization: `Bearer ${token || ''}`,

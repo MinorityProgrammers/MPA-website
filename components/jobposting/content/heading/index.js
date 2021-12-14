@@ -4,6 +4,7 @@ import styles from './topheader.module.css';
 import { JobsFilters } from '../../../career-components/JobsFilters';
 import JobsMainContent from '../JobsMainContent';
 import Loader from '../../../Loader';
+import axios from 'axios';
 
 export async function getServerSideProps(context) {
   return {
@@ -42,7 +43,7 @@ const TopHeader = function (props) {
 
   const fetchData = () => {
     setLoading(true);
-    fetch('https://koinstreet-learn-api.herokuapp.com/api/v1/job')
+    fetch(`${process.env.BASE_URI}/job`)
       .then((response) => response.json())
       .then((response) => {
         setJobs(response.data);
@@ -58,7 +59,7 @@ const TopHeader = function (props) {
 
   const filterJobs = () => {
     fetch(
-      `https://koinstreet-learn-api.herokuapp.com/api/v1/job?pay=${filter.pay}&remote=${filter.remote}&job_type=${filter.job_type}&date_posted=${filter.date_posted}&job_industry=${filter.job_industry}`,
+      `${process.env.BASE_URI}/job?pay=${filter.pay}&remote=${filter.remote}&job_type=${filter.job_type}&date_posted=${filter.date_posted}&job_industry=${filter.job_industry}`,
     )
       .then((response) => response.json())
       .then((response) => {
@@ -243,7 +244,7 @@ const TopHeader = function (props) {
     console.log(job);
     axios
       .post(
-        'https://koinstreet-learn-api.herokuapp.com/api/v1/savejob',
+        `${process.env.BASE_URI}/savejob`,
         {
           job_id: job._id,
         },
@@ -271,7 +272,7 @@ const TopHeader = function (props) {
 
       axios
         .get(
-          'https://koinstreet-learn-api.herokuapp.com/api/v1/savejob/userjobs',
+          `${process.env.BASE_URI}/savejob/userjobs`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -292,7 +293,7 @@ const TopHeader = function (props) {
 
       axios
         .get(
-          'https://koinstreet-learn-api.herokuapp.com/api/v1/easyApply/userApplied',
+          `${process.env.BASE_URI}/easyApply/userApplied`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

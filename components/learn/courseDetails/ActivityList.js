@@ -26,7 +26,7 @@ const ActivityList = function ({ module, userModules, specificUModules }) {
       router.push(moduleDetails);
     } else {
       const userToken = JSON.parse(localStorage.getItem('userInfo')).token;
-      fetch(`https://koinstreet-learn-api.herokuapp.com/api/v1/learn/${courseId}/module`, {
+      fetch(`${process.env.BASE_URI}/learn/${courseId}/module`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

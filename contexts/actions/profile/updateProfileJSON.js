@@ -18,7 +18,7 @@ export const updateProfileJSON = (id, body, token) => (dispatch) => {
   const token = window.localStorage.getItem('jwtToken');
 
   axios
-    .patch(`https://koinstreet-learn-api.herokuapp.com/api/v1/user/updateProfile/${id}`, body, {
+    .patch(`${process.env.BASE_URI}/user/updateProfile/${id}`, body, {
       headers: {
         'Content-type': 'application/json',
         Authorization: `Bearer ${token}`,

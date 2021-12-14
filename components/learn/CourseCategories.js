@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import axios from 'axios';
 import { Modal } from 'antd';
-import LoginModal from '../login-signup/card/index.jsx';
+import LoginModal from '../login-signup/card/index';
 import UserCourses from './UserCourses';
 import RecommendedCourses from './RecommendedCourses';
 import CoursesSkeleton from './CoursesSkeleton';
@@ -37,7 +37,7 @@ const CourseCategories = function ({ user, enrolledCourses, usersCourses }) {
   };
 
   useEffect(() => {
-    axios.get('https://koinstreet-learn-api.herokuapp.com/api/v1/course')
+    axios.get(`${process.env.BASE_URI}/course`)
       .then((res) => {
         setCourses(res.data.data);
         setTimeout(() => { setLoading(false); }, 3000);
@@ -47,7 +47,7 @@ const CourseCategories = function ({ user, enrolledCourses, usersCourses }) {
   const handleEnrolledCourse = () => {
     setDisable(true);
     const userToken = JSON.parse(localStorage.getItem('userInfo')).token;
-    fetch('https://koinstreet-learn-api.herokuapp.com/api/v1/learn/', {
+    fetch(`${process.env.BASE_URI}/learn/`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

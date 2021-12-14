@@ -45,7 +45,7 @@ const CoursePage = function ({ params }) {
     if (userToken !== null) {
       axios
         .get(
-          'https://koinstreet-learn-api.herokuapp.com/api/v1/learn/userCourses',
+          `${process.env.BASE_URI}/learn/userCourses`,
           {
             headers: {
               Authorization: `Bearer ${userToken.token}`,
@@ -76,7 +76,7 @@ const CoursePage = function ({ params }) {
     if (userToken !== null) {
       axios
         .get(
-          `https://koinstreet-learn-api.herokuapp.com/api/v1/course/${courseId}/module`,
+          `${process.env.BASE_URI}/course/${courseId}/module`,
           {
             headers: {
               Authorization: `Bearer ${userToken.token}`,

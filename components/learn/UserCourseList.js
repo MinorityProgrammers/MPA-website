@@ -11,7 +11,7 @@ const UserCoursesList = function ({ enrolledCourse }) {
 
   useEffect(() => {
     const userToken = JSON.parse(localStorage.getItem('userInfo')).token;
-    axios.get(`https://koinstreet-learn-api.herokuapp.com/api/v1/course/${_id}/module`, {
+    axios.get(`${process.env.BASE_URI}/course/${_id}/module`, {
       headers: {
         Authorization: `Bearer ${userToken}`,
       },
@@ -23,7 +23,7 @@ const UserCoursesList = function ({ enrolledCourse }) {
 
   useEffect(() => {
     const userToken = JSON.parse(localStorage.getItem('userInfo')).token;
-    axios.get(`https://koinstreet-learn-api.herokuapp.com/api/v1/learn/${_id}/userModules`, {
+    axios.get(`${process.env.BASE_URI}/learn/${_id}/userModules`, {
       headers: {
         Authorization: `Bearer ${userToken}`,
       },

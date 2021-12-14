@@ -16,7 +16,7 @@ const CreateProfileQuestions1 = function ({
   const [wrongUsernameWarning, setWrongUsernameWarning] = useState(false);
 
   useEffect(() => {
-    fetch('https://koinstreet-learn-api.herokuapp.com/api/v1/user').then((response) => response.json()).then((data) => {
+    fetch(`${process.env.BASE_URI}/user`).then((response) => response.json()).then((data) => {
       setUsernames(findUserNames(data.data));
     });
   }, []);

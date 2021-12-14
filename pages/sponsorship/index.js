@@ -2,7 +2,7 @@ import { useState } from 'react';
 import SponsorshipMain from '../../components/sponsorship/SponsorshipMain';
 import SponsorshipCheckout from '../../components/sponsorship/SponsorshipCheckout';
 import SponsorshipCard from '../../components/sponsorship/SponsorshipCard';
-import Sponsorship from './Sponsorship';
+import Sponsorship from '../../components/Sponsorship';
 
 const SponsorshipPage = function (props) {
   const [SponsorshipDisplay, setSponsorshipDisplay] = useState('sponsorship');

@@ -115,7 +115,7 @@ const CreateEvent = function (props) {
       setLoading(true);
       axios
         .post(
-          'https://koinstreet-learn-api.herokuapp.com/api/v1/event',
+          `${process.env.BASE_URI}/event`,
           formData,
           {
             headers: {

@@ -73,6 +73,9 @@ The technologies used in this project include:
 * [Solidity](https://docs.soliditylang.org/en/v0.8.10/)
 * [Nodejs](https://nodejs.org/)
 * [Bootstrap](https://getbootstrap.com)
+* [TailwindCSS](https://tailwindcss.com/)
+* [React-context](https://reactjs.org/)
+
 
 
 <!-- GETTING STARTED -->
@@ -196,6 +199,6 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
-[product-screenshot]: public/assets/images/MPA_landing_page.png
+[product-screenshot]: public/assets/images/MPA-wall.png
 [site-map]: public/assets/images/site-map.png
 [wireframe]: public/assets/images/Wireframe.png

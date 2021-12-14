@@ -15,7 +15,7 @@ const Course = function ({ userInfo, course, modules }) {
 
   useEffect(() => {
     const userToken = JSON.parse(localStorage.getItem('userInfo')).token;
-    axios.get(`https://koinstreet-learn-api.herokuapp.com/api/v1/learn/${courseId}/userModules`, {
+    axios.get(`${process.env.BASE_URI}/learn/${courseId}/userModules`, {
       headers: {
         Authorization: `Bearer ${userToken}`,
       },

@@ -90,7 +90,7 @@ const QuickApplyJobApplication = (props) => {
 
     axios
       .post(
-        'https://koinstreet-learn-api.herokuapp.com/api/v1/easyApply',
+        `${process.env.BASE_URI}/easyApply`,
         formData,
         {
           headers: {

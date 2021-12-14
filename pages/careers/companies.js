@@ -20,7 +20,7 @@ const CompaniesMain = (props) => {
   const locationRef = useRef();
 
   const fetchCompanies = () => {
-    fetch('https://koinstreet-learn-api.herokuapp.com/api/v1/company')
+    fetch(`${process.env.BASE_URI}/company`)
       .then((response) => response.json())
       .then((response) => {
         setCompanies(response.data);

@@ -18,7 +18,7 @@ const Saved = () => {
     if (token) {
       axios
         .get(
-          'https://koinstreet-learn-api.herokuapp.com/api/v1/savejob/userjobs',
+          `${process.env.BASE_URI}/savejob/userjobs`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -50,7 +50,7 @@ const Saved = () => {
     if (token) {
       axios
         .delete(
-          `https://koinstreet-learn-api.herokuapp.com/api/v1/saveJob/${jobID}`,
+          `${process.env.BASE_URI}/saveJob/${jobID}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

@@ -1,4 +1,3 @@
-import Toastify from 'toastify-js';
 import { notification } from 'antd';
 // toast notifications
 

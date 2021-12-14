@@ -17,7 +17,7 @@ const Proposal = function ({ proposal }) {
 
   // Replies ___________________
   useEffect(() => {
-    fetch(`https://koinstreet-learn-api.herokuapp.com/api/v1/proposal/${proposal._id}/reply`)
+    fetch(`${process.env.BASE_URI}/proposal/${proposal._id}/reply`)
       .then((response) => response.json())
       .then((response) => setReply(response.data.length));
   }, [proposal._id]);
@@ -27,7 +27,7 @@ const Proposal = function ({ proposal }) {
   // Views _______________
 
   useEffect(() => {
-    const res = axios.get('https://koinstreet-learn-api.herokuapp.com/api/v1/proposalViews/userProposalView', {
+    const res = axios.get(`${process.env.BASE_URI}/proposalViews/userProposalView`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -40,7 +40,7 @@ const Proposal = function ({ proposal }) {
   // upVotes _______________
 
   useEffect(() => {
-    const res = axios.get(`https://koinstreet-learn-api.herokuapp.com/api/v1/upVotes/proposalUpvote/${proposal._id}`, {
+    const res = axios.get(`${process.env.BASE_URI}/upVotes/proposalUpvote/${proposal._id}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -53,7 +53,7 @@ const Proposal = function ({ proposal }) {
   // downVotes _______________
 
   useEffect(() => {
-    const res = axios.get(`https://koinstreet-learn-api.herokuapp.com/api/v1/downVotes/proposalDownvote/${proposal._id}`, {
+    const res = axios.get(`${process.env.BASE_URI}/downVotes/proposalDownvote/${proposal._id}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

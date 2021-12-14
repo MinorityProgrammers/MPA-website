@@ -12,7 +12,7 @@ import links from '../../contexts/utils/links';
 
 export const getStaticPaths = async () => {
   const res = await axios.get(
-    'http://koinstreet-learn-api.herokuapp.com/api/v1/startup/',
+    `${process.env.BASE_URI}/startup/`,
   );
   const data = await res.data.data;
 
@@ -31,12 +31,12 @@ export const getStaticProps = async (context) => {
   // change url later when the get single startup controller is fixed in git repo
 
   // const res = await axios.get(
-  //   'http://koinstreet-learn-api.herokuapp.com/api/v1/startup/' + id
+  //   `${process.env.BASE_URI}/startup/` + id
   // )
 
   // Calendly test startup
   const res = await axios.get(
-    'https://koinstreet-learn-api.herokuapp.com/api/v1/startup/60ca4c75620570082453fc34 ',
+    `${process.env.BASE_URI}/startup/60ca4c75620570082453fc34`,
   );
   const data = await res.data.data;
 

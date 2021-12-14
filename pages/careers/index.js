@@ -60,7 +60,7 @@ const JobsMain = () => {
 
   const fetchData = () => {
     setLoading(true);
-    fetch('https://koinstreet-learn-api.herokuapp.com/api/v1/job')
+    fetch(`${process.env.BASE_URI}/job`)
       .then((response) => response.json())
       .then((response) => {
         setJobs(response.data);
@@ -94,7 +94,7 @@ const JobsMain = () => {
     setLoading(true);
     setJobs([]);
     fetch(
-      `https://koinstreet-learn-api.herokuapp.com/api/v1/job?pay=${filter.pay}&remote=${filter.remote}&job_type=${filter.job_type}&date_posted=${filter.date_posted}&job_industry=${filter.job_industry}`,
+      `${process.env.BASE_URI}/job?pay=${filter.pay}&remote=${filter.remote}&job_type=${filter.job_type}&date_posted=${filter.date_posted}&job_industry=${filter.job_industry}`,
     )
       .then((response) => response.json())
       .then((response) => {
@@ -272,7 +272,7 @@ const JobsMain = () => {
     if (token) {
       axios
         .get(
-          'https://koinstreet-learn-api.herokuapp.com/api/v1/savejob/userjobs',
+          `${process.env.BASE_URI}/savejob/userjobs`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -289,7 +289,7 @@ const JobsMain = () => {
   const saveJob = (job) => {
     axios
       .post(
-        'https://koinstreet-learn-api.herokuapp.com/api/v1/savejob',
+        `${process.env.BASE_URI}/savejob`,
         {
           job_id: job._id,
         },
@@ -315,7 +315,7 @@ const JobsMain = () => {
 
       axios
         .get(
-          'https://koinstreet-learn-api.herokuapp.com/api/v1/easyApply/userApplied',
+          `${process.env.BASE_URI}/easyApply/userApplied`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

@@ -33,7 +33,7 @@ const CompanyDetails = ({ id }) => {
 
   const fetchCompany = () => {
     setLoading(true);
-    fetch(`https://koinstreet-learn-api.herokuapp.com/api/v1/company/${id}`)
+    fetch(`${process.env.BASE_URI}/company/${id}`)
       .then((response) => response.json())
       .then((response) => {
         setCompany(response.data);

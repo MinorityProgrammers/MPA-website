@@ -31,7 +31,7 @@ const ApprovedProposal = function () {
     // Fetch the action data. Set loading state to true before fetch, back to false after the fetch is complete
     const fetchData = () => {
       setLoading(true);
-      fetch('https://koinstreet-learn-api.herokuapp.com/api/v1/proposal/')
+      fetch(`${process.env.BASE_URI}/proposal/`)
         .then((response) => response.json())
         .then((response) => {
           setProposals(response.data);

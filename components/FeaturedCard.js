@@ -15,7 +15,7 @@ const FeaturedCard = function ({
   const fundStartup = async (id, token) => {
     await axios
       .post(
-        'https://koinstreet-learn-api.herokuapp.com/api/v1/funded',
+        `${process.env.BASE_URI}/funded`,
         {
           startup_id: id,
           amount,

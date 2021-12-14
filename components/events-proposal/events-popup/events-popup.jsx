@@ -21,7 +21,7 @@ const EventsPopup = function ({
     event.preventDefault();
     try {
       axios.patch(
-        `https://koinstreet-learn-api.herokuapp.com/api/v1/event/${_id}`,
+        `${process.env.BASE_URI}/event/${_id}`,
         {
           eventStatus: feedback,
           eventLink,

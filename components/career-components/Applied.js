@@ -19,7 +19,7 @@ const Applied = () => {
     if (token) {
       axios
         .get(
-          'https://koinstreet-learn-api.herokuapp.com/api/v1/easyApply/userApplied',
+          `${process.env.BASE_URI}/easyApply/userApplied`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -50,7 +50,7 @@ const Applied = () => {
       deleteJob(e);
       axios
         .delete(
-          `https://koinstreet-learn-api.herokuapp.com/api/v1/easyApply/${jobID}`,
+          `${process.env.BASE_URI}/easyApply/${jobID}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

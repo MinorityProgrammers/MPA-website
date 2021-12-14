@@ -55,7 +55,7 @@ const ActivityDetails = function ({
   const onStart = () => {
     if (completionRate < 50) {
       const userToken = JSON.parse(localStorage.getItem('userInfo')).token;
-      fetch(`https://koinstreet-learn-api.herokuapp.com/api/v1/learn/${courseId}/${moduleId}/${_id}`, {
+      fetch(`${process.env.BASE_URI}/learn/${courseId}/${moduleId}/${_id}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -86,7 +86,7 @@ const ActivityDetails = function ({
       router.push(nextModuleInfo);
     } else {
       const userToken = JSON.parse(localStorage.getItem('userInfo')).token;
-      fetch(`https://koinstreet-learn-api.herokuapp.com/api/v1/learn/${courseId}/module`, {
+      fetch(`${process.env.BASE_URI}/learn/${courseId}/module`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

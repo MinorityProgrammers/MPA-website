@@ -17,7 +17,7 @@ export default function QuizResult(props) {
 
   const handleSubmit = () => {
     const userToken = JSON.parse(localStorage.getItem('userInfo')).token;
-    fetch(`https://koinstreet-learn-api.herokuapp.com/api/v1/learn/${courseId}/${moduleId}/${_id}`, {
+    fetch(`${process.env.BASE_URI}/learn/${courseId}/${moduleId}/${_id}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',

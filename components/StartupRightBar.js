@@ -50,7 +50,7 @@ const StartupRightBar = function ({ data }) {
   const fetchStartups = async () => {
     try {
       const res = await axios.get(
-        'http://koinstreet-learn-api.herokuapp.com/api/v1/startup/',
+        `${process.env.BASE_URI}/startup/`,
       );
       const result = await res.data.data;
       setStartups(result);

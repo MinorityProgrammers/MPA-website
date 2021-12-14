@@ -29,7 +29,7 @@ const MinorityEarnedActions = function () {
     // Fetch the action data. Set loading state to true before fetch, back to false after the fetch is complete
     const fetchData = () => {
       setLoading(true);
-      fetch('https://koinstreet-learn-api.herokuapp.com/api/v1/minority_earned/')
+      fetch(`${process.env.BASE_URI}/minority_earned/`)
         .then((response) => response.json())
         .then((response) => {
           setAllData(response.data.reverse());
