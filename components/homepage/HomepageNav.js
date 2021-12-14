@@ -583,7 +583,7 @@ const HomepageNav = ({
       </div>
       <nav className={` ${sticky ? 'sticky-menu' : ''}`}></nav> */}
 
-      <nav className={` ${sticky ? 'sticky-menu' : ''}`}>
+      <nav className={` ${sticky ? 'sticky-menu tw-flex tw-flex-row tw-justify-between tw-w-full' : 'tw-flex tw-flex-row tw-justify-between tw-w-full'}`}>
         {isLogin === true && (
           <div
             className="hamburger-icon tw-cursor-pointer"
@@ -593,7 +593,7 @@ const HomepageNav = ({
           </div>
         )}
 
-        <div className="container homepage__navbar">
+        <div className="tw-flex tw-flex-row tw-justify-items-end tw-w-full ">
           <div className="navbar-logo">
             <Link href="/" onClick={closeMobileMenu}>
               <img src="/assets/images/mpicon.svg" alt="" />
@@ -619,7 +619,7 @@ const HomepageNav = ({
 
               <li onClick={onClickMobile}>
                 <i
-                  className={isActiveMobile ? 'fas fa-times' : 'fas fa-bars'}
+                  className={isActiveMobile ? 'fas fa-times' : 'fas fa-bars tw-text-gray-500'}
                 />
               </li>
             </ul>
@@ -749,15 +749,15 @@ const HomepageNav = ({
               </Link>
             </li>
           </ul>
-          <div className="homepage__topbar">
+          <div className="">
             <div className="container">
-              <ul className="topbar__right">
+              <ul className="tw-flex tw-flex-row tw-justify-between tw-w-full tw-my-5">
                 <li>
-                  <div className="searchBox tw-text-white">
+                  <div className="tw-flex tw-flex-row tw-w-full tw-border tw-border-gray-700 tw-rounded-md tw-px-4 tw-text-gray-500">
                     <input
                       onChange={handleSearch}
                       value={searchValue}
-                      className="searchInput tw-text-white"
+                      className="searchInput tw-bg-transparent tw-border-0 tw-text-gray-500 tw-py-1 tw-outline-none focus:tw-outline-none"
                   // ${
                   //   searchValue ? "expand" : ""
                   // }`}
@@ -774,19 +774,19 @@ const HomepageNav = ({
                   </div>
                 </li>
                 <li>
-                  <div className="headerRight">
+                  <div className="tw-w-full tw-mx-5">
                     <Account />
                   </div>
                 </li>
                 {userData !== null && userData !== undefined ? (
-                  <>
+                  <div className="tw-mx-8 tw-flex tw-flex-row tw-justify-between tw-w-full">
                     <li>
                       <a href="/chat">
-                        <i className="fas fa-envelope" />
+                        <i className="fas fa-envelope NavIcon tw-mt-2" />
                       </a>
                     </li>
                     <li>
-                      <i className="fas fa-user-circle" onClick={onClick} />
+                      <i className="fas fa-user-circle tw-content-center tw-text-center NavIcon tw-cursor-pointer tw-mt-2" onClick={onClick} />
 
                       {isActive ? (
                         <HomepageNavLoggedin
@@ -797,10 +797,10 @@ const HomepageNav = ({
                         ''
                       )}
                     </li>
-                  </>
+                  </div>
                 ) : (
-                  <li className="topbar__login">
-                    <i aria-hidden className="fas fa-user-circle" onClick={onClick} />
+                  <li className="tw-mx-4 tw-bg-black">
+                    <i aria-hidden className="fas fa-user-circle tw-content-center tw-text-center NavIcon tw-cursor-pointer tw-mt-2" onClick={onClick} />
                     {isActive ? (
                       <HomepageNavLogin onCloseMobileMenu={onClick} />
                     ) : (
