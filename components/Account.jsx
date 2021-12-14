@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useMoralis } from 'react-moralis';
 import { Button, Card, Modal } from 'antd';
 import { SelectOutlined } from '@ant-design/icons';
@@ -34,17 +34,17 @@ const Account = function () {
   if (!isAuthenticated) {
     return (
       <div
-        className="topbar__vote"
+        className="tw-bg-blue-600 hover:tw-bg-blue-700 tw-text-white tw-text-center tw-font-bold tw-py-2 tw-px-2 tw-rounded tw-w-11/12 tw-cursor-pointer"
         onClick={() => authenticate({ signingMessage: 'connected!' })}
       >
-        <p>Connect wallet</p>
+        <p className="tw-text-sm">Connect</p>
       </div>
     );
   }
 
   return (
     <>
-      <div className="topbar__vote" onClick={() => setIsModalVisible(true)}>
+      <div className="tw-bg-blue-600 hover:tw-bg-blue-700 tw-text-white tw-font-bold tw-text-center tw-py-2 tw-px-2 tw-rounded tw-cursor-pointer tw-w-11/12" onClick={() => setIsModalVisible(true)}>
         <p className="tw-text-sm">{getEllipsisTxt(walletAddress, 6)}</p>
       </div>
       <Modal

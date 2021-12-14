@@ -6731,7 +6731,7 @@ html {
 */
 /* homepage navbar */
 .homepage__header {
-  background: #474bfe;
+  background: #efefef;
   position: absolute;
   top: 0;
   left: 0;
@@ -6837,26 +6837,22 @@ html {
 }
 
 .homepage__navbar {
-  background: #474bfe;
+  background: #efefef;
   height: 70px;
- 
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
   font-size: 1.2rem;
   margin: 0px;
-  margin-left:24vw ;
+  margin-left: 12vw ;
 }
 
 .navbar-logo {
   position: absolute;
-  width: 409px;
-  height: 182px;
+  width: 200px;
+  height: 100px;
   cursor: pointer;
   background-color: #474BFF;
   left :0px;
   top:.1px;
-  border-radius:  0% 100% 100% 0% / 100% 0% 100% 0% ;
+  border-radius:  0% 0% 100% 0% / 100% 0% 100% 0%;
  
 }
 .navbar-logo img {
@@ -9810,4 +9806,8 @@ html {
 
 .slick-prev:before, .slick-next:before{
   color: #151371 !important;
+}
+
+.NavIcon{
+  font-size: 1.3rem !important;
 }
