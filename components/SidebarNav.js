@@ -15,7 +15,7 @@ const SidebarNav = function ({
           className="dropdownHeader"
           onClick={() => setCollapse(!collapse)}
         >
-          <h3 className="dropdownTitle tw-text-white">{section.title}</h3>
+          <h3 className=" tw-text-white">{section.title}</h3>
           {collapse ? (
             <RiArrowDropDownLine size={20} />
           ) : (
