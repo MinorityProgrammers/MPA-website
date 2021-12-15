@@ -1,151 +1,88 @@
 import React from 'react';
 
-const HomepageApp = function () {
-  return (
-    <section className="homepage__app">
-      <div className="heading__number">
-        <h3 className="tw-text-blue-900">02</h3>
-      </div>
-      <div className="container">
-        <h2 className="heading__title mt-5 mb-5 tw-text-blue-900">
-          &lsaquo;Minority_App/&rsaquo;
-        </h2>
-
-        <div className="row">
-          <div className="col-lg-4 col-md-6 col-sm-6 col-xs-12 card__container-app">
-            <a href="/learn-page">
-              <div className="card border-0 rounded-0">
-                <div className="img-banner-app">
-                  <img
-                    src="/assets/images/app2.png"
-                    alt=""
-                    className="card-img-top rounded-0"
-                  />
-                  <img
-                    src="/assets/images/banner2.svg"
-                    alt=""
-                    className="card-img-banner"
-                  />
-                </div>
-                <div className="card-body card-body-custom">
-                  <p className="card-button">Learn</p>
-                </div>
-              </div>
-            </a>
-          </div>
-          <div className="col-lg-4 col-md-6 col-sm-6 col-xs-12 card__container-app">
-            <a href="/incubator">
-              <div className="card border-0 rounded-0">
-                <div className="img-banner-app">
-                  <img
-                    src="/assets/images/app1.png"
-                    alt=""
-                    className="card-img-top rounded-0"
-                  />
-                  <img
-                    src="/assets/images/banner1.svg"
-                    className="card-img-banner"
-                  />
-                </div>
-                <div className="card-body card-body-custom">
-                  <p href="/incubator" className="card-button">
-                    Incubator
-                  </p>
-                </div>
-              </div>
-            </a>
-          </div>
-          <div className="col-lg-4 col-md-6 col-sm-6 col-xs-12 card__container-app">
-            <a href="/mentorship">
-              <div className="card border-0 rounded-0">
-                <div className="img-banner-app">
-                  <img
-                    src="/assets/images/app4.png"
-                    alt=""
-                    className="card-img-top rounded-0"
-                  />
-                  <img
-                    src="/assets/images/banner4.svg"
-                    alt=""
-                    className="card-img-banner"
-                  />
-                </div>
-                <div className="card-body card-body-custom">
-                  <p className="card-button">Mentorship</p>
-                </div>
-              </div>
-            </a>
-          </div>
-          <div className="col-lg-4 col-md-6 col-sm-6 col-xs-12 card__container-app">
-            <a href="/events">
-              <div className="card border-0 rounded-0">
-                <div className="img-banner-app">
-                  <img
-                    src="/assets/images/app3.png"
-                    alt=""
-                    className="card-img-top rounded-0"
-                  />
-                  <img
-                    src="/assets/images/banner3.svg"
-                    alt=""
-                    className="card-img-banner"
-                  />
-                </div>
-                <div className="card-body card-body-custom">
-                  <p className="card-button">Events</p>
-                </div>
-              </div>
-            </a>
-          </div>
-
-          <div className="col-lg-4 col-md-6 col-sm-6 col-xs-12 card__container-app">
-            <a href="/careers">
-              <div className="card border-0 rounded-0">
-                <div className="img-banner-app">
-                  <img
-                    src="/assets/images/app5.png"
-                    alt=""
-                    className="card-img-top rounded-0"
-                  />
-                  <img
-                    src="/assets/images/banner5.svg"
-                    alt=""
-                    className="card-img-banner"
-                  />
-                </div>
-                <div className="card-body card-body-custom">
-                  <p className="card-button">Careers</p>
-                </div>
-              </div>
-            </a>
-          </div>
-          <div className="col-lg-4 col-md-6 col-sm-6 col-xs-12 card__container-app">
-            <a href="/consultancy">
-              <div className="card border-0 rounded-0">
-                <div className="img-banner-app">
-                  <img
-                    src="/assets/images/app6.png"
-                    alt=""
-                    className="card-img-top rounded-0"
-                  />
-                  <img
-                    src="/assets/images/banner6.svg"
-                    alt=""
-                    className="card-img-banner"
-                  />
-                </div>
-                <div className="card-body card-body-custom">
-                  <p href="/consultancy" className="card-button">
-                    Consultancy
-                  </p>
-                </div>
-              </div>
-            </a>
-          </div>
+// reusable ImageCard for the HomepageApp Component
+const ImageCard = ({
+  href, bkgImgSrc, iconSrc, text,
+}) => (
+  <div className="col-lg-4 col-md-6 col-sm-6 col-xs-12 card__container-app">
+    <a href={href}>
+      <div className="card border-0 rounded-0">
+        <div className="img-banner-app">
+          <img
+            src={bkgImgSrc}
+            alt=""
+            className="card-img-top rounded-0"
+          />
+          <img
+            src={iconSrc}
+            alt=""
+            className="card-img-banner"
+          />
+        </div>
+        <div className="card-body card-body-custom">
+          <p className="card-button">{text}</p>
         </div>
       </div>
-    </section>
-  );
-};
+    </a>
+  </div>
+);
+
+// HomepageApp Component
+const HomepageApp = () => (
+  <section className="homepage__app">
+    <div className="heading__number">
+      <h3 className="tw-text-blue-900">02</h3>
+    </div>
+    <div className="container">
+      <h2 className="heading__title mt-5 mb-5 tw-text-blue-900">
+        &lsaquo;Minority_App/&rsaquo;
+      </h2>
+
+      <div className="row">
+        <ImageCard
+          href="/learn-page"
+          bkgImgSrc="/assets/images/app2.png"
+          iconSrc="/assets/images/banner2.svg"
+          text="Learn"
+        />
+
+        <ImageCard
+          href="/incubator"
+          bkgImgSrc="/assets/images/app1.png"
+          iconSrc="/assets/images/banner1.svg"
+          text="Incubator"
+        />
+
+        <ImageCard
+          href="/mentorship"
+          bkgImgSrc="/assets/images/app4.png"
+          iconSrc="/assets/images/banner4.svg"
+          text="Mentorship"
+        />
+
+        <ImageCard
+          href="/events"
+          bkgImgSrc="/assets/images/app3.png"
+          iconSrc="/assets/images/banner3.svg"
+          text="Events"
+        />
+
+        <ImageCard
+          href="/careers"
+          bkgImgSrc="/assets/images/app5.png"
+          iconSrc="/assets/images/banner5.svg"
+          text="Careers"
+        />
+
+        <ImageCard
+          href="/consultancy"
+          bkgImgSrc="/assets/images/app6.png"
+          iconSrc="/assets/images/banner6.svg"
+          text="Consultancy"
+        />
+      </div>
+    </div>
+  </section>
+);
 
 export default HomepageApp;

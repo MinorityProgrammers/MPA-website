@@ -18,5 +18,13 @@ module.exports = {
     'jsx-a11y/click-events-have-key-events': 'off',
     'jsx-a11y/no-noninteractive-element-interactions': 'off',
     'react/jsx-filename-extension': 'off',
+    'react/prop-types': 0,
+    'no-underscore-dangle': 'off',
+    'no-nested-ternary': 'off',
+    'no-param-reassign': ['error', { props: false }],
+    'jsx-a11y/no-static-element-interactions': 'off',
+    'linebreak-style': ['error', process.platform === 'win32' ? 'windows' : 'unix'],
+    'react/jsx-no-useless-fragment': 'off',
+    radix: ['error', 'as-needed'],
   },
 };

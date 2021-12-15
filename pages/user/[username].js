@@ -127,7 +127,7 @@ export const getServerSideProps = async (context) => {
   const slug = context.params.username;
 
   const res = await fetch(
-    `https://koinstreet-learn-api.herokuapp.com/api/v1/user/${slug}`,
+    `${process.env.BASE_URI}/user/${slug}`,
   );
   const { data } = await res.json();
 
@@ -139,7 +139,7 @@ export const getServerSideProps = async (context) => {
 // // static generation
 // export const getStaticPaths = async () => {
 //   const res = await fetch(
-//     "https://koinstreet-learn-api.herokuapp.com/api/v1/user/"
+//     "${process.env.BASE_URI}/user/"
 //   );
 //   const data = await res.json();
 
@@ -157,7 +157,7 @@ export const getServerSideProps = async (context) => {
 //   const slug = context.params.username;
 
 //   const res = await fetch(
-//     `https://koinstreet-learn-api.herokuapp.com/api/v1/user/${slug}`
+//     `${process.env.BASE_URI}/user/${slug}`
 //   );
 //   const data = await res.json();
 

@@ -252,7 +252,7 @@ const MentorshipProgramHome = ({
               <Card />
             </div>
             <i
-              className="close_icon fas fa-times close-icon"
+              className="close_icon fas fa-times close-icon tw-text-white"
               onClick={() => {
                 setClickRegister(false);
               }}

@@ -62,7 +62,7 @@ const Footer = function () {
                 </div>
               </div>
 
-              <div className="col-xl-3 col-lg-6 col-sm-12">
+              <div className="col-xl-3 col-lg-6 col-sm-12 footerbout">
                 <div className="footer-widget footer-widget__about">
                   <h2 className="footer-widget__title text-white">About</h2>
                   <p className="footer-widget__text">

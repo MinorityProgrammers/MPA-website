@@ -11,7 +11,7 @@ import SearchCategory from './search-category';
 const Search = function ({ token }) {
   const { query: { _q } } = useRouter();
 
-  const searchUrl = 'https://koinstreet-learn-api.herokuapp.com/api/v1/search';
+  const searchUrl = `${process.env.BASE_URI}/search`;
 
   const popularSearches = ['bootstrap', 'technology', 'frontend']; // popular-searches keys should come from the database and not hard coded this way.
   const searchCategories = ['jobs', 'events', 'users', 'startups', 'chapter'];
@@ -75,7 +75,7 @@ users join chapter from the search page.
 
   useEffect(() => {
     if (token) {
-      axios.get('https://koinstreet-learn-api.herokuapp.com/api/v1/joinChapter/userJoinedRequests', {
+      axios.get(`${process.env.BASE_URI}/joinChapter/userJoinedRequests`, {
         headers: {
           Authorization: `Bearer ${token || ''}`,
         },

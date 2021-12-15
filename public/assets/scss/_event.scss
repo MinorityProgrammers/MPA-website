@@ -12,13 +12,7 @@
   &_wrapper {
     width: 100%;
     height: 100%;
-    background: linear-gradient(
-      104.61deg,
-      #ff00b8 2.65%,
-      #ff655b 51.83%,
-      #ffc700 100%
-    );
-    padding-top: 120px;
+    padding-top: 80px;
   }
   &_container {
     width: 100%;
@@ -38,28 +32,28 @@
         background: #f5f5f5;
         width: fit-content;
       }
-      .swiper-navigation_container {
-        position: absolute;
-        width: 100%;
-        height: 40px;
-        padding-top: 20px;
-        bottom: 5px;
-        display: flex;
-        justify-content: center;
-        z-index: 9999;
-      }
-      .swiper-navigation {
-        display: flex;
-        width: 100px;
-        height: auto;
-        .swiper-button-prev,
-        .swiper-button-next {
-          position: relative;
-          background: none;
-          border: none;
-          color: #ff00b8;
-        }
-      }
+      // .swiper-navigation_container {
+      //   position: absolute;
+      //   height: 40px;
+      //   padding-top: 20px;
+      //   bottom: 5px;
+      //   display: flex;
+      //   justify-content: center;
+      //   z-index: 9999;
+      // }
+      // .swiper-navigation {
+      //   display: flex;
+      //   width: 100px;
+      //   height: auto;
+      //   .swiper-button-prev,
+      //   .swiper-button-next {
+      //     position: relative;
+      //     background: none;
+      //     border: no
+      //     ne;
+      //     color: #ff00b8;
+      //   }
+      // }
       .swiper-slide {
         height: auto !important;
       }
@@ -166,28 +160,30 @@
     display: flex;
     align-items: center;
     &1 {
-      border-color: #151371;
+      border-color: #474bfd;
     }
     &1:hover {
-      background-color: rgba(59, 130, 246, 0.5);
+      background-color: rgba(103, 157, 243, 0.5);
     }
     &2 {
-      border-color: #fe19be;
+      border-color: #474bfd;
     }
         &2:hover {
-      background-color: #fbceee;
+     background-color: rgba(103, 157, 243, 0.5);
+      color:white;
     }
     &3 {
-      border-color: #fecc19;
+      border-color: #474bfd;
     }
     &3:hover{
-      background-color: #FFF7DA;
+      background-color: rgba(103, 157, 243, 0.5);
+      color: white;
     }
     &4 {
-      border-color: #fe19be;
+      border-color: #474bfd;
     }
     &4:hover{
-      background-color: #fbceee;
+      background-color: rgba(103, 157, 243, 0.5);
     }
     div {
       padding: 10px;
@@ -260,23 +256,69 @@
       margin-top: 0;
     }
     h1 {
-      font-size: 50px;
+      font-size: 40px;
       font-weight: 700;
       float: right;
-      background-image: linear-gradient(to right, #ff09b0, #ffb411);
       background-size: 100%;
+      background: #3E385D;
       -webkit-background-clip: text;
       -moz-background-clip: text;
       -webkit-text-fill-color: transparent;
       -moz-text-fill-color: transparent;
     }
-    div {
-      width: 100%;
+    .rule {
+      width: 70%;
       height: 0.2vw;
-      background-image: linear-gradient(to right, #ff09b0, #ffb411);
+      background: #3E385D;
       margin-top: 13px;
       margin-left: 3%;
     }
+    // .slider-button {
+    //   border: red;
+    //   width: 20%;
+    // }
+    // .event_container {
+    //   width: 100%;
+    //   height: 100%;
+    //   background-color: #f5f5f5;
+    //   padding-top: 40px;
+    //   .swiper-container {
+    //     width: 90%;
+    //     position: relative;
+    //     padding-bottom: 50px !important;
+    //     cursor: move; /* fallback if grab cursor is unsupported */
+    //     cursor: grab;
+    //     cursor: -moz-grab;
+    //     cursor: -webkit-grab;
+    //     min-height: 100px;
+    //     .swiper-wrapper {
+    //       background: #f5f5f5;
+    //       width: fit-content;
+    //     }
+        .swiper-navigation_container {
+          // position: absolute;
+          height: 40px;
+          padding-top: 20px;
+          bottom: 5px;
+          display: flex;
+          justify-content: center;
+          z-index: 50;
+        }
+        .swiper-navigation {
+          display: flex;
+          width: 100px;
+          height: auto;
+          margin-bottom: .7rem;
+          .swiper-button-prev,
+          .swiper-button-next {
+            position: relative;
+            background: none;
+            border: none;
+            color: #3E385D;
+          }
+        }
+      // }
+    // }
   }
 
   &_create_own_event {
@@ -316,7 +358,7 @@
 
           padding: 15px;
           width: 300px;
-          background-image: linear-gradient(to right, #fe19be, #fecc19);
+          background: #474BFF;
           background-size: 150% auto;
           box-shadow: 0 0 20px #eee;
           border-radius: 5px;
@@ -567,6 +609,7 @@
   &_bottom {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     margin-top: 60px;
     .save {
       color: #f700ff !important;
@@ -577,19 +620,19 @@
     }
 
     .button_info {
-      color: #151371;
+      color: #474BFF;
       border-style: solid;
       border-width: 1px;
-      border-color: #151371;
+      border-color: #474BFF;
       margin-bottom: 5px;
       width: fit-content;
       padding: 7px;
 
-      width: 100%;
+      // width: 40%;
     }
     .button_register {
       color: azure;
-      background-color: #151371;
+      background-color: #474BFF;
       padding: 7px;
       text-transform: capitalize;
 
@@ -651,7 +694,7 @@
     z-index: 6000;
     height: 95vh;
     border-radius: 20px;
-    overflow-y: scroll;
+    // overflow-y: scroll;
 
     display: flex;
     flex-direction: row;
@@ -1092,6 +1135,7 @@
       .header {
         padding: 40px 30px 30px;
         display: flex;
+        flex-direction: row;
         justify-content: space-between;
         align-items: center;
         .host_details {
@@ -1123,13 +1167,13 @@
         .buttons {
           padding-top: 1rem;
           .button_action {
-            background: #151371;
+            background: #474BFF;
             color: #ffffff;
             font-weight: bold;
             width: 172px;
             height: 58px;
             border-radius: 5px;
-            border: 1px solid #151371;
+            border: 1px solid #474BFF;
             transition: 0.3s;
 
             a {
@@ -1137,7 +1181,7 @@
             }
             &:hover {
               color: #151371;
-              background: #ffffff;
+              background: #151371;
             }
           }
         }

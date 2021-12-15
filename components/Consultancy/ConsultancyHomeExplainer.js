@@ -24,10 +24,10 @@ const ConsultancyHomeExplainer = function ({
             {data === null ? <a onClick={() => { setClickRegister(true); }} className="btn consultancyBTN--Login tw-cursor-pointer">Register</a> : ' '}
 
             {data === null
-                            && <a onClick={() => { setClickRegister(true); }} className="btn mentorshipBTN ml-4 consultancyBTN--getQuote">Get Quote</a>}
+                            && <a onClick={() => { setClickRegister(true); }} className="btn mentorshipBTN ml-4 consultancyBTN--getQuote hover:tw-text-white hover:tw-bg-blue-800">Get Quote</a>}
             {data && (
               <Link href="/consultancy">
-                <a className="btn mentorshipBTN ml-4 consultancyBTN--getQuote">Get Quote</a>
+                <a className="btn mentorshipBTN ml-4 consultancyBTN--getQuote hover:tw-text-white hover:tw-bg-blue-800">Get Quote</a>
               </Link>
             )}
           </div>
@@ -193,7 +193,7 @@ const ConsultancyHomeExplainer = function ({
               <div id="create_event-container" className="create_event-container">
                 <Card setClickRegister={setClickRegister} />
               </div>
-              <i className="close_icon fas fa-times close-icon" onClick={() => { setClickRegister(false); }} />
+              <i className="close_icon fas fa-times close-icon tw-text-white" onClick={() => { setClickRegister(false); }} />
             </div>
           )
           : ''}

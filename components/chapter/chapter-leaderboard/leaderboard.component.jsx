@@ -24,7 +24,7 @@ const Leaderboard = function () {
   const view = 3;
 
   useEffect(() => {
-    axios.get('https://koinstreet-learn-api.herokuapp.com/api/v1/chapter_stats')
+    axios.get(`${process.env.BASE_URI}/chapter_stats`)
       .then((res) => res.data)
       .then((msg) => msg.data)
       .then((data) => {

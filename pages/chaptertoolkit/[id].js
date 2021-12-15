@@ -21,7 +21,7 @@ const ChapterPage = function () {
 
   useEffect(() => {
     axios
-      .get('https://koinstreet-learn-api.herokuapp.com/api/v1/ChapterToolKit')
+      .get(`${process.env.BASE_URI}/ChapterToolKit`)
       .then((res) => res.data)
       .then((msg) => msg.data)
       .then((data) => {

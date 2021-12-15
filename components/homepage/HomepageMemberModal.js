@@ -1,10 +1,10 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 
-const HomepageMemberModal = function ({
+const HomepageMemberModal = ({
   showModal,
   setShowModal,
   selectedMember,
-}) {
+}) => {
   const modalRef = useRef();
 
   const closeModal = (e) => {

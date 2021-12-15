@@ -57,7 +57,7 @@ const ChapterMap = function ({ google, token }) {
   const userJoinRequests = findrequests(joinRequests);
 
   useEffect(() => {
-    axios.get('https://koinstreet-learn-api.herokuapp.com/api/v1/location')
+    axios.get(`${process.env.BASE_URI}/location`)
       .then((res) => res.data)
       .then((msg) => msg.data)
       .then((data) => {
@@ -69,7 +69,7 @@ const ChapterMap = function ({ google, token }) {
 
   useEffect(() => {
     if (token) {
-      axios.get('https://koinstreet-learn-api.herokuapp.com/api/v1/joinChapter/userJoinedRequests', {
+      axios.get(`${process.env.BASE_URI}/joinChapter/userJoinedRequests`, {
         headers: {
           Authorization: `Bearer ${token || ''}`,
         },

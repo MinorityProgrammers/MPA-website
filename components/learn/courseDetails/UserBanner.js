@@ -3,6 +3,9 @@ import { CircularProgressbarWithChildren, buildStyles } from 'react-circular-pro
 import 'react-circular-progressbar/dist/styles.css';
 
 const UserBanner = function ({ course, userInfo, userPercentages }) {
+  function scrollToModule() {
+    window.scrollTo(400, 400);
+  }
   return (
     <div className="pt-5 ml-5 pl-md-5">
       <div className="d-md-flex pb-5 mb-2">
@@ -44,7 +47,7 @@ const UserBanner = function ({ course, userInfo, userPercentages }) {
                             )}
           </div>
           <div className="ml-5 mt-5 pb-4">
-            <button className="btn banner-btn px-5" style={{ borderRadius: '15px' }}>Resume</button>
+            <button type="button" className="btn banner-btn px-5" style={{ borderRadius: '15px' }} onClick={() => { scrollToModule(); }}>Resume</button>
           </div>
         </div>
         <div className="col-md-2" />

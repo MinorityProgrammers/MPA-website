@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/iframe-has-title */
 import React, { useState, useRef } from 'react';
 import Layout from '../components/Layout';
 import HomepageNav from '../components/homepage/HomepageNav';
@@ -13,7 +14,7 @@ const Swap = function () {
   const handleClick = () => {
     setHide(!hide);
   };
-  if (hide == false) {
+  if (hide === false) {
     setTimeout(() => {
       setHide(true);
     }, 10000);

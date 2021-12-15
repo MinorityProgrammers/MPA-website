@@ -21,7 +21,7 @@ const ChatUserSearch = function ({
           //     'Authorization': `Bearer ${token}`
           //   }
           // });
-          const res = await axios.get(`http://koinstreet-learn-api.herokuapp.com/api/v1/user/search/${userSearch}`, {
+          const res = await axios.get(`${BASE_URI}/user/search/${userSearch}`, {
             headers: {
               Authorization: `Bearer ${token}`,
             },
@@ -51,7 +51,7 @@ const ChatUserSearch = function ({
       //     'Authorization': `Bearer ${token}`
       //   }
       // });
-      const res = await axios.post('http://koinstreet-learn-api.herokuapp.com/api/v1/chat/', body, {
+      const res = await axios.post(`${process.env.BASE_URI}/chat/`, body, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

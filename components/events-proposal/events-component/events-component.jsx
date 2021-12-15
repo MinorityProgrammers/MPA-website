@@ -87,7 +87,7 @@ const Events = function ({ token }) {
   };
 
   const fetchEvents = () => {
-    axios.get('https://koinstreet-learn-api.herokuapp.com/api/v1/event')
+    axios.get(`${process.env.BASE_URI}/event`)
       .then((res) => res.data.data)
       .then((data) => { setEvents(data); setEventsCopy(data); })
       .catch((err) => { console.log(err); });

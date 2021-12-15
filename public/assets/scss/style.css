@@ -1733,7 +1733,7 @@ a:visited {
 }
 
 .contact-info-one {
-  padding-top: 120px;
+  padding-top: 80px;
 }
 
 .contact-info-one__title {
@@ -1846,7 +1846,7 @@ a:visited {
 }
 
 .contact-one {
-  padding-top: 120px;
+  padding-top: 80px;
   padding-bottom: 120px;
 }
 
@@ -1904,7 +1904,7 @@ a:visited {
 * 5. gallery styles
 */
 .gallery-one {
-  padding-top: 120px;
+  padding-top: 80px;
   padding-bottom: 90px;
 }
 
@@ -1962,7 +1962,7 @@ a:visited {
 * 6. faq styles
 */
 .faq-one {
-  padding-top: 120px;
+  padding-top: 80px;
   padding-bottom: 120px;
 }
 
@@ -2334,7 +2334,7 @@ a:visited {
 }
 
 .cta-four {
-  padding-top: 120px;
+  padding-top: 80px;
   padding-bottom: 472px;
   background-image: url(../images/teacher-1-1.jpg);
   background-repeat: no-repeat;
@@ -2552,7 +2552,7 @@ a:visited {
 */
 .team-one {
   padding-bottom: 90px;
-  padding-top: 120px;
+  padding-top: 80px;
 }
 
 .team-one__single {
@@ -2664,7 +2664,7 @@ a:visited {
 }
 
 .team-details {
-  padding-top: 120px;
+  padding-top: 80px;
   padding-bottom: 90px;
 }
 
@@ -2904,7 +2904,7 @@ a:visited {
 */
 .pricing-one {
   background-color: #f1f1f1;
-  padding-top: 120px;
+  padding-top: 80px;
   padding-bottom: 90px;
 }
 
@@ -3048,7 +3048,7 @@ a:visited {
 * 10. become-teacher styles
 */
 .become-teacher {
-  padding-top: 120px;
+  padding-top: 80px;
 }
 
 .become-teacher__form {
@@ -3183,7 +3183,7 @@ a:visited {
 * 11. course styles
 */
 .course-one {
-  padding-top: 120px;
+  padding-top: 80px;
   padding-bottom: 120px;
 }
 
@@ -4598,7 +4598,7 @@ a:visited {
 }
 
 .course-one__top-title.home-two {
-  padding-top: 120px;
+  padding-top: 80px;
   padding-bottom: 0;
 }
 
@@ -4646,7 +4646,7 @@ a:visited {
 }
 
 .course-one__top-title.home-three {
-  padding-top: 120px;
+  padding-top: 80px;
   padding-bottom: 0;
 }
 
@@ -4846,12 +4846,16 @@ a:visited {
 * 13. footer styles
 */
 .site-footer {
-  background-color: #022c46;
+  background-color: #474bfe;
   overflow: hidden;
 }
 
+.footerAbout{
+    background-color: #474bfe !important;
+}
+
 .site-footer__bottom {
-  background-color: #012237;
+  background-color: #474bfe;
 }
 
 .site-footer__bottom .container {
@@ -4979,7 +4983,7 @@ a:visited {
 }
 
 .footer-widget {
-  padding-top: 120px;
+  padding-top: 80px;
   padding-bottom: 120px;
 }
 
@@ -4991,7 +4995,7 @@ a:visited {
   margin: 0;
   font-size: 15px;
   line-height: 30px;
-  color: #94a3ac;
+  color: #fff;
   margin-top: -10px;
 }
 
@@ -5099,7 +5103,7 @@ a:visited {
 }
 
 .footer-widget__link-list li a {
-  color: #94a3ac;
+  color: #fff;
   font-size: 15px;
   font-weight: 500;
   -webkit-transition: all .4s ease;
@@ -5117,7 +5121,7 @@ a:visited {
 .footer-widget__course-list li h2 {
   margin: 0;
   font-size: 15px;
-  color: #94a3ac;
+  color: #fff;
   font-weight: 500;
   margin-bottom: 10px;
 }
@@ -5139,7 +5143,7 @@ a:visited {
 * 14. blog styles
 */
 .blog-one {
-  padding-top: 120px;
+  padding-top: 80px;
   padding-bottom: 120px;
 }
 
@@ -6903,7 +6907,7 @@ a:visited {
 * 21. meeting styles
 */
 .meeting-one {
-  padding-top: 120px;
+  padding-top: 80px;
   padding-bottom: 120px;
 }
 

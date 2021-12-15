@@ -3,7 +3,6 @@ import axios from 'axios';
 import Layout from '../components/Layout';
 import HomepageNav from '../components/homepage/HomepageNav';
 import Footer from '../components/Footer';
-import LearnBanner from '../components/learn/LearnBanner';
 import CourseCategories from '../components/learn/CourseCategories';
 import SidebarTwo from '../components/SidebarTwo';
 import links from '../contexts/utils/links';
@@ -21,7 +20,7 @@ const LearnPage = function () {
   const handleClick = () => {
     setHide(!hide);
   };
-  if (hide == false) {
+  if (hide === false) {
     setTimeout(() => {
       setHide(true);
     }, 60000);
@@ -32,7 +31,7 @@ const LearnPage = function () {
     if (userToken !== null) {
       axios
         .get(
-          'https://koinstreet-learn-api.herokuapp.com/api/v1/learn/userCourses',
+          `${process.env.BASE_URI}/learn/userCourses`,
           {
             headers: {
               Authorization: `Bearer ${userToken.token}`,
@@ -47,7 +46,7 @@ const LearnPage = function () {
 
   useEffect(() => {
     axios
-      .get('https://koinstreet-learn-api.herokuapp.com/api/v1/learn/')
+      .get(`${process.env.BASE_URI}/learn/`)
       .then((res) => {
         setUsersCourses(res.data.data);
       });
@@ -68,13 +67,14 @@ const LearnPage = function () {
         active="Home"
         handleClick={handleClick}
       />
-      {hide == false && <ComingSoon closeClick={handleClick} />}
-      <LearnBanner />
-      <CourseCategories
-        user={data}
-        usersCourses={usersCourses}
-        enrolledCourses={enrolledCourses}
-      />
+      {hide === false && <ComingSoon closeClick={handleClick} />}
+      <div className="tw-pt-20">
+        <CourseCategories
+          user={data}
+          usersCourses={usersCourses}
+          enrolledCourses={enrolledCourses}
+        />
+      </div>
       <Footer />
     </Layout>
   );

@@ -62,7 +62,7 @@ const ProposalNotification = function () {
         </div>
         {/* approvedProposal ______________________  */}
 
-        <ApprovedRejected api="https://koinstreet-learn-api.herokuapp.com/api/v1/proposalStatus/approvedProposal" status="Approved" />
+        <ApprovedRejected api={`${process.env.BASE_URI}/proposalStatus/approvedProposal" status="Approved`} />
 
         {/* approvedProposal ______________________  */}
 
@@ -77,7 +77,7 @@ const ProposalNotification = function () {
             The following proposals you elected, were rejected by the core team.
           </p>
         </div>
-        <ApprovedRejected api="https://koinstreet-learn-api.herokuapp.com/api/v1/proposalStatus/userDeniedProposal" status="Rejected" />
+        <ApprovedRejected api={`${process.env.BASE_URI}/proposalStatus/userDeniedProposal`} status="Rejected" />
       </div>
     </section>
   );

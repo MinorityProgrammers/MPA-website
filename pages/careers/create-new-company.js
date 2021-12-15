@@ -1,11 +1,12 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
+import ImgUploadIconSvg from '../../components/career-components/svgs/ImgUploadIconSvg';
 import Footer from '../../components/Footer';
 import HomepageNav from '../../components/homepage/HomepageNav';
 import Layout from '../../components/Layout';
 import SidebarTwo from '../../components/SidebarTwo';
 import links from '../../contexts/utils/links';
 
-const CreateNewCompany = function () {
+const CreateNewCompany = () => {
   const [open, setOpen] = useState(false);
   return (
     <Layout>
@@ -219,25 +220,9 @@ const CreateNewCompany = function () {
                 <div className="tw-w-full sm:tw-w-1/3 tw-flex tw-flex-col tw-items-center tw-justify-between">
                   <label
                     className="tw-w-44 tw-h-44 tw-border tw-border-1 tw-text-4xl tw-text-white tw-flex tw-flex-col tw-justify-center tw-items-center tw-text-center"
-                    htmlFor="company-logo"
                   >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="36"
-                      height="24"
-                      viewBox="0 0 36 24"
-                      className="image-upload"
-                    >
-                      <path
-                        id="Icon_material-cloud-upload"
-                        data-name="Icon material-cloud-upload"
-                        d="M29.025,15.06a11.239,11.239,0,0,0-21-3A9,9,0,0,0,9,30H28.5a7.478,7.478,0,0,0,.525-14.94ZM21,19.5v6H15v-6H10.5L18,12l7.5,7.5Z"
-                        transform="translate(0 -6)"
-                        fill="#fff"
-                      />
-                    </svg>
+                    <ImgUploadIconSvg />
                   </label>
-
                   <input
                     type="file"
                     name="logo"
@@ -251,6 +236,7 @@ const CreateNewCompany = function () {
               <div className="tw-flex tw-flex-col tw-mb-3">
                 <label className="tw-text-white tw-text-lg tw-mb-1 tw-font-bold">
                   Company Description
+                  {' '}
                   <span className="tw-text-xl tw-text-yellow-200">*</span>
                 </label>
                 <textarea

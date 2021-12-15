@@ -1,7 +1,7 @@
-import { useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
+import React, { useEffect, useRef } from 'react';
 
-export var JobsFilters = function ({
+const JobsFilters = ({
   submitForm,
   openFilterForm,
   filter,
@@ -9,13 +9,8 @@ export var JobsFilters = function ({
   queryObj,
   showModal,
   setShowModal,
-}) {
+}) => {
   const remoteCheckbox = useRef();
-  const modalRef = useRef();
-
-  const closeModal = (e) => {
-    if (modalRef.current === e.target) setShowModal(false);
-  };
 
   useEffect(() => {
     if (showModal) {
@@ -37,12 +32,12 @@ export var JobsFilters = function ({
   function openFilters() {
     if (
       window.getComputedStyle(document.querySelector('.jobFilters')).display
-      == 'none'
+      === 'none'
     ) {
       document.querySelector('.jobFilters').style.display = 'flex';
     } else if (
       window.getComputedStyle(document.querySelector('.jobFilters')).display
-      == 'flex'
+      === 'flex'
     ) {
       document.querySelector('.jobFilters').style.display = 'none';
     }
@@ -61,11 +56,11 @@ export var JobsFilters = function ({
 
   // only allow one checkbox to be selected per filter
   function checkboxesOff(e) {
-    for (const i of e.target.parentNode.parentNode.querySelectorAll('li')) {
-      if (i.childNodes[0].value != e.target.value) {
-        i.childNodes[0].checked = false;
+    e.target.parentNode.parentNode.querySelectorAll('li').forEach((item) => {
+      if (item.childNodes[0].value !== e.target.value) {
+        item.childNodes[0].checked = false;
       }
-    }
+    });
   }
 
   // add window event listener to toggle "Filters" button on and off
@@ -98,27 +93,27 @@ export var JobsFilters = function ({
     fetchData();
   };
 
-  // tw-col-end-13 tw-bg-profileDark tw-col-start-1 lg:tw-col-start-3  tw-row-start-2  tw-row-end-4 tw-p-3
-
   // MODAL
 
   // filters-open-btn
   return (
     <>
-      <button className="filters-open-btn " onClick={openFilters}>
+      <button type="button" className="filters-open-btn " onClick={openFilters}>
         <i
           className="fas fa-sort-amount-down"
           style={{ color: '#ff4fcd', fontSize: '2rem' }}
         />
       </button>
+
       <div className="jobFilters">
         <div className="job-filter-item">
           <button
+            type="button"
             id="first-item-title"
             className="job-filter-item-title "
             onClick={(e) => openFilterForm(e.currentTarget)}
           >
-            {filter.date_posted == '0'
+            {filter.date_posted === '0'
               ? 'Date Posted'
               : `Past ${filter.date_posted
                 .charAt(0)
@@ -190,6 +185,7 @@ export var JobsFilters = function ({
             </ul>
             <div className="job-filter-item-form-options">
               <button
+                type="button"
                 className="job-filter-item-form-options-cancel"
                 onClick={(e) => closeForm(e.currentTarget)}
               >
@@ -200,10 +196,11 @@ export var JobsFilters = function ({
         </div>
         <div className="job-filter-item">
           <button
+            type="button"
             className="job-filter-item-title "
             onClick={(e) => openFilterForm(e.currentTarget)}
           >
-            {filter.job_industry == '' ? 'Industry' : filter.job_industry}
+            {filter.job_industry === '' ? 'Industry' : filter.job_industry}
             <span>&#9660;</span>
           </button>
           <div className="job-filter-item-form">
@@ -259,6 +256,7 @@ export var JobsFilters = function ({
             </ul>
             <div className="job-filter-item-form-options">
               <button
+                type="button"
                 className="job-filter-item-form-options-cancel"
                 onClick={(e) => closeForm(e.currentTarget)}
               >
@@ -269,10 +267,11 @@ export var JobsFilters = function ({
         </div>
         <div className="job-filter-item">
           <button
+            type="button"
             className="job-filter-item-title "
             onClick={(e) => openFilterForm(e.currentTarget)}
           >
-            {filter.pay == '' ? 'Pay' : `${filter.pay}+`}
+            {filter.pay === '' ? 'Pay' : `${filter.pay}+`}
             <span>&#9660;</span>
           </button>
           <div className="job-filter-item-form">
@@ -340,6 +339,7 @@ export var JobsFilters = function ({
             </ul>
             <div className="job-filter-item-form-options">
               <button
+                type="button"
                 className="job-filter-item-form-options-cancel"
                 onClick={(e) => closeForm(e.target)}
               >
@@ -350,10 +350,11 @@ export var JobsFilters = function ({
         </div>
         <div className="job-filter-item">
           <button
+            type="button"
             className="job-filter-item-title "
             onClick={(e) => openFilterForm(e.currentTarget)}
           >
-            {filter.job_type == '' ? 'Job Type' : filter.job_type}
+            {filter.job_type === '' ? 'Job Type' : filter.job_type}
             <span>&#9660;</span>
           </button>
           <div className="job-filter-item-form">
@@ -457,6 +458,7 @@ export var JobsFilters = function ({
             </ul>
             <div className="job-filter-item-form-options">
               <button
+                type="button"
                 className="job-filter-item-form-options-cancel"
                 onClick={(e) => closeForm(e.currentTarget)}
               >
@@ -466,9 +468,14 @@ export var JobsFilters = function ({
           </div>
         </div>
         <div className="job-filter-item remote-item">
-          <label className="remote-label">Remote</label>
+          <label htmlFor="remote" className="remote-label">
+            {' '}
+            Remote
+            {' '}
+          </label>
           <input
             className="remote-checkmate"
+            id="remote"
             type="checkbox"
             name="remote"
             ref={remoteCheckbox}
@@ -476,25 +483,32 @@ export var JobsFilters = function ({
           />
         </div>
         <div className="job-filter-item">
-          {filter.pay != ''
-            || filter.job_type != ''
-            || filter.date_posted != ''
-            || filter.remote != ''
-            || filter.job_industry != '' ? (
-
-              <button className="job-filter-reset" onClick={() => resetFilter()}>
-                Clear
-              </button>
-
+          {filter.pay !== ''
+          || filter.job_type !== ''
+          || filter.date_posted !== ''
+          || filter.remote !== ''
+          || filter.job_industry !== '' ? (
+            <button
+              type="button"
+              className="job-filter-reset"
+              onClick={() => resetFilter()}
+            >
+              Clear
+            </button>
             ) : (
-
-              <button className="job-filter-reset" style={{ display: 'none' }} onClick={() => resetFilter()}>
+              <button
+                type="button"
+                className="job-filter-reset"
+                style={{ display: 'none' }}
+                onClick={() => resetFilter()}
+              >
                 Clear
               </button>
-
             )}
         </div>
       </div>
     </>
   );
 };
+
+export default JobsFilters;

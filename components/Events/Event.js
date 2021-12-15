@@ -123,7 +123,7 @@ class Event extends Component {
   // fetch Event data
   getEvents = async () => {
     const dateNow = Date.now();
-    await axios.get('https://koinstreet-learn-api.herokuapp.com/api/v1/event')
+    await axios.get(`${process.env.BASE_URI}/event`)
       .then((response) => {
         console.log(response.data.data);
         this.setState({
@@ -159,7 +159,7 @@ class Event extends Component {
   getSavedEvents = async () => {
     const token = window.localStorage.getItem('jwtToken');
 
-    return axios.get('https://koinstreet-learn-api.herokuapp.com/api/v1/saveEvent/', {
+    return axios.get(`${process.env.BASE_URI}/saveEvent/`, {
       headers: {
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Methods': 'GET',
@@ -178,7 +178,7 @@ class Event extends Component {
     const token = window.localStorage.getItem('jwtToken');
 
     if (token != null) {
-      return axios.get('https://koinstreet-learn-api.herokuapp.com/api/v1/saveEvent/userEvents', {
+      return axios.get(`${process.env.BASE_URI}/saveEvent/userEvents`, {
         headers: {
           'Access-Control-Allow-Origin': '*',
           'Access-Control-Allow-Methods': 'GET',
@@ -227,7 +227,7 @@ class Event extends Component {
   filterEvents = () => {
     const { filter } = this.state;
     this.setState({ catergoryFilterLoading: true });
-    fetch(`https://koinstreet-learn-api.herokuapp.com/api/v1/event/?Virtual=${filter.Virtual}&event_time=${filter.event_time}&catName=${filter.catName}`)
+    fetch(`${process.env.BASE_URI}/event/?Virtual=${filter.Virtual}&event_time=${filter.event_time}&catName=${filter.catName}`)
       .then((response) => response.json())
       .then((response) => {
         // console.log(response)
@@ -466,7 +466,7 @@ class Event extends Component {
 
     const fetchEvents = async () => {
       const dateNow = Date.now();
-      const response = await axios.get('https://koinstreet-learn-api.herokuapp.com/api/v1/event', {
+      const response = await axios.get(`${process.env.BASE_URI}/event`, {
         headers: {
           'Access-Control-Allow-Origin': '*',
           'Access-Control-Allow-Methods': 'POST, GET',
@@ -477,7 +477,7 @@ class Event extends Component {
         Swiperdata: response.data.data.filter((event) => {
           const eventTime = new Date(event.time).getTime();
           if (dateNow < eventTime && event.approved !== null && event.approved === true) {
-            return event.Featured == true;
+            return event.Featured === true;
           }
         }),
       });
@@ -686,11 +686,20 @@ class Event extends Component {
 
           <div className="event_divide">
             <h1>Featured&nbsp;Events</h1>
-            <div />
+            <div className="rule" />
+            <div className="swiper-navigation_container">
+              <div className="swiper-navigation">
+                <div className="swiper-button-prev" />
+                <div className="swiper-button-next" />
+              </div>
+            </div>
           </div>
+            
+            
 
           {/* LOADING SKELETON HERE */}
           <div className="swiper-container">
+            
             {this.state.loading
               ? (
                 <div className="swiper-wrapper" style={{ width: '100%' }}>
@@ -756,17 +765,13 @@ class Event extends Component {
                     </div>
                   )}
 
-            <div className="swiper-navigation_container">
-              <div className="swiper-navigation">
-                <div className="swiper-button-prev" />
-                <div className="swiper-button-next" />
-              </div>
-            </div>
+            
+            
           </div>
 
           <div className="event_divide event_divide_second">
             <h1>Active&nbsp;Events</h1>
-            <div />
+            <div className="rule" />
           </div>
           {/* LOADING SKELETON HERE */}
           <div className="event_container_section">
@@ -814,7 +819,7 @@ class Event extends Component {
 
           <div className="event_divide">
             <h1>Past&nbsp;Events</h1>
-            <div />
+            <div className="rule" />
           </div>
           {/* LOADING SKELETON HERE */}
           <div className="event_container_section">
@@ -864,7 +869,7 @@ class Event extends Component {
           <div className="event_myevent">
             <div className="event_divide">
               <h1>My&nbsp;Events</h1>
-              <div />
+              <div className="rule" />
             </div>
 
             {userData !== null ? (
@@ -971,7 +976,7 @@ class Event extends Component {
                   <div id="create_event-container" className="create_event-container">
                     <Card />
                   </div>
-                  <i className="close_icon fas fa-times close-icon" onClick={() => { this.setState({ showMyEvent: false }); }} />
+                  <i className="close_icon fas fa-times close-icon tw-text-white" onClick={() => { this.setState({ showMyEvent: false }); }} />
                 </div>
               )
               : ''}

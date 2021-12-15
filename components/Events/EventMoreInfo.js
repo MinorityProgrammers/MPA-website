@@ -62,7 +62,7 @@ const EventMoreInfo = function (props) {
       // console.log("event card", clickRegister)
     } else if (active === true && userData !== null) {
       setLoading(true);
-      axios.post('https://koinstreet-learn-api.herokuapp.com/api/v1/saveEvent', {
+      axios.post(`${process.env.BASE_URI}/saveEvent`, {
         event_id: props.data._id,
         user_id: userData._id,
         attending: `${status}`,
@@ -94,7 +94,7 @@ const EventMoreInfo = function (props) {
       setClickRegister(true);
       // console.log("event card", clickRegister)
     } else if (active === true && userData !== null) {
-      axios.delete(`https://koinstreet-learn-api.herokuapp.com/api/v1/saveEvent/${eventId}`, {
+      axios.delete(`${process.env.BASE_URI}/saveEvent/${eventId}`, {
         headers: {
           'Content-Type': 'application/json',
           Accept: 'application/json',
@@ -133,7 +133,7 @@ const EventMoreInfo = function (props) {
       attending: `${attendingStatus}`,
     };
     console.log(savedEventId, eventId, userId, attendingStatus);
-    axios.patch(`https://koinstreet-learn-api.herokuapp.com/api/v1/saveEvent/${savedEventId}`, data, {
+    axios.patch(`${process.env.BASE_URI}/saveEvent/${savedEventId}`, data, {
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
@@ -274,7 +274,7 @@ const EventMoreInfo = function (props) {
           <div className="eventmoreinfo_shadow" />
         )}
 
-      <div className="eventmoreinfo_container ">
+      <div className="eventmoreinfo_container tw-z-50">
         <div className="eventmoreinfo_container_left">
           <img src={props.data.EventPicture} alt="Event Picture" />
         </div>

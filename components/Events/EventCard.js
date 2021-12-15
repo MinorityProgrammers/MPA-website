@@ -54,7 +54,7 @@ const EventCardFeatured = function (props) {
 
   const cancelEvent = (e, eventId, token) => {
     e.preventDefault();
-    axios.delete(`https://koinstreet-learn-api.herokuapp.com/api/v1/saveEvent/${eventId}`, {
+    axios.delete(`${process.env.BASE_URI}/saveEvent/${eventId}`, {
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
@@ -81,7 +81,7 @@ const EventCardFeatured = function (props) {
     } else if (active === true && userData !== null) {
       setLoading(true);
       if (val === 'yes') {
-        axios.post('https://koinstreet-learn-api.herokuapp.com/api/v1/saveEvent', {
+        axios.post(`${process.env.BASE_URI}/saveEvent`, {
           event_id: props.item._id,
           user_id: userData._id,
           attending: `${val}`,
@@ -105,7 +105,7 @@ const EventCardFeatured = function (props) {
             errorToast('Something went wrong, please contact us.');
           });
       } else if (val === 'maybe') {
-        axios.post('https://koinstreet-learn-api.herokuapp.com/api/v1/saveEvent', {
+        axios.post(`${process.env.BASE_URI}/saveEvent`, {
           event_id: props.item._id,
           user_id: userData._id,
           attending: `${val}`,

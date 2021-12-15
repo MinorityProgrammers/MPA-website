@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { eventItems } from '../../helpers/dropDownItems';
 
-const HomepageNavDropdown = function ({ onCloseMobileMenu }) {
+const HomepageNavDropdown = ({ onCloseMobileMenu }) => {
   const [click, setClick] = useState(false);
-  //   const handleClick = () => setClick(!click);
 
   return (
     <ul

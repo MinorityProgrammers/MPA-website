@@ -36,7 +36,7 @@ const Content = function (props) {
             <div className={styles.home}>
               <a className={router.pathname === item.path ? styles.active : ''}>
                 <i className={item.class} />
-                <a className={styles.text}>{item.title}</a>
+                <span className={styles.text}>{item.title}</span>
               </a>
             </div>
           </Link>

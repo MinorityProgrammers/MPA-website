@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
 import DonateStripeForm from './DonateStripeForm';
@@ -6,7 +6,6 @@ import DonateStripeForm from './DonateStripeForm';
 const stripePromise = loadStripe(process.env.STRIPE_PUBLISHABLE_KEY);
 
 const DonateStripModal = function ({ showModal, setShowModal, amount }) {
-  const modalRef = useRef();
   const [isDone, setIsDone] = useState(false);
   const [name, setName] = useState('');
   const [checkoutError, setCheckoutError] = useState();

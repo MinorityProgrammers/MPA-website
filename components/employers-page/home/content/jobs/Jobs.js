@@ -37,7 +37,7 @@ const Jobs = function ({ load }) {
     const userToken = window.localStorage.getItem('jwtToken');
     if (userToken !== null) {
       axios
-        .get('https://koinstreet-learn-api.herokuapp.com/api/v1/job/userJobs', {
+        .get(`${process.env.BASE_URI}/job/userJobs`, {
           headers: {
             Authorization: `Bearer ${userToken}`,
           },

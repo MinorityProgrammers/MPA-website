@@ -17,7 +17,7 @@ const Candidates = function ({ load }) {
     if (userToken !== null) {
       axios
         .get(
-          'https://koinstreet-learn-api.herokuapp.com/api/v1/job/candidates',
+          `${process.env.BASE_URI}/job/candidates`,
           {
             headers: {
               Authorization: `Bearer ${userToken}`,

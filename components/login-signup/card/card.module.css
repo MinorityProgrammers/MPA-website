@@ -10,7 +10,7 @@
 }
 /* LEFT SIDE OF CARD */
 .cardLeft {
-  margin-top: 8rem;
+  /* margin-top: 8rem; */
   background-color: #151371;
   background-image: url("/assets/images/login-signup/card-right-background.png");
   background-size: contain;
@@ -40,6 +40,7 @@
 .cardLeft h1 {
   font-size: 3.2rem;
   margin-bottom: 2vh;
+  color: #fff;
 }
 .cardLeft p {
   font-size: 1.2rem;
@@ -58,10 +59,9 @@
 
 /* RIGHT SIDE OF THE CARD */
 .cardRight {
-  margin-top: 8rem;
+  /* margin-top: 8rem; */
   background-color: #fff;
   width: 50%;
-  height: 100%;
   padding: 2vh 7vh 0.5vh 7vh;
   display: flex;
   flex-direction: column;

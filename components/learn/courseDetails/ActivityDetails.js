@@ -55,7 +55,7 @@ const ActivityDetails = function ({
   const onStart = () => {
     if (completionRate < 50) {
       const userToken = JSON.parse(localStorage.getItem('userInfo')).token;
-      fetch(`https://koinstreet-learn-api.herokuapp.com/api/v1/learn/${courseId}/${moduleId}/${_id}`, {
+      fetch(`${process.env.BASE_URI}/learn/${courseId}/${moduleId}/${_id}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -86,7 +86,7 @@ const ActivityDetails = function ({
       router.push(nextModuleInfo);
     } else {
       const userToken = JSON.parse(localStorage.getItem('userInfo')).token;
-      fetch(`https://koinstreet-learn-api.herokuapp.com/api/v1/learn/${courseId}/module`, {
+      fetch(`${process.env.BASE_URI}/learn/${courseId}/module`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -185,23 +185,19 @@ const ActivityDetails = function ({
                                         )}
               </div>
 
-              <div className="px-md-5 mx-md-5">
+              <div className="px-md-5 mx-md-5 tw-py-5">
                 <div className="course-weeks px-3 mb-4 mx-2 activityDetails">
                   <div className="pt-3"><p className={completionStatus === 'completed' ? 'green-activityStatus ml-auto' : 'red-activityStatus ml-auto'}><span>{completionStatus}</span></p></div>
                   <div className="ml-4 text-white activity-details">
                     <div className="d-pb-1">
-                      <h3 className="mt-3 mb-2">{moduleInfo.name}</h3>
+                      <h3 className="mt-3 mb-2 tw-text-white">{moduleInfo.name}</h3>
                     </div>
                     <div className="duration mt-3">
                       <span><FontAwesomeIcon icon={faClock} /></span>
                       <span className="ml-2">{moduleInfo.duration}</span>
                     </div>
                     <div className="mt-5">
-                      <h4 className="pb-2">Header</h4>
-                      <p>{moduleInfo.description}</p>
-                    </div>
-                    <div className="mt-5 mb-5 pb-5">
-                      <h4 className="pb-2">Header</h4>
+                      <h4 className="pb-2 tw-text-white">Header</h4>
                       <p>{moduleInfo.description}</p>
                     </div>
                   </div>

@@ -11,7 +11,7 @@ const UserCoursesList = function ({ enrolledCourse }) {
 
   useEffect(() => {
     const userToken = JSON.parse(localStorage.getItem('userInfo')).token;
-    axios.get(`https://koinstreet-learn-api.herokuapp.com/api/v1/course/${_id}/module`, {
+    axios.get(`${process.env.BASE_URI}/course/${_id}/module`, {
       headers: {
         Authorization: `Bearer ${userToken}`,
       },
@@ -23,7 +23,7 @@ const UserCoursesList = function ({ enrolledCourse }) {
 
   useEffect(() => {
     const userToken = JSON.parse(localStorage.getItem('userInfo')).token;
-    axios.get(`https://koinstreet-learn-api.herokuapp.com/api/v1/learn/${_id}/userModules`, {
+    axios.get(`${process.env.BASE_URI}/learn/${_id}/userModules`, {
       headers: {
         Authorization: `Bearer ${userToken}`,
       },
@@ -48,7 +48,7 @@ const UserCoursesList = function ({ enrolledCourse }) {
   const userPercentages = Math.round(completionRate / totalModulesLength);
 
   return (
-    <div className="courses-items px-3 mb-4 mx-2">
+    <div className="courses-items px-3 mb-4 mx-2 tw-bg-white tw-shadow-lg">
       <div className="pt-3">
         <div className="earn-rate ml-auto d-flex align-items-center">
           <img src="https://i.ibb.co/Yjpy6PN/dot.png" className="img-fluid ml-2" alt="" />

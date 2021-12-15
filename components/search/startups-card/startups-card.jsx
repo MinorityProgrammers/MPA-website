@@ -36,7 +36,7 @@ const StartupsCard = function ({ data }) {
       <div className={styles.fundBar}>
         <div style={{ width: `${percentFund(targetAmount, amount)}%` }} className={styles.reading} />
       </div>
-      <Link href={`/startup-info/${_id}`}>
+      <Link href={`/startup/${_id}`}>
         <a>
           <div className={styles.more}>Learn More</div>
         </a>

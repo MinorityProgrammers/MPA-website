@@ -8,7 +8,7 @@ import ComingSoon from '../components/ComingSoon';
 import { useDetectOutsideClick } from '../components/UseDetectOutsideClick';
 import PresaleCountDown from '../components/presale/presaleCountDown';
 import PresaleAmount from '../components/presale/presaleAmount';
-import PresaleHeroSection from '../components/presale/presaleHeroSection.js';
+import PresaleHeroSection from '../components/presale/presaleHeroSection';
 import PresalePreorder from '../components/presale/presalePreorder';
 
 const Presale = function () {

@@ -20,7 +20,7 @@
     #ffc700 100%
   );
   border: 20px solid black; 
-  padding-top: 120px 0;
+  padding-top: 80px 0;
 }
 
 .section__incubator {
@@ -50,12 +50,7 @@
 }
 
 .btn-gradient {
-  background: linear-gradient(
-    104.61deg,
-    #ff00b8 2.65%,
-    #ff655b 51.83%,
-    #ffc700 100%
-  );
+  background-color: #474BFF;
   color: #fff;
   width: 200px;
   padding: 1rem;
@@ -121,12 +116,11 @@
   color: #fff;
   display: flex;
   height: 100%;
-  padding: 120px 0 0 0;
-  background: linear-gradient(90deg, #ff00b8 0%, #ff655b 50.8%, #ffc700 100%);
+  padding: 80px 0 0 0;
+  background-color: #efefef;
 }
 
 .incubator-header {
-  background-color: #020010;
   width: 100%;
 }
 
@@ -201,6 +195,7 @@
   line-height: 1.5;
   letter-spacing: 1;
   margin-bottom: 0.75rem;
+  color: #333;
 }
 
 .featured__subtitle {
@@ -369,7 +364,7 @@ div.swiper-button-prev {
   left: 0;
   z-index: 1;
   position: absolute;
-  z-index: 9999;
+  z-index: 10;
 }
 
 div.swiper-button-next {
@@ -377,7 +372,7 @@ div.swiper-button-next {
   right: 0px;
   z-index: 1;
   position: absolute;
-  z-index: 9999;
+  z-index: 20;
 }
 
 .btn-carousel {

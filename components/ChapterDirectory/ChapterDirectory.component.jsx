@@ -11,7 +11,7 @@ const ChapterDirectory = function ({
   const [startedAChapter, setStartedAChapter] = useState(null);
   const [locationDetails, setLocationDetails] = useState(null);
 
-  const url = 'https://koinstreet-learn-api.herokuapp.com/api/v1/location';
+  const url = `${process.env.BASE_URI}/location`;
   const userDetails = { firstName: userData.firstName, lastName: userData.lastName };
 
   useEffect(() => {

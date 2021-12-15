@@ -45,7 +45,7 @@ const ActivityPage = function ({ params }) {
     if (userToken !== null) {
       axios
         .get(
-          'https://koinstreet-learn-api.herokuapp.com/api/v1/learn/userCourses',
+          `${process.env.BASE_URI}/learn/userCourses`,
           {
             headers: {
               Authorization: `Bearer ${userToken.token}`,
@@ -67,7 +67,7 @@ const ActivityPage = function ({ params }) {
     if (userToken !== null) {
       axios
         .get(
-          `https://koinstreet-learn-api.herokuapp.com/api/v1/course/${courseId}/module`,
+          `${process.env.BASE_URI}/course/${courseId}/module`,
           {
             headers: {
               Authorization: `Bearer ${userToken.token}`,
@@ -85,7 +85,7 @@ const ActivityPage = function ({ params }) {
     if (userToken !== null) {
       axios
         .get(
-          `https://koinstreet-learn-api.herokuapp.com/api/v1/learn/${courseId}/userModules`,
+          `${process.env.BASE_URI}/learn/${courseId}/userModules`,
           {
             headers: {
               Authorization: `Bearer ${userToken.token}`,

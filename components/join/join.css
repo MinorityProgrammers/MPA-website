@@ -1,11 +1,5 @@
 #join {
-  padding: 70px 0px;
-  background: linear-gradient(
-    104.61deg,
-    #ff00b8 2.65%,
-    #ff655b 51.83%,
-    #ffc700 100%
-  );
+  padding: 70px;
 }
 
 .title {
@@ -65,7 +59,7 @@
   line-height: 61px;
   display: flex;
   align-items: center;
-  color: #ffffff;
+  color: #333;
   margin-top: 30px;
 }
 .hero-container p {
@@ -74,13 +68,12 @@
   font-weight: 200;
   font-size: 25px;
   line-height: 37px;
-  color: #ffffff;
+  color: #333;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   margin-top: 30px;
 }
 .join-hero-section {
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-    linear-gradient(163.54deg, #ff00b8 11.4%, #151371 107.27%);
+  background: #fff;
 }
 .join-hero-section .hero-container {
   justify-content: space-between;
@@ -112,7 +105,7 @@
   width: 156px;
   height: 40px;
   left: 1009px;
-  background: rgba(255, 0, 184, 0.33);
+  background: #474bfd;
   box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.25);
   border-radius: 40px;
   font-family: Red Hat Display;
@@ -143,7 +136,7 @@
 }
 .join-head-container .join-head-icon {
   padding: 20px;
-  background-color: #151371;
+  background-color: #474bfd;
   color: white;
   font-size: 40px;
   border-radius: 5px;
@@ -162,7 +155,7 @@
   padding-left: 15px;
   padding-right: 15px;
   margin: 20px 0px 25px 20px;
-  background: #151371;
+  background: #474bfd;
   box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.25);
   border-radius: 40px;
   font-family: "Red Hat Display";
@@ -178,7 +171,7 @@
   padding-left: 15px;
   padding-right: 15px;
   margin: 20px 0px 25px 20px;
-  background: #151371;
+  background: #474bfd;
   box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.25);
   border-radius: 40px;
   font-family: "Red Hat Display";

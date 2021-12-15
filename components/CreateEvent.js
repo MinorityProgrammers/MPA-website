@@ -115,7 +115,7 @@ const CreateEvent = function (props) {
       setLoading(true);
       axios
         .post(
-          'https://koinstreet-learn-api.herokuapp.com/api/v1/event',
+          `${process.env.BASE_URI}/event`,
           formData,
           {
             headers: {
@@ -395,7 +395,7 @@ const CreateEvent = function (props) {
             <Card />
           </div>
           <i
-            className="close_icon fas fa-times close-icon"
+            className="close_icon fas fa-times close-icon tw-text-white"
             onClick={() => {
               props.handleCreateEvent();
             }}

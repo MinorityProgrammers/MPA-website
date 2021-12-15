@@ -1,17 +1,13 @@
-import React, { useState, useRef, useEffect } from 'react';
 import axios from 'axios';
 import FormData from 'form-data';
-import { useRouter } from 'next/router';
-import { successToast, notificationToast } from '../../contexts/utils/toasts';
+import React, { useRef, useState } from 'react';
+import { successToast } from '../../contexts/utils/toasts';
 
-const QuickApplyJobApplication = function ({
-  job,
-  open,
-  closeModal,
-  data,
-  getAppliedJobs,
-}) {
-  const router = useRouter();
+const QuickApplyJobApplication = (props) => {
+  const {
+    job, open, closeModal, data, getAppliedJobs,
+  } = props;
+
   const userInfo = typeof window !== 'undefined'
     ? window.localStorage.getItem('userInfo')
     : null;
@@ -20,6 +16,7 @@ const QuickApplyJobApplication = function ({
     : null;
 
   const userDataFromLS = JSON.parse(userInfo)?.user;
+
   const [quickApp, setQuickApp] = useState({
     firstName: '',
     lastName: '',
@@ -36,8 +33,6 @@ const QuickApplyJobApplication = function ({
   const [additional, setAdditional] = useState(null);
   const [resumeSizeWarning, setResumeSizeWarning] = useState(false);
   const [additionalSizeWarning, setAdditionalSizeWarning] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [clickOutside, setClickoutside] = useState(false);
 
   const modalRef = useRef();
 
@@ -92,22 +87,10 @@ const QuickApplyJobApplication = function ({
 
   const submitHandler = (e) => {
     e.preventDefault();
-    // if (token) {
-    //     fetch('https://koinstreet-learn-api.herokuapp.com/api/v1/easyApply', {
-    //         method: 'POST',
-    //         body: formData,
-    //         headers: { 'Authorization': `Bearer ${token}` },
-    //     })
-    //         .then(res => {
-    //             successToast(`Applied ${job.job_title} position Successfully!`);
-    //             getAppliedJobs()
-    //             console.log(res)
-    //         })
-    //         .catch(err => console.log(err))
-    // }
+
     axios
       .post(
-        'https://koinstreet-learn-api.herokuapp.com/api/v1/easyApply',
+        `${process.env.BASE_URI}/easyApply`,
         formData,
         {
           headers: {
@@ -118,7 +101,6 @@ const QuickApplyJobApplication = function ({
       .then((result) => {
         successToast(`Applied ${job.job_title} position Successfully!`);
         getAppliedJobs();
-        console.log(res);
       })
       .catch((error) => {
         console.error('Error:', error);
@@ -392,7 +374,7 @@ const QuickApplyJobApplication = function ({
               {additionalSizeWarning && (
                 <p className="tw-text-red-500">File size can't exceed 5mb.</p>
               )}
-              <img src={setResume.file} />
+              <img src={setResume.file} alt="" />
             </div>
 
             <div className="tw-flex tw-justify-between">

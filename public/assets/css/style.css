@@ -1619,11 +1619,11 @@ a:visited {
 }
 
 .calendly-wrapper {
-  background-color: #151565;
+  background-color: #474bfd;
   padding-top: 5em;
 }
 .quickswap-wrapper {
-  background-color: #151565;
+  background-color: #474bfd;
   padding-top: 6em;
 }
 .quickswap-iframe {
@@ -1648,7 +1648,7 @@ a:visited {
 }
 
 .contact-info-one {
-  padding-top: 120px;
+  padding-top: 80px;
 }
 .contact-info-one__title {
   margin: 0;
@@ -1754,7 +1754,7 @@ a:visited {
 }
 
 .contact-one {
-  padding-top: 120px;
+  padding-top: 80px;
   padding-bottom: 120px;
 }
 @media (min-width: 1200px) {
@@ -1804,7 +1804,7 @@ a:visited {
 * 5. gallery styles
 */
 .gallery-one {
-  padding-top: 120px;
+  padding-top: 80px;
   padding-bottom: 90px;
 }
 .gallery-one__single {
@@ -1857,7 +1857,7 @@ a:visited {
 * 6. faq styles
 */
 .faq-one {
-  padding-top: 120px;
+  padding-top: 80px;
   padding-bottom: 120px;
 }
 .faq-one [class*='col-lg-'] {
@@ -2243,7 +2243,7 @@ a:visited {
 }
 
 .cta-diversity {
-  padding-top: 120px;
+  padding-top: 80px;
   padding-bottom: 472px;
   background-image: url(../images/teacher-1-1.jpg);
   background-repeat: no-repeat;
@@ -2253,7 +2253,7 @@ a:visited {
 }
 
 .cta-four {
-  padding-top: 120px;
+  padding-top: 80px;
   padding-bottom: 472px;
   background-image: url(../images/teacher-1-1.jpg);
   background-repeat: no-repeat;
@@ -2449,7 +2449,7 @@ a:visited {
 */
 .team-one {
   padding-bottom: 90px;
-  padding-top: 120px;
+  padding-top: 80px;
 }
 .team-one__single {
   margin-bottom: 30px;
@@ -2550,7 +2550,7 @@ a:visited {
 }
 
 .team-details {
-  padding-top: 120px;
+  padding-top: 80px;
   padding-bottom: 90px;
 }
 .team-details .team-one__image {
@@ -2756,7 +2756,7 @@ a:visited {
 */
 .program-one {
   background-color: #f1f1f1;
-  padding-top: 120px;
+  padding-top: 80px;
   padding-bottom: 90px;
 }
 .program-one [class*='col-lg-']:nth-child(1) .program-one__tag-line,
@@ -2896,7 +2896,7 @@ a:visited {
 */
 .pricing-one {
   background-color: #f1f1f1;
-  padding-top: 120px;
+  padding-top: 80px;
   padding-bottom: 90px;
 }
 .pricing-one [class*='col-lg-']:nth-child(1) .pricing-one__tag-line,
@@ -3027,7 +3027,7 @@ a:visited {
 * 10. become-teacher styles
 */
 .become-teacher {
-  padding-top: 120px;
+  padding-top: 80px;
 }
 
 .become-teacher__form {
@@ -3150,7 +3150,7 @@ a:visited {
 * 11. course styles
 */
 .course-one {
-  padding-top: 120px;
+  padding-top: 80px;
   padding-bottom: 120px;
 }
 .course-one .post-pagination {
@@ -4371,7 +4371,7 @@ a:visited {
 }
 
 .course-one__top-title.home-two {
-  padding-top: 120px;
+  padding-top: 80px;
   padding-bottom: 0;
 }
 .course-one__top-title.home-two:before {
@@ -4414,7 +4414,7 @@ a:visited {
 }
 
 .course-one__top-title.home-three {
-  padding-top: 120px;
+  padding-top: 80px;
   padding-bottom: 0;
 }
 .course-one__top-title.home-three:before {
@@ -4595,11 +4595,11 @@ a:visited {
 * 13. footer styles
 */
 .site-footer {
-  background-color: #151371;
+  background-color: #474bfe;
   overflow: hidden;
 }
 .site-footer__bottom {
-  background-color: #151371;
+  background-color: #474bfe;
 }
 .site-footer__bottom .container {
   display: -webkit-box;
@@ -4714,7 +4714,7 @@ a:visited {
 }
 
 .footer-widget {
-  padding-top: 120px;
+  padding-top: 80px;
   padding-bottom: 120px;
 }
 .footer-widget .list-unstyled {
@@ -4724,7 +4724,7 @@ a:visited {
   margin: 0;
   font-size: 15px;
   line-height: 30px;
-  color: #94a3ac;
+  color: #fff;
   margin-top: -10px;
 }
 .footer-widget__about {
@@ -4737,7 +4737,7 @@ a:visited {
   position: absolute;
   top: 0;
   left: -60px;
-  background-color: #151371;
+  background-color: #474bfe;
 }
 .footer-widget__about * {
   position: relative;
@@ -4816,7 +4816,7 @@ a:visited {
   margin-top: 20px;
 }
 .footer-widget__link-list li a {
-  color: #94a3ac;
+  color: #fff;
   font-size: 15px;
   font-weight: 500;
   -webkit-transition: all 0.4s ease;
@@ -4831,7 +4831,7 @@ a:visited {
 .footer-widget__course-list li h2 {
   margin: 0;
   font-size: 15px;
-  color: #94a3ac;
+  color: #fff;
   font-weight: 500;
   margin-bottom: 10px;
 }
@@ -4851,7 +4851,7 @@ a:visited {
 * 14. blog styles
 */
 .blog-one {
-  padding-top: 120px;
+  padding-top: 80px;
   padding-bottom: 120px;
 }
 .blog-one__single {
@@ -6402,7 +6402,7 @@ a:visited {
 * 21. meeting styles
 */
 .meeting-one {
-  padding-top: 120px;
+  padding-top: 80px;
   padding-bottom: 120px;
 }
 .meeting-one__block-text {
@@ -6731,7 +6731,7 @@ html {
 */
 /* homepage navbar */
 .homepage__header {
-  background: linear-gradient(104.61deg, #FF00B8 2.65%, #FF655B 51.83%, #FFC700 100%);
+  background: #474bfe;
   position: absolute;
   top: 0;
   left: 0;
@@ -6834,7 +6834,7 @@ html {
 }
 
 .homepage__navbar {
-  background: transparent;
+  background: #474bfe;
   height: 70px;
   display: flex;
   align-items: baseline;
@@ -6979,7 +6979,7 @@ html {
   width: 250px;
   z-index: 999;
 
-  background-color: #151371;
+  background-color: #3638b7;
   color: #fff;
   border-radius: 5px 0 5px 5px;
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
@@ -7174,7 +7174,7 @@ html {
   left: 0;
   width: 100%;
   z-index: 999;
-  background-color: #151371;
+  background-color: #474bfe;
   -webkit-box-shadow: 0px 6px 13px 0px rgba(0, 0, 0, 0.06);
   box-shadow: 0px 6px 13px 0px rgba(167, 167, 167, 0.11);
   -webkit-animation: fadeInDown 0.3s ease-in-out 0s 1 normal none running;
@@ -9625,7 +9625,7 @@ html {
     width: 100%;
   }
   .register__container .no-border1 {
-    padding-top: 120px;
+    padding-top: 80px;
     padding-bottom: 120px;
   }
   .register__container h2 {
@@ -9661,7 +9661,7 @@ html {
     width: 50%;
   }
   .register__container .no-border1 {
-    padding-top: 120px;
+    padding-top: 80px;
     padding-bottom: 120px;
   }
   .register__container h2 {
@@ -9696,7 +9696,7 @@ html {
     width: 50%;
   }
   .register__container .no-border1 {
-    padding-top: 120px;
+    padding-top: 80px;
     padding-bottom: 120px;
   }
   .register__container h2 {
@@ -9786,4 +9786,8 @@ html {
   align-items: "center";
   font-size: "15px";
   font-weight: "600";
+}
+
+.slick-prev:before, .slick-next:before{
+  color: #151371 !important;
 }

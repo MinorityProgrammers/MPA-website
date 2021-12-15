@@ -4,20 +4,7 @@
   max-height: -webkit-fit-content;
   max-height: -moz-fit-content;
   max-height: fit-content;
-  background: -webkit-gradient(
-    linear,
-    left top,
-    right top,
-    color-stop(-0.69%, #ff00b8),
-    color-stop(50.18%, #ff655b),
-    to(#ffc700)
-  );
-  background: linear-gradient(
-    90deg,
-    #ff00b8 -0.69%,
-    #ff655b 50.18%,
-    #ffc700 100%
-  );
+  background: #ccc;
   padding: 10px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -32,12 +19,6 @@
 /*# sourceMappingURL=mentorship.css.map */
 
 .section__mentorshipProgram {
-  background: linear-gradient(
-    104.61deg,
-    #ff00b8 2.65%,
-    #ff655b 51.83%,
-    #ffc700 100%
-  );
   padding: 25px 0;
 }
 
@@ -49,7 +30,7 @@
 .signup__program {
   background: linear-gradient(
     270deg,
-    #151371 37.54%,
+    #474bfd 37.54%,
     rgba(21, 19, 113, 0) 82.06%
   );
   border-radius: 20px 20px 20px 0px;
@@ -111,8 +92,8 @@
 }
 
 .mentorshipBTN{
-  color: #151371;
-  background: #ffffff;
+  color: #fff !important;
+  background: #474bfd;
   cursor: pointer;
 }
 
@@ -130,7 +111,7 @@
 
 .myButton {
 	box-shadow: 0px 10px 14px -7px #ff655b 51.83%;
-	background:linear-gradient(to bottom, #151371 5%, #3937aa 100%);
+	background:linear-gradient(to bottom, #474bfd 5%, #474bfd 100%);
 	background-color:#151371;;
 	border-radius:8px;
 	display:inline-block;

@@ -134,7 +134,7 @@ const InterestForm = function ({ token }) {
       }
 
       if (token) {
-        axios.post('http://koinstreet-learn-api.herokuapp.com/api/v1/chapter', {
+        axios.post(`${process.env.BASE_URI}/chapter`, {
           ..._values,
         }, {
           headers: {

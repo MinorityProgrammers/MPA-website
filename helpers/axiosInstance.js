@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export default (history = null) => {
-  const baseURL = 'https://koinstreet-learn-api.herokuapp.com/api/v1';
+  const baseURL = `${process.env.BASE_URI}`;
 
   const headers = {};
 

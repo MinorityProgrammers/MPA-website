@@ -1,20 +1,20 @@
-import React, { useState, useRef, useEffect } from 'react';
-import Layout from '../components/Layout';
-import HomepageNav from '../components/homepage/HomepageNav';
-import HomePageNewTopSection from '../components/homepage/HomePageNewTopSection';
+import React, { useEffect, useRef, useState } from 'react';
+import ComingSoon from '../components/ComingSoon';
+import Footer from '../components/Footer';
 import HomepageAbout from '../components/homepage/HomepageAbout';
 import HomepageApp from '../components/homepage/HomepageApp';
 import HomepageCore from '../components/homepage/HomepageCore';
-import HomepageWave from '../components/homepage/HomepageWave';
+import HomepageDonate from '../components/homepage/HomepageDonate';
+import HomepageNav from '../components/homepage/HomepageNav';
+import HomePageNewTopSection from '../components/homepage/HomePageNewTopSection';
 import HomepageTeam from '../components/homepage/HomepageTeam';
 import HomepageTestimonials from '../components/homepage/HomepageTestimonials';
-import HomepageDonate from '../components/homepage/HomepageDonate';
-import SidebarTwo from '../components/SidebarTwo';
-import links from '../contexts/utils/links';
-import ComingSoon from '../components/ComingSoon';
-import { useDetectOutsideClick } from '../components/UseDetectOutsideClick';
-import Footer from '../components/Footer';
+import HomepageWave from '../components/homepage/HomepageWave';
+import Layout from '../components/Layout';
 import MpaBuilder from '../components/mpa-builder/builder';
+import SidebarTwo from '../components/SidebarTwo';
+import { useDetectOutsideClick } from '../components/UseDetectOutsideClick';
+import links from '../contexts/utils/links';
 
 const HomepageFour = function () {
   const [open, setOpen] = useState(false);
@@ -41,7 +41,7 @@ const HomepageFour = function () {
   const handleClick = () => {
     setHide(!hide);
   };
-  if (hide == false) {
+  if (hide === false) {
     setTimeout(() => {
       setHide(true);
     }, 10000);
@@ -62,10 +62,9 @@ const HomepageFour = function () {
                 active="Home"
                 handleClick={handleClick}
               />
-              {hide == false && <ComingSoon closeClick={handleClick} />}
+              {hide === false && <ComingSoon closeClick={handleClick} />}
               <HomePageNewTopSection />
               <HomepageAbout />
-              {/* <HomepageBuyMinority /> */}
               <HomepageApp />
               <HomepageCore />
               <HomepageWave />

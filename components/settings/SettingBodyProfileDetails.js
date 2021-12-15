@@ -15,7 +15,7 @@ const SettingBodyProfileDetails = function ({ settingsPage, data, userID }) {
   const router = useRouter();
 
   useEffect(() => {
-    fetch('https://koinstreet-learn-api.herokuapp.com/api/v1/user')
+    fetch(`${process.env.BASE_URI}/user`)
       .then((response) => response.json())
       .then((data) => {
         setUsernames(findUserNames(data.data));

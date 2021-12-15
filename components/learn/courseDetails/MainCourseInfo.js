@@ -55,12 +55,12 @@ const MainCourseInfo = function ({
             <li>
               <a className="course-item-active" style={{ fontWeight: 'bold' }}>Modules</a>
             </li>
-            <li className="pl-md-5">
+            {/* <li className="pl-md-5">
               <a>Calendar</a>
             </li>
             <li className="pl-md-5">
               <a>Messages</a>
-            </li>
+            </li> */}
           </ul>
         </div>
 

@@ -11,7 +11,7 @@ const ModalContent = function ({
 }) {
   const handleJoin = () => {
     if (token) {
-      axios.post('https://koinstreet-learn-api.herokuapp.com/api/v1/joinChapter', {
+      axios.post(`${process.env.BASE_URI}/joinChapter`, {
         chapterLocation_id: _id,
       }, {
         headers: {

@@ -1,17 +1,15 @@
 import React, {
   useState,
   useEffect,
-  Children,
   useMemo,
   useCallback,
 } from 'react';
 import Calendar from 'react-calendar';
-import Link from 'next/link';
 import Axios from 'axios';
 
 // AXIOS INSTANCE
 const axios = Axios.create({
-  baseURL: 'https://koinstreet-learn-api.herokuapp.com/api/v1/service',
+  baseURL: `${process.env.BASE_URI}/service`,
 });
 
 const LeadsForm = function () {
