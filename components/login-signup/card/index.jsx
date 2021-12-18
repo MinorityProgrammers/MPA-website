@@ -275,7 +275,7 @@ export default function Index() {
         <div className={styles.contentContainer}>
           <div className={styles.cardLeftLogo}>
             <img
-              src="./assets/images/login-signup/mp-icon.png"
+              src="/assets/images/mpicon.svg"
               alt="icon"
               className={styles.logo}
             />

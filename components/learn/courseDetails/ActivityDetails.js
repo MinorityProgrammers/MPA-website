@@ -123,7 +123,7 @@ const ActivityDetails = function ({
 
   return (
     <div className="banner-bg activity-pad">
-      <div className="row activity-styles" style={{ backgroundColor: '#151371' }}>
+      <div className="row activity-styles" style={{ backgroundColor: '#474BFF' }}>
         <div className="col-12 col-md-3 pr-0 scroll-sidebar">
           <CourseSidebar course={course} courseId={courseId} modules={modules} userModules={userModules} />
         </div>

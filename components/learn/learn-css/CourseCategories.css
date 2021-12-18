@@ -40,14 +40,14 @@
 }
 .banner-btn{
     /* background-image: linear-gradient(to right, #FF00B8 2.65%, #FF655B 51.83%, #FFC700 100%); */
-    background: #151371;
+    background: #474BFF;
     border-radius: 4px;
     border: none;
     color: white;
     transition: all .3s ease;
 }
 .banner-btn:hover{
-    background: #0e0d4e;
+    background: #3437e7;
     color: white;
 }
 .progress-bar{
