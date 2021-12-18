@@ -4595,11 +4595,11 @@ a:visited {
 * 13. footer styles
 */
 .site-footer {
-  background-color: #474bfe;
+  background-color: #431E8D;
   overflow: hidden;
 }
 .site-footer__bottom {
-  background-color: #474bfe;
+  background-color: #431E8D;
 }
 .site-footer__bottom .container {
   display: -webkit-box;
@@ -4737,7 +4737,7 @@ a:visited {
   position: absolute;
   top: 0;
   left: -60px;
-  background-color: #474bfe;
+  background-color: #431E8D;
 }
 .footer-widget__about * {
   position: relative;
@@ -6731,7 +6731,7 @@ html {
 */
 /* homepage navbar */
 .homepage__header {
-  background: #474bfe;
+  background: #431E8D;
   position: absolute;
   top: 0;
   left: 0;
@@ -6834,7 +6834,7 @@ html {
 }
 
 .homepage__navbar {
-  background: #474bfe;
+  background: #431E8D;
   height: 70px;
   display: flex;
   align-items: baseline;
@@ -7174,7 +7174,7 @@ html {
   left: 0;
   width: 100%;
   z-index: 999;
-  background-color: #474bfe;
+  background-color: #431E8D;
   -webkit-box-shadow: 0px 6px 13px 0px rgba(0, 0, 0, 0.06);
   box-shadow: 0px 6px 13px 0px rgba(167, 167, 167, 0.11);
   -webkit-animation: fadeInDown 0.3s ease-in-out 0s 1 normal none running;
@@ -8115,10 +8115,10 @@ html {
   cursor: pointer;
 }
 .img-banner-core-container.blue {
-  background-color: #151371;
+  background-color: #474bfd;
 }
 .img-banner-core-container.yellow {
-  background-color: #ffc700;
+  background-color: #3E385D;
 }
 .img-banner-core-container.pink {
   background-color: #ff00b8;
@@ -8135,10 +8135,10 @@ html {
   transition: all 0.4s ease;
 }
 .img-banner-core-container.blue::before {
-  border: 2px solid #151371;
+  border: 2px solid #474bfd;
 }
 .img-banner-core-container.yellow::before {
-  border: 2px solid #ffc700;
+  border: 2px solid #3E385D;
 }
 .img-banner-core-container.pink::before {
   border: 2px solid #ff00b8;
@@ -8311,7 +8311,7 @@ html {
 }
 
 .popup_image_container-core.yellow::before {
-  border: 2px solid #ffbf00;
+  border: 2px solid #3E385D;
 }
 
 .popup_image_container-core.pink::before {
@@ -8319,7 +8319,7 @@ html {
 }
 
 .popup_image_container-core.blue::before {
-  border: 2px solid #151371;
+  border: 2px solid #474BFD;
 }
 
 .popup_image_container-core:hover::before {
@@ -8337,17 +8337,17 @@ html {
 
 .popup_image_container-core.yellow,
 .popup_title_container-core.yellow {
-  background: #ffbf00;
+  background: #3E385D;
 }
 
 .popup_image_container-core.pink,
 .popup_title_container-core.pink {
-  background: #ff00b8;
+  background: #3E385D;
 }
 
 .popup_image_container-core.blue,
 .popup_title_container-core.blue {
-  background: #151371;
+  background: #474BFD;
 }
 
 .popup_title-core {
@@ -8365,6 +8365,10 @@ html {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.teamButton{
+  background: #FFC700 !important;
 }
 
 .popup_text-core {
@@ -8942,7 +8946,7 @@ html {
   transition: all 0.4s ease;
 }
 .donation__option a:hover {
-  color: rgba(255, 255, 255, 0.568);
+  color: #474BFD;
 }
 .donation__option a img {
   width: 25px;

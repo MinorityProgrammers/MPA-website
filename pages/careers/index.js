@@ -488,7 +488,7 @@ const JobsMain = () => {
                   placeholder="Search job description"
                 />
                 <button
-                  className="search-btn btn btn-warning p-1"
+                  className="search-btn btn tw-bg-blue-600 tw-text-white hover:tw-text-white tw-px-3"
                   type="submit"
                 >
                   Search

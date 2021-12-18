@@ -5,7 +5,7 @@
     color: #fff;
 }
 .course-sidebar{
-    background-color: #151371;
+    background-color: #474BFF;
     color: #fff;
     padding-bottom: 8rem;
     border-top: 2px solid gray;
@@ -141,7 +141,7 @@
     color: rgb(204, 203, 203);
 }
 .course-weeks{
-    background: url(../../../public/assets/images/learn-page/courses-items-background.png), linear-gradient(110.62deg, rgba(255, 255, 255, 0.25) 6.39%, rgba(255, 255, 255, 0) 53.34%);
+    background: #3E385D;
     background-size: 100% 100%;
     background-repeat: no-repeat;
     background-position: 50%;
@@ -157,7 +157,7 @@
     padding-top: 6rem;
 }
 .modules-details{
-    background-color: #151371;
+    background-color: #474BFF;
 }
 .modules-details .menu-items ul li a{
     font-size: 1.8rem;
@@ -196,11 +196,6 @@
 .week-info .progress{
     background-color: rgb(218, 218, 218) !important;
     height: 10px !important;
-}
-.week-info .progress-bar {
-    background-image: linear-gradient(270deg,#ff00b8 2.65%,#ff655b 51.83%,#ffc700) !important;
-    height: 0.7rem;
-    border-radius: 20px;
 }
 .nextPrev-icons button{
     font-size: 25px;
