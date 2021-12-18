@@ -6731,7 +6731,7 @@ html {
 */
 /* homepage navbar */
 .homepage__header {
-  background: #431E8D;
+  background: #efefef;
   position: absolute;
   top: 0;
   left: 0;
@@ -6837,11 +6837,7 @@ html {
 }
 
 .homepage__navbar {
-<<<<<<< HEAD
   background: #efefef;
-=======
-  background: #431E8D;
->>>>>>> b9e731d (styling final touch)
   height: 70px;
   font-size: 1.2rem;
   margin: 0px;
@@ -6849,7 +6845,6 @@ html {
 }
 
 .navbar-logo {
-  position: absolute;
   width: 200px;
   height: 100px;
   cursor: pointer;

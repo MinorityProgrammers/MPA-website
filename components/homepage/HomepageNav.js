@@ -593,7 +593,7 @@ const HomepageNav = ({
           </div>
         )}
 
-        <div className="tw-flex tw-flex-row tw-justify-items-end tw-w-full ">
+        <div className="tw-flex tw-flex-row tw-justify-between tw-w-full tw-flex-wrap">
           <div className="navbar-logo">
             <Link href="/" onClick={closeMobileMenu}>
               <img src="/assets/images/mpicon.svg" alt="" />
@@ -750,7 +750,7 @@ const HomepageNav = ({
             </li>
           </ul>
           <div className="">
-            <div className="container">
+            <div className="">
               <ul className="tw-flex tw-flex-row tw-justify-between tw-w-full tw-my-8">
                 <li>
                   <div className="tw-flex tw-flex-row tw-w-full tw-border tw-border-gray-700 tw-rounded-md tw-px-4 tw-text-gray-500">
