@@ -19,8 +19,9 @@ import projectCards from '../contexts/utils/profile/projectCards.json';
 import unpinnedCards from '../contexts/utils/profile/unpinnedCards.json';
 import pinnedCards from '../contexts/utils/profile/pinnedCards.json';
 import listItems from '../contexts/utils/profile/listItems.json';
-import nftaddress from '../config';
 import NFT from '../artifacts/contracts/NFT.sol/NFT.json';
+
+const nftaddress = process.env.ADDRESS;
 
 function countDown(mintedURL, tx) {
   let secondsToGo = 30;
