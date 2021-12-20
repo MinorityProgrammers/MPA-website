@@ -65,5 +65,7 @@ module.exports = {
     FACEBOOK_CLIENT_SECRET: process.env.FACEBOOK_CLIENT_SECRET,
     BASE_URI: process.env.BASE_URI,
     NEXTAUTH_URL: process.env.NEXTAUTH_URL,
+    NETWORK_URL: process.env.NETWORK_URL,
+    ADDRESS: process.env.ADDRESS,
   },
 };
