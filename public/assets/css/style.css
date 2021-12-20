@@ -6852,7 +6852,7 @@ html {
   left :0px;
   top:.1px;
   border-radius:  0% 0% 100% 0% / 100% 0% 100% 0%;
- 
+  
 }
 .navbar-logo img {
   width: 30%;
@@ -6892,7 +6892,7 @@ html {
   border: 1px solid rgba(255, 255, 255, 0.568);
   padding: 6px 10px;
   background-color: #fff;
-  color: #ff655b;
+  color: #474BFD !important;
   transition: all 0.2s ease-in-out;
 }
 
@@ -6900,17 +6900,17 @@ html {
 .nav-item.active-link a:hover,
 .nav-item.active-link a:active,
 .nav-item.active-link a:focus {
-  color: #ff655b;
+  color: #474BFD !important;
 }
 .nav-item a {
   transition: all 0.2s ease-in-out;
 }
 .nav-item a:hover,
 .nav-item a:focus {
-  color: rgba(255, 255, 255, 0.568);
+  color: #474BFD !important;
 }
 .nav-item a:active {
-  color: #ff655b;
+  color: #474BFD !important;
 }
 .nav-links-icon {
   display: flex;
@@ -6960,7 +6960,6 @@ html {
 }
 .fa-user-circle{
   color: #3E385D;
-  width: 4em;
 }
 .searchInput {
   /* border: none;
@@ -7177,19 +7176,16 @@ html {
 }
 /* sticky */
 .sticky-menu {
-  background: transparent;
-  height: 70px;
   display: flex;
   align-items: center;
   font-size: 1.2rem;
   margin-top: -1rem;
-
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 999;
-  background-color: #431E8D;
+  background-color: #efefef;
   -webkit-box-shadow: 0px 6px 13px 0px rgba(0, 0, 0, 0.06);
   box-shadow: 0px 6px 13px 0px rgba(167, 167, 167, 0.11);
   -webkit-animation: fadeInDown 0.3s ease-in-out 0s 1 normal none running;
@@ -7200,16 +7196,12 @@ html {
   -webkit-transform: translateY(0%);
   transform: translateY(0%);
 }
-.sticky-menu ul.nav-menu > li {
-  top: 25px;
-}
+
 .sticky-menu ul.nav-menu > li > a {
   font-size: 16px;
 }
 .sticky-menu .navbar-logo {
-  position: absolute;
-  top: 25px;
-  width: 60px;
+  width: 180px;
 }
 .sticky-menu .dropdown-menu {
   top: 58px;
@@ -7222,7 +7214,7 @@ html {
 }
 .nav__mobile {
   display: block;
-  background-color: #151371;
+  background-color: #474BFD;
   position: absolute;
   width: 100%;
   top: 100px;
@@ -7255,7 +7247,7 @@ html {
   white-space: nowrap;
   position: relative;
   transition: all 0.4s ease;
-  background-color: #151371;
+
   color: #fff;
   width: 100%;
 
@@ -7376,7 +7368,7 @@ html {
 }
 .nav__mobile-search {
   display: block;
-  background-color: #151371;
+  background-color: #474BFD;
   position: absolute;
   width: 100%;
   top: 100px;
@@ -7423,10 +7415,16 @@ html {
   box-shadow: none;
   color: rgba(255, 255, 255, 0.568);
 }
+@media screen and (max-width: 1100px) {
+  .nav-item {
+    letter-spacing: 0px;
+    font-size: 0.9rem;
+  }
+}
 @media screen and (max-width: 995px) {
   .nav-item {
     letter-spacing: 0px;
-    font-size: 14px;
+    font-size: 0.8rem;
   }
   .nav-item:not(:last-child) {
     padding: 10px;
@@ -7435,7 +7433,7 @@ html {
     padding: 10px 0 10px 10px;
   }
   .sticky-menu ul.nav-menu > li > a {
-    font-size: 14px;
+    font-size: 0.8rem;
   }
   .homepage__topbar {
     margin-bottom: -1rem;
@@ -7444,7 +7442,7 @@ html {
 @media screen and (max-width: 768px) {
   .nav-item {
     letter-spacing: 0px;
-    font-size: 14px;
+    font-size: 0.8rem;
   }
   .nav-item:not(:last-child) {
     padding: 8px;
@@ -7454,7 +7452,7 @@ html {
   }
 
   .sticky-menu ul.nav-menu > li > a {
-    font-size: 14px;
+    font-size: 0.8rem;
   }
 }
 @media screen and (max-width: 760px) {
@@ -7562,10 +7560,9 @@ html {
     display: none;
   }
   .sticky-menu .navbar-logo {
-    position: absolute;
     top: 10px;
     left: 20px;
-    width: 60px;
+    width: 180px;
   }
   .sticky-menu .menu-icon {
     left: 8rem;
@@ -7601,7 +7598,6 @@ html {
     margin-top: 0;
   }
   .sticky-menu .navbar-logo {
-    position: relative;
     left: 0;
     transform: translate(0, 0);
   }

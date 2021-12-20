@@ -93,6 +93,7 @@ const Account = function () {
             borderRadius: '0.5rem',
             fontSize: '16px',
             fontWeight: '500',
+            backgroundColor: '#2364EB',
           }}
           onClick={() => {
             logout();

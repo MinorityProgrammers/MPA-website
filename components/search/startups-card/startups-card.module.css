@@ -77,12 +77,7 @@
 
 .reading {
   width: 70%;
-  background: linear-gradient(
-    104.61deg,
-    #ff00b8 2.65%,
-    #ff655b 51.83%,
-    #ffc700 100%
-  );
+  background: #474BFF;
   height: 100%;
   border-radius: 1em;
 }

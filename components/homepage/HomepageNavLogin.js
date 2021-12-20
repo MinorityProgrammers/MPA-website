@@ -156,7 +156,7 @@ const HomepageNavLogin = ({ onCloseMobileMenu }) => {
                 />
               </div>
               <div id="password" className="form-text dropdown-form-text mb-3">
-                <p>Forgot password?</p>
+                {/* <p>Forgot password?</p> */}
               </div>
               <button
                 type="submit"
