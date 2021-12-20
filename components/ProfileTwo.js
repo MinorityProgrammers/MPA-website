@@ -7,6 +7,9 @@ import jwt from 'jsonwebtoken';
 import { useRouter } from 'next/router';
 import { Tooltip, Button, Modal } from 'antd';
 import { useMoralis } from 'react-moralis';
+import { ethers } from 'ethers';
+import Web3Modal from 'web3modal';
+import Web3 from 'web3';
 import ProfileTwoGenerateAvatarPopUp from './ProfileTwoGenerateAvatarPopUp';
 import { getProgressPercentage } from '../contexts/utils/settings/getProgressPercentage';
 import { getLevelUpTips } from '../contexts/utils/settings/getLevelUpTips';
@@ -16,12 +19,16 @@ import projectCards from '../contexts/utils/profile/projectCards.json';
 import unpinnedCards from '../contexts/utils/profile/unpinnedCards.json';
 import pinnedCards from '../contexts/utils/profile/pinnedCards.json';
 import listItems from '../contexts/utils/profile/listItems.json';
+import NFT from '../artifacts/contracts/NFT.sol/NFT.json';
 
-function countDown(mintedURL) {
+const nftaddress = process.env.ADDRESS;
+
+function countDown(mintedURL, tx) {
   let secondsToGo = 30;
+  console.log(tx);
   const modal = Modal.success({
     title: 'Successfully minted Your profile',
-    content: `Checkout your minted profile metadata ${mintedURL}`,
+    content: `Checkout your minted profile metadata ${mintedURL}, transaction id: ${process.env.NETWORK_URL}/${tx.transactionHash}`,
   });
   const timer = setInterval(() => {
     secondsToGo -= 1;
@@ -323,9 +330,23 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
         await mintedMetadata.saveIPFS();
 
         if (mintedMetadata.ipfs()) {
+          const web3Modal = new Web3Modal();
+          const connection = await web3Modal.connect();
+          const provider = new ethers.providers.Web3Provider(connection);
+          const signer = provider.getSigner();
+
+          let contract = new ethers.Contract(nftaddress, NFT.abi, signer);
+          let transaction = await contract.mintNFT(nftaddress, mintedMetadata.ipfs());
+          const tx = await transaction.wait();
+          const event = tx.events[0];
+          const value = event.args[2];
+          const tokenId = value.toNumber();
+          contract = new ethers.Contract(nftaddress, NFT.abi, signer);
+          transaction = await contract.giveOwnership(nftaddress, tokenId, { value: 10 });
+          await transaction.wait();
           setDoneMinting(true);
           setIsMinting(false);
-          countDown(mintedMetadata.ipfs());
+          countDown(mintedMetadata.ipfs(), tx);
         }
       }
     } catch (e) {

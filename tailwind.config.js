@@ -126,10 +126,11 @@ module.exports = {
       // 'lg': '992px',
       // 'xl': '1200px',
       sm: { max: '576px' },
-      md: { max: '767px' },
+      md: { max: '818px' },
       lg: { max: '991px' },
       xl: { max: '1199px' },
       '2xl': { min: '1200px' },
+      '3xl': { min: '1400px' },
     },
 
   },

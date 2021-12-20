@@ -25,7 +25,7 @@
   margin-right: 3em;
   overflow: auto;
   padding: 1em;
-  box-shadow: 0 0 2px 1px #ff00b8;
+  box-shadow: 0 0 2px 1px #474BFF;
 }
 
 .searchCategories {
@@ -72,15 +72,15 @@
 .tagsItem.clicked,
 .categoriesItem.clicked {
   color: white;
-  background: #ff00b8;
-  border: 1px solid #ff00b8;
+  background: #474BFF;
+  border: 1px solid #474BFF;
 }
 
 .tagsItem:hover,
 .categoriesItem:hover {
   color: white;
-  background: #ff00b8;
-  border: 1px solid #ff00b8;
+  background: #474BFF;
+  border: 1px solid #474BFF;
 }
 
 .searchBox {
@@ -109,8 +109,11 @@
   font-size: 1.2rem;
   padding-left: 0.5em;
   border: none;
-  outline: none;
   color: black;
+}
+
+.searchInput:focus{
+    outline: none;
 }
 
 .resultSection {

@@ -4846,16 +4846,16 @@ a:visited {
 * 13. footer styles
 */
 .site-footer {
-  background-color: #474bfe;
+  background-color: #431E8D;
   overflow: hidden;
 }
 
 .footerAbout{
-    background-color: #474bfe !important;
+    background-color: #431E8D !important;
 }
 
 .site-footer__bottom {
-  background-color: #474bfe;
+  background-color: #431E8D;
 }
 
 .site-footer__bottom .container {

@@ -1,8 +1,15 @@
 import React from 'react';
 
 const HomepageNewTopSection = () => (
-  <section className="tw-flex tw-flex-row  homepage__hero tw-w-full tw-h-full lg:tw-flex-col-reverse">
-    <div className="tw-flex tw-flex-col tw-px-10 tw-pt-52 tw-pb-20 lg:tw-pt-2">
+  <section className="tw-relative tw-flex tw-flex-row  homepage__hero tw-w-full tw-h-full lg:tw-flex-col-reverse">
+    <div className="tw-absolute tw-bottom-10 tw-left-0 tw-z-0">
+      <img
+        src="/assets/images/bg/Yellow.png"
+        alt=""
+        className="tw-w-1/3 tw-opacity-30"
+      />
+    </div>
+    <div className="tw-flex tw-flex-col tw-px-10 tw-pt-52 tw-pb-20 lg:tw-pt-2 tw-z-10">
       {/* content sections */}
       <div className="tw-w-1/3 tw-mt-4">
         <p className="tw-text-4xl tw-font-bold tw-text-blue-900">Minority Programmers Associations</p>
@@ -21,7 +28,7 @@ const HomepageNewTopSection = () => (
         </a>
       </div>
     </div>
-    <div className="tw-w-11/12 tw-p-10 lg:tw-p-2 lg:tw-pt-10">
+    <div className="tw-w-11/12 tw-p-10 lg:tw-p-2 lg:tw-pt-10 tw-z-10">
       {/* image sections */}
       <img
         src="/assets/images/meta.png"
