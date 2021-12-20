@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Swiper from 'react-id-swiper';
 import 'swiper/css/swiper.css';
-import FeaturedInfoCard from './FeaturedInfoCard';
+import FeaturedInfoCard from './featured/FeaturedInfoCard';
 import StartupRoadmap from './StartupRoadmap';
 
 const StartupRightBar = function ({ data }) {
@@ -49,9 +49,7 @@ const StartupRightBar = function ({ data }) {
 
   const fetchStartups = async () => {
     try {
-      const res = await axios.get(
-        `${process.env.BASE_URI}/startup/`,
-      );
+      const res = await axios.get(`${process.env.BASE_URI}/startup/`);
       const result = await res.data.data;
       setStartups(result);
     } catch (error) {
@@ -107,42 +105,42 @@ const StartupRightBar = function ({ data }) {
             }}
           >
             {data.frontend.length > 0 && (
-            <div style={{ flex: '1' }}>
-              Front-end
-              {data.frontend.indexOf('React') != -1 && (
-              <img src="/assets/images/incubator/react.jpeg" />
-              )}
-              {data.frontend.indexOf('Express') != -1 && (
-              <img src="/assets/images/incubator/express.png" />
-              )}
-            </div>
+              <div style={{ flex: '1' }}>
+                Front-end
+                {data.frontend.indexOf('React') != -1 && (
+                  <img src="/assets/images/incubator/react.jpeg" />
+                )}
+                {data.frontend.indexOf('Express') != -1 && (
+                  <img src="/assets/images/incubator/express.png" />
+                )}
+              </div>
             )}
             {data.backend.length > 0 && (
-            <div style={{ flex: '1' }}>
-              Back-end
-              {data.backend.indexOf('MongoDB') != -1 && (
-              <img src="/assets/images/incubator/mongodb.png" />
-              )}
-              {data.backend.indexOf('node') != -1 && (
-              <img src="/assets/images/incubator/node.png" />
-              )}
-            </div>
+              <div style={{ flex: '1' }}>
+                Back-end
+                {data.backend.indexOf('MongoDB') != -1 && (
+                  <img src="/assets/images/incubator/mongodb.png" />
+                )}
+                {data.backend.indexOf('node') != -1 && (
+                  <img src="/assets/images/incubator/node.png" />
+                )}
+              </div>
             )}
             {data.uiux.length > 0 && (
-            <div style={{ flex: '1' }}>
-              UI/UX
-              {data.uiux.indexOf('figma') != -1 && (
-              <img src="/assets/images/incubator/figma.png" />
-              )}
-            </div>
+              <div style={{ flex: '1' }}>
+                UI/UX
+                {data.uiux.indexOf('figma') != -1 && (
+                  <img src="/assets/images/incubator/figma.png" />
+                )}
+              </div>
             )}
             {data.deployment.length > 0 && (
-            <div style={{ flex: '1' }}>
-              Deployment
-              {data.deployment.indexOf('netlify') != -1 && (
-              <img src="/assets/images/incubator/netlify.png" />
-              )}
-            </div>
+              <div style={{ flex: '1' }}>
+                Deployment
+                {data.deployment.indexOf('netlify') != -1 && (
+                  <img src="/assets/images/incubator/netlify.png" />
+                )}
+              </div>
             )}
           </div>
         </div>
@@ -216,48 +214,46 @@ const StartupRightBar = function ({ data }) {
           </div>
 
           {hover && (
-          <div className="row container tam-sam-som-info">
-            <div style={{ fontWeight: 'bold', color: 'black' }}>
-              What is TAM, SAM,SOM?
-            </div>
-            <div>
-              <span className="tam-sam-som-text">TAM- </span>
-              <span>
-                Total available market. The total market for your product
-              </span>
-            </div>
-            <div>
-              <span className="tam-sam-som-text">SAM-</span>
+            <div className="row container tam-sam-som-info">
+              <div style={{ fontWeight: 'bold', color: 'black' }}>
+                What is TAM, SAM,SOM?
+              </div>
+              <div>
+                <span className="tam-sam-som-text">TAM- </span>
+                <span>
+                  Total available market. The total market for your product
+                </span>
+              </div>
+              <div>
+                <span className="tam-sam-som-text">SAM-</span>
 
-              <span>
-                Serviceable available market. Subset of you TAM, the portion
-                of the market you can acquire
-              </span>
+                <span>
+                  Serviceable available market. Subset of you TAM, the portion
+                  of the market you can acquire
+                </span>
+              </div>
+              <div>
+                <span className="tam-sam-som-text">SOM-</span>
+                <span>
+                  Service Obtainable Market Subset of your SAM that you will
+                  realistically get to use your product
+                </span>
+              </div>
+              <div className="tam-sam-som-buttons">
+                <button>Learn more</button>
+                <button
+                  onClick={() => {
+                    setHover(false);
+                  }}
+                >
+                  Got it
+                </button>
+              </div>
             </div>
-            <div>
-              <span className="tam-sam-som-text">SOM-</span>
-              <span>
-                Service Obtainable Market Subset of your SAM that you will
-                realistically get to use your product
-              </span>
-            </div>
-            <div className="tam-sam-som-buttons">
-              <button>Learn more</button>
-              <button
-                onClick={() => {
-                  setHover(false);
-                }}
-              >
-                Got it
-              </button>
-            </div>
-          </div>
           )}
         </div>
         <div className="row container">
-          <h2 className="right__topic mb-3 mt-1">
-            Market Size Justification
-          </h2>
+          <h2 className="right__topic mb-3 mt-1">Market Size Justification</h2>
         </div>
         <div className="row container">
           <h2 className="right__description">
