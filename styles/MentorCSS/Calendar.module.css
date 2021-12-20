@@ -1,0 +1,192 @@
+.popoverContainer {
+  transform-origin: 50% 50% 0px !important;
+  position: fixed !important;
+  top: 0 !important;
+  height: 100% !important;
+  width: 100% !important;
+  z-index: 10;
+  /* overflow: hidden; */
+}
+
+.calenderHide {
+  background: #393a9798;
+  opacity: 0.4;
+}
+
+.eventOutIcon {
+  cursor: pointer;
+  margin-right: 6px;
+}
+
+.createEvenTitle {
+  flex-wrap: wrap;
+  font-weight: bold;
+  font-size: 18px;
+  color: #393b97;
+}
+.row {
+  display: flex;
+}
+.col {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 10px 0;
+}
+
+.col > input {
+  color: rgb(0, 0, 0);
+
+  border: 0.5px solid #6765655e;
+  padding: 15px;
+  height: 30px;
+  background: #ebebeb;
+  outline: none;
+  box-sizing: border-box;
+  border-radius: 20px;
+  width: 100%;
+}
+.col > input[type="submit"] {
+  color: #ffffff;
+}
+.col > textarea {
+  color: rgb(0, 0, 0);
+  border: 0.5px solid #6765655e;
+  padding: 15px;
+  background: #ebebeb;
+  outline: none;
+  box-sizing: border-box;
+  border-radius: 20px;
+  width: 100%;
+}
+
+.col > label {
+  text-align: left;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  color: #000000;
+}
+
+.createEventSubmit {
+  background: #00aa4f !important;
+  border: 0.5px solid rgba(103, 101, 101, 0.3) !important;
+  width: 4.5rem !important;
+  padding: 0 !important;
+  font-size: 12px;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.colSubmit {
+  flex-direction: row-reverse;
+}
+
+.line {
+  width: 100%;
+  height: 1px;
+  background: #67656547;
+}
+
+.eventsDetail {
+  width: 50%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  max-height: 355px;
+  margin-right: 1rem;
+  background: white;
+}
+
+.eventsDetail::-webkit-scrollbar-button {
+  height: 10px;
+}
+/* width */
+.eventsDetail::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+/* Track */
+.eventsDetail::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+.eventsDetail::-webkit-scrollbar-thumb {
+  background: #c4c4c4;
+}
+
+.calenderMentor {
+  display: flex;
+  background: #eaeaea;
+  max-height: 400px;
+  padding: 1rem;
+  border-radius: 15px;
+}
+.calender {
+  width: 50%;
+  /* height: 100%; */
+  background: white;
+  height: 355px !important;
+  overflow: auto;
+}
+.views {
+  padding: 1rem;
+}
+.rowDate {
+  color: #666666;
+  font-size: 12px;
+  justify-content: space-between;
+}
+
+.rowEventName {
+  color: #333333;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.eventsHeader {
+  font-size: 20px;
+  padding: 1rem;
+  color: #393b97;
+  font-weight: bold;
+}
+.eventFalied {
+  padding: 1rem;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.fromControl {
+  cursor: pointer;
+  background: #ebebeb;
+}
+.fromControl:focus {
+  background: #ebebeb;
+  border-color: #969696;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
+    0 0 8px rgba(97, 97, 97, 0.6);
+}
+
+.fromControl option:hover {
+  /* background: #ebebeb !important; */
+}
+@media (max-width: 1000px) {
+  .calenderMentor {
+    flex-direction: column-reverse;
+    max-height: 800px;
+  }
+  .calender {
+    width: 100%;
+  }
+  .eventsDetail {
+    width: 100%;
+    height: 355px;
+    margin-top: 1rem;
+  }
+}
+@media (max-width: 456px) {
+  .row {
+    flex-wrap: wrap;
+  }
+}

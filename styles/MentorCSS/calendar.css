@@ -1,0 +1,85 @@
+.site-calendar-demo-card {
+  width: 300px;
+  border: 1px solid #f0f0f0;
+  border-radius: 2px;
+}
+[data-theme="dark"] .site-calendar-demo-card {
+  border: 1px solid #303030;
+}
+/* .ant-popover {
+  margin: 12rem !important;
+  margin: auto !important;
+  position: fixed !important;
+  padding: 1rem !important;
+  max-width: 500px !important;
+  top: 50% !important;
+  left: 50% !important;
+  margin-left: -230px !important;
+  margin-top: -220px !important;
+}
+.ant-btn {
+  width: 100%;
+  visibility: hidden;
+  height: 0.1px;
+  display: block;
+  border: none;
+  padding: 0;
+}
+.ant-popover-arrow {
+  display: none !important;
+} */
+.nice-dates-day:before {
+  background-color: #fb3f4a !important;
+}
+.nice-dates-day:after {
+  border: 2px solid #fb3f4a !important;
+}
+/* .ant-popover-title {
+  width: 100% !important;
+}
+.ant-popover-title > div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+}
+.ant-popover-inner-content {
+  padding: 1.5rem 3rem;
+} */
+.ant-alert {
+  flex: 0 0 100% !important;
+  margin-bottom: 2px !important;
+}
+.ant-alert-with-description {
+  padding: 5px !important;
+}
+
+.ant-alert-description {
+  font-size: 12px !important;
+}
+@media (max-width: 456px) {
+  .ant-popover {
+    left: auto !important;
+    margin-left: 0px !important;
+  }
+}
+/* Dashboard Mentor popModel */
+.menorship-mentor-model .css-1s2u09g-control {
+  background: #ebebeb;
+  border-radius: 20px;
+}
+.css-1pahdxg-control {
+  border-color: #ebebeb !important;
+  border-radius: 20px !important;
+  box-shadow: 0 0 0 1px #c2c2c2 !important;
+}
+.menorship-mentor-model .css-1s2u09g-control .css-14el2xx-placeholder {
+  color: #aeb3bd;
+  text-align: left;
+  font-size: 1rem;
+  font-weight: lighter;
+}
+
+.css-1rhbuit-multiValue {
+  background-color: white !important;
+}
