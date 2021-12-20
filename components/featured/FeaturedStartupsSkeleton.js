@@ -1,7 +1,8 @@
+import React from 'react';
 import Swiper from 'react-id-swiper';
 import FeaturedCardSkeleton from './FeaturedCardSkeleton';
 
-const FeaturedStartupsSkeleton = function () {
+const FeaturedStartupsSkeleton = () => {
   const params = {
     slidesPerView: 3,
     loop: true,

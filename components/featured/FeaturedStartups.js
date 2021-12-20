@@ -3,13 +3,13 @@ import Swiper from 'react-id-swiper';
 import 'swiper/css/swiper.css';
 import FeaturedCard from './FeaturedCard';
 
-const FeaturedStartups = function ({
+const FeaturedStartups = ({
   data,
   token,
   setClickRegister,
   userData,
   allfunded,
-}) {
+}) => {
   const params = {
     slidesPerView: 3,
     loop: true,
@@ -90,4 +90,5 @@ const FeaturedStartups = function ({
     </section>
   );
 };
+
 export default FeaturedStartups;
