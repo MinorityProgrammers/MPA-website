@@ -22,7 +22,7 @@ const ComingSoon = function ({ closeClick }) {
       </div>
       <div className="dropdown-login-button tw-mt-20 sm:tw-mt-10">
         <button
-          className="btn btn-warning tw-w-44 tw-text-white hover:tw-text-white"
+          className="btn tw-bg-blue-700 tw-w-44 tw-text-white hover:tw-text-white"
           onClick={closeClick}
         >
           Close

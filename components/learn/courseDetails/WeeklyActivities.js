@@ -49,7 +49,7 @@ const WeeklyActivities = function ({ enrolledCourses, modules, userModules }) {
 
   return (
     <div className="courses-details banner-bg">
-      <div className="row" style={{ backgroundColor: '#151371' }}>
+      <div className="row" style={{ backgroundColor: '#474BFF' }}>
         <div className="col-12 col-md-3 pr-0 scroll-sidebar">
           <CourseSidebar course={course} courseId={courseId} modules={modules} userModules={userModules} />
         </div>

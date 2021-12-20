@@ -128,18 +128,18 @@ const CourseCategories = function ({ user, enrolledCourses, usersCourses }) {
           </div>
           <div className="learn-items mb-5">
             <ul className="tw-flex tw-flex-row tw-justify-center tw-pt-2">
-              <li className="tw-bg-blue-900 tw-w-36 tw-text-center tw-p-2 tw-mx-2 tw-rounded-md tw-shadow-lg">
+              <li className="tw-bg-blue-700 tw-w-36 tw-text-center tw-p-2 tw-mx-2 tw-rounded-md tw-shadow-lg">
                 <Link href="#">
-                  <a className="learn-item-active">
-                    MY COURSES
+                  <a className="learn-item-active hover:tw-text-white">
+                    COURSES
                   </a>
                 </Link>
               </li>
-              <li className="menu tw-text-center">
+              {/* <li className="menu tw-text-center">
                 <Link href="#">
                   <a className="">MY CERTIFICATES</a>
                 </Link>
-              </li>
+              </li> */}
               {/* <li className="pl-md-5">
                 <Link href="#">
                   <a>BLOCKCHAIN</a>

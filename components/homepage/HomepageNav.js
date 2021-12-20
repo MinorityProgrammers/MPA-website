@@ -488,12 +488,7 @@ const HomepageNav = ({
             </div>
           )}
         </div>
-        <div className="mobile__vote-link">
-          <a href="/vote" className="">
-            <i className="far fa-check-circle" />
-            Vote
-          </a>
-        </div>
+
       </div>
     </div>
   );
@@ -507,84 +502,8 @@ const HomepageNav = ({
           : {}
       }
     >
-      {/* immediate solution fix for only /auth page header style */}
-      {/* <header className="homepage__header"> */}
-      <div className="homepage__topbar">
-        <div className="container">
-          <ul className="topbar__right">
-            <li>
-              <div className="searchBox tw-text-white">
-                <input
-                  onChange={handleSearch}
-                  value={searchValue}
-                  className={`searchInput tw-text-white ${
-                    searchValue ? 'expand' : ''
-                  }`}
-                  type="text"
-                  name=""
-                  placeholder="Search"
-                />
-                <button
-                  type="submit"
-                  onClick={handleSubmit}
-                  className={`searchButton ${searchValue ? 'scale' : ''}`}
-                >
-                  <i className="fas fa-search" />
-                </button>
-              </div>
-            </li>
-            {userData !== null && userData !== undefined ? (
-              <>
-                <li>
-                  <a href="/chat">
-                    <i className="fas fa-envelope" />
-                  </a>
-                </li>
-                <li>
-                  <i className="fas fa-user" onClick={onClick} />
-                  {isActive ? (
-                    <HomepageNavLoggedin
-                      onCloseMobileMenu={onClick}
-                      userInfo={userData}
-                    />
-                  ) : (
-                    ''
-                  )}
-                </li>
-              </>
-            ) : (
-              <li className="topbar__login">
-                <i aria-hidden className="fas fa-user" onClick={onClick} />
-                {isActive ? (
-                  <HomepageNavLogin onCloseMobileMenu={onClick} />
-                ) : (
-                  ''
-                )}
-              </li>
-            )}
-            <li>
-              <NativeBalance />
-            </li>
-            <li>
-              <div className="headerRight">
-                <Account />
-              </div>
-            </li>
-            <li>
-              <a
-                href="https://snapshot.org/#/minorityprogrammers.eth"
-                target="_blank"
-                className="topbar__vote "
-                rel="noreferrer"
-              >
-                <i className="far fa-check-circle" />
-                Vote
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <nav className={` ${sticky ? 'sticky-menu' : ''}`}>
+
+      <nav className={` ${sticky ? 'sticky-menu tw-flex tw-flex-row tw-justify-between tw-w-full' : 'tw-flex tw-flex-row tw-justify-between tw-w-full'}`}>
         {isLogin === true && (
           <div
             className="hamburger-icon tw-cursor-pointer"
@@ -594,162 +513,230 @@ const HomepageNav = ({
           </div>
         )}
 
-        <div className="container homepage__navbar">
-          <div className="navbar-logo">
-            <Link href="/" onClick={closeMobileMenu}>
-              <img src="/assets/images/mpicon.svg" alt="" />
-            </Link>
+        <div className="tw-flex tw-flex-row tw-justify-between tw-w-full">
+          <div className="3xl:tw-block tw-hidden md:tw-block">
+            <div className="navbar-logo">
+              <Link href="/" onClick={closeMobileMenu}>
+                <img src="/assets/images/mpicon.svg" alt="" />
+              </Link>
+            </div>
           </div>
-          <div className="mobile-icon">
-            <ul className="topbar__mobile">
-              <li>
-                <i className="fas fa-search" onClick={onClickSearch} />
-              </li>
+
+          <div className="tw-flex tw-flex-row tw-justify-around md:tw-justify-end tw-w-full">
+            <div className="mobile-icon tw-my-4 tw-justify-items-end tw-mx-2">
+              <ul className="topbar__mobile">
+                <li>
+                  <i className="fas fa-search tw-text-blue-700" onClick={onClickSearch} />
+                </li>
+                {userData !== null && userData !== undefined ? (
+                  <li onClick={() => setOpen(!open)}>
+                    <span
+                      className="tw-cursor-pointer tw-text-blue-700"
+                      style={{ fontSize: '1.8rem' }}
+                    >
+                      <BiMenuAltLeft />
+                    </span>
+                  </li>
+                ) : (
+                  ''
+                )}
+
+                <li onClick={onClickMobile}>
+                  <i
+                    className={isActiveMobile ? 'fas fa-times tw-text-blue-700' : 'fas fa-bars tw-text-blue-700'}
+                  />
+                </li>
+              </ul>
+            </div>
+            {isActiveMobile ? menuMobile() : ''}
+            {isActiveSearch ? showSearchIconMobile() : ''}
+
+            <ul className="nav-menu tw-py-0 md:tw-py-4">
               {userData !== null && userData !== undefined ? (
-                <li onClick={() => setOpen(!open)}>
-                  <span
-                    className="tw-cursor-pointer"
-                    style={{ fontSize: '1.8rem' }}
-                  >
+                <li
+                  className={open ? 'nav-item active-link' : 'nav-item'}
+                  onClick={() => setOpen(!open)}
+                >
+                  <div className="tw-cursor-pointer" style={{ display: 'flex' }}>
                     <BiMenuAltLeft />
-                  </span>
+                    <a>All</a>
+                  </div>
                 </li>
               ) : (
                 ''
               )}
-
-              <li onClick={onClickMobile}>
-                <i
-                  className={isActiveMobile ? 'fas fa-times' : 'fas fa-bars'}
-                />
-              </li>
-            </ul>
-          </div>
-          {isActiveMobile ? menuMobile() : ''}
-          {isActiveSearch ? showSearchIconMobile() : ''}
-
-          <ul className="nav-menu">
-            {userData !== null && userData !== undefined ? (
               <li
-                className={open ? 'nav-item active-link' : 'nav-item'}
-                onClick={() => setOpen(!open)}
-              >
-                <div className="tw-cursor-pointer" style={{ display: 'flex' }}>
-                  <BiMenuAltLeft />
-                  <a>All</a>
-                </div>
-              </li>
-            ) : (
-              ''
-            )}
-            <li
-              className={
+                className={
                 router.pathname === '/learn-page'
-                  ? 'nav-item active-link'
+                  ? 'nav-item active-link tw-cursor-pointer'
                   : 'nav-item'
               }
-            >
-              <Link
-                href="/learn-page"
-                className="nav-links"
-                onClick={closeMobileMenu}
               >
-                <a>LEARN</a>
-              </Link>
-            </li>
-            <li
-              className={
+                <Link
+                  href="/learn-page"
+                  className="nav-links"
+                  onClick={closeMobileMenu}
+                >
+                  <a>LEARN</a>
+                </Link>
+              </li>
+              <li
+                className={
                 router.pathname === '/incubator'
                   ? 'nav-item active-link'
                   : 'nav-item'
               }
-            >
-              <Link
-                href="/incubator"
-                className="nav-links"
-                onClick={closeMobileMenu}
               >
-                <a>INCUBATOR</a>
-              </Link>
-            </li>
-            <li
-              className={
+                <Link
+                  href="/incubator"
+                  className="nav-links"
+                  onClick={closeMobileMenu}
+                >
+                  <a>INCUBATOR</a>
+                </Link>
+              </li>
+              <li
+                className={
                 router.pathname === '/mentorshipProgram'
                   ? 'nav-item active-link'
                   : 'nav-item'
               }
-            >
-              <Link
-                href="/mentorshipProgram"
-                className="nav-links"
-                onClick={closeMobileMenu}
               >
-                <a>MENTORSHIP</a>
-              </Link>
-            </li>
-            <li
-              className={
+                <Link
+                  href="/mentorshipProgram"
+                  className="nav-links"
+                  onClick={closeMobileMenu}
+                >
+                  <a>MENTORSHIP</a>
+                </Link>
+              </li>
+              <li
+                className={
                 router.pathname === '/events'
                   ? 'nav-item active-link'
                   : 'nav-item'
               }
-            >
-              <Link
-                href="/events"
-                className="nav-links"
-                onClick={closeMobileMenu}
               >
-                <a>EVENTS</a>
-              </Link>
-            </li>
-            <li
-              className={
+                <Link
+                  href="/events"
+                  className="nav-links"
+                  onClick={closeMobileMenu}
+                >
+                  <a>EVENTS</a>
+                </Link>
+              </li>
+              <li
+                className={
                 router.pathname === '/careers'
                   ? 'nav-item active-link'
                   : 'nav-item'
               }
-            >
-              <Link
-                href="/careers"
-                className="nav-links"
-                onClick={closeMobileMenu}
               >
-                <a>CAREERS</a>
-              </Link>
-            </li>
-            <li
-              className={
+                <Link
+                  href="/careers"
+                  className="nav-links"
+                  onClick={closeMobileMenu}
+                >
+                  <a>CAREERS</a>
+                </Link>
+              </li>
+              <li
+                className={
                 router.pathname === '/consultancy_explainer'
                   ? 'nav-item active-link'
                   : 'nav-item'
               }
-              onMouseEnter={onMouseEnter}
-              onMouseLeave={onMouseLeave}
-            >
-              <Link
-                href="/consultancy_explainer"
-                className="nav-links"
-                onClick={extendEle}
+                onMouseEnter={onMouseEnter}
+                onMouseLeave={onMouseLeave}
               >
-                <a>CONSULTANCY</a>
-              </Link>
-            </li>
-            <li
-              className={
+                <Link
+                  href="/consultancy_explainer"
+                  className="nav-links"
+                  onClick={extendEle}
+                >
+                  <a>CONSULTANCY</a>
+                </Link>
+              </li>
+              <li
+                className={
                 router.pathname === '/join'
                   ? 'nav-item active-link'
                   : 'nav-item'
               }
-            >
-              <Link
-                href="/join"
-                className="nav-links"
-                onClick={closeMobileMenu}
               >
-                <a>JOIN</a>
-              </Link>
-            </li>
-          </ul>
+                <Link
+                  href="/join"
+                  className="nav-links"
+                  onClick={closeMobileMenu}
+                >
+                  <a>JOIN</a>
+                </Link>
+              </li>
+            </ul>
+            <ul className="tw-flex tw-flex-row tw-justify-around tw-w-1/4 tw-my-8 md:tw-hidden">
+              <li>
+                <div className="tw-flex tw-flex-row tw-w-full tw-border tw-border-gray-700 tw-rounded-md tw-px-1 tw-text-gray-500">
+                  <input
+                    onChange={handleSearch}
+                    value={searchValue}
+                    className="searchInput tw-bg-transparent tw-border-0 tw-text-gray-500 tw-py-1 xl:tw-w-10/12 tw-w-full tw-outline-none focus:tw-outline-none"
+                  // ${
+                  //   searchValue ? "expand" : ""
+                  // }`}
+                    type="text"
+                    name=""
+                    placeholder="Search..."
+                  />
+                  <button
+                    type="submit"
+                    onClick={handleSubmit}
+                  >
+                    <i className="fas fa-search" />
+                  </button>
+                </div>
+              </li>
+              <li>
+                <div className="tw-w-full tw-mx-2 tw-cursor-pointer">
+                  <Account />
+                </div>
+              </li>
+              {userData !== null && userData !== undefined ? (
+                <div className="tw-mx-2">
+                  {/* <li>
+                        <a href="/chat">
+                          <i className="fas fa-envelope NavIcon tw-mt-2" />
+                        </a>
+                      </li> */}
+                  <li>
+                    <i className="fas fa-user-circle tw-content-center tw-text-center NavIcon tw-cursor-pointer tw-mt-2" onClick={onClick} />
+
+                    {isActive ? (
+                      <HomepageNavLoggedin
+                        onCloseMobileMenu={onClick}
+                        userInfo={userData}
+                      />
+                    ) : (
+                      ''
+                    )}
+                  </li>
+                </div>
+              ) : (
+                <li className="">
+                  <i aria-hidden className="fas fa-user-circle tw-content-center tw-text-center NavIcon tw-cursor-pointer tw-mt-2" onClick={onClick} />
+                  {isActive ? (
+                    <HomepageNavLogin onCloseMobileMenu={onClick} />
+                  ) : (
+                    ''
+                  )}
+                </li>
+              )}
+              {/* <li>
+              <NativeBalance />
+            </li> */}
+
+            </ul>
+          </div>
+
         </div>
       </nav>
     </header>
