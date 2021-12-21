@@ -1,7 +1,7 @@
 import React from 'react';
 
-const FeaturedPopup = function (props) {
-  return props.trigger ? (
+const FeaturedPopup = (props) =>
+  props.trigger && (
     <div
       className="popup"
       style={{
@@ -48,9 +48,6 @@ const FeaturedPopup = function (props) {
         {props.children}
       </div>
     </div>
-  ) : (
-    ''
   );
-};
 
 export default FeaturedPopup;

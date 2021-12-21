@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import axios from 'axios';
-import { numFormat, percentFund } from '../helpers/formatIncubator';
+import { numFormat, percentFund } from '../../helpers/formatIncubator';
 import FeaturedPopup from './FeaturedPopup';
-import { errorToast, successToast } from '../contexts/utils/toasts';
+import { errorToast, successToast } from '../../contexts/utils/toasts';
 
-const FeaturedCard = function ({
-  data, setClickRegister, userData, allfunded,
-}) {
+const FeaturedCard = ({ data, setClickRegister, userData, allfunded }) => {
   const [buttonPopup, setButtonPopup] = useState(false);
   const [secondPopup, setSecondPopup] = useState(false);
   const [amount, setAmount] = useState();
@@ -24,7 +22,7 @@ const FeaturedCard = function ({
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        },
+        }
       )
       .then((res) => {
         successToast(res.data.message);
@@ -59,23 +57,17 @@ const FeaturedCard = function ({
             <h2 className="card__header-title">{data.name}</h2>
           </div>
           <p className="card-text card__text">
-            {`${data.about.substring(
-              0,
-              50,
-            )}...`}
+            {`${data.about.substring(0, 50)}...`}
           </p>
-
           <div className="fund__container">
             <div className="fund__top">
               <h3 className="fund__topic">Fundraised</h3>
               <h3 className="fund__percentage">
-                {percentFund(data.targetAmount, data.amount)}
-                % complete
+                {percentFund(data.targetAmount, data.amount)}% complete
               </h3>
             </div>
             <h3 className="fund__amount">
-              $
-              {numFormat(data.amount)}
+              ${numFormat(data.amount)}
               /$
               {numFormat(data.targetAmount)}
             </h3>
@@ -100,9 +92,11 @@ const FeaturedCard = function ({
               <button
                 style={{ outline: 'none' }}
                 className="button btn-filled"
-                onClick={() => (userData !== null
-                  ? setButtonPopup(true)
-                  : setClickRegister(true))}
+                onClick={() =>
+                  userData !== null
+                    ? setButtonPopup(true)
+                    : setClickRegister(true)
+                }
               >
                 Fund Startup
               </button>
@@ -120,10 +114,7 @@ const FeaturedCard = function ({
           <h2 className="card__header-title">{data.name}</h2>
         </div>
         <p style={{ marginTop: '20px' }}>
-          {`${data.about.substring(
-            0,
-            1000,
-          )}...`}
+          {`${data.about.substring(0, 1000)}...`}
         </p>
         <button
           style={{ float: 'right', width: '100px' }}

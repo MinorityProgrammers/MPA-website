@@ -1,15 +1,16 @@
+import React from 'react';
 import Swiper from 'react-id-swiper';
-import FeaturedCardSkeleton from './FeaturedCardSkeleton';
+import FeaturedMyCardSkeleton from './FeaturedMyCardSkeleton';
 
-const FeaturedStartupsSkeleton = function () {
+const FeaturedMyStartupSkeleton = () => {
   const params = {
-    slidesPerView: 3,
+    slidesPerView: 4,
     loop: true,
     speed: 700,
     spaceBetween: 0,
     navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
+      nextEl: 4 ? '.swiper-button-next' : '',
+      prevEl: 4 ? '.swiper-button-prev' : '',
     },
     autoplay: {
       delay: 3000,
@@ -17,7 +18,8 @@ const FeaturedStartupsSkeleton = function () {
     },
     observeParents: true,
     observer: true,
-
+    rebuildOnUpdate: true,
+    // Responsive breakpoints
     breakpoints: {
       1440: {
         slidesPerView: 3,
@@ -43,19 +45,19 @@ const FeaturedStartupsSkeleton = function () {
     <section className="featured__wrapper">
       <div className="container">
         <div className="row">
-          <div className="col-lg-3 featured__text">
-            <h2 className="featured__title">Featured Startups</h2>
+          <div className="col-lg-3 col-md-12 featured__text">
+            <h2 className="featured__title">My Startups</h2>
             <p className="featured__subtitle">
-              Invest in the next billion dollar company today
+              These are startups you have some shares in
             </p>
           </div>
-          <div className="col-lg-9 d-flex align-items-center featured__card">
+          <div className="col-lg-9 col-md-12 d-flex align-items-center justify-content-center ">
             <Swiper {...params} grabCursor>
-              <FeaturedCardSkeleton />
-              <FeaturedCardSkeleton />
-              <FeaturedCardSkeleton />
-              <FeaturedCardSkeleton />
-              <FeaturedCardSkeleton />
+              <FeaturedMyCardSkeleton />
+              <FeaturedMyCardSkeleton />
+              <FeaturedMyCardSkeleton />
+              <FeaturedMyCardSkeleton />
+              <FeaturedMyCardSkeleton />
             </Swiper>
           </div>
         </div>
@@ -64,4 +66,4 @@ const FeaturedStartupsSkeleton = function () {
   );
 };
 
-export default FeaturedStartupsSkeleton;
+export default FeaturedMyStartupSkeleton;

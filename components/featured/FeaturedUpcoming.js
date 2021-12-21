@@ -3,11 +3,8 @@ import ReactPaginate from 'react-paginate';
 import { Form } from 'react-bootstrap';
 import FeaturedCard from './FeaturedCard';
 
-const FeaturedUpcoming = function ({
-  data, setClickRegister, userData, allfunded,
-}) {
+const FeaturedUpcoming = ({ data, setClickRegister, userData, allfunded }) => {
   const [pageNumber, setPageNumber] = useState(0);
-  const [loading, setLoading] = useState(false);
   const [search, setSearch] = useState();
   const [searchResults, setSearchResults] = useState(data);
 
@@ -34,7 +31,8 @@ const FeaturedUpcoming = function ({
   const changePage = ({ selected }) => {
     setPageNumber(selected);
   };
-  const filterNames = ({ name }) => name.toLowerCase().indexOf(search.toLowerCase()) !== -1;
+  const filterNames = ({ name }) =>
+    name.toLowerCase().indexOf(search.toLowerCase()) !== -1;
 
   useEffect(() => {
     if (!search) return setSearchResults(data);
@@ -58,7 +56,6 @@ const FeaturedUpcoming = function ({
               change the world.
             </p>
           </div>
-
           {!data ? (
             <div className="container text-center mt-3 mb-3 featured__card-empty">
               <h1 className="featured__card-title mb-3">
@@ -95,4 +92,5 @@ const FeaturedUpcoming = function ({
     </section>
   );
 };
+
 export default FeaturedUpcoming;
