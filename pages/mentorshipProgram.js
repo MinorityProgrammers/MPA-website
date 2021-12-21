@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import HomepageNav from '../components/homepage/HomepageNav';
 import Layout from '../components/Layout';
-import SidebarTwo from '../components/SidebarTwo';
+import SidebarTwo from '../components/sidebar/SidebarTwo';
 import links from '../contexts/utils/links';
 import { useDetectOutsideClick } from '../components/UseDetectOutsideClick';
 import MentorshipProgramHero from '../components/mentorship/MentorshipProgramHero';
@@ -33,23 +33,23 @@ const mentorshipProgram = () => {
     }
   }, []);
   return (
-    <Layout pageTitle='MPA - Mentorship SignUp'>
+    <Layout pageTitle="MPA - Mentorship SignUp">
       <HomepageNav
         open={open}
         setOpen={setOpen}
         setData={setData}
-        page='MentorshipProgram'
+        page="MentorshipProgram"
       />
       <SidebarTwo
         open={open}
         setOpen={setOpen}
         links={links}
-        active='Home'
+        active="Home"
         handleClick={handleClick}
       />
       {hide == false && <ComingSoon closeClick={handleClick} />}
       <MentorshipProgramHero />
-      <section className='section__mentorshipProgram'>
+      <section className="section__mentorshipProgram">
         <MentorshipProgramHome
           data={data}
           setClickRegister={setClickRegister}

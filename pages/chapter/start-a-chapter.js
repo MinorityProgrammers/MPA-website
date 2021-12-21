@@ -1,13 +1,11 @@
-import React, {
-  useState, useRef, useEffect, useContext,
-} from 'react';
+import React, { useState, useRef, useEffect, useContext } from 'react';
 import Layout from '../../components/Layout';
 import Footer from '../../components/Footer';
 import HomepageNav from '../../components/homepage/HomepageNav';
 import { useDetectOutsideClick } from '../../components/UseDetectOutsideClick';
 import ChapterHeader from '../../components/chapterHeader/chapterHeader.component';
 import ChapterDirectory from '../../components/ChapterDirectory/ChapterDirectory.component';
-import SidebarTwo from '../../components/SidebarTwo';
+import SidebarTwo from '../../components/sidebar/SidebarTwo';
 import links from '../../contexts/utils/links';
 import { GlobalContext } from '../../contexts/provider';
 

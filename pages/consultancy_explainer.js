@@ -5,7 +5,7 @@ import ConsultancyHomeExplainer from '../components/Consultancy/ConsultancyHomeE
 import Footer from '../components/Footer';
 import { useDetectOutsideClick } from '../components/UseDetectOutsideClick';
 import Layout from '../components/Layout';
-import SidebarTwo from '../components/SidebarTwo';
+import SidebarTwo from '../components/sidebar/SidebarTwo';
 import links from '../contexts/utils/links';
 
 const consultancy = () => {

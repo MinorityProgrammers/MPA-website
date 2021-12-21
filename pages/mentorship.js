@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import HomepageNav from '../components/homepage/HomepageNav';
 import Layout from '../components/Layout';
 import Footer from '../components/Footer';
-import SidebarTwo from '../components/SidebarTwo';
+import SidebarTwo from '../components/sidebar/SidebarTwo';
 import { MentorshipRegister } from '../components/mentorship/MentorshipRegister';
 import links from '../contexts/utils/links';
 import ComingSoon from '../components/ComingSoon';

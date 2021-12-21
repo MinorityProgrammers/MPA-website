@@ -3,7 +3,7 @@ import ImgUploadIconSvg from '../../components/career-components/svgs/ImgUploadI
 import Footer from '../../components/Footer';
 import HomepageNav from '../../components/homepage/HomepageNav';
 import Layout from '../../components/Layout';
-import SidebarTwo from '../../components/SidebarTwo';
+import SidebarTwo from '../../components/sidebar/SidebarTwo';
 import links from '../../contexts/utils/links';
 
 const CreateNewCompany = () => {
@@ -218,9 +218,7 @@ const CreateNewCompany = () => {
                 </div>
 
                 <div className="tw-w-full sm:tw-w-1/3 tw-flex tw-flex-col tw-items-center tw-justify-between">
-                  <label
-                    className="tw-w-44 tw-h-44 tw-border tw-border-1 tw-text-4xl tw-text-white tw-flex tw-flex-col tw-justify-center tw-items-center tw-text-center"
-                  >
+                  <label className="tw-w-44 tw-h-44 tw-border tw-border-1 tw-text-4xl tw-text-white tw-flex tw-flex-col tw-justify-center tw-items-center tw-text-center">
                     <ImgUploadIconSvg />
                   </label>
                   <input
@@ -235,8 +233,7 @@ const CreateNewCompany = () => {
 
               <div className="tw-flex tw-flex-col tw-mb-3">
                 <label className="tw-text-white tw-text-lg tw-mb-1 tw-font-bold">
-                  Company Description
-                  {' '}
+                  Company Description{' '}
                   <span className="tw-text-xl tw-text-yellow-200">*</span>
                 </label>
                 <textarea

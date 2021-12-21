@@ -3,17 +3,15 @@ import axios from 'axios';
 import { useRouter } from 'next/router';
 import Layout from '../../components/Layout';
 import HomepageNav from '../../components/homepage/HomepageNav';
-import StartupTopBar from '../../components/StartupTopBar';
-import StartupMainBar from '../../components/StartupMainBar';
+import StartupTopBar from '../../components/startup/StartupTopBar';
+import StartupMainBar from '../../components/startup/StartupMainBar';
 import Footer from '../../components/Footer';
-import SidebarTwo from '../../components/SidebarTwo';
+import SidebarTwo from '../../components/sidebar/SidebarTwo';
 import links from '../../contexts/utils/links';
 // import datas from '../../helpers/mockData';
 
 export const getStaticPaths = async () => {
-  const res = await axios.get(
-    `${process.env.BASE_URI}/startup/`,
-  );
+  const res = await axios.get(`${process.env.BASE_URI}/startup/`);
   const data = await res.data.data;
 
   const paths = data.map((startup) => ({
@@ -36,7 +34,7 @@ export const getStaticProps = async (context) => {
 
   // Calendly test startup
   const res = await axios.get(
-    `${process.env.BASE_URI}/startup/60ca4c75620570082453fc34`,
+    `${process.env.BASE_URI}/startup/60ca4c75620570082453fc34`
   );
   const data = await res.data.data;
 

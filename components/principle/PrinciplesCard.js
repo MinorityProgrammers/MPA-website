@@ -1,0 +1,16 @@
+import React from 'react';
+
+const PrinciplesCard = (props) => (
+  <div className="item">
+    <div className={props.item.category}>
+      <div className="course-category-one__icon">
+        <i className={props.item.icon} />
+      </div>
+      <h3 className="course-category-one__title">
+        <a href={props.item.link}>{props.item.name}</a>
+      </h3>
+    </div>
+  </div>
+);
+
+export default PrinciplesCard;
