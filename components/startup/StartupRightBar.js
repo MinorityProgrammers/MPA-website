@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Swiper from 'react-id-swiper';
 import 'swiper/css/swiper.css';
-import FeaturedInfoCard from './featured/FeaturedInfoCard';
+import FeaturedInfoCard from '../featured/FeaturedInfoCard';
 import StartupRoadmap from './StartupRoadmap';
 
-const StartupRightBar = function ({ data }) {
+const StartupRightBar = ({ data }) => {
   const params = {
     loop: true,
     speed: 700,
@@ -172,7 +172,6 @@ const StartupRightBar = function ({ data }) {
             </button>
           </h2>
         </div>
-
         <div className="row container market-size">
           <div className="tam__sam__som">
             <div className="tam">
@@ -212,7 +211,6 @@ const StartupRightBar = function ({ data }) {
               </div>
             </div>
           </div>
-
           {hover && (
             <div className="row container tam-sam-som-info">
               <div style={{ fontWeight: 'bold', color: 'black' }}>
@@ -279,7 +277,6 @@ const StartupRightBar = function ({ data }) {
           ))}
         </div>
       </div>
-
       <div className="row right__container">
         <div className="container p-4">
           <h2 className="right__topic mb-3 mt-1">Related startups</h2>
@@ -297,4 +294,5 @@ const StartupRightBar = function ({ data }) {
     </div>
   );
 };
+
 export default StartupRightBar;

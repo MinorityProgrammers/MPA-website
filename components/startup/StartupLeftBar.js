@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { numFormat, convert } from '../helpers/formatIncubator';
+import { numFormat, convert } from '../../helpers/formatIncubator';
 
-const StartupLeftBar = function ({ data }) {
+const StartupLeftBar = ({ data }) => {
   const [city, setCity] = useState('');
   const [country, setCountry] = useState('');
   const { tags, website, location } = data;
@@ -37,8 +37,7 @@ const StartupLeftBar = function ({ data }) {
               <div className="col portfolio__items">
                 <p>Startup Valuation</p>
                 <h3 className="portfolio__amount">
-                  $
-                  {convert(data.valuation)}
+                  ${convert(data.valuation)}
                 </h3>
               </div>
               <div className="col portfolio__items">
@@ -53,7 +52,6 @@ const StartupLeftBar = function ({ data }) {
       ) : (
         ''
       )}
-
       {/* details section */}
       <div className="row left__container">
         <div className="container p-4">
@@ -102,22 +100,16 @@ const StartupLeftBar = function ({ data }) {
             </div>
             <p className="left__detail-topic">Location</p>
             <p className="left__detail-detail text-cap tw-mb-2">
-              {city}
-              ,
-              {country}
+              {city},{country}
             </p>
             <p className="left__detail-topic">Team Size</p>
             <p className="left__detail-detail tw-mb-2">
-              {data.teamSizeMin}
-              -
-              {data.teamSizeMax}
-              {' '}
+              {data.teamSizeMin}-{data.teamSizeMax}
               people
             </p>
             <p className="left__detail-topic">User Base</p>
             <p>
               {numFormat(data.userBase)}
-              {' '}
               Users
             </p>
           </div>
@@ -143,4 +135,5 @@ const StartupLeftBar = function ({ data }) {
     </>
   );
 };
+
 export default StartupLeftBar;
