@@ -3,7 +3,7 @@ import HomepageNav from '../components/homepage/HomepageNav';
 import { useDetectOutsideClick } from '../components/UseDetectOutsideClick';
 import Layout from '../components/Layout';
 import Testimonial from '../components/Internship/Testimonial';
-import SidebarTwo from '../components/SidebarTwo';
+import SidebarTwo from '../components/sidebar/SidebarTwo';
 import links from '../contexts/utils/links';
 import InternshipHero from '../components/Internship/InternshipHero';
 import InternshipHome from '../components/Internship/InternshipHome';

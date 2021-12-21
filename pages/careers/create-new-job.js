@@ -4,7 +4,7 @@ import ComingSoon from '../../components/ComingSoon';
 import Footer from '../../components/Footer';
 import HomepageNav from '../../components/homepage/HomepageNav';
 import Layout from '../../components/Layout';
-import SidebarTwo from '../../components/SidebarTwo';
+import SidebarTwo from '../../components/sidebar/SidebarTwo';
 import { useDetectOutsideClick } from '../../components/UseDetectOutsideClick';
 import links from '../../contexts/utils/links';
 
@@ -23,8 +23,7 @@ const CreateNewJob = () => {
   }
 
   function getTodaysDate() {
-    const todaysDate = new Date().toString().split(' ').slice(1, 4)
-      .join(' ');
+    const todaysDate = new Date().toString().split(' ').slice(1, 4).join(' ');
     return todaysDate;
   }
   getTodaysDate();
@@ -49,8 +48,7 @@ const CreateNewJob = () => {
                   COMPANY NAME FROM EMAIL
                 </div>
                 <div>
-                  Todays Date:
-                  {' '}
+                  Todays Date:{' '}
                   <span className="tw-font-bold">{getTodaysDate()}</span>
                 </div>
               </div>

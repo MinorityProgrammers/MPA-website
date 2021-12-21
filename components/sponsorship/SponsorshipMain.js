@@ -1,8 +1,8 @@
 import { useState, useRef } from 'react';
-import Layout from '../Layout.js';
-import Footer from '../Footer.js';
+import Layout from '../Layout';
+import Footer from '../Footer';
 import HomepageNav from '../homepage/HomepageNav';
-import SidebarTwo from '../SidebarTwo';
+import SidebarTwo from '../sidebar/SidebarTwo';
 import links from '../../contexts/utils/links';
 import { useDetectOutsideClick } from '../UseDetectOutsideClick';
 

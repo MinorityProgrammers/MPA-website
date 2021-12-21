@@ -1,6 +1,4 @@
-import {
-  useCallback, useEffect, useRef, useState,
-} from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import $ from 'jquery';
 
 const randomNames = [
@@ -76,9 +74,10 @@ const randomImages = [
   'https://minorityprogrammers.com/assets/images/SEEF.svg',
   'https://minorityprogrammers.com/assets/images/Bryanna.svg',
 ];
-const testimonialText = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis voluptatem eveniet delectus hic molestiae saepe expedita rem eum libero excepturi totam odit tempora porro asperiores eius, tempore explicabo reprehenderit culpa.';
+const testimonialText =
+  'Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis voluptatem eveniet delectus hic molestiae saepe expedita rem eum libero excepturi totam odit tempora porro asperiores eius, tempore explicabo reprehenderit culpa.';
 
-const Testimonials = function ({ homeClass, mode }) {
+const Testimonials = ({ homeClass, mode }) => {
   const [randomTestimony, setRandomTestimony] = useState([]);
   const containerRef = useRef();
   const uniqueKey = useRef(0);
@@ -114,10 +113,8 @@ const Testimonials = function ({ homeClass, mode }) {
       const maxRandom = 5;
       const containerWidth = $(containerRef.current).width();
       const containerHeight = $(containerRef.current).height();
-
       const widthOfCard = userCardWidth.current;
       const heightOfCard = parseInt($('body').css('--testimonialMaxHeight'));
-
       const numberOfNew = Math.floor(Math.random() * maxRandom) + 1;
       for (let i = 0; i < numberOfNew; i++) {
         const newObj = {
@@ -192,8 +189,7 @@ const Testimonials = function ({ homeClass, mode }) {
                   <div className={homeClass.testimonialCardHeader}>
                     <span className={homeClass.testimonialFirstName}>
                       {firstName}
-                    </span>
-                    {' '}
+                    </span>{' '}
                     <span className={homeClass.testimonialLastName}>
                       {lastName}
                     </span>
@@ -203,7 +199,7 @@ const Testimonials = function ({ homeClass, mode }) {
               </section>
               <section className={homeClass.testimonialsLocation}>
                 <i className="fa fa-map-marker" aria-hidden="true" />
-&emsp;
+                &emsp;
                 {location}
               </section>
               <section className={homeClass.testimonialsRating}>
@@ -246,4 +242,5 @@ const Testimonials = function ({ homeClass, mode }) {
     </div>
   );
 };
+
 export default Testimonials;

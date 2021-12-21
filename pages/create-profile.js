@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken';
 import { useRouter } from 'next/router';
 import Layout from '../components/Layout';
 import HomepageNav from '../components/homepage/HomepageNav';
-import SidebarTwo from '../components/SidebarTwo';
+import SidebarTwo from '../components/sidebar/SidebarTwo';
 import Footer from '../components/Footer';
 import CreateProfile from '../components/CreateProfile/CreateProfile';
 import links from '../contexts/utils/links';

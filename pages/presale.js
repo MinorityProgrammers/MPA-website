@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import Footer from '../components/Footer';
 import Layout from '../components/Layout';
-import SidebarTwo from '../components/SidebarTwo';
+import SidebarTwo from '../components/sidebar/SidebarTwo';
 import HomepageNav from '../components/homepage/HomepageNav';
 import links from '../contexts/utils/links';
 import ComingSoon from '../components/ComingSoon';

@@ -6,7 +6,7 @@ import HomepageNav from '../../components/homepage/HomepageNav';
 import StartupTopBar from '../../components/startup/StartupTopBar';
 import StartupMainBar from '../../components/startup/StartupMainBar';
 import Footer from '../../components/Footer';
-import SidebarTwo from '../../components/SidebarTwo';
+import SidebarTwo from '../../components/sidebar/SidebarTwo';
 import links from '../../contexts/utils/links';
 // import datas from '../../helpers/mockData';
 

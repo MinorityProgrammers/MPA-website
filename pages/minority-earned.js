@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import HomepageNav from '../components/homepage/HomepageNav';
 import Layout from '../components/Layout';
-import SidebarTwo from '../components/SidebarTwo';
+import SidebarTwo from '../components/sidebar/SidebarTwo';
 import links from '../contexts/utils/links';
 import ComingSoon from '../components/ComingSoon';
 import { useDetectOutsideClick } from '../components/UseDetectOutsideClick';

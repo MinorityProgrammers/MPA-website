@@ -3,7 +3,7 @@ import CareerExplainer from '../components/career-components/CareerExplainer';
 import Footer from '../components/Footer';
 import HomepageNav from '../components/homepage/HomepageNav';
 import Layout from '../components/Layout';
-import SidebarTwo from '../components/SidebarTwo';
+import SidebarTwo from '../components/sidebar/SidebarTwo';
 import { useDetectOutsideClick } from '../components/UseDetectOutsideClick';
 import links from '../contexts/utils/links';
 
