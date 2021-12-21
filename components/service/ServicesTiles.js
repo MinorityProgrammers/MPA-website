@@ -3,7 +3,7 @@ import Swiper from 'react-id-swiper';
 import ServicesCard from './ServicesCard';
 import 'swiper/css/swiper.css';
 
-const ServicesTiles = function () {
+const ServicesTiles = () => {
   const params = {
     slidesPerView: 5,
     loop: true,
