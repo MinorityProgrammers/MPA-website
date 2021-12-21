@@ -75,7 +75,7 @@ const Account = function () {
           />
           <div style={{ marginTop: '10px', padding: '0 10px' }}>
             <a
-              href={`${getExplorer(chainId)}/address/${walletAddress}`}
+              href={`${process.env.NETWORK_URL}/address/${walletAddress}`}
               target="_blank"
               rel="noreferrer"
             >

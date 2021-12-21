@@ -1,7 +1,9 @@
-import { useEffect } from 'react';
+/* eslint-disable no-bitwise */
+import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { Provider } from 'next-auth/client';
 import { PayPalScriptProvider } from '@paypal/react-paypal-js';
+import Loading from '../components/Loading';
 import * as ga from '../ga';
 import '../node_modules/react-modal-video/scss/modal-video.scss';
 import 'tailwindcss/tailwind.css';
@@ -58,33 +60,62 @@ const SERVER_URL = process.env.REACT_APP_MORALIS_SERVER_URL;
 export default function MyApp({ Component, pageProps }) {
   const router = useRouter();
 
+  const [state, setState] = useState({
+    isRouteChanging: false,
+    loadingKey: 0,
+  });
+
   useEffect(() => {
+    const handleRouteChangeStart = () => {
+      setState((prevState) => ({
+        ...prevState,
+        isRouteChanging: true,
+        loadingKey: prevState.loadingKey ^ 1,
+      }));
+    };
+
+    const handleRouteChangeEnd = () => {
+      setState((prevState) => ({
+        ...prevState,
+        isRouteChanging: false,
+      }));
+    };
+
     const handleRouteChange = (url) => {
       ga.pageview(url);
     };
 
     router.events.on('routeChangeComplete', handleRouteChange);
+    router.events.on('routeChangeStart', handleRouteChangeStart);
+    router.events.on('routeChangeComplete', handleRouteChangeEnd);
+    router.events.on('routeChangeError', handleRouteChangeEnd);
 
     return () => {
+      router.events.off('routeChangeStart', handleRouteChangeStart);
+      router.events.off('routeChangeComplete', handleRouteChangeEnd);
+      router.events.off('routeChangeError', handleRouteChangeEnd);
       router.events.off('routeChangeComplete', handleRouteChange);
     };
   }, [router.events]);
 
   return (
-    <MoralisProvider appId={APP_ID} serverUrl={SERVER_URL}>
-      <MoralisDappProvider>
-        <Provider session={pageProps.session}>
-          <PayPalScriptProvider
-            options={{ 'client-id': process.env.PAYPAL_CLIENT_ID }}
-          >
-            <GlobalProvider>
-              <SettingsPagesProvider>
-                <Component {...pageProps} />
-              </SettingsPagesProvider>
-            </GlobalProvider>
-          </PayPalScriptProvider>
-        </Provider>
-      </MoralisDappProvider>
-    </MoralisProvider>
+    <>
+      <Loading isRouteChanging={state.isRouteChanging} key={state.loadingKey} />
+      <MoralisProvider appId={APP_ID} serverUrl={SERVER_URL}>
+        <MoralisDappProvider>
+          <Provider session={pageProps.session}>
+            <PayPalScriptProvider
+              options={{ 'client-id': process.env.PAYPAL_CLIENT_ID }}
+            >
+              <GlobalProvider>
+                <SettingsPagesProvider>
+                  <Component {...pageProps} />
+                </SettingsPagesProvider>
+              </GlobalProvider>
+            </PayPalScriptProvider>
+          </Provider>
+        </MoralisDappProvider>
+      </MoralisProvider>
+    </>
   );
 }

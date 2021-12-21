@@ -28,7 +28,7 @@ function countDown(mintedURL, tx) {
   console.log(tx);
   const modal = Modal.success({
     title: 'Successfully minted Your profile',
-    content: `Checkout your minted profile metadata ${mintedURL}, transaction id: ${process.env.NETWORK_URL}/${tx.transactionHash}`,
+    content: `Checkout your minted profile metadata ${mintedURL}, transaction id: ${process.env.NETWORK_URL}/tx/${tx.transactionHash}`,
   });
   const timer = setInterval(() => {
     secondsToGo -= 1;
