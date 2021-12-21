@@ -14,13 +14,13 @@ const Loading = ({
         <div
           className="bar"
           style={{
-            background: '#fff', height: '2px', left: 0, marginLeft: `${(-1 + progress) * 100}%`, position: 'fixed', top: 0, transition: `margin-left ${animationDuration}ms linear`, width: '100%', zIndex: 99999,
+            background: '#474BFD', height: '2px', left: 0, marginLeft: `${(-1 + progress) * 100}%`, position: 'fixed', top: 0, transition: `margin-left ${animationDuration}ms linear`, width: '100%', zIndex: 99999,
           }}
         >
           <div
             className="spinner"
             style={{
-              boxShadow: '0 0 10px #fff, 0 0 5px #fff', display: 'block', height: '100%', opacity: 1, position: 'absolute', right: 0, transform: 'rotate(3deg) translate(0px, -4px)', width: '100px',
+              boxShadow: '0 0 10px #474BFD, 0 0 5px #474BFD', display: 'block', height: '100%', opacity: 1, position: 'absolute', right: 0, transform: 'rotate(3deg) translate(0px, -4px)', width: '100px',
             }}
           />
         </div>
