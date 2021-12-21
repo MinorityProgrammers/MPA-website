@@ -3,7 +3,7 @@ import Swiper from 'react-id-swiper';
 import TestimonialsCard from './TestimonialsCard';
 import 'swiper/css/swiper.css';
 
-const Testimonials = function () {
+const Testimonials = () => {
   const params = {
     slidesPerView: 3,
     loop: true,

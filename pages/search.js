@@ -1,11 +1,9 @@
-import React, {
-  useState, useRef, useEffect, useContext,
-} from 'react';
+import React, { useState, useRef, useEffect, useContext } from 'react';
 import { GlobalContext } from '../contexts/provider';
 import HomepageNav from '../components/homepage/HomepageNav';
 import Layout from '../components/Layout';
 import Footer from '../components/Footer';
-import SidebarTwo from '../components/SidebarTwo';
+import SidebarTwo from '../components/sidebar/SidebarTwo';
 import links from '../contexts/utils/links';
 import { useDetectOutsideClick } from '../components/UseDetectOutsideClick';
 import Search from '../components/search/search-main/search';

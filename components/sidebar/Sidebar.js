@@ -10,9 +10,7 @@ import { Tooltip } from 'react-tippy';
 import { SiWebauthn } from 'react-icons/si';
 import SidebarList from './SidebarList';
 
-const Sidebar = function ({
-  dark = true, authUser, Open, user,
-}) {
+const Sidebar = ({ dark = true, authUser, Open, user }) => {
   const [sidebar, setSidebar] = useState(false);
   const [pages, setPages] = useState(false);
   const [users, setUser] = useState(false);
@@ -59,9 +57,7 @@ const Sidebar = function ({
           </div>
           <div className="tw-w-full tw-flex tw-justify-center tw-flex-col tw-items-center ">
             <span className="tw-text-base tw-my-3">
-              {user.firstName}
-              {' '}
-              {user.lastName}
+              {user.firstName} {user.lastName}
             </span>
             <span className="tw-text-xs">{role}</span>
             <ul className="tw-flex tw-justify-around tw-mt-3 tw-w-full ">
@@ -196,7 +192,6 @@ const Sidebar = function ({
               </ul>
             </div>
           </article>
-
           <article className="tw-pl-2">
             <div className="tw-my-2 tw-mx-1 tw-font-bold">
               <span>Pages</span>
@@ -259,7 +254,6 @@ const Sidebar = function ({
                           Logout
                         </span>
                       </div>
-
                       <div />
                     </div>
                   </div>

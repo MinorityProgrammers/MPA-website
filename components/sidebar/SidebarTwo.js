@@ -5,13 +5,11 @@ import {
   CircularProgressbarWithChildren,
   buildStyles,
 } from 'react-circular-progressbar';
-import { GlobalContext } from '../contexts/provider';
+import { GlobalContext } from '../../contexts/provider';
 import SidebarNav from './SidebarNav';
-import { getProfile } from '../contexts/actions/profile/getProfile';
+import { getProfile } from '../../contexts/actions/profile/getProfile';
 
-const SidebarTwo = function ({
-  links, active, open, setOpen, handleClick,
-}) {
+const SidebarTwo = ({ links, active, open, setOpen, handleClick }) => {
   const [userData, setUserData] = useState([]);
   const [sectionStates, setSectionStates] = useState({
     collapseAll: true,
@@ -27,12 +25,14 @@ const SidebarTwo = function ({
   } = useContext(GlobalContext);
 
   useEffect(() => {
-    const token = typeof window !== 'undefined'
-      ? window.localStorage.getItem('jwtToken')
-      : null;
-    const userInfo = typeof window !== 'undefined'
-      ? window.localStorage.getItem('userInfo')
-      : null;
+    const token =
+      typeof window !== 'undefined'
+        ? window.localStorage.getItem('jwtToken')
+        : null;
+    const userInfo =
+      typeof window !== 'undefined'
+        ? window.localStorage.getItem('userInfo')
+        : null;
 
     if (token == null || userInfo == {}) {
       setUserData(null);
@@ -83,7 +83,6 @@ const SidebarTwo = function ({
               </CircularProgressbarWithChildren>
             </div>
           </Link>
-
           <h3>
             Hello,
             {userData ? userData.firstName : ''}

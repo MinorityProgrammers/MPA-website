@@ -12,7 +12,7 @@ import HomepageTestimonials from '../components/homepage/HomepageTestimonials';
 import HomepageWave from '../components/homepage/HomepageWave';
 import Layout from '../components/Layout';
 import MpaBuilder from '../components/mpa-builder/builder';
-import SidebarTwo from '../components/SidebarTwo';
+import SidebarTwo from '../components/sidebar/SidebarTwo';
 import { useDetectOutsideClick } from '../components/UseDetectOutsideClick';
 import links from '../contexts/utils/links';
 

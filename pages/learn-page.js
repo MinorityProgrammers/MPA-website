@@ -4,7 +4,7 @@ import Layout from '../components/Layout';
 import HomepageNav from '../components/homepage/HomepageNav';
 import Footer from '../components/Footer';
 import CourseCategories from '../components/learn/CourseCategories';
-import SidebarTwo from '../components/SidebarTwo';
+import SidebarTwo from '../components/sidebar/SidebarTwo';
 import links from '../contexts/utils/links';
 import ComingSoon from '../components/ComingSoon';
 import { useDetectOutsideClick } from '../components/UseDetectOutsideClick';
@@ -30,14 +30,11 @@ const LearnPage = function () {
     const userToken = JSON.parse(localStorage.getItem('userInfo'));
     if (userToken !== null) {
       axios
-        .get(
-          `${process.env.BASE_URI}/learn/userCourses`,
-          {
-            headers: {
-              Authorization: `Bearer ${userToken.token}`,
-            },
+        .get(`${process.env.BASE_URI}/learn/userCourses`, {
+          headers: {
+            Authorization: `Bearer ${userToken.token}`,
           },
-        )
+        })
         .then((res) => {
           setEnrolledCourses(res.data.data);
         });
@@ -45,11 +42,9 @@ const LearnPage = function () {
   }, []);
 
   useEffect(() => {
-    axios
-      .get(`${process.env.BASE_URI}/learn/`)
-      .then((res) => {
-        setUsersCourses(res.data.data);
-      });
+    axios.get(`${process.env.BASE_URI}/learn/`).then((res) => {
+      setUsersCourses(res.data.data);
+    });
   }, []);
 
   return (

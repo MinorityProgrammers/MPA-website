@@ -5,7 +5,7 @@ import HomepageNav from '../components/homepage/HomepageNav';
 import { useDetectOutsideClick } from '../components/UseDetectOutsideClick';
 import Footer from '../components/Footer';
 import links from '../contexts/utils/links';
-import SidebarTwo from '../components/SidebarTwo';
+import SidebarTwo from '../components/sidebar/SidebarTwo';
 
 const Partner = function () {
   const [open, setOpen] = useState(false);

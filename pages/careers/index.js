@@ -8,7 +8,7 @@ import LoadingSkeleton from '../../components/career-components/LoadingSkeleton'
 import ComingSoon from '../../components/ComingSoon';
 import HomepageNav from '../../components/homepage/HomepageNav';
 import Layout from '../../components/Layout';
-import SidebarTwo from '../../components/SidebarTwo';
+import SidebarTwo from '../../components/sidebar/SidebarTwo';
 import { useDetectOutsideClick } from '../../components/UseDetectOutsideClick';
 import links from '../../contexts/utils/links';
 import { errorToast, successToast } from '../../contexts/utils/toasts';
@@ -94,7 +94,7 @@ const JobsMain = () => {
     setLoading(true);
     setJobs([]);
     fetch(
-      `${process.env.BASE_URI}/job?pay=${filter.pay}&remote=${filter.remote}&job_type=${filter.job_type}&date_posted=${filter.date_posted}&job_industry=${filter.job_industry}`,
+      `${process.env.BASE_URI}/job?pay=${filter.pay}&remote=${filter.remote}&job_type=${filter.job_type}&date_posted=${filter.date_posted}&job_industry=${filter.job_industry}`
     )
       .then((response) => response.json())
       .then((response) => {
@@ -193,19 +193,19 @@ const JobsMain = () => {
   function containerReset() {
     if (window.innerWidth > 991 && document.querySelector('.jobsMain')) {
       document.getElementsByClassName(
-        'jobs-main-container-list',
+        'jobs-main-container-list'
       )[0].style.display = 'block';
       document.getElementsByClassName(
-        'jobs-main-container-single',
+        'jobs-main-container-single'
       )[0].style.display = 'block';
 
       winSize.current = 'large';
     } else if (
-      winSize.current === 'large'
-      && document.querySelector('.jobsMain')
+      winSize.current === 'large' &&
+      document.querySelector('.jobsMain')
     ) {
       document.getElementsByClassName(
-        'jobs-main-container-single',
+        'jobs-main-container-single'
       )[0].style.display = 'none';
       winSize.current = 'small';
     }
@@ -219,26 +219,30 @@ const JobsMain = () => {
     setActiveJobIndex(idx);
     changeCurrentJob((prevJob) => currJob);
     if (window.innerWidth <= 991) {
-      document.getElementsByClassName('jobsMain-search')[0].style.display = 'none';
+      document.getElementsByClassName('jobsMain-search')[0].style.display =
+        'none';
       document.getElementsByClassName(
-        'jobs-main-container-list',
+        'jobs-main-container-list'
       )[0].style.display = 'none';
-      document.getElementsByClassName('jobs-main-filters')[0].style.display = 'none';
+      document.getElementsByClassName('jobs-main-filters')[0].style.display =
+        'none';
       document.getElementsByClassName(
-        'jobs-main-container-single',
+        'jobs-main-container-single'
       )[0].style.display = 'block';
     }
   }
 
   function closeSingle() {
-    document.getElementsByClassName('jobsMain-search')[0].style.display = 'block';
-    document.getElementsByClassName('jobs-main-filters')[0].style.display = 'block';
+    document.getElementsByClassName('jobsMain-search')[0].style.display =
+      'block';
+    document.getElementsByClassName('jobs-main-filters')[0].style.display =
+      'block';
     document.getElementsByClassName(
-      'jobs-main-container-single',
+      'jobs-main-container-single'
     )[0].style.display = 'none';
     document.getElementsByClassName('jobsMain')[0].style.height = 'auto';
     document.getElementsByClassName(
-      'jobs-main-container-list',
+      'jobs-main-container-list'
     )[0].style.display = 'block';
   }
 
@@ -260,25 +264,24 @@ const JobsMain = () => {
     }
   }
 
-  const token = typeof window !== 'undefined'
-    ? window.localStorage.getItem('jwtToken')
-    : null;
+  const token =
+    typeof window !== 'undefined'
+      ? window.localStorage.getItem('jwtToken')
+      : null;
 
-  const userInfo = typeof window !== 'undefined'
-    ? window.localStorage.getItem('userInfo')
-    : null;
+  const userInfo =
+    typeof window !== 'undefined'
+      ? window.localStorage.getItem('userInfo')
+      : null;
 
   const fetchSavedJobs = () => {
     if (token) {
       axios
-        .get(
-          `${process.env.BASE_URI}/savejob/userjobs`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
+        .get(`${process.env.BASE_URI}/savejob/userjobs`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
           },
-        )
+        })
         .then((response) => {
           setSavedJobs(response.data.data);
           setLoading(false);
@@ -297,7 +300,7 @@ const JobsMain = () => {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        },
+        }
       )
       .then((response) => {
         successToast('Job Saved Successfully!');
@@ -314,14 +317,11 @@ const JobsMain = () => {
       setLoading(true);
 
       axios
-        .get(
-          `${process.env.BASE_URI}/easyApply/userApplied`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
+        .get(`${process.env.BASE_URI}/easyApply/userApplied`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
           },
-        )
+        })
         .then((response) => {
           setAppliedJobs(response.data.data);
           setLoading(false);
@@ -335,10 +335,10 @@ const JobsMain = () => {
   }, []);
 
   const savedJobsId = savedJobs.map(
-    (singleSavedJob) => singleSavedJob?.job_id?._id,
+    (singleSavedJob) => singleSavedJob?.job_id?._id
   );
   const appliedJobsId = appliedJobs.map(
-    (singleAppliedJob) => singleAppliedJob?.job_id?._id,
+    (singleAppliedJob) => singleAppliedJob?.job_id?._id
   );
 
   const authPlease = () => {
@@ -351,50 +351,55 @@ const JobsMain = () => {
 
   // jobStubs will be fetched from database and then map... the fetch will have ALL query parameters
   // (search description, search location, filters, jobs per page, current page)
-  const jobStubs = jobs?.length > 0 ? (
-    jobs.slice(pagesVisited, pagesVisited + jobsPerPage).map((job, idx) => (
-      <div
-        className={idx === activeJobIndex ? 'job-stub active' : 'job-stub'}
-        key={idx}
-        onClick={(e) => changeJobAndColor(e, job, idx)}
-      >
-        <div className="job-stub-header">
-          <div className="job-stub-title">{job.job_title}</div>
-          <div className="job-stub-company">
-            {job?.companyId?.company_name}
+  const jobStubs =
+    jobs?.length > 0 ? (
+      jobs.slice(pagesVisited, pagesVisited + jobsPerPage).map((job, idx) => (
+        <div
+          className={idx === activeJobIndex ? 'job-stub active' : 'job-stub'}
+          key={idx}
+          onClick={(e) => changeJobAndColor(e, job, idx)}
+        >
+          <div className="job-stub-header">
+            <div className="job-stub-title">{job.job_title}</div>
+            <div className="job-stub-company">
+              {job?.companyId?.company_name}
+            </div>
           </div>
-        </div>
-        <div className="job-stub-footer">
-          <div className="job-stub-postDate">
-            Posted:
-            {' '}
-            {new Date(job.updatedAt).toDateString().substr(3)}
-          </div>
-          {
-            userInfo !== null ? (
+          <div className="job-stub-footer">
+            <div className="job-stub-postDate">
+              Posted: {new Date(job.updatedAt).toDateString().substr(3)}
+            </div>
+            {userInfo !== null ? (
               savedJobsId.includes(job._id) ? (
                 <button type="button" disabled className="job-stub-saved">
                   Saved
                 </button>
               ) : (
-                <button type="button" className="job-stub-saveLink" onClick={() => saveJob(job)}>
+                <button
+                  type="button"
+                  className="job-stub-saveLink"
+                  onClick={() => saveJob(job)}
+                >
                   Save Job
                 </button>
               )
             ) : (
-              <button type="button" className="job-stub-saveLink" onClick={authPlease}>
+              <button
+                type="button"
+                className="job-stub-saveLink"
+                onClick={authPlease}
+              >
                 Save Job
               </button>
-            )
-          }
+            )}
+          </div>
         </div>
+      ))
+    ) : (
+      <div>
+        <h3>No Jobs Available</h3>
       </div>
-    ))
-  ) : (
-    <div>
-      <h3>No Jobs Available</h3>
-    </div>
-  );
+    );
 
   function inputSearchSubmit(e) {
     // if nothing is changed in the input searches, rerun query with same parameters
@@ -405,9 +410,11 @@ const JobsMain = () => {
       queryObj.description = e.target.childNodes[0].value;
       blank = false;
       setJobs(
-        jobs.filter((job) => job.job_description
-          .toLowerCase()
-          .includes(queryObj.description.toLowerCase())),
+        jobs.filter((job) =>
+          job.job_description
+            .toLowerCase()
+            .includes(queryObj.description.toLowerCase())
+        )
       );
     }
 
@@ -447,7 +454,6 @@ const JobsMain = () => {
       loadingReq={loadingReq}
       getAppliedJobs={getAppliedJobs}
     >
-
       <Layout pageTitle="MPA - Careers">
         <HomepageNav open={open} setOpen={setOpen} page="Employers Page" />
         <SidebarTwo
@@ -506,17 +512,17 @@ const JobsMain = () => {
                 {jobStubs}
                 <div className="jobs-paginator">
                   {jobs.length > 0 && (
-                  <ReactPaginate
-                    previousLabel="<"
-                    nextLabel=">"
-                    pageCount={pageCount}
-                    onPageChange={changePage}
-                    initialPage={0}
-                    containerClassName="paginationBttns"
-                    previousLinkClassName="previousBttn"
-                    nextLinkClassName="paginationDisabled"
-                    activeClassName="activePage"
-                  />
+                    <ReactPaginate
+                      previousLabel="<"
+                      nextLabel=">"
+                      pageCount={pageCount}
+                      onPageChange={changePage}
+                      initialPage={0}
+                      containerClassName="paginationBttns"
+                      previousLinkClassName="previousBttn"
+                      nextLinkClassName="paginationDisabled"
+                      activeClassName="activePage"
+                    />
                   )}
                 </div>
               </div>
@@ -526,128 +532,121 @@ const JobsMain = () => {
                 style={{ display: currentJob == null && 'none' }}
               >
                 {currentJob != null && (
-                <>
-                  <div className="current-job__header">
-                    <div className="float-current-job__title">
-                      <h1 className="current-job__title">
-                        {currentJob.job_title}
-                      </h1>
-                      <button
-                        type="button"
-                        className="close-single-padding jobs-main-container-single-close"
-                        onClick={closeSingle}
-                      >
-                        <i className="fas fa-times" />
-                      </button>
-                      <span>{currentJob.location}</span>
-                    </div>
-                    <div className="apply-button">
-                      <span>
-                        {userInfo != null ? (
-                          appliedJobsId.includes(currentJob._id) ? (
-                            <button
-                              type="button"
-                              disabled
-                              className="current-job-view-box1-jobInfo-postSave-apply applied-btn"
-                            >
-                              Applied
-                            </button>
+                  <>
+                    <div className="current-job__header">
+                      <div className="float-current-job__title">
+                        <h1 className="current-job__title">
+                          {currentJob.job_title}
+                        </h1>
+                        <button
+                          type="button"
+                          className="close-single-padding jobs-main-container-single-close"
+                          onClick={closeSingle}
+                        >
+                          <i className="fas fa-times" />
+                        </button>
+                        <span>{currentJob.location}</span>
+                      </div>
+                      <div className="apply-button">
+                        <span>
+                          {userInfo != null ? (
+                            appliedJobsId.includes(currentJob._id) ? (
+                              <button
+                                type="button"
+                                disabled
+                                className="current-job-view-box1-jobInfo-postSave-apply applied-btn"
+                              >
+                                Applied
+                              </button>
+                            ) : (
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  toggleModalView(true);
+                                }}
+                                className="current-job-view-box1-jobInfo-postSave-apply"
+                              >
+                                Apply
+                              </button>
+                            )
                           ) : (
                             <button
                               type="button"
-                              onClick={() => {
-                                toggleModalView(true);
-                              }}
+                              onClick={authPlease}
                               className="current-job-view-box1-jobInfo-postSave-apply"
                             >
                               Apply
                             </button>
-                          )
-                        ) : (
-                          <button
-                            type="button"
-                            onClick={authPlease}
-                            className="current-job-view-box1-jobInfo-postSave-apply"
-                          >
-                            Apply
-                          </button>
-                        )}
-                      </span>
-                    </div>
-                  </div>
-                  <hr className="current-job__rule" />
-                  <div className="apply__section">
-                    <div className="apply__section-header">
-                      <h2 className="description-header">
-                        Job Description
-                      </h2>
-                    </div>
-                    <span>{currentJob.job_description}</span>
-                    <div>
-                      <hr className="current-job__rule" />
-                      <div>
-                        <h2 className="description-header">
-                          Min Requirements
-                        </h2>
-                        <div>
-                          {loadingReq === true && (
-                          <div>
-                            {currentJob.min_requirements
-                              ? currentJob.min_requirements.map(
-                                (skill, index) => (
-                                  <ul key={index}>
-                                    <li className="list-style-square">
-                                      <span>
-                                        {skill.years}
-                                        {' '}
-                                        {skill.years === 1
-                                          ? 'year '
-                                          : 'years '}
-                                      </span>
-                                      <span>
-                                        {' '}
-                                        {skill.skill}
-                                      </span>
-                                    </li>
-                                  </ul>
-                                ),
-                              )
-                              : ''}
-                          </div>
                           )}
-                        </div>
+                        </span>
                       </div>
+                    </div>
+                    <hr className="current-job__rule" />
+                    <div className="apply__section">
+                      <div className="apply__section-header">
+                        <h2 className="description-header">Job Description</h2>
+                      </div>
+                      <span>{currentJob.job_description}</span>
                       <div>
-                        <h2 className="description-header">
-                          Additional Information
-                        </h2>
-                        <div className="current-job-view-box5-container">
+                        <hr className="current-job__rule" />
+                        <div>
+                          <h2 className="description-header">
+                            Min Requirements
+                          </h2>
                           <div>
-                            <span>Salary</span>
-                            <div>{`${currentJob.pay}`}</div>
+                            {loadingReq === true && (
+                              <div>
+                                {currentJob.min_requirements
+                                  ? currentJob.min_requirements.map(
+                                      (skill, index) => (
+                                        <ul key={index}>
+                                          <li className="list-style-square">
+                                            <span>
+                                              {skill.years}{' '}
+                                              {skill.years === 1
+                                                ? 'year '
+                                                : 'years '}
+                                            </span>
+                                            <span> {skill.skill}</span>
+                                          </li>
+                                        </ul>
+                                      )
+                                    )
+                                  : ''}
+                              </div>
+                            )}
                           </div>
-                          <div>
-                            <span>Job Type</span>
-                            <div>{currentJob.job_type}</div>
-                          </div>
-                          <div>
-                            <span>Remote</span>
+                        </div>
+                        <div>
+                          <h2 className="description-header">
+                            Additional Information
+                          </h2>
+                          <div className="current-job-view-box5-container">
                             <div>
-                              {currentJob.remote === true ? 'Yes' : 'No'}
+                              <span>Salary</span>
+                              <div>{`${currentJob.pay}`}</div>
+                            </div>
+                            <div>
+                              <span>Job Type</span>
+                              <div>{currentJob.job_type}</div>
+                            </div>
+                            <div>
+                              <span>Remote</span>
+                              <div>
+                                {currentJob.remote === true ? 'Yes' : 'No'}
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                </>
+                  </>
                 )}
               </div>
             </div>
           )}
         </div>
       </Layout>
-
     </CareersMainComponent>
   );
 };

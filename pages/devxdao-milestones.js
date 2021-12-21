@@ -3,12 +3,13 @@ import Layout from '../components/Layout';
 import HomepageNav from '../components/homepage/HomepageNav';
 import BlackBanner from '../components/BlackBanner';
 import Footer from '../components/Footer';
-import SidebarTwo from '../components/SidebarTwo';
+import SidebarTwo from '../components/sidebar/SidebarTwo';
 import links from '../contexts/utils/links';
 
 const DevxDaoMilestonesPage = function () {
   const [open, setOpen] = useState(false);
-  const bannerImgLink = 'https://www.devxdao.com/wp-content/uploads/2020/10/favicon-01-300x300.png';
+  const bannerImgLink =
+    'https://www.devxdao.com/wp-content/uploads/2020/10/favicon-01-300x300.png';
   const termsText = '';
   return (
     <Layout pageTitle="DevXDao Milestones">

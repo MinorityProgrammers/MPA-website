@@ -4,7 +4,7 @@ import ConsultancyHero from '../components/Consultancy/ConsultancyHero';
 import ConsultancyDashboard from '../components/Consultancy/ConsultancyDashboard';
 import { useDetectOutsideClick } from '../components/UseDetectOutsideClick';
 import Layout from '../components/Layout';
-import SidebarTwo from '../components/SidebarTwo';
+import SidebarTwo from '../components/sidebar/SidebarTwo';
 import links from '../contexts/utils/links';
 import Footer from '../components/Footer';
 
