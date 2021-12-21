@@ -1,9 +1,9 @@
 import React, { useContext, useState } from 'react';
 import { GlobalContext } from '../../contexts/provider';
-import DonateAmount from '../DonateAmount';
-import DonateCompleted from '../DonateCompleted';
-import DonateDetails from '../DonateDetails';
-import DonatePayment from '../DonatePayment';
+import DonateAmount from '../donate/DonateAmount';
+import DonateCompleted from '../donate/DonateCompleted';
+import DonateDetails from '../donate/DonateDetails';
+import DonatePayment from '../donate/DonatePayment';
 
 const HomepageDonate = () => {
   const { amount, donateDispatch } = useContext(GlobalContext);
@@ -28,23 +28,24 @@ const HomepageDonate = () => {
   };
 
   // creates one time paypal order
-  const createOrder = (data, actions) => actions.order
-    .create({
-      purchase_units: [
-        {
-          amount: {
-            value: amount,
+  const createOrder = (data, actions) =>
+    actions.order
+      .create({
+        purchase_units: [
+          {
+            amount: {
+              value: amount,
+            },
           },
+        ],
+        application_context: {
+          shipping_preference: 'NO_SHIPPING',
         },
-      ],
-      application_context: {
-        shipping_preference: 'NO_SHIPPING',
-      },
-    })
-    .then((orderID) => {
-      setOrderID(orderID);
-      return orderID;
-    });
+      })
+      .then((orderID) => {
+        setOrderID(orderID);
+        return orderID;
+      });
 
   // create paypal subscription
   const createSubscription = (data, action) => {
@@ -54,14 +55,15 @@ const HomepageDonate = () => {
   };
 
   // handles when a payment is confirmed for paypal
-  const onApprove = (data, actions) => actions.order.capture().then((details) => {
-    const { purchase_units } = details;
-    setBillingDetails(details);
-    setPayment(purchase_units);
-    setSucceeded(true);
-    setIsDone(true);
-    count++; // Instead of count++ use setCount(count+1)
-  });
+  const onApprove = (data, actions) =>
+    actions.order.capture().then((details) => {
+      const { purchase_units } = details;
+      setBillingDetails(details);
+      setPayment(purchase_units);
+      setSucceeded(true);
+      setIsDone(true);
+      count++; // Instead of count++ use setCount(count+1)
+    });
   // handles payment errors
   const onError = () => {
     setPaypalErrorMessage('Something went wrong with your payment');
@@ -72,7 +74,7 @@ const HomepageDonate = () => {
     const hasAnchor = currentLocation.includes('/#');
     if (hasAnchor) {
       const anchorId = `${currentLocation.substring(
-        currentLocation.indexOf('#') + 1,
+        currentLocation.indexOf('#') + 1
       )}`;
       const anchor = document.getElementById(anchorId);
       if (anchor) {
@@ -108,8 +110,7 @@ const HomepageDonate = () => {
             >
               {isDone && amount !== 0 ? (
                 <i className="far fa-check-circle" />
-              ) : null}
-              {' '}
+              ) : null}{' '}
               Amount
             </div>
             <div
@@ -119,8 +120,7 @@ const HomepageDonate = () => {
             >
               {isDone && succeeded ? (
                 <i className="far fa-check-circle" />
-              ) : null}
-              {' '}
+              ) : null}{' '}
               Payments
             </div>
             <div
@@ -172,7 +172,6 @@ const HomepageDonate = () => {
                 succeeded={succeeded}
               />
             )
-
           ) : null}
           {count === 3 ? (
             <DonateDetails
