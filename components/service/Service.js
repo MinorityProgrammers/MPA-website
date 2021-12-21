@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Service = function () {
+const Service = () => {
   const [step, setstep] = useState(0);
 
   const plus = () => {
@@ -38,6 +38,16 @@ const Service = function () {
         </button>
         <br />
       </div>
+    </div>
+  );
+  const buttons = () => (
+    <div>
+      <button className="service_leftbutton" onClick={() => minus()}>
+        <span>&#8592;</span>
+      </button>
+      <button className="service_rightbutton" onClick={() => plus()}>
+        <span>&#8594;</span>
+      </button>
     </div>
   );
 
@@ -155,17 +165,6 @@ const Service = function () {
       </button>
       <button className="service_submitbutton" onClick={() => plus()}>
         Submit
-      </button>
-    </div>
-  );
-
-  const buttons = () => (
-    <div>
-      <button className="service_leftbutton" onClick={() => minus()}>
-        <span>&#8592;</span>
-      </button>
-      <button className="service_rightbutton" onClick={() => plus()}>
-        <span>&#8594;</span>
       </button>
     </div>
   );
