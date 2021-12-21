@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { PayPalButtons } from '@paypal/react-paypal-js';
 import DonateStripeModal from './DonateStripeModal';
 
-const DonatePayment = function ({
+const DonatePayment = ({
   amount,
   count,
   setCount,
@@ -14,20 +14,18 @@ const DonatePayment = function ({
   onApprove,
   succeeded,
   createSubscription,
-}) {
+}) => {
   const [showModal, setShowModal] = useState(false);
   // modal for stripe
   const openModal = () => {
     setShowModal((prev) => !prev);
   };
-
   return (
     <>
       <div className="step__payment">
         <h2 className="step__payment-amount">
-          $
-          {amount}
-          {monthly === true ? '/month' : ''}
+          ${amount}
+          {monthly === true && '/month'}
         </h2>
         <h2
           className="step__payment-change"
@@ -38,13 +36,10 @@ const DonatePayment = function ({
           disabled={count < 2}
         >
           <p>
-            <i className="far fa-edit" />
-            {' '}
-            Change amount
+            <i className="far fa-edit" /> Change amount
           </p>
         </h2>
       </div>
-
       <p className="text-md mt-2 mb-2">Make it monthly!</p>
       <div className="container">
         <div className="row step__payment-monthly">
@@ -72,7 +67,6 @@ const DonatePayment = function ({
           </div>
         </div>
       </div>
-
       <div className="payment__buttons mt-3">
         <div className="col mt-4">
           <p className="mt-2 mb-2">Pay with credit card</p>
@@ -111,7 +105,6 @@ const DonatePayment = function ({
                 }}
                 fundingSource={paypal.FUNDING.PAYPAL}
               />
-              {/* <p>test</p> */}
             </>
           )}
         </div>
@@ -124,8 +117,7 @@ const DonatePayment = function ({
           egestas mauris egestas rhoncus cras.
         </p>
       </div>
-
-      {succeeded ? (
+      {succeeded && (
         <div className="step__button mt-3">
           <button
             className="button btn-gradient"
@@ -139,8 +131,6 @@ const DonatePayment = function ({
             Continue
           </button>
         </div>
-      ) : (
-        ''
       )}
     </>
   );

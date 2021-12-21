@@ -5,7 +5,7 @@ import DonateStripeForm from './DonateStripeForm';
 
 const stripePromise = loadStripe(process.env.STRIPE_PUBLISHABLE_KEY);
 
-const DonateStripModal = function ({ showModal, setShowModal, amount }) {
+const DonateStripModal = ({ showModal, setShowModal, amount }) => {
   const [isDone, setIsDone] = useState(false);
   const [name, setName] = useState('');
   const [checkoutError, setCheckoutError] = useState();
@@ -20,10 +20,7 @@ const DonateStripModal = function ({ showModal, setShowModal, amount }) {
             <div className="donate__modal-content">
               {!isDone ? (
                 <>
-                  <h3>
-                    Donation Amount: $
-                    {amount}
-                  </h3>
+                  <h3>Donation Amount: ${amount}</h3>
                   <Elements stripe={stripePromise}>
                     <DonateStripeForm
                       setIsDone={setIsDone}
@@ -49,17 +46,13 @@ const DonateStripModal = function ({ showModal, setShowModal, amount }) {
                   <div className="stripe-details">
                     <div className="stripe-detail">
                       <p className="stripe-detail-topic">Amount:</p>
-                      <p>
-                        $
-                        {amount}
-                      </p>
+                      <p>${amount}</p>
                     </div>
                     <div className="stripe-detail">
                       <p className="stripe-detail-topic">Payment method:</p>
                       <p>Credit card</p>
                     </div>
                   </div>
-
                   <a href="/index-4" className="btn-donate">
                     Back to MPA
                   </a>

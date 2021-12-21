@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
-import { GlobalContext } from '../contexts/provider';
+import { GlobalContext } from '../../contexts/provider';
 
 const CARD_OPTIONS = {
   iconStyle: 'solid',
@@ -56,7 +56,7 @@ const INPUT = {
   width: '100%',
 };
 
-const DonateStripeForm = function ({
+const DonateStripeForm = ({
   setIsDone,
   name,
   setName,
@@ -64,7 +64,7 @@ const DonateStripeForm = function ({
   setCheckoutSuccess,
   checkoutError,
   checkoutSuccess,
-}) {
+}) => {
   const { amount } = useContext(GlobalContext);
   const stripe = useStripe();
   const elements = useElements();
@@ -72,7 +72,6 @@ const DonateStripeForm = function ({
   const handleChange = (e) => {
     setName(e.target.value);
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -86,12 +85,8 @@ const DonateStripeForm = function ({
         },
         method: 'POST',
       });
-
       const result = await res.json();
-
       const cardElement = elements.getElement(CardElement);
-
-      // Use your card Element with other Stripe.js APIs
       const { error, paymentIntent } = await stripe.confirmCardPayment(
         result.client_secret,
         {
@@ -101,20 +96,18 @@ const DonateStripeForm = function ({
               name,
             },
           },
-        },
+        }
       );
 
       if (error) throw new Error(error.message);
       if (result) {
         setCheckoutSuccess(true);
-        // console.log("success", result);
         setIsDone(true);
       }
     } catch (err) {
       setCheckoutError(err.message);
     }
   };
-
   return (
     <form onSubmit={handleSubmit} style={STRIP_FORM}>
       <input
@@ -134,7 +127,6 @@ const DonateStripeForm = function ({
       >
         Donate
       </button>
-      {/* {checkoutError && <p style={{ color: "red", textAlign: "center", marginTop: "2rem" }}>{checkoutError}</p>} */}
     </form>
   );
 };
