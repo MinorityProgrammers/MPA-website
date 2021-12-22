@@ -21,23 +21,44 @@ export default function Index() {
   const [session, isLoading] = useSession();
 
   // Instead of another page we will set the text to variables
-  const [cardText, setCardText] = useState({
-    signIn: false,
-    h1Title: 'welcome',
-    p: (
-      <p>
-        To keep connecting with us please
-        {' '}
-        <br />
-        {' '}
-        register with your personal
-        info
-      </p>
-    ),
-    h2Title: 'sign up',
-    para: 'already have an account?',
-    link: 'sign in',
-  });
+  const {cardText, setCardText} = useState()
+  // ({
+  //   signIn: false,
+  //   h1Title: 'welcome',
+  //   p: (
+  //     <p>
+  //       To keep connecting with us please
+  //       {' '}
+  //       <br />
+  //       {' '}
+  //       register with your personal
+  //       info
+  //     </p>
+  //   ),
+  //   h2Title: 'sign up',
+  //   para: 'already have an account?',
+  //   link: 'sign in',
+  // });
+  
+  useEffect (()=>{
+
+    localStorage.setItem('cardText',
+    { signIn:false,
+      h1Title: 'welcome',
+      p: (
+        <p>
+          To keep connecting with us please
+          {' '}
+          <br />
+          {' '}
+          register with your personal
+          info
+        </p>
+      ),
+      h2Title: 'sign up',
+      para: 'already have an account?',
+      link: 'sign in',})
+  })
 
   // STATES USED THROUGHOUT THE COMPONENT
   const [submit, setSubmit] = useState(false);
@@ -98,6 +119,25 @@ export default function Index() {
     },
   } = useContext(GlobalContext);
 
+  const regEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+  // the body to be sent to the api
+  const registerBody = {
+    firstName,
+    lastName,
+    email,
+    password,
+    confirmPassword: ConfirmPassword,
+  };
+
+  const loginBody = {
+    email,
+    password,
+  };
+   
+
+  
+
   // redirecting the user
   useEffect(() => {
     if (
@@ -139,8 +179,8 @@ export default function Index() {
   const handleClick = (event) => {
     event.preventDefault();
 
-    if (cardText.signIn === true) {
-      setCardText({
+    if (window.localStorage.getItem('cardText.signIn') == true) {
+      window.localStorage.getItem(setCardText)({
         signIn: false,
         h1Title: 'register for MPA',
         p: (
@@ -157,8 +197,8 @@ export default function Index() {
         para: 'already have an account?',
         link: 'sign in',
       });
-    } else if (cardText.signIn === false) {
-      setCardText({
+    } else if (window.localStorage.getItem("cardText.signIn") === false) {
+      winidow.localStorage.getItem(setCardText)({
         signIn: true,
         h1Title: 'welcome back',
         p: (
@@ -187,6 +227,17 @@ export default function Index() {
       })(authDispatch);
     }
   }, [session]);
+
+  console.log(session);
+
+  //local storage signIn / Register
+  useEffect (() =>{
+
+    const {login, register} = useState
+    localStorage.setItem('login',false)
+    localStorage.setItem('register', false)
+  })
+  
 
   return (
     <div className={styles.cardContainer}>
