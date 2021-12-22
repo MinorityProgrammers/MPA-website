@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import {
   FaFacebook, FaLinkedin, FaGithub, FaGoogle, FaFigma, FaDribbble,
 } from 'react-icons/fa';
+import axios from 'axios';
 import { HiOutlinePencil } from 'react-icons/hi';
 import jwt from 'jsonwebtoken';
 import { useRouter } from 'next/router';
@@ -9,23 +10,18 @@ import { Tooltip, Button, Modal } from 'antd';
 import { useMoralis } from 'react-moralis';
 import { ethers } from 'ethers';
 import Web3Modal from 'web3modal';
-import Web3 from 'web3';
 import ProfileTwoGenerateAvatarPopUp from './ProfileTwoGenerateAvatarPopUp';
 import { getProgressPercentage } from '../contexts/utils/settings/getProgressPercentage';
 import { getLevelUpTips } from '../contexts/utils/settings/getLevelUpTips';
 import { useMoralisDapp } from '../MoralisDappProvider/MoralisDappProvider';
-import coursesCards from '../contexts/utils/profile/coursesCards.json';
 import projectCards from '../contexts/utils/profile/projectCards.json';
-import unpinnedCards from '../contexts/utils/profile/unpinnedCards.json';
 import pinnedCards from '../contexts/utils/profile/pinnedCards.json';
-import listItems from '../contexts/utils/profile/listItems.json';
 import NFT from '../artifacts/contracts/NFT.sol/NFT.json';
 
 const nftaddress = process.env.ADDRESS;
 
 function countDown(mintedURL, tx) {
   let secondsToGo = 30;
-  console.log(tx);
   const modal = Modal.success({
     title: 'Successfully minted Your profile',
     content: `Checkout your minted profile metadata ${mintedURL}, transaction id: ${process.env.NETWORK_URL}/tx/${tx.transactionHash}`,
@@ -40,59 +36,12 @@ function countDown(mintedURL, tx) {
 }
 
 const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
-  const keywords = [
-    {
-      id: 1,
-      title: 'Defi',
-    },
-    {
-      id: 2,
-      title: 'Adventure',
-    },
-    {
-      id: 3,
-      title: 'Bitcoin mining',
-    },
-    {
-      id: 4,
-      title: 'Flutter',
-    },
-    {
-      id: 5,
-      title: 'Solidity',
-    },
-    {
-      id: 6,
-      title: 'Web development',
-    },
-    {
-      id: 7,
-      title: 'Machine Learning',
-    },
-  ];
-
-  const badges = [
-    {
-      id: 18,
-      badge_img: '/assets/images/profile/star1g.png',
-    },
-    {
-      id: 19,
-      badge_img: '/assets/images/profile/star1.png',
-    },
-    {
-      id: 20,
-      badge_img: '/assets/images/profile/star2.png',
-    },
-    {
-      id: 21,
-      badge_img: '/assets/images/profile/star2b.png',
-    },
-    {
-      id: 22,
-      badge_img: '/assets/images/profile/star3.png',
-    },
-  ];
+  const reputationBadge = {
+    jobApplyCount: '/assets/images/job_apply.png',
+    eventRegisterCount: '/assets/images/event_badge.png',
+    courseEnroll: '/assets/images/course_enroll.png',
+    courseFinish: '/assets/images/course_finish.png',
+  };
 
   const [generateAvatarPopUp, setGenerateAvatarPopUp] = useState(false);
   const [socialLinks, setSocialLinks] = useState([]);
@@ -141,9 +90,41 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
   const [isMinting, setIsMinting] = useState(false);
   const [doneMinting, setDoneMinting] = useState(false);
   const [mintedURL, setMintedURl] = useState('');
+  const [reputation, setReputation] = useState([]);
+  const [enrolledCourses, setEnrolledCourses] = useState([]);
 
   const router = useRouter();
   const { Moralis } = useMoralis();
+
+  useEffect(() => {
+    const userToken = JSON.parse(localStorage.getItem('userInfo'));
+    if (userToken !== null) {
+      axios
+        .get(
+          `${process.env.BASE_URI}/learn/userCourses`,
+          {
+            headers: {
+              Authorization: `Bearer ${userToken.token}`,
+            },
+          },
+        )
+        .then((res) => {
+          setEnrolledCourses(res.data.data);
+        });
+    }
+    axios
+      .get(
+        `${process.env.BASE_URI}/reputation/userReputations`,
+        {
+          headers: {
+            Authorization: `Bearer ${userToken.token}`,
+          },
+        },
+      )
+      .then((res) => {
+        setReputation(res.data.data);
+      });
+  }, []);
 
   useEffect(() => {
     const allSocials = [
@@ -565,19 +546,20 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                     <p className="tw-font-bold">Reputation Badges</p>
 
                     <p className="all-badges tw-flex tw-justify-start  tw-flex-wrap ">
-                      {badges?.length ? (
-                        badges.map((badge) => (
-                          <a
-                            href="/"
-                            key={badge.id}
-                            className="tw-inline-block tw-p-1 tw-mr-1 "
+                      {reputation?.length ? (
+                        reputation.map((badge) => (
+                          <div
+                            key={badge._id}
+                            className="tw-inline-block tw-p-1 tw-mr-1 tw-cursor-pointer"
                           >
-                            <img src={badge.badge_img} alt="star" />
-                          </a>
+                            <Tooltip placement="top" title={badge.title}>
+                              <img className="tw-w-10 tw-h-10" src={reputationBadge[badge.type]} alt={badge.title} />
+                            </Tooltip>
+                          </div>
                         ))
                       ) : (
                         <span className="note" style={{ cursor: 'default' }}>
-                          N/A
+                          No badge yet
                         </span>
                       )}
                     </p>
@@ -643,31 +625,6 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                   <h3>No Achievements to Display</h3>
                 </div>
               )}
-
-              {/* <ul className="tw-flex sm:tw-flex-wrap">
-                {unpinnedCards.map((unpinitem) => (
-                  <li
-                    x-for="item in items"
-                    key={unpinitem.id}
-                    className="tw-mx-2 tw-w-1/3 sm:tw-w-full tw-mb-4"
-                  >
-                    <a
-                      href={unpinitem.link}
-                      className="tw-shadow-xl hover:tw-bg-light-blue-500 hover:tw-border-transparent hover:tw-shadow-lg tw-group tw-block tw-rounded-lg tw-p-4 tw-border tw-border-gray-200 tw-bg-white"
-                    >
-                      <div className="tw-grid sm:tw-block lg:tw-grid xl:tw-block tw-items-start tw-h-32 ">
-                        <div className="unpinned-item">
-                          <p className="tw-text-left tw-leading-6 tw-flex tw-text-sm tw-font-medium tw-text-current">
-                            <span className={`circle ${unpinitem.base}`}></span>
-                            {unpinitem.title}
-                          </p>
-                          <h3>{unpinitem.desc}</h3>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                ))}
-              </ul> */}
             </div>
           </div>
         </section>
@@ -820,52 +777,53 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
           <div className="pp-card-area pp-projects pp-courses tw-p-6  tw-rounded-md tw-grid tw-grid-flow-row tw-auto-rows-max">
             <div className="hover:tw-bg-light-blue-500 hover:tw-border-transparent hover:tw-shadow-lg tw-group tw-block tw-rounded-lg tw-p-4 tw-border-gray-300 tw-border tw-bg-white">
               <h2 className="tw-relative tw-text-xl tw-font-bold tw-mb-3 tw-text-black">
-                Completed Courses
+                Enrolled Courses
                 <span className="tw-absolute tw-top-0 tw-right-0 tw-text-xs tw-cursor-pointer">
-                  <a className="pp-view-all" href="#">
+                  <a className="pp-view-all" href="/learn-page">
                     View All
                   </a>
                 </span>
               </h2>
 
-              {coursesCards.length ? (
-                <ul className="tw-grid tw-grid-cols-3 md:tw-grid-cols-1">
-                  {coursesCards.map((cCard) => (
+              {enrolledCourses.length ? (
+                <ul
+                  className="tw-grid tw-grid-cols-3 md:tw-grid-cols-1"
+                  style={
+                    enrolledCourses.length < 3
+                      ? { display: 'flex', justifyContent: 'center' }
+                      : {}
+                  }
+                >
+                  {enrolledCourses.map((courseCard) => (
                     <li
                       x-for="item in items"
-                      key={cCard.id}
+                      key={Math.floor(Math.random() * 100000)}
                       className="tw-mx-2 tw-mb-4 tw-rounded-2xl tw-filter tw-drop-shadow-lg"
+                      style={
+                        enrolledCourses.length < 3
+                          ? {
+                            width: '33%',
+                          }
+                          : {}
+                      }
                     >
                       <div className="pp-card-content tw-flex tw-flex-col tw-items-center tw-justify-center hover:tw-bg-light-blue-500 tw-block tw-p-4">
                         <h3 className="tw-text-center tw-font-bold tw-text-black tw-cursor-text">
-                          {cCard.title}
+                          {courseCard.courseId.name}
                         </h3>
                         <p className="tw-text-center tw-mb-2 tw-text-xs tw-font-medium tw-text-current tw-text-gray-500 tw-cursor-text">
-                          {cCard.subTitle}
+                          {courseCard.courseId.description}
                         </p>
-                        <div className="imgDiv tw-w-1/2 md:tw-w-1/3 tw-mb-3">
+                        <div className="imgDiv tw-mb-6">
                           <img
-                            src={cCard.image}
-                            alt={`${cCard.title} image`}
-                            className="tw-block tw-w-full tw-rounded-full"
-                          />
-                        </div>
-                        <div className="tw-flex tw-items-center tw-mb-6">
-                          <a
-                            className="tw-block tw-mr-0.5 tw-text-xs tw-font-bold"
-                            href={cCard.addressLink}
-                          >
-                            {cCard.address}
-                          </a>
-                          <img
-                            className="tw-block tw-h-4"
-                            src="/assets/images/profile/external-link.svg"
-                            alt="external link icon"
+                            src={courseCard.courseId.image}
+                            alt={`${courseCard.courseId.name} Course`}
+                            className="tw-block tw-w-11/12 tw-h-48 tw-rounded-md"
                           />
                         </div>
                         <div className="cd-btn tw-rounded-md tw-text-white">
                           <a
-                            href={cCard.link}
+                            href={`/courses/${courseCard.courseId._id}`}
                             className="tw-block tw-py-1 tw-px-5"
                           >
                             View Course Details

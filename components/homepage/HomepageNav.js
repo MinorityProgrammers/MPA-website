@@ -440,12 +440,17 @@ const HomepageNav = ({
       </ul>
       {userData !== null && userData !== undefined ? (
         <ul className="nav__mobile-items">
-          <a href="/dashboard" onClick={closeMobileMenu}>
+          <a
+            href={`${
+              userData.userName ? `/user/${userData.userName}` : '/create-profile'
+            }`}
+            onClick={closeMobileMenu}
+          >
             <li className="nav-item">
               <div className="nav__mobile-link">Profile</div>
             </li>
           </a>
-          <a href="#" onClick={closeMobileMenu}>
+          {/* <a href="#" onClick={closeMobileMenu}>
             <li className="nav-item">
               <div className="nav__mobile-link">
                 Messages
@@ -460,33 +465,14 @@ const HomepageNav = ({
                 <p className="mobile__social notification">3</p>
               </div>
             </li>
-          </a>
+          </a> */}
         </ul>
       ) : (
         ''
       )}
       <div className="mobile__vote">
-        <div className="mobile__wallet-link" onClick={onClickMobile}>
-          {selectedAccount === null ? (
-            <a href="#" className="tw-text-white" onClick={onConnect}>
-              Connect Wallet
-            </a>
-          ) : (
-            <div>
-              <a href="#" className="topbar__connected">
-                <img src="/assets/images/greendot.svg" alt="" className="green__dot" />
-                <p> </p>
-                {selectedAccount}
-              </a>
-              <a
-                href="#"
-                className="copy__box"
-                onClick={copyWalletAddress(selectedAccount)}
-              >
-                🗐
-              </a>
-            </div>
-          )}
+        <div className="mobile__wallet-link">
+          <Account />
         </div>
 
       </div>
