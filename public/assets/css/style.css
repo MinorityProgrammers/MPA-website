@@ -1619,11 +1619,11 @@ a:visited {
 }
 
 .calendly-wrapper {
-  background-color: #474bfd;
+  background-color: #fff;
   padding-top: 5em;
 }
 .quickswap-wrapper {
-  background-color: #474bfd;
+  background-color: #fff;
   padding-top: 6em;
 }
 .quickswap-iframe {
@@ -8676,10 +8676,14 @@ html {
   color: #1e3a8a;
 }
 .team__all-container {
-  background: #ffc700;
+  background: #474BFD;
   font-size: 2rem;
   font-weight: bold;
   padding: 0.75rem;
+  color: #fff;
+}
+.team__all-container h2{
+    color: #fff;
 }
 .team__all-container a:hover {
   color: #fff;
@@ -9809,4 +9813,8 @@ html {
 
 .NavIcon{
   font-size: 1.3rem !important;
+}
+
+.certificate {
+  background: #efefef;
 }

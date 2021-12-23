@@ -12,9 +12,6 @@ export default function QuizResult(props) {
   const score = ((props.correct / props.questionLength) * 100).toFixed();
   const [congrats, setCongrats] = useState(false);
 
-  console.log(lastAdvancedModules._id);
-  console.log(userModuleId._id);
-
   const handleSubmit = () => {
     const userToken = JSON.parse(localStorage.getItem('userInfo')).token;
     fetch(`${process.env.BASE_URI}/learn/${courseId}/${moduleId}/${_id}`, {
@@ -43,6 +40,17 @@ export default function QuizResult(props) {
 
     if (lastAdvancedModules._id.includes(userModuleId._id)) {
       setCongrats(true);
+      fetch(`${process.env.BASE_URI}/certificate`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${userToken}`,
+        },
+        body: JSON.stringify({
+          id: `${courseId}`,
+        }),
+      })
+        .then((res) => res.json());
     } else {
       props.startOver();
       setIsOpen(false);
@@ -53,7 +61,7 @@ export default function QuizResult(props) {
 
   const handleCongratsModal = () => {
     setIsOpen(false);
-    window.location.href = router.asPath;
+    window.location.href = '/learn-page/certificates';
   };
 
   const congratsClose = {

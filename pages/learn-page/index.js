@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
-import Layout from '../components/Layout';
-import HomepageNav from '../components/homepage/HomepageNav';
-import Footer from '../components/Footer';
-import CourseCategories from '../components/learn/CourseCategories';
-import SidebarTwo from '../components/sidebar/SidebarTwo';
-import links from '../contexts/utils/links';
-import ComingSoon from '../components/ComingSoon';
-import { useDetectOutsideClick } from '../components/UseDetectOutsideClick';
+import Layout from '../../components/Layout';
+import HomepageNav from '../../components/homepage/HomepageNav';
+import Footer from '../../components/Footer';
+import CourseCategories from '../../components/learn/CourseCategories';
+import SidebarTwo from '../../components/sidebar/SidebarTwo';
+import links from '../../contexts/utils/links';
+import ComingSoon from '../../components/ComingSoon';
+import { useDetectOutsideClick } from '../../components/UseDetectOutsideClick';
 
 const LearnPage = function () {
   const [open, setOpen] = useState(false);
@@ -45,7 +45,9 @@ const LearnPage = function () {
     axios.get(`${process.env.BASE_URI}/learn/`).then((res) => {
       setUsersCourses(res.data.data);
     });
-  }, []);
+  }, [typeof window !== 'undefined'
+    ? window.localStorage.getItem('jwtToken')
+    : null]);
 
   return (
     <Layout pageTitle="Learn Page - Minority Programmers Association">

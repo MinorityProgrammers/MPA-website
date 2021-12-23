@@ -128,18 +128,21 @@ const CourseCategories = function ({ user, enrolledCourses, usersCourses }) {
           </div>
           <div className="learn-items mb-5">
             <ul className="tw-flex tw-flex-row tw-justify-center tw-pt-2">
-              <li className="tw-bg-blue-700 tw-w-36 tw-text-center tw-p-2 tw-mx-2 tw-rounded-md tw-shadow-lg">
-                <Link href="#">
-                  <a className="learn-item-active hover:tw-text-white">
+              <li className={`tw-cursor-pointer ${router.pathname.split('/').length !== 3 ? 'tw-bg-blue-700 tw-w-36 tw-text-center tw-p-2 tw-mx-2 tw-rounded-md tw-shadow-lg' : 'menu tw-text-center'}`}>
+                <Link href="/learn-page">
+                  <p className="learn-item-active hover:tw-text-blue-600">
                     COURSES
-                  </a>
+                  </p>
                 </Link>
               </li>
-              {/* <li className="menu tw-text-center">
-                <Link href="#">
-                  <a className="">MY CERTIFICATES</a>
-                </Link>
-              </li> */}
+              {!isActive && user !== null && (
+                <li className={`tw-cursor-pointer ${router.pathname.split('/').length === 3 ? 'tw-bg-blue-700 tw-w-36 tw-text-center tw-p-2 tw-mx-2 tw-rounded-md tw-shadow-lg' : 'menu tw-text-center'}`}>
+                  <Link href="/learn-page/certificates">
+                    <p className="hover:tw-text-blue-600">MY CERTIFICATES</p>
+                  </Link>
+                </li>
+              )}
+
               {/* <li className="pl-md-5">
                 <Link href="#">
                   <a>BLOCKCHAIN</a>

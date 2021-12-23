@@ -140,6 +140,7 @@
   color: white;
   font-size: 40px;
   border-radius: 5px;
+  margin: 5px 0px
 }
 .join-mpa-programs {
   background: #f2f2f2;
@@ -165,6 +166,11 @@
   line-height: 19px;
   color: #fffdfd;
 }
+
+.mpa-joinpage-btn{
+  background: #3e41fb;
+}
+
 .mpa-joinpage-btns-2 {
   width: 157;
   height: 40px;

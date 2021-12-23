@@ -4,7 +4,6 @@ import axios from 'axios';
 import HomepageNav from '../../components/homepage/HomepageNav';
 import Footer from '../../components/Footer';
 import Layout from '../../components/Layout';
-import NavOne from '../../components/NavOne';
 import SidebarTwo from '../../components/sidebar/SidebarTwo';
 import links from '../../contexts/utils/links';
 import ComingSoon from '../../components/ComingSoon';
