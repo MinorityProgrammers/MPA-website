@@ -5,7 +5,7 @@ import {
   LOGIN_ERROR,
 } from '../actionTypes';
 import { successToast, errorToast } from '../../utils/toasts';
-
+import Router from "next/router"
 export const login = (body) => (dispatch) => {
   dispatch({
     type: LOGIN_LOADING,
@@ -18,8 +18,6 @@ export const login = (body) => (dispatch) => {
 
       // using localstorage approach
       localStorage.setItem('jwtToken', token);
-
-      //   setAuthorizationToken(token)
       localStorage.setItem('userInfo', JSON.stringify(res.data.data));
 
       if (res?.data?.status == 'success') {
@@ -32,6 +30,7 @@ export const login = (body) => (dispatch) => {
         type: LOGIN_SUCCESS,
         payload: res.data,
       });
+      Router.reload();
     })
     .catch((err) => {
       errorToast(
