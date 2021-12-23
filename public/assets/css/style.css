@@ -9814,3 +9814,7 @@ html {
 .NavIcon{
   font-size: 1.3rem !important;
 }
+
+.certificate {
+  background: #efefef;
+}

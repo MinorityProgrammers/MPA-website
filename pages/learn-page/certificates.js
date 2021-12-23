@@ -12,16 +12,16 @@ import { useDetectOutsideClick } from '../../components/UseDetectOutsideClick';
 const LearnPage = function () {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef(null);
-  const [hide, setHide] = useDetectOutsideClick(dropdownRef, false);
+  const [hide, setHide] = useDetectOutsideClick(dropdownRef, true);
   const [data, setData] = useState([]);
   const [certificate, setCertificate] = useState([]);
   const [loading, setLoading] = useState(true);
   const handleClick = () => {
     setHide(!hide);
   };
-  if (hide === true) {
+  if (hide === false) {
     setTimeout(() => {
-      setHide(false);
+      setHide(true);
     }, 60000);
   }
 
@@ -59,8 +59,7 @@ const LearnPage = function () {
         handleClick={handleClick}
       />
       {hide === false && <ComingSoon closeClick={handleClick} />}
-      <div className="tw-pt-20">
-        <p>Certificates</p>
+      <div className="tw-py-20 certificate">
         <Certificates
           user={data}
           certificates={certificate}

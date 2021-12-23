@@ -40,19 +40,6 @@ export default function QuizResult(props) {
 
     if (lastAdvancedModules._id.includes(userModuleId._id)) {
       setCongrats(true);
-      fetch(`${process.env.BASE_URI}/learn/${userModuleId._id}`, {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${userToken}`,
-        },
-        body: JSON.stringify({
-          completed: true,
-          completionRate: 100,
-        }),
-      })
-        .then((res) => res.json());
-
       fetch(`${process.env.BASE_URI}/certificate`, {
         method: 'POST',
         headers: {
@@ -60,7 +47,7 @@ export default function QuizResult(props) {
           Authorization: `Bearer ${userToken}`,
         },
         body: JSON.stringify({
-          id: `${userModuleId._id}`,
+          id: `${courseId}`,
         }),
       })
         .then((res) => res.json());
