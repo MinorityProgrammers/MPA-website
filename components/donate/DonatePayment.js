@@ -69,9 +69,9 @@ const DonatePayment = ({
       </div>
       <div className="payment__buttons mt-3">
         <div className="col mt-4">
-          <p className="mt-2 mb-2">Pay with credit card</p>
+          <p className="mt-2 mb-2">Pay with card</p>
           <div className="stripe-payment" onClick={() => openModal()}>
-            <a>Pay by credit card</a>
+            <a>Pay by card</a>
           </div>
           <DonateStripeModal
             showModal={showModal}

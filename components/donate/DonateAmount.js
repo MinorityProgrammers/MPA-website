@@ -86,7 +86,7 @@ const DonateAmount = ({
           <i className="fas fa-dollar-sign" />
           <input
             type="number"
-            className="amount-input"
+            className="amount-input "
             min="1"
             value={amount}
             onChange={(e) => handleValue(e)}

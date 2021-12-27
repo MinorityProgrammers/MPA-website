@@ -63,7 +63,7 @@ const JoinCard = function () {
         </div>
         <span className="d-flex justify-content-evenly">
           <Link href="/chapter">
-            <button type="button" className="mpa-joinpage-btns-2">
+            <button type="button" className="mpa-joinpage-btns hover:tw-shadow-xl-2">
               Find Chapter
             </button>
           </Link>
@@ -71,7 +71,7 @@ const JoinCard = function () {
           <button
             type="button"
             style={{ color: '#151371' }}
-            className="mpa-joinpage-btns-2 bg-warning"
+            className="mpa-joinpage-btns hover:tw-shadow-xl-2 bg-warning"
             onClick={handleStart}
           >
             Start Chapter
@@ -79,7 +79,7 @@ const JoinCard = function () {
         </span>
       </div>
 
-      <div className="card m-5 align-items-center" style={{ width: '19rem' }}>
+      <div className="card m-5 align-items-center tw-shadow-xl tw-cursor-pointer" style={{ width: '19rem' }}>
         <img
           src="./assets/images/join/mpa-startup.png"
           className="card-img-top"
@@ -92,13 +92,13 @@ const JoinCard = function () {
           </p>
         </div>
         <Link href="/incubator">
-          <button type="button" className="mpa-joinpage-btns">
+          <button type="button" className="mpa-joinpage-btns hover:tw-shadow-xl">
             Get funding
           </button>
         </Link>
       </div>
 
-      <div className="card m-5 align-items-center" style={{ width: '19rem' }}>
+      <div className="card m-5 align-items-center tw-shadow-xl tw-cursor-pointer" style={{ width: '19rem' }}>
         <img
           src="./assets/images/join/mpa-intern.png"
           className="card-img-top"
@@ -111,12 +111,12 @@ const JoinCard = function () {
           </p>
         </div>
         <Link href="/careers">
-          <button type="button" className="mpa-joinpage-btns">
+          <button type="button" className="mpa-joinpage-btns hover:tw-shadow-xl">
             View Internships
           </button>
         </Link>
       </div>
-      <div className="card m-5 align-items-center" style={{ width: '19rem' }}>
+      <div className="card m-5 align-items-center tw-shadow-xl tw-cursor-pointer" style={{ width: '19rem' }}>
         <img
           src="./assets/images/join/mpa-mentor.png"
           className="card-img-top"
@@ -130,12 +130,12 @@ const JoinCard = function () {
           </p>
         </div>
         <Link href="/mentorshipProgram">
-          <button type="button" className="mpa-joinpage-btns">
+          <button type="button" className="mpa-joinpage-btns hover:tw-shadow-xl">
             Become a mentor
           </button>
         </Link>
       </div>
-      <div className="card m-5 align-items-center" style={{ width: '19rem' }}>
+      <div className="card m-5 align-items-center tw-shadow-xl tw-cursor-pointer" style={{ width: '19rem' }}>
         <img
           src="./assets/images/join/meet-president.png"
           className="card-img-top"
@@ -152,13 +152,13 @@ const JoinCard = function () {
         </div>
         <Link href="https://calendly.com/minorityprogrammers/join?month=2021-09">
           <a target="_blank">
-            <button type="button" className="mpa-joinpage-btns">
+            <button type="button" className="mpa-joinpage-btns hover:tw-shadow-xl">
               Meet the MPA president
             </button>
           </a>
         </Link>
       </div>
-      <div className="card m-5 align-items-center" style={{ width: '19rem' }}>
+      <div className="card m-5 align-items-center tw-shadow-xl tw-cursor-pointer" style={{ width: '19rem' }}>
         <img
           src="./assets/images/join/mpa-discord.png"
           className="card-img-top"
@@ -173,7 +173,7 @@ const JoinCard = function () {
         </div>
         <Link href="https://discord.com/invite/NhCq4Y6AQV">
           <a target="_blank">
-            <button type="button" className="mpa-joinpage-btns">
+            <button type="button" className="mpa-joinpage-btns hover:tw-shadow-xl">
               Join us on Discord
             </button>
           </a>

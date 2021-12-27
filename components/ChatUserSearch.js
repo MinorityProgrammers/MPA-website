@@ -21,7 +21,7 @@ const ChatUserSearch = function ({
           //     'Authorization': `Bearer ${token}`
           //   }
           // });
-          const res = await axios.get(`${BASE_URI}/user/search/${userSearch}`, {
+          const res = await axios.get(`${process.env.BASE_URI}/user/search/${userSearch}`, {
             headers: {
               Authorization: `Bearer ${token}`,
             },

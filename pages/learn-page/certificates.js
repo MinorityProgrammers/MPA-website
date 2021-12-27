@@ -1,22 +1,21 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
-import Layout from '../components/Layout';
-import HomepageNav from '../components/homepage/HomepageNav';
-import Footer from '../components/Footer';
-import CourseCategories from '../components/learn/CourseCategories';
-import SidebarTwo from '../components/sidebar/SidebarTwo';
-import links from '../contexts/utils/links';
-import ComingSoon from '../components/ComingSoon';
-import { useDetectOutsideClick } from '../components/UseDetectOutsideClick';
+import Layout from '../../components/Layout';
+import HomepageNav from '../../components/homepage/HomepageNav';
+import Footer from '../../components/Footer';
+import Certificates from '../../components/learn/Certificates';
+import SidebarTwo from '../../components/sidebar/SidebarTwo';
+import links from '../../contexts/utils/links';
+import ComingSoon from '../../components/ComingSoon';
+import { useDetectOutsideClick } from '../../components/UseDetectOutsideClick';
 
 const LearnPage = function () {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef(null);
-  const [hide, setHide] = useDetectOutsideClick(dropdownRef, false);
+  const [hide, setHide] = useDetectOutsideClick(dropdownRef, true);
   const [data, setData] = useState([]);
-  const [usersCourses, setUsersCourses] = useState([]);
-  const [enrolledCourses, setEnrolledCourses] = useState([]);
-
+  const [certificate, setCertificate] = useState([]);
+  const [loading, setLoading] = useState(true);
   const handleClick = () => {
     setHide(!hide);
   };
@@ -30,22 +29,19 @@ const LearnPage = function () {
     const userToken = JSON.parse(localStorage.getItem('userInfo'));
     if (userToken !== null) {
       axios
-        .get(`${process.env.BASE_URI}/learn/userCourses`, {
+        .get(`${process.env.BASE_URI}/certificate/getUserCertificate`, {
           headers: {
             Authorization: `Bearer ${userToken.token}`,
           },
         })
         .then((res) => {
-          setEnrolledCourses(res.data.data);
+          setCertificate(res.data.data);
+          setTimeout(() => { setLoading(false); }, 3000);
         });
     }
-  }, []);
-
-  useEffect(() => {
-    axios.get(`${process.env.BASE_URI}/learn/`).then((res) => {
-      setUsersCourses(res.data.data);
-    });
-  }, []);
+  }, [typeof window !== 'undefined'
+    ? window.localStorage.getItem('jwtToken')
+    : null]);
 
   return (
     <Layout pageTitle="Learn Page - Minority Programmers Association">
@@ -63,11 +59,11 @@ const LearnPage = function () {
         handleClick={handleClick}
       />
       {hide === false && <ComingSoon closeClick={handleClick} />}
-      <div className="tw-pt-20">
-        <CourseCategories
+      <div className="tw-py-20 certificate">
+        <Certificates
           user={data}
-          usersCourses={usersCourses}
-          enrolledCourses={enrolledCourses}
+          certificates={certificate}
+          loading={loading}
         />
       </div>
       <Footer />

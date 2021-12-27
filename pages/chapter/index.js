@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect, useContext } from 'react';
 import HomepageNav from '../../components/homepage/HomepageNav';
 import Layout from '../../components/Layout';
-import NavOne from '../../components/NavOne';
 import Footer from '../../components/Footer';
 import Intro from '../../components/chapter/chapter-intro/intro.component';
 import ChapterToolkit from '../../components/chapter/chapter-toolkit-menu/chapterToolkit.component';
