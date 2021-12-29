@@ -52,6 +52,7 @@ import '../styles/ModeratorCss/ElectProposals.css';
 import '../styles/coreteam/coreteam.css';
 import { MoralisProvider } from 'react-moralis';
 import { MoralisDappProvider } from '../MoralisDappProvider/MoralisDappProvider';
+import '../styles/$-Minority-Earned/comingSoon.css';
 
 const APP_ID = process.env.REACT_APP_MORALIS_APPLICATION_ID;
 const SERVER_URL = process.env.REACT_APP_MORALIS_SERVER_URL;
