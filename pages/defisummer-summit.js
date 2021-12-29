@@ -12,7 +12,7 @@ const DefisummerHome = function () {
   const navBarRef = useRef();
   const [hide, setHide] = useDetectOutsideClick(dropdownRef, true);
 
-  if (hide == false) {
+  if (hide === false) {
     setTimeout(() => {
       setHide(true);
     }, 10000);

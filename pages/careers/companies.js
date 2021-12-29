@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import CareersMainComponent from '../../components/career-components/CareersMainComponent';
 import CompanySkeleton from '../../components/career-components/CompanyLoadingSkeleton';
 import MPIconSvg from '../../components/career-components/svgs/MP_IconSvg';
+import { SearchInput } from '../../components/form-elements/inputs';
 
 export async function getServerSideProps(context) {
   return {
@@ -207,21 +208,18 @@ const CompaniesMain = (props) => {
             action="/careers/companies"
             onSubmit={(e) => formSubmit(e)}
           >
-            <input
+            <SearchInput
               name="company_name"
-              type="search"
               placeholder="Search by Name"
               ref={nameRef}
             />
-            <input
+            <SearchInput
               name="diversity_score"
-              type="search"
               placeholder="Diversity Score"
               ref={diversityScoreRef}
             />
-            <input
+            <SearchInput
               name="location"
-              type="search"
               placeholder="City, State, or Zip Code"
               ref={locationRef}
             />

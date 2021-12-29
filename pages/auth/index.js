@@ -18,7 +18,7 @@ const Index = function () {
   const handleClick = () => {
     setHide(!hide);
   };
-  if (hide == false) {
+  if (hide === false) {
     setTimeout(() => {
       setHide(true);
     }, 10000);
@@ -59,7 +59,7 @@ const Index = function () {
         <SidebarTwo open={open} setOpen={setOpen} links={links} active="Home" />
         {data !== [] && (
           <>
-            {hide == false && <ComingSoon closeClick={handleClick} />}
+            {hide === false && <ComingSoon closeClick={handleClick} />}
             <div
               style={{ marginTop: '0' }}
               className="tw-mx-24 tw-my-32 md:tw-mx-4"

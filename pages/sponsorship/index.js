@@ -1,10 +1,10 @@
-import { useState } from 'react';
-import SponsorshipMain from '../../components/sponsorship/SponsorshipMain';
-import SponsorshipCheckout from '../../components/sponsorship/SponsorshipCheckout';
-import SponsorshipCard from '../../components/sponsorship/SponsorshipCard';
+import React, { useState } from 'react';
 import Sponsorship from '../../components/Sponsorship';
+import SponsorshipCard from '../../components/sponsorship/SponsorshipCard';
+import SponsorshipCheckout from '../../components/sponsorship/SponsorshipCheckout';
+import SponsorshipMain from '../../components/sponsorship/SponsorshipMain';
 
-const SponsorshipPage = function (props) {
+const SponsorshipPage = function () {
   const [SponsorshipDisplay, setSponsorshipDisplay] = useState('sponsorship');
 
   const [organization, setOrganization] = useState('');

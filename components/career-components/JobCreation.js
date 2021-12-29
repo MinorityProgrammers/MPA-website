@@ -1,4 +1,11 @@
 import React, { useState } from 'react';
+import InputGroup from './form/job-creation/InputGroup';
+import Label from './form/job-creation/Label';
+import RadioInput from './form/job-creation/RadioInput';
+import SelectGroup from './form/job-creation/SelectGroup';
+import TextAreaGroup from './form/job-creation/TextAreaGroup';
+import jobIndustries from './JobIndustries.json';
+import jobTypes from './JobTypes.json';
 import SkillsDiv from './SkillsDiv';
 import JobGuySvg from './svgs/JobGuySvg';
 
@@ -35,114 +42,66 @@ const JobCreation = () => {
         <header className="tw-text-white tw-text-center tw-text-2xl tw-font-bold tw-mb-8">
           Create a New Job
         </header>
-        <div className="form-input-group tw-flex tw-flex-col tw-mb-3">
-          <label className="tw-text-white tw-text-lg tw-mb-1 tw-font-bold">
-            Job Title
-            {' '}
-            <span className="tw-text-xl tw-text-yellow-200">*</span>
-          </label>
-          <input
-            name="job_title"
-            required
-            className="focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-yellow-300 tw-text-white tw-py-1 tw-px-2 tw-border tw-border-white tw-bg-transparent tw-placeholder-white tw-placeholder-opacity-80"
-            type="text"
-            placeholder="Add a short, descriptive job title"
-          />
-        </div>
-        <div className="form-input-group tw-flex tw-flex-col tw-mb-3">
-          <label className="tw-text-white tw-text-lg tw-mb-1 tw-font-bold">
-            Job Location
-          </label>
-          <input
-            name="location"
-            className="focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-yellow-300 tw-text-white tw-py-1 tw-px-2 tw-border tw-border-white tw-bg-transparent tw-placeholder-white tw-placeholder-opacity-80"
-            type="text"
-            placeholder="Specific addresses help you reach nearby candidates"
-          />
-        </div>
+
+        <InputGroup
+          labelText="Job Title"
+          inputName="job_title"
+          isRequried
+          className="focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-yellow-300 tw-text-white tw-py-1 tw-px-2 tw-border tw-border-white tw-bg-transparent tw-placeholder-white tw-placeholder-opacity-80"
+          type="text"
+          placeholder="Add a short, descriptive job title"
+        />
+
+        <InputGroup
+          labelText="Job Location"
+          inputName="location"
+          className="focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-yellow-300 tw-text-white tw-py-1 tw-px-2 tw-border tw-border-white tw-bg-transparent tw-placeholder-white tw-placeholder-opacity-80"
+          type="text"
+          placeholder="Specific addresses help you reach nearby candidates"
+        />
 
         <div className="form-input-group tw-flex tw-flex-col tw-mb-3">
-          <span className="tw-block tw-text-white lg:tw-text-lg tw-mb-1 tw-font-bold">
-            Job Remote?
-            {' '}
-            <span className="tw-text-xl tw-text-yellow-200">*</span>
-          </span>
+          <Label text="Job Remote?" isRequried />
+
           <div className="tw-flex tw-justify-start tw-flex-wrap">
-            <label className="jobType-label tw-text-white tw-mr-5 tw-mb-0">
-              <input
-                name="remote"
-                required
-                type="radio"
-                value
-                className="jobType-checkbox tw-mr-1"
-              />
-              <span className="jobType-custom-checkbox" />
-              Yes
-            </label>
-            <label className="jobType-label tw-text-white tw-mr-5 tw-mb-0">
-              <input
-                name="remote"
-                type="radio"
-                value={false}
-                className="jobType-checkbox tw-mr-1"
-              />
-              <span className="jobType-custom-checkbox" />
-              No
-            </label>
+            <RadioInput
+              name="remote"
+              id="remote-yes"
+              required
+              value
+              text="Yes"
+            />
+            <RadioInput
+              name="remote"
+              id="remote-no"
+              value={false}
+              text="No"
+            />
           </div>
         </div>
 
         <div className="tw-mb-3">
-          <label className="tw-text-white tw-text-lg tw-mb-1 tw-font-bold">
-            Industry
-            {' '}
-            <span className="tw-text-xl tw-text-yellow-200">*</span>
-          </label>
-          <div>
-            <select
-              name="job_industry"
-              required
-              className="tw-w-full tw-py-1 tw-px-2 tw-border tw-border-white tw-bg-transparent tw-placeholder-white tw-placeholder-opacity-80 tw-text-white"
-            >
-              <option style={{ background: '#151371' }}>Art</option>
-              <option style={{ background: '#151371' }}>Automotive</option>
-              <option style={{ background: '#151371' }}>Medical</option>
-              <option style={{ background: '#151371' }}>Science</option>
-              <option style={{ background: '#151371' }}>Technology</option>
-            </select>
-          </div>
+          <SelectGroup
+            isRequried
+            labeText="Industry"
+            name="job_industry"
+            options={jobIndustries}
+          />
         </div>
 
         <div className="form-input-group tw-flex tw-flex-col tw-mb-3">
-          <span className="tw-block tw-text-white tw-text-lg tw-mb-1 tw-font-bold">
-            Job Type
-            {' '}
-            <span className="tw-text-xl tw-text-yellow-200">*</span>
-          </span>
-
-          <div>
-            <select
-              name="job_type"
-              className="tw-w-full tw-py-1 tw-px-2 tw-border tw-border-white tw-bg-transparent tw-placeholder-white tw-placeholder-opacity-80 tw-text-white"
-            >
-              <option style={{ background: '#151371' }}>Full-Time</option>
-              <option style={{ background: '#151371' }}>Part-Time</option>
-              <option style={{ background: '#151371' }}>Contract</option>
-              <option style={{ background: '#151371' }}>Industry</option>
-              <option style={{ background: '#151371' }}>Temporary</option>
-              <option style={{ background: '#151371' }}>Seasonal</option>
-              <option style={{ background: '#151371' }}>Freelance</option>
-              <option style={{ background: '#151371' }}>Volunteer</option>
-            </select>
-          </div>
+          <SelectGroup
+            isRequried
+            labeText="Job Type"
+            name="job_type"
+            options={jobTypes}
+          />
         </div>
 
         <div className="form-input-group tw-flex tw-flex-col">
-          <label className="tw-text-white tw-text-lg tw-mb-1 tw-font-bold">
-            Job Skills
-            {' '}
-            <span className="tw-text-sm tw-font-normal">(Max 15)</span>
-          </label>
+          <Label text="Job Skills">
+            <span className="tw-text-sm tw-font-normal">{' (Max 15)'}</span>
+          </Label>
 
           <div className="jobSkills-input">{jobSkills}</div>
           <button
@@ -154,37 +113,22 @@ const JobCreation = () => {
           </button>
         </div>
 
-        <div className="tw-flex tw-flex-col tw-mb-3">
-          <label className="tw-text-white tw-text-lg tw-mb-1 tw-font-bold">
-            Job Description
-            {' '}
-            <span className="tw-text-xl tw-text-yellow-200">*</span>
-          </label>
-          <textarea
-            name="job_description"
-            required
-            rows="6"
-            className="tw-text-white focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-yellow-300 tw-py-1 tw-px-2 tw-border tw-border-white tw-bg-transparent tw-placeholder-white tw-placeholder-opacity-80"
-            placeholder="Describe the responsibilities and preferred skills for this job"
-          />
-        </div>
-        <div className="form-input-group tw-flex tw-flex-col tw-mb-3">
-          <label className="tw-text-white tw-text-lg tw-mb-1 tw-font-bold">
-            Fulfill Role By
-          </label>
-          <input
-            name="fulfull_role_by"
-            type="date"
-            className="focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-yellow-300 tw-text-white tw-py-1 tw-px-2 tw-border tw-border-white tw-bg-transparent"
-          />
-        </div>
+        <TextAreaGroup
+          isRequried
+          labelText="Job Description"
+          name="job_description"
+          placeholder="Describe the responsibilities and preferred skills for this job"
+        />
+
+        <InputGroup
+          labelText="Fulfill Role By"
+          name="fulfull_role_by"
+          type="date"
+          className="focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-yellow-300 tw-text-white tw-py-1 tw-px-2 tw-border tw-border-white tw-bg-transparent"
+        />
 
         <div className="form-input-group tw-flex tw-flex-col tw-mb-3">
-          <label className="tw-text-white tw-text-lg tw-mb-1 tw-font-bold">
-            Salary
-            {' '}
-            <span className="tw-text-xl tw-text-yellow-200">*</span>
-          </label>
+          <Label text="Salary" isRequried />
           <input
             name="pay"
             required
@@ -193,64 +137,42 @@ const JobCreation = () => {
             type="text"
           />
           <div className="tw-flex tw-justify-start tw-flex-wrap">
-            <label className="jobType-label tw-text-white tw-mr-5 tw-mb-0">
-              <input
-                name="pay_interval"
-                required
-                type="radio"
-                value="annually"
-                className="jobType-checkbox tw-mr-1"
-              />
-              <span className="jobType-custom-checkbox" />
-              Annually
-            </label>
-            <label className="jobType-label tw-text-white tw-mr-5 tw-mb-0">
-              <input
-                name="pay_interval"
-                type="radio"
-                value="hourly"
-                className="jobType-checkbox tw-mr-1"
-              />
-              <span className="jobType-custom-checkbox" />
-              Hourly
-            </label>
+            <RadioInput
+              name="pay_interval"
+              id="annually"
+              required
+              value="annually"
+              text="Annually"
+            />
+            <RadioInput
+              name="pay_interval"
+              id="hourly"
+              value="hourly"
+              text="Hourly"
+            />
           </div>
         </div>
 
-        <div className="tw-flex tw-flex-col tw-mb-3">
-          <label className="tw-text-white tw-text-lg tw-mb-1 tw-font-bold">
-            Additional Compensation
-          </label>
-          <textarea
-            name="additional_compensation"
-            rows="6"
-            className="tw-text-white focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-yellow-300 tw-py-1 tw-px-2 tw-border tw-border-white tw-bg-transparent tw-placeholder-white tw-placeholder-opacity-80"
-            placeholder="List any additional compensation offered"
-          />
-        </div>
+        <TextAreaGroup
+          labelText="Additional Compensation"
+          name="additional_compensation"
+          placeholder="List any additional compensation offered"
+        />
 
-        <div className="tw-flex tw-flex-col tw-mb-3">
-          <label className="tw-text-white tw-text-lg tw-mb-1 tw-font-bold">
-            Benefits
-          </label>
-          <textarea
-            rows="6"
-            className="tw-text-white focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-yellow-300 tw-py-1 tw-px-2 tw-border tw-border-white tw-bg-transparent tw-placeholder-white tw-placeholder-opacity-80"
-            placeholder="Add benefits, separated by commas"
-          />
-        </div>
+        <TextAreaGroup
+          labelText="Benefits"
+          name="benefits"
+          placeholder="Add benefits, separated by commas"
+        />
 
-        <div className="form-input-group tw-flex tw-flex-col tw-mb-3">
-          <label className="tw-text-white tw-text-lg tw-mb-1 tw-font-bold">
-            Weekly Work Hours
-          </label>
-          <input
-            className="focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-yellow-300 tw-text-white tw-py-1 tw-px-2 tw-border tw-border-white tw-bg-transparent tw-placeholder-white tw-placeholder-opacity-80"
-            type="number"
-            min="1"
-            placeholder="Enter Number of Weekly Hours"
-          />
-        </div>
+        <InputGroup
+          labelText="Weekly Work Hours"
+          className="focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-yellow-300 tw-text-white tw-py-1 tw-px-2 tw-border tw-border-white tw-bg-transparent tw-placeholder-white tw-placeholder-opacity-80"
+          type="number"
+          min="1"
+          placeholder="Enter Number of Weekly Hours"
+        />
+
         <input
           method="GET"
           action="/"

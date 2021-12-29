@@ -26,5 +26,8 @@ module.exports = {
     'linebreak-style': ['error', process.platform === 'win32' ? 'windows' : 'unix'],
     'react/jsx-no-useless-fragment': 'off',
     radix: ['error', 'as-needed'],
+    'react/jsx-props-no-spreading': 'off',
+    camelcase: 'off',
+    'react/jsx-no-bind': 'off',
   },
 };

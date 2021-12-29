@@ -1,10 +1,9 @@
-import { useState } from 'react';
-import Select from 'react-select';
 import axios from 'axios';
-import styles from './InterestForm.module.css';
-
-import { validateField, validateForm, validateStepper } from './FormValidations';
+import React, { useState } from 'react';
+import Select from 'react-select';
 import { errorToast, successToast } from '../../contexts/utils/toasts';
+import { validateField, validateForm, validateStepper } from './FormValidations';
+import styles from './InterestForm.module.css';
 
 const interestOptions = [
   { label: 'Development', value: 'development' },
@@ -74,14 +73,14 @@ const InterestForm = function ({ token }) {
     }));
   };
 
+  const handleError = (error) => {
+    setErrors(error);
+  };
+
   const handleBlur = () => {
     setErrors({});
     const result = (validateField(sections, values));
     handleError(result);
-  };
-
-  const handleError = (error) => {
-    setErrors(error);
   };
 
   const handleNext = () => {

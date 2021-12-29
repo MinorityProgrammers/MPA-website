@@ -1,7 +1,7 @@
-import React, { useState, useRef } from 'react';
-import Layout from '../../components/Layout';
+import React from 'react';
 import Footer from '../../components/Footer';
 import HomepageNav from '../../components/homepage/HomepageNav';
+import Layout from '../../components/Layout';
 import MyElectedProposal from '../../components/Moderator/myElectedProposal';
 
 const my_elected_proposal = () => (
