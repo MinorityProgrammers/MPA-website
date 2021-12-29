@@ -29,7 +29,7 @@ const Account = function () {
   const { walletAddress, chainId } = useMoralisDapp();
   const [isModalVisible, setIsModalVisible] = useState(false);
 
-  console.log(getEllipsisTxt(walletAddress, 6));
+  // console.log(getEllipsisTxt(walletAddress, 6));
 
   if (!isAuthenticated) {
     return (

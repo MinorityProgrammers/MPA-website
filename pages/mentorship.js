@@ -1,13 +1,13 @@
-import React, { useState, useRef } from 'react';
 import { useRouter } from 'next/router';
+import React, { useRef, useState } from 'react';
+import ComingSoon from '../components/ComingSoon';
+import Footer from '../components/Footer';
 import HomepageNav from '../components/homepage/HomepageNav';
 import Layout from '../components/Layout';
-import Footer from '../components/Footer';
-import SidebarTwo from '../components/SidebarTwo';
 import { MentorshipRegister } from '../components/mentorship/MentorshipRegister';
-import links from '../contexts/utils/links';
-import ComingSoon from '../components/ComingSoon';
+import SidebarTwo from '../components/SidebarTwo';
 import { useDetectOutsideClick } from '../components/UseDetectOutsideClick';
+import links from '../contexts/utils/links';
 
 function mentorship() {
   const [open, setOpen] = useState(false);
@@ -52,7 +52,7 @@ function mentorship() {
               active="Home"
               handleClick={handleClick}
             />
-            {hide == false && <ComingSoon closeClick={handleClick} />}
+            {hide === false && <ComingSoon closeClick={handleClick} />}
             <section className="home-section">
               <MentorshipRegister />
             </section>

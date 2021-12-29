@@ -1,14 +1,12 @@
-import React, { useState } from 'react';
 import axios from 'axios';
-import { useRouter } from 'next/router';
-import Layout from '../../components/Layout';
-import HomepageNav from '../../components/homepage/HomepageNav';
-import StartupTopBar from '../../components/StartupTopBar';
-import StartupMainBar from '../../components/StartupMainBar';
+import React, { useState } from 'react';
 import Footer from '../../components/Footer';
+import HomepageNav from '../../components/homepage/HomepageNav';
+import Layout from '../../components/Layout';
 import SidebarTwo from '../../components/SidebarTwo';
+import StartupMainBar from '../../components/StartupMainBar';
+import StartupTopBar from '../../components/StartupTopBar';
 import links from '../../contexts/utils/links';
-// import datas from '../../helpers/mockData';
 
 export const getStaticPaths = async () => {
   const res = await axios.get(

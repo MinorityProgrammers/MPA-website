@@ -3,7 +3,6 @@ import React, {
 } from 'react';
 import HomepageNav from '../../components/homepage/HomepageNav';
 import Layout from '../../components/Layout';
-import NavOne from '../../components/NavOne';
 import Footer from '../../components/Footer';
 import Intro from '../../components/chapter/chapter-intro/intro.component';
 import ChapterToolkit from '../../components/chapter/chapter-toolkit-menu/chapterToolkit.component';
@@ -32,7 +31,7 @@ const index = () => {
     const token = window.localStorage.getItem('jwtToken');
     const userInfo = window.localStorage.getItem('userInfo');
 
-    if (token == null || userInfo == {}) {
+    if (token == null || userInfo === {}) {
       setUserData(null);
       setActive(false);
     } else {
@@ -46,7 +45,7 @@ const index = () => {
   const handleClick = () => {
     setHide(!hide);
   };
-  if (hide == false) {
+  if (hide === false) {
     setTimeout(() => {
       setHide(true);
     }, 10000);

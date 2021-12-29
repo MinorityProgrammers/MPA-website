@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import Layout from '../components/Layout';
-import HomepageNav from '../components/homepage/HomepageNav';
 import BlackBanner from '../components/BlackBanner';
 import Footer from '../components/Footer';
+import HomepageNav from '../components/homepage/HomepageNav';
+import Layout from '../components/Layout';
 import SidebarTwo from '../components/SidebarTwo';
 import links from '../contexts/utils/links';
 
@@ -19,6 +19,7 @@ const TokenomicsPage = function () {
         bannerImgLink={bannerImgLink}
       />
       <iframe
+        title="Legal Frame"
         className="legal-frame"
         src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRih2lxPJmVGM9NB76xjOe6JX_2JVCE-1NPZnsGXaikOpFnHkWPSnnJT6iLcDr_AiobRvknX2jzHihN/pubhtml?widget=true&amp;headers=false"
       />

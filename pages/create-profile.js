@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import jwt from 'jsonwebtoken';
 import { useRouter } from 'next/router';
 import Layout from '../components/Layout';

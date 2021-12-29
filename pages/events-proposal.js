@@ -1,15 +1,15 @@
 import React, {
-  useState, useRef, useEffect, useContext,
+  useContext, useEffect, useRef, useState,
 } from 'react';
+import ComingSoon from '../components/ComingSoon';
 import Events from '../components/events-proposal/events-component/events-component';
-import { GlobalContext } from '../contexts/provider';
+import Footer from '../components/Footer';
 import HomepageNav from '../components/homepage/HomepageNav';
 import Layout from '../components/Layout';
-import Footer from '../components/Footer';
 import SidebarTwo from '../components/SidebarTwo';
-import links from '../contexts/utils/links';
 import { useDetectOutsideClick } from '../components/UseDetectOutsideClick';
-import ComingSoon from '../components/ComingSoon';
+import { GlobalContext } from '../contexts/provider';
+import links from '../contexts/utils/links';
 
 const events = () => {
   const [open, setOpen] = useState(false);
@@ -23,7 +23,7 @@ const events = () => {
   const handleClick = () => {
     setHide(!hide);
   };
-  if (hide == false) {
+  if (hide === false) {
     setTimeout(() => {
       setHide(true);
     }, 60000);
@@ -40,7 +40,7 @@ const events = () => {
     const token = window.localStorage.getItem('jwtToken');
     const userInfo = window.localStorage.getItem('userInfo');
 
-    if (token == null || userInfo == {}) {
+    if (token == null || userInfo === {}) {
       setUserData(null);
       setActive(false);
     } else {
@@ -66,7 +66,7 @@ const events = () => {
             active="Home"
             handleClick={handleClick}
           />
-          {hide == false && <ComingSoon closeClick={handleClick} />}
+          {hide === false && <ComingSoon closeClick={handleClick} />}
           <Events
             userData={userData}
             active={active}

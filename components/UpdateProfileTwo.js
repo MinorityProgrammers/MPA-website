@@ -1,11 +1,12 @@
-import React, { useContext, useState, useEffect } from 'react';
+import FormData from 'form-data';
+import React, { useContext, useEffect, useState } from 'react';
 import { AiOutlineClose } from 'react-icons/ai';
 import { RiArrowDropDownLine } from 'react-icons/ri';
-import FormData from 'form-data';
-import { storeThree, storeTwo, storeOne } from '../contexts/utils/fields';
+import 'react-toastify/dist/ReactToastify.css';
 import { updateProfile } from '../contexts/actions/profile/updateProfile';
 import { GlobalContext } from '../contexts/provider';
-import 'react-toastify/dist/ReactToastify.css';
+import { storeOne, storeThree, storeTwo } from '../contexts/utils/fields';
+import { CustomInput } from './form-elements/inputs';
 
 const UpdateProfileTwo = function ({ open = true, setOpen = () => {}, userData }) {
   const {
@@ -16,8 +17,9 @@ const UpdateProfileTwo = function ({ open = true, setOpen = () => {}, userData }
       },
     },
   } = useContext(GlobalContext);
+
   useEffect(() => {
-    if (open == true) {
+    if (open === true) {
       document.getElementById('up-modal').classList.add('up-modal');
       document.getElementById('up-modal').classList.remove('up-hide-modal');
       document.getElementById('up-overlay').classList.add('up-overlay');
@@ -29,22 +31,6 @@ const UpdateProfileTwo = function ({ open = true, setOpen = () => {}, userData }
       document.getElementById('up-overlay').classList.remove('up-overlay');
     }
   });
-  useEffect(() => {
-    setNewFirstName(userData.firstName);
-    setNewLastName(userData.lastName);
-    setNewEmail(userData.email);
-    setNewPhoneNumber(userData.phoneNumber);
-    setNewLocation(userData.location);
-    setNewBirthDate(userData.birthday);
-    setNewNationality(userData.Nationality);
-    setNewEthnicity(userData.Ethnicity);
-    setNewGender(userData.Gender);
-    setNewGithub(userData.GithubLink);
-    setNewLinkedin(userData.LinkedinLink);
-    setNewMedium(userData.MediumLink);
-    setNewFacebook(userData.FacebookLink);
-    setNewBio(userData.bio);
-  }, [userData]);
 
   const [newFirstName, setNewFirstName] = useState(userData.firstName || '');
   const [newlastName, setNewLastName] = useState(userData.lastName || '');
@@ -66,6 +52,23 @@ const UpdateProfileTwo = function ({ open = true, setOpen = () => {}, userData }
   const [newFacebook, setNewFacebook] = useState(userData.FacebookLink || '');
 
   const [newBio, setNewBio] = useState(userData.bio);
+
+  useEffect(() => {
+    setNewFirstName(userData.firstName);
+    setNewLastName(userData.lastName);
+    setNewEmail(userData.email);
+    setNewPhoneNumber(userData.phoneNumber);
+    setNewLocation(userData.location);
+    setNewBirthDate(userData.birthday);
+    setNewNationality(userData.Nationality);
+    setNewEthnicity(userData.Ethnicity);
+    setNewGender(userData.Gender);
+    setNewGithub(userData.GithubLink);
+    setNewLinkedin(userData.LinkedinLink);
+    setNewMedium(userData.MediumLink);
+    setNewFacebook(userData.FacebookLink);
+    setNewBio(userData.bio);
+  }, [userData]);
 
   const formData = new FormData();
   formData.append('firstName', newFirstName || userData.firstName || '');
@@ -102,6 +105,7 @@ const UpdateProfileTwo = function ({ open = true, setOpen = () => {}, userData }
     setOpen(false);
     setSubmit(true);
   };
+
   const handleCancel = (e) => {
     e.preventDefault();
     setNewFirstName(userData.firstName);
@@ -244,7 +248,7 @@ const UpdateProfileTwo = function ({ open = true, setOpen = () => {}, userData }
                   <div className="up-social" key={id}>
                     <label htmlFor={field.name}>{field.label}</label>
                     <div className="up-input">
-                      {field.type == 'list' ? (
+                      {field.type === 'list' ? (
                         <div className="up-select-container">
                           <select
                             name={field.name}
@@ -263,12 +267,8 @@ const UpdateProfileTwo = function ({ open = true, setOpen = () => {}, userData }
                           <RiArrowDropDownLine />
                         </div>
                       ) : (
-                        <input
-                          id={field.name}
-                          name={field.name}
-                          placeholder={field.label}
-                          type={field.type}
-                          value={field.value || ''}
+                        <CustomInput
+                          field={field}
                           readOnly={!field.edit}
                           onChange={(e) => {
                             field.setValue(e.target.value);
@@ -289,12 +289,8 @@ const UpdateProfileTwo = function ({ open = true, setOpen = () => {}, userData }
                   <div className="up-social" key={id}>
                     <label htmlFor={field.name}>{field.label}</label>
                     <div className="up-input">
-                      <input
-                        id={field.name}
-                        name={field.name}
-                        placeholder={field.label}
-                        type={field.type}
-                        value={field.value || ''}
+                      <CustomInput
+                        field={field}
                         onChange={(e) => {
                           field.setValue(e.target.value);
                         }}
@@ -314,8 +310,8 @@ const UpdateProfileTwo = function ({ open = true, setOpen = () => {}, userData }
                   value={newBio}
                   onChange={(e) => {
                     setNewBio(e.target.value);
-                    console.log(userData);
-                    console.log(newBio);
+                    // console.log(userData);
+                    // console.log(newBio);
                   }}
                 />
               </div>
@@ -323,7 +319,7 @@ const UpdateProfileTwo = function ({ open = true, setOpen = () => {}, userData }
             <div className="up-modal-section">
               <div className="up-modal-section-body">
                 <div className="up-button-row">
-                  <button onClick={handleCancel}>Cancel</button>
+                  <button type="button" onClick={handleCancel}>Cancel</button>
                   <button className="green" type="submit">
                     Save
                   </button>

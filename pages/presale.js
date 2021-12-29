@@ -18,7 +18,7 @@ const Presale = function () {
   const handleClick = () => {
     setHide(!hide);
   };
-  if (hide == false) {
+  if (hide === false) {
     setTimeout(() => {
       setHide(true);
     }, 10000);
@@ -34,7 +34,7 @@ const Presale = function () {
           active="Home"
           handleClick={handleClick}
         />
-        {hide == false && <ComingSoon closeClick={handleClick} />}
+        {hide === false && <ComingSoon closeClick={handleClick} />}
         <div className="presale-page">
           <PresaleHeroSection />
           <PresaleCountDown />

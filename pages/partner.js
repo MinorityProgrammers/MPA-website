@@ -1,11 +1,11 @@
-import React, { useState, useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { InlineWidget } from 'react-calendly';
-import Layout from '../components/Layout';
-import HomepageNav from '../components/homepage/HomepageNav';
-import { useDetectOutsideClick } from '../components/UseDetectOutsideClick';
 import Footer from '../components/Footer';
-import links from '../contexts/utils/links';
+import HomepageNav from '../components/homepage/HomepageNav';
+import Layout from '../components/Layout';
 import SidebarTwo from '../components/SidebarTwo';
+import { useDetectOutsideClick } from '../components/UseDetectOutsideClick';
+import links from '../contexts/utils/links';
 
 const Partner = function () {
   const [open, setOpen] = useState(false);
@@ -14,7 +14,7 @@ const Partner = function () {
   const handleClick = () => {
     setHide(!hide);
   };
-  if (hide == false) {
+  if (hide === false) {
     setTimeout(() => {
       setHide(true);
     }, 10000);

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import Layout from '../components/Layout';
-import HomepageNav from '../components/homepage/HomepageNav';
 import BlackBanner from '../components/BlackBanner';
 import Footer from '../components/Footer';
+import HomepageNav from '../components/homepage/HomepageNav';
+import Layout from '../components/Layout';
 import SidebarTwo from '../components/SidebarTwo';
 import links from '../contexts/utils/links';
 
@@ -20,6 +20,7 @@ const UIKit = function () {
         bannerImgLink={bannerImgLink}
       />
       <iframe
+        title="Figma Frame"
         width="100%"
         height="1000px"
         src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2Fu9PtXvpKdawtmdRVs46I10%2FMPA-MASTER-UI-KIT%3Fnode-id%3D19%253A3"

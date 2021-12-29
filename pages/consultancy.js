@@ -18,7 +18,7 @@ const consultancy = () => {
   const handleClick = () => {
     setHide(!hide);
   };
-  if (hide == false) {
+  if (hide === false) {
     setTimeout(() => {
       setHide(true);
     }, 60000);
@@ -46,7 +46,7 @@ const consultancy = () => {
           active="Home"
           handleClick={handleClick}
         />
-        {hide == false && <ComingSoon closeClick={handleClick} />}
+        {hide === false && <ComingSoon closeClick={handleClick} />}
         <section className="home-section">
           <Consultancy
             data={data}

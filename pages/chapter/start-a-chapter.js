@@ -28,7 +28,7 @@ const Chapter = function () {
     const token = window.localStorage.getItem('jwtToken');
     const userInfo = window.localStorage.getItem('userInfo');
 
-    if (token == null || userInfo == {}) {
+    if (token == null || userInfo === {}) {
       setUserData(null);
       setActive(false);
     } else {
@@ -41,7 +41,7 @@ const Chapter = function () {
   const handleClick = () => {
     setHide(!hide);
   };
-  if (hide == false) {
+  if (hide === false) {
     setTimeout(() => {
       setHide(true);
     }, 60000);

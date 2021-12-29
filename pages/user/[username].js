@@ -63,7 +63,7 @@ const User = function ({ user }) {
     const token = window.localStorage.getItem('jwtToken');
     const userInfo = window.localStorage.getItem('userInfo');
 
-    if (token == null || userInfo == {}) {
+    if (token == null || userInfo === {}) {
       setIsLoggedIn(false);
     } else {
       setIsLoggedIn(true);
@@ -76,13 +76,12 @@ const User = function ({ user }) {
     }
   }, [userData]);
 
-  if (hide == false) {
+  if (hide === false) {
     setTimeout(() => {
       setHide(true);
     }, 60000);
   }
 
-  console.log(userData, profileData);
   // console.log(userData, profileData);
   return (
     <Layout pageTitle="Profile">
@@ -102,7 +101,7 @@ const User = function ({ user }) {
             active="Home"
             handleClick={handleClick}
           />
-          {hide == false && <ComingSoon closeClick={handleClick} />}
+          {hide === false && <ComingSoon closeClick={handleClick} />}
           <ProfileTwo
             userData={
               isLoggedIn && ownsProfile ? userData || profileData : user[0]

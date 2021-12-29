@@ -32,7 +32,7 @@ const IncubatorPage = function () {
   const handleClick = () => {
     setHide(!hide);
   };
-  if (hide == false) {
+  if (hide === false) {
     setTimeout(() => {
       setHide(true);
     }, 60000);
@@ -90,7 +90,7 @@ const IncubatorPage = function () {
         active="Home"
         handleClick={handleClick}
       />
-      {hide == false && <ComingSoon closeClick={handleClick} />}
+      {hide === false && <ComingSoon closeClick={handleClick} />}
       <IncubatorHero />
       {loading ? (
         <section className="section__incubator">

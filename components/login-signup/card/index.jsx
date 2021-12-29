@@ -1,25 +1,18 @@
-import React, {
-  useState, useContext, useEffect, useRef,
-} from 'react';
-import { ToastContainer, toast } from 'react-toastify';
-import { GoogleLogin, GoogleLogout } from 'react-google-login';
-import { useRouter } from 'next/router';
 import {
-  signIn,
-  signOut,
-  useSession,
-  getProviders,
-  providers,
-  getSession,
+  getProviders, getSession, signIn, useSession
 } from 'next-auth/client';
-import styles from './card.module.css';
-import Form from '../form/index';
-import { GlobalContext } from '../../../contexts/provider';
-import { register } from '../../../contexts/actions/auth/register';
-import { login } from '../../../contexts/actions/auth/login';
-import { googleAuth, nextAuth } from '../../../contexts/actions/auth/googleAuth';
+import { useRouter } from 'next/router';
+import React, { useContext, useEffect, useState } from 'react';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import {
+  googleAuth,
+  nextAuth
+} from '../../../contexts/actions/auth/googleAuth';
 import { getProfile } from '../../../contexts/actions/profile/getProfile';
+import { GlobalContext } from '../../../contexts/provider';
+import Form from '../form/index';
+import styles from './card.module.css';
 
 export default function Index() {
   // USED FOR SOCIAL AUTHENTICATION
@@ -46,26 +39,8 @@ export default function Index() {
     link: 'sign in',
   });
 
-  // NAME USED FOR USERS PROFILE
-  const [name, setName] = useState('');
-  let firstName = '';
-  let lastName = '';
-
-  // checking first name and lastname
-
-  if (name.trim().split(' ').length < 2) {
-    firstName = name;
-    lastName = name;
-  } else {
-    firstName = name.trim().split(' ')[0];
-    lastName = name.trim().split(' ')[1];
-  }
-
   // STATES USED THROUGHOUT THE COMPONENT
   const [submit, setSubmit] = useState(false);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [ConfirmPassword, setConfirmPassword] = useState('');
   const [spin, setSpin] = useState(false);
   const [signedIn, setSignedIn] = useState(false);
   const [userData, setUserData] = useState([]);
@@ -84,6 +59,7 @@ export default function Index() {
       getProfile(setUserData)(profileDispatch);
     }
   }, []);
+
   useEffect(() => {
     const setupProviders = async () => {
       const providers = await getProviders();
@@ -122,22 +98,6 @@ export default function Index() {
     },
   } = useContext(GlobalContext);
 
-  const regEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
-  // the body to be sent to the api
-  const registerBody = {
-    firstName,
-    lastName,
-    email,
-    password,
-    confirmPassword: ConfirmPassword,
-  };
-
-  const loginBody = {
-    email,
-    password,
-  };
-
   // redirecting the user
   useEffect(() => {
     if (
@@ -153,7 +113,9 @@ export default function Index() {
     if (data && submit) {
       router.push(router.pathname);
       if (router.pathname === '/auth') {
-        const loginSignUp = document.querySelector('.card_cardContainer__12vmM');
+        const loginSignUp = document.querySelector(
+          '.card_cardContainer__12vmM',
+        );
         loginSignUp.style.display = 'none';
       } else {
         const loginSignUp = document.querySelector('.create_event');
@@ -161,52 +123,6 @@ export default function Index() {
       }
     }
   }, [data]);
-
-  const handleRegister = async (e) => {
-    e.preventDefault();
-
-    setSubmit(true);
-
-    setTimeout(() => {
-      setSubmit(false);
-    }, 3000);
-
-    if (
-      (email !== ''
-        || name !== ''
-        || password !== ''
-        || ConfirmPassword !== ' ')
-      && email.length > 5
-      && regEmail.test(email)
-      && password.length >= 6
-      && password === ConfirmPassword
-    ) {
-      setSpin(true);
-
-      register(registerBody)(authDispatch);
-    }
-  };
-
-  const handleLogin = async (e) => {
-    e.preventDefault();
-
-    setSubmit(true);
-
-    setTimeout(() => {
-      setSubmit(false);
-    }, 3000);
-
-    if (
-      (email !== '' || password !== '')
-      && email.length > 5
-      && regEmail.test(email)
-      && password.length >= 6
-    ) {
-      setSpin(true);
-
-      login(loginBody)(authDispatch);
-    }
-  };
 
   // NEED TO CHECK IF ACCOUNT EXISTS, TRY REQUEST TO SEE IF USER EXISTS
   // SOCIAL AUTHENTICATION
@@ -264,14 +180,22 @@ export default function Index() {
 
   useEffect(() => {
     if (session) {
-      nextAuth({ name: session.user.name, email: session.user.email, image: session.user.image })(authDispatch);
+      nextAuth({
+        name: session.user.name,
+        email: session.user.email,
+        image: session.user.image,
+      })(authDispatch);
     }
   }, [session]);
 
   return (
     <div className={styles.cardContainer}>
       <ToastContainer limit={3} />
-      <div className={`${styles.cardLeft} ${router.pathname.endsWith('/auth') ? 'tw-mt-40' : ''}`}>
+      <div
+        className={`${styles.cardLeft} ${
+          router.pathname.endsWith('/auth') ? 'tw-mt-40' : ''
+        }`}
+      >
         <div className={styles.contentContainer}>
           <div className={styles.cardLeftLogo}>
             <img
@@ -286,12 +210,16 @@ export default function Index() {
           </div>
         </div>
       </div>
-      <div className={`${styles.cardRight} ${router.pathname.endsWith('/auth') ? 'tw-mt-40' : ''}`}>
+      <div
+        className={`${styles.cardRight} ${
+          router.pathname.endsWith('/auth') ? 'tw-mt-40' : ''
+        }`}
+      >
         <div className={styles.cardRightText}>
           <h2>{cardText.h2Title}</h2>
           <p>
             {cardText.para}
-            <a href="#" className="tw-text-blue-800" onClick={handleClick}>
+            <a href={`#${cardText.link}`} className="tw-text-blue-800" onClick={handleClick}>
               {' '}
               {cardText.link}
             </a>
@@ -351,23 +279,9 @@ export default function Index() {
         </div>
         <Form
           signIn={cardText.signIn}
-          email={email}
-          setEmail={setEmail}
-          name={name}
-          setName={setName}
-          submit={submit}
-          regEmail={regEmail}
-          password={password}
-          setPassword={setPassword}
-          data={data}
-          handleLogin={handleLogin}
-          spin={spin}
+          setSubmit={setSubmit}
           setSpin={setSpin}
-          handleRegister={handleRegister}
-          ConfirmPassword={ConfirmPassword}
           loading={loading}
-          setConfirmPassword={setConfirmPassword}
-          error={error}
         />
       </div>
     </div>

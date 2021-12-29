@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import Layout from '../components/Layout';
-import HomepageNav from '../components/homepage/HomepageNav';
 import BlackBanner from '../components/BlackBanner';
 import Footer from '../components/Footer';
+import HomepageNav from '../components/homepage/HomepageNav';
+import Layout from '../components/Layout';
 import SidebarTwo from '../components/SidebarTwo';
 import links from '../contexts/utils/links';
 
@@ -19,8 +19,13 @@ const DevxDaoMilestonesPage = function () {
         subtitle="For MPA career development dApp grant application."
         bannerImgLink={bannerImgLink}
       />
-      {/* <UnderBannerBody text="The following is terms and conditions for the Minority Programmers Association"/> */}
+      {/*
+          <UnderBannerBody text=
+          "The following is terms and conditions for the Minority Programmers Association"
+          />
+      */}
       <iframe
+        title="Presentation Docs Embed"
         src="https://docs.google.com/presentation/d/e/2PACX-1vTeEIq7kLhw_4hHdH35ZsF7rHqdwYZR7gM41TmtLQ8LoVtQGSFI2HPqlgM5nmZ_S2c7MF3nX_nZGFBk/embed?start=false&loop=false&delayms=15000"
         frameBorder="0"
         width="100%"
@@ -30,6 +35,7 @@ const DevxDaoMilestonesPage = function () {
         webkitallowfullscreen="true"
       />
       <iframe
+        title="Clickup Embed"
         className="clickup-embed"
         src="https://sharing.clickup.com/g/h/88bv0-126/1d761dd09d2f6e1"
         width="100%"
