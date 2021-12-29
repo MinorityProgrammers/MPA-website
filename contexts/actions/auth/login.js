@@ -30,7 +30,7 @@ export const login = (body) => (dispatch) => {
         type: LOGIN_SUCCESS,
         payload: res.data,
       });
-      Router.reload();
+      // Router.reload();
     })
     .catch((err) => {
       errorToast(

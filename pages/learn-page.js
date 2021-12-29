@@ -41,9 +41,10 @@ const LearnPage = function () {
         )
         .then((res) => {
           setEnrolledCourses(res.data.data);
+
         });
     }
-  }, []);
+  }, [typeof window !== 'undefined' ? window.localStorage.getItem('jwtToken') : null]);
 
   useEffect(() => {
     axios
