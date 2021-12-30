@@ -61,9 +61,31 @@ module.exports = {
       },
       gridTemplateRows: {
         main: '4.5em auto 3em',
+        10: 'repeat(10, minmax(0, 1fr))',
+        12: 'repeat(12, minmax(0, 1fr))',
+        14: 'repeat(14, minmax(0, 1fr))',
+      },
+      gridRow: {
+        'span-7': 'span 7 / span 7',
+        'span-8': 'span 8 / span 8',
+        'span-9': 'span 9 / span 9',
+        'span-10': 'span 10 / span 10',
       },
       gridTemplateColumns: {
         main: '20% auto 5%',
+        24: 'repeat(24, minmax(0, 1fr))',
+      },
+      gridColumn: {
+        'span-10': 'span 10 / span 10',
+        'span-11': 'span 11 / span 11',
+        'span-12': 'span 12 / span 12',
+        'span-13': 'span 13 / span 13',
+        'span-14': 'span 14 / span 14',
+        'span-15': 'span 15 / span 15',
+        'span-16': 'span 16 / span 16',
+        'span-18': 'span 18 / span 18',
+        'span-20': 'span 20 / span 20',
+        'span-24': 'span 24 / span 24',
       },
       width: {
         'line-1/6': '100%',

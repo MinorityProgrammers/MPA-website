@@ -15,53 +15,13 @@ const links = [
     dropdown: true,
     links: [
       {
-        name: 'My Wallet',
-        url: '/',
-        comingsoon: true,
-      },
-      {
-        name: 'My Courses',
-        url: '/learn-page',
+        name: 'Overview',
+        url: '/overview',
         comingsoon: false,
       },
       {
-        name: 'My Calendar',
-        url: '/',
-        comingsoon: false,
-      },
-      {
-        name: 'My Chapter',
-        url: '/',
-        comingsoon: false,
-      },
-      {
-        name: 'My Startups',
-        url: '/incubator',
-        comingsoon: false,
-      },
-      {
-        name: 'My Projects',
-        url: '/',
-        comingsoon: false,
-      },
-      {
-        name: 'My Events',
-        url: '/events',
-        comingsoon: false,
-      },
-      {
-        name: 'My Proposals',
-        url: '/',
-        comingsoon: false,
-      },
-      {
-        name: 'Messages',
-        url: '/',
-        comingsoon: false,
-      },
-      {
-        name: 'Notifications',
-        url: '/',
+        name: 'Wallet',
+        url: '/wallet',
         comingsoon: false,
       },
     ],

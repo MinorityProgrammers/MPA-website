@@ -1,11 +1,13 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-bitwise */
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { Provider } from 'next-auth/client';
 import { PayPalScriptProvider } from '@paypal/react-paypal-js';
+import { MoralisProvider } from 'react-moralis';
 import Loading from '../components/Loading';
 import * as ga from '../ga';
-import '../node_modules/react-modal-video/scss/modal-video.scss';
+import 'react-modal-video/scss/modal-video.scss';
 import 'tailwindcss/tailwind.css';
 import 'toastify-js/src/toastify.css';
 import 'antd/dist/antd.css';
@@ -50,9 +52,9 @@ import '../styles/Events/Event.css';
 import '../components/Faucet/faucet.css';
 import '../styles/ModeratorCss/ElectProposals.css';
 import '../styles/coreteam/coreteam.css';
-import { MoralisProvider } from 'react-moralis';
 import { MoralisDappProvider } from '../MoralisDappProvider/MoralisDappProvider';
 import '../styles/$-Minority-Earned/comingSoon.css';
+import '../styles/DashboardCSS/dashboard.css';
 
 const APP_ID = process.env.REACT_APP_MORALIS_APPLICATION_ID;
 const SERVER_URL = process.env.REACT_APP_MORALIS_SERVER_URL;
