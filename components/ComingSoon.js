@@ -1,12 +1,11 @@
 import React from 'react';
 
-
 const ComingSoon = function ({ closeClick }) {
   return (
     <div
       className="comingsoon-container"
     >
-     
+
       <div className="CSimg-container">
         {/* <div className="tw-text-right tw-mr-2">
           <p>Minority</p>
@@ -22,7 +21,7 @@ const ComingSoon = function ({ closeClick }) {
       <p className="CS-text">
         Coming soon...
       </p>
-      <div className="dropdown-login-button tw-mt-20 sm:tw-mt-10">
+      <div className="dropdown-login-button">
         <button
           className="btn tw-bg-blue-700 tw-w-44 tw-text-white hover:tw-text-white"
           onClick={closeClick}
@@ -30,7 +29,7 @@ const ComingSoon = function ({ closeClick }) {
           Close
         </button>
       </div>
-      
+
     </div>
   );
 };
