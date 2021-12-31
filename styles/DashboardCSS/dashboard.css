@@ -1,0 +1,532 @@
+@media only screen and (min-width: 768px) {
+  .outer-dashboard-container{
+    max-width: 1460px;
+    padding: 20px;
+    background: #E2DFE2;
+  }
+  .sidebar-item{
+    display: flex;
+    flex-direction: column;
+  }
+  .dashboard-overall-container{
+    max-width: 1540px;
+    width: 100%;
+  }
+  .dashboard-navbar-div{
+    width: 100%;
+  }
+  .dashboard-navbar{
+    width: 80px;
+  }
+  .navbar-dashboard-div{
+    height: 100%;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .sidebar-item{
+    display: flex;
+    flex-direction: row;
+  }
+  .show-sidebar-container{
+    background:rgba(0, 0, 0, 0.5);
+  }
+  .inner-dashboard-container{
+    height: 100vh;
+    width: 100vw;
+  }
+  .outer-dashboard-container{
+    width: 100%;
+  }
+  .dashboard-navbar{
+    height: 100vh;
+  }
+  .navbar-dashboard-div{
+    height: 100vh;
+    position: fixed;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+    z-index: 2;
+  }
+  .navbar-dashboard-div::-webkit-scrollbar {
+  display: none;
+}
+  .dashboard-overall-container{
+    padding: 0 !important;
+    width: 100% !important;
+  }
+  .navbar-dashboard-button{
+    background: #ff3587;
+    border-radius: 2px;
+    color: white;
+  }
+  .navbar-dashboard-button-selected{
+    background: white;
+    color: #ff3587;
+    border-radius: 2px;
+  }
+}
+.navbar-dashboard-div{
+   background: #151371;
+}
+
+.inner-dashboard-container{
+  background: #F2F3F5;
+  max-width: 1440px !important;
+  height: auto;
+}
+
+.dashboard-navbar-button{
+  padding: 20px 15px;
+  cursor: pointer;
+  color: white;
+}
+
+.dashboard-navbar-button:hover{
+  background: #6A0C8B;
+}
+
+.dashboard-navbar-button-selected{
+  background: white;
+  color: #6A0C8B;
+  padding: 20px 15px;
+  cursor: pointer;
+}
+
+.component-mobile-button{
+  background: #E0E0E0 ;
+  margin-bottom: 2%;
+  border-radius: 5px;
+  /* padding-left: 2%; */
+  line-height: 32px;
+}
+.hide-mobile-component{
+  display: none;
+}
+
+.component-mobile-button p{
+  font-size: 16px;
+  color: black;
+}
+.open-component-button{
+  font-size: 24px;
+  line-height: 32px;
+  color: #151371;
+}
+/* .open-component-button:active, .open-component-button:focus{
+  animation: rotate90 0.2s 1 forwards;
+  -webkit-animation:rotate90 0.2s 1 forwards;
+}
+.open-component-button:active:not(:focus){
+  transform: rotate(-90deg);
+} */
+@keyframes rotate90 {
+  25% {
+    transform: rotate(25deg);
+  }
+  50% {
+    transform: rotate(50deg);
+  }
+  75% {
+    transform: rotate(75deg);
+  }
+  100% {
+    transform: rotate(90deg);
+  }
+}
+
+
+.dashboard-card{
+  border-radius: 5px;
+  background: white;
+  padding: 12px 20px;
+}
+
+.missing-api-dashboard-card{
+  border: 0.5px solid yellow;
+  border-radius: 5px;
+  background: white;
+  padding: 12px 20px;
+}
+
+.marked-date{
+  color:white;
+  font-weight: 500;
+  background: #151371;
+}
+
+.overview-event-card{
+  background: #EFEFEF;
+  border-radius: 5px;
+  padding: 8px;
+  margin-bottom: 10px;
+  line-height: 15px;
+}
+.overview-event-card:hover{
+  background: #F3F3F3;
+}
+
+.overview-event-thumbnail {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+.overview-event-status{
+  line-height: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  color: white;
+  background: #151371;
+  border-radius: 2px;
+  max-width: 100px;
+}
+
+.more-details-button{
+  font-size: 32px;
+  line-height: 32px;
+  color: #151371;
+}
+
+.empty-events{
+  width: 70px;
+  height: 70px;
+}
+
+.empty-events-description{
+  margin-bottom: 5px;
+  text-align: center;
+  line-height: 16px;
+  vertical-align: top;
+  font-size: 14px;
+}
+
+/* OVERVIEW CAREER COMPONENT */
+
+.overview-career-button {
+  white-space: nowrap;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 10px;
+  cursor: pointer;
+}
+
+.selected{
+border: 1px solid #565656;
+background: #E0E0E0;
+}
+
+.overview-career-button p{
+  font-size: 12px ;
+  font-weight: 700;
+  color:#565656;
+  text-align: center;
+  margin: 0;
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+}
+
+.overview-career-button p:hover{
+  border-bottom: 1px solid black;
+}
+
+.overview-career-cards-list{
+  padding: 7px 0 ;
+
+}
+
+.overview-career-card {
+  padding: 5px 10px;
+  background: #EFEFEF;
+  border-radius: 10px;
+  width: 100%;
+  height: 30%;
+}
+
+.overview-career-card:hover{
+  background: #F3F3F3;
+}
+
+.overview-career-card-image img{
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+
+.overview-career-card-info{
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.overview-career-card-info p{
+  font-size: 12px;
+  margin: 0;
+  white-space: normal;
+}
+
+.overview-career-card-info-title{
+  font-size:14px;
+  font-weight: 700;
+  color: black;
+  margin: 0;
+}
+
+.overview-career-card-jobtype {
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.overview-career-card-jobtype p{
+  padding: 2px 7px;
+  font-size: 10px;
+  background: #565656;
+  color: white;
+  border-radius: 4px;
+  margin: 0;
+}
+
+/* COURSES */
+.overview-courses-list::-webkit-scrollbar {
+  display: none;
+}
+
+.overview-courses-list{
+  /* cursor: grab; */
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.overview-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.overview-barContainer {
+  flex: 1;
+  height: 8px;
+  background: #dfdfe7;
+  border-radius: 12px;
+}
+
+.overview-filler {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #151371 0%, #AD079F 53.03%, #D304AB 70.87%);;
+}
+
+.overview-course-card{
+  padding: 5px 10px;
+  background: #EFEFEF;
+  border-radius: 10px;
+  width: 100%;
+  margin-bottom: 2%;
+}
+
+.overview-courses-cards{
+  overflow-x: hidden; /* Hide horizontal scrollbar */
+  overflow-y: scroll;
+}
+
+/* .overview-courses-cards::-webkit-scrollbar {
+  display: none;
+} */
+
+.overview-course-card:hover{
+    background: #F3F3F3;
+}
+
+.overview-course-card-info p{
+  font-size: 12px;
+  line-height: 16px;
+}
+
+
+.overview-course-card-info-title{
+  font-size:14px;
+  font-weight: 700;
+  color: black;
+  margin: 0;
+}
+
+.overview-course-card-description{
+  font-size: 8px;
+  color: black;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* number of lines to show */
+  line-clamp: 2; 
+  -webkit-box-orient: vertical;
+}
+
+.overview-course-currency p{
+  line-height: 20px;
+  color: black;
+  margin: 0;
+  text-align: center;
+}
+
+
+/* Startups Component */
+
+.overview-startup-card{
+  padding: 5px 10px;
+  background: #EFEFEF;
+  border-radius: 10px;
+  width: 100%;
+  margin-bottom: 2%;
+}
+
+/* Proposals */
+
+.proposal-card-info{
+  font-size: 10px;
+  font-weight: 500;
+  color: black;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.overview-proposal-card{
+  background: #EFEFEF;
+  border-radius: 10px;
+  width: 100%;
+  margin-bottom: 2%;
+  padding: 10px 10px;
+}
+
+.overview-proposal-cards{
+  overflow-y: scroll;
+    -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.overview-proposal-cards::-webkit-scrollbar {
+  display: none;
+}
+
+.overview-proposal-button{
+  font-size: 8px;
+  font-weight: 700;
+  line-height: 10px;
+  text-align: center;
+}
+
+/* Chapter Component */
+
+.overview-chapter-card-description{
+  font-size: 10px;
+  color: black;
+  line-height: 16px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* number of lines to show */
+  line-clamp: 2; 
+  -webkit-box-orient: vertical;
+}
+
+/* Project component */
+
+.project-button {
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 11px;
+  letter-spacing: 0em;
+  text-align: left;
+  cursor: pointer;
+}
+
+.project-button-selected{
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 11px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: black;
+  cursor: pointer;
+  border-bottom: 1px solid #151371;
+}
+
+
+/* WALLET DASHBOARD */
+.total-balance-card-dashboard-wallet{
+  background: #474BFF;
+  border-radius: 20px;
+  width: 100%;
+  height: 200px;
+}
+
+.inner-total-balance-card-dashboard-wallet{
+  width: 90%;
+  height: 100%;
+  border-bottom-right-radius: 20px ;
+  border-top-right-radius: 20px;
+  background: white;
+  margin-left: 10%;
+  padding: 20px;
+}
+
+.wallet-dashboard-button{
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  /* margin: auto; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.trans-card{
+  background: #F8F9FD;
+  /* background: green; */
+  border-radius: 4px;
+  padding: 20px;
+  margin-bottom: 2%;
+  color: black;
+  cursor: pointer;
+}
+
+.trans-card:hover{
+  background: #d0d7f2;
+}
+
+.trans-card-text{
+  margin: 0;
+  line-height: 18px;
+}
+
+.trends-button{
+  background: #C4C4C480;
+  border: 0px solid transparent;
+  font-weight: 700;
+  color: black;
+}
+
+.trends-button:hover{
+  background: #f8f9fd;
+  border: 0px solid transparent;
+}
+
+.trends-button-selected{
+  background: #CFD0F6;
+  border: 0px solid transparent;
+  font-weight: 700;
+  color: #474BFF;
+}
+
+.wallet-transaction-form{
+  display: none;
+  position: absolute;
+  background: rgba(196, 196, 196, 0.3);
+  backdrop-filter: blur(2px);
+}
