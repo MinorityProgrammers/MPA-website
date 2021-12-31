@@ -16,7 +16,7 @@ const links = [
     links: [
       {
         name: 'Overview',
-        url: '/overview',
+        url: '/dashboard',
         comingsoon: false,
       },
       {

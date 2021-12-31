@@ -106,16 +106,17 @@ const Account = function () {
   };
 
   useEffect(async () => {
-    console.log(
-      chainId !== process.env.NEXT_PUBLIC_NETWORK_ID_MAINNET
-       && chainId !== process.env.NEXT_PUBLIC_NETWORK_ID_TESTNET
-    );
     if (chainId !== process.env.NEXT_PUBLIC_NETWORK_ID_MAINNET
        && chainId !== process.env.NEXT_PUBLIC_NETWORK_ID_TESTNET) {
       errorToast('Wrong Chain, please connect to polygon chain');
-      logout();
+
+      try {
+        logout();
+      } catch (e) {
+        console.log(e);
+      }
     }
-  });
+  }, [isAuthenticated, showModal]);
 
   const casperConnectWallet = async () => {
     try {
