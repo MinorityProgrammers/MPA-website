@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ConsultancyHero = function () {
+const LearnHero = function () {
   return (
     <section className="incubator-wrapper">
       <div className="mentorshipP-header">
@@ -8,12 +8,12 @@ const ConsultancyHero = function () {
           <div className="consultancyHero-container">
             <div>
               <h1 className="consultancyHero-title">
-                Consultancy
+                Learn
               </h1>
-              <p className="consultancyHero-txt">Get your idea turned into a complete web application ready for market with our transparent task-based escrow system that gives you as client, the control over how your product is being built.  </p>
+              <p className="consultancyHero-txt">Learn the hottest skills in blockchain, earn NFT credentials that recruiters from the top technology companies will see through our decentralized talent sourcing system.</p>
             </div>
             <div>
-              <img src = 'assets/images/consultancy/consultancyHero.png'/>
+              <img src = 'assets/images/learn-page/learnHero.png'/>
             </div>
           </div>
         </div>
@@ -22,4 +22,4 @@ const ConsultancyHero = function () {
   );
 };
 
-export default ConsultancyHero;
+export default LearnHero;

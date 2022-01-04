@@ -98,7 +98,6 @@
 }
 
 .mentorshipP-header {
-  background-image: url(/assets/images/mentorPHero.png);
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
@@ -106,6 +105,19 @@
 .mtb-mpa{
   margin-top: 100px;
   margin-bottom: 100px;
+}
+.consultancyHero-title{
+  font-size: 5vw;
+}
+.consultancyHero-txt{
+  color: #3E385D ;
+  font-size: 100%;
+  width: 30vw;
+  font-size: 24px;
+}
+.consultancyHero-container{
+  display: flex;
+  align-items: center;
 }
 
 
