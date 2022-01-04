@@ -1,13 +1,13 @@
+import React, { useState, useRef } from 'react';
 import { useRouter } from 'next/router';
-import React, { useRef, useState } from 'react';
-import ComingSoon from '../components/ComingSoon';
 import HomepageNav from '../components/homepage/HomepageNav';
 import Layout from '../components/Layout';
 import Footer from '../components/Footer';
 import SidebarTwo from '../components/sidebar/SidebarTwo';
 import { MentorshipRegister } from '../components/mentorship/MentorshipRegister';
-import { useDetectOutsideClick } from '../components/UseDetectOutsideClick';
 import links from '../contexts/utils/links';
+import ComingSoon from '../components/ComingSoon';
+import { useDetectOutsideClick } from '../components/UseDetectOutsideClick';
 
 function mentorship() {
   const [open, setOpen] = useState(false);

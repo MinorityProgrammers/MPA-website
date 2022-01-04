@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import Select from 'react-select';
+import React, { Component } from "react";
+import Select from "react-select";
 
 export class MentorshipQuestion4 extends Component {
   continue = (e) => {
@@ -15,57 +15,61 @@ export class MentorshipQuestion4 extends Component {
   render() {
     const { values, handleDropDown } = this.props;
     this.props.values;
-    let lookingTitle = '';
-    if (values.iAMa == 'Mentor') {
-      lookingTitle = 'Mentee';
+    let lookingTitle = "";
+    if (values.iAMa == "Mentor") {
+      lookingTitle = "Mentee";
     }
-    if (values.iAMa == 'Mentee') {
-      lookingTitle = 'Mentor';
+    if (values.iAMa == "Mentee") {
+      lookingTitle = "Mentor";
     }
 
     const educationOptions = [
-      { label: 'Associate’s', value: 'Associate’s' },
-      { label: 'Bachelor’s', value: 'Bachelor’s' },
-      { label: 'Master’s', value: 'Master’s' },
-      { label: 'PhD', value: 'PhD' },
+      { label: "High School Diploma", value: "High School Diploma" },
+      { label: "Associate's Degree", value: "Associate's Degree" },
+      { label: "Bachelor's Degree", value: "Bachelor's Degree" },
+      { label: "Master's Degree", value: "Master's Degree" },
+      { label: "MBA", value: "MBA" },
+      { label: "JD", value: "JD" },
+      { label: "MD", value: "MD" },
+      { label: "PhD", value: "PhD" },
     ];
     const skillOptions = [
-      { label: 'Beginner', value: 'Beginner' },
-      { label: 'Average', value: 'Average' },
-      { label: 'Skilled', value: 'Skilled' },
-      { label: 'Specialist', value: 'Specialist' },
+      { label: "Beginner", value: "Beginner" },
+      { label: "Average", value: "Average" },
+      { label: "Skilled", value: "Skilled" },
+      { label: "Specialist", value: "Specialist" },
     ];
     const availabilityOptions = [
-      { label: 'Less than 5 hours a week', value: 'Less than 5 hours a week' },
-      { label: '5-10 hours a week', value: '5-10 hours a week' },
-      { label: '10-20 hours a week', value: '10-20 hours a week' },
-      { label: '20-40 hours a week', value: '20-40 hours a week' },
-      { label: '40+ hours a week', value: '40+ hours a week' },
+      { label: "Less than 5 hours a week", value: "Less than 5 hours a week" },
+      { label: "5-10 hours a week", value: "5-10 hours a week" },
+      { label: "10-20 hours a week", value: "10-20 hours a week" },
+      { label: "20-40 hours a week", value: "20-40 hours a week" },
+      { label: "40+ hours a week", value: "40+ hours a week" },
     ];
     const genderOptions = [
-      { label: 'Female', value: 'Female' },
-      { label: 'Male ', value: 'Male ' },
+      { label: "Female", value: "Female" },
+      { label: "Male ", value: "Male " },
     ];
     const languageOptions = [
-      { label: 'Arabic', value: 'Arabic' },
-      { label: 'Chinese', value: 'Chinese' },
-      { label: 'English', value: 'English' },
-      { label: 'French', value: 'French' },
-      { label: 'Hindi', value: 'Hindi' },
-      { label: 'Portuguese', value: 'Portuguese' },
-      { label: 'Russian', value: 'Russian' },
-      { label: 'Spanish', value: 'Spanish' },
+      { label: "Arabic", value: "Arabic" },
+      { label: "Chinese", value: "Chinese" },
+      { label: "English", value: "English" },
+      { label: "French", value: "French" },
+      { label: "Hindi", value: "Hindi" },
+      { label: "Portuguese", value: "Portuguese" },
+      { label: "Russian", value: "Russian" },
+      { label: "Spanish", value: "Spanish" },
     ];
     const ethnicityOptions = [
-      { label: 'American Indian', value: 'American Indian' },
-      { label: 'Asian', value: 'Asian' },
+      { label: "American Indian", value: "American Indian" },
+      { label: "Asian", value: "Asian" },
       {
-        label: 'Black or African American',
-        value: 'Black or African American',
+        label: "Black or African American",
+        value: "Black or African American",
       },
-      { label: 'Hispanic or Latino', value: 'Hispanic or Latino' },
-      { label: 'Native Hawaiian', value: 'Native Hawaiian' },
-      { label: 'White', value: 'White' },
+      { label: "Hispanic or Latino", value: "Hispanic or Latino" },
+      { label: "Native Hawaiian", value: "Native Hawaiian" },
+      { label: "White", value: "White" },
     ];
     return (
       <div className="tw-relative tw-mt-20 tw-font-redhat tw-bg-white tw-h-660px tw-w-950px tw-px-24 tw-pt-16 tw-pb-36 tw-rounded-3xl tw-shadow-mentor md:tw-h-auto md:tw-px-10 md:tw-py-30 tw-select-none">
@@ -98,10 +102,10 @@ export class MentorshipQuestion4 extends Component {
                 options={educationOptions}
                 name="lookingForEdu"
                 value={values.lookingForEdu}
-                onChange={handleDropDown('lookingForEdu')}
+                onChange={handleDropDown("lookingForEdu")}
                 labelledBy="Select"
                 overrideStrings={{
-                  selectSomeItems: ' ',
+                  selectSomeItems: " ",
                 }}
               />
             </div>
@@ -118,10 +122,10 @@ export class MentorshipQuestion4 extends Component {
                 options={skillOptions}
                 name="lookingForExp"
                 value={values.lookingForExp}
-                onChange={handleDropDown('lookingForExp')}
+                onChange={handleDropDown("lookingForExp")}
                 labelledBy="Select"
                 overrideStrings={{
-                  selectSomeItems: ' ',
+                  selectSomeItems: " ",
                 }}
               />
             </div>
@@ -140,10 +144,10 @@ export class MentorshipQuestion4 extends Component {
                 options={availabilityOptions}
                 name="lookingForComm"
                 value={values.lookingForAvailability}
-                onChange={handleDropDown('lookingForAvailability')}
+                onChange={handleDropDown("lookingForAvailability")}
                 labelledBy="Select"
                 overrideStrings={{
-                  selectSomeItems: ' ',
+                  selectSomeItems: " ",
                 }}
               />
             </div>
@@ -160,10 +164,10 @@ export class MentorshipQuestion4 extends Component {
                 options={genderOptions}
                 name="lookingForGender"
                 value={values.lookingForGender}
-                onChange={handleDropDown('lookingForGender')}
+                onChange={handleDropDown("lookingForGender")}
                 labelledBy="Select"
                 overrideStrings={{
-                  selectSomeItems: ' ',
+                  selectSomeItems: " ",
                 }}
               />
             </div>
@@ -182,10 +186,10 @@ export class MentorshipQuestion4 extends Component {
                 options={languageOptions}
                 name="lookingForLang"
                 value={values.lookingForLang}
-                onChange={handleDropDown('lookingForLang')}
+                onChange={handleDropDown("lookingForLang")}
                 labelledBy="Select"
                 overrideStrings={{
-                  selectSomeItems: ' ',
+                  selectSomeItems: " ",
                 }}
               />
             </div>
@@ -202,10 +206,10 @@ export class MentorshipQuestion4 extends Component {
                 options={ethnicityOptions}
                 name="lookingForEthnicity"
                 value={values.lookingForEthnicity}
-                onChange={handleDropDown('lookingForEthnicity')}
+                onChange={handleDropDown("lookingForEthnicity")}
                 labelledBy="Select"
                 overrideStrings={{
-                  selectSomeItems: ' ',
+                  selectSomeItems: " ",
                 }}
               />
             </div>
@@ -229,7 +233,7 @@ export class MentorshipQuestion4 extends Component {
 
           <span className="tw-block tw-text-center">
             {values.step}
-            /6
+            /4
           </span>
           <div className="tw-w-full tw-bg-gradient-to-r tw-from-FFC700 tw-via-FF655B tw-to-FF00B8 tw-h-2 tw-rounded-2xl tw-relative">
             <div className="tw-bg-gray-300 tw-h-2 tw-rounded-2xl tw-absolute tw-right-0 tw-w-line-4/6" />
