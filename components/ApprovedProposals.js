@@ -1,6 +1,6 @@
 import { FaSortUp, FaSortDown } from 'react-icons/fa';
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import approvedproposal from './ProjectManager/approvedproposal.json';
 
 // Currently using JSON data for dynamic loading
@@ -52,14 +52,10 @@ const ApprovedProposals = function () {
             </h1>
             <div className="tw-flex sm:tw-grid  sm:tw-grid-cols-1">
               <h1 className="tw-text-red-700 md:tw-m-2 tw-m-2 sm:tw-text-sm sm:tw-font-bold">
-                Type:
-                {' '}
-                {proposal.type}
+                Type: {proposal.type}
               </h1>
               <h1 className="tw-text-red-700 md:tw-m-2 tw-m-2 sm:tw-text-sm sm:tw-font-bold">
-                Category:
-                {' '}
-                {proposal.category}
+                Category: {proposal.category}
               </h1>
             </div>
             <div className="tw-flex">
@@ -109,11 +105,9 @@ const ApprovedProposals = function () {
               >
                 <FaSortUp />
               </p>
-
               <p className="tw-text-xl tw-text-center sm:tw--m-2 md:tw--m-2 tw--m-2">
                 {proposal.voteCount}
               </p>
-
               <p
                 onClick={() => setVotes(votes - 1)}
                 className="tw-text-5xl sm:tw-text-5xl tw--m-6"

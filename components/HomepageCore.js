@@ -124,7 +124,7 @@ const CORE_PRINCIPLES = [
   },
 ];
 
-const HomepageCore = function () {
+const HomepageCore = () => {
   const [popupInfo, setPopupInfo] = useState({
     id: '',
     image: '',
@@ -198,9 +198,7 @@ const HomepageCore = function () {
         <div className="row">
           <Swiper {...params}>
             {CORE_PRINCIPLES.map(
-              ({
-                id, image, icon, color, title, url, description,
-              }) => (
+              ({ id, image, icon, color, title, url, description }) => (
                 <div
                   key={id}
                   className="col-lg-4 col-md-4 col-sm- col-xs-12 card__container-core"
@@ -213,15 +211,17 @@ const HomepageCore = function () {
                         className="card-img-top rounded-0"
                       />
                       <div
-                        onClick={() => handlePopup({
-                          id,
-                          image,
-                          icon,
-                          color,
-                          title,
-                          url,
-                          description,
-                        })}
+                        onClick={() =>
+                          handlePopup({
+                            id,
+                            image,
+                            icon,
+                            color,
+                            title,
+                            url,
+                            description,
+                          })
+                        }
                         className={`img-banner-core-container ${color}`}
                       >
                         <img
@@ -238,7 +238,7 @@ const HomepageCore = function () {
                     </div>
                   </div>
                 </div>
-              ),
+              )
             )}
           </Swiper>
         </div>
@@ -249,29 +249,25 @@ const HomepageCore = function () {
 
 export default HomepageCore;
 
-const Popup = function ({
-  image, icon, color, title, description, togglePopup,
-}) {
-  return (
-    <div className="popup_wrapper-core">
-      <div onClick={togglePopup} className="popup_btn_close-core">
-        <i className="fas fa-times" />
-      </div>
-      <div className="popup-core">
-        <div style={{ background: `url(${image})` }} className="popup_bg-core">
-          <div className="popup_content-core">
-            <div className="popup_heading-core">
-              <div className={`popup_image_container-core ${color}`}>
-                <img className="popup_img-core" src={icon} />
-              </div>
-              <div className={`popup_title_container-core ${color}`}>
-                <div className="popup_title-core">{title}</div>
-              </div>
+const Popup = ({ image, icon, color, title, description, togglePopup }) => (
+  <div className="popup_wrapper-core">
+    <div onClick={togglePopup} className="popup_btn_close-core">
+      <i className="fas fa-times" />
+    </div>
+    <div className="popup-core">
+      <div style={{ background: `url(${image})` }} className="popup_bg-core">
+        <div className="popup_content-core">
+          <div className="popup_heading-core">
+            <div className={`popup_image_container-core ${color}`}>
+              <img className="popup_img-core" src={icon} />
             </div>
-            <div className="popup_text-core">{description}</div>
+            <div className={`popup_title_container-core ${color}`}>
+              <div className="popup_title-core">{title}</div>
+            </div>
           </div>
+          <div className="popup_text-core">{description}</div>
         </div>
       </div>
     </div>
-  );
-};
+  </div>
+);

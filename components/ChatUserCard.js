@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const ChatUserCard = function ({ u, createChat, setPopUp }) {
+const ChatUserCard = ({ u, createChat, setPopUp }) => {
   const [addUserClicked, setAddUserClicked] = useState(false);
   const [createChatMessage, setCreateChatMessage] = useState('');
   return (
@@ -18,9 +18,7 @@ const ChatUserCard = function ({ u, createChat, setPopUp }) {
           className="conversation-img"
         />
         <span className="conversation-brief">
-          {u?.firstName}
-          {' '}
-          {u?.lastName}
+          {u?.firstName} {u?.lastName}
         </span>
       </div>
       {addUserClicked && (
@@ -35,12 +33,7 @@ const ChatUserCard = function ({ u, createChat, setPopUp }) {
           }}
         >
           <span style={{ color: 'black' }}>
-            Creating a chat with
-            {' '}
-            {u?.firstName}
-            {' '}
-            {u?.lastName}
-            :
+            Creating a chat with {u?.firstName} {u?.lastName}:
           </span>
           <textarea
             className="chat-input"
@@ -75,4 +68,5 @@ const ChatUserCard = function ({ u, createChat, setPopUp }) {
     </>
   );
 };
+
 export default ChatUserCard;

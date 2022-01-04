@@ -1,6 +1,6 @@
 import React from 'react';
 
-const LegalBanner = function (props) {
+const LegalBanner = (props) => {
   const { title } = props;
   const { subtitle } = props;
   const { bannerImgLink } = props;
@@ -20,4 +20,5 @@ const LegalBanner = function (props) {
     </section>
   );
 };
+
 export default LegalBanner;

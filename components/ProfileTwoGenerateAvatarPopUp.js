@@ -1,13 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
 import ReactDOM from 'react-dom';
 import FileSaver from 'file-saver';
-import {
-  AiFillCloseCircle,
-  AiOutlineArrowLeft,
-  AiOutlineArrowRight,
-} from 'react-icons/ai';
+import { AiFillCloseCircle } from 'react-icons/ai';
 import Avatar from 'avataaars';
-import { CirclePicker } from 'react-color';
 import { useRouter } from 'next/router';
 import CreateProfileForm from './CreateProfile/CreateProfileForm';
 import CreateProfileInput from './CreateProfile/CreateProfileInput';
@@ -26,24 +21,25 @@ import {
 } from '../contexts/utils/avatarFields';
 import { GlobalContext } from '../contexts/provider';
 import { updateProfile } from '../contexts/actions/profile/updateProfile';
-import { all } from '../contexts/utils/profileInputFields1';
 
-const ProfileTwoGenerateAvatarPopUp = function ({
+const ProfileTwoGenerateAvatarPopUp = ({
   loggedInUserData,
   userID,
   setGenerateAvatarPopUp,
-}) {
+}) => {
   const router = useRouter();
 
   const settingsSubPage = router.pathname.substring(
-    router.pathname.lastIndexOf('/') + 1,
+    router.pathname.lastIndexOf('/') + 1
   );
 
   const [state, setState] = useState({
     avatarOptions: {
       topType: JSON.parse(loggedInUserData.avatarOptions[0]).topType,
-      accessoriesType: JSON.parse(loggedInUserData.avatarOptions[0]).accessoriesType,
-      facialHairType: JSON.parse(loggedInUserData.avatarOptions[0]).facialHairType,
+      accessoriesType: JSON.parse(loggedInUserData.avatarOptions[0])
+        .accessoriesType,
+      facialHairType: JSON.parse(loggedInUserData.avatarOptions[0])
+        .facialHairType,
       clotheType: JSON.parse(loggedInUserData.avatarOptions[0]).clotheType,
       clotheColor: JSON.parse(loggedInUserData.avatarOptions[0]).clotheColor,
       eyeType: JSON.parse(loggedInUserData.avatarOptions[0]).eyeType,
@@ -51,7 +47,8 @@ const ProfileTwoGenerateAvatarPopUp = function ({
       mouthType: JSON.parse(loggedInUserData.avatarOptions[0]).mouthType,
       skinColor: JSON.parse(loggedInUserData.avatarOptions[0]).skinColor,
       hairColor: JSON.parse(loggedInUserData.avatarOptions[0]).hairColor,
-      backgroundColor: JSON.parse(loggedInUserData.avatarOptions[0]).backgroundColor,
+      backgroundColor: JSON.parse(loggedInUserData.avatarOptions[0])
+        .backgroundColor,
     },
     profilePicture: loggedInUserData.profilePicture,
   });
@@ -133,13 +130,10 @@ const ProfileTwoGenerateAvatarPopUp = function ({
   const {
     profileDispatch,
     profileState: {
-      profile: {
-        profileLoading, profileError, profileData, profileIsUpdated,
-      },
+      profile: { profileLoading, profileError, profileData, profileIsUpdated },
     },
   } = useContext(GlobalContext);
 
-  // console.log(state)
   const handleSubmit = () => {
     const formData = new FormData();
     formData.append('avatarOptions', JSON.stringify(state.avatarOptions));
@@ -159,14 +153,9 @@ const ProfileTwoGenerateAvatarPopUp = function ({
     }));
     handleSubmit();
     setGenerateAvatarPopUp(false);
-    // console.log(settingsSubPage, "submit and redirect");
     router.push(`/user/${loggedInUserData.userName}`);
     settingsSubPage === '[username]' && router.reload();
   };
-
-  // console.log(JSON.parse(loggedInUserData.avatarOptions[0]))
-  // console.log({loggedInUserData})
-  // console.log({state})
   return (
     <div className="cp-body">
       <AiFillCloseCircle
@@ -187,7 +176,9 @@ const ProfileTwoGenerateAvatarPopUp = function ({
             options={backgroundColorField.options}
             required={backgroundColorField.required}
             value={state.avatarOptions[backgroundColorField.name]}
-            setValue={(value) => handleColorChange(backgroundColorField.name, value)}
+            setValue={(value) =>
+              handleColorChange(backgroundColorField.name, value)
+            }
           />
           <div className="avatarReplace">
             <Avatar
