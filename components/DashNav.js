@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Notifications from './Notifications';
 import UserDropDown from './UserDropDown';
 
-const Navbar = function ({ Open = false, setOpen, user }) {
+const Navbar = ({ Open = false, setOpen, user }) => {
   const [notice, setNotice] = useState(false);
   const [Log, setLog] = useState(false);
 
@@ -15,9 +15,7 @@ const Navbar = function ({ Open = false, setOpen, user }) {
   }, []);
 
   return (
-    <div
-      className="tw-w-full tw-col-start-1 tw-bg-white lg:tw-col-start-3 tw-col-end-13  tw-row-start-1 tw-row-end-2   tw-shadow-2xl tw-border-b tw-border-gray-200 "
-    >
+    <div className="tw-w-full tw-col-start-1 tw-bg-white lg:tw-col-start-3 tw-col-end-13  tw-row-start-1 tw-row-end-2   tw-shadow-2xl tw-border-b tw-border-gray-200 ">
       <ToastContainer />
       <div className="tw-flex tw-justify-between tw-items-center  ">
         <div
@@ -51,9 +49,7 @@ const Navbar = function ({ Open = false, setOpen, user }) {
             </span>
 
             <div className={`${notice ? 'tw-block' : 'tw-hidden'}`}>
-              <div
-                className=" tw-absolute tw-top-10  tw-right-3 tw-shadow-md  tw-rounded-md tw-bg-white  tw-z-20 tw-w-64 tw-md:w-80"
-              >
+              <div className=" tw-absolute tw-top-10  tw-right-3 tw-shadow-md  tw-rounded-md tw-bg-white  tw-z-20 tw-w-64 tw-md:w-80">
                 <div className="tw-header tw-flex tw-text-sm tw-justify-between tw-border-b tw-border-gray-200 tw-p-2 ">
                   <span className=" tw-font-bold">Notification</span>
                   <a

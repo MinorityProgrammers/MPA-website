@@ -3,7 +3,7 @@ import Layout from '../components/Layout';
 import HomepageNav from '../components/homepage/HomepageNav';
 import Chats from '../components/Chats';
 
-const Chat = function () {
+const Chat = () => {
   const [data, setData] = useState([]);
 
   return (

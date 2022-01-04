@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Select from 'react-select';
 
 const options = [
@@ -8,7 +8,7 @@ const options = [
 ];
 
 let loggedInUser;
-const CreateTask = function () {
+const CreateTask = () => {
   const [description, setDescription] = useState('');
   const [open, setOpen] = useState(false);
   const [openDefinition, setOpenDefinition] = useState(false);
@@ -18,7 +18,6 @@ const CreateTask = function () {
 
   const handleChangeDescripton = (e) => {
     setDescription(e.target.value);
-    console.log(e.target.value);
   };
   const handleSubtask = () => {
     setOpenSubTask(!openSubTask);
@@ -94,7 +93,6 @@ const CreateTask = function () {
           <div className="tw-flex tw-justify-evenly">
             <p className="tw-m-3 tw-text-black">In</p>
             <div className="tw-flex-col tw-justify-center">
-              {/* <SearchIcon className="tw-ml-3" /> */}
               <Select
                 placeholder="Search List"
                 onChange={(e) => handleSelect(e)}
@@ -118,15 +116,11 @@ const CreateTask = function () {
                 <div className="tw-flex-col tw-m-1 tw--mb-32 tw-bg-blue-900 tw-absolute tw-z-20">
                   <img
                     onClick={handleExpand}
-                    src={
-                      loggedInUser || '/assets/images/project/people.png'
-                    }
+                    src={loggedInUser || '/assets/images/project/people.png'}
                     className="tw-h-8 tw-w-8 tw-place-self-center tw-cursor-pointer tw--mt-18 tw-ml-2 tw-mb-1"
                   />
                   <img
-                    src={
-                      loggedInUser || '/assets/images/project/people.png'
-                    }
+                    src={loggedInUser || '/assets/images/project/people.png'}
                     className="tw-h-8 tw-w-8 tw-place-self-center tw--mt-3 tw-ml-2 tw-mb-1"
                   />
                 </div>

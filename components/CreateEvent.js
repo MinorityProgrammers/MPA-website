@@ -8,7 +8,7 @@ import Card from './login-signup/card/index';
 import { successToast, errorToast } from '../contexts/utils/toasts';
 import 'react-datepicker/dist/react-datepicker.css';
 
-const CreateEvent = function (props) {
+const CreateEvent = (props) => {
   const { userData, token, createEventData } = props;
   const [loading, setLoading] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
@@ -36,7 +36,7 @@ const CreateEvent = function (props) {
     const blur = document.getElementById('delete_image-container');
     const deleteButton = document.getElementById('delete_upload');
     const blurQuestion = document.getElementById(
-      'delete_image-container-question',
+      'delete_image-container-question'
     );
     blur.style.display = 'flex';
     blur.style.backgroundImage = `url(data:${props.data.EventPicture})`;
@@ -46,7 +46,7 @@ const CreateEvent = function (props) {
   const removePictureDeny = () => {
     const blur = document.getElementById('delete_image-container');
     const blurQuestion = document.getElementById(
-      'delete_image-container-question',
+      'delete_image-container-question'
     );
     const deleteButton = document.getElementById('delete_upload');
     blur.style.display = 'none';
@@ -57,7 +57,7 @@ const CreateEvent = function (props) {
     const blur = document.getElementById('delete_image-container');
     const uploadButton = document.getElementById('img_upload');
     const blurQuestion = document.getElementById(
-      'delete_image-container-question',
+      'delete_image-container-question'
     );
     blurQuestion.style.display = 'none';
     blur.style.display = 'none';
@@ -80,13 +80,13 @@ const CreateEvent = function (props) {
 
   const handlePreview = () => {
     if (
-      props.data.EventPicture.length == 0
-      || props.data.eventName.length == 0
-      || props.data.EventDescription.length == 0
-      || props.data.eventLink.length == 0
-      || props.data.time.length == 0
-      || props.data.catName.length == 0
-      || props.data.Virtual.length == 0
+      props.data.EventPicture.length == 0 ||
+      props.data.eventName.length == 0 ||
+      props.data.EventDescription.length == 0 ||
+      props.data.eventLink.length == 0 ||
+      props.data.time.length == 0 ||
+      props.data.catName.length == 0 ||
+      props.data.Virtual.length == 0
     ) {
       if (props.data.isError == false) {
         props.handleError('isError');
@@ -114,17 +114,13 @@ const CreateEvent = function (props) {
     if (props.data.step == 3) {
       setLoading(true);
       axios
-        .post(
-          `${process.env.BASE_URI}/event`,
-          formData,
-          {
-            headers: {
-              'Access-Control-Allow-Origin': '*',
-              Authorization: `Bearer ${token}`,
-              'content-type': 'multipart/form-data',
-            },
+        .post(`${process.env.BASE_URI}/event`, formData, {
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            Authorization: `Bearer ${token}`,
+            'content-type': 'multipart/form-data',
           },
-        )
+        })
         .then((res) => {
           setLoading(false);
           successToast('Event created!');
@@ -265,9 +261,7 @@ const CreateEvent = function (props) {
                       removePicture();
                     }}
                   >
-                    <i className="far fa-trash-alt" />
-                    {' '}
-                    Yes, delete
+                    <i className="far fa-trash-alt" /> Yes, delete
                   </button>
                   <button
                     onClick={() => {
@@ -294,9 +288,7 @@ const CreateEvent = function (props) {
                   removePictureConfrimation();
                 }}
               >
-                <i className="far fa-trash-alt" />
-                {' '}
-                Delete Image
+                <i className="far fa-trash-alt" /> Delete Image
               </button>
             </div>
             <div id="container_right" className="create_event-container-right">
@@ -405,4 +397,5 @@ const CreateEvent = function (props) {
     </>
   );
 };
+
 export default CreateEvent;

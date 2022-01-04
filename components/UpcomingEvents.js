@@ -1,9 +1,9 @@
 import React from 'react';
 import Swiper from 'react-id-swiper';
 import 'swiper/css/swiper.css';
-import EventCard from '../components/EventCard';
+import EventCard from './Events/EventCard';
 
-const UpcomingEvents = function () {
+const UpcomingEvents = () => {
   const params = {
     slidesPerView: 3,
     loop: true,

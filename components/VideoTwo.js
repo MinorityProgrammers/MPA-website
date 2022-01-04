@@ -27,7 +27,6 @@ export default class VideoTwo extends Component {
               <div className="video-two__content">
                 <h2 className="video-two__title">
                   Minority Programmers
-                  {' '}
                   <br />
                   mission is to bring diversity through STEM education and
                   innovation.

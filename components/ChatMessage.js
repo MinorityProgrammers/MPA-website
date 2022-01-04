@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React from 'react';
 import { timeago } from '../helpers/timeago';
 
 // commented out copy and delete for now (still has inline css from developing/testing)
@@ -6,9 +6,7 @@ import { timeago } from '../helpers/timeago';
 //   console.log('copied');
 // }
 
-const ChatMessage = function ({
-  user, message, own, deleteMessage,
-}) {
+const ChatMessage = ({ user, message, own, deleteMessage }) => {
   // const [isHovering, setIsHovering] = useState(false);
   return own ? (
     // <div className="own-message" onMouseOver={()=>setIsHovering(true)} onMouseOut={()=> setIsHovering(false)}>

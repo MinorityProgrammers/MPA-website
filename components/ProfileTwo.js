@@ -1,6 +1,11 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import {
-  FaFacebook, FaLinkedin, FaGithub, FaGoogle, FaFigma, FaDribbble,
+  FaFacebook,
+  FaLinkedin,
+  FaGithub,
+  FaGoogle,
+  FaFigma,
+  FaDribbble,
 } from 'react-icons/fa';
 import axios from 'axios';
 import { HiOutlinePencil } from 'react-icons/hi';
@@ -100,27 +105,21 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
     const userToken = JSON.parse(localStorage.getItem('userInfo'));
     if (userToken !== null) {
       axios
-        .get(
-          `${process.env.BASE_URI}/learn/userCourses`,
-          {
-            headers: {
-              Authorization: `Bearer ${userToken.token}`,
-            },
+        .get(`${process.env.BASE_URI}/learn/userCourses`, {
+          headers: {
+            Authorization: `Bearer ${userToken.token}`,
           },
-        )
+        })
         .then((res) => {
           setEnrolledCourses(res.data.data);
         });
     }
     axios
-      .get(
-        `${process.env.BASE_URI}/reputation/userReputations`,
-        {
-          headers: {
-            Authorization: `Bearer ${userToken.token}`,
-          },
+      .get(`${process.env.BASE_URI}/reputation/userReputations`, {
+        headers: {
+          Authorization: `Bearer ${userToken.token}`,
         },
-      )
+      })
       .then((res) => {
         setReputation(res.data.data);
       });
@@ -176,8 +175,8 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
 
     const socials = [];
 
-    userData
-      && allSocials.map((social) => {
+    userData &&
+      allSocials.map((social) => {
         userData[social.name] && socials.push(social);
       });
 
@@ -212,10 +211,10 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
   };
   const completeExpAdd = () => {
     if (
-      uploadedExpImg
-      && expJobTitleInput
-      && expDateInput
-      && expLocationInput
+      uploadedExpImg &&
+      expJobTitleInput &&
+      expDateInput &&
+      expLocationInput
     ) {
       const newCard = {
         cardId: Math.floor(Math.random() * 100000),
@@ -232,7 +231,7 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
       const el = document.getElementById('add-exp-fields');
       el.insertAdjacentHTML(
         'afterend',
-        '<div class="exp-data-warn tw-ml-4 tw-mb-3 tw-self-end tw-text-red-500 tw-font-bold">Please add an image and fill in all fields</div>',
+        '<div class="exp-data-warn tw-ml-4 tw-mb-3 tw-self-end tw-text-red-500 tw-font-bold">Please add an image and fill in all fields</div>'
       );
     }
   };
@@ -246,7 +245,9 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
   };
   const removeExp = (expId) => {
     experienceCards.length === 1 && setExpEditMode(false);
-    setExperienceCards((prevCards) => prevCards.filter((card) => card.cardId !== expId));
+    setExperienceCards((prevCards) =>
+      prevCards.filter((card) => card.cardId !== expId)
+    );
   };
 
   const handleEduImgUpload = (file) => {
@@ -269,7 +270,7 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
       const el = document.getElementById('add-edu-fields');
       el.insertAdjacentHTML(
         'afterend',
-        '<div class="edu-data-warn tw-ml-4 tw-mb-3 tw-self-end tw-text-red-500 tw-font-bold">Please add an image and fill in all fields</div>',
+        '<div class="edu-data-warn tw-ml-4 tw-mb-3 tw-self-end tw-text-red-500 tw-font-bold">Please add an image and fill in all fields</div>'
       );
     }
   };
@@ -283,10 +284,10 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
   };
   const removeEdu = (eduId) => {
     educationCards.length === 1 && setEduEditMode(false);
-    setEducationCards((prevCards) => prevCards.filter((card) => card.cardId !== eduId));
+    setEducationCards((prevCards) =>
+      prevCards.filter((card) => card.cardId !== eduId)
+    );
   };
-
-  // console.log(userData);
 
   const onMint = async () => {
     const file = new Moralis.File('avatar.png', {
@@ -317,13 +318,18 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
           const signer = provider.getSigner();
 
           let contract = new ethers.Contract(nftaddress, NFT.abi, signer);
-          let transaction = await contract.mintNFT(nftaddress, mintedMetadata.ipfs());
+          let transaction = await contract.mintNFT(
+            nftaddress,
+            mintedMetadata.ipfs()
+          );
           const tx = await transaction.wait();
           const event = tx.events[0];
           const value = event.args[2];
           const tokenId = value.toNumber();
           contract = new ethers.Contract(nftaddress, NFT.abi, signer);
-          transaction = await contract.giveOwnership(nftaddress, tokenId, { value: 10 });
+          transaction = await contract.giveOwnership(nftaddress, tokenId, {
+            value: 10,
+          });
           await transaction.wait();
           setDoneMinting(true);
           setIsMinting(false);
@@ -423,18 +429,6 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                       </h4>
                     )}
                     {isLoggedIn && ownsProfile && (
-                      // <h5
-                      //   className="tw-mt-2 tw-font-medium"
-                      //   onClick={() => downloadProfilePDF()}
-                      // >
-                      //   <div>
-                      //     <img
-                      //       src="/assets/images/profile/download-icon.svg"
-                      //       alt="download icon"
-                      //     />
-                      //     <span>Download Profile as PDF</span>
-                      //   </div>
-                      // </h5>
                       <Button
                         onClick={() => {
                           onMint();
@@ -468,7 +462,9 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                             <div>
                               <span
                                 className="note"
-                                onClick={() => router.push('/settings/profile/media')}
+                                onClick={() =>
+                                  router.push('/settings/profile/media')
+                                }
                               >
                                 Please Add Social Links...
                               </span>
@@ -477,7 +473,9 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                           <div className="pencil tw-cursor-pointer">
                             <HiOutlinePencil
                               style={{ fontSize: '1.5rem' }}
-                              onClick={() => router.push('/settings/profile/media')}
+                              onClick={() =>
+                                router.push('/settings/profile/media')
+                              }
                             />
                           </div>
                         </div>
@@ -507,38 +505,41 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                     <p className="tw-font-bold">Passions & Skills</p>
 
                     <p className="all-skills tw-flex tw-justify-start  tw-flex-wrap ">
-                      {userData?.passions?.length
-                      && !(
-                        userData.passions.length === 1
-                        && userData.passions[0] === ''
+                      {userData?.passions?.length &&
+                      !(
+                        userData.passions.length === 1 &&
+                        userData.passions[0] === ''
                       ) ? (
-                          userData.passions.map(
-                            (passion, index) => passion && (
+                        userData.passions.map(
+                          (passion, index) =>
+                            passion && (
                               <span
                                 key={index}
                                 className="tw-inline-block tw-px-2 tw-py-1 tw-mr-1 tw-text-xs tw-text-gray-500 tw-border-gray-500 tw-mb-1 tw-rounded-md tw-border"
                               >
                                 {passion}
                               </span>
-                            ),
-                          )
-                        ) : (
-                          <span
-                            className="note"
-                            onClick={() => isLoggedIn
-                            && ownsProfile
-                            && router.push('/settings/profile/background')}
-                            style={
+                            )
+                        )
+                      ) : (
+                        <span
+                          className="note"
+                          onClick={() =>
+                            isLoggedIn &&
+                            ownsProfile &&
+                            router.push('/settings/profile/background')
+                          }
+                          style={
                             isLoggedIn && ownsProfile
                               ? { cursor: 'pointer' }
                               : { cursor: 'default' }
                           }
-                          >
-                            {isLoggedIn && ownsProfile
-                              ? 'Please Add Passions...'
-                              : 'N/A'}
-                          </span>
-                        )}
+                        >
+                          {isLoggedIn && ownsProfile
+                            ? 'Please Add Passions...'
+                            : 'N/A'}
+                        </span>
+                      )}
                     </p>
                   </div>
 
@@ -553,7 +554,11 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                             className="tw-inline-block tw-p-1 tw-mr-1 tw-cursor-pointer"
                           >
                             <Tooltip placement="top" title={badge.title}>
-                              <img className="tw-w-10 tw-h-10" src={reputationBadge[badge.type]} alt={badge.title} />
+                              <img
+                                className="tw-w-10 tw-h-10"
+                                src={reputationBadge[badge.type]}
+                                alt={badge.title}
+                              />
                             </Tooltip>
                           </div>
                         ))
@@ -629,8 +634,8 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
           </div>
         </section>
 
-        {getProgressPercentage(userData)
-          && getProgressPercentage(userData) < 100 && (
+        {getProgressPercentage(userData) &&
+          getProgressPercentage(userData) < 100 && (
             <section className="tw-mb-8 tw-container ">
               <div className="profile-strength tw-p-6  tw-rounded-md tw-grid tw-grid-flow-row tw-auto-rows-max">
                 <div
@@ -641,18 +646,16 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                   }tw-group tw-block tw-rounded-lg tw-p-4 tw-border-gray-300 tw-border tw-bg-white`}
                 >
                   <h2 className="tw-relative tw-text-xl tw-font-bold tw-mb-3 tw-text-black">
-                    Profile Strength:
-                    {' '}
+                    Profile Strength:{' '}
                     <span className="tw-font-medium tw-mr-4">
                       {`${
                         getProgressPercentage(userData) <= 33
                           ? 'Low'
                           : getProgressPercentage(userData) <= 66
-                            ? 'Intermediate'
-                            : 'High'
+                          ? 'Intermediate'
+                          : 'High'
                       }`}
-                    </span>
-                    {' '}
+                    </span>{' '}
                     {`${getProgressPercentage(userData)}%`}
                     <span
                       className="ps-arrow tw-absolute tw-top-0 tw-right-0 tw-text-xs tw-cursor-pointer"
@@ -699,9 +702,7 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                             className="il-step tw-cursor-pointer tw-inline-block tw-px-2 tw-py-1 tw-rounded-md tw-m-2"
                             onClick={() => router.push(missingData.route)}
                           >
-                            Add a
-                            {' '}
-                            {`${missingData.name}`}
+                            Add a {`${missingData.name}`}
                           </div>
                         ))}
                     </div>
@@ -709,7 +710,7 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                 )}
               </div>
             </section>
-        )}
+          )}
 
         <section className="tw-mb-8 tw-container ">
           <div className="pp-card-area pp-projects tw-p-6  tw-rounded-md tw-grid tw-grid-flow-row tw-auto-rows-max">
@@ -802,8 +803,8 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                       style={
                         enrolledCourses.length < 3
                           ? {
-                            width: '33%',
-                          }
+                              width: '33%',
+                            }
                           : {}
                       }
                     >
@@ -868,8 +869,8 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                   </div>
                 )}
 
-                {!!experienceCards?.length
-                  && experienceCards.map((card, idx) => (
+                {!!experienceCards?.length &&
+                  experienceCards.map((card, idx) => (
                     <div
                       className={`add-exp-edu tw-relative tw-flex tw-items-center tw-mb-4 ${
                         !(idx === experienceCards?.length - 1)
@@ -908,9 +909,9 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                     </div>
                   ))}
 
-                {isLoggedIn
-                  && ownsProfile
-                  && (!experienceCards?.length || !expEditMode) && (
+                {isLoggedIn &&
+                  ownsProfile &&
+                  (!experienceCards?.length || !expEditMode) && (
                     <div
                       id="add-exp-fields"
                       className="add-exp-edu tw-flex tw-items-center"
@@ -925,12 +926,14 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                               type="file"
                               name="image"
                               id="upload-exp-image"
-                              onChange={(e) => handleExpImgUpload(e.target.files[0])}
+                              onChange={(e) =>
+                                handleExpImgUpload(e.target.files[0])
+                              }
                             />
                             <img
                               src={
-                                uploadedExpImg
-                                || '/assets/images/profile/add-image.svg'
+                                uploadedExpImg ||
+                                '/assets/images/profile/add-image.svg'
                               }
                               alt="add image"
                               className="tw-w-full"
@@ -952,7 +955,9 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                             placeholder="Job Title"
                             className="tw-block tw-rounded tw-px-2 tw-font-bold tw-w-full"
                             value={expJobTitleInput}
-                            onChange={(e) => setExpJobTitleInput(e.target.value)}
+                            onChange={(e) =>
+                              setExpJobTitleInput(e.target.value)
+                            }
                           />
                           <input
                             type="text"
@@ -966,7 +971,9 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                             placeholder="Location"
                             className="tw-block tw-rounded tw-px-2 tw-w-full"
                             value={expLocationInput}
-                            onChange={(e) => setExpLocationInput(e.target.value)}
+                            onChange={(e) =>
+                              setExpLocationInput(e.target.value)
+                            }
                           />
                         </div>
                       ) : (
@@ -994,7 +1001,7 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                         </>
                       )}
                     </div>
-                )}
+                  )}
               </div>
             </div>
           </div>
@@ -1026,8 +1033,8 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                   </div>
                 )}
 
-                {!!educationCards?.length
-                  && educationCards.map((card, idx) => (
+                {!!educationCards?.length &&
+                  educationCards.map((card, idx) => (
                     <div
                       className={`add-exp-edu tw-relative tw-flex tw-items-center tw-mb-4 ${
                         !(idx === educationCards?.length - 1)
@@ -1066,9 +1073,9 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                     </div>
                   ))}
 
-                {isLoggedIn
-                  && ownsProfile
-                  && (!educationCards?.length || !eduEditMode) && (
+                {isLoggedIn &&
+                  ownsProfile &&
+                  (!educationCards?.length || !eduEditMode) && (
                     <div
                       id="add-edu-fields"
                       className="add-exp-edu tw-flex tw-items-center"
@@ -1083,12 +1090,14 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                               type="file"
                               name="image"
                               id="upload-edu-image"
-                              onChange={(e) => handleEduImgUpload(e.target.files[0])}
+                              onChange={(e) =>
+                                handleEduImgUpload(e.target.files[0])
+                              }
                             />
                             <img
                               src={
-                                uploadedEduImg
-                                || '/assets/images/profile/add-image.svg'
+                                uploadedEduImg ||
+                                '/assets/images/profile/add-image.svg'
                               }
                               alt="add image"
                               className="tw-w-full"
@@ -1124,7 +1133,9 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                             placeholder="Degree Awarded"
                             className="tw-block tw-rounded tw-px-2 tw-w-full"
                             value={eduLocationInput}
-                            onChange={(e) => setEduLocationInput(e.target.value)}
+                            onChange={(e) =>
+                              setEduLocationInput(e.target.value)
+                            }
                           />
                         </div>
                       ) : (
@@ -1152,35 +1163,11 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                         </>
                       )}
                     </div>
-                )}
+                  )}
               </div>
             </div>
           </div>
         </section>
-
-        {/* <section className="tw-px-4 sm:tw-px-6 lg:tw-px-4 xl:tw-px-6 tw-pt-4 tw-pb-4 sm:tw-pb-6 lg:tw-pb-4 xl:tw-pb-6 tw-space-y-4">
-          <div>
-            <ul className="category">
-              {listItems.map((item) => (
-                <li x-for="item in items " key={item.id}>
-                  <a
-                    href="#"
-                    className="hover:tw-bg-light-blue-500 hover:tw-border-transparent hover:tw-shadow-lg tw-group tw-block tw-rounded-lg tw-p-4 tw-border-gray-300 tw-border tw-bg-white"
-                  >
-                    <div className="">
-                      <p className="tw-text-left group-hover:tw-text-pink tw-leading-6 tw-font-medium tw-text-pink-600">
-                        {item.title}
-                      </p>
-                      <p className="tw-text-left tw-mt-2 group-hover:tw-text-light-blue-200 c-details">
-                        {item.category}
-                      </p>
-                    </div>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section> */}
       </div>
     </div>
   );
