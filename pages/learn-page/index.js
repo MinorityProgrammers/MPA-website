@@ -7,6 +7,7 @@ import CourseCategories from '../../components/learn/CourseCategories';
 import SidebarTwo from '../../components/sidebar/SidebarTwo';
 import links from '../../contexts/utils/links';
 import ComingSoon from '../../components/ComingSoon';
+import LearnHero from '../../components/learn/learnHero'
 import { useDetectOutsideClick } from '../../components/UseDetectOutsideClick';
 
 const LearnPage = function () {
@@ -66,6 +67,7 @@ const LearnPage = function () {
       />
       {hide === false && <ComingSoon closeClick={handleClick} />}
       <div className="tw-pt-20">
+        <LearnHero/>
         <CourseCategories
           user={data}
           usersCourses={usersCourses}
