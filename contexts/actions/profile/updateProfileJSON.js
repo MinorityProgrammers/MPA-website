@@ -30,7 +30,7 @@ export const updateProfileJSON = (id, body, token) => (dispatch) => {
       localStorage.setItem(
         "userInfo",
         JSON.stringify({
-          uesr: res.data.data,
+          user: res.data.data,
           token: token,
         })
       );
