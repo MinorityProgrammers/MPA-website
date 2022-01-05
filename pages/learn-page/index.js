@@ -66,7 +66,7 @@ const LearnPage = function () {
         handleClick={handleClick}
       />
       {hide === false && <ComingSoon closeClick={handleClick} />}
-      <div className="tw-pt-20">
+      <div >
         <LearnHero/>
         <CourseCategories
           user={data}
