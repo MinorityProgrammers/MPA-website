@@ -6,6 +6,7 @@ import Footer from '../../components/Footer';
 import CourseCategories from '../../components/learn/CourseCategories';
 import SidebarTwo from '../../components/sidebar/SidebarTwo';
 import links from '../../contexts/utils/links';
+import LearnHero from '../../components/learn/LearnHero';
 import { useDetectOutsideClick } from '../../components/UseDetectOutsideClick';
 
 const LearnPage = function () {
@@ -64,6 +65,7 @@ const LearnPage = function () {
         handleClick={handleClick}
       />
       <div className="tw-pt-20">
+        <LearnHero />
         <CourseCategories
           user={data}
           usersCourses={usersCourses}

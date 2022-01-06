@@ -5,12 +5,20 @@ const ConsultancyHero = function () {
     <section className="incubator-wrapper">
       <div className="mentorshipP-header">
         <div className="container ">
-          <div className="incubator__text mtb-mpa">
+          <div className="consultancyHero-container">
             <div>
-              <h1 className="display-1 font-weight-bold  d-flex justify-content-center tw-text-white">
+              <h1 className="consultancyHero-title">
                 Consultancy
               </h1>
-              <p className="d-flex justify-content-center text-center h5">Get your idea turned into a complete web application ready for market with our transparent task-based escrow system that gives you as client, the control over how your product is being built. </p>
+              <p className="consultancyHero-txt">Get your idea turned into a complete web application ready for market with our transparent task-based escrow system that gives you as client, the control over how your product is being built.  </p>
+              <div className="incubator__button">
+                <div  className="button btn-gradient">
+                  Get Quote
+                </div>
+              </div>
+            </div>
+            <div>
+              <img src = 'assets/images/consultancy/consultancyHero.png'/>
             </div>
           </div>
         </div>
