@@ -107,7 +107,7 @@ const Account = function () {
 
   useEffect(async () => {
     if (chainId !== process.env.NEXT_PUBLIC_NETWORK_ID_MAINNET
-       && chainId !== process.env.NEXT_PUBLIC_NETWORK_ID_TESTNET) {
+       && chainId !== process.env.NEXT_PUBLIC_NETWORK_ID_TESTNET && showModal === true) {
       errorToast('Wrong Chain, please connect to polygon chain');
 
       try {
@@ -116,7 +116,7 @@ const Account = function () {
         console.log(e);
       }
     }
-  }, [isAuthenticated, showModal]);
+  }, [isAuthenticated]);
 
   const casperConnectWallet = async () => {
     try {
