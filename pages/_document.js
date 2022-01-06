@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/iframe-has-title */
 /* eslint-disable react/style-prop-object */
 import Document, {
-  Html, Head, Main, NextScript,
+  Head, Html, Main, NextScript,
 } from 'next/document';
 import React from 'react';
 

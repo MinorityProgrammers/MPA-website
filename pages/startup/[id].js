@@ -1,14 +1,12 @@
-import React, { useState } from 'react';
 import axios from 'axios';
-import { useRouter } from 'next/router';
-import Layout from '../../components/Layout';
-import HomepageNav from '../../components/homepage/HomepageNav';
-import StartupTopBar from '../../components/startup/StartupTopBar';
-import StartupMainBar from '../../components/startup/StartupMainBar';
+import React, { useState } from 'react';
 import Footer from '../../components/Footer';
+import HomepageNav from '../../components/homepage/HomepageNav';
+import Layout from '../../components/Layout';
 import SidebarTwo from '../../components/sidebar/SidebarTwo';
+import StartupMainBar from '../../components/startup/StartupMainBar';
+import StartupTopBar from '../../components/startup/StartupTopBar';
 import links from '../../contexts/utils/links';
-// import datas from '../../helpers/mockData';
 
 export const getStaticPaths = async () => {
   const res = await axios.get(`${process.env.BASE_URI}/startup/`);
@@ -34,7 +32,7 @@ export const getStaticProps = async (context) => {
 
   // Calendly test startup
   const res = await axios.get(
-    `${process.env.BASE_URI}/startup/60ca4c75620570082453fc34`
+    `${process.env.BASE_URI}/startup/60ca4c75620570082453fc34`,
   );
   const data = await res.data.data;
 
