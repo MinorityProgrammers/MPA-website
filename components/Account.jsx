@@ -37,7 +37,7 @@ const Account = function () {
         className="tw-bg-blue-600 hover:tw-bg-blue-700 tw-text-white tw-text-center tw-font-bold tw-py-2 tw-px-2 tw-rounded tw-w-11/12 tw-cursor-pointer"
         onClick={() => authenticate({ signingMessage: 'connected!' })}
       >
-        <p className="tw-text-sm">Connect</p>
+        <p className="tw-text-sm">Connect Wallet</p>
       </div>
     );
   }
