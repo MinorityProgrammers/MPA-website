@@ -14,9 +14,7 @@ import {
   storeTwo,
 } from '../contexts/utils/fields';
 
-const UpdateForm = function ({
-  setOpen, setNotice, setLog, user,
-}) {
+const UpdateForm = ({ setOpen, setNotice, setLog, user }) => {
   const [newFirstName, setNewFirstName] = useState(user.firstName);
   const [newlastName, setNewLastName] = useState(user.lastName);
   const [newEmail, setNewEmail] = useState(user.email);
@@ -37,9 +35,7 @@ const UpdateForm = function ({
   const {
     profileDispatch,
     profileState: {
-      profile: {
-        profileLoading, profileError, profileData, profileIsUpdated,
-      },
+      profile: { profileLoading, profileError, profileData, profileIsUpdated },
     },
   } = useContext(GlobalContext);
 
@@ -59,7 +55,7 @@ const UpdateForm = function ({
   formData.append('bio', newBio || user.bio || '');
   formData.append(
     'profilePicture',
-    newProfileImage || user.profilePicture || '',
+    newProfileImage || user.profilePicture || ''
   );
 
   useEffect(() => {
@@ -111,18 +107,14 @@ const UpdateForm = function ({
           <span>
             <AiFillHome className="tw-text-primary-200 tw-mr-1" />
           </span>
-          /
-          <span className="tw-mx-1 tw-text-gray-100  tw-text-sm">User</span>
-          /
+          /<span className="tw-mx-1 tw-text-gray-100  tw-text-sm">User</span>/
           <span className="tw-mx-1 tw-text-gray-100  tw-text-sm ">
             Update profile
           </span>
         </div>
       </div>
 
-      <div
-        className="tw-rounded-md tw-bg-gray-100 tw-shadow-xl tw-w-full tw-my-4"
-      >
+      <div className="tw-rounded-md tw-bg-gray-100 tw-shadow-xl tw-w-full tw-my-4">
         <div className="tw-text-main tw-px-4 tw-py-4 tw-text-xl  ">
           <h2 className="tw-mx-5 tw-font-light"> Update profile</h2>
         </div>
@@ -168,8 +160,7 @@ const UpdateForm = function ({
               new={newBirthDate}
               setNew={setNewBirthDate}
             />
-          </div>
-          {' '}
+          </div>{' '}
           <div className="tw-grid  tw-grid-cols-1 md:tw-grid-cols-2 tw-w-full tw-justify-items-center">
             <div className="tw-flex tw-flex-row tw-h-10 tw-items-center  tw-rounded tw-my-3 tw-shadow-xl tw-w-10/12 inp">
               <Select
@@ -273,11 +264,11 @@ const UpdateForm = function ({
               className="tw-px-8 tw-py-1  tw-text-white tw-bg-hover tw-flex tw-flex-row tw-justify-between"
             >
               {spin && profileLoading && (
-              <img
-                src="../../loader.svg"
-                alt="Loader"
-                className="tw-w-3 tw-h-3 tw-mt-1 tw-animate-spin"
-              />
+                <img
+                  src="../../loader.svg"
+                  alt="Loader"
+                  className="tw-w-3 tw-h-3 tw-mt-1 tw-animate-spin"
+                />
               )}
               <p className="tw-ml-3">Update</p>
             </button>

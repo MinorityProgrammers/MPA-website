@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Swiper from 'react-id-swiper';
 import 'swiper/css/swiper.css';
 
-const SliderTwo = function () {
+const SliderTwo = () => {
   const [swiper, setSwiper] = useState(null);
 
   const goNext = () => {
@@ -30,9 +30,7 @@ const SliderTwo = function () {
                 <div className="col-xl-12">
                   <p className="banner-two__tag-line">High quality courses</p>
                   <h3 className="banner-two__title banner-two__light-color">
-                    Read & learn
-                    {' '}
-                    <br />
+                    Read & learn <br />
                     in an easy way
                   </h3>
                   <a href="#" className="thm-btn banner-two__btn">
@@ -51,9 +49,7 @@ const SliderTwo = function () {
                 <div className="col-xl-12">
                   <p className="banner-two__tag-line">High quality courses</p>
                   <h3 className="banner-two__title banner-two__light-color">
-                    Read & learn
-                    {' '}
-                    <br />
+                    Read & learn <br />
                     in an easy way
                   </h3>
                   <a href="#" className="thm-btn banner-two__btn">

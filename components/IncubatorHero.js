@@ -1,6 +1,6 @@
 import React from 'react';
 
-const IncubatorHero = function () {
+const IncubatorHero = () => {
   const scrollTo = () => {
     const section = document.querySelector('#all-startups');
     section.scrollIntoView({ behavior: 'smooth', block: 'start' });

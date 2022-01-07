@@ -29,14 +29,12 @@ const SidebarNav = ({
     >
       {section.links.map((link) => (
         <li
-          onClick={handleClick}
+          onClick={link.comingsoon === true ? handleClick : ''}
           key={link.name}
-          className={active == link.name ? 'active' : ''}
+          className={active === link.name ? 'active' : ''}
         >
           <Link href={link.url}>
-            <a>
-              <span className="link">{link.name}</span>
-            </a>
+            <span className="link">{link.name}</span>
           </Link>
         </li>
       ))}

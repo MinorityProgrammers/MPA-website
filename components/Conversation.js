@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 
-// need to redo cancel button to handle reject
-
-const Conversation = function ({
+const Conversation = ({
   conversation,
   currentUser,
   type,
@@ -10,7 +8,7 @@ const Conversation = function ({
   unblockfunc,
   acceptfunc,
   rejectfunc,
-}) {
+}) => {
   const user = conversation.users.find((m) => m._id !== currentUser._id);
   let popupfunc;
   let popupmsg;
@@ -39,18 +37,14 @@ const Conversation = function ({
       {conversation.newMessage ? (
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           <span className="conversation-brief">
-            {user?.firstName}
-            {' '}
-            {user?.lastName}
+            {user?.firstName} {user?.lastName}
           </span>
           <span style={{ fontSize: '14px' }}>New Message</span>
         </div>
       ) : (
         <>
           <span className="conversation-brief">
-            {user?.firstName}
-            {' '}
-            {user?.lastName}
+            {user?.firstName} {user?.lastName}
           </span>
           {type === 'blocked' && conversation.blocking_user == currentUser._id && (
             <div
@@ -60,12 +54,12 @@ const Conversation = function ({
               Unblock
             </div>
           )}
-          {type === 'blocked'
-            && conversation.blocking_user != currentUser._id && (
+          {type === 'blocked' &&
+            conversation.blocking_user != currentUser._id && (
               <span style={{ marginLeft: '4px' }}>
                 This chat has been blocked
               </span>
-          )}
+            )}
           {type === 'pending' && conversation.users[0]._id != currentUser._id && (
             <>
               <div

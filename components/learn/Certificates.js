@@ -21,7 +21,7 @@ const CourseCategories = function ({ user, certificates, loading }) {
   };
 
   const { Moralis } = useMoralis();
-  const nftaddress = process.env.ADDRESS;
+  const nftaddress = process.env.CERTIFICATES_ADDRESS;
 
   function countDown(mintedURL, tx) {
     let secondsToGo = 30;

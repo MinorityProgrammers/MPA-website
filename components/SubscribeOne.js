@@ -1,38 +1,33 @@
 import React from 'react';
 
-const SubscribeOne = function () {
-  return (
-    <section className="mailchimp-one">
-      <div className="container">
-        <div className="row">
-          <div className="col-lg-6">
-            <div className="mailchimp-one__content">
-              <div className="mailchimp-one__icon">
-                <i className="kipso-icon-email" />
-              </div>
-              <h2 className="mailchimp-one__title">
-                Keep updated with our newsletter!
-              </h2>
+const SubscribeOne = () => (
+  <section className="mailchimp-one">
+    <div className="container">
+      <div className="row">
+        <div className="col-lg-6">
+          <div className="mailchimp-one__content">
+            <div className="mailchimp-one__icon">
+              <i className="kipso-icon-email" />
             </div>
+            <h2 className="mailchimp-one__title">
+              Keep updated with our newsletter!
+            </h2>
           </div>
-          <div className="col-lg-6 d-flex">
-            <div className="my-auto">
-              <form action="#" className="mailchimp-one__form mc-form">
-                <input
-                  type="text"
-                  id="mc-email"
-                  placeholder="Enter your email"
-                />
-                <button type="submit" className="thm-btn">
-                  Subscribe
-                </button>
-              </form>
-              <div className="mc-form__response" />
-            </div>
+        </div>
+        <div className="col-lg-6 d-flex">
+          <div className="my-auto">
+            <form action="#" className="mailchimp-one__form mc-form">
+              <input type="text" id="mc-email" placeholder="Enter your email" />
+              <button type="submit" className="thm-btn">
+                Subscribe
+              </button>
+            </form>
+            <div className="mc-form__response" />
           </div>
         </div>
       </div>
-    </section>
-  );
-};
+    </div>
+  </section>
+);
+
 export default SubscribeOne;

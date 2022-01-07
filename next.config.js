@@ -67,5 +67,9 @@ module.exports = {
     NEXTAUTH_URL: process.env.NEXTAUTH_URL,
     NETWORK_URL: process.env.NETWORK_URL,
     ADDRESS: process.env.ADDRESS,
+    NEXT_PUBLIC_NETWORK_ID_TESTNET: process.env.NEXT_PUBLIC_NETWORK_ID_TESTNET,
+    NEXT_PUBLIC_NETWORK_ID_MAINNET: process.env.NEXT_PUBLIC_NETWORK_ID_MAINNET,
+    NEXT_CASPER_API_URL: process.env.NEXT_CASPER_API_URL,
+    CASPER_URL: process.env.CASPER_URL,
   },
 };

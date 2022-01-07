@@ -38,7 +38,6 @@ class VideoThree extends Component {
                       >
                         <CountUp end={this.state.startCounter ? 15 : 0} />
                       </VisibilitySensor>
-                      {' '}
                     </p>
                     <p className="video-three__fact-text">Courses</p>
                   </div>
@@ -53,7 +52,6 @@ class VideoThree extends Component {
                       >
                         <CountUp end={this.state.startCounter ? 75 : 0} />
                       </VisibilitySensor>
-                      {' '}
                     </p>
                     <p className="video-three__fact-text">Expert Instructors</p>
                   </div>

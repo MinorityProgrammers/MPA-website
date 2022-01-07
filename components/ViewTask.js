@@ -1,6 +1,9 @@
 import { useEffect, useState, useContext } from 'react';
 import {
-  DragDropContext, Draggable, Droppable, resetServerContext,
+  DragDropContext,
+  Draggable,
+  Droppable,
+  resetServerContext,
 } from 'react-beautiful-dnd';
 import { v4 as uuidv4 } from 'uuid';
 import itemsFromBackEnd from './ProjectManager/viewtask.json';
@@ -78,13 +81,10 @@ const onDragEnd = (result, columns, setColumns) => {
   let task;
   if (result.destination.droppableId == 1) {
     task = 'Planned Task';
-    console.log(task);
   } else if (result.destination.droppableId == 2) {
     task = 'Review Task';
-    console.log(task);
   } else {
     task = 'Completed Task';
-    console.log(task);
   }
 };
 
