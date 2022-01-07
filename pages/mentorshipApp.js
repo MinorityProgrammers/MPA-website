@@ -1,143 +1,140 @@
+/* eslint-disable react/state-in-constructor */
+/* eslint-disable react/destructuring-assignment */
 import React, { Component } from 'react';
+import axios from 'axios';
 import Footer from '../components/Footer';
 import HomepageNav from '../components/homepage/HomepageNav';
 import Layout from '../components/Layout';
 import MentorshipAppSideBar from '../components/mentorship/MentorshipAppSideBar';
 import MentorshipAppSwipeCards from '../components/mentorship/MentorshipAppSwipeCards';
+import { successToast, errorToast } from '../contexts/utils/toasts';
 
 export class mentorshipApp extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      step: 1,
-      likedList: [],
-      openedChatCharacter: {},
-
-      swipeCards: [
-        {
-          id: 1,
-          url: 'https://icatcare.org/app/uploads/2018/07/Thinking-of-getting-a-cat.png',
-          name: 'Oleg Nosyrev',
-          occupation: 'Frontend Developer',
-          company: 'MPA',
-          country: 'USA',
-          description:
-          'Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium quaerat eius provident nesciunt distinctio quasi unde iure quis repellat porro, accusamus assumenda perferendis beatae tenetur aliquid animi sint est veritatis voluptatem quo? Itaque voluptas quam officiis quaerat cupiditate ex dolorum?',
-        },
-        {
-          id: 2,
-          url: 'https://www.rochesterfirst.com/wp-content/uploads/sites/66/2019/09/cat.jpg',
-          name: 'Monica Hall',
-          occupation: 'Frontend Developer',
-          company: 'MPA',
-          country: 'USA',
-          description:
+  state = {
+    step: 1,
+    likedList: [],
+    openedChatCharacter: {},
+    show: false,
+    mentorshipInfo: {},
+    is_mentor: '',
+    swipeCards: [],
+    matchedPeople: [
+      {
+        id: 5,
+        url: 'https://i.pinimg.com/originals/33/32/6d/33326dcddbf15c56d631e374b62338dc.jpg',
+        name: 'Shot Code',
+        company: 'MPA',
+        occupation: 'Frontend Developer',
+        country: 'USA',
+        description:
           'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vero eum corrupti quasi, quas libero eos!',
-        },
-        {
-          id: 3,
-          url: 'https://images.reference.com/amg-cms-reference-images/media/cats-look-like_c942b88f95e4db21.jpg?width=740&height=420&fit=crop&format=pjpg',
-          name: 'Jared Dunn',
-          occupation: 'Frontend Developer',
-          company: 'MPA',
-          country: 'USA',
-          description:
-          'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vero eum corrupti quasi, quas libero eos!',
-        },
-        {
-          id: 4,
-          url: 'https://s01.sgp1.cdn.digitaloceanspaces.com/article/51036-cwobnirfka-1580816618.jpeg',
-          name: 'Dinesh Chugtai',
-          occupation: 'Frontend Developer',
-          company: 'MPA',
-          country: 'USA',
-          description:
-          'Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium quaerat eius provident nesciunt distinctio quasi unde iure quis repellat porro, accusamus assumenda perferendis beatae tenetur aliquid animi sint est veritatis voluptatem quo? Itaque voluptas quam officiis quaerat cupiditate ex dolorum?Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium quaerat eius provident nesciunt distinctio quasi unde iure quis repellat porro, accusamus assumenda perferendis beatae tenetur aliquid animi sint est veritatis voluptatem quo? Itaque voluptas quam officiis quaerat cupiditate ex dolorum?Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque, nulla. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsam, est? Iusto voluptatem ab quae esse itaque quibusdam ipsam fuga!',
-        },
-      ],
-      matchedPeople: [
-        {
-          id: 5,
-          url: 'https://i.pinimg.com/originals/33/32/6d/33326dcddbf15c56d631e374b62338dc.jpg',
-          name: 'Shot Code',
-          company: 'MPA',
-          occupation: 'Frontend Developer',
-          country: 'USA',
-          description:
-          'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vero eum corrupti quasi, quas libero eos!',
-          matchedTimestamp: '2:10 PM 4/20/2021',
-          messages: [
-            {
-              id: 1,
-              read: true,
+        matchedTimestamp: '2:10 PM 4/20/2021',
+        messages: [
+          {
+            id: 1,
+            read: true,
 
-              message: 'Good Morning!',
-              messageTimeStamp: '9:32 AM EST 4/20/2021',
-            },
-            {
-              id: 2,
-              read: false,
+            message: 'Good Morning!',
+            messageTimeStamp: '9:32 AM EST 4/20/2021',
+          },
+          {
+            id: 2,
+            read: false,
 
-              message: 'I will be your Mentor!😊',
-              messageTimeStamp: '9:34 AM EST 4/20/2021',
-            },
-            {
-              id: 3,
-              read: true,
+            message: 'I will be your Mentor!😊',
+            messageTimeStamp: '9:34 AM EST 4/20/2021',
+          },
+          {
+            id: 3,
+            read: true,
 
-              message: "Let's start coding👩‍💻",
-              messageTimeStamp: '9:59 AM EST 4/20/2021',
-            },
-          ],
-          toDo: [],
-        },
-        {
-          id: 7,
-          url: 'https://d25tv1xepz39hi.cloudfront.net/2016-07-16/files/cat-sample_1313.jpg',
-          name: 'Oleg N',
-          company: 'MPA',
-          occupation: 'Data Science',
-          country: 'USA',
-          description:
+            message: "Let's start coding👩‍💻",
+            messageTimeStamp: '9:59 AM EST 4/20/2021',
+          },
+        ],
+        toDo: [],
+      },
+      {
+        id: 7,
+        url: 'https://d25tv1xepz39hi.cloudfront.net/2016-07-16/files/cat-sample_1313.jpg',
+        name: 'Oleg N',
+        company: 'MPA',
+        occupation: 'Data Science',
+        country: 'USA',
+        description:
           'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vero eum corrupti quasi, quas libero eos!',
-          matchedTimestamp: '5:10 PM 4/20/2021',
-          messages: [
-            {
-              id: 1,
-              fromId: 7,
-              new: false,
-              message: 'Good Morning!',
-              messageTimeStamp: '9:32 AM EST 4/20/2021',
-            },
-            {
-              id: 2,
-              fromId: 7,
-              new: false,
-              message: 'Are you ready to code?',
-              messageTimeStamp: '9:34 AM EST 4/20/2021',
-            },
-          ],
-          toDo: [
-            {
-              id: 2,
-              fromId: 7,
-              message: 'Code the mentor page',
-              messageTimeStamp: '9:32 AM EST 4/20/2021',
-            },
-          ],
-        },
-      ],
-    };
-  }
+        matchedTimestamp: '5:10 PM 4/20/2021',
+        messages: [
+          {
+            id: 1,
+            fromId: 7,
+            new: false,
+            message: 'Good Morning!',
+            messageTimeStamp: '9:32 AM EST 4/20/2021',
+          },
+          {
+            id: 2,
+            fromId: 7,
+            new: false,
+            message: 'Are you ready to code?',
+            messageTimeStamp: '9:34 AM EST 4/20/2021',
+          },
+        ],
+        toDo: [
+          {
+            id: 2,
+            fromId: 7,
+            message: 'Code the mentor page',
+            messageTimeStamp: '9:32 AM EST 4/20/2021',
+          },
+        ],
+      },
+    ],
+  };
 
   componentDidMount() {
     const token = window.localStorage.getItem('jwtToken');
-    const userInfo = window.localStorage.getItem('userInfo');
+    const userInfo = JSON.parse(window.localStorage.getItem('userInfo')).user;
 
-    if (token == null || userInfo === {}) {
+    if (token == null || userInfo == {}) {
       this.redirect();
     }
+    let url;
+    if (userInfo.is_mentee) {
+      url = `http://localhost:5000/api/v1/suggestions/mentors/${userInfo._id}`;
+    } else if (userInfo.is_mentor) {
+      url = `http://localhost:5000/api/v1/suggestions/mentes/${userInfo._id}`;
+    }
+    console.log(url);
+    axios
+      .get(url, {
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        console.log(res.data.message.mentorshipInfo);
+        const sugggestions = res.data.message.sgs.map((mentorship) => ({
+          id: mentorship._id,
+          url: mentorship.user_id.profilePicture,
+          name: `${mentorship.user_id.firstName} ${mentorship.user_id.lastName}`,
+          occupation: mentorship.occupation,
+          company: mentorship.work_place,
+          description: mentorship.user_id.bio,
+          country: mentorship.user_id.location,
+        }));
+        // console.log(sugggestions);
+        this.setState({
+          swipeCards: sugggestions,
+          show: true,
+          mentorshipInfo: res.data.message.mentorshipInfo,
+          is_mentor: !!userInfo.is_mentor,
+        });
+      })
+      .catch((err) => {
+        errorToast('Something went wrong, please contact us.');
+      });
   }
 
   messagesStep = () => {
@@ -169,13 +166,44 @@ export class mentorshipApp extends Component {
         likedList: [...prevState.likedList, character],
       }));
     }
+    let mentorship;
+    const token = window.localStorage.getItem('jwtToken');
+
+    if (this.state.is_mentor) {
+      mentorship = {
+        mentor_id: this.state.mentorshipInfo._id,
+        mentee_id: character.id,
+      };
+    } else {
+      mentorship = {
+        mentee_id: this.state.mentorshipInfo._id,
+        mentor_id: character.id,
+      };
+    }
+    console.log(mentorship);
+    axios
+      .post('http://localhost:5000/api/v1/mentorship/', mentorship, {
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        console.log(res.data);
+        successToast('Mentorship Added!');
+        window.location.href = this.state.is_mentor
+          ? 'mentorship/mentor'
+          : 'mentorship/mentee';
+        console.log(res.data.data);
+      })
+      .catch((err) => {
+        errorToast('Something went wrong, please contact us.');
+      });
   };
 
   updateSwipeCards = (character) => {
     const { swipeCards } = this.state;
-    const copyswipeCards = swipeCards.filter(
-      (person) => person !== character,
-    );
+    const copyswipeCards = swipeCards.filter((person) => person !== character);
     this.setState({
       swipeCards: copyswipeCards,
     });
@@ -216,12 +244,14 @@ export class mentorshipApp extends Component {
           <HomepageNav />
           <section className="home-section">
             <div className="tw-flex lg:tw-hidden tw-font-redhat tw-bg-white tw-bg-opacity-0 tw-h-600px md:tw-h-auto tw-w-1300px tw-rounded-3xl tw-shadow-mentor tw-relative tw-text-black">
-              <MentorshipAppSwipeCards
-                handleSwipeRight={this.handleSwipeRight}
-                updateSwipeCards={this.updateSwipeCards}
-                undoLastSwipe={this.undoLastSwipe}
-                values={values.swipeCards}
-              />
+              {this.state.show && (
+                <MentorshipAppSwipeCards
+                  handleSwipeRight={this.handleSwipeRight}
+                  updateSwipeCards={this.updateSwipeCards}
+                  undoLastSwipe={this.undoLastSwipe}
+                  values={values.swipeCards}
+                />
+              )}
 
               <MentorshipAppSideBar
                 values={values.matchedPeople}

@@ -1,19 +1,19 @@
-import { useState, useEffect } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { useState, useEffect } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 // Styles
-import styles from '../../styles/MentorCSS/Dashboard.module.css';
+import styles from "../../styles/MentorCSS/Dashboard.module.css";
 // leftBar view
-import Resources from './Resources';
-import CalendarEvent from './Calender';
-import Evaluations from './Evaluations';
+import Resources from "./Resources";
+import CalendarEvent from "./Calender";
+import Evaluations from "./Evaluations";
 // Navbar comps view
-import Course from './Course';
-import Event from './Event';
-import Capstone from './Capstone';
-import Workshop from './Workshop';
-import Job from './Job';
-import MenteeSprint from './MenteeSprint';
+import Course from "./Course";
+import Event from "./Event";
+import Capstone from "./Capstone";
+import Workshop from "./Workshop";
+import Job from "./Job";
+import MenteeSprint from "./MenteeSprint";
 // import { menteeData } from "./data";
 const MenteeDashboard = ({
   setData,
@@ -63,8 +63,8 @@ const MenteeDashboard = ({
     setData(mentee);
   };
   useEffect(() => {
-    window.addEventListener('resize', function () {
-      if ($(window).width() >= 950) {
+    window.addEventListener("resize", function () {
+      if (window.width() >= 950) {
         setActive(false);
       }
     });
@@ -75,10 +75,10 @@ const MenteeDashboard = ({
       <div className={styles.userName}>
         Welcome Back, {menteeData.mentorship.mentee_id.user_id.firstName}!
       </div>
-      <div className={styles.navBar + ' ' + styles.navBarMentee}>
+      <div className={styles.navBar + " " + styles.navBarMentee}>
         <FontAwesomeIcon
           onClick={toggleHandler}
-          className={styles.navToggleMentee + ' ' + styles.navToggle}
+          className={styles.navToggleMentee + " " + styles.navToggle}
           icon={faBars}
         />
         <div className={active ? styles.display : styles.hide}>
@@ -101,7 +101,7 @@ const MenteeDashboard = ({
               });
               setActive(false);
             }}
-            className={navActive.course ? styles.navActive : ''}
+            className={navActive.course ? styles.navActive : ""}
           >
             Courses
           </div>
@@ -124,7 +124,7 @@ const MenteeDashboard = ({
               });
               setActive(false);
             }}
-            className={navActive.event ? styles.navActive : ''}
+            className={navActive.event ? styles.navActive : ""}
           >
             Events
           </div>
@@ -147,7 +147,7 @@ const MenteeDashboard = ({
               });
               setActive(false);
             }}
-            className={navActive.capstone ? styles.navActive : ''}
+            className={navActive.capstone ? styles.navActive : ""}
           >
             Capstone
           </div>
@@ -170,7 +170,7 @@ const MenteeDashboard = ({
               });
               setActive(false);
             }}
-            className={navActive.workshop ? styles.navActive : ''}
+            className={navActive.workshop ? styles.navActive : ""}
           >
             Resume Workshop
           </div>
@@ -193,7 +193,7 @@ const MenteeDashboard = ({
               });
               setActive(false);
             }}
-            className={navActive.job ? styles.navActive : ''}
+            className={navActive.job ? styles.navActive : ""}
           >
             Job Portal
           </div>
@@ -216,7 +216,7 @@ const MenteeDashboard = ({
               });
               setActive(false);
             }}
-            className={navActive.sprint ? styles.navActive : ''}
+            className={navActive.sprint ? styles.navActive : ""}
           >
             Sprint Review
           </div>
@@ -244,7 +244,7 @@ const MenteeDashboard = ({
           {actionActive.sprintsViewActive && navActive.sprint && (
             <>
               <div className={styles.teamImg}>
-                <img src={'/assets/images/mentor/sprint.png'} alt="sprint" />
+                <img src={"/assets/images/mentor/sprint.png"} alt="sprint" />
                 <p>SRPINT REVIEW</p>
               </div>
               <div className={styles.sprintsContainer}>
@@ -284,7 +284,7 @@ const MenteeDashboard = ({
             <>
               <div className={styles.teamImg}>
                 <img
-                  src={'/assets/images/mentor/capstone.png'}
+                  src={"/assets/images/mentor/capstone.png"}
                   alt="capstone"
                 />
                 <p>MY CAPSTONE</p>
@@ -305,7 +305,7 @@ const MenteeDashboard = ({
             <>
               <div className={styles.teamImg}>
                 <img
-                  src={'/assets/images/mentor/job.png'}
+                  src={"/assets/images/mentor/job.png"}
                   alt="upcoming-events"
                 />
                 <p>Job Portal</p>
@@ -321,7 +321,7 @@ const MenteeDashboard = ({
             <>
               <div className={styles.teamImg}>
                 <img
-                  src={'/assets/images/mentor/nav-events.png'}
+                  src={"/assets/images/mentor/nav-events.png"}
                   alt="upcoming-events"
                 />
                 <p>UPCOMING EVENTS</p>
@@ -342,7 +342,7 @@ const MenteeDashboard = ({
             <>
               <div className={styles.teamImg}>
                 <img
-                  src={'/assets/images/mentor/events.png'}
+                  src={"/assets/images/mentor/events.png"}
                   alt="Group-events"
                 />
                 <p>GROUP EVENTS</p>
@@ -363,8 +363,8 @@ const MenteeDashboard = ({
             <>
               <div className={styles.teamImg}>
                 <img
-                  style={{ width: '40px' }}
-                  src={'/assets/images/mentor/workshop.png'}
+                  style={{ width: "40px" }}
+                  src={"/assets/images/mentor/workshop.png"}
                   alt="upcoming-events"
                 />
                 <p>RESUME WORKSHOP</p>
@@ -383,7 +383,7 @@ const MenteeDashboard = ({
           )}
         </div>
         <div>
-          <div style={{ marginBottom: '21px' }} className={styles.gridTitle}>
+          <div style={{ marginBottom: "21px" }} className={styles.gridTitle}>
             <p>YOUR MENTOR</p>
           </div>
           <div className={styles.mentors}>
@@ -504,7 +504,7 @@ const MenteeDashboard = ({
                   evaluations: true,
                 })
               }
-              style={{ borderRadius: '0px 0 30px 0px' }}
+              style={{ borderRadius: "0px 0 30px 0px" }}
               className={
                 actionActive.evaluations ? styles.mentorRowE : styles.mentorRow
               }
