@@ -70,28 +70,28 @@ const MentorshipQuestion6 = (props) => {
       lookingfor_ethnicity: values.lookingForEthnicity.label,
     };
 
-    // axios
-    //   .post(
-    //     `http://localhost:5000/api/v1/${values.iAMa.toLowerCase()}/`,
-    //     mentorshipData,
-    //     {
-    //       headers: {
-    //         "Access-Control-Allow-Origin": "*",
-    //         Authorization: `Bearer ${token}`,
-    //       },
-    //     }
-    //   )
-    //   .then((res) => {
-    //     successToast(`${values.iAMa.toLowerCase()} Created!`);
-    //     router.push({
-    //       pathname: "/mentorshipApp",
-    //       query: { object: JSON.stringify(res.data.data) },
-    //     });
-    //     console.log(res.data.data);
-    //   })
-    //   .catch((err) => {
-    //     errorToast("Something went wrong, please contact us.");
-    //   });
+    axios
+      .post(
+        `http://localhost:5000/api/v1/${values.iAMa.toLowerCase()}/`,
+        mentorshipData,
+        {
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then((res) => {
+        successToast(`${values.iAMa.toLowerCase()} Created!`);
+        router.push({
+          pathname: "/mentorshipApp",
+          query: { object: JSON.stringify(res.data.data) },
+        });
+        console.log(res.data.data);
+      })
+      .catch((err) => {
+        errorToast("Something went wrong, please contact us.");
+      });
   };
   return (
     <div className="tw-relative tw-mt-20 tw-font-redhat tw-bg-white tw-h-660px tw-w-950px tw-px-24 tw-pt-16 tw-pb-36 tw-rounded-3xl tw-shadow-mentor md:tw-h-auto md:tw-px-10 md:tw-py-30 tw-select-none">

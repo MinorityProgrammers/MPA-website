@@ -1,14 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import { isSameDay, set } from 'date-fns';
-import { enGB } from 'date-fns/locale';
-import { Calendar } from 'react-nice-dates';
-import 'react-nice-dates/build/style.css';
-import { Events } from './Utils';
-import styles from '../../styles/MentorCSS/Calendar.module.css';
-import stylesE from '../../styles/MentorCSS/Dashboard.module.css';
-import PopModel from './PopModel';
+import React, { useState, useEffect } from "react";
+import { isSameDay, set } from "date-fns";
+import { enGB } from "date-fns/locale";
+import { Calendar } from "react-nice-dates";
+import "react-nice-dates/build/style.css";
+import { Events } from "./Utils";
+import styles from "../../styles/MentorCSS/Calendar.module.css";
+import stylesE from "../../styles/MentorCSS/Dashboard.module.css";
+import PopModel from "./PopModel";
 
-export default function CalendarEvent({ events: data, user_id }) {
+export default function CalendarEvent({
+  events: data,
+  user_id,
+  setUpdate,
+  update,
+}) {
   const [modalShow, setModalShow] = useState(false);
   const [selectedDates, setSelectedDates] = useState([]);
   const [date, setDate] = useState([]);
@@ -33,11 +38,11 @@ export default function CalendarEvent({ events: data, user_id }) {
   };
   const handleDayClick = (date) => {
     const day =
-      date.getDate() < 10 ? '0' + date.getDate() : date.getDate() + '';
+      date.getDate() < 10 ? "0" + date.getDate() : date.getDate() + "";
     const month =
       date.getMonth() + 1 < 10
-        ? '0' + (date.getMonth() + 1)
-        : date.getMonth() + 1 + '';
+        ? "0" + (date.getMonth() + 1)
+        : date.getMonth() + 1 + "";
     const newDate = `${date.getFullYear()}-${month}-${day}`;
     setDate(newDate);
     setModalShow(true);
@@ -46,7 +51,7 @@ export default function CalendarEvent({ events: data, user_id }) {
   return (
     <div>
       <div className={stylesE.teamImg}>
-        <img src={'/assets/images/mentor/calendarIcon.png'} alt="calendar" />
+        <img src={"/assets/images/mentor/calendarIcon.png"} alt="calendar" />
         <p>CALENDER/EVENTS</p>
       </div>
       <PopModel
@@ -60,6 +65,8 @@ export default function CalendarEvent({ events: data, user_id }) {
         setDate={setDate}
         setModalShow={setModalShow}
         user_id={user_id}
+        setUpdate={setUpdate}
+        update={update}
       />
 
       <div className={styles.calenderMentor}>

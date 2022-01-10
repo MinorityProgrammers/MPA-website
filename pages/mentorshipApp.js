@@ -168,7 +168,8 @@ export class mentorshipApp extends Component {
     }
     let mentorship;
     const token = window.localStorage.getItem('jwtToken');
-
+    let user = JSON.parse(localStorage.getItem('userInfo'));
+    user = user.user;
     if (this.state.is_mentor) {
       mentorship = {
         mentor_id: this.state.mentorshipInfo._id,
@@ -181,6 +182,33 @@ export class mentorshipApp extends Component {
       };
     }
     console.log(mentorship);
+    const updateUser = () => {
+      const userUpdate = {
+        has_mentorship: true,
+      };
+      axios
+        .patch(
+          `http://localhost:5000/api/v1/user/updateProfile/${user._id}`,
+          userUpdate,
+          {
+            headers: {
+              'Access-Control-Allow-Origin': '*',
+              Authorization: `Bearer ${token}`,
+            },
+          },
+        )
+        .then((res) => {
+          successToast('User Updated!');
+          localStorage.setItem(
+            'userInfo',
+            JSON.stringify({ token, user: res.data.data }),
+          );
+          console.log(res.data.data);
+        })
+        .catch((err) => {
+          errorToast('Something went wrong, please contact us.');
+        });
+    };
     axios
       .post('http://localhost:5000/api/v1/mentorship/', mentorship, {
         headers: {
@@ -191,10 +219,10 @@ export class mentorshipApp extends Component {
       .then((res) => {
         console.log(res.data);
         successToast('Mentorship Added!');
+        updateUser();
         window.location.href = this.state.is_mentor
           ? 'mentorship/mentor'
           : 'mentorship/mentee';
-        console.log(res.data.data);
       })
       .catch((err) => {
         errorToast('Something went wrong, please contact us.');

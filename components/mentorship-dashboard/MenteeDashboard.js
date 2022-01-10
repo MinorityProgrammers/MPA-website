@@ -64,7 +64,7 @@ const MenteeDashboard = ({
   };
   useEffect(() => {
     window.addEventListener("resize", function () {
-      if (window.width() >= 950) {
+      if (window.innerWidth >= 950) {
         setActive(false);
       }
     });
@@ -238,6 +238,8 @@ const MenteeDashboard = ({
             <CalendarEvent
               events={menteeData.mentorship.mentee_id.calender_events}
               user_id={menteeData.mentorship.mentee_id}
+              setUpdate={setUpdate}
+              update={update}
             />
           )}
 
