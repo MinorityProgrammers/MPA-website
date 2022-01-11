@@ -22,43 +22,44 @@ export default function Index() {
 
   // Instead of another page we will set the text to variables
   const {cardText, setCardText} = useState()
-  // ({
-  //   signIn: false,
-  //   h1Title: 'welcome',
-  //   p: (
-  //     <p>
-  //       To keep connecting with us please
-  //       {' '}
-  //       <br />
-  //       {' '}
-  //       register with your personal
-  //       info
-  //     </p>
-  //   ),
-  //   h2Title: 'sign up',
-  //   para: 'already have an account?',
-  //   link: 'sign in',
-  // });
+  ({
+    signIn: false,
+    h1Title: 'welcome',
+    p: (
+      <p>
+        To keep connecting with us please
+        {' '}
+        <br />
+        {' '}
+        register with your personal
+        info
+      </p>
+    ),
+    h2Title: 'sign up',
+    para: 'already have an account?',
+    link: 'sign in',
+  });
   
   useEffect (()=>{
-
-    localStorage.setItem('cardText',
-    { signIn:false,
-      h1Title: 'welcome',
-      p: (
-        <p>
-          To keep connecting with us please
-          {' '}
-          <br />
-          {' '}
-          register with your personal
-          info
-        </p>
-      ),
-      h2Title: 'sign up',
-      para: 'already have an account?',
-      link: 'sign in',})
+    localStorage.setItem('cardText',{signIn:False})
   })
+  //   localStorage.setItem('cardText',
+  //   { signIn:false,
+  //     h1Title: 'welcome',
+  //     p: (
+  //       <p>
+  //         To keep connecting with us please
+  //         {' '}
+  //         <br />
+  //         {' '}
+  //         register with your personal
+  //         info
+  //       </p>
+  //     ),
+  //     h2Title: 'sign up',
+  //     para: 'already have an account?',
+  //     link: 'sign in',})
+  // })
 
   // STATES USED THROUGHOUT THE COMPONENT
   const [submit, setSubmit] = useState(false);
@@ -198,7 +199,7 @@ export default function Index() {
         link: 'sign in',
       });
     } else if (window.localStorage.getItem("cardText.signIn") === false) {
-      winidow.localStorage.getItem(setCardText)({
+      window.localStorage.getItem(setCardText)({
         signIn: true,
         h1Title: 'welcome back',
         p: (
