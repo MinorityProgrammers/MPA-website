@@ -661,7 +661,7 @@ const HomepageNav = ({ setToken, setData, page, open, setOpen = () => {} }) => {
                   <a>CONSULTANCY</a>
                 </Link>
               </li>
-              {/* <li
+              <li
                 className={
                   router.pathname === '/join'
                     ? 'nav-item active-link'
@@ -675,7 +675,7 @@ const HomepageNav = ({ setToken, setData, page, open, setOpen = () => {} }) => {
                 >
                   <a>JOIN</a>
                 </Link>
-              </li> */}
+              </li>
             </ul>
             <ul className="tw-flex tw-flex-row tw-justify-around tw-w-1/4 tw-my-8 md:tw-hidden">
               <li>

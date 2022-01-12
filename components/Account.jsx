@@ -130,14 +130,6 @@ const Account = function () {
 
   if (isAuthenticated === false && isConnected === false) {
     return (
-<<<<<<< HEAD
-      <div
-        className="tw-bg-blue-600 hover:tw-bg-blue-700 tw-text-white tw-text-center tw-font-bold tw-py-2 tw-px-2 tw-rounded tw-w-11/12 tw-cursor-pointer"
-        onClick={() => authenticate({ signingMessage: 'connected!' })}
-      >
-        <p className="tw-text-sm">Connect Wallet</p>
-      </div>
-=======
       <>
         <div
           className="tw-bg-blue-600 hover:tw-bg-blue-700 tw-text-white tw-text-center tw-font-bold tw-py-2 tw-px-2 tw-rounded tw-w-11/12 tw-cursor-pointer"
@@ -197,7 +189,6 @@ const Account = function () {
           </div>
         </Modal>
       </>
->>>>>>> fbc5b618e8cceb01e3722acf7655973c4a28b5e2
     );
   }
 
