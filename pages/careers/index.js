@@ -1,17 +1,17 @@
-import axios from 'axios';
-import { useRouter } from 'next/router';
-import React, { useEffect, useRef, useState } from 'react';
-import ReactPaginate from 'react-paginate';
-import CareersMainComponent from '../../components/career-components/CareersMainComponent';
-import JobsFilters from '../../components/career-components/JobsFilters';
-import LoadingSkeleton from '../../components/career-components/LoadingSkeleton';
-import ComingSoon from '../../components/ComingSoon';
-import HomepageNav from '../../components/homepage/HomepageNav';
-import Layout from '../../components/Layout';
-import SidebarTwo from '../../components/sidebar/SidebarTwo';
-import { useDetectOutsideClick } from '../../components/UseDetectOutsideClick';
-import links from '../../contexts/utils/links';
-import { errorToast, successToast } from '../../contexts/utils/toasts';
+import axios from "axios";
+import { useRouter } from "next/router";
+import React, { useEffect, useRef, useState } from "react";
+import ReactPaginate from "react-paginate";
+import CareersMainComponent from "../../components/career-components/CareersMainComponent";
+import JobsFilters from "../../components/career-components/JobsFilters";
+import LoadingSkeleton from "../../components/career-components/LoadingSkeleton";
+import ComingSoon from "../../components/ComingSoon";
+import HomepageNav from "../../components/homepage/HomepageNav";
+import Layout from "../../components/Layout";
+import SidebarTwo from "../../components/SidebarTwo";
+import { useDetectOutsideClick } from "../../components/UseDetectOutsideClick";
+import links from "../../contexts/utils/links";
+import { errorToast, successToast } from "../../contexts/utils/toasts";
 
 export async function getServerSideProps(context) {
   return {
@@ -46,13 +46,13 @@ const JobsMain = () => {
   const [loadingReq, setLoadingReq] = useState(false);
   const [allJobs, setAllJobs] = useState([]);
   const [filter, setFilter] = useState({
-    pay: '',
-    job_type: '',
-    remote: '',
-    date_posted: '0',
-    job_industry: '',
-    description: '',
-    location: '',
+    pay: "",
+    job_type: "",
+    remote: "",
+    date_posted: "0",
+    job_industry: "",
+    description: "",
+    location: "",
   });
   const [queryObj, setQueryObj] = useState({});
   const [activeJobIndex, setActiveJobIndex] = useState(0);
@@ -123,60 +123,60 @@ const JobsMain = () => {
     }
 
     // closes form
-    if (btn.target.name !== 'remote') {
-      btn.target.parentNode.parentNode.parentNode.style.display = 'none';
+    if (btn.target.name !== "remote") {
+      btn.target.parentNode.parentNode.parentNode.style.display = "none";
     }
 
-    if (btn.target.name === 'pay') {
-      if (btn.target.value !== '') {
+    if (btn.target.name === "pay") {
+      if (btn.target.value !== "") {
         queryObj.pay = btn.target.value;
         filter.pay = btn.target.value;
       } else {
-        filter.pay = '';
+        filter.pay = "";
         delete queryObj.pay;
       }
       router.push({ query: queryObj });
     }
 
-    if (btn.target.name === 'remote') {
+    if (btn.target.name === "remote") {
       if (btn.target.checked === true) {
         queryObj.remote = true;
         filter.remote = true;
       } else {
-        filter.remote = '';
+        filter.remote = "";
         delete queryObj.remote;
       }
       router.push({ query: queryObj });
     }
 
-    if (btn.target.name === 'job_type') {
+    if (btn.target.name === "job_type") {
       if (btn.target.checked === true) {
         queryObj.job_type = btn.target.value;
         filter.job_type = btn.target.value;
       } else {
-        filter.job_type = '';
+        filter.job_type = "";
         delete queryObj.job_type;
       }
       router.push({ query: queryObj });
     }
 
-    if (btn.target.name === 'job_industry') {
+    if (btn.target.name === "job_industry") {
       if (btn.target.checked === true) {
         queryObj.job_industry = btn.target.value;
         filter.job_industry = btn.target.value;
       } else {
-        filter.job_industry = '';
+        filter.job_industry = "";
         delete queryObj.job_industry;
       }
       router.push({ query: queryObj });
     }
 
-    if (btn.target.name === 'date_posted') {
-      if (btn.target.value !== '0') {
+    if (btn.target.name === "date_posted") {
+      if (btn.target.value !== "0") {
         queryObj.date_posted = btn.target.value;
         filter.date_posted = btn.target.value;
       } else {
-        filter.date_posted = '0';
+        filter.date_posted = "0";
         delete queryObj.date_posted;
       }
       router.push({ query: queryObj });
@@ -187,19 +187,19 @@ const JobsMain = () => {
 
   const winSize = useRef(null);
   useEffect(() => {
-    winSize.current = window.innerWidth > 991 ? 'large' : 'small';
+    winSize.current = window.innerWidth > 991 ? "large" : "small";
   }, []);
 
   function containerReset() {
-    if (window.innerWidth > 991 && document.querySelector('.jobsMain')) {
+    if (window.innerWidth > 991 && document.querySelector(".jobsMain")) {
       document.getElementsByClassName(
-        'jobs-main-container-list'
-      )[0].style.display = 'block';
+        "jobs-main-container-list"
+      )[0].style.display = "block";
       document.getElementsByClassName(
-        'jobs-main-container-single'
-      )[0].style.display = 'block';
+        "jobs-main-container-single"
+      )[0].style.display = "block";
 
-      winSize.current = 'large';
+      winSize.current = "large";
     } else if (
       winSize.current === 'large' &&
       document.querySelector('.jobsMain')
@@ -212,7 +212,7 @@ const JobsMain = () => {
   }
 
   useEffect(() => {
-    window.addEventListener('resize', containerReset);
+    window.addEventListener("resize", containerReset);
   }, []);
 
   function changeJobAndColor(e, currJob, idx) {
@@ -233,45 +233,45 @@ const JobsMain = () => {
   }
 
   function closeSingle() {
-    document.getElementsByClassName('jobsMain-search')[0].style.display =
-      'block';
-    document.getElementsByClassName('jobs-main-filters')[0].style.display =
-      'block';
+    document.getElementsByClassName("jobsMain-search")[0].style.display =
+      "block";
+    document.getElementsByClassName("jobs-main-filters")[0].style.display =
+      "block";
     document.getElementsByClassName(
-      'jobs-main-container-single'
-    )[0].style.display = 'none';
-    document.getElementsByClassName('jobsMain')[0].style.height = 'auto';
+      "jobs-main-container-single"
+    )[0].style.display = "none";
+    document.getElementsByClassName("jobsMain")[0].style.height = "auto";
     document.getElementsByClassName(
-      'jobs-main-container-list'
-    )[0].style.display = 'block';
+      "jobs-main-container-list"
+    )[0].style.display = "block";
   }
 
   function openFilterForm(btn) {
     // if the form is open, close it and return
-    if (window.getComputedStyle(btn.nextSibling).display === 'block') {
-      btn.nextSibling.style.display = 'none';
+    if (window.getComputedStyle(btn.nextSibling).display === "block") {
+      btn.nextSibling.style.display = "none";
       return;
     }
 
     // close all other forms when any form button is clicked on
-    for (const i of document.getElementsByClassName('job-filter-item-form')) {
-      i.style.display = 'none';
+    for (const i of document.getElementsByClassName("job-filter-item-form")) {
+      i.style.display = "none";
     }
 
     // open the form which is the next sibling of the button that was clicked
     if (btn.nextSibling) {
-      btn.nextSibling.style.display = 'block';
+      btn.nextSibling.style.display = "block";
     }
   }
 
   const token =
-    typeof window !== 'undefined'
-      ? window.localStorage.getItem('jwtToken')
+    typeof window !== "undefined"
+      ? window.localStorage.getItem("jwtToken")
       : null;
 
   const userInfo =
-    typeof window !== 'undefined'
-      ? window.localStorage.getItem('userInfo')
+    typeof window !== "undefined"
+      ? window.localStorage.getItem("userInfo")
       : null;
 
   const fetchSavedJobs = () => {
@@ -303,12 +303,12 @@ const JobsMain = () => {
         }
       )
       .then((response) => {
-        successToast('Job Saved Successfully!');
+        successToast("Job Saved Successfully!");
         fetchSavedJobs();
       })
       .catch((err) => {
         setLoading(false);
-        errorToast('Job not saved, something went wrong, please contact us.');
+        errorToast("Job not saved, something went wrong, please contact us.");
       });
   };
 
@@ -342,7 +342,7 @@ const JobsMain = () => {
   );
 
   const authPlease = () => {
-    errorToast('Please, Sign in your account and after save and apply jobs.');
+    errorToast("Please, Sign in your account and after save and apply jobs.");
   };
 
   const pageCount = Math.ceil(jobs && jobs.length / 5);
@@ -355,7 +355,7 @@ const JobsMain = () => {
     jobs?.length > 0 ? (
       jobs.slice(pagesVisited, pagesVisited + jobsPerPage).map((job, idx) => (
         <div
-          className={idx === activeJobIndex ? 'job-stub active' : 'job-stub'}
+          className={idx === activeJobIndex ? "job-stub active" : "job-stub"}
           key={idx}
           onClick={(e) => changeJobAndColor(e, job, idx)}
         >
@@ -400,28 +400,61 @@ const JobsMain = () => {
         <h3>No Jobs Available</h3>
       </div>
     );
-
+  // TODO 1
   function inputSearchSubmit(e) {
     // if nothing is changed in the input searches, rerun query with same parameters
     e.preventDefault();
     // let queryObj={};
     let blank = true;
     if (e.target.childNodes[0].value) {
-      queryObj.description = e.target.childNodes[0].value;
+      queryObj.search = e.target.childNodes[0].value;
       blank = false;
-      setJobs(
-        jobs.filter((job) =>
-          job.job_description
-            .toLowerCase()
-            .includes(queryObj.description.toLowerCase())
-        )
+      // search the jobs using title
+      const filterJobsByTitle = allJobs.filter((job) =>
+        job.job_title.toLowerCase().includes(queryObj.search.toLowerCase())
       );
+      // search the jobs using description
+      const filterJobsByDes = allJobs.filter((job) =>
+        job.job_description
+          .toLowerCase()
+          .includes(queryObj.search.toLowerCase())
+      );
+      // convert min_requirements list to string
+      const requirements = (reqs) => {
+        const arr = reqs.map((item) => {
+          if (item.skill) return item.skill;
+          else return item;
+        });
+        return arr.toString().toLowerCase();
+      };
+      // search the jobs using requirements(skills)
+      const filterJobsByReq = allJobs.filter((job) => {
+        const min_requirements = requirements(job.min_requirements);
+        return min_requirements
+          .toString()
+          .toLowerCase()
+          .includes(queryObj.search.toLowerCase());
+      });
+      // changing the jobs if the search result is found based on the title then description then skills
+      if (filterJobsByTitle.length > 0) {
+        setJobs(filterJobsByTitle);
+        changeCurrentJob(filterJobsByTitle[0]);
+      } else if (filterJobsByDes.length > 0) {
+        setJobs(filterJobsByDes);
+        changeCurrentJob(filterJobsByDes[0]);
+      } else if (filterJobsByReq.length > 0) {
+        setJobs(filterJobsByReq);
+        changeCurrentJob(filterJobsByReq[0]);
+      } else {
+        setJobs([]);
+        changeCurrentJob(null);
+      }
     }
 
     if (!blank) {
       router.push({ query: queryObj });
     } else {
-      delete queryObj.description;
+      delete queryObj.search;
       router.push({ query: queryObj });
       filterJobs();
     }
@@ -529,7 +562,7 @@ const JobsMain = () => {
               {/* CURRENT JOB NOT SHOWN WHILE IN MOBILE VIEW */}
               <div
                 className="right-grid jobs-main-container-single"
-                style={{ display: currentJob == null && 'none' }}
+                style={{ display: currentJob == null && "none" }}
               >
                 {currentJob != null && (
                   <>
@@ -602,17 +635,17 @@ const JobsMain = () => {
                                         <ul key={index}>
                                           <li className="list-style-square">
                                             <span>
-                                              {skill.years}{' '}
+                                              {skill.years}{" "}
                                               {skill.years === 1
-                                                ? 'year '
-                                                : 'years '}
+                                                ? "year "
+                                                : "years "}
                                             </span>
                                             <span> {skill.skill}</span>
                                           </li>
                                         </ul>
                                       )
                                     )
-                                  : ''}
+                                  : ""}
                               </div>
                             )}
                           </div>
@@ -633,7 +666,7 @@ const JobsMain = () => {
                             <div>
                               <span>Remote</span>
                               <div>
-                                {currentJob.remote === true ? 'Yes' : 'No'}
+                                {currentJob.remote === true ? "Yes" : "No"}
                               </div>
                             </div>
                           </div>
