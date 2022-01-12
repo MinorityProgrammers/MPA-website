@@ -39,7 +39,7 @@ const LearnPage = function () {
           setEnrolledCourses(res.data.data);
         });
     }
-  }, []);
+  }, [typeof window !== 'undefined' ? window.localStorage.getItem('jwtToken') : null]);
 
   useEffect(() => {
     axios.get(`${process.env.BASE_URI}/learn/`).then((res) => {

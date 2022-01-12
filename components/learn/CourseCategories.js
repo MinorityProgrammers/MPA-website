@@ -42,7 +42,7 @@ const CourseCategories = function ({ user, enrolledCourses, usersCourses }) {
         setCourses(res.data.data);
         setTimeout(() => { setLoading(false); }, 3000);
       });
-  }, []);
+  }, [typeof window !== 'undefined' ? window.localStorage.getItem('jwtToken') : null]);
 
   const handleEnrolledCourse = () => {
     setDisable(true);
