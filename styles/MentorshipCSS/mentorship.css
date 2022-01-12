@@ -150,3 +150,19 @@
   font-size: 70px;
 }
 
+@media only screen and (max-width: 500px){
+  .consultancyHero-title{
+    font-size: 2rem;
+  }
+  .consultancyHero-txt{
+    font-size: 1rem;
+    width: 60vw;
+  }
+  .consultancyHero-container{
+    margin-top: 20px;
+    justify-content: center;
+  }
+  .consultancyHero-container img{
+    display: none;
+  }
+}
