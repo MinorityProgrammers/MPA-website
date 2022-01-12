@@ -1,11 +1,13 @@
 import React from 'react';
 
 const FeaturedCourseList = function ({
-  course, sameUserCourses, handleCourseInfo, enrolledBtn, showModal
+  course,
+  sameUserCourses,
+  handleCourseInfo,
+  enrolledBtn,
+  showModal,
 }) {
-  const {
-    earn, name, description, _id,
-  } = course;
+  const { earn, name, description, _id } = course;
 
   const userCoursesId = [];
   sameUserCourses.forEach((userCourse) => {
@@ -16,9 +18,13 @@ const FeaturedCourseList = function ({
     <div className="courses-items px-3 mb-4 mx-2 tw-bg-white tw-shadow-lg">
       <div className="pt-3">
         <div className="earn-rate ml-auto d-flex align-items-center">
-          <img src="https://i.ibb.co/Yjpy6PN/dot.png" className="img-fluid ml-2" alt="" />
+          <img
+            src="https://i.ibb.co/Yjpy6PN/dot.png"
+            className="img-fluid ml-2"
+            alt=""
+          />
           <span className="pl-4">
-            Earn
+            Earn &nbsp;
             {earn}
           </span>
         </div>
@@ -29,21 +35,35 @@ const FeaturedCourseList = function ({
       <p className="course-des ml-2">{description}</p>
 
       <div className="text-center pb-4">
-        {userCoursesId.includes(_id)
-          ? (
-            <button disabled={enrolledBtn} onClick={() =>{showModal(); handleCourseInfo(course)}} className="btn px-5 banner-btn mt-3" data-toggle="modal" data-target="#exampleModal">
-              Enrolled
-            </button>
-          )
-          : !userCoursesId.includes(_id)
-            ? (
-              <button onClick={() =>{showModal(); handleCourseInfo(course)}} className="btn px-5 banner-btn mt-3" data-toggle="modal" data-target="#exampleModal">
-                Enroll
-              </button>
-            )
-            : ''}
+        {userCoursesId.includes(_id) ? (
+          <button
+            disabled={enrolledBtn}
+            onClick={() => {
+              showModal();
+              handleCourseInfo(course);
+            }}
+            className="btn px-5 banner-btn mt-3"
+            data-toggle="modal"
+            data-target="#exampleModal"
+          >
+            Enrolled
+          </button>
+        ) : !userCoursesId.includes(_id) ? (
+          <button
+            onClick={() => {
+              showModal();
+              handleCourseInfo(course);
+            }}
+            className="btn px-5 banner-btn mt-3"
+            data-toggle="modal"
+            data-target="#exampleModal"
+          >
+            Enroll
+          </button>
+        ) : (
+          ''
+        )}
       </div>
-
     </div>
   );
 };

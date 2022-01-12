@@ -52,7 +52,7 @@
 }
 
 .hero-container h1 {
-  font-family: "Red Hat Display";
+  font-family: 'Red Hat Display';
   font-style: normal;
   font-weight: bold;
   font-size: 46px;
@@ -63,7 +63,7 @@
   margin-top: 30px;
 }
 .hero-container p {
-  font-family: "Red Hat Display";
+  font-family: 'Red Hat Display';
   font-style: normal;
   font-weight: 200;
   font-size: 25px;
@@ -87,6 +87,7 @@
   display: flex;
   justify-content: space-between;
 }
+
 .btn-join-mpa {
   width: 155px;
   height: 40px;
@@ -94,13 +95,17 @@
   background: #ffc700;
   box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.25);
   border-radius: 40px;
-  font-family: "Red Hat Display";
+  font-family: 'Red Hat Display';
   font-style: normal;
   font-weight: bold;
   font-size: 14px;
   line-height: 19px;
   color: #151371;
 }
+.btn-join-login:hover {
+  background: #1c19d1;
+}
+
 .btn-join-login {
   width: 156px;
   height: 40px;
@@ -118,7 +123,7 @@
   bottom: 0%;
 }
 .highlight-mpa-programs h1 {
-  font-family: "Red Hat Display";
+  font-family: 'Red Hat Display';
   font-style: normal;
   font-weight: bold;
   font-size: 46px;
@@ -140,7 +145,7 @@
   color: white;
   font-size: 40px;
   border-radius: 5px;
-  margin: 5px 0px
+  margin: 5px 0px;
 }
 .join-mpa-programs {
   background: #f2f2f2;
@@ -149,6 +154,9 @@
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
   text-align: center;
+}
+.mpa-joinpage-btns:hover {
+  background: #1c19d1;
 }
 .mpa-joinpage-btns {
   width: 200px;
@@ -159,7 +167,7 @@
   background: #474bfd;
   box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.25);
   border-radius: 40px;
-  font-family: "Red Hat Display";
+  font-family: 'Red Hat Display';
   font-style: normal;
   font-weight: bold;
   font-size: 14px;
@@ -167,7 +175,7 @@
   color: #fffdfd;
 }
 
-.mpa-joinpage-btn{
+.mpa-joinpage-btn {
   background: #3e41fb;
 }
 
@@ -180,7 +188,7 @@
   background: #474bfd;
   box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.25);
   border-radius: 40px;
-  font-family: "Red Hat Display";
+  font-family: 'Red Hat Display';
   font-style: normal;
   font-weight: bold;
   font-size: 14px;
@@ -188,7 +196,7 @@
   color: #fffdfd;
 }
 .join-mpa-programs .card .card-body h4 {
-  font-family: "Red Hat Display";
+  font-family: 'Red Hat Display';
   font-style: normal;
   font-weight: bold;
   font-size: 28px;
@@ -230,6 +238,10 @@
 .second:hover .maintext {
   background: #333;
   color: #ffc700;
+}
+
+.btn-join-mpa:hover {
+  background: #c8ac47;
 }
 
 .second:hover .icon {
