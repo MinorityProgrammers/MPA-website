@@ -5,9 +5,7 @@ import decode from 'jwt-decode';
 import { signOut, useSession } from 'next-auth/client';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, {
-  useContext, useEffect, useRef, useState,
-} from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { BiMenuAltLeft } from 'react-icons/bi';
 import { useMoralis } from 'react-moralis';
 import Web3 from 'web3';
@@ -127,13 +125,7 @@ async function onDisconnect() {
   selectedAccount = null;
 }
 
-const HomepageNav = ({
-  setToken,
-  setData,
-  page,
-  open,
-  setOpen = () => {},
-}) => {
+const HomepageNav = ({ setToken, setData, page, open, setOpen = () => {} }) => {
   const dropdownRef = useRef(null);
   const dropdownMobileRef = useRef(null);
   const searchMobileRef = useRef(null);
@@ -148,17 +140,16 @@ const HomepageNav = ({
   const [searchValue, setSearch] = useState('');
   const [isActiveMobile, setIsActiveMobile] = useDetectOutsideClick(
     dropdownMobileRef,
-    false,
+    false
   );
   const [isActiveSearch, setIsActiveSearch] = useDetectOutsideClick(
     searchMobileRef,
-    false,
+    false
   );
   const [connect, setConnect] = useState(false);
 
-  const {
-    isWeb3Enabled, enableWeb3, isAuthenticated, isWeb3EnableLoading,
-  } = useMoralis();
+  const { isWeb3Enabled, enableWeb3, isAuthenticated, isWeb3EnableLoading } =
+    useMoralis();
 
   useEffect(() => {
     if (isAuthenticated && !isWeb3Enabled && !isWeb3EnableLoading) {
@@ -210,31 +201,33 @@ const HomepageNav = ({
   } = useContext(GlobalContext || {});
 
   useEffect(() => {
-    const token = typeof window !== 'undefined'
-      ? window.localStorage.getItem('jwtToken')
-      : null;
-    const userInfo = typeof window !== 'undefined'
-      ? window.localStorage.getItem('userInfo')
-      : null;
+    const token =
+      typeof window !== 'undefined'
+        ? window.localStorage.getItem('jwtToken')
+        : null;
+    const userInfo =
+      typeof window !== 'undefined'
+        ? window.localStorage.getItem('userInfo')
+        : null;
 
     if (token === null || userInfo === {}) {
       setUserData(null);
       if (
-        page === 'MentorshipProgram'
-        || page === 'Consultancy'
-        || page === 'learn-page'
-        || page === 'About'
-        || page === 'Careers'
-        || page === 'auth'
-        || page === 'Incubator'
-        || page === 'Chat'
-        || page === 'CreateProfile'
-        || page === 'user'
-        || page === 'settings-overview'
-        || page === 'settings-profile'
-        || page === 'settings-security'
-        || page === 'settings-wallet'
-        || page === 'settings-notifications'
+        page === 'MentorshipProgram' ||
+        page === 'Consultancy' ||
+        page === 'learn-page' ||
+        page === 'About' ||
+        page === 'Careers' ||
+        page === 'auth' ||
+        page === 'Incubator' ||
+        page === 'Chat' ||
+        page === 'CreateProfile' ||
+        page === 'user' ||
+        page === 'settings-overview' ||
+        page === 'settings-profile' ||
+        page === 'settings-security' ||
+        page === 'settings-wallet' ||
+        page === 'settings-notifications'
       ) {
         setData(null);
       }
@@ -242,21 +235,21 @@ const HomepageNav = ({
       // setUserData(Object.values(JSON.parse(userInfo))[1])
       getProfile(setUserData)(profileDispatch);
       if (
-        page === 'MentorshipProgram'
-        || page === 'Consultancy'
-        || page === 'About'
-        || page === 'Careers'
-        || page === 'learn-page'
-        || page === 'auth'
-        || page === 'Incubator'
-        || page === 'Chat'
-        || page === 'CreateProfile'
-        || page === 'user'
-        || page === 'settings-overview'
-        || page === 'settings-profile'
-        || page === 'settings-security'
-        || page === 'settings-wallet'
-        || page === 'settings-notifications'
+        page === 'MentorshipProgram' ||
+        page === 'Consultancy' ||
+        page === 'About' ||
+        page === 'Careers' ||
+        page === 'learn-page' ||
+        page === 'auth' ||
+        page === 'Incubator' ||
+        page === 'Chat' ||
+        page === 'CreateProfile' ||
+        page === 'user' ||
+        page === 'settings-overview' ||
+        page === 'settings-profile' ||
+        page === 'settings-security' ||
+        page === 'settings-wallet' ||
+        page === 'settings-notifications'
       ) {
         getProfile(setData)(profileDispatch);
       }
@@ -291,9 +284,10 @@ const HomepageNav = ({
   };
 
   useEffect(() => {
-    const token = typeof window !== 'undefined'
-      ? window.localStorage.getItem('jwtToken')
-      : null;
+    const token =
+      typeof window !== 'undefined'
+        ? window.localStorage.getItem('jwtToken')
+        : null;
     if (token) {
       const decodedToken = decode(token);
       if (decodedToken.exp * 1000 < new Date().getTime()) handleLogout();
@@ -371,13 +365,21 @@ const HomepageNav = ({
       ) : (
         <div className="mobile__register">
           <a href="/auth">
-            <button type="button" className="btn btn-pink mr-3 ml-3" onClick={handleClick}>
+            <button
+              type="button"
+              className="btn btn-pink mr-3 ml-3"
+              onClick={handleClick}
+            >
               Sign in
             </button>
           </a>
           <p className="mr-3 ml-3">OR</p>
           <a href="/auth">
-            <button type="button" className="btn btn-yellow mr-3 ml-3" onClick={handleClick}>
+            <button
+              type="button"
+              className="btn btn-yellow mr-3 ml-3"
+              onClick={handleClick}
+            >
               Register
             </button>
           </a>
@@ -440,12 +442,19 @@ const HomepageNav = ({
       </ul>
       {userData !== null && userData !== undefined ? (
         <ul className="nav__mobile-items">
-          <a href="/dashboard" onClick={closeMobileMenu}>
+          <a
+            href={`${
+              userData.userName
+                ? `/user/${userData.userName}`
+                : '/create-profile'
+            }`}
+            onClick={closeMobileMenu}
+          >
             <li className="nav-item">
               <div className="nav__mobile-link">Profile</div>
             </li>
           </a>
-          <a href="#" onClick={closeMobileMenu}>
+          {/* <a href="#" onClick={closeMobileMenu}>
             <li className="nav-item">
               <div className="nav__mobile-link">
                 Messages
@@ -460,35 +469,15 @@ const HomepageNav = ({
                 <p className="mobile__social notification">3</p>
               </div>
             </li>
-          </a>
+          </a> */}
         </ul>
       ) : (
         ''
       )}
       <div className="mobile__vote">
-        <div className="mobile__wallet-link" onClick={onClickMobile}>
-          {selectedAccount === null ? (
-            <a href="#" className="tw-text-white" onClick={onConnect}>
-              Connect Wallet
-            </a>
-          ) : (
-            <div>
-              <a href="#" className="topbar__connected">
-                <img src="/assets/images/greendot.svg" alt="" className="green__dot" />
-                <p> </p>
-                {selectedAccount}
-              </a>
-              <a
-                href="#"
-                className="copy__box"
-                onClick={copyWalletAddress(selectedAccount)}
-              >
-                🗐
-              </a>
-            </div>
-          )}
+        <div className="mobile__wallet-link">
+          <Account />
         </div>
-
       </div>
     </div>
   );
@@ -502,8 +491,13 @@ const HomepageNav = ({
           : {}
       }
     >
-
-      <nav className={` ${sticky ? 'sticky-menu tw-flex tw-flex-row tw-justify-between tw-w-full' : 'tw-flex tw-flex-row tw-justify-between tw-w-full'}`}>
+      <nav
+        className={` ${
+          sticky
+            ? 'sticky-menu tw-flex tw-flex-row tw-justify-between tw-w-full'
+            : 'tw-flex tw-flex-row tw-justify-between tw-w-full'
+        }`}
+      >
         {isLogin === true && (
           <div
             className="hamburger-icon tw-cursor-pointer"
@@ -526,7 +520,10 @@ const HomepageNav = ({
             <div className="mobile-icon tw-my-4 tw-justify-items-end tw-mx-2">
               <ul className="topbar__mobile">
                 <li>
-                  <i className="fas fa-search tw-text-blue-700" onClick={onClickSearch} />
+                  <i
+                    className="fas fa-search tw-text-blue-700"
+                    onClick={onClickSearch}
+                  />
                 </li>
                 {userData !== null && userData !== undefined ? (
                   <li onClick={() => setOpen(!open)}>
@@ -543,7 +540,11 @@ const HomepageNav = ({
 
                 <li onClick={onClickMobile}>
                   <i
-                    className={isActiveMobile ? 'fas fa-times tw-text-blue-700' : 'fas fa-bars tw-text-blue-700'}
+                    className={
+                      isActiveMobile
+                        ? 'fas fa-times tw-text-blue-700'
+                        : 'fas fa-bars tw-text-blue-700'
+                    }
                   />
                 </li>
               </ul>
@@ -557,7 +558,10 @@ const HomepageNav = ({
                   className={open ? 'nav-item active-link' : 'nav-item'}
                   onClick={() => setOpen(!open)}
                 >
-                  <div className="tw-cursor-pointer" style={{ display: 'flex' }}>
+                  <div
+                    className="tw-cursor-pointer"
+                    style={{ display: 'flex' }}
+                  >
                     <BiMenuAltLeft />
                     <a>All</a>
                   </div>
@@ -567,10 +571,10 @@ const HomepageNav = ({
               )}
               <li
                 className={
-                router.pathname === '/learn-page'
-                  ? 'nav-item active-link tw-cursor-pointer'
-                  : 'nav-item'
-              }
+                  router.pathname === '/learn-page'
+                    ? 'nav-item active-link tw-cursor-pointer'
+                    : 'nav-item'
+                }
               >
                 <Link
                   href="/learn-page"
@@ -582,10 +586,10 @@ const HomepageNav = ({
               </li>
               <li
                 className={
-                router.pathname === '/incubator'
-                  ? 'nav-item active-link'
-                  : 'nav-item'
-              }
+                  router.pathname === '/incubator'
+                    ? 'nav-item active-link'
+                    : 'nav-item'
+                }
               >
                 <Link
                   href="/incubator"
@@ -597,10 +601,10 @@ const HomepageNav = ({
               </li>
               <li
                 className={
-                router.pathname === '/mentorshipProgram'
-                  ? 'nav-item active-link'
-                  : 'nav-item'
-              }
+                  router.pathname === '/mentorshipProgram'
+                    ? 'nav-item active-link'
+                    : 'nav-item'
+                }
               >
                 <Link
                   href="/mentorshipProgram"
@@ -612,10 +616,10 @@ const HomepageNav = ({
               </li>
               <li
                 className={
-                router.pathname === '/events'
-                  ? 'nav-item active-link'
-                  : 'nav-item'
-              }
+                  router.pathname === '/events'
+                    ? 'nav-item active-link'
+                    : 'nav-item'
+                }
               >
                 <Link
                   href="/events"
@@ -627,10 +631,10 @@ const HomepageNav = ({
               </li>
               <li
                 className={
-                router.pathname === '/careers'
-                  ? 'nav-item active-link'
-                  : 'nav-item'
-              }
+                  router.pathname === '/careers'
+                    ? 'nav-item active-link'
+                    : 'nav-item'
+                }
               >
                 <Link
                   href="/careers"
@@ -642,10 +646,10 @@ const HomepageNav = ({
               </li>
               <li
                 className={
-                router.pathname === '/consultancy_explainer'
-                  ? 'nav-item active-link'
-                  : 'nav-item'
-              }
+                  router.pathname === '/consultancy_explainer'
+                    ? 'nav-item active-link'
+                    : 'nav-item'
+                }
                 onMouseEnter={onMouseEnter}
                 onMouseLeave={onMouseLeave}
               >
@@ -659,10 +663,10 @@ const HomepageNav = ({
               </li>
               <li
                 className={
-                router.pathname === '/join'
-                  ? 'nav-item active-link'
-                  : 'nav-item'
-              }
+                  router.pathname === '/join'
+                    ? 'nav-item active-link'
+                    : 'nav-item'
+                }
               >
                 <Link
                   href="/join"
@@ -680,17 +684,14 @@ const HomepageNav = ({
                     onChange={handleSearch}
                     value={searchValue}
                     className="searchInput tw-bg-transparent tw-border-0 tw-text-gray-500 tw-py-1 xl:tw-w-10/12 tw-w-full tw-outline-none focus:tw-outline-none"
-                  // ${
-                  //   searchValue ? "expand" : ""
-                  // }`}
+                    // ${
+                    //   searchValue ? "expand" : ""
+                    // }`}
                     type="text"
                     name=""
                     placeholder="Search..."
                   />
-                  <button
-                    type="submit"
-                    onClick={handleSubmit}
-                  >
+                  <button type="submit" onClick={handleSubmit}>
                     <i className="fas fa-search" />
                   </button>
                 </div>
@@ -708,7 +709,10 @@ const HomepageNav = ({
                         </a>
                       </li> */}
                   <li>
-                    <i className="fas fa-user-circle tw-content-center tw-text-center NavIcon tw-cursor-pointer tw-mt-2" onClick={onClick} />
+                    <i
+                      className="fas fa-user-circle tw-content-center tw-text-center NavIcon tw-cursor-pointer tw-mt-2"
+                      onClick={onClick}
+                    />
 
                     {isActive ? (
                       <HomepageNavLoggedin
@@ -722,7 +726,11 @@ const HomepageNav = ({
                 </div>
               ) : (
                 <li className="">
-                  <i aria-hidden className="fas fa-user-circle tw-content-center tw-text-center NavIcon tw-cursor-pointer tw-mt-2" onClick={onClick} />
+                  <i
+                    aria-hidden
+                    className="fas fa-user-circle tw-content-center tw-text-center NavIcon tw-cursor-pointer tw-mt-2"
+                    onClick={onClick}
+                  />
                   {isActive ? (
                     <HomepageNavLogin onCloseMobileMenu={onClick} />
                   ) : (
@@ -733,10 +741,8 @@ const HomepageNav = ({
               {/* <li>
               <NativeBalance />
             </li> */}
-
             </ul>
           </div>
-
         </div>
       </nav>
     </header>

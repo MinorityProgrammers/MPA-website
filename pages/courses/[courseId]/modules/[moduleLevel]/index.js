@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import WeeklyActivities from '../../../../../components/learn/courseDetails/WeeklyActivities';
-import Layout from '../../../../../components/Layout';
-import HomepageNav from '../../../../../components/homepage/HomepageNav';
+import React, { useEffect, useState } from 'react';
 import Footer from '../../../../../components/Footer';
+import HomepageNav from '../../../../../components/homepage/HomepageNav';
+import Layout from '../../../../../components/Layout';
+import WeeklyActivities from '../../../../../components/learn/courseDetails/WeeklyActivities';
 import SkeletonElement from '../../../../../components/learn/SkeletonElement';
 
 export async function getServerSideProps(context) {
@@ -32,7 +32,7 @@ const WeekPage = function ({ params }) {
     if (token === null || userInfo === {}) {
       redirect();
     }
-    if (modules.length == 0) {
+    if (modules.length === 0) {
       setTimeout(() => {
         setLoading(false);
       }, 1000);

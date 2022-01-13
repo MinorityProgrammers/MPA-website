@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import Layout from '../components/Layout';
 import HomepageNav from '../components/homepage/HomepageNav';
 import Footer from '../components/Footer';
-import SidebarTwo from '../components/SidebarTwo';
+import SidebarTwo from '../components/sidebar/SidebarTwo';
 import links from '../contexts/utils/links';
 import { useDetectOutsideClick } from '../components/UseDetectOutsideClick';
 import JoinHerosection from '../components/join/JoinHerosection';
@@ -16,7 +16,7 @@ const JoinPage = function () {
   const handleClick = () => {
     setHide(!hide);
   };
-  if (hide == false) {
+  if (hide === false) {
     setTimeout(() => {
       setHide(true);
     }, 10000);

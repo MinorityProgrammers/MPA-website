@@ -6,7 +6,7 @@ import Conversation from './Conversation';
 import Message from './ChatMessage';
 import ChatUserSearch from './ChatUserSearch';
 
-const Chats = function ({ data }) {
+const Chats = ({ data }) => {
   const [allchats, setAllchats] = useState([]);
   const [pendingchats, setPendingchats] = useState([]);
   const [blockedchats, setBlockedchats] = useState([]);
@@ -158,15 +158,11 @@ const Chats = function ({ data }) {
     const getChats = async () => {
       try {
         const token = window.localStorage.getItem('jwtToken');
-        // let res = await axios.get("http://localhost:5000/api/v1/chat/", {
-        const res = await axios.get(
-          `${process.env.BASE_URI}/chat/`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
+        const res = await axios.get(`${process.env.BASE_URI}/chat/`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
           },
-        );
+        });
         setAllchats(res.data.data);
       } catch (err) {
         console.log(err);
@@ -176,19 +172,11 @@ const Chats = function ({ data }) {
     const getPendingChats = async () => {
       try {
         const token = window.localStorage.getItem('jwtToken');
-        // let res = await axios.get("http://localhost:5000/api/v1/chat/pending", {
-        //   headers: {
-        //     'Authorization': `Bearer ${token}`
-        //   }
-        // });
-        const res = await axios.get(
-          `${process.env.BASE_URI}/chat/pending`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
+        const res = await axios.get(`${process.env.BASE_URI}/chat/pending`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
           },
-        );
+        });
         setPendingchats(res.data.data);
       } catch (err) {
         console.log(err);
@@ -198,19 +186,11 @@ const Chats = function ({ data }) {
     const getBlockedChats = async () => {
       try {
         const token = window.localStorage.getItem('jwtToken');
-        // const res = await axios.get("http://localhost:5000/api/v1/chat/block", {
-        //   headers: {
-        //     'Authorization': `Bearer ${token}`
-        //   }
-        // });
-        const res = await axios.get(
-          `${process.env.BASE_URI}/chat/block`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
+        const res = await axios.get(`${process.env.BASE_URI}/chat/block`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
           },
-        );
+        });
         setBlockedchats(res.data.data);
       } catch (err) {
         console.log(err);
@@ -232,14 +212,12 @@ const Chats = function ({ data }) {
         try {
           const token = window.localStorage.getItem('jwtToken');
           const res = await axios.get(
-            `${process.env.BASE_URI}/chat_message/${
-              currentChat._id}`,
+            `${process.env.BASE_URI}/chat_message/${currentChat._id}`,
             {
-              // const res = await axios.get("http://localhost:5000/api/v1/chat_message/" + currentChat._id, {
               headers: {
                 Authorization: `Bearer ${token}`,
               },
-            },
+            }
           );
           setMessages(res.data.data);
         } catch (err) {
@@ -248,7 +226,8 @@ const Chats = function ({ data }) {
       }
     };
     getMessages();
-    if (currentChat) setRecipient(currentChat.users.find((m) => m._id !== user._id));
+    if (currentChat)
+      setRecipient(currentChat.users.find((m) => m._id !== user._id));
   }, [currentChat]);
 
   useEffect(() => {
@@ -258,19 +237,13 @@ const Chats = function ({ data }) {
       } else {
         try {
           const token = window.localStorage.getItem('jwtToken');
-          // const res = await axios.get("http://localhost:5000/api/v1/chat/search/" + chatSearch, {
-          //   headers: {
-          //     'Authorization': `Bearer ${token}`
-          //   }
-          // });
           const res = await axios.get(
-            `${process.env.BASE_URI}/chat/search/${
-              chatSearch}`,
+            `${process.env.BASE_URI}/chat/search/${chatSearch}`,
             {
               headers: {
                 Authorization: `Bearer ${token}`,
               },
-            },
+            }
           );
           setTempResults({ query: chatSearch, results: res.data.data });
         } catch (err) {
@@ -305,21 +278,12 @@ const Chats = function ({ data }) {
       const chatid = currentChat._id;
       const body = { chatid };
       const token = window.localStorage.getItem('jwtToken');
-      // await axios.put("http://localhost:5000/api/v1/chat/block", body, {
-      //   headers: {
-      //     'Authorization': `Bearer ${token}`
-      //   }
-      // })
       await axios
-        .put(
-          `${process.env.BASE_URI}/chat/block`,
-          body,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
+        .put(`${process.env.BASE_URI}/chat/block`, body, {
+          headers: {
+            Authorization: `Bearer ${token}`,
           },
-        )
+        })
         .then((res) => {
           // If the user is online, tell socket
           if (onlineUsers.find((u) => u.userId == recipient._id)) {
@@ -389,20 +353,12 @@ const Chats = function ({ data }) {
   const rejectChat = async (chat, setpopUp) => {
     try {
       const token = window.localStorage.getItem('jwtToken');
-      // await axios.delete("http://localhost:5000/api/v1/chat/" + chat._id, {
-      //   headers: {
-      //     'Authorization': `Bearer ${token}`
-      //   }
-      // })
       await axios
-        .delete(
-          `${process.env.BASE_URI}/chat/${chat._id}`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
+        .delete(`${process.env.BASE_URI}/chat/${chat._id}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
           },
-        )
+        })
         .then((res) => {
           // If the user is online, tell socket
           const receiver = chat.users.find((m) => m._id !== user._id);
@@ -430,21 +386,12 @@ const Chats = function ({ data }) {
     try {
       const body = { chatid: chat._id };
       const token = window.localStorage.getItem('jwtToken');
-      // await axios.put("http://localhost:5000/api/v1/chat/block", body, {
-      //   headers: {
-      //     'Authorization': `Bearer ${token}`
-      //   }
-      // })
       await axios
-        .put(
-          `${process.env.BASE_URI}/chat/block`,
-          body,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
+        .put(`${process.env.BASE_URI}/chat/block`, body, {
+          headers: {
+            Authorization: `Bearer ${token}`,
           },
-        )
+        })
         .then((res) => {
           // If the user is online, tell socket
           const receiver = chat.users.find((m) => m._id !== user._id);
@@ -481,16 +428,11 @@ const Chats = function ({ data }) {
     };
 
     const receiverId = currentChat.users.find(
-      (member) => member._id !== user._id,
+      (member) => member._id !== user._id
     );
 
     try {
       const token = window.localStorage.getItem('jwtToken');
-      // const res = await axios.post("http://localhost:5000/api/v1/chat_message/", message, {
-      //   headers: {
-      //     'Authorization': `Bearer ${token}`
-      //   }
-      // });
       const res = await axios.post(
         `${process.env.BASE_URI}/chat_message/`,
         message,
@@ -498,7 +440,7 @@ const Chats = function ({ data }) {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        },
+        }
       );
       // send the new message to the socket
       socket.current.emit('sendMessage', {
@@ -618,8 +560,6 @@ const Chats = function ({ data }) {
   const setUpResults = () => {
     let chatRes;
     let messageRes;
-    // console.log("search query in results formatting: "+chatSearch)
-    // console.log(searchResults)
     if (searchResults && searchResults.chats.length > 0) {
       chatRes = (
         <>
@@ -671,9 +611,7 @@ const Chats = function ({ data }) {
                   />
                   <div style={{ display: 'flex', flexDirection: 'column' }}>
                     <span className="conversation-brief">
-                      {muser?.firstName}
-                      {' '}
-                      {muser?.lastName}
+                      {muser?.firstName} {muser?.lastName}
                     </span>
                     <Highlighter
                       textToHighlight={m.message}
@@ -692,9 +630,9 @@ const Chats = function ({ data }) {
       );
     }
     if (
-      searchResults
-      && searchResults.messages.length == 0
-      && searchResults.chats.length == 0
+      searchResults &&
+      searchResults.messages.length == 0 &&
+      searchResults.chats.length == 0
     ) {
       chatRes = (
         <span style={{ alignSelf: 'center' }}>
@@ -720,10 +658,10 @@ const Chats = function ({ data }) {
             style={
               chatlist === 'all'
                 ? {
-                  backgroundColor: '#C4C4C4',
-                  color: '#000000',
-                  border: '1px solid #000000',
-                }
+                    backgroundColor: '#C4C4C4',
+                    color: '#000000',
+                    border: '1px solid #000000',
+                  }
                 : {}
             }
           >
@@ -735,10 +673,10 @@ const Chats = function ({ data }) {
             style={
               chatlist === 'pending'
                 ? {
-                  backgroundColor: '#C4C4C4',
-                  color: '#000000',
-                  border: '1px solid #000000',
-                }
+                    backgroundColor: '#C4C4C4',
+                    color: '#000000',
+                    border: '1px solid #000000',
+                  }
                 : {}
             }
           >
@@ -750,10 +688,10 @@ const Chats = function ({ data }) {
             style={
               chatlist === 'blocked'
                 ? {
-                  backgroundColor: '#C4C4C4',
-                  color: '#000000',
-                  border: '1px solid #000000',
-                }
+                    backgroundColor: '#C4C4C4',
+                    color: '#000000',
+                    border: '1px solid #000000',
+                  }
                 : {}
             }
           >
@@ -806,9 +744,7 @@ const Chats = function ({ data }) {
                 className="chat-header-img"
               />
               <span className="chat-header-name">
-                {recipient.firstName}
-                {' '}
-                {recipient.lastName}
+                {recipient.firstName} {recipient.lastName}
               </span>
               {!expandInfo && (
                 <div
@@ -877,19 +813,13 @@ const Chats = function ({ data }) {
           className="chat-info-img"
         />
         <span className="chat-info-name">
-          {recipient.firstName}
-          {' '}
-          {recipient.lastName}
+          {recipient.firstName} {recipient.lastName}
         </span>
         {blockPopUp && (
           <div className="chat-popup-container">
             <span>
-              Are you sure you want to block
-              {' '}
-              {recipient.firstName}
-              {' '}
-              {recipient.lastName}
-              ?
+              Are you sure you want to block {recipient.firstName}{' '}
+              {recipient.lastName}?
             </span>
             <div className="chat-popup-btn-container">
               <div
@@ -936,7 +866,9 @@ const Chats = function ({ data }) {
             {!currentChat?.blocked && currentChat?.accepted && (
               <div
                 className="chat-info-blocked-btn"
-                onClick={() => (blockPopUp ? setBlockPopUp(false) : setBlockPopUp(true))}
+                onClick={() =>
+                  blockPopUp ? setBlockPopUp(false) : setBlockPopUp(true)
+                }
               >
                 Block
               </div>
@@ -954,9 +886,7 @@ const Chats = function ({ data }) {
           <div style={{ flex: '1', fontWeight: '600' }}>
             {recipient.userName && (
               <>
-                Username
-                {' '}
-                <br />
+                Username <br />
               </>
             )}
             {/* Add privacy check for emails */}
@@ -968,7 +898,6 @@ const Chats = function ({ data }) {
               <>
                 {' '}
                 {recipient.userName}
-                {' '}
                 <br />
               </>
             )}

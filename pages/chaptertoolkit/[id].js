@@ -1,17 +1,16 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { useRouter } from 'next/router';
 import axios from 'axios';
-import HomepageNav from '../../components/homepage/HomepageNav';
-import Footer from '../../components/Footer';
-import Layout from '../../components/Layout';
-import NavOne from '../../components/NavOne';
-import SidebarTwo from '../../components/SidebarTwo';
-import links from '../../contexts/utils/links';
-import ComingSoon from '../../components/ComingSoon';
-import { useDetectOutsideClick } from '../../components/UseDetectOutsideClick';
+import { useRouter } from 'next/router';
+import React, { useEffect, useRef, useState } from 'react';
 import ToolkitContent from '../../components/chapter/chapter-toolkit-content/toolkitContent.component';
 import ToolkitHeader from '../../components/chapter/chapter-toolkit-header/toolkitHeader.component';
 import ChapterWrapper from '../../components/chapter/chapter-wrapper/ChapterWrapper.component';
+import ComingSoon from '../../components/ComingSoon';
+import Footer from '../../components/Footer';
+import HomepageNav from '../../components/homepage/HomepageNav';
+import Layout from '../../components/Layout';
+import SidebarTwo from '../../components/sidebar/SidebarTwo';
+import { useDetectOutsideClick } from '../../components/UseDetectOutsideClick';
+import links from '../../contexts/utils/links';
 
 const ChapterPage = function () {
   const [toolkits, setToolkits] = useState([]);
@@ -34,7 +33,7 @@ const ChapterPage = function () {
     setHide(!hide);
   };
 
-  if (hide == false) {
+  if (hide === false) {
     setTimeout(() => {
       setHide(true);
     }, 60000);
@@ -60,7 +59,7 @@ const ChapterPage = function () {
         active="Home"
         handleClick={handleClick}
       />
-      {hide == false && <ComingSoon closeClick={handleClick} />}
+      {hide === false && <ComingSoon closeClick={handleClick} />}
       <ChapterWrapper>
         <ToolkitHeader />
 

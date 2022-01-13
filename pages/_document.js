@@ -1,12 +1,24 @@
+/* eslint-disable jsx-a11y/iframe-has-title */
+/* eslint-disable react/style-prop-object */
 import Document, {
-  Html, Head, Main, NextScript,
+  Head, Html, Main, NextScript,
 } from 'next/document';
+import React from 'react';
 
 export default class MyDocument extends Document {
   render() {
     return (
       <Html>
         <Head>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-N4H84NK')`,
+            }}
+          />
           <script
             dangerouslySetInnerHTML={{
               __html: `(function (w, d, s, l, i) {
@@ -39,17 +51,24 @@ export default class MyDocument extends Document {
           />
         </Head>
         <body>
-          <noscript
-            dangerouslySetInnerHTML={{
-              __html: `
-              <iframe src="https://www.googletagmanager.com/ns.html?id=${process.env.GTM_CONTAINER_ID}"
-                height="0" 
-                width="0" 
-                style="display:none;visibility:hidden">
-              </iframe>
-          `,
-            }}
-          />
+          <noscript>
+            <iframe
+              src="https://www.googletagmanager.com/ns.html?id=GTM-N4H84NK"
+              height="0"
+              width="0"
+              style={{ display: 'none', visibility: 'hidden' }}
+            />
+
+          </noscript>
+          <noscript>
+            <iframe
+              src={`https://www.googletagmanager.com/ns.html?id=${process.env.GTM_CONTAINER_ID}`}
+              height="0"
+              width="0"
+              style={{ display: 'none', visibility: 'hidden' }}
+            />
+
+          </noscript>
           <script
             dangerouslySetInnerHTML={{
               __html: ` window.watsonAssistantChatOptions = {

@@ -10,7 +10,7 @@ import ComingSoon from '../../../components/ComingSoon';
 import Footer from '../../../components/Footer';
 import HomepageNav from '../../../components/homepage/HomepageNav';
 import Layout from '../../../components/Layout';
-import SidebarTwo from '../../../components/SidebarTwo';
+import SidebarTwo from '../../../components/sidebar/SidebarTwo';
 import { useDetectOutsideClick } from '../../../components/UseDetectOutsideClick';
 import links from '../../../contexts/utils/links';
 
@@ -79,11 +79,8 @@ const CompanyDetails = ({ id }) => {
                 {company.company_name}
               </h2>
               <div className="companyDetails-container-info-relationship">
-                <strong>{company.relation_type}</strong>
-                {' '}
-                of Minority Programmers
-                Association since
-                {' '}
+                <strong>{company.relation_type}</strong> of Minority Programmers
+                Association since{' '}
                 <strong>
                   {new Date(company.mpa_relationship_started)
                     .toDateString()
@@ -140,11 +137,11 @@ const CompanyDetails = ({ id }) => {
               <div className="companyDetails-container-specialties-list">
                 {company.specialties
                   ? company.specialties.map((specialty, idx) => (
-                    <div key={idx}>
-                      <CheckIconSvg />
-                      <div>{specialty}</div>
-                    </div>
-                  ))
+                      <div key={idx}>
+                        <CheckIconSvg />
+                        <div>{specialty}</div>
+                      </div>
+                    ))
                   : ''}
               </div>
             </div>

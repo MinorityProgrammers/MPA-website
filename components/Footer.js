@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Footer = function () {
+const Footer = () => {
   function scrollTop() {
     window.scrollTo(0, 0);
   }
@@ -29,7 +29,11 @@ const Footer = function () {
                         <a href="/learn-page">Learn</a>
                       </li>
                       <li>
-                        <a href="https://www.defisummer.org" target="_blank" rel="noreferrer">
+                        <a
+                          href="https://www.defisummer.org"
+                          target="_blank"
+                          rel="noreferrer"
+                        >
                           DefiSummer
                         </a>
                       </li>
@@ -85,8 +89,7 @@ const Footer = function () {
         <div className="site-footer__bottom">
           <div className="container">
             <p className="site-footer__copy">
-              &copy; Copyright 2021 by
-              {' '}
+              &copy; Copyright 2021 by{' '}
               <a href="#">Minority Programmers Association</a>
             </p>
             <div className="site-footer__social">
@@ -96,7 +99,11 @@ const Footer = function () {
               >
                 <i className="kipso-icon-top-arrow" />
               </div>
-              <a href="https://twitter.com/minorityprogram" target="_blank" rel="noreferrer">
+              <a
+                href="https://twitter.com/minorityprogram"
+                target="_blank"
+                rel="noreferrer"
+              >
                 <i className="fab fa-twitter" />
               </a>
               <a
@@ -127,7 +134,11 @@ const Footer = function () {
               >
                 <i className="fab fa-reddit" />
               </a>
-              <a href="https://github.com/MinorityProgrammers/" target="_blank" rel="noreferrer">
+              <a
+                href="https://github.com/MinorityProgrammers/"
+                target="_blank"
+                rel="noreferrer"
+              >
                 <i className="fab fa-github" />
               </a>
               <a
@@ -137,17 +148,24 @@ const Footer = function () {
               >
                 <i className="fab fa-youtube" />
               </a>
-              <a href="https://medium.com/minority-programmers" target="_blank" rel="noreferrer">
+              <a
+                href="https://medium.com/minority-programmers"
+                target="_blank"
+                rel="noreferrer"
+              >
                 <i className="fab fa-medium" />
               </a>
-              <a href="https://t.me/minorityprogrammers" target="_blank" rel="noreferrer">
+              <a
+                href="https://t.me/minorityprogrammers"
+                target="_blank"
+                rel="noreferrer"
+              >
                 <i className="fab fa-telegram" />
               </a>
             </div>
           </div>
         </div>
       </footer>
-
       <div className="search-popup">
         <div className="search-popup__overlay custom-cursor__overlay search-overlay" />
         <div className="search-popup__inner">
@@ -169,4 +187,5 @@ const Footer = function () {
     </div>
   );
 };
+
 export default Footer;

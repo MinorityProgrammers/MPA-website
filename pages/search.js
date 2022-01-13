@@ -1,15 +1,13 @@
-import React, {
-  useState, useRef, useEffect, useContext,
-} from 'react';
+import React, { useState, useRef, useEffect, useContext } from 'react';
 import { GlobalContext } from '../contexts/provider';
 import HomepageNav from '../components/homepage/HomepageNav';
 import Layout from '../components/Layout';
 import Footer from '../components/Footer';
-import SidebarTwo from '../components/SidebarTwo';
+import SidebarTwo from '../components/sidebar/SidebarTwo';
 import links from '../contexts/utils/links';
-import { useDetectOutsideClick } from '../components/UseDetectOutsideClick';
-import Search from '../components/search/search-main/search';
 import ComingSoon from '../components/ComingSoon';
+import Search from '../components/search/search-main/search';
+import { useDetectOutsideClick } from '../components/UseDetectOutsideClick';
 
 const search = () => {
   const [open, setOpen] = useState(false);
@@ -23,7 +21,7 @@ const search = () => {
   const handleClick = () => {
     setHide(!hide);
   };
-  if (hide == false) {
+  if (hide === false) {
     setTimeout(() => {
       setHide(true);
     }, 60000);
@@ -40,7 +38,7 @@ const search = () => {
     const token = window.localStorage.getItem('jwtToken');
     const userInfo = window.localStorage.getItem('userInfo');
     setToken(token);
-    if (token == null || userInfo == {}) {
+    if (token == null || userInfo === {}) {
       setUserData(null);
       setActive(false);
     } else {
@@ -66,7 +64,7 @@ const search = () => {
             active="Home"
             handleClick={handleClick}
           />
-          {hide == false && <ComingSoon closeClick={handleClick} />}
+          {hide === false && <ComingSoon closeClick={handleClick} />}
           <Search
             userData={userData}
             active={active}

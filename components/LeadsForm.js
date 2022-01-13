@@ -1,9 +1,4 @@
-import React, {
-  useState,
-  useEffect,
-  useMemo,
-  useCallback,
-} from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import Calendar from 'react-calendar';
 import Axios from 'axios';
 
@@ -12,25 +7,13 @@ const axios = Axios.create({
   baseURL: `${process.env.BASE_URI}/service`,
 });
 
-const LeadsForm = function () {
+const LeadsForm = () => {
   const totalSteps = 9;
   const [questions, setQuestions] = useState('');
-
   const [step, setstep] = useState(0);
-
   const [inputValue, setInputValue] = useState(' ');
-
   const [displayError, setDisplayError] = useState(undefined);
-
   const [errorMsg, setErrorMsg] = useState('Please fill in required fields');
-
-  const test = 'test post request';
-
-  // axios get request for test
-  // const getInfoUsingAxios = () => {
-  //   axios.get().then(res => console.log(res.data));
-  // }
-
   const postDataUsingAxios = () => {
     axios
       .post('/', {
@@ -42,46 +25,6 @@ const LeadsForm = function () {
   };
 
   const handleInputChange = (e) => {
-    // try {
-    //   if (e.target.value.match(/[a-zA-Z0-9]+/)) {
-    //     // console.log('LETTERS AND NUMBER');
-    //     if (
-    //       e.target.value.match(/[0-9]+/) &&
-    //       !e.target.value.match(/[a-zA-Z]+/)
-    //     ) {
-    //       // console.log('JUST NUMBER');
-    //       if (step === 5) {
-    //         if (e.target.value <= 100 && e.target.value >= 0) {
-    //           setInputValue(e.target.value);
-    //           setDisplayError(false);
-    //           return false;
-    //         }
-    //       } else if (e.target.value <= 1000000 && e.target.value >= 0) {
-    //         setInputValue(e.target.value);
-    //         setDisplayError(false);
-    //         return false;
-    //       }
-    //     } else if (e.target.value.match(/[a-zA-Z0-9]+/)) {
-    //       // console.log('LETTERS AND NUMBER');
-    //       setInputValue(e.target.value);
-    //       setDisplayError(false);
-    //       return false;
-    //     }
-    //   } else {
-    //     // console.log('NOTHING');
-    //     setErrorMsg("Please fill in required fields");
-    //     setInputValue(" ");
-    //     setDisplayError(true);
-    //     return true;
-    //   }
-    // } catch (error) {
-    //   // console.log('ERROR CATCHING');
-    //   setErrorMsg("Please fill in required fields");
-    //   setInputValue(" ");
-    //   setDisplayError(true);
-    //   return true;
-    // }
-
     const string = e.target ? e.target.value : e;
     if (string.match(/[a-zA-Z0-9]+/)) {
       setInputValue(string);
@@ -94,14 +37,12 @@ const LeadsForm = function () {
     return true;
   };
   const plus = useCallback(() => {
-    console.log(inputValue);
     postDataUsingAxios();
 
     if (step === 0) {
       setstep((prev) => prev + 1);
     } else {
       const error = handleInputChange(inputValue);
-      console.log(error);
       if (!error) {
         setInputValue('');
         setQuestions({
@@ -114,69 +55,6 @@ const LeadsForm = function () {
         }
       }
     }
-
-    // POST DATA USING AXIOS
-    // postDataUsingAxios();
-
-    // if (!displayError || step === 0) {
-    //   //REMOVE ERROR MSG IS DISPAY IS TRUE
-    //   if (displayError === true) setDisplayError(false);
-
-    //   if (step < 9) {
-    //     //INCREMENT STEP
-    //     setstep(step + 1);
-
-    //     //TAKE INPUT VALUE AND SAVE TO QUESTIONS
-    //     if (step > 0) {
-    //       if (step === 7) {
-    //         if (
-    //           inputValue.match(
-    //             /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-    //           )
-    //         ) {
-    //           setQuestions({
-    //             ...questions,
-    //             ["question" + step.toString()]: inputValue,
-    //           });
-    //         } else {
-    //           setErrorMsg("Incorrect Format");
-    //           setDisplayError(true);
-    //           setstep(step);
-    //         }
-    //       } else {
-    //         setQuestions({
-    //           ...questions,
-    //           ["question" + step.toString()]: inputValue,
-    //         });
-    //       }
-    //     }
-    //     //CLEAR INPUT
-    //     if (
-    //       questions["question" + (step + 1).toString()] === " " ||
-    //       questions["question" + (step + 1).toString()] === undefined ||
-    //       questions["question" + (step + 1).toString()] === null
-    //     )
-    //       setInputValue(" ");
-    //     else setInputValue(questions["question" + (step + 1).toString()]);
-    //   }
-    // } else if (displayError) {
-    //   if (step === 6) {
-    //     setErrorMsg("Please choose a date");
-    //   } else {
-    //     setErrorMsg("Please fill in required fields");
-    //   }
-
-    //   // setDisplayError(true);
-    // } else if (step >= 8) {
-    //   //CLEAR INPUT VALUE
-    //   setInputValue(" ");
-
-    //   //CLEAR QUESTIONS
-    //   setQuestions({});
-
-    //   //SET STEP TO 0
-    //   setstep(0);
-    // }
   }, [displayError, step]);
 
   const minus = useCallback(() => {
@@ -184,17 +62,6 @@ const LeadsForm = function () {
       setInputValue(' ');
       // DECREMENT STEP
       setstep(step - 1);
-
-      // UPDATE INPUT TO PREVIOUS ENTRY
-      // if (
-      //   questions["question" + (step - 1).toString()] === undefined ||
-      //   questions["question" + (step - 1).toString()] === " " ||
-      //   questions["question" + (step - 1).toString()] === null
-      // ) {
-      //   setInputValue(" ");
-      // } else {
-      //   setInputValue(questions["question" + (step - 1).toString()]);
-      // }
 
       setDisplayError(false);
     }
@@ -206,11 +73,12 @@ const LeadsForm = function () {
         <h4>{index === undefined ? errorMsg : errorMsg[index]}</h4>
       </div>
     ),
-    [errorMsg],
+    [errorMsg]
   );
 
   const KeepingUpWithStep = useCallback(({ selected }) => {
-    const calculateLinePercentage = () => (selected === 0 ? 0 : ((selected - 1) / (totalSteps - 1)) * 100);
+    const calculateLinePercentage = () =>
+      selected === 0 ? 0 : ((selected - 1) / (totalSteps - 1)) * 100;
 
     const percentageOfBlueLine = Number.isInteger(selected)
       ? calculateLinePercentage()
@@ -225,11 +93,11 @@ const LeadsForm = function () {
       >
         <div className="keepingUpItemContainer">
           {[
-            ...(function () {
+            ...(() => {
               const range = [];
               for (let i = 0; i < totalSteps; i++) range.push(i + 1);
               return range;
-            }()),
+            })(),
           ].map((index) => (
             <span
               key={index}
@@ -246,9 +114,7 @@ const LeadsForm = function () {
   }, []);
 
   const Buttons = useCallback(
-    ({
-      left, right, marginTop, customPlusFunction,
-    }) => (
+    ({ left, right, marginTop, customPlusFunction }) => (
       <div className="service_buttons">
         {left ? (
           <button
@@ -273,13 +139,11 @@ const LeadsForm = function () {
         ) : null}
       </div>
     ),
-    [plus, minus],
+    [plus, minus]
   );
 
   const QuestionContainer = useCallback(
-    ({
-      children, left, right, marginBottom, customPlusFunction,
-    }) => (
+    ({ children, left, right, marginBottom, customPlusFunction }) => (
       <div className="service_container">
         <div className="questions">
           {children}
@@ -293,24 +157,28 @@ const LeadsForm = function () {
         </div>
       </div>
     ),
-    [Buttons, step],
+    [Buttons, step]
   );
-  const CustomSelectTag = function ({
+  const CustomSelectTag = ({
     options,
     setSelected,
     selected,
     optionsShowByDefault = false,
-  }) {
+  }) => {
     const [dropDown, setDropDown] = useState(optionsShowByDefault);
-    const updatedOptions = useMemo(() => ['...select an option', ...options], [options]);
+    const updatedOptions = useMemo(
+      () => ['...select an option', ...options],
+      [options]
+    );
 
     useEffect(() => {
       setSelected(0);
     }, []);
 
-    const getRootVariable = (str) => parseInt(
-      window.getComputedStyle(document.body).getPropertyValue(`--${str}`),
-    );
+    const getRootVariable = (str) =>
+      parseInt(
+        window.getComputedStyle(document.body).getPropertyValue(`--${str}`)
+      );
 
     const maximumOptionHeight = getRootVariable('maximumOptionPerScrollable');
     const optionHeight = getRootVariable('optionHeight');
@@ -327,14 +195,10 @@ const LeadsForm = function () {
 
     return (
       <div
-        className={
-          `customSelectTag ${dropDown ? 'select-border-bottom' : ''}`
-        }
+        className={`customSelectTag ${dropDown ? 'select-border-bottom' : ''}`}
       >
         <div
-          className={
-            `selectDisplay ${dropDown ? 'select-border-bottom' : ''}`
-          }
+          className={`selectDisplay ${dropDown ? 'select-border-bottom' : ''}`}
         >
           <span>{updatedOptions[selected]}</span>
           <i
@@ -376,11 +240,11 @@ const LeadsForm = function () {
     );
   };
 
-  const CustomCheckboxMaker = function ({
+  const CustomCheckboxMaker = ({
     checkboxes,
     setCheckboxes,
     checkBoxLabels,
-  }) {
+  }) => {
     useEffect(() => {
       setCheckboxes([
         ...(function () {
@@ -390,7 +254,7 @@ const LeadsForm = function () {
             arr.push(obj);
           }
           return arr;
-        }()),
+        })(),
       ]);
     }, []);
 
@@ -410,9 +274,9 @@ const LeadsForm = function () {
             >
               <i
                 className={
-                    'fa fa-check '
-                    + `${checkbox.checked ? 'checkVisible' : 'checkInvisible'}`
-                  }
+                  'fa fa-check ' +
+                  `${checkbox.checked ? 'checkVisible' : 'checkInvisible'}`
+                }
                 aria-hidden="true"
               />
             </div>
@@ -426,7 +290,7 @@ const LeadsForm = function () {
     prev,
     lengthOfPageQuestions,
     questionIndex,
-    errorStr,
+    errorStr
   ) => {
     let errorList = [];
     if (prev instanceof Array) {
@@ -445,15 +309,17 @@ const LeadsForm = function () {
     index,
     question,
     questionIndex,
-    lengthOfPageQuestions,
+    lengthOfPageQuestions
   ) => {
     if (!index) {
-      setErrorMsg((prev) => setCustomTagError(
-        prev,
-        lengthOfPageQuestions,
-        questionIndex,
-        'You must select at least one option.',
-      ));
+      setErrorMsg((prev) =>
+        setCustomTagError(
+          prev,
+          lengthOfPageQuestions,
+          questionIndex,
+          'You must select at least one option.'
+        )
+      );
       setDisplayError(true);
     } else {
       return [question, options[index - 1]];
@@ -463,7 +329,7 @@ const LeadsForm = function () {
     checkboxes,
     question,
     questionIndex,
-    lengthOfPageQuestions,
+    lengthOfPageQuestions
   ) => {
     const checkedCheckboxes = checkboxes
       .filter((checkbox) => {
@@ -475,12 +341,14 @@ const LeadsForm = function () {
       .map((checkbox) => checkbox.label);
 
     if (checkedCheckboxes.length === 0) {
-      setErrorMsg((prev) => setCustomTagError(
-        prev,
-        lengthOfPageQuestions,
-        questionIndex,
-        'You must check at least one checkbox.',
-      ));
+      setErrorMsg((prev) =>
+        setCustomTagError(
+          prev,
+          lengthOfPageQuestions,
+          questionIndex,
+          'You must check at least one checkbox.'
+        )
+      );
     } else {
       return [question, checkedCheckboxes];
     }
@@ -524,11 +392,7 @@ const LeadsForm = function () {
           type="text"
           name="idea"
           className={`${'service_input'} ${
-            displayError === undefined
-              ? ''
-              : displayError
-                ? 'error'
-                : 'success'
+            displayError === undefined ? '' : displayError ? 'error' : 'success'
           }`}
           defaultValue={inputValue}
           placeholder="Enter the title of this product."
@@ -538,7 +402,7 @@ const LeadsForm = function () {
         {displayError === true ? <ErrorEle /> : null}
       </QuestionContainer>
     ),
-    [displayError, QuestionContainer],
+    [displayError, QuestionContainer]
   );
   const Page3 = useCallback(() => {
     const [selected, setSelected] = useState();
@@ -572,13 +436,13 @@ const LeadsForm = function () {
         selected,
         question1,
         currentQuestionIndex,
-        lenght_of_questions,
+        lenght_of_questions
       );
       const questionSheetTwo = validateCheckBox(
         checkboxes,
         question2,
         currentQuestionIndex + 1,
-        lenght_of_questions,
+        lenght_of_questions
       );
       if (questionSheetOne && questionSheetTwo) {
         setstep((prev) => prev + 1);
@@ -798,8 +662,8 @@ const LeadsForm = function () {
             inputValue !== ' '
               ? inputValue
               : questions.question1
-                ? questions.question1
-                : ''
+              ? questions.question1
+              : ''
           }
         />
       )}

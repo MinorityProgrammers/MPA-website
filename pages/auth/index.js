@@ -5,7 +5,7 @@ import Card from '../../components/login-signup/card/index';
 import Layout from '../../components/Layout';
 import HomepageNav from '../../components/homepage/HomepageNav';
 import Footer from '../../components/Footer';
-import SidebarTwo from '../../components/SidebarTwo';
+import SidebarTwo from '../../components/sidebar/SidebarTwo';
 import links from '../../contexts/utils/links';
 import ComingSoon from '../../components/ComingSoon';
 import { useDetectOutsideClick } from '../../components/UseDetectOutsideClick';
@@ -18,7 +18,7 @@ const Index = function () {
   const handleClick = () => {
     setHide(!hide);
   };
-  if (hide == false) {
+  if (hide === false) {
     setTimeout(() => {
       setHide(true);
     }, 10000);
@@ -34,8 +34,9 @@ const Index = function () {
 
   // user redirection's
   useEffect(() => {
-    const user = JSON.parse(window?.localStorage.getItem('userInfo'))?.user
-      || JSON.parse(window?.localStorage.getItem('userInfo'));
+    const user =
+      JSON.parse(window?.localStorage.getItem('userInfo'))?.user ||
+      JSON.parse(window?.localStorage.getItem('userInfo'));
     // console.log(user);
     if (user?.isUpdated === true) {
       const slug = user?.userName;
@@ -58,7 +59,7 @@ const Index = function () {
         <SidebarTwo open={open} setOpen={setOpen} links={links} active="Home" />
         {data !== [] && (
           <>
-            {hide == false && <ComingSoon closeClick={handleClick} />}
+            {hide === false && <ComingSoon closeClick={handleClick} />}
             <div
               style={{ marginTop: '0' }}
               className="tw-mx-24 tw-my-32 md:tw-mx-4"

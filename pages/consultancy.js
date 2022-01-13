@@ -4,7 +4,7 @@ import ComingSoon from '../components/ComingSoon';
 import { useDetectOutsideClick } from '../components/UseDetectOutsideClick';
 import Layout from '../components/Layout';
 import Footer from '../components/Footer';
-import SidebarTwo from '../components/SidebarTwo';
+import SidebarTwo from '../components/sidebar/SidebarTwo';
 import links from '../contexts/utils/links';
 import Consultancy from '../components/Consultancy/consultancy_Home';
 
@@ -18,7 +18,7 @@ const consultancy = () => {
   const handleClick = () => {
     setHide(!hide);
   };
-  if (hide == false) {
+  if (hide === false) {
     setTimeout(() => {
       setHide(true);
     }, 60000);
@@ -46,7 +46,7 @@ const consultancy = () => {
           active="Home"
           handleClick={handleClick}
         />
-        {hide == false && <ComingSoon closeClick={handleClick} />}
+        {hide === false && <ComingSoon closeClick={handleClick} />}
         <section className="home-section">
           <Consultancy
             data={data}

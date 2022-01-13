@@ -1,11 +1,9 @@
-import React, {
-  useEffect, useState, useContext, useRef,
-} from 'react';
+import React, { useEffect, useState, useContext, useRef } from 'react';
 import { useRouter } from 'next/router';
 import NotFoundPage from '../404';
 import Layout from '../../components/Layout';
 import HomepageNav from '../../components/homepage/HomepageNav';
-import SidebarTwo from '../../components/SidebarTwo';
+import SidebarTwo from '../../components/sidebar/SidebarTwo';
 import ProfileTwo from '../../components/ProfileTwo';
 import { GlobalContext } from '../../contexts/provider';
 import { getProfile } from '../../contexts/actions/profile/getProfile';
@@ -25,8 +23,8 @@ const User = function ({ user }) {
 
   useEffect(() => {
     setTimeout(() => {
-      !((isLoggedIn && ownsProfile) || user[0]?.profileVisibility)
-        && setHiddenProfileValidated(true);
+      !((isLoggedIn && ownsProfile) || user[0]?.profileVisibility) &&
+        setHiddenProfileValidated(true);
     }, 2000);
   }, [isLoggedIn, ownsProfile, user]);
 
@@ -54,8 +52,8 @@ const User = function ({ user }) {
   // user is logged in and viewing own profile page
   useEffect(() => {
     setOwnsProfile(
-      userData?.userName === user[0]?.userName
-        || profileData?.userName === user[0]?.userName,
+      userData?.userName === user[0]?.userName ||
+        profileData?.userName === user[0]?.userName
     );
   }, [user, userData, profileData]);
 
@@ -63,7 +61,7 @@ const User = function ({ user }) {
     const token = window.localStorage.getItem('jwtToken');
     const userInfo = window.localStorage.getItem('userInfo');
 
-    if (token == null || userInfo == {}) {
+    if (token == null || userInfo === {}) {
       setIsLoggedIn(false);
     } else {
       setIsLoggedIn(true);
@@ -76,18 +74,17 @@ const User = function ({ user }) {
     }
   }, [userData]);
 
-  if (hide == false) {
+  if (hide === false) {
     setTimeout(() => {
       setHide(true);
     }, 60000);
   }
 
-  console.log(userData, profileData);
   // console.log(userData, profileData);
   return (
     <Layout pageTitle="Profile">
-      {(isLoggedIn && ownsProfile && user?.[0])
-      || user[0]?.profileVisibility !== false ? (
+      {(isLoggedIn && ownsProfile && user?.[0]) ||
+      user[0]?.profileVisibility !== false ? (
         <>
           <HomepageNav
             setData={setUserData}
@@ -102,7 +99,7 @@ const User = function ({ user }) {
             active="Home"
             handleClick={handleClick}
           />
-          {hide == false && <ComingSoon closeClick={handleClick} />}
+          {hide === false && <ComingSoon closeClick={handleClick} />}
           <ProfileTwo
             userData={
               isLoggedIn && ownsProfile ? userData || profileData : user[0]
@@ -112,11 +109,11 @@ const User = function ({ user }) {
           />
           <Footer />
         </>
-        ) : hiddenProfileValidated ? (
-          <NotFoundPage />
-        ) : (
-          <></>
-        )}
+      ) : hiddenProfileValidated ? (
+        <NotFoundPage />
+      ) : (
+        <></>
+      )}
     </Layout>
   );
 };
@@ -126,9 +123,7 @@ export default User;
 export const getServerSideProps = async (context) => {
   const slug = context.params.username;
 
-  const res = await fetch(
-    `${process.env.BASE_URI}/user/${slug}`,
-  );
+  const res = await fetch(`${process.env.BASE_URI}/user/${slug}`);
   const { data } = await res.json();
 
   return {

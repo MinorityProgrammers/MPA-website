@@ -1,7 +1,7 @@
 import React from 'react';
 
-const LoginPop = function (props) {
-  return (props.trigger) ? (
+const LoginPop = (props) =>
+  props.trigger && (
     <div
       className="popup"
       style={{
@@ -33,7 +33,6 @@ const LoginPop = function (props) {
         {props.children}
       </div>
     </div>
-  ) : '';
-};
+  );
 
 export default LoginPop;

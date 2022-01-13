@@ -1,6 +1,6 @@
 import React from 'react';
 
-const UnderBannerBody = function (props) {
+const UnderBannerBody = (props) => {
   const { text } = props;
 
   return (

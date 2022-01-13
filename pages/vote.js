@@ -4,7 +4,7 @@ import HomepageNav from '../components/homepage/HomepageNav';
 import VoteHero from '../components/vote-components/VoteHero';
 import VoteGuide from '../components/vote-components/VoteGuide';
 import Footer from '../components/Footer';
-import SidebarTwo from '../components/SidebarTwo';
+import SidebarTwo from '../components/sidebar/SidebarTwo';
 import links from '../contexts/utils/links';
 
 const VotePage = function () {

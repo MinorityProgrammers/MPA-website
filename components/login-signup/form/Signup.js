@@ -1,8 +1,8 @@
-import { Formik, Form } from 'formik';
+import { Form, Formik } from 'formik';
+import React, { useContext } from 'react';
 import * as Yup from 'yup';
-import { useContext } from 'react';
-import { GlobalContext } from '../../../contexts/provider';
 import { register } from '../../../contexts/actions/auth/register';
+import { GlobalContext } from '../../../contexts/provider';
 import TextField from '../../TextField';
 import styles from './form.module.css';
 
@@ -29,15 +29,16 @@ const Signup = function ({ setSubmit }) {
       setSubmit(false);
     }, 3000);
 
+    // NAME USED FOR USERS PROFILE
     let firstName = '';
     let lastName = '';
 
+    // extracting first name and last name
     if (e.name.trim().split(' ').length < 2) {
       firstName = e.name;
       lastName = e.name;
     } else {
-      firstName = e.name.trim().split(' ')[0];
-      lastName = e.name.trim().split(' ')[1];
+      [firstName, lastName] = e.name.trim().split(' ');
     }
 
     register({

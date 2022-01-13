@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import Footer from '../components/Footer';
 import Layout from '../components/Layout';
-import SidebarTwo from '../components/SidebarTwo';
+import SidebarTwo from '../components/sidebar/SidebarTwo';
 import HomepageNav from '../components/homepage/HomepageNav';
 import links from '../contexts/utils/links';
 import ComingSoon from '../components/ComingSoon';
@@ -18,7 +18,7 @@ const Presale = function () {
   const handleClick = () => {
     setHide(!hide);
   };
-  if (hide == false) {
+  if (hide === false) {
     setTimeout(() => {
       setHide(true);
     }, 10000);
@@ -34,7 +34,7 @@ const Presale = function () {
           active="Home"
           handleClick={handleClick}
         />
-        {hide == false && <ComingSoon closeClick={handleClick} />}
+        {hide === false && <ComingSoon closeClick={handleClick} />}
         <div className="presale-page">
           <PresaleHeroSection />
           <PresaleCountDown />

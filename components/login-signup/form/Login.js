@@ -1,8 +1,8 @@
-import { Formik, Form } from 'formik';
+import { Form, Formik } from 'formik';
+import React, { useContext } from 'react';
 import * as Yup from 'yup';
-import { useContext } from 'react';
-import { GlobalContext } from '../../../contexts/provider';
 import { login } from '../../../contexts/actions/auth/login';
+import { GlobalContext } from '../../../contexts/provider';
 import TextField from '../../TextField';
 import styles from './form.module.css';
 

@@ -1,12 +1,12 @@
 import React, { useRef, useState } from 'react';
+import MinorityEarned from '../components/$-minority-earned/MinorityEarned';
+import Footer from '../components/Footer';
 import HomepageNav from '../components/homepage/HomepageNav';
 import Layout from '../components/Layout';
-import SidebarTwo from '../components/SidebarTwo';
+import SidebarTwo from '../components/sidebar/SidebarTwo';
 import links from '../contexts/utils/links';
 import ComingSoon from '../components/ComingSoon';
 import { useDetectOutsideClick } from '../components/UseDetectOutsideClick';
-import MinorityEarned from '../components/$-minority-earned/MinorityEarned';
-import Footer from '../components/Footer';
 
 const MinorityEarnedPage = function () {
   const [open, setOpen] = useState(false);
@@ -16,7 +16,7 @@ const MinorityEarnedPage = function () {
   const handleClick = () => {
     setHide(!hide);
   };
-  if (hide == false) {
+  if (hide === false) {
     setTimeout(() => {
       setHide(true);
     }, 60000);
@@ -36,7 +36,7 @@ const MinorityEarnedPage = function () {
         active="Home"
         handleClick={handleClick}
       />
-      {hide == false && <ComingSoon closeClick={handleClick} />}
+      {hide === false && <ComingSoon closeClick={handleClick} />}
       <MinorityEarned />
 
       <Footer />

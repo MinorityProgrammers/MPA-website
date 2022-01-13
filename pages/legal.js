@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import Layout from '../components/Layout';
-import HomepageNav from '../components/homepage/HomepageNav';
 import BlackBanner from '../components/BlackBanner';
 import Footer from '../components/Footer';
-import SidebarTwo from '../components/SidebarTwo';
+import HomepageNav from '../components/homepage/HomepageNav';
+import Layout from '../components/Layout';
+import SidebarTwo from '../components/sidebar/SidebarTwo';
 import links from '../contexts/utils/links';
 
 const LegalPage = function () {
@@ -19,8 +19,13 @@ const LegalPage = function () {
         subtitle="Last Updated on July 1st, 2021."
         bannerImgLink={bannerImgLink}
       />
-      {/* <UnderBannerBody text="The following is terms and conditions for the Minority Programmers Association"/> */}
+      {/*
+          <UnderBannerBody
+            text="The following is terms and conditions for the Minority Programmers Association"
+          />
+      */}
       <iframe
+        title="Legal Frame"
         className="legal-frame"
         src="https://docs.google.com/document/d/e/2PACX-1vQzEm54e7WsXqbJSkte_AGY6N0Dr6dCKLAWGld-ulKoBmd98HUimFK9_KjsIC27CckYj9Uv8q9Ts97K/pub?embedded=true"
       />

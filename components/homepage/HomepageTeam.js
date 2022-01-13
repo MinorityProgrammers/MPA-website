@@ -156,7 +156,7 @@ const HomepageTeam = () => {
         <div className="container team__homepage-container tw-shadow-lg">
           <div className="team__item-text pt-3">
             <h2>
-              <button type="button" className="btn tw-text-white tw-bg-yellow-400 hover:tw-text-white" onClick={getAllMembers}>
+              <button type="button" className="btn tw-text-white tw-bg-blue-600 hover:tw-text-white" onClick={getAllMembers}>
                 All
               </button>
             </h2>
@@ -174,7 +174,7 @@ const HomepageTeam = () => {
                     <h2>
                       <button
                         type="button"
-                        className="btn tw-text-white tw-bg-yellow-400 hover:tw-text-white"
+                        className="btn tw-text-white tw-bg-blue-600 hover:tw-text-white"
                         onClick={() => handleTeam(d, d.id)}
                       >
                         {d.teamName}
@@ -187,7 +187,7 @@ const HomepageTeam = () => {
           </div>
 
           <div className="row team__all-container">
-            <h2>{allMembers ? 'ALL' : team}</h2>
+            <h2 className="tw-text-white">{allMembers ? 'ALL' : team}</h2>
           </div>
 
           <div className="row team__homepage-members">

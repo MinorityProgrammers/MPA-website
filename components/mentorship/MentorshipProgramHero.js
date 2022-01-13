@@ -11,7 +11,7 @@ const MentorshipProgramHero = () => {
         <div className="container">
           <div className="incubator__text mtb-mpa">
             <div>
-              <h1 className="font-weight-bold  d-flex justify-content-center big__font tw-text-white">
+              <h1 className="font-weight-bold  d-flex justify-content-center big__font ">
                 Mentorship
               </h1>
               <p className="d-flex justify-content-center h5">

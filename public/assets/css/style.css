@@ -1619,11 +1619,11 @@ a:visited {
 }
 
 .calendly-wrapper {
-  background-color: #474bfd;
+  background-color: #fff;
   padding-top: 5em;
 }
 .quickswap-wrapper {
-  background-color: #474bfd;
+  background-color: #fff;
   padding-top: 6em;
 }
 .quickswap-iframe {
@@ -6838,7 +6838,7 @@ html {
 
 .homepage__navbar {
   background: #efefef;
-  height: 70px;
+  height: 60px;
   font-size: 1.2rem;
   margin: 0px;
   margin-left: 12vw ;
@@ -6872,10 +6872,10 @@ html {
   display: flex;
   align-items: center;
   position: relative;
-
-  font-family: 'Red Hat Display', sans-serif;
+  font-family: 'Graphik', sans-serif;
   letter-spacing: 0.5px;
-  font-size: 1rem;
+  font-size: .9rem;
+  font-weight: 500;
   color: #3E385D;
   -webkit-transition: all 0.4s ease;
   transition: all 0.4s ease;
@@ -6889,11 +6889,12 @@ html {
 }
 
 .nav-item.active-link {
-  border: 1px solid rgba(255, 255, 255, 0.568);
   padding: 6px 10px;
-  background-color: #fff;
+  background-color: transparent;
   color: #474BFD !important;
   transition: all 0.2s ease-in-out;
+  text-decoration: underline;
+  font-weight: 600;
 }
 
 .nav-item.active-link a,
@@ -6908,6 +6909,7 @@ html {
 .nav-item a:hover,
 .nav-item a:focus {
   color: #474BFD !important;
+  font-weight: 600;
 }
 .nav-item a:active {
   color: #474BFD !important;
@@ -6929,6 +6931,7 @@ html {
   border: solid 1px black ;
   border-radius: 5px;
   padding: 2px;
+  
 }
 
 /* .searchBox:hover > .searchInput {
@@ -6965,8 +6968,8 @@ html {
   /* border: none;
   outline: none; */
   background: transparent;
- 
-  width: 189px;
+  height: 30px;
+  width: 180px;
   float: left;
   padding: 0;
   font-size: 16px;
@@ -8353,7 +8356,7 @@ html {
 
 .popup_image_container-core.pink,
 .popup_title_container-core.pink {
-  background: #3E385D;
+  background: #ff00b8;
 }
 
 .popup_image_container-core.blue,
@@ -8676,10 +8679,14 @@ html {
   color: #1e3a8a;
 }
 .team__all-container {
-  background: #ffc700;
+  background: #474BFD;
   font-size: 2rem;
   font-weight: bold;
   padding: 0.75rem;
+  color: #fff;
+}
+.team__all-container h2{
+    color: #fff;
 }
 .team__all-container a:hover {
   color: #fff;
@@ -9809,4 +9816,8 @@ html {
 
 .NavIcon{
   font-size: 1.3rem !important;
+}
+
+.certificate {
+  background: #efefef;
 }

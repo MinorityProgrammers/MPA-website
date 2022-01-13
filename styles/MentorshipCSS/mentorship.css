@@ -98,7 +98,6 @@
 }
 
 .mentorshipP-header {
-  background-image: url(/assets/images/mentorPHero.png);
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
@@ -106,6 +105,21 @@
 .mtb-mpa{
   margin-top: 100px;
   margin-bottom: 100px;
+}
+.consultancyHero-title{
+  font-family: 'Graphik', sans-serif;
+  font-size: 2em;
+  font-weight: 700;
+}
+.consultancyHero-txt{
+  color: #3E385D ;
+  font-size: 100%;
+  width: 30vw;
+  font-size: 1rem;
+}
+.consultancyHero-container{
+  display: flex;
+  align-items: center;
 }
 
 
@@ -136,3 +150,19 @@
   font-size: 70px;
 }
 
+@media only screen and (max-width: 500px){
+  .consultancyHero-title{
+    font-size: 2rem;
+  }
+  .consultancyHero-txt{
+    font-size: 1rem;
+    width: 60vw;
+  }
+  .consultancyHero-container{
+    margin-top: 20px;
+    justify-content: center;
+  }
+  .consultancyHero-container img{
+    display: none;
+  }
+}

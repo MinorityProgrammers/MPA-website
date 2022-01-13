@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 import { GlobalContext } from '../contexts/provider';
 import { LOGOUT_USER } from '../contexts/actions/actionTypes';
 
-const UserDropDown = function ({
+const UserDropDown = ({
   setNotice,
   notice,
   Log,
@@ -14,7 +14,7 @@ const UserDropDown = function ({
   profilePicture,
   fullName,
   email,
-}) {
+}) => {
   const { authDispatch } = useContext(GlobalContext);
 
   const handleLogout = () => {
@@ -59,8 +59,7 @@ const UserDropDown = function ({
               <FaRegUser />
             </div>
             <div className="tw-text-xs">Profile</div>
-          </a>
-          {' '}
+          </a>{' '}
           <div className="tw-flex tw-p-2 tw-border-b tw-items-center  tw-cursor-pointer tw-justify-center tw-text-red-500 tw-border-gray-200">
             <div className=" tw-mr-1 tw-text-sm">
               <IoIosLogOut />

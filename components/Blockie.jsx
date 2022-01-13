@@ -2,7 +2,7 @@ import React from 'react';
 import Blockies from 'react-blockies';
 import { useMoralisDapp } from '../MoralisDappProvider/MoralisDappProvider';
 
-const Blockie = function (props) {
+const Blockie = (props) => {
   const { walletAddress } = useMoralisDapp();
   if ((!props.address && !props.currentWallet) || !walletAddress) return null;
 

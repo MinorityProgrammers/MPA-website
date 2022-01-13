@@ -13,6 +13,7 @@ module.exports = {
   },
   plugins: ['react'],
   rules: {
+    'linebreak-style': 0,
     'react/function-component-definition': 'off',
     'jsx-a11y/click-events-have-key-events': 'off',
     'jsx-a11y/no-noninteractive-element-interactions': 'off',
@@ -25,5 +26,8 @@ module.exports = {
     'linebreak-style': ['error', process.platform === 'win32' ? 'windows' : 'unix'],
     'react/jsx-no-useless-fragment': 'off',
     radix: ['error', 'as-needed'],
+    'react/jsx-props-no-spreading': 'off',
+    camelcase: 'off',
+    'react/jsx-no-bind': 'off',
   },
 };

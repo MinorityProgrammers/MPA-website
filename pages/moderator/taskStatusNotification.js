@@ -1,9 +1,8 @@
-import React, { useState, useRef } from 'react';
-import Layout from '../../components/Layout';
-import TaskStatus from '../../components/Moderator/TaskStatus';
+import React from 'react';
 import Footer from '../../components/Footer';
 import HomepageNav from '../../components/homepage/HomepageNav';
-// import TaskStatusDnD from "../../components/Moderator/TaskStatusDragNdrop";
+import Layout from '../../components/Layout';
+import TaskStatus from '../../components/Moderator/TaskStatus';
 
 const taskStatusNotification = () => (
   <Layout pageTitle="Moderator_Elect Proposals">

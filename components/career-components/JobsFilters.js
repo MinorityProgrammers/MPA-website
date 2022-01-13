@@ -1,5 +1,8 @@
 import { useRouter } from 'next/router';
 import React, { useEffect, useRef } from 'react';
+import { CancelButton, ExpandButton, ResetButton } from './form/jobs-filters/buttons';
+import CheckBoxItem from './form/jobs-filters/CheckBoxItem';
+import jobTypes from './JobTypes.json';
 
 const JobsFilters = ({
   submitForm,
@@ -63,6 +66,11 @@ const JobsFilters = ({
     });
   }
 
+  const submitAndOffCheckBoxes = (e) => {
+    submitForm(e);
+    checkboxesOff(e);
+  };
+
   // add window event listener to toggle "Filters" button on and off
   useEffect(() => {
     window.addEventListener('resize', assureFiltersOpen);
@@ -93,6 +101,22 @@ const JobsFilters = ({
     fetchData();
   };
 
+  const datePosted = {
+    0: 'Any',
+    day: 'Past 24 Hours',
+    week: 'Past Week',
+    month: 'Past Month',
+    year: 'Past Year',
+  };
+
+  const payAmount = {
+    0: 'Any',
+    40000: '$40,000+',
+    60000: '$60,000+',
+    80000: '$80,000+',
+    100000: '$100,000+',
+  };
+
   // MODAL
 
   // filters-open-btn
@@ -107,371 +131,102 @@ const JobsFilters = ({
 
       <div className="jobFilters">
         <div className="job-filter-item">
-          <button
-            type="button"
-            id="first-item-title"
-            className="job-filter-item-title "
-            onClick={(e) => openFilterForm(e.currentTarget)}
-          >
-            {filter.date_posted === '0'
-              ? 'Date Posted'
-              : `Past ${filter.date_posted
-                .charAt(0)
-                .toUpperCase()}${filter.date_posted.slice(1)}`}
-            <span>&#9660;</span>
-          </button>
+          <ExpandButton id="first-item-title" onClick={openFilterForm}>
+            {
+              filter.date_posted === '0'
+                ? 'Date Posted'
+                : `Past ${filter.date_posted
+                  .charAt(0)
+                  .toUpperCase()}${filter.date_posted.slice(1)}`
+            }
+          </ExpandButton>
           <div className="job-filter-item-form">
             <ul className="job-filter-item-form-list">
-              <li>
-                <input
-                  type="checkbox"
-                  name="date_posted"
-                  value="0"
-                  onChange={(e) => {
-                    submitForm(e);
-                    checkboxesOff(e);
-                  }}
-                />
-                <span>Any</span>
-              </li>
-              <li>
-                <input
-                  type="checkbox"
-                  name="date_posted"
-                  value="day"
-                  onChange={(e) => {
-                    submitForm(e);
-                    checkboxesOff(e);
-                  }}
-                />
-                <span>Past 24 Hours</span>
-              </li>
-              <li>
-                <input
-                  type="checkbox"
-                  name="date_posted"
-                  value="week"
-                  onChange={(e) => {
-                    submitForm(e);
-                    checkboxesOff(e);
-                  }}
-                />
-                <span>Past Week</span>
-              </li>
-              <li>
-                <input
-                  type="checkbox"
-                  name="date_posted"
-                  value="month"
-                  onChange={(e) => {
-                    submitForm(e);
-                    checkboxesOff(e);
-                  }}
-                />
-                <span>Past Month</span>
-              </li>
-              <li>
-                <input
-                  type="checkbox"
-                  name="date_posted"
-                  value="year"
-                  onChange={(e) => {
-                    submitForm(e);
-                    checkboxesOff(e);
-                  }}
-                />
-                <span>Past Year</span>
-              </li>
+              {
+                Object.keys(datePosted).map((key) => (
+                  <CheckBoxItem
+                    key={key}
+                    name="date_posted"
+                    value={key}
+                    text={datePosted[key]}
+                    onChange={submitAndOffCheckBoxes}
+                  />
+                ))
+              }
             </ul>
-            <div className="job-filter-item-form-options">
-              <button
-                type="button"
-                className="job-filter-item-form-options-cancel"
-                onClick={(e) => closeForm(e.currentTarget)}
-              >
-                Cancel
-              </button>
-            </div>
+            <CancelButton onClick={closeForm} />
           </div>
         </div>
+
         <div className="job-filter-item">
-          <button
-            type="button"
-            className="job-filter-item-title "
-            onClick={(e) => openFilterForm(e.currentTarget)}
-          >
+          <ExpandButton onClick={openFilterForm}>
             {filter.job_industry === '' ? 'Industry' : filter.job_industry}
-            <span>&#9660;</span>
-          </button>
+          </ExpandButton>
           <div className="job-filter-item-form">
             <ul className="job-filter-item-form-list">
-              <li>
-                <input
-                  type="checkbox"
-                  name="job_industry"
-                  value="Technology"
-                  onChange={(e) => {
-                    submitForm(e);
-                    checkboxesOff(e);
-                  }}
-                />
-                <span>Technology</span>
-              </li>
-              <li>
-                <input
-                  type="checkbox"
-                  name="job_industry"
-                  value="Health"
-                  onChange={(e) => {
-                    submitForm(e);
-                    checkboxesOff(e);
-                  }}
-                />
-                <span>Health</span>
-              </li>
-              <li>
-                <input
-                  type="checkbox"
-                  name="job_industry"
-                  value="Education"
-                  onChange={(e) => {
-                    submitForm(e);
-                    checkboxesOff(e);
-                  }}
-                />
-                <span>Education</span>
-              </li>
-              <li>
-                <input
-                  type="checkbox"
-                  name="job_industry"
-                  value="Consultancy"
-                  onChange={(e) => {
-                    submitForm(e);
-                    checkboxesOff(e);
-                  }}
-                />
-                <span>Consultancy</span>
-              </li>
+              {
+                ['Technology', 'Health', 'Education', 'Consultancy'].map((jobIndustry) => (
+                  <CheckBoxItem
+                    key={jobIndustry}
+                    name="job_industry"
+                    value={jobIndustry}
+                    text={jobIndustry}
+                    onChange={submitAndOffCheckBoxes}
+                  />
+                ))
+              }
             </ul>
-            <div className="job-filter-item-form-options">
-              <button
-                type="button"
-                className="job-filter-item-form-options-cancel"
-                onClick={(e) => closeForm(e.currentTarget)}
-              >
-                Cancel
-              </button>
-            </div>
+            <CancelButton onClick={closeForm} />
           </div>
         </div>
+
         <div className="job-filter-item">
-          <button
-            type="button"
-            className="job-filter-item-title "
-            onClick={(e) => openFilterForm(e.currentTarget)}
-          >
+          <ExpandButton onClick={openFilterForm}>
             {filter.pay === '' ? 'Pay' : `${filter.pay}+`}
-            <span>&#9660;</span>
-          </button>
+          </ExpandButton>
           <div className="job-filter-item-form">
             <ul className="job-filter-item-form-list">
-              <li>
-                <input
-                  type="checkbox"
-                  name="pay"
-                  value=""
-                  onChange={(e) => {
-                    submitForm(e);
-                    checkboxesOff(e);
-                  }}
-                />
-                <span>Any</span>
-              </li>
-              <li>
-                <input
-                  type="checkbox"
-                  name="pay"
-                  value="40000"
-                  onChange={(e) => {
-                    submitForm(e);
-                    checkboxesOff(e);
-                  }}
-                />
-                <span>$40,000+</span>
-              </li>
-              <li>
-                <input
-                  type="checkbox"
-                  name="pay"
-                  value="60000"
-                  onChange={(e) => {
-                    submitForm(e);
-                    checkboxesOff(e);
-                  }}
-                />
-                <span>$60,000+</span>
-              </li>
-              <li>
-                <input
-                  type="checkbox"
-                  name="pay"
-                  value="80000"
-                  onChange={(e) => {
-                    submitForm(e);
-                    checkboxesOff(e);
-                  }}
-                />
-                <span>$80,000+</span>
-              </li>
-              <li>
-                <input
-                  type="checkbox"
-                  name="pay"
-                  value="100000"
-                  onChange={(e) => {
-                    submitForm(e);
-                    checkboxesOff(e);
-                  }}
-                />
-                <span>$100,000+</span>
-              </li>
+              {
+                Object.keys(payAmount).map((key) => (
+                  <CheckBoxItem
+                    key={key}
+                    name="pay"
+                    value={key === '0' ? '' : key}
+                    text={payAmount[key]}
+                    onChange={submitAndOffCheckBoxes}
+                  />
+                ))
+              }
             </ul>
-            <div className="job-filter-item-form-options">
-              <button
-                type="button"
-                className="job-filter-item-form-options-cancel"
-                onClick={(e) => closeForm(e.target)}
-              >
-                Cancel
-              </button>
-            </div>
+            <CancelButton onClick={closeForm} />
           </div>
         </div>
+
         <div className="job-filter-item">
-          <button
-            type="button"
-            className="job-filter-item-title "
-            onClick={(e) => openFilterForm(e.currentTarget)}
-          >
+          <ExpandButton onClick={openFilterForm}>
             {filter.job_type === '' ? 'Job Type' : filter.job_type}
-            <span>&#9660;</span>
-          </button>
+          </ExpandButton>
           <div className="job-filter-item-form">
             <ul className="job-filter-item-form-list">
-              <li>
-                <input
-                  type="checkbox"
-                  name="job_type"
-                  value="Full-Time"
-                  onChange={(e) => {
-                    submitForm(e);
-                    checkboxesOff(e);
-                  }}
-                />
-                <span>Full-Time</span>
-              </li>
-              <li>
-                <input
-                  type="checkbox"
-                  name="job_type"
-                  value="Part-Time"
-                  onChange={(e) => {
-                    submitForm(e);
-                    checkboxesOff(e);
-                  }}
-                />
-                <span>Part-Time</span>
-              </li>
-              <li>
-                <input
-                  type="checkbox"
-                  name="job_type"
-                  value="Contract"
-                  onChange={(e) => {
-                    submitForm(e);
-                    checkboxesOff(e);
-                  }}
-                />
-                <span>Contract</span>
-              </li>
-              <li>
-                <input
-                  type="checkbox"
-                  name="job_type"
-                  value="Internship"
-                  onChange={(e) => {
-                    submitForm(e);
-                    checkboxesOff(e);
-                  }}
-                />
-                <span>Internship</span>
-              </li>
-              <li>
-                <input
-                  type="checkbox"
-                  name="job_type"
-                  value="Temporary"
-                  onChange={(e) => {
-                    submitForm(e);
-                    checkboxesOff(e);
-                  }}
-                />
-                <span>Temporary</span>
-              </li>
-              <li>
-                <input
-                  type="checkbox"
-                  name="job_type"
-                  value="Seasonal"
-                  onChange={(e) => {
-                    submitForm(e);
-                    checkboxesOff(e);
-                  }}
-                />
-                <span>Seasonal</span>
-              </li>
-              <li>
-                <input
-                  type="checkbox"
-                  name="job_type"
-                  value="Freelance"
-                  onChange={(e) => {
-                    submitForm(e);
-                    checkboxesOff(e);
-                  }}
-                />
-                <span>Freelance</span>
-              </li>
-              <li>
-                <input
-                  type="checkbox"
-                  name="job_type"
-                  value="Volunteer"
-                  onChange={(e) => {
-                    submitForm(e);
-                    checkboxesOff(e);
-                  }}
-                />
-                <span>Volunteer</span>
-              </li>
+              {
+                jobTypes.map((jobType) => (
+                  <CheckBoxItem
+                    key={jobType}
+                    name="job_type"
+                    value={jobType}
+                    text={jobType}
+                    onChange={submitAndOffCheckBoxes}
+                  />
+                ))
+              }
             </ul>
-            <div className="job-filter-item-form-options">
-              <button
-                type="button"
-                className="job-filter-item-form-options-cancel"
-                onClick={(e) => closeForm(e.currentTarget)}
-              >
-                Cancel
-              </button>
-            </div>
+            <CancelButton onClick={closeForm} />
           </div>
         </div>
+
         <div className="job-filter-item remote-item">
           <label htmlFor="remote" className="remote-label">
-            {' '}
-            Remote
-            {' '}
+            {' Remote '}
           </label>
           <input
             className="remote-checkmate"
@@ -483,28 +238,17 @@ const JobsFilters = ({
           />
         </div>
         <div className="job-filter-item">
-          {filter.pay !== ''
-          || filter.job_type !== ''
-          || filter.date_posted !== ''
-          || filter.remote !== ''
-          || filter.job_industry !== '' ? (
-            <button
-              type="button"
-              className="job-filter-reset"
-              onClick={() => resetFilter()}
-            >
-              Clear
-            </button>
-            ) : (
-              <button
-                type="button"
-                className="job-filter-reset"
-                style={{ display: 'none' }}
-                onClick={() => resetFilter()}
-              >
-                Clear
-              </button>
-            )}
+          {
+            filter.pay !== ''
+            || filter.job_type !== ''
+            || filter.date_posted !== ''
+            || filter.remote !== ''
+            || filter.job_industry !== '' ? (
+              <ResetButton onClick={resetFilter} />
+              ) : (
+                <ResetButton onClick={resetFilter} style={{ display: 'none' }} />
+              )
+          }
         </div>
       </div>
     </>

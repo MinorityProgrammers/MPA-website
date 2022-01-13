@@ -2,19 +2,19 @@ import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react';
 import ComingSoon from '../components/ComingSoon';
 import LoginPage from '../components/Consultancy/helperFiles/LoginPage';
-import FeaturedAdvice from '../components/FeaturedAdvice';
-import FeaturedMyStartup from '../components/FeaturedMyStartup';
-import FeaturedMyStartupSkeleton from '../components/FeaturedMyStartupSkeleton';
-import FeaturedStartups from '../components/FeaturedStartups';
+import FeaturedAdvice from '../components/featured/FeaturedAdvice';
+import FeaturedMyStartup from '../components/featured/FeaturedMyStartup';
+import FeaturedMyStartupSkeleton from '../components/featured/FeaturedMyStartupSkeleton';
+import FeaturedStartups from '../components/featured/FeaturedStartups';
 // Skeletons
-import FeaturedStartupsSkeleton from '../components/FeaturedStartupsSkeleton';
-import FeaturedUpcoming from '../components/FeaturedUpcoming';
-import FeaturedUpcomingSkeleton from '../components/FeaturedUpcomingSkeleton';
+import FeaturedStartupsSkeleton from '../components/featured/FeaturedStartupsSkeleton';
+import FeaturedUpcoming from '../components/featured/FeaturedUpcoming';
+import FeaturedUpcomingSkeleton from '../components/featured/FeaturedUpcomingSkeleton';
 import Footer from '../components/Footer';
 import HomepageNav from '../components/homepage/HomepageNav';
 import IncubatorHero from '../components/IncubatorHero';
 import Layout from '../components/Layout';
-import SidebarTwo from '../components/SidebarTwo';
+import SidebarTwo from '../components/sidebar/SidebarTwo';
 import { useDetectOutsideClick } from '../components/UseDetectOutsideClick';
 import links from '../contexts/utils/links';
 
@@ -32,7 +32,7 @@ const IncubatorPage = function () {
   const handleClick = () => {
     setHide(!hide);
   };
-  if (hide == false) {
+  if (hide === false) {
     setTimeout(() => {
       setHide(true);
     }, 60000);
@@ -54,14 +54,11 @@ const IncubatorPage = function () {
       .then((res) => {
         if (token) {
           return axios
-            .get(
-              `${process.env.BASE_URI}/funded/userFunded`,
-              {
-                headers: {
-                  Authorization: `Bearer ${token || ''}`,
-                },
+            .get(`${process.env.BASE_URI}/funded/userFunded`, {
+              headers: {
+                Authorization: `Bearer ${token || ''}`,
               },
-            )
+            })
             .then((response) => {
               setFunded(response.data.data);
               setTimeout(setLoading(false), 3000);
@@ -90,7 +87,7 @@ const IncubatorPage = function () {
         active="Home"
         handleClick={handleClick}
       />
-      {hide == false && <ComingSoon closeClick={handleClick} />}
+      {hide === false && <ComingSoon closeClick={handleClick} />}
       <IncubatorHero />
       {loading ? (
         <section className="section__incubator">

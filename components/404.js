@@ -1,6 +1,14 @@
-import React, { useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import React, { useEffect } from 'react';
+
+const NavItem = ({ href, text }) => (
+  <div className="link-404">
+    <Link href={href} className="nav-links">
+      <a className="small-404-text anchor-404">{text}</a>
+    </Link>
+  </div>
+);
 
 const NotFound = function () {
   const router = useRouter();
@@ -29,36 +37,17 @@ const NotFound = function () {
           </p>
           <p className="small-404-text">Here are a few helpful links: </p>
           <div>
-            <div className="link-404">
-              <Link href="/" className="nav-links">
-                <a className="small-404-text anchor-404 ">Home</a>
-              </Link>
-            </div>
-            <div className="link-404">
-              <Link href="/learn-page" className="nav-links">
-                <a className="small-404-text anchor-404">Learn</a>
-              </Link>
-            </div>
-            <div className="link-404">
-              <Link href="/events" className="nav-links">
-                <a className="small-404-text anchor-404">Events</a>
-              </Link>
-            </div>
-            <div className="link-404">
-              <Link href="/consultancy" className="nav-links">
-                <a className="small-404-text anchor-404">Consultancy</a>
-              </Link>
-            </div>
-            <div className="link-404">
-              <Link href="/incubator" className="nav-links">
-                <a className="small-404-text anchor-404">Incubator</a>
-              </Link>
-            </div>
-            <div className="link-404">
-              <Link href="/sponsorship" className="nav-links">
-                <a className="small-404-text anchor-404">Sponsorship</a>
-              </Link>
-            </div>
+            <NavItem href="/" text="Home" />
+
+            <NavItem href="/learn-page" text="Learn" />
+
+            <NavItem href="/events" text="Events" />
+
+            <NavItem href="/consultancy" text="Consultancy" />
+
+            <NavItem href="/incubator" text="Incubator" />
+
+            <NavItem href="/sponsorship" text="Sponsorship" />
           </div>
         </div>
       </div>
