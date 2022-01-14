@@ -153,12 +153,12 @@ const Account = function () {
     return (
       <>
         <div
-          className="tw-bg-blue-600 hover:tw-bg-blue-700 tw-text-white tw-text-center tw-font-bold tw-py-2 tw-px-2 tw-rounded tw-w-11/12 tw-cursor-pointer"
+          className="tw-bg-blue-600 hover:tw-bg-blue-700 tw-text-white tw-text-center tw-font-bold tw-py-1.5 tw-px-1.5 tw-rounded tw-w-11/12 tw-cursor-pointer"
           onClick={() => {
             openAuthModal();
           }}
         >
-          <p className="tw-text-sm">connect</p>
+          <p className="tw-text-sm">Connect</p>
         </div>
         <Modal
           title={false}
