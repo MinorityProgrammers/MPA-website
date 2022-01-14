@@ -105,9 +105,9 @@ const CourseCategories = function ({ user, enrolledCourses, usersCourses }) {
               <div className="search-items pt-5">
                 <form className="d-flex" onSubmit={handleSubmit}>
                   <div className="input-group">
-                    <input type="text" className="course-search search-input" placeholder="What course are you looking for?" />
                     <div className="input-group-append learnSearch-btn">
-                      <button className="btn bg-white" type="submit"><FontAwesomeIcon icon={faSearch} /></button>
+                      <input type="text" className="course-search search-input" placeholder="Search Courses" />
+                      <button className = 'courseSearch-btn' ><i className="fas fa-search" /></button>
                     </div>
                   </div>
 

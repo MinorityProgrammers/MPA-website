@@ -110,9 +110,11 @@
 }
 
 .mentorshipP-header {
+  display: flex;
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
+  
 }
 .mtb-mpa {
   margin-top: 100px;
@@ -120,18 +122,19 @@
 }
 .consultancyHero-title {
   font-family: 'Graphik', sans-serif;
-  font-size: 2em;
+  font-size: 3em;
   font-weight: 700;
 }
 .consultancyHero-txt {
   color: #3e385d;
   font-size: 100%;
   width: 30vw;
-  font-size: 1rem;
+  font-size: 1.5rem;
 }
 .consultancyHero-container {
   display: flex;
   align-items: center;
+  height: 40vh;
 }
 
 .myButton {
