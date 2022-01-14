@@ -6733,7 +6733,7 @@ html {
 .homepage__header {
   background: #efefef;
   position: absolute;
-  top: 0;
+  top: -3px;
   left: 0;
   width: 100%;
   z-index: 99;
@@ -6850,7 +6850,7 @@ html {
   cursor: pointer;
   background-color: #474BFF;
   left :0px;
-  top:.1px;
+  top:-1px;
   border-radius:  0% 0% 100% 0% / 100% 0% 100% 0%;
   
 }
@@ -6879,7 +6879,9 @@ html {
   color: #3E385D;
   -webkit-transition: all 0.4s ease;
   transition: all 0.4s ease;
+  
 }
+
 .nav-item:not(:last-child) {
   padding: 6px 1rem 6px 1rem;
 }
@@ -6893,8 +6895,8 @@ html {
   background-color: transparent;
   color: #474BFD !important;
   transition: all 0.2s ease-in-out;
-  text-decoration: underline;
   font-weight: 600;
+  
 }
 
 .nav-item.active-link a,
@@ -6902,6 +6904,7 @@ html {
 .nav-item.active-link a:active,
 .nav-item.active-link a:focus {
   color: #474BFD !important;
+  border-bottom: 2px #474BFD solid;
 }
 .nav-item a {
   transition: all 0.2s ease-in-out;
@@ -6911,8 +6914,9 @@ html {
   color: #474BFD !important;
   font-weight: 600;
 }
-.nav-item a:active {
+.nav-item a:active{
   color: #474BFD !important;
+  border-bottom: 2px blue solid;
 }
 .nav-links-icon {
   display: flex;
