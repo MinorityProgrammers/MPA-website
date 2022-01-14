@@ -1,11 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Skeleton from 'react-loading-skeleton';
+import { Spinner } from 'react-bootstrap';
 import { Chart } from 'react-google-charts';
 import EmptyOverviewComponent from './EmptyOverviewComponent';
 import TasksList from './TasksList';
 
 const OverviewProgress = (props) => {
   const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => { setLoading(false); }, 5000);
+  }, []);
+
   const ProgressMobileComponent = () => (
     <div className="d-flex flex-column" style={{ width: '100%', height: '280px' }}>
       {/* there are 2 columns: text - images */}
@@ -149,15 +156,36 @@ const OverviewProgress = (props) => {
   );
 
   return (
-    <div className="d-flex flex-column justify-content-between " style={{ height: '100%' }}>
+    <div className="d-flex flex-column justify-content-between " style={{ height: '100%', width: '100%' }}>
       {loading
         ? (
-          <EmptyOverviewComponent
-            imgURL="https://s3-alpha-sig.figma.com/img/68a7/20a9/452929fc6a5439295987354f00239538?Expires=1638748800&Signature=fN0Sl~q93Zz1tXpq2349l-hcsZQpQF2-K88IA2S~oextAW6CgEOTdTgaW0FcZCol2tFhN~~DCYI3LGmFn5jpfi1cbR~YFy63gbUTh9vbjpVpA8qZEWcQlF3~B2Jm1HjyKnLB7F5ZOtpKTPsN3M8DyGPVOvKnv7ug8eErHswRxnMHVtdzSOPxVbsf8bKW9r8jdbxIizL0P5EjwRKApO6t0ms0-Z5lFO5kh8GgRkXObULZNFFtNAUuTsKNjzjIfSMJLRqbJ5TZNXVOGk-hl6tB0YFf8DvHNLaFLyJ0nkJFygmvABJCpwpkqB5w2~aiPz9nPVZYQPJ5Ha0hlwPN3aMiLw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
-            description="Oops, your progress on the MPA website right now is currently at 0%. The percentage will increase when you complete tasks that are assigned to you"
-            btnText="Get Started"
-            btnFunction={() => { setLoading(false); }}
-          />
+          <div className="d-flex flex row" style={{ width: '100%', height: '100%', overflowY: 'scroll' }}>
+            <div style={{ width: '50%', marginRight: '2.5%', marginLeft: '2.5%' }}>
+              <div
+                className="d-flex flex-column"
+                style={{
+                  width: '100%', height: '27%', marginBottom: '5px', overflowX: 'hidden',
+                }}
+              >
+                <Skeleton height={20} width={130} />
+                <Skeleton height={15} width={250} />
+                <Skeleton height={15} width={230} />
+                <Skeleton height={15} width={200} />
+              </div>
+              <div
+                className="overview-proposal-cards d-flex flex-row justify-content-start align-items-start"
+                style={{
+                  lineHeight: 2, height: '70%', overflowX: 'hidden', overflowY: 'scroll',
+                }}
+              >
+                <Skeleton count={6} height={35} width={1200} />
+              </div>
+            </div>
+            <div className="d-flex flex-row justify-content-center align-items-center" style={{ width: '42.5%', marginLeft: '2.5%' }}>
+              <Spinner animation="border" variant="secondary" size="lg" />
+            </div>
+
+          </div>
         )
         : props.renderMobile
           ? <ProgressMobileComponent /> : <ProgressComponent />}

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Skeleton from 'react-loading-skeleton';
 import EmptyOverviewComponent from './EmptyOverviewComponent';
 
 const OverviewCourses = (props) => {
@@ -224,12 +225,9 @@ const OverviewCourses = (props) => {
       {/* Second row */}
       {loading
         ? (
-          <EmptyOverviewComponent
-            imgURL="https://s3-alpha-sig.figma.com/img/4ee3/cff9/cf0ef958c8ee474d3c466885d8a7acb2?Expires=1638144000&Signature=Hx2O6JatkBlAG0Wm5bk50yhqB9mRDEKvIGMTg6McZouzxm7lEI7bFyXuuggJECaV6up1yFLf99jvfeUJAoOKgYZriW6XvBzfkVooV5h1KI82p5hOFABst8NLDLKU6ChjUx8hbDorzGTFj77oN7KzekqomQteVjwAnx9qXUIRQSl2p0TCUGrrWvTvPnhB1piU~An6M3nmKlNYJzpsl9O30kRSiaaYl2XGPDQi9cSj8J8LBeJgat~oM7LrcCGCHZ4smIJu6zjOuL9pcsO71P-mCCFjLeQYvz6uNC~LGyRXBIh4HIIlDh67It4yKd49NaCOVhJ-WFZUgAVDt3ytdidWhA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
-            description={`You haven’t  enrolled for any courses in ${currentView} on MPA yet. You can enroll for one in the Courses Section. Remember, you earn $MINORITY tokens when you complete a course.`}
-            btnText="Enroll For Your First Course"
-            btnFunction={() => { setLoading(!loading); }}
-          />
+          <div className="d-flex flex-row justify-content-start align-items-center" style={{ lineHeight: 2, height: '100%', overflowX: 'hidden' }}>
+            <Skeleton count={5} height={50} width={1200} />
+          </div>
         )
         : <CourseCard />}
 

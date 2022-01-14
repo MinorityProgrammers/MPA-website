@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Chart } from 'react-google-charts';
+import Skeleton from 'react-loading-skeleton';
 import { width } from 'dom-helpers';
 import EmptyOverviewComponent from './EmptyOverviewComponent';
 
 const OverviewStatistic = (props) => {
   const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(setLoading(false), 3000);
+  }, []);
 
   const DonutChartComponent = (props) => {
     const { data } = props;
@@ -181,15 +186,19 @@ const OverviewStatistic = (props) => {
 
       {loading
         ? (
-          <EmptyOverviewComponent
-            imgURL="https://s3-alpha-sig.figma.com/img/8663/1959/1dae49cf5ac63140041c4372073781e6?Expires=1638748800&Signature=bMmTTgzCfDpeVWfdHBCKLF7frNcSbXuarJ8X4fgnf42Ix1VHXoc8H52nQ~deNiOxsnQ37qqlW1aVp9DQhWA6I~URhnfyQZGSLRkwxOP0YzMMg3fqgsZCE6zUpWEbUi54W3PkQPEjwzsAYQsU93rG9tAssS9AlSrQ0MJq37IEqblWK4dQLyxrbLFfpfIp1~0sf39S3gJJzwHptfKocaTfBfeRuzu5hOTf9fO5neceta2044nYCKEXTPDDKPuteLPC7Qmu3ls95ba5u24eHeEyD1-R0Fi5UBAgXzWwQ2B8PVRlEdDLv3VImE1OtOYlIV8-BxEeYogMrRIw7cu2qE77jQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
-            description="Oops, there is no data to display here. Before we can create any charts, we need some engagement data from you."
-            btnText="Add Data"
-            btnFunction={() => { setLoading(false); }}
-          />
+          <div
+            className="d-flex flex-column justify-content-center align-items-center"
+            style={{
+              height: '100%', width: '100%', overflowY: 'scroll', overflowX: 'hidden',
+            }}
+          >
+            <Skeleton width={1200} height={150} style={{ marginBottom: '15px' }} />
+            <Skeleton width={1200} height={150} style={{ marginBottom: '15px' }} />
+            <Skeleton width={1200} height={150} />
+          </div>
         )
         : (
-          <div className="d-flex flex-column overflow-scroll" style={{ width: '100%', height: '100%' }}>
+          <div className="d-flex flex-column justify-content-center align-items-center overflow-scroll" style={{ width: '100%', height: '100%', padding: '12px' }}>
             <DonutChartComponent data={dummyData1} title="Courses Completed" centerText="Completed" colorText="#6A0C8B" />
             <DonutChartComponent data={dummyData2} title="Proposals" centerText="Approved" colorText="#2D761B" />
             <DonutChartComponent data={dummyData3} title="Tasks" centerText="Completed" colorText="#6A0C8B" />

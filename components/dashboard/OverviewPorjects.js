@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import EmptyOverviewComponent from './EmptyOverviewComponent';
+import Skeleton from 'react-loading-skeleton';
 import Swiper from 'react-id-swiper';
 import 'swiper/css/swiper.css';
 import { AiOutlineSolution } from 'react-icons/ai';
@@ -11,6 +11,10 @@ const OverviewProjects = (props) => {
   const [projectInfo, setProjectInfo] = useState();
   const [projectView, setProjectView] = useState('tasks'); // tasks - details
   const [projects, setProjects] = useState([]);
+
+  useEffect(() => {
+    setTimeout(() => { setLoading(false) }, 5000);
+  }, [])
 
   const params = {
     slidesPerView: 3,
@@ -31,8 +35,8 @@ const OverviewProjects = (props) => {
           //  add classification for the courses
           const tempProjects = response.data.data;
           setProjects(tempProjects);
-          console.log('Projects ', tempProjects);
-          setLoading(false);
+          // console.log('Projects ', tempProjects);
+          setTimeout(() => { setLoading(false) }, 5000);
         })
         .catch((error) => {
           if (error.response) {
@@ -252,12 +256,28 @@ const OverviewProjects = (props) => {
 
         {loading
           ? (
-            <EmptyOverviewComponent
-              imgURL="https://s3-alpha-sig.figma.com/img/a24c/4001/d3b875b235fd8fd5d73117fb5ffc3915?Expires=1638748800&Signature=AYyI5Io6fRXETreC6G180yA-w4P6uSCEMpJEKn9tUMPobKTvfGGYk2THMTnAkbYdeG4DWQ-qB7LwDe7bTweLJBZ4o~oKKuzOO6JcyA0lub2GNO5QZDChRxydGF6F5xluXL3Wzconc5pLEQTE0OAI1Us~sRwbT5F~PvmMVibZrmFB-Tx7gBBxlBdC2bgz~IP9ks7FoFJdoJF4ANT6AFd355~8yUXaS8vFGIa0SQQs5Aen1G1oDLeMNtMfPxFqWyXqX62QtMG7dEw9x9gClWgxgmArxXuhkqV0~TP8tjw5Ymn8Ntyd8MFxirEbB3dOsr9GuzZOLwYn2ljPJTWkm3ILbw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
-              description="You currently have no Active Projects ongoing. You can check the Projects Section for projects that might interest you."
-              btnText="Start your first project"
-              btnFunction={() => { setLoading(false); }}
-            />
+            <div className="d-flex flex-column" style={{ height: '100%', width: '100%' }}>
+              {/* first row */}
+              <div className="overview-proposal-cards d-flex flex-row justify-content-between align-items-center" style={{ height: '50%', overflowX: 'scroll', marginBottom: '5px' }}>
+                <Skeleton width={150} height={100} style={{ marginRight: '10px' }} />
+                <Skeleton width={150} height={100} style={{ marginRight: '10px' }} />
+                <Skeleton width={150} height={100} style={{ marginRight: '10px' }} />
+              </div>
+              {/* second row - button */}
+              <div className="d-flex flex-row">
+                <Skeleton width={80} height={15} style={{ marginRight: '10px' }} />
+                <Skeleton width={60} height={15} style={{ marginRight: '10px' }} />
+              </div>
+              {/* third row */}
+              <div
+                className="d-flex flex-row justify-content-start align-items-start"
+                style={{
+                  lineHeight: 2, height: '150px', overflowX: 'hidden', overflowY: 'scroll',
+                }}
+              >
+                <Skeleton count={3} height={40} width={1200} />
+              </div>
+            </div>
           )
           : (
             <div style={{ height: '100%', width: '100%' }}>
