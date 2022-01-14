@@ -35,7 +35,7 @@ const index = () => {
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    }, 2000);
+    }, 500);
   }, []);
 
   // grab a token from local storage so as user info
@@ -65,7 +65,7 @@ const index = () => {
         <div className="outer-dashboard-container">
           <div className="container inner-dashboard-container tw-mt-28 tw-mb-10">
             {loading
-              ? <h1>Loading</h1>
+              ? <></>
               : <Overview userData={userData} token={token} />}
           </div>
         </div>

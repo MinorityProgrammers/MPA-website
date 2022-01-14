@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Skeleton from 'react-loading-skeleton';
 import EmptyOverviewComponent from './EmptyOverviewComponent';
 import TasksList from './TasksList';
 
@@ -30,7 +31,7 @@ const OverviewMentor = (props) => {
         }
         return true;
       }).then((res) => {
-        setLoading(false);
+        setTimeout(() => { setLoading(false); }, 3000);
       }).catch((error) => {
         if (error?.response) {
           // The request was made and the server responded with a status code
@@ -151,12 +152,23 @@ const OverviewMentor = (props) => {
 
         {loading
           ? (
-            <EmptyOverviewComponent
-              imgURL="https://s3-alpha-sig.figma.com/img/c57e/17ea/eb507081228d5162cdda273edf35170d?Expires=1638748800&Signature=EQS3119ucAld6O05oWqzuNT6Kv2zVucef1f2yHThNWc7t6gfBxVNozW4wgclXWIAkAqrmq3r8-iPDDeYxEJF1c1Oj2SD5xW0mMNhdxdchh-X-W2zxto2c9yqG6HVcdO2s7MXHZ0pJZPKE8sp0t9sum2T29yuXvaS-Yh8i8ycIvF7rYWxmhRypnfuOEJkzciRkCtFoht3CHdapT2yk4N77ptYD-N1DRYt9ZDUgroIVRI8BgYaiAXDkUHoZOhQkv2nxhilIkqb8BMoQDsdySXQ7A-ERrxiVKUOA8CZH5GlO3iLhetpq03Fvr~W8N-UYKRR-5YW29IBKOTIBvWYSu-ZjA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
-              description="Oops, You don’t have a Mentor yet. Would you like to be assigned to one?."
-              btnText="Yes, I want a Mentor"
-              btnFunction={() => { setLoading(false); }}
-            />
+            <div style={{ height: '100%', width: '100%', overflowX: 'hidden' }}>
+              <div className="d-flex flex-row align-items-center justify-content-start" style={{ marginBottom: '5px' }}>
+                <Skeleton circle height={60} width={60} style={{ marginRight: '5px' }} />
+                <div className="d-flex flex-column">
+                  <Skeleton height={25} width={150} />
+                  <Skeleton height={20} width={100} />
+                </div>
+              </div>
+              <div style={{ marginBottom: '15px' }}><Skeleton count={3} height={14} width={1200} /></div>
+              <div className="d-flex flex-column" style={{ marginBottom: '15px' }}>
+                <Skeleton height={10} width={170} />
+                <Skeleton height={10} width={100} />
+              </div>
+              <div className="d-flex flex-row justify-content-end" style={{ width: '100%' }}>
+                <Skeleton height={30} width={200} />
+              </div>
+            </div>
           )
           : currentView === 'overview'
             ? <OverviewComponent />

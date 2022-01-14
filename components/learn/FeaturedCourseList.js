@@ -30,7 +30,7 @@ const FeaturedCourseList = function ({
         </div>
       </div>
       <div className="d-pb-1 ml-2">
-        <h3 className="course-name mt-3 mb-0 tw-text-white">{name}</h3>
+        <h3 className="course-name mt-3 mb-0">{name}</h3>
       </div>
       <p className="course-des ml-2">{description}</p>
 
