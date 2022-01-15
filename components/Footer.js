@@ -146,13 +146,19 @@ const Footer = () => {
               >
                 <i className="fab fa-youtube" />
               </a>
-
               <a
                 href="https://linkedin.com/company/minority-programmers/"
                 target="_blank"
                 rel="noreferrer"
               >
                 <i className="fab fa-linkedin" />
+              </a>
+              <a
+                href="https://linktr.ee/MinorityProgrammers"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <i className="fas fab fa-link" />
               </a>
             </div>
           </div>

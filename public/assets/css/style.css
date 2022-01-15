@@ -4643,7 +4643,7 @@ a:visited {
   justify-content: space-between;
 }
 
-.site-footer__social a {
+.site-footer__social a i{
   color: #ffffff;
   font-size: 40px;
   -webkit-transition: all 0.4s ease;
@@ -4651,7 +4651,7 @@ a:visited {
   position: relative;
   z-index: 10;
 }
-.site-footer__social a:hover {
+.site-footer__social a i:hover {
   background: linear-gradient(273.08deg, #ff47a7 -19.63%, #474bff 141.17%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -9803,7 +9803,7 @@ html {
   }
 }
 @media (max-width: 550px) {
-  .site-footer__social a {
+  .site-footer__social a i{
     font-size: 20px;
   }
   .site-footer__social {
