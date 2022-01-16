@@ -112,6 +112,13 @@ const Footer = () => {
                 <i className="fab fa-instagram" />
               </a>
               <a
+                href="https://discord.com/invite/4vdtmQqz6d"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <i className="fab fa-discord" />
+              </a>
+              <a
                 href="https://github.com/MinorityProgrammers/"
                 target="_blank"
                 rel="noreferrer"
