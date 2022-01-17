@@ -61,7 +61,7 @@ const StartupLeftBar = ({ data }) => {
               {data.found}
             </h2>
           </div>
-          <hr className="mt-3 mb-3" />
+          <hr className="mb-3" />
           <div className="row container d-flex flex-column">
             <div>
               <p className="left__detail-topic">Website</p>
@@ -115,10 +115,10 @@ const StartupLeftBar = ({ data }) => {
           </div>
           <hr className="mt-3 mb-3" />
           <div className="row container">
-            <h2 className="left__topic mb-3 mt-1">Meet the team</h2>
+            <h2 className="left__topic mt-1">Meet the team</h2>
           </div>
           <div className="row container d-flex flex-column">
-            <hr className="mt-3 mb-3" />
+            <hr className="mb-3" />
             <div className="row container d-flex flex-column">
               <h2 className="left__topic mb-3 mt-1">Tags</h2>
               <div className="tags-container">
