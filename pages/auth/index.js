@@ -8,7 +8,7 @@ import Footer from '../../components/Footer';
 import SidebarTwo from '../../components/sidebar/SidebarTwo';
 import links from '../../contexts/utils/links';
 import ComingSoon from '../../components/ComingSoon';
-import { useDetectOutsideClick } from '../../components/UseDetectOutsideClick';
+import useDetectOutsideClick from '../../components/UseDetectOutsideClick';
 
 const Index = function () {
   const [open, setOpen] = useState(false);
@@ -34,9 +34,8 @@ const Index = function () {
 
   // user redirection's
   useEffect(() => {
-    const user =
-      JSON.parse(window?.localStorage.getItem('userInfo'))?.user ||
-      JSON.parse(window?.localStorage.getItem('userInfo'));
+    const user = JSON.parse(window?.localStorage.getItem('userInfo'))?.user
+      || JSON.parse(window?.localStorage.getItem('userInfo'));
     // console.log(user);
     if (user?.isUpdated === true) {
       const slug = user?.userName;

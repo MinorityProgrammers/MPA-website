@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Select from '../chapter-select/select.component';
 import styles from './leaderboard.module.css';
@@ -33,9 +33,9 @@ const Leaderboard = function () {
         setStats(newData);
         setFilteredStats(newData);
         const categories = new Set();
-        for (const val of newData) {
+        newData.forEach((val) => {
           categories.add(val.category);
-        }
+        });
         const select = [...categories].map((c) => ({ [c]: false }));
         setItems([...select, { all: false }]);
       })
@@ -44,7 +44,7 @@ const Leaderboard = function () {
 
   useEffect(() => {
     const pLink = [];
-    for (let i = 0; i < Math.ceil(filteredStats.length / pageNumDisplay); i++) {
+    for (let i = 0; i < Math.ceil(filteredStats.length / pageNumDisplay); i += 1) {
       pLink.push(i + 1);
     }
     setPageLink(pLink);

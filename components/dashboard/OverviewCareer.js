@@ -2,24 +2,24 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Skeleton from 'react-loading-skeleton';
 
-const OverviewCareer = (props) => {
+const OverviewCareer = ({ token }) => {
   const [loading, setLoading] = useState(true);
   const [appliedJobs, setAppliedJobs] = useState([]);
   const [allJobs, setAllJobs] = useState([]);
   const [currentView, setCurrentView] = useState('applied');
 
   useEffect(() => {
-    if (props.token !== null) {
+    if (token !== null) {
       axios
-        .get('https://koinstreet-learn-api.herokuapp.com/api/v1/job')
+        .get(`${process.env.BASE_URI}/job`)
         .then((response) => {
           setAllJobs(response.data.data);
           return axios
             .get(
-              'https://koinstreet-learn-api.herokuapp.com/api/v1/easyApply/userApplied',
+              `${process.env.BASE_URI}/easyApply/userApplied`,
               {
                 headers: {
-                  Authorization: `Bearer ${props.token}`,
+                  Authorization: `Bearer ${token}`,
                 },
               },
             );
@@ -98,7 +98,11 @@ const OverviewCareer = (props) => {
               ? allJobs.length !== 0 // if all jobs is not empty
                 ? allJobs.slice(0, 3).map((job) => (
                   <div key={job.createdAt} className="overview-career-card d-flex flex-row justify-content-between">
-                    {/* 4 column  logo - company name + position - job type - more details button */}
+                    {
+                      /*
+                        4 column  logo - company name + position - job type - more details button
+                      */
+                    }
                     <div className="d-flex flex-row">
                       <div className="overview-career-card-image d-flex justify-content-center align-items-center" style={{ paddingRight: '10px' }}>
                         <img alt="company's logo" src="/assets/images/mpicon.svg" />
@@ -115,7 +119,7 @@ const OverviewCareer = (props) => {
                       </div>
                       <div className="d-flex justify-content-center align-items-center" style={{ width: '32px' }}>
                         <a href="#" target="_blank">
-                          <button className="more-details-button">
+                          <button type="button" className="more-details-button">
                             &gt;
                           </button>
                         </a>
@@ -131,10 +135,15 @@ const OverviewCareer = (props) => {
                     </p>
                   </div>
                 )
-              : appliedJobs.length > 0 // if current view is applied job then check if applied jobs emptied
+                // if current view is applied job then check if applied jobs emptied
+              : appliedJobs.length > 0
                 ? appliedJobs.slice(0, 3).map((job) => (
                   <div key={job?.companyId?.authorId} className="overview-career-card d-flex flex-row justify-content-between">
-                    {/* 4 column  logo - company name + position - job type - more details button */}
+                    {
+                      /*
+                        4 column  logo - company name + position - job type - more details button
+                      */
+                    }
                     <div className="d-flex flex-row">
                       <div className="overview-career-card-image d-flex justify-content-center align-items-center" style={{ paddingRight: '10px' }}>
                         <img alt="company's logo" src="/assets/images/mpicon.svg" />
@@ -151,7 +160,7 @@ const OverviewCareer = (props) => {
                       </div>
                       <div className="d-flex justify-content-center align-items-center" style={{ width: '32px' }}>
                         <a href="#" target="_blank">
-                          <button className="more-details-button">
+                          <button type="button" className="more-details-button">
                             &gt;
                           </button>
                         </a>
@@ -163,7 +172,8 @@ const OverviewCareer = (props) => {
                   <div className="overview-career-cards-list d-flex row justify-content-center align-items-between" style={{ height: '100%' }}>
                     <img className="empty-events" alt="empty" src="https://s3-alpha-sig.figma.com/img/1246/595d/4a0da69c016851ce633343ee4f30313d?Expires=1639353600&Signature=EJMuUjTc9G61ydW6x2nU~hpJLuXYU8MfNm2x8OtLhmikkWVFKQEepE4zR0xBOZprHcbOwJcH4WmD5e3ugNYd3m4wqqBKhvTbuAjqIVhiSWIXM2WiNo3cZgDe1hHGoocFzHSWcnseBvgqafwvABhbZBjUeogeU0UPFEhb-7D2HzKUxGwrc4kkvCLz7~IQjQCy1sAGxLhqgRa0RD-p~VNtcgemF5N1qpiDe-cwFQL58kHg1v3tZMpGZagi7PC6ryl-i8-PBWVY20znzZ9iaUs2WdcBRqHYuopxGe9Oq4~tyIKsfdOOT05~sDFvwqA33c8YaNc8uhE8-kiu5g~NLGVbKg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA" />
                     <p className="empty-events-description">
-                      You haven’t applied for any jobs on MPA yet. You can do that in the Careers Section.
+                      You haven’t applied for any jobs on MPA yet.
+                      You can do that in the Careers Section.
                     </p>
                     <div className="d-flex justify-content-center align-items-center" style={{ width: '100%' }}>
                       <button type="button" className="btn btn-primary" style={{ background: '#151371', paddingLeft: '31px', paddingRight: '31px' }}>

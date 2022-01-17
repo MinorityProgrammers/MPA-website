@@ -12,8 +12,14 @@ const DonateDetails = ({
     <div className="container">
       <h1>Donation complete!</h1>
       <p>
-        Your donation of ${Number(amount).toFixed(2)} has been processed. An
-        e-mail has been sent to {billingDetails.payer.email_address}. Please
+        Your donation of $
+        {Number(amount).toFixed(2)}
+        {' '}
+        has been processed. An
+        e-mail has been sent to
+        {' '}
+        {billingDetails.payer.email_address}
+        . Please
         save this for your records.
       </p>
       <i className="fas fa-check-circle icon" />

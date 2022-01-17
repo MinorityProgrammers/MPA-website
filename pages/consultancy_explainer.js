@@ -3,7 +3,7 @@ import HomepageNav from '../components/homepage/HomepageNav';
 import ConsultancyHero from '../components/Consultancy/ConsultancyHero';
 import ConsultancyHomeExplainer from '../components/Consultancy/ConsultancyHomeExplainer';
 import Footer from '../components/Footer';
-import { useDetectOutsideClick } from '../components/UseDetectOutsideClick';
+import useDetectOutsideClick from '../components/UseDetectOutsideClick';
 import Layout from '../components/Layout';
 import SidebarTwo from '../components/sidebar/SidebarTwo';
 import links from '../contexts/utils/links';

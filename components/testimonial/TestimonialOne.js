@@ -39,7 +39,9 @@ const TestimonialOne = () => {
       <div className="container">
         <div className="block-title text-center">
           <h2 className="block-title__title">
-            What our students <br />
+            What our students
+            {' '}
+            <br />
             have to say
           </h2>
         </div>

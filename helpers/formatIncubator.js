@@ -3,18 +3,19 @@ export function numFormat(val) {
 }
 
 export function convert(val) {
+  let newVal;
   if (val >= 1000000000000) {
-    val = `${val / 1000000000000}T`;
-    return `${val}T`;
+    newVal = `${val / 1000000000000}T`;
+    return `${newVal}T`;
   } if (val >= 1000000000) {
-    val = `${val / 1000000000}B`;
-    return val;
+    newVal = `${val / 1000000000}B`;
+    return newVal;
   } if (val >= 1000000) {
-    val = `${val / 1000000}M`;
-    return val;
+    newVal = `${val / 1000000}M`;
+    return newVal;
   } if (val >= 1000) {
-    val = `${val / 1000}K`;
-    return val;
+    newVal = `${val / 1000}K`;
+    return newVal;
   }
   return val;
 }

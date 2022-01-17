@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import styles from './jobs-card.module.css';
 import JobsPopup from './jobs-popup';
 
@@ -32,10 +32,13 @@ const JobsCard = function ({ data }) {
         }
         <div className={styles.sect}>
           {
-            (new Array(6).fill(null)) // this code should be replaced with job responsibilities when added to the database. Lorem ipsum should be replaced with an actual responsibility.
+           /*  this code should be replaced with job responsibilities when added to the database.
+               Lorem ipsum should be replaced with an actual responsibility.
+            */
+            (new Array(6).fill(null))
               .filter((_, idx) => idx < 4)
               .map((_, idx) => (
-                <div key={idx} className={styles.list}>
+                <div key={`${idx + 1}`} className={styles.list}>
                   <span className={`${styles.listStyle} ${styles.circle}`} />
                   {`${'Lorem ipsum dolor, sit amet consectetur adipisicing elit.'.substring(0, 40)}...`}
                 </div>

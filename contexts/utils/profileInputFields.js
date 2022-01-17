@@ -1,5 +1,5 @@
 import {
-  languages, degrees, universities, polars, softSkills, programmingLanguages, proficiencies,
+  languages, degrees, polars, softSkills, programmingLanguages, proficiencies,
 } from './fields';
 
 export const firstNameField = {

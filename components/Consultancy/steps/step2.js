@@ -1,9 +1,7 @@
-import {
-  useMemo, useState, useRef, useEffect,
-} from 'react';
+import React, { useState, useEffect } from 'react';
 import addQuestion from '../helperFiles/addQuestion';
 import Input from '../helperFiles/customInputTags/input';
-import { useDefaultValue } from '../helperFiles/getDefaultValue';
+import useDefaultValue from '../helperFiles/getDefaultValue';
 import QuestionContainer from '../helperFiles/questionContainer';
 
 const Page2 = function ({

@@ -2,7 +2,7 @@ import React from 'react';
 import { CircularProgressbarWithChildren, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 
-const UserBanner = function ({ course, userInfo, userPercentages }) {
+const UserBanner = function ({ userInfo, userPercentages }) {
   function scrollToModule() {
     window.scrollTo(400, 400);
   }
@@ -12,7 +12,7 @@ const UserBanner = function ({ course, userInfo, userPercentages }) {
         <div className="col-12 col-md-4 mt-2">
           <div style={{ width: 260, height: 260 }}>
             <CircularProgressbarWithChildren
-              value={!isNaN(userPercentages) && userPercentages}
+              value={!Number.isNaN(userPercentages) && userPercentages}
               strokeWidth={4}
               styles={buildStyles({
                 pathColor: '#ffc700',
@@ -23,8 +23,8 @@ const UserBanner = function ({ course, userInfo, userPercentages }) {
               })}
             >
               {userInfo != null && userInfo.profilePicture
-                ? <img src={userInfo.profilePicture} className="img-fluid progress-circle" alt="user-image" />
-                : <img src="/assets/images/profile.png" className="img-fluid progress-circle" alt="user-image" />}
+                ? <img src={userInfo.profilePicture} className="img-fluid progress-circle" alt="user_image" />
+                : <img src="/assets/images/profile.png" className="img-fluid progress-circle" alt="user_image" />}
             </CircularProgressbarWithChildren>
           </div>
         </div>
@@ -38,13 +38,14 @@ const UserBanner = function ({ course, userInfo, userPercentages }) {
               {userInfo.firstName}
             </h1>
             )}
-            {!isNaN(userPercentages)
-                            && (
-                            <p className="mt-3">
-                              {userPercentages}
-                              % Completed
-                            </p>
-                            )}
+            {
+              !Number.isNaN(userPercentages) && (
+                <p className="mt-3">
+                  {userPercentages}
+                  % Completed
+                </p>
+              )
+            }
           </div>
           <div className="ml-5 mt-5 pb-4">
             <button type="button" className="btn banner-btn px-5" style={{ borderRadius: '15px' }} onClick={() => { scrollToModule(); }}>Resume</button>

@@ -152,7 +152,7 @@ const Proposal = function ({ proposal }) {
       </div>
       <div className="btn-p tw-self-center">
         <p className="">
-          <button className="elect-p-btn tw-shadow-lg">
+          <button type="button" className="elect-p-btn tw-shadow-lg">
             View Proposal
           </button>
         </p>

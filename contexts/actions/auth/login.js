@@ -5,8 +5,9 @@ import {
   LOGIN_ERROR,
 } from '../actionTypes';
 import { successToast, errorToast } from '../../utils/toasts';
-import Router from "next/router"
-export const login = (body) => (dispatch) => {
+// import Router from 'next/router';
+
+const login = (body) => (dispatch) => {
   dispatch({
     type: LOGIN_LOADING,
   });
@@ -20,7 +21,7 @@ export const login = (body) => (dispatch) => {
       localStorage.setItem('jwtToken', token);
       localStorage.setItem('userInfo', JSON.stringify(res.data.data));
 
-      if (res?.data?.status == 'success') {
+      if (res?.data?.status === 'success') {
         successToast(res.data.message);
       } else {
         errorToast(res.data.message.msg);
@@ -45,3 +46,5 @@ export const login = (body) => (dispatch) => {
       });
     });
 };
+
+export default login;

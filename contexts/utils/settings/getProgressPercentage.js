@@ -1,4 +1,4 @@
-export const getProgressPercentage = (data) => {
+const getProgressPercentage = (data) => {
   const userProfileDatas = [
     data?.firstName,
     data?.lastName,
@@ -73,6 +73,8 @@ export const getProgressPercentage = (data) => {
   ];
 
   return Math.round(
-    (datasInBool.filter((data) => data).length * 100) / userProfileDatas.length,
+    (datasInBool.filter((dataItem) => dataItem).length * 100) / userProfileDatas.length,
   );
 };
+
+export default getProgressPercentage;

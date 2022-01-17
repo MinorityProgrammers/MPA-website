@@ -165,7 +165,7 @@ const Proposal = function (props) {
         </div>
         <div className="s-p-view tw-w-1/5 tw-text-center mr-t">
           <p>
-            <button className="elect-p-btn tw-shadow-lg">
+            <button type="button" className="elect-p-btn tw-shadow-lg">
               View Proposal
             </button>
           </p>

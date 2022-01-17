@@ -5,7 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Select from 'react-select';
 import FormData from 'form-data';
 import { GlobalContext } from '../contexts/provider';
-import { updateProfile } from '../contexts/actions/profile/updateProfile';
+import updateProfile from '../contexts/actions/profile/updateProfile';
 import DashboardInputs from './DashboardInputs';
 import {
   storeOne,
@@ -14,7 +14,9 @@ import {
   storeTwo,
 } from '../contexts/utils/fields';
 
-const UpdateForm = ({ setOpen, setNotice, setLog, user }) => {
+const UpdateForm = ({
+  setOpen, setNotice, setLog, user,
+}) => {
   const [newFirstName, setNewFirstName] = useState(user.firstName);
   const [newlastName, setNewLastName] = useState(user.lastName);
   const [newEmail, setNewEmail] = useState(user.email);
@@ -35,7 +37,9 @@ const UpdateForm = ({ setOpen, setNotice, setLog, user }) => {
   const {
     profileDispatch,
     profileState: {
-      profile: { profileLoading, profileError, profileData, profileIsUpdated },
+      profile: {
+        profileLoading, profileError, profileData,
+      },
     },
   } = useContext(GlobalContext);
 
@@ -55,7 +59,7 @@ const UpdateForm = ({ setOpen, setNotice, setLog, user }) => {
   formData.append('bio', newBio || user.bio || '');
   formData.append(
     'profilePicture',
-    newProfileImage || user.profilePicture || ''
+    newProfileImage || user.profilePicture || '',
   );
 
   useEffect(() => {
@@ -107,7 +111,9 @@ const UpdateForm = ({ setOpen, setNotice, setLog, user }) => {
           <span>
             <AiFillHome className="tw-text-primary-200 tw-mr-1" />
           </span>
-          /<span className="tw-mx-1 tw-text-gray-100  tw-text-sm">User</span>/
+          /
+          <span className="tw-mx-1 tw-text-gray-100  tw-text-sm">User</span>
+          /
           <span className="tw-mx-1 tw-text-gray-100  tw-text-sm ">
             Update profile
           </span>
@@ -160,7 +166,8 @@ const UpdateForm = ({ setOpen, setNotice, setLog, user }) => {
               new={newBirthDate}
               setNew={setNewBirthDate}
             />
-          </div>{' '}
+          </div>
+          {' '}
           <div className="tw-grid  tw-grid-cols-1 md:tw-grid-cols-2 tw-w-full tw-justify-items-center">
             <div className="tw-flex tw-flex-row tw-h-10 tw-items-center  tw-rounded tw-my-3 tw-shadow-xl tw-w-10/12 inp">
               <Select

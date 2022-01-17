@@ -7,9 +7,11 @@ import {
 } from 'react-circular-progressbar';
 import { GlobalContext } from '../../contexts/provider';
 import SidebarNav from './SidebarNav';
-import { getProfile } from '../../contexts/actions/profile/getProfile';
+import getProfile from '../../contexts/actions/profile/getProfile';
 
-const SidebarTwo = ({ links, active, open, setOpen, handleClick }) => {
+const SidebarTwo = ({
+  links, active, open, setOpen, handleClick,
+}) => {
   const [userData, setUserData] = useState([]);
   const [sectionStates, setSectionStates] = useState({
     collapseAll: true,
@@ -18,23 +20,20 @@ const SidebarTwo = ({ links, active, open, setOpen, handleClick }) => {
 
   const {
     profileDispatch,
-    authDispatch,
     authState: {
-      auth: { loading, error, data },
+      auth: { data },
     },
   } = useContext(GlobalContext);
 
   useEffect(() => {
-    const token =
-      typeof window !== 'undefined'
-        ? window.localStorage.getItem('jwtToken')
-        : null;
-    const userInfo =
-      typeof window !== 'undefined'
-        ? window.localStorage.getItem('userInfo')
-        : null;
+    const token = typeof window !== 'undefined'
+      ? window.localStorage.getItem('jwtToken')
+      : null;
+    const userInfo = typeof window !== 'undefined'
+      ? window.localStorage.getItem('userInfo')
+      : null;
 
-    if (token == null || userInfo == {}) {
+    if (token == null || userInfo === {}) {
       setUserData(null);
     } else {
       getProfile(setUserData)(profileDispatch);
@@ -44,7 +43,7 @@ const SidebarTwo = ({ links, active, open, setOpen, handleClick }) => {
   const handleCollapseAll = () => {
     setSectionStates((prev) => ({ ...prev, collapseAll: !prev.collapseAll }));
     Object.keys(sectionStates).forEach((title) => {
-      if (title != 'collapseAll') {
+      if (title !== 'collapseAll') {
         setSectionStates((prev) => ({ ...prev, [title]: prev.collapseAll }));
       }
     });
@@ -79,6 +78,7 @@ const SidebarTwo = ({ links, active, open, setOpen, handleClick }) => {
                       : '/assets/images/profile.png'
                   }
                   className="profileImg"
+                  alt="profile_image"
                 />
               </CircularProgressbarWithChildren>
             </div>

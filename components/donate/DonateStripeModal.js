@@ -20,7 +20,10 @@ const DonateStripModal = ({ showModal, setShowModal, amount }) => {
             <div className="donate__modal-content">
               {!isDone ? (
                 <>
-                  <h3>Donation Amount: ${amount}</h3>
+                  <h3>
+                    Donation Amount: $
+                    {amount}
+                  </h3>
                   <Elements stripe={stripePromise}>
                     <DonateStripeForm
                       setIsDone={setIsDone}
@@ -46,7 +49,10 @@ const DonateStripModal = ({ showModal, setShowModal, amount }) => {
                   <div className="stripe-details">
                     <div className="stripe-detail">
                       <p className="stripe-detail-topic">Amount:</p>
-                      <p>${amount}</p>
+                      <p>
+                        $
+                        {amount}
+                      </p>
                     </div>
                     <div className="stripe-detail">
                       <p className="stripe-detail-topic">Payment method:</p>
@@ -63,6 +69,7 @@ const DonateStripModal = ({ showModal, setShowModal, amount }) => {
               ''
             ) : (
               <button
+                type="button"
                 className="donate__btn-close"
                 onClick={() => setShowModal((prev) => !prev)}
               >

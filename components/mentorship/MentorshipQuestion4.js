@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Select from 'react-select';
 
-export class MentorshipQuestion4 extends Component {
+export default class MentorshipQuestion4 extends Component {
   continue = (e) => {
     e.preventDefault();
     this.props.nextStep();
@@ -14,12 +14,11 @@ export class MentorshipQuestion4 extends Component {
 
   render() {
     const { values, handleDropDown } = this.props;
-    this.props.values;
     let lookingTitle = '';
-    if (values.iAMa == 'Mentor') {
+    if (values.iAMa === 'Mentor') {
       lookingTitle = 'Mentee';
     }
-    if (values.iAMa == 'Mentee') {
+    if (values.iAMa === 'Mentee') {
       lookingTitle = 'Mentor';
     }
 
@@ -214,12 +213,14 @@ export class MentorshipQuestion4 extends Component {
         <div className="tw-absolute tw-w-full tw-bottom-12 tw-pr-48 md:tw-pr-20 md:tw-bottom-7 tw-text-center">
           <div className="tw-w-140px tw-mx-auto tw-flex tw-justify-between">
             <button
+              type="button"
               className="tw-bg-NavDark tw-outline-none tw-rounded-md tw-w-14 tw-mb-8 tw-text-white hover:tw-text-NavDark hover:tw-bg-white tw-duration-500 tw-mx-auto"
               onClick={this.back}
             >
               <i className="fas fa-arrow-left tw-text-2xl tw-p-2" />
             </button>
             <button
+              type="button"
               className="tw-bg-NavDark tw-outline-none tw-rounded-md tw-w-14 tw-mb-8 tw-text-white hover:tw-text-NavDark hover:tw-bg-white tw-duration-500 tw-mx-auto"
               onClick={this.continue}
             >
@@ -239,5 +240,3 @@ export class MentorshipQuestion4 extends Component {
     );
   }
 }
-
-export default MentorshipQuestion4;

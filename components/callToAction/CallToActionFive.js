@@ -40,7 +40,9 @@ const CallToActionFive = () => (
     </div>
     <div className="container text-center">
       <h2 className="cta-five__title">
-        Start growing with <br />
+        Start growing with
+        {' '}
+        <br />
         the community
       </h2>
       <p className="cta-five__text">

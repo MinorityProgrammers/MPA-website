@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 require('@nomiclabs/hardhat-waffle');
 
 // This is a sample Hardhat task. To learn how to create your own go to
@@ -5,9 +6,9 @@ require('@nomiclabs/hardhat-waffle');
 task('accounts', 'Prints the list of accounts', async (taskArgs, hre) => {
   const accounts = await hre.ethers.getSigners();
 
-  for (const account of accounts) {
+  accounts.forEach((account) => {
     console.log(account.address);
-  }
+  });
 });
 
 // You need to export an object to set up your config

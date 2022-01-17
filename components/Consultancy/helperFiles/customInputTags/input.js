@@ -1,4 +1,5 @@
-import { Fragment } from 'react';
+/* eslint-disable jsx-a11y/no-autofocus */
+import React from 'react';
 import ErrorPrint from '../errorPrint';
 
 // undefined ---> the input was just initialized

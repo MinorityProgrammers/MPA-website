@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import EventsCard from '../events-card/events-card';
 import styles from './past-events.module.css';
 
@@ -77,7 +77,7 @@ const PastEvents = function ({ eventStatus, events, token }) {
               <div className={styles.events}>
                 {
                 view.map((data, idx) => (
-                  <EventsCard pastEvent key={idx} event={data} token={token} />
+                  <EventsCard pastEvent key={`${idx + 1}`} event={data} token={token} />
                 ))
               }
               </div>

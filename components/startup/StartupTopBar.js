@@ -9,7 +9,7 @@ const StartupTopBar = ({ data }) => (
           <a href="/incubator" className="">
             <i className="fas fa-arrow-left top__button-back" />
           </a>
-          <img className="top__logo" src={data.startupImage} />
+          <img className="top__logo" src={data.startupImage} alt="startup_image" />
           <h3 className="top__name">{data.name}</h3>
         </div>
       </div>
@@ -18,17 +18,23 @@ const StartupTopBar = ({ data }) => (
       <div className="row top__center-container">
         <div className="top__shares">
           <p>Shares offered</p>
-          <p>{convert(data.shareOffered)} shares</p>
+          <p>
+            {convert(data.shareOffered)}
+            {' '}
+            shares
+          </p>
         </div>
         <div className="top__funds-container">
           <div className="top__funds">
             <h3 className="top__funds-topic">Funds raised</h3>
             <h3 className="top__funds-percentage">
-              {percentFund(data.targetAmount, data.amount)}% complete
+              {percentFund(data.targetAmount, data.amount)}
+              % complete
             </h3>
           </div>
           <h3 className="top__funds-amount">
-            ${numFormat(data.amount)}
+            $
+            {numFormat(data.amount)}
             /$
             {numFormat(data.targetAmount)}
           </h3>

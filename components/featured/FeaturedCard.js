@@ -5,7 +5,9 @@ import { numFormat, percentFund } from '../../helpers/formatIncubator';
 import FeaturedPopup from './FeaturedPopup';
 import { errorToast, successToast } from '../../contexts/utils/toasts';
 
-const FeaturedCard = ({ data, setClickRegister, userData, allfunded }) => {
+const FeaturedCard = ({
+  data, setClickRegister, userData, allfunded,
+}) => {
   const [buttonPopup, setButtonPopup] = useState(false);
   const [secondPopup, setSecondPopup] = useState(false);
   const [amount, setAmount] = useState();
@@ -22,7 +24,7 @@ const FeaturedCard = ({ data, setClickRegister, userData, allfunded }) => {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        }
+        },
       )
       .then((res) => {
         successToast(res.data.message);
@@ -38,13 +40,13 @@ const FeaturedCard = ({ data, setClickRegister, userData, allfunded }) => {
     setAmount(e.target.value);
   };
 
-  const signIfNotLoggedIn = (data) => {
+  const signIfNotLoggedIn = (_data) => {
     const token = window.localStorage.getItem('jwtToken');
     if (userData === undefined) {
       setClickRegister(true);
       errorToast('Log in to continue');
     } else {
-      fundStartup(data._id, token);
+      fundStartup(_data._id, token);
     }
   };
 
@@ -53,7 +55,7 @@ const FeaturedCard = ({ data, setClickRegister, userData, allfunded }) => {
       <div className="card card__container">
         <div className="card-body">
           <div className="card__header">
-            <img src={data.startupImage} className="card__header-logo" />
+            <img src={data.startupImage} className="card__header-logo" alt="startupImage" />
             <h2 className="card__header-title">{data.name}</h2>
           </div>
           <p className="card-text card__text">
@@ -63,11 +65,13 @@ const FeaturedCard = ({ data, setClickRegister, userData, allfunded }) => {
             <div className="fund__top">
               <h3 className="fund__topic">Fundraised</h3>
               <h3 className="fund__percentage">
-                {percentFund(data.targetAmount, data.amount)}% complete
+                {percentFund(data.targetAmount, data.amount)}
+                % complete
               </h3>
             </div>
             <h3 className="fund__amount">
-              ${numFormat(data.amount)}
+              $
+              {numFormat(data.amount)}
               /$
               {numFormat(data.targetAmount)}
             </h3>
@@ -90,13 +94,12 @@ const FeaturedCard = ({ data, setClickRegister, userData, allfunded }) => {
             {/* Add popup when button is clicked */}
             {!allfunded.includes(data._id) && (
               <button
+                type="button"
                 style={{ outline: 'none' }}
                 className="button btn-filled"
-                onClick={() =>
-                  userData !== null
-                    ? setButtonPopup(true)
-                    : setClickRegister(true)
-                }
+                onClick={() => (userData !== null
+                  ? setButtonPopup(true)
+                  : setClickRegister(true))}
               >
                 Fund Startup
               </button>
@@ -110,13 +113,14 @@ const FeaturedCard = ({ data, setClickRegister, userData, allfunded }) => {
       {/* Popup content */}
       <FeaturedPopup trigger={buttonPopup} setTrigger={setButtonPopup}>
         <div className="card__header">
-          <img src={data.startupImage} className="card__header-logo" />
+          <img src={data.startupImage} className="card__header-logo" alt="startupImage" />
           <h2 className="card__header-title">{data.name}</h2>
         </div>
         <p style={{ marginTop: '20px' }}>
           {`${data.about.substring(0, 1000)}...`}
         </p>
         <button
+          type="button"
           style={{ float: 'right', width: '100px' }}
           className="button btn-filled"
           onClick={() => setButtonPopup(false) + setSecondPopup(true)}
@@ -146,6 +150,7 @@ const FeaturedCard = ({ data, setClickRegister, userData, allfunded }) => {
           />
         </form>
         <button
+          type="button"
           className="button btn-filled"
           onClick={(e) => {
             e.preventDefault();

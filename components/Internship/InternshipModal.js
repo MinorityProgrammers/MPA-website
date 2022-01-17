@@ -1,9 +1,9 @@
 import Link from 'next/link';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaTimes } from 'react-icons/fa';
 import Modal from 'react-modal';
 import Card from '../login-signup/card';
-import { useDetectOutsideClick } from '../UseDetectOutsideClick';
+// import useDetectOutsideClick from '../UseDetectOutsideClick';
 
 const InternshipModal = function ({
   modalIsOpen,
@@ -16,10 +16,10 @@ const InternshipModal = function ({
   toggleHandler,
   data,
 }) {
-  const dropdownRef = useRef(null);
+  // const dropdownRef = useRef(null);
   const [clickRegister, setClickRegister] = useState(false);
   const [active, setActive] = useState(false);
-  const [hide, setHide] = useDetectOutsideClick(dropdownRef, false);
+  // const [hide, setHide] = useDetectOutsideClick(dropdownRef, false);
 
   // const redirectCareers = () => {
   //   window.location.href = '/careers';
@@ -33,8 +33,10 @@ const InternshipModal = function ({
     }
   }, []);
 
-  const [isActive, setIsActive] = useDetectOutsideClick(dropdownRef, false);
-  const onClick = () => setIsActive(!isActive);
+  /* // this set of code is not used in the file.... it needs to be addressed
+    const [isActive, setIsActive] = useDetectOutsideClick(dropdownRef, false);
+    const onClick = () => setIsActive(!isActive);
+  */
 
   return (
     <>
@@ -89,7 +91,7 @@ const InternshipModal = function ({
                             </ul>
                             <h5>{item.subTitle}</h5>
                             <ul>
-                              {item.requiredOwn.map((reqOwn, i) => (
+                              {item.requiredOwn.map((reqOwn) => (
                                 <li key={reqOwn.i}>{reqOwn.text}</li>
                               ))}
                             </ul>

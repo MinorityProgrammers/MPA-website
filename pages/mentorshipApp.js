@@ -141,21 +141,18 @@ export class mentorshipApp extends Component {
   }
 
   messagesStep = () => {
-    const { step } = this.state;
     this.setState({
       step: 1,
     });
   };
 
   todoStep = () => {
-    const { step } = this.state;
     this.setState({
       step: 2,
     });
   };
 
   chatRedirectStep = (character) => {
-    const { step } = this.state;
     this.setState({
       openedChatCharacter: character,
       step: 3,

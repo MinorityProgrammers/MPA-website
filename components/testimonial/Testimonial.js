@@ -1,4 +1,6 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, {
+  useCallback, useEffect, useRef, useState,
+} from 'react';
 import $ from 'jquery';
 
 const randomNames = [
@@ -74,8 +76,7 @@ const randomImages = [
   'https://minorityprogrammers.com/assets/images/SEEF.svg',
   'https://minorityprogrammers.com/assets/images/Bryanna.svg',
 ];
-const testimonialText =
-  'Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis voluptatem eveniet delectus hic molestiae saepe expedita rem eum libero excepturi totam odit tempora porro asperiores eius, tempore explicabo reprehenderit culpa.';
+const testimonialText = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis voluptatem eveniet delectus hic molestiae saepe expedita rem eum libero excepturi totam odit tempora porro asperiores eius, tempore explicabo reprehenderit culpa.';
 
 const Testimonials = ({ homeClass, mode }) => {
   const [randomTestimony, setRandomTestimony] = useState([]);
@@ -85,7 +86,7 @@ const Testimonials = ({ homeClass, mode }) => {
   const userCardWidth = useRef(parseInt($('body').css('--testimonialWidth')));
 
   function newKey() {
-    uniqueKey.current++;
+    uniqueKey.current += 1;
     return uniqueKey.current;
   }
 
@@ -93,7 +94,7 @@ const Testimonials = ({ homeClass, mode }) => {
     function oneHotEncode(number) {
       let counter = number;
       const retArr = [];
-      for (let i = 0; i < 5; i++) {
+      for (let i = 0; i < 5; i += 1) {
         counter -= 1;
         retArr.push(counter >= 0 ? 1 : Math.abs(counter) < 1 ? 0.5 : 0);
       }
@@ -116,7 +117,7 @@ const Testimonials = ({ homeClass, mode }) => {
       const widthOfCard = userCardWidth.current;
       const heightOfCard = parseInt($('body').css('--testimonialMaxHeight'));
       const numberOfNew = Math.floor(Math.random() * maxRandom) + 1;
-      for (let i = 0; i < numberOfNew; i++) {
+      for (let i = 0; i < numberOfNew; i += 1) {
         const newObj = {
           firstName:
             randomNames[Math.floor(Math.random() * randomNames.length)],
@@ -189,7 +190,8 @@ const Testimonials = ({ homeClass, mode }) => {
                   <div className={homeClass.testimonialCardHeader}>
                     <span className={homeClass.testimonialFirstName}>
                       {firstName}
-                    </span>{' '}
+                    </span>
+                    {' '}
                     <span className={homeClass.testimonialLastName}>
                       {lastName}
                     </span>
@@ -204,12 +206,12 @@ const Testimonials = ({ homeClass, mode }) => {
               </section>
               <section className={homeClass.testimonialsRating}>
                 <div className={homeClass.testimonialWrapStars}>
-                  {stars.map((star, index) => {
+                  {stars.map((star, idx) => {
                     if (star === 1) {
                       return (
                         <i
                           className={`fa fa-star ${homeClass.testimonialStar}`}
-                          key={index}
+                          key={`${`star${idx}`}`}
                         />
                       );
                     }
@@ -217,7 +219,7 @@ const Testimonials = ({ homeClass, mode }) => {
                       return (
                         <i
                           className={`fa fa-star-o ${homeClass.testimonialStar}`}
-                          key={index}
+                          key={`${`star${idx}`}`}
                           aria-hidden="true"
                         />
                       );
@@ -226,7 +228,7 @@ const Testimonials = ({ homeClass, mode }) => {
                       return (
                         <i
                           className={`fa fa-star-half-o ${homeClass.testimonialStar}`}
-                          key={index}
+                          key={`${`star${idx}`}`}
                           aria-hidden="true"
                         />
                       );

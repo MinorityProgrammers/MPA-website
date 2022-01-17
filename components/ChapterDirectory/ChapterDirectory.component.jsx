@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './ChapterDirectory.module.css';
 import ChapterMenu from '../ChapterMenu/ChapterMenu.component';
 import InterestForm from '../InterestForm/InterestForm.component';
@@ -23,7 +23,9 @@ const ChapterDirectory = function ({
 
   useEffect(() => {
     const result = locationDetails && locationDetails
-      .reduce((acc, { added_by }) => [...acc, { firstName: added_by.firstName, lastName: added_by.lastName }], [])
+      .reduce((acc, { added_by }) => [
+        ...acc, { firstName: added_by.firstName, lastName: added_by.lastName },
+      ], [])
       .find((details) => JSON.stringify(details) === JSON.stringify(userDetails));
     setStartedAChapter(result);
   }, [locationDetails]);

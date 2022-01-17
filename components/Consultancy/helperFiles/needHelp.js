@@ -1,3 +1,5 @@
+import React from 'react';
+
 const NeedHelp = function ({ link = '#' }) {
   return (
     <div className="fixed-help-div">

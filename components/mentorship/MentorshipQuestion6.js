@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-
 import Link from 'next/link';
 
-export class MentorshipQuestion6 extends Component {
+export default class MentorshipQuestion6 extends Component {
   back = (e) => {
     e.preventDefault();
     this.props.prevStep();
@@ -10,12 +9,11 @@ export class MentorshipQuestion6 extends Component {
 
   render() {
     const { values } = this.props;
-    this.props.values;
     let lookingTitle = '';
-    if (values.iAMa == 'Mentor') {
+    if (values.iAMa === 'Mentor') {
       lookingTitle = 'Mentee';
     }
-    if (values.iAMa == 'Mentee') {
+    if (values.iAMa === 'Mentee') {
       lookingTitle = 'Mentor';
     }
 
@@ -29,7 +27,7 @@ export class MentorshipQuestion6 extends Component {
             <div className="row tw tw-mx-0">
               <h2 className="tw-text-center tw-text-3xl tw-text-#222222 tw-font-bold tw-pb-4 col">
                 {values.iAMa}
-                's Registration
+                &apos;s Registration
               </h2>
             </div>
             <div className="row tw tw-mx-0">
@@ -42,7 +40,9 @@ export class MentorshipQuestion6 extends Component {
               <div className="col-sm-12 col-md-4">
                 <h5 className="tw-font-bold tw-text-#222222">Full Name</h5>
                 <p className="tw-m-0">
-                  {values.firstName} {values.lastName}
+                  {values.firstName}
+                  {' '}
+                  {values.lastName}
                 </p>
               </div>
               <div className="col-sm-12 col-md-4 tw-text-center md:tw-text-left">
@@ -61,7 +61,10 @@ export class MentorshipQuestion6 extends Component {
                 <h5 className="tw-font-bold tw-text-#222222">Passions:</h5>
                 <p className="tw-m-0">
                   {values.passions.map((passion) => (
-                    <span>{passion.label} </span>
+                    <span>
+                      {passion.label}
+                      {' '}
+                    </span>
                   ))}
                 </p>
               </div>
@@ -70,13 +73,19 @@ export class MentorshipQuestion6 extends Component {
               <div className="col-sm-12 col-md-4">
                 <h5 className="tw-font-bold tw-text-#222222">Country</h5>
                 <p className="tw-m-0">
-                  <p className="tw-m-0">{values.country[0].label} </p>
+                  <p className="tw-m-0">
+                    {values.country[0].label}
+                    {' '}
+                  </p>
                 </p>
               </div>
               <div className="tw-text-center md:tw-text-left col-sm-12 col-md-4">
                 <h5 className="tw-font-bold tw-text-#222222">Ocupation</h5>
                 <p className="tw-m-0">
-                  <p className="tw-m-0">{values.occupation} </p>
+                  <p className="tw-m-0">
+                    {values.occupation}
+                    {' '}
+                  </p>
                 </p>
               </div>
               <div className="tw-text-right md:tw-text-left col-sm-12 col-md-4">
@@ -84,7 +93,10 @@ export class MentorshipQuestion6 extends Component {
                   Place I work/study in
                 </h5>
                 <p className="tw-m-0">
-                  <p className="tw-m-0">{values.occupationPlace} </p>
+                  <p className="tw-m-0">
+                    {values.occupationPlace}
+                    {' '}
+                  </p>
                 </p>
               </div>
             </div>
@@ -93,7 +105,10 @@ export class MentorshipQuestion6 extends Component {
                 <h5 className="tw-font-bold tw-text-#222222">Interest:</h5>
                 <p className="tw-m-0">
                   {values.interest.map((item) => (
-                    <span>{item.label} </span>
+                    <span>
+                      {item.label}
+                      {' '}
+                    </span>
                   ))}
                 </p>
               </div>
@@ -103,7 +118,10 @@ export class MentorshipQuestion6 extends Component {
                 <h5 className="tw-font-bold tw-text-#222222">Learning Style</h5>
                 <p className="tw-m-0">
                   {values.learningStyle.map((item) => (
-                    <p className="tw-m-0">{item.label} </p>
+                    <p className="tw-m-0">
+                      {item.label}
+                      {' '}
+                    </p>
                   ))}
                 </p>
               </div>
@@ -113,7 +131,10 @@ export class MentorshipQuestion6 extends Component {
                 </h5>
                 <p className="tw-m-0">
                   {values.personlityType.map((item) => (
-                    <p className="tw-m-0">{item.label} </p>
+                    <p className="tw-m-0">
+                      {item.label}
+                      {' '}
+                    </p>
                   ))}
                 </p>
               </div>
@@ -121,7 +142,10 @@ export class MentorshipQuestion6 extends Component {
                 <h5 className="tw-font-bold tw-text-#222222">Languages</h5>
                 <p className="tw-m-0">
                   {values.primaryLang.map((item) => (
-                    <p className="tw-m-0">{item.label} </p>
+                    <p className="tw-m-0">
+                      {item.label}
+                      {' '}
+                    </p>
                   ))}
                 </p>
               </div>
@@ -143,33 +167,42 @@ export class MentorshipQuestion6 extends Component {
               <div className="col-sm-12 col-md-4">
                 <h5 className="tw-font-bold tw-text-#222222">
                   {lookingTitle}
-                  's Education
+                  &apos;s Education
                 </h5>
                 <p className="tw-m-0">
                   {values.lookingForEdu.map((item) => (
-                    <p className="tw-m-0">{item.label} </p>
+                    <p className="tw-m-0">
+                      {item.label}
+                      {' '}
+                    </p>
                   ))}
                 </p>
               </div>
               <div className="tw-text-center md:tw-text-left col-sm-12 col-md-4">
                 <h5 className="tw-font-bold tw-text-#222222">
                   {lookingTitle}
-                  's Experience
+                  &apos;s Experience
                 </h5>
                 <p className="tw-m-0">
                   {values.lookingForExp.map((item) => (
-                    <p className="tw-m-0">{item.label} </p>
+                    <p className="tw-m-0">
+                      {item.label}
+                      {' '}
+                    </p>
                   ))}
                 </p>
               </div>
               <div className="tw-text-right md:tw-text-left col-sm-12 col-md-4">
                 <h5 className="tw-font-bold tw-text-#222222">
                   {lookingTitle}
-                  's Gender
+                  &apos;s Gender
                 </h5>
                 <p className="tw-m-0">
                   {values.lookingForGender.map((item) => (
-                    <p className="tw-m-0">{item.label} </p>
+                    <p className="tw-m-0">
+                      {item.label}
+                      {' '}
+                    </p>
                   ))}
                 </p>
               </div>
@@ -178,33 +211,42 @@ export class MentorshipQuestion6 extends Component {
               <div className="col-sm-12 col-md-4">
                 <h5 className="tw-font-bold tw-text-#222222">
                   {lookingTitle}
-                  's Availability
+                  &apos;s Availability
                 </h5>
                 <p className="tw-m-0">
                   {values.lookingForAvailability.map((item) => (
-                    <p className="tw-m-0">{item.label} </p>
+                    <p className="tw-m-0">
+                      {item.label}
+                      {' '}
+                    </p>
                   ))}
                 </p>
               </div>
               <div className="tw-text-center md:tw-text-left col-sm-12 col-md-4">
                 <h5 className="tw-font-bold tw-text-#222222">
                   {lookingTitle}
-                  's Language
+                  &apos;s Language
                 </h5>
                 <p className="tw-m-0">
                   {values.lookingForLang.map((item) => (
-                    <p className="tw-m-0">{item.label} </p>
+                    <p className="tw-m-0">
+                      {item.label}
+                      {' '}
+                    </p>
                   ))}
                 </p>
               </div>
               <div className="tw-text-right md:tw-text-left col-sm-12 col-md-4">
                 <h5 className="tw-font-bold tw-text-#222222">
                   {lookingTitle}
-                  's Ethnicity
+                  &apos;s Ethnicity
                 </h5>
                 <p className="tw-m-0">
                   {values.lookingForEthnicity.map((item) => (
-                    <p className="tw-m-0">{item.label} </p>
+                    <p className="tw-m-0">
+                      {item.label}
+                      {' '}
+                    </p>
                   ))}
                 </p>
               </div>
@@ -214,13 +256,17 @@ export class MentorshipQuestion6 extends Component {
         <div className="tw-absolute tw-w-full tw-bottom-12 tw-pr-48 md:tw-pr-20 md:tw-bottom-7 tw-text-center">
           <div className="tw-w-280px tw-mx-auto tw-flex tw-justify-between">
             <button
+              type="button"
               className="tw-bg-NavDark tw-outline-none tw-rounded-md tw-w-32 tw-py-2 tw-mb-6 tw-text-white hover:tw-text-NavDark hover:tw-bg-white tw-duration-500"
               onClick={this.back}
             >
               Edit
             </button>
             <Link href="/mentorshipApp">
-              <button className="tw-bg-activeOrange tw-outline-none tw-rounded-md tw-w-32 tw-py-2 tw-mb-6 tw-text-white hover:tw-text-NavDark hover:tw-bg-white tw-duration-500">
+              <button
+                type="button"
+                className="tw-bg-activeOrange tw-outline-none tw-rounded-md tw-w-32 tw-py-2 tw-mb-6 tw-text-white hover:tw-text-NavDark hover:tw-bg-white tw-duration-500"
+              >
                 Complete
               </button>
             </Link>
@@ -238,5 +284,3 @@ export class MentorshipQuestion6 extends Component {
     );
   }
 }
-
-export default MentorshipQuestion6;

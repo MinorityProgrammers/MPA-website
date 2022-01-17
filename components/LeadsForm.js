@@ -1,4 +1,6 @@
-import React, { useState, useEffect, useMemo, useCallback } from 'react';
+import React, {
+  useState, useEffect, useMemo, useCallback,
+} from 'react';
 import Calendar from 'react-calendar';
 import Axios from 'axios';
 
@@ -49,7 +51,7 @@ const LeadsForm = () => {
           ...questions,
           [`question${step.toString()}`]: inputValue,
         });
-        setstep((prev) => step + 1);
+        setstep(() => step + 1);
         if (errorMsg) {
           setErrorMsg('');
         }
@@ -73,12 +75,13 @@ const LeadsForm = () => {
         <h4>{index === undefined ? errorMsg : errorMsg[index]}</h4>
       </div>
     ),
-    [errorMsg]
+    [errorMsg],
   );
 
   const KeepingUpWithStep = useCallback(({ selected }) => {
-    const calculateLinePercentage = () =>
-      selected === 0 ? 0 : ((selected - 1) / (totalSteps - 1)) * 100;
+    const calculateLinePercentage = () => (
+      selected === 0 ? 0 : ((selected - 1) / (totalSteps - 1)) * 100
+    );
 
     const percentageOfBlueLine = Number.isInteger(selected)
       ? calculateLinePercentage()
@@ -95,7 +98,7 @@ const LeadsForm = () => {
           {[
             ...(() => {
               const range = [];
-              for (let i = 0; i < totalSteps; i++) range.push(i + 1);
+              for (let i = 0; i < totalSteps; i += 1) range.push(i + 1);
               return range;
             })(),
           ].map((index) => (
@@ -114,10 +117,13 @@ const LeadsForm = () => {
   }, []);
 
   const Buttons = useCallback(
-    ({ left, right, marginTop, customPlusFunction }) => (
+    ({
+      left, right, marginTop, customPlusFunction,
+    }) => (
       <div className="service_buttons">
         {left ? (
           <button
+            type="button"
             onClick={() => {
               minus();
             }}
@@ -128,6 +134,7 @@ const LeadsForm = () => {
         ) : null}
         {right ? (
           <button
+            type="button"
             onClick={() => {
               if (!customPlusFunction) plus();
               else customPlusFunction();
@@ -139,11 +146,13 @@ const LeadsForm = () => {
         ) : null}
       </div>
     ),
-    [plus, minus]
+    [plus, minus],
   );
 
   const QuestionContainer = useCallback(
-    ({ children, left, right, marginBottom, customPlusFunction }) => (
+    ({
+      children, left, right, marginBottom, customPlusFunction,
+    }) => (
       <div className="service_container">
         <div className="questions">
           {children}
@@ -157,7 +166,7 @@ const LeadsForm = () => {
         </div>
       </div>
     ),
-    [Buttons, step]
+    [Buttons, step],
   );
   const CustomSelectTag = ({
     options,
@@ -168,17 +177,16 @@ const LeadsForm = () => {
     const [dropDown, setDropDown] = useState(optionsShowByDefault);
     const updatedOptions = useMemo(
       () => ['...select an option', ...options],
-      [options]
+      [options],
     );
 
     useEffect(() => {
       setSelected(0);
     }, []);
 
-    const getRootVariable = (str) =>
-      parseInt(
-        window.getComputedStyle(document.body).getPropertyValue(`--${str}`)
-      );
+    const getRootVariable = (str) => parseInt(
+      window.getComputedStyle(document.body).getPropertyValue(`--${str}`),
+    );
 
     const maximumOptionHeight = getRootVariable('maximumOptionPerScrollable');
     const optionHeight = getRootVariable('optionHeight');
@@ -254,7 +262,7 @@ const LeadsForm = () => {
             arr.push(obj);
           }
           return arr;
-        })(),
+        }()),
       ]);
     }, []);
 
@@ -274,8 +282,8 @@ const LeadsForm = () => {
             >
               <i
                 className={
-                  'fa fa-check ' +
-                  `${checkbox.checked ? 'checkVisible' : 'checkInvisible'}`
+                  'fa fa-check '
+                  + `${checkbox.checked ? 'checkVisible' : 'checkInvisible'}`
                 }
                 aria-hidden="true"
               />
@@ -290,13 +298,13 @@ const LeadsForm = () => {
     prev,
     lengthOfPageQuestions,
     questionIndex,
-    errorStr
+    errorStr,
   ) => {
     let errorList = [];
     if (prev instanceof Array) {
       errorList = [...prev];
     } else {
-      for (let i = 0; i < lengthOfPageQuestions; i++) {
+      for (let i = 0; i < lengthOfPageQuestions; i += 1) {
         errorList.push('');
       }
     }
@@ -309,17 +317,15 @@ const LeadsForm = () => {
     index,
     question,
     questionIndex,
-    lengthOfPageQuestions
+    lengthOfPageQuestions,
   ) => {
     if (!index) {
-      setErrorMsg((prev) =>
-        setCustomTagError(
-          prev,
-          lengthOfPageQuestions,
-          questionIndex,
-          'You must select at least one option.'
-        )
-      );
+      setErrorMsg((prev) => setCustomTagError(
+        prev,
+        lengthOfPageQuestions,
+        questionIndex,
+        'You must select at least one option.',
+      ));
       setDisplayError(true);
     } else {
       return [question, options[index - 1]];
@@ -329,7 +335,7 @@ const LeadsForm = () => {
     checkboxes,
     question,
     questionIndex,
-    lengthOfPageQuestions
+    lengthOfPageQuestions,
   ) => {
     const checkedCheckboxes = checkboxes
       .filter((checkbox) => {
@@ -341,14 +347,12 @@ const LeadsForm = () => {
       .map((checkbox) => checkbox.label);
 
     if (checkedCheckboxes.length === 0) {
-      setErrorMsg((prev) =>
-        setCustomTagError(
-          prev,
-          lengthOfPageQuestions,
-          questionIndex,
-          'You must check at least one checkbox.'
-        )
-      );
+      setErrorMsg((prev) => setCustomTagError(
+        prev,
+        lengthOfPageQuestions,
+        questionIndex,
+        'You must check at least one checkbox.',
+      ));
     } else {
       return [question, checkedCheckboxes];
     }
@@ -402,7 +406,7 @@ const LeadsForm = () => {
         {displayError === true ? <ErrorEle /> : null}
       </QuestionContainer>
     ),
-    [displayError, QuestionContainer]
+    [displayError, QuestionContainer],
   );
   const Page3 = useCallback(() => {
     const [selected, setSelected] = useState();
@@ -436,13 +440,13 @@ const LeadsForm = () => {
         selected,
         question1,
         currentQuestionIndex,
-        lenght_of_questions
+        lenght_of_questions,
       );
       const questionSheetTwo = validateCheckBox(
         checkboxes,
         question2,
         currentQuestionIndex + 1,
-        lenght_of_questions
+        lenght_of_questions,
       );
       if (questionSheetOne && questionSheetTwo) {
         setstep((prev) => prev + 1);
@@ -655,25 +659,25 @@ const LeadsForm = () => {
   };
   return (
     <div className="service tw-mt-12" key="rigid">
-      {step == 0 && <Page1 />}
-      {step == 1 && (
+      {step === 0 && <Page1 />}
+      {step === 1 && (
         <Page2
           inputValue={
             inputValue !== ' '
               ? inputValue
               : questions.question1
-              ? questions.question1
-              : ''
+                ? questions.question1
+                : ''
           }
         />
       )}
-      {step == 2 && <Page3 />}
-      {step == 3 && <Page4 />}
-      {step == 4 && <Page5 />}
-      {step == 5 && <Page6 />}
-      {step == 6 && <Page7 />}
-      {step == 7 && <Page8 />}
-      {step == 8 && <Page9 />}
+      {step === 2 && <Page3 />}
+      {step === 3 && <Page4 />}
+      {step === 4 && <Page5 />}
+      {step === 5 && <Page6 />}
+      {step === 6 && <Page7 />}
+      {step === 7 && <Page8 />}
+      {step === 8 && <Page9 />}
     </div>
   );
 };

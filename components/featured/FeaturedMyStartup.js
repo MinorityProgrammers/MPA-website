@@ -3,7 +3,9 @@ import Swiper from 'react-id-swiper';
 import 'swiper/css/swiper.css';
 import FeaturedMyCard from './FeaturedMyCard';
 
-const FeaturedMyStartup = ({ data, token, setClickRegister, userData }) => {
+const FeaturedMyStartup = ({
+  data, setClickRegister, userData,
+}) => {
   const params = {
     slidesPerView: data.length,
     loop: data.length >= 3,
@@ -86,7 +88,7 @@ const FeaturedMyStartup = ({ data, token, setClickRegister, userData }) => {
             ) : (
               <Swiper {...params} grabCursor>
                 {data.map((s, i) => (
-                  <div className="item" key={i}>
+                  <div className="item" key={`${i + 1}`}>
                     <FeaturedMyCard data={s.startup_id} />
                   </div>
                 ))}

@@ -1,3 +1,4 @@
+import React from 'react';
 import Link from 'next/link';
 import styles from './startups-card.module.css';
 import { numFormat, percentFund } from '../../../helpers/formatIncubator';

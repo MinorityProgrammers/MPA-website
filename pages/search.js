@@ -1,4 +1,6 @@
-import React, { useState, useRef, useEffect, useContext } from 'react';
+import React, {
+  useState, useRef, useEffect, useContext,
+} from 'react';
 import { GlobalContext } from '../contexts/provider';
 import HomepageNav from '../components/homepage/HomepageNav';
 import Layout from '../components/Layout';
@@ -7,7 +9,7 @@ import SidebarTwo from '../components/sidebar/SidebarTwo';
 import links from '../contexts/utils/links';
 import ComingSoon from '../components/ComingSoon';
 import Search from '../components/search/search-main/search';
-import { useDetectOutsideClick } from '../components/UseDetectOutsideClick';
+import useDetectOutsideClick from '../components/UseDetectOutsideClick';
 
 const search = () => {
   const [open, setOpen] = useState(false);
@@ -28,17 +30,16 @@ const search = () => {
   }
 
   const {
-    authDispatch,
     authState: {
-      auth: { loading, error, data },
+      auth: { data },
     },
   } = useContext(GlobalContext);
 
   useEffect(() => {
-    const token = window.localStorage.getItem('jwtToken');
+    const userToken = window.localStorage.getItem('jwtToken');
     const userInfo = window.localStorage.getItem('userInfo');
-    setToken(token);
-    if (token == null || userInfo === {}) {
+    setToken(userToken);
+    if (userToken == null || userInfo === {}) {
       setUserData(null);
       setActive(false);
     } else {

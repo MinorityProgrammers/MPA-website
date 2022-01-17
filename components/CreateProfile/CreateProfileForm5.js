@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import FileSaver from 'file-saver';
-import { AiFillCloseCircle, AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai';
+import { AiFillCloseCircle, AiOutlineArrowLeft } from 'react-icons/ai';
 import Avatar from 'avataaars';
-import { CirclePicker } from 'react-color';
 import CreateProfileForm from './CreateProfileForm';
 import CreateProfileInput from './CreateProfileInput';
 import {
@@ -115,9 +114,9 @@ const CreateProfileQuestions5 = function ({
   };
   const submitData = () => {
     // update userData
-    const data = getSVG();
-    const svg = new Blob([data], { type: 'image/svg+xml' });
-    const svgURL = URL.createObjectURL(svg);
+    // const data = getSVG();
+    // const svg = new Blob([data], { type: 'image/svg+xml' });
+    // const svgURL = URL.createObjectURL(svg);
     setState((prevState) => ({ ...prevState, 5: { ...prevState['5'], profilePicture: state['5'].profilePicture } }));
     handleSubmit();
     handleNext();
@@ -127,7 +126,7 @@ const CreateProfileQuestions5 = function ({
       <AiFillCloseCircle className="cp-close" onClick={closeProfileSetup} style={{ cursor: 'pointer' }} />
       <div className="cp-top">
         <h1>Ready to make your avatar?</h1>
-        <h2>Let's begin, it's easy</h2>
+        <h2>Let&apos;s begin, it&apos;s easy</h2>
       </div>
       <CreateProfileForm>
         <div className="cp-formGrid">
@@ -145,7 +144,7 @@ const CreateProfileQuestions5 = function ({
               style={{
                 width: '250px', height: '250px', background: state['5'].avatarOptions.backgroundColor || '#fff', borderRadius: '100%',
               }}
-              ref={(ref) => avatarRef = ref}
+              ref={(ref) => { avatarRef = ref; }}
               {...state['5'].avatarOptions}
             />
           </div>
@@ -159,37 +158,38 @@ const CreateProfileQuestions5 = function ({
             setValue={(value) => handleColorChange(hairColorField.name, value)}
           />
           {
-                        [topTypeField,
-                          accessoriesTypeField,
-                          facialHairTypeField,
-                          clotheTypeField,
-                          clotheColorField,
-                          eyeTypeField,
-                          eyebrowTypeField,
-                          mouthTypeField,
-                          skinColorField,
-                        ].map((field, key) => (
-                          <CreateProfileInput
-                            name={field.name}
-                            type={field.type}
-                            label={field.label}
-                            options={field.options}
-                            required={field.required}
-                            value={state['5'].avatarOptions[field.name]}
-                            setValue={(value) => handleAvatarChange(field.name, value)}
-                            key={key}
-                          />
-                        ))
-                    }
+            [
+              topTypeField,
+              accessoriesTypeField,
+              facialHairTypeField,
+              clotheTypeField,
+              clotheColorField,
+              eyeTypeField,
+              eyebrowTypeField,
+              mouthTypeField,
+              skinColorField,
+            ].map((field) => (
+              <CreateProfileInput
+                name={field.name}
+                type={field.type}
+                label={field.label}
+                options={field.options}
+                required={field.required}
+                value={state['5'].avatarOptions[field.name]}
+                setValue={(value) => handleAvatarChange(field.name, value)}
+                key={field.name}
+              />
+            ))
+          }
           <div className="cp-downloadButtonsContainer">
-            <button onClick={onDownloadSVG}>Download SVG</button>
-            <button onClick={onDownloadPNG}>Download PNG</button>
+            <button type="button" onClick={onDownloadSVG}>Download SVG</button>
+            <button type="button" onClick={onDownloadPNG}>Download PNG</button>
           </div>
         </div>
       </CreateProfileForm>
       <div className="cp-navButtonsContainer">
-        <button className="cp-navButton" onClick={handlePrev}><AiOutlineArrowLeft /></button>
-        <button className="cp-navButton" onClick={submitData}>Finish</button>
+        <button type="button" className="cp-navButton" onClick={handlePrev}><AiOutlineArrowLeft /></button>
+        <button type="button" className="cp-navButton" onClick={submitData}>Finish</button>
       </div>
     </div>
   );

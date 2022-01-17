@@ -5,17 +5,23 @@ import UserBanner from './UserBanner';
 const MainCourseInfo = function ({
   courseId, userInfo, modules, userModules,
 }) {
-  const beginnerModules = modules.filter((module) => module.level == 'beginner');
-  const intermediateModules = modules.filter((module) => module.level == 'intermediate');
-  const advancedModules = modules.filter((module) => module.level == 'advanced');
+  const beginnerModules = modules.filter((module) => module.level === 'beginner');
+  const intermediateModules = modules.filter((module) => module.level === 'intermediate');
+  const advancedModules = modules.filter((module) => module.level === 'advanced');
 
   const totalBeginnerLength = beginnerModules.length;
   const totalIntermediateLength = intermediateModules.length;
   const totalAdvancedLength = advancedModules.length;
 
-  const specificUBeginnerModules = userModules.filter((eModule) => beginnerModules.some((module) => eModule.moduleId._id === module._id));
-  const specificUIntermediateModules = userModules.filter((eModule) => intermediateModules.some((module) => eModule.moduleId._id === module._id));
-  const specificUAdvancedModules = userModules.filter((eModule) => advancedModules.some((module) => eModule.moduleId._id === module._id));
+  const specificUBeginnerModules = userModules.filter(
+    (eModule) => beginnerModules.some((module) => eModule.moduleId._id === module._id),
+  );
+  const specificUIntermediateModules = userModules.filter(
+    (eModule) => intermediateModules.some((module) => eModule.moduleId._id === module._id),
+  );
+  const specificUAdvancedModules = userModules.filter(
+    (eModule) => advancedModules.some((module) => eModule.moduleId._id === module._id),
+  );
 
   // Beginner level progress
   let beginnerCompletionRate = 0;
@@ -29,7 +35,9 @@ const MainCourseInfo = function ({
   specificUIntermediateModules.forEach((module) => {
     intermediateCompletionRate += module.completionRate;
   });
-  const totalIntermediatePercentage = Math.round(intermediateCompletionRate / totalIntermediateLength);
+  const totalIntermediatePercentage = Math.round(
+    intermediateCompletionRate / totalIntermediateLength,
+  );
 
   // Advanced level progress
   let advancedCompletionRate = 0;
@@ -39,7 +47,9 @@ const MainCourseInfo = function ({
   const totalAdvancedPercentage = Math.round(advancedCompletionRate / totalAdvancedLength);
 
   // User progress
-  const totalCompletionRate = beginnerCompletionRate + intermediateCompletionRate + advancedCompletionRate;
+  const totalCompletionRate = (
+    beginnerCompletionRate + intermediateCompletionRate + advancedCompletionRate
+  );
   const totalModulesLength = totalBeginnerLength + totalIntermediateLength + totalAdvancedLength;
   const userPercentages = Math.round(totalCompletionRate / totalModulesLength);
 
@@ -64,7 +74,18 @@ const MainCourseInfo = function ({
           </ul>
         </div>
 
-        <CourseWeeksList courseId={courseId} beginnerPercentage={totalBeginnerPercentage} intermediatePercentage={totalIntermediatePercentage} advancedPercentage={totalAdvancedPercentage} specificUBeginnerModules={specificUBeginnerModules} specificUIntermediateModules={specificUIntermediateModules} specificUAdvancedModules={specificUAdvancedModules} beginnerLength={totalBeginnerLength} intermediateLength={totalIntermediateLength} advancedLength={totalAdvancedLength} />
+        <CourseWeeksList
+          courseId={courseId}
+          beginnerPercentage={totalBeginnerPercentage}
+          intermediatePercentage={totalIntermediatePercentage}
+          advancedPercentage={totalAdvancedPercentage}
+          specificUBeginnerModules={specificUBeginnerModules}
+          specificUIntermediateModules={specificUIntermediateModules}
+          specificUAdvancedModules={specificUAdvancedModules}
+          beginnerLength={totalBeginnerLength}
+          intermediateLength={totalIntermediateLength}
+          advancedLength={totalAdvancedLength}
+        />
 
       </div>
     </>

@@ -1,39 +1,41 @@
-import React, { useState, useEffect } from 'react';
+/* eslint-disable react/no-unstable-nested-components */
+/* eslint-disable quote-props */
+import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import Skeleton from 'react-loading-skeleton';
 import EmptyOverviewComponent from './EmptyOverviewComponent';
 
-const OverviewStartups = (props) => {
+const OverviewStartups = ({ userData, token }) => {
   const [currentView, setCurrentView] = useState('founded');
   const [loading, setLoading] = useState(true);
   const [startups, setStartups] = useState([]);
 
   useEffect(() => {
-    console.log('userData: ', props.userData);
-    if (props.token !== null) {
+    console.log('userData: ', userData);
+    if (token !== null) {
       axios
-        .get("https://koinstreet-learn-api.herokuapp.com/api/v1/startup", {
+        .get(`${process.env.BASE_URI}/startup`, {
           // .get("https://koinstreet-learn-api.herokuapp.com/api/v1/funded/userFunded", {
           headers: {
             'Access-Control-Allow-Origin': '*',
             'Access-Control-Allow-Methods': 'GET',
             'Access-Control-Allow-Headers': 'Content-Type',
-            Authorization: `Bearer ${props.token}`,
+            'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json',
           },
         })
         .then((response) => {
           // convert startup's amount / target amount into number
           const tempStartupData = response.data.data;
-          tempStartupData.map((startup) => {
+          tempStartupData.forEach((startup) => {
             const tempAmount = parseInt(startup.amount);
             startup.amount = tempAmount;
             startup.percentRaised = Math.ceil((tempAmount * 100) / startup.targetAmount);
-            startup.isFounder = props.userData._id === startup.startupOwner._id;
+            startup.isFounder = userData._id === startup.startupOwner._id;
           });
           setStartups(tempStartupData);
           return true;
-        }).then((response) => {
+        }).then(() => {
           setTimeout(setLoading(false), 3000);
         })
         .catch((error) => {
@@ -57,18 +59,18 @@ const OverviewStartups = (props) => {
     }
   }, []);
 
-  const EmptyStartupComponent = () => (
+  const EmptyStartupComponent = useCallback(() => (
     <EmptyOverviewComponent
       imgURL="https://s3-alpha-sig.figma.com/img/e964/1331/6f840dad9adc11eb036d0b485ebb0233?Expires=1639353600&Signature=RXwGa6MBpBjiVeurYUQh0TJw2fUop~2fEHntjng0YwETQ~oMj-FkgjSFj1DgcM8btl~fK~jWHK-Sy6v6e7AJ3ymEpHu0jfGhkN7q2aziZ77EqcAFCfFE6rM352S-1lVIryJxBfF0L~v6ATChxxKtJpFv5Fn1nkp37OWdkx4PCR4SqElXgKGPPihF~SMq4ZJUgqeFhg9gDfPCYGEWrSb9nA3vy3~BLrqsjrvyfffxQ5duVTKVLURVZtY-oBdbD09LVHnDm~8VzLyAjv-rcBn3z74ndOFojz7N7L1Zcj9dKQcn7WvR-qEH~CeByULnNEPCaZZfQ-ELHeKXCDRl~unXrA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
       description="You currently have no stakes or founded any of the startups yet. To explore your options, go to the Startups Section."
       btnText="Try your first Stake in"
       btnFunction={() => { setLoading(false); }}
     />
-  );
+  ), []);
 
-  const ProgressBar = (props) => {
+  const ProgressBar = useCallback((props) => {
     let value = props.completionRate;
-    if (typeof value === 'number' || (typeof value === 'String')) {
+    if (typeof value === 'number' || (typeof value === 'string')) {
       value = props.completionRate;
     } else { value = 0; }
     return (
@@ -78,7 +80,7 @@ const OverviewStartups = (props) => {
         </div>
       </div>
     );
-  };
+  }, []);
 
   const StartupCards = () => {
     let startupData = [];
@@ -130,7 +132,10 @@ const OverviewStartups = (props) => {
                 {/* Fourth and Fifth Column */}
                 <div className="d-flex flex-row" style={{ width: '18%' }}>
                   {/* Fourth Column */}
-                  <div className="overview-course-currency d-flex justify-content-center flex-column align-items-center" style={{ marginRight: '2%', width: '75%', marginRight: '5%' }}>
+                  <div
+                    className="overview-course-currency d-flex justify-content-center flex-column align-items-center"
+                    style={{ marginRight: '2%', width: '75%' /* marginRight: '5%' */ }}
+                  >
                     <p style={{ fontSize: '16px', fontWeight: '700', color: '#151371' }}>
                       {startup.percentRaised}
                       %
@@ -187,9 +192,11 @@ const OverviewStartups = (props) => {
       </div>
       <div className="overview-courses-cards d-flex flex-column" style={{ height: '85%' }}>
         {loading
-          ? <div className="d-flex flex-row justify-content-start align-items-start" style={{ lineHeight: 2, height: '100%', overflowX: 'hidden' }}>
-            <Skeleton count={7} height={40} width={1200} />
-          </div>
+          ? (
+            <div className="d-flex flex-row justify-content-start align-items-start" style={{ lineHeight: 2, height: '100%', overflowX: 'hidden' }}>
+              <Skeleton count={7} height={40} width={1200} />
+            </div>
+          )
           : <StartupCards />}
       </div>
 

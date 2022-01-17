@@ -1,23 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Skeleton from 'react-loading-skeleton';
-import EmptyOverviewComponent from './EmptyOverviewComponent';
+// import EmptyOverviewComponent from './EmptyOverviewComponent';
 import TasksList from './TasksList';
 
-const OverviewMentor = (props) => {
+const OverviewMentor = ({ token }) => {
   const [loading, setLoading] = useState(true);
   const [currentView, setCurrentView] = useState('overview');
   const [mentorInfo, setMentorInfo] = useState();
-  const [mentors, setMentors] = useState([]);
+  const [, setMentors] = useState([]);
 
   useEffect(() => {
-    if (props.token != null) {
-      axios.get(' https://koinstreet-learn-api.herokuapp.com/api/v1/mentor/', {
+    if (token != null) {
+      axios.get(`${process.env.BASE_URI}/mentor/`, {
         headers: {
           'Access-Control-Allow-Origin': '*',
           'Access-Control-Allow-Methods': 'GET',
           'Access-Control-Allow-Headers': 'Content-Type',
-          Authorization: `Bearer ${props.token}`,
+          Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json',
         },
       }).then((res) => {
@@ -30,7 +30,7 @@ const OverviewMentor = (props) => {
           console.log('Mentor: ', tempMentors[0]?.user_id);
         }
         return true;
-      }).then((res) => {
+      }).then(() => {
         setTimeout(() => { setLoading(false); }, 3000);
       }).catch((error) => {
         if (error?.response) {
@@ -52,72 +52,6 @@ const OverviewMentor = (props) => {
       });
     }
   }, []);
-
-  const OverviewComponent = () => (
-    <div className="d-flex flex-column align-items-start justify-content-between" style={{ width: '100%', height: '100%' }}>
-      {/* 3 rows: profile + name - meeting date + mentorship start date + number of mentees - button */}
-      {/* first row */}
-      <div className="d-flex flex-row align-items-center justify-content-start" style={{ width: '100%' }}>
-        <img
-          style={{
-            width: '60px', height: '60px', borderRadius: '50%', marginBottom: '2%', marginRight: '4%',
-          }}
-          src={mentorInfo?.user_id?.profilePicture || '/assets/images/profile.png'}
-          alt="avatar"
-        />
-        <div className="d-flex flex-column">
-          <p style={{
-            fontSize: '14px', fontWeight: 700, color: 'black', marginBottom: '2%',
-          }}
-          >
-            {mentorInfo?.user_id?.firstName}
-            {' '}
-            {mentorInfo?.user_id?.lastName}
-          </p>
-          <p style={{
-            fontSize: '12px', fontWeight: 400, color: 'black', marginBottom: '2%',
-          }}
-          >
-            Position
-          </p>
-        </div>
-      </div>
-      {/* second row */}
-      <div className="d-flex flex-row justify-content-between">
-        <div className="d-flex flex-column ">
-          <p style={{
-            fontSize: '12px', fontWeight: 400, color: 'black', marginBottom: '2%',
-          }}
-          >
-            <strong>Last Meeting: </strong>
-            19th Jun, 2021 @ 11:00am
-          </p>
-          <p style={{
-            fontSize: '12px', fontWeight: 400, color: 'black', marginBottom: '2%',
-          }}
-          >
-            <strong>Mentorship Start Date: </strong>
-            3rd March, 2021
-          </p>
-          <p style={{
-            fontSize: '12px', fontWeight: 400, color: 'black', marginBottom: '2%',
-          }}
-          >
-            <strong>Number of Mentees: </strong>
-            4
-          </p>
-        </div>
-
-      </div>
-      {/* third row */}
-      <div className="d-flex flex-row justify-content-end" style={{ width: '100%' }}>
-        <button className="btn btn-primary" style={{ background: '#151371', fontSize: '12px' }}>
-          Message
-          {mentorInfo?.user_id?.firstName}
-        </button>
-      </div>
-    </div>
-  );
 
   return (
     <div className="d-flex flex-column justify-content-between " style={{ height: '100%', width: '100%' }}>
@@ -171,7 +105,7 @@ const OverviewMentor = (props) => {
             </div>
           )
           : currentView === 'overview'
-            ? <OverviewComponent />
+            ? <OverviewComponent mentorInfo={mentorInfo} />
             : <TasksList />}
       </div>
     </div>
@@ -179,3 +113,71 @@ const OverviewMentor = (props) => {
 };
 
 export default OverviewMentor;
+
+const OverviewComponent = ({ mentorInfo }) => (
+  <div className="d-flex flex-column align-items-start justify-content-between" style={{ width: '100%', height: '100%' }}>
+    {/* 3 rows:
+          profile + name - meeting date + mentorship start date + number of mentees - button
+    */}
+    {/* first row */}
+    <div className="d-flex flex-row align-items-center justify-content-start" style={{ width: '100%' }}>
+      <img
+        style={{
+          width: '60px', height: '60px', borderRadius: '50%', marginBottom: '2%', marginRight: '4%',
+        }}
+        src={mentorInfo?.user_id?.profilePicture || '/assets/images/profile.png'}
+        alt="avatar"
+      />
+      <div className="d-flex flex-column">
+        <p style={{
+          fontSize: '14px', fontWeight: 700, color: 'black', marginBottom: '2%',
+        }}
+        >
+          {mentorInfo?.user_id?.firstName}
+          {' '}
+          {mentorInfo?.user_id?.lastName}
+        </p>
+        <p style={{
+          fontSize: '12px', fontWeight: 400, color: 'black', marginBottom: '2%',
+        }}
+        >
+          Position
+        </p>
+      </div>
+    </div>
+    {/* second row */}
+    <div className="d-flex flex-row justify-content-between">
+      <div className="d-flex flex-column ">
+        <p style={{
+          fontSize: '12px', fontWeight: 400, color: 'black', marginBottom: '2%',
+        }}
+        >
+          <strong>Last Meeting: </strong>
+          19th Jun, 2021 @ 11:00am
+        </p>
+        <p style={{
+          fontSize: '12px', fontWeight: 400, color: 'black', marginBottom: '2%',
+        }}
+        >
+          <strong>Mentorship Start Date: </strong>
+          3rd March, 2021
+        </p>
+        <p style={{
+          fontSize: '12px', fontWeight: 400, color: 'black', marginBottom: '2%',
+        }}
+        >
+          <strong>Number of Mentees: </strong>
+          4
+        </p>
+      </div>
+
+    </div>
+    {/* third row */}
+    <div className="d-flex flex-row justify-content-end" style={{ width: '100%' }}>
+      <button type="button" className="btn btn-primary" style={{ background: '#151371', fontSize: '12px' }}>
+        Message
+        {mentorInfo?.user_id?.firstName}
+      </button>
+    </div>
+  </div>
+);

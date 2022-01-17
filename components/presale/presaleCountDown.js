@@ -38,14 +38,23 @@ const presaleCountDown = () => {
     }
     timerComponents.push(
       <span className="interval">
-        {timeLeft[interval]} <br /> {interval}{' '}
-      </span>
+        {timeLeft[interval]}
+        {' '}
+        <br />
+        {' '}
+        {interval}
+        {' '}
+      </span>,
     );
   });
   return (
     <div className="presale-in">
       <div className="presale-time">
-        PRE-SALE <br /> ENDS IN:
+        PRE-SALE
+        {' '}
+        <br />
+        {' '}
+        ENDS IN:
         <div className="count-down-timer">
           {timerComponents.length ? (
             timerComponents

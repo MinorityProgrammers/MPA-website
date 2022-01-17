@@ -4,7 +4,8 @@ import 'swiper/css/swiper.css';
 import EventCard from './Events/EventCard';
 
 const UpcomingEvents = () => {
-  const params = {
+  // params is unused... check if it is needed before deleting
+  /* const params = {
     slidesPerView: 3,
     loop: true,
     speed: 1000,
@@ -32,7 +33,7 @@ const UpcomingEvents = () => {
         slidesPerView: 1,
       },
     },
-  };
+  }; */
   const Events = [
     {
       imgSrc: '/assets/images/DefiSummerAnimation.gif',
@@ -90,8 +91,8 @@ const UpcomingEvents = () => {
         <div className="container">
           <div className="course-one__carousel">
             <Swiper>
-              {Events.map((events, index) => (
-                <EventCard item={events} key={index} />
+              {Events.map((events) => (
+                <EventCard item={events} key={events.eventName} />
               ))}
             </Swiper>
           </div>

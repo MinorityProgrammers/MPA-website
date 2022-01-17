@@ -2,7 +2,7 @@
 import React, { useState, useRef } from 'react';
 import Layout from '../components/Layout';
 import HomepageNav from '../components/homepage/HomepageNav';
-import { useDetectOutsideClick } from '../components/UseDetectOutsideClick';
+import useDetectOutsideClick from '../components/UseDetectOutsideClick';
 import Footer from '../components/Footer';
 import links from '../contexts/utils/links';
 import SidebarTwo from '../components/sidebar/SidebarTwo';

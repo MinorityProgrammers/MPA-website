@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import Moment from 'moment';
 import axios from 'axios';
 import {
@@ -14,46 +13,41 @@ import {
 import { successToast, errorToast } from '../../contexts/utils/toasts';
 
 const EventMoreInfo = function (props) {
-  const router = useRouter();
   const {
-    clickRegister, setClickRegister, active, userData, token, attended, userSavedEvents, allsavedEvents, createEventData, eventDateTime, allEvent, getUserSavedEvents,
+    clickRegister,
+    setClickRegister,
+    active,
+    data,
+    userData,
+    token,
+    attended,
+    userSavedEvents,
+    allsavedEvents,
+    createEventData,
+    allEvent,
+    getUserSavedEvents,
+    handleMoreInfo,
+    handleCreateEventData,
   } = props;
-  const [loading, setLoading] = useState(false);
+  const [, setLoading] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState([]);
   const dateNow = Date.now();
-  const eventTime = new Date(props.data.time).getTime();
+  const eventTime = new Date(data.time).getTime();
 
-  console.log('props eventInfo', props.data);
-  console.log('allEvent eventInfo', allEvent);
-  console.log('userSavedEvents from EventMoreInfo', userSavedEvents);
+  // console.log('props eventInfo', data);
+  // console.log('allEvent eventInfo', allEvent);
+  // console.log('userSavedEvents from EventMoreInfo', userSavedEvents);
 
-  const shareUrl = `${props.data.eventLink}`;
-  const title = `${props.data.eventName}`;
+  const shareUrl = `${data.eventLink}`;
+  const title = `${data.eventName}`;
 
-  const eventStatus = userSavedEvents.filter((user) => user.event_id?._id === props.data._id).map((x) => (
+  const eventStatus = userSavedEvents.filter(
+    (user) => user.event_id?._id === data._id,
+  ).map((x) => (
     <li className="event-status-yes">{x.attending}</li>
   ));
 
   const Capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
-
-  // Check saveEvents to change label
-  const checkSaveEvent = (val) => {
-    if (val === 'Register') {
-      for (let i = 0; i < userSavedEvents.length; i++) {
-        if (userSavedEvents[i].event_id?._id === props.data._id || userSavedEvents !== null && attended.attending === 'yes') {
-          // console.log("cancel", userSavedEvents[i]._id)
-          return <button className="button_action" onClick={(e) => cancelRegister(e, userSavedEvents[i]._id, token)}>Cancel Registration</button>;
-        }
-      }
-    } else if (val === 'attendance') {
-      for (let i = 0; i < userSavedEvents.length; i++) {
-        if (userSavedEvents[i].event_id._id === props.data._id || userSavedEvents !== null && attended.attending === 'yes') {
-          // console.log("true attendance", userSavedEvents[i].event_id._id)
-          return <p>{' '}</p>;
-        }
-      }
-    }
-  };
 
   const checkRegister = (e, status) => {
     e.preventDefault();
@@ -63,7 +57,7 @@ const EventMoreInfo = function (props) {
     } else if (active === true && userData !== null) {
       setLoading(true);
       axios.post(`${process.env.BASE_URI}/saveEvent`, {
-        event_id: props.data._id,
+        event_id: data._id,
         user_id: userData._id,
         attending: `${status}`,
       }, {
@@ -88,7 +82,7 @@ const EventMoreInfo = function (props) {
     }
   };
 
-  const cancelRegister = (e, eventId, token) => {
+  const cancelRegister = (e, eventId, _token) => {
     e.preventDefault();
     if (clickRegister === false && active === false) {
       setClickRegister(true);
@@ -98,7 +92,7 @@ const EventMoreInfo = function (props) {
         headers: {
           'Content-Type': 'application/json',
           Accept: 'application/json',
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${_token}`,
         },
       })
         .then((res) => {
@@ -116,28 +110,47 @@ const EventMoreInfo = function (props) {
     }
   };
 
+  // Check saveEvents to change label
+  const checkSaveEvent = (val) => {
+    if (val === 'Register') {
+      for (let i = 0; i < userSavedEvents.length; i += 1) {
+        if (userSavedEvents[i].event_id?._id === data._id || userSavedEvents !== null && attended.attending === 'yes') {
+          // console.log("cancel", userSavedEvents[i]._id)
+          return <button type="button" className="button_action" onClick={(e) => cancelRegister(e, userSavedEvents[i]._id, token)}>Cancel Registration</button>;
+        }
+      }
+    } else if (val === 'attendance') {
+      for (let i = 0; i < userSavedEvents.length; i += 1) {
+        if (userSavedEvents[i].event_id._id === data._id || userSavedEvents !== null && attended.attending === 'yes') {
+          // console.log("true attendance", userSavedEvents[i].event_id._id)
+          return <p>{' '}</p>;
+        }
+      }
+    }
+  };
+
   const getSelectedEvent = () => {
-    for (let i = 0; i < userSavedEvents.length; i++) {
-      if (userSavedEvents[i].event_id?._id === props.data._id) {
+    for (let i = 0; i < userSavedEvents.length; i += 1) {
+      if (userSavedEvents[i].event_id?._id === data._id) {
         setSelectedEvent(userSavedEvents[i]);
       }
     }
     return selectedEvent;
   };
 
-  const changeStatusApi = (e, token, savedEventId, eventId, userId, attendingStatus) => {
+  const changeStatusApi = (e, _token, savedEventId, eventId, userId, attendingStatus) => {
     e.preventDefault();
-    const data = {
+    const _data = {
       event_id: eventId,
       user_id: userId,
       attending: `${attendingStatus}`,
     };
     console.log(savedEventId, eventId, userId, attendingStatus);
-    axios.patch(`${process.env.BASE_URI}/saveEvent/${savedEventId}`, data, {
+    axios.patch(`${process.env.BASE_URI}/saveEvent/${savedEventId}`, _data, {
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${_token}`,
       },
     })
       .then((res) => {
@@ -174,11 +187,11 @@ const EventMoreInfo = function (props) {
       }
       if (userSavedEvents.includes(event)) {
         if (status === 'yes') {
-          changeStatusApi(e, token, event._id, props.data._id, userData._id, status);
+          changeStatusApi(e, token, event._id, data._id, userData._id, status);
         } else if (status === 'no') {
           cancelRegister(e, event._id, token);
         } else if (status === 'maybe') {
-          changeStatusApi(e, token, event._id, props.data._id, userData._id, status);
+          changeStatusApi(e, token, event._id, data._id, userData._id, status);
         }
       }
     }
@@ -186,10 +199,10 @@ const EventMoreInfo = function (props) {
 
   let count = 0;
   const totalAttendees = (eventId) => {
-    for (let i = 0; i < allsavedEvents.length; i++) {
+    for (let i = 0; i < allsavedEvents.length; i += 1) {
       if (allsavedEvents[i].event_id !== null) {
         if (allsavedEvents[i].attending === 'yes' && allsavedEvents[i].event_id._id === eventId) {
-          count++;
+          count += 1;
         }
       }
     }
@@ -200,48 +213,48 @@ const EventMoreInfo = function (props) {
   let exportButton;
   let catName;
   let Virtual;
-  if (props.data.catName.label) {
-    catName = props.data.catName.label;
+  if (data.catName.label) {
+    catName = data.catName.label;
   } else {
-    catName = props.data.catName;
+    catName = data.catName;
   }
-  if (props.data.Virtual.label) {
-    Virtual = props.data.Virtual.value;
+  if (data.Virtual.label) {
+    Virtual = data.Virtual.value;
   } else {
-    Virtual = props.data.Virtual;
+    Virtual = data.Virtual;
   }
   const labelTitle = catName.toLowerCase();
-  if (labelTitle == 'lecture' || labelTitle == 'webinar') {
+  if (labelTitle === 'lecture' || labelTitle === 'webinar') {
     label = (
       <p className="about_header-label about_header-label-first">
         {Capitalize(catName)}
       </p>
     );
-    exportButton = <button className="eventmoreinfo_export eventmoreinfo_export-first">Export Event To Calendar</button>;
-  } else if (labelTitle == 'workshop' || labelTitle == 'conference') {
+    exportButton = <button type="button" className="eventmoreinfo_export eventmoreinfo_export-first">Export Event To Calendar</button>;
+  } else if (labelTitle === 'workshop' || labelTitle === 'conference') {
     label = (
       <p className="about_header-label about_header-label-second">
         {Capitalize(catName)}
       </p>
     );
-    exportButton = <button className="eventmoreinfo_export eventmoreinfo_export-second">Export Event To Calendar</button>;
-  } else if (labelTitle == 'hackathon') {
+    exportButton = <button type="button" className="eventmoreinfo_export eventmoreinfo_export-second">Export Event To Calendar</button>;
+  } else if (labelTitle === 'hackathon') {
     label = (
       <p className="about_header-label about_header-label-third">
         {Capitalize(catName)}
       </p>
     );
-    exportButton = <button className="eventmoreinfo_export eventmoreinfo_export-third">Export Event To Calendar</button>;
-  } else if (labelTitle == 'incubator' || labelTitle == 'accelerator') {
+    exportButton = <button type="button" className="eventmoreinfo_export eventmoreinfo_export-third">Export Event To Calendar</button>;
+  } else if (labelTitle === 'incubator' || labelTitle === 'accelerator') {
     label = (
       <p className="about_header-label about_header-label-fourth">
         {Capitalize(catName)}
       </p>
     );
-    exportButton = <button className="eventmoreinfo_export eventmoreinfo_export-fourth">Export Event To Calendar</button>;
+    exportButton = <button type="button" className="eventmoreinfo_export eventmoreinfo_export-fourth">Export Event To Calendar</button>;
   }
 
-  const getEventDetailPhoto = () => allEvent.filter((e) => e._id === props.data._id).map((n) => (
+  const getEventDetailPhoto = () => allEvent.filter((e) => e._id === data._id).map((n) => (
     <img
       src={n.host.profilePicture ? n.host.profilePicture : 'https://github.com/MinorityProgrammers/mpa-avatars/blob/main/avatars/mysteryAvatar.png?raw=true'}
       style={{
@@ -251,10 +264,11 @@ const EventMoreInfo = function (props) {
         objectFit: 'cover',
         marginRight: '20px',
       }}
+      alt="avatar"
     />
   ));
 
-  const getEventDetailName = () => allEvent.filter((e) => e._id === props.data._id).map((n) => (
+  const getEventDetailName = () => allEvent.filter((e) => e._id === data._id).map((n) => (
     <>
       <p>{n.host.fistName}</p>
       <p>
@@ -268,34 +282,34 @@ const EventMoreInfo = function (props) {
 
   return (
     <div className="eventinfo">
-      {props.data.host
-        ? <div className="eventmoreinfo_shadow" onClick={() => props.handleMoreInfo()} />
+      {data.host
+        ? <div className="eventmoreinfo_shadow" onClick={() => handleMoreInfo()} />
         : (
           <div className="eventmoreinfo_shadow" />
         )}
 
       <div className="eventmoreinfo_container tw-z-50">
         <div className="eventmoreinfo_container_left">
-          <img src={props.data.EventPicture} alt="Event Picture" />
+          <img src={data.EventPicture} alt="Event_Picture" />
         </div>
         <div className="eventmoreinfo_container_right">
-          {props.data.host
-            && <i className="close_icon fas fa-times" id="closeicon" onClick={() => props.handleMoreInfo()} />}
+          {data.host
+            && <i className="close_icon fas fa-times" id="closeicon" onClick={() => handleMoreInfo()} />}
           <div className="header">
-            {props.data.host ? (
+            {data.host ? (
               <div className="host_details">
-                {props.data.host.profilePicture ? <img src={props.data.host.profilePicture ? props.data.host.profilePicture : 'https://github.com/MinorityProgrammers/mpa-avatars/blob/main/avatars/mysteryAvatar.png?raw=true'} alt="Host Avatar" /> : getEventDetailPhoto()}
+                {data.host.profilePicture ? <img src={data.host.profilePicture ? data.host.profilePicture : 'https://github.com/MinorityProgrammers/mpa-avatars/blob/main/avatars/mysteryAvatar.png?raw=true'} alt="Host Avatar" /> : getEventDetailPhoto()}
 
                 <div className="host_title">
                   <h4>Host</h4>
-                  {props.data.host.firstName ? (
+                  {data.host.firstName ? (
                     <p>
-                      {props.data.host.firstName}
+                      {data.host.firstName}
                       {' '}
-                      {props.data.host.lastName}
+                      {data.host.lastName}
                     </p>
                   ) : getEventDetailName()}
-                  {/* <p>{props.data.host.firstName} {props.data.host.lastName}</p> */}
+                  {/* <p>{data.host.firstName} {data.host.lastName}</p> */}
                 </div>
               </div>
             ) : (
@@ -304,20 +318,20 @@ const EventMoreInfo = function (props) {
                 <div className="host_title">
                   <h4>Host</h4>
                   <p>
-                    {userData.firstName ? userData.firstName : props.data.host.fistName}
+                    {userData.firstName ? userData.firstName : data.host.fistName}
                     {' '}
-                    {userData.lastName ? userData.lastName : props.data.host.lastName}
+                    {userData.lastName ? userData.lastName : data.host.lastName}
                   </p>
                 </div>
               </div>
             )}
             {createEventData.step === 2 ? '' : (
               <div className="buttons">
-                {Virtual == 'true' ? <p>Virtual Event</p> : <p>In-Person Event</p>}
-                {eventTime < dateNow ? <button className="button_action"><Link href={props.data.actionLink}><a target="_blank">Watch Webinar</a></Link></button> : (
+                {Virtual === 'true' ? <p>Virtual Event</p> : <p>In-Person Event</p>}
+                {eventTime < dateNow ? <button type="button" className="button_action"><Link href={data.actionLink}><a target="_blank">Watch Webinar</a></Link></button> : (
                   <span>
-                    {userData !== null ? checkSaveEvent('Register') : <button className="button_action" onClick={(e) => checkRegister(e, 'yes')}>{props.data.callToAction}</button>}
-                    {userData !== null && !checkSaveEvent('Register') ? <button className="button_action" onClick={(e) => checkRegister(e, 'yes')}>{props.data.callToAction}</button> : ''}
+                    {userData !== null ? checkSaveEvent('Register') : <button type="button" className="button_action" onClick={(e) => checkRegister(e, 'yes')}>{data.callToAction}</button>}
+                    {userData !== null && !checkSaveEvent('Register') ? <button type="button" className="button_action" onClick={(e) => checkRegister(e, 'yes')}>{data.callToAction}</button> : ''}
                   </span>
                 )}
               </div>
@@ -327,7 +341,7 @@ const EventMoreInfo = function (props) {
           <div className="body">
             <div className="about">
               <div className="about_header">
-                <h1>{props.data.eventName}</h1>
+                <h1>{data.eventName}</h1>
                 {label}
                 {eventStatus && (
                 <div className="event-status">
@@ -337,16 +351,16 @@ const EventMoreInfo = function (props) {
               </div>
               <div className="about_body">
                 <h3>About event</h3>
-                <p>{props.data.EventDescription}</p>
+                <p>{data.EventDescription}</p>
               </div>
             </div>
             <div className="sidebar" style={{ marginTop: '0px' }}>
               <span>Local Time</span>
-              <h3>{Moment(props.data.time).format('LLL')}</h3>
+              <h3>{Moment(data.time).format('LLL')}</h3>
               <p className="attending">
-                {totalAttendees(props.data._id)}
+                {totalAttendees(data._id)}
                 {' '}
-                {totalAttendees(props.data._id) > 2 ? 'people' : 'person'}
+                {totalAttendees(data._id) > 2 ? 'people' : 'person'}
                 {' '}
                 {eventTime < dateNow ? 'attended' : 'attending'}
               </p>
@@ -354,9 +368,9 @@ const EventMoreInfo = function (props) {
                 <>
                   <h3>Will you be attending?</h3>
                   <div className="option_buttons">
-                    <button className={selectedEvent.attending === 'yes' ? 'focus' : ''} onClick={(e) => changeStatus(e, selectedEvent, 'yes')}>Yes</button>
-                    <button className={selectedEvent.attending === 'no' ? 'focus' : ''} onClick={(e) => changeStatus(e, selectedEvent, 'no')}>No</button>
-                    <button className={selectedEvent.attending === 'maybe' ? 'focus' : ''} onClick={(e) => changeStatus(e, selectedEvent, 'maybe')}> Maybe</button>
+                    <button type="button" className={selectedEvent.attending === 'yes' ? 'focus' : ''} onClick={(e) => changeStatus(e, selectedEvent, 'yes')}>Yes</button>
+                    <button type="button" className={selectedEvent.attending === 'no' ? 'focus' : ''} onClick={(e) => changeStatus(e, selectedEvent, 'no')}>No</button>
+                    <button type="button" className={selectedEvent.attending === 'maybe' ? 'focus' : ''} onClick={(e) => changeStatus(e, selectedEvent, 'maybe')}> Maybe</button>
                   </div>
                 </>
               )}
@@ -408,12 +422,12 @@ const EventMoreInfo = function (props) {
               {userData && eventTime > dateNow && createEventData.step !== 2 ? exportButton : ''}
             </div>
           </div>
-          {props.data.host ? <div /> : (
+          {data.host ? <div /> : (
             <div className="bottom">
               <div className="buttons">
 
-                <button onClick={() => props.handleMoreInfo()}>Edit</button>
-                <button onClick={props.handleCreateEventData('step')}>Submit Event</button>
+                <button type="button" onClick={() => handleMoreInfo()}>Edit</button>
+                <button type="button" onClick={handleCreateEventData('step')}>Submit Event</button>
               </div>
             </div>
           )}

@@ -6,7 +6,7 @@ import Layout from '../components/Layout';
 import Footer from '../components/Footer';
 import SidebarTwo from '../components/sidebar/SidebarTwo';
 import { MentorshipRegister } from '../components/mentorship/MentorshipRegister';
-import { useDetectOutsideClick } from '../components/UseDetectOutsideClick';
+import useDetectOutsideClick from '../components/UseDetectOutsideClick';
 import links from '../contexts/utils/links';
 
 function mentorship() {

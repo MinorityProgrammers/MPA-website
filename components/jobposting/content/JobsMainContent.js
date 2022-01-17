@@ -1,8 +1,10 @@
-const JobsMainContent = function (props) {
+import React from 'react';
+
+const JobsMainContent = function ({ children }) {
   return (
     <div className="careers-main">
       <div className="careers-main-container">
-        <div className="careers-main-container-all">{props.children}</div>
+        <div className="careers-main-container-all">{children}</div>
       </div>
     </div>
   );

@@ -5,7 +5,7 @@ const Pagination = function ({
 }) {
   const pageNumbers = [];
 
-  for (let i = 1; i <= Math.ceil(totalActions / actionsPerPage); i++) {
+  for (let i = 1; i <= Math.ceil(totalActions / actionsPerPage); i += 1) {
     pageNumbers.push(i);
   }
 

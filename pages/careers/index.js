@@ -9,7 +9,7 @@ import ComingSoon from '../../components/ComingSoon';
 import HomepageNav from '../../components/homepage/HomepageNav';
 import Layout from '../../components/Layout';
 import SidebarTwo from '../../components/sidebar/SidebarTwo';
-import { useDetectOutsideClick } from '../../components/UseDetectOutsideClick';
+import useDetectOutsideClick from '../../components/UseDetectOutsideClick';
 import links from '../../contexts/utils/links';
 import { errorToast, successToast } from '../../contexts/utils/toasts';
 
@@ -45,7 +45,7 @@ const JobsMain = () => {
   const [loading, setLoading] = useState(false);
   const [loadingReq, setLoadingReq] = useState(false);
   const [allJobs, setAllJobs] = useState([]);
-  const [filter, setFilter] = useState({
+  const [filter/* , setFilter */] = useState({
     pay: '',
     job_type: '',
     remote: '',
@@ -54,7 +54,7 @@ const JobsMain = () => {
     description: '',
     location: '',
   });
-  const [queryObj, setQueryObj] = useState({});
+  const [queryObj/* , setQueryObj */] = useState({});
   const [activeJobIndex, setActiveJobIndex] = useState(0);
   const descriptionInput = useRef();
 
@@ -217,7 +217,7 @@ const JobsMain = () => {
 
   function changeJobAndColor(e, currJob, idx) {
     setActiveJobIndex(idx);
-    changeCurrentJob((prevJob) => currJob);
+    changeCurrentJob((/* prevJob */) => currJob);
     if (window.innerWidth <= 991) {
       document.getElementsByClassName('jobsMain-search')[0].style.display = 'none';
       document.getElementsByClassName(
@@ -250,8 +250,9 @@ const JobsMain = () => {
     }
 
     // close all other forms when any form button is clicked on
-    for (const i of document.getElementsByClassName('job-filter-item-form')) {
-      i.style.display = 'none';
+    const elements = document.getElementsByClassName('job-filter-item-form');
+    for (let i = 0; i < elements.length; i += 1) {
+      elements[i].style.display = 'none';
     }
 
     // open the form which is the next sibling of the button that was clicked
@@ -296,11 +297,11 @@ const JobsMain = () => {
           },
         },
       )
-      .then((response) => {
+      .then((/* response */) => {
         successToast('Job Saved Successfully!');
         fetchSavedJobs();
       })
-      .catch((err) => {
+      .catch((/* err */) => {
         setLoading(false);
         errorToast('Job not saved, something went wrong, please contact us.');
       });
@@ -349,7 +350,7 @@ const JobsMain = () => {
     jobs.slice(pagesVisited, pagesVisited + jobsPerPage).map((job, idx) => (
       <div
         className={idx === activeJobIndex ? 'job-stub active' : 'job-stub'}
-        key={idx}
+        key={job._id}
         onClick={(e) => changeJobAndColor(e, job, idx)}
       >
         <div className="job-stub-header">
@@ -405,7 +406,9 @@ const JobsMain = () => {
       queryObj.search = e.target.childNodes[0].value;
       blank = false;
       // search the jobs using title
-      const filterJobsByTitle = allJobs.filter((job) => job.job_title.toLowerCase().includes(queryObj.search.toLowerCase()));
+      const filterJobsByTitle = allJobs.filter(
+        (job) => job.job_title.toLowerCase().includes(queryObj.search.toLowerCase()),
+      );
       // search the jobs using description
       const filterJobsByDes = allJobs.filter((job) => job.job_description
         .toLowerCase()
@@ -426,7 +429,10 @@ const JobsMain = () => {
           .toLowerCase()
           .includes(queryObj.search.toLowerCase());
       });
-      // changing the jobs if the search result is found based on the title then description then skills
+
+      /* changing the jobs if the search result is found
+        based on the title then description then skills
+      */
       if (filterJobsByTitle.length > 0) {
         setJobs(filterJobsByTitle);
         changeCurrentJob(filterJobsByTitle[0]);
@@ -456,6 +462,8 @@ const JobsMain = () => {
     inputSearchSubmit(e);
   };
 
+  /*
+  // this function is not used in this file.... check if it is needed before deleting
   const onEmptySearchFields = () => {
     if (!descriptionInput.current.value) {
       delete queryObj.description;
@@ -463,6 +471,7 @@ const JobsMain = () => {
       filterJobs();
     }
   };
+ */
 
   const changePage = ({ selected }) => {
     setPageNumber(selected);
@@ -623,7 +632,7 @@ const JobsMain = () => {
                                 {currentJob.min_requirements
                                   ? currentJob.min_requirements.map(
                                     (skill, index) => (
-                                      <ul key={index}>
+                                      <ul key={`${index + 1}`}>
                                         <li className="list-style-square">
                                           <span>
                                             {skill.years}

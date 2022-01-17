@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef } from 'react';
+import React, { useEffect, useMemo, useRef } from 'react';
 
 const defaultCriteriaCheck = (callback, input, prevArr) => {
   if (input.length > 0 && prevArr.indexOf(input) === -1) {
@@ -15,7 +15,7 @@ const TagInput = function ({
   const inputRef = useRef();
   const containerRef = useRef();
   useEffect(() => {
-    function handleTagCreation(e) {
+    function handleTagCreation(rr) {
       // function that actually saves the input
       function callback() {
         updateListOfTags((prev) => [...prev, inputRef.current.value]);
@@ -26,12 +26,16 @@ const TagInput = function ({
       }
       // check to see that the we are listening on submission of new tag
       if (
-        e.code === targetCode
+        rr.code === targetCode
         && inputRef.current === document.activeElement
       ) {
         try {
-          // call end users validation function, if the function sent back is invalid, we run my validation function
-          // we also send in a function that the end user runs when the validation test passes, the input string end user could use for validation, an array of list of all tags
+          /*
+            call end users validation function,
+            if the function sent back is invalid, we run my validation function.
+            we also send in a function that the end user runs when the validation test passes,
+            the input string end user could use for validation, an array of list of all tags.
+          */
           criteriaCheck(
             () => {
               callback();
@@ -39,7 +43,7 @@ const TagInput = function ({
             inputRef.current.value,
             [...listOfTags],
           );
-        } catch (e) {
+        } catch (err) {
           defaultCriteriaCheck(
             () => {
               callback();
@@ -71,7 +75,7 @@ const TagInput = function ({
     >
       <section className="contain-tags">
         {listOfTags.map((tag, index) => (
-          <div key={index}>
+          <div key={`${index + 1}`}>
             <span>{tag}</span>
             <span
               onClick={() => {

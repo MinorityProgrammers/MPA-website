@@ -29,7 +29,7 @@ const ChatUserSearch = ({
               headers: {
                 Authorization: `Bearer ${token}`,
               },
-            }
+            },
           );
           setTempUserResults({ query: userSearch, results: res.data.data });
         } catch (err) {
@@ -42,7 +42,7 @@ const ChatUserSearch = ({
 
   // To ensure most recent results are show
   useEffect(() => {
-    if (tempUserResults.query == userSearch) {
+    if (tempUserResults.query === userSearch) {
       setUserResults(tempUserResults.results);
     }
   }, [tempUserResults]);
@@ -61,20 +61,18 @@ const ChatUserSearch = ({
       addChatRequest(res.data.data, user);
       if (message !== '') {
         // If the user is online, tell socket
-        if (onlineUsers.find((u) => u.userId == user._id)) {
+        if (onlineUsers.find((u) => u.userId === user._id)) {
           socket.emit('createChat', {
             receiverId: user._id,
             chat: createdchat,
           });
         }
-      } else {
+      } else if (onlineUsers.find((u) => u.userId === user._id)) {
         // If the user is online, tell socket
-        if (onlineUsers.find((u) => u.userId == user._id)) {
-          socket.emit('createChat', {
-            receiverId: user._id,
-            chat: createdchat,
-          });
-        }
+        socket.emit('createChat', {
+          receiverId: user._id,
+          chat: createdchat,
+        });
       }
     } catch (err) {
       console.log(err);
@@ -83,38 +81,32 @@ const ChatUserSearch = ({
 
   const setUpUserResults = () => {
     const allusers = [];
-    allchats.map((c) =>
-      allusers.push(c.users.find((m) => m._id !== thisUser._id))
-    );
-    pendingchats.map((c) =>
-      allusers.push(c.users.find((m) => m._id !== thisUser._id))
-    );
-    blockedchats.map((c) =>
-      allusers.push(c.users.find((m) => m._id !== thisUser._id))
-    );
+    allchats.map((c) => allusers.push(c.users.find((m) => m._id !== thisUser._id)));
+    pendingchats.map((c) => allusers.push(c.users.find((m) => m._id !== thisUser._id)));
+    blockedchats.map((c) => allusers.push(c.users.find((m) => m._id !== thisUser._id)));
 
     const cards = () => {
       const cardsarr = [];
-      if (userResults.length == 0) {
+      if (userResults.length === 0) {
         return (
           <span>
             Looks like there are no users that match the search criteria!
           </span>
         );
       }
-      userResults.map((u) => {
-        if (!allusers.find((m) => m._id == u._id) && thisUser._id != u._id) {
+      userResults.forEach((u) => {
+        if (!allusers.find((m) => m._id === u._id) && thisUser._id !== u._id) {
           cardsarr.push(
             <ChatUserCard
               u={u}
               createChat={createChat}
               key={u._id}
               setPopUp={setPopUp}
-            />
+            />,
           );
         }
       });
-      if (cardsarr.length == 0) {
+      if (cardsarr.length === 0) {
         return (
           <span>
             Looks like there are no users that match the search criteria!
@@ -125,7 +117,7 @@ const ChatUserSearch = ({
       return cardsarr;
     };
 
-    if (userSearch == '') {
+    if (userSearch === '') {
       return (
         <span style={{ textAlign: 'center' }}>
           Search a user to start a chat!

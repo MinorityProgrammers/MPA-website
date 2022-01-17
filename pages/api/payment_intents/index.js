@@ -10,7 +10,7 @@ export default async function handler(
   res,
 ) {
   if (req.method === 'POST') {
-    const { amount, name } = req.body;
+    const { amount } = req.body;
     try {
       // Create PaymentIntent from body params.
       const params = {

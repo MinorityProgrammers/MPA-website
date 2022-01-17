@@ -2,7 +2,23 @@ import React, { Component } from 'react';
 import Select from 'react-select';
 
 const countries = [];
-export class MentorshipQuestion1 extends Component {
+export default class MentorshipQuestion1 extends Component {
+  componentDidMount() {
+    fetch('https://restcountries.eu/rest/v2/all')
+      .then((res) => res.json())
+      .then(
+        (result) => {
+          for (let i = 0; i < result.length; i += 1) {
+            const country = { label: result[i].name, value: result[i].name };
+            countries.push(country);
+          }
+        },
+        (/* error */) => {
+          console.log();
+        },
+      );
+  }
+
   continue = (e) => {
     e.preventDefault();
     this.props.nextStep();
@@ -13,25 +29,8 @@ export class MentorshipQuestion1 extends Component {
     this.props.prevStep();
   };
 
-  componentDidMount() {
-    fetch('https://restcountries.eu/rest/v2/all')
-      .then((res) => res.json())
-      .then(
-        (result) => {
-          for (let i = 0; i < result.length; i++) {
-            const country = { label: result[i].name, value: result[i].name };
-            countries.push(country);
-          }
-        },
-        (error) => {
-          console.log();
-        }
-      );
-  }
-
   render() {
     const { values, handleChange, handleDropDown } = this.props;
-    this.props.values;
 
     const eduOptions = [
       { label: 'Middle School', value: 'Middle School' },
@@ -187,12 +186,14 @@ export class MentorshipQuestion1 extends Component {
         <div className="tw-absolute tw-w-full tw-bottom-12 tw-pr-48 md:tw-pr-20 md:tw-bottom-7 tw-text-center">
           <div className="tw-w-140px tw-mx-auto tw-flex tw-justify-between">
             <button
+              type="button"
               className="tw-bg-NavDark tw-outline-none tw-rounded-md tw-w-14 tw-mb-8 tw-text-white hover:tw-text-NavDark hover:tw-bg-white tw-duration-500 tw-mx-auto tw-select-none"
               onClick={this.back}
             >
               <i className="fas fa-arrow-left tw-text-2xl tw-p-2" />
             </button>
             <button
+              type="button"
               className="tw-bg-NavDark tw-outline-none tw-rounded-md tw-w-14 tw-mb-8 tw-text-white hover:tw-text-NavDark hover:tw-bg-white tw-duration-500 tw-mx-auto tw-select-none"
               onClick={this.continue}
             >
@@ -212,5 +213,3 @@ export class MentorshipQuestion1 extends Component {
     );
   }
 }
-
-export default MentorshipQuestion1;

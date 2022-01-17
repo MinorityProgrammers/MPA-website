@@ -1,12 +1,11 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { FaPlay } from 'react-icons/fa';
 import ModalVideo from 'react-modal-video';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import styles from './intro.module.css';
 import { errorToast } from '../../../contexts/utils/toasts';
 
-const Intro = function ({ userData, active }) {
+const Intro = function ({ active }) {
   const [isOpen, setOpen] = useState(false);
   const router = useRouter();
 

@@ -28,7 +28,7 @@ const CreateSettingAddition = function ({ values, setValue }) {
                 } `
                 + `${settingsSubPage === 'background' && styles.bgcpSkill}`
               }
-          key={key}
+          key={`${key + 1}`}
         >
           {value}
           <AiFillCloseCircle

@@ -5,7 +5,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import FeaturedCourseList from './FeaturedCourseList';
 
 const FeaturedCourses = function ({
-  courses, handleCourseInfo, enrolledCourses, enrolledBtn, showModal
+  courses, handleCourseInfo, enrolledCourses, enrolledBtn, showModal,
 }) {
   const coursesLength = courses.length;
 
@@ -33,7 +33,9 @@ const FeaturedCourses = function ({
       },
     ],
   };
-  const sameUserCourses = courses && courses.filter((course) => enrolledCourses.some((eCourse) => course._id === eCourse.courseId._id));
+  const sameUserCourses = courses && courses.filter(
+    (course) => enrolledCourses.some((eCourse) => course._id === eCourse.courseId._id),
+  );
 
   return (
     <div>
@@ -45,7 +47,7 @@ const FeaturedCourses = function ({
           <Slider {...conditionalInfinite}>
             {courses && courses.map((course) => (
               <FeaturedCourseList
-              showModal={showModal}
+                showModal={showModal}
                 course={course}
                 handleCourseInfo={handleCourseInfo}
                 key={course._id}

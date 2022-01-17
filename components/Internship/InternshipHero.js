@@ -1,10 +1,11 @@
 import React from 'react';
 
 const InternshipHero = function () {
+  /* // this function is declared but not used - check if it's needed before deleting
   const scrollTo = () => {
     const section = document.querySelector('#all-startups');
     section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  };
+  }; */
 
   return (
     <section className="incubator-wrapper">

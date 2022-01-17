@@ -1,6 +1,8 @@
 import React from 'react';
 
-const DashboardInputs = ({ holder, setNew, New, name }) => (
+const DashboardInputs = ({
+  holder, setNew, New, name,
+}) => (
   <div className="tw-flex tw-flex-row tw-h-10 tw-bg-white tw-items-center tw-rounded tw-my-3 tw-shadow-xl tw-w-10/12 inp">
     <input
       value={New}

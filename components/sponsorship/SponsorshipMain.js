@@ -1,10 +1,10 @@
-import { useState, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import Layout from '../Layout';
 import Footer from '../Footer';
 import HomepageNav from '../homepage/HomepageNav';
 import SidebarTwo from '../sidebar/SidebarTwo';
 import links from '../../contexts/utils/links';
-import { useDetectOutsideClick } from '../UseDetectOutsideClick';
+import useDetectOutsideClick from '../UseDetectOutsideClick';
 
 const SponsorshipMain = function (props) {
   const [open, setOpen] = useState(false);
@@ -13,7 +13,7 @@ const SponsorshipMain = function (props) {
   const handleClick = () => {
     setHide(!hide);
   };
-  if (hide == false) {
+  if (hide === false) {
     setTimeout(() => {
       setHide(true);
     }, 60000);

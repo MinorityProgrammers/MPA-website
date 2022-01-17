@@ -1,16 +1,10 @@
-import React, { useState, useEffect, useContext } from 'react';
-import FormData from 'form-data';
-import { useRouter } from 'next/router';
-import { GlobalContext } from '../../contexts/provider';
-import { updateProfile } from '../../contexts/actions/profile/updateProfile';
-import { all } from '../../contexts/utils/settings/settingsInputFields';
+import React, { useState } from 'react';
 import styles from '../../styles/settings/settingBodySecurityManagement.module.css';
 import SettingBody from './SettingBody';
 import SettingBodySecurityManagementModal from './SettingBodySecurityManagementModal';
 
 const SettingBodySecurityManagement = function ({ settingsPage, data, userID }) {
   const [modal, openModal] = useState('');
-  const router = useRouter();
 
   const goBack = () => {
     openModal(false);

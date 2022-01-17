@@ -1,7 +1,7 @@
-import { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import Select from '../customInputTags/select';
 import QuestionContainer from '../questionContainer';
-import { useDefaultValue } from '../getDefaultValue';
+import useDefaultValue from '../getDefaultValue';
 import addQuestion from '../addQuestion';
 
 // structure of childRenderInfo

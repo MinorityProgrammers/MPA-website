@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react';
 import ComingSoon from '../components/ComingSoon';
@@ -15,7 +16,7 @@ import HomepageNav from '../components/homepage/HomepageNav';
 import IncubatorHero from '../components/IncubatorHero';
 import Layout from '../components/Layout';
 import SidebarTwo from '../components/sidebar/SidebarTwo';
-import { useDetectOutsideClick } from '../components/UseDetectOutsideClick';
+import useDetectOutsideClick from '../components/UseDetectOutsideClick';
 import links from '../contexts/utils/links';
 
 const IncubatorPage = function () {
@@ -38,25 +39,21 @@ const IncubatorPage = function () {
     }, 60000);
   }
 
-  const allfunded = [];
-
-  funded.map((all) => {
-    allfunded.push(all.startup_id._id);
-  });
+  const allfunded = funded.map((all) => all.startup_id._id);
 
   useEffect(() => {
-    const token = window.localStorage.getItem('jwtToken');
+    const _token = window.localStorage.getItem('jwtToken');
     axios
       .get(`${process.env.BASE_URI}/startup/`)
       .then((res) => {
         setStartups(res.data.data);
       })
-      .then((res) => {
-        if (token) {
+      .then(() => {
+        if (_token) {
           return axios
             .get(`${process.env.BASE_URI}/funded/userFunded`, {
               headers: {
-                Authorization: `Bearer ${token || ''}`,
+                Authorization: `Bearer ${_token || ''}`,
               },
             })
             .then((response) => {

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-export const useDetectOutsideClick = (el, initialState) => {
+const useDetectOutsideClick = (el, initialState) => {
   const [isActive, setIsActive] = useState(initialState);
 
   useEffect(() => {
@@ -23,3 +23,5 @@ export const useDetectOutsideClick = (el, initialState) => {
 
   return [isActive, setIsActive];
 };
+
+export default useDetectOutsideClick;

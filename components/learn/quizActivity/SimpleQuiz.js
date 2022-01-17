@@ -32,13 +32,13 @@ export default function SimpleQuiz() {
     radioRef.current.reset();
   };
   const getResult = () => {
-    let answer = correct;
+    let _answer = correct;
     questions.forEach((item, index) => {
       if (item.answerCorrect) {
-        ++answer;
+        _answer += 1;
       }
       if (index === questions.length - 1) {
-        setCorrect(answer);
+        setCorrect(_answer);
         setInprogress(false);
       }
     });
@@ -92,7 +92,7 @@ export default function SimpleQuiz() {
             <form ref={radioRef}>
               {answer?.map((item, index) => (
                 <div
-                  key={index}
+                  key={`${index + 1}`}
                   className={
                     `option${
                       questions[currentQuestion].checked && !item.correct
@@ -116,7 +116,12 @@ export default function SimpleQuiz() {
               ))}
             </form>
             <div className="bottom">
-              {/* {questions[currentQuestion].feedback && questions[currentQuestion].checked && <p>{questions[currentQuestion].feedback}</p>} */}
+              {/*  {
+                questions[currentQuestion].feedback
+                && questions[currentQuestion].checked
+                && <p>{questions[currentQuestion].feedback}</p>
+              } */}
+
               {!questions[currentQuestion].checked && (
                 <button
                   type="button"

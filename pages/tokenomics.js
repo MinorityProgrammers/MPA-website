@@ -8,8 +8,7 @@ import links from '../contexts/utils/links';
 
 const TokenomicsPage = function () {
   const [open, setOpen] = useState(false);
-  const bannerImgLink =
-    'https://raw.githubusercontent.com/MinorityProgrammers/graphics/f75b343d4eadc38bf1c6e27f3614329385eb4604/transactional%20burn%20tax.svg';
+  const bannerImgLink = 'https://raw.githubusercontent.com/MinorityProgrammers/graphics/f75b343d4eadc38bf1c6e27f3614329385eb4604/transactional%20burn%20tax.svg';
   return (
     <Layout pageTitle="$MINORITY Tokenomics">
       <HomepageNav open={open} setOpen={setOpen} page="Tokenomics" />

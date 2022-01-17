@@ -1,9 +1,10 @@
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable max-len */
 import React, { Component } from 'react';
 
 import axios from 'axios';
 import Swiper from 'swiper';
 import Select from 'react-select';
-import { BiJoystickButton } from 'react-icons/bi';
 import CreateEvent from '../CreateEvent';
 import EventCard from './EventCard';
 import EventCardFeatured from './EventCardFeatured';
@@ -73,7 +74,7 @@ class Event extends Component {
       this.getSavedEvents(),
       this.findSavedEvents(),
       this.getUserSavedEvents(),
-    ]).then(([response1]) => {
+    ]).then(() => {
       setTimeout(() => {
         this.setState({ loading: false });
       }, 1500);
@@ -125,7 +126,7 @@ class Event extends Component {
     const dateNow = Date.now();
     await axios.get(`${process.env.BASE_URI}/event`)
       .then((response) => {
-        console.log(response.data.data);
+        // console.log(response.data.data);
         this.setState({
           AllEvent: response.data.data.filter((event) => {
             const eventTime = new Date(event.time).getTime();
@@ -139,7 +140,7 @@ class Event extends Component {
           Swiperdata: response.data.data.filter((event) => {
             const eventTime = new Date(event.time).getTime();
             if (event.approved !== null && event.approved === true) {
-              return event.Featured == true;
+              return event.Featured === true;
             }
           }),
         });
@@ -209,7 +210,7 @@ class Event extends Component {
       Swiperdata: response.data.filter((event) => {
         const eventTime = new Date(event.time).getTime();
         if (event.approved !== null && event.approved === true) {
-          return event.Featured == true;
+          return event.Featured === true;
         }
       }),
     });
@@ -242,12 +243,20 @@ class Event extends Component {
       // console.log(this.state.userEvents)
       this.state.userEvents.map((all) => {
         if (all.event_id !== null) {
-          if (all.user_id._id === this.props.userData._id && all.event_id.approved !== null && all.event_id.approved === true) {
+          if (
+            all.user_id._id === this.props.userData._id
+            && all.event_id.approved !== null
+            && all.event_id.approved === true
+          ) {
             this.setState({ userSavedEvents: [...this.state.userSavedEvents, all] });
           }
         }
       });
-      this.setState({ userSavedEvents: this.state.allsavedEvents.filter((event) => event.user_id._id == this.props.userData._id) });
+      this.setState({
+        userSavedEvents: this.state.allsavedEvents.filter(
+          (event) => event.user_id._id === this.props.userData._id,
+        ),
+      });
 
       return this.state.userSavedEvents;
     }
@@ -259,7 +268,7 @@ class Event extends Component {
       userData, active, clickRegister, setClickRegister, token,
     } = this.props;
     const {
-      userSavedEvents, allsavedEvents, eventDateTime, myEvent,
+      userSavedEvents, allsavedEvents,
     } = this.state;
 
     const options = [
@@ -289,8 +298,6 @@ class Event extends Component {
     const handleSubmit = async (e) => {
       e.preventDefault();
 
-      const dateNow = Date.now();
-
       if (e.target.childNodes[0].value) {
         const searchValue = e.target.childNodes[0].value;
         this.setState({ AllEvent: [...this.state.AllEvent].filter((event) => event.eventName.toLowerCase().includes(searchValue.toLowerCase())) });
@@ -302,21 +309,21 @@ class Event extends Component {
     };
     // Handle showMoreInfo change
     const handleMoreInfo = (item) => {
-      if (this.state.showCreateEvent == true) {
-        if (this.state.showMoreInfo == true) {
+      if (this.state.showCreateEvent === true) {
+        if (this.state.showMoreInfo === true) {
           this.setState({ moreInfoData: [], showMoreInfo: false });
         } else {
           const data = this.state.createEventData;
           this.setState({ moreInfoData: data, showMoreInfo: true });
         }
-      } else if (this.state.showMoreInfo == false) {
+      } else if (this.state.showMoreInfo === false) {
         this.setState({ moreInfoData: item, showMoreInfo: true });
       } else {
         this.setState({ moreInfoData: [], showMoreInfo: false });
       }
     };
     const handleCreateEvent = () => {
-      if (this.state.showCreateEvent == false) {
+      if (this.state.showCreateEvent === false) {
         this.setState({ showCreateEvent: true });
       } else {
         this.setState({ showCreateEvent: false });
@@ -326,14 +333,15 @@ class Event extends Component {
     };
 
     const handleError = (input) => {
-      if (input == 'isError') {
+      let changedState = { ...this.state.createEventData };
+      if (input === 'isError') {
         console.log('if input is Error passed');
-        if (this.state.createEventData.isError == false) {
+        if (this.state.createEventData.isError === false) {
           console.log('if error is false');
-          var changedState = { ...this.state.createEventData, [input]: true };
+          changedState = { ...this.state.createEventData, [input]: true };
         } else {
           console.log('if error is true or else');
-          var changedState = { ...this.state.createEventData, [input]: false };
+          changedState = { ...this.state.createEventData, [input]: false };
         }
         this.setState({ createEventData: changedState });
       }
@@ -352,28 +360,28 @@ class Event extends Component {
     const handleCreateEventData = (input) => (e) => {
       console.log('input', this.state.createEventData);
 
-      if (input == 'step') {
+      if (input === 'step') {
         const { step } = this.state.createEventData;
         const changedState = { ...this.state.createEventData, [input]: step + 1 };
         this.setState({ createEventData: changedState });
-        if (step == 2) {
+        if (step === 2) {
           handleMoreInfo();
         }
-      } else if (input == 'catName' || input == 'Virtual') {
+      } else if (input === 'catName' || input === 'Virtual') {
         const changedState = { ...this.state.createEventData, [input]: e.value, [`${input}Options`]: e };
         this.setState({ createEventData: changedState });
-      } else if (input == 'eventDate' || input == 'eventTime') {
-        if (input == 'eventDate') {
-          if (this.state.createEventData.eventTime.length == 0) {
-            const changedState = { ...this.state.createEventData, [input]: e.target.value, time: `${e.target.value}T` + '00:00' + ':00.000Z' };
+      } else if (input === 'eventDate' || input === 'eventTime') {
+        if (input === 'eventDate') {
+          if (this.state.createEventData.eventTime.length === 0) {
+            const changedState = { ...this.state.createEventData, [input]: e.target.value, time: `${e.target.value}T00:00:00.000Z` };
             this.setState({ createEventData: changedState });
           } else {
             const changedState = { ...this.state.createEventData, [input]: e.target.value, time: `${e.target.value}T${this.state.createEventData.eventTime}:00.000Z` };
             this.setState({ createEventData: changedState });
           }
-        } else if (input == 'eventTime') {
-          if (this.state.createEventData.eventDate.length == 0) {
-            const changedState = { ...this.state.createEventData, [input]: e.target.value, time: `${'2021-01-01' + 'T'}${e.target.value}:00.000Z` };
+        } else if (input === 'eventTime') {
+          if (this.state.createEventData.eventDate.length === 0) {
+            const changedState = { ...this.state.createEventData, [input]: e.target.value, time: `2021-01-01'T${e.target.value}:00.000Z` };
             this.setState({ createEventData: changedState });
           } else {
             const changedState = { ...this.state.createEventData, [input]: e.target.value, time: `${this.state.createEventData.eventDate}T${e.target.value}:00.000Z` };
@@ -428,7 +436,7 @@ class Event extends Component {
         height: 50,
         minHeight: 50,
       }),
-      control: (base, state) => ({
+      control: (base) => ({
         ...base,
         '&:hover': { borderColor: 'gray' }, // border style on hover
         border: '1px solid lightgray', // default border color
@@ -497,7 +505,7 @@ class Event extends Component {
           }
         }),
       });
-      console.log(response);
+      // console.log(response);
     };
 
     const onChangeInput = async (value) => {
@@ -505,8 +513,8 @@ class Event extends Component {
       // let filterValue = value.value
 
       if (await value != null) {
-        console.log(value.value);
-        if (value.value == 'Virtual Event') {
+        // console.log(value.value);
+        if (value.value === 'Virtual Event') {
           this.setState((prevState) => ({
             filter: {
               ...prevState.filter,
@@ -514,7 +522,7 @@ class Event extends Component {
             },
           }));
         }
-        if (value.value == 'In-person Event') {
+        if (value.value === 'In-person Event') {
           this.setState((prevState) => ({
             filter: {
               ...prevState.filter,
@@ -522,7 +530,7 @@ class Event extends Component {
             },
           }));
         }
-        if (value.value == 'Week') {
+        if (value.value === 'Week') {
           this.setState((prevState) => ({
             filter: {
               ...prevState.filter,
@@ -530,7 +538,7 @@ class Event extends Component {
             },
           }));
         }
-        if (value.value == 'Month') {
+        if (value.value === 'Month') {
           this.setState((prevState) => ({
             filter: {
               ...prevState.filter,
@@ -546,21 +554,26 @@ class Event extends Component {
     };
 
     const {
-      categoryButtons, categoryButtonsActiveIndex, catergoryFilterLoading, AllEvent, PastEvent, Swiperdata,
+      categoryButtons,
+      categoryButtonsActiveIndex,
+      catergoryFilterLoading,
+      AllEvent,
+      PastEvent,
+      Swiperdata,
     } = this.state;
 
     const categoryFilter = async (idx) => {
       this.setState({ catergoryFilterLoading: true });
       await this.setState({ categoryButtonsActiveIndex: idx });
 
-      if (idx == categoryButtonsActiveIndex) {
+      if (idx === categoryButtonsActiveIndex) {
         await this.setState({ categoryButtonsActiveIndex: -1 });
       }
 
-      if (idx != -1) {
-        if (idx == 0) {
+      if (idx !== -1) {
+        if (idx === 0) {
           if (await this.state.categories.includes('Webinar') || this.state.categories.includes('Lecture')) {
-            this.setState({ categories: [...this.state.categories].filter((category) => category != 'Webinar' && category != 'Lecture') });
+            this.setState({ categories: [...this.state.categories].filter((category) => category !== 'Webinar' && category !== 'Lecture') });
           } else {
             await this.setState({ categories: [...this.state.categories, 'Webinar', 'Lecture'] });
           }
@@ -571,9 +584,9 @@ class Event extends Component {
             catName: this.state.categories,
           },
         }));
-        if (idx == 1) {
+        if (idx === 1) {
           if (this.state.categories.includes('Workshop') || this.state.categories.includes('Conference')) {
-            this.setState({ categories: [...this.state.categories].filter((category) => category != 'Workshop' && category != 'Conference') });
+            this.setState({ categories: [...this.state.categories].filter((category) => category !== 'Workshop' && category !== 'Conference') });
           } else {
             await this.setState({ categories: [...this.state.categories, 'Workshop', 'Conference'] });
           }
@@ -584,9 +597,9 @@ class Event extends Component {
             catName: this.state.categories,
           },
         }));
-        if (idx == 2) {
+        if (idx === 2) {
           if (this.state.categories.includes('Hackathon')) {
-            this.setState({ categories: [...this.state.categories].filter((category) => category != 'Hackathon') });
+            this.setState({ categories: [...this.state.categories].filter((category) => category !== 'Hackathon') });
           } else {
             await this.setState({ categories: [...this.state.categories, 'Hackathon'] });
           }
@@ -597,9 +610,9 @@ class Event extends Component {
             catName: this.state.categories,
           },
         }));
-        if (idx == 3) {
+        if (idx === 3) {
           if (this.state.categories.includes('Incubator') || this.state.categories.includes('Accelerator')) {
-            this.setState({ categories: [...this.state.categories].filter((category) => category != 'Incubator' && category != 'Accelerator') });
+            this.setState({ categories: [...this.state.categories].filter((category) => category !== 'Incubator' && category !== 'Accelerator') });
           } else {
             await this.setState({ categories: [...this.state.categories, 'Incubator', 'Accelerator'] });
           }
@@ -610,9 +623,7 @@ class Event extends Component {
             catName: this.state.categories,
           },
         }));
-      } else {
-
-      }
+      } /* else { } */
       this.filterEvents();
     };
 
@@ -646,7 +657,7 @@ class Event extends Component {
           <div className="event_search">
             <form className="input" onSubmit={(e) => handleSubmit(e)}>
               <input type="text" className="events_search" placeholder="What event are you looking for?" onChange={(e) => searchNoValue(e)} />
-              <button>
+              <button type="button">
                 <i className="fas fa-search tw-text-xl tw-h-auto" />
               </button>
 
@@ -669,18 +680,18 @@ class Event extends Component {
 
             {categoryButtons.map((button, idx) => (
               <EventCategoryFilterButton
-                key={idx}
+                key={`${`evnt_btn${idx}`}`}
                 category={button.category}
                 description={button.description}
                 categoryFilter={categoryFilter}
                 idx={idx}
                 filter={this.state.filter}
                 activebtn={button.activebtn}
-                onClickActive={() => button.activebtn = !button.activebtn}
+                onClickActive={() => { button.activebtn = !button.activebtn; }}
               />
             ))}
 
-            {([...categoryButtons].filter((button) => button.activebtn == true)).length > 0 ? <button onClick={() => resetFilter()}>Reset</button> : ''}
+            {([...categoryButtons].filter((button) => button.activebtn === true)).length > 0 ? <button type="button" onClick={() => resetFilter()}>Reset</button> : ''}
 
           </div>
 
@@ -694,12 +705,10 @@ class Event extends Component {
               </div>
             </div>
           </div>
-            
-            
 
           {/* LOADING SKELETON HERE */}
           <div className="swiper-container">
-            
+
             {this.state.loading
               ? (
                 <div className="swiper-wrapper" style={{ width: '100%' }}>
@@ -745,12 +754,12 @@ class Event extends Component {
                     <div className="swiper-wrapper">
 
                       {this.state.Swiperdata.map((event, index) => (
-                        <div className="swiper-slide" key={index}>
+                        <div className="swiper-slide" key={`${`event_card-ft${index}`}`}>
                           <EventCardFeatured
                             item={event}
                             attended={event}
                             userSavedEvents={userSavedEvents}
-                            key={index}
+                            /* key={index} */
                             handleMoreInfo={handleMoreInfo}
                             active={active}
                             setClickRegister={setClickRegister}
@@ -765,8 +774,6 @@ class Event extends Component {
                     </div>
                   )}
 
-            
-            
           </div>
 
           <div className="event_divide event_divide_second">
@@ -802,7 +809,7 @@ class Event extends Component {
                         attended={userSavedEvents}
                         userSavedEvents={userSavedEvents}
                         userEvent={this.state.userEvents}
-                        key={index}
+                        key={`${`event_card${index}`}`}
                         handleMoreInfo={handleMoreInfo}
                         active={active}
                         setClickRegister={setClickRegister}
@@ -850,7 +857,7 @@ class Event extends Component {
                         attended={userSavedEvents}
                         userSavedEvents={userSavedEvents}
                         userEvent={this.state.userEvents}
-                        key={index}
+                        key={`${`event_card${index}`}`}
                         handleMoreInfo={handleMoreInfo}
                         active={active}
                         setClickRegister={setClickRegister}
@@ -921,12 +928,12 @@ class Event extends Component {
                           <>
                             <div className="swiper-wrapper">
                               {this.state.userEvents.filter((e) => ((e.attending === 'yes' || e.attending === 'maybe') && e.event_id !== null)).map((events, index) => (
-                                <div className="swiper-slide" key={index}>
+                                <div className="swiper-slide" key={`${`event_card${index}`}`}>
                                   <EventCard
                                     item={events.event_id}
                                     attended={events}
                                     userEvent={this.state.userEvents}
-                                    key={index}
+                                    /* key={index} */
                                     handleMoreInfo={handleMoreInfo}
                                     active={active}
                                     setClickRegister={setClickRegister}
@@ -959,6 +966,7 @@ class Event extends Component {
 
                   <div className="event_login_button">
                     <button
+                      type="button"
                       className="event_login_gradient-button"
                       onClick={() => {
                         this.setState({ showMyEvent: true });
@@ -986,27 +994,30 @@ class Event extends Component {
 
             <div className="event_end_text">
               <h1>Create your own event</h1>
-              <h6>It could be a virtual party, workshop, meetup or seminar. Host any event you want and share for people to join.</h6>
+              <h6>
+                It could be a virtual party, workshop, meetup or seminar.
+                Host any event you want and share for people to join.
+              </h6>
               <div className="event_submit_button">
-                <button className="gradient-button gradient-button-1" onClick={() => { this.setState({ showCreateEvent: true }); }}>
+                <button type="button" className="gradient-button gradient-button-1" onClick={() => { this.setState({ showCreateEvent: true }); }}>
                   + Submit an Event
                 </button>
               </div>
             </div>
             <div className="images-box">
               <div className="image">
-                <img className="event_img1" src="/assets/images/event1.png" />
+                <img className="event_img1" src="/assets/images/event1.png" alt="event1" />
               </div>
               <div className="image_two_three_four">
                 <div className="image">
-                  <img className="event_img2" src="/assets/images/event2.png" />
+                  <img className="event_img2" src="/assets/images/event2.png" alt="event2" />
                 </div>
                 <div className="image_three_four">
                   <div className="image">
-                    <img className="event_img3" src="/assets/images/event3.png" />
+                    <img className="event_img3" src="/assets/images/event3.png" alt="event3" />
                   </div>
                   <div className="image">
-                    <img className="event_img4" src="/assets/images/event4.png" />
+                    <img className="event_img4" src="/assets/images/event4.png" alt="event4" />
                   </div>
                 </div>
               </div>

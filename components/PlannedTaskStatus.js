@@ -20,6 +20,7 @@ const PlannedTaskStatus = () => (
               <img
                 src="/assets/images/project/rafiul.jpg"
                 className="tw-h-6 tw-w-6 tw-rounded-full tw-place-self-center tw-mb-4"
+                alt="rafiul"
               />
             </div>
           </div>
@@ -28,12 +29,14 @@ const PlannedTaskStatus = () => (
               <img
                 src="/assets/images/project/print.png"
                 className="tw-h-6 tw-w-6 tw-place-self-center tw-mb-2"
+                alt="print"
               />
             </div>
             <div className="tw-m-3">
               <img
                 src="/assets/images/project/share.png"
                 className="tw-h-6 tw-w-6 tw-place-self-center tw-mb-2"
+                alt="share"
               />
             </div>
           </div>
@@ -54,14 +57,17 @@ const PlannedTaskStatus = () => (
                 <img
                   src="/assets/images/project/clip.png"
                   className="tw-h-6 tw-w-6 tw-place-self-center tw-ml-2 tw-mb-4"
+                  alt="clip"
                 />
                 <img
                   src="/assets/images/project/datastack.png"
                   className="tw-h-6 tw-w-6 tw-place-self-center tw-ml-2 tw-mb-4"
+                  alt="datastack"
                 />
                 <img
                   src="/assets/images/project/riflag.png"
                   className="tw-h-6 tw-w-6 tw-place-self-center tw-ml-2 tw-mb-4"
+                  alt="riflag"
                 />
               </div>
             </div>
@@ -85,6 +91,7 @@ const PlannedTaskStatus = () => (
                 <img
                   src="/assets/images/project/eye.png"
                   className="tw-h-6 tw-w-10 tw-place-self-center tw-mb-4"
+                  alt="eye"
                 />
               </div>
             </div>
@@ -114,7 +121,7 @@ const PlannedTaskStatus = () => (
                 </div>
               </div>
               <div className=" tw-flex tw-justify-center  ">
-                <button className="tw-bg-white shadow tw-p-2">
+                <button type="button" className="tw-bg-white shadow tw-p-2">
                   {' '}
                   Show More
                 </button>

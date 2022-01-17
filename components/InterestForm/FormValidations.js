@@ -58,7 +58,7 @@ export const validateField = ({
 export const validateStepper = (sections, values, nextStep) => {
   const sectionsToArray = Object.keys(sections);
   const indexOfNextStep = sectionsToArray.indexOf(nextStep);
-  for (let i = 0; i < indexOfNextStep; i++) {
+  for (let i = 0; i < indexOfNextStep; i + 1) {
     if (sectionsToArray[i] === 'section_1' && Object.keys(validateSection_1(values)).length !== 0) {
       return { profession: 'Field 1 is required' };
     } if (sectionsToArray[i] === 'section_2' && Object.keys(validateSection_2(values)).length !== 0) {

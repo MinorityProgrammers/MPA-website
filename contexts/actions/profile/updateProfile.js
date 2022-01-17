@@ -1,6 +1,4 @@
 import axios from 'axios';
-import jwt from 'jsonwebtoken';
-import axiosInstance from '../../../helpers/axiosInstance';
 
 import {
   UPDATE_PROFILE_LOADING,
@@ -9,7 +7,7 @@ import {
 } from '../actionTypes';
 import { successToast, errorToast } from '../../utils/toasts';
 
-export const updateProfile = (id, body, token) => (dispatch) => {
+const updateProfile = (id, body) => (dispatch) => {
   dispatch({
     type: UPDATE_PROFILE_LOADING,
   });
@@ -49,3 +47,5 @@ export const updateProfile = (id, body, token) => (dispatch) => {
       });
     });
 };
+
+export default updateProfile;

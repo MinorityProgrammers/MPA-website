@@ -28,25 +28,30 @@ const Conversation = ({
   return (
     <div
       className="conversation"
-      style={c == conversation ? { backgroundColor: '#ececec' } : {}}
+      style={c === conversation ? { backgroundColor: '#ececec' } : {}}
     >
       <img
         src={user.profilePicture || '../../assets/images/profile.png'}
         className="conversation-img"
+        alt=""
       />
       {conversation.newMessage ? (
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           <span className="conversation-brief">
-            {user?.firstName} {user?.lastName}
+            {user?.firstName}
+            {' '}
+            {user?.lastName}
           </span>
           <span style={{ fontSize: '14px' }}>New Message</span>
         </div>
       ) : (
         <>
           <span className="conversation-brief">
-            {user?.firstName} {user?.lastName}
+            {user?.firstName}
+            {' '}
+            {user?.lastName}
           </span>
-          {type === 'blocked' && conversation.blocking_user == currentUser._id && (
+          {type === 'blocked' && conversation.blocking_user === currentUser._id && (
             <div
               className="conversation-blocked-btn"
               onClick={() => setPopup(true)}
@@ -54,13 +59,13 @@ const Conversation = ({
               Unblock
             </div>
           )}
-          {type === 'blocked' &&
-            conversation.blocking_user != currentUser._id && (
+          {type === 'blocked'
+            && conversation.blocking_user !== currentUser._id && (
               <span style={{ marginLeft: '4px' }}>
                 This chat has been blocked
               </span>
-            )}
-          {type === 'pending' && conversation.users[0]._id != currentUser._id && (
+          )}
+          {type === 'pending' && conversation.users[0]._id !== currentUser._id && (
             <>
               <div
                 className="conversation-accept-btn"
@@ -79,7 +84,7 @@ const Conversation = ({
         </>
       )}
 
-      {type === 'pending' && conversation.users[0]._id == currentUser._id && (
+      {type === 'pending' && conversation.users[0]._id === currentUser._id && (
         <span style={{ marginLeft: '4px' }}>Waiting on response</span>
       )}
       {rejectPopup && (

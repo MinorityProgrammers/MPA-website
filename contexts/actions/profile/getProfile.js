@@ -1,11 +1,11 @@
 import jwt from 'jsonwebtoken';
 import axiosInstance from '../../../helpers/axiosInstance';
 import {
-  GET_PROFILE,
+  GET_PROFILE, UPDATE_PROFILE_ERROR,
 } from '../actionTypes';
-import { successToast, errorToast } from '../../utils/toasts';
+import { errorToast } from '../../utils/toasts';
 
-export const getProfile = (setUserData) => (dispatch) => {
+const getProfile = (setUserData) => (dispatch) => {
   const user = jwt.decode(localStorage.getItem('jwtToken'));
   const { id } = user;
 
@@ -29,3 +29,5 @@ export const getProfile = (setUserData) => (dispatch) => {
       });
     });
 };
+
+export default getProfile;

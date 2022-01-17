@@ -1,11 +1,20 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import styles from './users-popup.module.css';
 
 const UsersPopup = function ({ data, togglePopup }) {
   const [isImage, setImage] = useState(false);
 
   const {
-    profilePicture, firstName, lastName, role, skills, passions, programmingSkills, userName, isMentor, isMentee,
+    profilePicture,
+    firstName,
+    lastName,
+    role,
+    skills,
+    passions,
+    programmingSkills,
+    userName,
+    isMentor,
+    isMentee,
   } = data;
 
   return (
@@ -51,8 +60,8 @@ const UsersPopup = function ({ data, togglePopup }) {
           <div className={styles.title}>Skills</div>
           <ul>
             {
-              skills.map((skill, idx) => (
-                <li key={idx}>{skill}</li>
+              skills.map((skill) => (
+                <li key={skill}>{skill}</li>
               ))
             }
           </ul>
@@ -62,8 +71,8 @@ const UsersPopup = function ({ data, togglePopup }) {
           <div className={styles.title}>Programming Skills</div>
           <ul>
             {
-              programmingSkills.map((skill, idx) => (
-                <li key={idx}>{skill}</li>
+              programmingSkills.map((skill) => (
+                <li key={skill}>{skill}</li>
               ))
             }
           </ul>
@@ -73,8 +82,8 @@ const UsersPopup = function ({ data, togglePopup }) {
           <div className={styles.title}>Passion</div>
           <div className={styles.values}>
             {
-              passions.map((passio, idx) => (
-                <span key={idx}>{passio}</span>
+              passions.map((passio) => (
+                <span key={passio}>{passio}</span>
               ))
             }
           </div>

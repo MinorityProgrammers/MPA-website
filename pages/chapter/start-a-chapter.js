@@ -1,8 +1,10 @@
-import React, { useState, useRef, useEffect, useContext } from 'react';
+import React, {
+  useState, useRef, useEffect, useContext,
+} from 'react';
 import Layout from '../../components/Layout';
 import Footer from '../../components/Footer';
 import HomepageNav from '../../components/homepage/HomepageNav';
-import { useDetectOutsideClick } from '../../components/UseDetectOutsideClick';
+import useDetectOutsideClick from '../../components/UseDetectOutsideClick';
 import ChapterHeader from '../../components/chapterHeader/chapterHeader.component';
 import ChapterDirectory from '../../components/ChapterDirectory/ChapterDirectory.component';
 import SidebarTwo from '../../components/sidebar/SidebarTwo';
@@ -16,17 +18,16 @@ const Chapter = function () {
   const [token, setToken] = useState('');
   const dropdownRef = useRef(null);
   const {
-    authDispatch,
     authState: {
-      auth: { loading, error, data },
+      auth: { data },
     },
   } = useContext(GlobalContext);
 
   useEffect(() => {
-    const token = window.localStorage.getItem('jwtToken');
+    const userToken = window.localStorage.getItem('jwtToken');
     const userInfo = window.localStorage.getItem('userInfo');
 
-    if (token == null || userInfo === {}) {
+    if (userToken == null || userInfo === {}) {
       setUserData(null);
       setActive(false);
     } else {

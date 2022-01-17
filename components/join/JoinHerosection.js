@@ -1,14 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
-import ApplyIcon, {
-  BuildIcon,
-  JoinIcon,
-  MentorIcon,
-  StartIcon,
-  HoldhandIcon,
-} from './svg/icons';
 
-const JoinHerosection = function (props) {
+const JoinHerosection = function () {
   return (
     <div className="row hero-container">
       <div className="col-md-6">

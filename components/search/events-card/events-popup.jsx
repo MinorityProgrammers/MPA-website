@@ -7,7 +7,7 @@ Moment.locale('en');
 
 const EventsPopup = function ({ data, togglePopup }) {
   const {
-    EventPicture, eventStatus, eventName, location, Virtual, eventLink, actionLink, EventDescription, time, host,
+    EventPicture, eventName, location, Virtual, EventDescription, time, host,
   } = data;
 
   return (

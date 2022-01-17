@@ -37,11 +37,6 @@ module.exports = {
         '#222222': '#222222',
 
       },
-      gradientColorStops: {
-        FFC700: '#FFC700',
-        FF655B: '#FF655B',
-        FF00B8: '#FF00B8',
-      },
       boxShadow: {
         'md-top': '0 -4px 6px -1px rgba(0, 0, 0, 0.1), 0 -2px 4px -1px rgba(0, 0, 0, 0.06)',
         mentor: '0 25px 50px -12px rgba(0, 0, 0, 1)',
@@ -51,6 +46,10 @@ module.exports = {
       },
       colors: {
         main: '#FF00B8',
+        primary: {
+          100: '#151565',
+          200: '#FF00B8',
+        },
       },
       borderColor: {
         NavDark: '#151565',
@@ -134,13 +133,6 @@ module.exports = {
         '3/4': '30%',
         '1/3': '35%',
       }),
-      colors: {
-        primary: {
-          100: '#151565',
-          200: '#FF00B8',
-        },
-
-      },
     },
     screens: {
       // 'sm': '576px',

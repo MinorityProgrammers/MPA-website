@@ -1,22 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React from 'react';
 import PaginationData from './PaginationData';
-import ApprovedRejected from './ApprovedRejected.js';
-import Proposal from './Proposal';
-import Loader from '../../Loader';
-import Pagination from '../ElectProposals/Pagination';
-import electProposal from '../electProposal.json';
+import ApprovedRejected from './ApprovedRejected';
+// import Proposal from './Proposal';
+// import Loader from '../../Loader';
+// import Pagination from '../ElectProposals/Pagination';
+// import electProposal from '../electProposal.json';
 
 const ProposalNotification = function () {
-  const [approvedProposal, setApprovedProposal] = useState({ status: null, data: { data: 0 } });
+  // const [approvedProposal, setApprovedProposal] = useState({ status: null, data: { data: 0 } });
 
-  const [deniedProposal, setDenied] = useState({ status: null, data: { data: 0 } });
-
-  // userDeniedProposal ___________________
+  // const [deniedProposal, setDenied] = useState({ status: null, data: { data: 0 } });
 
   // userDeniedProposal ___________________
 
-  // ______________________________________________________________________________________________________________________________________________________________________
+  // userDeniedProposal ___________________
+
+  // ___________________________________________________________________________________________
 
   // // Function to sort the actions by amount or date
 

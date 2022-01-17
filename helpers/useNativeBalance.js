@@ -3,7 +3,7 @@ import { useMoralis, useMoralisWeb3Api, useMoralisWeb3ApiCall } from 'react-mora
 import { getNativeByChain } from './networks';
 import { useMoralisDapp } from '../MoralisDappProvider/MoralisDappProvider';
 
-export const useNativeBalance = (options) => {
+const useNativeBalance = (options) => {
   const { account } = useMoralisWeb3Api();
   const { Moralis } = useMoralis();
   const { chainId, walletAddress } = useMoralisDapp();
@@ -31,10 +31,11 @@ export const useNativeBalance = (options) => {
       };
       setBalance(balances);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
 
   return {
     getBalance, balance, nativeName, error, isLoading,
   };
 };
+
+export default useNativeBalance;

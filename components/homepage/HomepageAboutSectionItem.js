@@ -15,7 +15,7 @@ export default function AboutSectionItem({
       </div>
       <div className={`homepage__about-right ${imgBoxCustomClassNames}`}>
         {imgSrcList.map((src) => <img key={src} src={src} className="heading__img" alt="" />)}
-        <button name="play" onClick={onPlayBtnClick} />
+        <button type="button" name="play" onClick={onPlayBtnClick} />
       </div>
     </div>
   );

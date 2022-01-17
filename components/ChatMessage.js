@@ -1,22 +1,49 @@
 import React from 'react';
-import { timeago } from '../helpers/timeago';
+import timeago from '../helpers/timeago';
 
 // commented out copy and delete for now (still has inline css from developing/testing)
 // const copyMessage = () => {
 //   console.log('copied');
 // }
 
-const ChatMessage = ({ user, message, own, deleteMessage }) => {
+const ChatMessage = ({
+  user, message, own,
+}) => (
   // const [isHovering, setIsHovering] = useState(false);
-  return own ? (
-    // <div className="own-message" onMouseOver={()=>setIsHovering(true)} onMouseOut={()=> setIsHovering(false)}>
+  own ? (
+    // <div
+    // className="own-message"
+    // onMouseOver={()=>setIsHovering(true)}
+    // onMouseOut={()=> setIsHovering(false)}>
     //   <div style={{display:'flex', flexDirection:'row', alignItems:'center'}}>
     //     {isHovering &&
     //     (<>
-    //     <div style={{cursor:"pointer", borderRadius:'5px', backgroundColor:'lightgray', height:'25px', marginRight:'10px',display:'flex', justifyContent:'center', alignItems:'center'}} onClick={deleteMessage}>
+    //     <div
+    //       style={{
+    //        cursor:"pointer"
+    //        borderRadius:'5px',
+    //        backgroundColor:'lightgray',
+    //        height:'25px',
+    //        marginRight:'10px',
+    //        display:'flex',
+    //        justifyContent:'center',
+    //        alignItems:'center'}}
+    //        onClick={deleteMessage}
+    //     >
     //       <span style={{color:'black'}}>Delete</span>
     //     </div>
-    //     <div style={{cursor:"pointer", borderRadius:'5px', backgroundColor:'lightgray', height:'25px', marginRight:'10px',display:'flex', justifyContent:'center', alignItems:'center'}} onClick={copyMessage}>
+    //     <div
+    //       style={{
+    //        cursor:"pointer",
+    //        borderRadius:'5px',
+    //        backgroundColor:'lightgray',
+    //        height:'25px',
+    //        marginRight:'10px',
+    //        display:'flex',
+    //        justifyContent:'center',
+    //        alignItems:'center'}}
+    //        onClick={copyMessage}
+    //     >
     //       <span style={{color:'black'}}>Copy</span>
     //     </div>
     //     </>)}
@@ -28,13 +55,16 @@ const ChatMessage = ({ user, message, own, deleteMessage }) => {
       <div className="message-bottom">{timeago(message.createdAt)}</div>
     </div>
   ) : (
-    // <div className="message"  onMouseOver={()=>setIsHovering(true)} onMouseOut={()=> setIsHovering(false)}>
+    // <div
+    // className="message"
+    // onMouseOver={()=>setIsHovering(true)}
+    // onMouseOut={()=> setIsHovering(false)}>
     //   <div style={{display:'flex',flexDirection:'row', alignItems:'center'}}>
     <div className="message">
       <div style={{ display: 'flex', flexDirection: 'row', width: '100%' }}>
         <img
           className="message-icon"
-          alt="profile picture"
+          alt="profile_picture"
           src={user.profilePicture || '../../assets/images/profile.png'}
         />
         <div className="message-top">
@@ -45,14 +75,26 @@ const ChatMessage = ({ user, message, own, deleteMessage }) => {
         </div>
       </div>
       {/* {isHovering &&
-        <div style={{cursor:"pointer", borderRadius:'5px', backgroundColor:'lightgray', height:'25px', marginLeft:'10px', display:'flex', justifyContent:'center', alignItems:'center'}} onClick={copyMessage}>
+        <div
+          style={{
+            cursor:"pointer",
+            borderRadius:'5px',
+            backgroundColor:'lightgray',
+            height:'25px',
+            marginLeft:'10px',
+            display:'flex',
+            justifyContent:'center',
+            alignItems:'center'
+          }}
+          onClick={copyMessage}
+        >
           <span style={{color:'black'}}>Copy</span>
         </div>}
       </div> */}
 
       <div className="message-bottom">{timeago(message.createdAt)}</div>
     </div>
-  );
-};
+  )
+);
 
 export default ChatMessage;

@@ -1,20 +1,23 @@
+/* eslint-disable react/no-unstable-nested-components */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Skeleton from 'react-loading-skeleton';
 import Swiper from 'react-id-swiper';
 import 'swiper/css/swiper.css';
 import { AiOutlineSolution } from 'react-icons/ai';
+// import EmptyOverviewComponent from './EmptyOverviewComponent';
 
-const OverviewProjects = (props) => {
+const OverviewProjects = ({ token }) => {
   const [loading, setLoading] = useState(true);
   const [currentView, setCurrentView] = useState('active'); // active - completed - all
   const [projectInfo, setProjectInfo] = useState();
   const [projectView, setProjectView] = useState('tasks'); // tasks - details
-  const [projects, setProjects] = useState([]);
+  const [, setProjects] = useState([]);
 
   useEffect(() => {
-    setTimeout(() => { setLoading(false) }, 5000);
-  }, [])
+    const timeoutID = setTimeout(() => { setLoading(false); }, 5000);
+    return () => { clearTimeout(timeoutID); };
+  }, []);
 
   const params = {
     slidesPerView: 3,
@@ -28,15 +31,15 @@ const OverviewProjects = (props) => {
   };
 
   useEffect(() => {
-    if (props.token !== null) {
+    if (token !== null) {
       axios
-        .get('https://koinstreet-learn-api.herokuapp.com/api/v1/project/ ')
+        .get(`${process.env.BASE_URI}/project/`)
         .then((response) => {
           //  add classification for the courses
           const tempProjects = response.data.data;
           setProjects(tempProjects);
           // console.log('Projects ', tempProjects);
-          setTimeout(() => { setLoading(false) }, 5000);
+          setTimeout(() => { setLoading(false); }, 5000);
         })
         .catch((error) => {
           if (error.response) {
@@ -53,7 +56,7 @@ const OverviewProjects = (props) => {
             console.log('Error', error.message);
           }
           console.log(error.config);
-          setUserCourses([]);
+          // setUserCourses([]);
           setLoading(true);
         });
     }
@@ -116,8 +119,8 @@ const OverviewProjects = (props) => {
       thumbnail: 'https://s3-alpha-sig.figma.com/img/534b/7f4e/d21bc3c0761a4d2cb72de7952521a8b6?Expires=1639353600&Signature=JL7FL9ra9p173rG~xW9ginqFax4tmcKHeZ8o-RB9o5paUh4gB3kV0alTlOkLvsEr~7O9YVtSCwIIfRiUCNBhHmGJU5Io1D5wLh~XlHSrcZjSTZo1SH2Y5fxpI7Nc0DILHUkmn3bQ8ymlU7wHV28mt~x6Js8Ejlij4hXcCGqQo1lf1hCct47h4OlkJxMZnSS4rcdv-2drcASfCxKxfi2llzjD7B-NpAgoPPr0LrQS~DA-9faBA3q0IwTI-OsvBtzQXVH1rOpO4DgJ6Wz8GmdGjgglZaTvV5XtMiRUAC5-ncDXL4-9rlTTjWWcCYjQDhnlsjdiPaKyVXB~lwUkarefvg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA',
     },
   ];
-  const ProjectTaskCard = (props) => {
-    const taskName = props.data;
+  const ProjectTaskCard = ({ data }) => {
+    const taskName = data;
     return (
       <div className="overview-course-card d-flex flex-row justify-content-between">
         {/* First and Second */}
@@ -192,29 +195,28 @@ const OverviewProjects = (props) => {
           </div>
         </div>
         {
-            projectView === 'tasks'
-              ? (
-                <div className="overview-courses-cards d-flex flex-column" style={{ width: '100%', height: '80%' }}>
-                  {
-                  projectInfo !== undefined
-                    ? projectInfo.tasks.map((task) => (
-                      <ProjectTaskCard data={task} key={task} />
-                    ))
-                    : <p style={{ fontSize: '12px', color: 'black' }}>Select a Project to View Tasks</p>
-                }
-                </div>
-              )
-              : (
-                <div className="overview-courses-cards d-flex flex-column" style={{ width: '100%' }}>
-                  {
-                  projectInfo !== undefined
-                    ? <p style={{ fontSize: '12px', color: 'black' }}>{projectInfo.description}</p>
-                    : <p style={{ fontSize: '12px', color: 'black' }}>Select a Project to View Tasks</p>
-                }
-
-                </div>
-              )
-}
+          projectView === 'tasks'
+            ? (
+              <div className="overview-courses-cards d-flex flex-column" style={{ width: '100%', height: '80%' }}>
+                {
+                projectInfo !== undefined
+                  ? projectInfo.tasks.map((task) => (
+                    <ProjectTaskCard data={task} key={task} />
+                  ))
+                  : <p style={{ fontSize: '12px', color: 'black' }}>Select a Project to View Tasks</p>
+              }
+              </div>
+            )
+            : (
+              <div className="overview-courses-cards d-flex flex-column" style={{ width: '100%' }}>
+                {
+                projectInfo !== undefined
+                  ? <p style={{ fontSize: '12px', color: 'black' }}>{projectInfo.description}</p>
+                  : <p style={{ fontSize: '12px', color: 'black' }}>Select a Project to View Tasks</p>
+              }
+              </div>
+            )
+        }
       </div>
     </div>
   );

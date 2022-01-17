@@ -1,6 +1,6 @@
 import React from 'react';
 
-const JoinCard = function (props) {
+const JoinCard = function () {
   return (
     <div className="join-nav-container align-items-center;
         justify-content-center"

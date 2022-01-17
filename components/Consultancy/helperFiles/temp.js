@@ -1,8 +1,8 @@
-import { useState } from 'react';
-import Select from '../customInputTags/select';
-import QuestionContainer from '../questionContainer';
-import { useDefaultValue } from '../getDefaultValue';
-import addQuestion from '../addQuestion';
+import React, { useState } from 'react';
+import Select from './customInputTags/select';
+import QuestionContainer from './questionContainer';
+import useDefaultValue from './getDefaultValue';
+import addQuestion from './addQuestion';
 
 const SelectTemplate = function ({
   step,

@@ -10,7 +10,7 @@ const StartupLeftBar = ({ data }) => {
     .split('.')[0];
 
   useEffect(() => {
-    const l = location.map((lo) => {
+    location.forEach((lo) => {
       setCity(lo.city);
       setCountry(lo.state);
     });
@@ -37,7 +37,8 @@ const StartupLeftBar = ({ data }) => {
               <div className="col portfolio__items">
                 <p>Startup Valuation</p>
                 <h3 className="portfolio__amount">
-                  ${convert(data.valuation)}
+                  $
+                  {convert(data.valuation)}
                 </h3>
               </div>
               <div className="col portfolio__items">
@@ -100,11 +101,15 @@ const StartupLeftBar = ({ data }) => {
             </div>
             <p className="left__detail-topic">Location</p>
             <p className="left__detail-detail text-cap tw-mb-2">
-              {city},{country}
+              {city}
+              ,
+              {country}
             </p>
             <p className="left__detail-topic">Team Size</p>
             <p className="left__detail-detail tw-mb-2">
-              {data.teamSizeMin}-{data.teamSizeMax}
+              {data.teamSizeMin}
+              -
+              {data.teamSizeMax}
               people
             </p>
             <p className="left__detail-topic">User Base</p>
@@ -123,7 +128,7 @@ const StartupLeftBar = ({ data }) => {
               <h2 className="left__topic mb-3 mt-1">Tags</h2>
               <div className="tags-container">
                 {tags.map((t, i) => (
-                  <a href="#" className="badge left__badge" key={i}>
+                  <a href="#" className="badge left__badge" key={`${i + 1}`}>
                     {t}
                   </a>
                 ))}

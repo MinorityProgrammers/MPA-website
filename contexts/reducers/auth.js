@@ -10,7 +10,7 @@ import {
 
 // auth reducer body
 
-export const auth = (state, { payload, type }) => {
+export default function auth(state, { payload, type }) {
   switch (type) {
     case REGISTER_LOADING:
     case LOGIN_LOADING:
@@ -58,4 +58,4 @@ export const auth = (state, { payload, type }) => {
     default:
       return state;
   }
-};
+}

@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -9,7 +7,9 @@ import { FiInstagram, FiTwitter } from 'react-icons/fi';
 import { IoLocationOutline } from 'react-icons/io5';
 import { AiFillHome } from 'react-icons/ai';
 
-const Profile = ({ setOpen, setNotice, setLog, user }) => (
+const Profile = ({
+  setOpen, user,
+}) => (
   <div
     className="tw-bg-surface tw-text-gray-800 tw-col-end-13 tw-col-start-1 lg:tw-col-start-3 tw-p-2   tw-row-start-2  tw-row-end-4 p-3"
     onClick={() => setOpen(false)}
@@ -25,7 +25,9 @@ const Profile = ({ setOpen, setNotice, setLog, user }) => (
         <span>
           <AiFillHome className="tw-text-primary-200 tw-mr-1 mt-1 " />
         </span>
-        /<span className="tw-mx-1">user</span>/
+        /
+        <span className="tw-mx-1">user</span>
+        /
         <span className="tw-mx-1">Profile</span>
       </div>
     </div>
@@ -78,7 +80,9 @@ const Profile = ({ setOpen, setNotice, setLog, user }) => (
             <div className="tw-flex-col tw-flex tw-justify-center tw-items-center tw-mt-3 md:tw-justify-start md:tw-items-start  md:tw-relative  ">
               <div className="tw-flex ">
                 <span className="md:tw-text-2xl md:tw-absolute tw-text-gray-600  tw--left-2 tw-bottom-2 tw-pr-4 ">
-                  {user.firstName} {user.lastName}
+                  {user.firstName}
+                  {' '}
+                  {user.lastName}
                 </span>
               </div>
               <span className="tw-text-primary-200 md:tw-left-3  md:tw-absolute tw-mr-4 md:tw-mr-0 md:tw-ml-5">
@@ -99,7 +103,8 @@ const Profile = ({ setOpen, setNotice, setLog, user }) => (
               <span className="tw-text-gray-500 tw-w-full md:tw-w-5/6 ">
                 {user.phoneNumber || 'N/A'}
               </span>
-            </div>{' '}
+            </div>
+            {' '}
             <div className="tw-flex-col tw-flex tw-items-center tw-justify-center md:tw-justify-start  md:tw-items-start tw-my-2">
               <div className="tw-flex tw-my-3">
                 <span>
@@ -110,7 +115,10 @@ const Profile = ({ setOpen, setNotice, setLog, user }) => (
                 </span>
               </div>
               <span className=" tw-text-gray-500  tw-w-full md:tw-w-5/6  ">
-                {user.location || 'N/A'} /{user.Nationality || 'N/A'}
+                {user.location || 'N/A'}
+                {' '}
+                /
+                {user.Nationality || 'N/A'}
               </span>
             </div>
           </div>
@@ -126,7 +134,8 @@ const Profile = ({ setOpen, setNotice, setLog, user }) => (
               <a href="#fb">
                 <FiTwitter className="hover:tw-text-primary-200 tw-text-xl" />
               </a>
-            </li>{' '}
+            </li>
+            {' '}
             <li className="tw-ml-8">
               <a href="#fb">
                 <FiInstagram className="hover:tw-text-primary-200 tw-text-xl" />
@@ -156,7 +165,9 @@ const Profile = ({ setOpen, setNotice, setLog, user }) => (
           className="tw-h-20   tw-object-cover tw-rounded-full tw-w-20 tw-border-surface tw-border-8"
         />
         <span className="tw-ml-2 tw-text-sm">
-          {user.firstName} {user.lastName}
+          {user.firstName}
+          {' '}
+          {user.lastName}
         </span>
       </div>
       <div className="tw-m-4 tw-py-4">

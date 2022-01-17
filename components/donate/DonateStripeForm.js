@@ -62,8 +62,6 @@ const DonateStripeForm = ({
   setName,
   setCheckoutError,
   setCheckoutSuccess,
-  checkoutError,
-  checkoutSuccess,
 }) => {
   const { amount } = useContext(GlobalContext);
   const stripe = useStripe();
@@ -87,7 +85,7 @@ const DonateStripeForm = ({
       });
       const result = await res.json();
       const cardElement = elements.getElement(CardElement);
-      const { error, paymentIntent } = await stripe.confirmCardPayment(
+      const { error /* , paymentIntent */ } = await stripe.confirmCardPayment(
         result.client_secret,
         {
           payment_method: {
@@ -96,7 +94,7 @@ const DonateStripeForm = ({
               name,
             },
           },
-        }
+        },
       );
 
       if (error) throw new Error(error.message);

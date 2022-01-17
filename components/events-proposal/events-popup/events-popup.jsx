@@ -1,11 +1,12 @@
-import { useState } from 'react';
+/* eslint-disable max-len */
+import React, { useState } from 'react';
 import Moment from 'moment';
 import axios from 'axios';
 import styles from './events-popup.module.css';
 import ReviewAction from './review-action';
 import ApproveAction from './approve-action';
 import RejectAction from './reject-action';
-import { successToast } from '../../../contexts/utils/toasts';
+import { errorToast, successToast } from '../../../contexts/utils/toasts';
 
 Moment.locale('en');
 
@@ -14,11 +15,20 @@ const EventsPopup = function ({
 }) {
   const [value, setValue] = useState('');
   const {
-    EventPicture, EventDescription, eventLink, catName, eventName, time, host, Virtual, _id, eventStatus,
+    EventPicture,
+    EventDescription,
+    eventLink,
+    catName,
+    eventName,
+    time,
+    host,
+    Virtual,
+    _id,
+    eventStatus,
   } = event;
 
-  const handleReviewFeedback = (event, feedback) => {
-    event.preventDefault();
+  const handleReviewFeedback = (e, feedback) => {
+    e.preventDefault();
     try {
       axios.patch(
         `${process.env.BASE_URI}/event/${_id}`,

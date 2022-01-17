@@ -5,13 +5,13 @@ import SettingBodyOverview from '../../../components/settings/SettingBodyOvervie
 
 function overview() {
   const [data, setData] = useState([]);
-  const [userID, setUserID] = useState('');
+  const [, setUserID] = useState('');
 
   useEffect(() => {
     const token = window.localStorage.getItem('jwtToken');
     const userInfo = window.localStorage.getItem('userInfo');
 
-    token && userInfo && setUserID(jwt.decode(token).id);
+    if (token && userInfo) { setUserID(jwt.decode(token).id); }
   }, []);
 
   return (

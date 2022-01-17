@@ -38,7 +38,7 @@ export default NextAuth({
     error: '/auth', // Error code passed in query string as ?error=
   },
   callbacks: {
-    async session(session, user) {
+    async session(session) {
       return session;
     },
   },

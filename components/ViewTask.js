@@ -1,11 +1,11 @@
-import { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import {
   DragDropContext,
   Draggable,
   Droppable,
   resetServerContext,
 } from 'react-beautiful-dnd';
-import { v4 as uuidv4 } from 'uuid';
+// import { v4 as uuidv4 } from 'uuid';
 import itemsFromBackEnd from './ProjectManager/viewtask.json';
 import TaskStatus, { UserContext } from './ProjectManager/TaskStatus';
 // Currently using JSON data for dynamic loading
@@ -45,13 +45,15 @@ const columnsFromBackend = {
   3: { name: 'Completed Task', items: [] },
 };
 
+let task;
+
 const onDragEnd = (result, columns, setColumns) => {
   const { source, destination } = result;
   if (source.droppableId !== destination?.droppableId) {
     const sourceColumn = columns[source.droppableId];
     const destinationColumn = columns[destination?.droppableId];
     const sourceItems = [...sourceColumn.items];
-    const destinationItems = [...destinationColumn?.items];
+    const destinationItems = [...destinationColumn || destinationColumn.items];
     const [removed] = sourceItems.splice(source.index, 1);
     destinationItems.splice(destination.index, 0, removed);
     setColumns({
@@ -78,10 +80,10 @@ const onDragEnd = (result, columns, setColumns) => {
       },
     });
   }
-  let task;
-  if (result.destination.droppableId == 1) {
+
+  if (result.destination.droppableId === 1) {
     task = 'Planned Task';
-  } else if (result.destination.droppableId == 2) {
+  } else if (result.destination.droppableId === 2) {
     task = 'Review Task';
   } else {
     task = 'Completed Task';
@@ -89,7 +91,7 @@ const onDragEnd = (result, columns, setColumns) => {
 };
 
 const ViewTask = function () {
-  const [plannedTasks, setPlannedTasks] = useState([]);
+  // const [plannedTasks, setPlannedTasks] = useState([]);
   const [columns, setColumms] = useState(columnsFromBackend);
   const priorityStatus = useContext(UserContext);
   // schema for backend connection
@@ -108,10 +110,11 @@ const ViewTask = function () {
         body: JSON.stringify(taskDetails),
       })
         .then((res) => res.json())
-        .then((data) => {
+        .then(() => {
           alert('Task submitted successfully');
         });
     };
+    handleTask(); // added by Koscee
   }, []);
   // handlePriority function sent to TaskStatus component as props to set the priority flag
   const handlePriority = () => {};
@@ -127,11 +130,12 @@ const ViewTask = function () {
               <img
                 className="tw-h-8 tw-w-8 tw-m-2"
                 src="/assets/images/project/tick.png"
+                alt="tick_image"
               />
               <p className="tw-text-white tw-text-3xl">{column.name}</p>
             </div>
             <Droppable droppableId={id} key={id}>
-              {(provided, snapshot) => (
+              {(provided/* , snapshot */) => (
                 <div
                   className="tw-grid tw-grid-cols-2"
                   {...provided.droppableProps}
@@ -143,11 +147,11 @@ const ViewTask = function () {
                       index={index}
                       draggableId={item.id}
                     >
-                      {(provided, snapshot) => (
+                      {(_provided/* , snapshot */) => (
                         <div
-                          ref={provided.innerRef}
-                          {...provided.draggableProps}
-                          {...provided.dragHandleProps}
+                          ref={_provided.innerRef}
+                          {..._provided.draggableProps}
+                          {..._provided.dragHandleProps}
                           className="tw-justify-center"
                         >
                           <TaskStatus

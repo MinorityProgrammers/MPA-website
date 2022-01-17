@@ -8,7 +8,15 @@ import CreateProfileQuestions5 from './CreateProfileForm5';
 import CreateProfileDone from './CreateProfileDone';
 
 const CreateProfileBody = function ({
-  state, setState, activeStep, setActiveStep, handleSubmit, handleUsernameSubmit, inputStates, closeProfileSetup, userData,
+  state,
+  setState,
+  activeStep,
+  setActiveStep,
+  handleSubmit,
+  handleUsernameSubmit,
+  inputStates,
+  closeProfileSetup,
+  userData,
 }) {
   // displays body based on active step
   const step = activeStep;
