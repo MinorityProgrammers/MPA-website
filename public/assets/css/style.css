@@ -6970,6 +6970,7 @@ html {
 }
 .fa-user-circle {
   color: #3e385d;
+  margin-left: 4px;
 }
 .searchInput {
   /* border: none;
@@ -7462,18 +7463,7 @@ html {
     font-size: 0.8rem;
   }
 }
-@media screen and (max-width: 760px) {
-  .dropdown-menu {
-    width: 100%;
-    position: absolute;
-    top: 45px;
-    text-align: left;
-    box-shadow: none;
-  }
-  .dropdown-menu li a {
-    font-size: 16px;
-    text-transform: capitalize;
-  }
+@media screen and (max-width: 1200px) {
   .navbar {
     width: 100%;
   }
@@ -7498,6 +7488,9 @@ html {
     -webkit-transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
     transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
   }
+  .navbar__right{
+    display: none !important;
+  }
   .homepage__header ul.nav-menu > li > a {
     font-size: 16px;
     padding: 12px 30px;
@@ -7520,19 +7513,8 @@ html {
     background: #ff00b8;
   }
   .navbar-logo {
-    position: absolute;
-    top: 0;
-    left: 0;
-    transform: translate(25%, 50%);
-  }
-  .menu-icon {
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 10rem;
-    transform: translate(-50%, 120%);
-    font-size: 1.2rem;
-    cursor: pointer;
+    position: relative;
+    transform: translate(0, 0);
   }
   .topbar__mobile {
     display: flex;
@@ -7553,6 +7535,43 @@ html {
   .topbar__mobile li + li {
     margin-left: 20px;
   }
+  .homepage__topbar {
+    display: none;
+  }
+  .sticky-menu .navbar-logo {
+    top: 10px;
+    left: 20px;
+    width: 180px;
+  }
+  .sticky-menu .topbar__mobile {
+    transform: translate(-50%, 100%);
+  }
+  .sticky-menu ul.nav-menu > li {
+    padding: 0;
+  }
+}
+@media screen and (max-width: 760px) {
+  .dropdown-menu {
+    width: 100%;
+    position: absolute;
+    top: 45px;
+    text-align: left;
+    box-shadow: none;
+  }
+  .dropdown-menu li a {
+    font-size: 16px;
+    text-transform: capitalize;
+  }
+  
+  .menu-icon {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 10rem;
+    transform: translate(-50%, 120%);
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
   .menu-icon .fas {
     transition: all 0.4s ease;
   }
@@ -7563,23 +7582,9 @@ html {
     color: #fff;
     font-size: 1.3rem;
   }
-  .homepage__topbar {
-    display: none;
-  }
-  .sticky-menu .navbar-logo {
-    top: 10px;
-    left: 20px;
-    width: 180px;
-  }
   .sticky-menu .menu-icon {
     left: 8rem;
     transform: translate(-50%, 100%);
-  }
-  .sticky-menu .topbar__mobile {
-    transform: translate(-50%, 100%);
-  }
-  .sticky-menu ul.nav-menu > li {
-    padding: 0;
   }
   .dropdown-login {
     top: 40px;
@@ -7593,10 +7598,6 @@ html {
     align-items: center;
     margin-top: 1.5rem;
   }
-  .navbar-logo {
-    position: relative;
-    transform: translate(0, 0);
-  }
   .topbar__mobile {
     position: relative;
     transform: translate(0, 0);
@@ -7608,7 +7609,6 @@ html {
     left: 0;
     transform: translate(0, 0);
   }
-
   .sticky-menu .topbar__mobile {
     position: relative;
     top: 10px;

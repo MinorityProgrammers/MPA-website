@@ -508,7 +508,7 @@ const HomepageNav = ({ setToken, setData, page, open, setOpen = () => {} }) => {
         )}
 
         <div className="tw-flex tw-flex-row tw-justify-between tw-w-full">
-          <div className="3xl:tw-block tw-hidden md:tw-block">
+          <div className="3xl:tw-block md:tw-block">
             <div className="navbar-logo">
               <Link href="/" onClick={closeMobileMenu}>
                 <img src="/assets/images/mpicon.svg" alt="" />
@@ -677,7 +677,7 @@ const HomepageNav = ({ setToken, setData, page, open, setOpen = () => {} }) => {
                 </Link>
               </li>
             </ul>
-            <ul className="tw-flex tw-flex-row tw-justify-around tw-w-1/4 tw-my-8 md:tw-hidden">
+            <ul className="tw-flex tw-flex-row tw-justify-around tw-w-1/4 tw-my-8 navbar__right md:tw-hidden">
               <li>
                 <div className="tw-flex tw-flex-row tw-w-full tw-border tw-border-gray-700 tw-rounded-md tw-px-1 tw-text-gray-500">
                   <input
