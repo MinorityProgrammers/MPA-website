@@ -1,7 +1,7 @@
 import React from 'react';
 
 const FeaturedPopup = (props) =>
-  props.trigger && (
+  props.trigger === true && (
     <div
       className="popup"
       style={{

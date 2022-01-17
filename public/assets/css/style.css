@@ -4645,7 +4645,7 @@ a:visited {
 
 .site-footer__social a i{
   color: #ffffff;
-  font-size: 40px;
+  font-size: 30px;
   -webkit-transition: all 0.4s ease;
   transition: all 0.4s ease;
   position: relative;
@@ -6857,18 +6857,10 @@ html {
   width: 200px;
   height: 100px;
   cursor: pointer;
-<<<<<<< HEAD
   background-color: #474bff;
   left: 0px;
   top: 0.1px;
   border-radius: 0% 0% 100% 0% / 100% 0% 100% 0%;
-=======
-  background-color: #474BFF;
-  left :0px;
-  top:-1px;
-  border-radius:  0% 0% 100% 0% / 100% 0% 100% 0%;
-  
->>>>>>> f2e006c (fixed searchbar and active nav bar selection)
 }
 .navbar-logo img {
   width: 30%;
@@ -7550,7 +7542,6 @@ html {
   }
   .sticky-menu .navbar-logo {
     top: 10px;
-    left: 20px;
     width: 180px;
   }
   .sticky-menu .topbar__mobile {

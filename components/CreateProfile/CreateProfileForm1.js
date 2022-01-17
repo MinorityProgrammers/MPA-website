@@ -6,6 +6,7 @@ import CreateProfileInput from './CreateProfileInput';
 import {
   usernameField,
 } from '../../contexts/utils/profileInputFields';
+import Account from '../Account';
 
 const CreateProfileQuestions1 = function ({
   state, setState, step, setStep, inputStates, handleUsernameSubmit, closeProfileSetup, userData,
@@ -179,6 +180,10 @@ const CreateProfileQuestions1 = function ({
                                   <p className="tw-cursor-pointer hover:tw-to-gray-500" key={key} onClick={() => setUsername(name)}>{name}</p>
                                 ))
                             }
+            </div>
+            <div className="tw-mt-8 tw-flex tw-flex-col tw-w-80 tw-pl-4 tw-justify-center tw-text-center">
+              <h2>Connect Wallet</h2>
+              <Account />
             </div>
           </div>
         </CreateProfileForm>

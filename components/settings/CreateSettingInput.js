@@ -140,7 +140,7 @@ const CreateSettingInput = function ({
           <textarea
             name={name}
             onChange={handleChange}
-            autoComplete="off"
+            autoComplete="false"
             placeholder="Describe your favorite code..."
             value={value || ''}
           />
@@ -226,7 +226,7 @@ const CreateSettingInput = function ({
             name={name}
             value={value}
             onChange={handleChange}
-            autoComplete="off"
+            autoComplete="false"
             placeholder={placeholder || ''}
           />
         </label>
