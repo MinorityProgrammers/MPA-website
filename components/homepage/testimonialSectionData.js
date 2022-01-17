@@ -54,6 +54,18 @@ export const sponsors = [
     sponsorLink: 'https://tokamak.network/',
     imgSrc: 'assets/images/sponsorship/sponsor8.png',
   },
+  {
+    sponsorLink: 'https://near.foundation/',
+    imgSrc: 'assets/images/sponsorship/sponsor17.png',
+  },
+  {
+    sponsorLink: 'https://casper.network/en/network',
+    imgSrc: 'assets/images/sponsorship/sponsor18.png',
+  },
+  {
+    sponsorLink: 'https://algorand.foundation/',
+    imgSrc: 'assets/images/sponsorship/sponsor13.png',
+  },
 ];
 
 export const allies = [
@@ -99,5 +111,13 @@ export const allies = [
   {
     allyLink: 'https://entethalliance.org/',
     imgSrc: 'assets/images/sponsorship/sponsor14.png',
+  },
+  {
+    allyLink: 'https://www.democracylab.org/',
+    imgSrc: 'assets/images/sponsorship/sponsor15.png',
+  },
+  {
+    allyLink: 'https://www.theshrimpsociety.com/',
+    imgSrc: 'assets/images/sponsorship/sponsor16.png',
   },
 ];
