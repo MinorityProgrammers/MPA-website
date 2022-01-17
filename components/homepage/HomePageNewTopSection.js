@@ -29,7 +29,7 @@ const HomepageNewTopSection = () => (
           </a>
         </div>
       </div>
-      <div className="tw-w-11/12 lg:tw-p-2 tw-z-10 tw-h-full">
+      <div className="tw-w-11/12 lg:tw-p-2 tw-z-10 tw-h-full homepage__hero__img">
         {/* image sections */}
         <img
           src="/assets/images/meta.png"

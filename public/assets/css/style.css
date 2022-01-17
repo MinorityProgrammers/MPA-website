@@ -7468,6 +7468,9 @@ html {
   .top__part{
     flex-direction: column-reverse !important;
   }
+  .homepage__hero__img{
+    padding-top: 0;
+  }
   /* NavBar */
   .navbar {
     width: 100%;
@@ -7654,7 +7657,7 @@ html {
   background: none;
 }
 .homepage__hero__img{
-  width: 100%;
+  padding-top: 2.5rem;
 }
 .hero__item {
   display: flex;
