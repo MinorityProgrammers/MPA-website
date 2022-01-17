@@ -9,7 +9,7 @@ import {
   googleAuth,
   nextAuth,
 } from '../../../contexts/actions/auth/googleAuth';
-import { getProfile } from '../../../contexts/actions/profile/getProfile';
+import getProfile from '../../../contexts/actions/profile/getProfile';
 import { GlobalContext } from '../../../contexts/provider';
 import Form from '../form/index';
 import styles from './card.module.css';
@@ -17,8 +17,8 @@ import styles from './card.module.css';
 export default function Index() {
   // USED FOR SOCIAL AUTHENTICATION
 
-  const googleClientId = process.env.CLIENT_ID;
-  const [session, isLoading] = useSession();
+  // const googleClientId = process.env.CLIENT_ID;
+  const [session/* , isLoading */] = useSession();
 
   // Instead of another page we will set the text to variables
   const [cardText, setCardText] = useState({
@@ -41,17 +41,14 @@ export default function Index() {
 
   // STATES USED THROUGHOUT THE COMPONENT
   const [submit, setSubmit] = useState(false);
-  const [spin, setSpin] = useState(false);
-  const [signedIn, setSignedIn] = useState(false);
-  const [userData, setUserData] = useState([]);
+  const [, setSpin] = useState(false);
+  const [, setSignedIn] = useState(false);
+  const [, setUserData] = useState([]);
   const [providers, setPrivders] = useState([]);
   const router = useRouter();
 
   const {
     profileDispatch,
-    profileState: {
-      profile: { profileLoading, profileError, profileData },
-    },
   } = useContext(GlobalContext);
 
   useEffect(() => {
@@ -62,9 +59,9 @@ export default function Index() {
 
   useEffect(() => {
     const setupProviders = async () => {
-      const providers = await getProviders();
+      const _providers = await getProviders();
 
-      setPrivders(providers);
+      setPrivders(_providers);
     };
     setupProviders();
   }, []);
@@ -94,7 +91,7 @@ export default function Index() {
   const {
     authDispatch,
     authState: {
-      auth: { loading, error, data },
+      auth: { loading, data },
     },
   } = useContext(GlobalContext);
 

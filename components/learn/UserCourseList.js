@@ -33,7 +33,9 @@ const UserCoursesList = function ({ enrolledCourse }) {
       });
   }, [_id]);
 
-  const totalUserModules = userModules.filter((eModule) => modules.some((module) => eModule.moduleId._id === module._id));
+  const totalUserModules = userModules.filter(
+    (eModule) => modules.some((module) => eModule.moduleId._id === module._id),
+  );
   const totalModulesLength = modules.length;
 
   // user progress
@@ -42,7 +44,7 @@ const UserCoursesList = function ({ enrolledCourse }) {
   totalUserModules.forEach((module) => {
     completionRate += module.completionRate;
     if (module.completed) {
-      completedModules++;
+      completedModules += 1;
     }
   });
   const userPercentages = Math.round(completionRate / totalModulesLength);
@@ -65,7 +67,7 @@ const UserCoursesList = function ({ enrolledCourse }) {
 
       <div className="text-center pb-4">
         <Link href={`/courses/${_id}`}>
-          <button className="btn px-5 banner-btn mt-3">
+          <button type="button" className="btn px-5 banner-btn mt-3">
             Learn
           </button>
         </Link>
@@ -84,13 +86,14 @@ const UserCoursesList = function ({ enrolledCourse }) {
         <div className="progress mt-1 mb-1 mx-4">
           <div className="progress-bar" style={{ width: `${userPercentages}%` }} role="progressbar" aria-valuenow={userPercentages} aria-valuemin="0" aria-valuemax="100" />
         </div>
-        {!isNaN(userPercentages)
-                    && (
-                    <p className="text-center pb-3" style={{ fontSize: '14px', fontWeight: '300' }}>
-                      {userPercentages}
-                      % Completed
-                    </p>
-                    )}
+        {
+          !Number.isNaN(userPercentages) && (
+            <p className="text-center pb-3" style={{ fontSize: '14px', fontWeight: '300' }}>
+              {userPercentages}
+              % Completed
+            </p>
+          )
+        }
       </div>
     </div>
   );

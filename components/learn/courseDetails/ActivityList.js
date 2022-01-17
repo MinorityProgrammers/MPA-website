@@ -7,16 +7,16 @@ const ActivityList = function ({ module, userModules, specificUModules }) {
   const router = useRouter();
   const { courseId, moduleLevel } = router.query;
 
-  const specificUserModules = userModules.filter((module) => module.moduleId._id == _id);
+  const specificUserModules = userModules.filter((_module) => _module.moduleId._id === _id);
   useEffect(() => {
-    specificUserModules.forEach((module) => {
-      setUserModule(module);
+    specificUserModules.forEach((_module) => {
+      setUserModule(_module);
     });
   }, [specificUserModules]);
 
   const userModulesId = [];
-  specificUModules.forEach((module) => {
-    userModulesId.push(module.moduleId._id);
+  specificUModules.forEach((_module) => {
+    userModulesId.push(_module.moduleId._id);
   });
 
   const handleModuleInfo = () => {

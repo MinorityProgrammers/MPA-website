@@ -9,8 +9,8 @@ const HomepageNavDropdown = ({ onCloseMobileMenu }) => {
       onClick={onCloseMobileMenu}
       className={click ? 'dropdown-menu clicked' : 'dropdown-menu'}
     >
-      {eventItems.map((item, index) => (
-        <li key={index}>
+      {eventItems.map((item) => (
+        <li key={item.title}>
           <div
             className={item.cName}
             href={item.path}

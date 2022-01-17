@@ -1,4 +1,4 @@
-export function getFormattedOutput(questions, myEmail) {
+export default function getFormattedOutput(questions, myEmail) {
   const prefix = 'question';
   const getArray = (index, innerIndex) => questions[prefix + index][innerIndex];
   return {

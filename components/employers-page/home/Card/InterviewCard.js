@@ -1,3 +1,4 @@
+import React from 'react';
 import styles from './interview_card.module.css';
 
 const InterviewCard = function ({
@@ -7,7 +8,7 @@ const InterviewCard = function ({
     <div>
       <div className={styles.root}>
         <div className={styles.head}>
-          <img src={image || '/assets/images/profile.jpg'} />
+          <img src={image || '/assets/images/profile.jpg'} alt="profile_image" />
           <div className={styles.identity}>
             <h3>{name}</h3>
             <span>{description}</span>

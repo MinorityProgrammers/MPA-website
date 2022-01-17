@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './select.module.css';
 
 const Select = function ({
@@ -9,13 +9,15 @@ const Select = function ({
 
   useEffect(() => {
     const arr = [];
-    items && items.forEach((item) => {
-      if (Object.values(item)[0] === true) {
-        setHeading(Object.keys(item)[0]);
-      } else {
-        arr.push(Object.keys(item)[0]);
-      }
-    });
+    if (items) {
+      items.forEach((item) => {
+        if (Object.values(item)[0] === true) {
+          setHeading(Object.keys(item)[0]);
+        } else {
+          arr.push(Object.keys(item)[0]);
+        }
+      });
+    }
     setList(arr);
   }, [items]);
 
@@ -47,7 +49,7 @@ const Select = function ({
       <div className={`${styles.selectList} ${toggle && styles.toggle}`}>
         {
             list && list.map((item, idx) => (
-              <div key={idx} onClick={() => handleSelect(item)} className={styles.selectItem}>{item}</div>
+              <div key={`${idx + 1}`} onClick={() => handleSelect(item)} className={styles.selectItem}>{item}</div>
             ))
           }
       </div>

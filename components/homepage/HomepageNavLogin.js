@@ -7,23 +7,23 @@ import React, { useContext, useEffect, useState } from 'react';
 import 'react-toastify/dist/ReactToastify.css';
 import * as Yup from 'yup';
 import { googleAuth, nextAuth } from '../../contexts/actions/auth/googleAuth';
-import { login } from '../../contexts/actions/auth/login';
+import login from '../../contexts/actions/auth/login';
 import { GlobalContext } from '../../contexts/provider';
 import TextField from '../TextField';
 
 const HomepageNavLogin = ({ onCloseMobileMenu }) => {
   const router = useRouter();
-  const googleClientId = process.env.CLIENT_ID;
+  // const googleClientId = process.env.CLIENT_ID;
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
-  const [loginSubmit, setLoginSubmit] = useState(false);
-  const [session, isLoading] = useSession();
+  const [, setLoginSubmit] = useState(false);
+  const [session] = useSession();
   const [providers, setPrivders] = useState([]);
 
   const {
     authDispatch,
     authState: {
-      auth: { loading, error, data },
+      auth: { loading, data },
     },
   } = useContext(GlobalContext);
 
@@ -49,9 +49,9 @@ const HomepageNavLogin = ({ onCloseMobileMenu }) => {
 
   useEffect(() => {
     const setupProviders = async () => {
-      const providers = await getProviders();
+      const _providers = await getProviders();
 
-      setPrivders(providers);
+      setPrivders(_providers);
     };
     setupProviders();
   }, []);
@@ -72,9 +72,9 @@ const HomepageNavLogin = ({ onCloseMobileMenu }) => {
     googleAuth({ tokenId: res.tokenId })(authDispatch);
   };
 
-  const handleLoginFailure = (res) => {
+  /* const handleLoginFailure = (res) => {
     // console.log(res);
-  };
+  }; */
 
   const onSubmit = async (e) => {
     setLoginSubmit(true);
@@ -170,7 +170,7 @@ const HomepageNavLogin = ({ onCloseMobileMenu }) => {
       </div>
 
       <div className="login-register mt-2">
-        <p className="mb-2">Don't have an account?</p>
+        <p className="mb-2">Don&apos;t have an account?</p>
         <div className="dropdown-login-button">
           <a
             href="/auth"

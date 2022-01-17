@@ -16,6 +16,7 @@ const ChatUserCard = ({ u, createChat, setPopUp }) => {
         <img
           src={u.profilePicture || '../../assets/images/profile.png'}
           className="conversation-img"
+          alt="profile"
         />
         <span className="conversation-brief">
           {u?.firstName}

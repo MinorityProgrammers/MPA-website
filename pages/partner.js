@@ -3,7 +3,7 @@ import { InlineWidget } from 'react-calendly';
 import Footer from '../components/Footer';
 import HomepageNav from '../components/homepage/HomepageNav';
 import Layout from '../components/Layout';
-import { useDetectOutsideClick } from '../components/UseDetectOutsideClick';
+import useDetectOutsideClick from '../components/UseDetectOutsideClick';
 import links from '../contexts/utils/links';
 import SidebarTwo from '../components/sidebar/SidebarTwo';
 

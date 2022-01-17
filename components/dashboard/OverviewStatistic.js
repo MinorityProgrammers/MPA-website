@@ -1,15 +1,16 @@
+/* eslint-disable react/no-unstable-nested-components */
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { Chart } from 'react-google-charts';
 import Skeleton from 'react-loading-skeleton';
-import { width } from 'dom-helpers';
-import EmptyOverviewComponent from './EmptyOverviewComponent';
+// import { width } from 'dom-helpers';
+// import EmptyOverviewComponent from './EmptyOverviewComponent';
 
 const OverviewStatistic = (props) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setTimeout(setLoading(false), 3000);
+    const timeoutID = setTimeout(setLoading(false), 3000);
+    return () => { clearTimeout(timeoutID); };
   }, []);
 
   const DonutChartComponent = (props) => {

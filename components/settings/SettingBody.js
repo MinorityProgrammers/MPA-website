@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useRouter } from 'next/router';
 import styles from '../../styles/settings/settingBody.module.css';
-import { getSpecificSettingsLayoutNavigationList } from '../../helpers/getSpecificSettingsLayoutNavigationList';
+import getSpecificSettingsLayoutNavigationList from '../../helpers/getSpecificSettingsLayoutNavigationList';
 
 const SettingBody = function ({
   settingsPage,
@@ -44,6 +44,7 @@ const SettingBody = function ({
           && settingsSubPage !== 'management' && (
             <div className={styles.footerButtons}>
               <button
+                type="button"
                 className={styles.danger}
                 onClick={(e) => {
                   e.preventDefault();
@@ -53,6 +54,7 @@ const SettingBody = function ({
                 Discard Changes
               </button>
               <button
+                type="button"
                 className={styles.success}
                 onClick={(e) => {
                   e.preventDefault();

@@ -7,7 +7,7 @@ import {
 
 // profile reducer body
 
-export const profile = (state, { payload, type }) => {
+export default function profile(state, { payload, type }) {
   switch (type) {
     case UPDATE_PROFILE_LOADING:
       return {
@@ -55,4 +55,4 @@ export const profile = (state, { payload, type }) => {
     default:
       return state;
   }
-};
+}

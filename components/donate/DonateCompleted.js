@@ -5,7 +5,6 @@ const DonateCompleted = ({
   count,
   setCount,
   amount,
-  isDone,
   setIsDone,
 }) => (
   <div className="step__completed">

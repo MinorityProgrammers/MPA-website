@@ -1,7 +1,8 @@
-import { useRef, useState } from 'react';
+/* eslint-disable no-useless-escape */
+import React, { useRef, useState } from 'react';
 import InputWithIcon from '../helperFiles/customInputTags/inputWithIcon';
 import ErrorPrint from '../helperFiles/errorPrint';
-import { useDefaultValue } from '../helperFiles/getDefaultValue';
+import useDefaultValue from '../helperFiles/getDefaultValue';
 import SelectTemplate from '../helperFiles/templates/selectTemplate';
 
 const Page8 = function ({

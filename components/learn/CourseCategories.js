@@ -66,15 +66,21 @@ const CourseCategories = function ({ user, enrolledCourses, usersCourses }) {
       });
   };
 
-  const recommendedCourses = courses && courses.filter((course) => enrolledCourses.every((eCourse) => course._id !== eCourse.courseId._id));
+  const recommendedCourses = courses && courses.filter(
+    (course) => enrolledCourses.every((eCourse) => course._id !== eCourse.courseId._id),
+  );
 
   const handleCourseInfo = (course) => {
     setSingleCourse(course);
-    const usersCoursesInfo = usersCourses?.filter((usersCourse) => usersCourse.courseId._id == course._id);
+    const usersCoursesInfo = usersCourses?.filter(
+      (usersCourse) => usersCourse.courseId._id === course._id,
+    );
     setTotalEnrolledCourse(usersCoursesInfo);
-    const singleEnrolledCourse = enrolledCourses?.filter((eCourse) => eCourse.courseId._id == course._id);
-    const singleCourse = singleEnrolledCourse[0];
-    const enrolledCourseId = singleCourse?.courseId;
+    const singleEnrolledCourse = enrolledCourses?.filter(
+      (eCourse) => eCourse.courseId._id === course._id,
+    );
+    const _singleCourse = singleEnrolledCourse[0];
+    const enrolledCourseId = _singleCourse?.courseId;
     if (!enrolledCourseId) {
       return null;
     }
@@ -181,14 +187,32 @@ const CourseCategories = function ({ user, enrolledCourses, usersCourses }) {
                   )
             }
 
-            {loading
-              ? <CoursesSkeleton title="Recommended Courses" />
-              : recommendedCourses.length > 0
-              && <RecommendedCourses showModal={showModal} recommendedCourses={recommendedCourses} handleCourseInfo={handleCourseInfo} />}
+            {
+              loading
+                ? <CoursesSkeleton title="Recommended Courses" />
+                : recommendedCourses.length > 0
+              && (
+              <RecommendedCourses
+                showModal={showModal}
+                recommendedCourses={recommendedCourses}
+                handleCourseInfo={handleCourseInfo}
+              />
+              )
+            }
 
-            {loading
-              ? <CoursesSkeleton title="Featured Courses" />
-              : <FeaturedCourses showModal={showModal} courses={courses} enrolledCourses={enrolledCourses} handleCourseInfo={handleCourseInfo} enrolledBtn={enrolledBtn} />}
+            {
+              loading
+                ? <CoursesSkeleton title="Featured Courses" />
+                : (
+                  <FeaturedCourses
+                    showModal={showModal}
+                    courses={courses}
+                    enrolledCourses={enrolledCourses}
+                    handleCourseInfo={handleCourseInfo}
+                    enrolledBtn={enrolledBtn}
+                  />
+                )
+            }
           </div>
 
         </div>
@@ -217,19 +241,19 @@ const CourseCategories = function ({ user, enrolledCourses, usersCourses }) {
                     <>
                       {enrolledCourse._id === singleCourse._id
                         ? (
-                          <button onClick={goToCourseInfo} data-dismiss="modal" aria-label="Close" className="btn px-5 banner-btn mt-4 pt-2  mb-2">
+                          <button type="button" onClick={goToCourseInfo} data-dismiss="modal" aria-label="Close" className="btn px-5 banner-btn mt-4 pt-2  mb-2">
                             Learn
                           </button>
                         )
                         : (
-                          <button disabled={disable} onClick={handleEnrolledCourse} data-dismiss="modal" aria-label="Close" className="btn px-5 banner-btn mt-4 pt-2  mb-2">
+                          <button type="button" disabled={disable} onClick={handleEnrolledCourse} data-dismiss="modal" aria-label="Close" className="btn px-5 banner-btn mt-4 pt-2  mb-2">
                             Enroll
                           </button>
                         )}
                     </>
                   )
                   : (
-                    <button onClick={onClick} data-dismiss="modal" aria-label="Close" className="btn px-5 banner-btn mt-4 pt-2 font-weight-bold mb-2">
+                    <button type="button" onClick={onClick} data-dismiss="modal" aria-label="Close" className="btn px-5 banner-btn mt-4 pt-2 font-weight-bold mb-2">
                       login to access your courses
                     </button>
                   )}

@@ -1,3 +1,4 @@
+import React from 'react';
 import styles from './events-popup.module.css';
 
 const ReviewAction = function ({ reveiwFeedback, value, setValue }) {

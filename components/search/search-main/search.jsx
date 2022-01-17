@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Router, { useRouter } from 'next/router';
 import axios from 'axios';
 import Skeleton from 'react-loading-skeleton';
@@ -37,9 +37,9 @@ const Search = function ({ token }) {
     setLoading(false);
   };
 
-  const handleCategory = (category) => {
-    setCategory(category);
-    setActiveSearch(category);
+  const handleCategory = (_category) => {
+    setCategory(_category);
+    setActiveSearch(_category);
   };
 
   const handleTags = (tag) => {
@@ -88,12 +88,7 @@ users join chapter from the search page.
   }, []);
 
   const findrequests = (requests) => {
-    const allRequests = [];
-
-    requests.map((all) => {
-      allRequests.push(all.chapterLocation_id);
-    });
-
+    const allRequests = requests.map((all) => all.chapterLocation_id);
     return allRequests;
   };
 
@@ -117,10 +112,10 @@ users join chapter from the search page.
                 All
               </li>
               {
-                searchCategories && searchCategories.map((category, idx) => (
+                searchCategories && searchCategories.map((_category, idx) => (
                   <SearchCategory
-                    key={idx}
-                    category={category}
+                    key={`${`category${idx}`}`}
+                    category={_category}
                     activeSearch={activeSearch}
                     handleCategory={handleCategory}
                   />
@@ -140,7 +135,7 @@ users join chapter from the search page.
               {
                 popularSearches && popularSearches.map((tag, idx) => (
                   <PopularSearch
-                    key={idx}
+                    key={`${`tag${idx}`}`}
                     handleTags={handleTags}
                     tag={tag}
                     activeSearch={activeSearch}
@@ -154,7 +149,7 @@ users join chapter from the search page.
           {
             loading
               ? (new Array(4).fill(null)).map((_, idx) => (
-                <div key={idx} style={{ width: '100%' }}>
+                <div key={`${idx + 1}`} style={{ width: '100%' }}>
                   <Skeleton width={320} height={160} />
                   <br />
                   <br />
@@ -164,7 +159,14 @@ users join chapter from the search page.
                 </div>
               ))
               : isResult(result)
-                ? <SearchResult result={result} category={category} token={token} userJoinRequests={userJoinRequests} />
+                ? (
+                  <SearchResult
+                    result={result}
+                    category={category}
+                    token={token}
+                    userJoinRequests={userJoinRequests}
+                  />
+                )
                 : <div className={styles.no_result}>No result found</div>
           }
         </section>

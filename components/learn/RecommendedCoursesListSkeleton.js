@@ -1,4 +1,5 @@
-import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
+import React from 'react';
+import Skeleton from 'react-loading-skeleton';
 
 const RecommendedCoursesListSkeleton = function () {
   return (
@@ -17,6 +18,7 @@ const RecommendedCoursesListSkeleton = function () {
 
       <div className="text-center pb-4">
         <button
+          type="button"
           data-toggle="modal"
           data-target="#exampleModal"
         >

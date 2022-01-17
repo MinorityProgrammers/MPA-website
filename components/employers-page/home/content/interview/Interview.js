@@ -1,3 +1,4 @@
+import React from 'react';
 import styles from './candidate_interview.module.css';
 import InterviewCard from '../../Card/InterviewCard';
 
@@ -44,7 +45,7 @@ const Interview = function ({ scheduled }) {
       </div>
       {/** INDIVIDUAL SCHEDULE CARDS */}
       {interviewItem.slice(0, 3).map((item, index) => (
-        <div key={index}>
+        <div key={`${index + 1}`}>
           <InterviewCard
             name={item.name}
             description={item.description}

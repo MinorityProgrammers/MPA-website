@@ -1,3 +1,4 @@
+import React from 'react';
 import styles from './candidate_card.module.css';
 
 const CandidateCard = function ({ name, description, image }) {

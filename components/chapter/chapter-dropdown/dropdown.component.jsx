@@ -1,3 +1,4 @@
+import React from 'react';
 import styles from './dropdown.module.css';
 
 const Dropdown = function ({
@@ -13,7 +14,13 @@ const Dropdown = function ({
       <div className={`${styles.dropdownList} ${toggle && styles.toggle}`}>
         {
             list && list.map((item, idx) => (
-              <div key={idx} onClick={() => setMap(item)} className={styles.dropdownItem}>{item}</div>
+              <div
+                key={`${idx + 1}`}
+                onClick={() => setMap(item)}
+                className={styles.dropdownItem}
+              >
+                {item}
+              </div>
             ))
           }
       </div>

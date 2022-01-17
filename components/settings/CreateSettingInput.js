@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Select, { components } from 'react-select';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -29,7 +29,7 @@ const CreateSettingInput = function ({
 
   const handleSwitchChange = () => (setValue
     ? {
-      value: options.find((option) => option.label == value),
+      value: options.find((option) => option.label === value),
       onChange: (e) => {
         setValue(e.value);
       },
@@ -42,7 +42,7 @@ const CreateSettingInput = function ({
 
   switch (type) {
     case 'select':
-      var DropdownIndicator = function (props) {
+      const DropdownIndicator = function (props) {
         return (
           <components.DropdownIndicator {...props}>
             <img
@@ -100,6 +100,7 @@ const CreateSettingInput = function ({
           />
         </label>
       );
+
     case 'date':
       return (
         <label

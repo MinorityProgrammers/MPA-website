@@ -7,10 +7,10 @@ const CreateProfileSidebar = ({ stepNames, activeStep }) => {
     <div className="cp-sidebar">
       <ul className="cp-stepProgress">
         {steps.map((step, key) => (
-          <li className="cp-stepProgressItem" key={key}>
+          <li className="cp-stepProgressItem" key={`${key + 1}`}>
             <span className="cp-border" />
             <div
-              className={`cp-dot ${step == activeStep ? 'cp-dotActive' : ''}`}
+              className={`cp-dot ${step === activeStep ? 'cp-dotActive' : ''}`}
             />
             <p>{stepNames[step]}</p>
           </li>

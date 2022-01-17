@@ -2,8 +2,8 @@ import React, { useState, useEffect, useContext } from 'react';
 import FormData from 'form-data';
 import { useRouter } from 'next/router';
 import { GlobalContext } from '../../contexts/provider';
-import { updateProfile } from '../../contexts/actions/profile/updateProfile';
-import { all } from '../../contexts/utils/settings/settingsInputFields';
+import updateProfile from '../../contexts/actions/profile/updateProfile';
+import all from '../../contexts/utils/settings/settingsInputFields';
 import styles from '../../styles/settings/settingBodyProfileOverview.module.css';
 import CreateSettingInput from './CreateSettingInput';
 import SettingBody from './SettingBody';
@@ -18,7 +18,7 @@ const SettingBodyProfileOverview = function ({
   const initialInputState = {};
 
   inputFields.forEach(
-    (field) => (initialInputState[field.name] = ''),
+    (field) => { initialInputState[field.name] = ''; },
     // ex. {someInputFieldName: "inputFieldValue", ...}
   );
 
@@ -26,21 +26,14 @@ const SettingBodyProfileOverview = function ({
 
   useEffect(() => {
     inputFields.forEach(
-      (field) => (initialInputState[field.name] = data?.[field.name] || ''),
+      (field) => { initialInputState[field.name] = data?.[field.name] || ''; },
     );
 
     setInputStates(initialInputState);
   }, [data]);
 
   // update userData
-  const {
-    profileDispatch,
-    profileState: {
-      profile: {
-        profileLoading, profileError, profileData, profileIsUpdated,
-      },
-    },
-  } = useContext(GlobalContext);
+  const { profileDispatch } = useContext(GlobalContext);
 
   const formData = new FormData();
   Object.keys(inputStates).forEach((inputName) => {
@@ -51,20 +44,20 @@ const SettingBodyProfileOverview = function ({
     setInputStates({ ...inputStates, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = () => {
     // submit data
     updateProfile(userID, formData)(profileDispatch);
 
     const slug = data?.userName;
-    slug && router.push(`/user/${slug}`);
+    if (slug) { router.push(`/user/${slug}`); }
   };
 
-  const closeProfileSetup = (e) => {
+  const closeProfileSetup = () => {
     // discard changes
     setInputStates(initialInputState);
 
     const slug = data?.userName;
-    slug && router.push(`/user/${slug}`);
+    if (slug) { router.push(`/user/${slug}`); }
   };
 
   // console.log({ inputStates });
@@ -129,7 +122,7 @@ const SettingBodyProfileOverview = function ({
       </div>
       {
         // display an input component for each input field
-        [all.bioField, all.languageField].map((field, key) => (
+        [all.bioField, all.languageField].map((field) => (
           <CreateSettingInput
             name={field.name}
             type={field.type}
@@ -142,7 +135,7 @@ const SettingBodyProfileOverview = function ({
             setValue={(value) => {
               handleChange(field.name, value);
             }}
-            key={key}
+            key={field.name}
           />
         ))
       }

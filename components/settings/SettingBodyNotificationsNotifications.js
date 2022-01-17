@@ -2,8 +2,8 @@ import React, { useState, useEffect, useContext } from 'react';
 import FormData from 'form-data';
 import { useRouter } from 'next/router';
 import { GlobalContext } from '../../contexts/provider';
-import { updateProfile } from '../../contexts/actions/profile/updateProfile';
-import { all } from '../../contexts/utils/settings/settingsInputFields';
+import updateProfile from '../../contexts/actions/profile/updateProfile';
+import all from '../../contexts/utils/settings/settingsInputFields';
 import styles from '../../styles/settings/settingBodyNotificationsNotifications.module.css';
 import CreateSettingInput from './CreateSettingInput';
 import SettingBody from './SettingBody';
@@ -21,7 +21,7 @@ const SettingBodyNotificationsNotifications = function ({ settingsPage, data, us
   const initialInputState = {};
 
   inputFields.forEach(
-    (field) => (initialInputState[field.name] = ''),
+    (field) => { initialInputState[field.name] = ''; },
     // ex. {someInputFieldName: "inputFieldValue", ...}
   );
 
@@ -29,20 +29,13 @@ const SettingBodyNotificationsNotifications = function ({ settingsPage, data, us
 
   useEffect(() => {
     inputFields.forEach(
-      (field) => (initialInputState[field.name] = data?.[field.name] || false),
+      (field) => { initialInputState[field.name] = data?.[field.name] || false; },
     );
 
     setInputStates(initialInputState);
   }, [data]);
 
-  const {
-    profileDispatch,
-    profileState: {
-      profile: {
-        profileLoading, profileError, profileData, profileIsUpdated,
-      },
-    },
-  } = useContext(GlobalContext);
+  const { profileDispatch } = useContext(GlobalContext);
 
   const formData = new FormData();
   Object.keys(inputStates).forEach((inputName) => {
@@ -53,19 +46,19 @@ const SettingBodyNotificationsNotifications = function ({ settingsPage, data, us
     setInputStates({ ...inputStates, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = () => {
     // submit data
     updateProfile(userID, formData)(profileDispatch);
 
     const slug = data?.userName;
-    slug && router.push(`/user/${slug}`);
+    if (slug) { router.push(`/user/${slug}`); }
   };
 
-  const closeProfileSetup = (e) => {
+  const closeProfileSetup = () => {
     setInputStates(initialInputState);
 
     const slug = data?.userName;
-    slug && router.push(`/user/${slug}`);
+    if (slug) { router.push(`/user/${slug}`); }
   };
   return (
     <SettingBody
@@ -86,7 +79,7 @@ const SettingBodyNotificationsNotifications = function ({ settingsPage, data, us
               all.notifyAccountActivityField,
               all.notifyJobAlertsField,
               all.notifyEventsField,
-            ].map((field, key) => (
+            ].map((field) => (
               <CreateSettingInput
                 name={field.name}
                 type={field.type}
@@ -97,7 +90,7 @@ const SettingBodyNotificationsNotifications = function ({ settingsPage, data, us
                 setValue={(value) => {
                   handleChange(field.name, value);
                 }}
-                key={key}
+                key={field.name}
               />
             ))
           }

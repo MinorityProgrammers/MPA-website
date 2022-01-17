@@ -8,7 +8,16 @@ const CourseWeeksList = function (props) {
   const toastId = useRef(null);
   const router = useRouter();
   const {
-    courseId, beginnerPercentage, intermediatePercentage, advancedPercentage, specificUBeginnerModules, specificUIntermediateModules, specificUAdvancedModules, beginnerLength, intermediateLength, advancedLength,
+    courseId,
+    beginnerPercentage,
+    intermediatePercentage,
+    advancedPercentage,
+    specificUBeginnerModules,
+    specificUIntermediateModules,
+    specificUAdvancedModules,
+    beginnerLength,
+    intermediateLength,
+    advancedLength,
   } = props;
 
   // Beginner level completion status
@@ -18,9 +27,9 @@ const CourseWeeksList = function (props) {
   specificUBeginnerModules.forEach((module) => {
     completedBeginner += module.completed;
     if (module.completionStatus === 'completed') {
-      completedStatusBeginner++;
+      completedStatusBeginner += 1;
     } else if (module.completionStatus === 'uncompleted') {
-      uncompletedStatusBeginner++;
+      uncompletedStatusBeginner += 1;
     }
   });
 
@@ -31,9 +40,9 @@ const CourseWeeksList = function (props) {
   specificUIntermediateModules.forEach((module) => {
     completedIntermediate += module.completed;
     if (module.completionStatus === 'completed') {
-      completedStatusIntermediate++;
+      completedStatusIntermediate += 1;
     } else if (module.completionStatus === 'uncompleted') {
-      uncompletedStatusIntermediate++;
+      uncompletedStatusIntermediate += 1;
     }
   });
 
@@ -42,9 +51,9 @@ const CourseWeeksList = function (props) {
   let uncompletedStatusAdvanced = 0;
   specificUAdvancedModules.forEach((module) => {
     if (module.completionStatus === 'completed') {
-      completedStatusAdvanced++;
+      completedStatusAdvanced += 1;
     } else if (module.completionStatus === 'uncompleted') {
-      uncompletedStatusAdvanced++;
+      uncompletedStatusAdvanced += 1;
     }
   });
 
@@ -80,16 +89,17 @@ const CourseWeeksList = function (props) {
           <div className="course-weeks mb-4 moduleInfo">
 
             <div className="pt-3 pr-3">
-              {!isNaN(beginnerPercentage)
-                                && (
-                                <>
-                                  {
-                                        completedStatusBeginner === beginnerLength ? <p className="green-status ml-auto"><span>completed</span></p>
-                                          : uncompletedStatusBeginner > 0 || completedStatusBeginner > 0 ? <p className="red-status ml-auto"><span>uncompleted</span></p>
-                                            : <p className="white-status ml-auto"><span>Start</span></p>
-                                    }
-                                </>
-                                )}
+              {
+                !Number.isNaN(beginnerPercentage) && (
+                  <>
+                    {
+                      completedStatusBeginner === beginnerLength ? <p className="green-status ml-auto"><span>completed</span></p>
+                        : uncompletedStatusBeginner > 0 || completedStatusBeginner > 0 ? <p className="red-status ml-auto"><span>uncompleted</span></p>
+                          : <p className="white-status ml-auto"><span>Start</span></p>
+                    }
+                  </>
+                )
+              }
             </div>
             <div className="d-pb-1 text-center">
               <h4 className="mt-2 mb-2 text-white text-capitalize">Beginner Level</h4>
@@ -100,13 +110,14 @@ const CourseWeeksList = function (props) {
               </div>
             </div>
             <p className="text-center text-white pb-3">
-              {!isNaN(beginnerPercentage)
-                                && (
-                                <span className="">
-                                  {beginnerPercentage}
-                                  % completed
-                                </span>
-                                )}
+              {
+                !Number.isNaN(beginnerPercentage) && (
+                  <span className="">
+                    {beginnerPercentage}
+                    % completed
+                  </span>
+                )
+              }
             </p>
           </div>
         </div>
@@ -116,16 +127,17 @@ const CourseWeeksList = function (props) {
         <div className="px-md-3 mx-md-5 mt-4 pt-2 all-weeks">
           <div className="course-weeks mb-4 moduleInfo">
             <div className="pt-3 pr-3">
-              {!isNaN(intermediatePercentage)
-                                && (
-                                <>
-                                  {
-                                        completedStatusIntermediate === intermediateLength ? <p className="green-status ml-auto"><span>completed</span></p>
-                                          : uncompletedStatusIntermediate > 0 || completedStatusIntermediate > 0 ? <p className="red-status ml-auto"><span>uncompleted</span></p>
-                                            : <p className="white-status ml-auto"><span>Start</span></p>
-                                    }
-                                </>
-                                )}
+              {
+                !Number.isNaN(intermediatePercentage) && (
+                  <>
+                    {
+                      completedStatusIntermediate === intermediateLength ? <p className="green-status ml-auto"><span>completed</span></p>
+                        : uncompletedStatusIntermediate > 0 || completedStatusIntermediate > 0 ? <p className="red-status ml-auto"><span>uncompleted</span></p>
+                          : <p className="white-status ml-auto"><span>Start</span></p>
+                    }
+                  </>
+                )
+              }
             </div>
             <div className="d-pb-1 text-center">
               <h4 className="mt-2 mb-2 text-white text-capitalize">Intermediate Level</h4>
@@ -136,13 +148,14 @@ const CourseWeeksList = function (props) {
               </div>
             </div>
             <p className="text-center text-white pb-3">
-              {!isNaN(intermediatePercentage)
-                                && (
-                                <span className="">
-                                  {intermediatePercentage}
-                                  % completed
-                                </span>
-                                )}
+              {
+                !Number.isNaN(intermediatePercentage) && (
+                  <span className="">
+                    {intermediatePercentage}
+                    % completed
+                  </span>
+                )
+              }
             </p>
           </div>
         </div>
@@ -152,16 +165,17 @@ const CourseWeeksList = function (props) {
         <div className="px-md-3 mx-md-5 mt-4 pt-2 all-weeks">
           <div className="course-weeks mb-4 moduleInfo">
             <div className="pt-3 pr-3">
-              {!isNaN(advancedPercentage)
-                                && (
-                                <>
-                                  {
-                                        completedStatusAdvanced === advancedLength ? <p className="green-status ml-auto"><span>completed</span></p>
-                                          : uncompletedStatusAdvanced > 0 || completedStatusAdvanced > 0 ? <p className="red-status ml-auto"><span>uncompleted</span></p>
-                                            : <p className="white-status ml-auto"><span>Start</span></p>
-                                    }
-                                </>
-                                )}
+              {
+                !Number.isNaN(advancedPercentage) && (
+                  <>
+                    {
+                      completedStatusAdvanced === advancedLength ? <p className="green-status ml-auto"><span>completed</span></p>
+                        : uncompletedStatusAdvanced > 0 || completedStatusAdvanced > 0 ? <p className="red-status ml-auto"><span>uncompleted</span></p>
+                          : <p className="white-status ml-auto"><span>Start</span></p>
+                    }
+                  </>
+                )
+              }
             </div>
             <div className="d-pb-1 text-center">
               <h4 className="mt-2 mb-2 text-white text-capitalize">Advanced Level</h4>
@@ -172,13 +186,14 @@ const CourseWeeksList = function (props) {
               </div>
             </div>
             <p className="text-center text-white pb-3">
-              {!isNaN(advancedPercentage)
-                                && (
-                                <span className="">
-                                  {advancedPercentage}
-                                  % completed
-                                </span>
-                                )}
+              {
+                !Number.isNaN(advancedPercentage) && (
+                  <span className="">
+                    {advancedPercentage}
+                    % completed
+                  </span>
+                )
+              }
             </p>
           </div>
         </div>

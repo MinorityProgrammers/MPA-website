@@ -5,7 +5,7 @@ import { successToast } from '../../contexts/utils/toasts';
 
 const QuickApplyJobApplication = (props) => {
   const {
-    job, open, closeModal, data, getAppliedJobs,
+    job, open, closeModal, getAppliedJobs,
   } = props;
 
   const userInfo = typeof window !== 'undefined'
@@ -98,7 +98,7 @@ const QuickApplyJobApplication = (props) => {
           },
         },
       )
-      .then((result) => {
+      .then(() => {
         successToast(`Applied ${job.job_title} position Successfully!`);
         getAppliedJobs();
       })
@@ -357,7 +357,7 @@ const QuickApplyJobApplication = (props) => {
                 required
               />
               {resumeSizeWarning && (
-                <p className="tw-text-red-500">File size can't exceed 5mb.</p>
+                <p className="tw-text-red-500">File size can&apos;t exceed 5mb.</p>
               )}
             </div>
 
@@ -372,7 +372,7 @@ const QuickApplyJobApplication = (props) => {
                 onChange={handleAdditionalInput}
               />
               {additionalSizeWarning && (
-                <p className="tw-text-red-500">File size can't exceed 5mb.</p>
+                <p className="tw-text-red-500">File size can&apos;t exceed 5mb.</p>
               )}
               <img src={setResume.file} alt="" />
             </div>

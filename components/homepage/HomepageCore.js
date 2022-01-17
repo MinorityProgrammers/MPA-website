@@ -146,7 +146,7 @@ const Popup = function ({
           <div className="popup_content-core">
             <div className="popup_heading-core">
               <div className={`popup_image_container-core ${color}`}>
-                <img className="popup_img-core" src={icon} alt="" />
+                <img className="popup_img-core" src={icon} alt="popup_img-icon" />
               </div>
               <div className={`popup_title_container-core ${color}`}>
                 <div className="popup_title-core">{title}</div>

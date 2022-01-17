@@ -30,6 +30,7 @@ const FeaturedPopup = (props) => props.trigger === true && (
     }}
   >
     <button
+      type="button"
       className="close__btn"
       style={{
         position: 'absolute',

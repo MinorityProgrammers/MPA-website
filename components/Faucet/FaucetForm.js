@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { ethers } from 'ethers';
 import Abi from './contractAbi.json';
 
-const FaucetForm = function (props) {
+const FaucetForm = function () {
   const minterAddress = process.env.MINTER_ADDRESS;
   const [address, setAddresss] = useState('');
   const [error, setError] = useState('');
@@ -25,13 +25,13 @@ const FaucetForm = function (props) {
       try {
         await contract.mint(address);
         alert('Token sent, check your wallet, Contract address: 0x316748158Bf8a5C50cfF39aef9AC44aD0a9579B6');
-      } catch (error) {
-        if (error.code === 4001) {
-          setError(error.message);
+      } catch (err) {
+        if (err.code === 4001) {
+          setError(err.message);
           alert('You cancelled the transaction!');
         } else {
-          setError(error.data.message);
-          alert(`${error.data.message === 'execution reverted' ? 'check that you have not recieved $MPA token before' : 'check that your wallet contains some $Minority token'}`);
+          setError(err.data.message);
+          alert(`${err.data.message === 'execution reverted' ? 'check that you have not recieved $MPA token before' : 'check that your wallet contains some $Minority token'}`);
         }
         setErrorState('');
       }
@@ -63,7 +63,8 @@ const FaucetForm = function (props) {
           <input type="text" value={address} onChange={handleAddress} placeholder="Enter your address" className="faucet-form" />
           <span className="icon-bg">
             <span className="tooltiptext">
-              To be eligible for the Governance token you must possess some $MINORITY token in your wallet, each wallet is only eligible for one request.
+              To be eligible for the Governance token you must possess some
+              $MINORITY token in your wallet, each wallet is only eligible for one request.
             </span>
             <span className="eligibility-info">
               &#8505;

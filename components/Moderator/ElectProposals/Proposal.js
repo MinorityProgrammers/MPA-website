@@ -123,7 +123,7 @@ const Proposal = function ({ proposal }) {
         <div className="count tw-flex tw-self-center mr-t">
           <div className=" tw-mr-3">
             <p>
-              {reply == 0 ? <strong> 1 </strong> : <strong>{reply}</strong> }
+              {reply === 0 ? <strong> 1 </strong> : <strong>{reply}</strong> }
               {' '}
               <br />
               {' '}
@@ -156,12 +156,12 @@ const Proposal = function ({ proposal }) {
         </div>
         <div className="s-p-view tw-w-1/5 tw-text-center mr-t">
           <p className="tw-mb-5">
-            <button className="view-p-btn tw-shadow-lg">
+            <button type="button" className="view-p-btn tw-shadow-lg">
               View Proposal
             </button>
           </p>
           <p>
-            <button className="elect-p-btn tw-shadow-lg">
+            <button type="button" className="elect-p-btn tw-shadow-lg">
               Elect Proposal
             </button>
           </p>

@@ -74,7 +74,7 @@ const TaskStatus = function () {
   );
 };
 
-const ProposalList = function ({ id, sDes, flag }) {
+const ProposalList = function ({ sDes, flag }) {
   return (
     <div className="task-card tw-col-span-1 tw-mr-2 tw-mb-2">
       <div className="task-des tw-flex">

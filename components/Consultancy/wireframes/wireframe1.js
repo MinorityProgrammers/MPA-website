@@ -1,4 +1,4 @@
-import { useState, Fragment } from 'react';
+import React, { useState } from 'react';
 import BlurBackground from '../helperFiles/blurBackground';
 import Select from '../helperFiles/customInputTags/select';
 import NeedHelp from '../helperFiles/needHelp';
@@ -37,6 +37,7 @@ const Wireframe1 = function ({ step }) {
               pressing the follow up button.
             </article>
             <button
+              type="button"
               onClick={() => {
                 setShowBlur(option);
               }}
@@ -63,6 +64,7 @@ const Wireframe1 = function ({ step }) {
               <div className="contain-buttons">
                 {showBlur === 1 ? (
                   <button
+                    type="button"
                     className="btn-1"
                     onClick={() => {
                       document.body.classList.remove('hide-overflow');
@@ -74,6 +76,7 @@ const Wireframe1 = function ({ step }) {
                 ) : (
                   <div style={{ width: '60%', display: 'flex' }}>
                     <button
+                      type="button"
                       className="btn-1 btn-1-plus-select"
                       style={{
                         margin: 0,

@@ -14,7 +14,7 @@ function overview() {
     const token = window.localStorage.getItem('jwtToken');
     const userInfo = window.localStorage.getItem('userInfo');
 
-    token && userInfo && setUserID(jwt.decode(token).id);
+    if (token && userInfo) { setUserID(jwt.decode(token).id); }
   }, []);
 
   return (

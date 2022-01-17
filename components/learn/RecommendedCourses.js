@@ -40,7 +40,14 @@ const RecommendedCourses = function ({ recommendedCourses, handleCourseInfo, sho
         </div>
         <div className={coursesLength > 2 ? 'mt-3 pt-2 FRCourses' : 'mt-3 courses-info pt-2 recommended-courses'}>
           <Slider {...conditionalInfinite}>
-            {recommendedCourses && recommendedCourses.map((course) => <RecommendedCourseList showModal={showModal} course={course} key={course._id} handleCourseInfo={handleCourseInfo} />)}
+            {recommendedCourses && recommendedCourses.map((course) => (
+              <RecommendedCourseList
+                showModal={showModal}
+                course={course}
+                key={course._id}
+                handleCourseInfo={handleCourseInfo}
+              />
+            ))}
           </Slider>
         </div>
       </div>

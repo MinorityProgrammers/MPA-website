@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import React from 'react';
 
 const dummyFunction = () => {};
 const Buttons = function ({
@@ -13,6 +13,7 @@ const Buttons = function ({
     <div className="service_buttons">
       {left ? (
         <button
+          type="button"
           onClick={() => {
             minus();
           }}
@@ -23,6 +24,7 @@ const Buttons = function ({
       ) : null}
       {right ? (
         <button
+          type="button"
           onClick={() => {
             plus();
             // if (!customPlusFunction) plus();

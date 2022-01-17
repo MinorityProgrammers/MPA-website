@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { PayPalButtons } from '@paypal/react-paypal-js';
 import SponsorshipPaymentCompleted from './SponsorshipPaymentCompleted';
 import SponsorshipPaymentDetails from './SponsorshipPaymentDetails';
@@ -23,9 +23,9 @@ const SponsorshipCard = function ({
   const [count, setCount] = useState(1);
 
   const [succeeded, setSucceeded] = useState(false);
-  const [orderID, setOrderID] = useState(false);
+  const [, setOrderID] = useState(false);
   const [billingDetails, setBillingDetails] = useState([]);
-  const [payment, setPayment] = useState([]);
+  const [, setPayment] = useState([]);
 
   const amount = sponsorshipOption === 'ally'
     ? 5000
@@ -49,9 +49,9 @@ const SponsorshipCard = function ({
         shipping_preference: 'NO_SHIPPING',
       },
     })
-    .then((orderID) => {
-      setOrderID(orderID);
-      return orderID;
+    .then((_orderID) => {
+      setOrderID(_orderID);
+      return _orderID;
     });
 
   // handles when a payment is confirmed for paypal
@@ -61,7 +61,7 @@ const SponsorshipCard = function ({
     setPayment(purchase_units);
     setSucceeded(true);
     setIsDone(true);
-    count++;
+    setCount(count + 1); // this was changed from count++ to setCount(count+1)
   });
 
   return (

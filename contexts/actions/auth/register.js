@@ -6,7 +6,7 @@ import {
 } from '../actionTypes';
 import { successToast, errorToast } from '../../utils/toasts';
 
-export const register = (body) => (dispatch) => {
+const register = (body) => (dispatch) => {
   dispatch({
     type: REGISTER_LOADING,
   });
@@ -24,7 +24,7 @@ export const register = (body) => (dispatch) => {
       //   setAuthorizationToken(token)
       localStorage.setItem('userInfo', JSON.stringify(res.data.data));
 
-      if (res?.data?.status == 'success') {
+      if (res?.data?.status === 'success') {
         successToast(res.data.message);
         // window.location.href = "/create-profile";
       } else {
@@ -49,3 +49,5 @@ export const register = (body) => (dispatch) => {
       });
     });
 };
+
+export default register;

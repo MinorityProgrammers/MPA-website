@@ -34,7 +34,12 @@ const CreateProfileQuestions4 = function ({
     });
     // fieldValues[0].value = reset;
   };
-  const allInputFields = [passionsField, softSkillsField, programmingLanguagesField, proficiencyField];
+  const allInputFields = [
+    passionsField,
+    softSkillsField,
+    programmingLanguagesField,
+    proficiencyField,
+  ];
 
   const [displayWarning, setDisplayWarning] = useState(false);
   const toggleWarning = (on) => {
@@ -58,7 +63,7 @@ const CreateProfileQuestions4 = function ({
   const handleNext = () => {
     const inputFieldNames = Object.keys(state[step]);
     const allRequiredFilled = inputFieldNames.every((fieldName) => {
-      const inputField = allInputFields.find((inputField) => inputField.name == fieldName);
+      const inputField = allInputFields.find((_inputField) => _inputField.name === fieldName);
       return (state[step][fieldName]) || !inputField.required;
     });
     if (allRequiredFilled) {
@@ -90,7 +95,7 @@ const CreateProfileQuestions4 = function ({
                 options={passionsField.options}
                 required={passionsField.required}
               />
-              <button onClick={(e) => handleAdd(e, [passionsField.name], '')}>Add</button>
+              <button type="button" onClick={(e) => handleAdd(e, [passionsField.name], '')}>Add</button>
             </div>
             <CreateProfileSkills
               values={[...state[step][passionsField.name]]}
@@ -114,7 +119,7 @@ const CreateProfileQuestions4 = function ({
                 options={proficiencyField.options}
                 required={proficiencyField.required}
               />
-              <button onClick={(e) => handleAdd(e, [softSkillsField.name, proficiencyField.name], '')}>Add</button>
+              <button type="button" onClick={(e) => handleAdd(e, [softSkillsField.name, proficiencyField.name], '')}>Add</button>
             </div>
             <CreateProfileSkills
               values={[...state[step][softSkillsField.name]]}
@@ -137,7 +142,7 @@ const CreateProfileQuestions4 = function ({
                 options={proficiencyField.options}
                 required={proficiencyField.required}
               />
-              <button onClick={(e) => handleAdd(e, [programmingLanguagesField.name, proficiencyField.name], '')}>Add</button>
+              <button type="button" onClick={(e) => handleAdd(e, [programmingLanguagesField.name, proficiencyField.name], '')}>Add</button>
             </div>
             <CreateProfileSkills
               values={[...state[step][programmingLanguagesField.name]]}
@@ -147,8 +152,8 @@ const CreateProfileQuestions4 = function ({
         </div>
       </CreateProfileForm>
       <div className="cp-navButtonsContainer">
-        <button className="cp-navButton" onClick={handlePrev}><AiOutlineArrowLeft /></button>
-        <button className="cp-navButton" onClick={handleNext}><AiOutlineArrowRight /></button>
+        <button type="button" className="cp-navButton" onClick={handlePrev}><AiOutlineArrowLeft /></button>
+        <button type="button" className="cp-navButton" onClick={handleNext}><AiOutlineArrowRight /></button>
       </div>
     </div>
   );

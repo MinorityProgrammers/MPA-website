@@ -1,3 +1,4 @@
+import React from 'react';
 import styles from './chapterHeader.module.css';
 
 const ChapterHeader = function () {

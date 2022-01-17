@@ -41,9 +41,7 @@ const FeaturedUpcomingSkeleton = () => (
           breakLabel="..."
           breakClassName="break-me"
           pageCount={2}
-          onPageChange={() => {
-            null;
-          }}
+          onPageChange={() => null}
           containerClassName="paginationBttns"
           previousLinkClassName="previousBttn"
           nextLinkClassName="nextBttn"

@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -10,7 +8,7 @@ import { IoLocationOutline } from 'react-icons/io5';
 import { AiFillHome } from 'react-icons/ai';
 
 const Profile = ({
-  setOpen, setNotice, setLog, user,
+  setOpen, user, /* setNotice, setLog, */
 }) => (
   <div
     className="tw-bg-surface tw-text-gray-800 tw-col-end-13 tw-col-start-1 lg:tw-col-start-3 tw-p-2   tw-row-start-2  tw-row-end-4 p-3"

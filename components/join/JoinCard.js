@@ -8,12 +8,11 @@ const JoinCard = function () {
   const router = useRouter();
   // Auth States
   const [active, setActive] = useState('');
-  const [userData, setUserData] = useState([]);
+  const [, setUserData] = useState([]);
 
   const {
-    authDispatch,
     authState: {
-      auth: { loading, error, data },
+      auth: { data },
     },
   } = useContext(GlobalContext);
 
@@ -21,7 +20,7 @@ const JoinCard = function () {
     const token = window.localStorage.getItem('jwtToken');
     const userInfo = window.localStorage.getItem('userInfo');
 
-    if (token == null || userInfo == {}) {
+    if (token == null || userInfo === {}) {
       setUserData(null);
       setActive(false);
     } else {

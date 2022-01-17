@@ -64,12 +64,12 @@ const ProposalDetailsHeader = () => (
       </div>
       <div className="tw-grid tw-m-8 tw-items-center">
         <p>
-          <button className="tw-h-10 tw-m-2 tw-text-xl tw-w-48 tw-text-center tw-border tw-rounded tw-border-purple-900 tw-text-blue-900">
+          <button type="button" className="tw-h-10 tw-m-2 tw-text-xl tw-w-48 tw-text-center tw-border tw-rounded tw-border-purple-900 tw-text-blue-900">
             View Proposal
           </button>
         </p>
         <p>
-          <button className="tw-h-10 tw-bg-blue-900 tw-text-xl tw-m-2 tw-rounded tw-w-48 tw-text-white tw-text-center">
+          <button type="button" className="tw-h-10 tw-bg-blue-900 tw-text-xl tw-m-2 tw-rounded tw-w-48 tw-text-white tw-text-center">
             Create Task
           </button>
         </p>

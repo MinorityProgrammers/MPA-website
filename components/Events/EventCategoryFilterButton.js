@@ -1,13 +1,13 @@
-import { useState } from 'react';
+import React from 'react';
 
 const EventCategoryFilterButton = function ({
-  category, description, idx, categoryFilter, filter, activebtn, onClickActive,
+  category, description, idx, categoryFilter, activebtn, onClickActive,
 }) {
   // const [active, setActive] = useState(activebtn)
 
-  const onClick = (idx) => {
+  const onClick = (_idx) => {
     // setActive(!active)
-    categoryFilter(idx);
+    categoryFilter(_idx);
     onClickActive();
   };
 

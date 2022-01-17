@@ -30,6 +30,7 @@ const FeaturedForm = (props) => props.trigger && (
     }}
   >
     <button
+      type="button"
       className="close__btn"
       style={{
         position: 'absolute',

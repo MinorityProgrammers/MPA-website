@@ -1,8 +1,10 @@
-import { Fragment } from 'react';
+import React from 'react';
 
 const totalSteps = 9;
 const KeepingUpWithStep = function ({ selected, marginTop = 0 }) {
-  const calculateLinePercentage = () => (selected === 0 ? 0 : ((selected - 1) / (totalSteps - 1)) * 100);
+  const calculateLinePercentage = () => (
+    selected === 0 ? 0 : ((selected - 1) / (totalSteps - 1)) * 100
+  );
 
   const percentageOfBlueLine = Number.isInteger(selected)
     ? calculateLinePercentage()
@@ -22,7 +24,7 @@ const KeepingUpWithStep = function ({ selected, marginTop = 0 }) {
             {[
               ...(function () {
                 const range = [];
-                for (let i = 0; i < totalSteps; i++) range.push(i + 1);
+                for (let i = 0; i < totalSteps; i += 1) range.push(i + 1);
                 return range;
               }()),
             ].map((index) => (

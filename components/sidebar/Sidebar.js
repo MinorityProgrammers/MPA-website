@@ -17,9 +17,9 @@ const Sidebar = ({
   const [pages, setPages] = useState(false);
   const [users, setUser] = useState(false);
   const { role } = authUser || 'student';
-  const { lastName } = authUser || 'user';
-  const { profileImage } = authUser || './assets/images/mpcircle.svg';
-  const { firstName } = authUser || 'user';
+  // const { lastName } = authUser || 'user';
+  // const { profileImage } = authUser || './assets/images/mpcircle.svg';
+  // const { firstName } = authUser || 'user';
 
   return (
     <div

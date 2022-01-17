@@ -1,15 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Skeleton from 'react-loading-skeleton';
-import axios from 'axios';
+// import axios from 'axios';
 
-const OverviewWallet = (props) => {
+const OverviewWallet = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setTimeout(setLoading(false), 3000);
+    const timeoutID = setTimeout(setLoading(false), 3000);
+    return () => { clearTimeout(timeoutID); };
   }, []);
 
-  const EmptyWallet = () => (
+  // EmptyWallet component is not used in this file, check if it is needed before deleting it
+  const EmptyWallet = useCallback(() => (
     <div className="d-flex flex-column justify-content-between h-100 w-100 ">
       {/* title */}
       <p style={{
@@ -63,6 +65,7 @@ const OverviewWallet = (props) => {
                 width: '30px', height: '30px', borderRadius: '50%', marginRight: '5px',
               }}
               src="/assets/images/mpicon.svg"
+              alt="mpicon"
             />
             <div className="d-flex flex-column" style={{ textAlign: 'left' }}>
               <p style={{
@@ -111,7 +114,7 @@ const OverviewWallet = (props) => {
         </div>
       </div>
     </div>
-  );
+  ), []);
 
   return (
     <div style={{ height: '100%' }}>
@@ -193,6 +196,7 @@ const OverviewWallet = (props) => {
                       width: '30px', height: '30px', borderRadius: '50%', marginRight: '5px',
                     }}
                     src="/assets/images/mpicon.svg"
+                    alt="mpicon"
                   />
                   <div className="d-flex flex-column" style={{ textAlign: 'left' }}>
                     <p style={{

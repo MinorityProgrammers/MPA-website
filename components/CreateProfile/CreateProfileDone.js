@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
-import { AiFillCloseCircle, AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai';
+import { AiFillCloseCircle } from 'react-icons/ai';
 import Avatar from 'avataaars';
 import { useRouter } from 'next/router';
 import CreateProfileForm from './CreateProfileForm';
 
 const ProfileDone = function ({
-  state, setState, step, setStep, closeProfileSetup,
+  state, step, setStep, closeProfileSetup,
 }) {
-  const userName = Object.values(state)[2].username;
+  // const userName = Object.values(state)[2].username;
   const [displayWarning, setDisplayWarning] = useState(false);
+
   const toggleWarning = (on) => {
     if (on) {
       if (!displayWarning) {
@@ -21,16 +22,19 @@ const ProfileDone = function ({
       setDisplayWarning(false);
     }
   };
+
   // go back one step
   const handlePrev = () => {
     setStep(step - 1);
     toggleWarning(false);
   };
+
   // go forward one step
   const router = useRouter();
   const handleNext = () => {
     router.push(`/user/${Object.values(state)[0].userName}`);
   };
+
   return (
     <div className="cp-body">
       <AiFillCloseCircle className="cp-close" onClick={closeProfileSetup} style={{ cursor: 'pointer' }} />
@@ -59,7 +63,7 @@ const ProfileDone = function ({
               as well as your MPA community. Cheers!
             </p>
             <div className="cp__done--btn">
-              <button className="cp-navButton tw-outline-none" onClick={handleNext}>Done</button>
+              <button type="button" className="cp-navButton tw-outline-none" onClick={handleNext}>Done</button>
             </div>
           </div>
         </div>

@@ -15,31 +15,19 @@ const softSkill_list = ['communication', 'leadership', 'collaboration'];
 const programmingLanguage_list = ['Java', 'Python', 'HTML', 'CSS', 'Javascript', 'Ruby', 'PHP', 'Sql', 'Swift', 'C-Plusplus', 'C-Sharp', 'Visual Basic Net', 'Objective C', 'Matlab', 'Kotlin', 'Unix', 'Shell', 'Web-Development', 'Cryptography', 'Algorithms', 'UI/UX', 'Wireframing', 'System Design', 'Cloud', 'Mobile Development', 'Web Automation', 'Cyber Security', 'Dev-Ops', 'Quality-Assurance', 'Data-Analytics', 'Data Mining', 'Data Science', 'Game Development', 'Robotics', 'Quantum Computing', 'Internet of Things', 'Amazon Web Services', 'Microsoft Azure'];
 
 export const storeOne = () => {
-  const tempArray1 = [];
-  ethnicity_list.map((element) => {
-    tempArray1.push({ label: `${element}`, value: element });
-  });
+  const tempArray1 = ethnicity_list.map((element) => ({ label: `${element}`, value: element }));
   return tempArray1;
 };
 export const storeTwo = () => {
-  const tempArray2 = [];
-  country_list.map((element) => {
-    tempArray2.push({ label: `${element}`, value: element });
-  });
+  const tempArray2 = country_list.map((element) => ({ label: `${element}`, value: element }));
   return tempArray2;
 };
 export const storeThree = () => {
-  const tempArray3 = [];
-  gender_list.map((element) => {
-    tempArray3.push({ label: `${element}`, value: element });
-  });
+  const tempArray3 = gender_list.map((element) => ({ label: `${element}`, value: element }));
   return tempArray3;
 };
 export const storeFour = () => {
-  const tempArray4 = [];
-  Experience.map((element) => {
-    tempArray4.push({ label: `${element}`, value: element });
-  });
+  const tempArray4 = Experience.map((element) => ({ label: `${element}`, value: element }));
   return tempArray4;
 };
 

@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AiOutlineClose } from 'react-icons/ai';
 import { RiArrowDropDownLine } from 'react-icons/ri';
 import 'react-toastify/dist/ReactToastify.css';
-import { updateProfile } from '../contexts/actions/profile/updateProfile';
+import updateProfile from '../contexts/actions/profile/updateProfile';
 import { GlobalContext } from '../contexts/provider';
 import { storeOne, storeThree, storeTwo } from '../contexts/utils/fields';
 import { CustomInput } from './form-elements/inputs';
@@ -13,7 +13,7 @@ const UpdateProfileTwo = function ({ open = true, setOpen = () => {}, userData }
     profileDispatch,
     profileState: {
       profile: {
-        profileLoading, profileError, profileData, profileIsUpdated,
+        profileError, profileData,
       },
     },
   } = useContext(GlobalContext);
@@ -244,8 +244,8 @@ const UpdateProfileTwo = function ({ open = true, setOpen = () => {}, userData }
                 <h2>Personal Information</h2>
               </div>
               <div className="up-modal-section-body">
-                {personalInfo.map((field, id) => (
-                  <div className="up-social" key={id}>
+                {personalInfo.map((field) => (
+                  <div className="up-social" key={field.name}>
                     <label htmlFor={field.name}>{field.label}</label>
                     <div className="up-input">
                       {field.type === 'list' ? (
@@ -285,8 +285,8 @@ const UpdateProfileTwo = function ({ open = true, setOpen = () => {}, userData }
                 <h2>Additional Media</h2>
               </div>
               <div className="up-modal-section-body">
-                {socialMedia.map((field, id) => (
-                  <div className="up-social" key={id}>
+                {socialMedia.map((field) => (
+                  <div className="up-social" key={field.name}>
                     <label htmlFor={field.name}>{field.label}</label>
                     <div className="up-input">
                       <CustomInput

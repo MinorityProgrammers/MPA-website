@@ -1,28 +1,29 @@
-/* eslint-disable react/no-unstable-nested-components */
-/* eslint-disable jsx-a11y/alt-text */
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+/* eslint-disable max-len */
+import React, { useState, useEffect, useCallback } from 'react';
 import Skeleton from 'react-loading-skeleton';
-import EmptyOverviewComponent from './EmptyOverviewComponent';
+// import EmptyOverviewComponent from './EmptyOverviewComponent';
 
-const OverviewMyProposals = (props) => {
+const OverviewMyProposals = () => {
   const [loading, setLoading] = useState(true);
   const [currentView, setCurrentView] = useState('ideas');
 
   useEffect(() => {
-    setTimeout(() => { setLoading(false); }, 5000);
+    const timeoutID = setTimeout(() => { setLoading(false); }, 5000);
+    return () => { clearTimeout(timeoutID); };
   }, []);
 
-  const AprrovedButton = () => (
-    <button className="btn btn-primary overview-proposal-button" style={{ background: '#2D761B' }}>Approved</button>
-  );
-  const UnderReviewButton = () => (
-    <button className="btn btn-primary overview-proposal-button" style={{ background: '#6A0C8B' }}>Under Review</button>
+  const AprrovedButton = useCallback(() => (
+    <button type="button" className="btn btn-primary overview-proposal-button" style={{ background: '#2D761B' }}>Approved</button>
+  ), []);
+
+  /* const UnderReviewButton = () => (
+    <button type="button" className="btn btn-primary overview-proposal-button" style={{ background: '#6A0C8B' }}>Under Review</button>
   );
   const SubmitedButton = () => (
-    <button className="btn btn-primary overview-proposal-button" style={{ background: '#151371' }}>Submited</button>
-  );
-  const ProposalCard = () => (
+    <button type="button" className="btn btn-primary overview-proposal-button" style={{ background: '#151371' }}>Submited</button>
+  ); */
+
+  const ProposalCard = useCallback(() => (
     <div className="overview-proposal-card d-flex flex-row justify-content-center align-items-center" style={{ width: '100%' }}>
       <p className="proposal-card-info" style={{ width: '25%', margin: 0 }}>
         Dog Walkr
@@ -39,11 +40,12 @@ const OverviewMyProposals = (props) => {
             height: '24px', width: '24px', borderRadius: '50%', marginRight: '2px',
           }}
           src="https://s3-alpha-sig.figma.com/img/8f26/8387/fe7165a279e84bfb08b58534b8aff61a?Expires=1638748800&Signature=EcDi0o7X9EcSh~fF3W21-A~FYI-99XEY-KWaIr862bD7XA2VIxsQEDxsg~0hLgfFk-4lsYjLKPyiQnHwZ13fZy8IN7L0vX81Nb5dKdpfp5Ii-GJ2rNkD6eGSNfL6~zMWygUfBHJzObhrZhPUYzhU45HldQxHCUQRtMMPbqhOJFtGj59GmFAt4YUXfBy3fGbtWoMOZ9v3xEm6X7dDyLCeX5J7IwkvYLlqN4j95N4yo6Nor1PfGAs564wZzNUynl~I3Th6QypIVQz-kG6k0NwsePDlT7RXcQJv8d8~2rk3FpZaCQ5Ud35T3JS6xnw8KCfboJ0pcgL7-w9JfzyXB3rMZg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
+          alt=""
         />
         <p className="proposal-card-info">Scott Davis</p>
       </div>
     </div>
-  );
+  ), []);
 
   return (
     <div className="d-flex flex-column justify-content-between " style={{ height: '100%' }}>

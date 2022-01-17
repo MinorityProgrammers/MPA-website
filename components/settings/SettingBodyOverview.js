@@ -1,9 +1,8 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { useRouter } from 'next/router';
-import { GlobalContext } from '../../contexts/provider';
 import styles from '../../styles/settings/settingBodyOverview.module.css';
 import { uprContext } from '../../contexts/settingsPagesProvider/settingsPagesProvider';
-import { getProgressPercentage } from '../../contexts/utils/settings/getProgressPercentage';
+import getProgressPercentage from '../../contexts/utils/settings/getProgressPercentage';
 import Account from '../Account';
 
 const SettingBodyOverview = function ({ data }) {
@@ -145,6 +144,7 @@ const SettingBodyOverview = function ({ data }) {
             </div>
           ) : (
             <button
+              type="button"
               onClick={(e) => {
                 e.preventDefault();
                 completeRedirection();
@@ -236,7 +236,7 @@ const SettingBodyOverview = function ({ data }) {
                 alt="facebook icon"
                 onClick={() => {
                   copyToClipboard(data?.FacebookLink);
-                  data?.FacebookLink ? copied(true) : copied(false);
+                  (() => (data?.FacebookLink ? copied(true) : copied(false)))();
                 }}
               />
               <img
@@ -244,7 +244,7 @@ const SettingBodyOverview = function ({ data }) {
                 alt="linkedin icon"
                 onClick={() => {
                   copyToClipboard(data?.LinkedinLink);
-                  data?.LinkedinLink ? copied(true) : copied(false);
+                  (() => (data?.LinkedinLink ? copied(true) : copied(false)))();
                 }}
               />
               <img
@@ -252,7 +252,7 @@ const SettingBodyOverview = function ({ data }) {
                 alt="github icon"
                 onClick={() => {
                   copyToClipboard(data?.GithubLink);
-                  data?.GithubLink ? copied(true) : copied(false);
+                  (() => (data?.GithubLink ? copied(true) : copied(false)))();
                 }}
               />
               <img
@@ -260,7 +260,7 @@ const SettingBodyOverview = function ({ data }) {
                 alt="google icon"
                 onClick={() => {
                   copyToClipboard(data?.GoogleLink);
-                  data?.GoogleLink ? copied(true) : copied(false);
+                  (() => (data?.GoogleLink ? copied(true) : copied(false)))();
                 }}
               />
               <img
@@ -268,7 +268,7 @@ const SettingBodyOverview = function ({ data }) {
                 alt="figma icon"
                 onClick={() => {
                   copyToClipboard(data?.FigmaLink);
-                  data?.FigmaLink ? copied(true) : copied(false);
+                  (() => (data?.FigmaLink ? copied(true) : copied(false)))();
                 }}
               />
               <img
@@ -276,7 +276,7 @@ const SettingBodyOverview = function ({ data }) {
                 alt="dribbble icon"
                 onClick={() => {
                   copyToClipboard(data?.DribbleLink);
-                  data?.DribbleLink ? copied(true) : copied(false);
+                  (() => (data?.DribbleLink ? copied(true) : copied(false)))();
                 }}
               />
               <img
@@ -284,7 +284,7 @@ const SettingBodyOverview = function ({ data }) {
                 alt="clickup icon"
                 onClick={() => {
                   copyToClipboard(data?.ClickupLink);
-                  data?.ClickupLink ? copied(true) : copied(false);
+                  (() => (data?.ClickupLink ? copied(true) : copied(false)))();
                 }}
               />
             </div>
@@ -325,6 +325,7 @@ const SettingBodyOverview = function ({ data }) {
           <h5>Wallet</h5>
           {/* <div className={styles.connectWrapper}>
             <button
+              type="button"
               onClick={(e) => {
                 e.preventDefault();
                 router.push('/settings/wallet/my-wallet');

@@ -40,13 +40,13 @@ const FeaturedCard = ({
     setAmount(e.target.value);
   };
 
-  const signIfNotLoggedIn = (data) => {
+  const signIfNotLoggedIn = (_data) => {
     const token = window.localStorage.getItem('jwtToken');
     if (userData === undefined) {
       setClickRegister(true);
       errorToast('Log in to continue');
     } else {
-      fundStartup(data._id, token);
+      fundStartup(_data._id, token);
     }
   };
 
@@ -55,7 +55,7 @@ const FeaturedCard = ({
       <div className="card card__container">
         <div className="card-body">
           <div className="card__header">
-            <img src={data.startupImage} className="card__header-logo" />
+            <img src={data.startupImage} className="card__header-logo" alt="startupImage" />
             <h2 className="card__header-title">{data.name}</h2>
           </div>
           <p className="card-text card__text">
@@ -94,6 +94,7 @@ const FeaturedCard = ({
             {/* Add popup when button is clicked */}
             {!allfunded.includes(data._id) && (
               <button
+                type="button"
                 style={{ outline: 'none' }}
                 className="button btn-filled"
                 onClick={() => (userData !== null
@@ -112,13 +113,14 @@ const FeaturedCard = ({
       {/* Popup content */}
       <FeaturedPopup trigger={buttonPopup} setTrigger={setButtonPopup}>
         <div className="card__header">
-          <img src={data.startupImage} className="card__header-logo" />
+          <img src={data.startupImage} className="card__header-logo" alt="startupImage" />
           <h2 className="card__header-title">{data.name}</h2>
         </div>
         <p style={{ marginTop: '20px' }}>
           {`${data.about.substring(0, 1000)}...`}
         </p>
         <button
+          type="button"
           style={{ float: 'right', width: '100px' }}
           className="button btn-filled"
           onClick={() => setButtonPopup(false) + setSecondPopup(true)}
@@ -148,6 +150,7 @@ const FeaturedCard = ({
           />
         </form>
         <button
+          type="button"
           className="button btn-filled"
           onClick={(e) => {
             e.preventDefault();

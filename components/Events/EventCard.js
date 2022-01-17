@@ -1,16 +1,27 @@
-import React, { useState, useEffect } from 'react';
+/* eslint-disable max-len */
+import React, { useState } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+// import { useRouter } from 'next/router';
 import Moment from 'moment';
 import axios from 'axios';
 import { successToast, errorToast } from '../../contexts/utils/toasts';
 
 const EventCardFeatured = function (props) {
-  const router = useRouter();
+  // const router = useRouter();
   const {
-    clickRegister, setClickRegister, active, userData, token, attended, userSavedEvents, allsavedEvents, userEvent, getUserSavedEvents,
+    clickRegister,
+    setClickRegister,
+    active,
+    userData,
+    token,
+    /* attended, */
+    userSavedEvents,
+    allsavedEvents,
+    /* userEvent, */
+    getUserSavedEvents,
   } = props;
-  const [loading, setLoading] = useState(false);
+
+  const [, setLoading] = useState(false);
   const [liked, setLiked] = useState(false);
   const dateNow = Date.now();
   const eventTime = new Date(props.item ? props.item.time : '').getTime();
@@ -21,44 +32,22 @@ const EventCardFeatured = function (props) {
   // Check saveEvents to change label
   const checkSaveEvent = (val) => {
     if (val === 'Register') {
-      for (let i = 0; i < userSavedEvents.length; i++) {
+      for (let i = 0; i < userSavedEvents.length; i += 1) {
         if (userSavedEvents !== null && ((userSavedEvents[i].event_id?._id === props.item._id) && (userSavedEvents[i].attending === 'yes' || userSavedEvents[i].attending === 'maybe'))) {
-          return <button className="button_register">Registered</button>;
+          return <button type="button" className="button_register">Registered</button>;
         }
       }
     }
+    return null;
   };
 
-  const handleToggle = (e, eventId) => {
-    e.preventDefault();
-    if (clickRegister === false && active === false) {
-      setClickRegister(true);
-    }
-    if (props.item._id === eventId) {
-      setLiked(!liked);
-      if (liked === true) {
-        setLiked(false);
-      } else if (liked == false) {
-        for (let i = 0; i < userSavedEvents.length; i++) {
-          if (userSavedEvents[i].event_id?._id === eventId) {
-            if (userSavedEvents[i].attending === 'yes' || userSavedEvents[i].attending === 'maybe') {
-              cancelEvent(e, userSavedEvents[i]._id, token);
-              return;
-            }
-          }
-        }
-        checkRegister('maybe');
-      }
-    }
-  };
-
-  const cancelEvent = (e, eventId, token) => {
+  const cancelEvent = (e, eventId, _token) => {
     e.preventDefault();
     axios.delete(`${process.env.BASE_URI}/saveEvent/${eventId}`, {
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${_token}`,
       },
     })
       .then((res) => {
@@ -132,8 +121,32 @@ const EventCardFeatured = function (props) {
       }
     }
   };
+
+  const handleToggle = (e, eventId) => {
+    e.preventDefault();
+    if (clickRegister === false && active === false) {
+      setClickRegister(true);
+    }
+    if (props.item._id === eventId) {
+      setLiked(!liked);
+      if (liked === true) {
+        setLiked(false);
+      } else if (liked === false) {
+        for (let i = 0; i < userSavedEvents.length; i += 1) {
+          if (userSavedEvents[i].event_id?._id === eventId) {
+            if (userSavedEvents[i].attending === 'yes' || userSavedEvents[i].attending === 'maybe') {
+              cancelEvent(e, userSavedEvents[i]._id, token);
+              return;
+            }
+          }
+        }
+        checkRegister('maybe');
+      }
+    }
+  };
+
   // const checkAttend = () => {
-  //   for (let i = 0; i < userSavedEvents.length; i++) {
+  //   for (let i = 0; i < userSavedEvents.length; i += 1) {
   //     // console.log(userSavedEvents[i])
   //     if (userSavedEvents[i].event_id !== null && ((userSavedEvents[i].event_id._id === props.item ? props.item._id : '') && (userSavedEvents[i].attending === "maybe" || userSavedEvents[i].attending === "yes"))) {
   //       return <><i className="fas fa-heart" ></i> Saved</>
@@ -156,7 +169,7 @@ const EventCardFeatured = function (props) {
       return 'nothing';
     }
 
-    // for (let i = 0; i < userSavedEvents.length; i++) {
+    // for (let i = 0; i < userSavedEvents.length; i += 1) {
     //   // console.log("x",userSavedEvents[i])
     //   if (userSavedEvents[i].event_id !== null && ((userSavedEvents[i].event_id._id === props.item ? props.item._id : '') && (userSavedEvents[i].attending === "maybe" || userSavedEvents[i].attending === "yes"))) {
     //     return <><i className="fas fa-heart" ></i> Saved</>
@@ -164,17 +177,21 @@ const EventCardFeatured = function (props) {
     //     return "nothing"
     //   }
     // }
+    return null;
   };
 
-  const eventStatus = userSavedEvents.filter((user) => user.event_id?._id === props.item._id).map((x) => (
+  const eventStatus = userSavedEvents.filter(
+    (user) => user.event_id?._id === props.item._id,
+  ).map((x) => (
     <li className="event-status-yes">{x.attending}</li>
   ));
+
   let count = 0;
   const totalAttendees = (eventId) => {
-    for (let i = 0; i < allsavedEvents.length; i++) {
+    for (let i = 0; i < allsavedEvents.length; i += 1) {
       if (allsavedEvents[i].event_id !== null) {
         if (allsavedEvents[i].attending === 'yes' && allsavedEvents[i].event_id._id === eventId) {
-          count++;
+          count += 1;
         }
       }
     }
@@ -187,25 +204,25 @@ const EventCardFeatured = function (props) {
 
   let label;
   const labelTitle = props.item ? props.item.catName.toLowerCase() : '';
-  if (labelTitle == 'lecture' || labelTitle == 'webinar') {
+  if (labelTitle === 'lecture' || labelTitle === 'webinar') {
     label = (
       <p className="eventcard_image-label eventcard_image-label-first">
         {Capitalize(props.item.catName)}
       </p>
     );
-  } else if (labelTitle == 'workshop' || labelTitle == 'conference') {
+  } else if (labelTitle === 'workshop' || labelTitle === 'conference') {
     label = (
       <p className="eventcard_image-label eventcard_image-label-second">
         {Capitalize(props.item.catName)}
       </p>
     );
-  } else if (labelTitle == 'hackathon') {
+  } else if (labelTitle === 'hackathon') {
     label = (
       <p className="eventcard_image-label eventcard_image-label-third">
         {Capitalize(props.item.catName)}
       </p>
     );
-  } else if (labelTitle == 'incubator' || labelTitle == 'accelerator') {
+  } else if (labelTitle === 'incubator' || labelTitle === 'accelerator') {
     label = (
       <p className="eventcard_image-label eventcard_image-label-fourth">
         {Capitalize(props.item.catName)}
@@ -265,17 +282,17 @@ const EventCardFeatured = function (props) {
               ) : ''}
             </p>
           )}
-          <button className="button_info" onClick={() => props.handleMoreInfo(props.item ? props.item : '')}>
+          <button type="button" className="button_info" onClick={() => props.handleMoreInfo(props.item ? props.item : '')}>
             {' '}
             <i className="fas fa-plus" />
             {' '}
             More Info
           </button>
           {/* Check save events Register label */}
-          {eventTime < dateNow ? <button className="button_register"><Link href={props.item ? props.item.actionLink : ''}><a target="_blank">Watch Webinar</a></Link></button> : (
+          {eventTime < dateNow ? <button type="button" className="button_register"><Link href={props.item ? props.item.actionLink : ''}><a target="_blank">Watch Webinar</a></Link></button> : (
             <span>
-              {userData !== null ? checkSaveEvent('Register') : <button className="button_register" onClick={() => checkRegister('yes')}>{props.item ? props.item.callToAction : ''}</button>}
-              {userData !== null && !checkSaveEvent('Register') ? <button className="button_register" onClick={() => checkRegister('yes')}>{props.item ? props.item.callToAction : ''}</button> : ''}
+              {userData !== null ? checkSaveEvent('Register') : <button type="button" className="button_register" onClick={() => checkRegister('yes')}>{props.item ? props.item.callToAction : ''}</button>}
+              {userData !== null && !checkSaveEvent('Register') ? <button type="button" className="button_register" onClick={() => checkRegister('yes')}>{props.item ? props.item.callToAction : ''}</button> : ''}
             </span>
           )}
         </div>

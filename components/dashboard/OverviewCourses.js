@@ -1,56 +1,60 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import Skeleton from 'react-loading-skeleton';
 import EmptyOverviewComponent from './EmptyOverviewComponent';
 
-const OverviewCourses = (props) => {
+const categories = [
+  {
+    category: 'webdev',
+    tags: ['HTML', 'Web development', 'React', 'Javascript'],
+  },
+  {
+    category: 'blockchain',
+    tags: ['Solidity', 'Smart Contract'],
+  },
+  {
+    category: 'ui/ux',
+    tags: ['UI/UX', 'Figma'],
+  },
+  {
+    category: 'entrepeneurship',
+    tags: ['Entrepeneurship'],
+  },
+  {
+    category: 'all',
+    tags: ['HTML', 'Web development', 'React', 'Javascript', 'Solidity', 'Smart Contract', 'UI/UX', 'Figma', 'Entrepeneurship'],
+  },
+];
+
+const OverviewCourses = ({ token }) => {
   const [loading, setLoading] = useState(true);
   const [currentView, setCurrentView] = useState('webdev');
-  const [allCourses, setAllCourses] = useState([]);
+  const [, setAllCourses] = useState([]);
   const [userCourses, setUserCourses] = useState([]);
-  const categories = [
-    {
-      category: 'webdev',
-      tags: ['HTML', 'Web development', 'React', 'Javascript'],
-    },
-    {
-      category: 'blockchain',
-      tags: ['Solidity', 'Smart Contract'],
-    },
-    {
-      category: 'ui/ux',
-      tags: ['UI/UX', 'Figma'],
-    },
-    {
-      category: 'entrepeneurship',
-      tags: ['Entrepeneurship'],
-    },
-    {
-      category: 'all',
-      tags: ['HTML', 'Web development', 'React', 'Javascript', 'Solidity', 'Smart Contract', 'UI/UX', 'Figma', 'Entrepeneurship'],
-    },
-  ];
+
   useEffect(() => {
-    if (props.token !== null) {
+    if (token !== null) {
       axios
-        .get('https://koinstreet-learn-api.herokuapp.com/api/v1/learn/')
+        .get(`${process.env.BASE_URI}/learn/`)
         .then((response) => {
           //  add classification for the courses
           const tempAllCoursesData = response.data.data;
-          tempAllCoursesData.map((course) => {
+          tempAllCoursesData.forEach((course) => {
             course.categories = [];
             // if courses tag include
-            categories.map((category) => {
-              course.courseId.tags.some((tag) => category.tags.includes(tag) && course.categories.push(category.category));
+            categories.forEach((category) => {
+              course.courseId.tags.some(
+                (tag) => category.tags.includes(tag) && course.categories.push(category.category),
+              );
             });
           });
           setAllCourses(tempAllCoursesData);
           return axios
             .get(
-              'https://koinstreet-learn-api.herokuapp.com/api/v1/learn/userCourses',
+              `${process.env.BASE_URI}/learn/userCourses`,
               {
                 headers: {
-                  Authorization: `Bearer ${props.token}`,
+                  Authorization: `Bearer ${token}`,
                 },
               },
             );
@@ -58,11 +62,13 @@ const OverviewCourses = (props) => {
         .then((response) => {
           //  add classification for the courses
           const tempUserCoursesData = response.data.data;
-          tempUserCoursesData.map((course) => {
+          tempUserCoursesData.forEach((course) => {
             course.categories = [];
             // if courses tag include
-            categories.map((category) => {
-              course.courseId.tags.some((tag) => category.tags.includes(tag) && course.categories.push(category.category));
+            categories.forEach((category) => {
+              course.courseId.tags.some(
+                (tag) => category.tags.includes(tag) && course.categories.push(category.category),
+              );
             });
           });
           setUserCourses(tempUserCoursesData);
@@ -89,9 +95,9 @@ const OverviewCourses = (props) => {
     }
   }, []);
 
-  const ProgressBar = (props) => {
+  const ProgressBar = useCallback((props) => {
     let value = props.completionRate;
-    if (typeof value === 'number' || (typeof value === 'String')) {
+    if (typeof value === 'number' || (typeof value === 'string')) {
       value = props.completionRate;
     } else { value = 0; }
     return (
@@ -101,14 +107,13 @@ const OverviewCourses = (props) => {
         </div>
       </div>
     );
-  };
+  }, []);
 
-  const CourseCard = () => {
+  const CourseCard = useCallback(() => {
     const courses = userCourses.filter((course) => course.categories.includes(currentView));
 
     return (
       <>
-
         {
           courses.length > 0
             ? (
@@ -150,7 +155,7 @@ const OverviewCourses = (props) => {
                       {/* Fifth Column */}
                       <div className="d-flex justify-content-center align-items-center ">
                         <a href="#" target="_blank">
-                          <button className="btn btn-primary overview-course-viewcourse-btn" style={{ fontSize: '0.7rem', background: '#151371' }}>
+                          <button type="button" className="btn btn-primary overview-course-viewcourse-btn" style={{ fontSize: '0.7rem', background: '#151371' }}>
                             View Course
                           </button>
                         </a>
@@ -171,7 +176,7 @@ const OverviewCourses = (props) => {
         }
       </>
     );
-  };
+  }, []);
 
   return (
     // this component will have 2 rows

@@ -122,8 +122,8 @@ const Principles = () => {
         <div className="course-category-one__carousel">
           <Swiper {...params}>
             {PrinciplesTile.map((principles, index) => (
-              <div className="swiper-slide" key={index}>
-                <PrinciplesCard item={principles} key={index} />
+              <div className="swiper-slide" key={`${index + 1}`}>
+                <PrinciplesCard item={principles} />
               </div>
             ))}
           </Swiper>

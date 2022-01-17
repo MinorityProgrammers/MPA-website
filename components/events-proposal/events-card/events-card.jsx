@@ -1,5 +1,5 @@
 import Moment from 'moment';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import styles from './events-card.module.css';
 import EventsPopup from '../events-popup/events-popup';
 

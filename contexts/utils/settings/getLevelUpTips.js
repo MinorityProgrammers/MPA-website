@@ -1,4 +1,4 @@
-export const getLevelUpTips = (data) => [
+export default (data) => [
   {
     name: 'First name',
     missing: !data?.firstName,

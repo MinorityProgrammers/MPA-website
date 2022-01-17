@@ -39,6 +39,7 @@ const AvatarMaker = () => (
           <br />
         </div>
         <iframe
+          title="Avatar Maker"
           src="https://avatarmaker.com/"
           style={({ height: '600px' }, { width: '600px' })}
         />

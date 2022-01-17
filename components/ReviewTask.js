@@ -20,6 +20,7 @@ const ReviewTask = () => (
               <img
                 src="/assets/images/project/rafiul.jpg"
                 className="tw-h-6 tw-w-6 tw-rounded-full tw-place-self-center tw-mb-4"
+                alt="rafiul"
               />
             </div>
           </div>
@@ -28,12 +29,14 @@ const ReviewTask = () => (
               <img
                 src="/assets/images/project/print.png"
                 className="tw-h-6 tw-w-6 tw-place-self-center tw-mb-2"
+                alt="print"
               />
             </div>
             <div className="tw-m-3">
               <img
                 src="/assets/images/project/share.png"
                 className="tw-h-6 tw-w-6 tw-place-self-center tw-mb-2"
+                alt="share"
               />
             </div>
           </div>
@@ -88,6 +91,7 @@ const ReviewTask = () => (
                 <img
                   src="/assets/images/project/eye.png"
                   className="tw-h-6 tw-w-10 tw-place-self-center tw-mb-4"
+                  alt="eye_image"
                 />
               </div>
             </div>
@@ -238,7 +242,7 @@ const ReviewTask = () => (
             doesnt meet definition of done.
           </p>
           <p>
-            <button className="tw-text-black tw-rounded tw-h-8 tw-w-24 tw-mt-4 tw-bg-white">
+            <button type="button" className="tw-text-black tw-rounded tw-h-8 tw-w-24 tw-mt-4 tw-bg-white">
               Send
             </button>
           </p>
@@ -260,7 +264,7 @@ const ReviewTask = () => (
             once task has been checked to satisfy DOD.
           </p>
           <p>
-            <button className="tw-text-white tw-rounded tw-h-8 tw-w-24 tw-mt-4 tw-bg-blue-700">
+            <button type="button" className="tw-text-white tw-rounded tw-h-8 tw-w-24 tw-mt-4 tw-bg-blue-700">
               Completed
             </button>
           </p>

@@ -1,3 +1,4 @@
+/* eslint-disable react/destructuring-assignment */
 import { useRouter } from 'next/router';
 import React, { useEffect, useRef, useState } from 'react';
 import CareersMainComponent from '../../components/career-components/CareersMainComponent';

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import VoteCard from './VoteCard';
 import VoteModal from './VoteModal';
 
@@ -34,15 +34,22 @@ const VoteGuide = function () {
     <div className="vote-section guide">
       <div className="container vote-header">
         <h2>Voting resource guide</h2>
-        <p>Check out our valuable resources to get insight on how you could win $MINORITY by having your ecosystem proposals turn to features in thie app.</p>
+        <p>
+          Check out our valuable resources to get insight on how you could win
+          $MINORITY by having your ecosystem proposals turn to features in thie app.
+        </p>
       </div>
       <div className="container vote-info">
         {cards.map((card, index) => (
-          <span key={index}>
+          <span key={`${index + 1}`}>
             <div onClick={() => openModal(card)}>
               <VoteCard card={card} />
             </div>
-            <VoteModal showModal={showModal} setShowModal={setShowModal} selectedCard={selectedCard} />
+            <VoteModal
+              showModal={showModal}
+              setShowModal={setShowModal}
+              selectedCard={selectedCard}
+            />
           </span>
         ))}
       </div>

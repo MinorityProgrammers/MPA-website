@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import Layout from '../components/Layout';
 import NotFound from '../components/404';
 import HomepageNav from '../components/homepage/HomepageNav';
-import { useDetectOutsideClick } from '../components/UseDetectOutsideClick';
+import useDetectOutsideClick from '../components/UseDetectOutsideClick';
 import Footer from '../components/Footer';
 
 const NotFoundPage = function () {

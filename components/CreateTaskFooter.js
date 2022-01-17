@@ -12,7 +12,7 @@ const CreateTaskFooter = () => (
           been created and assigned.
         </p>
         <p>
-          <button className="tw-text-white tw-rounded tw-h-8 tw-w-24 tw-mt-4 tw-bg-blue-700">
+          <button type="button" className="tw-text-white tw-rounded tw-h-8 tw-w-24 tw-mt-4 tw-bg-blue-700">
             Planned
           </button>
         </p>

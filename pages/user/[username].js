@@ -8,11 +8,11 @@ import HomepageNav from '../../components/homepage/HomepageNav';
 import SidebarTwo from '../../components/sidebar/SidebarTwo';
 import ProfileTwo from '../../components/ProfileTwo';
 import { GlobalContext } from '../../contexts/provider';
-import { getProfile } from '../../contexts/actions/profile/getProfile';
+import getProfile from '../../contexts/actions/profile/getProfile';
 import links from '../../contexts/utils/links';
 import Footer from '../../components/Footer';
 import ComingSoon from '../../components/ComingSoon';
-import { useDetectOutsideClick } from '../../components/UseDetectOutsideClick';
+import useDetectOutsideClick from '../../components/UseDetectOutsideClick';
 
 const User = function ({ user }) {
   const [hiddenProfileValidated, setHiddenProfileValidated] = useState(false);
@@ -24,10 +24,11 @@ const User = function ({ user }) {
   const [ownsProfile, setOwnsProfile] = useState(false);
 
   useEffect(() => {
-    setTimeout(() => {
+    const timeoutID = setTimeout(() => (
       !((isLoggedIn && ownsProfile) || user[0]?.profileVisibility)
-        && setHiddenProfileValidated(true);
-    }, 2000);
+        && setHiddenProfileValidated(true)
+    ), 2000);
+    return () => { clearTimeout(timeoutID); };
   }, [isLoggedIn, ownsProfile, user]);
 
   const handleClick = () => {
@@ -38,7 +39,7 @@ const User = function ({ user }) {
   const {
     profileDispatch,
     profileState: {
-      profile: { profileLoading, profileError, profileData },
+      profile: { profileData },
     },
   } = useContext(GlobalContext);
 

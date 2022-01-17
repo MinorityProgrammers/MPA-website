@@ -5,47 +5,48 @@ import 'swiper/css/swiper.css';
 import FeaturedInfoCard from '../featured/FeaturedInfoCard';
 import StartupRoadmap from './StartupRoadmap';
 
-const StartupRightBar = ({ data }) => {
-  const params = {
-    loop: true,
-    speed: 700,
-    spaceBetween: 0,
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
+const params = {
+  loop: true,
+  speed: 700,
+  spaceBetween: 0,
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+  autoplay: {
+    delay: 3000,
+    disableOnInteraction: false,
+  },
+  observeParents: true,
+  observer: true,
+  rebuildOnUpdate: true,
+  breakpoints: {
+    1440: {
+      slidesPerView: 3,
     },
-    autoplay: {
-      delay: 3000,
-      disableOnInteraction: false,
+    1025: {
+      slidesPerView: 2,
     },
-    observeParents: true,
-    observer: true,
-    rebuildOnUpdate: true,
-    breakpoints: {
-      1440: {
-        slidesPerView: 3,
-      },
-      1025: {
-        slidesPerView: 2,
-      },
-      1024: {
-        slidesPerView: 2,
-      },
-      768: {
-        slidesPerView: 2,
-      },
-      640: {
-        slidesPerView: 2,
-      },
-      320: {
-        slidesPerView: 1,
-      },
+    1024: {
+      slidesPerView: 2,
     },
-  };
+    768: {
+      slidesPerView: 2,
+    },
+    640: {
+      slidesPerView: 2,
+    },
+    320: {
+      slidesPerView: 1,
+    },
+  },
+};
 
-  useEffect(() => {
-    fetchStartups();
-  }, []);
+const StartupRightBar = ({ data }) => {
+  const [startups, setStartups] = useState([]);
+  const [hover, setHover] = useState(false);
+  const [hoverRoadMap, setHoverRoadMap] = useState(-1);
+  const { roadmap } = data;
 
   const fetchStartups = async () => {
     try {
@@ -56,10 +57,10 @@ const StartupRightBar = ({ data }) => {
       console.log(error);
     }
   };
-  const [startups, setStartups] = useState([]);
-  const [hover, setHover] = useState(false);
-  const [hoverRoadMap, setHoverRoadMap] = useState(-1);
-  const { roadmap } = data;
+
+  useEffect(() => {
+    fetchStartups();
+  }, []);
 
   return (
     <div className="row right__container pb-5 market">
@@ -160,6 +161,7 @@ const StartupRightBar = ({ data }) => {
           <h2 className="right__topic mb-3 mt-1">
             Market Size(TAM, SAM, SOM)
             <button
+              type="button"
               className="market__size"
               onMouseEnter={() => {
                 setHover(true);
@@ -238,8 +240,9 @@ const StartupRightBar = ({ data }) => {
                 </span>
               </div>
               <div className="tam-sam-som-buttons">
-                <button>Learn more</button>
+                <button type="button">Learn more</button>
                 <button
+                  type="button"
                   onClick={() => {
                     setHover(false);
                   }}
@@ -269,7 +272,7 @@ const StartupRightBar = ({ data }) => {
             <StartupRoadmap
               item={r}
               index={i}
-              key={i}
+              key={`${`roadmap_${i}`}`}
               setHoverRoadMap={setHoverRoadMap}
               hoverRoadMap={hoverRoadMap}
               milestones={data.milestone}
@@ -283,7 +286,7 @@ const StartupRightBar = ({ data }) => {
           <div>
             <Swiper {...params} grabCursor>
               {startups.map((d, i) => (
-                <div className="item" key={i}>
+                <div className="item" key={`${`startup_${i}`}`}>
                   <FeaturedInfoCard data={d} />
                 </div>
               ))}

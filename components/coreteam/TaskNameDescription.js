@@ -1,16 +1,12 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { MdArrowDropDown } from 'react-icons/md';
 import { CgAttachment } from 'react-icons/cg';
 import { GrEmoji } from 'react-icons/gr';
-import { BiMessageRounded } from 'react-icons/bi';
 import { IoIosMail } from 'react-icons/io';
 import ReactTooltip from 'react-tooltip';
-import userinfo from './User.json';
 import SingleSubTask from './SingleSubTask';
 
 const TaskNameDescription = function () {
-  const [ddId, setDdId] = useState();
   const [textDescription, setTextDescription] = useState({});
   const handleText = (e) => {
     // text description-----------
@@ -27,11 +23,11 @@ const TaskNameDescription = function () {
   // ------subTak------
   const [subtaskText, setSubTaskText] = useState([]);
   const [subtaskOpen, setSubTaskOpen] = useState(false);
-  const { register, handleSubmit } = useForm();
+  const { handleSubmit } = useForm();
   // { data, id: Math.floor((Math.random() * 1000) + 1)
   const onSubmitSubTask = handleSubmit((data, e) => {
     const newSubTakText = [...subtaskText, data];
-    for (let i = 0; i < newSubTakText.length; i++) {
+    for (let i = 0; i < newSubTakText.length; i += 1) {
       newSubTakText[i].id = i;
     }
     console.log(newSubTakText);
@@ -40,45 +36,7 @@ const TaskNameDescription = function () {
 
     // e.preventDefault(newSubTakText);
   });
-  console.log(subtaskText);
 
-  // // user---------add
-  // const [newUser, setNewUser] = useState(false);
-  // const [users, setUsers] = useState({});
-  // const [userCart, setUserCart] = useState([]);
-
-  // useEffect(() => {
-  //     setUsers(userinfo);
-  // }, [])
-  // const handleUserCart = (addnew) => {
-  //     let addTaskId = [];
-  //     let addUserInfo = addnew;
-  //     // let id = { "tid": ddId };
-  //     addUserInfo = { ...addUserInfo, "tid": ddId + 1 }
-  //     console.log(addUserInfo);
-  //     // const check =
-  //     if (subtaskText.map(sub => sub.id === addUserInfo.tid)) {
-
-  //         let newUsers = [...userCart, addnew];
-  //         setUserCart(newUsers)
-
-  //         //   console.log(true);
-  //     }
-
-  // }
-  // console.log(userCart);
-
-  // const modifyUser = (e) => {
-  //     console.log("event", e.target.id);
-  //     setNewUser(!newUser)
-  //     setDdId(e.target.id)
-
-  // }
-  // console.log(ddId);
-
-  // const modifyUser = () => {
-
-  // }
   const inputRef = useRef(null);
   const [todo, setTodo] = useState('');
   const [todos, setTodos] = useState([]);
@@ -91,7 +49,6 @@ const TaskNameDescription = function () {
       setTodo('');
     }
   };
-  console.log(todos);
 
   return (
     <div className=" ">
@@ -102,9 +59,10 @@ const TaskNameDescription = function () {
               <h1 className=" text-center">Task Description</h1>
             </div>
             <div className="tw-h-32 tw-p-3 tw-m-3">
-              {/* <div className="tw-bg-gray-200 tw-h-32 tw-p-3 tw-m-3 tw-relative "> */}
-              {/* <h1>Task description here</h1> */}
-              <form className="tw-bg-gray-200 tw-h-32  tw-relative " onClick={handleTaskDescriptionFormSubmit}>
+              <form
+                className="tw-bg-gray-200 tw-h-32  tw-relative "
+                onClick={handleTaskDescriptionFormSubmit}
+              >
                 <div className="tw-form-group">
                   <label htmlFor="exampleFormControlTextarea1">
                     Task description here
@@ -127,21 +85,9 @@ const TaskNameDescription = function () {
                   </select>
                 </section>
               </form>
-              {/* <div className="tw-absolute tw-bottom-0 tw-right-0">
-                  <textarea className="tw-text-black tw-bg-gray-400" placeholder="write here " id="description" name="description" rows="4" cols="100">
-                  </textarea>
-                  <select
-                    className=" tw-bg-white tw-pl-2 tw-text-sm tw-w-40 tw-text-black"
-                    value="Add Attachments"
-                  >
-                    <option value="pending">Add Attachments</option>
-                    <option value="onGoing">OnGing</option>
-                    <option value="done">Done</option>
-                  </select>
-                </div> */}
-              {/* </div> */}
+
               <div className=" tw-flex tw-justify-center  ">
-                <button className="tw-bg-white shadow tw-p-2">
+                <button type="button" className="tw-bg-white shadow tw-p-2">
                   {' '}
                   Show More
                 </button>
@@ -163,98 +109,112 @@ const TaskNameDescription = function () {
                   />
                 </svg>
                 <h3>Add Subtask</h3>
-
               </div>
 
-              {todos?.map((todo, index) => (
+              {todos?.map((_todo, index) => (
                 <div className="tw-flex tw-items-center tw-gap-x-2 tw-ml-4 tw-my-4">
                   <SingleSubTask
                     index={index}
                     todos={todos}
-                    todo={todo}
-                    key={todo.id}
+                    todo={_todo}
+                    key={_todo.id}
                     setTodos={setTodos}
                   />
-                  {/* <p className="  tw-font-semibold"  >{todo.todo}</p> */}
                 </div>
               ))}
 
-              {
-                                subtaskText.map((singleSubTask, index) => (
-                                  <div key={singleSubTask.id} className="tw-flex tw-items-center tw-gap-x-2 tw-ml-4 tw-my-4">
+              {subtaskText.map((singleSubTask, index) => (
+                <div
+                  key={singleSubTask.id}
+                  className="tw-flex tw-items-center tw-gap-x-2 tw-ml-4 tw-my-4"
+                >
+                  {
+                    // singleSubTask.data.id &&
+                    userCart.map((u) => (
+                      <div
+                        className="tw-cursor-pointer tw-btn"
+                        key={u.id}
+                        onClick={() => HandleRemoveUser(u.id)}
+                        data-tip={u.name}
+                      >
+                        <img className="tw-h-5 tw-w-5" src={u.image} alt="" />
+                        <ReactTooltip />
+                      </div>
+                    ))
+                  }
 
-                                    {
-                                        // singleSubTask.data.id &&
-                                        userCart.map((u) => (
-                                          <div
-                                            className="tw-cursor-pointer tw-btn"
-                                            key={u.id}
-                                            onClick={() => HandleRemoveUser(u.id)}
-                                            data-tip={u.name}
-                                          >
-                                            <img className="tw-h-5 tw-w-5" src={u.image} alt="" />
-                                            <ReactTooltip />
-                                          </div>
-                                        ))
-                                    }
-
-                                    <div id={index} className="tw-border-dashed tw-border-2 tw-border-gray-400 tw-text-gray-600 tw-rounded-full tw-h-6 tw-w-6 tw-flex tw-items-center tw-justify-center " onClick={modifyUser} key={index}>
-                                      <svg id={index} width="18" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" /></svg>
-
-                                    </div>
-                                    <p className="  tw-font-semibold">{singleSubTask.name}</p>
-                                    {
-                                        newUser && (
-                                        <div id="myDropdown" className="dropdown-content">
-                                          {
-
-                                                users.map((user) => (
-                                                  <a className="hover:tw-bg-gray-200" key={user.id}>
-
-                                                    <div className="tw-flex tw-gap-x-3 tw-cursor-pointer" onClick={() => handleUserCart(user)}>
-                                                      <img className="tw-h-5 tw-w-5" src="/assets/images/coreteamimg/user.png" alt="" />
-                                                      {' '}
-                                                      <span>{user.name}</span>
-                                                    </div>
-                                                  </a>
-                                                ))
-                                            }
-                                        </div>
-                                        )
-                                    }
-
-                                  </div>
-                                ))
-                            }
-              {
-                                subtaskOpen
-                                && (
-                                <form
-                                  onSubmit={(e) => {
-                                    handleAdd(e);
-                                    inputRef.current?.blur();
-                                  }}
-
-                                  className="  tw-ml-2 tw-pl-3 tw-rounded tw-my-3 tw-mr-3 tw-bg-gray-200 w-full  tw-px-4 tw-py-3"
-                                >
-
-                                  <input
-                                    type="text"
-                                    placeholder="Enter a Task"
-                                    value={todo}
-                                    ref={inputRef}
-                                    onChange={(e) => setTodo(e.target.value)}
-
-                                    className=" tw-w-1/2 tw-bg-gray-200 tw-rounded-lg tw-text-black  tw-px-4 tw-py-1 focus:tw-outline-none text-lg"
-                                    placeholder="Sub Task description here"
-                                  />
-                                  {/* <input type="text" className="tw-opacity-0" /> */}
-                                  <button className="tw-font-bold tw-py-1 tw-px-2 tw-bg-blue-600 hover:tw-bg-green-600 tw-text-white tw-text-md tw-rounded-md focus:tw-outline-none " type="submit">Save</button>
-
-                                </form>
-                                )
-                            }
-
+                  <div
+                    id={index}
+                    className="tw-border-dashed tw-border-2 tw-border-gray-400 tw-text-gray-600 tw-rounded-full tw-h-6 tw-w-6 tw-flex tw-items-center tw-justify-center "
+                    onClick={modifyUser}
+                    key={index}
+                  >
+                    <svg
+                      id={index}
+                      width="18"
+                      height="15"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"
+                      />
+                    </svg>
+                  </div>
+                  <p className="  tw-font-semibold">{singleSubTask.name}</p>
+                  {newUser && (
+                    <div id="myDropdown" className="dropdown-content">
+                      {users.map((user) => (
+                        <a className="hover:tw-bg-gray-200" key={user.id}>
+                          <div
+                            className="tw-flex tw-gap-x-3 tw-cursor-pointer"
+                            onClick={() => handleUserCart(user)}
+                          >
+                            <img
+                              className="tw-h-5 tw-w-5"
+                              src="/assets/images/coreteamimg/user.png"
+                              alt=""
+                            />
+                            {' '}
+                            <span>{user.name}</span>
+                          </div>
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
+              {subtaskOpen && (
+                <form
+                  onSubmit={(e) => {
+                    handleAdd(e);
+                    inputRef.current?.blur();
+                  }}
+                  className="tw-ml-2 tw-pl-3 tw-rounded tw-my-3 tw-mr-3 tw-bg-gray-200 w-full  tw-px-4 tw-py-3"
+                >
+                  <input
+                    type="text"
+                    placeholder="Enter a Task"
+                    value={todo}
+                    ref={inputRef}
+                    onChange={(e) => setTodo(e.target.value)}
+                    className=" tw-w-1/2 tw-bg-gray-200 tw-rounded-lg tw-text-black  tw-px-4 tw-py-1 focus:tw-outline-none text-lg"
+                    placeholder="Sub Task description here"
+                  />
+                  {/* <input type="text" className="tw-opacity-0" /> */}
+                  <button
+                    className="tw-font-bold tw-py-1 tw-px-2 tw-bg-blue-600 hover:tw-bg-green-600 tw-text-white tw-text-md tw-rounded-md focus:tw-outline-none "
+                    type="submit"
+                  >
+                    Save
+                  </button>
+                </form>
+              )}
             </div>
           </div>
           {/* Right Site--------- */}
@@ -264,33 +224,38 @@ const TaskNameDescription = function () {
             </div>
             <div className="tw-bg-gray-200 tw-h-64 tw-p-3 tw-m-3  ">
               <form action="http://www.acme.com/register" method="POST">
-                <input type="checkbox" name="selectone" id="one" value="hello" />
-                <label htmlFor="name" className="tw-ml-4">Checklist Point 1</label>
+                <input
+                  type="checkbox"
+                  name="selectone"
+                  id="one"
+                  value="hello"
+                />
+                <label htmlFor="name" className="tw-ml-4">
+                  Checklist Point 1
+                </label>
                 <br />
-                <input type="checkbox" name="selectone" id="one" value="hello" />
-                <label htmlFor="name" className="tw-ml-4">Checklist Point 2</label>
+                <input
+                  type="checkbox"
+                  name="selectone"
+                  id="one"
+                  value="hello"
+                />
+                <label htmlFor="name" className="tw-ml-4">
+                  Checklist Point 2
+                </label>
                 <br />
-                <input type="checkbox" name="selectone" id="one" value="hello" />
-                <label htmlFor="name" className="tw-ml-4">Checklist Point 3</label>
+                <input
+                  type="checkbox"
+                  name="selectone"
+                  id="one"
+                  value="hello"
+                />
+                <label htmlFor="name" className="tw-ml-4">
+                  Checklist Point 3
+                </label>
                 <br />
               </form>
             </div>
-            {/* <div>
-              <div className="tw-bg-gray-200 tw-h-64 tw-p-3 tw-m-3  ">
-                <div className="tw-flex tw-items-center tw-justify-start tw-gap-2">
-                  <div className="tw-bg-gray-400 tw-h-2 tw-w-2"></div>
-                  <p>Checklist Point 1</p>
-                </div>
-                <div className="tw-flex tw-items-center tw-justify-start tw-gap-2">
-                  <div className="tw-bg-gray-400 tw-h-2 tw-w-2"></div>
-                  <p>Checklist Point 1</p>
-                </div>
-                <div className="tw-flex tw-items-center tw-justify-start tw-gap-2">
-                  <div className="tw-bg-gray-400 tw-h-2 tw-w-2"></div>
-                  <p>Checklist Point 1</p>
-                </div>
-              </div>
-            </div> */}
           </div>
         </div>
       </div>
@@ -357,7 +322,10 @@ const TaskNameDescription = function () {
             Claim task and notify project manager that the task is being done.
           </p>
           <div className="s-p-view tw-w-1/5 tw-text-center tw-mx-auto tw-my-6 ">
-            <button className="green-btn  tw-rounded tw-p-2 tw-text-white sm:tw-w-32">
+            <button
+              type="button"
+              className="green-btn  tw-rounded tw-p-2 tw-text-white sm:tw-w-32"
+            >
               In-Progress
             </button>
           </div>

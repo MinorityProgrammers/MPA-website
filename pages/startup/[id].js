@@ -9,7 +9,7 @@ import StartupTopBar from '../../components/startup/StartupTopBar';
 import links from '../../contexts/utils/links';
 
 export const getStaticPaths = async () => {
-  const res = await axios.get(`${process.env.BASE_URI}/startup/`);
+  const res = await axios.get(`${process.env.BASE_URI}/startup`);
   const data = await res.data.data;
 
   const paths = data.map((startup) => ({

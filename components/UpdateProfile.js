@@ -5,7 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Select from 'react-select';
 import FormData from 'form-data';
 import { GlobalContext } from '../contexts/provider';
-import { updateProfile } from '../contexts/actions/profile/updateProfile';
+import updateProfile from '../contexts/actions/profile/updateProfile';
 import DashboardInputs from './DashboardInputs';
 import {
   storeOne,
@@ -38,7 +38,7 @@ const UpdateForm = ({
     profileDispatch,
     profileState: {
       profile: {
-        profileLoading, profileError, profileData, profileIsUpdated,
+        profileLoading, profileError, profileData,
       },
     },
   } = useContext(GlobalContext);

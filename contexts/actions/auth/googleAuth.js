@@ -22,7 +22,7 @@ const postData = (route, body, dispatch) => {
 
     console.log(res);
 
-    if (res.data.status == 'success') {
+    if (res.data.status === 'success') {
       successToast(res.data.message);
       window.location.href = '/';
     } else {

@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import Skeleton from 'react-loading-skeleton';
-import { Spinner } from 'react-bootstrap';
+// import axios from 'axios';
+// import Skeleton from 'react-loading-skeleton';
+// import { Spinner } from 'react-bootstrap';
 import EmptyOverviewComponent from './EmptyOverviewComponent';
 
-const OverviewProfile = (props) => {
+const OverviewProfile = ({ userData }) => {
   const [loading, setLoading] = useState(false);
-  const [currentView, setCurrentView] = useState('active');
+  // const [currentView, setCurrentView] = useState('active');
 
   useEffect(() => {
-    setTimeout(() => { setLoading(false); }, 5000);
+    const timeoutID = setTimeout(() => { setLoading(false); }, 5000);
+    return () => { clearTimeout(timeoutID); };
   }, []);
 
   return (
@@ -40,22 +41,22 @@ const OverviewProfile = (props) => {
                 style={{
                   width: '90px', height: '90px', borderRadius: '50%', border: '3px solid  #6A0C8B', marginBottom: '2%',
                 }}
-                src={props.userData?.profilePicture || '/assets/images/profile.png'}
+                src={userData?.profilePicture || '/assets/images/profile.png'}
                 alt="avatar"
               />
               <p style={{
                 fontSize: '16px', fontWeight: 700, color: 'black', marginBottom: '2%',
               }}
               >
-                {props.userData.firstName}
+                {userData.firstName}
                 {' '}
-                {props.userData.lastName}
+                {userData.lastName}
               </p>
               <p style={{ fontSize: '12px', color: 'black', marginBottom: '2%' }}>
                 Current Position
               </p>
-              <a href={`user/${props.userData.userName}`}>
-                <button className="btn btn-primary" style={{ background: '#151371', fontSize: '12px' }}>View Profile</button>
+              <a href={`user/${userData.userName}`}>
+                <button type="button" className="btn btn-primary" style={{ background: '#151371', fontSize: '12px' }}>View Profile</button>
               </a>
             </div>
           )}

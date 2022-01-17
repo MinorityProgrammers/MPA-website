@@ -1,8 +1,7 @@
-import { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import {
   DragDropContext, Draggable, Droppable, resetServerContext,
 } from 'react-beautiful-dnd';
-import { v4 as uuidv4 } from 'uuid';
 import itemsFromBackEnd from './taskCardData.json';
 import TestTaskCard, { UserContext } from './TestTaskCard';
 // Currently using JSON data for dynamic loading
@@ -52,7 +51,10 @@ const CheckDND = function () {
   const [readyReview, setReadyReview] = useState([]);
   const [columns, setColumms] = useState(columnsFromBackend);
   const priorityStatus = useContext(UserContext);
-  const onDragEnd = (result, columns, setColumns) => {
+
+  let task;
+
+  const onDragEnd = (result, _columns, setColumns) => {
     if (!result.destination) return;
     const { source, destination } = result;
     if (
@@ -62,14 +64,14 @@ const CheckDND = function () {
       return;
     }
     if (source.droppableId !== destination.droppableId) {
-      const sourceColumn = columns[source.droppableId];
-      const destinationColumn = columns[destination.droppableId];
+      const sourceColumn = _columns[source.droppableId];
+      const destinationColumn = _columns[destination.droppableId];
       const sourceItems = [...sourceColumn.items];
       const destinationItems = [...destinationColumn.items];
       const [removed] = sourceItems.splice(source.index, 1);
       destinationItems.splice(destination.index, 0, removed);
       setColumns({
-        ...columns,
+        ..._columns,
         [source.droppableId]: {
           ...sourceColumn,
           items: sourceItems,
@@ -80,46 +82,46 @@ const CheckDND = function () {
         },
       });
     } else {
-      const column = columns[source.droppableId];
+      const column = _columns[source.droppableId];
       const copiedItems = [...column.items];
       const [removed] = copiedItems.splice(source.index, 1);
       copiedItems.splice(destination.index, 0, removed);
       setColumns({
-        ...columns,
+        ..._columns,
         [source.droppableId]: {
-          ...columns,
+          ..._columns,
           items: copiedItems,
         },
       });
     }
-    let task;
-    let add;
-    const active = plannedTasks;
-    const inPro = inProgress;
-    if (result.destination.droppableId == 1) {
+
+    // let add;
+    // const active = plannedTasks;
+    // const inPro = inProgress;
+    if (result.destination.droppableId === 1) {
       task = 'Planned Task';
 
       console.log(task);
       const newResult = [...plannedTasks, result];
       setPlannedTasks(newResult);
       console.log(plannedTasks);
-    } else if (result.destination.droppableId == 2) {
+    } else if (result.destination.droppableId === 2) {
       // task = "In-Progress Tasks";
       // add = active[source.index];
       // active.splice(source.index, 1);
       const newResult = [...inProgress, result];
       setInProgress(newResult);
       console.log(inProgress);
-    } else if (result.destination.droppableId == 3) {
+    } else if (result.destination.droppableId === 3) {
       task = 'Ready For Review Tasks';
       console.log(task);
       const newResult = [...readyReview, result];
       setReadyReview(newResult);
       console.log(readyReview);
-    } else if (result.destination.droppableId == 4) {
+    } else if (result.destination.droppableId === 4) {
       task = 'In Review Tasks';
       console.log(task);
-    } else if (result.destination.droppableId == 5) {
+    } else if (result.destination.droppableId === 5) {
       task = 'Revision Required Tasks';
       console.log(task);
     } else {
@@ -127,6 +129,7 @@ const CheckDND = function () {
       console.log(task);
     }
   };
+
   useEffect(() => {
     setPlannedTasks(plannedTasks);
     setInProgress(inProgress);
@@ -149,7 +152,7 @@ const CheckDND = function () {
         body: JSON.stringify(taskDetails),
       })
         .then((res) => res.json())
-        .then((data) => {
+        .then(() => {
           alert('Task submitted successfully');
         });
     };
@@ -182,6 +185,7 @@ const CheckDND = function () {
               <img
                 className="tw-h-7 tw-w-7 tw-m-2"
                 src="/assets/images/project/tick.png"
+                alt=""
               />
               <h3 className=" tw-text-xl">{column.name}</h3>
             </div>

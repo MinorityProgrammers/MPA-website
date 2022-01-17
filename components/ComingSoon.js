@@ -3,9 +3,11 @@ import React, { useState, useEffect } from 'react';
 const ComingSoon = ({ closeClick }) => {
   const [delay, setDelay] = useState(true);
   useEffect(() => {
-    setTimeout(() => {
+    const timeoutID = setTimeout(() => {
       setDelay(false);
     }, 6000);
+
+    return () => { clearTimeout(timeoutID); };
   }, [1]);
 
   if (delay) {
@@ -25,6 +27,7 @@ const ComingSoon = ({ closeClick }) => {
         <p className="CS-text">Coming soon...</p>
         <div className="dropdown-login-button">
           <button
+            type="button"
             className="btn tw-bg-blue-700 tw-w-44 tw-text-white hover:tw-text-white"
             onClick={closeClick}
           >

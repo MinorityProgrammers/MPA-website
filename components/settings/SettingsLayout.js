@@ -3,17 +3,16 @@ import React, {
 } from 'react';
 import { useRouter } from 'next/router';
 import decode from 'jwt-decode';
-import { style } from 'dom-helpers';
 import Layout from '../Layout';
 import HomepageNav from '../homepage/HomepageNav';
 import SidebarTwo from '../sidebar/SidebarTwo';
 import { GlobalContext } from '../../contexts/provider';
 import { LOGOUT_USER } from '../../contexts/actions/actionTypes';
-import { getProfile } from '../../contexts/actions/profile/getProfile';
+import getProfile from '../../contexts/actions/profile/getProfile';
 import links from '../../contexts/utils/links';
 import Footer from '../Footer';
 import ComingSoon from '../ComingSoon';
-import { useDetectOutsideClick } from '../UseDetectOutsideClick';
+import useDetectOutsideClick from '../UseDetectOutsideClick';
 import styles from '../../styles/settings/settingsLayout.module.css';
 
 const SettingsLayout = function ({ setData, children, settingsPage }) {
@@ -21,8 +20,8 @@ const SettingsLayout = function ({ setData, children, settingsPage }) {
   const dropdownRef = useRef(null);
   const [hide, setHide] = useDetectOutsideClick(dropdownRef, false);
   const [userData, setUserData] = useState({});
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [ownsProfile, setOwnsProfile] = useState(false);
+  // const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // const [ownsProfile, setOwnsProfile] = useState(false);
 
   const router = useRouter();
 
@@ -34,9 +33,6 @@ const SettingsLayout = function ({ setData, children, settingsPage }) {
   const {
     profileDispatch,
     authDispatch,
-    profileState: {
-      profile: { profileLoading, profileError, profileData },
-    },
   } = useContext(GlobalContext);
 
   // grab a token from local storage so as user info
@@ -59,12 +55,12 @@ const SettingsLayout = function ({ setData, children, settingsPage }) {
     const token = window.localStorage.getItem('jwtToken');
     const userInfo = window.localStorage.getItem('userInfo');
 
-    if (token == null || userInfo == {}) {
+    if (token == null || userInfo === {}) {
       router.push('/auth');
     }
   }, [userData]);
 
-  if (hide == false) {
+  if (hide === false) {
     setTimeout(() => {
       setHide(true);
     }, 60000);
@@ -111,7 +107,7 @@ const SettingsLayout = function ({ setData, children, settingsPage }) {
         active="Home"
         handleClick={handleClick}
       />
-      {hide == false && <ComingSoon closeClick={handleClick} />}
+      {hide === false && <ComingSoon closeClick={handleClick} />}
       <div className={styles.settingsContainer}>
         <div className={styles.accountSettings}>
           <div className={styles.settingsNavigation}>

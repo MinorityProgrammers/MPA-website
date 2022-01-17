@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import Link from 'next/link';
 import styles from './toolkitContent.module.css';
 import Document from '../chapter-document/document.component';
@@ -22,25 +22,35 @@ const ToolkitContent = function ({ data, links }) {
     <div className={styles.wrapper}>
       <div className={styles.container}>
         <div className={styles.linkContainer}>
-          <div onClick={() => menuRef.current.scrollLeft = scrollPos - 300} className={styles.arrowLeft}>
+          <div
+            onClick={() => { menuRef.current.scrollLeft = scrollPos - 300; }}
+            className={styles.arrowLeft}
+          >
             {' '}
             <img className={styles.arrow} src="/assets/images/chapter/arrow-double-left.png" alt="arrow-left" />
             {' '}
           </div>
-          <div className={styles.links} onScroll={() => setScrollPos(menuRef.current.scrollLeft)} ref={menuRef}>
+          <div
+            className={styles.links}
+            onScroll={() => setScrollPos(menuRef.current.scrollLeft)}
+            ref={menuRef}
+          >
             {
-              links.map(({ link, name }, idx) => (
-                <div key={idx} className={styles.link} style={linkBg(link)}>
+              links.map(({ link, link_name }, idx) => (
+                <div key={`${idx + 1}`} className={styles.link} style={linkBg(link)}>
                   <Link href={`/chaptertoolkit/${link}`}>
                     <a>
-                      <div style={linkColor(link)}>{name}</div>
+                      <div style={linkColor(link)}>{link_name}</div>
                     </a>
                   </Link>
                 </div>
               ))
             }
           </div>
-          <div onClick={() => menuRef.current.scrollLeft = scrollPos + 300} className={styles.arrowRight}>
+          <div
+            onClick={() => { menuRef.current.scrollLeft = scrollPos + 300; }}
+            className={styles.arrowRight}
+          >
             {' '}
             <img className={styles.arrow} src="/assets/images/chapter/arrow-double-right.png" alt="arrow-right" />
             {' '}
@@ -54,7 +64,7 @@ const ToolkitContent = function ({ data, links }) {
           <div className={styles.info}>Documents and Downlaods</div>
           {
             documents.map((document, idx) => (
-              <Document key={idx} {...document} id={idx + 1} />
+              <Document key={`${idx + 1}`} {...document} id={idx + 1} />
             ))
           }
         </div>

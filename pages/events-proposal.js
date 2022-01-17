@@ -7,7 +7,7 @@ import Footer from '../components/Footer';
 import HomepageNav from '../components/homepage/HomepageNav';
 import Layout from '../components/Layout';
 import SidebarTwo from '../components/sidebar/SidebarTwo';
-import { useDetectOutsideClick } from '../components/UseDetectOutsideClick';
+import useDetectOutsideClick from '../components/UseDetectOutsideClick';
 import { GlobalContext } from '../contexts/provider';
 import links from '../contexts/utils/links';
 
@@ -30,17 +30,16 @@ const events = () => {
   }
 
   const {
-    authDispatch,
     authState: {
-      auth: { loading, error, data },
+      auth: { data },
     },
   } = useContext(GlobalContext);
 
   useEffect(() => {
-    const token = window.localStorage.getItem('jwtToken');
+    const userToken = window.localStorage.getItem('jwtToken');
     const userInfo = window.localStorage.getItem('userInfo');
 
-    if (token == null || userInfo === {}) {
+    if (userToken == null || userInfo === {}) {
       setUserData(null);
       setActive(false);
     } else {

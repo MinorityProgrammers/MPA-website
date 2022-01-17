@@ -9,13 +9,13 @@ const CreateProfileSkills = function ({ values, setValue }) {
   return (
     <div className="cp-skillsContainer">
       {
-                values.map((value, key) => value !== '' && (
-                <span className="cp-skill" key={key}>
-                  {value}
-                  <AiFillCloseCircle className="delete-skill" onClick={() => deleteValue(value)} />
-                </span>
-                ))
-            }
+        values.map((value) => value !== '' && (
+        <span className="cp-skill" key={value}>
+          {value}
+          <AiFillCloseCircle className="delete-skill" onClick={() => deleteValue(value)} />
+        </span>
+        ))
+      }
     </div>
   );
 };

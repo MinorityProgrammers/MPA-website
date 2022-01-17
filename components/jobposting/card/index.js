@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import React, { useState } from 'react';
 import styles from './job-card.module.css';
 
 const JobCard = function ({
@@ -10,7 +10,7 @@ const JobCard = function ({
   pageNumber,
 }) {
   const initDataShow = limit && body ? body.slice(0, Number(limit)) : body;
-  const [jobs, setJobs] = useState(initDataShow);
+  const [jobs] = useState(initDataShow);
 
   const jobsPerPage = 5;
   const pagesVisited = pageNumber * jobsPerPage;
@@ -21,7 +21,7 @@ const JobCard = function ({
       <div>
         {body && (
         <div
-          key={index}
+          key={`${index + 1}`}
           onClick={(e) => cardClick(e, item, index)}
           className={styles.root}
         >
@@ -37,7 +37,7 @@ const JobCard = function ({
               {' '}
               {new Date(item.updatedAt).toDateString().substr(3)}
             </span>
-            <button onClick={() => buttonClick(item)}>{savejob}</button>
+            <button type="button" onClick={() => buttonClick(item)}>{savejob}</button>
           </div>
         </div>
         )}
