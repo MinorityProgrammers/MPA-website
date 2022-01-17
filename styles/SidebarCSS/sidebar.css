@@ -1,10 +1,5 @@
 #SidebarPage {
-  background: linear-gradient(
-    104.61deg,
-    #ff00b8 2.65%,
-    #ff655b 51.83%,
-    #ffc700 100%
-  );
+  background: rgb(224, 224, 224);
   min-height: 100vh;
   width: 100%;
 }

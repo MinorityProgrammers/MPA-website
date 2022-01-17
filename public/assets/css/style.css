@@ -4645,7 +4645,7 @@ a:visited {
 
 .site-footer__social a i{
   color: #ffffff;
-  font-size: 40px;
+  font-size: 30px;
   -webkit-transition: all 0.4s ease;
   transition: all 0.4s ease;
   position: relative;
@@ -6742,7 +6742,7 @@ html {
 .homepage__header {
   background: #efefef;
   position: absolute;
-  top: 0;
+  top: -3px;
   left: 0;
   width: 100%;
   z-index: 99;
@@ -6887,7 +6887,9 @@ html {
   color: #3e385d;
   -webkit-transition: all 0.4s ease;
   transition: all 0.4s ease;
+  
 }
+
 .nav-item:not(:last-child) {
   padding: 6px 1rem 6px 1rem;
 }
@@ -6901,8 +6903,8 @@ html {
   background-color: transparent;
   color: #474bfd !important;
   transition: all 0.2s ease-in-out;
-  text-decoration: underline;
   font-weight: 600;
+  
 }
 
 .nav-item.active-link a,
@@ -7540,7 +7542,6 @@ html {
   }
   .sticky-menu .navbar-logo {
     top: 10px;
-    left: 20px;
     width: 180px;
   }
   .sticky-menu .topbar__mobile {

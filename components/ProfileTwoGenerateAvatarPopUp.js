@@ -33,25 +33,25 @@ const ProfileTwoGenerateAvatarPopUp = ({
     router.pathname.lastIndexOf('/') + 1
   );
 
-  const [state, setState] = useState({
+  const [state, setState] = useState(loggedInUserData.avatarOptions.length !== 0 ? {
     avatarOptions: {
-      topType: JSON.parse(loggedInUserData.avatarOptions[0]).topType,
-      accessoriesType: JSON.parse(loggedInUserData.avatarOptions[0])
+      topType: JSON.parse(loggedInUserData?.avatarOptions[0])?.topType,
+      accessoriesType: JSON.parse(loggedInUserData?.avatarOptions[0])
         .accessoriesType,
-      facialHairType: JSON.parse(loggedInUserData.avatarOptions[0])
+      facialHairType: JSON.parse(loggedInUserData?.avatarOptions[0])
         .facialHairType,
-      clotheType: JSON.parse(loggedInUserData.avatarOptions[0]).clotheType,
-      clotheColor: JSON.parse(loggedInUserData.avatarOptions[0]).clotheColor,
-      eyeType: JSON.parse(loggedInUserData.avatarOptions[0]).eyeType,
-      eyebrowType: JSON.parse(loggedInUserData.avatarOptions[0]).eyebrowType,
-      mouthType: JSON.parse(loggedInUserData.avatarOptions[0]).mouthType,
-      skinColor: JSON.parse(loggedInUserData.avatarOptions[0]).skinColor,
-      hairColor: JSON.parse(loggedInUserData.avatarOptions[0]).hairColor,
-      backgroundColor: JSON.parse(loggedInUserData.avatarOptions[0])
+      clotheType: JSON.parse(loggedInUserData?.avatarOptions[0])?.clotheType,
+      clotheColor: JSON.parse(loggedInUserData?.avatarOptions[0])?.clotheColor,
+      eyeType: JSON.parse(loggedInUserData?.avatarOptions[0])?.eyeType,
+      eyebrowType: JSON.parse(loggedInUserData?.avatarOptions[0])?.eyebrowType,
+      mouthType: JSON.parse(loggedInUserData?.avatarOptions[0])?.mouthType,
+      skinColor: JSON.parse(loggedInUserData?.avatarOptions[0])?.skinColor,
+      hairColor: JSON.parse(loggedInUserData?.avatarOptions[0])?.hairColor,
+      backgroundColor: JSON.parse(loggedInUserData?.avatarOptions[0])
         .backgroundColor,
     },
-    profilePicture: loggedInUserData.profilePicture,
-  });
+    profilePicture: loggedInUserData?.profilePicture,
+  } : {});
 
   const handleAvatarChange = (name, value) => {
     setState((prevState) => ({
@@ -124,7 +124,7 @@ const ProfileTwoGenerateAvatarPopUp = ({
         profilePicture: imgData,
       }));
     });
-  }, [state.avatarOptions]);
+  }, [state?.avatarOptions]);
 
   // update userData
   const {
@@ -136,7 +136,7 @@ const ProfileTwoGenerateAvatarPopUp = ({
 
   const handleSubmit = () => {
     const formData = new FormData();
-    formData.append('avatarOptions', JSON.stringify(state.avatarOptions));
+    formData.append('avatarOptions', JSON.stringify(state?.avatarOptions));
     formData.append('profilePicture', state.profilePicture);
     // submit all data
     updateProfile(userID, formData)(profileDispatch);
@@ -175,7 +175,7 @@ const ProfileTwoGenerateAvatarPopUp = ({
             label={backgroundColorField.label}
             options={backgroundColorField.options}
             required={backgroundColorField.required}
-            value={state.avatarOptions[backgroundColorField.name]}
+            value={loggedInUserData.avatarOptions.length !== 0 ? state?.avatarOptions[backgroundColorField?.name] : '#a55728'}
             setValue={(value) =>
               handleColorChange(backgroundColorField.name, value)
             }
@@ -185,11 +185,11 @@ const ProfileTwoGenerateAvatarPopUp = ({
               style={{
                 width: '250px',
                 height: '250px',
-                background: state.avatarOptions.backgroundColor || '#fff',
+                background: state?.avatarOptions?.backgroundColor || '#fff',
                 borderRadius: '100%',
               }}
               ref={(ref) => (avatarRef = ref)}
-              {...state.avatarOptions}
+              {...state?.avatarOptions}
             />
           </div>
           <CreateProfileInput
@@ -198,7 +198,7 @@ const ProfileTwoGenerateAvatarPopUp = ({
             label={hairColorField.label}
             options={hairColorField.options}
             required={hairColorField.required}
-            value={state.avatarOptions[hairColorField.name]}
+            value={loggedInUserData.avatarOptions.length !== 0 ? state?.avatarOptions[hairColorField.name] : '#a55728'}
             setValue={(value) => handleColorChange(hairColorField.name, value)}
           />
           {[
@@ -218,7 +218,7 @@ const ProfileTwoGenerateAvatarPopUp = ({
               label={field.label}
               options={field.options}
               required={field.required}
-              value={state.avatarOptions[field.name]}
+              value={loggedInUserData.avatarOptions.length !== 0 ? state?.avatarOptions[field.name] : '#a55728'}
               setValue={(value) => handleAvatarChange(field.name, value)}
               key={key}
             />

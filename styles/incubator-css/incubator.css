@@ -688,25 +688,25 @@ div.swiper-button-next {
   border-radius: 5px;
   border: 1px solid #fff;
   color: #fff;
-  background: #151371;
+  background: #474bfe;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
 }
 .previousBttn a {
   color: #fff;
-  background: #151371;
+  background: #474bfe;
 }
 .paginationBttns a:hover {
-  color: #151371;
+  color: #474bfe;
   border-radius: 5px;
-  border: 1px solid #151371;
+  border: 1px solid #474bfe;
   background-color: rgb(255, 255, 255);
 }
 
 .paginationActive a {
-  color: #151371;
+  color: #474bfe;
   border-radius: 5px;
-  border: 1px solid #151371;
+  border: 1px solid #474bfe;
   background-color: rgb(255, 255, 255);
 }
 
