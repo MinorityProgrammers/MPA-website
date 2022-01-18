@@ -1,3 +1,4 @@
+import React from 'react';
 import { Tooltip, OverlayTrigger } from 'react-bootstrap';
 import styles from '../../styles/MentorCSS/Course.module.css';
 
@@ -14,8 +15,8 @@ const Course = ({ course, mentor, mentee }) => (
               <OverlayTrigger
                 overlay={(
                   <Tooltip>
-                      {`${mentor.user_id.firstName} ${mentor.user_id.lastName}`}
-                    </Tooltip>
+                    {`${mentor.user_id.firstName} ${mentor.user_id.lastName}`}
+                  </Tooltip>
                   )}
               >
                 <img
@@ -35,8 +36,8 @@ const Course = ({ course, mentor, mentee }) => (
               <OverlayTrigger
                 overlay={(
                   <Tooltip>
-                      {`${mentee.user_id.firstName} ${mentee.user_id.lastName}`}
-                    </Tooltip>
+                    {`${mentee.user_id.firstName} ${mentee.user_id.lastName}`}
+                  </Tooltip>
                   )}
               >
                 <img

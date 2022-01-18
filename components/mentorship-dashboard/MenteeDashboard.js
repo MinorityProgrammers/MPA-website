@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 // Styles
@@ -394,7 +394,7 @@ const MenteeDashboard = ({
           <div className={styles.mentors}>
             <div
               className={
-                menteeData.mentorship.mentor_id._id == currentMentee
+                menteeData.mentorship.mentor_id._id === currentMentee
                   ? styles.mentorRowE
                   : styles.mentorRow
               }
@@ -402,7 +402,7 @@ const MenteeDashboard = ({
             >
               <div
                 className={
-                  menteeData.mentorship.mentor_id._id == currentMentee
+                  menteeData.mentorship.mentor_id._id === currentMentee
                     ? styles.sideBar
                     : styles.hide
                 }

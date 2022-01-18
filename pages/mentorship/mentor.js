@@ -5,7 +5,7 @@ import Layout from '../../components/Layout';
 import Footer from '../../components/Footer';
 import SidebarTwo from '../../components/sidebar/SidebarTwo';
 import links from '../../contexts/utils/links';
-import { useDetectOutsideClick } from '../../components/UseDetectOutsideClick';
+import useDetectOutsideClick from '../../components/UseDetectOutsideClick';
 import MentorDashboard from '../../components/mentorship-dashboard/MentorDashboard';
 import MenteeDetail from '../../components/mentorship-dashboard/MenteeDetail';
 import styles from '../../styles/MentorCSS/Dashboard.module.css';

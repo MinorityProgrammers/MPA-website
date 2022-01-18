@@ -22,9 +22,9 @@ export default function CalendarEvent({
   // console.log(selectedDates);
   useEffect(() => {
     const arr = [];
-    data.map((d) => {
-      const date = new Date(Date.parse(d.event_date));
-      if (date) {
+    data.forEach((d) => {
+      const _date = new Date(Date.parse(d.event_date));
+      if (_date) {
         arr.push(new Date(Date.parse(d.event_date)));
       }
     });
@@ -33,14 +33,14 @@ export default function CalendarEvent({
   }, []);
 
   const modifiers = {
-    selected: (date) => selectedDates.some((selectedDate) => isSameDay(selectedDate, date)),
+    selected: (_date) => selectedDates.some((selectedDate) => isSameDay(selectedDate, _date)),
   };
-  const handleDayClick = (date) => {
-    const day = date.getDate() < 10 ? `0${date.getDate()}` : `${date.getDate()}`;
-    const month = date.getMonth() + 1 < 10
-      ? `0${date.getMonth() + 1}`
-      : `${date.getMonth() + 1}`;
-    const newDate = `${date.getFullYear()}-${month}-${day}`;
+  const handleDayClick = (_date) => {
+    const day = _date.getDate() < 10 ? `0${_date.getDate()}` : `${_date.getDate()}`;
+    const month = _date.getMonth() + 1 < 10
+      ? `0${_date.getMonth() + 1}`
+      : `${_date.getMonth() + 1}`;
+    const newDate = `${_date.getFullYear()}-${month}-${day}`;
     setDate(newDate);
     setModalShow(true);
   };
