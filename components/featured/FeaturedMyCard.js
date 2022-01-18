@@ -12,7 +12,10 @@ const FeaturedMyCard = ({ data }) => (
       <div className="row container mb-3">
         <div className="card__info mr-auto">
           <p>Amount Invested</p>
-          <h3 className="">${convert(data.amount)}</h3>
+          <h3 className="">
+            $
+            {convert(data.amount)}
+          </h3>
         </div>
         <div className="card__info">
           <p>Shares owned</p>
@@ -23,11 +26,13 @@ const FeaturedMyCard = ({ data }) => (
         <div className="fund__top">
           <h3 className="fund__topic">Fundraised</h3>
           <h3 className="fund__percentage">
-            {percentFund(data.targetAmount, data.amount)}% complete
+            {percentFund(data.targetAmount, data.amount)}
+            % complete
           </h3>
         </div>
         <h3 className="fund__amount">
-          ${numFormat(data.amount)}
+          $
+          {numFormat(data.amount)}
           /$
           {numFormat(data.targetAmount)}
         </h3>

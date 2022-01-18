@@ -3,7 +3,9 @@ import Swiper from 'react-id-swiper';
 import 'swiper/css/swiper.css';
 import FeaturedMyCard from './FeaturedMyCard';
 
-const FeaturedMyStartup = ({ data, token, setClickRegister, userData }) => {
+const FeaturedMyStartup = ({
+  data, token, setClickRegister, userData,
+}) => {
   const params = {
     slidesPerView: data.length,
     loop: data.length >= 3,

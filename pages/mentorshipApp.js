@@ -101,9 +101,9 @@ export class mentorshipApp extends Component {
     }
     let url;
     if (userInfo.is_mentee) {
-      url = `http://localhost:5000/api/v1/suggestions/mentors/${userInfo._id}`;
+      url = `${process.env.BASE_URI}/suggestions/mentors/${userInfo._id}`;
     } else if (userInfo.is_mentor) {
-      url = `http://localhost:5000/api/v1/suggestions/mentes/${userInfo._id}`;
+      url = `${process.env.BASE_URI}/suggestions/mentes/${userInfo._id}`;
     }
     console.log(url);
     axios
@@ -188,7 +188,7 @@ export class mentorshipApp extends Component {
       };
       axios
         .patch(
-          `http://localhost:5000/api/v1/user/updateProfile/${user._id}`,
+          `${process.env.BASE_URI}/user/updateProfile/${user._id}`,
           userUpdate,
           {
             headers: {
@@ -210,7 +210,7 @@ export class mentorshipApp extends Component {
         });
     };
     axios
-      .post('http://localhost:5000/api/v1/mentorship/', mentorship, {
+      .post('${process.env.BASE_URI}/mentorship/', mentorship, {
         headers: {
           'Access-Control-Allow-Origin': '*',
           Authorization: `Bearer ${token}`,

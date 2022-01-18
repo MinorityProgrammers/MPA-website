@@ -1,8 +1,8 @@
-import React, { useMemo, useState } from "react";
-import TinderCard from "react-tinder-card";
+import React, { useMemo, useState } from 'react';
+import TinderCard from 'react-tinder-card';
 
-import axios from "axios";
-import { successToast, errorToast } from "../../contexts/utils/toasts";
+import axios from 'axios';
+import { successToast, errorToast } from '../../contexts/utils/toasts';
 
 const alreadyRemoved = [];
 
@@ -11,15 +11,13 @@ let swipeClick = 0;
 const MentorshipAppSwipeCards = (props) => {
   // const [childRefs, setChildRefs] = useState([]);
   const childRefs = useMemo(
-    () =>
-      Array(props.values.length)
-        .fill(0)
-        .map((i) => React.createRef()),
-    []
+    () => Array(props.values.length)
+      .fill(0)
+      .map((i) => React.createRef()),
+    [],
   );
   // console.log(props.values);
-  const sleep = (milliseconds) =>
-    new Promise((resolve) => setTimeout(resolve, milliseconds));
+  const sleep = (milliseconds) => new Promise((resolve) => setTimeout(resolve, milliseconds));
 
   const swiped = (dir, character) => {
     toggleUndo();
@@ -27,7 +25,7 @@ const MentorshipAppSwipeCards = (props) => {
     if (!alreadyRemoved.includes(character)) {
       alreadyRemoved.push(character);
     }
-    if (dir === "right") {
+    if (dir === 'right') {
       props.handleSwipeRight(character);
     }
   };
@@ -47,7 +45,7 @@ const MentorshipAppSwipeCards = (props) => {
 
   const swipe = (dir) => {
     const cardsLeft = props.values.filter(
-      (person) => !alreadyRemoved.includes(person)
+      (person) => !alreadyRemoved.includes(person),
     );
     if (cardsLeft.length) {
       const toBeRemoved = cardsLeft[cardsLeft.length - 1];
@@ -65,18 +63,18 @@ const MentorshipAppSwipeCards = (props) => {
   };
 
   async function toggleUndo() {
-    const activeBtn = document.getElementById("active_replay_button");
-    const inactiveBtn = document.getElementById("inactive_replay_button");
-    activeBtn.classList.add("tw-hidden");
-    inactiveBtn.classList.remove("tw-hidden");
+    const activeBtn = document.getElementById('active_replay_button');
+    const inactiveBtn = document.getElementById('inactive_replay_button');
+    activeBtn.classList.add('tw-hidden');
+    inactiveBtn.classList.remove('tw-hidden');
     await sleep(2400);
     if (swipeClick == 0) {
-      inactiveBtn.classList.add("tw-hidden");
-      activeBtn.classList.remove("tw-hidden");
+      inactiveBtn.classList.add('tw-hidden');
+      activeBtn.classList.remove('tw-hidden');
     } else {
       await sleep(2400);
-      inactiveBtn.classList.add("tw-hidden");
-      activeBtn.classList.remove("tw-hidden");
+      inactiveBtn.classList.add('tw-hidden');
+      activeBtn.classList.remove('tw-hidden');
     }
   }
 
@@ -102,13 +100,13 @@ const MentorshipAppSwipeCards = (props) => {
           ref={childRefs[index]}
           className={`${character.name}_id swipe tw-absolute tw-h-full tw-w-1/2 tw-rounded-l-3xl`}
           key={character.id}
-          preventSwipe={["up", "down"]}
+          preventSwipe={['up', 'down']}
           onSwipe={(dir) => swiped(dir, character)}
           onCardLeftScreen={() => outOfFrame(character)}
         >
           <img
             className="tw-h-61%  tw-absolute tw-top 0 tw-w-full tw-rounded-tl-3xl"
-            style={{ objectFit: "contain", background: "#fff" }}
+            style={{ objectFit: 'contain', background: '#fff' }}
             src={character.url}
             alt={character.name}
           />
@@ -155,7 +153,7 @@ const MentorshipAppSwipeCards = (props) => {
                 </button>
                 <button
                   className="tw-rounded-full hover:tw-shadow-mentorAppButton tw-bg-white"
-                  onClick={() => swipe("right")}
+                  onClick={() => swipe('right')}
                 >
                   <img
                     src="/assets/images/Mentorship/likeBtn.png"
@@ -164,7 +162,7 @@ const MentorshipAppSwipeCards = (props) => {
                 </button>
                 <button
                   className="tw-rounded-full hover:tw-shadow-mentorAppButton tw-bg-white"
-                  onClick={() => swipe("left")}
+                  onClick={() => swipe('left')}
                 >
                   <img
                     src="/assets/images/Mentorship/dislikeBtn.png"

@@ -30,7 +30,7 @@ const ProfileTwoGenerateAvatarPopUp = ({
   const router = useRouter();
 
   const settingsSubPage = router.pathname.substring(
-    router.pathname.lastIndexOf('/') + 1
+    router.pathname.lastIndexOf('/') + 1,
   );
 
   const [state, setState] = useState(loggedInUserData.avatarOptions.length !== 0 ? {
@@ -130,7 +130,9 @@ const ProfileTwoGenerateAvatarPopUp = ({
   const {
     profileDispatch,
     profileState: {
-      profile: { profileLoading, profileError, profileData, profileIsUpdated },
+      profile: {
+        profileLoading, profileError, profileData, profileIsUpdated,
+      },
     },
   } = useContext(GlobalContext);
 
@@ -176,9 +178,7 @@ const ProfileTwoGenerateAvatarPopUp = ({
             options={backgroundColorField.options}
             required={backgroundColorField.required}
             value={loggedInUserData.avatarOptions.length !== 0 ? state?.avatarOptions[backgroundColorField?.name] : '#a55728'}
-            setValue={(value) =>
-              handleColorChange(backgroundColorField.name, value)
-            }
+            setValue={(value) => handleColorChange(backgroundColorField.name, value)}
           />
           <div className="avatarReplace">
             <Avatar

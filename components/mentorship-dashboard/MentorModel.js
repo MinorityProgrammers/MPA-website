@@ -1,16 +1,18 @@
-import React, { useState, useEffect } from "react";
-import { Modal, Dropdown, Form, ListGroup } from "react-bootstrap";
-import { successToast, errorToast } from "../../contexts/utils/toasts";
-import stylesE from "../../styles/MentorCSS/Mentor.module.css";
-import styles from "../../styles/MentorCSS/Calendar.module.css";
-import { Alert } from "antd";
-import "antd/lib/alert/style/index.css";
-import axios from "axios";
-import FormData from "form-data";
-import "antd/lib/upload/style/index.css";
-import CreatableInputOnly from "./InputSelect.tsx";
-import { event } from "jquery";
-import { set } from "date-fns";
+import React, { useState, useEffect } from 'react';
+import {
+  Modal, Dropdown, Form, ListGroup,
+} from 'react-bootstrap';
+import { Alert } from 'antd';
+import 'antd/lib/alert/style/index.css';
+import axios from 'axios';
+import FormData from 'form-data';
+import 'antd/lib/upload/style/index.css';
+import { event } from 'jquery';
+import { set } from 'date-fns';
+import CreatableInputOnly from './InputSelect.tsx';
+import styles from '../../styles/MentorCSS/Calendar.module.css';
+import stylesE from '../../styles/MentorCSS/Mentor.module.css';
+import { successToast, errorToast } from '../../contexts/utils/toasts';
 
 const MentorModel = ({
   setModalShow,
@@ -25,56 +27,56 @@ const MentorModel = ({
   ...propsR
 }) => {
   const [err, setErr] = useState(false);
-  const [title, setTitle] = useState("");
-  const [time, setTime] = useState("");
-  const [description, setDescription] = useState("");
-  const [progressPercentage, setProgressPercentage] = useState("");
+  const [title, setTitle] = useState('');
+  const [time, setTime] = useState('');
+  const [description, setDescription] = useState('');
+  const [progressPercentage, setProgressPercentage] = useState('');
   const [notesValue, setNotesValue] = useState([]);
 
   const onSubmit = (e) => {
     e.preventDefault();
     const notes = notesValue.map((note) => note.value);
     const data = {
-      title: title,
-      description: description,
+      title,
+      description,
       progress_percentage: progressPercentage,
       completion_time: time,
-      notes: notes,
+      notes,
     };
-    const token = window.localStorage.getItem("jwtToken");
-    if (title == "" || description == "") {
+    const token = window.localStorage.getItem('jwtToken');
+    if (title == '' || description == '') {
       setErr(true);
     } else {
       if (token != null && edit == false) {
         axios
           .post(
-            `http://localhost:5000/api/v1/mentorship/${currentModel}/${mentorship_id}`,
+            `${process.env.BASE_URI}/mentorship/${currentModel}/${mentorship_id}`,
             data,
             {
               headers: {
-                "Access-Control-Allow-Origin": "*",
+                'Access-Control-Allow-Origin': '*',
                 Authorization: `Bearer ${token}`,
               },
-            }
+            },
           )
           .then((res) => {
             successToast(`${currentModel} created!`);
             setUpdate(!update);
           })
           .catch((err) => {
-            errorToast("Something went wrong, please contact us.");
+            errorToast('Something went wrong, please contact us.');
           });
       } else if (token != null && edit == true) {
         axios
           .patch(
-            `http://localhost:5000/api/v1/mentorship/${currentModel}/${currentRes._id}`,
+            `${process.env.BASE_URI}/mentorship/${currentModel}/${currentRes._id}`,
             data,
             {
               headers: {
-                "Access-Control-Allow-Origin": "*",
+                'Access-Control-Allow-Origin': '*',
                 Authorization: `Bearer ${token}`,
               },
-            }
+            },
           )
           .then((res) => {
             successToast(`${currentModel} updated!`);
@@ -82,14 +84,14 @@ const MentorModel = ({
             setUpdate(!update);
           })
           .catch((err) => {
-            errorToast("Something went wrong, please contact us.");
+            errorToast('Something went wrong, please contact us.');
           });
       }
       setErr(false);
-      setTitle("");
-      setDescription("");
-      setProgressPercentage("");
-      setTime("");
+      setTitle('');
+      setDescription('');
+      setProgressPercentage('');
+      setTime('');
       setModalShow(false);
       setEdit(false);
     }
@@ -102,10 +104,10 @@ const MentorModel = ({
       setProgressPercentage(currentRes.progress_percentage);
       setTime(currentRes.completion_time);
     } else {
-      setTitle("");
-      setDescription("");
-      setProgressPercentage("");
-      setTime("");
+      setTitle('');
+      setDescription('');
+      setProgressPercentage('');
+      setTime('');
     }
   }, [currentRes, edit]);
 
@@ -161,13 +163,13 @@ const MentorModel = ({
               </div>
               <img
                 className={styles.eventOutIcon}
-                style={{ width: "30px", height: "30px" }}
+                style={{ width: '30px', height: '30px' }}
                 onClick={() => setModalShow(false)}
                 src="/assets/images/mentor/event-exit-icon.svg"
                 alt="exit-icon"
               />
             </div>
-            <div className={stylesE.line}></div>
+            <div className={stylesE.line} />
           </div>
         </Modal.Title>
       </Modal.Header>
@@ -186,7 +188,7 @@ const MentorModel = ({
               </div>
             </div>
 
-            {currentModel == "sprint" && (
+            {currentModel == 'sprint' && (
               <div className={styles.row}>
                 <div className={styles.col}>
                   <label>Notes</label>
@@ -195,9 +197,9 @@ const MentorModel = ({
               </div>
             )}
             <div className={styles.row}>
-              {currentModel != "event" && (
+              {currentModel != 'event' && (
                 <div
-                  style={{ width: "25%", marginRight: "1rem" }}
+                  style={{ width: '25%', marginRight: '1rem' }}
                   className={styles.col}
                 >
                   <label>Progress Percentage</label>
@@ -205,23 +207,23 @@ const MentorModel = ({
                     value={progressPercentage}
                     onChange={(e) => setProgressPercentage(e.target.value)}
                     type="text"
-                    style={{ width: "80%" }}
+                    style={{ width: '80%' }}
                     placeholder="75%"
                     required
                   />
                 </div>
               )}
-              {currentModel == "sprint" && (
+              {currentModel == 'sprint' && (
                 <div
                   className={styles.col}
-                  style={{ width: "40%", marginRight: "10px" }}
+                  style={{ width: '40%', marginRight: '10px' }}
                 >
                   <label>Time to completion</label>
                   <input
                     value={time}
                     onChange={(e) => setTime(e.target.value)}
                     type="text"
-                    style={{ width: "40%" }}
+                    style={{ width: '40%' }}
                     placeholder="5 days"
                   />
                 </div>
@@ -235,12 +237,12 @@ const MentorModel = ({
                   onChange={(e) => setDescription(e.target.value)}
                   cols="30"
                   rows="3"
-                ></textarea>
+                />
               </div>
             </div>
 
             <div className={styles.row}>
-              <div className={styles.col + " " + styles.colSubmit}>
+              <div className={`${styles.col} ${styles.colSubmit}`}>
                 <input className={styles.createEventSubmit} type="submit" />
               </div>
             </div>

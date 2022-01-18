@@ -2,11 +2,11 @@ import stylesD from '../../styles/MentorCSS/Dashboard.module.css';
 import styles from '../../styles/MentorCSS/Course.module.css';
 
 const Evaluations = () => {
-  let counter = 0;
+  const counter = 0;
   return (
     <div>
       <div className={stylesD.teamImg}>
-        <img src={'/assets/images/mentor/sprint.png'} alt="sprint" />
+        <img src="/assets/images/mentor/sprint.png" alt="sprint" />
         <p>EVALUATIONS</p>
       </div>
       <div className={stylesD.sprintsContainer}>
@@ -39,7 +39,9 @@ const Evaluations = () => {
                 style={{ position: 'relative' }}
               >
                 <div className={styles.postedDate}>
-                  <span>Posted:</span> Aug 16 2021 at 1:30pm EST
+                  <span>Posted:</span>
+                  {' '}
+                  Aug 16 2021 at 1:30pm EST
                 </div>
               </div>
 
@@ -111,7 +113,9 @@ const Evaluations = () => {
                 style={{ position: 'relative' }}
               >
                 <div className={styles.postedDate}>
-                  <span>Posted:</span> Aug 16 2021 at 1:30pm EST
+                  <span>Posted:</span>
+                  {' '}
+                  Aug 16 2021 at 1:30pm EST
                 </div>
               </div>
 

@@ -1,4 +1,6 @@
-import React, { useState, useRef, useEffect, useContext } from 'react';
+import React, {
+  useState, useRef, useEffect, useContext,
+} from 'react';
 import { GlobalContext } from '../contexts/provider';
 import HomepageNav from '../components/homepage/HomepageNav';
 import Layout from '../components/Layout';

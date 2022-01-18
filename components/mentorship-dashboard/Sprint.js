@@ -20,30 +20,28 @@ const Sprint = ({
   setUpdate,
   update,
 }) => {
-  const Edit = ({ id, res, currentModel }) => {
-    return (
-      <div className={styles.actionIcons}>
-        <FontAwesomeIcon
-          onClick={() => {
-            DeleteHandler(id, currentModel);
-            setCurrentModel(currentModel);
-          }}
-          className={styles.deleteIcon}
-          icon={faTrashAlt}
-        />
-        <FontAwesomeIcon
-          onClick={() => {
-            setCurrentRes(res);
-            setEdit(true);
-            setModalShow(true);
-            setCurrentModel(currentModel);
-          }}
-          className={styles.editIcon}
-          icon={faEdit}
-        />
-      </div>
-    );
-  };
+  const Edit = ({ id, res, currentModel }) => (
+    <div className={styles.actionIcons}>
+      <FontAwesomeIcon
+        onClick={() => {
+          DeleteHandler(id, currentModel);
+          setCurrentModel(currentModel);
+        }}
+        className={styles.deleteIcon}
+        icon={faTrashAlt}
+      />
+      <FontAwesomeIcon
+        onClick={() => {
+          setCurrentRes(res);
+          setEdit(true);
+          setModalShow(true);
+          setCurrentModel(currentModel);
+        }}
+        className={styles.editIcon}
+        icon={faEdit}
+      />
+    </div>
+  );
   // Delete Req
   const DeleteHandler = (id, currentModel) => {
     const token = window.localStorage.getItem('jwtToken');
@@ -51,13 +49,13 @@ const Sprint = ({
     if (token != null) {
       axios
         .delete(
-          `http://localhost:5000/api/v1/mentorship/${currentModel}/${id}`,
+          `${process.env.BASE_URI}/mentorship/${currentModel}/${id}`,
           {
             headers: {
               'Access-Control-Allow-Origin': '*',
               Authorization: `Bearer ${token}`,
             },
-          }
+          },
         )
         .then((res) => {
           successToast(`${currentModel} Deleted successfully!`);
@@ -77,19 +75,19 @@ const Sprint = ({
         className={styles.sprintTitle}
       >
         <div>{sprint.title}</div>
-        <Edit res={sprint} id={sprint._id} currentModel={'sprint'} />
+        <Edit res={sprint} id={sprint._id} currentModel="sprint" />
       </div>
-      <div className={styles.line}></div>
+      <div className={styles.line} />
       <div className={styles.row}>
         <div>
           <div className={styles.colTitle}>Mentees</div>
           <div className={styles.menteesIcon}>
             <OverlayTrigger
-              overlay={
+              overlay={(
                 <Tooltip>
-                  {mentee.user_id.firstName + ' ' + mentee.user_id.lastName}
+                  {`${mentee.user_id.firstName} ${mentee.user_id.lastName}`}
                 </Tooltip>
-              }
+              )}
             >
               <img
                 style={{ height: '35px', width: '35px', borderRadius: '50px' }}
@@ -119,7 +117,7 @@ const Sprint = ({
                     <p>{event.createdAt.split('T')[0]}</p>
                   </div>
                 </div>
-                <Edit res={event} id={event._id} currentModel={'event'} />
+                <Edit res={event} id={event._id} currentModel="event" />
               </div>
             ))}
           </div>
@@ -141,7 +139,7 @@ const Sprint = ({
                     <p>{course.createdAt.split('T')[0]}</p>
                   </div>
                 </div>
-                <Edit res={course} id={course._id} currentModel={'course'} />
+                <Edit res={course} id={course._id} currentModel="course" />
               </div>
             ))}
           </div>
@@ -165,7 +163,7 @@ const Sprint = ({
                 <Edit
                   res={capstone}
                   id={capstone._id}
-                  currentModel={'capstone'}
+                  currentModel="capstone"
                 />
               </div>
             ))}

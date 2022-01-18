@@ -62,7 +62,8 @@ const MentorDetail = ({
       />
       <div className={stylesE.userName}>
         Meet Your Mentor,
-        {` ${menteeData.user_id.firstName} ${menteeData.user_id.lastName}`}!
+        {` ${menteeData.user_id.firstName} ${menteeData.user_id.lastName}`}
+        !
       </div>
       <div className={styles.container}>
         <div className={styles.grid}>
@@ -88,7 +89,8 @@ const MentorDetail = ({
                   </div>
                   <div className={stylesE.menteeSocial}>
                     <div>
-                      @{menteeData.user_id.GithubLink.split('/')[3]}
+                      @
+                      {menteeData.user_id.GithubLink.split('/')[3]}
                       <img
                         className={stylesE.qrCode}
                         onClick={() => setModalShow(true)}
@@ -128,19 +130,25 @@ const MentorDetail = ({
                   Minority Programmer Mentor
                 </div>
                 <div className={stylesE.role}>
-                  Been with MPA: {menteeData.duration}
+                  Been with MPA:
+                  {' '}
+                  {menteeData.duration}
                 </div>
                 <div className={stylesE.tags}>
                   {menteeData.user_id.programmingSkills.map((tag) => (
                     <div key={tag}>
-                      <a> {tag}</a>
+                      <a>
+                        {' '}
+                        {tag}
+                      </a>
                     </div>
                   ))}
                 </div>
               </div>
             </div>
             <div className={stylesE.menteeSectionTitle}>
-              {menteeData.user_id.firstName}’s Mentees
+              {menteeData.user_id.firstName}
+              ’s Mentees
             </div>
             <div className={stylesE.menteeSection}>
               <div>
@@ -181,7 +189,7 @@ const MentorDetail = ({
                       ? styles.sideBar
                       : styles.hide
                   }
-                ></div>
+                />
 
                 <img
                   src={menteeData.user_id.profilePicture}
@@ -209,20 +217,18 @@ const MentorDetail = ({
                       ? styles.sideBar
                       : styles.hide
                   }
-                ></div>
+                />
                 <img src="/assets/images/mentor/Rectangle 1971.png" alt="" />
                 <p>Communication</p>
               </div>
               <div
-                onClick={() =>
-                  setActionActive({
-                    sprintsViewActive: false,
-                    calendarActive: false,
-                    eventActive: false,
-                    resourceActive: true,
-                    evaluations: false,
-                  })
-                }
+                onClick={() => setActionActive({
+                  sprintsViewActive: false,
+                  calendarActive: false,
+                  eventActive: false,
+                  resourceActive: true,
+                  evaluations: false,
+                })}
                 className={
                   actionActive.resourceActive
                     ? styles.mentorRowE
@@ -233,21 +239,19 @@ const MentorDetail = ({
                   className={
                     actionActive.resourceActive ? styles.sideBar : styles.hide
                   }
-                ></div>
+                />
                 <img src="/assets/images/mentor/resources.png" alt="" />
                 <p>Resources</p>
               </div>
 
               <div
-                onClick={() =>
-                  setActionActive({
-                    sprintsViewActive: false,
-                    calendarActive: false,
-                    eventActive: true,
-                    resourceActive: false,
-                    evaluations: false,
-                  })
-                }
+                onClick={() => setActionActive({
+                  sprintsViewActive: false,
+                  calendarActive: false,
+                  eventActive: true,
+                  resourceActive: false,
+                  evaluations: false,
+                })}
                 className={
                   actionActive.eventActive
                     ? styles.mentorRowE
@@ -258,7 +262,7 @@ const MentorDetail = ({
                   className={
                     actionActive.eventActive ? styles.sideBar : styles.hide
                   }
-                ></div>
+                />
                 <img src="/assets/images/mentor/events.png" alt="" />
                 <p>Group Events</p>
               </div>
@@ -274,20 +278,18 @@ const MentorDetail = ({
                   className={
                     actionActive.calendarActive ? styles.sideBar : styles.hide
                   }
-                ></div>
+                />
                 <img src="/assets/images/mentor/calendarIcon.png" alt="" />
                 <p>Calender/Bi-Weekly</p>
               </div>
               <div
-                onClick={() =>
-                  setActionActive({
-                    sprintsViewActive: false,
-                    calendarActive: false,
-                    eventActive: false,
-                    resourceActive: false,
-                    evaluations: true,
-                  })
-                }
+                onClick={() => setActionActive({
+                  sprintsViewActive: false,
+                  calendarActive: false,
+                  eventActive: false,
+                  resourceActive: false,
+                  evaluations: true,
+                })}
                 style={{ borderRadius: '0px 0 30px 0px' }}
                 className={
                   actionActive.evaluations
@@ -299,7 +301,7 @@ const MentorDetail = ({
                   className={
                     actionActive.evaluations ? styles.sideBar : styles.hide
                   }
-                ></div>
+                />
                 <img src="/assets/images/mentor/Rectangle 1977.png" alt="" />
                 <p>Evaluations</p>
               </div>

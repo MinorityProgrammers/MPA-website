@@ -49,14 +49,14 @@ const ResourcesModel = ({
       if (token != null && edit == false) {
         axios
           .post(
-            `http://localhost:5000/api/v1/mentorship/resource/${mentorship_id}`,
+            `${process.env.BASE_URI}/mentorship/resource/${mentorship_id}`,
             formData,
             {
               headers: {
                 'Access-Control-Allow-Origin': '*',
                 Authorization: `Bearer ${token}`,
               },
-            }
+            },
           )
           .then((res) => {
             successToast('Resource created!');
@@ -68,14 +68,14 @@ const ResourcesModel = ({
       } else if (token != null && edit == true) {
         axios
           .patch(
-            `http://localhost:5000/api/v1/mentorship/resource/${currentRes._id}`,
+            `${process.env.BASE_URI}/mentorship/resource/${currentRes._id}`,
             formData,
             {
               headers: {
                 'Access-Control-Allow-Origin': '*',
                 Authorization: `Bearer ${token}`,
               },
-            }
+            },
           )
           .then((res) => {
             successToast('Resource updated!');
@@ -165,7 +165,7 @@ const ResourcesModel = ({
                 alt="exit-icon"
               />
             </div>
-            <div className={stylesE.line}></div>
+            <div className={stylesE.line} />
           </div>
         </Modal.Title>
       </Modal.Header>
@@ -205,7 +205,7 @@ const ResourcesModel = ({
                   onChange={(e) => setDescription(e.target.value)}
                   cols="30"
                   rows="3"
-                ></textarea>
+                />
               </div>
             </div>
             <div className={styles.row}>
@@ -227,7 +227,7 @@ const ResourcesModel = ({
             </div>
 
             <div style={{ marginTop: '1.4rem' }} className={styles.row}>
-              <div className={styles.col + ' ' + styles.colSubmit}>
+              <div className={`${styles.col} ${styles.colSubmit}`}>
                 <input className={styles.createEventSubmit} type="submit" />
               </div>
             </div>

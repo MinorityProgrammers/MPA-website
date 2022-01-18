@@ -1,4 +1,6 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, {
+  useContext, useEffect, useRef, useState,
+} from 'react';
 import ComingSoon from '../components/ComingSoon';
 import Events from '../components/events-proposal/events-component/events-component';
 import Footer from '../components/Footer';

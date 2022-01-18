@@ -18,7 +18,15 @@ const AvatarMaker = () => (
           <div className="countdown-one__content">
             <h2 className="countdown-one__title block-title__title">
               {' '}
-              Join <br /> Blockchain <br /> with your NFT
+              Join
+              {' '}
+              <br />
+              {' '}
+              Blockchain
+              {' '}
+              <br />
+              {' '}
+              with your NFT
             </h2>
             <p className="countdown-one__tag-line">Create your own avatar!</p>
             <div />

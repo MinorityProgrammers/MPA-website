@@ -25,7 +25,7 @@ const SprintsView = ({
         className={styles.teamImg}
       >
         <div style={{ display: 'flex' }}>
-          <img src={'/assets/images/mentor/mentor-team.png'} alt="team" />
+          <img src="/assets/images/mentor/mentor-team.png" alt="team" />
           <p>TEAM SPRINTS</p>
         </div>
         <div style={{ marginTop: '3px' }}>

@@ -14,8 +14,11 @@ const CallToActionTwo = () => (
             <div className="cta-two__content">
               <h2 className="cta-two__title">Become an teacher</h2>
               <p className="cta-two__text">
-                There are many variations of passages of lore available but{' '}
-                <br /> the majority have suffered alteration in some form.
+                There are many variations of passages of lore available but
+                {' '}
+                <br />
+                {' '}
+                the majority have suffered alteration in some form.
               </p>
               <a href="#" className="thm-btn cta-two__btn">
                 Start Teaching

@@ -12,13 +12,13 @@ const ConsultancyHero = function () {
               </h1>
               <p className="consultancyHero-txt">Get your idea turned into a complete web application ready for market with our transparent task-based escrow system that gives you as client, the control over how your product is being built.  </p>
               <div className="incubator__button">
-                <div  className="button btn-gradient">
+                <div className="button btn-gradient">
                   Get Quote
                 </div>
               </div>
             </div>
             <div>
-              <img src = 'assets/images/consultancy/consultancyHero.png'/>
+              <img src="assets/images/consultancy/consultancyHero.png" />
             </div>
           </div>
         </div>

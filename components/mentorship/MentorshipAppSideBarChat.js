@@ -19,7 +19,9 @@ const MentorshipAppSideBarChat = (props) => (
       <div className="text tw-flex-1 tw-px-6 tw-pb-4">
         <h4 className="tw-font-medium tw-text-2xl">{props.character.name}</h4>
         <p>
-          {props.character.occupation}, {props.character.country}
+          {props.character.occupation}
+          ,
+          {props.character.country}
         </p>
       </div>
     </div>

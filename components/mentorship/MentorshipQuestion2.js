@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 export class MentorshipQuestion2 extends Component {
   continue = (e) => {
@@ -41,9 +41,9 @@ export class MentorshipQuestion2 extends Component {
                 className="tw-outline-none tw-hidden"
                 type="radio"
                 name="iAMa"
-                onChange={handleChange("iAMa")}
+                onChange={handleChange('iAMa')}
                 defaultValue="Mentor"
-                defaultChecked={values.iAMa === "Mentor"}
+                defaultChecked={values.iAMa === 'Mentor'}
               />
               <img
                 className="tw-w-full tw-h-240px tw-mx-auto tw-object-cover tw-rounded-t-2xl tw-filter tw-grayscale label-checked:tw-filter-none"
@@ -63,9 +63,9 @@ export class MentorshipQuestion2 extends Component {
                 className="tw-outline-none tw-hidden"
                 type="radio"
                 name="iAMa"
-                onChange={handleChange("iAMa")}
+                onChange={handleChange('iAMa')}
                 defaultValue="Mentee"
-                defaultChecked={values.iAMa === "Mentee"}
+                defaultChecked={values.iAMa === 'Mentee'}
               />
               <img
                 className="tw-w-full tw-h-240px tw-mx-auto tw-object-cover tw-rounded-t-2xl tw-filter tw-grayscale label-checked:tw-filter-none"

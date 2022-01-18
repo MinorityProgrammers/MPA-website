@@ -3,7 +3,7 @@ import axios from 'axios';
 import HomepageNav from '../../components/homepage/HomepageNav';
 import Layout from '../../components/Layout';
 import Footer from '../../components/Footer';
-import SidebarTwo from '../../components/SidebarTwo';
+import SidebarTwo from '../../components/sidebar/SidebarTwo';
 import links from '../../contexts/utils/links';
 import { useDetectOutsideClick } from '../../components/UseDetectOutsideClick';
 import MentorDashboard from '../../components/mentorship-dashboard/MentorDashboard';
@@ -44,7 +44,7 @@ const Mentor = () => {
 
     if (token != null) {
       axios
-        .get(`http://localhost:5000/api/v1/mentorship/user/${user.user._id}`, {
+        .get(`${process.env.BASE_URI}/mentorship/user/${user.user._id}`, {
           headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`,

@@ -47,7 +47,7 @@ const MentorDashboard = ({
     setData(mentee);
   };
   useEffect(() => {
-    window.addEventListener('resize', function () {
+    window.addEventListener('resize', () => {
       if ($(window).width() >= 650) {
         console.log(active);
         setActive(false);
@@ -58,8 +58,10 @@ const MentorDashboard = ({
   return (
     <div>
       <div className={styles.userName}>
-        Welcome Back, Mentor{' '}
-        {mentorshipData.mentorship.mentor_id.user_id.firstName}!
+        Welcome Back, Mentor
+        {' '}
+        {mentorshipData.mentorship.mentor_id.user_id.firstName}
+        !
       </div>
       <div className={styles.navBar}>
         <FontAwesomeIcon
@@ -125,7 +127,7 @@ const MentorDashboard = ({
                     ? styles.sideBar
                     : styles.hide
                 }
-              ></div>
+              />
 
               <img
                 src={mentorshipData.mentorship.mentee_id.user_id.profilePicture}
@@ -151,7 +153,7 @@ const MentorDashboard = ({
                 className={
                   actionActive.sprintsViewActive ? styles.sideBar : styles.hide
                 }
-              ></div>
+              />
               <img src="/assets/images/mentor/Rectangle 1971.png" alt="" />
               <p>Messages</p>
             </div>
@@ -167,19 +169,17 @@ const MentorDashboard = ({
                 className={
                   actionActive.calendarActive ? styles.sideBar : styles.hide
                 }
-              ></div>
+              />
               <img src="/assets/images/mentor/calendarIcon.png" alt="" />
               <p>Calender/Events</p>
             </div>
             <div
-              onClick={() =>
-                setActionActive({
-                  resourceActive: false,
-                  sprintsViewActive: false,
-                  calendarActive: false,
-                  evaluationActive: true,
-                })
-              }
+              onClick={() => setActionActive({
+                resourceActive: false,
+                sprintsViewActive: false,
+                calendarActive: false,
+                evaluationActive: true,
+              })}
               className={
                 actionActive.evaluationActive
                   ? styles.mentorRowE
@@ -190,20 +190,18 @@ const MentorDashboard = ({
                 className={
                   actionActive.evaluationActive ? styles.sideBar : styles.hide
                 }
-              ></div>
+              />
               <img src="/assets/images/mentor/Rectangle 1977.png" alt="" />
               <p>Evaluations</p>
             </div>
             <div
               style={{ borderRadius: '0px 0 30px 0px' }}
-              onClick={() =>
-                setActionActive({
-                  sprintsViewActive: false,
-                  calendarActive: false,
-                  evaluationActive: false,
-                  resourceActive: true,
-                })
-              }
+              onClick={() => setActionActive({
+                sprintsViewActive: false,
+                calendarActive: false,
+                evaluationActive: false,
+                resourceActive: true,
+              })}
               className={
                 actionActive.resourceActive
                   ? styles.mentorRowE
@@ -214,7 +212,7 @@ const MentorDashboard = ({
                 className={
                   actionActive.resourceActive ? styles.sideBar : styles.hide
                 }
-              ></div>
+              />
               <img src="/assets/images/mentor/resources.png" alt="" />
               <p>Resources</p>
             </div>

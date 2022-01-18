@@ -9,10 +9,14 @@ const PlannedTaskStatusHeader = () => (
           <h3 className="tw-text-2xl tw-font-semibold">Title</h3>
           <p>
             <span className="tw-mr-3">
-              <strong>Type:</strong> Type
+              <strong>Type:</strong>
+              {' '}
+              Type
             </span>
             <span>
-              <strong>Category:</strong> Category
+              <strong>Category:</strong>
+              {' '}
+              Category
             </span>
           </p>
         </div>
@@ -29,25 +33,41 @@ const PlannedTaskStatusHeader = () => (
 
           <div className=" tw-mr-3 -mt-1">
             <p>
-              Created by <br /> <strong>Created By</strong>
+              Created by
+              {' '}
+              <br />
+              {' '}
+              <strong>Created By</strong>
             </p>
           </div>
           <div className="">
             <p>
-              Created on <br /> <strong>Created On</strong>
+              Created on
+              {' '}
+              <br />
+              {' '}
+              <strong>Created On</strong>
             </p>
           </div>
         </div>
         <div className="count tw-flex tw-self-center">
           <div className=" tw-mr-3">
             <p>
-              <strong>Replies</strong> <br /> Replies
+              <strong>Replies</strong>
+              {' '}
+              <br />
+              {' '}
+              Replies
             </p>
           </div>
 
           <div className=" tw-mr-3">
             <p>
-              <strong>Views</strong> <br /> Views
+              <strong>Views</strong>
+              {' '}
+              <br />
+              {' '}
+              Views
             </p>
           </div>
           <div className=" ">

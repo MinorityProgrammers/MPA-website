@@ -1,10 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
+import axios from 'axios';
 import styles from './topheader.module.css';
 import { JobsFilters } from '../../../career-components/JobsFilters';
 import JobsMainContent from '../JobsMainContent';
 import Loader from '../../../Loader';
-import axios from 'axios';
 
 export async function getServerSideProps(context) {
   return {

@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
-import { isSameDay, set } from "date-fns";
-import { enGB } from "date-fns/locale";
-import { Calendar } from "react-nice-dates";
-import "react-nice-dates/build/style.css";
-import { Events } from "./Utils";
-import styles from "../../styles/MentorCSS/Calendar.module.css";
-import stylesE from "../../styles/MentorCSS/Dashboard.module.css";
-import PopModel from "./PopModel";
+import React, { useState, useEffect } from 'react';
+import { isSameDay, set } from 'date-fns';
+import { enGB } from 'date-fns/locale';
+import { Calendar } from 'react-nice-dates';
+import 'react-nice-dates/build/style.css';
+import { Events } from './Utils';
+import styles from '../../styles/MentorCSS/Calendar.module.css';
+import stylesE from '../../styles/MentorCSS/Dashboard.module.css';
+import PopModel from './PopModel';
 
 export default function CalendarEvent({
   events: data,
@@ -33,16 +33,13 @@ export default function CalendarEvent({
   }, []);
 
   const modifiers = {
-    selected: (date) =>
-      selectedDates.some((selectedDate) => isSameDay(selectedDate, date)),
+    selected: (date) => selectedDates.some((selectedDate) => isSameDay(selectedDate, date)),
   };
   const handleDayClick = (date) => {
-    const day =
-      date.getDate() < 10 ? "0" + date.getDate() : date.getDate() + "";
-    const month =
-      date.getMonth() + 1 < 10
-        ? "0" + (date.getMonth() + 1)
-        : date.getMonth() + 1 + "";
+    const day = date.getDate() < 10 ? `0${date.getDate()}` : `${date.getDate()}`;
+    const month = date.getMonth() + 1 < 10
+      ? `0${date.getMonth() + 1}`
+      : `${date.getMonth() + 1}`;
     const newDate = `${date.getFullYear()}-${month}-${day}`;
     setDate(newDate);
     setModalShow(true);
@@ -51,7 +48,7 @@ export default function CalendarEvent({
   return (
     <div>
       <div className={stylesE.teamImg}>
-        <img src={"/assets/images/mentor/calendarIcon.png"} alt="calendar" />
+        <img src="/assets/images/mentor/calendarIcon.png" alt="calendar" />
         <p>CALENDER/EVENTS</p>
       </div>
       <PopModel

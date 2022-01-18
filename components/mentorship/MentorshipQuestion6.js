@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react";
-import { successToast, errorToast } from "../../contexts/utils/toasts";
-import axios from "axios";
-import Link from "next/link";
-import { useRouter } from "next/router";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { successToast, errorToast } from '../../contexts/utils/toasts';
 
 const MentorshipQuestion6 = (props) => {
-  const [user, setUser] = useState("");
+  const [user, setUser] = useState('');
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("userInfo"));
+    const user = JSON.parse(localStorage.getItem('userInfo'));
     setUser(user.user);
   }, []);
   const back = (e) => {
@@ -16,43 +16,43 @@ const MentorshipQuestion6 = (props) => {
   };
 
   const { values } = props;
-  let lookingTitle = "";
-  if (values.iAMa == "Mentor") {
-    lookingTitle = "Mentee";
+  let lookingTitle = '';
+  if (values.iAMa == 'Mentor') {
+    lookingTitle = 'Mentee';
   }
-  if (values.iAMa == "Mentee") {
-    lookingTitle = "Mentor";
+  if (values.iAMa == 'Mentee') {
+    lookingTitle = 'Mentor';
   }
   console.log(values);
   const submitHandler = (e) => {
     // e.preventDefault();
     const userUpdate = {
-      is_mentor: values.iAMa === "Mentor",
-      is_mentee: values.iAMa === "Mentee",
+      is_mentor: values.iAMa === 'Mentor',
+      is_mentee: values.iAMa === 'Mentee',
     };
-    const token = window.localStorage.getItem("jwtToken");
+    const token = window.localStorage.getItem('jwtToken');
 
     axios
       .patch(
-        `http://localhost:5000/api/v1/user/updateProfile/${user._id}`,
+        `${process.env.BASE_URI}/user/updateProfile/${user._id}`,
         userUpdate,
         {
           headers: {
-            "Access-Control-Allow-Origin": "*",
+            'Access-Control-Allow-Origin': '*',
             Authorization: `Bearer ${token}`,
           },
-        }
+        },
       )
       .then((res) => {
-        successToast(`User Updated!`);
+        successToast('User Updated!');
         localStorage.setItem(
-          "userInfo",
-          JSON.stringify({ token: token, user: res.data.data })
+          'userInfo',
+          JSON.stringify({ token, user: res.data.data }),
         );
         console.log(res.data.data);
       })
       .catch((err) => {
-        errorToast("Something went wrong, please contact us.");
+        errorToast('Something went wrong, please contact us.');
       });
 
     const mentorshipData = {
@@ -72,25 +72,25 @@ const MentorshipQuestion6 = (props) => {
 
     axios
       .post(
-        `http://localhost:5000/api/v1/${values.iAMa.toLowerCase()}/`,
+        `${process.env.BASE_URI}/${values.iAMa.toLowerCase()}/`,
         mentorshipData,
         {
           headers: {
-            "Access-Control-Allow-Origin": "*",
+            'Access-Control-Allow-Origin': '*',
             Authorization: `Bearer ${token}`,
           },
-        }
+        },
       )
       .then((res) => {
         successToast(`${values.iAMa.toLowerCase()} Created!`);
         router.push({
-          pathname: "/mentorshipApp",
+          pathname: '/mentorshipApp',
           query: { object: JSON.stringify(res.data.data) },
         });
         console.log(res.data.data);
       })
       .catch((err) => {
-        errorToast("Something went wrong, please contact us.");
+        errorToast('Something went wrong, please contact us.');
       });
   };
   return (
@@ -116,7 +116,9 @@ const MentorshipQuestion6 = (props) => {
             <div className="col-sm-12 col-md-4">
               <h5 className="tw-font-bold tw-text-#222222">Full Name</h5>
               <p className="tw-m-0">
-                {user.firstName} {user.lastName}
+                {user.firstName}
+                {' '}
+                {user.lastName}
               </p>
             </div>
             <div className="col-sm-12 col-md-4 tw-text-center md:tw-text-left">
@@ -128,7 +130,7 @@ const MentorshipQuestion6 = (props) => {
             <div className="col-sm-12 col-md-4 tw-text-right md:tw-text-left">
               <h5 className="tw-font-bold tw-text-#222222">Date of Birth</h5>
               <p className="tw-m-0">
-                {user.birthday ? user.birthday.split("T")[0] : user.birthday}
+                {user.birthday ? user.birthday.split('T')[0] : user.birthday}
               </p>
             </div>
           </div>
@@ -137,7 +139,10 @@ const MentorshipQuestion6 = (props) => {
               <h5 className="tw-font-bold tw-text-#222222">Passions:</h5>
               <p className="tw-m-0">
                 {values.passions.map((passion) => (
-                  <span>{passion.label} </span>
+                  <span>
+                    {passion.label}
+                    {' '}
+                  </span>
                 ))}
               </p>
             </div>
@@ -146,13 +151,19 @@ const MentorshipQuestion6 = (props) => {
             <div className="col-sm-12 col-md-4">
               <h5 className="tw-font-bold tw-text-#222222">Nationality</h5>
               <p className="tw-m-0">
-                <p className="tw-m-0">{user.Nationality} </p>
+                <p className="tw-m-0">
+                  {user.Nationality}
+                  {' '}
+                </p>
               </p>
             </div>
             <div className="tw-text-center md:tw-text-left col-sm-12 col-md-4">
               <h5 className="tw-font-bold tw-text-#222222">Ocupation</h5>
               <p className="tw-m-0">
-                <p className="tw-m-0">{values.occupation} </p>
+                <p className="tw-m-0">
+                  {values.occupation}
+                  {' '}
+                </p>
               </p>
             </div>
             <div className="tw-text-right md:tw-text-left col-sm-12 col-md-4">
@@ -160,7 +171,10 @@ const MentorshipQuestion6 = (props) => {
                 Place I work/study in
               </h5>
               <p className="tw-m-0">
-                <p className="tw-m-0">{values.occupationPlace} </p>
+                <p className="tw-m-0">
+                  {values.occupationPlace}
+                  {' '}
+                </p>
               </p>
             </div>
           </div>
@@ -169,7 +183,11 @@ const MentorshipQuestion6 = (props) => {
               <h5 className="tw-font-bold tw-text-#222222">Interest:</h5>
               <p className="tw-m-0">
                 {/* {values.interest.map((item) => ( */}
-                <span> {values.interest.label} </span>
+                <span>
+                  {' '}
+                  {values.interest.label}
+                  {' '}
+                </span>
                 {/* ))} */}
               </p>
             </div>
@@ -179,7 +197,10 @@ const MentorshipQuestion6 = (props) => {
               <h5 className="tw-font-bold tw-text-#222222">Learning Style</h5>
               <p className="tw-m-0">
                 {/* {values.learningStyle.map((item) => ( */}
-                <p className="tw-m-0">{values.learningStyle.label} </p>
+                <p className="tw-m-0">
+                  {values.learningStyle.label}
+                  {' '}
+                </p>
                 {/* ))} */}
               </p>
             </div>
@@ -187,7 +208,10 @@ const MentorshipQuestion6 = (props) => {
               <h5 className="tw-font-bold tw-text-#222222">Personality Type</h5>
               <p className="tw-m-0">
                 {/* {values.personlityType.map((item) => ( */}
-                <p className="tw-m-0">{values.personlityType.label} </p>
+                <p className="tw-m-0">
+                  {values.personlityType.label}
+                  {' '}
+                </p>
                 {/* ))} */}
               </p>
             </div>
@@ -195,7 +219,10 @@ const MentorshipQuestion6 = (props) => {
               <h5 className="tw-font-bold tw-text-#222222">Languages</h5>
               <p className="tw-m-0">
                 {/* {values.primaryLang.map((item) => ( */}
-                <p className="tw-m-0">{user.primaryLanguage} </p>
+                <p className="tw-m-0">
+                  {user.primaryLanguage}
+                  {' '}
+                </p>
                 {/* ))} */}
               </p>
             </div>
@@ -221,7 +248,10 @@ const MentorshipQuestion6 = (props) => {
               </h5>
               <p className="tw-m-0">
                 {/* {values.lookingForEdu.map((item) => ( */}
-                <p className="tw-m-0">{values.lookingForEdu.label} </p>
+                <p className="tw-m-0">
+                  {values.lookingForEdu.label}
+                  {' '}
+                </p>
                 {/* ))} */}
               </p>
             </div>
@@ -232,7 +262,10 @@ const MentorshipQuestion6 = (props) => {
               </h5>
               <p className="tw-m-0">
                 {/* {values.lookingForExp.map((item) => ( */}
-                <p className="tw-m-0">{values.lookingForExp.label} </p>
+                <p className="tw-m-0">
+                  {values.lookingForExp.label}
+                  {' '}
+                </p>
                 {/* ))} */}
               </p>
             </div>
@@ -243,7 +276,10 @@ const MentorshipQuestion6 = (props) => {
               </h5>
               <p className="tw-m-0">
                 {/* {values.lookingForGender.map((item) => ( */}
-                <p className="tw-m-0">{values.lookingForGender.label} </p>
+                <p className="tw-m-0">
+                  {values.lookingForGender.label}
+                  {' '}
+                </p>
                 {/* ))} */}
               </p>
             </div>
@@ -267,7 +303,10 @@ const MentorshipQuestion6 = (props) => {
               </h5>
               <p className="tw-m-0">
                 {/* {values.lookingForLang.map((item) => ( */}
-                <p className="tw-m-0">{values.lookingForLang.label} </p>
+                <p className="tw-m-0">
+                  {values.lookingForLang.label}
+                  {' '}
+                </p>
                 {/* ))} */}
               </p>
             </div>
@@ -278,7 +317,10 @@ const MentorshipQuestion6 = (props) => {
               </h5>
               <p className="tw-m-0">
                 {/* {values.lookingForEthnicity.map((item) => ( */}
-                <p className="tw-m-0">{values.lookingForEthnicity.label} </p>
+                <p className="tw-m-0">
+                  {values.lookingForEthnicity.label}
+                  {' '}
+                </p>
                 {/* ))} */}
               </p>
             </div>
@@ -295,7 +337,7 @@ const MentorshipQuestion6 = (props) => {
           </button>
           <Link
             href={{
-              pathname: "/mentorshipApp",
+              pathname: '/mentorshipApp',
             }}
           >
             <button

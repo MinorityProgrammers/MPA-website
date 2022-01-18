@@ -6,20 +6,22 @@ import { timeago } from '../helpers/timeago';
 //   console.log('copied');
 // }
 
-const ChatMessage = ({ user, message, own, deleteMessage }) => {
+const ChatMessage = ({
+  user, message, own, deleteMessage,
+}) =>
   // const [isHovering, setIsHovering] = useState(false);
-  return own ? (
-    // <div className="own-message" onMouseOver={()=>setIsHovering(true)} onMouseOut={()=> setIsHovering(false)}>
-    //   <div style={{display:'flex', flexDirection:'row', alignItems:'center'}}>
-    //     {isHovering &&
-    //     (<>
-    //     <div style={{cursor:"pointer", borderRadius:'5px', backgroundColor:'lightgray', height:'25px', marginRight:'10px',display:'flex', justifyContent:'center', alignItems:'center'}} onClick={deleteMessage}>
-    //       <span style={{color:'black'}}>Delete</span>
-    //     </div>
-    //     <div style={{cursor:"pointer", borderRadius:'5px', backgroundColor:'lightgray', height:'25px', marginRight:'10px',display:'flex', justifyContent:'center', alignItems:'center'}} onClick={copyMessage}>
-    //       <span style={{color:'black'}}>Copy</span>
-    //     </div>
-    //     </>)}
+  (own ? (
+  // <div className="own-message" onMouseOver={()=>setIsHovering(true)} onMouseOut={()=> setIsHovering(false)}>
+  //   <div style={{display:'flex', flexDirection:'row', alignItems:'center'}}>
+  //     {isHovering &&
+  //     (<>
+  //     <div style={{cursor:"pointer", borderRadius:'5px', backgroundColor:'lightgray', height:'25px', marginRight:'10px',display:'flex', justifyContent:'center', alignItems:'center'}} onClick={deleteMessage}>
+  //       <span style={{color:'black'}}>Delete</span>
+  //     </div>
+  //     <div style={{cursor:"pointer", borderRadius:'5px', backgroundColor:'lightgray', height:'25px', marginRight:'10px',display:'flex', justifyContent:'center', alignItems:'center'}} onClick={copyMessage}>
+  //       <span style={{color:'black'}}>Copy</span>
+  //     </div>
+  //     </>)}
     <div className="own-message">
       <div className="message-top">
         <p>{message.message}</p>
@@ -52,7 +54,5 @@ const ChatMessage = ({ user, message, own, deleteMessage }) => {
 
       <div className="message-bottom">{timeago(message.createdAt)}</div>
     </div>
-  );
-};
-
+  ));
 export default ChatMessage;

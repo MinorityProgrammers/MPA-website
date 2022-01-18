@@ -23,7 +23,8 @@ const CreateNewJob = () => {
   }
 
   function getTodaysDate() {
-    const todaysDate = new Date().toString().split(' ').slice(1, 4).join(' ');
+    const todaysDate = new Date().toString().split(' ').slice(1, 4)
+      .join(' ');
     return todaysDate;
   }
   getTodaysDate();
@@ -48,7 +49,8 @@ const CreateNewJob = () => {
                   COMPANY NAME FROM EMAIL
                 </div>
                 <div>
-                  Todays Date:{' '}
+                  Todays Date:
+                  {' '}
                   <span className="tw-font-bold">{getTodaysDate()}</span>
                 </div>
               </div>

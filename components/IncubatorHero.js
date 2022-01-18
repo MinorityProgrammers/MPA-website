@@ -22,9 +22,9 @@ const IncubatorHero = () => {
                 </div>
               </div>
             </div>
-        <div>
-          <img src = 'assets/images/incubator/incubatorHero.png'/>
-        </div>
+            <div>
+              <img src="assets/images/incubator/incubatorHero.png" />
+            </div>
           </div>
         </div>
       </div>

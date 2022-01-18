@@ -59,7 +59,8 @@ const UserDropDown = ({
               <FaRegUser />
             </div>
             <div className="tw-text-xs">Profile</div>
-          </a>{' '}
+          </a>
+          {' '}
           <div className="tw-flex tw-p-2 tw-border-b tw-items-center  tw-cursor-pointer tw-justify-center tw-text-red-500 tw-border-gray-200">
             <div className=" tw-mr-1 tw-text-sm">
               <IoIosLogOut />

@@ -694,12 +694,10 @@ class Event extends Component {
               </div>
             </div>
           </div>
-            
-            
 
           {/* LOADING SKELETON HERE */}
           <div className="swiper-container">
-            
+
             {this.state.loading
               ? (
                 <div className="swiper-wrapper" style={{ width: '100%' }}>
@@ -765,8 +763,6 @@ class Event extends Component {
                     </div>
                   )}
 
-            
-            
           </div>
 
           <div className="event_divide event_divide_second">

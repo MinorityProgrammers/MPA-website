@@ -7,7 +7,7 @@ import approvedproposal from './ProjectManager/approvedproposal.json';
 // After completing backend JSON should be removed and Proposals data will be loading-
 //  through getStaticProps function instead of useEffect hooks
 export const getStaticProps = async () => {
-  const res = await fetch('http://localhost:3000/getProposalsdata');
+  const res = await fetch(`${process.env.BASE_URI}/getProposalsdata`);
   const data = await res.json();
 
   return {
@@ -26,7 +26,7 @@ const ApprovedProposals = function () {
   }, []);
 
   useEffect(() => {
-    fetch('http://localhost:3000/addVote', {
+    fetch(`${process.env.BASE_URI}/addVote`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(votes),
@@ -52,10 +52,14 @@ const ApprovedProposals = function () {
             </h1>
             <div className="tw-flex sm:tw-grid  sm:tw-grid-cols-1">
               <h1 className="tw-text-red-700 md:tw-m-2 tw-m-2 sm:tw-text-sm sm:tw-font-bold">
-                Type: {proposal.type}
+                Type:
+                {' '}
+                {proposal.type}
               </h1>
               <h1 className="tw-text-red-700 md:tw-m-2 tw-m-2 sm:tw-text-sm sm:tw-font-bold">
-                Category: {proposal.category}
+                Category:
+                {' '}
+                {proposal.category}
               </h1>
             </div>
             <div className="tw-flex">

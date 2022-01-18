@@ -198,7 +198,9 @@ const HomepageCore = () => {
         <div className="row">
           <Swiper {...params}>
             {CORE_PRINCIPLES.map(
-              ({ id, image, icon, color, title, url, description }) => (
+              ({
+                id, image, icon, color, title, url, description,
+              }) => (
                 <div
                   key={id}
                   className="col-lg-4 col-md-4 col-sm- col-xs-12 card__container-core"
@@ -211,17 +213,15 @@ const HomepageCore = () => {
                         className="card-img-top rounded-0"
                       />
                       <div
-                        onClick={() =>
-                          handlePopup({
-                            id,
-                            image,
-                            icon,
-                            color,
-                            title,
-                            url,
-                            description,
-                          })
-                        }
+                        onClick={() => handlePopup({
+                          id,
+                          image,
+                          icon,
+                          color,
+                          title,
+                          url,
+                          description,
+                        })}
                         className={`img-banner-core-container ${color}`}
                       >
                         <img
@@ -238,7 +238,7 @@ const HomepageCore = () => {
                     </div>
                   </div>
                 </div>
-              )
+              ),
             )}
           </Swiper>
         </div>
@@ -249,7 +249,9 @@ const HomepageCore = () => {
 
 export default HomepageCore;
 
-const Popup = ({ image, icon, color, title, description, togglePopup }) => (
+const Popup = ({
+  image, icon, color, title, description, togglePopup,
+}) => (
   <div className="popup_wrapper-core">
     <div onClick={togglePopup} className="popup_btn_close-core">
       <i className="fas fa-times" />

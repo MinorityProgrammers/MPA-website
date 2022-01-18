@@ -1,3 +1,4 @@
+import Router from 'next/router';
 import axiosInstance from '../../../helpers/axiosInstance';
 import {
   LOGIN_LOADING,
@@ -5,7 +6,7 @@ import {
   LOGIN_ERROR,
 } from '../actionTypes';
 import { successToast, errorToast } from '../../utils/toasts';
-import Router from "next/router"
+
 export const login = (body) => (dispatch) => {
   dispatch({
     type: LOGIN_LOADING,

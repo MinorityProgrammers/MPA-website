@@ -26,8 +26,12 @@ class VideoOne extends Component {
             <div className="col-lg-6 d-flex align-items-end">
               <div className="video-one__content">
                 <h2 className="video-one__title">
-                  Take a tour dolor <br />
-                  sit amet, consect <br />
+                  Take a tour dolor
+                  {' '}
+                  <br />
+                  sit amet, consect
+                  {' '}
+                  <br />
                   etur elit
                 </h2>
                 <a href="#" className="thm-btn video-one__btn">

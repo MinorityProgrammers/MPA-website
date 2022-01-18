@@ -1,20 +1,22 @@
-import React, { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import axios from "axios";
-import { Button } from "react-bootstrap";
-import { faTrashAlt, faEdit } from "@fortawesome/free-solid-svg-icons";
-import ResourcesModel from "./ResourcesModel";
-import styles from "../../styles/MentorCSS/Resources.module.css";
-import { successToast, errorToast } from "../../contexts/utils/toasts";
+import React, { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import axios from 'axios';
+import { Button } from 'react-bootstrap';
+import { faTrashAlt, faEdit } from '@fortawesome/free-solid-svg-icons';
+import ResourcesModel from './ResourcesModel';
+import styles from '../../styles/MentorCSS/Resources.module.css';
+import { successToast, errorToast } from '../../contexts/utils/toasts';
 
-const Resources = ({ resources, mentorship, setUpdate, update }) => {
+const Resources = ({
+  resources, mentorship, setUpdate, update,
+}) => {
   const [modalShow, setModalShow] = useState(false);
   const [edit, setEdit] = useState(false);
   const [currentRes, setCurrentRes] = useState({});
 
   // checking if the user is a menotr
-  const user = JSON.parse(window.localStorage.getItem("userInfo"));
-  let is_mentor = user.user.is_mentor;
+  const user = JSON.parse(window.localStorage.getItem('userInfo'));
+  const { is_mentor } = user.user;
   // delete and update element
   const Edit = ({ id, res }) => (
     <div>
@@ -37,22 +39,22 @@ const Resources = ({ resources, mentorship, setUpdate, update }) => {
 
   // Delete Req
   const DeleteHandler = (id) => {
-    const token = window.localStorage.getItem("jwtToken");
+    const token = window.localStorage.getItem('jwtToken');
 
     if (token != null) {
       axios
-        .delete(`http://localhost:5000/api/v1/mentorship/resource/${id}`, {
+        .delete(`${process.env.BASE_URI}/mentorship/resource/${id}`, {
           headers: {
-            "Access-Control-Allow-Origin": "*",
+            'Access-Control-Allow-Origin': '*',
             Authorization: `Bearer ${token}`,
           },
         })
         .then((res) => {
-          successToast("Resource Deleted successfully!");
+          successToast('Resource Deleted successfully!');
           setUpdate(!update);
         })
         .catch((err) => {
-          errorToast("Something went wrong, please contact us.");
+          errorToast('Something went wrong, please contact us.');
         });
     }
   };

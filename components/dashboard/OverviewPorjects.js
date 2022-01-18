@@ -13,8 +13,8 @@ const OverviewProjects = (props) => {
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
-    setTimeout(() => { setLoading(false) }, 5000);
-  }, [])
+    setTimeout(() => { setLoading(false); }, 5000);
+  }, []);
 
   const params = {
     slidesPerView: 3,
@@ -36,7 +36,7 @@ const OverviewProjects = (props) => {
           const tempProjects = response.data.data;
           setProjects(tempProjects);
           // console.log('Projects ', tempProjects);
-          setTimeout(() => { setLoading(false) }, 5000);
+          setTimeout(() => { setLoading(false); }, 5000);
         })
         .catch((error) => {
           if (error.response) {

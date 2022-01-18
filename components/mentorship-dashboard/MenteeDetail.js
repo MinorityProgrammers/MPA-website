@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import styles from '../../styles/MentorCSS/Dashboard.module.css';
 import stylesE from '../../styles/MentorCSS/Mentor.module.css';
 import VerticalModel from './VerticalModel';
-import Link from 'next/link';
 
 const MenteeDetail = ({
   menteeData,
@@ -52,14 +52,14 @@ const MenteeDetail = ({
       calendarActive: false,
       evaluationActive: false,
     });
-    let num = sprints.length;
+    const num = sprints.length;
     let prec = 100;
     sprints.map((sprint) => {
       prec += parseInt(sprint.progress_percentage.split('%')[0]);
     });
 
     prec /= 4;
-    setProgressPrecentage(prec + '%');
+    setProgressPrecentage(`${prec}%`);
     if (num === 0) {
       setUpdatedSprints([
         {
@@ -120,7 +120,9 @@ const MenteeDetail = ({
       />
       <div
         className={stylesE.userName}
-      >{` ${menteeData.user_id.firstName} ${menteeData.user_id.lastName}`}</div>
+      >
+        {` ${menteeData.user_id.firstName} ${menteeData.user_id.lastName}`}
+      </div>
       <div className={styles.container}>
         <div className={styles.grid}>
           <div className={styles.dashleft}>
@@ -145,7 +147,8 @@ const MenteeDetail = ({
                   </div>
                   <div className={stylesE.menteeSocial}>
                     <div>
-                      @{menteeData.user_id.GithubLink.split('/')[3]}
+                      @
+                      {menteeData.user_id.GithubLink.split('/')[3]}
                       <img
                         className={stylesE.qrCode}
                         onClick={() => setModalShow(true)}
@@ -168,7 +171,8 @@ const MenteeDetail = ({
                           src="/assets/images/mentor/Linkedin.svg"
                           alt="Linkedin"
                         />
-                      </a>{' '}
+                      </a>
+                      {' '}
                       {/* </Link> */}
                       <img
                         src="/assets/images/mentor/Twitter.svg"
@@ -188,14 +192,18 @@ const MenteeDetail = ({
                 <div className={stylesE.tags}>
                   {menteeData.user_id.programmingSkills.map((tag) => (
                     <div key={tag}>
-                      <a> {tag}</a>
+                      <a>
+                        {' '}
+                        {tag}
+                      </a>
                     </div>
                   ))}
                 </div>
               </div>
             </div>
             <div className={stylesE.progressName}>
-              {menteeData.user_id.firstName}’s Progress
+              {menteeData.user_id.firstName}
+              ’s Progress
             </div>
             <div className={stylesE.progress}>
               <div className={stylesE.grid}>
@@ -210,11 +218,11 @@ const MenteeDetail = ({
                     <div
                       style={{ width: progressPrecentage }}
                       className={stylesE.bar}
-                    ></div>
+                    />
                   </div>
                   <div className={stylesE.progressInfo}>
                     <div className={stylesE.sprintCol}>
-                      <div className={stylesE.vertivalBar}></div>
+                      <div className={stylesE.vertivalBar} />
                       <div className={stylesE.sprintInfo}>
                         <div> Start Internship</div>
                       </div>
@@ -224,11 +232,12 @@ const MenteeDetail = ({
                       .reverse()
                       .map((sprint) => (
                         <div key={sprint._id} className={stylesE.sprintCol}>
-                          <div className={stylesE.vertivalBar}></div>
+                          <div className={stylesE.vertivalBar} />
                           <div className={stylesE.sprintInfo}>
                             <div>{sprint.title}</div>
                             <div style={{ color: '#40BF7B', fontSize: '14px' }}>
-                              Completion time:{' '}
+                              Completion time:
+                              {' '}
                               {sprint.completion_time
                                 ? sprint.completion_time
                                 : '-'}
@@ -242,7 +251,10 @@ const MenteeDetail = ({
                               Notes by Mentor:
                               <ul className={stylesE.notesList}>
                                 {sprint.notes.map((note) => (
-                                  <li key={note}> {note}</li>
+                                  <li key={note}>
+                                    {' '}
+                                    {note}
+                                  </li>
                                 ))}
                                 {!sprint.notes.length && <li>-</li>}
                               </ul>
@@ -252,7 +264,7 @@ const MenteeDetail = ({
                       ))}
 
                     <div className={stylesE.sprintCol}>
-                      <div className={stylesE.vertivalBar}></div>
+                      <div className={stylesE.vertivalBar} />
                     </div>
                   </div>
                 </div>
@@ -277,9 +289,7 @@ const MenteeDetail = ({
                     ? styles.mentorRowE
                     : styles.mentorRow
                 }
-                onClick={() =>
-                  menteeHandler(mentorshipData.mentorship.mentee_id)
-                }
+                onClick={() => menteeHandler(mentorshipData.mentorship.mentee_id)}
               >
                 <div
                   className={
@@ -287,7 +297,7 @@ const MenteeDetail = ({
                       ? styles.sideBar
                       : styles.hide
                   }
-                ></div>
+                />
 
                 <img
                   src={
@@ -317,7 +327,7 @@ const MenteeDetail = ({
                       ? styles.sideBar
                       : styles.hide
                   }
-                ></div>
+                />
                 <img src="/assets/images/mentor/Rectangle 1971.png" alt="" />
                 <p>Messages</p>
               </div>
@@ -333,33 +343,29 @@ const MenteeDetail = ({
                   className={
                     actionActive.calendarActive ? styles.sideBar : styles.hide
                   }
-                ></div>
+                />
                 <img src="/assets/images/mentor/calendarIcon.png" alt="" />
                 <p>Calender/Events</p>
               </div>
               <div
-                onClick={() =>
-                  setActionActive({
-                    resourceActive: false,
-                    sprintsViewActive: false,
-                    calendarActive: false,
-                    evaluationActive: true,
-                  })
-                }
+                onClick={() => setActionActive({
+                  resourceActive: false,
+                  sprintsViewActive: false,
+                  calendarActive: false,
+                  evaluationActive: true,
+                })}
                 className={styles.mentorRow}
               >
                 <img src="/assets/images/mentor/Rectangle 1977.png" alt="" />
                 <p>Evaluations</p>
               </div>
               <div
-                onClick={() =>
-                  setActionActive({
-                    sprintsViewActive: false,
-                    calendarActive: false,
-                    evaluationActive: false,
-                    resourceActive: true,
-                  })
-                }
+                onClick={() => setActionActive({
+                  sprintsViewActive: false,
+                  calendarActive: false,
+                  evaluationActive: false,
+                  resourceActive: true,
+                })}
                 style={{ borderRadius: '0px 0 30px 0px' }}
                 className={
                   actionActive.resourceActive
@@ -371,7 +377,7 @@ const MenteeDetail = ({
                   className={
                     actionActive.resourceActive ? styles.sideBar : styles.hide
                   }
-                ></div>
+                />
                 <img src="/assets/images/mentor/resources.png" alt="" />
                 <p>Resources</p>
               </div>

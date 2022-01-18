@@ -8,7 +8,9 @@ const ProposalDetailsHeader = () => (
         Proposal Title
       </h1>
       <h1 className="tw-text-red-700">
-        Type: Enhancement <span className="tw-ml-5">Category: Incubator</span>
+        Type: Enhancement
+        {' '}
+        <span className="tw-ml-5">Category: Incubator</span>
       </h1>
     </div>
     <div className="tw-flex tw-justify-between tw-border-gray-600 tw-border-t-2 tw-border-b-2">

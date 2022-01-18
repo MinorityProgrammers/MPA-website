@@ -1,6 +1,6 @@
 import { Form, Formik } from 'formik';
 import {
-  getProviders, getSession, signIn, useSession
+  getProviders, getSession, signIn, useSession,
 } from 'next-auth/client';
 import { useRouter } from 'next/router';
 import React, { useContext, useEffect, useState } from 'react';

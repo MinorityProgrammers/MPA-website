@@ -79,8 +79,11 @@ const CompanyDetails = ({ id }) => {
                 {company.company_name}
               </h2>
               <div className="companyDetails-container-info-relationship">
-                <strong>{company.relation_type}</strong> of Minority Programmers
-                Association since{' '}
+                <strong>{company.relation_type}</strong>
+                {' '}
+                of Minority Programmers
+                Association since
+                {' '}
                 <strong>
                   {new Date(company.mpa_relationship_started)
                     .toDateString()
@@ -137,11 +140,11 @@ const CompanyDetails = ({ id }) => {
               <div className="companyDetails-container-specialties-list">
                 {company.specialties
                   ? company.specialties.map((specialty, idx) => (
-                      <div key={idx}>
-                        <CheckIconSvg />
-                        <div>{specialty}</div>
-                      </div>
-                    ))
+                    <div key={idx}>
+                      <CheckIconSvg />
+                      <div>{specialty}</div>
+                    </div>
+                  ))
                   : ''}
               </div>
             </div>

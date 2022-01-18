@@ -217,7 +217,7 @@ const Chats = ({ data }) => {
               headers: {
                 Authorization: `Bearer ${token}`,
               },
-            }
+            },
           );
           setMessages(res.data.data);
         } catch (err) {
@@ -226,8 +226,7 @@ const Chats = ({ data }) => {
       }
     };
     getMessages();
-    if (currentChat)
-      setRecipient(currentChat.users.find((m) => m._id !== user._id));
+    if (currentChat) setRecipient(currentChat.users.find((m) => m._id !== user._id));
   }, [currentChat]);
 
   useEffect(() => {
@@ -243,7 +242,7 @@ const Chats = ({ data }) => {
               headers: {
                 Authorization: `Bearer ${token}`,
               },
-            }
+            },
           );
           setTempResults({ query: chatSearch, results: res.data.data });
         } catch (err) {
@@ -428,7 +427,7 @@ const Chats = ({ data }) => {
     };
 
     const receiverId = currentChat.users.find(
-      (member) => member._id !== user._id
+      (member) => member._id !== user._id,
     );
 
     try {
@@ -440,7 +439,7 @@ const Chats = ({ data }) => {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        }
+        },
       );
       // send the new message to the socket
       socket.current.emit('sendMessage', {
@@ -611,7 +610,9 @@ const Chats = ({ data }) => {
                   />
                   <div style={{ display: 'flex', flexDirection: 'column' }}>
                     <span className="conversation-brief">
-                      {muser?.firstName} {muser?.lastName}
+                      {muser?.firstName}
+                      {' '}
+                      {muser?.lastName}
                     </span>
                     <Highlighter
                       textToHighlight={m.message}
@@ -630,9 +631,9 @@ const Chats = ({ data }) => {
       );
     }
     if (
-      searchResults &&
-      searchResults.messages.length == 0 &&
-      searchResults.chats.length == 0
+      searchResults
+      && searchResults.messages.length == 0
+      && searchResults.chats.length == 0
     ) {
       chatRes = (
         <span style={{ alignSelf: 'center' }}>
@@ -658,10 +659,10 @@ const Chats = ({ data }) => {
             style={
               chatlist === 'all'
                 ? {
-                    backgroundColor: '#C4C4C4',
-                    color: '#000000',
-                    border: '1px solid #000000',
-                  }
+                  backgroundColor: '#C4C4C4',
+                  color: '#000000',
+                  border: '1px solid #000000',
+                }
                 : {}
             }
           >
@@ -673,10 +674,10 @@ const Chats = ({ data }) => {
             style={
               chatlist === 'pending'
                 ? {
-                    backgroundColor: '#C4C4C4',
-                    color: '#000000',
-                    border: '1px solid #000000',
-                  }
+                  backgroundColor: '#C4C4C4',
+                  color: '#000000',
+                  border: '1px solid #000000',
+                }
                 : {}
             }
           >
@@ -688,10 +689,10 @@ const Chats = ({ data }) => {
             style={
               chatlist === 'blocked'
                 ? {
-                    backgroundColor: '#C4C4C4',
-                    color: '#000000',
-                    border: '1px solid #000000',
-                  }
+                  backgroundColor: '#C4C4C4',
+                  color: '#000000',
+                  border: '1px solid #000000',
+                }
                 : {}
             }
           >
@@ -744,7 +745,9 @@ const Chats = ({ data }) => {
                 className="chat-header-img"
               />
               <span className="chat-header-name">
-                {recipient.firstName} {recipient.lastName}
+                {recipient.firstName}
+                {' '}
+                {recipient.lastName}
               </span>
               {!expandInfo && (
                 <div
@@ -813,13 +816,19 @@ const Chats = ({ data }) => {
           className="chat-info-img"
         />
         <span className="chat-info-name">
-          {recipient.firstName} {recipient.lastName}
+          {recipient.firstName}
+          {' '}
+          {recipient.lastName}
         </span>
         {blockPopUp && (
           <div className="chat-popup-container">
             <span>
-              Are you sure you want to block {recipient.firstName}{' '}
-              {recipient.lastName}?
+              Are you sure you want to block
+              {' '}
+              {recipient.firstName}
+              {' '}
+              {recipient.lastName}
+              ?
             </span>
             <div className="chat-popup-btn-container">
               <div
@@ -866,9 +875,7 @@ const Chats = ({ data }) => {
             {!currentChat?.blocked && currentChat?.accepted && (
               <div
                 className="chat-info-blocked-btn"
-                onClick={() =>
-                  blockPopUp ? setBlockPopUp(false) : setBlockPopUp(true)
-                }
+                onClick={() => (blockPopUp ? setBlockPopUp(false) : setBlockPopUp(true))}
               >
                 Block
               </div>
@@ -886,7 +893,9 @@ const Chats = ({ data }) => {
           <div style={{ flex: '1', fontWeight: '600' }}>
             {recipient.userName && (
               <>
-                Username <br />
+                Username
+                {' '}
+                <br />
               </>
             )}
             {/* Add privacy check for emails */}

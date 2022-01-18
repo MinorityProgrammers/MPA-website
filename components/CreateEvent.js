@@ -36,7 +36,7 @@ const CreateEvent = (props) => {
     const blur = document.getElementById('delete_image-container');
     const deleteButton = document.getElementById('delete_upload');
     const blurQuestion = document.getElementById(
-      'delete_image-container-question'
+      'delete_image-container-question',
     );
     blur.style.display = 'flex';
     blur.style.backgroundImage = `url(data:${props.data.EventPicture})`;
@@ -46,7 +46,7 @@ const CreateEvent = (props) => {
   const removePictureDeny = () => {
     const blur = document.getElementById('delete_image-container');
     const blurQuestion = document.getElementById(
-      'delete_image-container-question'
+      'delete_image-container-question',
     );
     const deleteButton = document.getElementById('delete_upload');
     blur.style.display = 'none';
@@ -57,7 +57,7 @@ const CreateEvent = (props) => {
     const blur = document.getElementById('delete_image-container');
     const uploadButton = document.getElementById('img_upload');
     const blurQuestion = document.getElementById(
-      'delete_image-container-question'
+      'delete_image-container-question',
     );
     blurQuestion.style.display = 'none';
     blur.style.display = 'none';
@@ -80,13 +80,13 @@ const CreateEvent = (props) => {
 
   const handlePreview = () => {
     if (
-      props.data.EventPicture.length == 0 ||
-      props.data.eventName.length == 0 ||
-      props.data.EventDescription.length == 0 ||
-      props.data.eventLink.length == 0 ||
-      props.data.time.length == 0 ||
-      props.data.catName.length == 0 ||
-      props.data.Virtual.length == 0
+      props.data.EventPicture.length == 0
+      || props.data.eventName.length == 0
+      || props.data.EventDescription.length == 0
+      || props.data.eventLink.length == 0
+      || props.data.time.length == 0
+      || props.data.catName.length == 0
+      || props.data.Virtual.length == 0
     ) {
       if (props.data.isError == false) {
         props.handleError('isError');
@@ -261,7 +261,9 @@ const CreateEvent = (props) => {
                       removePicture();
                     }}
                   >
-                    <i className="far fa-trash-alt" /> Yes, delete
+                    <i className="far fa-trash-alt" />
+                    {' '}
+                    Yes, delete
                   </button>
                   <button
                     onClick={() => {
@@ -288,7 +290,9 @@ const CreateEvent = (props) => {
                   removePictureConfrimation();
                 }}
               >
-                <i className="far fa-trash-alt" /> Delete Image
+                <i className="far fa-trash-alt" />
+                {' '}
+                Delete Image
               </button>
             </div>
             <div id="container_right" className="create_event-container-right">

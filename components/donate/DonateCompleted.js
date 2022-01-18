@@ -30,7 +30,10 @@ const DonateCompleted = ({
             <p>Amount:</p>
           </div>
           <div className="col">
-            <p>${Number(amount).toFixed(2)}</p>
+            <p>
+              $
+              {Number(amount).toFixed(2)}
+            </p>
           </div>
         </div>
         <div className="row">

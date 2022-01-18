@@ -5,7 +5,9 @@ import { numFormat, percentFund } from '../../helpers/formatIncubator';
 import FeaturedPopup from './FeaturedPopup';
 import { errorToast, successToast } from '../../contexts/utils/toasts';
 
-const FeaturedCard = ({ data, setClickRegister, userData, allfunded }) => {
+const FeaturedCard = ({
+  data, setClickRegister, userData, allfunded,
+}) => {
   const [buttonPopup, setButtonPopup] = useState(false);
   const [secondPopup, setSecondPopup] = useState(false);
   const [amount, setAmount] = useState();
@@ -22,7 +24,7 @@ const FeaturedCard = ({ data, setClickRegister, userData, allfunded }) => {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        }
+        },
       )
       .then((res) => {
         successToast(res.data.message);
@@ -63,11 +65,13 @@ const FeaturedCard = ({ data, setClickRegister, userData, allfunded }) => {
             <div className="fund__top">
               <h3 className="fund__topic">Fundraised</h3>
               <h3 className="fund__percentage">
-                {percentFund(data.targetAmount, data.amount)}% complete
+                {percentFund(data.targetAmount, data.amount)}
+                % complete
               </h3>
             </div>
             <h3 className="fund__amount">
-              ${numFormat(data.amount)}
+              $
+              {numFormat(data.amount)}
               /$
               {numFormat(data.targetAmount)}
             </h3>
@@ -92,11 +96,9 @@ const FeaturedCard = ({ data, setClickRegister, userData, allfunded }) => {
               <button
                 style={{ outline: 'none' }}
                 className="button btn-filled"
-                onClick={() =>
-                  userData !== null
-                    ? setButtonPopup(true)
-                    : setClickRegister(true)
-                }
+                onClick={() => (userData !== null
+                  ? setButtonPopup(true)
+                  : setClickRegister(true))}
               >
                 Fund Startup
               </button>

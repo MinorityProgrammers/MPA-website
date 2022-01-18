@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import { Modal } from "react-bootstrap";
-import axios from "axios";
-import { Alert } from "antd";
-import stylesE from "../../styles/MentorCSS/Mentor.module.css";
-import styles from "../../styles/MentorCSS/Calendar.module.css";
-import "antd/lib/alert/style/index.css";
+import React, { useState } from 'react';
+import { Modal } from 'react-bootstrap';
+import axios from 'axios';
+import { Alert } from 'antd';
+import stylesE from '../../styles/MentorCSS/Mentor.module.css';
+import styles from '../../styles/MentorCSS/Calendar.module.css';
+import 'antd/lib/alert/style/index.css';
 
 const numberValidator = (value, set) => {
   if (/^\d{1,2}(-\d{1,2})?$/.test(value)) {
@@ -30,29 +30,29 @@ const PopModel = ({
   ...props
 }) => {
   const [err, setErr] = useState(false);
-  const [eventName, setEventName] = useState("");
-  const [time, setTime] = useState("00-00");
-  const [description, setDescription] = useState("");
+  const [eventName, setEventName] = useState('');
+  const [time, setTime] = useState('00-00');
+  const [description, setDescription] = useState('');
 
-  const user = JSON.parse(window.localStorage.getItem("userInfo"));
-  let is_mentor = user.user.is_mentor;
+  const user = JSON.parse(window.localStorage.getItem('userInfo'));
+  const { is_mentor } = user.user;
   const onSubmit = (e) => {
     e.preventDefault();
-    if (eventName == "" || description == "") {
+    if (eventName == '' || description == '') {
       setErr(true);
     } else {
-      const year = date.split("-")[0];
-      const month = (parseInt(date.split("-")[1]) - 1).toString();
-      const day = date.split("-")[2];
-      const hours = time.split("-")[0];
-      const minutes = time.split("-")[1];
+      const year = date.split('-')[0];
+      const month = (parseInt(date.split('-')[1]) - 1).toString();
+      const day = date.split('-')[2];
+      const hours = time.split('-')[0];
+      const minutes = time.split('-')[1];
       const newDate = new Date(year, month, day, hours, minutes);
-      const token = window.localStorage.getItem("jwtToken");
+      const token = window.localStorage.getItem('jwtToken');
 
       if (token != null) {
         axios
           .patch(
-            `http://localhost:5000/api/v1/${is_mentor ? "mentor" : "mentee"}/${
+            `${process.env.BASE_URI}/${is_mentor ? 'mentor' : 'mentee'}/${
               user_id._id
             }`,
             {
@@ -61,16 +61,16 @@ const PopModel = ({
                 {
                   title: eventName,
                   event_date: newDate.toDateString(),
-                  description: description,
+                  description,
                 },
               ],
             },
             {
               headers: {
-                "Content-Type": "application/json",
+                'Content-Type': 'application/json',
                 Authorization: `Bearer ${token}`,
               },
-            }
+            },
           )
           .then((res) => {
             console.log(res.data);
@@ -84,10 +84,10 @@ const PopModel = ({
       }
 
       setErr(false);
-      setEventName("");
-      setDate("2021-01-01");
-      setTime("00-00");
-      setDescription("");
+      setEventName('');
+      setDate('2021-01-01');
+      setTime('00-00');
+      setDescription('');
       setModalShow(false);
     }
   };
@@ -120,7 +120,7 @@ const PopModel = ({
                 alt="exit-icon"
               />
             </div>
-            <div className={stylesE.line}></div>
+            <div className={stylesE.line} />
           </div>
         </Modal.Title>
       </Modal.Header>
@@ -140,7 +140,7 @@ const PopModel = ({
             </div>
             <div className={styles.row}>
               <div
-                style={{ width: "70%", marginRight: "3rem" }}
+                style={{ width: '70%', marginRight: '3rem' }}
                 className={styles.col}
               >
                 <label>Date</label>
@@ -154,7 +154,7 @@ const PopModel = ({
               </div>
               <div
                 className={styles.col}
-                style={{ width: "40%", marginRight: "10px" }}
+                style={{ width: '40%', marginRight: '10px' }}
               >
                 <label>Time</label>
                 <input
@@ -174,11 +174,11 @@ const PopModel = ({
                   value={description}
                   cols="30"
                   rows="3"
-                ></textarea>
+                />
               </div>
             </div>
             <div className={styles.row}>
-              <div className={styles.col + " " + styles.colSubmit}>
+              <div className={`${styles.col} ${styles.colSubmit}`}>
                 <input className={styles.createEventSubmit} type="submit" />
               </div>
             </div>

@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import Select from "react-select";
+import React, { Component } from 'react';
+import Select from 'react-select';
 
 export class MentorshipQuestion3 extends Component {
   continue = (e) => {
@@ -17,52 +17,52 @@ export class MentorshipQuestion3 extends Component {
     this.props.values;
 
     const interestOptions = [
-      { label: "Front-end Development", value: "Front-end Development" },
-      { label: "Back-end Development", value: "Back-end Development" },
-      { label: "Graphic Design", value: "Graphic Design" },
-      { label: "UX/UI", value: "UX/UI" },
-      { label: "Data Science", value: "Data Science" },
+      { label: 'Front-end Development', value: 'Front-end Development' },
+      { label: 'Back-end Development', value: 'Back-end Development' },
+      { label: 'Graphic Design', value: 'Graphic Design' },
+      { label: 'UX/UI', value: 'UX/UI' },
+      { label: 'Data Science', value: 'Data Science' },
     ];
     const learningStyleOptions = [
-      { label: "Visual", value: "Visual" },
-      { label: "Auditory", value: "Auditory" },
-      { label: "Read/Write", value: "Read/Write" },
-      { label: "Kinesthetic", value: "Kinesthetic" },
+      { label: 'Visual', value: 'Visual' },
+      { label: 'Auditory', value: 'Auditory' },
+      { label: 'Read/Write', value: 'Read/Write' },
+      { label: 'Kinesthetic', value: 'Kinesthetic' },
     ];
     const personalityTypeOptions = [
-      { label: "Architect (INTJ)", value: "Architect (INTJ)" },
-      { label: "Logician (INTP)", value: "Logician (INTP)" },
-      { label: "Commander (ENTJ)", value: "Commander (ENTJ)" },
-      { label: "Debater (ENTP)", value: "Debater (ENTP)" },
-      { label: "Advocate (INFJ)", value: "Advocate (INFJ)" },
-      { label: "Mediator (INFP)", value: "Mediator (INFP)" },
-      { label: "Protagonist (ENFJ)", value: "Protagonist (ENFJ)" },
-      { label: "Campaigner (ENFP)", value: "Campaigner (ENFP)" },
-      { label: "Logistician (ISTJ)", value: "Logistician (ISTJ)" },
-      { label: "Defender (ISFJ)", value: "Defender (ISFJ)" },
-      { label: "Executive (ESTJ)", value: "Executive (ESTJ)" },
-      { label: "Consul (ESFJ)", value: "Consul (ESFJ)" },
-      { label: "Virtuoso (ISTP)", value: "Virtuoso (ISTP)" },
-      { label: "Adventurer (ISFP)", value: "Adventurer (ISFP)" },
-      { label: "Entrepreneur (ESTP)", value: "Entrepreneur (ESTP)" },
-      { label: "Entertainer (ESFP)", value: "Entertainer (ESFP)" },
+      { label: 'Architect (INTJ)', value: 'Architect (INTJ)' },
+      { label: 'Logician (INTP)', value: 'Logician (INTP)' },
+      { label: 'Commander (ENTJ)', value: 'Commander (ENTJ)' },
+      { label: 'Debater (ENTP)', value: 'Debater (ENTP)' },
+      { label: 'Advocate (INFJ)', value: 'Advocate (INFJ)' },
+      { label: 'Mediator (INFP)', value: 'Mediator (INFP)' },
+      { label: 'Protagonist (ENFJ)', value: 'Protagonist (ENFJ)' },
+      { label: 'Campaigner (ENFP)', value: 'Campaigner (ENFP)' },
+      { label: 'Logistician (ISTJ)', value: 'Logistician (ISTJ)' },
+      { label: 'Defender (ISFJ)', value: 'Defender (ISFJ)' },
+      { label: 'Executive (ESTJ)', value: 'Executive (ESTJ)' },
+      { label: 'Consul (ESFJ)', value: 'Consul (ESFJ)' },
+      { label: 'Virtuoso (ISTP)', value: 'Virtuoso (ISTP)' },
+      { label: 'Adventurer (ISFP)', value: 'Adventurer (ISFP)' },
+      { label: 'Entrepreneur (ESTP)', value: 'Entrepreneur (ESTP)' },
+      { label: 'Entertainer (ESFP)', value: 'Entertainer (ESFP)' },
     ];
     const languageOptions = [
-      { label: "Arabic", value: "Arabic" },
-      { label: "Chinese", value: "Chinese" },
-      { label: "English", value: "English" },
-      { label: "French", value: "French" },
-      { label: "Hindi", value: "Hindi" },
-      { label: "Portuguese", value: "Portuguese" },
-      { label: "Russian", value: "Russian" },
-      { label: "Spanish", value: "Spanish" },
+      { label: 'Arabic', value: 'Arabic' },
+      { label: 'Chinese', value: 'Chinese' },
+      { label: 'English', value: 'English' },
+      { label: 'French', value: 'French' },
+      { label: 'Hindi', value: 'Hindi' },
+      { label: 'Portuguese', value: 'Portuguese' },
+      { label: 'Russian', value: 'Russian' },
+      { label: 'Spanish', value: 'Spanish' },
     ];
     const availabilityOptions = [
-      { label: "Less than 5 hours a week", value: "Less than 5 hours a week" },
-      { label: "5-10 hours a week", value: "5-10 hours a week" },
-      { label: "10-20 hours a week", value: "10-20 hours a week" },
-      { label: "20-40 hours a week", value: "20-40 hours a week" },
-      { label: "40+ hours a week", value: "40+ hours a week" },
+      { label: 'Less than 5 hours a week', value: 'Less than 5 hours a week' },
+      { label: '5-10 hours a week', value: '5-10 hours a week' },
+      { label: '10-20 hours a week', value: '10-20 hours a week' },
+      { label: '20-40 hours a week', value: '20-40 hours a week' },
+      { label: '40+ hours a week', value: '40+ hours a week' },
     ];
     // console.log(Object.keys(values.primaryLang).length);
     return (
@@ -95,10 +95,10 @@ export class MentorshipQuestion3 extends Component {
                 options={interestOptions}
                 name="interest"
                 value={values.interest}
-                onChange={handleDropDown("interest")}
+                onChange={handleDropDown('interest')}
                 labelledBy="Select"
                 overrideStrings={{
-                  selectSomeItems: " ",
+                  selectSomeItems: ' ',
                 }}
               />
             </div>
@@ -114,10 +114,10 @@ export class MentorshipQuestion3 extends Component {
                 options={learningStyleOptions}
                 name="learningStyle"
                 value={values.learningStyle}
-                onChange={handleDropDown("learningStyle")}
+                onChange={handleDropDown('learningStyle')}
                 labelledBy="Select"
                 overrideStrings={{
-                  selectSomeItems: " ",
+                  selectSomeItems: ' ',
                 }}
               />
             </div>
@@ -143,11 +143,11 @@ export class MentorshipQuestion3 extends Component {
                 options={personalityTypeOptions}
                 name="personlityType"
                 value={values.personlityType}
-                onChange={handleDropDown("personlityType")}
+                onChange={handleDropDown('personlityType')}
                 labelledBy="Select"
                 hasSelectAll={false}
                 overrideStrings={{
-                  selectSomeItems: " ",
+                  selectSomeItems: ' ',
                 }}
               />
             </div>
@@ -162,7 +162,7 @@ export class MentorshipQuestion3 extends Component {
                 className="tw-w-full tw-outline-none tw-text-darkGray tw-text-md"
                 type="text"
                 name="occupation"
-                onChange={handleChange("occupation")}
+                onChange={handleChange('occupation')}
                 placeholder="Front-End Developer, Student..."
                 defaultValue={values.occupation}
                 maxLength="30"
@@ -181,7 +181,7 @@ export class MentorshipQuestion3 extends Component {
                 className="tw-w-full tw-outline-none tw-text-darkGray tw-text-md"
                 type="text"
                 name="occupationPlace"
-                onChange={handleChange("occupationPlace")}
+                onChange={handleChange('occupationPlace')}
                 placeholder="Google, Harvard..."
                 defaultValue={values.occupationPlace}
                 maxLength="50"
@@ -199,10 +199,10 @@ export class MentorshipQuestion3 extends Component {
                 options={availabilityOptions}
                 name="lookingForComm"
                 value={values.availability}
-                onChange={handleDropDown("availability")}
+                onChange={handleDropDown('availability')}
                 labelledBy="Select"
                 overrideStrings={{
-                  selectSomeItems: " ",
+                  selectSomeItems: ' ',
                 }}
               />
             </div>
