@@ -177,9 +177,11 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
 
     userData &&
       allSocials.map((social) => {
-        userData[social.name] && socials.push(social);
+        if(userData[social.name]) { 
+          social.url=userData[social.name]
+          socials.push(social);
+        }
       });
-
     setSocialLinks(socials);
   }, [userData]);
 
@@ -354,7 +356,6 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
       ? window.addEventListener('click', clickOutsideAvatarPopup)
       : window.removeEventListener('click', clickOutsideAvatarPopup);
   }, [generateAvatarPopUp]);
-
   return (
     <div className="profile_container">
       {generateAvatarPopUp && (
@@ -451,7 +452,7 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                     <div className="sl-wrap">
                       <div>
                         {socialLinks.map((link) => (
-                          <a key={link.id} href={link.url || '#'}>
+                          <a key={link.id} target="_blank" rel="noreferrer" href={link.url || '#'} >
                             <span className="social">{link.slink}</span>
                           </a>
                         ))}
@@ -647,7 +648,7 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                 >
                   <h2 className="tw-relative tw-text-xl tw-font-bold tw-mb-3 tw-text-black">
                     Profile Strength:{' '}
-                    <span className="tw-font-medium tw-mr-4">
+                    <span className="tw-font-medium">
                       {`${
                         getProgressPercentage(userData) <= 33
                           ? 'Low'

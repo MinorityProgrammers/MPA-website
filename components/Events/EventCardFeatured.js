@@ -207,13 +207,19 @@ const EventCardFeatured = function (props) {
         <div className="eventcard_top">
           <h2>{props.item.eventName}</h2>
           <p className="date">{Moment(props.item.time).format('LL')}</p>
-          <p className="attending">
-            {totalAttendees(props.item._id)}
-            {' '}
-            {totalAttendees(props.item._id) > 2 ? 'people' : 'person'}
-            {' '}
-            {eventTime < dateNow ? 'attended' : 'attending'}
-          </p>
+          {totalAttendees(props.item ? props.item._id : '') === 0 ? (
+            <p className="attending">
+              no attendee
+            </p>
+          ) : (
+            <p className="attending">
+              {totalAttendees(props.item ? props.item._id : '')}
+              {' '}
+              {totalAttendees(props.item ? props.item._id : '') > 2 ? 'people' : 'person'}
+              {' '}
+              {eventTime < dateNow ? 'attended' : 'attending'}
+            </p>
+          )}
         </div>
         <div className="eventcard_bottom">
           {/* Check save events heart label */}

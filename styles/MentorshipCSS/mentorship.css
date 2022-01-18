@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,400;0,700;1,400&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,400;0,700;1,400&display=swap');
 .home-section {
   min-height: 811px;
   max-height: -webkit-fit-content;
@@ -46,7 +46,7 @@
     #ffffff 32.74%,
     rgba(255, 255, 255, 0) 93.35%
   );
-  opacity: 0.8;
+  /* opacity: 0.8; */
   border-radius: 20px;
   padding: 5rem;
 }
@@ -61,7 +61,9 @@
   width: 90px;
   border-radius: 50%;
 }
-
+.numImg {
+  opacity: 0.9;
+}
 .mentorship__SUP {
   position: relative;
 }
@@ -80,7 +82,17 @@
   color: #fff;
   font-size: 20px;
 }
-.mshipProgram__b_list h1{
+.mshipProgram__b_list {
+  opacity: 0.8;
+}
+.mshipProgram__b_list .mentorship__SUPIMG {
+  opacity: 0.8;
+}
+.mshipProgram__w_list ul li,
+.mshipProgram__b_list ul li {
+  list-style: disc;
+}
+.mshipProgram__b_list h1 {
   margin-bottom: 14px;
   font-size: 46px;
   font-weight: bold;
@@ -91,78 +103,83 @@
   font-size: 20px;
 }
 
-.mentorshipBTN{
+.mentorshipBTN {
   color: #fff !important;
   background: #474bfd;
   cursor: pointer;
 }
 
 .mentorshipP-header {
+  display: flex;
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
+  
 }
-.mtb-mpa{
+.mtb-mpa {
   margin-top: 100px;
   margin-bottom: 100px;
 }
-.consultancyHero-title{
+.consultancyHero-title {
   font-family: 'Graphik', sans-serif;
-  font-size: 2em;
+  font-size: 3em;
   font-weight: 700;
 }
-.consultancyHero-txt{
-  color: #3E385D ;
+.consultancyHero-txt {
+  color: #3e385d;
   font-size: 100%;
   width: 30vw;
-  font-size: 1rem;
+  font-size: 1.5rem;
 }
-.consultancyHero-container{
+.consultancyHero-container {
   display: flex;
   align-items: center;
+  height: 40vh;
 }
-
 
 .myButton {
-	box-shadow: 0px 10px 14px -7px #ff655b 51.83%;
-	background:linear-gradient(to bottom, #474bfd 5%, #474bfd 100%);
-	background-color:#151371;;
-	border-radius:8px;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-family:Arial;
-	font-size:20px;
-	font-weight:bold;
-	padding:13px 32px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #5856cc;;
+  box-shadow: 0px 10px 14px -7px #ff655b 51.83%;
+  background: linear-gradient(to bottom, #474bfd 5%, #474bfd 100%);
+  background-color: #151371;
+  border-radius: 8px;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: Arial;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 13px 32px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #5856cc;
 }
 .myButton:hover {
-	background:linear-gradient(to bottom, #284db3 5%,#3f3d94  100%);
-	background-color:#2c2a8d;
+  background: linear-gradient(to bottom, #284db3 5%, #3f3d94 100%);
+  background-color: #2c2a8d;
 }
 .myButton:active {
-	position:relative;
-	top:1px;
+  position: relative;
+  top: 1px;
 }
-.big__font{
+.big__font {
   font-size: 70px;
 }
 
-@media only screen and (max-width: 500px){
-  .consultancyHero-title{
+.list__bullet {
+  font-size: 20px;
+}
+@media only screen and (max-width: 500px) {
+  .consultancyHero-title {
     font-size: 2rem;
   }
-  .consultancyHero-txt{
+  .consultancyHero-txt {
     font-size: 1rem;
     width: 60vw;
   }
-  .consultancyHero-container{
+  .consultancyHero-container {
     margin-top: 20px;
     justify-content: center;
   }
-  .consultancyHero-container img{
+  .consultancyHero-container img {
     display: none;
   }
 }

@@ -29,7 +29,7 @@ const SidebarNav = ({
     >
       {section.links.map((link) => (
         <li
-          onClick={link.comingsoon === true ? handleClick : ''}
+          onClick={() => { if (link.comingsoon === true) handleClick(); }}
           key={link.name}
           className={active === link.name ? 'active' : ''}
         >

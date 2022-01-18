@@ -1,10 +1,17 @@
+/* eslint-disable react/no-unstable-nested-components */
+/* eslint-disable jsx-a11y/alt-text */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Skeleton from 'react-loading-skeleton';
 import EmptyOverviewComponent from './EmptyOverviewComponent';
 
 const OverviewMyProposals = (props) => {
   const [loading, setLoading] = useState(true);
   const [currentView, setCurrentView] = useState('ideas');
+
+  useEffect(() => {
+    setTimeout(() => { setLoading(false); }, 5000);
+  }, []);
 
   const AprrovedButton = () => (
     <button className="btn btn-primary overview-proposal-button" style={{ background: '#2D761B' }}>Approved</button>
@@ -72,43 +79,44 @@ const OverviewMyProposals = (props) => {
         </div>
       </div>
       <div className="" style={{ height: '85%' }}>
-
-        {loading
-          ? (
-            <EmptyOverviewComponent
-              imgURL="https://s3-alpha-sig.figma.com/img/5bcf/ddf5/5d9ce499aec11e58757d8a16806d3987?Expires=1638748800&Signature=QUNE46yfLdleC33bUJm5O~ZM~z5P0--l91eouMJV3u6gZjn3yEiLkHtx3o7JkktsyR6xlpgnPjoIa1z9nj50kJnnibCXah3yvtyhnBZVHs6rArNY9xPZGHvHOqeuHnEZ3fnsUjMt20EzO4ErYbXXGj776fmXMLYQ5jXSo2RaFQopijoq7zBZ6vINknp79gcG0koH95IL8kmgfpF1TzmDCOjwjTuStalEM~l7RCIpJrtgXd2yUZe0hEi1I8GPNvEjlvbcbWkozt0I3AXX2QiOj6rrQvjmlQ5Elt-E9aHV71jsg-gUHRihTmztyJZxPO5rT21byXQEL9rGNm2M0lNoBQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
-              description="Oops, it seems you haven’t submitted any proposals yet."
-              btnText="Submit your first proposal"
-              btnFunction={() => setLoading(false)}
-            />
-          )
-          : (
-            <div className="d-flex flex-column" style={{ width: '100%', height: '100%' }}>
-              {/* Titles Row */}
+        <div className="d-flex flex-column" style={{ width: '100%', height: '100%' }}>
+          {/* Titles Row */}
+          <div
+            className="d-flex flex-row"
+            style={{
+              width: '100%', fontSize: '12px', margin: '0', fontWeight: '700', color: 'black', padding: '0 10px', height: '15%',
+            }}
+          >
+            {/* 25% each */}
+            <p style={{ width: '25%' }}>Name</p>
+            <p style={{ width: '24%', marginLeft: '1%' }}>Status</p>
+            <p style={{ width: '24%', marginLeft: '1%' }}>Created On</p>
+            <p style={{
+              maxLines: '1', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', width: '24%', marginLeft: '1%',
+            }}
+            >
+              Project Manager
+            </p>
+          </div>
+          {loading
+            ? (
               <div
-                className="d-flex flex-row"
+                className="d-flex flex-row justify-content-start align-items-start"
                 style={{
-                  width: '100%', fontSize: '12px', margin: '0', fontWeight: '700', color: 'black', padding: '0 10px', height: '15%',
+                  lineHeight: 2, height: '100%', overflowX: 'hidden', overflowY: 'scroll',
                 }}
               >
-                {/* 25% each */}
-                <p style={{ width: '25%' }}>Name</p>
-                <p style={{ width: '24%', marginLeft: '1%' }}>Status</p>
-                <p style={{ width: '24%', marginLeft: '1%' }}>Created On</p>
-                <p style={{
-                  maxLines: '1', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', width: '24%', marginLeft: '1%',
-                }}
-                >
-                  Project Manager
-                </p>
+                <Skeleton count={6} height={35} width={1200} />
               </div>
-              {/* Proposals Row */}
+            )
+            : (
               <div
                 className="overview-proposal-cards d-flex flex-column"
                 style={{
                   width: '100%', margin: '0', padding: 0, height: '85%',
                 }}
               >
+                {/* Proposals Row */}
                 <ProposalCard />
                 <ProposalCard />
                 <ProposalCard />
@@ -118,8 +126,8 @@ const OverviewMyProposals = (props) => {
                 <ProposalCard />
                 <ProposalCard />
               </div>
-            </div>
-          )}
+            )}
+        </div>
       </div>
     </div>
   );

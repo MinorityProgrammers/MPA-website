@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Skeleton from 'react-loading-skeleton';
+import { Spinner } from 'react-bootstrap';
 import EmptyOverviewComponent from './EmptyOverviewComponent';
 
 const OverviewProfile = (props) => {
   const [loading, setLoading] = useState(false);
   const [currentView, setCurrentView] = useState('active');
+
+  useEffect(() => {
+    setTimeout(() => { setLoading(false); }, 5000);
+  }, []);
 
   return (
     <div className="d-flex flex-column justify-content-between " style={{ height: '100%' }}>

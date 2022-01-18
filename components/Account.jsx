@@ -116,7 +116,9 @@ const Account = function () {
       chainId === process.env.NEXT_PUBLIC_NETWORK_ID_TESTNET
     ) {
       authenticate({ signingMessage: 'connected!' });
-      await window.casperlabsHelper.disconnectFromSite();
+      if (isConnected === true) {
+        await window.casperlabsHelper.disconnectFromSite();
+      }
     } else {
       errorToast('Wrong Chain, please connect to Polygon chain');
       logout();
@@ -141,7 +143,7 @@ const Account = function () {
 
   const casperConnectWallet = async () => {
     try {
-      Signer.sendConnectionRequest();
+      Signer?.sendConnectionRequest();
     } catch (err) {
       if (err) {
         errorToast(err);
@@ -153,12 +155,12 @@ const Account = function () {
     return (
       <>
         <div
-          className="tw-bg-blue-600 hover:tw-bg-blue-700 tw-text-white tw-text-center tw-font-bold tw-py-2 tw-px-2 tw-rounded tw-w-11/12 tw-cursor-pointer"
+          className="tw-bg-blue-600 hover:tw-bg-blue-700 tw-text-white tw-text-center tw-font-bold tw-py-1.5 tw-px-1.5 tw-rounded tw-w-11/12 tw-cursor-pointer"
           onClick={() => {
             openAuthModal();
           }}
         >
-          <p className="tw-text-sm">connect</p>
+          <p className="tw-text-sm">Connect</p>
         </div>
         <Modal
           title={false}
@@ -302,7 +304,7 @@ const Account = function () {
           }}
           onClick={async () => {
             logout();
-            window.casperlabsHelper.disconnectFromSite();
+            await window.casperlabsHelper.disconnectFromSite();
             [SIGNER_EVENTS.locked, SIGNER_EVENTS.disconnected].forEach(
               (event) =>
                 window.addEventListener(event, dispatchDisconnectedSinger)

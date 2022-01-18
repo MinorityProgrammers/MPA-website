@@ -3,7 +3,7 @@
     color: white;
 }
 .search-input{
-    border: 1px solid #D3D3D3 !important;
+    border: 1px solid white !important;
     border-top-left-radius: 4px !important;
     border-bottom-left-radius: 4px !important;
 }
@@ -142,8 +142,16 @@
     color: #151371;
     text-align: center !important;
 }
-.learnSearch-btn button{
-    color: #585858;
+.learnSearch-btn {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    width: 92% ;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+}
+.courseSearch-btn{
+    width : 10%
 }
 .courses-items,
 .course-weeks{

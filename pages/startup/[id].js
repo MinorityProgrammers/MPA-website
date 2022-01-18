@@ -32,7 +32,7 @@ export const getStaticProps = async (context) => {
 
   // Calendly test startup
   const res = await axios.get(
-    `${process.env.BASE_URI}/startup/60ca4c75620570082453fc34`,
+    `${process.env.BASE_URI}/startup/${id}`,
   );
   const data = await res.data.data;
 

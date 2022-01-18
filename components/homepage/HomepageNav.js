@@ -5,7 +5,9 @@ import decode from 'jwt-decode';
 import { signOut, useSession } from 'next-auth/client';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, {
+  useContext, useEffect, useRef, useState,
+} from 'react';
 import { BiMenuAltLeft } from 'react-icons/bi';
 import { useMoralis } from 'react-moralis';
 import Web3 from 'web3';
@@ -125,7 +127,9 @@ async function onDisconnect() {
   selectedAccount = null;
 }
 
-const HomepageNav = ({ setToken, setData, page, open, setOpen = () => {} }) => {
+const HomepageNav = ({
+  setToken, setData, page, open, setOpen = () => {},
+}) => {
   const dropdownRef = useRef(null);
   const dropdownMobileRef = useRef(null);
   const searchMobileRef = useRef(null);
@@ -140,16 +144,17 @@ const HomepageNav = ({ setToken, setData, page, open, setOpen = () => {} }) => {
   const [searchValue, setSearch] = useState('');
   const [isActiveMobile, setIsActiveMobile] = useDetectOutsideClick(
     dropdownMobileRef,
-    false
+    false,
   );
   const [isActiveSearch, setIsActiveSearch] = useDetectOutsideClick(
     searchMobileRef,
-    false
+    false,
   );
   const [connect, setConnect] = useState(false);
 
-  const { isWeb3Enabled, enableWeb3, isAuthenticated, isWeb3EnableLoading } =
-    useMoralis();
+  const {
+    isWeb3Enabled, enableWeb3, isAuthenticated, isWeb3EnableLoading,
+  } = useMoralis();
 
   useEffect(() => {
     if (isAuthenticated && !isWeb3Enabled && !isWeb3EnableLoading) {
@@ -201,33 +206,31 @@ const HomepageNav = ({ setToken, setData, page, open, setOpen = () => {} }) => {
   } = useContext(GlobalContext || {});
 
   useEffect(() => {
-    const token =
-      typeof window !== 'undefined'
-        ? window.localStorage.getItem('jwtToken')
-        : null;
-    const userInfo =
-      typeof window !== 'undefined'
-        ? window.localStorage.getItem('userInfo')
-        : null;
+    const token = typeof window !== 'undefined'
+      ? window.localStorage.getItem('jwtToken')
+      : null;
+    const userInfo = typeof window !== 'undefined'
+      ? window.localStorage.getItem('userInfo')
+      : null;
 
     if (token === null || userInfo === {}) {
       setUserData(null);
       if (
-        page === 'MentorshipProgram' ||
-        page === 'Consultancy' ||
-        page === 'learn-page' ||
-        page === 'About' ||
-        page === 'Careers' ||
-        page === 'auth' ||
-        page === 'Incubator' ||
-        page === 'Chat' ||
-        page === 'CreateProfile' ||
-        page === 'user' ||
-        page === 'settings-overview' ||
-        page === 'settings-profile' ||
-        page === 'settings-security' ||
-        page === 'settings-wallet' ||
-        page === 'settings-notifications'
+        page === 'MentorshipProgram'
+        || page === 'Consultancy'
+        || page === 'learn-page'
+        || page === 'About'
+        || page === 'Careers'
+        || page === 'auth'
+        || page === 'Incubator'
+        || page === 'Chat'
+        || page === 'CreateProfile'
+        || page === 'user'
+        || page === 'settings-overview'
+        || page === 'settings-profile'
+        || page === 'settings-security'
+        || page === 'settings-wallet'
+        || page === 'settings-notifications'
       ) {
         setData(null);
       }
@@ -235,21 +238,21 @@ const HomepageNav = ({ setToken, setData, page, open, setOpen = () => {} }) => {
       // setUserData(Object.values(JSON.parse(userInfo))[1])
       getProfile(setUserData)(profileDispatch);
       if (
-        page === 'MentorshipProgram' ||
-        page === 'Consultancy' ||
-        page === 'About' ||
-        page === 'Careers' ||
-        page === 'learn-page' ||
-        page === 'auth' ||
-        page === 'Incubator' ||
-        page === 'Chat' ||
-        page === 'CreateProfile' ||
-        page === 'user' ||
-        page === 'settings-overview' ||
-        page === 'settings-profile' ||
-        page === 'settings-security' ||
-        page === 'settings-wallet' ||
-        page === 'settings-notifications'
+        page === 'MentorshipProgram'
+        || page === 'Consultancy'
+        || page === 'About'
+        || page === 'Careers'
+        || page === 'learn-page'
+        || page === 'auth'
+        || page === 'Incubator'
+        || page === 'Chat'
+        || page === 'CreateProfile'
+        || page === 'user'
+        || page === 'settings-overview'
+        || page === 'settings-profile'
+        || page === 'settings-security'
+        || page === 'settings-wallet'
+        || page === 'settings-notifications'
       ) {
         getProfile(setData)(profileDispatch);
       }
@@ -284,10 +287,9 @@ const HomepageNav = ({ setToken, setData, page, open, setOpen = () => {} }) => {
   };
 
   useEffect(() => {
-    const token =
-      typeof window !== 'undefined'
-        ? window.localStorage.getItem('jwtToken')
-        : null;
+    const token = typeof window !== 'undefined'
+      ? window.localStorage.getItem('jwtToken')
+      : null;
     if (token) {
       const decodedToken = decode(token);
       if (decodedToken.exp * 1000 < new Date().getTime()) handleLogout();
@@ -474,11 +476,7 @@ const HomepageNav = ({ setToken, setData, page, open, setOpen = () => {} }) => {
       ) : (
         ''
       )}
-      <div className="mobile__vote">
-        <div className="mobile__wallet-link">
-          <Account />
-        </div>
-      </div>
+      <Account />
     </div>
   );
 
@@ -508,7 +506,7 @@ const HomepageNav = ({ setToken, setData, page, open, setOpen = () => {} }) => {
         )}
 
         <div className="tw-flex tw-flex-row tw-justify-between tw-w-full">
-          <div className="3xl:tw-block tw-hidden md:tw-block">
+          <div className="3xl:tw-block md:tw-block">
             <div className="navbar-logo">
               <Link href="/" onClick={closeMobileMenu}>
                 <img src="/assets/images/mpicon.svg" alt="" />
@@ -677,7 +675,7 @@ const HomepageNav = ({ setToken, setData, page, open, setOpen = () => {} }) => {
                 </Link>
               </li>
             </ul>
-            <ul className="tw-flex tw-flex-row tw-justify-around tw-w-1/4 tw-my-8 md:tw-hidden">
+            <ul className="tw-flex tw-flex-row tw-justify-around tw-w-1/4 tw-my-8 navbar__right md:tw-hidden">
               <li>
                 <div className="tw-flex tw-flex-row tw-w-full tw-border tw-border-gray-700 tw-rounded-md tw-px-1 tw-text-gray-500">
                   <input

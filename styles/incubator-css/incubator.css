@@ -27,14 +27,14 @@
   display: inline-block;
   background: #fff;
   color: #141471;
-  border: 1px solid #474BFF;
+  border: 1px solid #474bff;
   cursor: pointer;
   margin: 0.2rem;
   text-align: center;
 }
 
 .btn-gradient {
-  background-color: #474BFF;
+  background-color: #474bff;
   color: #fff;
   width: 200px;
   padding: 1rem;
@@ -43,7 +43,7 @@
 }
 
 .btn-blued {
-  background: #474BFF;
+  background: #474bff;
   color: #fff;
   width: 200px;
   padding: 1rem;
@@ -62,7 +62,7 @@
   font-size: 0.75rem;
   padding: 12px;
   color: #fff;
-  background: #474BFF;
+  background: #474bff;
   transition: all 0.2s ease-in;
   width: 100%;
 }
@@ -110,7 +110,7 @@
   display: flex;
   height: 100%;
   padding: 80px 0 0 0;
-  background: #efefef
+  background: #efefef;
 }
 
 .incubator-header {
@@ -127,7 +127,7 @@
   justify-content: flex-start;
   align-content: flex-start;
   padding: 1rem;
-  color: #3E385D;
+  color: #3e385d;
 }
 .incubator__text h2 {
   font-size: 1.5rem;
@@ -594,18 +594,7 @@ div.swiper-button-next {
 .portfolio__header {
   font-size: 1rem;
   font-weight: 700;
-  background: linear-gradient(
-    104.61deg,
-    #ff00b8 2.65%,
-    #ff655b 51.83%,
-    #ffc700 100%
-  );
-  background-clip: text;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  -moz-text-fill-color: transparent;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 1rem;
+  color: #000;
 }
 
 .portfolio__items {
@@ -678,6 +667,9 @@ div.swiper-button-next {
   letter-spacing: 0.5px;
   word-break: break-all;
 }
+.right__description div img {
+  max-width: 120px;
+}
 
 /* Pagination */
 
@@ -696,21 +688,30 @@ div.swiper-button-next {
   border-radius: 5px;
   border: 1px solid #fff;
   color: #fff;
+  background: #474bfe;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
 }
-
+.previousBttn a {
+  color: #fff;
+  background: #474bfe;
+}
 .paginationBttns a:hover {
-  background-color: rgba(255, 255, 255, 0.404);
+  color: #474bfe;
+  border-radius: 5px;
+  border: 1px solid #474bfe;
+  background-color: rgb(255, 255, 255);
 }
 
 .paginationActive a {
-  color: #fff;
-  background-color: rgba(255, 255, 255, 0.404);
+  color: #474bfe;
+  border-radius: 5px;
+  border: 1px solid #474bfe;
+  background-color: rgb(255, 255, 255);
 }
 
 .paginationDisabled a {
-  color: rgba(255, 255, 255, 0.404);
+  color: rgb(255, 255, 255);
 }
 
 .break-me {
@@ -771,6 +772,9 @@ div.swiper-button-next {
   .top__container-column {
     padding: 0;
   }
+  .right__description div img {
+    max-width: 100px;
+  }
 }
 
 @media only screen and (max-width: 640px) {
@@ -782,10 +786,10 @@ div.swiper-button-next {
     text-align: center;
     margin-bottom: 2rem;
   }
-  .incubator-center h2{
+  .incubator-center h2 {
     font-size: 1rem;
   }
-  .incubator-center img{
+  .incubator-center img {
     display: none;
   }
   .featured__title {
@@ -807,6 +811,11 @@ div.swiper-button-next {
   }
   .btn-filled.sm {
     width: 150px;
+  }
+  .right__description {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr);
+    margin-bottom: 1rem;
   }
 }
 

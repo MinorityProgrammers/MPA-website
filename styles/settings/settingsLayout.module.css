@@ -1,11 +1,6 @@
 .settingsContainer {
   font-family: "Red Hat Display", sans-serif;
-  background: linear-gradient(
-    104.61deg,
-    #ff00b8 2.65%,
-    #ff655b 51.83%,
-    #ffc700 100%
-  );
+  background: #cccc;
   display: flex;
   justify-content: center;
   padding-top: 60px;
@@ -26,7 +21,7 @@
 
 .settingsNavigation h1,
 .settingsNavigation h2 {
-  color: #151371;
+  color: #474BFD;
 }
 
 .settingsNavigation .userDataHeader {
@@ -84,7 +79,7 @@
 }
 
 .settingsNavigation nav {
-  color: #151371;
+  color: #474BFD;
   font-weight: 700;
   margin-bottom: 3.5vw;
 }
@@ -93,13 +88,13 @@
   font-size: 1.5vw;
 }
 .settingsNavigation nav .navHeader.activeLi {
-  background-color: #151371;
+  background-color: #474BFD;
   color: white;
 }
 .settingsNavigation nav .navHeader.activeLi h2 {
   border-top: none !important;
   border-bottom: none !important;
-  background-color: #151371;
+  background-color: #474BFD;
   color: white;
 }
 
@@ -156,7 +151,7 @@
 }
 
 .specificSettings {
-  background-color: #151371;
+  background-color: #474BFD;
   border-radius: 1vw;
   display: flex;
   width: 66%;

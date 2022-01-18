@@ -4,6 +4,7 @@ import { GlobalContext } from '../../contexts/provider';
 import styles from '../../styles/settings/settingBodyOverview.module.css';
 import { uprContext } from '../../contexts/settingsPagesProvider/settingsPagesProvider';
 import { getProgressPercentage } from '../../contexts/utils/settings/getProgressPercentage';
+import Account from '../Account';
 
 const SettingBodyOverview = function ({ data }) {
   const router = useRouter();
@@ -322,7 +323,7 @@ const SettingBodyOverview = function ({ data }) {
       <div className={styles.fright}>
         <div className={`${styles.fItem} ${styles.fIWallet}`}>
           <h5>Wallet</h5>
-          <div className={styles.connectWrapper}>
+          {/* <div className={styles.connectWrapper}>
             <button
               onClick={(e) => {
                 e.preventDefault();
@@ -331,6 +332,9 @@ const SettingBodyOverview = function ({ data }) {
             >
               Connect Wallet
             </button>
+          </div> */}
+          <div className="tw-m-4">
+              <Account />
           </div>
           <div className={styles.balances}>
             <h5>Balances</h5>

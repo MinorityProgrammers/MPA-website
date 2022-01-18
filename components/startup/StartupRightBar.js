@@ -107,38 +107,38 @@ const StartupRightBar = ({ data }) => {
             {data.frontend.length > 0 && (
               <div style={{ flex: '1' }}>
                 Front-end
-                {data.frontend.indexOf('React') != -1 && (
-                  <img src="/assets/images/incubator/react.jpeg" />
+                {data.frontend.indexOf('React') !== -1 && (
+                  <img src="/assets/images/incubator/react.jpeg" alt="react" />
                 )}
-                {data.frontend.indexOf('Express') != -1 && (
-                  <img src="/assets/images/incubator/express.png" />
+                {data.frontend.indexOf('Express') !== -1 && (
+                  <img src="/assets/images/incubator/express.png" alt="express" />
                 )}
               </div>
             )}
             {data.backend.length > 0 && (
               <div style={{ flex: '1' }}>
                 Back-end
-                {data.backend.indexOf('MongoDB') != -1 && (
-                  <img src="/assets/images/incubator/mongodb.png" />
+                {data.backend.indexOf('MongoDB') !== -1 && (
+                  <img src="/assets/images/incubator/mongodb.png" alt="mongodb" />
                 )}
-                {data.backend.indexOf('node') != -1 && (
-                  <img src="/assets/images/incubator/node.png" />
+                {data.backend.indexOf('node') !== -1 && (
+                  <img src="/assets/images/incubator/node.png" alt="node" />
                 )}
               </div>
             )}
             {data.uiux.length > 0 && (
               <div style={{ flex: '1' }}>
                 UI/UX
-                {data.uiux.indexOf('figma') != -1 && (
-                  <img src="/assets/images/incubator/figma.png" />
+                {data.uiux.indexOf('figma') !== -1 && (
+                  <img src="/assets/images/incubator/figma.png" alt="figma" />
                 )}
               </div>
             )}
             {data.deployment.length > 0 && (
               <div style={{ flex: '1' }}>
                 Deployment
-                {data.deployment.indexOf('netlify') != -1 && (
-                  <img src="/assets/images/incubator/netlify.png" />
+                {data.deployment.indexOf('netlify') !== -1 && (
+                  <img src="/assets/images/incubator/netlify.png" alt="netlify" />
                 )}
               </div>
             )}
