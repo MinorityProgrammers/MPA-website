@@ -105,10 +105,6 @@ export const allies = [
     imgSrc: 'assets/images/sponsorship/sponsorlearn.svg',
   },
   {
-    allyLink: 'https://algorand.foundation/',
-    imgSrc: 'assets/images/sponsorship/sponsor13.png',
-  },
-  {
     allyLink: 'https://entethalliance.org/',
     imgSrc: 'assets/images/sponsorship/sponsor14.png',
   },
@@ -119,5 +115,13 @@ export const allies = [
   {
     allyLink: 'https://www.theshrimpsociety.com/',
     imgSrc: 'assets/images/sponsorship/sponsor16.png',
+  },
+  {
+    allyLink: 'https://www.devxdao.com/',
+    imgSrc: 'assets/images/sponsorship/sponsor19.png',
+  },
+  {
+    allyLink: 'https://www.developerdao.com/',
+    imgSrc: 'assets/images/sponsorship/sponsor20.png',
   },
 ];

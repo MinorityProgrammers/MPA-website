@@ -23,13 +23,13 @@ const ConsultancyHomeExplainer = function ({
           <div>
             {data === null ? <a onClick={() => { setClickRegister(true); }} className="btn consultancyBTN--Login tw-cursor-pointer">Register</a> : ' '}
 
-            {data === null
+            {/* {data === null
                             && <a onClick={() => { setClickRegister(true); }} className="btn mentorshipBTN ml-4 consultancyBTN--getQuote hover:tw-text-white hover:tw-bg-blue-800">Get Quote</a>}
             {data && (
               <Link href="/consultancy">
                 <a className="btn mentorshipBTN ml-4 consultancyBTN--getQuote hover:tw-text-white hover:tw-bg-blue-800">Get Quote</a>
               </Link>
-            )}
+            )} */}
           </div>
         </div>
 
@@ -143,7 +143,7 @@ const ConsultancyHomeExplainer = function ({
             )}
         </div>
 
-        <div className="consultancy__bottom">
+        {/* <div className="consultancy__bottom">
           <h1 className="consultancy__title--h1">Are you a Project Manager?</h1>
           <div className="d-flex justify-content-between">
             <div className="col-lg-3 text-center consultancy__type--card">
@@ -169,7 +169,7 @@ const ConsultancyHomeExplainer = function ({
               <p>Earn $MINORITY</p>
             </div>
           </div>
-        </div>
+        </div> */}
 
         {data === null
           ? ''
