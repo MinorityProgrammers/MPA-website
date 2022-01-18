@@ -1,5 +1,5 @@
 import {
-  getProviders, getSession, signIn, useSession
+  getProviders, getSession, signIn, useSession,
 } from 'next-auth/client';
 import { useRouter } from 'next/router';
 import React, { useContext, useEffect, useState } from 'react';
@@ -7,7 +7,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {
   googleAuth,
-  nextAuth
+  nextAuth,
 } from '../../../contexts/actions/auth/googleAuth';
 import { getProfile } from '../../../contexts/actions/profile/getProfile';
 import { GlobalContext } from '../../../contexts/provider';
@@ -21,8 +21,7 @@ export default function Index() {
   const [session, isLoading] = useSession();
 
   // Instead of another page we will set the text to variables
-  const {cardText, setCardText} = useState()
-  ({
+  const { cardText, setCardText } = useState({
     signIn: false,
     h1Title: 'welcome',
     p: (
@@ -39,10 +38,10 @@ export default function Index() {
     para: 'already have an account?',
     link: 'sign in',
   });
-  
-  useEffect (()=>{
-    localStorage.setItem('cardText',{signIn:False})
-  })
+
+  useEffect(() => {
+    localStorage.setItem('cardText', { signIn: False });
+  });
   //   localStorage.setItem('cardText',
   //   { signIn:false,
   //     h1Title: 'welcome',
@@ -123,21 +122,18 @@ export default function Index() {
   const regEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
   // the body to be sent to the api
-  const registerBody = {
-    firstName,
-    lastName,
-    email,
-    password,
-    confirmPassword: ConfirmPassword,
-  };
+  // const registerBody = {
+  //   firstName,
+  //   lastName,
+  //   email,
+  //   password,
+  //   confirmPassword: ConfirmPassword,
+  // };
 
-  const loginBody = {
-    email,
-    password,
-  };
-   
-
-  
+  // const loginBody = {
+  //   email,
+  //   password,
+  // };
 
   // redirecting the user
   useEffect(() => {
@@ -198,7 +194,7 @@ export default function Index() {
         para: 'already have an account?',
         link: 'sign in',
       });
-    } else if (window.localStorage.getItem("cardText.signIn") === false) {
+    } else if (window.localStorage.getItem('cardText.signIn') === false) {
       window.localStorage.getItem(setCardText)({
         signIn: true,
         h1Title: 'welcome back',
@@ -231,14 +227,12 @@ export default function Index() {
 
   console.log(session);
 
-  //local storage signIn / Register
-  useEffect (() =>{
-
-    const {login, register} = useState
-    localStorage.setItem('login',false)
-    localStorage.setItem('register', false)
-  })
-  
+  // local storage signIn / Register
+  useEffect(() => {
+    const { login, register } = useState;
+    localStorage.setItem('login', false);
+    localStorage.setItem('register', false);
+  });
 
   return (
     <div className={styles.cardContainer}>
