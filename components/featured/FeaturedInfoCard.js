@@ -17,11 +17,13 @@ const FeaturedInfoCard = ({ data }) => (
         <div className="fund__top">
           <h3 className="fund__topic">Fundraised</h3>
           <h3 className="fund__percentage">
-            {percentFund(data.targetAmount, data.amount)}% complete
+            {percentFund(data.targetAmount, data.amount)}
+            % complete
           </h3>
         </div>
         <h3 className="fund__amount">
-          ${numFormat(data.amount)}
+          $
+          {numFormat(data.amount)}
           /$
           {numFormat(data.targetAmount)}
         </h3>

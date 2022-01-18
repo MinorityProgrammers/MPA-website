@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react';
 import classes from '../public/assets/css/defisummer.module.css';
 
 const Defisummer = ({ navBarRef }) => {
-  const { day, month, date, startTime, endTime } = {
+  const {
+    day, month, date, startTime, endTime,
+  } = {
     day: 'Thursday',
     month: 'August',
     date: 26,
@@ -135,18 +137,18 @@ const Defisummer = ({ navBarRef }) => {
               {keynotes(
                 'Future of Asset Management',
                 'w/ Founder of Enzyme, Finance Mona El Isa',
-                '3:00PM'
+                '3:00PM',
               )}
 
               {keynotes(
                 'Future of Yield Maximizing',
                 'w/ Founder of Idle, Finance',
-                '3:20PM'
+                '3:20PM',
               )}
               {keynotes(
                 'Future of Global Banking',
                 'w/ Founder of Steller Development Foundation',
-                '3:40PM'
+                '3:40PM',
               )}
             </div>
             <div className={classes.wrapSponsorsSection}>

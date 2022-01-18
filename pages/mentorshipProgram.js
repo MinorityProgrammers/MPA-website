@@ -26,6 +26,12 @@ const mentorshipProgram = () => {
   }
 
   useEffect(() => {
+    const userInfo = JSON.parse(window.localStorage.getItem('userInfo')).user;
+    if (userInfo.has_mentorship) {
+      window.location.href = userInfo.is_mentor
+        ? 'mentorship/mentor'
+        : 'mentorship/mentee';
+    }
     if (data === null) {
       setActive(false);
     } else {

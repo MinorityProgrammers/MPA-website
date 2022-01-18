@@ -1,4 +1,6 @@
-import React, { useEffect, useState, useContext, useRef } from 'react';
+import React, {
+  useEffect, useState, useContext, useRef,
+} from 'react';
 import { useRouter } from 'next/router';
 import NotFoundPage from '../404';
 import Layout from '../../components/Layout';
@@ -23,8 +25,8 @@ const User = function ({ user }) {
 
   useEffect(() => {
     setTimeout(() => {
-      !((isLoggedIn && ownsProfile) || user[0]?.profileVisibility) &&
-        setHiddenProfileValidated(true);
+      !((isLoggedIn && ownsProfile) || user[0]?.profileVisibility)
+        && setHiddenProfileValidated(true);
     }, 2000);
   }, [isLoggedIn, ownsProfile, user]);
 
@@ -52,8 +54,8 @@ const User = function ({ user }) {
   // user is logged in and viewing own profile page
   useEffect(() => {
     setOwnsProfile(
-      userData?.userName === user[0]?.userName ||
-        profileData?.userName === user[0]?.userName
+      userData?.userName === user[0]?.userName
+        || profileData?.userName === user[0]?.userName,
     );
   }, [user, userData, profileData]);
 
@@ -83,8 +85,8 @@ const User = function ({ user }) {
   // console.log(userData, profileData);
   return (
     <Layout pageTitle="Profile">
-      {(isLoggedIn && ownsProfile && user?.[0]) ||
-      user[0]?.profileVisibility !== false ? (
+      {(isLoggedIn && ownsProfile && user?.[0])
+      || user[0]?.profileVisibility !== false ? (
         <>
           <HomepageNav
             setData={setUserData}
@@ -109,11 +111,11 @@ const User = function ({ user }) {
           />
           <Footer />
         </>
-      ) : hiddenProfileValidated ? (
-        <NotFoundPage />
-      ) : (
-        <></>
-      )}
+        ) : hiddenProfileValidated ? (
+          <NotFoundPage />
+        ) : (
+          <></>
+        )}
     </Layout>
   );
 };

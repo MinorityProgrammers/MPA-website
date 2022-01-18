@@ -24,9 +24,13 @@ export class MentorshipQuestion4 extends Component {
     }
 
     const educationOptions = [
-      { label: 'Associate’s', value: 'Associate’s' },
-      { label: 'Bachelor’s', value: 'Bachelor’s' },
-      { label: 'Master’s', value: 'Master’s' },
+      { label: 'High School Diploma', value: 'High School Diploma' },
+      { label: "Associate's Degree", value: "Associate's Degree" },
+      { label: "Bachelor's Degree", value: "Bachelor's Degree" },
+      { label: "Master's Degree", value: "Master's Degree" },
+      { label: 'MBA', value: 'MBA' },
+      { label: 'JD', value: 'JD' },
+      { label: 'MD', value: 'MD' },
       { label: 'PhD', value: 'PhD' },
     ];
     const skillOptions = [
@@ -229,7 +233,7 @@ export class MentorshipQuestion4 extends Component {
 
           <span className="tw-block tw-text-center">
             {values.step}
-            /6
+            /4
           </span>
           <div className="tw-w-full tw-bg-gradient-to-r tw-from-FFC700 tw-via-FF655B tw-to-FF00B8 tw-h-2 tw-rounded-2xl tw-relative">
             <div className="tw-bg-gray-300 tw-h-2 tw-rounded-2xl tw-absolute tw-right-0 tw-w-line-4/6" />

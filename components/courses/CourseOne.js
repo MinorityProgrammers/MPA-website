@@ -64,7 +64,9 @@ const CourseOne = () => {
                     </a>
                     <div className="course-one__admin">
                       <img src="/assets/images/team-1-1.jpg" alt="" />
-                      by <a href="/teacher-details">MinorityProgrammers</a>
+                      by
+                      {' '}
+                      <a href="/teacher-details">MinorityProgrammers</a>
                     </div>
                     <h2 className="course-one__title">
                       <a href="/course-details">#ClimateHacks Hackathon</a>
@@ -94,7 +96,9 @@ const CourseOne = () => {
                     </a>
                     <div className="course-one__admin">
                       <img src="/assets/images/team-1-1.jpg" alt="" />
-                      by <a href="/teacher-details">MinorityProgrammers</a>
+                      by
+                      {' '}
+                      <a href="/teacher-details">MinorityProgrammers</a>
                     </div>
                     <h2 className="course-one__title">
                       <a href="/course-details">#ElectionHackathon</a>
@@ -105,7 +109,9 @@ const CourseOne = () => {
                         Sat April 24 - Sun April 25, 2021
                       </a>
                       <a href="/course-details">
-                        <i className="far fa-folder-open" /> 50 Participants
+                        <i className="far fa-folder-open" />
+                        {' '}
+                        50 Participants
                       </a>
                       <a href="/course-details">Free</a>
                     </div>

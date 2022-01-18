@@ -1,4 +1,6 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, {
+  useCallback, useEffect, useRef, useState,
+} from 'react';
 import $ from 'jquery';
 
 const randomNames = [
@@ -74,8 +76,7 @@ const randomImages = [
   'https://minorityprogrammers.com/assets/images/SEEF.svg',
   'https://minorityprogrammers.com/assets/images/Bryanna.svg',
 ];
-const testimonialText =
-  'Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis voluptatem eveniet delectus hic molestiae saepe expedita rem eum libero excepturi totam odit tempora porro asperiores eius, tempore explicabo reprehenderit culpa.';
+const testimonialText = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis voluptatem eveniet delectus hic molestiae saepe expedita rem eum libero excepturi totam odit tempora porro asperiores eius, tempore explicabo reprehenderit culpa.';
 
 const Testimonials = ({ homeClass, mode }) => {
   const [randomTestimony, setRandomTestimony] = useState([]);
@@ -189,7 +190,8 @@ const Testimonials = ({ homeClass, mode }) => {
                   <div className={homeClass.testimonialCardHeader}>
                     <span className={homeClass.testimonialFirstName}>
                       {firstName}
-                    </span>{' '}
+                    </span>
+                    {' '}
                     <span className={homeClass.testimonialLastName}>
                       {lastName}
                     </span>

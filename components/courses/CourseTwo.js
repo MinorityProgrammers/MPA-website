@@ -39,7 +39,9 @@ const CourseTwo = () => {
         <div className="container">
           <div className="block-title">
             <h2 className="block-title__title">
-              Explore our <br />
+              Explore our
+              {' '}
+              <br />
               popular courses
             </h2>
           </div>
@@ -67,7 +69,9 @@ const CourseTwo = () => {
                     </a>
                     <div className="course-one__admin">
                       <img src="/assets/images/team-1-1.jpg" alt="" />
-                      by <a href="/teacher-details">Lou Guerrero</a>
+                      by
+                      {' '}
+                      <a href="/teacher-details">Lou Guerrero</a>
                     </div>
                     <h2 className="course-one__title">
                       <a href="/course-details">New react bootcamp</a>
@@ -85,10 +89,14 @@ const CourseTwo = () => {
                     </div>
                     <div className="course-one__meta">
                       <a href="/course-details">
-                        <i className="far fa-clock" /> 10 Hours
+                        <i className="far fa-clock" />
+                        {' '}
+                        10 Hours
                       </a>
                       <a href="/course-details">
-                        <i className="far fa-folder-open" /> 6 Lectures
+                        <i className="far fa-folder-open" />
+                        {' '}
+                        6 Lectures
                       </a>
                       <a href="/course-details">$18</a>
                     </div>
@@ -110,7 +118,9 @@ const CourseTwo = () => {
                     </a>
                     <div className="course-one__admin">
                       <img src="/assets/images/team-1-2.jpg" alt="" />
-                      by <a href="/teacher-details">Cora Diaz</a>
+                      by
+                      {' '}
+                      <a href="/teacher-details">Cora Diaz</a>
                     </div>
                     <h2 className="course-one__title">
                       <a href="/course-details">Improve editing skills</a>
@@ -128,10 +138,14 @@ const CourseTwo = () => {
                     </div>
                     <div className="course-one__meta">
                       <a href="/course-details">
-                        <i className="far fa-clock" /> 10 Hours
+                        <i className="far fa-clock" />
+                        {' '}
+                        10 Hours
                       </a>
                       <a href="/course-details">
-                        <i className="far fa-folder-open" /> 6 Lectures
+                        <i className="far fa-folder-open" />
+                        {' '}
+                        6 Lectures
                       </a>
                       <a href="/course-details">$18</a>
                     </div>
@@ -153,7 +167,9 @@ const CourseTwo = () => {
                     </a>
                     <div className="course-one__admin">
                       <img src="/assets/images/team-1-3.jpg" alt="" />
-                      by <a href="/teacher-details">Ruth Becker</a>
+                      by
+                      {' '}
+                      <a href="/teacher-details">Ruth Becker</a>
                     </div>
                     <h2 className="course-one__title">
                       <a href="/course-details">Marketing strategies</a>
@@ -171,10 +187,14 @@ const CourseTwo = () => {
                     </div>
                     <div className="course-one__meta">
                       <a href="/course-details">
-                        <i className="far fa-clock" /> 10 Hours
+                        <i className="far fa-clock" />
+                        {' '}
+                        10 Hours
                       </a>
                       <a href="/course-details">
-                        <i className="far fa-folder-open" /> 6 Lectures
+                        <i className="far fa-folder-open" />
+                        {' '}
+                        6 Lectures
                       </a>
                       <a href="/course-details">$18</a>
                     </div>
@@ -196,7 +216,9 @@ const CourseTwo = () => {
                     </a>
                     <div className="course-one__admin">
                       <img src="/assets/images/team-1-4.jpg" alt="" />
-                      by <a href="/teacher-details">Ernest Rodriquez</a>
+                      by
+                      {' '}
+                      <a href="/teacher-details">Ernest Rodriquez</a>
                     </div>
                     <h2 className="course-one__title">
                       <a href="/course-details">Basics of photography</a>
@@ -214,10 +236,14 @@ const CourseTwo = () => {
                     </div>
                     <div className="course-one__meta">
                       <a href="/course-details">
-                        <i className="far fa-clock" /> 10 Hours
+                        <i className="far fa-clock" />
+                        {' '}
+                        10 Hours
                       </a>
                       <a href="/course-details">
-                        <i className="far fa-folder-open" /> 6 Lectures
+                        <i className="far fa-folder-open" />
+                        {' '}
+                        6 Lectures
                       </a>
                       <a href="/course-details">$18</a>
                     </div>
@@ -239,7 +265,9 @@ const CourseTwo = () => {
                     </a>
                     <div className="course-one__admin">
                       <img src="/assets/images/team-1-5.jpg" alt="" />
-                      by <a href="/teacher-details">Isabella Stanley</a>
+                      by
+                      {' '}
+                      <a href="/teacher-details">Isabella Stanley</a>
                     </div>
                     <h2 className="course-one__title">
                       <a href="/course-details">Affiliate bootcamp</a>
@@ -257,10 +285,14 @@ const CourseTwo = () => {
                     </div>
                     <div className="course-one__meta">
                       <a href="/course-details">
-                        <i className="far fa-clock" /> 10 Hours
+                        <i className="far fa-clock" />
+                        {' '}
+                        10 Hours
                       </a>
                       <a href="/course-details">
-                        <i className="far fa-folder-open" /> 6 Lectures
+                        <i className="far fa-folder-open" />
+                        {' '}
+                        6 Lectures
                       </a>
                       <a href="/course-details">$18</a>
                     </div>
@@ -282,7 +314,9 @@ const CourseTwo = () => {
                     </a>
                     <div className="course-one__admin">
                       <img src="/assets/images/team-1-6.jpg" alt="" />
-                      by <a href="/teacher-details">Katherine Collins</a>
+                      by
+                      {' '}
+                      <a href="/teacher-details">Katherine Collins</a>
                     </div>
                     <h2 className="course-one__title">
                       <a href="/course-details">Healthy workout tips </a>
@@ -300,10 +334,14 @@ const CourseTwo = () => {
                     </div>
                     <div className="course-one__meta">
                       <a href="/course-details">
-                        <i className="far fa-clock" /> 10 Hours
+                        <i className="far fa-clock" />
+                        {' '}
+                        10 Hours
                       </a>
                       <a href="/course-details">
-                        <i className="far fa-folder-open" /> 6 Lectures
+                        <i className="far fa-folder-open" />
+                        {' '}
+                        6 Lectures
                       </a>
                       <a href="/course-details">$18</a>
                     </div>
@@ -325,7 +363,9 @@ const CourseTwo = () => {
                     </a>
                     <div className="course-one__admin">
                       <img src="/assets/images/team-1-1.jpg" alt="" />
-                      by <a href="/teacher-details">Lou Guerrero</a>
+                      by
+                      {' '}
+                      <a href="/teacher-details">Lou Guerrero</a>
                     </div>
                     <h2 className="course-one__title">
                       <a href="/course-details">New react bootcamp</a>
@@ -343,10 +383,14 @@ const CourseTwo = () => {
                     </div>
                     <div className="course-one__meta">
                       <a href="/course-details">
-                        <i className="far fa-clock" /> 10 Hours
+                        <i className="far fa-clock" />
+                        {' '}
+                        10 Hours
                       </a>
                       <a href="/course-details">
-                        <i className="far fa-folder-open" /> 6 Lectures
+                        <i className="far fa-folder-open" />
+                        {' '}
+                        6 Lectures
                       </a>
                       <a href="/course-details">$18</a>
                     </div>
@@ -368,7 +412,9 @@ const CourseTwo = () => {
                     </a>
                     <div className="course-one__admin">
                       <img src="/assets/images/team-1-2.jpg" alt="" />
-                      by <a href="/teacher-details">Cora Diaz</a>
+                      by
+                      {' '}
+                      <a href="/teacher-details">Cora Diaz</a>
                     </div>
                     <h2 className="course-one__title">
                       <a href="/course-details">Improve editing skills</a>
@@ -386,10 +432,14 @@ const CourseTwo = () => {
                     </div>
                     <div className="course-one__meta">
                       <a href="/course-details">
-                        <i className="far fa-clock" /> 10 Hours
+                        <i className="far fa-clock" />
+                        {' '}
+                        10 Hours
                       </a>
                       <a href="/course-details">
-                        <i className="far fa-folder-open" /> 6 Lectures
+                        <i className="far fa-folder-open" />
+                        {' '}
+                        6 Lectures
                       </a>
                       <a href="/course-details">$18</a>
                     </div>
@@ -411,7 +461,9 @@ const CourseTwo = () => {
                     </a>
                     <div className="course-one__admin">
                       <img src="/assets/images/team-1-3.jpg" alt="" />
-                      by <a href="/teacher-details">Ruth Becker</a>
+                      by
+                      {' '}
+                      <a href="/teacher-details">Ruth Becker</a>
                     </div>
                     <h2 className="course-one__title">
                       <a href="/course-details">Marketing strategies</a>
@@ -429,10 +481,14 @@ const CourseTwo = () => {
                     </div>
                     <div className="course-one__meta">
                       <a href="/course-details">
-                        <i className="far fa-clock" /> 10 Hours
+                        <i className="far fa-clock" />
+                        {' '}
+                        10 Hours
                       </a>
                       <a href="/course-details">
-                        <i className="far fa-folder-open" /> 6 Lectures
+                        <i className="far fa-folder-open" />
+                        {' '}
+                        6 Lectures
                       </a>
                       <a href="/course-details">$18</a>
                     </div>

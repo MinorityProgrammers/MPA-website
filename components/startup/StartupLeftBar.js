@@ -37,7 +37,8 @@ const StartupLeftBar = ({ data }) => {
               <div className="col portfolio__items">
                 <p>Startup Valuation</p>
                 <h3 className="portfolio__amount">
-                  ${convert(data.valuation)}
+                  $
+                  {convert(data.valuation)}
                 </h3>
               </div>
               <div className="col portfolio__items">
@@ -100,11 +101,15 @@ const StartupLeftBar = ({ data }) => {
             </div>
             <p className="left__detail-topic">Location</p>
             <p className="left__detail-detail text-cap tw-mb-2">
-              {city},{country}
+              {city}
+              ,
+              {country}
             </p>
             <p className="left__detail-topic">Team Size</p>
             <p className="left__detail-detail tw-mb-2">
-              {data.teamSizeMin}-{data.teamSizeMax}
+              {data.teamSizeMin}
+              -
+              {data.teamSizeMax}
               people
             </p>
             <p className="left__detail-topic">User Base</p>

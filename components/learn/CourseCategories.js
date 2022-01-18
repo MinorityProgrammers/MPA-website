@@ -107,7 +107,7 @@ const CourseCategories = function ({ user, enrolledCourses, usersCourses }) {
                   <div className="input-group">
                     <div className="input-group-append learnSearch-btn">
                       <input type="text" className="course-search search-input" placeholder="Search Courses" />
-                      <button className = 'courseSearch-btn' ><i className="fas fa-search" /></button>
+                      <button className="courseSearch-btn"><i className="fas fa-search" /></button>
                     </div>
                   </div>
 

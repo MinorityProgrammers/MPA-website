@@ -57,6 +57,14 @@ export class MentorshipQuestion3 extends Component {
       { label: 'Russian', value: 'Russian' },
       { label: 'Spanish', value: 'Spanish' },
     ];
+    const availabilityOptions = [
+      { label: 'Less than 5 hours a week', value: 'Less than 5 hours a week' },
+      { label: '5-10 hours a week', value: '5-10 hours a week' },
+      { label: '10-20 hours a week', value: '10-20 hours a week' },
+      { label: '20-40 hours a week', value: '20-40 hours a week' },
+      { label: '40+ hours a week', value: '40+ hours a week' },
+    ];
+    // console.log(Object.keys(values.primaryLang).length);
     return (
       <div className="tw-relative tw-mt-20 tw-font-redhat tw-bg-white tw-h-660px tw-w-950px tw-px-24 tw-pt-16 tw-pb-36 tw-rounded-3xl tw-shadow-mentor md:tw-h-auto md:tw-px-10 md:tw-py-30 tw-select-none">
         <form className="tw-pb-20">
@@ -182,16 +190,16 @@ export class MentorshipQuestion3 extends Component {
             <div className="tw-flex tw-w-6/12 md:tw-w-full tw-flex-initial tw-flex-col  tw-bg-white input-area tw-py-3 tw-px-3 tw-border-4 tw-border-gray-300 tw-border-opacity-50 tw-rounded-2xl tw-my-2 tw-ml-3 md:tw-ml-0">
               <label
                 className="tw-text-md tw-select-none tw-mb-0.5"
-                htmlFor="primaryLang"
+                htmlFor="lookingForComm"
               >
-                My primary/secondary language
+                Availability
               </label>
               <Select
                 className="tw-w-full tw-outline-none tw-text-darkGray tw-text-md"
-                options={languageOptions}
-                name="primaryLang"
-                value={values.primaryLang}
-                onChange={handleDropDown('primaryLang')}
+                options={availabilityOptions}
+                name="lookingForComm"
+                value={values.availability}
+                onChange={handleDropDown('availability')}
                 labelledBy="Select"
                 overrideStrings={{
                   selectSomeItems: ' ',
@@ -218,7 +226,7 @@ export class MentorshipQuestion3 extends Component {
 
           <span className="tw-block tw-text-center">
             {values.step}
-            /6
+            /4
           </span>
           <div className="tw-w-full tw-bg-gradient-to-r tw-from-FFC700 tw-via-FF655B tw-to-FF00B8 tw-h-2 tw-rounded-2xl tw-relative">
             <div className="tw-bg-gray-300 tw-h-2 tw-rounded-2xl tw-absolute tw-right-0 tw-w-line-3/6" />

@@ -34,9 +34,8 @@ const Index = function () {
 
   // user redirection's
   useEffect(() => {
-    const user =
-      JSON.parse(window?.localStorage.getItem('userInfo'))?.user ||
-      JSON.parse(window?.localStorage.getItem('userInfo'));
+    const user = JSON.parse(window?.localStorage.getItem('userInfo'))?.user
+      || JSON.parse(window?.localStorage.getItem('userInfo'));
     // console.log(user);
     if (user?.isUpdated === true) {
       const slug = user?.userName;

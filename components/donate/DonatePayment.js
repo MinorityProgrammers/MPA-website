@@ -24,7 +24,8 @@ const DonatePayment = ({
     <>
       <div className="step__payment">
         <h2 className="step__payment-amount">
-          ${amount}
+          $
+          {amount}
           {monthly === true && '/month'}
         </h2>
         <h2
@@ -36,7 +37,9 @@ const DonatePayment = ({
           disabled={count < 2}
         >
           <p>
-            <i className="far fa-edit" /> Change amount
+            <i className="far fa-edit" />
+            {' '}
+            Change amount
           </p>
         </h2>
       </div>

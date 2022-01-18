@@ -8,7 +8,9 @@ const CourseDetails = () => (
           <div className="course-details__content">
             <p className="course-details__author">
               <img src="/assets/images/team-1-1.jpg" alt="" />
-              by <a href="#">Addie Walters</a>
+              by
+              {' '}
+              <a href="#">Addie Walters</a>
             </p>
 
             <div className="course-details__top">
@@ -123,7 +125,8 @@ const CourseDetails = () => (
                       <div className="course-details__meta-icon video-icon">
                         <i className="fas fa-play" />
                       </div>
-                      <a href="#">Introduction to Editing</a>{' '}
+                      <a href="#">Introduction to Editing</a>
+                      {' '}
                       <span>Preview</span>
                     </div>
                     <div className="course-details__curriculum-list-right">
@@ -135,7 +138,9 @@ const CourseDetails = () => (
                       <div className="course-details__meta-icon video-icon">
                         <i className="fas fa-play" />
                       </div>
-                      <a href="#">Overview of Editing</a> <span>Preview</span>
+                      <a href="#">Overview of Editing</a>
+                      {' '}
+                      <span>Preview</span>
                     </div>
                     <div className="course-details__curriculum-list-right">
                       10 minutes
@@ -338,7 +343,9 @@ const CourseDetails = () => (
                 <form action="#" className="course-details__comment-form">
                   <h2 className="course-details__title">Add a review</h2>
                   <p className="course-details__comment-form-text">
-                    Rate this Course? <a href="#" className="fas fa-star" />
+                    Rate this Course?
+                    {' '}
+                    <a href="#" className="fas fa-star" />
                     <a href="#" className="fas fa-star" />
                     <a href="#" className="fas fa-star" />
                     <a href="#" className="fas fa-star" />
@@ -378,37 +385,49 @@ const CourseDetails = () => (
               <span className="course-details__meta-icon">
                 <i className="far fa-clock" />
               </span>
-              Durations: <span>10 hours</span>
+              Durations:
+              {' '}
+              <span>10 hours</span>
             </a>
             <a href="#" className="course-details__meta-link">
               <span className="course-details__meta-icon">
                 <i className="far fa-folder-open" />
               </span>
-              Lectures: <span>6</span>
+              Lectures:
+              {' '}
+              <span>6</span>
             </a>
             <a href="#" className="course-details__meta-link">
               <span className="course-details__meta-icon">
                 <i className="far fa-user-circle" />
               </span>
-              Students: <span>Max 4</span>
+              Students:
+              {' '}
+              <span>Max 4</span>
             </a>
             <a href="#" className="course-details__meta-link">
               <span className="course-details__meta-icon">
                 <i className="fas fa-play" />
               </span>
-              Video: <span>8 hours</span>
+              Video:
+              {' '}
+              <span>8 hours</span>
             </a>
             <a href="#" className="course-details__meta-link">
               <span className="course-details__meta-icon">
                 <i className="far fa-flag" />
               </span>
-              Skill Level: <span>Advanced</span>
+              Skill Level:
+              {' '}
+              <span>Advanced</span>
             </a>
             <a href="#" className="course-details__meta-link">
               <span className="course-details__meta-icon">
                 <i className="far fa-bell" />
               </span>
-              Language: <span>English</span>
+              Language:
+              {' '}
+              <span>English</span>
             </a>
           </div>
           <div className="course-details__list">
@@ -419,7 +438,9 @@ const CourseDetails = () => (
               </div>
               <div className="course-details__list-content">
                 <a className="course-details__list-author" href="#">
-                  by <span>Lydia Byrd</span>
+                  by
+                  {' '}
+                  <span>Lydia Byrd</span>
                 </a>
                 <h3>
                   <a href="#">Marketing strategies</a>
@@ -440,7 +461,9 @@ const CourseDetails = () => (
               </div>
               <div className="course-details__list-content">
                 <a className="course-details__list-author" href="#">
-                  by <span>Lydia Byrd</span>
+                  by
+                  {' '}
+                  <span>Lydia Byrd</span>
                 </a>
                 <h3>
                   <a href="#">Marketing strategies</a>
@@ -461,7 +484,9 @@ const CourseDetails = () => (
               </div>
               <div className="course-details__list-content">
                 <a className="course-details__list-author" href="#">
-                  by <span>Lydia Byrd</span>
+                  by
+                  {' '}
+                  <span>Lydia Byrd</span>
                 </a>
                 <h3>
                   <a href="#">Marketing strategies</a>

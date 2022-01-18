@@ -1,5 +1,5 @@
 import {
-  getProviders, getSession, signIn, useSession
+  getProviders, getSession, signIn, useSession,
 } from 'next-auth/client';
 import { useRouter } from 'next/router';
 import React, { useContext, useEffect, useState } from 'react';
@@ -7,7 +7,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {
   googleAuth,
-  nextAuth
+  nextAuth,
 } from '../../../contexts/actions/auth/googleAuth';
 import { getProfile } from '../../../contexts/actions/profile/getProfile';
 import { GlobalContext } from '../../../contexts/provider';

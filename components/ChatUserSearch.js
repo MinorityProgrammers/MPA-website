@@ -29,7 +29,7 @@ const ChatUserSearch = ({
               headers: {
                 Authorization: `Bearer ${token}`,
               },
-            }
+            },
           );
           setTempUserResults({ query: userSearch, results: res.data.data });
         } catch (err) {
@@ -83,15 +83,9 @@ const ChatUserSearch = ({
 
   const setUpUserResults = () => {
     const allusers = [];
-    allchats.map((c) =>
-      allusers.push(c.users.find((m) => m._id !== thisUser._id))
-    );
-    pendingchats.map((c) =>
-      allusers.push(c.users.find((m) => m._id !== thisUser._id))
-    );
-    blockedchats.map((c) =>
-      allusers.push(c.users.find((m) => m._id !== thisUser._id))
-    );
+    allchats.map((c) => allusers.push(c.users.find((m) => m._id !== thisUser._id)));
+    pendingchats.map((c) => allusers.push(c.users.find((m) => m._id !== thisUser._id)));
+    blockedchats.map((c) => allusers.push(c.users.find((m) => m._id !== thisUser._id)));
 
     const cards = () => {
       const cardsarr = [];
@@ -110,7 +104,7 @@ const ChatUserSearch = ({
               createChat={createChat}
               key={u._id}
               setPopUp={setPopUp}
-            />
+            />,
           );
         }
       });

@@ -25,7 +25,7 @@ export class MentorshipQuestion1 extends Component {
         },
         (error) => {
           console.log();
-        }
+        },
       );
   }
 

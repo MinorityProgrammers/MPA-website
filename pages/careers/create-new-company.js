@@ -210,7 +210,8 @@ const CreateNewCompany = () => {
 
               <div className="tw-flex tw-flex-col tw-mb-3">
                 <label className="tw-text-white tw-text-lg tw-mb-1 tw-font-bold">
-                  Company Description{' '}
+                  Company Description
+                  {' '}
                   <span className="tw-text-xl tw-text-yellow-200">*</span>
                 </label>
                 <textarea

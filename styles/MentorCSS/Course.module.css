@@ -1,0 +1,283 @@
+/* Course */
+.container {
+  min-height: 12rem;
+  background: #ffffff;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 13px;
+  margin: 1rem;
+}
+
+.containerTitle {
+  padding: 0rem 1.7rem;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 40px;
+  color: #151371;
+}
+
+.line {
+  height: 1px;
+  background: #67656552;
+  width: 100%;
+  margin: 0.4rem 0rem;
+}
+
+.colTitle {
+  color: #393b97;
+  font-size: 18px;
+  font-weight: bold;
+}
+.menteesIcon {
+  cursor: pointer;
+  display: flex;
+  flex-wrap: wrap;
+  font-weight: bold;
+  line-height: 27px;
+  justify-content: center;
+}
+.menteesIcon img {
+  border-radius: 15px;
+  height: 27px;
+}
+
+.progressName {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  color: #393b97;
+  margin-top: 8px;
+}
+
+.grid {
+  padding: 0rem 1.7rem;
+  grid-template-columns: 30% 70%;
+  display: grid;
+}
+.pointer {
+  height: 20px;
+  position: relative;
+  margin-left: -9px;
+  left: 50%;
+  z-index: 1;
+}
+
+.progressBar {
+  background: #eaeaea;
+  border-radius: 30px;
+  width: 100%;
+  height: 20px;
+  overflow: overlay;
+}
+.bar {
+  height: 100%;
+  width: 50%;
+  background: linear-gradient(91.04deg, #ffc700 9.63%, #ec9236 90.49%);
+  border-radius: 30px;
+}
+.progressInfo {
+  display: flex;
+  justify-content: space-between;
+}
+.sprintCol {
+  display: flex;
+}
+.courseInfo {
+  color: #393b97;
+  font-weight: normal;
+  font-size: 10px;
+}
+
+.event {
+  font-size: 14px;
+  margin: 4px 0;
+  margin-top: 6px;
+}
+
+.event img {
+  background: #0079bf;
+  border-radius: 4px;
+  height: 22px;
+  margin-right: 4px;
+  margin-top: 2px;
+}
+
+.eventDetail {
+  display: flex;
+  justify-content: space-between;
+  width: 9rem;
+  background: #dadbd8;
+  border-radius: 4px;
+}
+.eventDetail p {
+  padding: 4px;
+  white-space: nowrap;
+  font-size: 12px;
+  line-height: 19px;
+  color: #393b97;
+}
+.avatersContainer {
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: space-between;
+  /* padding-right: 3rem; */
+}
+
+.courseDescription {
+  padding-left: 2rem;
+  color: #393b97;
+}
+.messageDescription {
+  padding: 1rem 0;
+  padding-left: 2rem;
+}
+
+/* Event */
+.eventDate {
+  font-size: 14px;
+  color: #393b97;
+}
+.eventDate p {
+  margin-top: 1rem;
+  margin-bottom: 4px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* Capstone  */
+.capstoneTitle {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.capstoneDate,
+.postedDate {
+  font-size: 14px;
+  font-weight: normal;
+  color: #393b97;
+}
+
+.capstoneDate span,
+.postedDate span {
+  font-weight: bold;
+}
+
+.postedDate {
+  width: 100%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Job */
+.reviewBtn {
+  height: 20px;
+  line-height: 0px;
+  width: 70px;
+  border-radius: 30px;
+}
+.companyDetail {
+  color: #393b97;
+  margin: 1rem 0;
+}
+/* Evaluations */
+.buttonEvaluation {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+.buttonEvaluation button {
+  background: #00aa4f;
+  border-radius: 145px;
+  color: #ffffff;
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+  min-width: 15rem;
+  min-height: 2.7rem;
+  display: block;
+  outline: none;
+}
+.buttonEvaluation button:hover {
+  box-shadow: #00aa4f5e 0px 4px 6px -1px, #01964656 0px 2px 4px -1px;
+}
+.userIcon {
+  margin-top: 1rem;
+  margin-left: 1rem;
+}
+.userIcon img {
+  min-width: 4rem;
+}
+
+.evaluationItem {
+  display: flex;
+}
+.oddItem {
+  flex-direction: row-reverse;
+}
+.oddGrid {
+  grid-template-columns: 70% 30%;
+}
+.oddDate {
+  grid-column: 2;
+  grid-row: 1;
+}
+.oddDescription {
+  grid-column: 1;
+}
+.oddImg {
+  margin-right: 1rem;
+  margin-left: 0;
+}
+@media (max-width: 400px) {
+  .avatersContainer {
+    padding-right: 0px;
+  }
+}
+
+/* Evaluations */
+@media (max-width: 800px) {
+  .postedDate {
+    padding-top: 1rem;
+    padding-left: 2rem;
+    width: 100%;
+    position: relative;
+    left: initial;
+    top: initial;
+    transform: none;
+  }
+  .oddDate {
+    grid-column: 1;
+  }
+  .gridE {
+    grid-template-columns: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: 100%;
+  }
+  .courseDescription {
+    padding-left: 0rem;
+    margin-top: 1rem;
+  }
+  .postedDate {
+    padding-left: 0rem;
+  }
+  .courseInfo {
+    font-size: 12px;
+  }
+}
+@media (max-width: 450px) {
+  .userIcon img {
+    min-width: 3rem;
+  }
+  .containerE {
+    margin-left: 0.2rem;
+    margin-right: 0.2rem;
+  }
+}

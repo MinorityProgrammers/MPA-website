@@ -12,7 +12,7 @@ const OverviewStartups = (props) => {
     console.log('userData: ', props.userData);
     if (props.token !== null) {
       axios
-        .get("https://koinstreet-learn-api.herokuapp.com/api/v1/startup", {
+        .get('https://koinstreet-learn-api.herokuapp.com/api/v1/startup', {
           // .get("https://koinstreet-learn-api.herokuapp.com/api/v1/funded/userFunded", {
           headers: {
             'Access-Control-Allow-Origin': '*',
@@ -187,9 +187,11 @@ const OverviewStartups = (props) => {
       </div>
       <div className="overview-courses-cards d-flex flex-column" style={{ height: '85%' }}>
         {loading
-          ? <div className="d-flex flex-row justify-content-start align-items-start" style={{ lineHeight: 2, height: '100%', overflowX: 'hidden' }}>
-            <Skeleton count={7} height={40} width={1200} />
-          </div>
+          ? (
+            <div className="d-flex flex-row justify-content-start align-items-start" style={{ lineHeight: 2, height: '100%', overflowX: 'hidden' }}>
+              <Skeleton count={7} height={40} width={1200} />
+            </div>
+          )
           : <StartupCards />}
       </div>
 

@@ -96,7 +96,7 @@ export class MentorshipQuestion2 extends Component {
 
           <span className="tw-block tw-text-center">
             {values.step}
-            /6
+            /4
           </span>
           <div className="tw-w-full tw-bg-gradient-to-r tw-from-FFC700 tw-via-FF655B tw-to-FF00B8 tw-h-2 tw-rounded-2xl tw-relative">
             <div className="tw-bg-gray-300 tw-h-2 tw-rounded-2xl tw-absolute tw-right-0 tw-w-line-2/6" />

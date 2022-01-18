@@ -334,7 +334,7 @@ const SettingBodyOverview = function ({ data }) {
             </button>
           </div> */}
           <div className="tw-m-4">
-              <Account />
+            <Account />
           </div>
           <div className={styles.balances}>
             <h5>Balances</h5>

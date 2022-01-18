@@ -1,20 +1,23 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import TinderCard from 'react-tinder-card';
+
+import axios from 'axios';
+import { successToast, errorToast } from '../../contexts/utils/toasts';
 
 const alreadyRemoved = [];
 
 let swipeClick = 0;
 
 const MentorshipAppSwipeCards = (props) => {
-  const sleep = (milliseconds) =>
-    new Promise((resolve) => setTimeout(resolve, milliseconds));
+  // const [childRefs, setChildRefs] = useState([]);
   const childRefs = useMemo(
-    () =>
-      Array(props.values.length)
-        .fill(0)
-        .map((i) => React.createRef()),
-    []
+    () => Array(props.values.length)
+      .fill(0)
+      .map((i) => React.createRef()),
+    [],
   );
+  // console.log(props.values);
+  const sleep = (milliseconds) => new Promise((resolve) => setTimeout(resolve, milliseconds));
 
   const swiped = (dir, character) => {
     toggleUndo();
@@ -42,15 +45,19 @@ const MentorshipAppSwipeCards = (props) => {
 
   const swipe = (dir) => {
     const cardsLeft = props.values.filter(
-      (person) => !alreadyRemoved.includes(person)
+      (person) => !alreadyRemoved.includes(person),
     );
     if (cardsLeft.length) {
-      const toBeRemoved = cardsLeft[cardsLeft.length - 1]; // Find the card object to be removed
+      const toBeRemoved = cardsLeft[cardsLeft.length - 1];
+      // console.log(toBeRemoved); // Find the card object to be removed
       const index = props.values.indexOf(toBeRemoved); // Find the index of which to make the reference to
       if (!alreadyRemoved.includes(toBeRemoved)) {
         alreadyRemoved.push(toBeRemoved); // Make sure the next card gets removed next time if this card do not have time to exit the screen
       }
-      childRefs[index].current.swipe(dir);
+      // console.log("childRefs[index]", childRefs[index]);
+      if (childRefs[index]) {
+        childRefs[index].current.swipe(dir);
+      }
       // Swipe the card!
     }
   };
@@ -92,20 +99,23 @@ const MentorshipAppSwipeCards = (props) => {
         <TinderCard
           ref={childRefs[index]}
           className={`${character.name}_id swipe tw-absolute tw-h-full tw-w-1/2 tw-rounded-l-3xl`}
-          key={character.name}
+          key={character.id}
           preventSwipe={['up', 'down']}
           onSwipe={(dir) => swiped(dir, character)}
           onCardLeftScreen={() => outOfFrame(character)}
         >
           <img
             className="tw-h-61%  tw-absolute tw-top 0 tw-w-full tw-rounded-tl-3xl"
+            style={{ objectFit: 'contain', background: '#fff' }}
             src={character.url}
             alt={character.name}
           />
           <div className="details tw-bg-white tw-w-full tw-absolute tw-bottom-0 tw-rounded-t-3xl tw-rounded-bl-3xl tw-px-7">
             <div className="top tw-flex tw-justify-between tw-py-4 tw-border-b tw-border-#B9BCC1">
               <div className="tw-text-left">
-                <h3 className="tw-text-3xl tw-font-bold">{character.name}</h3>
+                <h3 className="tw-text-3xl tw-font-bold tw-mr-4">
+                  {character.name}
+                </h3>
                 <p className="tw-text-2xl tw-font-medium">
                   {character.occupation}
                 </p>
