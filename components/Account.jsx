@@ -197,13 +197,8 @@ const Account = function () {
                 span={11}
                 className="tw-py-3 tw-cursor-pointer hover:tw-bg-gray-100 hover:tw-shadow-xl tw-transition-all tw-duration-500 tw-mb-10"
                 onClick={() => (wallet.id === 'MetaMask'
-                  ? (metamaskConnectWallet,
-                  window.open('https://metamask.io', '_blank'))
-                  : (casperConnectWallet,
-                  window.open(
-                    'https://casper.network/en/network',
-                    '_blank',
-                  )))}
+                  ? metamaskConnectWallet()
+                  : casperConnectWallet())}
               >
                 <img
                   alt="wallet"
@@ -215,11 +210,21 @@ const Account = function () {
             ))}
           </Row>
           <div className="tw-text-center tw-font-bold tw-pt-10">
-            <a href="https://metamask.io/" target="_blank" rel="noreferrer">
-              <span className="tw-cursor-pointer hover:tw-text-gray-500 tw-transition-all tw-duration-500">
-                Dont have a wallet? Get one
-              </span>
-            </a>
+            <span className="tw-cursor-pointer hover:tw-text-gray-500 tw-transition-all tw-duration-500">
+              Dont have a wallet? Get one
+            </span>
+            <div className="tw-flex tw-flex-row tw-justify-evenly tw-w-full tw-mt-4">
+              <a href="https://metamask.io/" target="_blank" rel="noreferrer">
+                <span className="tw-cursor-pointer hover:tw-text-gray-500 tw-transition-all tw-duration-500">
+                  Metamask
+                </span>
+              </a>
+              <a href="https://casper.network/en/network" target="_blank" rel="noreferrer">
+                <span className="tw-cursor-pointer hover:tw-text-gray-500 tw-transition-all tw-duration-500">
+                  Casper
+                </span>
+              </a>
+            </div>
           </div>
         </Modal>
       </>
