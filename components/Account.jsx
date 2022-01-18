@@ -198,8 +198,13 @@ const Account = function () {
                 className="tw-py-3 tw-cursor-pointer hover:tw-bg-gray-100 hover:tw-shadow-xl tw-transition-all tw-duration-500 tw-mb-10"
                 onClick={() =>
                   wallet.id === 'MetaMask'
-                    ? metamaskConnectWallet()
-                    : casperConnectWallet()
+                    ? (metamaskConnectWallet,
+                      window.open('https://metamask.io', '_blank'))
+                    : (casperConnectWallet,
+                      window.open(
+                        'https://casper.network/en/network',
+                        '_blank'
+                      ))
                 }
               >
                 <img
