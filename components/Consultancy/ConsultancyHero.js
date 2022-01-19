@@ -7,9 +7,6 @@ const ConsultancyHero = function () {
         <div className="container ">
           <div className="consultancyHero-container">
             <div>
-              <h1 className="consultancyHero-title">
-                Consultancy
-              </h1>
               <p className="consultancyHero-txt">Get your idea turned into a complete web application ready for market with our transparent task-based escrow system that gives you as client, the control over how your product is being built.  </p>
               <div className="incubator__button">
                 <div className="button btn-gradient">
@@ -18,7 +15,7 @@ const ConsultancyHero = function () {
               </div>
             </div>
             <div>
-              <img src="assets/images/consultancy/consultancyHero.png" />
+              <img src="assets/images/consultancy/consultancyHero.png" alt="hero-img" />
             </div>
           </div>
         </div>
