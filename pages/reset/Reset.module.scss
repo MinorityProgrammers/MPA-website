@@ -194,9 +194,7 @@
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
   }
-  .innerText {
-    margin: 5vh auto;
-  }
+
   .cardRight {
     width: 100%;
     height: auto;
@@ -214,12 +212,6 @@
   }
 }
 @media (max-width: 650px) {
-  .cardRightText h2 {
-    font-size: 1.5rem;
-  }
-  .cardRightText p {
-    font-size: 1.1rem;
-  }
   .socialMedia,
   .mid {
     width: 100%;
@@ -234,24 +226,20 @@
   }
 }
 @media (max-width: 500px) {
+  .cardRightText h2 {
+    font-size: 30px;
+  }
+  .contentContainer{
+    padding: 1rem;
+  }
+  .innerText{
+    padding: 25px 0;
+  }
   .imgContainer #closeIcon {
     width: 5%;
   }
-  .cardLeft h1 {
-    font-size: 2.1rem;
-  }
-  .cardLeft p {
-    font-size: 0.8rem;
-  }
   .cardRight {
-    padding: 15px;
-    font-size: 1.2rem;
-  }
-  .cardRightText h2 {
-    font-size: 1.1rem;
-  }
-  .cardRightText p {
-    font-size: 0.9rem;
+    padding: 15px 23px;
   }
   .socialMedia,
   .mid {

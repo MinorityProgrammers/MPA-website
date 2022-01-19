@@ -14,7 +14,7 @@ const Index = () => {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef(null);
   const [hide, setHide] = useDetectOutsideClick(dropdownRef, true);
-  const [data, setData] = useState([]);
+  // const [data, setData] = useState([]);
   const handleClick = () => {
     setHide(!hide);
   };
@@ -28,19 +28,17 @@ const Index = () => {
 
   return (
     <div className={styles.container}>
-      <Layout pageTitle='MPA - Password'>
+      <Layout pageTitle="MPA - Password">
         <HomepageNav
           open={open}
-          setData={setData}
           setOpen={setOpen}
-          page='auth'
         />
-        <SidebarTwo open={open} setOpen={setOpen} links={links} active='Home' />
+        <SidebarTwo open={open} setOpen={setOpen} links={links} active="Home" />
         <>
           {hide === false && <ComingSoon closeClick={handleClick} />}
           <div
             style={{ marginTop: '0' }}
-            className='tw-mx-24 tw-my-32 md:tw-mx-4'
+            className="tw-mx-24 tw-my-32 md:tw-mx-4"
           >
             <div className={styles.cardContainer}>
               <ToastContainer limit={3} />
@@ -48,8 +46,8 @@ const Index = () => {
                 <div className={styles.contentContainer}>
                   <div className={styles.cardLeftLogo}>
                     <img
-                      src='./assets/images/mpicon.svg'
-                      alt='icon'
+                      src="./assets/images/mpicon.svg"
+                      alt="icon"
                       className={styles.logo}
                     />
                   </div>
@@ -69,7 +67,7 @@ const Index = () => {
                 </div>
                 <div>
                   <form>
-                    <div className='mb-3'>
+                    <div className="mb-3">
                       <span className={`${styles.inputLabel} form-label`}>
                         New Password
                       </span>
@@ -80,12 +78,12 @@ const Index = () => {
                         }}
                         minLength={8}
                         maxLength={128}
-                        type='password'
+                        type="password"
                         className={styles.passInput}
-                        placeholder='Password'
+                        placeholder="Password"
                       />
                     </div>
-                    <div className='mb-3'>
+                    <div className="mb-3">
                       <span className={`${styles.inputLabel} form-label`}>
                         Confirm Password
                       </span>
@@ -97,9 +95,9 @@ const Index = () => {
                         }}
                         minLength={8}
                         maxLength={128}
-                        type='password'
+                        type="password"
                         className={styles.passInput}
-                        placeholder='Password'
+                        placeholder="Password"
                       />
                     </div>
                   </form>
@@ -107,8 +105,8 @@ const Index = () => {
                 <div>
                   <input
                     className={styles.submit}
-                    type='submit'
-                    value='Reset Password'
+                    type="submit"
+                    value="Reset Password"
                   />
                 </div>
               </div>
