@@ -57,7 +57,7 @@ const MentorshipProgramHome = ({
             </div>
             <div className="col-lg-8 d-flex align-items-center mshipProgram__w_list">
               <ul className="">
-                <h1> Sign Up Program</h1>
+                <h1> Sign Up For The Program</h1>
                 <li>
                   {' '}
                   REGISTER for a Minority Programmers Association account.
@@ -90,7 +90,7 @@ const MentorshipProgramHome = ({
                 </li>
                 <li>
                   {' '}
-                  Choose a mentorship track & start CHAT with your match.
+                  Choose a mentorship track & start a chat with your match.
                   {' '}
                 </li>
               </ul>
