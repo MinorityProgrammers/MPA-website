@@ -193,7 +193,7 @@ const HomepageDonate = () => {
             >
               <i className="fab fa-bitcoin" />
             </a>
-            <a href="sponsorship" target="_blank" rel="noreferrer">
+            {/* <a href="sponsorship" target="_blank" rel="noreferrer">
               <i className="fas fa-gift" />
             </a>
             <a href="sponsorship" target="_blank" rel="noreferrer">
@@ -201,7 +201,7 @@ const HomepageDonate = () => {
             </a>
             <a href="sponsorship" target="_blank" rel="noreferrer">
               <i className="fab fa-twitch" />
-            </a>
+            </a> */}
           </div>
         </div>
       </div>
