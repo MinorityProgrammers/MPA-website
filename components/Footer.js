@@ -17,14 +17,32 @@ const Footer = () => {
                   <div className="footer-widget__link-wrap">
                     <ul className="list-unstyled footer-widget__link-list">
                       <li>
-                        <a href="/consultancy">Consultancy</a>
+                        <a
+                          href="https://snapshot.org/#/minorityprogrammers.eth"
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          The DAO
+                        </a>
                       </li>
                       <li>
-                        <a href="/mentorship">Mentorship</a>
+                        <a
+                          href="https://www.genadrop.com/"
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          GenaDrop
+                        </a>
                       </li>
+
                       <li>
-                        <a href="/incubator">Incubator</a>
-                      </li>
+                        <a
+                          href="https://opensea.io/MinorityProgrammers"
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          OpenSea
+                        </a></li>
                       <li>
                         <a href="/learn-page">Learn</a>
                       </li>
@@ -47,10 +65,7 @@ const Footer = () => {
                   <div className="footer-widget__link-wrap">
                     <ul className="list-unstyled footer-widget__link-list">
                       <li>
-                        <a href="/">About</a>
-                      </li>
-                      <li>
-                        <a href="/events">Events</a>
+                      <a href="/learn-page">Learn</a>
                       </li>
                       <li>
                         <a href="/partner">Partner</a>
@@ -59,7 +74,7 @@ const Footer = () => {
                         <a href="/careers">Careers</a>
                       </li>
                       <li>
-                        <a href="/sponsorship">Sponsorship</a>
+                        <a href="/events">Events</a>
                       </li>
                     </ul>
                   </div>
@@ -70,7 +85,7 @@ const Footer = () => {
                 <div className="footer-widget footer-widget__about">
                   <h2 className="footer-widget__title text-white">About</h2>
                   <p className="footer-widget__text">
-                    We are an international network of programmers unifying
+                    We are an international & decentralized network of programmers unifying
                     together to deliver socially impactful software solutions.
                   </p>
                   <div className="footer-widget__btn-block">
