@@ -20,7 +20,7 @@ const MentorshipProgramHome = ({
   return (
     <section>
       <div className="container">
-        <div className="login__reg flex d-flex justify-content-end mb-5 mt-2 pr-5">
+        {/* <div className="login__reg flex d-flex justify-content-end mb-5 mt-2 pr-5">
           <div>
             {data === null ? (
               <a
@@ -35,7 +35,7 @@ const MentorshipProgramHome = ({
               ' '
             )}
           </div>
-        </div>
+        </div> */}
 
         <div className="signup__program">
           <div className="row">
