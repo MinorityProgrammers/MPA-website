@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
-  Map, GoogleApiWrapper, InfoWindow, Marker,
+  Map, GoogleApiWrapper, Marker,
 } from 'google-maps-react';
 import axios from 'axios';
 import styles from './chapterMap.module.css';
@@ -37,19 +37,15 @@ const ChapterMap = function ({ google, token }) {
   const dateFounded = new Set();
   const memberSize = new Set();
 
-  for (const val of locations) {
+  locations.forEach((val) => {
     location.add(val.LocationName);
     chapterType.add(val.chapter_type);
-    dateFounded.add(val.date_founded),
+    dateFounded.add(val.date_founded);
     memberSize.add(val.member_size);
-  }
+  });
 
   const findrequests = (requests) => {
-    const allRequests = [];
-
-    requests.map((all) => {
-      allRequests.push(all.chapterLocation_id);
-    });
+    const allRequests = requests.map((all) => all.chapterLocation_id);
 
     return allRequests;
   };
@@ -86,10 +82,10 @@ const ChapterMap = function ({ google, token }) {
       const result = str.match(/\d+/);
       return (parseInt(result[0]));
     };
-    const newLocations = locations.filter((location) => {
-      if (category === 'all') return location;
-      if (category === 'member_size') return getNumFromStr(location.member_size) >= getNumFromStr(val);
-      return location[category] === val || location[category] === val;
+    const newLocations = locations.filter((_location) => {
+      if (category === 'all') return _location;
+      if (category === 'member_size') return getNumFromStr(_location.member_size) >= getNumFromStr(val);
+      return _location[category] === val || _location[category] === val;
     });
     setFilteredLocations(newLocations);
     setActiveDropdown({});
@@ -123,7 +119,7 @@ const ChapterMap = function ({ google, token }) {
         <div className={styles.text}>Checkout chapter locations accross the globe</div>
         <div className={styles.navbar}>
           <div className={styles.resetButtonContainer}>
-            <button className={styles.resetButton} onClick={() => handlePlaces('', 'all')}>All</button>
+            <button type="button" className={styles.resetButton} onClick={() => handlePlaces('', 'all')}>All</button>
           </div>
           <Dropdown handleClick={() => handleClick('location')} setMap={(e) => handlePlaces(e, 'LocationName')} toggle={active.location} heading="Location" list={[...location]} />
           <Dropdown handleClick={() => handleClick('chapterType')} setMap={(e) => handlePlaces(e, 'chapter_type')} toggle={active.chapterType} heading="ChapterType" list={[...chapterType]} />
@@ -145,7 +141,16 @@ const ChapterMap = function ({ google, token }) {
           onClick={handleMapClick}
         >
           {
-            filteredLocations && filteredLocations.map((place) => <Marker key={place._id} onClick={() => handleLocation({ ...place })} icon={{ url: place.LocationLogo }} name={place.LocationName} title={place.LocationName} position={{ lat: place.latitude, lng: place.longitude }} />)
+            filteredLocations && filteredLocations.map((place) => (
+              <Marker
+                key={place._id}
+                onClick={() => handleLocation({ ...place })}
+                icon={{ url: place.LocationLogo }}
+                name={place.LocationName}
+                title={place.LocationName}
+                position={{ lat: place.latitude, lng: place.longitude }}
+              />
+            ))
           }
         </Map>
 
@@ -155,7 +160,12 @@ const ChapterMap = function ({ google, token }) {
           modalIsOpen
           && (
           <div className={styles.modal} onClick={() => setIsOpen(!!activeArea)}>
-            <ModalContent setActive={(e) => setActive(e)} {...modalDetails} token={token} userJoinRequests={userJoinRequests} />
+            <ModalContent
+              setActive={(e) => setActive(e)}
+              {...modalDetails}
+              token={token}
+              userJoinRequests={userJoinRequests}
+            />
           </div>
           )
         }

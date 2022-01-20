@@ -4,7 +4,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import RecommendedCoursesListSkeleton from './RecommendedCoursesListSkeleton';
 
-const CoursesSkeleton = function (props) {
+const CoursesSkeleton = function ({ title }) {
   const coursesLength = 4;
 
   const conditionalInfinite = {
@@ -36,7 +36,7 @@ const CoursesSkeleton = function (props) {
     <div>
       <div className="mb-5 pb-3">
         <div className="course-category d-flex font-weight-bold tw-justify-center">
-          <h1 className="courseCategory-title">{props.title}</h1>
+          <h1 className="courseCategory-title">{title}</h1>
         </div>
         <div className="mt-3 pt-2 FRCourses">
           <Slider {...conditionalInfinite}>

@@ -29,6 +29,7 @@ const RecommendedCourseList = function ({
 
       <div className="text-center pb-4">
         <button
+          type="button"
           onClick={() => {
             showModal();
             handleCourseInfo(course);

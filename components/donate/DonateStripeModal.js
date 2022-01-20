@@ -69,6 +69,7 @@ const DonateStripModal = ({ showModal, setShowModal, amount }) => {
               ''
             ) : (
               <button
+                type="button"
                 className="donate__btn-close"
                 onClick={() => setShowModal((prev) => !prev)}
               >

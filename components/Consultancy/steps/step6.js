@@ -1,8 +1,8 @@
-import {
-  useRef, useState, useEffect, Fragment,
+import React, {
+  useRef, useState, useEffect,
 } from 'react';
 import addQuestion from '../helperFiles/addQuestion';
-import { useDefaultValue } from '../helperFiles/getDefaultValue';
+import useDefaultValue from '../helperFiles/getDefaultValue';
 import QuestionContainer from '../helperFiles/questionContainer';
 import ErrorPrint from '../helperFiles/errorPrint';
 import BlurBackground from '../helperFiles/blurBackground';
@@ -139,10 +139,10 @@ const Page6 = function ({
   }, [selectedOption.current]);
   const buttons = (
     <div className="contain-buttons">
-      <button className="btn-1" onClick={agree}>
+      <button type="button" className="btn-1" onClick={agree}>
         Agree
       </button>
-      <button className="btn-2" onClick={makeChanges}>
+      <button type="button" className="btn-2" onClick={makeChanges}>
         Cancel &amp; Close
       </button>
     </div>
@@ -184,7 +184,7 @@ const Page6 = function ({
                 id="rep"
                 name="page-selection"
                 defaultChecked={selectedOption.current === 0}
-                onChange={(e) => {
+                onChange={() => {
                   // addToQuestion();
                   onChangeRadio(0);
                 }}
@@ -246,7 +246,7 @@ const Page6 = function ({
                 id="manager"
                 name="page-selection"
                 defaultChecked={selectedOption.current === 1}
-                onChange={(e) => {
+                onChange={() => {
                   // addToQuestion();
                   onChangeRadio(1);
                 }}
@@ -268,7 +268,7 @@ const Page6 = function ({
                 id="myself"
                 name="page-selection"
                 defaultChecked={selectedOption.current === 2}
-                onChange={(e) => {
+                onChange={() => {
                   onChangeRadio(2);
                 }}
               />

@@ -11,9 +11,9 @@ const CourseSidebar = function ({
 }) {
   const router = useRouter();
 
-  const beginnerModules = modules.filter((module) => module.level == 'beginner');
-  const intermediateModules = modules.filter((module) => module.level == 'intermediate');
-  const advancedModules = modules.filter((module) => module.level == 'advanced');
+  const beginnerModules = modules.filter((module) => module.level === 'beginner');
+  const intermediateModules = modules.filter((module) => module.level === 'intermediate');
+  const advancedModules = modules.filter((module) => module.level === 'advanced');
 
   return (
     <div className="course-sidebar pt-5">
@@ -30,24 +30,50 @@ const CourseSidebar = function ({
         <div className="mt-4 pt-3">
           <h5 className="mb-3 week-name text-capitalize">Beginner Level</h5>
           {
-                        beginnerModules && beginnerModules.map((module) => <BeginnerModules module={module} key={module._id} courseId={courseId} userModules={userModules} />)
-                    }
+            beginnerModules && beginnerModules.map(
+              (module) => (
+                <BeginnerModules
+                  module={module}
+                  key={module._id}
+                  courseId={courseId}
+                  userModules={userModules}
+                />
+              ),
+            )
+          }
         </div>
 
         <div className="mt-4 pt-3">
           <h5 className="mb-3 week-name text-capitalize">Intermediate Level</h5>
           {
-                        intermediateModules && intermediateModules.map((module) => <IntermediateModules module={module} key={module._id} courseId={courseId} userModules={userModules} />)
-                    }
+            intermediateModules && intermediateModules.map(
+              (module) => (
+                <IntermediateModules
+                  module={module}
+                  key={module._id}
+                  courseId={courseId}
+                  userModules={userModules}
+                />
+              ),
+            )
+          }
         </div>
 
         <div className="mt-4 pt-3">
           <h5 className="mb-3 week-name text-capitalize">Advanced Level</h5>
           {
-                        advancedModules && advancedModules.map((module) => <AdvancedModules module={module} key={module._id} courseId={courseId} userModules={userModules} />)
-                    }
+            advancedModules && advancedModules.map(
+              (module) => (
+                <AdvancedModules
+                  module={module}
+                  key={module._id}
+                  courseId={courseId}
+                  userModules={userModules}
+                />
+              ),
+            )
+          }
         </div>
-
       </div>
     </div>
   );

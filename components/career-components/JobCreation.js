@@ -17,7 +17,7 @@ const JobCreation = () => {
     changeSkillsArray(skillsArray.filter((_, index) => i !== index));
   }
 
-  function addSkill(e) {
+  function addSkill() {
     if (skillsArray.length < 15) {
       const newSkillsArray = [...skillsArray, { id: skillsKey }];
       changeSkillsKey(skillsKey + 1);

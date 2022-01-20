@@ -41,6 +41,7 @@
     "antd": "^4.16.13",
     "async-mutex": "^0.3.1",
     "authereum": "^0.1.14",
+    "avataaars": "^2.0.0",
     "axios": "^0.21.1",
     "babel-plugin-styled-components": "^1.13.2",
     "bitski": "^0.11.0-beta.4",

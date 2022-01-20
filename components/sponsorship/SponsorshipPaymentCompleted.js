@@ -6,7 +6,6 @@ const SponsorshipPaymentCompleted = function ({
   count,
   setCount,
   amount,
-  isDone,
   setIsDone,
 }) {
   return (

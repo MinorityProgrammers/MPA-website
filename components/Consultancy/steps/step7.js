@@ -1,3 +1,4 @@
+import React from 'react';
 import SelectTemplate from '../helperFiles/templates/selectTemplate';
 
 const Page7 = function ({

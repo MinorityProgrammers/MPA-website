@@ -1,5 +1,7 @@
+/* eslint-disable max-len */
 import React from 'react';
-import styles from './jobs-card.module.css';
+import Skeleton from 'react-loading-skeleton';
+import styles from './jobs-card/jobs-card.module.css';
 
 const JobsCard = function ({ click, popup, data }) {
   const {
@@ -40,7 +42,7 @@ const JobsCard = function ({ click, popup, data }) {
                 {
                 status ? <div className={`${styles.is} ${styles.active}`}>Active</div> : <div className={`${styles.not} ${styles.active}`}>Inactive</div>
               }
-                <button>
+                <button type="button">
                   Apply Now
                   {application_link}
                 </button>
@@ -79,7 +81,7 @@ const JobsCard = function ({ click, popup, data }) {
                 <div className={styles.sect}>
                   <div className={styles.sectTitle}>Requirements</div>
                   {
-                  min_requirements && min_requirements.map(({ skill, years }, idx) => (
+                  min_requirements && min_requirements.map(({ skill, years }) => (
                     <div className={`${styles.list} ${popup ? styles.expand : null}`}>
                       <span className={`${styles.listStyle} ${styles.disc}`} />
                       {' '}
@@ -161,7 +163,7 @@ const JobsCard = function ({ click, popup, data }) {
 export default JobsCard;
 
 [1, 2, 3, 4].map((_, idx) => (
-  <div key={idx}>
+  <div key={`${idx + 0}`}>
     <Skeleton height={20} />
     <br />
     <br />

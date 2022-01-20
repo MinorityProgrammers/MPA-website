@@ -1,8 +1,7 @@
+/* eslint-disable jsx-a11y/heading-has-content */
 import { RiFlag2Fill } from 'react-icons/ri';
 import { BsThreeDotsVertical } from 'react-icons/bs';
-import { FaSortUp, FaSortDown } from 'react-icons/fa';
-import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import taskNotification from './taskNotification.json';
 
 const TaskNotification = function () {
@@ -25,6 +24,7 @@ const TaskNotification = function () {
             <img
               className="tw-h-8 tw-w-8 tw-m-2"
               src="/assets/images/project/tick.png"
+              alt="tick"
             />
             <p className="tw-text-white tw-text-3xl">Completed Task</p>
           </div>
@@ -39,6 +39,7 @@ const TaskNotification = function () {
                   <img
                     src="/assets/images/project/rafiul.jpg"
                     className="tw-h-6 tw-w-6 tw-rounded-full tw-place-self-center tw-mb-4"
+                    alt="rafiul"
                   />
                 </div>
                 <div className="tw-flex">
@@ -80,6 +81,7 @@ const TaskNotification = function () {
             <img
               className="tw-h-8 tw-w-8 tw-m-2"
               src="/assets/images/project/tick.png"
+              alt="tick"
             />
             <p className="tw-text-white tw-text-3xl">Completed Task</p>
           </div>
@@ -94,6 +96,7 @@ const TaskNotification = function () {
                   <img
                     src="/assets/images/project/rafiul.jpg"
                     className="tw-h-6 tw-w-6 tw-rounded-full tw-place-self-center tw-mb-4"
+                    alt="rafiul"
                   />
                 </div>
                 <div className="tw-flex">
@@ -143,6 +146,7 @@ const TaskNotification = function () {
             <img
               className="tw-h-8 tw-w-8 tw-m-2"
               src="/assets/images/project/tick.png"
+              alt="tick"
             />
             <p className="tw-text-white tw-text-3xl">Completed Task</p>
           </div>
@@ -157,6 +161,7 @@ const TaskNotification = function () {
                   <img
                     src="/assets/images/project/rafiul.jpg"
                     className="tw-h-6 tw-w-6 tw-rounded-full tw-place-self-center tw-mb-4"
+                    alt="rafiul"
                   />
                 </div>
                 <div className="tw-flex">
@@ -198,6 +203,7 @@ const TaskNotification = function () {
             <img
               className="tw-h-8 tw-w-8 tw-m-2"
               src="/assets/images/project/tick.png"
+              alt="tick"
             />
             <p className="tw-text-white tw-text-3xl">Completed Task</p>
           </div>
@@ -212,6 +218,7 @@ const TaskNotification = function () {
                   <img
                     src="/assets/images/project/rafiul.jpg"
                     className="tw-h-6 tw-w-6 tw-rounded-full tw-place-self-center tw-mb-4"
+                    alt="rafiul"
                   />
                 </div>
                 <div className="tw-flex">

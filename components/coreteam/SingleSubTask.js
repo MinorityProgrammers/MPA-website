@@ -1,6 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { AiFillEdit, AiFillDelete } from 'react-icons/ai';
-import { MdDone } from 'react-icons/md';
 import ReactTooltip from 'react-tooltip';
 import userinfo from './User.json';
 
@@ -18,29 +17,30 @@ const SingleSubTask = function ({
   const handleEdit = (e, id) => {
     e.preventDefault();
     setTodos(
-      todos.map((todo) => (todo.id === id ? { ...todo, todo: editTodo } : todo)),
+      todos.map((_todo) => (_todo.id === id ? { ..._todo, todo: editTodo } : _todo)),
     );
     setEdit(false);
   };
 
   const handleDelete = (id) => {
-    setTodos(todos.filter((todo) => todo.id !== id));
+    setTodos(todos.filter((_todo) => _todo.id !== id));
   };
 
   const handleDone = (id) => {
     setTodos(
-      todos.map((todo) => (todo.id === id ? { ...todo, isDone: !todo.isDone } : todo)),
+      todos.map((_todo) => (_todo.id === id ? { ..._todo, isDone: !_todo.isDone } : _todo)),
     );
   };
 
   const [newUser, setNewUser] = useState(false);
   const [users, setUsers] = useState({});
   const [userCart, setUserCart] = useState([]);
+
   useEffect(() => {
     setUsers(userinfo);
   }, []);
-  console.log(users);
-  const handleUser = (id) => {
+
+  const handleUser = () => {
     setNewUser(!newUser);
   };
 
@@ -73,19 +73,19 @@ const SingleSubTask = function ({
           <div className="tw-flex">
 
             {
-                            // singleSubTask.data.id &&
-                            userCart.map((u) => (
-                              <div
-                                className="tw-cursor-pointer tw-btn"
-                                key={u.id}
-                                onClick={() => HandleUserRemove(u.id)}
-                                data-tip={u.name}
-                              >
-                                <img className="tw-h-5 tw-w-5" src={u.image} alt="" />
-                                <ReactTooltip />
-                              </div>
-                            ))
-                        }
+              // singleSubTask.data.id &&
+              userCart.map((u) => (
+                <div
+                  className="tw-cursor-pointer tw-btn"
+                  key={u.id}
+                  onClick={() => HandleUserRemove(u.id)}
+                  data-tip={u.name}
+                >
+                  <img className="tw-h-5 tw-w-5" src={u.image} alt="" />
+                  <ReactTooltip />
+                </div>
+              ))
+            }
             <h3 className="  tw-text-black  tw-px-4 tw-py-1 focus:tw-outline-none text-lg">{todo.todo}</h3>
           </div>
 
@@ -93,19 +93,19 @@ const SingleSubTask = function ({
           <div className="tw-flex">
 
             {
-                            // singleSubTask.data.id &&
-                            userCart.map((u) => (
-                              <div
-                                className="tw-cursor-pointer tw-btn"
-                                key={u.id}
-                                onClick={() => HandleRemoveUser(u.id)}
-                                data-tip={u.name}
-                              >
-                                <img className="tw-h-5 tw-w-5" src={u.image} alt="" />
-                                <ReactTooltip />
-                              </div>
-                            ))
-                        }
+              // singleSubTask.data.id &&
+              userCart.map((u) => (
+                <div
+                  className="tw-cursor-pointer tw-btn"
+                  key={u.id}
+                  onClick={() => HandleRemoveUser(u.id)}
+                  data-tip={u.name}
+                >
+                  <img className="tw-h-5 tw-w-5" src={u.image} alt="" />
+                  <ReactTooltip />
+                </div>
+              ))
+            }
             <h3 className="tw-text-black  tw-px-4 tw-py-1 focus:tw-outline-none text-lg">{todo.todo}</h3>
           </div>
         )}

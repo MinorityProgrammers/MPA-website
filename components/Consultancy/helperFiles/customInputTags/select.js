@@ -1,5 +1,5 @@
-import {
-  useMemo, useState, useRef, useEffect, Fragment,
+import React, {
+  useMemo, useState, useRef, useEffect,
 } from 'react';
 import ErrorPrint from '../errorPrint';
 
@@ -76,9 +76,8 @@ const Select = function ({
   return (
     <>
       <div
-        style={{ width: '100%', display: 'flex' }}
+        style={{ width: '100%', display: 'flex', color: mainColor }}
         id="selectCustomTag"
-        style={{ color: mainColor }}
       >
         <style>
           {`
@@ -130,7 +129,7 @@ const Select = function ({
           >
             {updatedOptions.map((option, index) => (
               <div
-                key={index}
+                key={`${`option${index}`}`}
                 className={`option-item ${
                   selectedIndex.current === index
                     ? 'selected-option-item'

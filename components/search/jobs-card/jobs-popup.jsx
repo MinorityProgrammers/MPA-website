@@ -4,8 +4,28 @@ import styles from './jobs-popup.module.css';
 const JobsPopup = function ({ togglePopup, data }) {
   const {
     companyId: {
-      company_name, company_description, website, headquarter, type_company, size_company, diversity_score,
-    }, job_responsibilities, easy_apply, status, min_requirements, job_title, application_link, job_description, job_industry, location, remote, pay, weekly_hours, is_deleted, additional_compensation, benefits, job_type,
+      company_name,
+      company_description,
+      website,
+      type_company,
+      size_company,
+      diversity_score,
+    },
+    job_responsibilities,
+    easy_apply,
+    min_requirements,
+    job_title,
+    application_link,
+    job_description,
+    job_industry,
+    location,
+    remote,
+    pay,
+    weekly_hours,
+    is_deleted,
+    additional_compensation,
+    benefits,
+    job_type,
   } = data;
 
   return (
@@ -23,7 +43,7 @@ const JobsPopup = function ({ togglePopup, data }) {
           {remote ? <span className={styles.remote}>Remote</span> : null}
         </div>
         <a href={application_link}>
-          <button className={styles.applyButton}>Apply Now</button>
+          <button type="button" className={styles.applyButton}>Apply Now</button>
         </a>
         {
           is_deleted ? <div className={`${styles.is} ${styles.active}`}>Active</div> : <div className={`${styles.not} ${styles.active}`}>Inactive</div>
@@ -59,21 +79,26 @@ const JobsPopup = function ({ togglePopup, data }) {
         }
 
         {
-          job_responsibilities || true // || true should be removed when job_responsibilites is available in the database
+          /* || true should be removed when job_responsibilites is available in the database */
+          job_responsibilities || true
             ? (
               <div className={styles.sect}>
                 <div className={styles.sectTitle}>Responsibilities</div>
                 {
-                (new Array(6).fill(null)) // this code should be replaced with job responsibilities when added to the database. Lorem ipsum should be replaced with an actual responsibility.
-                  .map((_, idx) => (
-                    <div key={idx} className={`${styles.list} ${styles.expand}`}>
-                      <span className={`${styles.listStyle} ${styles.disc}`} />
-                      {' '}
-                      Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                      {' '}
-                    </div>
-                  ))
-              }
+                  /*
+                  this code should be replaced with job responsibilities when added to the database.
+                    Lorem ipsum should be replaced with an actual responsibility.
+                  */
+                  (new Array(6).fill(null))
+                    .map((_, idx) => (
+                      <div key={`${idx + 1}`} className={`${styles.list} ${styles.expand}`}>
+                        <span className={`${styles.listStyle} ${styles.disc}`} />
+                        {' '}
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                        {' '}
+                      </div>
+                    ))
+                }
               </div>
             ) : null
         }
@@ -85,7 +110,7 @@ const JobsPopup = function ({ togglePopup, data }) {
                 <div className={styles.sectTitle}>Requirements</div>
                 {
                 min_requirements.map(({ years, skill }, idx) => (
-                  <div key={idx} className={`${styles.list} ${styles.expand}`}>
+                  <div key={`${idx + 1}`} className={`${styles.list} ${styles.expand}`}>
                     <span className={`${styles.listStyle} ${styles.disc}`} />
                     {`${years} year(s) of experience in ${skill}`}
                   </div>

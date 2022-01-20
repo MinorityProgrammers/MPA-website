@@ -6,7 +6,7 @@ const FeaturedMyCard = ({ data }) => (
   <div className="card card__container">
     <div className="card-body">
       <div className="card__header">
-        <img src={data.startupImage} className="card__header-logo" />
+        <img src={data.startupImage} className="card__header-logo" alt="startupImage" />
         <h2 className="card__header-title">{data.name}</h2>
       </div>
       <div className="row container mb-3">

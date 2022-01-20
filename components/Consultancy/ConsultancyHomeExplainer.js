@@ -1,33 +1,47 @@
-import React, {
-  useEffect, useContext, useState, useRef,
-} from 'react';
-import { useRouter } from 'next/router';
+/* eslint-disable max-len */
+import React from 'react';
 import Link from 'next/link';
-import { GlobalContext } from '../../contexts/provider';
-import { useDetectOutsideClick } from '../UseDetectOutsideClick';
 import Card from '../login-signup/card';
 
 const ConsultancyHomeExplainer = function ({
-  data, active, clickRegister, setClickRegister,
+  data,
+  active,
+  clickRegister,
+  setClickRegister,
 }) {
-  const router = useRouter();
-
-  const [click, setClick] = useState(false);
-  const dropdownRef = useRef(null);
-  const [isActive, setIsActive] = useDetectOutsideClick(dropdownRef, false);
-  const onClick = () => setIsActive(!isActive);
   return (
     <section>
       <div className="container">
         <div className="login__reg flex d-flex justify-content-end mb-5 mt-2 pr-5">
           <div>
-            {data === null ? <a onClick={() => { setClickRegister(true); }} className="btn consultancyBTN--Login tw-cursor-pointer">Register</a> : ' '}
+            {data === null ? (
+              <a
+                onClick={() => {
+                  setClickRegister(true);
+                }}
+                className="btn consultancyBTN--Login tw-cursor-pointer"
+              >
+                Register
+              </a>
+            ) : (
+              ' '
+            )}
 
-            {/* {data === null
-                            && <a onClick={() => { setClickRegister(true); }} className="btn mentorshipBTN ml-4 consultancyBTN--getQuote hover:tw-text-white hover:tw-bg-blue-800">Get Quote</a>}
+            {/* {data === null && (
+            <a
+              onClick={() => {
+                setClickRegister(true);
+              }}
+              className="btn mentorshipBTN ml-4 consultancyBTN--getQuote hover:tw-text-white hover:tw-bg-blue-800"
+            >
+              Get Quote
+            </a>
+            )}
             {data && (
               <Link href="/consultancy">
-                <a className="btn mentorshipBTN ml-4 consultancyBTN--getQuote hover:tw-text-white hover:tw-bg-blue-800">Get Quote</a>
+                <a className="btn mentorshipBTN ml-4 consultancyBTN--getQuote hover:tw-text-white hover:tw-bg-blue-800">
+                  Get Quote
+                </a>
               </Link>
             )} */}
           </div>
@@ -37,10 +51,18 @@ const ConsultancyHomeExplainer = function ({
           <div className="row">
             <div className="col-lg-4">
               <div className="mentorship__SUP">
-                <img className="mentorship__SUPIMG" src="/assets/images/consultancy/1.png" alt="mentorSUP" />
+                <img
+                  className="mentorship__SUPIMG"
+                  src="/assets/images/consultancy/1.png"
+                  alt="mentorSUP"
+                />
               </div>
               <div className="msnum">
-                <img className="msnumIMG" src="/assets/images/num1.png" alt="num1" />
+                <img
+                  className="msnumIMG"
+                  src="/assets/images/num1.png"
+                  alt="num1"
+                />
               </div>
             </div>
             <div className="col-lg-8 d-flex align-items-center mshipProgram__w_list">
@@ -57,7 +79,6 @@ const ConsultancyHomeExplainer = function ({
         {/* start matching */}
         <div className="start__matching">
           <div className="row">
-
             <div className="col-lg-8 d-flex align-items-center mshipProgram__b_list">
               <ul className="">
                 <h1>Submit Your Idea</h1>
@@ -68,10 +89,18 @@ const ConsultancyHomeExplainer = function ({
             </div>
             <div className="col-lg-4">
               <div className="mentorship__SUP">
-                <img className="mentorship__SUPIMG" src="/assets/images/consultancy/2.png" alt="mentorSUP" />
+                <img
+                  className="mentorship__SUPIMG"
+                  src="/assets/images/consultancy/2.png"
+                  alt="mentorSUP"
+                />
               </div>
               <div className="msnum">
-                <img className="msnumIMG" src="/assets/images/num2.png" alt="num1" />
+                <img
+                  className="msnumIMG"
+                  src="/assets/images/num2.png"
+                  alt="num1"
+                />
               </div>
             </div>
           </div>
@@ -82,10 +111,18 @@ const ConsultancyHomeExplainer = function ({
           <div className="row">
             <div className="col-lg-4">
               <div className="mentorship__SUP">
-                <img className="mentorship__SUPIMG" src="/assets/images/consultancy/3.png" alt="mentorSUP" />
+                <img
+                  className="mentorship__SUPIMG"
+                  src="/assets/images/consultancy/3.png"
+                  alt="mentorSUP"
+                />
               </div>
               <div className="msnum">
-                <img className="msnumIMG" src="/assets/images/num3.png" alt="num1" />
+                <img
+                  className="msnumIMG"
+                  src="/assets/images/num3.png"
+                  alt="num1"
+                />
               </div>
             </div>
             <div className="col-lg-8 d-flex align-items-center mshipProgram__w_list">
@@ -112,10 +149,18 @@ const ConsultancyHomeExplainer = function ({
             </div>
             <div className="col-lg-4">
               <div className="mentorship__SUP">
-                <img className="mentorship__SUPIMG" src="/assets/images/consultancy/4.png" alt="mentorSUP" />
+                <img
+                  className="mentorship__SUPIMG"
+                  src="/assets/images/consultancy/4.png"
+                  alt="mentorSUP"
+                />
               </div>
               <div className="msnum">
-                <img className="msnumIMG" src="/assets/images/num4.png" alt="num1" />
+                <img
+                  className="msnumIMG"
+                  src="/assets/images/num4.png"
+                  alt="num1"
+                />
               </div>
             </div>
           </div>
@@ -124,23 +169,47 @@ const ConsultancyHomeExplainer = function ({
         {/*  */}
 
         <div className="mentorshipP__login d-flex justify-content-between mt-4 mb-3">
-          {data
-            ? (
-              <>
-                <Link href="/consultancy">
-                  <button className="font-weight-bold h3 myButton mb-5 w-100 mr-1 btn--go">Submit Proposal</button>
-                </Link>
-                <Link href="/consultancy_dashboard">
-                  <button className="font-weight-bold h3 myButton mb-5 w-100 ml-1 btn--go">Go to Projects</button>
-                </Link>
-              </>
-            )
-            : (
-              <>
-                <button onClick={() => { setClickRegister(true); }} className="font-weight-bold h3 myButton mb-5 w-100 mr-1 btn--go tw-cursor-pointer">Submit Proposal</button>
-                <button onClick={() => { setClickRegister(true); }} className="font-weight-bold h3 myButton mb-5 w-100 ml-1 btn--go">Go to Projects</button>
-              </>
-            )}
+          {data ? (
+            <>
+              <Link href="/consultancy">
+                <button
+                  type="button"
+                  className="font-weight-bold h3 myButton mb-5 w-100 mr-1 btn--go"
+                >
+                  Submit Proposal
+                </button>
+              </Link>
+              <Link href="/consultancy_dashboard">
+                <button
+                  type="button"
+                  className="font-weight-bold h3 myButton mb-5 w-100 ml-1 btn--go"
+                >
+                  Go to Projects
+                </button>
+              </Link>
+            </>
+          ) : (
+            <>
+              <button
+                type="button"
+                onClick={() => {
+                  setClickRegister(true);
+                }}
+                className="font-weight-bold h3 myButton mb-5 w-100 mr-1 btn--go tw-cursor-pointer"
+              >
+                Submit Proposal
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setClickRegister(true);
+                }}
+                className="font-weight-bold h3 myButton mb-5 w-100 ml-1 btn--go"
+              >
+                Go to Projects
+              </button>
+            </>
+          )}
         </div>
 
         {/* <div className="consultancy__bottom">
@@ -150,11 +219,7 @@ const ConsultancyHomeExplainer = function ({
               <div className="consultancy__logo--image">
                 <img src="/assets/images/consultancy/check.png" alt="" />
               </div>
-              <p>
-                Apply  for our
-                “Board of Project
-                Managers”
-              </p>
+              <p>Apply for our “Board of Project Managers”</p>
             </div>
             <div className="col-lg-3 text-center consultancy__type--card">
               <div className="consultancy__logo--image">
@@ -171,32 +236,42 @@ const ConsultancyHomeExplainer = function ({
           </div>
         </div> */}
 
-        {data === null
-          ? ''
-          : (
-            <div className="mentorshipP__login d-flex justify-content-center mt-4 mb-3">
-              <Link href="/consultancy">
-                <button className="font-weight-bold h3 myButton mb-5 w-30 mr-1 btn--go">Apply Now</button>
-              </Link>
-            </div>
-          )}
+        {data === null ? (
+          ''
+        ) : (
+          <div className="mentorshipP__login d-flex justify-content-center mt-4 mb-3">
+            <Link href="/consultancy">
+              <button
+                type="button"
+                className="font-weight-bold h3 myButton mb-5 w-30 mr-1 btn--go"
+              >
+                Apply Now
+              </button>
+            </Link>
+          </div>
+        )}
 
-        {clickRegister && active
-          ? (
-            <div className="create_event">
-              <div
-                className="create_event-shadow"
-                onClick={() => {
-                  setClickRegister(false);
-                }}
-              />
-              <div id="create_event-container" className="create_event-container">
-                <Card setClickRegister={setClickRegister} />
-              </div>
-              <i className="close_icon fas fa-times close-icon tw-text-white" onClick={() => { setClickRegister(false); }} />
+        {clickRegister && active ? (
+          <div className="create_event">
+            <div
+              className="create_event-shadow"
+              onClick={() => {
+                setClickRegister(false);
+              }}
+            />
+            <div id="create_event-container" className="create_event-container">
+              <Card setClickRegister={setClickRegister} />
             </div>
-          )
-          : ''}
+            <i
+              className="close_icon fas fa-times close-icon tw-text-white"
+              onClick={() => {
+                setClickRegister(false);
+              }}
+            />
+          </div>
+        ) : (
+          ''
+        )}
       </div>
     </section>
   );

@@ -9,14 +9,13 @@ const HomepageDonate = () => {
   const { amount, donateDispatch } = useContext(GlobalContext);
   const [isDone, setIsDone] = useState(false);
   const [count, setCount] = useState(1);
-  const [value, setValue] = useState(0);
   const [monthly, setMonthly] = useState(false);
 
   const [succeeded, setSucceeded] = useState(false);
-  const [paypalErrorMessage, setPaypalErrorMessage] = useState('');
-  const [orderID, setOrderID] = useState(false);
+  // const [paypalErrorMessage, setPaypalErrorMessage] = useState('');
+  const [, setOrderID] = useState(false);
   const [billingDetails, setBillingDetails] = useState([]);
-  const [payment, setPayment] = useState([]);
+  const [, setPayment] = useState([]);
 
   // get donate amount when click
   const handleValue = (e) => {
@@ -60,12 +59,13 @@ const HomepageDonate = () => {
     setPayment(purchase_units);
     setSucceeded(true);
     setIsDone(true);
-    count++; // Instead of count++ use setCount(count+1)
+    setCount(count + 1); // Instead of count++ use setCount(count+1)
   });
+
   // handles payment errors
-  const onError = () => {
+  /* const onError = () => {
     setPaypalErrorMessage('Something went wrong with your payment');
-  };
+  }; */
 
   const scrollTo = () => {
     const currentLocation = window.location.href;

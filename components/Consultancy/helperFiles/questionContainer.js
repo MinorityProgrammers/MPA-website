@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import React from 'react';
 import Buttons from './buttons';
 import KeepingUpWithStep from './keepingUpWithStep';
 

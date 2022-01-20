@@ -3,8 +3,6 @@ import HomepageNav from '../components/homepage/HomepageNav';
 import { GlobalContext } from '../contexts/provider';
 import Layout from '../components/Layout';
 import Overview from '../components/dashboard/Overview';
-import WalletComponent from '../components/dashboard/wallet/WalletPage';
-import DashboardNavbar from '../components/dashboard/DashboardNavBar';
 import SidebarTwo from '../components/sidebar/SidebarTwo';
 import links from '../contexts/utils/links';
 import Footer from '../components/Footer';
@@ -13,16 +11,14 @@ const index = () => {
   const [userData, setUserData] = useState({});
   const [token, setToken] = useState('');
   const [loading, setLoading] = useState(true);
-  const [currentComponent, setCurrentComponent] = useState('dashboard');
   const [open, setOpen] = useState(false);
-  const [Data, setData] = useState([]);
+  const [, setData] = useState([]);
 
   // states from global context
 
   const {
-    authDispatch,
     authState: {
-      auth: { loader, error, data },
+      auth: { data },
     },
   } = useContext(GlobalContext);
 

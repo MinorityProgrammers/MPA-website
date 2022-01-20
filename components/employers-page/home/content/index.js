@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import styles from './content.module.css';
 import Jobs from './jobs/Jobs';
 import Candidates from './candidates/Candidates';
@@ -19,7 +19,7 @@ const EmployerContent = function () {
         <Interview scheduled={7} />
       </div>
       <div className={styles.footer}>
-        <button onClick={loadmore}>load more</button>
+        <button type="button" onClick={loadmore}>load more</button>
       </div>
     </div>
   );

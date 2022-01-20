@@ -1,7 +1,7 @@
-import { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import TagInput from '../helperFiles/customInputTags/tagInput';
 import QuestionContainer from '../helperFiles/questionContainer';
-import { useDefaultValue } from '../helperFiles/getDefaultValue';
+import useDefaultValue from '../helperFiles/getDefaultValue';
 import addQuestion from '../helperFiles/addQuestion';
 import ErrorPrint from '../helperFiles/errorPrint';
 
@@ -146,7 +146,7 @@ const Page5 = function ({
             id="page5-input"
             ref={inspirationLink}
             defaultValue={defaultInspitation || ''}
-            onChange={(e) => {
+            onChange={() => {
               addToQuestion();
             }}
           />

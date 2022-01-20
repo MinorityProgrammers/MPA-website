@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import Footer from '../Footer';
-import { useDetectOutsideClick } from '../UseDetectOutsideClick';
+import useDetectOutsideClick from '../UseDetectOutsideClick';
 import ApplyModal from './QuickApplyJobApplication';
 
 const CareersMainComponent = (props) => {
@@ -8,7 +8,7 @@ const CareersMainComponent = (props) => {
     jobsOn, open, job, closeModal, getAppliedJobs, children,
   } = props;
 
-  const [data, setData] = useState([]);
+  const [data] = useState([]);
   const dropdownRef = useRef(null);
   const [hide, setHide] = useDetectOutsideClick(dropdownRef, false);
 

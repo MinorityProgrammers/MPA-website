@@ -1,8 +1,9 @@
-import React, { useMemo, useState } from 'react';
+/* eslint-disable max-len */
+import React, { useMemo } from 'react';
 import TinderCard from 'react-tinder-card';
 
-import axios from 'axios';
-import { successToast, errorToast } from '../../contexts/utils/toasts';
+// import axios from 'axios';
+// import { successToast, errorToast } from '../../contexts/utils/toasts';
 
 const alreadyRemoved = [];
 
@@ -13,15 +14,31 @@ const MentorshipAppSwipeCards = (props) => {
   const childRefs = useMemo(
     () => Array(props.values.length)
       .fill(0)
-      .map((i) => React.createRef()),
+      .map((/* i */) => React.createRef()),
     [],
   );
   // console.log(props.values);
-  const sleep = (milliseconds) => new Promise((resolve) => setTimeout(resolve, milliseconds));
+  const sleep = (milliseconds) => new Promise((resolve) => { setTimeout(resolve, milliseconds); });
+
+  async function toggleUndo() {
+    const activeBtn = document.getElementById('active_replay_button');
+    const inactiveBtn = document.getElementById('inactive_replay_button');
+    activeBtn.classList.add('tw-hidden');
+    inactiveBtn.classList.remove('tw-hidden');
+    await sleep(2400);
+    if (swipeClick === 0) {
+      inactiveBtn.classList.add('tw-hidden');
+      activeBtn.classList.remove('tw-hidden');
+    } else {
+      await sleep(2400);
+      inactiveBtn.classList.add('tw-hidden');
+      activeBtn.classList.remove('tw-hidden');
+    }
+  }
 
   const swiped = (dir, character) => {
     toggleUndo();
-    swipeClick++;
+    swipeClick += 1;
     if (!alreadyRemoved.includes(character)) {
       alreadyRemoved.push(character);
     }
@@ -31,7 +48,7 @@ const MentorshipAppSwipeCards = (props) => {
   };
 
   const outOfFrame = (character) => {
-    swipeClick--;
+    swipeClick -= 1;
     props.updateSwipeCards(character);
   };
 
@@ -61,22 +78,6 @@ const MentorshipAppSwipeCards = (props) => {
       // Swipe the card!
     }
   };
-
-  async function toggleUndo() {
-    const activeBtn = document.getElementById('active_replay_button');
-    const inactiveBtn = document.getElementById('inactive_replay_button');
-    activeBtn.classList.add('tw-hidden');
-    inactiveBtn.classList.remove('tw-hidden');
-    await sleep(2400);
-    if (swipeClick == 0) {
-      inactiveBtn.classList.add('tw-hidden');
-      activeBtn.classList.remove('tw-hidden');
-    } else {
-      await sleep(2400);
-      inactiveBtn.classList.add('tw-hidden');
-      activeBtn.classList.remove('tw-hidden');
-    }
-  }
 
   return (
     <div className="tw-w-1/2 tw-z-40 tw-bg-#F9F9F9 tw-rounded-l-3xl">
@@ -133,6 +134,7 @@ const MentorshipAppSwipeCards = (props) => {
             <div className="buttons tw-mb-12">
               <div className="tw-w-300px tw-flex tw-justify-between tw-mx-auto">
                 <button
+                  type="button"
                   id="active_replay_button"
                   className="tw-rounded-full hover:tw-shadow-mentorAppButton tw-bg-white"
                   onClick={() => undoPerson()}
@@ -143,6 +145,7 @@ const MentorshipAppSwipeCards = (props) => {
                   />
                 </button>
                 <button
+                  type="button"
                   id="inactive_replay_button"
                   className="tw-rounded-full hover:tw-shadow-mentorAppButton tw-bg-white tw-hidden"
                 >
@@ -152,6 +155,7 @@ const MentorshipAppSwipeCards = (props) => {
                   />
                 </button>
                 <button
+                  type="button"
                   className="tw-rounded-full hover:tw-shadow-mentorAppButton tw-bg-white"
                   onClick={() => swipe('right')}
                 >
@@ -161,6 +165,7 @@ const MentorshipAppSwipeCards = (props) => {
                   />
                 </button>
                 <button
+                  type="button"
                   className="tw-rounded-full hover:tw-shadow-mentorAppButton tw-bg-white"
                   onClick={() => swipe('left')}
                 >

@@ -40,7 +40,13 @@ const UserCourses = function ({ enrolledCourses, user }) {
         </div>
         <div className={coursesLength > 2 ? 'mt-3 courses-info pt-2' : 'mt-3 courses-info pt-2 user-courses'}>
           <Slider {...conditionalInfinite}>
-            {enrolledCourses && enrolledCourses.map((course) => <UserCoursesList enrolledCourse={course} key={course._id} userInfo={user} />)}
+            {enrolledCourses && enrolledCourses.map((course) => (
+              <UserCoursesList
+                enrolledCourse={course}
+                key={course._id}
+                userInfo={user}
+              />
+            ))}
           </Slider>
         </div>
       </div>

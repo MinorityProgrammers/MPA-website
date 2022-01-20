@@ -12,10 +12,11 @@ const TaskStatus = function ({ item, handlePriority }) {
   const [designs, setDesigns] = useState(false);
   const [priority, setPriority] = useState('green');
   const [userCart, setUserCart] = useState([]);
-  const [removedUser, setRemovedUser] = useState([]);
+  // const [removedUser, setRemovedUser] = useState([]);
+
   const handleRemoveUser = (id) => {
     const afterRemovedUser = userCart.filter(
-      (removedUser) => removedUser.id !== id,
+      (_removedUser) => _removedUser.id !== id,
     );
     setUserCart(afterRemovedUser);
   };
@@ -41,17 +42,19 @@ const TaskStatus = function ({ item, handlePriority }) {
           <div className="tw-grid tw-grid-cols-1">
             <div className="tw-flex">
               {userCart.length
-                && userCart.map((user) => {
+                && userCart.forEach((user) => {
                   <img
                     src={user.img}
                     className="tw-h-6 tw-w-6 tw-rounded-full tw-place-self-center tw-mb-1 tw-mt-2"
                     onClick={(id) => handleRemoveUser(id, setCreators(!creators))}
+                    alt=""
                   />;
                 })}
               <img
                 src="/assets/images/project/rafiul.jpg"
                 className="tw-h-6 tw-w-6 tw-rounded-full tw-place-self-center tw-mb-1 tw-mt-2"
                 onClick={() => setCreators(!creators)}
+                alt="rafiul"
               />
             </div>
             {creators && (
@@ -61,6 +64,7 @@ const TaskStatus = function ({ item, handlePriority }) {
                     src="/assets/images/project/rafiul.jpg"
                     className="tw-h-6 tw-w-6 tw-rounded-full tw-place-self-center tw-mb-1"
                     onClick={(addNew) => handleAddUser(addNew)}
+                    alt="rafiul"
                   />
                 </div>
               </div>

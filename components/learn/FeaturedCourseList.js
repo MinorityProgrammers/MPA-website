@@ -38,6 +38,7 @@ const FeaturedCourseList = function ({
       <div className="text-center pb-4">
         {userCoursesId.includes(_id) ? (
           <button
+            type="button"
             disabled={enrolledBtn}
             onClick={() => {
               showModal();
@@ -51,6 +52,7 @@ const FeaturedCourseList = function ({
           </button>
         ) : !userCoursesId.includes(_id) ? (
           <button
+            type="button"
             onClick={() => {
               showModal();
               handleCourseInfo(course);

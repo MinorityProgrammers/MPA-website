@@ -1,16 +1,17 @@
 import React, { useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import { useDetectOutsideClick } from '../UseDetectOutsideClick';
+import useDetectOutsideClick from '../UseDetectOutsideClick';
 import Card from '../login-signup/card';
 
 const MentorshipProgramHome = ({
   data,
-  onCloseMobileMenu,
+  /* onCloseMobileMenu, */
   active,
   clickRegister,
   setClickRegister,
 }) => {
+  // the codes from Line 15~19 were not used in this file, check if they are needed before deleting
   const router = useRouter();
   const [click, setClick] = useState(false);
   const dropdownRef = useRef(null);
@@ -193,6 +194,7 @@ const MentorshipProgramHome = ({
               <div className="row">
                 <div className="col-lg-6 d-flex justify-content-center">
                   <button
+                    type="button"
                     onClick={() => {
                       setClickRegister(true);
                     }}
@@ -203,6 +205,7 @@ const MentorshipProgramHome = ({
                 </div>
                 <div className="col-lg-6 d-flex justify-content-center">
                   <button
+                    type="button"
                     onClick={() => {
                       setClickRegister(true);
                     }}
@@ -234,7 +237,7 @@ const MentorshipProgramHome = ({
         ) : (
           <div className="mentorshipP__login d-flex justify-content-center mt-4 mb-5">
             <Link href="/mentorship">
-              <button className="font-weight-bold h3 myButton mb-5">
+              <button type="button" className="font-weight-bold h3 myButton mb-5">
                 Get Started
               </button>
             </Link>

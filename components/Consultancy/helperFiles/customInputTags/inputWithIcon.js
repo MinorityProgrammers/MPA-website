@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import React from 'react';
 
 const InputWithIcon = function ({
   marginTop,

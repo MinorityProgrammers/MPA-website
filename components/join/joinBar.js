@@ -1,8 +1,8 @@
+/* eslint-disable react/destructuring-assignment */
 import Link from 'next/link';
 import Router from 'next/router';
 import React from 'react';
 import { FaChevronRight } from 'react-icons/fa';
-import ApplyIcon from './svg/icons';
 
 const JoinBar = function (props) {
   const buildMinorityHandler = () => {

@@ -20,3 +20,5 @@ export const eventItems = [
     cName: 'dropdown-link',
   },
 ];
+
+export default eventItems;

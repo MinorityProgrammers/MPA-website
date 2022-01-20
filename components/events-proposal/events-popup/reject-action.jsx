@@ -1,5 +1,5 @@
 import Moment from 'moment';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './events-popup.module.css';
 import ReviewAction from './review-action';
 
@@ -33,7 +33,9 @@ const RejectAction = function ({
                 </div>
               </div>
 
-              <div onClick={() => setStatus(true)} className={styles.actionButton}>Change Status</div>
+              <div onClick={() => setStatus(true)} className={styles.actionButton}>
+                Change Status
+              </div>
             </div>
           )
           : <ReviewAction reveiwFeedback={reveiwFeedback} value={value} setValue={setValue} />

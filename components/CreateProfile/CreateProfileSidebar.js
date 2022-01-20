@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { all } from '../../contexts/utils/profileInputFields1';
-import { findUserNames } from '../../helpers/userNames';
+import all from '../../contexts/utils/profileInputFields1';
+import findUserNames from '../../helpers/userNames';
 
 const CreateProfileSidebar = function ({
   state,
   stepNames,
-  setStep,
   activeStep,
   setActiveStep,
 }) {
@@ -59,25 +58,29 @@ const CreateProfileSidebar = function ({
     if (x !== 6) {
       if ((step === 1 && usernames.includes(state[step].userName)) || (step === 1 && /[^\w\-]/.test(state[step].userName))) {
         toggleWarning(true);
-        console.log('HAVE USER');
+        // console.log('HAVE USER');
       } else {
         const inputFieldNames = Object.keys(state[step]);
+        const findInputField = (inputFields, nameOfField) => inputFields.find(
+          (_inputField) => _inputField.name === nameOfField,
+        );
         const allRequiredFilled = inputFieldNames.every((fieldName) => {
           if (step === 1) {
-            const inputField = allInputFields1.find((inputField) => inputField.name == fieldName);
+            const inputField = findInputField(allInputFields1, fieldName);
             return (inputField.required && state[step][fieldName]) || !inputField.required;
           } if (step === 2) {
-            const inputField = allInputFields2.find((inputField) => inputField.name == fieldName);
+            const inputField = findInputField(allInputFields2, fieldName);
             return (inputField.required && state[step][fieldName]) || !inputField.required;
           } if (step === 3) {
-            const inputField = allInputFields3.find((inputField) => inputField.name == fieldName);
+            const inputField = findInputField(allInputFields3, fieldName);
             return ((inputField.required && state[step][fieldName]) && !/[^\w\-]/.test(state[step].userName) || (!inputField.required && !/[^\w\-]/.test(state[step].userName)));
           } if (step === 4) {
-            const inputField = allInputFields4.find((inputField) => inputField.name == fieldName);
+            const inputField = findInputField(allInputFields4, fieldName);
             return (inputField.required && state[step][fieldName]) || !inputField.required;
           } if (step === 5) {
             return true;
           }
+          // return false;
         });
         if (allRequiredFilled) {
           setActiveStep(x);
@@ -95,13 +98,13 @@ const CreateProfileSidebar = function ({
         <li className="cp-stepProgressItem head-li">
           <p>MPA Profile Setup</p>
         </li>
-        {steps.map((step, key) => (
-          <li className="cp-stepProgressItem" key={key}>
-            <span className="cp-border" style={step === 1 ? { height: '50%', bottom: '0' } : {}} />
+        {steps.map((_step) => (
+          <li className="cp-stepProgressItem" key={_step}>
+            <span className="cp-border" style={_step === 1 ? { height: '50%', bottom: '0' } : {}} />
             <div
-              className={`cp-dot ${step == activeStep ? 'cp-dotActive' : ''}`}
+              className={`cp-dot ${_step === activeStep ? 'cp-dotActive' : ''}`}
             />
-            <p onClick={() => changeHandler(step)}>{stepNames[step]}</p>
+            <p onClick={() => changeHandler(_step)}>{stepNames[_step]}</p>
           </li>
         ))}
       </ul>

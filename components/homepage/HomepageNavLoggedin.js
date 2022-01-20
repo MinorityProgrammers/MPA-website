@@ -1,5 +1,4 @@
 import { signOut } from 'next-auth/client';
-import { useRouter } from 'next/router';
 import React, { useContext, useState } from 'react';
 import { LOGOUT_USER } from '../../contexts/actions/actionTypes';
 import { GlobalContext } from '../../contexts/provider';
@@ -8,7 +7,6 @@ const HomepageNavLoggedin = function ({ onCloseMobileMenu, userInfo }) {
   const { authDispatch } = useContext(GlobalContext);
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
-  const router = useRouter();
 
   const handleLogout = () => {
     localStorage.removeItem('userInfo');

@@ -5,7 +5,6 @@ import FeaturedCard from './FeaturedCard';
 
 const FeaturedStartups = ({
   data,
-  token,
   setClickRegister,
   userData,
   allfunded,
@@ -72,10 +71,9 @@ const FeaturedStartups = ({
             ) : (
               <Swiper {...params} grabCursor>
                 {data.map((d, i) => (
-                  <div className="item" key={i}>
+                  <div className="item" key={`${i + 1}`}>
                     <FeaturedCard
                       data={d}
-                      key={i}
                       userData={userData}
                       setClickRegister={setClickRegister}
                       allfunded={allfunded}

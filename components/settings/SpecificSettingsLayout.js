@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import styles from '../../styles/settings/specificSettingsLayoutNavigation.module.css';
-import { getSpecificSettingsLayoutNavigationList } from '../../helpers/getSpecificSettingsLayoutNavigationList';
+import getSpecificSettingsLayoutNavigationList from '../../helpers/getSpecificSettingsLayoutNavigationList';
 
 const SettingsLayout = function ({ settingsPage }) {
   const router = useRouter();

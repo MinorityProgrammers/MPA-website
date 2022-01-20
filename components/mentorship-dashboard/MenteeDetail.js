@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import Link from 'next/link';
+import React, { useState, useEffect } from 'react';
+// import Link from 'next/link';
 import styles from '../../styles/MentorCSS/Dashboard.module.css';
 import stylesE from '../../styles/MentorCSS/Mentor.module.css';
 import VerticalModel from './VerticalModel';
@@ -54,7 +54,7 @@ const MenteeDetail = ({
     });
     const num = sprints.length;
     let prec = 100;
-    sprints.map((sprint) => {
+    sprints.forEach((sprint) => {
       prec += parseInt(sprint.progress_percentage.split('%')[0]);
     });
 
@@ -285,7 +285,7 @@ const MenteeDetail = ({
             <div className={styles.mentors}>
               <div
                 className={
-                  mentorshipData.mentorship.mentee_id._id == currentMentor
+                  mentorshipData.mentorship.mentee_id._id === currentMentor
                     ? styles.mentorRowE
                     : styles.mentorRow
                 }
@@ -293,7 +293,7 @@ const MenteeDetail = ({
               >
                 <div
                   className={
-                    mentorshipData.mentorship.mentee_id._id == currentMentor
+                    mentorshipData.mentorship.mentee_id._id === currentMentor
                       ? styles.sideBar
                       : styles.hide
                   }

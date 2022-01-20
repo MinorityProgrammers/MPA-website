@@ -1,14 +1,14 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import styles from './candidate.module.css';
 import CandidateCard from '../../Card/CandidateCard';
 
-const candidate = [
-  { name: 'Michael Montgometry', description: 'Front End Developer' },
-  { name: 'Michael Montgometry', description: 'Front End Developer' },
-  { name: 'Michael Montgometry', description: 'Front End Developer' },
-  { name: 'Michael Montgometry', description: 'Front End Developer' },
-];
+// const candidate = [
+//   { name: 'Michael Montgometry', description: 'Front End Developer' },
+//   { name: 'Michael Montgometry', description: 'Front End Developer' },
+//   { name: 'Michael Montgometry', description: 'Front End Developer' },
+//   { name: 'Michael Montgometry', description: 'Front End Developer' },
+// ];
 
 const Candidates = function ({ load }) {
   const [candidates, setCandidates] = useState([]);
@@ -42,7 +42,7 @@ const Candidates = function ({ load }) {
       {/** INDIVIDUAL CANDIDATES CARDS */}
       {candidates.length > 1 ? (
         candidates.slice(0, load).map((item, index) => (
-          <div key={index}>
+          <div key={`${`candidate${index}`}`}>
             <CandidateCard
               description={item.job_id?.job_title}
               name={`${item.firstName} ${item.lastName}`}

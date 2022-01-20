@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import React from 'react';
 import Card from '../../login-signup/card';
 
 const LoginPage = function ({ setClickRegister, clickRegister }) {

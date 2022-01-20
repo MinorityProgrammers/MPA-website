@@ -4,26 +4,28 @@ import axios from 'axios';
 import Skeleton from 'react-loading-skeleton';
 import EmptyOverviewComponent from './EmptyOverviewComponent';
 
-const OverviewEvents = (props) => {
+const OverviewEvents = ({ token }) => {
   const [userEvents, setUserEvents] = useState([]);
-  const [dates, setDates] = useState([]);
+  const [, setDates] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (props.token != null) {
+    if (token != null) {
       // axios.get(`https://koinstreet-learn-api.herokuapp.com/api/v1/saveEvent/userEvents`, {
-      axios.get('https://koinstreet-learn-api.herokuapp.com/api/v1/event', {
+      axios.get(`${process.env.BASE_URI}/event`, {
         headers: {
           'Access-Control-Allow-Origin': '*',
           'Access-Control-Allow-Methods': 'GET',
           'Access-Control-Allow-Headers': 'Content-Type',
-          Authorization: `Bearer ${props.token}`,
+          Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json',
         },
       }).then((res) => {
         setLoading(false);
         const userEventsData = res.data.data.filter((event) => event?.time !== null);
-        const tempUserEventsData = userEventsData.map((event) => event.time = new Date(event?.time));
+        // const tempUserEventsData = userEventsData.forEach(
+        //   (event) => { event.time = new Date(event?.time); },
+        // );
         // console.log(userEventsData);
         setUserEvents(userEventsData.slice(0, 2));
         setDates(userEventsData.map((event) => event.time));
@@ -70,12 +72,12 @@ const OverviewEvents = (props) => {
           <div className="d-flex flex-column justify-content-between h-100">
             <p style={{ fontSize: '18px', fontWeight: '700', color: 'black' }}>Events </p>
             <Calendar
-              tileClassName={({ date, view }) => {
+              /* tileClassName={({ date, view }) => {
                 const convertedDate = date?.toISOString()?.substring(0, 10);
                 // if (dates.find((x) => x?.toISOString()?.substring(0, 10) === convertedDate)) {
                 //   return 'marked-date';
                 // }
-              }}
+              }} */
               maxDetail="month"
               nextLabel=">>"
               nextAriaLabel="Go to next month"
@@ -104,7 +106,7 @@ const OverviewEvents = (props) => {
                   </div>
                   <div className="d-flex justify-content-center align-items-center" style={{ width: '10%', height: '100%' }}>
                     <a href={event?.eventLink?.toString()} target="_blank" rel="noreferrer">
-                      <button className="more-details-button">
+                      <button type="button" className="more-details-button">
                         &gt;
                       </button>
                     </a>

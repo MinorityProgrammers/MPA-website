@@ -1,6 +1,5 @@
 import React from 'react';
 import TaskNameHeader from './TaskNameHeader';
-import Footer from '../Footer';
 // import TaskNameDescription from "./TaskNameDescription";
 import TaskNameDescription from './TaskNameDescription';
 

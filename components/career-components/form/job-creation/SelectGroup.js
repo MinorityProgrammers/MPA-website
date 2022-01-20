@@ -14,7 +14,7 @@ const SelectGroup = ({
       >
         {
           options.map((item, index) => (
-            <option key={index} style={{ background: '#151371' }}>{item}</option>
+            <option key={`${item + index}`} style={{ background: '#151371' }}>{item}</option>
           ))
         }
       </select>

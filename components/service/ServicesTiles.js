@@ -80,8 +80,8 @@ const ServicesTiles = () => {
           <div className="course-category-two__carousel">
             <Swiper {...params}>
               {ServicesTile.map((services, index) => (
-                <div className="swiper-slide" key={index}>
-                  <ServicesCard item={services} key={index} />
+                <div className="swiper-slide" key={`${index + 1}`}>
+                  <ServicesCard item={services} />
                 </div>
               ))}
             </Swiper>

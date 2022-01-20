@@ -16,8 +16,8 @@ import { useMoralis } from 'react-moralis';
 import { ethers } from 'ethers';
 import Web3Modal from 'web3modal';
 import ProfileTwoGenerateAvatarPopUp from './ProfileTwoGenerateAvatarPopUp';
-import { getProgressPercentage } from '../contexts/utils/settings/getProgressPercentage';
-import { getLevelUpTips } from '../contexts/utils/settings/getLevelUpTips';
+import getProgressPercentage from '../contexts/utils/settings/getProgressPercentage';
+import getLevelUpTips from '../contexts/utils/settings/getLevelUpTips';
 import { useMoralisDapp } from '../MoralisDappProvider/MoralisDappProvider';
 import projectCards from '../contexts/utils/profile/projectCards.json';
 import pinnedCards from '../contexts/utils/profile/pinnedCards.json';
@@ -93,8 +93,8 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
   const [eduLocationInput, setEduLocationInput] = useState('');
   const [copyText, setCopyText] = useState('Click to copy');
   const [isMinting, setIsMinting] = useState(false);
-  const [doneMinting, setDoneMinting] = useState(false);
-  const [mintedURL, setMintedURl] = useState('');
+  const [, setDoneMinting] = useState(false);
+  // const [mintedURL, setMintedURl] = useState('');
   const [reputation, setReputation] = useState([]);
   const [enrolledCourses, setEnrolledCourses] = useState([]);
 
@@ -175,13 +175,14 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
 
     const socials = [];
 
-    userData
-      && allSocials.map((social) => {
+    if (userData) {
+      allSocials.forEach((social) => {
         if (userData[social.name]) {
           social.url = userData[social.name];
           socials.push(social);
         }
       });
+    }
     setSocialLinks(socials);
   }, [userData]);
 
@@ -201,7 +202,7 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
     }
   }, [isLoggedIn, ownsProfile]);
 
-  const downloadProfilePDF = () => {};
+  /*  const downloadProfilePDF = () => {}; // this function is unused */
 
   const copyWallet = () => {
     setCopyText('Copied');
@@ -209,8 +210,21 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
   };
 
   const handleExpImgUpload = (file) => {
-    file && setUploadedExpImg(URL.createObjectURL(file));
+    if (file) { setUploadedExpImg(URL.createObjectURL(file)); }
   };
+  const clearExpAdd = () => {
+    document.getElementsByClassName('exp-data-warn')?.[0]?.remove();
+    setUploadedExpImg('');
+    setExpJobTitleInput('');
+    setExpDateInput('');
+    setExpLocationInput('');
+    setExpAddMode(false);
+  };
+  const removeExp = (expId) => {
+    if (experienceCards.length === 1) { setExpEditMode(false); }
+    setExperienceCards((prevCards) => prevCards.filter((card) => card.cardId !== expId));
+  };
+
   const completeExpAdd = () => {
     if (
       uploadedExpImg
@@ -237,22 +251,25 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
       );
     }
   };
-  const clearExpAdd = () => {
-    document.getElementsByClassName('exp-data-warn')?.[0]?.remove();
-    setUploadedExpImg('');
-    setExpJobTitleInput('');
-    setExpDateInput('');
-    setExpLocationInput('');
-    setExpAddMode(false);
-  };
-  const removeExp = (expId) => {
-    experienceCards.length === 1 && setExpEditMode(false);
-    setExperienceCards((prevCards) => prevCards.filter((card) => card.cardId !== expId));
-  };
 
   const handleEduImgUpload = (file) => {
-    file && setUploadedEduImg(URL.createObjectURL(file));
+    if (file) { setUploadedEduImg(URL.createObjectURL(file)); }
   };
+
+  const clearEduAdd = () => {
+    document.getElementsByClassName('edu-data-warn')?.[0]?.remove();
+    setUploadedEduImg('');
+    setEduTitleInput('');
+    setEduDateInput('');
+    setEduLocationInput('');
+    setEduAddMode(false);
+  };
+
+  const removeEdu = (eduId) => {
+    if (educationCards.length === 1) { setEduEditMode(false); }
+    setEducationCards((prevCards) => prevCards.filter((card) => card.cardId !== eduId));
+  };
+
   const completeEduAdd = () => {
     if (uploadedEduImg && eduTitleInput && eduDateInput && eduLocationInput) {
       const newCard = {
@@ -273,18 +290,6 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
         '<div class="edu-data-warn tw-ml-4 tw-mb-3 tw-self-end tw-text-red-500 tw-font-bold">Please add an image and fill in all fields</div>',
       );
     }
-  };
-  const clearEduAdd = () => {
-    document.getElementsByClassName('edu-data-warn')?.[0]?.remove();
-    setUploadedEduImg('');
-    setEduTitleInput('');
-    setEduDateInput('');
-    setEduLocationInput('');
-    setEduAddMode(false);
-  };
-  const removeEdu = (eduId) => {
-    educationCards.length === 1 && setEduEditMode(false);
-    setEducationCards((prevCards) => prevCards.filter((card) => card.cardId !== eduId));
   };
 
   const onMint = async () => {
@@ -348,9 +353,9 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
   }, []);
 
   useEffect(() => {
-    generateAvatarPopUp
-      ? window.addEventListener('click', clickOutsideAvatarPopup)
-      : window.removeEventListener('click', clickOutsideAvatarPopup);
+    if (generateAvatarPopUp) {
+      window.addEventListener('click', clickOutsideAvatarPopup);
+    } else { window.removeEventListener('click', clickOutsideAvatarPopup); }
   }, [generateAvatarPopUp]);
   return (
     <div className="profile_container">
@@ -436,6 +441,7 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                           <img
                             src="/assets/spinner.png"
                             className="tw-h-5 tw-animate-spin"
+                            alt="spinner"
                           />
                         ) : (
                           'Mint profile'
@@ -506,7 +512,7 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                           userData.passions.map(
                             (passion, index) => passion && (
                               <span
-                                key={index}
+                                key={`${index + 1}`}
                                 className="tw-inline-block tw-px-2 tw-py-1 tw-mr-1 tw-text-xs tw-text-gray-500 tw-border-gray-500 tw-mb-1 tw-rounded-md tw-border"
                               >
                                 {passion}
@@ -603,7 +609,7 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                               {pinitem.checklist.map((item, index) => (
                                 <div
                                   className="chk-step tw-inline-block tw-px-2 tw-py-1 tw-rounded-md tw-my-1 tw-mr-1 tw-bg-white tw-text-black tw-text-xs tw-font-bold"
-                                  key={`0${index}${pinitem.id}`}
+                                  key={`${`0${index}${pinitem.id}`}`}
                                 >
                                   {item}
                                 </div>
@@ -686,7 +692,7 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                       Your profile is at an intermediate level. Do the following
                       to increase your level
                     </h2>
-                    <div className="increase-level-steps tw-flex tw-flex-wrap	">
+                    <div className="increase-level-steps tw-flex tw-flex-wrap">
                       {getLevelUpTips(userData)
                         .filter((data) => data.missing)
                         .map((missingData) => (
@@ -733,7 +739,7 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                         <div className="imgDiv sm:tw-m-0 sm:tw-w-full">
                           <img
                             src={pCard.image}
-                            alt={`${pCard.title} image`}
+                            alt={`${pCard.title}_image`}
                             className="tw-block tw-w-1/2 tw-mr-2 tw-rounded-lg"
                           />
                         </div>
@@ -748,7 +754,7 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                             {pCard.checklist.map((item, index) => (
                               <div
                                 className="chk-step tw-inline-block tw-px-2 tw-py-1 tw-rounded-md tw-my-1 tw-mr-1 tw-bg-white tw-text-black tw-text-xs tw-font-bold"
-                                key={`0${index}${pCard.id}`}
+                                key={`${`0${index}${pCard.id}`}`}
                               >
                                 {item}
                               </div>
@@ -867,16 +873,16 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                   && experienceCards.map((card, idx) => (
                     <div
                       className={`add-exp-edu tw-relative tw-flex tw-items-center tw-mb-4 ${
-                        !(idx === experienceCards?.length - 1)
+                        !(idx === experienceCards || experienceCards.length - 1)
                           ? 'tw-border-b border-gray-500'
                           : ''
                       }`}
-                      key={idx}
+                      key={card.cardId}
                     >
                       <div className="addImg tw-mr-4 tw-mb-6 tw-cursor-pointer">
                         <img
                           src={card.jobImg}
-                          alt="add image"
+                          alt="add_image"
                           className="tw-w-full"
                           onClick={() => setExpAddMode(true)}
                         />
@@ -894,7 +900,7 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                       </div>
                       {expEditMode && (
                         <span
-                          className="tw-absolute tw-top-1/3	tw-right-0 tw-text-xs tw-font-bold tw-text-red-500 tw-cursor-pointer hover:tw-text-gray-500"
+                          className="tw-absolute tw-top-1/3 tw-right-0 tw-text-xs tw-font-bold tw-text-red-500 tw-cursor-pointer hover:tw-text-gray-500"
                           onClick={() => removeExp(card.cardId)}
                         >
                           Remove
@@ -927,14 +933,14 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                                 uploadedExpImg
                                 || '/assets/images/profile/add-image.svg'
                               }
-                              alt="add image"
+                              alt="add_image"
                               className="tw-w-full"
                             />
                           </label>
                         ) : (
                           <img
                             src="/assets/images/profile/add-image.svg"
-                            alt="add image"
+                            alt="add_image"
                             className="tw-w-full"
                             onClick={() => setExpAddMode(true)}
                           />
@@ -1025,16 +1031,16 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                   && educationCards.map((card, idx) => (
                     <div
                       className={`add-exp-edu tw-relative tw-flex tw-items-center tw-mb-4 ${
-                        !(idx === educationCards?.length - 1)
+                        !(idx === educationCards || educationCards.length - 1)
                           ? 'tw-border-b border-gray-500'
                           : ''
                       }`}
-                      key={idx}
+                      key={`${idx + 1}`}
                     >
                       <div className="addImg tw-mr-4 tw-mb-6 tw-cursor-pointer">
                         <img
                           src={card.eduImg}
-                          alt="add image"
+                          alt="add_image"
                           className="tw-w-full"
                           onClick={() => setEduAddMode(true)}
                         />
@@ -1052,7 +1058,7 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                       </div>
                       {eduEditMode && (
                         <span
-                          className="tw-absolute tw-top-1/3	tw-right-0 tw-text-xs tw-font-bold tw-text-red-500 tw-cursor-pointer hover:tw-text-gray-500"
+                          className="tw-absolute tw-top-1/3 tw-right-0 tw-text-xs tw-font-bold tw-text-red-500 tw-cursor-pointer hover:tw-text-gray-500"
                           onClick={() => removeEdu(card.cardId)}
                         >
                           Remove
@@ -1085,14 +1091,14 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                                 uploadedEduImg
                                 || '/assets/images/profile/add-image.svg'
                               }
-                              alt="add image"
+                              alt="add_image"
                               className="tw-w-full"
                             />
                           </label>
                         ) : (
                           <img
                             src="/assets/images/profile/add-image.svg"
-                            alt="add image"
+                            alt="add_image"
                             className="tw-w-full"
                             onClick={() => setEduAddMode(true)}
                           />

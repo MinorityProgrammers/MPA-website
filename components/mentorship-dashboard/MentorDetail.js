@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import styles from '../../styles/MentorCSS/Dashboard.module.css';
 import stylesE from '../../styles/MentorCSS/Mentor.module.css';
@@ -26,11 +26,11 @@ const MentorDetail = ({
     });
   }, []);
 
-  const menteeHandler = (mentee) => {
+  const menteeHandler = (_mentee) => {
     setActive([false, true]);
 
-    setCurrentMentee(mentee._id);
-    setData(mentee);
+    setCurrentMentee(_mentee._id);
+    setData(_mentee);
   };
   const activeHandler = () => {
     setActive([true, false]);
@@ -177,7 +177,7 @@ const MentorDetail = ({
             <div className={styles.mentors}>
               <div
                 className={
-                  menteeData._id == currentMentee
+                  menteeData._id === currentMentee
                     ? styles.mentorRowE
                     : styles.mentorRow
                 }
@@ -185,7 +185,7 @@ const MentorDetail = ({
               >
                 <div
                   className={
-                    menteeData._id == currentMentee
+                    menteeData._id === currentMentee
                       ? styles.sideBar
                       : styles.hide
                   }

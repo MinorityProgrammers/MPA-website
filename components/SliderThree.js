@@ -34,7 +34,7 @@ const SliderThree = () => (
             <p className="slider-three__tag-line">we can teach you anything</p>
             <h2 className="slider-three__title">Start learning with us now</h2>
             <p className="slider-three__text">
-              You need to be sure there isn't anything hidden in the middle of
+              You need to be sure there isn&apos;t anything hidden in the middle of
               text lorem ipsum on the Internet.
             </p>
             <form action="#" className="slider-three__search">

@@ -9,7 +9,7 @@ const StartupTopBar = ({ data }) => (
           <a href="/incubator" className="">
             <i className="fas fa-arrow-left top__button-back" />
           </a>
-          <img className="top__logo" src={data.startupImage} />
+          <img className="top__logo" src={data.startupImage} alt="startup_image" />
           <h3 className="top__name">{data.name}</h3>
         </div>
       </div>

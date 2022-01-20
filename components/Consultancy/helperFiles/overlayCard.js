@@ -1,3 +1,5 @@
+import React from 'react';
+
 const OverlayCard = function ({ children }) {
   return (
     <div className="overlay-card">

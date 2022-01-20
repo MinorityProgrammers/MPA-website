@@ -10,6 +10,7 @@ const RegisterIcon = ({ icon, link }) => (
       <img
         src={`./assets/images/favicons/${icon}.svg`}
         className="tw-w-4 tw-h-4"
+        alt={`${icon}`}
       />
     </Link>
   </div>

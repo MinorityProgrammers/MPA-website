@@ -29,10 +29,20 @@ const Course = function ({ userInfo, course, modules }) {
     <div className="courses-details banner-bg">
       <div className="row" style={{ backgroundColor: '#474BFF' }}>
         <div className="col-12 col-md-3 pr-0 scroll-sidebar">
-          <CourseSidebar course={course} courseId={courseId} modules={modules} userModules={userModules} />
+          <CourseSidebar
+            course={course}
+            courseId={courseId}
+            modules={modules}
+            userModules={userModules}
+          />
         </div>
         <div className="col-12 col-md-9 pl-0">
-          <MainCourseInfo courseId={courseId} userInfo={userInfo} modules={modules} userModules={userModules} />
+          <MainCourseInfo
+            courseId={courseId}
+            userInfo={userInfo}
+            modules={modules}
+            userModules={userModules}
+          />
         </div>
       </div>
     </div>

@@ -1,19 +1,20 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useCallback, useState, useEffect } from 'react';
+// import axios from 'axios';
 import Skeleton from 'react-loading-skeleton';
 import { Spinner } from 'react-bootstrap';
 import { Chart } from 'react-google-charts';
-import EmptyOverviewComponent from './EmptyOverviewComponent';
+// import EmptyOverviewComponent from './EmptyOverviewComponent';
 import TasksList from './TasksList';
 
-const OverviewProgress = (props) => {
+const OverviewProgress = ({ userData, renderMobile }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setTimeout(() => { setLoading(false); }, 5000);
+    const timeoutID = setTimeout(() => { setLoading(false); }, 5000);
+    return () => { clearTimeout(timeoutID); };
   }, []);
 
-  const ProgressMobileComponent = () => (
+  const ProgressMobileComponent = useCallback(() => (
     <div className="d-flex flex-column" style={{ width: '100%', height: '280px' }}>
       {/* there are 2 columns: text - images */}
       <div className="d-flex flex-column" style={{ width: '100%' }}>
@@ -24,7 +25,7 @@ const OverviewProgress = (props) => {
           }}
           >
             Welcome back,
-            <strong>{props.userData.firstName}</strong>
+            <strong>{userData.firstName}</strong>
           </p>
           <p style={{ fontSize: '14px', color: 'black', lineHeight: '16px' }}>
             You’ve completed
@@ -86,8 +87,9 @@ const OverviewProgress = (props) => {
         </div>
       </div>
     </div>
-  );
-  const ProgressComponent = () => (
+  ), []);
+
+  const ProgressComponent = useCallback(() => (
     <div className="d-flex flex-row" style={{ width: '100%', height: '100%' }}>
       {/* there are 2 columns: text - images */}
       {/* first column */}
@@ -96,7 +98,7 @@ const OverviewProgress = (props) => {
         <div className="d-flex flex-column justify-content-between align-items-start" style={{ height: '47%', marginBottom: '3%', width: '100%' }}>
           <p style={{ fontSize: ' 20px', color: 'black', marginBottom: '4%' }}>
             Welcome back,
-            <strong>{props.userData.firstName}</strong>
+            <strong>{userData.firstName}</strong>
           </p>
           <p style={{ fontSize: '14px', color: 'black' }}>
             You’ve completed
@@ -153,7 +155,7 @@ const OverviewProgress = (props) => {
         </div>
       </div>
     </div>
-  );
+  ), []);
 
   return (
     <div className="d-flex flex-column justify-content-between " style={{ height: '100%', width: '100%' }}>
@@ -187,7 +189,7 @@ const OverviewProgress = (props) => {
 
           </div>
         )
-        : props.renderMobile
+        : renderMobile
           ? <ProgressMobileComponent /> : <ProgressComponent />}
     </div>
   );

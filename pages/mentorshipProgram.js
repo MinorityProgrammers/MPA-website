@@ -5,7 +5,7 @@ import HomepageNav from '../components/homepage/HomepageNav';
 import Layout from '../components/Layout';
 import SidebarTwo from '../components/sidebar/SidebarTwo';
 import links from '../contexts/utils/links';
-import { useDetectOutsideClick } from '../components/UseDetectOutsideClick';
+import useDetectOutsideClick from '../components/UseDetectOutsideClick';
 import MentorshipProgramHero from '../components/mentorship/MentorshipProgramHero';
 import MentorshipProgramHome from '../components/mentorship/MentorshipProgramHome';
 

@@ -63,11 +63,11 @@ const CoursePage = function ({ params }) {
   }, []);
 
   const singleCourse = enrolledCourses?.filter(
-    (course) => course.courseId._id === courseId,
+    (courseItem) => courseItem.courseId._id === courseId,
   );
   useEffect(() => {
-    singleCourse.forEach((course) => {
-      setCourse(course?.courseId);
+    singleCourse.forEach((courseItem) => {
+      setCourse(courseItem?.courseId);
     });
   }, [singleCourse]);
 

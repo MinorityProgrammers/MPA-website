@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { AiFillCloseCircle, AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai';
-import { findUserNames } from '../../helpers/userNames';
+import { AiFillCloseCircle, AiOutlineArrowRight } from 'react-icons/ai';
+import findUserNames from '../../helpers/userNames';
 import CreateProfileForm from './CreateProfileForm';
 import CreateProfileInput from './CreateProfileInput';
 import {
@@ -21,31 +21,6 @@ const CreateProfileQuestions1 = function ({
       setUsernames(findUserNames(data.data));
     });
   }, []);
-
-  const handleChange = (name, value) => {
-    // compare value with all usernames
-    if (usernames.includes(value) && !(value == '')) {
-      // display username
-      toggleUsernameWarning(true);
-    } else {
-      toggleUsernameWarning(false);
-    }
-
-    if (/[^\w\-]/.test(state[step].userName)) {
-      // display username
-      toggleWrongUsernameWarning(true);
-    } else {
-      toggleWrongUsernameWarning(false);
-    }
-
-    setState({ ...state, [step]: { ...state[step], [name]: value.toLowerCase() } });
-  };
-
-  const setUsername = (value) => {
-    toggleUsernameWarning(false);
-    toggleWrongUsernameWarning(false);
-    setState({ ...state, [step]: { ...state[step], userName: value.toLowerCase() } });
-  };
 
   const toggleUsernameWarning = (on) => {
     if (on) {
@@ -73,6 +48,31 @@ const CreateProfileQuestions1 = function ({
     }
   };
 
+  const handleChange = (name, value) => {
+    // compare value with all usernames
+    if (usernames.includes(value) && !(value === '')) {
+      // display username
+      toggleUsernameWarning(true);
+    } else {
+      toggleUsernameWarning(false);
+    }
+
+    if (/[^\w\-]/.test(state[step].userName)) {
+      // display username
+      toggleWrongUsernameWarning(true);
+    } else {
+      toggleWrongUsernameWarning(false);
+    }
+
+    setState({ ...state, [step]: { ...state[step], [name]: value.toLowerCase() } });
+  };
+
+  const setUsername = (value) => {
+    toggleUsernameWarning(false);
+    toggleWrongUsernameWarning(false);
+    setState({ ...state, [step]: { ...state[step], userName: value.toLowerCase() } });
+  };
+
   const allInputFields = [usernameField];
 
   const [displayWarning, setDisplayWarning] = useState(false);
@@ -88,6 +88,7 @@ const CreateProfileQuestions1 = function ({
       setDisplayWarning(false);
     }
   };
+
   // go back one step
   const handlePrev = () => {
     if (usernames.includes(state[step].userName)) {
@@ -98,10 +99,10 @@ const CreateProfileQuestions1 = function ({
     } else {
       const inputFieldNames = Object.keys(state[step]);
       const allRequiredFilled = inputFieldNames.every((fieldName) => {
-        const inputField = allInputFields.find((inputField) => inputField.name == fieldName);
+        const inputField = allInputFields.find((_inputField) => _inputField.name === fieldName);
         return (inputField.required && state[step][fieldName]) || !inputField.required;
       });
-      if (allRequiredFilled && !usernameWarning && !wrongUsernameWarning || (state[step].userName == '')) {
+      if (allRequiredFilled && !usernameWarning && !wrongUsernameWarning || (state[step].userName === '')) {
         setStep(step - 1);
         toggleWarning(false);
         localStorage.setItem('datas', JSON.stringify(inputStates));
@@ -112,6 +113,7 @@ const CreateProfileQuestions1 = function ({
       }
     }
   };
+
   // go forward one step
   const handleNext = () => {
     if (usernames.includes(state[step].userName)) {
@@ -122,7 +124,7 @@ const CreateProfileQuestions1 = function ({
     } else {
       const inputFieldNames = Object.keys(state[step]);
       const allRequiredFilled = inputFieldNames.every((fieldName) => {
-        const inputField = allInputFields.find((inputField) => inputField.name == fieldName);
+        const inputField = allInputFields.find((_inputField) => _inputField.name === fieldName);
         return (inputField.required && state[step][fieldName]) || !inputField.required;
       });
       if (allRequiredFilled && !usernameWarning && !wrongUsernameWarning) {
@@ -148,7 +150,9 @@ const CreateProfileQuestions1 = function ({
     const firstName = userData?.firstName;
     const lastName = userData?.lastName;
     const numbers = [1, 2, 3, 4].map(() => Math.floor(Math.random() * 10000));
-    setSuggestedNames(numbers.filter((num) => !usernames.includes(firstName + lastName + num.toString())).map((num) => firstName + lastName + num.toString()));
+    setSuggestedNames(numbers.filter(
+      (num) => !usernames.includes(firstName + lastName + num.toString()),
+    ).map((num) => firstName + lastName + num.toString()));
   };
   // if Username has not been picked yet
   if (true) {
@@ -157,7 +161,7 @@ const CreateProfileQuestions1 = function ({
         <AiFillCloseCircle className="cp-close" onClick={closeProfileSetup} style={{ cursor: 'pointer' }} />
         <div className="cp-top">
           <h1>Setup Profile Page</h1>
-          <h2>It's quick and easy!</h2>
+          <h2>It&apos;s quick and easy!</h2>
         </div>
         <CreateProfileForm grid={false}>
           <div className="cp-formFlex">
@@ -172,14 +176,13 @@ const CreateProfileQuestions1 = function ({
               setValue={(value) => { handleChange(usernameField.name, value); }}
               className="cp-username"
             />
-            {/* <button onClick={handleUsername} disabled={usernameWarning}>Pick Username</button> */}
-            <button onClick={getUsernameSuggestions}>Username Suggestions</button>
+            <button type="button" onClick={getUsernameSuggestions}>Username Suggestions</button>
             <div className="cp-usernameSuggestions">
               {
-                                suggestedNames.map((name, key) => (
-                                  <p className="tw-cursor-pointer hover:tw-to-gray-500" key={key} onClick={() => setUsername(name)}>{name}</p>
-                                ))
-                            }
+                  suggestedNames.map((name, key) => (
+                    <p className="tw-cursor-pointer hover:tw-to-gray-500" key={`${name + key}`} onClick={() => setUsername(name)}>{name}</p>
+                  ))
+              }
             </div>
             <div className="tw-mt-8 tw-flex tw-flex-col tw-w-80 tw-pl-4 tw-justify-center tw-text-center">
               <h2>Connect Wallet</h2>
@@ -188,7 +191,7 @@ const CreateProfileQuestions1 = function ({
           </div>
         </CreateProfileForm>
         <div className="cp-navButtonsContainer">
-          <button className="cp-navButton" onClick={handleNext}><AiOutlineArrowRight /></button>
+          <button type="button" className="cp-navButton" onClick={handleNext}><AiOutlineArrowRight /></button>
         </div>
       </div>
     );

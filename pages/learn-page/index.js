@@ -7,7 +7,7 @@ import CourseCategories from '../../components/learn/CourseCategories';
 import SidebarTwo from '../../components/sidebar/SidebarTwo';
 import links from '../../contexts/utils/links';
 import LearnHero from '../../components/learn/LearnHero';
-import { useDetectOutsideClick } from '../../components/UseDetectOutsideClick';
+import useDetectOutsideClick from '../../components/UseDetectOutsideClick';
 
 const LearnPage = function () {
   const [open, setOpen] = useState(false);

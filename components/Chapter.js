@@ -38,7 +38,7 @@ const Chapter = () => (
             <div className="cta-two__content">
               <h2 className="cta-two__title">Start Your Own Course</h2>
               <p className="cta-two__text">
-                Can't find a course to join in your area? Make your own and
+                Can&apos;t find a course to join in your area? Make your own and
                 represent MPA as a community leader!
               </p>
               <a

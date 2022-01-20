@@ -18,7 +18,6 @@ const IncubatorHero = () => {
               <h2>
                 Build diverse startups in a transparent and accountable way.
                 Build milestone driven DAOs around the projects you have a stake in.
-
               </h2>
               <div className="incubator__button">
                 <div onClick={scrollTo} className="button btn-gradient">

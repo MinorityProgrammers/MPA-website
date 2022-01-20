@@ -1,3 +1,4 @@
+import React from 'react';
 import { FiFacebook, FiTwitter, FiInstagram } from 'react-icons/fi';
 import { IoPaperPlaneOutline } from 'react-icons/io5';
 import { VscGithubAlt } from 'react-icons/vsc';
@@ -23,9 +24,9 @@ const ChaptersCard = function ({ data, token, userJoinRequests }) {
           Authorization: `Bearer ${token}`,
         },
       })
-        .then((response) => {
+        .then(() => {
           successToast('You have successfully joined a chapter');
-          setTimeout('location.reload(true);', 2000);
+          setTimeout(window.location.reload(true), 2000);
         })
         .catch((err) => {
           try {
@@ -69,7 +70,9 @@ const ChaptersCard = function ({ data, token, userJoinRequests }) {
       {
         !userJoinRequests
           ? <div onClick={handleJoin} className={styles.joinButton}>Join</div>
-          : !userJoinRequests.includes(_id) ? <div onClick={handleJoin} className={styles.joinButton}>Join</div> : <div className={styles.joinButton}>Cancel Request</div>
+          : !userJoinRequests.includes(_id)
+            ? <div onClick={handleJoin} className={styles.joinButton}>Join</div>
+            : <div className={styles.joinButton}>Cancel Request</div>
       }
       <div className={styles.icons}>
         <FiFacebook />

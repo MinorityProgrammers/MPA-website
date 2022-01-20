@@ -1,3 +1,4 @@
+import React from 'react';
 import axios from 'axios';
 import { Tooltip, OverlayTrigger } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -10,7 +11,7 @@ const Sprint = ({
   courses,
   capstones,
   events,
-  mentor,
+  /* mentor, */
   mentee,
   setCurrentRes,
   setEdit,

@@ -2,7 +2,7 @@ import Portis from '@portis/web3';
 import WalletConnectProvider from '@walletconnect/web3-provider';
 import Fortmatic from 'fortmatic';
 import decode from 'jwt-decode';
-import { signOut, useSession } from 'next-auth/client';
+import { signOut } from 'next-auth/client';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, {
@@ -13,18 +13,18 @@ import { useMoralis } from 'react-moralis';
 import Web3 from 'web3';
 import Web3Modal from 'web3modal';
 import { LOGOUT_USER } from '../../contexts/actions/actionTypes';
-import { getProfile } from '../../contexts/actions/profile/getProfile';
+import getProfile from '../../contexts/actions/profile/getProfile';
 import { GlobalContext } from '../../contexts/provider';
 import Account from '../Account';
-import NativeBalance from '../NativeBalance';
-import { useDetectOutsideClick } from '../UseDetectOutsideClick';
+import useDetectOutsideClick from '../UseDetectOutsideClick';
 import HomepageNavLoggedin from './HomepageNavLoggedin';
 import HomepageNavLogin from './HomepageNavLogin';
 
 let web3Modal;
-let selectedAccount = null;
+let selectedAccount = null; // address the use of this variable
 let provider;
 
+/* // address the use of this function
 function copyWalletAddress(text) {
   const copyText = document.createElement('textarea');
   document.body.appendChild(copyText);
@@ -32,7 +32,7 @@ function copyWalletAddress(text) {
   copyText.select();
   document.execCommand('copy');
   document.body.removeChild(copyText);
-}
+} */
 
 async function fetchAccountData() {
   // Get a Web3 instance for the wallet
@@ -42,7 +42,7 @@ async function fetchAccountData() {
   const accounts = await web3.eth.getAccounts();
 
   // MetaMask does not give you all accounts, only the selected account
-  selectedAccount = accounts[0];
+  selectedAccount = accounts[0]; // address the use of this variable
 }
 
 /**
@@ -94,17 +94,17 @@ async function onConnect() {
   }
 
   // Subscribe to accounts change
-  provider.on('accountsChanged', (accounts) => {
+  provider.on('accountsChanged', (/* accounts */) => {
     fetchAccountData();
   });
 
   // Subscribe to chainId change
-  provider.on('chainChanged', (chainId) => {
+  provider.on('chainChanged', (/* chainId */) => {
     fetchAccountData();
   });
 
   // Subscribe to networkId change
-  provider.on('networkChanged', (networkId) => {
+  provider.on('networkChanged', (/* networkId */) => {
     fetchAccountData();
   });
 
@@ -124,7 +124,7 @@ async function onDisconnect() {
     provider = null;
   }
 
-  selectedAccount = null;
+  selectedAccount = null; // address the use of this variable
 }
 
 const HomepageNav = ({
@@ -139,7 +139,6 @@ const HomepageNav = ({
   const [sticky, setSticky] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
   const router = useRouter();
-  const session = useSession();
   const [isActive, setIsActive] = useDetectOutsideClick(dropdownRef, false);
   const [searchValue, setSearch] = useState('');
   const [isActiveMobile, setIsActiveMobile] = useDetectOutsideClick(
@@ -150,10 +149,10 @@ const HomepageNav = ({
     searchMobileRef,
     false,
   );
-  const [connect, setConnect] = useState(false);
+  const [, setConnect] = useState(false);
 
   const {
-    isWeb3Enabled, enableWeb3, isAuthenticated, isWeb3EnableLoading,
+    isWeb3Enabled, /* enableWeb3, */ isAuthenticated, isWeb3EnableLoading,
   } = useMoralis();
 
   useEffect(() => {
@@ -182,9 +181,10 @@ const HomepageNav = ({
     });
   };
 
+  /*  // this function is not used check if it is needed before removing it
   const handleConnect = () => {
     enableWeb3();
-  };
+  }; */
 
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
@@ -201,7 +201,7 @@ const HomepageNav = ({
     profileDispatch,
     authDispatch,
     authState: {
-      auth: { loading, error, data },
+      auth: { data },
     },
   } = useContext(GlobalContext || {});
 

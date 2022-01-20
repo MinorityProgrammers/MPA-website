@@ -18,7 +18,7 @@ const FeaturedUpcoming = ({
     .map((d, index) => (
       <div
         className="col-xl-4 col-lg-4 col-md-6 col-sm featured__card"
-        key={index}
+        key={`${index + 1}`}
       >
         <FeaturedCard
           data={d}

@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import HomepageNav from '../components/homepage/HomepageNav';
-import { useDetectOutsideClick } from '../components/UseDetectOutsideClick';
+import useDetectOutsideClick from '../components/UseDetectOutsideClick';
 import Layout from '../components/Layout';
 import Testimonial from '../components/Internship/Testimonial';
 import SidebarTwo from '../components/sidebar/SidebarTwo';

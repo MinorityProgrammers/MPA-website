@@ -1,3 +1,4 @@
+import React from 'react';
 import EventsCard from '../events-card/events-card';
 import StartupsCard from '../startups-card/startups-card';
 import JobsCard from '../jobs-card/jobs-card';
@@ -31,7 +32,12 @@ const SearchResult = function ({
                     )) : <div className={styles.noResult} />
                     : key === 'chapter'
                       ? result[key].length ? result[key].map((data) => (
-                        <ChaptersCard key={data._id} data={data} userJoinRequests={userJoinRequests} token={token} />
+                        <ChaptersCard
+                          key={data._id}
+                          data={data}
+                          userJoinRequests={userJoinRequests}
+                          token={token}
+                        />
                       )) : <div className={styles.noResult} />
                       : null
           ))
@@ -73,7 +79,12 @@ const SearchResult = function ({
                   )
                   : category === 'chapter'
                     ? result[category].length ? result[category].map((data) => (
-                      <ChaptersCard key={data._id} data={data} userJoinRequests={userJoinRequests} token={token} />
+                      <ChaptersCard
+                        key={data._id}
+                        data={data}
+                        userJoinRequests={userJoinRequests}
+                        token={token}
+                      />
                     )) : (
                       <div className={styles.no_result}>
                         No result found in

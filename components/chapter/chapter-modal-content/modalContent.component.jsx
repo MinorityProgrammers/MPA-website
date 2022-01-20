@@ -1,5 +1,5 @@
 import { FiFacebook, FiTwitter, FiInstagram } from 'react-icons/fi';
-import { useState, useEffect } from 'react';
+import React from 'react';
 import { IoPaperPlaneOutline } from 'react-icons/io5';
 import { VscGithubAlt } from 'react-icons/vsc';
 import axios from 'axios';
@@ -7,7 +7,15 @@ import styles from './modalContent.module.css';
 import { errorToast, successToast } from '../../../contexts/utils/toasts';
 
 const ModalContent = function ({
-  token, location, description, chapter_leader, chapter_type, member_size, date_founded, setActive, _id, userJoinRequests,
+  token,
+  location,
+  description,
+  chapter_leader,
+  chapter_type,
+  member_size,
+  date_founded,
+  _id,
+  userJoinRequests,
 }) {
   const handleJoin = () => {
     if (token) {
@@ -18,9 +26,9 @@ const ModalContent = function ({
           Authorization: `Bearer ${token}`,
         },
       })
-        .then((response) => {
+        .then(() => {
           successToast('You have successfully joined a chapter');
-          setTimeout('location.reload(true);', 2000);
+          setTimeout(location.reload(true), 2000);
         })
         .catch((err) => {
           try {
@@ -35,7 +43,13 @@ const ModalContent = function ({
   };
 
   return (
-    <div onMouseOver={() => { }} onMouseOut={() => { }} className={styles.container}>
+    <div
+      onMouseOver={() => { }}
+      onFocus={() => { }}
+      onMouseOut={() => { }}
+      onBlur={() => { }}
+      className={styles.container}
+    >
       <div className={styles.logo}>
         <img src="/assets/images/mp_gradient_rock.svg" alt="logo" />
       </div>
@@ -61,7 +75,14 @@ const ModalContent = function ({
           <div className={styles.content}>{chapter_type}</div>
         </div>
       </div>
-      {!userJoinRequests.includes(_id) ? <div onClick={handleJoin} className={styles.joinButton}>Join</div> : <div className={styles.joinButton}>Cancel Request</div>}
+      {
+        !userJoinRequests.includes(_id)
+          ? (
+            <div onClick={handleJoin} className={styles.joinButton}>
+              Join
+            </div>
+          ) : <div className={styles.joinButton}>Cancel Request</div>
+      }
 
       <div className={styles.icons}>
         <FiFacebook />

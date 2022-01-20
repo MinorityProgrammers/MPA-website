@@ -1,7 +1,6 @@
-import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React from 'react';
 
-const TotalBalance = (props) => (
+const TotalBalance = () => (
   <div className="total-balance-card-dashboard-wallet">
     <div className="inner-total-balance-card-dashboard-wallet d-flex flex-column justify-content-between">
       {/* First Row */}
@@ -21,7 +20,7 @@ const TotalBalance = (props) => (
       </div>
       {/* Third Row */}
       <div className="d-flex flex-row justify-content-between align-items-start">
-        <select name="fiat-currency" className="btn btn-primary" className="btn btn-primary" style={{ color: '#474BFF', background: 'white' }}>
+        <select name="fiat-currency" className="btn btn-primary" style={{ color: '#474BFF', background: 'white' }}>
           <option value="deposit">Deposit</option>
           <option value="swap">Exchange</option>
           <option value="widthdraw">Withdraw</option>

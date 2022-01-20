@@ -12,7 +12,7 @@ import { GlobalContext } from '../contexts/provider';
 import { useMoralisDapp } from '../MoralisDappProvider/MoralisDappProvider';
 import { getEllipsisTxt } from '../helpers/formatters';
 import Address from './Address/Address';
-import { successToast, errorToast } from '../contexts/utils/toasts';
+import { errorToast } from '../contexts/utils/toasts';
 import changeAuthModal from '../contexts/actions/authModal/index';
 import {
   handleLockSigner,
@@ -29,7 +29,7 @@ const Account = function () {
     setShowModal,
     signerState: {
       signer: {
-        error, isConnected, isUnlocked, activeKey,
+        error, isConnected, /* isUnlocked, */ activeKey,
       },
     },
     setSignerState,

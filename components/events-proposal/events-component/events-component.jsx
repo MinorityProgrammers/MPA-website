@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Select from 'react-select';
 import styles from './events-component.module.css';
@@ -50,7 +50,7 @@ const Events = function ({ token }) {
       height: 50,
       minHeight: 50,
     }),
-    control: (base, state) => ({
+    control: (base) => ({
       ...base,
       '&:hover': { borderColor: 'gray' }, // border style on hover
       border: '1px solid lightgray', // default border color
@@ -98,8 +98,8 @@ const Events = function ({ token }) {
   const onChangeInput = (obj) => {
     setValue('');
     if (obj) {
-      if (obj.value == 'Virtual Event') setEvents(filter('Virtual', true));
-      if (obj.value == 'In-person Event') setEvents(filter('Virtual', false));
+      if (obj.value === 'Virtual Event') setEvents(filter('Virtual', true));
+      if (obj.value === 'In-person Event') setEvents(filter('Virtual', false));
     } else {
       setEvents(eventsCopy);
     }
@@ -108,7 +108,9 @@ const Events = function ({ token }) {
   const getSearch = (e) => {
     if (e.target.value) {
       const searchValue = e.target.value;
-      const newEvents = events.filter((event) => event.eventName.toLowerCase().includes(searchValue.toLowerCase()));
+      const newEvents = events.filter(
+        (event) => event.eventName.toLowerCase().includes(searchValue.toLowerCase()),
+      );
       setEvents(newEvents);
     } else {
       fetchEvents();

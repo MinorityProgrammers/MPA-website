@@ -1,3 +1,4 @@
+import React from 'react';
 import styles from './builder.module.css';
 
 const MpaBuilder = function () {

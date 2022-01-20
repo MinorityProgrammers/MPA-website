@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Moment from 'moment';
 import styles from './events-card.module.css';
 import EventsPopup from './events-popup';
@@ -10,7 +10,7 @@ const EventsCard = function ({ data }) {
   const [isImage, setImage] = useState(false);
 
   const {
-    EventPicture, eventStatus, eventName, catName, Virtual, eventLink, EventDescription, time,
+    EventPicture, eventName, catName, Virtual, time,
   } = data;
 
   const handleClick = () => {

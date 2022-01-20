@@ -7,7 +7,7 @@ import SidebarTwo from '../components/sidebar/SidebarTwo';
 import { MentorshipRegister } from '../components/mentorship/MentorshipRegister';
 import links from '../contexts/utils/links';
 import ComingSoon from '../components/ComingSoon';
-import { useDetectOutsideClick } from '../components/UseDetectOutsideClick';
+import useDetectOutsideClick from '../components/UseDetectOutsideClick';
 
 function mentorship() {
   const [open, setOpen] = useState(false);

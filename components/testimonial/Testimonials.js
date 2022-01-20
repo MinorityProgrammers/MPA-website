@@ -78,8 +78,8 @@ const Testimonials = () => {
         <div className="testimonials-one__carousel">
           <Swiper {...params}>
             {TestimonialsMap.map((testimonials, index) => (
-              <div className="swiper-slide" key={index}>
-                <TestimonialsCard item={testimonials} key={index} />
+              <div className="swiper-slide" key={`${`testimonial${index}`}`}>
+                <TestimonialsCard item={testimonials} />
               </div>
             ))}
           </Swiper>

@@ -7,16 +7,57 @@ import ComingSoon from '../../ComingSoon';
 import TenPercentile from './TenPercentile';
 
 const ElectProposals = function () {
-  const [proposals, setProposals] = useState([]);
+  const [, setProposals] = useState([]);
 
   const [actions, setActions] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [actionsPerPage] = useState(4);
-  const [sortType, setSortType] = useState('Sort By');
-  const [filter, setFilter] = useState('all');
+  const [sortType/* , setSortType */] = useState('Sort By');
+  const [filter/* , setFilter */] = useState('all');
   const [categories, setCategories] = useState([]);
   const [allData, setAllData] = useState([]);
   const [loading, setLoading] = useState(false);
+
+  // Function to sort the actions by amount or date
+  const sortArray = (type) => {
+    const types = {
+      amountAsc: 'amount',
+      amountDesc: 'amount',
+      date: 'date',
+    };
+
+    const sortProperty = types[type];
+
+    if (sortType === 'amountAsc') {
+      const sorted = [...actions].sort((a, b) => a[sortProperty] - b[sortProperty]);
+      setActions(sorted);
+    } else if (sortType === 'amountDesc') {
+      const sorted = [...actions].sort((a, b) => b[sortProperty] - a[sortProperty]);
+      setActions(sorted);
+    } else if (sortType === 'date') {
+      const sorted = [...actions].sort(
+        (a, b) => new Date(a[sortProperty]) - new Date(b[sortProperty]),
+      );
+      setActions(sorted);
+    } else {
+      setActions(allData);
+    }
+  };
+
+  // Filter the array, sets current page back to 1 after filtering
+  const filterArray = () => {
+    setCurrentPage(1);
+    if (filter !== 'all') {
+      for (let i = 0; i < categories.length; i += 1) {
+        if (filter === categories[i]) {
+          const filtered = [...allData].filter((action) => action.category === categories[i]);
+          setActions(filtered);
+        }
+      }
+    } else {
+      setActions(allData);
+    }
+  };
 
   useEffect(() => {
     filterArray();
@@ -30,7 +71,9 @@ const ElectProposals = function () {
     let uniqueCategories = [];
     const allCategories = [];
 
-    // Fetch the action data. Set loading state to true before fetch, back to false after the fetch is complete
+    /* Fetch the action data. Set loading state to true before fetch,
+      back to false after the fetch is complete
+    */
     const fetchData = () => {
       setLoading(true);
       fetch(`${process.env.BASE_URI}/proposal/`)
@@ -42,7 +85,7 @@ const ElectProposals = function () {
           setLoading(false);
 
           // Set unique categories for filter dropdown
-          response.data.map((action) => {
+          response.data.forEach((action) => {
             allCategories.push(action.category);
           });
           uniqueCategories = [...new Set(allCategories)];
@@ -53,45 +96,6 @@ const ElectProposals = function () {
     fetchData();
   }, []);
 
-  // Function to sort the actions by amount or date
-  const sortArray = (type) => {
-    const types = {
-      amountAsc: 'amount',
-      amountDesc: 'amount',
-      date: 'date',
-    };
-
-    const sortProperty = types[type];
-
-    if (sortType == 'amountAsc') {
-      const sorted = [...actions].sort((a, b) => a[sortProperty] - b[sortProperty]);
-      setActions(sorted);
-    } else if (sortType == 'amountDesc') {
-      const sorted = [...actions].sort((a, b) => b[sortProperty] - a[sortProperty]);
-      setActions(sorted);
-    } else if (sortType == 'date') {
-      const sorted = [...actions].sort((a, b) => new Date(a[sortProperty]) - new Date(b[sortProperty]));
-      setActions(sorted);
-    } else {
-      setActions(allData);
-    }
-  };
-
-  // Filter the array, sets current page back to 1 after filtering
-  const filterArray = () => {
-    setCurrentPage(1);
-    if (filter != 'all') {
-      for (let i = 0; i < categories.length; i++) {
-        if (filter == categories[i]) {
-          const filtered = [...allData].filter((action) => action.category == categories[i]);
-          setActions(filtered);
-        }
-      }
-    } else {
-      setActions(allData);
-    }
-  };
-
   // Get current actions
   const indexOfLastAction = currentPage * actionsPerPage;
   const indexOfFirstAction = indexOfLastAction - actionsPerPage;
@@ -100,11 +104,11 @@ const ElectProposals = function () {
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-  const nextPage = (currentPage) => {
-    if (currentPage === Math.ceil(actions.length / actionsPerPage)) {
+  const nextPage = (_currentPage) => {
+    if (_currentPage === Math.ceil(actions.length / actionsPerPage)) {
       return;
     }
-    setCurrentPage(currentPage + 1);
+    setCurrentPage(_currentPage + 1);
   };
 
   const previousPage = () => {
@@ -113,9 +117,9 @@ const ElectProposals = function () {
     }
     setCurrentPage(currentPage - 1);
   };
-  console.log('proposal Data', proposals);
-  console.log('all data', allData);
-  console.log('actions', actions);
+  // console.log('proposal Data', proposals);
+  // console.log('all data', allData);
+  // console.log('actions', actions);
 
   if (loading) {
     return (
@@ -128,7 +132,7 @@ const ElectProposals = function () {
   return (
     <section className="elect-proposal tw-w-100">
 
-      {allData.length >= 1 && loading != true
+      {allData.length >= 1 && loading !== true
         ? (
           <div>
             <div />
@@ -256,12 +260,12 @@ const ElectProposals = function () {
                     </div>
                     <div className="s-p-view tw-w-1/5 tw-text-center">
                       <p className="tw-mb-5">
-                        <button className="view-p-btn tw-shadow-lg">
+                        <button type="button" className="view-p-btn tw-shadow-lg">
                           View Proposal
                         </button>
                       </p>
                       <p>
-                        <button className="elect-p-btn tw-shadow-lg">
+                        <button type="button" className="elect-p-btn tw-shadow-lg">
                           Elect Proposal
                         </button>
                       </p>

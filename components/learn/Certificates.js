@@ -14,7 +14,7 @@ import NFT from '../../artifacts/contracts/NFT.sol/NFT.json';
 const CourseCategories = function ({ user, certificates, loading }) {
   const [isActive, setIsActive] = useState(false);
   const [isMinting, setIsMinting] = useState(false);
-  const [doneMinting, setDoneMinting] = useState(false);
+  const [, setDoneMinting] = useState(false);
   const router = useRouter();
   const handleSubmit = (e) => {
     e.preventDefault();

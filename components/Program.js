@@ -4,7 +4,7 @@ const Program = (props) => (
   <div className="col-lg-6">
     <div className="pricing-one__single">
       <div className="pricing-one__inner">
-        <img src={props.imgLink} width="90%" />
+        <img src={props.imgLink} width="90%" alt="pricing" />
         <p>{props.description}</p>
       </div>
     </div>

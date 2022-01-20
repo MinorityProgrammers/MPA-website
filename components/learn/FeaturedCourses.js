@@ -33,7 +33,9 @@ const FeaturedCourses = function ({
       },
     ],
   };
-  const sameUserCourses = courses && courses.filter((course) => enrolledCourses.some((eCourse) => course._id === eCourse.courseId._id));
+  const sameUserCourses = courses && courses.filter(
+    (course) => enrolledCourses.some((eCourse) => course._id === eCourse.courseId._id),
+  );
 
   return (
     <div>

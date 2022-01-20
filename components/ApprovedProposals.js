@@ -20,7 +20,8 @@ export const getStaticProps = async () => {
 const ApprovedProposals = function () {
   const [proposals, setProposals] = useState([]);
   const [votes, setVotes] = useState(0);
-  // This votes should ve post to database as API and will be shown on page loading from DB through API
+  /* This votes should ve post to database
+  as API and will be shown on page loading from DB through API */
   useEffect(() => {
     setProposals(approvedproposal);
   }, []);
@@ -32,7 +33,7 @@ const ApprovedProposals = function () {
       body: JSON.stringify(votes),
     })
       .then((response) => response.json())
-      .then((data) => {
+      .then(() => {
         console.log('saved to server');
       })
       .catch((error) => {
@@ -86,7 +87,7 @@ const ApprovedProposals = function () {
               <Link href={`/viewTask/${proposal.id}`}>
                 <div>
                   <p>
-                    <button className="tw-h-10 tw-text-xl sm:tw-mb-2 sm:tw-text-sm sm:tw-w-12 sm:tw-p-0 tw-w-48 md:tw-w-36 tw-border tw-rounded tw-text-center tw-border-purple-900 tw-text-blue-900">
+                    <button type="button" className="tw-h-10 tw-text-xl sm:tw-mb-2 sm:tw-text-sm sm:tw-w-12 sm:tw-p-0 tw-w-48 md:tw-w-36 tw-border tw-rounded tw-text-center tw-border-purple-900 tw-text-blue-900">
                       View Proposal
                     </button>
                   </p>
@@ -95,7 +96,7 @@ const ApprovedProposals = function () {
               <Link href={`/createTask/${proposal.id}`}>
                 <div>
                   <p>
-                    <button className="tw-h-10 tw-text-xl sm:tw-text-sm sm:tw-w-4/12 sm:tw-mt-2 md:tw-w-36 tw-w-48 tw-rounded tw-text-white tw-text-center tw-bg-blue-900">
+                    <button type="button" className="tw-h-10 tw-text-xl sm:tw-text-sm sm:tw-w-4/12 sm:tw-mt-2 md:tw-w-36 tw-w-48 tw-rounded tw-text-white tw-text-center tw-bg-blue-900">
                       Create Task
                     </button>
                   </p>

@@ -81,7 +81,7 @@ const HomepageTestimonials = () => {
           <div className="container" style={{ margin: '-3rem 0 0 0' }}>
             <div className="row homepage__testimonials-sponsor">
               {sponsors.map((sponsor, index) => (
-                <div className="col-lg-3 col-md-4 sponsor-col" key={index}>
+                <div className="col-lg-3 col-md-4 sponsor-col" key={`${`sponsor${index}`}`}>
                   <a
                     href={sponsor.sponsorLink}
                     target="_blank"
@@ -100,10 +100,10 @@ const HomepageTestimonials = () => {
             </div>
           </div>
           <div className="container">
-            {TestimonialsCollection.map((t, i) => (
+            {TestimonialsCollection.map((t) => (
               <div
                 className="row homepage__testimonials-container mt-3"
-                key={i}
+                key={t.name}
               >
                 <div className="homepage__testimonials-left m-2">
                   <img src={t.imgSrc} className="rounded-circle" alt={t.name} />
@@ -124,7 +124,7 @@ const HomepageTestimonials = () => {
           <div className="container" style={{ margin: '-3rem 0 0 0' }}>
             <div className="row homepage__testimonials-sponsor">
               {allies.map((ally, index) => (
-                <div className="col-lg-3 col-md-4 sponsor-col" key={index}>
+                <div className="col-lg-3 col-md-4 sponsor-col" key={`${`ally${index}`}`}>
                   <a href={ally.allyLink} target="_blank" rel="noreferrer">
                     <div className="item sponsor-item">
                       <img

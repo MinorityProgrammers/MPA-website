@@ -210,7 +210,7 @@ const Events = () => {
         </div>
         <div className="row">
           {PastEvents.map((events, index) => (
-            <EventCard item={events} key={index} />
+            <EventCard item={events} key={`${index + 1}`} />
           ))}
         </div>
       </div>

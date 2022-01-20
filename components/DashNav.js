@@ -38,7 +38,7 @@ const Navbar = ({ Open = false, setOpen, user }) => {
               className="tw-text-xl tw-z-10 tw-mr-6 tw-cursor-pointer "
               onClick={() => {
                 setNotice(!notice);
-                if (Log == true) {
+                if (Log === true) {
                   setLog(false);
                 }
               }}

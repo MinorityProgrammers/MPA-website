@@ -1,4 +1,4 @@
-export const members = [
+const members = [
   {
     id: 1,
     name: 'Shot',
@@ -639,3 +639,5 @@ export const members = [
   // },
 
 ];
+
+export default members;

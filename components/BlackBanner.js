@@ -13,7 +13,7 @@ const LegalBanner = (props) => {
             <p>{subtitle}</p>
           </div>
           <div className="vote-img">
-            <img src={bannerImgLink} alt="legal picture" />
+            <img src={bannerImgLink} alt="legal_picture" />
           </div>
         </div>
       </div>

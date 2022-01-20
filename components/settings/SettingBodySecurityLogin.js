@@ -2,14 +2,14 @@ import React, { useState, useEffect, useContext } from 'react';
 import FormData from 'form-data';
 import { useRouter } from 'next/router';
 import { GlobalContext } from '../../contexts/provider';
-import { updateProfile } from '../../contexts/actions/profile/updateProfile';
-import { all } from '../../contexts/utils/settings/settingsInputFields';
+import updateProfile from '../../contexts/actions/profile/updateProfile';
+import all from '../../contexts/utils/settings/settingsInputFields';
 import styles from '../../styles/settings/settingBodySecurityLogin.module.css';
 import CreateSettingInput from './CreateSettingInput';
 import SettingBody from './SettingBody';
 import { uprContext } from '../../contexts/settingsPagesProvider/settingsPagesProvider';
-import { findUserNames } from '../../helpers/userNames';
-import { findUserEmails } from '../../helpers/userEmails';
+import findUserNames from '../../helpers/userNames';
+import findUserEmails from '../../helpers/userEmails';
 
 const SettingBodySecurityLogin = function ({ settingsPage, data, userID }) {
   const router = useRouter();
@@ -23,15 +23,15 @@ const SettingBodySecurityLogin = function ({ settingsPage, data, userID }) {
 
   const { updatePasswordRedirection, setUpdatePasswordRedirection } = useContext(uprContext);
   useEffect(() => {
-    updatePasswordRedirection && setChangePassword(true);
+    if (updatePasswordRedirection) { setChangePassword(true); }
   }, []);
 
   useEffect(() => {
     fetch(`${process.env.BASE_URI}/user`)
       .then((response) => response.json())
-      .then((data) => {
-        setUsernames(findUserNames(data.data));
-        setEmails(findUserEmails(data.data));
+      .then((_data) => {
+        setUsernames(findUserNames(_data.data));
+        setEmails(findUserEmails(_data.data));
       });
   }, []);
 
@@ -48,7 +48,7 @@ const SettingBodySecurityLogin = function ({ settingsPage, data, userID }) {
   const initialInputState = {};
 
   inputFields.forEach(
-    (field) => (initialInputState[field.name] = ''),
+    (field) => { initialInputState[field.name] = ''; },
     // ex. {someInputFieldName: "inputFieldValue", ...}
   );
 
@@ -56,21 +56,14 @@ const SettingBodySecurityLogin = function ({ settingsPage, data, userID }) {
 
   useEffect(() => {
     inputFields.forEach(
-      (field) => (initialInputState[field.name] = data?.[field.name] || ''),
+      (field) => { initialInputState[field.name] = data?.[field.name] || ''; },
     );
 
     setInputStates(initialInputState);
   }, [data]);
 
   // update userData
-  const {
-    profileDispatch,
-    profileState: {
-      profile: {
-        profileLoading, profileError, profileData, profileIsUpdated,
-      },
-    },
-  } = useContext(GlobalContext);
+  const { profileDispatch } = useContext(GlobalContext);
 
   const formData = new FormData();
   Object.keys(inputStates).forEach((inputName) => {
@@ -85,48 +78,6 @@ const SettingBodySecurityLogin = function ({ settingsPage, data, userID }) {
 
     formData.append(inputName, value);
   });
-
-  const handleChange = (name, value) => {
-    if (
-      name === 'userName'
-      && usernames.includes(value)
-      && data?.userName !== value
-      && !(value === '')
-    ) {
-      toggleUsernameWarning(true);
-    } else {
-      toggleUsernameWarning(false);
-    }
-
-    if (name === 'userName' && /[^\w\-]/.test(value)) {
-      toggleWrongUsernameWarning(true);
-    } else {
-      toggleWrongUsernameWarning(false);
-    }
-
-    if (
-      name === 'email'
-      && emails.includes(value)
-      && data?.email !== value
-      && !(value === '')
-    ) {
-      toggleEmailWarning(true);
-    } else {
-      toggleEmailWarning(false);
-    }
-
-    if (
-      name === 'email'
-      && (value.trim().length < 5
-        || (value.trim().length >= 5 && !regEmail.test(value.trim())))
-    ) {
-      toggleWrongEmailWarning(true);
-    } else {
-      toggleWrongEmailWarning(false);
-    }
-
-    setInputStates({ ...inputStates, [name]: value.toLowerCase() });
-  };
 
   const toggleUsernameWarning = (on) => {
     if (on) {
@@ -188,6 +139,48 @@ const SettingBodySecurityLogin = function ({ settingsPage, data, userID }) {
     }
   };
 
+  const handleChange = (name, value) => {
+    if (
+      name === 'userName'
+      && usernames.includes(value)
+      && data?.userName !== value
+      && !(value === '')
+    ) {
+      toggleUsernameWarning(true);
+    } else {
+      toggleUsernameWarning(false);
+    }
+
+    if (name === 'userName' && /[^\w\-]/.test(value)) {
+      toggleWrongUsernameWarning(true);
+    } else {
+      toggleWrongUsernameWarning(false);
+    }
+
+    if (
+      name === 'email'
+      && emails.includes(value)
+      && data?.email !== value
+      && !(value === '')
+    ) {
+      toggleEmailWarning(true);
+    } else {
+      toggleEmailWarning(false);
+    }
+
+    if (
+      name === 'email'
+      && (value.trim().length < 5
+        || (value.trim().length >= 5 && !regEmail.test(value.trim())))
+    ) {
+      toggleWrongEmailWarning(true);
+    } else {
+      toggleWrongEmailWarning(false);
+    }
+
+    setInputStates({ ...inputStates, [name]: value.toLowerCase() });
+  };
+
   const handleSubmit = () => {
     if (
       // email already exists
@@ -234,12 +227,12 @@ const SettingBodySecurityLogin = function ({ settingsPage, data, userID }) {
 
       if (data?.userName === inputStates?.userName) {
         const slug = data?.userName;
-        slug && router.push(`/user/${slug}`);
+        if (slug) { router.push(`/user/${slug}`); }
       } else {
         // wait until username updates to generate new route for user profile page
         setTimeout(() => {
           const slug = inputStates?.userName;
-          slug && router.push(`/user/${slug}`);
+          if (slug) { router.push(`/user/${slug}`); }
         }, 3000);
       }
     }
@@ -248,7 +241,7 @@ const SettingBodySecurityLogin = function ({ settingsPage, data, userID }) {
   const closeProfileSetup = () => {
     // discard changes
     const slug = data?.userName;
-    slug && router.push(`/user/${slug}`);
+    if (slug) { router.push(`/user/${slug}`); }
   };
 
   return (
@@ -264,7 +257,7 @@ const SettingBodySecurityLogin = function ({ settingsPage, data, userID }) {
           <h5>Update Account Login</h5>
           {
             // display an input component for each input field
-            [all.emailField, all.usernameField].map((field, key) => (
+            [all.emailField, all.usernameField].map((field) => (
               <CreateSettingInput
                 name={field.name}
                 type={field.type}
@@ -277,7 +270,7 @@ const SettingBodySecurityLogin = function ({ settingsPage, data, userID }) {
                 setValue={(value) => {
                   handleChange(field.name, value);
                 }}
-                key={key}
+                key={field.name}
               />
             ))
           }
@@ -286,8 +279,7 @@ const SettingBodySecurityLogin = function ({ settingsPage, data, userID }) {
           <h5>
             <span
               onClick={() => {
-                updatePasswordRedirection
-                  && setUpdatePasswordRedirection(false);
+                if (updatePasswordRedirection) { setUpdatePasswordRedirection(false); }
                 setChangePassword((state) => !state);
               }}
             >
@@ -300,7 +292,7 @@ const SettingBodySecurityLogin = function ({ settingsPage, data, userID }) {
               all.currentPasswordField,
               all.newPasswordField,
               all.confirmNewPasswordField,
-            ].map((field, key) => (
+            ].map((field) => (
               <CreateSettingInput
                 name={field.name}
                 type={field.type}
@@ -313,7 +305,7 @@ const SettingBodySecurityLogin = function ({ settingsPage, data, userID }) {
                 setValue={(value) => {
                   handleChange(field.name, value);
                 }}
-                key={key}
+                key={field.name}
               />
             ))}
         </div>

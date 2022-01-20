@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import { FaRegUser } from 'react-icons/fa';
 import { IoSettingsOutline } from 'react-icons/io5';
 import { IoIosLogOut } from 'react-icons/io';
-import { useRouter } from 'next/router';
 import { GlobalContext } from '../contexts/provider';
 import { LOGOUT_USER } from '../contexts/actions/actionTypes';
 
@@ -12,8 +11,6 @@ const UserDropDown = ({
   Log,
   setLog,
   profilePicture,
-  fullName,
-  email,
 }) => {
   const { authDispatch } = useContext(GlobalContext);
 
@@ -26,7 +23,6 @@ const UserDropDown = ({
     window.location.href = '/login';
   };
 
-  const Router = useRouter();
   return (
     <div>
       <img
@@ -35,8 +31,8 @@ const UserDropDown = ({
         alt="profile"
         onClick={() => {
           setLog(!Log);
-          if (notice == true) {
-            setNotice(notice == false);
+          if (notice === true) {
+            setNotice(notice === false);
           }
         }}
       />

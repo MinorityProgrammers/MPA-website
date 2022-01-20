@@ -6,7 +6,7 @@ const FeaturedInfoCard = ({ data }) => (
   <div className="card card__container">
     <div className="card-body">
       <div className="card__header mb-2">
-        <img src={data.startupImage} className="card__header-logo" />
+        <img src={data.startupImage} className="card__header-logo" alt="startupImage" />
         <Link href={`/startup/${data._id}`}>
           <h2 className="card__header-title" style={{ cursor: 'pointer' }}>
             {data.name}

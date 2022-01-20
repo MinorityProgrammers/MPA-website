@@ -2,8 +2,8 @@ import React, { useState, useEffect, useContext } from 'react';
 import FormData from 'form-data';
 import { useRouter } from 'next/router';
 import { GlobalContext } from '../../contexts/provider';
-import { updateProfile } from '../../contexts/actions/profile/updateProfile';
-import { all } from '../../contexts/utils/settings/settingsInputFields';
+import updateProfile from '../../contexts/actions/profile/updateProfile';
+import all from '../../contexts/utils/settings/settingsInputFields';
 import styles from '../../styles/settings/SettingBodyProfileBackground.module.css';
 import CreateSettingInput from './CreateSettingInput';
 import CreateSettingAddition from './CreateSettingAddition';
@@ -23,7 +23,7 @@ const SettingBodyProfileBackground = function ({ settingsPage, data, userID }) {
   const initialInputState = {};
 
   inputFields.forEach(
-    (field) => (initialInputState[field.name] = ''),
+    (field) => { initialInputState[field.name] = ''; },
     // ex. {someInputFieldName: "inputFieldValue", ...}
   );
 
@@ -31,36 +31,31 @@ const SettingBodyProfileBackground = function ({ settingsPage, data, userID }) {
 
   useEffect(() => {
     inputFields.forEach(
-      (field) => (initialInputState[field.name] = data?.[field.name] || ''),
+      (field) => { initialInputState[field.name] = data?.[field.name] || ''; },
     );
 
     setInputStates(initialInputState);
   }, [data]);
 
   // update userData
-  const {
-    profileDispatch,
-    profileState: {
-      profile: {
-        profileLoading, profileError, profileData, profileIsUpdated,
-      },
-    },
-  } = useContext(GlobalContext);
+  const { profileDispatch } = useContext(GlobalContext);
 
   const formData = new FormData();
-  Object.keys(inputStates).forEach((inputName) => {
+  Object.keys(inputStates).forEach((inputName) => (
     Array.isArray(inputStates[inputName])
-      && inputStates[inputName].map((item) => formData.append(inputName, item));
-  });
+      && inputStates[inputName].map((item) => formData.append(inputName, item))
+  ));
 
   const handleChange = (name, value) => {
     setInputStates({ ...inputStates, [name]: value.length ? value : [''] });
   };
 
   // Get multiple values from multiple input fields within the same parent element
-  const getFieldValues = (element, names) => names.map((name) => element.parentNode.parentNode.parentNode.querySelector(
-    `input[name='${name}']`,
-  ));
+  const getFieldValues = (element, names) => names.map(
+    (name) => element.parentNode.parentNode.parentNode.querySelector(
+      `input[name='${name}']`,
+    ),
+  );
   // get values from input fields within same parent and add it as an array element to state
   const handleAdd = (e, names, reset) => {
     const fieldValues = getFieldValues(e.target, names);
@@ -69,7 +64,7 @@ const SettingBodyProfileBackground = function ({ settingsPage, data, userID }) {
     const value = Array.from(fieldValues)
       .map((fieldValue) => fieldValue.value)
       .join(' - ');
-    value !== ' - ' && !/^[ \- ]/.test(value) && !/[ \- ]$/.test(value) && handleChange(name, [...new Set([...prevValues, value])]);
+    (() => value !== ' - ' && !/^[ \- ]/.test(value) && !/[ \- ]$/.test(value) && handleChange(name, [...new Set([...prevValues, value])]))();
     const addedText = document.querySelectorAll('.css-1uccc91-singleValue');
     addedText.forEach((singleText) => {
       singleText.textContent = reset;
@@ -85,13 +80,13 @@ const SettingBodyProfileBackground = function ({ settingsPage, data, userID }) {
     updateProfile(userID, formData)(profileDispatch);
 
     const slug = data?.userName;
-    slug && router.push(`/user/${slug}`);
+    if (slug) { router.push(`/user/${slug}`); }
   };
 
   const closeProfileSetup = () => {
     // discard changes
     const slug = data?.userName;
-    slug && router.push(`/user/${slug}`);
+    if (slug) { router.push(`/user/${slug}`); }
   };
   // console.log(inputStates);
   return (
