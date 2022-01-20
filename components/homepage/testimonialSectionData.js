@@ -124,4 +124,8 @@ export const allies = [
     allyLink: 'https://www.developerdao.com/',
     imgSrc: 'assets/images/sponsorship/sponsor20.png',
   },
+  {
+    allyLink: 'https://www.questbook.app/',
+    imgSrc: 'assets/images/sponsorship/sponsor21.svg',
+  },
 ];
