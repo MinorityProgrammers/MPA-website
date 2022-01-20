@@ -19,7 +19,7 @@ const HomepageNewTopSection = () => (
           <p className="tw-text-xl lg:tw-text-sm tw-text-blue-900">We are an International network of developers unifying together to build socially impactful projects and spread STEM education to marginalized communities.</p>
         </div>
         <div className="tw-mt-4">
-          <a href="/join">
+          <a href="https://snapshot.org/#/minorityprogrammers.eth" target="_blank" rel="noreferrer">
             <button
               type="button"
               className="tw-bg-blue-600 hover:tw-bg-blue-700 tw-text-white tw-font-bold tw-py-2 tw-px-4 tw-rounded"
