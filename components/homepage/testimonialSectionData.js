@@ -66,6 +66,10 @@ export const sponsors = [
     sponsorLink: 'https://algorand.foundation/',
     imgSrc: 'assets/images/sponsorship/sponsor13.png',
   },
+  {
+    sponsorLink: 'https://celocommunityfund.org/',
+    imgSrc: 'assets/images/sponsorship/CeloCommunityFUnd.jpg',
+  },
 ];
 
 export const allies = [
