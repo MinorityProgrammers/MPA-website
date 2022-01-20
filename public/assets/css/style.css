@@ -6740,12 +6740,15 @@ html {
 */
 /* homepage navbar */
 .homepage__header {
-  background: #efefef;
+  background: #14152B;
+  color: #FFFFFF;
   position: absolute;
   top: -3px;
   left: 0;
   width: 100%;
   z-index: 99;
+  border-bottom: 1px solid #9379FF;
+  font-family: 'Poppins', sans-serif;
 }
 .homepage__topbar {
   background: transparent;
@@ -6857,16 +6860,14 @@ html {
   width: 200px;
   height: 100px;
   cursor: pointer;
-  background-color: #474bff;
   left: 0px;
   top: 0.1px;
-  border-radius: 0% 0% 100% 0% / 100% 0% 100% 0%;
 }
 .navbar-logo img {
   width: 30%;
   position: relative;
   left: 20%;
-  top: 20%;
+  top: 30%;
 }
 .nav-menu {
   /* display: grid;
@@ -6884,7 +6885,7 @@ html {
   letter-spacing: 0.5px;
   font-size: 0.9rem;
   font-weight: 500;
-  color: #3e385d;
+  color: #FFFFFF;
   -webkit-transition: all 0.4s ease;
   transition: all 0.4s ease;
   
@@ -6918,7 +6919,7 @@ html {
 }
 .nav-item a:hover,
 .nav-item a:focus {
-  color: #474bfd !important;
+  color: #9379FF !important;
   font-weight: 600;
 }
 .nav-item a:active {
@@ -6968,11 +6969,20 @@ html {
   transform: scale(1.2);
 }
 .fa-search {
-  color: #3e385d;
+  color: #ffffff;
 }
 .fa-user-circle {
-  color: #3e385d;
+  font-size: 25px;
+  color: #fff;
   margin-left: 4px;
+  margin-top: 0.6rem;
+}
+.connect__button{
+  background: #A259FF;
+  border-radius: 100px
+}
+.navbar__search{
+  max-width: 150px;
 }
 .searchInput {
   /* border: none;
@@ -6989,7 +6999,7 @@ html {
 
 .searchInput::placeholder,
 .mobile-searchInput::placeholder {
-  color: #3e385d;
+  color: #ffffff;
 }
 
 /* dropdown login*/
@@ -7646,7 +7656,7 @@ html {
   font-family: 'Red Hat Display', sans-serif;
   color: #fff;
   /* background: linear-gradient(90deg, #ff00b8 0%, #ff655b 50.8%, #ffc700 100%); */
-  background-color: #efefef;
+  background: #14152B;
 }
 .homepage__hero .container {
   margin-top: 2rem;
@@ -7658,7 +7668,7 @@ html {
   background: none;
 }
 .homepage__hero__img{
-  padding-top: 2.5rem;
+  /* padding-top: 2.5rem; */
 }
 .hero__item {
   display: flex;
@@ -10016,10 +10026,6 @@ blockquote.twitter-tweet {
 .slick-prev:before,
 .slick-next:before {
   color: #151371 !important;
-}
-
-.NavIcon {
-  font-size: 1.3rem !important;
 }
 
 .certificate {
