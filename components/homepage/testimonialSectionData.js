@@ -74,47 +74,13 @@ export const sponsors = [
 
 export const allies = [
   {
-    allyLink: 'https://mason360.gmu.edu/bam/',
-    imgSrc: 'assets/images/brand-1-1.png',
-  },
-  {
-    allyLink: 'https://thelastmile.org/',
-    imgSrc: 'assets/images/lastmile.png',
-  },
-  { allyLink: 'https://aisnet.org/', imgSrc: 'assets/images/ais.png' },
-  {
     allyLink: 'https://www.blockchainedu.org/',
     imgSrc: 'assets/images/ben.png',
   },
   { allyLink: 'https://devpost.com/', imgSrc: 'assets/images/devpost.png' },
   {
-    allyLink: 'https://www.blockchainacceleration.org/',
-    imgSrc: 'assets/images/baf-logo.png',
-  },
-  { allyLink: 'https://www.jmu.edu/', imgSrc: 'assets/images/jmucs.png' },
-  {
-    allyLink: 'https://www.echelondigital.com/',
-    imgSrc: 'assets/images/echelon-logo.png',
-  },
-  {
-    allyLink: 'https://montech.io/',
-    imgSrc: 'assets/images/sponsorship/sponsor10.png',
-  },
-  {
-    allyLink: 'https://jmuxlabs.org/',
-    imgSrc: 'assets/images/sponsorship/sponsor11.png',
-  },
-  {
-    allyLink: 'https://www.learnacademy.org/',
-    imgSrc: 'assets/images/sponsorship/sponsorlearn.svg',
-  },
-  {
     allyLink: 'https://entethalliance.org/',
     imgSrc: 'assets/images/sponsorship/sponsor14.png',
-  },
-  {
-    allyLink: 'https://www.democracylab.org/',
-    imgSrc: 'assets/images/sponsorship/sponsor15.png',
   },
   {
     allyLink: 'https://www.theshrimpsociety.com/',
@@ -127,5 +93,39 @@ export const allies = [
   {
     allyLink: 'https://www.developerdao.com/',
     imgSrc: 'assets/images/sponsorship/sponsor20.png',
+  },
+  {
+    allyLink: 'https://www.blockchainacceleration.org/',
+    imgSrc: 'assets/images/baf-logo.png',
+  },
+  { allyLink: 'https://www.jmu.edu/', imgSrc: 'assets/images/jmucs.png' },
+  {
+    allyLink: 'https://mason360.gmu.edu/bam/',
+    imgSrc: 'assets/images/brand-1-1.png',
+  },
+  {
+    allyLink: 'https://thelastmile.org/',
+    imgSrc: 'assets/images/lastmile.png',
+  },
+  { allyLink: 'https://aisnet.org/', imgSrc: 'assets/images/ais.png' },
+  {
+    allyLink: 'https://jmuxlabs.org/',
+    imgSrc: 'assets/images/sponsorship/sponsor11.png',
+  },
+  {
+    allyLink: 'https://www.learnacademy.org/',
+    imgSrc: 'assets/images/sponsorship/sponsorlearn.svg',
+  },
+  {
+    allyLink: 'https://www.democracylab.org/',
+    imgSrc: 'assets/images/sponsorship/sponsor15.png',
+  },
+  {
+    allyLink: 'https://www.echelondigital.com/',
+    imgSrc: 'assets/images/echelon-logo.png',
+  },
+  {
+    allyLink: 'https://montech.io/',
+    imgSrc: 'assets/images/sponsorship/sponsor10.png',
   },
 ];
