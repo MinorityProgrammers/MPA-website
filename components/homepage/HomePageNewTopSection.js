@@ -10,13 +10,17 @@ const HomepageNewTopSection = () => (
       />
     </div>
     <div className="container top__part tw-relative tw-flex tw-flex-row tw-w-full tw-h-full lg:tw-flex-col-reverse">
-      <div className="tw-flex tw-flex-col tw-pt-52 tw-pb-20 tw-px-4 lg:tw-pt-2 tw-z-10">
+      <div className="tw-flex tw-flex-col tw-pb-20 tw-px-4 lg:tw-pt-2 tw-z-10">
         {/* content sections */}
         <div className="tw-w-1/3 tw-mt-4">
-          <p className="tw-text-4xl tw-font-bold tw-text-blue-900">Minority Programmers Associations</p>
+          <p className="tw-text-4xl tw-font-bold tw-text-blue-900">Diversity meets web3</p>
         </div>
         <div className="tw-mt-4 tw-font-medium">
-          <p className="tw-text-xl lg:tw-text-sm tw-text-blue-900">We are an International network of developers unifying together to build socially impactful projects and spread STEM education to marginalized communities.</p>
+          <p className="tw-text-xl lg:tw-text-sm tw-text-blue-900">
+            Join over 2 thousand International network of minority developers
+            changing the world through tech.
+            Connect your wallet to  REGISTER FOR FREE!
+          </p>
         </div>
         <div className="tw-mt-4">
           <a href="https://snapshot.org/#/minorityprogrammers.eth" target="_blank" rel="noreferrer">
@@ -29,10 +33,10 @@ const HomepageNewTopSection = () => (
           </a>
         </div>
       </div>
-      <div className="tw-w-11/12 lg:tw-p-2 tw-z-10 tw-h-full homepage__hero__img">
+      <div className="tw-w-11/12 tw-z-10 tw-h-full homepage__hero__img">
         {/* image sections */}
         <img
-          src="/assets/images/meta.png"
+          src="/assets/images/meta.svg"
           alt=""
           className="tw-w-full tw-h-ful "
         />
