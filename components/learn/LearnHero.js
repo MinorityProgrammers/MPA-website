@@ -10,6 +10,9 @@ const LearnHero = function () {
         <div className="container ">
           <div className="consultancyHero-container">
             <div>
+              <h1 className="consultancyHero-title">
+                Learn
+              </h1>
               <p className="consultancyHero-txt">Learn the hottest skills in blockchain, earn NFT credentials that recruiters from the top technology companies will see through our decentralized talent sourcing system.</p>
               <div className="incubator__button">
                 <div className="button btn-gradient" onClick={() => { scrollToModule(); }}>

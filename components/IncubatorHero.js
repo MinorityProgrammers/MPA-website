@@ -12,6 +12,9 @@ const IncubatorHero = () => {
         <div className="container">
           <div className="incubator-center">
             <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 incubator__text">
+              <h1 className="incubator__title">
+                Incubator
+              </h1>
               <h2>
                 Build diverse startups in a transparent and accountable way.
                 Build milestone driven DAOs around the projects you have a stake in.
