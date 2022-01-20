@@ -950,8 +950,8 @@ class Event extends Component {
             )
               : (
                 <div className="event_login">
-                  <h1>Participating in events you enjoy</h1>
-                  <h2>There are many activities for you to help improve yourself.</h2>
+                  <h1>Participate in events you enjoy</h1>
+                  <h2>Choose from the hundreds of virtual, hybrid, and IRL events in the Minority Programmers network.</h2>
 
                   <div className="event_login_button">
                     <button
