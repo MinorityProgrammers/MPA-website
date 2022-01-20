@@ -134,7 +134,13 @@
 .consultancyHero-container {
   display: flex;
   align-items: center;
-  height: 40vh;
+  justify-content: space-evenly;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  /* max-height: 40vh; */
+}
+.consultancyHero-container img {
+  max-height: 500px;
 }
 
 .myButton {
@@ -166,6 +172,15 @@
 
 .list__bullet {
   font-size: 20px;
+}
+@media only screen and (max-width: 850px) {
+  .consultancyHero-container {
+    flex-direction: column-reverse;
+  }
+  .consultancyHero-txt {
+    width: 100%;
+    padding: 15px;
+  }
 }
 @media only screen and (max-width: 500px) {
   .consultancyHero-title {

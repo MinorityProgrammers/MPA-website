@@ -18,7 +18,7 @@ const ConsultancyHero = function () {
               </div>
             </div>
             <div>
-              <img src="assets/images/consultancy/consultancyHero.png" />
+              <img src="assets/images/consultancy/consultancyHero.png" alt="hero-img" />
             </div>
           </div>
         </div>

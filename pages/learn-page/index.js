@@ -64,7 +64,7 @@ const LearnPage = function () {
         active="Home"
         handleClick={handleClick}
       />
-      <div className="tw-pt-20">
+      <div>
         <LearnHero />
         <CourseCategories
           user={data}

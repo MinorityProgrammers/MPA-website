@@ -15,7 +15,11 @@ const IncubatorHero = () => {
               <h1 className="incubator__title">
                 Incubator
               </h1>
-              <h2>Build diverse startups in a transparent and accountable way. Build milestone driven DAOs around the projects you have a stake in.</h2>
+              <h2>
+                Build diverse startups in a transparent and accountable way.
+                Build milestone driven DAOs around the projects you have a stake in.
+
+              </h2>
               <div className="incubator__button">
                 <div onClick={scrollTo} className="button btn-gradient">
                   View Startups
@@ -23,7 +27,7 @@ const IncubatorHero = () => {
               </div>
             </div>
             <div>
-              <img src="assets/images/incubator/incubatorHero.png" />
+              <img src="assets/images/incubator/incubatorHero.png" alt="hero-img" />
             </div>
           </div>
         </div>

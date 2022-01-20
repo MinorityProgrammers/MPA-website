@@ -128,4 +128,8 @@ export const allies = [
     allyLink: 'https://montech.io/',
     imgSrc: 'assets/images/sponsorship/sponsor10.png',
   },
+  {
+    allyLink: 'https://www.questbook.app/',
+    imgSrc: 'assets/images/sponsorship/sponsor21.svg',
+  },
 ];
