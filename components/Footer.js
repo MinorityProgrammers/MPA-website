@@ -30,11 +30,11 @@ const Footer = () => {
                       </li>
                       <li>
                         <a
-                          href="https://www.defisummer.org"
+                          href="https://winter.devpost.com/"
                           target="_blank"
                           rel="noreferrer"
                         >
-                          DefiSummer
+                          DefiWinter
                         </a>
                       </li>
                     </ul>
@@ -98,18 +98,11 @@ const Footer = () => {
           <div className="container">
             <div className="site-footer__social">
               <a
-                href="https://www.facebook.com/MinorityProgrammers"
+                href="https://linktr.ee/MinorityProgrammers"
                 target="_blank"
                 rel="noreferrer"
               >
-                <i className="fab fa-facebook-square" />
-              </a>
-              <a
-                href="https://www.instagram.com/minorityprogrammers/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <i className="fab fa-instagram" />
+                <i className="fas fab fa-link" />
               </a>
               <a
                 href="https://discord.com/invite/4vdtmQqz6d"
@@ -119,26 +112,19 @@ const Footer = () => {
                 <i className="fab fa-discord" />
               </a>
               <a
-                href="https://github.com/MinorityProgrammers/"
+                href="https://linkedin.com/company/minority-programmers/"
                 target="_blank"
                 rel="noreferrer"
               >
-                <i className="fab fa-github" />
+                <i className="fab fa-linkedin" />
               </a>
-              <a
+              {/* <a
                 href="https://www.reddit.com/r/MinorityProgrammers"
                 target="_blank"
                 rel="noreferrer"
               >
                 <i className="fab fa-reddit-alien" />
-              </a>
-              <a
-                href="https://medium.com/minority-programmers"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <i className="fab fa-medium-m" />
-              </a>
+              </a> */}
               <a
                 href="https://twitter.com/minorityprogram"
                 target="_blank"
@@ -154,18 +140,32 @@ const Footer = () => {
                 <i className="fab fa-youtube" />
               </a>
               <a
-                href="https://linkedin.com/company/minority-programmers/"
+                href="https://www.instagram.com/minorityprogrammers/"
                 target="_blank"
                 rel="noreferrer"
               >
-                <i className="fab fa-linkedin" />
+                <i className="fab fa-instagram" />
               </a>
               <a
-                href="https://linktr.ee/MinorityProgrammers"
+                href="https://www.facebook.com/MinorityProgrammers"
                 target="_blank"
                 rel="noreferrer"
               >
-                <i className="fas fab fa-link" />
+                <i className="fab fa-facebook-square" />
+              </a>
+              <a
+                href="https://github.com/MinorityProgrammers/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <i className="fab fa-github" />
+              </a>
+              <a
+                href="https://medium.com/minority-programmers"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <i className="fab fa-medium-m" />
               </a>
             </div>
           </div>
