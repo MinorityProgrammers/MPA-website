@@ -61,7 +61,7 @@ const JoinCard = function () {
             rewarded today.
           </p>
         </div>
-        <span className="d-flex justify-content-evenly">
+        {/* <span className="d-flex justify-content-evenly">
           <Link href="/chapter">
             <button type="button" className="mpa-joinpage-btns hover:tw-shadow-xl-2">
               Find Chapter
@@ -76,7 +76,7 @@ const JoinCard = function () {
           >
             Start Chapter
           </button>
-        </span>
+        </span> */}
       </div>
 
       <div className="card m-5 align-items-center tw-shadow-xl tw-cursor-pointer" style={{ width: '19rem' }}>
@@ -93,7 +93,7 @@ const JoinCard = function () {
         </div>
         <Link href="/incubator">
           <button type="button" className="mpa-joinpage-btns hover:tw-shadow-xl">
-            Get funding
+            Get Funding
           </button>
         </Link>
       </div>

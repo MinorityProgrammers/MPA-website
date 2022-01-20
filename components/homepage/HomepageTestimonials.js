@@ -43,7 +43,7 @@ const HomepageTestimonials = () => {
   return (
     <section className="homepage__testimonials">
       <div className="heading__number">
-        <h3 className="tw-text-blue-900">06</h3>
+        <h3 className="tw-text-blue-900">03</h3>
       </div>
       <div className="container">
         <div className="heading__title-container">

@@ -68,7 +68,7 @@ const HomepageCore = () => {
     <section className="homepage__core">
       <Popup {...popupInfo} togglePopup={handleTogglePopup} />
       <div className="heading__number">
-        <h3 className="tw-text-blue-900">03</h3>
+        <h3 className="tw-text-blue-900">02</h3>
       </div>
       <div className="container">
         <h2 className="heading__title mt-5 mb-5 tw-text-blue-900">

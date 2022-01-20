@@ -64,11 +64,11 @@ const HomepageFour = function () {
               />
               {hide === false && <ComingSoon closeClick={handleClick} />}
               <HomePageNewTopSection />
-              <HomepageAbout />
-              <HomepageApp />
+              {/* <HomepageAbout /> */}
+              {/* <HomepageApp /> */}
               <HomepageCore />
-              <HomepageWave />
-              <HomepageTeam />
+              {/* <HomepageWave /> */}
+              {/* <HomepageTeam /> */}
               <HomepageTestimonials />
               <HomepageDonate />
               <Footer />
