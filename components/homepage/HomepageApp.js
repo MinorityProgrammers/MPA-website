@@ -2,7 +2,7 @@ import React from 'react';
 
 // reusable ImageCard for the HomepageApp Component
 const ImageCard = ({
-  href, bkgImgSrc, iconSrc, text,
+  href, bkgImgSrc, iconSrc,
 }) => (
   <div className="col-lg-4 col-md-6 col-sm-6 col-xs-12 card__container-app">
     <a href={href}>
@@ -19,9 +19,9 @@ const ImageCard = ({
             className="card-img-banner"
           />
         </div>
-        <div className="card-body card-body-custom">
+        {/* <div className="card-body card-body-custom">
           <p className="card-button">{text}</p>
-        </div>
+        </div> */}
       </div>
     </a>
   </div>

@@ -21,7 +21,7 @@ const MentorshipProgramHome = ({
   return (
     <section>
       <div className="container">
-        <div className="login__reg flex d-flex justify-content-end mb-5 mt-2 pr-5">
+        {/* <div className="login__reg flex d-flex justify-content-end mb-5 mt-2 pr-5">
           <div>
             {data === null ? (
               <a
@@ -36,7 +36,7 @@ const MentorshipProgramHome = ({
               ' '
             )}
           </div>
-        </div>
+        </div> */}
 
         <div className="signup__program">
           <div className="row">
@@ -58,7 +58,7 @@ const MentorshipProgramHome = ({
             </div>
             <div className="col-lg-8 d-flex align-items-center mshipProgram__w_list">
               <ul className="">
-                <h1> Sign Up Program</h1>
+                <h1> Sign Up For The Program</h1>
                 <li>
                   {' '}
                   REGISTER for a Minority Programmers Association account.
@@ -91,7 +91,7 @@ const MentorshipProgramHome = ({
                 </li>
                 <li>
                   {' '}
-                  Choose a mentorship track & start CHAT with your match.
+                  Choose a mentorship track & start a chat with your match.
                   {' '}
                 </li>
               </ul>

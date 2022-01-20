@@ -60,7 +60,7 @@ const JoinCard = function () {
             rewarded today.
           </p>
         </div>
-        <span className="d-flex justify-content-evenly">
+        {/* <span className="d-flex justify-content-evenly">
           <Link href="/chapter">
             <button type="button" className="mpa-joinpage-btns hover:tw-shadow-xl-2">
               Find Chapter
@@ -75,7 +75,7 @@ const JoinCard = function () {
           >
             Start Chapter
           </button>
-        </span>
+        </span> */}
       </div>
 
       <div className="card m-5 align-items-center tw-shadow-xl tw-cursor-pointer" style={{ width: '19rem' }}>
@@ -92,7 +92,7 @@ const JoinCard = function () {
         </div>
         <Link href="/incubator">
           <button type="button" className="mpa-joinpage-btns hover:tw-shadow-xl">
-            Get funding
+            Get Funding
           </button>
         </Link>
       </div>
@@ -130,7 +130,7 @@ const JoinCard = function () {
         </div>
         <Link href="/mentorshipProgram">
           <button type="button" className="mpa-joinpage-btns hover:tw-shadow-xl">
-            Become a mentor
+            Become a Mentor
           </button>
         </Link>
       </div>
@@ -144,15 +144,15 @@ const JoinCard = function () {
           <h4 className="card-title">Meet the President</h4>
           <p className="card-text">
             {' '}
-            Unsure how to get involved? Schedule a a one-on-one video chat with
-            MPA president Shot Khan and learn how to get started.
+            Unsure how to get involved? Schedule a one-on-one video chat with the
+            MPA President & learn how to get started.
             {' '}
           </p>
         </div>
         <Link href="https://calendly.com/minorityprogrammers/join?month=2021-09">
           <a target="_blank">
             <button type="button" className="mpa-joinpage-btns hover:tw-shadow-xl">
-              Meet the MPA president
+              Schedule Meeting
             </button>
           </a>
         </Link>

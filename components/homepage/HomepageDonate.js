@@ -86,7 +86,7 @@ const HomepageDonate = () => {
   return (
     <section id="donate" className="homepage__donate">
       <div className="heading__number">
-        <h3 className="tw-text-blue-900">07</h3>
+        <h3 className="tw-text-blue-900">04</h3>
       </div>
       <div className="container donate__container">
         <h2 className="heading__title mt-5 mb-5 tw-text-blue-900">
@@ -193,7 +193,7 @@ const HomepageDonate = () => {
             >
               <i className="fab fa-bitcoin" />
             </a>
-            <a href="sponsorship" target="_blank" rel="noreferrer">
+            {/* <a href="sponsorship" target="_blank" rel="noreferrer">
               <i className="fas fa-gift" />
             </a>
             <a href="sponsorship" target="_blank" rel="noreferrer">
@@ -201,7 +201,7 @@ const HomepageDonate = () => {
             </a>
             <a href="sponsorship" target="_blank" rel="noreferrer">
               <i className="fab fa-twitch" />
-            </a>
+            </a> */}
           </div>
         </div>
       </div>

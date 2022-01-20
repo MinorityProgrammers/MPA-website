@@ -67,16 +67,10 @@ const ConsultancyHomeExplainer = function ({
             </div>
             <div className="col-lg-8 d-flex align-items-center mshipProgram__w_list">
               <ul className="">
-                <h1> - Make Account</h1>
-                <li>
-                  {' '}
-                  - REGISTER for a Minority Programmers Association account.
-                </li>
-                <li> - Go to CONSULTANCY page and submit your project idea.</li>
-                <li>
-                  {' '}
-                  - Get all the resources to BUILD a Large Scale Tech Business.
-                </li>
+                <h1> Make Account</h1>
+                <li> REGISTER for a  Minority Programmers Association account.</li>
+                <li> Go to CONSULTANCY page and submit your project idea.</li>
+                <li> Get all the resources to BUILD a Large Scale Tech Business.</li>
               </ul>
             </div>
           </div>
@@ -88,16 +82,9 @@ const ConsultancyHomeExplainer = function ({
             <div className="col-lg-8 d-flex align-items-center mshipProgram__b_list">
               <ul className="">
                 <h1>Submit Your Idea</h1>
-                <li>
-                  {' '}
-                  - Submit your PROJECT PROPOSAL directly to a project manager.
-                </li>
-                <li>
-                  - A MPA project manager will translate you requirements to a
-                  PROJECT QUOTE (budget, staffing, timeline, with a complete
-                  task break down and vesting schedule)
-                </li>
-                <li> - You would be charge for a fee to project quotes. </li>
+                <li> Submit your PROJECT PROPOSAL directly to a project manager.</li>
+                <li> A MPA project manager will translate you requirements to a PROJECT QUOTE (budget, staffing, timeline, with a complete task break down and vesting schedule)</li>
+                <li> You would be charge for a fee to project quotes. </li>
               </ul>
             </div>
             <div className="col-lg-4">
@@ -141,18 +128,9 @@ const ConsultancyHomeExplainer = function ({
             <div className="col-lg-8 d-flex align-items-center mshipProgram__w_list">
               <ul className="">
                 <h1>Approve Quote</h1>
-                <li> - CHECK the quote propused by the project manager</li>
-                <li>
-                  {' '}
-                  - Stake your PAYMENT in $MINORITY tokens, to be paid out
-                  automatically based on completion of tasks.
-                  {' '}
-                </li>
-                <li>
-                  {' '}
-                  - Wait for QUALIFIED TEAM members to take your task and submit
-                  tasks for review.
-                </li>
+                <li> CHECK the quote propused by the project manager</li>
+                <li> Stake your PAYMENT in $MINORITY tokens, to be paid out automatically based on completion of tasks. </li>
+                <li> Wait for QUALIFIED TEAM members to take your task and submit tasks for review.</li>
               </ul>
             </div>
           </div>
@@ -164,23 +142,9 @@ const ConsultancyHomeExplainer = function ({
             <div className="col-lg-8 d-flex align-items-center mshipProgram__b_list">
               <ul className="">
                 <h1>Approve Tasks</h1>
-                <li>
-                  {' '}
-                  - Based on the DEFINITION OF DONE for complete tasks, approve
-                  them or submit them for review.
-                  {' '}
-                </li>
-                <li>
-                  {' '}
-                  - Approval allows builders to directly get part of the budget
-                  PAID in $MINORITY. Do this until project is delivered. FINAL
-                  REVIEW
-                </li>
-                <li>
-                  {' '}
-                  - If any disputes occur the Board of Project Managers settle
-                  it based on deliverables vs Definition of Done.
-                </li>
+                <li> Based on the DEFINITION OF DONE for complete tasks, approve them or submit them for review. </li>
+                <li> Approval allows builders to directly get part of the budget PAID in $MINORITY. Do this until project is delivered. FINAL REVIEW</li>
+                <li> If any disputes occur the Board of Project Managers settle it based on deliverables vs Definition of Done.</li>
               </ul>
             </div>
             <div className="col-lg-4">
