@@ -480,11 +480,14 @@ const HomepageNav = ({
             </ul>
             <ul className="tw-flex tw-flex-row tw-justify-around tw-w-1/4 tw-my-8 navbar__right md:tw-hidden">
               <li>
-                <div className="tw-flex tw-flex-row tw-w-full tw-border tw-border-gray-700 tw-rounded-md tw-px-1 tw-text-gray-500">
+                {/* <div className="navbar__search tw-flex tw-flex-row tw-w-full tw-border tw-border-white tw-rounded-md tw-px-1 tw-text-white">
                   <input
                     onChange={handleSearch}
                     value={searchValue}
-                    className="searchInput tw-bg-transparent tw-border-0 tw-text-gray-500 tw-py-1 xl:tw-w-10/12 tw-w-full tw-outline-none focus:tw-outline-none"
+                    className="searchInput tw-bg-transparent tw-border-0 tw-text-white tw-py-1 xl:tw-w-10/12 tw-w-full tw-outline-none focus:tw-outline-none"
+                    // ${
+                    //   searchValue ? "expand" : ""
+                    // }`}
                     type="text"
                     name=""
                     placeholder="Search..."
@@ -492,7 +495,7 @@ const HomepageNav = ({
                   <button type="submit" onClick={handleSubmit}>
                     <i className="fas fa-search" />
                   </button>
-                </div>
+                </div> */}
               </li>
               <li>
                 <div className="tw-w-full tw-mx-2 tw-cursor-pointer">
