@@ -6857,18 +6857,10 @@ html {
   width: 200px;
   height: 100px;
   cursor: pointer;
-<<<<<<< HEAD
-  background-color: #474BFF;
-  left :0px;
-  top:-1px;
-  border-radius:  0% 0% 100% 0% / 100% 0% 100% 0%;
-  
-=======
   background-color: #474bff;
   left: 0px;
   top: 0.1px;
   border-radius: 0% 0% 100% 0% / 100% 0% 100% 0%;
->>>>>>> aeea77deaff1fd9a1e9814af1fc48cb02d80fbac
 }
 .navbar-logo img {
   width: 30%;
@@ -6919,12 +6911,9 @@ html {
 .nav-item.active-link a:hover,
 .nav-item.active-link a:active,
 .nav-item.active-link a:focus {
-<<<<<<< HEAD
   color: #474BFD !important;
   border-bottom: 2px #474BFD solid;
-=======
-  color: #474bfd !important;
->>>>>>> aeea77deaff1fd9a1e9814af1fc48cb02d80fbac
+
 }
 .nav-item a {
   transition: all 0.2s ease-in-out;
@@ -6934,14 +6923,10 @@ html {
   color: #474bfd !important;
   font-weight: 600;
 }
-<<<<<<< HEAD
 .nav-item a:active{
   color: #474BFD !important;
   border-bottom: 2px blue solid;
-=======
-.nav-item a:active {
-  color: #474bfd !important;
->>>>>>> aeea77deaff1fd9a1e9814af1fc48cb02d80fbac
+
 }
 .nav-links-icon {
   display: flex;
