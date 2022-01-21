@@ -1,4 +1,5 @@
 import React from 'react';
+import Account from '../Account';
 
 const HomepageNewTopSection = () => (
   <section className="homepage__hero">
@@ -26,22 +27,13 @@ const HomepageNewTopSection = () => (
             <span>REGISTER FOR FREE!</span>
           </p>
         </div>
-        <div className="tw-mt-4">
-          <div className="navbar__search tw-flex tw-flex-row tw-w-full tw-border tw-border-white tw-rounded-md tw-px-1 tw-text-white">
-            <input
-              onChange={handleSearch}
-              value={searchValue}
-              className="searchInput tw-bg-transparent tw-border-0 tw-text-white tw-py-1 xl:tw-w-10/12 tw-w-full tw-outline-none focus:tw-outline-none"
-                    // ${
-                    //   searchValue ? "expand" : ""
-                    // }`}
-              type="text"
-              name=""
-              placeholder="Search..."
-            />
-            <button type="submit" onClick={handleSubmit}>
-              <i className="fas fa-search" />
-            </button>
+        <div className="tw-mt-4 tw-grid tw-grid-cols-2">
+          <Account />
+          <div>
+            <a className="tw-text-lg tw-mt-2.5 tw-block" target="_blank">
+              Checkout our  other Apps
+              <i className="fas fa-arrow-right" />
+            </a>
           </div>
         </div>
       </div>
