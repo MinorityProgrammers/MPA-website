@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
+import Applied from '../components/career-components/Applied';
 import CareersMainComponent from '../components/career-components/CareersMainComponent';
 import Saved from '../components/career-components/Saved';
-import Applied from '../components/career-components/Applied';
 
 const SavedJobs = function () {
   const [currentView, changeCurrentView] = useState('saved');
@@ -30,14 +30,14 @@ const SavedJobs = function () {
           </a>
         </div>
         <div className="saved-jobsMain-toggler">
-          <button className="tw-mr-4" onClick={loadSaved}>
+          <button type="button" className="tw-mr-4" onClick={loadSaved}>
             Saved
           </button>
-          <button onClick={loadApplied}>Applied</button>
+          <button type="button" onClick={loadApplied}>Applied</button>
         </div>
         <div>
-          {currentView == 'saved' && <Saved />}
-          {currentView == 'applied' && <Applied />}
+          {currentView === 'saved' && <Saved />}
+          {currentView === 'applied' && <Applied />}
         </div>
       </div>
     </CareersMainComponent>

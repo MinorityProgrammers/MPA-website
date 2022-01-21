@@ -15,7 +15,9 @@ import Address from './Address/Address';
 import { successToast, errorToast } from '../contexts/utils/toasts';
 import changeAuthModal from '../contexts/actions/authModal/index';
 import {
-  handleLockSigner, handleUnlockSigner, isConnectedCasper,
+  handleLockSigner,
+  handleUnlockSigner,
+  isConnectedCasper,
 } from '../contexts/actions/signer/index';
 
 const Account = function () {
@@ -55,18 +57,30 @@ const Account = function () {
   }, [isConnected, setSignerState]);
 
   useEffect(() => {
-    [SIGNER_EVENTS.unlocked, SIGNER_EVENTS.activeKeyChanged, SIGNER_EVENTS.connected].forEach((event) => window.addEventListener(event, dispatchUnlockSinger));
+    [
+      SIGNER_EVENTS.unlocked,
+      SIGNER_EVENTS.activeKeyChanged,
+      SIGNER_EVENTS.connected,
+    ].forEach((event) => window.addEventListener(event, dispatchUnlockSinger));
     [SIGNER_EVENTS.locked, SIGNER_EVENTS.disconnected].forEach((event) => window.addEventListener(event, dispatchDisconnectedSinger));
 
     return () => {
-      [SIGNER_EVENTS.unlocked, SIGNER_EVENTS.activeKeyChanged, SIGNER_EVENTS.connected].forEach((event) => window.removeEventListener(event, dispatchUnlockSinger));
+      [
+        SIGNER_EVENTS.unlocked,
+        SIGNER_EVENTS.activeKeyChanged,
+        SIGNER_EVENTS.connected,
+      ].forEach((event) => window.removeEventListener(event, dispatchUnlockSinger));
       [SIGNER_EVENTS.locked, SIGNER_EVENTS.disconnected].forEach((event) => window.removeEventListener(event, dispatchDisconnectedSinger));
     };
   });
 
   useEffect(() => {
     isConnectedCasper().then(() => {
-      [SIGNER_EVENTS.unlocked, SIGNER_EVENTS.activeKeyChanged, SIGNER_EVENTS.connected].forEach((event) => window.addEventListener(event, dispatchUnlockSinger));
+      [
+        SIGNER_EVENTS.unlocked,
+        SIGNER_EVENTS.activeKeyChanged,
+        SIGNER_EVENTS.connected,
+      ].forEach((event) => window.addEventListener(event, dispatchUnlockSinger));
     });
     if (error) {
       errorToast(error);
@@ -95,20 +109,27 @@ const Account = function () {
   };
 
   const metamaskConnectWallet = async () => {
-    if (chainId === process.env.NEXT_PUBLIC_NETWORK_ID_MAINNET
-       || chainId === process.env.NEXT_PUBLIC_NETWORK_ID_TESTNET) {
+    if (
+      chainId === process.env.NEXT_PUBLIC_NETWORK_ID_MAINNET
+      || chainId === process.env.NEXT_PUBLIC_NETWORK_ID_TESTNET
+    ) {
       authenticate({ signingMessage: 'connected!' });
-      await window.casperlabsHelper.disconnectFromSite();
+      if (isConnected === true) {
+        await window.casperlabsHelper.disconnectFromSite();
+      }
     } else {
-      errorToast('Wrong Chain, please connect to polygon chain');
+      errorToast('Wrong Chain, please connect to Polygon chain');
       logout();
     }
   };
 
   useEffect(async () => {
-    if (chainId !== process.env.NEXT_PUBLIC_NETWORK_ID_MAINNET
-       && chainId !== process.env.NEXT_PUBLIC_NETWORK_ID_TESTNET && showModal === true) {
-      errorToast('Wrong Chain, please connect to polygon chain');
+    if (
+      chainId !== process.env.NEXT_PUBLIC_NETWORK_ID_MAINNET
+      && chainId !== process.env.NEXT_PUBLIC_NETWORK_ID_TESTNET
+      && showModal === true
+    ) {
+      errorToast('Wrong Chain, please connect to Polygon chain');
 
       try {
         logout();
@@ -120,7 +141,7 @@ const Account = function () {
 
   const casperConnectWallet = async () => {
     try {
-      Signer.sendConnectionRequest();
+      Signer?.sendConnectionRequest();
     } catch (err) {
       if (err) {
         errorToast(err);
@@ -132,10 +153,12 @@ const Account = function () {
     return (
       <>
         <div
-          className="tw-bg-blue-600 hover:tw-bg-blue-700 tw-text-white tw-text-center tw-font-bold tw-py-2 tw-px-2 tw-rounded tw-w-11/12 tw-cursor-pointer"
-          onClick={() => { openAuthModal(); }}
+          className="tw-bg-blue-600 hover:tw-bg-blue-700 tw-text-white tw-text-center tw-font-bold tw-py-1.5 tw-px-1.5 tw-rounded tw-w-11/12 tw-cursor-pointer"
+          onClick={() => {
+            openAuthModal();
+          }}
         >
-          <p className="tw-text-sm">connect</p>
+          <p className="tw-text-sm">Connect</p>
         </div>
         <Modal
           title={false}
@@ -173,9 +196,15 @@ const Account = function () {
                 align="middle"
                 span={11}
                 className="tw-py-3 tw-cursor-pointer hover:tw-bg-gray-100 hover:tw-shadow-xl tw-transition-all tw-duration-500 tw-mb-10"
-                onClick={() => (wallet.id === 'MetaMask' ? metamaskConnectWallet() : casperConnectWallet())}
+                onClick={() => (wallet.id === 'MetaMask'
+                  ? metamaskConnectWallet()
+                  : casperConnectWallet())}
               >
-                <img alt="wallet" className="tw-w-32 tw-h-32" src={wallet.icon} />
+                <img
+                  alt="wallet"
+                  className="tw-w-32 tw-h-32"
+                  src={wallet.icon}
+                />
                 <div className="tw-mt-2 tw-font-bold">{wallet.label}</div>
               </Col>
             ))}
@@ -194,8 +223,15 @@ const Account = function () {
 
   return (
     <>
-      <div className="tw-bg-blue-600 hover:tw-bg-blue-700 tw-text-white tw-font-bold tw-text-center tw-py-2 tw-px-2 tw-rounded tw-cursor-pointer tw-w-11/12" onClick={() => setIsModalVisible(true)}>
-        <p className="tw-text-sm">{isConnected ? getEllipsisTxt(activeKey, 6) : getEllipsisTxt(walletAddress, 6)}</p>
+      <div
+        className="tw-bg-blue-600 hover:tw-bg-blue-700 tw-text-white tw-font-bold tw-text-center tw-py-2 tw-px-2 tw-rounded tw-cursor-pointer tw-w-11/12"
+        onClick={() => setIsModalVisible(true)}
+      >
+        <p className="tw-text-sm">
+          {isConnected
+            ? getEllipsisTxt(activeKey, 6)
+            : getEllipsisTxt(walletAddress, 6)}
+        </p>
       </div>
       <Modal
         visible={isModalVisible}
@@ -244,7 +280,6 @@ const Account = function () {
                 View on CSPR live
               </a>
             )}
-
           </div>
         </Card>
         <Button
@@ -260,8 +295,10 @@ const Account = function () {
           }}
           onClick={async () => {
             logout();
-            window.casperlabsHelper.disconnectFromSite();
-            [SIGNER_EVENTS.locked, SIGNER_EVENTS.disconnected].forEach((event) => window.addEventListener(event, dispatchDisconnectedSinger));
+            await window.casperlabsHelper.disconnectFromSite();
+            [SIGNER_EVENTS.locked, SIGNER_EVENTS.disconnected].forEach(
+              (event) => window.addEventListener(event, dispatchDisconnectedSinger),
+            );
             setIsModalVisible(false);
           }}
         >

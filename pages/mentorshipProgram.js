@@ -1,4 +1,6 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import ComingSoon from '../components/ComingSoon';
+import Footer from '../components/Footer';
 import HomepageNav from '../components/homepage/HomepageNav';
 import Layout from '../components/Layout';
 import SidebarTwo from '../components/sidebar/SidebarTwo';
@@ -6,8 +8,6 @@ import links from '../contexts/utils/links';
 import { useDetectOutsideClick } from '../components/UseDetectOutsideClick';
 import MentorshipProgramHero from '../components/mentorship/MentorshipProgramHero';
 import MentorshipProgramHome from '../components/mentorship/MentorshipProgramHome';
-import Footer from '../components/Footer';
-import ComingSoon from '../components/ComingSoon';
 
 const mentorshipProgram = () => {
   const [open, setOpen] = useState(false);
@@ -19,7 +19,7 @@ const mentorshipProgram = () => {
   const handleClick = () => {
     setHide(!hide);
   };
-  if (hide == false) {
+  if (hide === false) {
     setTimeout(() => {
       setHide(true);
     }, 60000);
@@ -47,7 +47,7 @@ const mentorshipProgram = () => {
         active="Home"
         handleClick={handleClick}
       />
-      {hide == false && <ComingSoon closeClick={handleClick} />}
+      {hide === false && <ComingSoon closeClick={handleClick} />}
       <MentorshipProgramHero />
       <section className="section__mentorshipProgram">
         <MentorshipProgramHome

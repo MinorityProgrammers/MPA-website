@@ -129,12 +129,12 @@
 }
 .cp-form .cp-formFlex button,
 .cp-form .cp-downloadButtonsContainer button {
-  background-color: #690065;
+  background-color: #2364eb;
   color: white;
   padding: 10px 20px;
   width: fit-content;
   margin-top: 20px;
-  border-radius: 22px;
+  border-radius: 5px;
 }
 .cp-formFlex {
   width: 100%;
@@ -392,7 +392,7 @@
   background-color: #eaeaea;
   color: black;
   height: 40px;
-  border-radius: 25px;
+  border-radius: 5px;
 }
 @media screen and (max-width: 900px) {
   .cp-formGrid {

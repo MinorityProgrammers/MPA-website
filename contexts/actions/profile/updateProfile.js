@@ -27,7 +27,13 @@ export const updateProfile = (id, body, token) => (dispatch) => {
     .then((res) => {
       // setting updated user
 
-      localStorage.setItem('userInfo', JSON.stringify(res.data.data));
+      localStorage.setItem(
+        'userInfo',
+        JSON.stringify({
+          user: res.data.data,
+          token,
+        }),
+      );
       dispatch({
         type: UPDATE_PROFILE_SUCCESS,
         payload: res.data,
@@ -35,7 +41,7 @@ export const updateProfile = (id, body, token) => (dispatch) => {
       successToast('successfully updated profile');
     })
     .catch((err) => {
-      console.log(err.response.data);
+      console.log(err.response?.data);
       errorToast('failed to update profile');
       dispatch({
         type: UPDATE_PROFILE_ERROR,

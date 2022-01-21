@@ -51,7 +51,7 @@ const FeaturedUpcoming = ({ data, setClickRegister, userData, allfunded }) => {
               placeholder="Search Startup"
               onChange={(e) => setSearch(e.target.value)}
             />
-            <p className="featured__subtitle">
+            <p className="featured__subtitle tw-mt-3">
               These visionary companies and disruptors are on their journey to
               change the world.
             </p>

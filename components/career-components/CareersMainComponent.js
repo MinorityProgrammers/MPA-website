@@ -4,6 +4,10 @@ import { useDetectOutsideClick } from '../UseDetectOutsideClick';
 import ApplyModal from './QuickApplyJobApplication';
 
 const CareersMainComponent = (props) => {
+  const {
+    jobsOn, open, job, closeModal, getAppliedJobs, children,
+  } = props;
+
   const [data, setData] = useState([]);
   const dropdownRef = useRef(null);
   const [hide, setHide] = useDetectOutsideClick(dropdownRef, false);
@@ -20,17 +24,17 @@ const CareersMainComponent = (props) => {
 
   return (
     <div>
-      {props.jobsOn && (
+      {jobsOn && (
         <ApplyModal
           data={data}
-          open={props.open}
-          job={props.job}
+          open={open}
+          job={job}
           onClick={handleClick}
-          closeModal={props.closeModal}
-          getAppliedJobs={props.getAppliedJobs}
+          closeModal={closeModal}
+          getAppliedJobs={getAppliedJobs}
         />
       )}
-      <div>{props.children}</div>
+      <div>{children}</div>
       <Footer />
     </div>
   );

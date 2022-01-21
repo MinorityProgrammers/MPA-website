@@ -135,7 +135,7 @@ const CreateProfileInput = function ({
             onBlur={handleBlur}
             value={value}
             onChange={handleChange}
-            autoComplete="off"
+            autoComplete="false"
           />
         </label>
       );

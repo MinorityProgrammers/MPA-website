@@ -49,7 +49,7 @@ const MentorshipProgramHome = ({
               </div>
               <div className="msnum">
                 <img
-                  className="msnumIMG"
+                  className="msnumIMG numImg"
                   src="/assets/images/num1.png"
                   alt="num1"
                 />
@@ -57,18 +57,18 @@ const MentorshipProgramHome = ({
             </div>
             <div className="col-lg-8 d-flex align-items-center mshipProgram__w_list">
               <ul className="">
-                <h1> - Sign Up Program</h1>
+                <h1> Sign Up Program</h1>
                 <li>
                   {' '}
-                  - REGISTER for a Minority Programmers Association account.
+                  REGISTER for a Minority Programmers Association account.
                 </li>
                 <li>
                   {' '}
-                  - SIGN UP, have access to training and growth opportunities.
+                  SIGN UP, have access to training and growth opportunities.
                 </li>
                 <li>
                   {' '}
-                  - Being part of the Mentorship Program offers guidance to
+                  Being part of the Mentorship Program offers guidance to
                   SUCCESS
                 </li>
               </ul>
@@ -82,29 +82,30 @@ const MentorshipProgramHome = ({
             <div className="col-lg-8 d-flex align-items-center mshipProgram__b_list">
               <ul className="">
                 <h1>Start Matching</h1>
-                <li> - Tell us about your GOALS and needs.</li>
+                <li>Tell us about your GOALS and needs.</li>
                 <li>
                   {' '}
-                  - CHOOSE from the mentoring suggestions made by machine
+                  CHOOSE from the mentoring suggestions made by machine
                   learning.
                 </li>
                 <li>
                   {' '}
-                  - Choose a mentorship track & start CHAT with your match.{' '}
+                  Choose a mentorship track & start CHAT with your match.
+                  {' '}
                 </li>
               </ul>
             </div>
             <div className="col-lg-4">
               <div className="mentorship__SUP">
                 <img
-                  className="mentorship__SUPIMG"
+                  className="mentorship__SUPIMG numImg"
                   src="/assets/images/mentorSUP2.png"
                   alt="mentorSUP"
                 />
               </div>
               <div className="msnum">
                 <img
-                  className="msnumIMG"
+                  className="msnumIMG numImg"
                   src="/assets/images/num2.png"
                   alt="num1"
                 />
@@ -126,7 +127,7 @@ const MentorshipProgramHome = ({
               </div>
               <div className="msnum">
                 <img
-                  className="msnumIMG"
+                  className="msnumIMG numImg"
                   src="/assets/images/num3.png"
                   alt="num1"
                 />
@@ -137,10 +138,10 @@ const MentorshipProgramHome = ({
                 <h1>Start Program</h1>
                 <li>
                   {' '}
-                  - Define ACTIVITIES and schedule with your mentor or mentee
+                  Define ACTIVITIES and schedule with your mentor or mentee
                 </li>
-                <li> - You can use the LEARNING resources</li>
-                <li> - COUNSELING one - one</li>
+                <li>You can use the LEARNING resources</li>
+                <li>COUNSELING one - one</li>
               </ul>
             </div>
           </div>
@@ -155,28 +156,28 @@ const MentorshipProgramHome = ({
 
                 <li>
                   {' '}
-                  - Mentor and mentee will receive REWARDS based on successful
+                  Mentor and mentee will receive REWARDS based on successful
                   homework completion.
                 </li>
                 <li>
                   {' '}
-                  - An evaluation will be carried out by both parties on the
+                  An evaluation will be carried out by both parties on the
                   COMMITMENT of their counterparts, during and after the task.
                 </li>
-                <li> - Earn $MINORITY tokens for completing tasks.</li>
+                <li>Earn $MINORITY tokens for completing tasks.</li>
               </ul>
             </div>
             <div className="col-lg-4">
               <div className="mentorship__SUP">
                 <img
-                  className="mentorship__SUPIMG"
+                  className="mentorship__SUPIMG numImg"
                   src="/assets/images/mentorSUP4.png"
                   alt="mentorSUP"
                 />
               </div>
               <div className="msnum">
                 <img
-                  className="msnumIMG"
+                  className="msnumIMG numImg"
                   src="/assets/images/num4.png"
                   alt="num1"
                 />

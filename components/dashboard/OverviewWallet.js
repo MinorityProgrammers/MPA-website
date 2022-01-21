@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import Skeleton from 'react-loading-skeleton';
 import axios from 'axios';
 
 const OverviewWallet = (props) => {
   const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(setLoading(false), 3000);
+  }, []);
 
   const EmptyWallet = () => (
     <div className="d-flex flex-column justify-content-between h-100 w-100 ">
@@ -110,8 +115,29 @@ const OverviewWallet = (props) => {
 
   return (
     <div style={{ height: '100%' }}>
+      <p style={{
+        fontSize: '18px', fontWeight: '700', color: 'black', height: '13%', marginBottom: '2%',
+      }}
+      >
+        Wallet
+      </p>
+      <div className="overview-courses-cards d-flex flex-column justify-content-between align-items-between" style={{ height: '85%' }} />
       {loading
-        ? <EmptyWallet />
+        ? (
+          <div
+            className="d-flex flex-column justify-content-center align-items-center"
+            style={{
+              height: '100%', width: '100%', overflowY: 'scroll', overflowX: 'hidden',
+            }}
+          >
+            <Skeleton width={1200} height={70} style={{ marginBottom: '5px' }} />
+            <Skeleton width={1200} height={70} style={{ marginBottom: '5px' }} />
+            <div className="d-flex flex-row justify-content-between align-items-center" style={{ width: '100%' }}>
+              <Skeleton width={60} height={30} />
+              <Skeleton width={60} height={30} />
+            </div>
+          </div>
+        )
         : (
           <div className="d-flex flex-column justify-content-between" style={{ height: '100%' }}>
             {/* title */}

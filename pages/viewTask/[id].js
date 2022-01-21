@@ -1,7 +1,8 @@
+import React from 'react';
+import Footer from '../../components/Footer';
+import Layout from '../../components/Layout';
 import ViewTask from '../../components/ViewTask';
 import ViewTaskHeader from '../../components/ViewTaskHeader';
-import Layout from '../../components/Layout';
-import Footer from '../../components/Footer';
 
 const viewTask = () => (
   <Layout pageTitle="View-Task">

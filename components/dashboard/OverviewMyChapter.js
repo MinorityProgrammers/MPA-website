@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Skeleton from 'react-loading-skeleton';
 import EmptyOverviewComponent from './EmptyOverviewComponent';
 import TasksList from './TasksList';
 
@@ -7,6 +8,10 @@ const OverviewMyChatper = (props) => {
   const [loading, setLoading] = useState(true);
   const [currentView, setCurrentView] = useState('overviews');
   const [chapterEvents, setChapterEvents] = useState([]);
+
+  useEffect(() => {
+    setTimeout(() => { setLoading(false); }, 3000);
+  }, []);
 
   const EventCards = () => (
     <div className="d-flex flex-column justify-content-between align-items-center">
@@ -37,12 +42,21 @@ const OverviewMyChatper = (props) => {
           </div>
         ))
         : (
-          <EmptyOverviewComponent
-            imgURL="https://s3-alpha-sig.figma.com/img/19e3/44e7/4ec198df3b7bfd4e806f340dbcfd3bd3?Expires=1638748800&Signature=G4VB-qMqAue8RqTkOPa5kvXQDzQg-mGi6CSAmCvSDXe5Vy-2rQPyeHKf-uHFmgc9dherDLlcSfhNJx~5GtILjwwSROJhEUjujHn7DOuH43lB1fjiZor-DmLuxjQjREAo3hKEYi3KeU0qpR9-4FJFGfcwPZKy0UszzeOLdUzcDjxs0WIJDuWM6LfYw2SR4ls4g8lLZqEs8Z0rY-C95HBUCu5r~OKbiOerp~r90-m5~Vx3wIg9lisIQOLcZ87U2fY5IQULhPHJ0dfh7aT7sWN~CPuHhntEvfb6VA4Y5uVSvbcNHfu2DoHqycSDbpDcVsMUPfTgXgktO8t-MVGSfytXkA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
-            description="You don’t belong to any chapters yet. You can find chapters to join in the Chapter Section."
-            btnText="Join Your First Chapter"
-            btnFunction={() => { setLoading(!loading); }}
-          />
+          <div className="d-flex flex-column" style={{ height: '100%', width: '100%', overflowX: 'hidden' }}>
+            <Skeleton height={20} width={100} />
+            <div className="d-flex flex-row align-items-center justify-content-start" style={{ marginBottom: '10px' }}>
+              <Skeleton height={80} width={140} style={{ marginRight: '10px' }} />
+              <div className="d-flex flex-column">
+                <Skeleton height={15} width={130} />
+                <Skeleton height={15} width={200} />
+                <Skeleton height={15} width={170} />
+                <Skeleton height={15} width={150} />
+              </div>
+            </div>
+            <div className="d-flex flex-row justify-content-center align-items-center" style={{ width: '100%' }}>
+              <Skeleton height={30} width={250} />
+            </div>
+          </div>
         )}
     </div>
   );

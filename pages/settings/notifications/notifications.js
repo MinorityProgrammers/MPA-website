@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
 import jwt from 'jsonwebtoken';
+import React, { useEffect, useState } from 'react';
+import SettingBodyNotificationsNotifications from '../../../components/settings/SettingBodyNotificationsNotifications';
 import SettingsLayout from '../../../components/settings/SettingsLayout';
 import SpecificSettingsLayout from '../../../components/settings/SpecificSettingsLayout';
-import SettingBodyNotificationsNotifications from '../../../components/settings/SettingBodyNotificationsNotifications';
 
 function notifications() {
   const [data, setData] = useState([]);

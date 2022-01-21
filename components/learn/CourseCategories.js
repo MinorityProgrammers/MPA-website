@@ -43,7 +43,7 @@ const CourseCategories = function ({ user, enrolledCourses, usersCourses }) {
         setCourses(res.data.data);
         setTimeout(() => { setLoading(false); }, 3000);
       });
-  }, []);
+  }, [typeof window !== 'undefined' ? window.localStorage.getItem('jwtToken') : null]);
 
   const handleEnrolledCourse = () => {
     setDisable(true);
@@ -116,7 +116,11 @@ const CourseCategories = function ({ user, enrolledCourses, usersCourses }) {
                 <form className="d-flex" onSubmit={handleSubmit}>
                   <div className="input-group">
                     <div className="input-group-append learnSearch-btn">
+<<<<<<< HEAD
                       <input type="text" className="course-search search-input" placeholder="Search Courses" onChange={(e) => setSearchCourse(e.target.value)} />
+=======
+                      <input type="text" className="course-search search-input" placeholder="Search Courses" />
+>>>>>>> aeea77deaff1fd9a1e9814af1fc48cb02d80fbac
                       <button className = 'courseSearch-btn' ><i className="fas fa-search" /></button>
                     </div>
                   </div>

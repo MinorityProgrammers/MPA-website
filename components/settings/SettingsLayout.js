@@ -59,8 +59,6 @@ const SettingsLayout = function ({ setData, children, settingsPage }) {
 
     if (token == null || userInfo == {}) {
       router.push('/auth');
-    } else if (userData?.isUpdated === false) {
-      router.push('/create-profile');
     }
   }, [userData]);
 

@@ -1,10 +1,32 @@
 import React, { useState } from 'react';
+import jobIndustries from '../../components/career-components/JobIndustries.json';
 import ImgUploadIconSvg from '../../components/career-components/svgs/ImgUploadIconSvg';
 import Footer from '../../components/Footer';
 import HomepageNav from '../../components/homepage/HomepageNav';
 import Layout from '../../components/Layout';
 import SidebarTwo from '../../components/sidebar/SidebarTwo';
 import links from '../../contexts/utils/links';
+
+const companyType = {
+  nonprofit: 'Non-Profit',
+  llc: 'LLC',
+  club: 'Club',
+  c_crop: 'C-Crop',
+  s_crop: 'S-Crop',
+  lp: 'LP',
+  educational: 'Educational',
+  dao: 'DAO',
+};
+
+const companySize = {
+  1: '1',
+  2: '2-10',
+  11: '11-50',
+  501: '501-1000',
+  1001: '1001-5000',
+  5001: '5001-10,000',
+  10000: '10,000+',
+};
 
 const CreateNewCompany = () => {
   const [open, setOpen] = useState(false);
@@ -45,36 +67,13 @@ const CreateNewCompany = () => {
                       required
                       className="tw-w-full tw-py-1 tw-px-2 tw-border tw-border-white tw-bg-transparent tw-placeholder-white tw-placeholder-opacity-80 tw-text-white"
                     >
-                      <option
-                        value="nonprofit"
-                        style={{ background: '#151371' }}
-                      >
-                        Non-Profit
-                      </option>
-                      <option value="llc" style={{ background: '#151371' }}>
-                        LLC
-                      </option>
-                      <option value="club" style={{ background: '#151371' }}>
-                        Club
-                      </option>
-                      <option value="c_corp" style={{ background: '#151371' }}>
-                        C-Corp
-                      </option>
-                      <option value="s_corp" style={{ background: '#151371' }}>
-                        S-Corp
-                      </option>
-                      <option value="lp" style={{ background: '#151371' }}>
-                        LP
-                      </option>
-                      <option
-                        value="educational"
-                        style={{ background: '#151371' }}
-                      >
-                        Educational
-                      </option>
-                      <option value="dao" style={{ background: '#151371' }}>
-                        DAO
-                      </option>
+                      {
+                        Object.keys(companyType).map((key) => (
+                          <option key={key} value="key" style={{ background: '#151371' }}>
+                            {companyType[key]}
+                          </option>
+                        ))
+                      }
                     </select>
                   </div>
                 </div>
@@ -146,27 +145,13 @@ const CreateNewCompany = () => {
                       required
                       className="tw-w-full tw-py-1 tw-px-2 tw-border tw-border-white tw-bg-transparent tw-placeholder-white tw-placeholder-opacity-80 tw-text-white"
                     >
-                      <option name="1" style={{ background: '#151371' }}>
-                        1
-                      </option>
-                      <option name="2" style={{ background: '#151371' }}>
-                        2-10
-                      </option>
-                      <option name="11" style={{ background: '#151371' }}>
-                        11-50
-                      </option>
-                      <option name="501" style={{ background: '#151371' }}>
-                        501-1000
-                      </option>
-                      <option name="1001" style={{ background: '#151371' }}>
-                        1001-5000
-                      </option>
-                      <option name="5001" style={{ background: '#151371' }}>
-                        5001-10,000
-                      </option>
-                      <option name="10000" style={{ background: '#151371' }}>
-                        10,000+
-                      </option>
+                      {
+                        Object.keys(companySize).map((key) => (
+                          <option key={key} name="key" style={{ background: '#151371' }}>
+                            {companySize[key]}
+                          </option>
+                        ))
+                      }
                     </select>
                   </div>
                 </div>
@@ -185,19 +170,11 @@ const CreateNewCompany = () => {
                         required
                         className="tw-w-full tw-py-1 tw-px-2 tw-border tw-border-white tw-bg-transparent tw-placeholder-white tw-placeholder-opacity-80 tw-text-white"
                       >
-                        <option style={{ background: '#151371' }}>Art</option>
-                        <option style={{ background: '#151371' }}>
-                          Automotive
-                        </option>
-                        <option style={{ background: '#151371' }}>
-                          Medical
-                        </option>
-                        <option style={{ background: '#151371' }}>
-                          Science
-                        </option>
-                        <option style={{ background: '#151371' }}>
-                          Technology
-                        </option>
+                        {
+                          jobIndustries.map((jobIndustry) => (
+                            <option key={jobIndustry} style={{ background: '#151371' }}>{jobIndustry}</option>
+                          ))
+                        }
                       </select>
                     </div>
                   </div>
