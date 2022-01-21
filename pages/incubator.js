@@ -7,7 +7,6 @@ import FeaturedAdvice from '../components/featured/FeaturedAdvice';
 import FeaturedMyStartup from '../components/featured/FeaturedMyStartup';
 import FeaturedMyStartupSkeleton from '../components/featured/FeaturedMyStartupSkeleton';
 import FeaturedStartups from '../components/featured/FeaturedStartups';
-// Skeletons
 import FeaturedStartupsSkeleton from '../components/featured/FeaturedStartupsSkeleton';
 import FeaturedUpcoming from '../components/featured/FeaturedUpcoming';
 import FeaturedUpcomingSkeleton from '../components/featured/FeaturedUpcomingSkeleton';
@@ -19,7 +18,7 @@ import SidebarTwo from '../components/sidebar/SidebarTwo';
 import useDetectOutsideClick from '../components/UseDetectOutsideClick';
 import links from '../contexts/utils/links';
 
-const IncubatorPage = function () {
+const IncubatorPage = () => {
   const [startups, setStartups] = useState([]);
   const [loading, setLoading] = useState(true);
   const [open, setOpen] = useState(false);

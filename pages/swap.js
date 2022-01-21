@@ -7,7 +7,7 @@ import Footer from '../components/Footer';
 import links from '../contexts/utils/links';
 import SidebarTwo from '../components/sidebar/SidebarTwo';
 
-const Swap = function () {
+const Swap = () => {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef(null);
   const [hide, setHide] = useDetectOutsideClick(dropdownRef, true);

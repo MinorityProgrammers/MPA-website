@@ -16,7 +16,7 @@ import SidebarTwo from '../components/sidebar/SidebarTwo';
 import useDetectOutsideClick from '../components/UseDetectOutsideClick';
 import links from '../contexts/utils/links';
 
-const HomepageFour = function () {
+const HomepageFour = () => {
   const [open, setOpen] = useState(false);
   const [builder, setBuilder] = useState(true);
   const [mount, setMount] = useState(false);
@@ -64,11 +64,7 @@ const HomepageFour = function () {
               />
               {hide === false && <ComingSoon closeClick={handleClick} />}
               <HomePageNewTopSection />
-              {/* <HomepageAbout /> */}
-              {/* <HomepageApp /> */}
               <HomepageCore />
-              {/* <HomepageWave /> */}
-              {/* <HomepageTeam /> */}
               <HomepageTestimonials />
               <HomepageDonate />
               <Footer />
