@@ -6972,7 +6972,7 @@ html {
   color: #ffffff;
 }
 .fa-user-circle {
-  font-size: 25px;
+  font-size: 25px !important;
   color: #fff;
   margin-left: 4px;
   margin-top: 0.6rem;
@@ -7666,6 +7666,18 @@ html {
 .homepage__hero .top__part{
   padding: 0 15px;
   background: none;
+  font-family: 'Poppins', sans-serif;
+}
+.top__part span{
+  color: #68AEFF;
+}
+.top__part__title {
+  background: linear-gradient(92.43deg, #68AEFF 31.43%, #9379FF 77.17%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 0.03em;
+  font-weight: bold;
+  font-size: 3.9rem;
 }
 .homepage__hero__img{
   /* padding-top: 2.5rem; */

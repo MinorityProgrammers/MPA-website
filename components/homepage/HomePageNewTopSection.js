@@ -12,25 +12,37 @@ const HomepageNewTopSection = () => (
     <div className="container top__part tw-relative tw-flex tw-flex-row tw-w-full tw-h-full lg:tw-flex-col-reverse">
       <div className="tw-flex tw-flex-col tw-pb-20 tw-px-4 lg:tw-pt-2 tw-z-10">
         {/* content sections */}
-        <div className="tw-w-1/3 tw-mt-4">
-          <p className="tw-text-4xl tw-font-bold tw-text-blue-900">Diversity meets web3</p>
+        <div className="tw-mt-4">
+          <p className="top__part__title">Diversity meets web3</p>
         </div>
         <div className="tw-mt-4 tw-font-medium">
-          <p className="tw-text-xl lg:tw-text-sm tw-text-blue-900">
+          <p className="tw-text-xl lg:tw-text-sm tw-text-white">
             Join over 2 thousand International network of minority developers
             changing the world through tech.
-            Connect your wallet to  REGISTER FOR FREE!
+            <br />
+            <br />
+            Connect your wallet to
+            {' '}
+            <span>REGISTER FOR FREE!</span>
           </p>
         </div>
         <div className="tw-mt-4">
-          <a href="https://snapshot.org/#/minorityprogrammers.eth" target="_blank" rel="noreferrer">
-            <button
-              type="button"
-              className="tw-bg-blue-600 hover:tw-bg-blue-700 tw-text-white tw-font-bold tw-py-2 tw-px-4 tw-rounded"
-            >
-              JOIN NOW
+          <div className="navbar__search tw-flex tw-flex-row tw-w-full tw-border tw-border-white tw-rounded-md tw-px-1 tw-text-white">
+            <input
+              onChange={handleSearch}
+              value={searchValue}
+              className="searchInput tw-bg-transparent tw-border-0 tw-text-white tw-py-1 xl:tw-w-10/12 tw-w-full tw-outline-none focus:tw-outline-none"
+                    // ${
+                    //   searchValue ? "expand" : ""
+                    // }`}
+              type="text"
+              name=""
+              placeholder="Search..."
+            />
+            <button type="submit" onClick={handleSubmit}>
+              <i className="fas fa-search" />
             </button>
-          </a>
+          </div>
         </div>
       </div>
       <div className="tw-w-11/12 tw-z-10 tw-h-full homepage__hero__img">

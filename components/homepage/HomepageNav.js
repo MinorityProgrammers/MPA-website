@@ -506,7 +506,7 @@ const HomepageNav = ({
                 <div className="tw-mx-2">
                   <li>
                     <i
-                      className="fas fa-user-circle tw-content-center tw-text-center NavIcon tw-cursor-pointer tw-mt-2"
+                      className="fa-user-circle fas tw-content-center tw-text-center NavIcon tw-cursor-pointer tw-mt-2"
                       onClick={onClick}
                     />
 
