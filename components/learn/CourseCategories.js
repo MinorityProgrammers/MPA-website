@@ -16,6 +16,7 @@ const CourseCategories = function ({ user, enrolledCourses, usersCourses }) {
   const [loading, setLoading] = useState(true);
   const [singleCourse, setSingleCourse] = useState({});
   const [courses, setCourses] = useState([]);
+  const [searchCourse, setSearchCourse] = useState('');
   const [totalEnrolledCourse, setTotalEnrolledCourse] = useState(0);
   const [enrolledCourse, setEnrolledCourse] = useState({});
   const [enrolledBtn, setEnrolledBtn] = useState(false);
@@ -35,7 +36,7 @@ const CourseCategories = function ({ user, enrolledCourses, usersCourses }) {
   const handleCancel = () => {
     setIsModalVisible(false);
   };
-
+ 
   useEffect(() => {
     axios.get(`${process.env.BASE_URI}/course`)
       .then((res) => {
@@ -95,6 +96,15 @@ const CourseCategories = function ({ user, enrolledCourses, usersCourses }) {
     router.push(userCourse);
   };
 
+
+  const CourseResults = courses.filter((data) =>{
+    if (searchCourse ==""){
+      return data
+    } else if (data.name.toLowerCase().includes(searchCourse.toLowerCase())){
+      return data
+    }
+  })
+
   return (
     <>
       <div className="courses pb-5">
@@ -106,7 +116,7 @@ const CourseCategories = function ({ user, enrolledCourses, usersCourses }) {
                 <form className="d-flex" onSubmit={handleSubmit}>
                   <div className="input-group">
                     <div className="input-group-append learnSearch-btn">
-                      <input type="text" className="course-search search-input" placeholder="Search Courses" />
+                      <input type="text" className="course-search search-input" placeholder="Search Courses" onChange={(e) => setSearchCourse(e.target.value)} />
                       <button className = 'courseSearch-btn' ><i className="fas fa-search" /></button>
                     </div>
                   </div>
@@ -162,6 +172,13 @@ const CourseCategories = function ({ user, enrolledCourses, usersCourses }) {
           </div>
 
           <div className="courses">
+            {
+               loading?
+               <div/>:
+              CourseResults.length > 0 ?
+              <CoursesSkeleton title = "Search Results"/>:
+              <CourseResults showModal ={showModal} courses = {courses}/>
+            }
             {
               loading
                 ? <CoursesSkeleton title="My Courses" />
