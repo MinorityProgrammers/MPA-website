@@ -661,13 +661,13 @@ const HomepageNav = ({
               </li>
               <li
                 className={
-                  router.pathname === '/join'
+                  router.pathname === 'https://snapshot.org/#/minorityprogrammers.eth'
                     ? 'nav-item active-link'
                     : 'nav-item'
                 }
               >
                 <Link
-                  href="/join"
+                  href="https://snapshot.org/#/minorityprogrammers.eth"
                   className="nav-links"
                   onClick={closeMobileMenu}
                 >
