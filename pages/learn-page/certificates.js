@@ -9,7 +9,7 @@ import links from '../../contexts/utils/links';
 import ComingSoon from '../../components/ComingSoon';
 import useDetectOutsideClick from '../../components/UseDetectOutsideClick';
 
-const LearnPage = function () {
+const LearnPage = () => {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef(null);
   const [hide, setHide] = useDetectOutsideClick(dropdownRef, true);
@@ -36,12 +36,16 @@ const LearnPage = function () {
         })
         .then((res) => {
           setCertificate(res.data.data);
-          setTimeout(() => { setLoading(false); }, 3000);
+          setTimeout(() => {
+            setLoading(false);
+          }, 3000);
         });
     }
-  }, [typeof window !== 'undefined'
-    ? window.localStorage.getItem('jwtToken')
-    : null]);
+  }, [
+    typeof window !== 'undefined'
+      ? window.localStorage.getItem('jwtToken')
+      : null,
+  ]);
 
   return (
     <Layout pageTitle="Learn Page - Minority Programmers Association">

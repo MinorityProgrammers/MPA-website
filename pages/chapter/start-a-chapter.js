@@ -1,6 +1,4 @@
-import React, {
-  useState, useRef, useEffect, useContext,
-} from 'react';
+import React, { useState, useRef, useEffect, useContext } from 'react';
 import Layout from '../../components/Layout';
 import Footer from '../../components/Footer';
 import HomepageNav from '../../components/homepage/HomepageNav';
@@ -11,7 +9,7 @@ import SidebarTwo from '../../components/sidebar/SidebarTwo';
 import links from '../../contexts/utils/links';
 import { GlobalContext } from '../../contexts/provider';
 
-const Chapter = function () {
+const Chapter = () => {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState('');
   const [userData, setUserData] = useState([]);

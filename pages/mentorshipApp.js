@@ -124,7 +124,6 @@ export class mentorshipApp extends Component {
           description: mentorship.user_id.bio,
           country: mentorship.user_id.location,
         }));
-        // console.log(sugggestions);
         this.setState({
           swipeCards: sugggestions,
           show: true,

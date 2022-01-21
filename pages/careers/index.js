@@ -45,7 +45,7 @@ const JobsMain = () => {
   const [loading, setLoading] = useState(false);
   const [loadingReq, setLoadingReq] = useState(false);
   const [allJobs, setAllJobs] = useState([]);
-  const [filter/* , setFilter */] = useState({
+  const [filter] = useState({
     pay: '',
     job_type: '',
     remote: '',
@@ -54,7 +54,7 @@ const JobsMain = () => {
     description: '',
     location: '',
   });
-  const [queryObj/* , setQueryObj */] = useState({});
+  const [queryObj] = useState({});
   const [activeJobIndex, setActiveJobIndex] = useState(0);
   const descriptionInput = useRef();
 
@@ -66,7 +66,6 @@ const JobsMain = () => {
         setJobs(response.data);
         setAllJobs(response.data);
 
-        // check if the views is mobile or desktop to display "current view job"
         if (window.innerWidth <= 991) {
           changeCurrentJob(null);
         } else {
@@ -74,7 +73,6 @@ const JobsMain = () => {
         }
 
         setTimeout(() => {
-          // TO TEST LOADING SKELETON COMMENT OUT setLoading(false);
           setLoading(false);
           setLoadingReq(true);
         }, 1);
@@ -94,7 +92,7 @@ const JobsMain = () => {
     setLoading(true);
     setJobs([]);
     fetch(
-      `${process.env.BASE_URI}/job?pay=${filter.pay}&remote=${filter.remote}&job_type=${filter.job_type}&date_posted=${filter.date_posted}&job_industry=${filter.job_industry}`,
+      `${process.env.BASE_URI}/job?pay=${filter.pay}&remote=${filter.remote}&job_type=${filter.job_type}&date_posted=${filter.date_posted}&job_industry=${filter.job_industry}`
     )
       .then((response) => response.json())
       .then((response) => {
@@ -122,7 +120,6 @@ const JobsMain = () => {
       delete queryObj.page;
     }
 
-    // closes form
     if (btn.target.name !== 'remote') {
       btn.target.parentNode.parentNode.parentNode.style.display = 'none';
     }
@@ -193,19 +190,19 @@ const JobsMain = () => {
   function containerReset() {
     if (window.innerWidth > 991 && document.querySelector('.jobsMain')) {
       document.getElementsByClassName(
-        'jobs-main-container-list',
+        'jobs-main-container-list'
       )[0].style.display = 'block';
       document.getElementsByClassName(
-        'jobs-main-container-single',
+        'jobs-main-container-single'
       )[0].style.display = 'block';
 
       winSize.current = 'large';
     } else if (
-      winSize.current === 'large'
-      && document.querySelector('.jobsMain')
+      winSize.current === 'large' &&
+      document.querySelector('.jobsMain')
     ) {
       document.getElementsByClassName(
-        'jobs-main-container-single',
+        'jobs-main-container-single'
       )[0].style.display = 'none';
       winSize.current = 'small';
     }
@@ -219,55 +216,58 @@ const JobsMain = () => {
     setActiveJobIndex(idx);
     changeCurrentJob((/* prevJob */) => currJob);
     if (window.innerWidth <= 991) {
-      document.getElementsByClassName('jobsMain-search')[0].style.display = 'none';
+      document.getElementsByClassName('jobsMain-search')[0].style.display =
+        'none';
       document.getElementsByClassName(
-        'jobs-main-container-list',
+        'jobs-main-container-list'
       )[0].style.display = 'none';
-      document.getElementsByClassName('jobs-main-filters')[0].style.display = 'none';
+      document.getElementsByClassName('jobs-main-filters')[0].style.display =
+        'none';
       document.getElementsByClassName(
-        'jobs-main-container-single',
+        'jobs-main-container-single'
       )[0].style.display = 'block';
     }
   }
 
   function closeSingle() {
-    document.getElementsByClassName('jobsMain-search')[0].style.display = 'block';
-    document.getElementsByClassName('jobs-main-filters')[0].style.display = 'block';
+    document.getElementsByClassName('jobsMain-search')[0].style.display =
+      'block';
+    document.getElementsByClassName('jobs-main-filters')[0].style.display =
+      'block';
     document.getElementsByClassName(
-      'jobs-main-container-single',
+      'jobs-main-container-single'
     )[0].style.display = 'none';
     document.getElementsByClassName('jobsMain')[0].style.height = 'auto';
     document.getElementsByClassName(
-      'jobs-main-container-list',
+      'jobs-main-container-list'
     )[0].style.display = 'block';
   }
 
   function openFilterForm(btn) {
-    // if the form is open, close it and return
     if (window.getComputedStyle(btn.nextSibling).display === 'block') {
       btn.nextSibling.style.display = 'none';
       return;
     }
 
-    // close all other forms when any form button is clicked on
     const elements = document.getElementsByClassName('job-filter-item-form');
     for (let i = 0; i < elements.length; i += 1) {
       elements[i].style.display = 'none';
     }
 
-    // open the form which is the next sibling of the button that was clicked
     if (btn.nextSibling) {
       btn.nextSibling.style.display = 'block';
     }
   }
 
-  const token = typeof window !== 'undefined'
-    ? window.localStorage.getItem('jwtToken')
-    : null;
+  const token =
+    typeof window !== 'undefined'
+      ? window.localStorage.getItem('jwtToken')
+      : null;
 
-  const userInfo = typeof window !== 'undefined'
-    ? window.localStorage.getItem('userInfo')
-    : null;
+  const userInfo =
+    typeof window !== 'undefined'
+      ? window.localStorage.getItem('userInfo')
+      : null;
 
   const fetchSavedJobs = () => {
     if (token) {
@@ -295,7 +295,7 @@ const JobsMain = () => {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        },
+        }
       )
       .then((/* response */) => {
         successToast('Job Saved Successfully!');
@@ -330,10 +330,10 @@ const JobsMain = () => {
   }, []);
 
   const savedJobsId = savedJobs.map(
-    (singleSavedJob) => singleSavedJob?.job_id?._id,
+    (singleSavedJob) => singleSavedJob?.job_id?._id
   );
   const appliedJobsId = appliedJobs.map(
-    (singleAppliedJob) => singleAppliedJob?.job_id?._id,
+    (singleAppliedJob) => singleAppliedJob?.job_id?._id
   );
 
   const authPlease = () => {
@@ -344,76 +344,69 @@ const JobsMain = () => {
   const jobsPerPage = 5;
   const pagesVisited = pageNumber * jobsPerPage;
 
-  // jobStubs will be fetched from database and then map... the fetch will have ALL query parameters
-  // (search description, search location, filters, jobs per page, current page)
-  const jobStubs = jobs?.length > 0 ? (
-    jobs.slice(pagesVisited, pagesVisited + jobsPerPage).map((job, idx) => (
-      <div
-        className={idx === activeJobIndex ? 'job-stub active' : 'job-stub'}
-        key={job._id}
-        onClick={(e) => changeJobAndColor(e, job, idx)}
-      >
-        <div className="job-stub-header">
-          <div className="job-stub-title">{job.job_title}</div>
-          <div className="job-stub-company">
-            {job?.companyId?.company_name}
+  const jobStubs =
+    jobs?.length > 0 ? (
+      jobs.slice(pagesVisited, pagesVisited + jobsPerPage).map((job, idx) => (
+        <div
+          className={idx === activeJobIndex ? 'job-stub active' : 'job-stub'}
+          key={job._id}
+          onClick={(e) => changeJobAndColor(e, job, idx)}
+        >
+          <div className="job-stub-header">
+            <div className="job-stub-title">{job.job_title}</div>
+            <div className="job-stub-company">
+              {job?.companyId?.company_name}
+            </div>
           </div>
-        </div>
-        <div className="job-stub-footer">
-          <div className="job-stub-postDate">
-            Posted:
-            {' '}
-            {new Date(job.updatedAt).toDateString().substr(3)}
-          </div>
-          {userInfo !== null ? (
-            savedJobsId.includes(job._id) ? (
-              <button type="button" disabled className="job-stub-saved">
-                Saved
-              </button>
+          <div className="job-stub-footer">
+            <div className="job-stub-postDate">
+              Posted: {new Date(job.updatedAt).toDateString().substr(3)}
+            </div>
+            {userInfo !== null ? (
+              savedJobsId.includes(job._id) ? (
+                <button type="button" disabled className="job-stub-saved">
+                  Saved
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  className="job-stub-saveLink"
+                  onClick={() => saveJob(job)}
+                >
+                  Save Job
+                </button>
+              )
             ) : (
               <button
                 type="button"
                 className="job-stub-saveLink"
-                onClick={() => saveJob(job)}
+                onClick={authPlease}
               >
                 Save Job
               </button>
-            )
-          ) : (
-            <button
-              type="button"
-              className="job-stub-saveLink"
-              onClick={authPlease}
-            >
-              Save Job
-            </button>
-          )}
+            )}
+          </div>
         </div>
+      ))
+    ) : (
+      <div>
+        <h3>No Jobs Available</h3>
       </div>
-    ))
-  ) : (
-    <div>
-      <h3>No Jobs Available</h3>
-    </div>
-  );
-  // TODO 1
+    );
   function inputSearchSubmit(e) {
-    // if nothing is changed in the input searches, rerun query with same parameters
     e.preventDefault();
-    // let queryObj={};
     let blank = true;
     if (e.target.childNodes[0].value) {
       queryObj.search = e.target.childNodes[0].value;
       blank = false;
-      // search the jobs using title
-      const filterJobsByTitle = allJobs.filter(
-        (job) => job.job_title.toLowerCase().includes(queryObj.search.toLowerCase()),
+      const filterJobsByTitle = allJobs.filter((job) =>
+        job.job_title.toLowerCase().includes(queryObj.search.toLowerCase())
       );
-      // search the jobs using description
-      const filterJobsByDes = allJobs.filter((job) => job.job_description
-        .toLowerCase()
-        .includes(queryObj.search.toLowerCase()));
-      // convert min_requirements list to string
+      const filterJobsByDes = allJobs.filter((job) =>
+        job.job_description
+          .toLowerCase()
+          .includes(queryObj.search.toLowerCase())
+      );
       const requirements = (reqs) => {
         const arr = reqs.map((item) => {
           if (item.skill) return item.skill;
@@ -421,7 +414,6 @@ const JobsMain = () => {
         });
         return arr.toString().toLowerCase();
       };
-      // search the jobs using requirements(skills)
       const filterJobsByReq = allJobs.filter((job) => {
         const min_requirements = requirements(job.min_requirements);
         return min_requirements
@@ -430,9 +422,6 @@ const JobsMain = () => {
           .includes(queryObj.search.toLowerCase());
       });
 
-      /* changing the jobs if the search result is found
-        based on the title then description then skills
-      */
       if (filterJobsByTitle.length > 0) {
         setJobs(filterJobsByTitle);
         changeCurrentJob(filterJobsByTitle[0]);
@@ -462,22 +451,10 @@ const JobsMain = () => {
     inputSearchSubmit(e);
   };
 
-  /*
-  // this function is not used in this file.... check if it is needed before deleting
-  const onEmptySearchFields = () => {
-    if (!descriptionInput.current.value) {
-      delete queryObj.description;
-      router.push({ query: queryObj });
-      filterJobs();
-    }
-  };
- */
-
   const changePage = ({ selected }) => {
     setPageNumber(selected);
   };
 
-  // renders jsx elements (page contents)
   return (
     <CareersMainComponent
       jobsOn
@@ -631,24 +608,20 @@ const JobsMain = () => {
                               <div>
                                 {currentJob.min_requirements
                                   ? currentJob.min_requirements.map(
-                                    (skill, index) => (
-                                      <ul key={`${index + 1}`}>
-                                        <li className="list-style-square">
-                                          <span>
-                                            {skill.years}
-                                            {' '}
-                                            {skill.years === 1
-                                              ? 'year '
-                                              : 'years '}
-                                          </span>
-                                          <span>
-                                            {' '}
-                                            {skill.skill}
-                                          </span>
-                                        </li>
-                                      </ul>
-                                    ),
-                                  )
+                                      (skill, index) => (
+                                        <ul key={`${index + 1}`}>
+                                          <li className="list-style-square">
+                                            <span>
+                                              {skill.years}{' '}
+                                              {skill.years === 1
+                                                ? 'year '
+                                                : 'years '}
+                                            </span>
+                                            <span> {skill.skill}</span>
+                                          </li>
+                                        </ul>
+                                      )
+                                    )
                                   : ''}
                               </div>
                             )}

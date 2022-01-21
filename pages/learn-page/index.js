@@ -9,7 +9,7 @@ import links from '../../contexts/utils/links';
 import LearnHero from '../../components/learn/LearnHero';
 import useDetectOutsideClick from '../../components/UseDetectOutsideClick';
 
-const LearnPage = function () {
+const LearnPage = () => {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef(null);
   const [hide, setHide] = useDetectOutsideClick(dropdownRef, false);
@@ -39,15 +39,21 @@ const LearnPage = function () {
           setEnrolledCourses(res.data.data);
         });
     }
-  }, [typeof window !== 'undefined' ? window.localStorage.getItem('jwtToken') : null]);
+  }, [
+    typeof window !== 'undefined'
+      ? window.localStorage.getItem('jwtToken')
+      : null,
+  ]);
 
   useEffect(() => {
     axios.get(`${process.env.BASE_URI}/learn/`).then((res) => {
       setUsersCourses(res.data.data);
     });
-  }, [typeof window !== 'undefined'
-    ? window.localStorage.getItem('jwtToken')
-    : null]);
+  }, [
+    typeof window !== 'undefined'
+      ? window.localStorage.getItem('jwtToken')
+      : null,
+  ]);
 
   return (
     <Layout pageTitle="Learn Page - Minority Programmers Association">

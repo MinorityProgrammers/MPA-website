@@ -11,7 +11,7 @@ import PresaleAmount from '../components/presale/presaleAmount';
 import PresaleHeroSection from '../components/presale/presaleHeroSection';
 import PresalePreorder from '../components/presale/presalePreorder';
 
-const Presale = function () {
+const Presale = () => {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef(null);
   const [hide, setHide] = useDetectOutsideClick(dropdownRef, true);

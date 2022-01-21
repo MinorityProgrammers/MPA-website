@@ -6,7 +6,7 @@ import useDetectOutsideClick from '../components/UseDetectOutsideClick';
 
 import Footer from '../components/Footer';
 
-const DefisummerHome = function () {
+const DefisummerHome = () => {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef(null);
   const navBarRef = useRef();

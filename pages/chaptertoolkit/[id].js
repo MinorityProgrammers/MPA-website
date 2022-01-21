@@ -12,7 +12,7 @@ import SidebarTwo from '../../components/sidebar/SidebarTwo';
 import useDetectOutsideClick from '../../components/UseDetectOutsideClick';
 import links from '../../contexts/utils/links';
 
-const ChapterPage = function () {
+const ChapterPage = () => {
   const [toolkits, setToolkits] = useState([]);
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef(null);

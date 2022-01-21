@@ -7,7 +7,7 @@ import Footer from '../components/Footer';
 import SidebarTwo from '../components/sidebar/SidebarTwo';
 import links from '../contexts/utils/links';
 
-const VotePage = function () {
+const VotePage = () => {
   const [open, setOpen] = useState(false);
   return (
     <Layout pageTitle="Voting Resource Guide">

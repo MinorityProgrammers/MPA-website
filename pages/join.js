@@ -9,7 +9,7 @@ import JoinHerosection from '../components/join/JoinHerosection';
 import MpaPrograms from '../components/join/MpaProgramsHighlight';
 import JoinCard from '../components/join/JoinCard';
 
-const JoinPage = function () {
+const JoinPage = () => {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef(null);
   const [hide, setHide] = useDetectOutsideClick(dropdownRef, true);

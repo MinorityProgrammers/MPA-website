@@ -14,7 +14,7 @@ export async function getServerSideProps(context) {
   };
 }
 
-const CoursePage = function ({ params }) {
+const CoursePage = ({ params }) => {
   const [data, setData] = useState([]);
   const { courseId } = params;
   const [enrolledCourses, setEnrolledCourses] = useState([]);
@@ -44,14 +44,11 @@ const CoursePage = function ({ params }) {
     const userToken = JSON.parse(localStorage.getItem('userInfo'));
     if (userToken !== null) {
       axios
-        .get(
-          `${process.env.BASE_URI}/learn/userCourses`,
-          {
-            headers: {
-              Authorization: `Bearer ${userToken.token}`,
-            },
+        .get(`${process.env.BASE_URI}/learn/userCourses`, {
+          headers: {
+            Authorization: `Bearer ${userToken.token}`,
           },
-        )
+        })
         .then((res) => {
           if (res.data.data.length > 0) {
             setEnrolledCourses(res.data.data);
@@ -63,7 +60,7 @@ const CoursePage = function ({ params }) {
   }, []);
 
   const singleCourse = enrolledCourses?.filter(
-    (courseItem) => courseItem.courseId._id === courseId,
+    (courseItem) => courseItem.courseId._id === courseId
   );
   useEffect(() => {
     singleCourse.forEach((courseItem) => {
@@ -75,14 +72,11 @@ const CoursePage = function ({ params }) {
     const userToken = JSON.parse(localStorage.getItem('userInfo'));
     if (userToken !== null) {
       axios
-        .get(
-          `${process.env.BASE_URI}/course/${courseId}/module`,
-          {
-            headers: {
-              Authorization: `Bearer ${userToken.token}`,
-            },
+        .get(`${process.env.BASE_URI}/course/${courseId}/module`, {
+          headers: {
+            Authorization: `Bearer ${userToken.token}`,
           },
-        )
+        })
         .then((res) => {
           setModules(res.data.data);
         });
