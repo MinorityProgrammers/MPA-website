@@ -14,7 +14,7 @@ export async function getServerSideProps(context) {
   };
 }
 
-const ActivityPage = function ({ params }) {
+const ActivityPage = ({ params }) => {
   const { courseId, moduleId } = params;
   const [data, setData] = useState([]);
   const [enrolledCourses, setEnrolledCourses] = useState([]);
@@ -44,14 +44,11 @@ const ActivityPage = function ({ params }) {
     const userToken = JSON.parse(localStorage.getItem('userInfo'));
     if (userToken !== null) {
       axios
-        .get(
-          `${process.env.BASE_URI}/learn/userCourses`,
-          {
-            headers: {
-              Authorization: `Bearer ${userToken.token}`,
-            },
+        .get(`${process.env.BASE_URI}/learn/userCourses`, {
+          headers: {
+            Authorization: `Bearer ${userToken.token}`,
           },
-        )
+        })
         .then((res) => {
           if (res.data.data.length > 0) {
             setEnrolledCourses(res.data.data);
@@ -66,14 +63,11 @@ const ActivityPage = function ({ params }) {
     const userToken = JSON.parse(localStorage.getItem('userInfo'));
     if (userToken !== null) {
       axios
-        .get(
-          `${process.env.BASE_URI}/course/${courseId}/module`,
-          {
-            headers: {
-              Authorization: `Bearer ${userToken.token}`,
-            },
+        .get(`${process.env.BASE_URI}/course/${courseId}/module`, {
+          headers: {
+            Authorization: `Bearer ${userToken.token}`,
           },
-        )
+        })
         .then((res) => {
           setModules(res.data.data);
         });
@@ -84,14 +78,11 @@ const ActivityPage = function ({ params }) {
     const userToken = JSON.parse(localStorage.getItem('userInfo'));
     if (userToken !== null) {
       axios
-        .get(
-          `${process.env.BASE_URI}/learn/${courseId}/userModules`,
-          {
-            headers: {
-              Authorization: `Bearer ${userToken.token}`,
-            },
+        .get(`${process.env.BASE_URI}/learn/${courseId}/userModules`, {
+          headers: {
+            Authorization: `Bearer ${userToken.token}`,
           },
-        )
+        })
         .then((res) => {
           setUserModules(res.data.data);
         });
@@ -99,7 +90,7 @@ const ActivityPage = function ({ params }) {
   }, [courseId]);
 
   const singleUserModule = userModules?.filter(
-    (userModule) => userModule.moduleId._id === moduleId,
+    (userModule) => userModule.moduleId._id === moduleId
   );
   const singleUserModuleInfo = singleUserModule[0];
 

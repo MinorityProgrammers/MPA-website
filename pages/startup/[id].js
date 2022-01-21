@@ -24,16 +24,8 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context) => {
   const { id } = context.params;
-  // change url later when the get single startup controller is fixed in git repo
 
-  // const res = await axios.get(
-  //   `${process.env.BASE_URI}/startup/` + id
-  // )
-
-  // Calendly test startup
-  const res = await axios.get(
-    `${process.env.BASE_URI}/startup/${id}`,
-  );
+  const res = await axios.get(`${process.env.BASE_URI}/startup/${id}`);
   const data = await res.data.data;
 
   return {
@@ -41,9 +33,8 @@ export const getStaticProps = async (context) => {
   };
 };
 
-const StartupInfoPage = function ({ startup }) {
+const StartupInfoPage = ({ startup }) => {
   const [open, setOpen] = useState(false);
-  // console.log("startup data from [id]page", startup)
 
   return (
     <Layout pageTitle="Information">

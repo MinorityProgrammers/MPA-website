@@ -1,6 +1,4 @@
-import React, {
-  useEffect, useState, useContext, useRef,
-} from 'react';
+import React, { useEffect, useState, useContext, useRef } from 'react';
 import { useRouter } from 'next/router';
 import NotFoundPage from '../404';
 import Layout from '../../components/Layout';
@@ -14,7 +12,7 @@ import Footer from '../../components/Footer';
 import ComingSoon from '../../components/ComingSoon';
 import useDetectOutsideClick from '../../components/UseDetectOutsideClick';
 
-const User = function ({ user }) {
+const User = ({ user }) => {
   const [hiddenProfileValidated, setHiddenProfileValidated] = useState(false);
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef(null);
@@ -24,18 +22,21 @@ const User = function ({ user }) {
   const [ownsProfile, setOwnsProfile] = useState(false);
 
   useEffect(() => {
-    const timeoutID = setTimeout(() => (
-      !((isLoggedIn && ownsProfile) || user[0]?.profileVisibility)
-        && setHiddenProfileValidated(true)
-    ), 2000);
-    return () => { clearTimeout(timeoutID); };
+    const timeoutID = setTimeout(
+      () =>
+        !((isLoggedIn && ownsProfile) || user[0]?.profileVisibility) &&
+        setHiddenProfileValidated(true),
+      2000
+    );
+    return () => {
+      clearTimeout(timeoutID);
+    };
   }, [isLoggedIn, ownsProfile, user]);
 
   const handleClick = () => {
     setHide(!hide);
   };
 
-  // states from global context
   const {
     profileDispatch,
     profileState: {
@@ -45,18 +46,16 @@ const User = function ({ user }) {
 
   const router = useRouter();
 
-  // grab a token from local storage so as user info
   useEffect(() => {
     if (window.localStorage.getItem('jwtToken')) {
       getProfile(setUserData)(profileDispatch);
     }
   }, []);
 
-  // user is logged in and viewing own profile page
   useEffect(() => {
     setOwnsProfile(
-      userData?.userName === user[0]?.userName
-        || profileData?.userName === user[0]?.userName,
+      userData?.userName === user[0]?.userName ||
+        profileData?.userName === user[0]?.userName
     );
   }, [user, userData, profileData]);
 
@@ -83,11 +82,10 @@ const User = function ({ user }) {
     }, 60000);
   }
 
-  // console.log(userData, profileData);
   return (
     <Layout pageTitle="Profile">
-      {(isLoggedIn && ownsProfile && user?.[0])
-      || user[0]?.profileVisibility !== false ? (
+      {(isLoggedIn && ownsProfile && user?.[0]) ||
+      user[0]?.profileVisibility !== false ? (
         <>
           <HomepageNav
             setData={setUserData}
@@ -112,11 +110,11 @@ const User = function ({ user }) {
           />
           <Footer />
         </>
-        ) : hiddenProfileValidated ? (
-          <NotFoundPage />
-        ) : (
-          <></>
-        )}
+      ) : hiddenProfileValidated ? (
+        <NotFoundPage />
+      ) : (
+        <></>
+      )}
     </Layout>
   );
 };
@@ -133,33 +131,3 @@ export const getServerSideProps = async (context) => {
     props: { user: data },
   };
 };
-
-// // static generation
-// export const getStaticPaths = async () => {
-//   const res = await fetch(
-//     "${process.env.BASE_URI}/user/"
-//   );
-//   const data = await res.json();
-
-//   const paths = data.data.map((user) => {
-//     return { params: { username: user.userName } };
-//   });
-
-//   return {
-//     paths,
-//     fallback: false,
-//   };
-// };
-// // static generation
-// export const getStaticProps = async (context) => {
-//   const slug = context.params.username;
-
-//   const res = await fetch(
-//     `${process.env.BASE_URI}/user/${slug}`
-//   );
-//   const data = await res.json();
-
-//   return {
-//     props: { user: data },
-//   };
-// };
