@@ -422,9 +422,9 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                           : 'no username'}
                       </small>
                     </h3>
-                    <p className="tw-text-sm tw-text-gray-500">
+                    {/* <p className="tw-text-sm tw-text-gray-500">
                       UX Design Intern, Minority Programmers
-                    </p>
+                    </p> */}
                     {userData?.locationVisibility && (
                       <h4 className="tw-mt-2 tw-font-medium">
                         {userData?.location}
