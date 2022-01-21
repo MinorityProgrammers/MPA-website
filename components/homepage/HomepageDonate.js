@@ -86,7 +86,7 @@ const HomepageDonate = () => {
   return (
     <section id="donate" className="homepage__donate">
       <div className="heading__number">
-        <h3 className="tw-text-blue-900">04</h3>
+        <h3 className="tw-text-blue-900">05</h3>
       </div>
       <div className="container donate__container">
         <h2 className="heading__title mt-5 mb-5 tw-text-blue-900">
