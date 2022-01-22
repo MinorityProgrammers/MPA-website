@@ -1,14 +1,13 @@
-/* eslint-disable max-len */
 import Swiper from 'react-id-swiper';
 import 'swiper/css/swiper.css';
-import TweetEmbed from 'react-tweet-embed';
 import React from 'react';
+import TweetEmbed from './TweetEmbed';
 
 const HomePageReviews = () => {
   const data = [
-    '1444383109307412487',
-    '1455675414765051905',
-    '1431364200132190219',
+    { tweetId: '1444383109307412487' },
+    { tweetId: '1431364200132190219', options: { cards: 'hidden' } },
+    { tweetId: '1455675414765051905' },
   ];
   const params = {
     slidesPerView: data.length,
@@ -44,12 +43,6 @@ const HomePageReviews = () => {
       },
     },
   };
-  //   parent.document
-  //     .querySelectorAll('iframe, frame')
-  //     .forEach((frame) => {
-  //       console.log(frame);
-  //     });
-
   return (
     <section className="homepage__Reviews">
       <div className="heading__number">
@@ -61,15 +54,12 @@ const HomePageReviews = () => {
         </h2>
 
         <Swiper {...params} grabCursor>
-          {data.map((comment) => (
-            <div className="item" key={comment.id}>
+          {data.map((tweet) => (
+            <div className="item tweet__card" id={`tweet-${tweet.tweetId}`} key={tweet.tweetId}>
               <div className="card card__container homepage__comment">
                 <TweetEmbed
-                  className="css-1dbjc4n"
-                  id={comment}
-                  options={{
-                    cards: 'hidden', width: 300, maxWidth: 350,
-                  }}
+                  tweetId={tweet.tweetId}
+                  options={tweet.options}
                   onLoad={(tweetWidgetEl) => {
                     const tweetEl = tweetWidgetEl.shadowRoot.querySelector('.EmbeddedTweet');
                     tweetEl.style.margin = 'auto';
@@ -79,7 +69,6 @@ const HomePageReviews = () => {
             </div>
           ))}
         </Swiper>
-        {/* <p className="swiper__counter">3/6</p> */}
       </div>
     </section>
   );

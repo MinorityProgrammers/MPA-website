@@ -8962,19 +8962,39 @@ html {
   padding-bottom: 60px;
 }
 .homepage__Reviews .container .swiper-container .swiper-button-next{
-  top: 90%;
+  top: 94%;
 }
 .homepage__Reviews .container .swiper-container .swiper-button-prev{
-  top: 90%;
+  top: 94%;
   left: 88%;
 }
-.homepage__comment{
- /* height: 500px; */
- overflow: hidden;
+.item .homepage__comment{
+  margin: 0;
+  margin-right: 10px;
+  min-height: 400px;
+  max-height: 450px;
+  /* max-width: 300px; */
+ /* overflow: hidden; */
   border: none;
 }
-.homepage__comment .css-1dbjc4n .twitter-tweet{
-/* display: none !important; */
+#tweet-1455675414765051905 .homepage__comment{
+  max-width: 270px !important;
+  margin: auto;
+}
+.homepage__comment div div{
+  margin-top: 0 !important;
+}
+#tweet-1444383109307412487 .homepage__comment div iframe{
+  max-width: 300px !important;
+}
+#tweet-1455675414765051905 .homepage__comment div iframe{
+  max-width: 280px !important;
+}
+#tweet-1431364200132190219 .homepage__comment div iframe{
+  max-width: 355px !important;
+}
+.tweet__card{
+  margin-bottom: 40px;
 }
 #twitter-widget-2{
   display: none;
@@ -9052,11 +9072,11 @@ blockquote.twitter-tweet {
 }
 @media only screen and (max-width: 768px) {
   .homepage__Reviews .container .swiper-container .swiper-button-prev{
-  top: 92%;
-  left: 75%;
+    top: 94%;
+    left: 75%;
   }
   .homepage__Reviews .container .swiper-container .swiper-button-next{
-    top: 92%;
+    top: 94%;
   }
   .homepage__comment{
     width: 300px;
@@ -9065,8 +9085,11 @@ blockquote.twitter-tweet {
 }
 @media only screen and (max-width: 450px) {
   .homepage__Reviews .container .swiper-container .swiper-button-prev{
-  top: 90%;
-  left: 70%;
+    top: 94%;
+    left: 67%;
+  }
+  .homepage__Reviews .container .swiper-container .swiper-button-next{
+    top: 94%;
   }
 } 
 
@@ -9895,6 +9918,7 @@ blockquote.twitter-tweet {
 #not-found {
   height: 100vh;
 }
+
 @media (max-height: 636px) {
   #not-found {
     height: 636px;
