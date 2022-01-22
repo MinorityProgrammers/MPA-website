@@ -5,7 +5,7 @@ import NeedHelp from '../helperFiles/needHelp';
 import OverlayCard from '../helperFiles/overlayCard';
 import QuestionContainer from '../helperFiles/questionContainer';
 
-const Wireframe1 = function ({ step }) {
+const Wireframe1 = ({ step }) => {
   const [showBlur, setShowBlur] = useState(0);
   const projectId = 'XXALD4';
   const option = 2;
@@ -27,9 +27,7 @@ const Wireframe1 = function ({ step }) {
         <div className="body">
           <div className="inner-body">
             <header>
-              Your project ID is
-              {' '}
-              <span>{projectId}</span>
+              Your project ID is <span>{projectId}</span>
             </header>
             <article>
               Due to heavy traffic of projects, no MPA project manager could

@@ -4,7 +4,7 @@ import QuestionContainer from './questionContainer';
 import useDefaultValue from './getDefaultValue';
 import addQuestion from './addQuestion';
 
-const SelectTemplate = function ({
+const SelectTemplate = ({
   step,
   setstep,
   questions,
@@ -12,7 +12,7 @@ const SelectTemplate = function ({
   options = [],
   secondOptions,
   question1 = '',
-}) {
+}) => {
   const defaultValueSelected = useDefaultValue(questions, step, 0);
   const defaultSecondValueSelected = useDefaultValue(questions, step, 1);
 

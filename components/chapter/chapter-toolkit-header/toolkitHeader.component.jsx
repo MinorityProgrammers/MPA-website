@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import styles from './toolkitHeader.module.css';
 
-const ToolkitHeader = function () {
+const ToolkitHeader = () => {
   const bgImage = {
     backgroundImage: 'url(/assets/images/chapter/toolkit.png)',
   };
@@ -14,14 +14,18 @@ const ToolkitHeader = function () {
           <Link href="/chapter">
             <a>
               <div className={styles.arrowBackContainer}>
-                <i className={`${styles.arrowBack} fas fa-long-arrow-alt-left`} />
+                <i
+                  className={`${styles.arrowBack} fas fa-long-arrow-alt-left`}
+                />
               </div>
             </a>
           </Link>
         </div>
         <div className={styles.heading}>
           <div className={styles.title}>CHAPTER TOOLKIT</div>
-          <div className={styles.text}>Lorem ipsum dolor sit amet consectetur</div>
+          <div className={styles.text}>
+            Lorem ipsum dolor sit amet consectetur
+          </div>
         </div>
       </div>
     </div>

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import coreteamInfo from './coreteamInfo.json';
 import TaskCard from './TaskCard';
 
-const ViewTask = function () {
+const ViewTask = () => {
   const [proposals, setProposals] = useState([]);
 
   useEffect(() => {

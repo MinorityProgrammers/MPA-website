@@ -6,10 +6,9 @@ import { IoIosMail } from 'react-icons/io';
 import ReactTooltip from 'react-tooltip';
 import SingleSubTask from './SingleSubTask';
 
-const TaskNameDescription = function () {
+const TaskNameDescription = () => {
   const [textDescription, setTextDescription] = useState({});
   const handleText = (e) => {
-    // text description-----------
     const newTextDecription = { ...textDescription };
     newTextDecription[e.target.name] = e.target.value;
     setTextDescription(newTextDecription);
@@ -20,11 +19,9 @@ const TaskNameDescription = function () {
     const formData = new FormData();
     formData.append('text', textDescription.text);
   };
-  // ------subTak------
   const [subtaskText, setSubTaskText] = useState([]);
   const [subtaskOpen, setSubTaskOpen] = useState(false);
   const { handleSubmit } = useForm();
-  // { data, id: Math.floor((Math.random() * 1000) + 1)
   const onSubmitSubTask = handleSubmit((data, e) => {
     const newSubTakText = [...subtaskText, data];
     for (let i = 0; i < newSubTakText.length; i += 1) {
@@ -33,8 +30,6 @@ const TaskNameDescription = function () {
     console.log(newSubTakText);
     setSubTaskText(newSubTakText);
     e.target.reset();
-
-    // e.preventDefault(newSubTakText);
   });
 
   const inputRef = useRef(null);
@@ -128,20 +123,17 @@ const TaskNameDescription = function () {
                   key={singleSubTask.id}
                   className="tw-flex tw-items-center tw-gap-x-2 tw-ml-4 tw-my-4"
                 >
-                  {
-                    // singleSubTask.data.id &&
-                    userCart.map((u) => (
-                      <div
-                        className="tw-cursor-pointer tw-btn"
-                        key={u.id}
-                        onClick={() => HandleRemoveUser(u.id)}
-                        data-tip={u.name}
-                      >
-                        <img className="tw-h-5 tw-w-5" src={u.image} alt="" />
-                        <ReactTooltip />
-                      </div>
-                    ))
-                  }
+                  {userCart.map((u) => (
+                    <div
+                      className="tw-cursor-pointer tw-btn"
+                      key={u.id}
+                      onClick={() => HandleRemoveUser(u.id)}
+                      data-tip={u.name}
+                    >
+                      <img className="tw-h-5 tw-w-5" src={u.image} alt="" />
+                      <ReactTooltip />
+                    </div>
+                  ))}
 
                   <div
                     id={index}
@@ -179,8 +171,7 @@ const TaskNameDescription = function () {
                               className="tw-h-5 tw-w-5"
                               src="/assets/images/coreteamimg/user.png"
                               alt=""
-                            />
-                            {' '}
+                            />{' '}
                             <span>{user.name}</span>
                           </div>
                         </a>
@@ -206,7 +197,6 @@ const TaskNameDescription = function () {
                     className=" tw-w-1/2 tw-bg-gray-200 tw-rounded-lg tw-text-black  tw-px-4 tw-py-1 focus:tw-outline-none text-lg"
                     placeholder="Sub Task description here"
                   />
-                  {/* <input type="text" className="tw-opacity-0" /> */}
                   <button
                     className="tw-font-bold tw-py-1 tw-px-2 tw-bg-blue-600 hover:tw-bg-green-600 tw-text-white tw-text-md tw-rounded-md focus:tw-outline-none "
                     type="submit"
@@ -314,9 +304,7 @@ const TaskNameDescription = function () {
       <section className="  move-task  tw-mx-auto">
         <div className="tw-my-8 tw-p-3 tw-container text-center">
           <h1 className="tw-lg tw-green-600 tw-my-4 parsonal-title">
-            MOVE TASK TO
-            {' '}
-            <span className="tw-uppercase">In-Progress</span>
+            MOVE TASK TO <span className="tw-uppercase">In-Progress</span>
           </h1>
           <p>
             Claim task and notify project manager that the task is being done.

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-// import Card from "../login-signup/card";
 import LoginPage from './helperFiles/LoginPage';
 import Page1 from './steps/step1';
 import Page2 from './steps/step2';
@@ -16,9 +15,7 @@ import Page11 from './steps/step11';
 const localStorageConsultancyKey = 'consultancy-questions';
 const localStorageStepKey = 'consultancy-step';
 
-const Consultancy = function ({
-  data, clickRegister, setClickRegister,
-}) {
+const Consultancy = ({ data, clickRegister, setClickRegister }) => {
   const [step, setstep] = useState(0);
   const [questions, setQuestions] = useState({});
   console.log(questions);
@@ -39,22 +36,22 @@ const Consultancy = function ({
   }
 
   useEffect(() => {
-    setQuestions((prev) => getLocalVariables(
-      localStorageConsultancyKey,
-      (value) => {
-        console.log(value);
-        return JSON.parse(JSON.parse(JSON.stringify(value)));
-      },
-      prev,
-    ));
+    setQuestions((prev) =>
+      getLocalVariables(
+        localStorageConsultancyKey,
+        (value) => {
+          console.log(value);
+          return JSON.parse(JSON.parse(JSON.stringify(value)));
+        },
+        prev
+      )
+    );
     if (data === null) {
       setClickRegister(true);
     } else {
-      setstep((prev) => getLocalVariables(
-        localStorageStepKey,
-        (value) => parseInt(value),
-        prev,
-      ));
+      setstep((prev) =>
+        getLocalVariables(localStorageStepKey, (value) => parseInt(value), prev)
+      );
     }
   }, []);
   useEffect(() => {
@@ -62,7 +59,7 @@ const Consultancy = function ({
     if (lenght_of_questions > 0 && lenght_of_questions + 1 >= step) {
       window.localStorage.setItem(
         localStorageConsultancyKey,
-        JSON.stringify(questions),
+        JSON.stringify(questions)
       );
     }
   }, [questions, step]);
@@ -165,7 +162,6 @@ const Consultancy = function ({
             setQuestions={setQuestions}
           />
         )}
-        {/* <Wireframe1 step={100} /> */}
       </div>
 
       <LoginPage

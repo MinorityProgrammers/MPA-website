@@ -12,7 +12,7 @@ import {
 } from 'react-share';
 import { successToast, errorToast } from '../../contexts/utils/toasts';
 
-const EventMoreInfo = function (props) {
+const EventMoreInfo = (props) => {
   const {
     clickRegister,
     setClickRegister,
@@ -33,19 +33,11 @@ const EventMoreInfo = function (props) {
   const [selectedEvent, setSelectedEvent] = useState([]);
   const dateNow = Date.now();
   const eventTime = new Date(data.time).getTime();
-
-  // console.log('props eventInfo', data);
-  // console.log('allEvent eventInfo', allEvent);
-  // console.log('userSavedEvents from EventMoreInfo', userSavedEvents);
-
   const shareUrl = `${data.eventLink}`;
   const title = `${data.eventName}`;
-
-  const eventStatus = userSavedEvents.filter(
-    (user) => user.event_id?._id === data._id,
-  ).map((x) => (
-    <li className="event-status-yes">{x.attending}</li>
-  ));
+  const eventStatus = userSavedEvents
+    .filter((user) => user.event_id?._id === data._id)
+    .map((x) => <li className="event-status-yes">{x.attending}</li>);
 
   const Capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
 
@@ -53,26 +45,29 @@ const EventMoreInfo = function (props) {
     e.preventDefault();
     if (clickRegister === false && active === false) {
       setClickRegister(true);
-      // console.log("event card", clickRegister)
     } else if (active === true && userData !== null) {
       setLoading(true);
-      axios.post(`${process.env.BASE_URI}/saveEvent`, {
-        event_id: data._id,
-        user_id: userData._id,
-        attending: `${status}`,
-      }, {
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-          Authorization: `Bearer ${token}`,
-        },
-      })
+      axios
+        .post(
+          `${process.env.BASE_URI}/saveEvent`,
+          {
+            event_id: data._id,
+            user_id: userData._id,
+            attending: `${status}`,
+          },
+          {
+            headers: {
+              'Content-Type': 'application/json',
+              Accept: 'application/json',
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        )
         .then((res) => {
           console.log('register:', res);
           setLoading(false);
           successToast('You are registered!');
           getUserSavedEvents();
-          // setTimeout("location.reload(true);", 2000);
         })
         .catch((err) => {
           console.log(err);
@@ -86,21 +81,20 @@ const EventMoreInfo = function (props) {
     e.preventDefault();
     if (clickRegister === false && active === false) {
       setClickRegister(true);
-      // console.log("event card", clickRegister)
     } else if (active === true && userData !== null) {
-      axios.delete(`${process.env.BASE_URI}/saveEvent/${eventId}`, {
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-          Authorization: `Bearer ${_token}`,
-        },
-      })
+      axios
+        .delete(`${process.env.BASE_URI}/saveEvent/${eventId}`, {
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+            Authorization: `Bearer ${_token}`,
+          },
+        })
         .then((res) => {
           console.log('cancel:', res);
           setLoading(false);
           successToast('removed event');
           getUserSavedEvents();
-          // setTimeout("location.reload(true);", 2000);
         })
         .catch((err) => {
           console.log(err);
@@ -109,21 +103,31 @@ const EventMoreInfo = function (props) {
         });
     }
   };
-
-  // Check saveEvents to change label
   const checkSaveEvent = (val) => {
     if (val === 'Register') {
       for (let i = 0; i < userSavedEvents.length; i += 1) {
-        if (userSavedEvents[i].event_id?._id === data._id || userSavedEvents !== null && attended.attending === 'yes') {
-          // console.log("cancel", userSavedEvents[i]._id)
-          return <button type="button" className="button_action" onClick={(e) => cancelRegister(e, userSavedEvents[i]._id, token)}>Cancel Registration</button>;
+        if (
+          userSavedEvents[i].event_id?._id === data._id ||
+          (userSavedEvents !== null && attended.attending === 'yes')
+        ) {
+          return (
+            <button
+              type="button"
+              className="button_action"
+              onClick={(e) => cancelRegister(e, userSavedEvents[i]._id, token)}
+            >
+              Cancel Registration
+            </button>
+          );
         }
       }
     } else if (val === 'attendance') {
       for (let i = 0; i < userSavedEvents.length; i += 1) {
-        if (userSavedEvents[i].event_id._id === data._id || userSavedEvents !== null && attended.attending === 'yes') {
-          // console.log("true attendance", userSavedEvents[i].event_id._id)
-          return <p>{' '}</p>;
+        if (
+          userSavedEvents[i].event_id._id === data._id ||
+          (userSavedEvents !== null && attended.attending === 'yes')
+        ) {
+          return <p> </p>;
         }
       }
     }
@@ -138,7 +142,14 @@ const EventMoreInfo = function (props) {
     return selectedEvent;
   };
 
-  const changeStatusApi = (e, _token, savedEventId, eventId, userId, attendingStatus) => {
+  const changeStatusApi = (
+    e,
+    _token,
+    savedEventId,
+    eventId,
+    userId,
+    attendingStatus
+  ) => {
     e.preventDefault();
     const _data = {
       event_id: eventId,
@@ -146,24 +157,26 @@ const EventMoreInfo = function (props) {
       attending: `${attendingStatus}`,
     };
     console.log(savedEventId, eventId, userId, attendingStatus);
-    axios.patch(`${process.env.BASE_URI}/saveEvent/${savedEventId}`, _data, {
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-        Authorization: `Bearer ${_token}`,
-      },
-    })
+    axios
+      .patch(`${process.env.BASE_URI}/saveEvent/${savedEventId}`, _data, {
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+          Authorization: `Bearer ${_token}`,
+        },
+      })
       .then((res) => {
         console.log('Changed status', res);
         setLoading(false);
         successToast(`Attending status: ${attendingStatus}`);
         getUserSavedEvents();
-        // setTimeout("location.reload(true);", 2000);
       })
       .catch((err) => {
         console.log(err.response.data);
         setLoading(false);
-        errorToast(`Cannot change status to ${attendingStatus} Something went wrong, please contact us.`);
+        errorToast(
+          `Cannot change status to ${attendingStatus} Something went wrong, please contact us.`
+        );
       });
   };
 
@@ -174,9 +187,6 @@ const EventMoreInfo = function (props) {
       isMount = false;
     };
   }, []);
-
-  // console.log("selectedevent", selectedEvent)
-
   const changeStatus = (e, event, status) => {
     e.preventDefault();
     if (clickRegister === false && active === false) {
@@ -201,7 +211,10 @@ const EventMoreInfo = function (props) {
   const totalAttendees = (eventId) => {
     for (let i = 0; i < allsavedEvents.length; i += 1) {
       if (allsavedEvents[i].event_id !== null) {
-        if (allsavedEvents[i].attending === 'yes' && allsavedEvents[i].event_id._id === eventId) {
+        if (
+          allsavedEvents[i].attending === 'yes' &&
+          allsavedEvents[i].event_id._id === eventId
+        ) {
           count += 1;
         }
       }
@@ -230,108 +243,201 @@ const EventMoreInfo = function (props) {
         {Capitalize(catName)}
       </p>
     );
-    exportButton = <button type="button" className="eventmoreinfo_export eventmoreinfo_export-first">Export Event To Calendar</button>;
+    exportButton = (
+      <button
+        type="button"
+        className="eventmoreinfo_export eventmoreinfo_export-first"
+      >
+        Export Event To Calendar
+      </button>
+    );
   } else if (labelTitle === 'workshop' || labelTitle === 'conference') {
     label = (
       <p className="about_header-label about_header-label-second">
         {Capitalize(catName)}
       </p>
     );
-    exportButton = <button type="button" className="eventmoreinfo_export eventmoreinfo_export-second">Export Event To Calendar</button>;
+    exportButton = (
+      <button
+        type="button"
+        className="eventmoreinfo_export eventmoreinfo_export-second"
+      >
+        Export Event To Calendar
+      </button>
+    );
   } else if (labelTitle === 'hackathon') {
     label = (
       <p className="about_header-label about_header-label-third">
         {Capitalize(catName)}
       </p>
     );
-    exportButton = <button type="button" className="eventmoreinfo_export eventmoreinfo_export-third">Export Event To Calendar</button>;
+    exportButton = (
+      <button
+        type="button"
+        className="eventmoreinfo_export eventmoreinfo_export-third"
+      >
+        Export Event To Calendar
+      </button>
+    );
   } else if (labelTitle === 'incubator' || labelTitle === 'accelerator') {
     label = (
       <p className="about_header-label about_header-label-fourth">
         {Capitalize(catName)}
       </p>
     );
-    exportButton = <button type="button" className="eventmoreinfo_export eventmoreinfo_export-fourth">Export Event To Calendar</button>;
+    exportButton = (
+      <button
+        type="button"
+        className="eventmoreinfo_export eventmoreinfo_export-fourth"
+      >
+        Export Event To Calendar
+      </button>
+    );
   }
 
-  const getEventDetailPhoto = () => allEvent.filter((e) => e._id === data._id).map((n) => (
-    <img
-      src={n.host.profilePicture ? n.host.profilePicture : 'https://github.com/MinorityProgrammers/mpa-avatars/blob/main/avatars/mysteryAvatar.png?raw=true'}
-      style={{
-        borderRadius: '50%',
-        width: '100px',
-        height: '100px',
-        objectFit: 'cover',
-        marginRight: '20px',
-      }}
-      alt="avatar"
-    />
-  ));
+  const getEventDetailPhoto = () =>
+    allEvent
+      .filter((e) => e._id === data._id)
+      .map((n) => (
+        <img
+          src={
+            n.host.profilePicture
+              ? n.host.profilePicture
+              : 'https://github.com/MinorityProgrammers/mpa-avatars/blob/main/avatars/mysteryAvatar.png?raw=true'
+          }
+          style={{
+            borderRadius: '50%',
+            width: '100px',
+            height: '100px',
+            objectFit: 'cover',
+            marginRight: '20px',
+          }}
+          alt="avatar"
+        />
+      ));
 
-  const getEventDetailName = () => allEvent.filter((e) => e._id === data._id).map((n) => (
-    <>
-      <p>{n.host.fistName}</p>
-      <p>
-        {' '}
-        {n.host.lastName}
-      </p>
-    </>
-  ));
+  const getEventDetailName = () =>
+    allEvent
+      .filter((e) => e._id === data._id)
+      .map((n) => (
+        <>
+          <p>{n.host.fistName}</p>
+          <p> {n.host.lastName}</p>
+        </>
+      ));
 
   Moment.locale('en');
 
   return (
     <div className="eventinfo">
-      {data.host
-        ? <div className="eventmoreinfo_shadow" onClick={() => handleMoreInfo()} />
-        : (
-          <div className="eventmoreinfo_shadow" />
-        )}
+      {data.host ? (
+        <div
+          className="eventmoreinfo_shadow"
+          onClick={() => handleMoreInfo()}
+        />
+      ) : (
+        <div className="eventmoreinfo_shadow" />
+      )}
 
       <div className="eventmoreinfo_container tw-z-50">
         <div className="eventmoreinfo_container_left">
           <img src={data.EventPicture} alt="Event_Picture" />
         </div>
         <div className="eventmoreinfo_container_right">
-          {data.host
-            && <i className="close_icon fas fa-times" id="closeicon" onClick={() => handleMoreInfo()} />}
+          {data.host && (
+            <i
+              className="close_icon fas fa-times"
+              id="closeicon"
+              onClick={() => handleMoreInfo()}
+            />
+          )}
           <div className="header">
             {data.host ? (
               <div className="host_details">
-                {data.host.profilePicture ? <img src={data.host.profilePicture ? data.host.profilePicture : 'https://github.com/MinorityProgrammers/mpa-avatars/blob/main/avatars/mysteryAvatar.png?raw=true'} alt="Host Avatar" /> : getEventDetailPhoto()}
+                {data.host.profilePicture ? (
+                  <img
+                    src={
+                      data.host.profilePicture
+                        ? data.host.profilePicture
+                        : 'https://github.com/MinorityProgrammers/mpa-avatars/blob/main/avatars/mysteryAvatar.png?raw=true'
+                    }
+                    alt="Host Avatar"
+                  />
+                ) : (
+                  getEventDetailPhoto()
+                )}
 
                 <div className="host_title">
                   <h4>Host</h4>
                   {data.host.firstName ? (
                     <p>
-                      {data.host.firstName}
-                      {' '}
-                      {data.host.lastName}
+                      {data.host.firstName} {data.host.lastName}
                     </p>
-                  ) : getEventDetailName()}
-                  {/* <p>{data.host.firstName} {data.host.lastName}</p> */}
+                  ) : (
+                    getEventDetailName()
+                  )}
                 </div>
               </div>
             ) : (
               <div className="host_details">
-                <img src={userData.profilePicture ? userData.profilePicture : 'https://github.com/MinorityProgrammers/mpa-avatars/blob/main/avatars/mysteryAvatar.png?raw=true'} alt="Host Avatar" />
+                <img
+                  src={
+                    userData.profilePicture
+                      ? userData.profilePicture
+                      : 'https://github.com/MinorityProgrammers/mpa-avatars/blob/main/avatars/mysteryAvatar.png?raw=true'
+                  }
+                  alt="Host Avatar"
+                />
                 <div className="host_title">
                   <h4>Host</h4>
                   <p>
-                    {userData.firstName ? userData.firstName : data.host.fistName}
-                    {' '}
+                    {userData.firstName
+                      ? userData.firstName
+                      : data.host.fistName}{' '}
                     {userData.lastName ? userData.lastName : data.host.lastName}
                   </p>
                 </div>
               </div>
             )}
-            {createEventData.step === 2 ? '' : (
+            {createEventData.step === 2 ? (
+              ''
+            ) : (
               <div className="buttons">
-                {Virtual === 'true' ? <p>Virtual Event</p> : <p>In-Person Event</p>}
-                {eventTime < dateNow ? <button type="button" className="button_action"><Link href={data.actionLink}><a target="_blank">Watch Webinar</a></Link></button> : (
+                {Virtual === 'true' ? (
+                  <p>Virtual Event</p>
+                ) : (
+                  <p>In-Person Event</p>
+                )}
+                {eventTime < dateNow ? (
+                  <button type="button" className="button_action">
+                    <Link href={data.actionLink}>
+                      <a target="_blank">Watch Webinar</a>
+                    </Link>
+                  </button>
+                ) : (
                   <span>
-                    {userData !== null ? checkSaveEvent('Register') : <button type="button" className="button_action" onClick={(e) => checkRegister(e, 'yes')}>{data.callToAction}</button>}
-                    {userData !== null && !checkSaveEvent('Register') ? <button type="button" className="button_action" onClick={(e) => checkRegister(e, 'yes')}>{data.callToAction}</button> : ''}
+                    {userData !== null ? (
+                      checkSaveEvent('Register')
+                    ) : (
+                      <button
+                        type="button"
+                        className="button_action"
+                        onClick={(e) => checkRegister(e, 'yes')}
+                      >
+                        {data.callToAction}
+                      </button>
+                    )}
+                    {userData !== null && !checkSaveEvent('Register') ? (
+                      <button
+                        type="button"
+                        className="button_action"
+                        onClick={(e) => checkRegister(e, 'yes')}
+                      >
+                        {data.callToAction}
+                      </button>
+                    ) : (
+                      ''
+                    )}
                   </span>
                 )}
               </div>
@@ -344,9 +450,7 @@ const EventMoreInfo = function (props) {
                 <h1>{data.eventName}</h1>
                 {label}
                 {eventStatus && (
-                <div className="event-status">
-                  {eventStatus}
-                </div>
+                  <div className="event-status">{eventStatus}</div>
                 )}
               </div>
               <div className="about_body">
@@ -359,18 +463,42 @@ const EventMoreInfo = function (props) {
               <h3>{Moment(data.time).format('LLL')}</h3>
               <p className="attending">
                 {totalAttendees(data._id)}
-                {' '}
                 {totalAttendees(data._id) > 2 ? 'people' : 'person'}
-                {' '}
                 {eventTime < dateNow ? 'attended' : 'attending'}
               </p>
-              {eventTime < dateNow || createEventData.step === 2 ? '' : (
+              {eventTime < dateNow || createEventData.step === 2 ? (
+                ''
+              ) : (
                 <>
                   <h3>Will you be attending?</h3>
                   <div className="option_buttons">
-                    <button type="button" className={selectedEvent.attending === 'yes' ? 'focus' : ''} onClick={(e) => changeStatus(e, selectedEvent, 'yes')}>Yes</button>
-                    <button type="button" className={selectedEvent.attending === 'no' ? 'focus' : ''} onClick={(e) => changeStatus(e, selectedEvent, 'no')}>No</button>
-                    <button type="button" className={selectedEvent.attending === 'maybe' ? 'focus' : ''} onClick={(e) => changeStatus(e, selectedEvent, 'maybe')}> Maybe</button>
+                    <button
+                      type="button"
+                      className={
+                        selectedEvent.attending === 'yes' ? 'focus' : ''
+                      }
+                      onClick={(e) => changeStatus(e, selectedEvent, 'yes')}
+                    >
+                      Yes
+                    </button>
+                    <button
+                      type="button"
+                      className={
+                        selectedEvent.attending === 'no' ? 'focus' : ''
+                      }
+                      onClick={(e) => changeStatus(e, selectedEvent, 'no')}
+                    >
+                      No
+                    </button>
+                    <button
+                      type="button"
+                      className={
+                        selectedEvent.attending === 'maybe' ? 'focus' : ''
+                      }
+                      onClick={(e) => changeStatus(e, selectedEvent, 'maybe')}
+                    >
+                      Maybe
+                    </button>
                   </div>
                 </>
               )}
@@ -399,7 +527,10 @@ const EventMoreInfo = function (props) {
                 >
                   <i className="fab fa-facebook" />
                 </FacebookShareButton>
-                <LinkedinShareButton url={shareUrl} className="Demo__some-network__share-button">
+                <LinkedinShareButton
+                  url={shareUrl}
+                  className="Demo__some-network__share-button"
+                >
                   <i className="fab fa-linkedin" />
                 </LinkedinShareButton>
                 <WhatsappShareButton
@@ -419,22 +550,28 @@ const EventMoreInfo = function (props) {
                   <i className="fas fa-envelope" />
                 </EmailShareButton>
               </div>
-              {userData && eventTime > dateNow && createEventData.step !== 2 ? exportButton : ''}
+              {userData && eventTime > dateNow && createEventData.step !== 2
+                ? exportButton
+                : ''}
             </div>
           </div>
-          {data.host ? <div /> : (
+          {data.host ? (
+            <div />
+          ) : (
             <div className="bottom">
               <div className="buttons">
-
-                <button type="button" onClick={() => handleMoreInfo()}>Edit</button>
-                <button type="button" onClick={handleCreateEventData('step')}>Submit Event</button>
+                <button type="button" onClick={() => handleMoreInfo()}>
+                  Edit
+                </button>
+                <button type="button" onClick={handleCreateEventData('step')}>
+                  Submit Event
+                </button>
               </div>
             </div>
           )}
         </div>
       </div>
     </div>
-
   );
 };
 

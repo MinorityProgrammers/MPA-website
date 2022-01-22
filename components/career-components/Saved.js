@@ -26,7 +26,6 @@ const Saved = () => {
           },
         )
         .then((response) => {
-          // filter out invalid responses
           const savedJobsData = response.data.data.filter(
             (jobInfo) => jobInfo.job_id !== null,
           );

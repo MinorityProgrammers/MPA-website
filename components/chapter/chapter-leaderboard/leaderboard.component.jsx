@@ -4,7 +4,7 @@ import Select from '../chapter-select/select.component';
 import styles from './leaderboard.module.css';
 import ChapterStat from '../chapter-stat/chapterStat.component';
 
-const Leaderboard = function () {
+const Leaderboard = () => {
   const [stats, setStats] = useState([]);
   const [filteredStats, setFilteredStats] = useState([]);
   const [selectItems, setItems] = useState([]);
@@ -24,12 +24,12 @@ const Leaderboard = function () {
   const view = 3;
 
   useEffect(() => {
-    axios.get(`${process.env.BASE_URI}/chapter_stats`)
+    axios
+      .get(`${process.env.BASE_URI}/chapter_stats`)
       .then((res) => res.data)
       .then((msg) => msg.data)
       .then((data) => {
-        const newData = data
-          .map((d, idx) => ({ ...d, number: idx + 1 }));
+        const newData = data.map((d, idx) => ({ ...d, number: idx + 1 }));
         setStats(newData);
         setFilteredStats(newData);
         const categories = new Set();
@@ -44,7 +44,11 @@ const Leaderboard = function () {
 
   useEffect(() => {
     const pLink = [];
-    for (let i = 0; i < Math.ceil(filteredStats.length / pageNumDisplay); i += 1) {
+    for (
+      let i = 0;
+      i < Math.ceil(filteredStats.length / pageNumDisplay);
+      i += 1
+    ) {
       pLink.push(i + 1);
     }
     setPageLink(pLink);
@@ -55,7 +59,7 @@ const Leaderboard = function () {
 
   useEffect(() => {
     setPageEnd(currentPage * pageNumDisplay);
-    setPageStart((currentPage * pageNumDisplay) - pageNumDisplay);
+    setPageStart(currentPage * pageNumDisplay - pageNumDisplay);
     setPageToDisplay(filteredStats.slice(pageStart, pageEnd));
   }, [pageStart, pageEnd, currentPage, filteredStats]);
 
@@ -88,12 +92,8 @@ const Leaderboard = function () {
 
   const handleChange = (val) => {
     const newStats = stats
-      .filter((stat) => (
-        val === 'all' ? stat : stat.category === val
-      ))
-      .map((stat, idx) => (
-        { ...stat, number: idx + 1 }
-      ));
+      .filter((stat) => (val === 'all' ? stat : stat.category === val))
+      .map((stat, idx) => ({ ...stat, number: idx + 1 }));
     setFilteredStats(newStats);
     setCurrentPage(1);
     setCurrentView(0);
@@ -110,39 +110,47 @@ const Leaderboard = function () {
         <div className={styles.tag}>03</div>
         <div className={styles.navbar}>
           <div className={styles.paginate}>
-            <div onClick={handlePrev} className={styles.pageSelector}><i className="fas fa-chevron-left " /></div>
-            {
-              viewToDisplay.map((link) => (
-                <div
-                  key={link}
-                  onClick={() => handlePage(link)}
-                  className={styles.pageSelector}
-                  style={{ borderBottom: pointer === link ? '2px solid white' : '' }}
-                >
-                  P
-                  {link}
-                </div>
-              ))
-            }
-            {pageLink.length !== viewToDisplay[viewToDisplay.length - 1] && (
-            <div className={styles.pageLengthInfo}>
-              ...P
-              {pageLink.length}
+            <div onClick={handlePrev} className={styles.pageSelector}>
+              <i className="fas fa-chevron-left " />
             </div>
+            {viewToDisplay.map((link) => (
+              <div
+                key={link}
+                onClick={() => handlePage(link)}
+                className={styles.pageSelector}
+                style={{
+                  borderBottom: pointer === link ? '2px solid white' : '',
+                }}
+              >
+                P{link}
+              </div>
+            ))}
+            {pageLink.length !== viewToDisplay[viewToDisplay.length - 1] && (
+              <div className={styles.pageLengthInfo}>
+                ...P
+                {pageLink.length}
+              </div>
             )}
-            <div onClick={handleNext} className={styles.pageSelector}><i className="fas fa-chevron-right" /></div>
+            <div onClick={handleNext} className={styles.pageSelector}>
+              <i className="fas fa-chevron-right" />
+            </div>
           </div>
 
-          <Select onClick={handleClick} onChange={handleChange} toggle={toggle} items={selectItems} defaultValue="category" setItems={setItems} />
+          <Select
+            onClick={handleClick}
+            onChange={handleChange}
+            toggle={toggle}
+            items={selectItems}
+            defaultValue="category"
+            setItems={setItems}
+          />
         </div>
 
         <div className={styles.stats}>
-          {
-            pageToDisplay && pageToDisplay
-              .map((stat, idx) => (
-                <ChapterStat key={stat._id} {...stat} idx={idx} />
-              ))
-          }
+          {pageToDisplay &&
+            pageToDisplay.map((stat, idx) => (
+              <ChapterStat key={stat._id} {...stat} idx={idx} />
+            ))}
         </div>
       </div>
     </div>

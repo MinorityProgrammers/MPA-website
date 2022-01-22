@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Binary from './Binary';
 
-const ProposalBox = function () {
+const ProposalBox = () => {
   const [myProposals] = useState(92);
   const [otherActions] = useState(60);
   const [spent] = useState(12);
@@ -9,21 +9,18 @@ const ProposalBox = function () {
 
   return (
     <div className="proposal__box__container">
-
       <div className="proposal">
         <Binary />
         <div className="back__to__proposals">
           <p className="proposal__text">
             Go Back to
-            <span className="bold">My Proposals</span>
-            .
+            <span className="bold">My Proposals</span>.
           </p>
           <button type="button" className="go__back">
             <i className="fas fa-chevron-left mobile-arrow" />
             <p className="go__back__text">Back</p>
           </button>
         </div>
-
       </div>
 
       <div className="net">
@@ -32,36 +29,27 @@ const ProposalBox = function () {
         <div className="earned">
           <p>
             $ Minority earned through
-            <span className="light__purple">My Proposals</span>
-            {' '}
-            -
+            <span className="light__purple">My Proposals</span> -
             <span className="light__purple">{myProposals}</span>
           </p>
           <p>
             $ Minority earned through
-            <span className="pink">Other Actions</span>
-            {' '}
-            -
+            <span className="pink">Other Actions</span> -
             <span className="purple">{otherActions}</span>
           </p>
           <p>
             $ Minority
-            <span className="light__purple">Spent</span>
-            {' '}
-            over 2 months -
+            <span className="light__purple">Spent</span> over 2 months -
             <span className="light__purple">{spent}</span>
           </p>
         </div>
 
         <div className="total__earned">
           <p>
-            Total net $ Minority -
-            <span>{total}</span>
+            Total net $ Minority -<span>{total}</span>
           </p>
         </div>
-
       </div>
-
     </div>
   );
 };
