@@ -120,6 +120,7 @@ const CreateProfileInput = function ({
             required
             onFocus={handleFocus}
             onBlur={handleBlur}
+            autoComplete="false"
           />
         </label>
       );
