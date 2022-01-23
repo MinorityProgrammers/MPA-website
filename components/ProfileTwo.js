@@ -274,20 +274,6 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
       );
     }
   };
-<<<<<<< HEAD
-
-  const handleEduImgUpload = (file) => {
-    if (file) { setUploadedEduImg(URL.createObjectURL(file)); }
-  };
-
-  const clearEduAdd = () => {
-    document.getElementsByClassName('edu-data-warn')?.[0]?.remove();
-    setUploadedEduImg('');
-    setEduTitleInput('');
-    setEduDateInput('');
-    setEduLocationInput('');
-    setEduAddMode(false);
-=======
   const clearExpAdd = () => {
     document.getElementsByClassName('exp-data-warn')?.[0]?.remove();
     setUploadedExpImg('');
@@ -312,20 +298,15 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
         console.log(e);
         errorToast('Something went wrong');
       });
->>>>>>> 414e984 (added project, experience, education)
   };
 
   const removeEdu = (eduId) => {
     if (educationCards.length === 1) { setEduEditMode(false); }
     setEducationCards((prevCards) => prevCards.filter((card) => card.cardId !== eduId));
   };
-<<<<<<< HEAD
-
-=======
   const handleProImgUpload = (file) => {
     file && setUploadedProImg(URL.createObjectURL(file));
   };
->>>>>>> 414e984 (added project, experience, education)
   const completeEduAdd = () => {
     if (uploadedEduImg && eduTitleInput && eduDateInput && EducationMajor) {
       const newCard = {
@@ -369,8 +350,6 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
       );
     }
   };
-<<<<<<< HEAD
-=======
 
   const completeProAdd = () => {
     if (uploadedProImg && proTitleInput && ProDateInput && ProjectRole) {
@@ -467,7 +446,6 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
         errorToast('Something went wrong');
       });
   };
->>>>>>> 414e984 (added project, experience, education)
 
   const onMint = async () => {
     const file = new Moralis.File('avatar.png', {
@@ -748,68 +726,6 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
           </div>
         </section>
 
-<<<<<<< HEAD
-        <section className="tw-mb-8 tw-container ">
-          <div className="pp-card-area tw-p-6  tw-rounded-md tw-grid tw-grid-flow-row tw-auto-rows-max">
-            <div className="hover:tw-bg-light-blue-500 hover:tw-border-transparent hover:tw-shadow-lg tw-group tw-block tw-rounded-lg tw-p-4 tw-border-gray-300 tw-border tw-bg-white">
-              <h2 className="tw-relative tw-text-xl tw-font-bold tw-mb-3 tw-text-black">
-                Achievements at MPA
-                <span className="tw-absolute tw-top-0 tw-right-0 tw-text-xs tw-cursor-pointer">
-                  <a className="pp-view-all" href="#">
-                    View All
-                  </a>
-                </span>
-              </h2>
-
-              {pinnedCards.length ? (
-                <ul className="tw-flex sm:tw-flex-wrap">
-                  {pinnedCards.map((pinitem) => (
-                    <li
-                      x-for="item in items"
-                      key={pinitem.id}
-                      className="tw-mx-2 tw-w-1/3 sm:tw-w-full tw-mb-4 tw-rounded-2xl tw-filter tw-drop-shadow-lg"
-                    >
-                      <a
-                        href={pinitem.link}
-                        className="tw-group tw-block tw-p-4"
-                      >
-                        <div className="tw-grid sm:tw-block lg:tw-grid xl:tw-block tw-items-start">
-                          <div className="pinned-item">
-                            <p className="tw-text-left tw-leading-6 tw-flex tw-text-sm tw-font-medium tw-text-current tw-font-bold ">
-                              <span className={`circle ${pinitem.base}`} />
-                              {pinitem.title}
-                            </p>
-                            <h3>{pinitem.desc}</h3>
-                            <p className="tw-text-left tw-text-sm tw-font-medium tw-text-gray-500 sm:tw-mt-0 lg:tw-mt-0 xl:tw-mt-0">
-                              {pinitem.desc2}
-                            </p>
-                            <div className="tw-flex tw-flex-wrap">
-                              {pinitem.checklist.map((item, index) => (
-                                <div
-                                  className="chk-step tw-inline-block tw-px-2 tw-py-1 tw-rounded-md tw-my-1 tw-mr-1 tw-bg-white tw-text-black tw-text-xs tw-font-bold"
-                                  key={`${`0${index}${pinitem.id}`}`}
-                                >
-                                  {item}
-                                </div>
-                              ))}
-                            </div>
-                          </div>
-                        </div>
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              ) : (
-                <div className="no-content">
-                  <h3>No Achievements to Display</h3>
-                </div>
-              )}
-            </div>
-          </div>
-        </section>
-
-=======
->>>>>>> 414e984 (added project, experience, education)
         {getProgressPercentage(userData)
           && getProgressPercentage(userData) < 100 && (
             <section className="tw-mb-8 tw-container ">
@@ -993,29 +909,6 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                           </label>
                         ) : (
                           <img
-<<<<<<< HEAD
-                            src={pCard.image}
-                            alt={`${pCard.title}_image`}
-                            className="tw-block tw-w-1/2 tw-mr-2 tw-rounded-lg"
-                          />
-                        </div>
-                        <div className="tw-w-1/2 sm:tw-w-full">
-                          <h3 className="tw-text-center tw-font-bold tw-text-black">
-                            {pCard.title}
-                          </h3>
-                          <p className="tw-text-center tw-leading-6 tw-text-sm tw-font-medium tw-text-current tw-text-gray-500">
-                            {pCard.subTitle}
-                          </p>
-                          <div className="tw-flex tw-flex-wrap">
-                            {pCard.checklist.map((item, index) => (
-                              <div
-                                className="chk-step tw-inline-block tw-px-2 tw-py-1 tw-rounded-md tw-my-1 tw-mr-1 tw-bg-white tw-text-black tw-text-xs tw-font-bold"
-                                key={`${`0${index}${pCard.id}`}`}
-                              >
-                                {item}
-                              </div>
-                            ))}
-=======
                             src="/assets/images/profile/add-image.svg"
                             alt="add item"
                             className="tw-w-full"
@@ -1076,7 +969,6 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                             onClick={() => completeProAdd()}
                           >
                             Add
->>>>>>> 414e984 (added project, experience, education)
                           </div>
                           <div
                             className="ee-rm-btn tw-px-2 tw-py-1 tw-ml-4 tw-mb-3 tw-self-end tw-rounded tw-cursor-pointer tw-text-white"
@@ -1201,14 +1093,6 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                     >
 
                       <div className="addImg tw-mr-4 tw-mb-6 tw-cursor-pointer">
-<<<<<<< HEAD
-                        <img
-                          src={card.jobImg}
-                          alt="add_image"
-                          className="tw-w-full"
-                          onClick={() => setExpAddMode(true)}
-                        />
-=======
                         <a href={card.link ? card.link : '#'} target="_blank" rel="noreferrer">
                           <img
                             src={card.image}
@@ -1216,7 +1100,6 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                             className="tw-w-full"
                           />
                         </a>
->>>>>>> 414e984 (added project, experience, education)
                       </div>
 
                       <div className="ee-fields tw-flex tw-flex-col tw-items-start tw-mb-2">
@@ -1236,14 +1119,9 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                       </div>
                       {expEditMode && (
                         <span
-<<<<<<< HEAD
-                          className="tw-absolute tw-top-1/3 tw-right-0 tw-text-xs tw-font-bold tw-text-red-500 tw-cursor-pointer hover:tw-text-gray-500"
-                          onClick={() => removeExp(card.cardId)}
-=======
                           className="tw-absolute tw-top-1/3
                           tw-right-0 tw-text-xs tw-font-bold tw-text-red-500 tw-cursor-pointer hover:tw-text-gray-500"
                           onClick={() => removeExp(card._id)}
->>>>>>> 414e984 (added project, experience, education)
                         >
                           Remove
                         </span>
@@ -1280,11 +1158,7 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                                 uploadedExpImg
                                 || '/assets/images/profile/add-image.svg'
                               }
-<<<<<<< HEAD
-                              alt="add_image"
-=======
                               alt="add item"
->>>>>>> 414e984 (added project, experience, education)
                               className="tw-w-full"
                             />
                             <p className="tw-text-sm tw-text-gray-500">add company's image (logo)</p>
@@ -1292,11 +1166,7 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                         ) : (
                           <img
                             src="/assets/images/profile/add-image.svg"
-<<<<<<< HEAD
-                            alt="add_image"
-=======
                             alt="add item"
->>>>>>> 414e984 (added project, experience, education)
                             className="tw-w-full"
                             onClick={() => setExpAddMode(true)}
                           />
@@ -1429,14 +1299,6 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                       key={`${idx + 1}`}
                     >
                       <div className="addImg tw-mr-4 tw-mb-6 tw-cursor-pointer">
-<<<<<<< HEAD
-                        <img
-                          src={card.eduImg}
-                          alt="add_image"
-                          className="tw-w-full"
-                          onClick={() => setEduAddMode(true)}
-                        />
-=======
                         <a href={card.link ? card.link : '#'} target="_blank" rel="noreferrer">
                           <img
                             src={card.image}
@@ -1444,7 +1306,6 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                             className="tw-w-full"
                           />
                         </a>
->>>>>>> 414e984 (added project, experience, education)
                       </div>
                       <div className="ee-fields tw-flex tw-flex-col tw-items-start tw-mb-2">
                         <p className="tw-block tw-rounded tw-px-2 tw-text-black tw-font-bold tw-w-full">
@@ -1464,11 +1325,7 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                       {eduEditMode && (
                         <span
                           className="tw-absolute tw-top-1/3 tw-right-0 tw-text-xs tw-font-bold tw-text-red-500 tw-cursor-pointer hover:tw-text-gray-500"
-<<<<<<< HEAD
-                          onClick={() => removeEdu(card.cardId)}
-=======
                           onClick={() => removeEdu(card._id)}
->>>>>>> 414e984 (added project, experience, education)
                         >
                           Remove
                         </span>
@@ -1503,11 +1360,7 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                                 uploadedEduImg
                                 || '/assets/images/profile/add-image.svg'
                               }
-<<<<<<< HEAD
-                              alt="add_image"
-=======
                               alt="add item"
->>>>>>> 414e984 (added project, experience, education)
                               className="tw-w-full"
                             />
                             <p className="tw-text-sm tw-text-gray-500">add University's image (logo)</p>
@@ -1515,11 +1368,7 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                         ) : (
                           <img
                             src="/assets/images/profile/add-image.svg"
-<<<<<<< HEAD
-                            alt="add_image"
-=======
                             alt="add item"
->>>>>>> 414e984 (added project, experience, education)
                             className="tw-w-full"
                             onClick={() => setEduAddMode(true)}
                           />
