@@ -206,7 +206,7 @@ export class mentorshipApp extends Component {
         });
     };
     axios
-      .post('${process.env.BASE_URI}/mentorship/', mentorship, {
+      .post(`${process.env.BASE_URI}/mentorship`, mentorship, {
         headers: {
           'Access-Control-Allow-Origin': '*',
           Authorization: `Bearer ${token}`,
@@ -221,7 +221,7 @@ export class mentorshipApp extends Component {
           : 'mentorship/mentee';
       })
       .catch((err) => {
-        errorToast('Something went wrong, please contact us.');
+        errorToast('Something went wrong, please contact us.', err);
       });
   };
 

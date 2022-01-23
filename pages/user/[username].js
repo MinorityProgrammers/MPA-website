@@ -100,7 +100,6 @@ const User = ({ user }) => {
             active="Home"
             handleClick={handleClick}
           />
-          {hide === false && <ComingSoon closeClick={handleClick} />}
           <ProfileTwo
             userData={
               isLoggedIn && ownsProfile ? userData || profileData : user[0]
