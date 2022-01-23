@@ -127,6 +127,7 @@ const CreateSettingInput = function ({
             }}
             dateFormat="MM/dd/yyyy"
             placeholder="mm/dd/yyyy"
+            autoComplete="false"
             required
           />
         </label>
