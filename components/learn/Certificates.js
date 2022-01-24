@@ -14,8 +14,8 @@ import NFT from '../../artifacts/contracts/NFT.sol/NFT.json';
 
 const CourseCategories = function ({ user, certificates, loading }) {
   // pagination variables
-  const pageCount = Math.ceil(certificates.length / 2);
-  const [currentCertificates, setCurrentCertificates] = useState(certificates.slice(0, 2));
+  const pageCount = Math.ceil(certificates.length / 4);
+  const [currentCertificates, setCurrentCertificates] = useState(certificates.slice(0, 4));
   // certificate or minting variables
   const [isActive, setIsActive] = useState(false);
   const [isMinting, setIsMinting] = useState(false);
@@ -29,8 +29,8 @@ const CourseCategories = function ({ user, certificates, loading }) {
   const nftaddress = process.env.CERTIFICATES_ADDRESS;
 
   const handlePageClick = (event) => {
-    const newOffset = (event.selected * 2) % certificates.length;
-    setCurrentCertificates(certificates.slice(newOffset, newOffset + 2));
+    const newOffset = (event.selected * 4) % certificates.length;
+    setCurrentCertificates(certificates.slice(newOffset, newOffset + 4));
   };
 
   function countDown(mintedURL, tx) {
@@ -148,10 +148,10 @@ const CourseCategories = function ({ user, certificates, loading }) {
                 )
                 : certificates.length > 0
                   ? (
-                    <div className="tw-flex tw-flex-col tw-flex-content-center tw-items-center">
-                      <div className="tw-flex tw-flex-row tw-content-center tw-items-center tw-h-100 tw-w-100 tw-mb-5">
+                    <div className="tw-flex tw-flex-col tw-justify-start tw-items-center">
+                      <div className="tw-grid tw-gap-4 tw-grid-cols-2 tw-grid-rows-2 sm:tw-grid-cols-1 sm:tw-grid-rows-1 tw-h-100 tw-w-100 tw-mb-5">
                         {currentCertificates.map((each) => (
-                          <div className="courses tw-flex tw-flex-col tw-cursor-pointer hover:tw-shadow-xl tw-mx-2" key={each._id}>
+                          <div className="courses tw-flex tw-flex-col tw-cursor-pointer tw-mx-2" key={each._id}>
                             <a href={each.ipfsURL} target="_blank" rel="noreferrer"><img className="tw-rounded-md" src={each.ipfsURL} alt="certificate" /></a>
                             <button
                               type="button"
@@ -169,16 +169,16 @@ const CourseCategories = function ({ user, certificates, loading }) {
                       </div>
                       <ReactPaginate
                         className="tw-flex tw-flex-row tw-text-xl"
-                        nextClassName="tw-text-black tw-p-1"
-                        previousClassName="tw-text-black tw-p-1"
-                        pageClassName="tw-text-black tw-p-1"
-                        pageLinkClassName="tw-mx-2 tw-p-1 tw-decoration-black"
+                        nextClassName="btn btn-primary tw-bg-blue-700"
+                        previousClassName="btn btn-primary tw-bg-blue-700"
+                        pageClassName="btn btn-primary tw-mx-2 tw-bg-blue-700"
+                        pageLinkClassName=" tw-p-1 "
                         breakLabel="..."
-                        nextLabel=">"
+                        nextLabel="Next"
                         onPageChange={handlePageClick}
                         pageRangeDisplayed={5}
                         pageCount={pageCount}
-                        previousLabel="<"
+                        previousLabel="Previous"
                         renderOnZeroPageCount={null}
                       />
                     </div>
