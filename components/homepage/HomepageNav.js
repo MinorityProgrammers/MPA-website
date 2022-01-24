@@ -597,7 +597,7 @@ const HomepageNav = ({
                   <a>INCUBATOR</a>
                 </Link>
               </li>
-              <li
+              {/* <li
                 className={
                   router.pathname === '/mentorshipProgram'
                     ? 'nav-item active-link'
@@ -611,7 +611,7 @@ const HomepageNav = ({
                 >
                   <a>MENTORSHIP</a>
                 </Link>
-              </li>
+              </li> */}
               <li
                 className={
                   router.pathname === '/events'
@@ -642,7 +642,7 @@ const HomepageNav = ({
                   <a>CAREERS</a>
                 </Link>
               </li>
-              <li
+              {/* <li
                 className={
                   router.pathname === '/consultancy_explainer'
                     ? 'nav-item active-link'
@@ -658,7 +658,7 @@ const HomepageNav = ({
                 >
                   <a>CONSULTANCY</a>
                 </Link>
-              </li>
+              </li> */}
               <li
                 className={
                   router.pathname === 'https://snapshot.org/#/minorityprogrammers.eth'

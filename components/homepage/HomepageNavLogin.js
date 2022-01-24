@@ -91,15 +91,16 @@ const HomepageNavLogin = ({ onCloseMobileMenu }) => {
         <i className="fas fa-times" />
       </button>
       <div className="dropdown-login-icons">
-        <img
+        {/* <img
           onClick={() => signIn(providers.google.id)}
           src="./assets/images/login-signup/google.png"
           alt="icon"
-        />
+        /> */}
         <div>
           <img
             src="/assets/images/linkedin-white.png"
             alt="linkedin icon"
+            className="tw-mx-4"
             onClick={() => signIn(providers.linkedin.id)}
           />
         </div>
@@ -112,13 +113,13 @@ const HomepageNavLogin = ({ onCloseMobileMenu }) => {
             })}
           />
         </div>
-        <div>
+        {/* <div>
           <img
             src="/assets/images/facebook.svg"
             alt="facebook icon"
             onClick={() => signIn(providers.facebook.id)}
           />
-        </div>
+        </div> */}
       </div>
       <div className="login-form mt-2">
         <Formik

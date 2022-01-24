@@ -7079,7 +7079,7 @@ html {
 }
 .dropdown-login-icons {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   border-bottom: 1px solid rgba(255, 255, 255, 0.568);
   padding-bottom: 1.5rem;
 }

@@ -242,10 +242,11 @@ export default function Index() {
             <img
               onClick={() => signIn(providers.google.id)}
               src="./assets/images/login-signup/google.png"
+              className="tw-mx-4"
               alt="icon"
             />
           </li>
-          <li>
+          {/* <li>
             <img
               onClick={() => signIn(providers.linkedin.id)}
               src="./assets/images/login-signup/linkin.png"
@@ -260,11 +261,12 @@ export default function Index() {
               src="./assets/images/login-signup/github.png"
               alt="icon"
             />
-          </li>
+          </li> */}
           <li>
             <img
               onClick={() => signIn(providers.facebook.id)}
               src="./assets/images/login-signup/facebook.png"
+              className="tw-mx-4"
               alt="icon"
             />
           </li>
