@@ -217,10 +217,6 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
     setExpLocationInput('');
     setExpAddMode(false);
   };
-  const removeExp = (expId) => {
-    if (experienceCards.length === 1) { setExpEditMode(false); }
-    setExperienceCards((prevCards) => prevCards.filter((card) => card.cardId !== expId));
-  };
 
   const completeExpAdd = () => {
     if (
@@ -274,14 +270,7 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
       );
     }
   };
-  const clearExpAdd = () => {
-    document.getElementsByClassName('exp-data-warn')?.[0]?.remove();
-    setUploadedExpImg('');
-    setExpJobTitleInput('');
-    setExpDateInputFrom('');
-    setExpLocationInput('');
-    setExpAddMode(false);
-  };
+
   const removeExp = (expId) => {
     const userToken = JSON.parse(localStorage.getItem('userInfo'));
     experienceCards.length === 1 && setExpEditMode(false);
@@ -300,10 +289,6 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
       });
   };
 
-  const removeEdu = (eduId) => {
-    if (educationCards.length === 1) { setEduEditMode(false); }
-    setEducationCards((prevCards) => prevCards.filter((card) => card.cardId !== eduId));
-  };
   const handleProImgUpload = (file) => {
     file && setUploadedProImg(URL.createObjectURL(file));
   };
