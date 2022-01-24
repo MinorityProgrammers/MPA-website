@@ -51,6 +51,8 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
     courseFinish: '/assets/images/course_finish.png',
   };
 
+  console.log(userData);
+
   const [generateAvatarPopUp, setGenerateAvatarPopUp] = useState(false);
   const [socialLinks, setSocialLinks] = useState([]);
   const [userID, setUserID] = useState('');
@@ -114,7 +116,7 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
   useEffect(() => {
     const userToken = JSON.parse(localStorage.getItem('userInfo'));
     if (userToken !== null) {
-      axiosFunc('learn/userCourses', userToken.token, setEnrolledCourses);
+      axiosFunc(`learn/user/${userData._id}`, userToken.token, setEnrolledCourses);
       axiosFunc('reputation/userReputations', userToken.token, setReputation);
       axiosFunc('experience/userExperience', userToken.token, setExperienceCards);
       axiosFunc('education/userEducation', userToken.token, setEducationCards);
