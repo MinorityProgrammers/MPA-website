@@ -9,8 +9,8 @@ import HomepageNav from '../components/homepage/HomepageNav';
 import HomePageNewTopSection from '../components/homepage/HomePageNewTopSection';
 // import HomepageTeam from '../components/homepage/HomepageTeam';
 import HomepageTestimonials from '../components/homepage/HomepageTestimonials';
+import HomePageAboutUs from '../components/homepage/HomePageAboutUs';
 // import HomepageWave from '../components/homepage/HomepageWave';
-import HomePageReviews from '../components/homepage/HomePageReviews';
 import Layout from '../components/Layout';
 import MpaBuilder from '../components/mpa-builder/builder';
 import SidebarTwo from '../components/sidebar/SidebarTwo';
@@ -65,9 +65,12 @@ const HomepageFour = () => {
               />
               {hide === false && <ComingSoon closeClick={handleClick} />}
               <HomePageNewTopSection />
+              <HomePageAboutUs />
+              {/* <HomepageAbout /> */}
+              {/* <HomepageApp /> */}
               <HomepageCore />
               <HomepageTestimonials />
-              <HomePageReviews />
+              {/* <HomePageReviews /> */}
               <HomepageDonate />
               <Footer />
             </>
