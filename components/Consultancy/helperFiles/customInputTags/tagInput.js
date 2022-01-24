@@ -5,18 +5,17 @@ const defaultCriteriaCheck = (callback, input, prevArr) => {
     callback();
   }
 };
-const TagInput = function ({
+const TagInput = ({
   children,
   listOfTags,
   updateListOfTags,
   criteriaCheck = defaultCriteriaCheck,
   targetCode = 'Enter',
-}) {
+}) => {
   const inputRef = useRef();
   const containerRef = useRef();
   useEffect(() => {
     function handleTagCreation(rr) {
-      // function that actually saves the input
       function callback() {
         updateListOfTags((prev) => [...prev, inputRef.current.value]);
         inputRef.current.value = '';
@@ -24,24 +23,17 @@ const TagInput = function ({
           containerRef.current.scrollLeft = containerRef.current.scrollWidth;
         }
       }
-      // check to see that the we are listening on submission of new tag
       if (
-        rr.code === targetCode
-        && inputRef.current === document.activeElement
+        rr.code === targetCode &&
+        inputRef.current === document.activeElement
       ) {
         try {
-          /*
-            call end users validation function,
-            if the function sent back is invalid, we run my validation function.
-            we also send in a function that the end user runs when the validation test passes,
-            the input string end user could use for validation, an array of list of all tags.
-          */
           criteriaCheck(
             () => {
               callback();
             },
             inputRef.current.value,
-            [...listOfTags],
+            [...listOfTags]
           );
         } catch (err) {
           defaultCriteriaCheck(
@@ -49,7 +41,7 @@ const TagInput = function ({
               callback();
             },
             inputRef.current.value,
-            [...listOfTags],
+            [...listOfTags]
           );
         }
       }
@@ -89,7 +81,6 @@ const TagInput = function ({
             >
               &times;
             </span>
-            {' '}
           </div>
         ))}
       </section>

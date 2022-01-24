@@ -4,15 +4,11 @@ import Input from '../helperFiles/customInputTags/input';
 import useDefaultValue from '../helperFiles/getDefaultValue';
 import QuestionContainer from '../helperFiles/questionContainer';
 
-const Page2 = function ({
-  step, setstep, questions, setQuestions,
-}) {
+const Page2 = ({ step, setstep, questions, setQuestions }) => {
   const defaultValue = useDefaultValue(questions, step, 0);
 
   console.log(defaultValue, questions);
-  const [inputValue, setInputValue] = useState(
-    defaultValue || undefined,
-  );
+  const [inputValue, setInputValue] = useState(defaultValue || undefined);
 
   const questionText = 'Tell us about your idea';
   const list_of_errors = ['You must enter an input'];

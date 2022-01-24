@@ -5,9 +5,7 @@ const CurrencyBalances = (props) => {
   const { walletInfo } = props;
   const { coinsInfo } = props;
 
-  const chartData = [
-    ['Coin', 'Amount'],
-  ];
+  const chartData = [['Coin', 'Amount']];
   const colorData = [];
   walletInfo.forEach((coin) => {
     const coinOwned = [];
@@ -22,10 +20,18 @@ const CurrencyBalances = (props) => {
   });
 
   return (
-    <div className="d-flex flex-column" style={{ width: '100%', height: '100%' }}>
+    <div
+      className="d-flex flex-column"
+      style={{ width: '100%', height: '100%' }}
+    >
       {/* title row */}
-      <div className="d-flex flex-row justify-content-between align-items-start" style={{ height: '15%', width: '100%', marginBottom: '15px' }}>
-        <p style={{ fontSize: '20px', fontWeight: '700', color: 'black' }}>Currency Balances</p>
+      <div
+        className="d-flex flex-row justify-content-between align-items-start"
+        style={{ height: '15%', width: '100%', marginBottom: '15px' }}
+      >
+        <p style={{ fontSize: '20px', fontWeight: '700', color: 'black' }}>
+          Currency Balances
+        </p>
         <button type="button">Add Token</button>
       </div>
       <div className="d-flex flex-row" style={{ width: '100%', height: '80%' }}>
@@ -39,7 +45,6 @@ const CurrencyBalances = (props) => {
             options={{
               pieHole: 0.7,
               backgroundColor: 'transparent',
-              // reverseCategories: true,
               slices: colorData,
               pieSliceText: 'none',
               chartArea: { width: '100%', height: '100%' },
@@ -64,7 +69,11 @@ const CoinsLegend = ({ walletInfo }) => (
       <div
         className="d-flex flex-row justify-content-between"
         style={{
-          width: '100%', height: '70px', background: '#F8F9FD', marginBottom: '15px', padding: '20px 10px',
+          width: '100%',
+          height: '70px',
+          background: '#F8F9FD',
+          marginBottom: '15px',
+          padding: '20px 10px',
         }}
       >
         {/* first column name and symbol */}
@@ -74,19 +83,27 @@ const CoinsLegend = ({ walletInfo }) => (
         </div>
         {/* amount owned */}
         <div className="d-flex flex-column justify-content-start">
-          <p style={{ color: 'gray', fontSize: '12px' }}>{ownedCoin.owned.toFixed(2)}</p>
+          <p style={{ color: 'gray', fontSize: '12px' }}>
+            {ownedCoin.owned.toFixed(2)}
+          </p>
         </div>
         {/* amount in USD */}
         <div className="d-flex flex-row justify-content-around">
-          <div className="d-flex flex-column justify-content-start" style={{ marginRight: '3px' }}>
+          <div
+            className="d-flex flex-column justify-content-start"
+            style={{ marginRight: '3px' }}
+          >
             <p style={{ color: 'gray', fontSize: '12px' }}>
-              $
-              {ownedCoin.AmountInUSD.toFixed(2).toLocaleString()}
+              ${ownedCoin.AmountInUSD.toFixed(2).toLocaleString()}
             </p>
           </div>
-          <div style={{
-            width: '40px', height: '40px', borderRadius: '5px', background: ownedCoin.color,
-          }}
+          <div
+            style={{
+              width: '40px',
+              height: '40px',
+              borderRadius: '5px',
+              background: ownedCoin.color,
+            }}
           />
         </div>
       </div>

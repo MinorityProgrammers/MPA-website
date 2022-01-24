@@ -5,9 +5,7 @@ import QuestionContainer from '../helperFiles/questionContainer';
 import useDefaultValue from '../helperFiles/getDefaultValue';
 import addQuestion from '../helperFiles/addQuestion';
 
-const Page3 = function ({
-  step, setstep, questions, setQuestions,
-}) {
+const Page3 = ({ step, setstep, questions, setQuestions }) => {
   const defaultValueSelected = useDefaultValue(questions, step, 0);
   const defaultValueCheckboxes = useDefaultValue(questions, step, 1);
 

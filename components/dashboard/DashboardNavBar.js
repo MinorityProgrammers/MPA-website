@@ -79,10 +79,6 @@ const DashboardNavbar = (props) => {
   const [showNavbar, setShowNavbar] = useState(false);
   const [winSize, setWinSize] = useState(0);
 
-  // const handleClick = (compName) => {
-  //   props.setView(compName);
-  // };
-
   useEffect(() => {
     setWinSize(window.innerWidth);
     const handleResize = () => {
@@ -94,43 +90,51 @@ const DashboardNavbar = (props) => {
     };
   }, [winSize]);
 
-  const PopulatedNavBar = () => (
+  const PopulatedNavBar = () =>
     buttons.map((button) => (
       <div
         key={button.buttonText}
         style={{ width: '100%' }}
-        className={button.componentName === currentView ? 'sidebar-item tw-items-center dashboard-navbar-button-selected' : 'sidebar-item tw-items-center dashboard-navbar-button'}
-        onClick={() => { setView(button.componentName); }}
+        className={
+          button.componentName === currentView
+            ? 'sidebar-item tw-items-center dashboard-navbar-button-selected'
+            : 'sidebar-item tw-items-center dashboard-navbar-button'
+        }
+        onClick={() => {
+          setView(button.componentName);
+        }}
       >
         <FontAwesomeIcon icon={button.iconName} className="fa-2x" />
         <p>{button.buttonText}</p>
       </div>
-    ))
-  );
+    ));
 
   return (
     <>
-      {
-        winSize >= 768
-          ? <DesktopSideBar populatedNavBar={<PopulatedNavBar selectedComp={props} />} />
-          : (
-            <MobileSideBar
-              showNavbar={showNavbar}
-              setShowNavbar={setShowNavbar}
-              populatedNavBar={<PopulatedNavBar selectedComp={props} />}
-            />
-          )
-      }
+      {winSize >= 768 ? (
+        <DesktopSideBar
+          populatedNavBar={<PopulatedNavBar selectedComp={props} />}
+        />
+      ) : (
+        <MobileSideBar
+          showNavbar={showNavbar}
+          setShowNavbar={setShowNavbar}
+          populatedNavBar={<PopulatedNavBar selectedComp={props} />}
+        />
+      )}
     </>
   );
 };
 
 export default DashboardNavbar;
-
 const DesktopSideBar = ({ populatedNavBar }) => (
   <div style={{ height: '100%', width: '100%' }}>
     <div className="d-flex flex-column justify-content-start align-items-center navbar-dashboard-div">
-      <img src="/assets/images/mpicon.svg" style={{ width: '60px', paddingBottom: '80px', paddingTop: '40px' }} alt="" />
+      <img
+        src="/assets/images/mpicon.svg"
+        style={{ width: '60px', paddingBottom: '80px', paddingTop: '40px' }}
+        alt=""
+      />
       {populatedNavBar}
     </div>
   </div>
@@ -152,22 +156,46 @@ const MobileSideBar = ({ populatedNavBar, showNavbar, setShowNavbar }) => (
         transition: 'width 0.5s linear',
       }}
     >
-      <img src="/assets/images/mpicon.svg" style={{ width: '60px', paddingBottom: '80px', paddingTop: '40px' }} alt="" />
+      <img
+        src="/assets/images/mpicon.svg"
+        style={{ width: '60px', paddingBottom: '80px', paddingTop: '40px' }}
+        alt=""
+      />
       {populatedNavBar}
     </div>
     <div
       style={{
-        width: showNavbar ? '100vw' : '0', height: showNavbar ? '100vh' : '0', position: 'fixed', zIndex: '1',
+        width: showNavbar ? '100vw' : '0',
+        height: showNavbar ? '100vh' : '0',
+        position: 'fixed',
+        zIndex: '1',
       }}
-      onClick={() => { setShowNavbar(!showNavbar); }}
+      onClick={() => {
+        setShowNavbar(!showNavbar);
+      }}
     />
     <div
-      className={`tw-float-left d-flex justify-content-center ${showNavbar ? 'navbar-dashboard-button-selected' : 'navbar-dashboard-button'}`}
+      className={`tw-float-left d-flex justify-content-center ${
+        showNavbar
+          ? 'navbar-dashboard-button-selected'
+          : 'navbar-dashboard-button'
+      }`}
       style={{
-        position: 'fixed', bottom: '15px', left: '15px', zIndex: 4, height: '56px', width: '56px',
+        position: 'fixed',
+        bottom: '15px',
+        left: '15px',
+        zIndex: 4,
+        height: '56px',
+        width: '56px',
       }}
     >
-      <button type="button" className="w-100 h-100" onClick={() => { setShowNavbar(!showNavbar); }}>
+      <button
+        type="button"
+        className="w-100 h-100"
+        onClick={() => {
+          setShowNavbar(!showNavbar);
+        }}
+      >
         <FontAwesomeIcon icon={faHamburger} className="fa-2x" />
       </button>
     </div>

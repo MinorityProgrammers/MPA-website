@@ -97,7 +97,7 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
   const router = useRouter();
   const { Moralis } = useMoralis();
 
-  console.log(proEditMode)
+  console.log(proEditMode);
 
   const axiosFunc = (url, token, setState) => {
     axios
@@ -116,9 +116,17 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
     if (userToken !== null) {
       axiosFunc('learn/userCourses', userToken.token, setEnrolledCourses);
       axiosFunc('reputation/userReputations', userToken.token, setReputation);
-      axiosFunc('experience/userExperience', userToken.token, setExperienceCards);
+      axiosFunc(
+        'experience/userExperience',
+        userToken.token,
+        setExperienceCards
+      );
       axiosFunc('education/userEducation', userToken.token, setEducationCards);
-      axiosFunc('personalProject/userPersonalProject', userToken.token, setProjectCards);
+      axiosFunc(
+        'personalProject/userPersonalProject',
+        userToken.token,
+        setProjectCards
+      );
     }
   }, []);
 
@@ -207,7 +215,9 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
   };
 
   const handleExpImgUpload = (file) => {
-    if (file) { setUploadedExpImg(URL.createObjectURL(file)); }
+    if (file) {
+      setUploadedExpImg(URL.createObjectURL(file));
+    }
   };
   const clearExpAdd = () => {
     document.getElementsByClassName('exp-data-warn')?.[0]?.remove();
@@ -220,12 +230,12 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
 
   const completeExpAdd = () => {
     if (
-      uploadedExpImg
-      && expJobTitleInput
-      && expDateInputFrom
-      && expDateInputTo
-      && expLocationInput
-      && link
+      uploadedExpImg &&
+      expJobTitleInput &&
+      expDateInputFrom &&
+      expDateInputTo &&
+      expLocationInput &&
+      link
     ) {
       const newCard = {
         image: uploadedExpImg,
@@ -257,7 +267,8 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
         })
         .then(() => {
           successToast('Experience Added');
-        }).catch((e) => {
+        })
+        .catch((e) => {
           console.log(e);
           errorToast('Something went wrong');
         });
@@ -266,7 +277,7 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
       const el = document.getElementById('add-exp-fields');
       el.insertAdjacentHTML(
         'afterend',
-        '<div class="exp-data-warn tw-ml-4 tw-mb-3 tw-self-end tw-text-red-500 tw-font-bold">Please add an image and fill in all fields</div>',
+        '<div class="exp-data-warn tw-ml-4 tw-mb-3 tw-self-end tw-text-red-500 tw-font-bold">Please add an image and fill in all fields</div>'
       );
     }
   };
@@ -274,7 +285,9 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
   const removeExp = (expId) => {
     const userToken = JSON.parse(localStorage.getItem('userInfo'));
     experienceCards.length === 1 && setExpEditMode(false);
-    setExperienceCards((prevCards) => prevCards.filter((card) => card._id !== expId));
+    setExperienceCards((prevCards) =>
+      prevCards.filter((card) => card._id !== expId)
+    );
     axios
       .delete(`${process.env.BASE_URI}/experience/${expId}`, {
         headers: {
@@ -283,7 +296,8 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
       })
       .then(() => {
         successToast('Experience deleted');
-      }).catch((e) => {
+      })
+      .catch((e) => {
         console.log(e);
         errorToast('Something went wrong');
       });
@@ -321,7 +335,8 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
         })
         .then(() => {
           successToast('Education Added');
-        }).catch((e) => {
+        })
+        .catch((e) => {
           console.log(e);
           errorToast('Something went wrong');
         });
@@ -331,7 +346,7 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
       const el = document.getElementById('add-edu-fields');
       el.insertAdjacentHTML(
         'afterend',
-        '<div class="edu-data-warn tw-ml-4 tw-mb-3 tw-self-end tw-text-red-500 tw-font-bold">Please add an image and fill in all fields</div>',
+        '<div class="edu-data-warn tw-ml-4 tw-mb-3 tw-self-end tw-text-red-500 tw-font-bold">Please add an image and fill in all fields</div>'
       );
     }
   };
@@ -363,7 +378,8 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
         })
         .then(() => {
           successToast('Project Added');
-        }).catch((e) => {
+        })
+        .catch((e) => {
           console.log(e);
           errorToast('Something went wrong');
         });
@@ -373,7 +389,7 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
       const el = document.getElementById('add-edu-fields');
       el.insertAdjacentHTML(
         'afterend',
-        '<div class="edu-data-warn tw-ml-4 tw-mb-3 tw-self-end tw-text-red-500 tw-font-bold">Please add an image and fill in all fields</div>',
+        '<div class="edu-data-warn tw-ml-4 tw-mb-3 tw-self-end tw-text-red-500 tw-font-bold">Please add an image and fill in all fields</div>'
       );
     }
   };
@@ -398,7 +414,9 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
 
   const removeEdu = (eduId) => {
     educationCards.length === 1 && setEduEditMode(false);
-    setEducationCards((prevCards) => prevCards.filter((card) => card._id !== eduId));
+    setEducationCards((prevCards) =>
+      prevCards.filter((card) => card._id !== eduId)
+    );
     const userToken = JSON.parse(localStorage.getItem('userInfo'));
     axios
       .delete(`${process.env.BASE_URI}/education/${eduId}`, {
@@ -408,7 +426,8 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
       })
       .then(() => {
         successToast('Education deleted');
-      }).catch((e) => {
+      })
+      .catch((e) => {
         console.log(e);
         errorToast('Something went wrong');
       });
@@ -416,7 +435,9 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
 
   const removePro = (eduId) => {
     projectCards.length === 1 && setProEditMode(false);
-    setProjectCards((prevCards) => prevCards.filter((card) => card._id !== eduId));
+    setProjectCards((prevCards) =>
+      prevCards.filter((card) => card._id !== eduId)
+    );
     const userToken = JSON.parse(localStorage.getItem('userInfo'));
     axios
       .delete(`${process.env.BASE_URI}/personalProject/${eduId}`, {
@@ -426,7 +447,8 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
       })
       .then(() => {
         successToast('Project deleted');
-      }).catch((e) => {
+      })
+      .catch((e) => {
         console.log(e);
         errorToast('Something went wrong');
       });
@@ -463,7 +485,7 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
           let contract = new ethers.Contract(nftaddress, NFT.abi, signer);
           let transaction = await contract.mintNFT(
             nftaddress,
-            mintedMetadata.ipfs(),
+            mintedMetadata.ipfs()
           );
           const tx = await transaction.wait();
           const event = tx.events[0];
@@ -495,7 +517,9 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
   useEffect(() => {
     if (generateAvatarPopUp) {
       window.addEventListener('click', clickOutsideAvatarPopup);
-    } else { window.removeEventListener('click', clickOutsideAvatarPopup); }
+    } else {
+      window.removeEventListener('click', clickOutsideAvatarPopup);
+    }
   }, [generateAvatarPopUp]);
   return (
     <div className="profile_container">
@@ -594,7 +618,12 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                     <div className="sl-wrap">
                       <div>
                         {socialLinks.map((link) => (
-                          <a key={link.id} target="_blank" rel="noreferrer" href={link.url || '#'}>
+                          <a
+                            key={link.id}
+                            target="_blank"
+                            rel="noreferrer"
+                            href={link.url || '#'}
+                          >
                             <span className="social">{link.slink}</span>
                           </a>
                         ))}
@@ -605,7 +634,9 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                             <div>
                               <span
                                 className="note"
-                                onClick={() => router.push('/settings/profile/media')}
+                                onClick={() =>
+                                  router.push('/settings/profile/media')
+                                }
                               >
                                 Please Add Social Links...
                               </span>
@@ -614,7 +645,9 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                           <div className="pencil tw-cursor-pointer">
                             <HiOutlinePencil
                               style={{ fontSize: '1.5rem' }}
-                              onClick={() => router.push('/settings/profile/media')}
+                              onClick={() =>
+                                router.push('/settings/profile/media')
+                              }
                             />
                           </div>
                         </div>
@@ -644,38 +677,41 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                     <p className="tw-font-bold">Passions & Skills</p>
 
                     <p className="all-skills tw-flex tw-justify-start  tw-flex-wrap ">
-                      {userData?.passions?.length
-                      && !(
-                        userData.passions.length === 1
-                        && userData.passions[0] === ''
+                      {userData?.passions?.length &&
+                      !(
+                        userData.passions.length === 1 &&
+                        userData.passions[0] === ''
                       ) ? (
-                          userData.passions.map(
-                            (passion, index) => passion && (
+                        userData.passions.map(
+                          (passion, index) =>
+                            passion && (
                               <span
                                 key={`${index + 1}`}
                                 className="tw-inline-block tw-px-2 tw-py-1 tw-mr-1 tw-text-xs tw-text-gray-500 tw-border-gray-500 tw-mb-1 tw-rounded-md tw-border"
                               >
                                 {passion}
                               </span>
-                            ),
-                          )
-                        ) : (
-                          <span
-                            className="note"
-                            onClick={() => isLoggedIn
-                            && ownsProfile
-                            && router.push('/settings/profile/background')}
-                            style={
+                            )
+                        )
+                      ) : (
+                        <span
+                          className="note"
+                          onClick={() =>
+                            isLoggedIn &&
+                            ownsProfile &&
+                            router.push('/settings/profile/background')
+                          }
+                          style={
                             isLoggedIn && ownsProfile
                               ? { cursor: 'pointer' }
                               : { cursor: 'default' }
                           }
-                          >
-                            {isLoggedIn && ownsProfile
-                              ? 'Please Add Passions...'
-                              : 'N/A'}
-                          </span>
-                        )}
+                        >
+                          {isLoggedIn && ownsProfile
+                            ? 'Please Add Passions...'
+                            : 'N/A'}
+                        </span>
+                      )}
                     </p>
                   </div>
 
@@ -711,8 +747,8 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
           </div>
         </section>
 
-        {getProgressPercentage(userData)
-          && getProgressPercentage(userData) < 100 && (
+        {getProgressPercentage(userData) &&
+          getProgressPercentage(userData) < 100 && (
             <section className="tw-mb-8 tw-container ">
               <div className="profile-strength tw-p-6  tw-rounded-md tw-grid tw-grid-flow-row tw-auto-rows-max">
                 <div
@@ -723,18 +759,16 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                   }tw-group tw-block tw-rounded-lg tw-p-4 tw-border-gray-300 tw-border tw-bg-white`}
                 >
                   <h2 className="tw-relative tw-text-xl tw-font-bold tw-mb-3 tw-text-black">
-                    Profile Strength:
-                    {' '}
+                    Profile Strength:{' '}
                     <span className="tw-font-medium">
                       {`${
                         getProgressPercentage(userData) <= 33
                           ? 'Low'
                           : getProgressPercentage(userData) <= 66
-                            ? 'Intermediate'
-                            : 'High'
+                          ? 'Intermediate'
+                          : 'High'
                       }`}
-                    </span>
-                    {' '}
+                    </span>{' '}
                     {`${getProgressPercentage(userData)}%`}
                     <span
                       className="ps-arrow tw-absolute tw-top-0 tw-right-0 tw-text-xs tw-cursor-pointer"
@@ -781,9 +815,7 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                             className="il-step tw-cursor-pointer tw-inline-block tw-px-2 tw-py-1 tw-rounded-md tw-m-2"
                             onClick={() => router.push(missingData.route)}
                           >
-                            Add a
-                            {' '}
-                            {`${missingData.name}`}
+                            Add a {`${missingData.name}`}
                           </div>
                         ))}
                     </div>
@@ -791,7 +823,7 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                 )}
               </div>
             </section>
-        )}
+          )}
 
         <section className="tw-mb-8 tw-container ">
           <div className="pp-exp-edu-area tw-p-6  tw-rounded-md tw-grid tw-grid-flow-row tw-auto-rows-max">
@@ -814,13 +846,13 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
 
               <div className="exp-edu-content">
                 {!projectCards?.length && (
-                <div className="no-content">
-                  <h3>No Project to Display</h3>
-                </div>
+                  <div className="no-content">
+                    <h3>No Project to Display</h3>
+                  </div>
                 )}
 
-                {!!projectCards?.length
-                  && projectCards.map((card, idx) => (
+                {!!projectCards?.length &&
+                  projectCards.map((card, idx) => (
                     <div
                       className={`add-exp-edu tw-relative tw-flex tw-items-center tw-mb-4 ${
                         !(idx === projectCards?.length - 1)
@@ -830,7 +862,11 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                       key={idx}
                     >
                       <div className="addImg tw-mr-4 tw-mb-6 tw-cursor-pointer">
-                        <a href={card.link ? card.link : '#'} target="_blank" rel="noreferrer">
+                        <a
+                          href={card.link ? card.link : '#'}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
                           <img
                             src={card.image}
                             alt="add item"
@@ -860,9 +896,9 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                     </div>
                   ))}
 
-                {isLoggedIn
-                  && ownsProfile
-                  && (!projectCards?.length || !proEditMode) && (
+                {isLoggedIn &&
+                  ownsProfile &&
+                  (!projectCards?.length || !proEditMode) && (
                     <form
                       id="add-edu-fields"
                       className="add-exp-edu tw-flex tw-items-center"
@@ -884,13 +920,15 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                             />
                             <img
                               src={
-                                uploadedProImg
-                                || '/assets/images/profile/add-image.svg'
+                                uploadedProImg ||
+                                '/assets/images/profile/add-image.svg'
                               }
                               alt="add item"
                               className="tw-w-full"
                             />
-                            <p className="tw-text-sm tw-text-gray-500">add Project's image</p>
+                            <p className="tw-text-sm tw-text-gray-500">
+                              add Project's image
+                            </p>
                           </label>
                         ) : (
                           <img
@@ -922,9 +960,15 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                           <DatePicker
                             className="tw-block tw-rounded tw-px-2 tw-w-full tw-text-gray-400"
                             name="date"
-                            value={ProDateInput === '' ? 'Project Date' : ProDateInput}
+                            value={
+                              ProDateInput === ''
+                                ? 'Project Date'
+                                : ProDateInput
+                            }
                             selected={ProDateInput}
-                            onChange={(date) => { setProDateInput(date); }}
+                            onChange={(date) => {
+                              setProDateInput(date);
+                            }}
                             dateFormat="MM/dd/yyyy"
                             placeholder="Project Date"
                             autoComplete="false"
@@ -964,7 +1008,7 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                         </>
                       )}
                     </form>
-                )}
+                  )}
               </div>
             </div>
           </div>
@@ -999,8 +1043,8 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                       style={
                         enrolledCourses.length < 3
                           ? {
-                            width: '33%',
-                          }
+                              width: '33%',
+                            }
                           : {}
                       }
                     >
@@ -1065,9 +1109,8 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                   </div>
                 )}
 
-                {!!experienceCards?.length
-                  && experienceCards.map((card, idx) => (
-
+                {!!experienceCards?.length &&
+                  experienceCards.map((card, idx) => (
                     <div
                       className={`add-exp-edu tw-relative tw-flex tw-items-center tw-mb-4 ${
                         !(idx === experienceCards || experienceCards.length - 1)
@@ -1076,9 +1119,12 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                       }`}
                       key={card.cardId}
                     >
-
                       <div className="addImg tw-mr-4 tw-mb-6 tw-cursor-pointer">
-                        <a href={card.link ? card.link : '#'} target="_blank" rel="noreferrer">
+                        <a
+                          href={card.link ? card.link : '#'}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
                           <img
                             src={card.image}
                             alt="add item"
@@ -1092,10 +1138,7 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                           {card.jobTitle}
                         </p>
                         <p className="tw-block tw-rounded tw-px-2 tw-my-2 tw-w-full">
-                          {moment(card?.from).calendar()}
-                          {' '}
-                          -
-                          {' '}
+                          {moment(card?.from).calendar()} -{' '}
                           {moment(card?.to).calendar()}
                         </p>
                         <p className="tw-block tw-rounded tw-px-2 tw-w-full">
@@ -1112,12 +1155,11 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                         </span>
                       )}
                     </div>
-
                   ))}
 
-                {isLoggedIn
-                  && ownsProfile
-                  && (!experienceCards?.length || !expEditMode) && (
+                {isLoggedIn &&
+                  ownsProfile &&
+                  (!experienceCards?.length || !expEditMode) && (
                     <form
                       id="add-exp-fields"
                       className="add-exp-edu tw-flex tw-items-center"
@@ -1140,13 +1182,15 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
 
                             <img
                               src={
-                                uploadedExpImg
-                                || '/assets/images/profile/add-image.svg'
+                                uploadedExpImg ||
+                                '/assets/images/profile/add-image.svg'
                               }
                               alt="add item"
                               className="tw-w-full"
                             />
-                            <p className="tw-text-sm tw-text-gray-500">add company's image (logo)</p>
+                            <p className="tw-text-sm tw-text-gray-500">
+                              add company's image (logo)
+                            </p>
                           </label>
                         ) : (
                           <img
@@ -1157,74 +1201,88 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                           />
                         )}
                       </div>
-                        {expAddMode ? (
-                          <div className="ee-fields tw-flex tw-flex-col tw-items-start tw-mb-2">
-                            <input
-                              type="text"
-                              placeholder="Job Title"
-                              name="jobTitle"
-                              className="tw-block tw-rounded tw-px-2 tw-font-bold tw-w-full"
-                              value={expJobTitleInput}
-                              onChange={(e) => setExpJobTitleInput(e.target.value)}
-                            />
-                            <input
-                              type="text"
-                              placeholder="Company name"
-                              name="company"
-                              className="tw-block tw-rounded tw-px-2 tw-w-full tw-my-1"
-                              value={company}
-                              onChange={(e) => setCompany(e.target.value)}
-                            />
-                            <DatePicker
-                              className="tw-block tw-rounded tw-px-2 tw-w-full tw-text-gray-400"
-                              value={expDateInputFrom === '' ? 'From' : expDateInputFrom}
-                              selected={expDateInputFrom}
-                              name="from"
-                              onChange={(date) => { setExpDateInputFrom(date); }}
-                              dateFormat="MM/dd/yyyy"
-                              placeholder="from"
-                              autoComplete="false"
-                              required
-                            />
-                            <DatePicker
-                              className="tw-block tw-rounded tw-px-2 tw-w-full tw-text-gray-400"
-                              minDate={new Date(expDateInputFrom)}
-                              maxDate={moment().toDate()}
-                              name="to"
-                              value={expDateInputTo === '' ? 'To' : expDateInputTo}
-                              selected={expDateInputTo}
-                              onChange={(date) => { setExpDateInputTo(date); }}
-                              dateFormat="MM/dd/yyyy"
-                              placeholder="to"
-                              autoComplete="false"
-                              required
-                            />
-                            <input
-                              type="text"
-                              placeholder="Location"
-                              name="location"
-                              className="tw-block tw-rounded tw-px-2 tw-w-full tw-my-1"
-                              value={expLocationInput}
-                              onChange={(e) => setExpLocationInput(e.target.value)}
-                            />
-                            <input
-                              type="text"
-                              placeholder="Link"
-                              name="link"
-                              className="tw-block tw-rounded tw-px-2 tw-w-full tw-my-1"
-                              value={link}
-                              onChange={(e) => setLink(e.target.value)}
-                            />
-                          </div>
-                        ) : (
-                          <h3
-                            className="tw-font-bold tw-cursor-pointer"
-                            onClick={() => setExpAddMode(true)}
-                          >
-                            Add Experience
-                          </h3>
-                        )}
-                        {expAddMode && (
+                      {expAddMode ? (
+                        <div className="ee-fields tw-flex tw-flex-col tw-items-start tw-mb-2">
+                          <input
+                            type="text"
+                            placeholder="Job Title"
+                            name="jobTitle"
+                            className="tw-block tw-rounded tw-px-2 tw-font-bold tw-w-full"
+                            value={expJobTitleInput}
+                            onChange={(e) =>
+                              setExpJobTitleInput(e.target.value)
+                            }
+                          />
+                          <input
+                            type="text"
+                            placeholder="Company name"
+                            name="company"
+                            className="tw-block tw-rounded tw-px-2 tw-w-full tw-my-1"
+                            value={company}
+                            onChange={(e) => setCompany(e.target.value)}
+                          />
+                          <DatePicker
+                            className="tw-block tw-rounded tw-px-2 tw-w-full tw-text-gray-400"
+                            value={
+                              expDateInputFrom === ''
+                                ? 'From'
+                                : expDateInputFrom
+                            }
+                            selected={expDateInputFrom}
+                            name="from"
+                            onChange={(date) => {
+                              setExpDateInputFrom(date);
+                            }}
+                            dateFormat="MM/dd/yyyy"
+                            placeholder="from"
+                            autoComplete="false"
+                            required
+                          />
+                          <DatePicker
+                            className="tw-block tw-rounded tw-px-2 tw-w-full tw-text-gray-400"
+                            minDate={new Date(expDateInputFrom)}
+                            maxDate={moment().toDate()}
+                            name="to"
+                            value={
+                              expDateInputTo === '' ? 'To' : expDateInputTo
+                            }
+                            selected={expDateInputTo}
+                            onChange={(date) => {
+                              setExpDateInputTo(date);
+                            }}
+                            dateFormat="MM/dd/yyyy"
+                            placeholder="to"
+                            autoComplete="false"
+                            required
+                          />
+                          <input
+                            type="text"
+                            placeholder="Location"
+                            name="location"
+                            className="tw-block tw-rounded tw-px-2 tw-w-full tw-my-1"
+                            value={expLocationInput}
+                            onChange={(e) =>
+                              setExpLocationInput(e.target.value)
+                            }
+                          />
+                          <input
+                            type="text"
+                            placeholder="Link"
+                            name="link"
+                            className="tw-block tw-rounded tw-px-2 tw-w-full tw-my-1"
+                            value={link}
+                            onChange={(e) => setLink(e.target.value)}
+                          />
+                        </div>
+                      ) : (
+                        <h3
+                          className="tw-font-bold tw-cursor-pointer"
+                          onClick={() => setExpAddMode(true)}
+                        >
+                          Add Experience
+                        </h3>
+                      )}
+                      {expAddMode && (
                         <>
                           <div
                             className="ee-add-btn tw-px-2 tw-py-1 tw-ml-4 tw-mb-3 tw-self-end tw-rounded tw-cursor-pointer tw-text-white"
@@ -1239,9 +1297,9 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                             Cancel
                           </div>
                         </>
-                        )}
+                      )}
                     </form>
-                )}
+                  )}
               </div>
             </div>
           </div>
@@ -1273,8 +1331,8 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                   </div>
                 )}
 
-                {!!educationCards?.length
-                  && educationCards.map((card, idx) => (
+                {!!educationCards?.length &&
+                  educationCards.map((card, idx) => (
                     <div
                       className={`add-exp-edu tw-relative tw-flex tw-items-center tw-mb-4 ${
                         !(idx === educationCards || educationCards.length - 1)
@@ -1284,7 +1342,11 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                       key={`${idx + 1}`}
                     >
                       <div className="addImg tw-mr-4 tw-mb-6 tw-cursor-pointer">
-                        <a href={card.link ? card.link : '#'} target="_blank" rel="noreferrer">
+                        <a
+                          href={card.link ? card.link : '#'}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
                           <img
                             src={card.image}
                             alt="add item"
@@ -1297,10 +1359,7 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                           {card.name}
                         </p>
                         <p className="tw-block tw-rounded tw-px-2 tw-my-2 tw-w-full">
-                          {moment(card.date).calendar()}
-                          {' '}
-                          -
-                          {' '}
+                          {moment(card.date).calendar()} -{' '}
                           {moment(card.gradDate).calendar()}
                         </p>
                         <p className="tw-block tw-rounded tw-px-2 tw-w-full">
@@ -1318,9 +1377,9 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                     </div>
                   ))}
 
-                {isLoggedIn
-                  && ownsProfile
-                  && (!educationCards?.length || !eduEditMode) && (
+                {isLoggedIn &&
+                  ownsProfile &&
+                  (!educationCards?.length || !eduEditMode) && (
                     <form
                       id="add-edu-fields"
                       className="add-exp-edu tw-flex tw-items-center"
@@ -1342,13 +1401,15 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                             />
                             <img
                               src={
-                                uploadedEduImg
-                                || '/assets/images/profile/add-image.svg'
+                                uploadedEduImg ||
+                                '/assets/images/profile/add-image.svg'
                               }
                               alt="add item"
                               className="tw-w-full"
                             />
-                            <p className="tw-text-sm tw-text-gray-500">add University's image (logo)</p>
+                            <p className="tw-text-sm tw-text-gray-500">
+                              add University's image (logo)
+                            </p>
                           </label>
                         ) : (
                           <img
@@ -1371,10 +1432,16 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                           />
                           <DatePicker
                             className="tw-block tw-rounded tw-px-2 tw-w-full tw-text-gray-400"
-                            value={eduDateInput === '' ? 'Date attended' : eduDateInput}
+                            value={
+                              eduDateInput === ''
+                                ? 'Date attended'
+                                : eduDateInput
+                            }
                             name="date"
                             selected={eduDateInput}
-                            onChange={(date) => { setEduDateInput(date); }}
+                            onChange={(date) => {
+                              setEduDateInput(date);
+                            }}
                             dateFormat="MM/dd/yyyy"
                             placeholder="Started"
                             autoComplete="false"
@@ -1384,9 +1451,13 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                             className="tw-block tw-rounded tw-px-2 tw-w-full tw-text-gray-400"
                             minDate={new Date(eduDateInput)}
                             name="gradDate"
-                            value={eduDateGrad === '' ? 'Graduate Date' : eduDateGrad}
+                            value={
+                              eduDateGrad === '' ? 'Graduate Date' : eduDateGrad
+                            }
                             selected={eduDateGrad}
-                            onChange={(date) => { setEduDateGrad(date); }}
+                            onChange={(date) => {
+                              setEduDateGrad(date);
+                            }}
                             dateFormat="MM/dd/yyyy"
                             placeholder="Graduate Date"
                             autoComplete="false"
@@ -1434,12 +1505,11 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                         </>
                       )}
                     </form>
-                )}
+                  )}
               </div>
             </div>
           </div>
         </section>
-
       </div>
     </div>
   );

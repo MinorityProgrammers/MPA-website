@@ -28,18 +28,15 @@ const allSections = [
   },
 ];
 
-// component's function
 const CareerExplainer = (props) => {
-  const {
-    data, setClickRegister, clickRegister, navBarRef,
-  } = props;
+  const { data, setClickRegister, clickRegister, navBarRef } = props;
 
   const [marginTop, setMarginTop] = useState(0);
 
   useEffect(() => {
     if (navBarRef.current && window) {
       const currHeight = parseInt(
-        window.getComputedStyle(navBarRef.current).height,
+        window.getComputedStyle(navBarRef.current).height
       );
       if (typeof currHeight === 'number' && currHeight > marginTop) {
         setMarginTop((/* prev */) => `${currHeight}px`);

@@ -3,7 +3,7 @@ import MinorityEarnedHeader from './MinorityEarnedHeader';
 import MinorityEarnedActions from './MinorityEarnedActions';
 import ProposalBox from './ProposalBox';
 
-const MinorityEarned = function () {
+const MinorityEarned = () => {
   const styling = {
     background:
       'linear-gradient(90deg, #FF00B8 0%, #FF655B 50.8%, #FFC700 100%)',

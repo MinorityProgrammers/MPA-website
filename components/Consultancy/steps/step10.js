@@ -1,6 +1,4 @@
-import React, {
-  useRef, useState, useEffect,
-} from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import Axios from 'axios';
 import QuestionContainer from '../helperFiles/questionContainer';
 import InputWithIcon from '../helperFiles/customInputTags/inputWithIcon';
@@ -10,7 +8,6 @@ import getFormattedOutput from '../helperFiles/getFormattedOutput';
 import Radio from '../helperFiles/Radio';
 import Dependency from '../helperFiles/dependency';
 
-// AXIOS INSTANCE
 const axios = Axios.create({
   baseURL: `${process.env.BASE_URI}/service`,
 });
@@ -82,9 +79,7 @@ function createDateEntry(e) {
   e.target.selectionEnd = cursor;
 }
 
-const Page10 = function ({
-  step, setstep, questions, setQuestions, data,
-}) {
+const Page10 = ({ step, setstep, questions, setQuestions, data }) => {
   const card_full_name = useRef();
   const card_number = useRef();
   const card_expiry_date = useRef();
@@ -106,7 +101,10 @@ const Page10 = function ({
       [
         'Credit Card/Debit Card',
         <div className="contain-label-second-part">
-          <img src="/assets/images/icons/kissclipart-mastercard-logo-png-clipart-mastercard-credit-card-4497856f6840bcae 1.png" alt="" />
+          <img
+            src="/assets/images/icons/kissclipart-mastercard-logo-png-clipart-mastercard-credit-card-4497856f6840bcae 1.png"
+            alt=""
+          />
           <img src="/assets/images/icons/pngwing 1.png" alt="" />
           and more...
         </div>,
@@ -118,7 +116,7 @@ const Page10 = function ({
           'Full Name',
           card_full_name,
           'text',
-          basic_text_validation,
+          basic_text_validation
         ),
         new Dependency(
           '* Card Number',
@@ -127,7 +125,7 @@ const Page10 = function ({
           'tel',
           basic_number_validation,
           createEntry,
-          16,
+          16
         ),
         new Dependency(
           '* Card Expiry Date',
@@ -136,7 +134,7 @@ const Page10 = function ({
           'tel',
           basic_number_validation,
           createDateEntry,
-          6,
+          6
         ),
         new Dependency(
           '* Card Security Code (CVV2)',
@@ -145,9 +143,9 @@ const Page10 = function ({
           'tel',
           basic_number_validation,
           createEntry,
-          3,
+          3
         ),
-      ],
+      ]
     ),
     new Radio(
       [
@@ -156,7 +154,7 @@ const Page10 = function ({
           <img src="/assets/images/icons/pngaaa 1.png" alt="" />
         </div>,
       ],
-      'paypal',
+      'paypal'
     ),
     new Radio(['Pay in $Minority'], 'minority'),
     new Radio(['Electronic Check'], 'electronic-check'),
@@ -183,7 +181,8 @@ const Page10 = function ({
           let feedback = e.response.data.data
             ? e.response.data.data.message
             : e.response.data.message;
-          feedback = typeof feedback === 'string' ? [feedback] : Object.values(feedback);
+          feedback =
+            typeof feedback === 'string' ? [feedback] : Object.values(feedback);
           setServerError(feedback);
         });
     }
@@ -239,7 +238,7 @@ const Page10 = function ({
     for (let i = 0; i < dependency_arr.length; i += 1) {
       if (errors.inputs[i][0] === undefined) {
         const validation = dependency_arr[i].validationFxn(
-          dependency_arr[i].ref.current.value,
+          dependency_arr[i].ref.current.value
         );
         if (validation !== '') {
           shouldSubmit = false;
@@ -248,7 +247,8 @@ const Page10 = function ({
       } else if (errors.inputs[i][0] !== '') {
         shouldSubmit = false;
       } else {
-        paymentInfo[dependency_arr[i].label.replaceAll('*', '').trim()] = dependency_arr[i].ref.current.value;
+        paymentInfo[dependency_arr[i].label.replaceAll('*', '').trim()] =
+          dependency_arr[i].ref.current.value;
       }
     }
     if (shouldSubmit) {
@@ -259,7 +259,6 @@ const Page10 = function ({
   function prevPage() {
     setstep((prev) => prev - 1);
   }
-  // let pop = "popup";
   function toggle() {
     const popup = document.getElementById('myPopup');
     popup.classList.toggle('show');
@@ -276,31 +275,22 @@ const Page10 = function ({
       marginBottom="1rem"
     >
       <div className="body">
-        A MPA project manager will translate you requirements to a PROJECT
-        QUOTE (budget, staffing, timeline, with a complete task break down and
-        vesting schedule). You would be charged a fee of $40 for this!
+        A MPA project manager will translate you requirements to a PROJECT QUOTE
+        (budget, staffing, timeline, with a complete task break down and vesting
+        schedule). You would be charged a fee of $40 for this!
         <table>
           <tbody>
             <tr>
               <th>TOTAL</th>
-              <td>
-                $
-                {a}
-              </td>
+              <td>${a}</td>
             </tr>
             <tr>
               <th>TAXES</th>
-              <td>
-                $
-                {b}
-              </td>
+              <td>${b}</td>
             </tr>
             <tr>
               <th>TOTAL</th>
-              <th>
-                $
-                {c}
-              </th>
+              <th>${c}</th>
             </tr>
           </tbody>
         </table>
@@ -310,7 +300,6 @@ const Page10 = function ({
         {serverError.length !== 0 ? (
           <div
             className="alert alert-danger"
-              // role="alert"
             style={{
               textAlign: 'left',
               fontWeight: '200',
@@ -318,7 +307,9 @@ const Page10 = function ({
             }}
           >
             <ul>
-              {serverError.map((error, index) => <li key={`error${index + 1}`}>{error}</li>)}
+              {serverError.map((error, index) => (
+                <li key={`error${index + 1}`}>{error}</li>
+              ))}
             </ul>
             <div
               style={{
@@ -337,7 +328,10 @@ const Page10 = function ({
           </div>
         ) : null}
         {allRadios.map((radio, index) => (
-          <div className="contain-options edit-payment-options" key={`radio${index + 1}`}>
+          <div
+            className="contain-options edit-payment-options"
+            key={`radio${index + 1}`}
+          >
             <div className="wrap">
               {/* checkbox input */}
               <input
@@ -388,11 +382,10 @@ const Page10 = function ({
                           hideIcon
                           width="100%"
                           maxLength={
-                                  dependency.maxLength
-                                  && dependency.type === 'tel'
-                                    ? dependency.maxLength
-                                    : ''
-                                }
+                            dependency.maxLength && dependency.type === 'tel'
+                              ? dependency.maxLength
+                              : ''
+                          }
                           type={dependency.type}
                           onInput={(e) => {
                             dependency.onInput(e);
@@ -400,22 +393,18 @@ const Page10 = function ({
                               validateRegularInputs(
                                 dependency.validationFxn(
                                   dependency.ref.current.value,
-                                  dependency.correctLength,
+                                  dependency.correctLength
                                 ),
-                                index,
+                                index
                               );
                             }
                           }}
                         />
-                        {errors.inputs.length > 0
-                              && errors.inputs[index][0] !== undefined
-                              && errors.inputs[index][0] !== '' ? (
-                                <ErrorPrint
-                                  errors={errors.inputs[index]}
-                                  red
-                                  left
-                                />
-                          ) : null}
+                        {errors.inputs.length > 0 &&
+                        errors.inputs[index][0] !== undefined &&
+                        errors.inputs[index][0] !== '' ? (
+                          <ErrorPrint errors={errors.inputs[index]} red left />
+                        ) : null}
                       </div>
                     ))}
                   </div>
@@ -436,13 +425,7 @@ const Page10 = function ({
             }}
           />
           <label id="agree" onClick={toggle}>
-            {/* <a
-                href="https://drive.google.com/file/d/1ZvUac-yvEb-OR2KC8mGmIybU7yIDPuCA/view?usp=sharing"
-                target="_blank"
-              > */}
-            {' '}
             I have read &amp; agree to the terms/warranty
-            {/* </a> */}
           </label>
         </span>
         {errors.agreement[0] !== undefined && errors.agreement[0] !== '' ? (

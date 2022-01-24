@@ -1,7 +1,6 @@
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable max-len */
 import React, { Component } from 'react';
-
 import axios from 'axios';
 import Swiper from 'swiper';
 import Select from 'react-select';
@@ -10,7 +9,6 @@ import EventCard from './EventCard';
 import EventCardFeatured from './EventCardFeatured';
 import EventCardSkeleton from './EventCardSkeleton';
 import EventCardFeaturedSkeleton from './EventCardFeaturedSkeleton';
-
 import 'swiper/css/swiper.min.css';
 import 'swiper/css/swiper.css';
 import EventMoreInfo from './EventMoreInfo';
@@ -50,10 +48,26 @@ class Event extends Component {
       eventDateTime: '',
       myEvent: false,
       categoryButtons: [
-        { category: 'Lectures/Webinars', description: 'On The Hottest Topic', activebtn: false },
-        { category: 'Workshops/Conferences', description: 'Hands on Training', activebtn: false },
-        { category: 'Hackathons', description: 'Compete For Prizes', activebtn: false },
-        { category: 'Incubators/Accelerators', description: 'Start Your Tech Business', activebtn: false },
+        {
+          category: 'Lectures/Webinars',
+          description: 'On The Hottest Topic',
+          activebtn: false,
+        },
+        {
+          category: 'Workshops/Conferences',
+          description: 'Hands on Training',
+          activebtn: false,
+        },
+        {
+          category: 'Hackathons',
+          description: 'Compete For Prizes',
+          activebtn: false,
+        },
+        {
+          category: 'Incubators/Accelerators',
+          description: 'Start Your Tech Business',
+          activebtn: false,
+        },
       ],
       categoryButtonsActiveIndex: -1,
       catergoryFilterLoading: false,
@@ -74,11 +88,13 @@ class Event extends Component {
       this.getSavedEvents(),
       this.findSavedEvents(),
       this.getUserSavedEvents(),
-    ]).then(() => {
-      setTimeout(() => {
-        this.setState({ loading: false });
-      }, 1500);
-    }).catch((err) => console.error(err));
+    ])
+      .then(() => {
+        setTimeout(() => {
+          this.setState({ loading: false });
+        }, 1500);
+      })
+      .catch((err) => console.error(err));
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -124,62 +140,52 @@ class Event extends Component {
   // fetch Event data
   getEvents = async () => {
     const dateNow = Date.now();
-    await axios.get(`${process.env.BASE_URI}/event`)
-      .then((response) => {
-        // console.log(response.data.data);
-        this.setState({
-          AllEvent: response.data.data.filter((event) => {
-            const eventTime = new Date(event.time).getTime();
-            if (dateNow < eventTime && event.approved !== null && event.approved === true) {
-              return event;
-            }
-          }),
-        });
-
-        this.setState({
-          Swiperdata: response.data.data.filter((event) => {
-            const eventTime = new Date(event.time).getTime();
-            if (event.approved !== null && event.approved === true) {
-              return event.Featured === true;
-            }
-          }),
-        });
-
-        this.setState({
-          PastEvent: response.data.data.filter((event) => {
-            const eventTime = new Date(event.time).getTime();
-            if (dateNow > eventTime && event.approved !== null && event.approved === true) {
-              return event;
-            }
-          }).sort((a, b) => new Date(a.time) - new Date(b.time)),
-        });
+    await axios.get(`${process.env.BASE_URI}/event`).then((response) => {
+      this.setState({
+        AllEvent: response.data.data.filter((event) => {
+          const eventTime = new Date(event.time).getTime();
+          if (
+            dateNow < eventTime &&
+            event.approved !== null &&
+            event.approved === true
+          ) {
+            return event;
+          }
+        }),
       });
+
+      this.setState({
+        Swiperdata: response.data.data.filter((event) => {
+          const eventTime = new Date(event.time).getTime();
+          if (event.approved !== null && event.approved === true) {
+            return event.Featured === true;
+          }
+        }),
+      });
+
+      this.setState({
+        PastEvent: response.data.data
+          .filter((event) => {
+            const eventTime = new Date(event.time).getTime();
+            if (
+              dateNow > eventTime &&
+              event.approved !== null &&
+              event.approved === true
+            ) {
+              return event;
+            }
+          })
+          .sort((a, b) => new Date(a.time) - new Date(b.time)),
+      });
+    });
   };
 
   // fetch SavedEvents data from a user
   getSavedEvents = async () => {
     const token = window.localStorage.getItem('jwtToken');
 
-    return axios.get(`${process.env.BASE_URI}/saveEvent/`, {
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'GET',
-        'Access-Control-Allow-Headers': 'Content-Type',
-        Authorization: `Bearer ${token}`,
-        'Content-Type': 'application/json',
-      },
-    }).then((res) => {
-      this.setState({
-        allsavedEvents: res.data.data,
-      });
-    });
-  };
-
-  getUserSavedEvents = async () => {
-    const token = window.localStorage.getItem('jwtToken');
-
-    if (token != null) {
-      return axios.get(`${process.env.BASE_URI}/saveEvent/userEvents`, {
+    return axios
+      .get(`${process.env.BASE_URI}/saveEvent/`, {
         headers: {
           'Access-Control-Allow-Origin': '*',
           'Access-Control-Allow-Methods': 'GET',
@@ -187,12 +193,34 @@ class Event extends Component {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json',
         },
-      }).then((res) => {
+      })
+      .then((res) => {
         this.setState({
-          userEvents: res.data.data,
-          userSavedEvents: res.data.data,
+          allsavedEvents: res.data.data,
         });
       });
+  };
+
+  getUserSavedEvents = async () => {
+    const token = window.localStorage.getItem('jwtToken');
+
+    if (token != null) {
+      return axios
+        .get(`${process.env.BASE_URI}/saveEvent/userEvents`, {
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'GET',
+            'Access-Control-Allow-Headers': 'Content-Type',
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json',
+          },
+        })
+        .then((res) => {
+          this.setState({
+            userEvents: res.data.data,
+            userSavedEvents: res.data.data,
+          });
+        });
     }
   };
 
@@ -201,7 +229,11 @@ class Event extends Component {
     this.setState({
       AllEvent: response.data.filter((event) => {
         const eventTime = new Date(event.time).getTime();
-        if (dateNow < eventTime && event.approved !== null && event.approved === true) {
+        if (
+          dateNow < eventTime &&
+          event.approved !== null &&
+          event.approved === true
+        ) {
           return event;
         }
       }),
@@ -215,12 +247,18 @@ class Event extends Component {
       }),
     });
     this.setState({
-      PastEvent: response.data.filter((event) => {
-        const eventTime = new Date(event.time).getTime();
-        if (dateNow > eventTime && event.approved !== null && event.approved === true) {
-          return event;
-        }
-      }).sort((a, b) => new Date(a.time) - new Date(b.time)),
+      PastEvent: response.data
+        .filter((event) => {
+          const eventTime = new Date(event.time).getTime();
+          if (
+            dateNow > eventTime &&
+            event.approved !== null &&
+            event.approved === true
+          ) {
+            return event;
+          }
+        })
+        .sort((a, b) => new Date(a.time) - new Date(b.time)),
     });
     this.setState({ catergoryFilterLoading: false });
   };
@@ -228,10 +266,11 @@ class Event extends Component {
   filterEvents = () => {
     const { filter } = this.state;
     this.setState({ catergoryFilterLoading: true });
-    fetch(`${process.env.BASE_URI}/event/?Virtual=${filter.Virtual}&event_time=${filter.event_time}&catName=${filter.catName}`)
+    fetch(
+      `${process.env.BASE_URI}/event/?Virtual=${filter.Virtual}&event_time=${filter.event_time}&catName=${filter.catName}`
+    )
       .then((response) => response.json())
       .then((response) => {
-        // console.log(response)
         setTimeout(() => {
           this.setEventState(response);
         }, 1500);
@@ -240,21 +279,22 @@ class Event extends Component {
 
   findSavedEvents = () => {
     if (this.props.userData !== null) {
-      // console.log(this.state.userEvents)
       this.state.userEvents.map((all) => {
         if (all.event_id !== null) {
           if (
-            all.user_id._id === this.props.userData._id
-            && all.event_id.approved !== null
-            && all.event_id.approved === true
+            all.user_id._id === this.props.userData._id &&
+            all.event_id.approved !== null &&
+            all.event_id.approved === true
           ) {
-            this.setState({ userSavedEvents: [...this.state.userSavedEvents, all] });
+            this.setState({
+              userSavedEvents: [...this.state.userSavedEvents, all],
+            });
           }
         }
       });
       this.setState({
         userSavedEvents: this.state.allsavedEvents.filter(
-          (event) => event.user_id._id === this.props.userData._id,
+          (event) => event.user_id._id === this.props.userData._id
         ),
       });
 
@@ -264,12 +304,9 @@ class Event extends Component {
   };
 
   render() {
-    const {
-      userData, active, clickRegister, setClickRegister, token,
-    } = this.props;
-    const {
-      userSavedEvents, allsavedEvents,
-    } = this.state;
+    const { userData, active, clickRegister, setClickRegister, token } =
+      this.props;
+    const { userSavedEvents, allsavedEvents } = this.state;
 
     const options = [
       {
@@ -300,9 +337,21 @@ class Event extends Component {
 
       if (e.target.childNodes[0].value) {
         const searchValue = e.target.childNodes[0].value;
-        this.setState({ AllEvent: [...this.state.AllEvent].filter((event) => event.eventName.toLowerCase().includes(searchValue.toLowerCase())) });
-        this.setState({ PastEvent: [...this.state.PastEvent].filter((event) => event.eventName.toLowerCase().includes(searchValue.toLowerCase())) });
-        this.setState({ Swiperdata: [...this.state.Swiperdata].filter((event) => event.eventName.toLowerCase().includes(searchValue.toLowerCase())) });
+        this.setState({
+          AllEvent: [...this.state.AllEvent].filter((event) =>
+            event.eventName.toLowerCase().includes(searchValue.toLowerCase())
+          ),
+        });
+        this.setState({
+          PastEvent: [...this.state.PastEvent].filter((event) =>
+            event.eventName.toLowerCase().includes(searchValue.toLowerCase())
+          ),
+        });
+        this.setState({
+          Swiperdata: [...this.state.Swiperdata].filter((event) =>
+            event.eventName.toLowerCase().includes(searchValue.toLowerCase())
+          ),
+        });
       } else {
         this.filterEvents();
       }
@@ -327,7 +376,11 @@ class Event extends Component {
         this.setState({ showCreateEvent: true });
       } else {
         this.setState({ showCreateEvent: false });
-        const changedState = { ...this.state.createEventData, step: 0, EventPicture: '' };
+        const changedState = {
+          ...this.state.createEventData,
+          step: 0,
+          EventPicture: '',
+        };
         this.setState({ createEventData: changedState });
       }
     };
@@ -362,45 +415,69 @@ class Event extends Component {
 
       if (input === 'step') {
         const { step } = this.state.createEventData;
-        const changedState = { ...this.state.createEventData, [input]: step + 1 };
+        const changedState = {
+          ...this.state.createEventData,
+          [input]: step + 1,
+        };
         this.setState({ createEventData: changedState });
         if (step === 2) {
           handleMoreInfo();
         }
       } else if (input === 'catName' || input === 'Virtual') {
-        const changedState = { ...this.state.createEventData, [input]: e.value, [`${input}Options`]: e };
+        const changedState = {
+          ...this.state.createEventData,
+          [input]: e.value,
+          [`${input}Options`]: e,
+        };
         this.setState({ createEventData: changedState });
       } else if (input === 'eventDate' || input === 'eventTime') {
         if (input === 'eventDate') {
           if (this.state.createEventData.eventTime.length === 0) {
-            const changedState = { ...this.state.createEventData, [input]: e.target.value, time: `${e.target.value}T00:00:00.000Z` };
+            const changedState = {
+              ...this.state.createEventData,
+              [input]: e.target.value,
+              time: `${e.target.value}T00:00:00.000Z`,
+            };
             this.setState({ createEventData: changedState });
           } else {
-            const changedState = { ...this.state.createEventData, [input]: e.target.value, time: `${e.target.value}T${this.state.createEventData.eventTime}:00.000Z` };
+            const changedState = {
+              ...this.state.createEventData,
+              [input]: e.target.value,
+              time: `${e.target.value}T${this.state.createEventData.eventTime}:00.000Z`,
+            };
             this.setState({ createEventData: changedState });
           }
         } else if (input === 'eventTime') {
           if (this.state.createEventData.eventDate.length === 0) {
-            const changedState = { ...this.state.createEventData, [input]: e.target.value, time: `2021-01-01'T${e.target.value}:00.000Z` };
+            const changedState = {
+              ...this.state.createEventData,
+              [input]: e.target.value,
+              time: `2021-01-01'T${e.target.value}:00.000Z`,
+            };
             this.setState({ createEventData: changedState });
           } else {
-            const changedState = { ...this.state.createEventData, [input]: e.target.value, time: `${this.state.createEventData.eventDate}T${e.target.value}:00.000Z` };
+            const changedState = {
+              ...this.state.createEventData,
+              [input]: e.target.value,
+              time: `${this.state.createEventData.eventDate}T${e.target.value}:00.000Z`,
+            };
             this.setState({ createEventData: changedState });
           }
         }
       } else {
-        const changedState = { ...this.state.createEventData, [input]: e.target.value };
+        const changedState = {
+          ...this.state.createEventData,
+          [input]: e.target.value,
+        };
         this.setState({ createEventData: changedState });
       }
     };
 
-    // const updateTime = () => {
-    //   const changedState = { ...this.state.createEventData, time: this.state.createEventData.eventDate + "T" + this.state.createEventData.eventTime + ":00.000Z" };
-    //   this.setState({ createEventData: changedState })
-    // }
-
     const handleCreateEventPicture = (input) => {
-      const changedState = { ...this.state.createEventData, EventPicture: input };
+      const changedState = {
+        ...this.state.createEventData,
+        EventPicture: input,
+      };
       this.setState({ createEventData: changedState });
     };
 
@@ -423,7 +500,10 @@ class Event extends Component {
         minHeight: 50,
         width: 200,
         minWidth: 200,
-        '@media only screen and (max-width: 666px)': { width: '80%', minWidth: '80%' },
+        '@media only screen and (max-width: 666px)': {
+          width: '80%',
+          minWidth: '80%',
+        },
       }),
       indicatorsContainer: (provided) => ({
         ...provided,
@@ -438,9 +518,9 @@ class Event extends Component {
       }),
       control: (base) => ({
         ...base,
-        '&:hover': { borderColor: 'gray' }, // border style on hover
-        border: '1px solid lightgray', // default border color
-        boxShadow: 'none', // no box-shadow
+        '&:hover': { borderColor: 'gray' },
+        border: '1px solid lightgray',
+        boxShadow: 'none',
         padding: 0,
         height: 50,
         minHeight: 50,
@@ -484,7 +564,11 @@ class Event extends Component {
       this.setState({
         Swiperdata: response.data.data.filter((event) => {
           const eventTime = new Date(event.time).getTime();
-          if (dateNow < eventTime && event.approved !== null && event.approved === true) {
+          if (
+            dateNow < eventTime &&
+            event.approved !== null &&
+            event.approved === true
+          ) {
             return event.Featured === true;
           }
         }),
@@ -492,7 +576,11 @@ class Event extends Component {
       this.setState({
         AllEvent: response.data.data.filter((event) => {
           const eventTime = new Date(event.time).getTime();
-          if (dateNow < eventTime && event.approved !== null && event.approved === true) {
+          if (
+            dateNow < eventTime &&
+            event.approved !== null &&
+            event.approved === true
+          ) {
             return event;
           }
         }),
@@ -500,20 +588,19 @@ class Event extends Component {
       this.setState({
         PastEvent: response.data.data.filter((event) => {
           const eventTime = new Date(event.time).getTime();
-          if (dateNow > eventTime && event.approved !== null && event.approved === true) {
+          if (
+            dateNow > eventTime &&
+            event.approved !== null &&
+            event.approved === true
+          ) {
             return event;
           }
         }),
       });
-      // console.log(response);
     };
 
     const onChangeInput = async (value) => {
-      // await fetchEvents()
-      // let filterValue = value.value
-
-      if (await value != null) {
-        // console.log(value.value);
+      if ((await value) != null) {
         if (value.value === 'Virtual Event') {
           this.setState((prevState) => ({
             filter: {
@@ -572,10 +659,19 @@ class Event extends Component {
 
       if (idx !== -1) {
         if (idx === 0) {
-          if (await this.state.categories.includes('Webinar') || this.state.categories.includes('Lecture')) {
-            this.setState({ categories: [...this.state.categories].filter((category) => category !== 'Webinar' && category !== 'Lecture') });
+          if (
+            (await this.state.categories.includes('Webinar')) ||
+            this.state.categories.includes('Lecture')
+          ) {
+            this.setState({
+              categories: [...this.state.categories].filter(
+                (category) => category !== 'Webinar' && category !== 'Lecture'
+              ),
+            });
           } else {
-            await this.setState({ categories: [...this.state.categories, 'Webinar', 'Lecture'] });
+            await this.setState({
+              categories: [...this.state.categories, 'Webinar', 'Lecture'],
+            });
           }
         }
         await this.setState((prevState) => ({
@@ -585,10 +681,20 @@ class Event extends Component {
           },
         }));
         if (idx === 1) {
-          if (this.state.categories.includes('Workshop') || this.state.categories.includes('Conference')) {
-            this.setState({ categories: [...this.state.categories].filter((category) => category !== 'Workshop' && category !== 'Conference') });
+          if (
+            this.state.categories.includes('Workshop') ||
+            this.state.categories.includes('Conference')
+          ) {
+            this.setState({
+              categories: [...this.state.categories].filter(
+                (category) =>
+                  category !== 'Workshop' && category !== 'Conference'
+              ),
+            });
           } else {
-            await this.setState({ categories: [...this.state.categories, 'Workshop', 'Conference'] });
+            await this.setState({
+              categories: [...this.state.categories, 'Workshop', 'Conference'],
+            });
           }
         }
         await this.setState((prevState) => ({
@@ -599,9 +705,15 @@ class Event extends Component {
         }));
         if (idx === 2) {
           if (this.state.categories.includes('Hackathon')) {
-            this.setState({ categories: [...this.state.categories].filter((category) => category !== 'Hackathon') });
+            this.setState({
+              categories: [...this.state.categories].filter(
+                (category) => category !== 'Hackathon'
+              ),
+            });
           } else {
-            await this.setState({ categories: [...this.state.categories, 'Hackathon'] });
+            await this.setState({
+              categories: [...this.state.categories, 'Hackathon'],
+            });
           }
         }
         await this.setState((prevState) => ({
@@ -611,10 +723,24 @@ class Event extends Component {
           },
         }));
         if (idx === 3) {
-          if (this.state.categories.includes('Incubator') || this.state.categories.includes('Accelerator')) {
-            this.setState({ categories: [...this.state.categories].filter((category) => category !== 'Incubator' && category !== 'Accelerator') });
+          if (
+            this.state.categories.includes('Incubator') ||
+            this.state.categories.includes('Accelerator')
+          ) {
+            this.setState({
+              categories: [...this.state.categories].filter(
+                (category) =>
+                  category !== 'Incubator' && category !== 'Accelerator'
+              ),
+            });
           } else {
-            await this.setState({ categories: [...this.state.categories, 'Incubator', 'Accelerator'] });
+            await this.setState({
+              categories: [
+                ...this.state.categories,
+                'Incubator',
+                'Accelerator',
+              ],
+            });
           }
         }
         await this.setState((prevState) => ({
@@ -651,16 +777,19 @@ class Event extends Component {
     console.log(this.state.userEvents);
 
     return (
-
       <div className="event_wrapper">
         <div className="event_container">
           <div className="event_search">
             <form className="input" onSubmit={(e) => handleSubmit(e)}>
-              <input type="text" className="events_search" placeholder="What event are you looking for?" onChange={(e) => searchNoValue(e)} />
+              <input
+                type="text"
+                className="events_search"
+                placeholder="What event are you looking for?"
+                onChange={(e) => searchNoValue(e)}
+              />
               <button type="button">
                 <i className="fas fa-search tw-text-xl tw-h-auto" />
               </button>
-
             </form>
             <Select
               id="form-filter"
@@ -677,7 +806,6 @@ class Event extends Component {
           </div>
 
           <div className="event_title_button">
-
             {categoryButtons.map((button, idx) => (
               <EventCategoryFilterButton
                 key={`${`evnt_btn${idx}`}`}
@@ -687,12 +815,20 @@ class Event extends Component {
                 idx={idx}
                 filter={this.state.filter}
                 activebtn={button.activebtn}
-                onClickActive={() => { button.activebtn = !button.activebtn; }}
+                onClickActive={() => {
+                  button.activebtn = !button.activebtn;
+                }}
               />
             ))}
 
-            {([...categoryButtons].filter((button) => button.activebtn === true)).length > 0 ? <button type="button" onClick={() => resetFilter()}>Reset</button> : ''}
-
+            {[...categoryButtons].filter((button) => button.activebtn === true)
+              .length > 0 ? (
+              <button type="button" onClick={() => resetFilter()}>
+                Reset
+              </button>
+            ) : (
+              ''
+            )}
           </div>
 
           <div className="event_divide">
@@ -708,27 +844,170 @@ class Event extends Component {
 
           {/* LOADING SKELETON HERE */}
           <div className="swiper-container">
-
-            {this.state.loading
-              ? (
-                <div className="swiper-wrapper" style={{ width: '100%' }}>
-                  <div className="swiper-slide">
-                    <EventCardFeaturedSkeleton />
-                  </div>
-                  <div className="swiper-slide">
-                    <EventCardFeaturedSkeleton />
-                  </div>
-                  <div className="swiper-slide">
-                    <EventCardFeaturedSkeleton />
-                  </div>
-                  <div className="swiper-slide">
-                    <EventCardFeaturedSkeleton />
-                  </div>
+            {this.state.loading ? (
+              <div className="swiper-wrapper" style={{ width: '100%' }}>
+                <div className="swiper-slide">
+                  <EventCardFeaturedSkeleton />
                 </div>
-              )
+                <div className="swiper-slide">
+                  <EventCardFeaturedSkeleton />
+                </div>
+                <div className="swiper-slide">
+                  <EventCardFeaturedSkeleton />
+                </div>
+                <div className="swiper-slide">
+                  <EventCardFeaturedSkeleton />
+                </div>
+              </div>
+            ) : catergoryFilterLoading ? (
+              <div className="swiper-wrapper" style={{ width: '100%' }}>
+                <div className="swiper-slide">
+                  <EventCardFeaturedSkeleton />
+                </div>
+                <div className="swiper-slide">
+                  <EventCardFeaturedSkeleton />
+                </div>
+                <div className="swiper-slide">
+                  <EventCardFeaturedSkeleton />
+                </div>
+                <div className="swiper-slide">
+                  <EventCardFeaturedSkeleton />
+                </div>
+              </div>
+            ) : Swiperdata.length < 1 ? (
+              <div className="swiper-wrapper" style={{ width: '100%' }}>
+                <div className="text-center" style={{ width: '100%' }}>
+                  Sorry, no events match your filters
+                </div>
+              </div>
+            ) : (
+              <div className="swiper-wrapper">
+                {this.state.Swiperdata.map((event, index) => (
+                  <div
+                    className="swiper-slide"
+                    key={`${`event_card-ft${index}`}`}
+                  >
+                    <EventCardFeatured
+                      item={event}
+                      attended={event}
+                      userSavedEvents={userSavedEvents}
+                      /* key={index} */
+                      handleMoreInfo={handleMoreInfo}
+                      active={active}
+                      setClickRegister={setClickRegister}
+                      userEvent={this.state.userEvents}
+                      clickRegister={clickRegister}
+                      userData={userData}
+                      token={token}
+                      allsavedEvents={allsavedEvents}
+                    />
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
 
-              : catergoryFilterLoading
-                ? (
+          <div className="event_divide event_divide_second">
+            <h1>Active&nbsp;Events</h1>
+            <div className="rule" />
+          </div>
+          {/* LOADING SKELETON HERE */}
+          <div className="event_container_section">
+            {this.state.loading ? (
+              <div className="cards">
+                <EventCardSkeleton />
+                <EventCardSkeleton />
+                <EventCardSkeleton />
+                <EventCardSkeleton />
+              </div>
+            ) : catergoryFilterLoading ? (
+              <div className="cards">
+                <EventCardSkeleton />
+                <EventCardSkeleton />
+                <EventCardSkeleton />
+                <EventCardSkeleton />
+              </div>
+            ) : (
+              <div className="cards">
+                {AllEvent.length < 1 && (
+                  <div>Sorry, no events match your filters</div>
+                )}
+                {this.state.AllEvent.map((events, index) => (
+                  <EventCard
+                    item={events}
+                    attended={userSavedEvents}
+                    userSavedEvents={userSavedEvents}
+                    userEvent={this.state.userEvents}
+                    key={`${`event_card${index}`}`}
+                    handleMoreInfo={handleMoreInfo}
+                    active={active}
+                    setClickRegister={setClickRegister}
+                    clickRegister={clickRegister}
+                    userData={userData}
+                    token={token}
+                    allsavedEvents={allsavedEvents}
+                    getUserSavedEvents={this.getUserSavedEvents}
+                  />
+                ))}
+              </div>
+            )}
+          </div>
+
+          <div className="event_divide">
+            <h1>Past&nbsp;Events</h1>
+            <div className="rule" />
+          </div>
+          {/* LOADING SKELETON HERE */}
+          <div className="event_container_section">
+            {this.state.loading ? (
+              <div className="cards">
+                <EventCardSkeleton />
+                <EventCardSkeleton />
+                <EventCardSkeleton />
+                <EventCardSkeleton />
+              </div>
+            ) : catergoryFilterLoading ? (
+              <div className="cards">
+                <EventCardSkeleton />
+                <EventCardSkeleton />
+                <EventCardSkeleton />
+                <EventCardSkeleton />
+              </div>
+            ) : (
+              <div className="cards">
+                {PastEvent.length < 1 && (
+                  <div>Sorry, no events match your filters</div>
+                )}
+                {this.state.PastEvent.map((events, index) => (
+                  <EventCard
+                    item={events}
+                    attended={userSavedEvents}
+                    userSavedEvents={userSavedEvents}
+                    userEvent={this.state.userEvents}
+                    key={`${`event_card${index}`}`}
+                    handleMoreInfo={handleMoreInfo}
+                    active={active}
+                    setClickRegister={setClickRegister}
+                    clickRegister={clickRegister}
+                    userData={userData}
+                    token={token}
+                    allsavedEvents={allsavedEvents}
+                    getUserSavedEvents={this.getUserSavedEvents}
+                  />
+                ))}
+              </div>
+            )}
+          </div>
+
+          <div className="event_myevent">
+            <div className="event_divide">
+              <h1>My&nbsp;Events</h1>
+              <div className="rule" />
+            </div>
+
+            {userData !== null ? (
+              <div className="swiper-container">
+                {this.state.loading ? (
                   <div className="swiper-wrapper" style={{ width: '100%' }}>
                     <div className="swiper-slide">
                       <EventCardFeaturedSkeleton />
@@ -743,288 +1022,169 @@ class Event extends Component {
                       <EventCardFeaturedSkeleton />
                     </div>
                   </div>
-                )
-                : Swiperdata.length < 1
-                  ? (
-                    <div className="swiper-wrapper" style={{ width: '100%' }}>
-                      <div className="text-center" style={{ width: '100%' }}>Sorry, no events match your filters</div>
+                ) : catergoryFilterLoading ? (
+                  <div className="swiper-wrapper" style={{ width: '100%' }}>
+                    <div className="swiper-slide">
+                      <EventCardSkeleton />
                     </div>
-                  )
-                  : (
+                    <div className="swiper-slide">
+                      <EventCardSkeleton />
+                    </div>
+                    <div className="swiper-slide">
+                      <EventCardSkeleton />
+                    </div>
+                    <div className="swiper-slide">
+                      <EventCardSkeleton />
+                    </div>
+                  </div>
+                ) : this.state.userEvents.length === 0 ? (
+                  <div className="container d-flex justify-content-center">
+                    <h1>You have not registered to any events yet.</h1>
+                  </div>
+                ) : (
+                  <>
                     <div className="swiper-wrapper">
-
-                      {this.state.Swiperdata.map((event, index) => (
-                        <div className="swiper-slide" key={`${`event_card-ft${index}`}`}>
-                          <EventCardFeatured
-                            item={event}
-                            attended={event}
-                            userSavedEvents={userSavedEvents}
-                            /* key={index} */
-                            handleMoreInfo={handleMoreInfo}
-                            active={active}
-                            setClickRegister={setClickRegister}
-                            userEvent={this.state.userEvents}
-                            clickRegister={clickRegister}
-                            userData={userData}
-                            token={token}
-                            allsavedEvents={allsavedEvents}
-                          />
-                        </div>
-                      ))}
+                      {this.state.userEvents
+                        .filter(
+                          (e) =>
+                            (e.attending === 'yes' ||
+                              e.attending === 'maybe') &&
+                            e.event_id !== null
+                        )
+                        .map((events, index) => (
+                          <div
+                            className="swiper-slide"
+                            key={`${`event_card${index}`}`}
+                          >
+                            <EventCard
+                              item={events.event_id}
+                              attended={events}
+                              userEvent={this.state.userEvents}
+                              /* key={index} */
+                              handleMoreInfo={handleMoreInfo}
+                              active={active}
+                              setClickRegister={setClickRegister}
+                              clickRegister={clickRegister}
+                              userData={userData}
+                              token={token}
+                              userSavedEvents={userSavedEvents}
+                              allsavedEvents={allsavedEvents}
+                              getUserSavedEvents={this.getUserSavedEvents}
+                            />
+                          </div>
+                        ))}
                     </div>
-                  )}
-
-          </div>
-
-          <div className="event_divide event_divide_second">
-            <h1>Active&nbsp;Events</h1>
-            <div className="rule" />
-          </div>
-          {/* LOADING SKELETON HERE */}
-          <div className="event_container_section">
-            {this.state.loading
-              ? (
-                <div className="cards">
-                  <EventCardSkeleton />
-                  <EventCardSkeleton />
-                  <EventCardSkeleton />
-                  <EventCardSkeleton />
-                </div>
-              )
-              : catergoryFilterLoading
-                ? (
-                  <div className="cards">
-                    <EventCardSkeleton />
-                    <EventCardSkeleton />
-                    <EventCardSkeleton />
-                    <EventCardSkeleton />
-                  </div>
-                )
-                : (
-                  <div className="cards">
-                    {AllEvent.length < 1 && <div>Sorry, no events match your filters</div>}
-                    {this.state.AllEvent.map((events, index) => (
-                      <EventCard
-                        item={events}
-                        attended={userSavedEvents}
-                        userSavedEvents={userSavedEvents}
-                        userEvent={this.state.userEvents}
-                        key={`${`event_card${index}`}`}
-                        handleMoreInfo={handleMoreInfo}
-                        active={active}
-                        setClickRegister={setClickRegister}
-                        clickRegister={clickRegister}
-                        userData={userData}
-                        token={token}
-                        allsavedEvents={allsavedEvents}
-                        getUserSavedEvents={this.getUserSavedEvents}
-                      />
-                    ))}
-                  </div>
-                )}
-          </div>
-
-          <div className="event_divide">
-            <h1>Past&nbsp;Events</h1>
-            <div className="rule" />
-          </div>
-          {/* LOADING SKELETON HERE */}
-          <div className="event_container_section">
-            {this.state.loading
-              ? (
-                <div className="cards">
-                  <EventCardSkeleton />
-                  <EventCardSkeleton />
-                  <EventCardSkeleton />
-                  <EventCardSkeleton />
-                </div>
-              )
-              : catergoryFilterLoading
-                ? (
-                  <div className="cards">
-                    <EventCardSkeleton />
-                    <EventCardSkeleton />
-                    <EventCardSkeleton />
-                    <EventCardSkeleton />
-                  </div>
-                )
-                : (
-                  <div className="cards">
-                    {PastEvent.length < 1 && <div>Sorry, no events match your filters</div>}
-                    {this.state.PastEvent.map((events, index) => (
-                      <EventCard
-                        item={events}
-                        attended={userSavedEvents}
-                        userSavedEvents={userSavedEvents}
-                        userEvent={this.state.userEvents}
-                        key={`${`event_card${index}`}`}
-                        handleMoreInfo={handleMoreInfo}
-                        active={active}
-                        setClickRegister={setClickRegister}
-                        clickRegister={clickRegister}
-                        userData={userData}
-                        token={token}
-                        allsavedEvents={allsavedEvents}
-                        getUserSavedEvents={this.getUserSavedEvents}
-                      />
-                    ))}
-                  </div>
-                )}
-
-          </div>
-
-          <div className="event_myevent">
-            <div className="event_divide">
-              <h1>My&nbsp;Events</h1>
-              <div className="rule" />
-            </div>
-
-            {userData !== null ? (
-              <div className="swiper-container">
-
-                {
-                  this.state.loading
-                    ? (
-                      <div className="swiper-wrapper" style={{ width: '100%' }}>
-                        <div className="swiper-slide">
-                          <EventCardFeaturedSkeleton />
-                        </div>
-                        <div className="swiper-slide">
-                          <EventCardFeaturedSkeleton />
-                        </div>
-                        <div className="swiper-slide">
-                          <EventCardFeaturedSkeleton />
-                        </div>
-                        <div className="swiper-slide">
-                          <EventCardFeaturedSkeleton />
-                        </div>
+                    <div className="swiper-navigation_container">
+                      <div className="swiper-navigation">
+                        <div className="swiper-button-prev" />
+                        <div className="swiper-button-next" />
                       </div>
-                    )
-
-                    : catergoryFilterLoading
-                      ? (
-                        <div className="swiper-wrapper" style={{ width: '100%' }}>
-                          <div className="swiper-slide">
-                            <EventCardSkeleton />
-                          </div>
-                          <div className="swiper-slide">
-                            <EventCardSkeleton />
-                          </div>
-                          <div className="swiper-slide">
-                            <EventCardSkeleton />
-                          </div>
-                          <div className="swiper-slide">
-                            <EventCardSkeleton />
-                          </div>
-                        </div>
-                      )
-                      : this.state.userEvents.length === 0
-                        ? (
-                          <div className="container d-flex justify-content-center">
-                            <h1>You have not registered to any events yet.</h1>
-                          </div>
-                        )
-                        : (
-                          <>
-                            <div className="swiper-wrapper">
-                              {this.state.userEvents.filter((e) => ((e.attending === 'yes' || e.attending === 'maybe') && e.event_id !== null)).map((events, index) => (
-                                <div className="swiper-slide" key={`${`event_card${index}`}`}>
-                                  <EventCard
-                                    item={events.event_id}
-                                    attended={events}
-                                    userEvent={this.state.userEvents}
-                                    /* key={index} */
-                                    handleMoreInfo={handleMoreInfo}
-                                    active={active}
-                                    setClickRegister={setClickRegister}
-                                    clickRegister={clickRegister}
-                                    userData={userData}
-                                    token={token}
-                                    userSavedEvents={userSavedEvents}
-                                    allsavedEvents={allsavedEvents}
-                                    getUserSavedEvents={this.getUserSavedEvents}
-                                  />
-                                </div>
-                              ))}
-                            </div>
-                            <div className="swiper-navigation_container">
-                              <div className="swiper-navigation">
-                                <div className="swiper-button-prev" />
-                                <div className="swiper-button-next" />
-                              </div>
-                            </div>
-                          </>
-                        )
-}
+                    </div>
+                  </>
+                )}
               </div>
+            ) : (
+              <div className="event_login">
+                <h1>Participate in events you enjoy</h1>
+                <h2>
+                  Choose from the hundreds of virtual, hybrid, and IRL events in
+                  the Minority Programmers network.
+                </h2>
 
-            )
-              : (
-                <div className="event_login">
-                  <h1>Participate in events you enjoy</h1>
-                  <h2>Choose from the hundreds of virtual, hybrid, and IRL events in the Minority Programmers network.</h2>
-
-                  <div className="event_login_button">
-                    <button
-                      type="button"
-                      className="event_login_gradient-button"
-                      onClick={() => {
-                        this.setState({ showMyEvent: true });
-                      }}
-                    >
-                      Log In
-                    </button>
-                  </div>
+                <div className="event_login_button">
+                  <button
+                    type="button"
+                    className="event_login_gradient-button"
+                    onClick={() => {
+                      this.setState({ showMyEvent: true });
+                    }}
+                  >
+                    Log In
+                  </button>
                 </div>
-              )}
-            {this.state.showMyEvent
-              ? (
-                <div className="create_event">
-                  <div className="create_event-shadow" onClick={() => { this.setState({ showMyEvent: false }); }} />
-                  <div id="create_event-container" className="create_event-container">
-                    <Card />
-                  </div>
-                  <i className="close_icon fas fa-times close-icon tw-text-white" onClick={() => { this.setState({ showMyEvent: false }); }} />
+              </div>
+            )}
+            {this.state.showMyEvent ? (
+              <div className="create_event">
+                <div
+                  className="create_event-shadow"
+                  onClick={() => {
+                    this.setState({ showMyEvent: false });
+                  }}
+                />
+                <div
+                  id="create_event-container"
+                  className="create_event-container"
+                >
+                  <Card />
                 </div>
-              )
-              : ''}
+                <i
+                  className="close_icon fas fa-times close-icon tw-text-white"
+                  onClick={() => {
+                    this.setState({ showMyEvent: false });
+                  }}
+                />
+              </div>
+            ) : (
+              ''
+            )}
           </div>
 
           <div className="event_create_own_event">
-
             <div className="event_end_text">
               <h1>Create your own event</h1>
               <h6>
-                It could be a virtual party, workshop, meetup or seminar.
-                Host any event you want and share for people to join.
+                It could be a virtual party, workshop, meetup or seminar. Host
+                any event you want and share for people to join.
               </h6>
               <div className="event_submit_button">
-                <button type="button" className="gradient-button gradient-button-1" onClick={() => { this.setState({ showCreateEvent: true }); }}>
+                <button
+                  type="button"
+                  className="gradient-button gradient-button-1"
+                  onClick={() => {
+                    this.setState({ showCreateEvent: true });
+                  }}
+                >
                   + Submit an Event
                 </button>
               </div>
             </div>
             <div className="images-box">
               <div className="image">
-                <img className="event_img1" src="/assets/images/event1.png" alt="event1" />
+                <img
+                  className="event_img1"
+                  src="/assets/images/event1.png"
+                  alt="event1"
+                />
               </div>
               <div className="image_two_three_four">
                 <div className="image">
-                  <img className="event_img2" src="/assets/images/event2.png" alt="event2" />
+                  <img
+                    className="event_img2"
+                    src="/assets/images/event2.png"
+                    alt="event2"
+                  />
                 </div>
                 <div className="image_three_four">
                   <div className="image">
-                    <img className="event_img3" src="/assets/images/event3.png" alt="event3" />
+                    <img
+                      className="event_img3"
+                      src="/assets/images/event3.png"
+                      alt="event3"
+                    />
                   </div>
                   <div className="image">
-                    <img className="event_img4" src="/assets/images/event4.png" alt="event4" />
+                    <img
+                      className="event_img4"
+                      src="/assets/images/event4.png"
+                      alt="event4"
+                    />
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          {this.state.showCreateEvent
-            && (
+          {this.state.showCreateEvent && (
             <CreateEvent
               data={this.state.createEventData}
               handleError={handleError}
@@ -1039,9 +1199,8 @@ class Event extends Component {
               handleEventDateTime={handleEventDateTime}
               eventDateTime={this.state.eventDateTime}
             />
-            )}
-          {this.state.showMoreInfo
-            && (
+          )}
+          {this.state.showMoreInfo && (
             <EventMoreInfo
               data={this.state.moreInfoData}
               handleMoreInfo={handleMoreInfo}
@@ -1062,23 +1221,31 @@ class Event extends Component {
               userEvent={this.state.userEvents}
               getUserSavedEvents={this.getUserSavedEvents}
             />
-            )}
-          {this.props.clickRegister && !this.props.active
-            ? (
-              <div className="create_event">
-                <div
-                  className="create_event-shadow"
-                  onClick={() => {
-                    setClickRegister(false);
-                  }}
-                />
-                <div id="create_event-container" className="create_event-container">
-                  <Card />
-                </div>
-                <i className="close_icon fas fa-times close-icon" onClick={() => { setClickRegister(false); }} />
+          )}
+          {this.props.clickRegister && !this.props.active ? (
+            <div className="create_event">
+              <div
+                className="create_event-shadow"
+                onClick={() => {
+                  setClickRegister(false);
+                }}
+              />
+              <div
+                id="create_event-container"
+                className="create_event-container"
+              >
+                <Card />
               </div>
-            )
-            : ''}
+              <i
+                className="close_icon fas fa-times close-icon"
+                onClick={() => {
+                  setClickRegister(false);
+                }}
+              />
+            </div>
+          ) : (
+            ''
+          )}
         </div>
       </div>
     );

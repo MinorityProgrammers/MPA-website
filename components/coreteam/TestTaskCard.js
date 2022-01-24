@@ -5,22 +5,18 @@ import { BsThreeDotsVertical } from 'react-icons/bs';
 import userinfo from './User.json';
 
 export const UserContext = createContext();
-const TestTaskCard = function ({ item, handlePriority }) {
-  // priority-----flag
+const TestTaskCard = ({ item, handlePriority }) => {
   const [open, setOpen] = useState(false);
   const [priority, setPriority] = useState('gray');
-  // for-----------user
   const [newUser, setNewUser] = useState(false);
   const [users] = useState(userinfo);
   const [userCart, setUserCart] = useState([]);
-  // add---------selected------user
   const handleUserCart = (addnew) => {
     const newUsers = [...userCart, addnew];
     setUserCart(newUsers);
   };
   console.log(userCart);
 
-  // remove---------selected------user
   const HandleRemoveUser = (id) => {
     const afterRemoveUsers = userCart.filter((remo) => remo.id !== id);
     setUserCart(afterRemoveUsers);
@@ -53,7 +49,6 @@ const TestTaskCard = function ({ item, handlePriority }) {
                         src="/assets/images/coreteamimg/user.png"
                         alt=""
                       />
-                      {' '}
                       <span>{user.name}</span>
                     </div>
                   </a>
@@ -63,8 +58,8 @@ const TestTaskCard = function ({ item, handlePriority }) {
             <div className="gradient tw-rounded-full tw-h-6 tw-w-6 text-center tw-block">
               <span className="tw-purple-800 te-p-2">LA</span>
             </div>
-            {userCart
-              && userCart.map((u) => (
+            {userCart &&
+              userCart.map((u) => (
                 <div
                   className="tw-cursor-pointer tw-btn"
                   key={u.id}
@@ -87,19 +82,27 @@ const TestTaskCard = function ({ item, handlePriority }) {
               <div className="tw-absolute tw-z-24 tw-bg-white">
                 <RiFlag2Fill
                   className="tw-text-red-500 tw-m-1 tw-mt-2 tw-cursor-pointer"
-                  onClick={() => handlePriority(setPriority('red'), setOpen(!open))}
+                  onClick={() =>
+                    handlePriority(setPriority('red'), setOpen(!open))
+                  }
                 />
                 <RiFlag2Fill
                   className="tw-text-pink-500 tw-m-1 tw-mt-2 tw-cursor-pointer"
-                  onClick={() => handlePriority(setPriority('pink'), setOpen(!open))}
+                  onClick={() =>
+                    handlePriority(setPriority('pink'), setOpen(!open))
+                  }
                 />
                 <RiFlag2Fill
                   className="tw-text-yellow-500 tw-m-1 tw-mt-2 tw-cursor-pointer"
-                  onClick={() => handlePriority(setPriority('yellow'), setOpen(!open))}
+                  onClick={() =>
+                    handlePriority(setPriority('yellow'), setOpen(!open))
+                  }
                 />
                 <RiFlag2Fill
                   className="tw-text-gray-500 tw-m-1 tw-mt-2 tw-cursor-pointer"
-                  onClick={() => handlePriority(setPriority('gray'), setOpen(!open))}
+                  onClick={() =>
+                    handlePriority(setPriority('gray'), setOpen(!open))
+                  }
                 />
               </div>
             )}
