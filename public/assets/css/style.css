@@ -9012,7 +9012,8 @@ html {
   font-size: 24px;
 }
 .homepage__comment .card-body {
-  min-height: 500px;
+  padding: 1rem 1rem 0;
+  height: fit-content;
 }
 .homepage__comment .card-body .card__bottom{
   position: absolute;
@@ -9065,12 +9066,19 @@ blockquote.twitter-tweet {
   padding: 0 16px 16px 16px;
   max-width: 468px;
 }
+.skelton-wrapper{
+  display: flex;
+  justify-content: space-between;
+}
 @media only screen and (max-width: 992px) {
   .homepage__Reviews .container .swiper-container .swiper-button-prev{
     left: 82%;
   }
 }
 @media only screen and (max-width: 768px) {
+  .skelton-wrapper{
+    justify-content: space-around;
+  }
   .homepage__Reviews .container .swiper-container .swiper-button-prev{
     top: 94%;
     left: 75%;
