@@ -1,4 +1,6 @@
 import React from 'react';
+import Link from 'next/link';
+import Account from './Account';
 
 const Footer = () => {
   function scrollTop() {
@@ -11,40 +13,47 @@ const Footer = () => {
         <div className="site-footer__upper">
           <div className="container">
             <div className="row justify-content-between">
+              <div className="col-xl-3 col-lg-6 col-sm-12 footerbout">
+                <div className="footer-widget footer-widget__about">
+                  <p className="footer-widget__text">
+                    Join the minority wave Connnect to jump start your career in web3
+                  </p>
+                  <div className="footer-widget__btn-block">
+                    <Account />
+                  </div>
+                </div>
+              </div>
               <div className="col-xl-3 col-lg-6 col-sm-12">
                 <div className="footer-widget footer-widget__contact">
                   <h2 className="footer-widget__title text-white">Services</h2>
                   <div className="footer-widget__link-wrap">
                     <ul className="list-unstyled footer-widget__link-list">
                       <li>
-                        <a
-                          href="https://snapshot.org/#/minorityprogrammers.eth"
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          The DAO
-                        </a>
+                        <Link href="/consultancy_explainer">
+                          <a>
+                            Consultancy
+                          </a>
+                        </Link>
                       </li>
                       <li>
-                        <a
-                          href="https://www.genadrop.com/"
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          GenaDrop
-                        </a>
+                        <Link href="/mentorshipProgram">
+                          <a>
+                            Mentorship
+                          </a>
+                        </Link>
                       </li>
 
                       <li>
-                        <a
-                          href="https://opensea.io/MinorityProgrammers"
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          OpenSea
-                        </a></li>
+                        <Link href="/incubator">
+                          <a>
+                            Incubator
+                          </a>
+                        </Link>
+                      </li>
                       <li>
-                        <a href="/learn-page">Learn</a>
+                        <Link href="/learn-page">
+                          <a>Learn</a>
+                        </Link>
                       </li>
                       <li>
                         <a
@@ -52,7 +61,7 @@ const Footer = () => {
                           target="_blank"
                           rel="noreferrer"
                         >
-                          DefiWinter
+                          DefiSummer
                         </a>
                       </li>
                     </ul>
@@ -65,39 +74,40 @@ const Footer = () => {
                   <div className="footer-widget__link-wrap">
                     <ul className="list-unstyled footer-widget__link-list">
                       <li>
-                      <a href="/learn-page">Learn</a>
+                        <Link href="/careers">
+                          <a>Careers</a>
+                        </Link>
                       </li>
                       <li>
-                        <a href="/partner">Partner</a>
+                        <Link href="/">
+                          <a>Partnership</a>
+                        </Link>
                       </li>
                       <li>
-                        <a href="/careers">Careers</a>
+                        <Link href="/events">
+                          <a>Events</a>
+                        </Link>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div className="col-xl-3 col-lg-6 col-sm-12">
+                <div className="footer-widget footer-widget__link">
+                  <h2 className="footer-widget__title text-white">Quick Links</h2>
+                  <div className="footer-widget__link-wrap">
+                    <ul className="list-unstyled footer-widget__link-list">
+                      <li>
+                        <a href="https://snapshot.org/#/minorityprogrammers.eth" target="_blank" rel="noreferrer">The Dao</a>
                       </li>
                       <li>
-                        <a href="/events">Events</a>
+                        <a href="https://www.genadrop.com/" target="_blank" rel="noreferrer">GenaDrop</a>
                       </li>
                     </ul>
                   </div>
                 </div>
               </div>
 
-              <div className="col-xl-3 col-lg-6 col-sm-12 footerbout">
-                <div className="footer-widget footer-widget__about">
-                  <h2 className="footer-widget__title text-white">About</h2>
-                  <p className="footer-widget__text">
-                    We are an international & decentralized network of programmers unifying
-                    together to deliver socially impactful software solutions.
-                  </p>
-                  <div className="footer-widget__btn-block">
-                    <a href="/join" className="thm-btn">
-                      Join
-                    </a>
-                    <a href="/learn-page" className="thm-btn">
-                      Learn
-                    </a>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>

@@ -4595,7 +4595,7 @@ a:visited {
 * 13. footer styles
 */
 .site-footer {
-  background-color: #431e8d;
+  background-color: #1C1D37;
   overflow: hidden;
 }
 .site-footer__bottom {
@@ -4733,15 +4733,6 @@ a:visited {
   position: relative;
   padding-top: 48px;
   padding-bottom: 86px;
-}
-.footer-widget__about::before {
-  content: '';
-  width: 100000px;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: -60px;
-  background-color: #431e8d;
 }
 .footer-widget__about * {
   position: relative;
