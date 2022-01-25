@@ -1,15 +1,13 @@
-import { Form, Formik } from 'formik';
-import {
-  getProviders, getSession, signIn, useSession,
-} from 'next-auth/client';
-import { useRouter } from 'next/router';
-import React, { useContext, useEffect, useState } from 'react';
-import 'react-toastify/dist/ReactToastify.css';
-import * as Yup from 'yup';
-import { googleAuth, nextAuth } from '../../contexts/actions/auth/googleAuth';
-import { login } from '../../contexts/actions/auth/login';
-import { GlobalContext } from '../../contexts/provider';
-import TextField from '../TextField';
+import { Form, Formik } from "formik";
+import { getProviders, getSession, signIn, useSession } from "next-auth/client";
+import { useRouter } from "next/router";
+import React, { useContext, useEffect, useState } from "react";
+import "react-toastify/dist/ReactToastify.css";
+import * as Yup from "yup";
+import { googleAuth, nextAuth } from "../../contexts/actions/auth/googleAuth";
+import { login } from "../../contexts/actions/auth/login";
+import { GlobalContext } from "../../contexts/provider";
+import TextField from "../TextField";
 
 const HomepageNavLogin = ({ onCloseMobileMenu }) => {
   const router = useRouter();
@@ -29,7 +27,7 @@ const HomepageNavLogin = ({ onCloseMobileMenu }) => {
 
   // user redirect
   useEffect(() => {
-    const token = window.localStorage.getItem('jwtToken');
+    const token = window.localStorage.getItem("jwtToken");
     let timerId;
     if (data || token !== null) {
       setLoginSubmit(false);
@@ -86,8 +84,12 @@ const HomepageNavLogin = ({ onCloseMobileMenu }) => {
   };
 
   return (
-    <div className={click ? 'dropdown-login clicked' : 'dropdown-login'}>
-      <button type="button" className="dropdown-login-btn-close" onClick={onCloseMobileMenu}>
+    <div className={click ? "dropdown-login clicked" : "dropdown-login"}>
+      <button
+        type="button"
+        className="dropdown-login-btn-close"
+        onClick={onCloseMobileMenu}
+      >
         <i className="fas fa-times" />
       </button>
       <div className="dropdown-login-icons">
@@ -107,9 +109,11 @@ const HomepageNavLogin = ({ onCloseMobileMenu }) => {
           <img
             src="/assets/images/github.svg"
             alt="github icon"
-            onClick={() => signIn(providers.github.id, {
-              callbackUrl: 'https://minorityprogrammers.com/auth',
-            })}
+            onClick={() =>
+              signIn(providers.github.id, {
+                callbackUrl: "https://minorityprogrammers.com/auth",
+              })
+            }
           />
         </div>
         <div>
@@ -123,12 +127,12 @@ const HomepageNavLogin = ({ onCloseMobileMenu }) => {
       <div className="login-form mt-2">
         <Formik
           initialValues={{
-            email: '',
-            password: '',
+            email: "",
+            password: "",
           }}
           validationSchema={Yup.object({
-            email: Yup.string().email('Invalid Email').required('Required'),
-            password: Yup.string().required('Required'),
+            email: Yup.string().email("Invalid Email").required("Required"),
+            password: Yup.string().required("Required"),
           })}
           onSubmit={onSubmit}
         >
@@ -162,7 +166,7 @@ const HomepageNavLogin = ({ onCloseMobileMenu }) => {
                 type="submit"
                 className="btn btn-warning btn-dropdown-filled"
               >
-                {loading ? 'Signing In...' : 'Sign In'}
+                {loading ? "Signing In..." : "Sign In"}
               </button>
             </Form>
           )}
@@ -170,6 +174,9 @@ const HomepageNavLogin = ({ onCloseMobileMenu }) => {
       </div>
 
       <div className="login-register mt-2">
+        <p className="tw-cursor-pointer tw-hover:text-blue-700 tw-mb-4">
+          Forget password?
+        </p>
         <p className="mb-2">Don't have an account?</p>
         <div className="dropdown-login-button">
           <a
@@ -191,7 +198,7 @@ HomepageNavLogin.getInitialProps = async (context) => {
 
   if (session && res && session.accessToken) {
     res.writeHead(302, {
-      Location: '/',
+      Location: "/",
     });
     res.end();
     return;
