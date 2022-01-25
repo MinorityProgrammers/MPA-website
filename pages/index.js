@@ -1,15 +1,16 @@
 import React, { useEffect, useRef, useState } from 'react';
 import ComingSoon from '../components/ComingSoon';
 import Footer from '../components/Footer';
-import HomepageAbout from '../components/homepage/HomepageAbout';
-import HomepageApp from '../components/homepage/HomepageApp';
+// import HomepageAbout from '../components/homepage/HomepageAbout';
+// import HomepageApp from '../components/homepage/HomepageApp';
 import HomepageCore from '../components/homepage/HomepageCore';
 import HomepageDonate from '../components/homepage/HomepageDonate';
 import HomepageNav from '../components/homepage/HomepageNav';
 import HomePageNewTopSection from '../components/homepage/HomePageNewTopSection';
-import HomepageTeam from '../components/homepage/HomepageTeam';
+// import HomepageTeam from '../components/homepage/HomepageTeam';
 import HomepageTestimonials from '../components/homepage/HomepageTestimonials';
-import HomepageWave from '../components/homepage/HomepageWave';
+// import HomepageWave from '../components/homepage/HomepageWave';
+import HomePageReviews from '../components/homepage/HomePageReviews';
 import Layout from '../components/Layout';
 import MpaBuilder from '../components/mpa-builder/builder';
 import SidebarTwo from '../components/sidebar/SidebarTwo';
@@ -66,6 +67,7 @@ const HomepageFour = () => {
               <HomePageNewTopSection />
               <HomepageCore />
               <HomepageTestimonials />
+              <HomePageReviews />
               <HomepageDonate />
               <Footer />
             </>
