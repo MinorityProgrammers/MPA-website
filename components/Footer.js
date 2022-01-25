@@ -13,21 +13,25 @@ const Footer = () => {
         <div className="site-footer__upper">
           <div className="container">
             <div className="row justify-content-between">
-              <div className="col-xl-3 col-lg-6 col-sm-12 footerbout">
+              <div className="col-xl-6 col-lg-6 col-sm-12 footerbout">
                 <div className="footer-widget footer-widget__about">
                   <p className="footer-widget__text">
-                    Join the minority wave Connnect to jump start your career in web3
+                    Join the minority wave Connnect
+                    <br />
+                    to jump start your career in web3
                   </p>
                   <div className="footer-widget__btn-block">
                     <Account />
                   </div>
                 </div>
               </div>
-              <div className="col-xl-3 col-lg-6 col-sm-12">
+              <div className="col-xl-2 col-lg-2 col-sm-12">
                 <div className="footer-widget footer-widget__contact">
-                  <h2 className="footer-widget__title text-white">Services</h2>
                   <div className="footer-widget__link-wrap">
                     <ul className="list-unstyled footer-widget__link-list">
+                      <li>
+                        <h2 className="footer-widget__title text-white">Services</h2>
+                      </li>
                       <li>
                         <Link href="/consultancy_explainer">
                           <a>
@@ -68,11 +72,13 @@ const Footer = () => {
                   </div>
                 </div>
               </div>
-              <div className="col-xl-3 col-lg-6 col-sm-12">
+              <div className="col-xl-2 col-lg-2 col-sm-12">
                 <div className="footer-widget footer-widget__link">
-                  <h2 className="footer-widget__title text-white">Explore</h2>
                   <div className="footer-widget__link-wrap">
                     <ul className="list-unstyled footer-widget__link-list">
+                      <li>
+                        <h2 className="footer-widget__title text-white">Explore</h2>
+                      </li>
                       <li>
                         <Link href="/careers">
                           <a>Careers</a>
@@ -92,11 +98,13 @@ const Footer = () => {
                   </div>
                 </div>
               </div>
-              <div className="col-xl-3 col-lg-6 col-sm-12">
+              <div className="col-xl-2 col-lg-2  col-sm-12">
                 <div className="footer-widget footer-widget__link">
-                  <h2 className="footer-widget__title text-white">Quick Links</h2>
                   <div className="footer-widget__link-wrap">
                     <ul className="list-unstyled footer-widget__link-list">
+                      <li>
+                        <h2 className="footer-widget__title text-white">Quick Links</h2>
+                      </li>
                       <li>
                         <a href="https://snapshot.org/#/minorityprogrammers.eth" target="_blank" rel="noreferrer">The Dao</a>
                       </li>
@@ -112,15 +120,15 @@ const Footer = () => {
           </div>
         </div>
         <div className="site-footer__bottom">
-          <div className="row justify-content-center">
+          {/* <div className="row justify-content-center">
             <div
               onClick={scrollTop}
               className="scroll-to-target site-footer__scroll-top"
             >
               <i className="kipso-icon-top-arrow" />
             </div>
-          </div>
-          <div className="container">
+          </div> */}
+          {/* <div className="container">
             <div className="site-footer__social">
               <a
                 href="https://linktr.ee/MinorityProgrammers"
@@ -143,13 +151,13 @@ const Footer = () => {
               >
                 <i className="fab fa-linkedin" />
               </a>
-              {/* <a
+              <a
                 href="https://www.reddit.com/r/MinorityProgrammers"
                 target="_blank"
                 rel="noreferrer"
               >
                 <i className="fab fa-reddit-alien" />
-              </a> */}
+              </a>
               <a
                 href="https://twitter.com/minorityprogram"
                 target="_blank"
@@ -193,7 +201,7 @@ const Footer = () => {
                 <i className="fab fa-medium-m" />
               </a>
             </div>
-          </div>
+          </div> */}
           <div className="site-footer__copy row justify-content-center">
             &copy; Copyright
             &nbsp;
