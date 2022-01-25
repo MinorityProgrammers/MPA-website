@@ -1,9 +1,12 @@
 import Swiper from 'react-id-swiper';
 import 'swiper/css/swiper.css';
-import React from 'react';
+import React, { useState } from 'react';
 import TweetEmbed from './TweetEmbed';
+import TweetSkeltonLoader from './TweetSkeltonLoader';
 
 const HomePageReviews = () => {
+  const [loading, setLoading] = useState(true);
+
   const data = [
     { tweetId: '1444383109307412487' },
     { tweetId: '1431364200132190219', options: { cards: 'hidden' } },
@@ -20,8 +23,6 @@ const HomePageReviews = () => {
     },
     observeParents: true,
     observer: true,
-    // rebuildOnUpdate: true,
-    // Responsive breakpoints
     breakpoints: {
       1440: {
         slidesPerView: data.length >= 3 ? 3 : data.length,
@@ -43,6 +44,17 @@ const HomePageReviews = () => {
       },
     },
   };
+  const skeltonCount = () => {
+    let num;
+    if (window.innerWidth < 768) {
+      num = 1;
+    } else if (window.innerWidth < 1200) {
+      num = 2;
+    } else {
+      num = 3;
+    }
+    return num;
+  };
   return (
     <section className="homepage__Reviews">
       <div className="heading__number">
@@ -52,18 +64,23 @@ const HomePageReviews = () => {
         <h2 className="heading__title mt-5 mb-5 tw-text-blue-900">
           &lsaquo;testimonials/&rsaquo;
         </h2>
-
+        {loading
+          && (
+            <Swiper wrapperClass="skelton-wrapper" slidesPerView={skeltonCount()} {...params} grabCursor>
+              {
+              Array.apply(0, Array(skeltonCount())).map(() => (<TweetSkeltonLoader />))
+              }
+            </Swiper>
+          )}
         <Swiper {...params} grabCursor>
-          {data.map((tweet) => (
+          { data.map((tweet) => (
             <div className="item tweet__card" id={`tweet-${tweet.tweetId}`} key={tweet.tweetId}>
               <div className="card card__container homepage__comment">
                 <TweetEmbed
                   tweetId={tweet.tweetId}
                   options={tweet.options}
-                  onLoad={(tweetWidgetEl) => {
-                    const tweetEl = tweetWidgetEl.shadowRoot.querySelector('.EmbeddedTweet');
-                    tweetEl.style.margin = 'auto';
-                  }}
+                  loading={loading}
+                  setLoading={setLoading}
                 />
               </div>
             </div>

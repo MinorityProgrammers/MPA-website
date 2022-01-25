@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import twitterWidget from './twitterWidget';
 
-const TweetEmbed = ({ tweetId = '', options = '' }) => {
+const TweetEmbed = ({
+  tweetId = '', options = '', loading, setLoading,
+}) => {
   const [widget, setWidget] = useState();
   const [twt, setTwttr] = useState();
-  const [loading, setLoading] = useState(true);
 
   // Make sure we have a window before attaching the twitter widget
   useEffect(() => {
@@ -50,7 +51,7 @@ const TweetEmbed = ({ tweetId = '', options = '' }) => {
         .catch(() => console.log(`Failed to load Tweet ${tweetId}.`));
     }
   }, [loading]);
-
+  console.log(loading);
   return (
     <div id={tweetId} />
   );
