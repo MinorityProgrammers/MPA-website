@@ -7,11 +7,16 @@ import { Modal } from 'antd';
 import { useMoralis } from 'react-moralis';
 import { ethers } from 'ethers';
 import Web3Modal from 'web3modal';
+import ReactPaginate from 'react-paginate';
 import LoginModal from '../login-signup/card/index';
 import CoursesSkeleton from './CoursesSkeleton';
 import NFT from '../../artifacts/contracts/NFT.sol/NFT.json';
 
 const CourseCategories = function ({ user, certificates, loading }) {
+  // pagination variables
+  const pageCount = Math.ceil(certificates.length / 4);
+  const [currentCertificates, setCurrentCertificates] = useState(certificates.slice(0, 4));
+  // certificate or minting variables
   const [isActive, setIsActive] = useState(false);
   const [isMinting, setIsMinting] = useState(false);
   const [, setDoneMinting] = useState(false);
@@ -22,6 +27,11 @@ const CourseCategories = function ({ user, certificates, loading }) {
 
   const { Moralis } = useMoralis();
   const nftaddress = process.env.CERTIFICATES_ADDRESS;
+
+  const handlePageClick = (event) => {
+    const newOffset = (event.selected * 4) % certificates.length;
+    setCurrentCertificates(certificates.slice(newOffset, newOffset + 4));
+  };
 
   function countDown(mintedURL, tx) {
     let secondsToGo = 30;
@@ -89,10 +99,10 @@ const CourseCategories = function ({ user, certificates, loading }) {
             <div className="col-md-6 pb-2">
               <div className="search-items pt-5">
                 <form className="d-flex" onSubmit={handleSubmit}>
-                  <div className="input-group">
-                    <input type="text" className="course-search search-input" placeholder="What course are you looking for?" />
+                  <div className="tw-flex tw-flex-row tw-mr-5">
+                    <input type="text" className="course-search search-input tw-mr-4" placeholder="What course are you looking for?" style={{ borderRight: '1px solid transparent' }} />
                     <div className="input-group-append learnSearch-btn">
-                      <button className="btn bg-white" type="submit"><FontAwesomeIcon icon={faSearch} /></button>
+                      <button label="search-button" className="btn bg-white" type="submit"><FontAwesomeIcon icon={faSearch} /></button>
                     </div>
                   </div>
 
@@ -111,7 +121,7 @@ const CourseCategories = function ({ user, certificates, loading }) {
             </div>
             <div className="col-md-3" />
           </div>
-          <div className="learn-items mb-5">
+          <div className="learn-items mb-2">
             <ul className="tw-flex tw-flex-row tw-justify-center tw-pt-2">
               <li className={`tw-cursor-pointer ${router.pathname.split('/').length !== 3 ? 'tw-bg-blue-700 tw-w-36 tw-text-center tw-p-2 tw-mx-2 tw-rounded-md tw-shadow-lg' : 'menu tw-text-center'}`}>
                 <Link href="/learn-page">
@@ -125,21 +135,6 @@ const CourseCategories = function ({ user, certificates, loading }) {
                   <p className="hover:tw-text-blue-600">MY CERTIFICATES</p>
                 </Link>
               </li>
-              {/* <li className="pl-md-5">
-                <Link href="#">
-                  <a>BLOCKCHAIN</a>
-                </Link>
-              </li>
-              <li className="pl-md-5">
-                <Link href="#">
-                  <a>UI / UX DESIGN</a>
-                </Link>
-              </li>
-              <li className="pl-md-5">
-                <Link href="#">
-                  <a>ENTREPRENEURSHIP</a>
-                </Link>
-              </li> */}
             </ul>
           </div>
 
@@ -153,24 +148,39 @@ const CourseCategories = function ({ user, certificates, loading }) {
                 )
                 : certificates.length > 0
                   ? (
-                    <div className="tw-flex tw-flex-row tw-flex-wrap">
-                      {certificates.map((each) => (
-                        <div className="courses tw-flex tw-flex-col tw-cursor-pointer hover:tw-shadow-xl tw-w-80 tw-h-44 tw-mx-4" key={each._id}>
-                          <a href={each.ipfsURL} target="_blank" rel="noreferrer"><img className="tw-rounded-md" src={each.ipfsURL} alt="certificate" /></a>
-                          <button
-                            type="button"
-                            className="tw-bg-blue-600 hover:tw-bg-blue-700 tw-text-white tw-content-center tw-font-bold tw-py-2 tw-px-4 tw-rounded tw-w-1/2 tw-my-2"
-                            onClick={() => { mintCertificate(each.ipfsURL, each.courseId); }}
-                          >
-                            {isMinting ? (
-                              'Minting...'
-                            ) : (
-                              'Mint Certificate'
-                            )}
-                          </button>
-                        </div>
-                      ))}
-
+                    <div className="tw-flex tw-flex-col tw-justify-start tw-items-center">
+                      <div className="tw-grid tw-gap-4 tw-grid-cols-2 tw-grid-rows-2 sm:tw-grid-cols-1 sm:tw-grid-rows-1 tw-h-100 tw-w-100 tw-mb-5">
+                        {currentCertificates.map((each) => (
+                          <div className="courses tw-flex tw-flex-col tw-cursor-pointer tw-mx-2" key={each._id}>
+                            <a href={each.ipfsURL} target="_blank" rel="noreferrer"><img className="tw-rounded-md" src={each.ipfsURL} alt="certificate" /></a>
+                            <button
+                              type="button"
+                              className="tw-bg-blue-600 hover:tw-bg-blue-700 tw-text-white tw-content-center tw-font-bold tw-py-2 tw-px-4 tw-rounded tw-w-100 tw-my-2"
+                              onClick={() => { mintCertificate(each.ipfsURL, each.courseId); }}
+                            >
+                              {isMinting ? (
+                                'Minting...'
+                              ) : (
+                                'Mint Certificate'
+                              )}
+                            </button>
+                          </div>
+                        ))}
+                      </div>
+                      <ReactPaginate
+                        className="tw-flex tw-flex-row tw-text-xl"
+                        nextClassName="btn btn-primary tw-bg-blue-700"
+                        previousClassName="btn btn-primary tw-bg-blue-700"
+                        pageClassName="btn btn-primary tw-mx-2 tw-bg-blue-700"
+                        pageLinkClassName=" tw-p-1 "
+                        breakLabel="..."
+                        nextLabel="Next"
+                        onPageChange={handlePageClick}
+                        pageRangeDisplayed={5}
+                        pageCount={pageCount}
+                        previousLabel="Previous"
+                        renderOnZeroPageCount={null}
+                      />
                     </div>
                   )
                   : (

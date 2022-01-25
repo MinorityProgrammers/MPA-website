@@ -27,7 +27,6 @@
     "@stripe/stripe-js": "^1.15.0",
     "@tanem/react-nprogress": "^3.0.82",
     "@types/caniuse-lite": "^1.0.1",
-    "@types/copy-webpack-plugin": "^8.0.1",
     "@types/react-beautiful-dnd": "^13.1.2",
     "@types/react-bootstrap": "^0.32.26",
     "@types/react-highlight-words": "^0.16.3",

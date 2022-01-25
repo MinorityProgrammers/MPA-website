@@ -63,13 +63,19 @@ const LearnPage = () => {
         handleClick={handleClick}
       />
       {hide === false && <ComingSoon closeClick={handleClick} />}
-      <div className="tw-py-20 certificate">
-        <Certificates
-          user={data}
-          certificates={certificate}
-          loading={loading}
-        />
-      </div>
+      {
+        loading
+          ? (<> </>)
+          : (
+            <div className="tw-py-20 certificate">
+              <Certificates
+                user={data}
+                certificates={certificate}
+                loading={loading}
+              />
+            </div>
+          )
+      }
       <Footer />
     </Layout>
   );
