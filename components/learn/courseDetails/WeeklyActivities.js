@@ -5,13 +5,13 @@ import { useRouter } from 'next/router';
 import CourseSidebar from './CourseSidebar';
 import ActivityList from './ActivityList';
 
-const WeeklyActivities = function ({ enrolledCourses, modules, userModules }) {
+const WeeklyActivities = ({ enrolledCourses, modules, userModules }) => {
   const [course, setCourse] = useState({});
   const router = useRouter();
   const { courseId, moduleLevel } = router.query;
 
   const singleCourse = enrolledCourses?.filter(
-    (_course) => _course.courseId._id === courseId,
+    (_course) => _course.courseId._id === courseId
   );
   useEffect(() => {
     singleCourse.forEach((_course) => {
@@ -20,14 +20,15 @@ const WeeklyActivities = function ({ enrolledCourses, modules, userModules }) {
   }, [singleCourse]);
 
   const specificModules = modules.filter(
-    (module) => module.level === moduleLevel,
+    (module) => module.level === moduleLevel
   );
 
-  // progress
   const totalModules = specificModules.length;
-  const specificUserModules = userModules && userModules.filter(
-    (eModule) => specificModules.some((module) => eModule.moduleId._id === module._id),
-  );
+  const specificUserModules =
+    userModules &&
+    userModules.filter((eModule) =>
+      specificModules.some((module) => eModule.moduleId._id === module._id)
+    );
 
   let completedModules = 0;
   specificUserModules.forEach((module) => {
@@ -42,12 +43,11 @@ const WeeklyActivities = function ({ enrolledCourses, modules, userModules }) {
   });
   const totalPercentage = Math.round(totalCompletionRate / totalModules);
 
-  // Forward button functionality
   const handleForwardLevelInfo = () => {
     if (moduleLevel === 'beginner') {
       const forwardLevelInfo = router.asPath.replace(
         moduleLevel,
-        'intermediate',
+        'intermediate'
       );
       router.push(forwardLevelInfo);
     } else if (moduleLevel === 'intermediate') {
@@ -71,16 +71,10 @@ const WeeklyActivities = function ({ enrolledCourses, modules, userModules }) {
           <div className="activities-banner">
             <div className="pt-5 mx-5 pe-5 ps-md-5 pb-5">
               <div className="week-info mx-5 px-4">
-                <h1 className="mb-4 text-capitalize">
-                  {moduleLevel}
-                  {' '}
-                  level
-                </h1>
+                <h1 className="mb-4 text-capitalize">{moduleLevel} level</h1>
                 <h5 style={{ fontWeight: '600' }}>Progress</h5>
                 <p className="text-center mt-4 pt-2 mb-0">
-                  {completedModules}
-                  /
-                  {totalModules}
+                  {completedModules}/{totalModules}
                 </p>
                 <div className="progress mt-2 mb-2">
                   <div
@@ -94,10 +88,7 @@ const WeeklyActivities = function ({ enrolledCourses, modules, userModules }) {
                 </div>
                 <p className="text-center">
                   {!Number.isNaN(totalPercentage) && (
-                    <span className="">
-                      {totalPercentage}
-                      % completed
-                    </span>
+                    <span className="">{totalPercentage}% completed</span>
                   )}
                 </p>
               </div>
@@ -114,8 +105,8 @@ const WeeklyActivities = function ({ enrolledCourses, modules, userModules }) {
                 >
                   <FontAwesomeIcon icon={faArrowLeft} />
                 </button>
-                {specificModules.length === specificUserModules.length
-                && specificUserModules.length !== 0 ? (
+                {specificModules.length === specificUserModules.length &&
+                specificUserModules.length !== 0 ? (
                   <>
                     {specificUserModules.length === completedModules && (
                       <>
@@ -133,18 +124,18 @@ const WeeklyActivities = function ({ enrolledCourses, modules, userModules }) {
                       </>
                     )}
                   </>
-                  ) : (
-                    <button
-                      type="button"
-                      disabled
-                      style={{ pointerEvents: 'none' }}
-                    >
-                      <FontAwesomeIcon icon={faArrowRight} />
-                    </button>
-                  )}
+                ) : (
+                  <button
+                    type="button"
+                    disabled
+                    style={{ pointerEvents: 'none' }}
+                  >
+                    <FontAwesomeIcon icon={faArrowRight} />
+                  </button>
+                )}
               </div>
-              {specificModules
-                && specificModules.map((module) => (
+              {specificModules &&
+                specificModules.map((module) => (
                   <ActivityList
                     module={module}
                     key={module._id}

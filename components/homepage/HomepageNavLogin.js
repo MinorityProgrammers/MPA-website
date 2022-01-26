@@ -1,7 +1,5 @@
 import { Form, Formik } from 'formik';
-import {
-  getProviders, getSession, signIn, useSession,
-} from 'next-auth/client';
+import { getProviders, getSession, signIn, useSession } from 'next-auth/client';
 import { useRouter } from 'next/router';
 import React, { useContext, useEffect, useState } from 'react';
 import 'react-toastify/dist/ReactToastify.css';
@@ -13,7 +11,6 @@ import TextField from '../TextField';
 
 const HomepageNavLogin = ({ onCloseMobileMenu }) => {
   const router = useRouter();
-  // const googleClientId = process.env.CLIENT_ID;
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
   const [, setLoginSubmit] = useState(false);
@@ -27,7 +24,6 @@ const HomepageNavLogin = ({ onCloseMobileMenu }) => {
     },
   } = useContext(GlobalContext);
 
-  // user redirect
   useEffect(() => {
     const token = window.localStorage.getItem('jwtToken');
     let timerId;
@@ -38,14 +34,10 @@ const HomepageNavLogin = ({ onCloseMobileMenu }) => {
         onCloseMobileMenu();
       }, 2000);
     } else {
-      // router.push('/login')
-      // window.location.href = '/login'
       setLoginSubmit(false);
     }
     return () => timerId && clearTimeout(timerId);
   }, [data]);
-
-  // const { walletAddress, chainId } = useMoralisDapp();
 
   useEffect(() => {
     const setupProviders = async () => {
@@ -67,14 +59,8 @@ const HomepageNavLogin = ({ onCloseMobileMenu }) => {
   }, [session]);
 
   const handleLoginSuccess = (res) => {
-    // keep this
-
     googleAuth({ tokenId: res.tokenId })(authDispatch);
   };
-
-  /* const handleLoginFailure = (res) => {
-    // console.log(res);
-  }; */
 
   const onSubmit = async (e) => {
     setLoginSubmit(true);
@@ -87,15 +73,14 @@ const HomepageNavLogin = ({ onCloseMobileMenu }) => {
 
   return (
     <div className={click ? 'dropdown-login clicked' : 'dropdown-login'}>
-      <button type="button" className="dropdown-login-btn-close" onClick={onCloseMobileMenu}>
+      <button
+        type="button"
+        className="dropdown-login-btn-close"
+        onClick={onCloseMobileMenu}
+      >
         <i className="fas fa-times" />
       </button>
       <div className="dropdown-login-icons">
-        {/* <img
-          onClick={() => signIn(providers.google.id)}
-          src="./assets/images/login-signup/google.png"
-          alt="icon"
-        /> */}
         <div>
           <img
             src="/assets/images/linkedin-white.png"
@@ -108,18 +93,13 @@ const HomepageNavLogin = ({ onCloseMobileMenu }) => {
           <img
             src="/assets/images/github.svg"
             alt="github icon"
-            onClick={() => signIn(providers.github.id, {
-              callbackUrl: 'https://minorityprogrammers.com/auth',
-            })}
+            onClick={() =>
+              signIn(providers.github.id, {
+                callbackUrl: 'https://minorityprogrammers.com/auth',
+              })
+            }
           />
         </div>
-        {/* <div>
-          <img
-            src="/assets/images/facebook.svg"
-            alt="facebook icon"
-            onClick={() => signIn(providers.facebook.id)}
-          />
-        </div> */}
       </div>
       <div className="login-form mt-2">
         <Formik
@@ -156,9 +136,10 @@ const HomepageNavLogin = ({ onCloseMobileMenu }) => {
                   alertStyle="form-text dropdown-form-text mb-3 tw-text-red-400"
                 />
               </div>
-              <div id="password" className="form-text dropdown-form-text mb-3">
-                {/* <p>Forgot password?</p> */}
-              </div>
+              <div
+                id="password"
+                className="form-text dropdown-form-text mb-3"
+              ></div>
               <button
                 type="submit"
                 className="btn btn-warning btn-dropdown-filled"

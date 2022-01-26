@@ -19,7 +19,6 @@ const FeaturedMyStartupSkeleton = () => {
     observeParents: true,
     observer: true,
     rebuildOnUpdate: true,
-    // Responsive breakpoints
     breakpoints: {
       1440: {
         slidesPerView: 3,

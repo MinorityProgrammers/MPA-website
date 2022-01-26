@@ -12,9 +12,7 @@ const HomepageBuyMinority = () => (
           <div className="heading-buy mb-5">
             <h2 className="title-buy tw-text-blue-900">
               Buy $MINORITY
-              {' '}
               <br />
-              {' '}
               FAIR LAUNCH
             </h2>
           </div>
@@ -22,9 +20,7 @@ const HomepageBuyMinority = () => (
             <Link href="#/register">
               <a>
                 <div className="link-buy">
-                  LEARN MORE
-                  {' '}
-                  <i className="fas fa-caret-down" />
+                  LEARN MORE <i className="fas fa-caret-down" />
                 </div>
               </a>
             </Link>

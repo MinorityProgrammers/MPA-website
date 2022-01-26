@@ -25,8 +25,7 @@ const MentorshipQuestion6 = (props) => {
     lookingTitle = 'Mentor';
   }
   console.log(values);
-  const submitHandler = (/* e */) => {
-    // e.preventDefault();
+  const submitHandler = () => {
     const userUpdate = {
       is_mentor: values.iAMa === 'Mentor',
       is_mentee: values.iAMa === 'Mentee',
@@ -42,17 +41,17 @@ const MentorshipQuestion6 = (props) => {
             'Access-Control-Allow-Origin': '*',
             Authorization: `Bearer ${token}`,
           },
-        },
+        }
       )
       .then((res) => {
         successToast('User Updated!');
         localStorage.setItem(
           'userInfo',
-          JSON.stringify({ token, user: res.data.data }),
+          JSON.stringify({ token, user: res.data.data })
         );
         console.log(res.data.data);
       })
-      .catch((/* err */) => {
+      .catch(() => {
         errorToast('Something went wrong, please contact us.');
       });
 
@@ -80,7 +79,7 @@ const MentorshipQuestion6 = (props) => {
             'Access-Control-Allow-Origin': '*',
             Authorization: `Bearer ${token}`,
           },
-        },
+        }
       )
       .then((res) => {
         successToast(`${values.iAMa.toLowerCase()} Created!`);
@@ -90,7 +89,7 @@ const MentorshipQuestion6 = (props) => {
         });
         console.log(res.data.data);
       })
-      .catch((/* err */) => {
+      .catch(() => {
         errorToast('Something went wrong, please contact us.');
       });
   };
@@ -117,9 +116,7 @@ const MentorshipQuestion6 = (props) => {
             <div className="col-sm-12 col-md-4">
               <h5 className="tw-font-bold tw-text-#222222">Full Name</h5>
               <p className="tw-m-0">
-                {user.firstName}
-                {' '}
-                {user.lastName}
+                {user.firstName} {user.lastName}
               </p>
             </div>
             <div className="col-sm-12 col-md-4 tw-text-center md:tw-text-left">
@@ -140,10 +137,7 @@ const MentorshipQuestion6 = (props) => {
               <h5 className="tw-font-bold tw-text-#222222">Passions:</h5>
               <p className="tw-m-0">
                 {values.passions.map((passion) => (
-                  <span>
-                    {passion.label}
-                    {' '}
-                  </span>
+                  <span>{passion.label} </span>
                 ))}
               </p>
             </div>
@@ -152,19 +146,13 @@ const MentorshipQuestion6 = (props) => {
             <div className="col-sm-12 col-md-4">
               <h5 className="tw-font-bold tw-text-#222222">Nationality</h5>
               <p className="tw-m-0">
-                <p className="tw-m-0">
-                  {user.Nationality}
-                  {' '}
-                </p>
+                <p className="tw-m-0">{user.Nationality} </p>
               </p>
             </div>
             <div className="tw-text-center md:tw-text-left col-sm-12 col-md-4">
               <h5 className="tw-font-bold tw-text-#222222">Ocupation</h5>
               <p className="tw-m-0">
-                <p className="tw-m-0">
-                  {values.occupation}
-                  {' '}
-                </p>
+                <p className="tw-m-0">{values.occupation} </p>
               </p>
             </div>
             <div className="tw-text-right md:tw-text-left col-sm-12 col-md-4">
@@ -172,10 +160,7 @@ const MentorshipQuestion6 = (props) => {
                 Place I work/study in
               </h5>
               <p className="tw-m-0">
-                <p className="tw-m-0">
-                  {values.occupationPlace}
-                  {' '}
-                </p>
+                <p className="tw-m-0">{values.occupationPlace} </p>
               </p>
             </div>
           </div>
@@ -183,13 +168,7 @@ const MentorshipQuestion6 = (props) => {
             <div className="col">
               <h5 className="tw-font-bold tw-text-#222222">Interest:</h5>
               <p className="tw-m-0">
-                {/* {values.interest.map((item) => ( */}
-                <span>
-                  {' '}
-                  {values.interest.label}
-                  {' '}
-                </span>
-                {/* ))} */}
+                <span> {values.interest.label} </span>
               </p>
             </div>
           </div>
@@ -197,34 +176,19 @@ const MentorshipQuestion6 = (props) => {
             <div className="col-sm-12 col-md-4">
               <h5 className="tw-font-bold tw-text-#222222">Learning Style</h5>
               <p className="tw-m-0">
-                {/* {values.learningStyle.map((item) => ( */}
-                <p className="tw-m-0">
-                  {values.learningStyle.label}
-                  {' '}
-                </p>
-                {/* ))} */}
+                <p className="tw-m-0">{values.learningStyle.label} </p>
               </p>
             </div>
             <div className="tw-text-center md:tw-text-left col-sm-12 col-md-4">
               <h5 className="tw-font-bold tw-text-#222222">Personality Type</h5>
               <p className="tw-m-0">
-                {/* {values.personlityType.map((item) => ( */}
-                <p className="tw-m-0">
-                  {values.personlityType.label}
-                  {' '}
-                </p>
-                {/* ))} */}
+                <p className="tw-m-0">{values.personlityType.label} </p>
               </p>
             </div>
             <div className="tw-text-right md:tw-text-left col-sm-12 col-md-4">
               <h5 className="tw-font-bold tw-text-#222222">Languages</h5>
               <p className="tw-m-0">
-                {/* {values.primaryLang.map((item) => ( */}
-                <p className="tw-m-0">
-                  {user.primaryLanguage}
-                  {' '}
-                </p>
-                {/* ))} */}
+                <p className="tw-m-0">{user.primaryLanguage} </p>
               </p>
             </div>
           </div>
@@ -248,12 +212,7 @@ const MentorshipQuestion6 = (props) => {
                 &apos;s Education
               </h5>
               <p className="tw-m-0">
-                {/* {values.lookingForEdu.map((item) => ( */}
-                <p className="tw-m-0">
-                  {values.lookingForEdu.label}
-                  {' '}
-                </p>
-                {/* ))} */}
+                <p className="tw-m-0">{values.lookingForEdu.label} </p>
               </p>
             </div>
             <div className="tw-text-center md:tw-text-left col-sm-12 col-md-4">
@@ -262,12 +221,7 @@ const MentorshipQuestion6 = (props) => {
                 &apos;s Experience
               </h5>
               <p className="tw-m-0">
-                {/* {values.lookingForExp.map((item) => ( */}
-                <p className="tw-m-0">
-                  {values.lookingForExp.label}
-                  {' '}
-                </p>
-                {/* ))} */}
+                <p className="tw-m-0">{values.lookingForExp.label} </p>
               </p>
             </div>
             <div className="tw-text-right md:tw-text-left col-sm-12 col-md-4">
@@ -276,12 +230,7 @@ const MentorshipQuestion6 = (props) => {
                 &apos;s Gender
               </h5>
               <p className="tw-m-0">
-                {/* {values.lookingForGender.map((item) => ( */}
-                <p className="tw-m-0">
-                  {values.lookingForGender.label}
-                  {' '}
-                </p>
-                {/* ))} */}
+                <p className="tw-m-0">{values.lookingForGender.label} </p>
               </p>
             </div>
           </div>
@@ -292,9 +241,7 @@ const MentorshipQuestion6 = (props) => {
                 &apos;s Availability
               </h5>
               <p className="tw-m-0">
-                {/* {values.lookingForAvailability.map((item) => ( */}
                 <p className="tw-m-0">{values.lookingForAvailability.label}</p>
-                {/* ))} */}
               </p>
             </div>
             <div className="tw-text-center md:tw-text-left col-sm-12 col-md-4">
@@ -303,12 +250,7 @@ const MentorshipQuestion6 = (props) => {
                 &apos;s Language
               </h5>
               <p className="tw-m-0">
-                {/* {values.lookingForLang.map((item) => ( */}
-                <p className="tw-m-0">
-                  {values.lookingForLang.label}
-                  {' '}
-                </p>
-                {/* ))} */}
+                <p className="tw-m-0">{values.lookingForLang.label} </p>
               </p>
             </div>
             <div className="tw-text-right md:tw-text-left col-sm-12 col-md-4">
@@ -317,12 +259,7 @@ const MentorshipQuestion6 = (props) => {
                 &apos;s Ethnicity
               </h5>
               <p className="tw-m-0">
-                {/* {values.lookingForEthnicity.map((item) => ( */}
-                <p className="tw-m-0">
-                  {values.lookingForEthnicity.label}
-                  {' '}
-                </p>
-                {/* ))} */}
+                <p className="tw-m-0">{values.lookingForEthnicity.label} </p>
               </p>
             </div>
           </div>

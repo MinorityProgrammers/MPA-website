@@ -12,67 +12,53 @@ const HomepageDonate = () => {
   const [monthly, setMonthly] = useState(false);
 
   const [succeeded, setSucceeded] = useState(false);
-  // const [paypalErrorMessage, setPaypalErrorMessage] = useState('');
   const [, setOrderID] = useState(false);
   const [billingDetails, setBillingDetails] = useState([]);
   const [, setPayment] = useState([]);
 
-  // get donate amount when click
   const handleValue = (e) => {
-    // dispatch
     donateDispatch({
       type: 'UPDATE_DONATE_AMOUNT',
       amount: e.target.value,
     });
   };
 
-  // creates one time paypal order
-  const createOrder = (data, actions) => actions.order
-    .create({
-      purchase_units: [
-        {
-          amount: {
-            value: amount,
+  const createOrder = (data, actions) =>
+    actions.order
+      .create({
+        purchase_units: [
+          {
+            amount: {
+              value: amount,
+            },
           },
+        ],
+        application_context: {
+          shipping_preference: 'NO_SHIPPING',
         },
-      ],
-      application_context: {
-        shipping_preference: 'NO_SHIPPING',
-      },
-    })
-    .then((orderID) => {
-      setOrderID(orderID);
-      return orderID;
+      })
+      .then((orderID) => {
+        setOrderID(orderID);
+        return orderID;
+      });
+  const createSubscription = (data, action) => {};
+
+  const onApprove = (data, actions) =>
+    actions.order.capture().then((details) => {
+      const { purchase_units } = details;
+      setBillingDetails(details);
+      setPayment(purchase_units);
+      setSucceeded(true);
+      setIsDone(true);
+      setCount(count + 1);
     });
-
-  // create paypal subscription
-  const createSubscription = (data, action) => {
-    // return actions.subscription.create({
-    //     'plan_id': 'P-2UF78835G6983425GLSM44MA'
-    // })
-  };
-
-  // handles when a payment is confirmed for paypal
-  const onApprove = (data, actions) => actions.order.capture().then((details) => {
-    const { purchase_units } = details;
-    setBillingDetails(details);
-    setPayment(purchase_units);
-    setSucceeded(true);
-    setIsDone(true);
-    setCount(count + 1); // Instead of count++ use setCount(count+1)
-  });
-
-  // handles payment errors
-  /* const onError = () => {
-    setPaypalErrorMessage('Something went wrong with your payment');
-  }; */
 
   const scrollTo = () => {
     const currentLocation = window.location.href;
     const hasAnchor = currentLocation.includes('/#');
     if (hasAnchor) {
       const anchorId = `${currentLocation.substring(
-        currentLocation.indexOf('#') + 1,
+        currentLocation.indexOf('#') + 1
       )}`;
       const anchor = document.getElementById(anchorId);
       if (anchor) {
@@ -109,7 +95,6 @@ const HomepageDonate = () => {
               {isDone && amount !== 0 ? (
                 <i className="far fa-check-circle" />
               ) : null}
-              {' '}
               Amount
             </div>
             <div
@@ -120,7 +105,6 @@ const HomepageDonate = () => {
               {isDone && succeeded ? (
                 <i className="far fa-check-circle" />
               ) : null}
-              {' '}
               Payments
             </div>
             <div
@@ -193,15 +177,6 @@ const HomepageDonate = () => {
             >
               <i className="fab fa-bitcoin" />
             </a>
-            {/* <a href="sponsorship" target="_blank" rel="noreferrer">
-              <i className="fas fa-gift" />
-            </a>
-            <a href="sponsorship" target="_blank" rel="noreferrer">
-              <i className="fas fa-hand-holding-usd" />
-            </a>
-            <a href="sponsorship" target="_blank" rel="noreferrer">
-              <i className="fab fa-twitch" />
-            </a> */}
           </div>
         </div>
       </div>
@@ -210,9 +185,3 @@ const HomepageDonate = () => {
 };
 
 export default HomepageDonate;
-
-// Paypal subscription
-// https://medium.com/analytics-vidhya/paypal-subscription-in-react-1121c39b26be
-// https://github.com/skydiver/nextjs-paypal-integration
-
-// Stripe subscription

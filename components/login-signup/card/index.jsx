@@ -1,6 +1,4 @@
-import {
-  getProviders, getSession, signIn, useSession,
-} from 'next-auth/client';
+import { getProviders, getSession, signIn, useSession } from 'next-auth/client';
 import { useRouter } from 'next/router';
 import React, { useContext, useEffect, useState } from 'react';
 import { ToastContainer } from 'react-toastify';
@@ -15,23 +13,16 @@ import Form from '../form/index';
 import styles from './card.module.css';
 
 export default function Index() {
-  // USED FOR SOCIAL AUTHENTICATION
+  const [session] = useSession();
 
-  // const googleClientId = process.env.CLIENT_ID;
-  const [session/* , isLoading */] = useSession();
-
-  // Instead of another page we will set the text to variables
   const [cardText, setCardText] = useState({
     signIn: false,
     h1Title: 'welcome',
     p: (
       <p>
         To keep connecting with us please
-        {' '}
         <br />
-        {' '}
-        register with your personal
-        info
+        register with your personal info
       </p>
     ),
     h2Title: 'sign up',
@@ -39,7 +30,6 @@ export default function Index() {
     link: 'sign in',
   });
 
-  // STATES USED THROUGHOUT THE COMPONENT
   const [submit, setSubmit] = useState(false);
   const [, setSpin] = useState(false);
   const [, setSignedIn] = useState(false);
@@ -47,9 +37,7 @@ export default function Index() {
   const [providers, setPrivders] = useState([]);
   const router = useRouter();
 
-  const {
-    profileDispatch,
-  } = useContext(GlobalContext);
+  const { profileDispatch } = useContext(GlobalContext);
 
   useEffect(() => {
     if (window.localStorage.getItem('jwtToken')) {
@@ -66,28 +54,6 @@ export default function Index() {
     setupProviders();
   }, []);
 
-  // user redirection's
-  // useEffect(() => {
-  //     if (userData?.isUpdated === true) {
-  //         const slug = userData?.userName
-  //         router.push(`/user/${slug}`)
-  //     }
-  //     if (userData?.isUpdated === false) {
-  //         router.push(`/create-profile`)
-  //     }
-  // }, [userData])
-
-  // useEffect(() => {
-  //     if (profileData?.isUpdated === true) {
-  //         const slug = profileData?.userName
-  //         router.push(`/user/${slug}`)
-  //     }
-  //     if (profileData?.isUpdated === false) {
-  //         router.push(`/create-profile`)
-  //     }
-  // }, [profileData])
-
-  // states from global context
   const {
     authDispatch,
     authState: {
@@ -95,13 +61,11 @@ export default function Index() {
     },
   } = useContext(GlobalContext);
 
-  // redirecting the user
   useEffect(() => {
     if (
-      window.localStorage.getItem('jwtToken')
-      && window.localStorage.getItem('userInfo')
+      window.localStorage.getItem('jwtToken') &&
+      window.localStorage.getItem('userInfo')
     ) {
-      // UPDATE SIGNIN STATE
       setSignedIn(true);
     }
   }, []);
@@ -111,7 +75,7 @@ export default function Index() {
       router.push(router.pathname);
       if (router.pathname === '/auth') {
         const loginSignUp = document.querySelector(
-          '.card_cardContainer__12vmM',
+          '.card_cardContainer__12vmM'
         );
         loginSignUp.style.display = 'none';
       } else {
@@ -121,18 +85,12 @@ export default function Index() {
     }
   }, [data]);
 
-  // NEED TO CHECK IF ACCOUNT EXISTS, TRY REQUEST TO SEE IF USER EXISTS
-  // SOCIAL AUTHENTICATION
   const handleLoginSuccess = (res) => {
-    // keep this
     googleAuth({ tokenId: res.tokenId })(authDispatch);
   };
 
-  const handleLoginFailure = (res) => {
-    // console.log(res);
-  };
+  const handleLoginFailure = (res) => {};
 
-  // CHANGES CARD FROM SIGN UP TO SIGN IN
   const handleClick = (event) => {
     event.preventDefault();
 
@@ -142,11 +100,7 @@ export default function Index() {
         h1Title: 'register for MPA',
         p: (
           <p>
-            To keep connecting with us please
-            {' '}
-            <br />
-            {' '}
-            register with your personal
+            To keep connecting with us please <br /> register with your personal
             info
           </p>
         ),
@@ -160,11 +114,7 @@ export default function Index() {
         h1Title: 'welcome back',
         p: (
           <p>
-            To keep connecting with us please
-            {' '}
-            <br />
-            {' '}
-            sign-in with your personal
+            To keep connecting with us please <br /> sign-in with your personal
             info
           </p>
         ),
@@ -216,7 +166,11 @@ export default function Index() {
           <h2>{cardText.h2Title}</h2>
           <p>
             {cardText.para}
-            <a href={`#${cardText.link}`} className="tw-text-blue-800" onClick={handleClick}>
+            <a
+              href={`#${cardText.link}`}
+              className="tw-text-blue-800"
+              onClick={handleClick}
+            >
               {' '}
               {cardText.link}
             </a>
@@ -224,21 +178,6 @@ export default function Index() {
         </div>
         <ul className={styles.socialMedia}>
           <li>
-            {/* <GoogleLogin
-              clientId={googleClientId}
-              render={(renderProps) => (
-                <img
-                  src="./assets/images/login-signup/google.png"
-                  alt="icon"
-                  onClick={renderProps.onClick}
-                  disabled={renderProps.disabled}
-                />
-              )}
-              buttonText="Login"
-              onSuccess={handleLoginSuccess}
-              onFailure={handleLoginFailure}
-              cookiePolicy="single_host_origin"
-            /> */}
             <img
               onClick={() => signIn(providers.google.id)}
               src="./assets/images/login-signup/google.png"
@@ -246,22 +185,7 @@ export default function Index() {
               alt="icon"
             />
           </li>
-          {/* <li>
-            <img
-              onClick={() => signIn(providers.linkedin.id)}
-              src="./assets/images/login-signup/linkin.png"
-              alt="icon"
-            />
-          </li>
-          <li>
-            <img
-              onClick={() => signIn(providers.github.id, {
-                callbackUrl: 'https://minorityprogrammers.com/auth',
-              })}
-              src="./assets/images/login-signup/github.png"
-              alt="icon"
-            />
-          </li> */}
+
           <li>
             <img
               onClick={() => signIn(providers.facebook.id)}
