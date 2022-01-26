@@ -12,14 +12,8 @@ const Contact = () => (
               </div>
               <h2 className="contact-info-one__title">About Us </h2>
               <p className="contact-info-one__text">
-                Lorem ipsum is simply free text
-                {' '}
-                <br />
-                {' '}
-                available in the market
-                to use
-                {' '}
-                <br />
+                Lorem ipsum is simply free text <br /> available in the market
+                to use <br />
                 deliver satisfaction.
               </p>
             </div>
@@ -31,14 +25,8 @@ const Contact = () => (
               </div>
               <h2 className="contact-info-one__title">Our Address</h2>
               <p className="contact-info-one__text">
-                855 Road Broklyn Street,
-                {' '}
-                <br />
-                600 New York, United States of
-                {' '}
-                <br />
-                {' '}
-                America
+                855 Road Broklyn Street, <br />
+                600 New York, United States of <br /> America
               </p>
             </div>
           </div>
@@ -49,12 +37,8 @@ const Contact = () => (
               </div>
               <h2 className="contact-info-one__title">Contact Info</h2>
               <p className="contact-info-one__text">
-                minorityprogrammers@gmail.com
-                {' '}
-                <br />
-                <br />
-                {' '}
-&nbsp;
+                minorityprogrammers@gmail.com <br />
+                <br /> &nbsp;
               </p>
             </div>
           </div>
@@ -64,9 +48,7 @@ const Contact = () => (
     <section className="contact-one">
       <div className="container">
         <h2 className="contact-one__title text-center">
-          Get in touch
-          {' '}
-          <br />
+          Get in touch <br />
           with us
         </h2>
         <form
