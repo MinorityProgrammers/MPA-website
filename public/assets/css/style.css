@@ -8960,13 +8960,13 @@ html {
 .homepage__Reviews .container .swiper-container {
   padding-bottom: 60px;
 }
-/* .homepage__Reviews .container .swiper-container .swiper-button-next{
+.homepage__Reviews .container .swiper-container .swiper-button-next{
   top: 94%;
 }
 .homepage__Reviews .container .swiper-container .swiper-button-prev{
   top: 94%;
   left: 88%;
-} */
+}
 .item .homepage__comment{
   margin: 0;
   margin-right: 10px;
@@ -8976,10 +8976,10 @@ html {
  /* overflow: hidden; */
   border: none;
 }
-/* #tweet-1455675414765051905 .homepage__comment{
+#tweet-1455675414765051905 .homepage__comment{
   max-width: 270px !important;
   margin: auto;
-} */
+}
 .homepage__comment div div{
   margin-top: 0 !important;
 }
@@ -8989,7 +8989,7 @@ html {
 .homepage__Reviews .container .swiper-container{
   cursor: grab;
 }
-/* #tweet-1444383109307412487 .homepage__comment div iframe{
+#tweet-1444383109307412487 .homepage__comment div iframe{
   max-width: 300px !important;
 }
 #tweet-1455675414765051905 .homepage__comment div iframe{
@@ -8997,7 +8997,10 @@ html {
 }
 #tweet-1431364200132190219 .homepage__comment div iframe{
   max-width: 355px !important;
-} */
+}
+#tweet-1444383109307412487,#tweet-1455675414765051905,#tweet-1431364200132190219{
+  margin-top: 0;
+} 
 .tweet__card{
   margin: auto 0;
 }
@@ -9075,28 +9078,28 @@ blockquote.twitter-tweet {
   display: flex;
   justify-content: space-between;
 }
-/* @media only screen and (max-width: 992px) {
+@media only screen and (max-width: 992px) {
   .homepage__Reviews .container .swiper-container .swiper-button-prev{
     left: 82%;
   }
-} */
+}
 @media only screen and (max-width: 768px) {
   .skelton-wrapper{
     justify-content: space-around;
   }
-  /* .homepage__Reviews .container .swiper-container .swiper-button-prev{
+  .homepage__Reviews .container .swiper-container .swiper-button-prev{
     top: 94%;
     left: 75%;
   }
   .homepage__Reviews .container .swiper-container .swiper-button-next{
     top: 94%;
-  } */
+  }
   .homepage__comment{
     width: 300px;
     margin: auto !important;
   }
 }
-/* @media only screen and (max-width: 450px) {
+@media only screen and (max-width: 450px) {
   .homepage__Reviews .container .swiper-container .swiper-button-prev{
     top: 94%;
     left: 67%;
@@ -9104,7 +9107,7 @@ blockquote.twitter-tweet {
   .homepage__Reviews .container .swiper-container .swiper-button-next{
     top: 94%;
   }
-}  */
+} 
 
 /* the minority donate section */
 /* Donate amount */
