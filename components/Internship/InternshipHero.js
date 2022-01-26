@@ -12,7 +12,8 @@ const InternshipHero = () => (
             <p className="d-flex justify-content-center h5">
               Gain work experience with the latest technologies and grow as a
               highly qualified professional in an intensive 3-month internship
-              program 
+              program
+            </p>
           </div>
         </div>
       </div>
