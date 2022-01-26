@@ -6,7 +6,7 @@ import EventsOverview from '../events-overview/events-overview';
 import EventsMenu from '../events-menu/events-menu';
 import MpaLoader from '../../mpa-loader/loader';
 
-const Events = function ({ token }) {
+const Events = ({ token }) => {
   const [status, setStatus] = useState();
   const [eventsCopy, setEventsCopy] = useState(null);
   const [events, setEvents] = useState(null);
@@ -37,7 +37,6 @@ const Events = function ({ token }) {
       minHeight: 50,
       width: 200,
       minWidth: 200,
-      // '@media only screen and (max-width: 768px)': { width: '80%', minWidth: '80%' },
     }),
     indicatorsContainer: (provided) => ({
       ...provided,
@@ -52,9 +51,9 @@ const Events = function ({ token }) {
     }),
     control: (base) => ({
       ...base,
-      '&:hover': { borderColor: 'gray' }, // border style on hover
-      border: '1px solid lightgray', // default border color
-      boxShadow: 'none', // no box-shadow
+      '&:hover': { borderColor: 'gray' },
+      border: '1px solid lightgray',
+      boxShadow: 'none',
       padding: 0,
       height: 50,
       minHeight: 50,
@@ -87,10 +86,16 @@ const Events = function ({ token }) {
   };
 
   const fetchEvents = () => {
-    axios.get(`${process.env.BASE_URI}/event`)
+    axios
+      .get(`${process.env.BASE_URI}/event`)
       .then((res) => res.data.data)
-      .then((data) => { setEvents(data); setEventsCopy(data); })
-      .catch((err) => { console.log(err); });
+      .then((data) => {
+        setEvents(data);
+        setEventsCopy(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   const filter = (key, val) => eventsCopy.filter((ev) => ev[key] === val);
@@ -108,8 +113,8 @@ const Events = function ({ token }) {
   const getSearch = (e) => {
     if (e.target.value) {
       const searchValue = e.target.value;
-      const newEvents = events.filter(
-        (event) => event.eventName.toLowerCase().includes(searchValue.toLowerCase()),
+      const newEvents = events.filter((event) =>
+        event.eventName.toLowerCase().includes(searchValue.toLowerCase())
       );
       setEvents(newEvents);
     } else {
@@ -133,7 +138,10 @@ const Events = function ({ token }) {
           <div className={styles.imageOverlay}>
             <div className={styles.title}>Event Proposals</div>
           </div>
-          <div style={{ backgroundImage: 'url(/assets/images/events-bg.png)' }} className={styles.topBg} />
+          <div
+            style={{ backgroundImage: 'url(/assets/images/events-bg.png)' }}
+            className={styles.topBg}
+          />
         </div>
         <div className={styles.main}>
           <div className={styles.formContainer}>
@@ -145,7 +153,9 @@ const Events = function ({ token }) {
                 onChange={handleChange}
                 placeholder="What event are you looking for?"
               />
-              <div className={styles.searchIcon}><i className="fas fa-search" /></div>
+              <div className={styles.searchIcon}>
+                <i className="fas fa-search" />
+              </div>
             </div>
 
             <div className={styles.filterContainer}>
@@ -179,32 +189,68 @@ const Events = function ({ token }) {
             </div>
 
             <div className={`${styles.highlight} ${styles.pink}`}>
-              <div className={styles.highlightTitle}>Incubators/Accelerators</div>
-              <div className={styles.highlightSubtitle}>Start Your Tech Business</div>
+              <div className={styles.highlightTitle}>
+                Incubators/Accelerators
+              </div>
+              <div className={styles.highlightSubtitle}>
+                Start Your Tech Business
+              </div>
             </div>
           </div>
 
           <div className={styles.navContainer}>
             <div className={styles.navList}>
-              <div onClick={() => { setShow(false); setStatus('pending'); }} className={`${styles.nav} ${status === 'pending' ? styles.clicked : styles.notClicked}`}>For Review</div>
-              <div onClick={() => { setShow(false); setStatus('approved'); }} className={`${styles.nav} ${status === 'approved' ? styles.clicked : styles.notClicked}`}>Approved</div>
-              <div onClick={() => { setShow(false); setStatus('rejected'); }} className={`${styles.nav} ${status === 'rejected' ? styles.clicked : styles.notClicked}`}>Rejected</div>
+              <div
+                onClick={() => {
+                  setShow(false);
+                  setStatus('pending');
+                }}
+                className={`${styles.nav} ${
+                  status === 'pending' ? styles.clicked : styles.notClicked
+                }`}
+              >
+                For Review
+              </div>
+              <div
+                onClick={() => {
+                  setShow(false);
+                  setStatus('approved');
+                }}
+                className={`${styles.nav} ${
+                  status === 'approved' ? styles.clicked : styles.notClicked
+                }`}
+              >
+                Approved
+              </div>
+              <div
+                onClick={() => {
+                  setShow(false);
+                  setStatus('rejected');
+                }}
+                className={`${styles.nav} ${
+                  status === 'rejected' ? styles.clicked : styles.notClicked
+                }`}
+              >
+                Rejected
+              </div>
             </div>
             <div className={styles.underline} />
           </div>
-          {
-            events
-              ? (
-                <>
-                  {
-                  showOverview
-                    ? <EventsOverview events={events} token={token} />
-                    : <EventsMenu events={events} eventStatus={status} token={token} />
-                }
-                </>
-              )
-              : <MpaLoader style={{ background: '#ff0068' }} />
-          }
+          {events ? (
+            <>
+              {showOverview ? (
+                <EventsOverview events={events} token={token} />
+              ) : (
+                <EventsMenu
+                  events={events}
+                  eventStatus={status}
+                  token={token}
+                />
+              )}
+            </>
+          ) : (
+            <MpaLoader style={{ background: '#ff0068' }} />
+          )}
         </div>
       </div>
     </div>

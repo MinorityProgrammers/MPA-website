@@ -3,8 +3,7 @@ import { BiNews } from 'react-icons/bi';
 import { FaChalkboardTeacher, FaDiscord, FaGlobeAmericas } from 'react-icons/fa';
 import { IoMdRocket, IoMdSchool } from 'react-icons/io';
 
-const MpaPrograms = function () {
-  return (
+const MpaPrograms =   () =>(
     <div className="col-md-11 d-flex justify-content-center">
       <div className="join-head-container tw-cursor-pointer">
         <div className="join-head-icon tw-my-2"><FaGlobeAmericas /></div>
@@ -13,7 +12,7 @@ const MpaPrograms = function () {
       <div className="join-head-container tw-cursor-pointer">
         <div className="join-head-icon tw-my-2">
           <IoMdRocket />
-          {' '}
+           
         </div>
         <h5>Startups</h5>
       </div>

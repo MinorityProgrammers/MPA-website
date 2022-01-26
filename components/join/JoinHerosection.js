@@ -1,8 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 
-const JoinHerosection = function () {
-  return (
+const JoinHerosection =   () =>(
     <div className="row hero-container">
       <div className="col-md-6">
         <img

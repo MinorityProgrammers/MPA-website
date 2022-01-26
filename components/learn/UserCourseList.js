@@ -2,20 +2,19 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import axios from 'axios';
 
-const UserCoursesList = function ({ enrolledCourse }) {
+const UserCoursesList = ({ enrolledCourse }) => {
   const [modules, setModules] = useState([]);
   const [userModules, setUserModules] = useState([]);
-  const {
-    name, description, earn, _id,
-  } = enrolledCourse.courseId;
+  const { name, description, earn, _id } = enrolledCourse.courseId;
 
   useEffect(() => {
     const userToken = JSON.parse(localStorage.getItem('userInfo')).token;
-    axios.get(`${process.env.BASE_URI}/course/${_id}/module`, {
-      headers: {
-        Authorization: `Bearer ${userToken}`,
-      },
-    })
+    axios
+      .get(`${process.env.BASE_URI}/course/${_id}/module`, {
+        headers: {
+          Authorization: `Bearer ${userToken}`,
+        },
+      })
       .then((res) => {
         setModules(res.data.data);
       });
@@ -23,18 +22,19 @@ const UserCoursesList = function ({ enrolledCourse }) {
 
   useEffect(() => {
     const userToken = JSON.parse(localStorage.getItem('userInfo')).token;
-    axios.get(`${process.env.BASE_URI}/learn/${_id}/userModules`, {
-      headers: {
-        Authorization: `Bearer ${userToken}`,
-      },
-    })
+    axios
+      .get(`${process.env.BASE_URI}/learn/${_id}/userModules`, {
+        headers: {
+          Authorization: `Bearer ${userToken}`,
+        },
+      })
       .then((res) => {
         setUserModules(res.data.data);
       });
   }, [_id]);
 
-  const totalUserModules = userModules.filter(
-    (eModule) => modules.some((module) => eModule.moduleId._id === module._id),
+  const totalUserModules = userModules.filter((eModule) =>
+    modules.some((module) => eModule.moduleId._id === module._id)
   );
   const totalModulesLength = modules.length;
 
@@ -53,7 +53,11 @@ const UserCoursesList = function ({ enrolledCourse }) {
     <div className="courses-items px-3 mb-4 mx-2 tw-bg-white tw-shadow-lg">
       <div className="pt-3">
         <div className="earn-rate ml-auto d-flex align-items-center">
-          <img src="https://i.ibb.co/Yjpy6PN/dot.png" className="img-fluid ml-2" alt="" />
+          <img
+            src="https://i.ibb.co/Yjpy6PN/dot.png"
+            className="img-fluid ml-2"
+            alt=""
+          />
           <span className="pl-4">
             Earn
             {earn}
@@ -76,24 +80,27 @@ const UserCoursesList = function ({ enrolledCourse }) {
       <div>
         <div className="module-rate d-flex justify-content-center">
           <span>
-            {completedModules}
-            /
-            {totalModulesLength}
-            {' '}
-            Modules
+            {completedModules}/{totalModulesLength} Modules
           </span>
         </div>
         <div className="progress mt-1 mb-1 mx-4">
-          <div className="progress-bar" style={{ width: `${userPercentages}%` }} role="progressbar" aria-valuenow={userPercentages} aria-valuemin="0" aria-valuemax="100" />
+          <div
+            className="progress-bar"
+            style={{ width: `${userPercentages}%` }}
+            role="progressbar"
+            aria-valuenow={userPercentages}
+            aria-valuemin="0"
+            aria-valuemax="100"
+          />
         </div>
-        {
-          !Number.isNaN(userPercentages) && (
-            <p className="text-center pb-3" style={{ fontSize: '14px', fontWeight: '300' }}>
-              {userPercentages}
-              % Completed
-            </p>
-          )
-        }
+        {!Number.isNaN(userPercentages) && (
+          <p
+            className="text-center pb-3"
+            style={{ fontSize: '14px', fontWeight: '300' }}
+          >
+            {userPercentages}% Completed
+          </p>
+        )}
       </div>
     </div>
   );

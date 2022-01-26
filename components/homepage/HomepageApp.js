@@ -1,33 +1,18 @@
 import React from 'react';
 
-// reusable ImageCard for the HomepageApp Component
-const ImageCard = ({
-  href, bkgImgSrc, iconSrc,
-}) => (
+const ImageCard = ({ href, bkgImgSrc, iconSrc }) => (
   <div className="col-lg-4 col-md-6 col-sm-6 col-xs-12 card__container-app">
     <a href={href}>
       <div className="card border-0 rounded-0">
         <div className="img-banner-app">
-          <img
-            src={bkgImgSrc}
-            alt=""
-            className="card-img-top rounded-0"
-          />
-          <img
-            src={iconSrc}
-            alt=""
-            className="card-img-banner"
-          />
+          <img src={bkgImgSrc} alt="" className="card-img-top rounded-0" />
+          <img src={iconSrc} alt="" className="card-img-banner" />
         </div>
-        {/* <div className="card-body card-body-custom">
-          <p className="card-button">{text}</p>
-        </div> */}
       </div>
     </a>
   </div>
 );
 
-// HomepageApp Component
 const HomepageApp = () => (
   <section className="homepage__app">
     <div className="heading__number">

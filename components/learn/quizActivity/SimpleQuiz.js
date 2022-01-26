@@ -1,16 +1,20 @@
-import React, {
-  useRef, useState, useEffect, useContext,
-} from 'react';
+import React, { useRef, useState, useEffect, useContext } from 'react';
 import { QuizContext } from '../courseDetails/ActivityDetails';
 import QuizProgress from './QuizProgress';
 import QuizResult from './QuizResult';
 
 export default function SimpleQuiz() {
   const {
-    singleUserModuleInfo, forwardInfo, course, setWatched, lastAdvancedModules,
+    singleUserModuleInfo,
+    forwardInfo,
+    course,
+    setWatched,
+    lastAdvancedModules,
   } = useContext(QuizContext);
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [questions, setQuestions] = useState(singleUserModuleInfo.moduleId.content.questions);
+  const [questions, setQuestions] = useState(
+    singleUserModuleInfo.moduleId.content.questions
+  );
   const [correct, setCorrect] = useState(0);
   const [inprogress, setInprogress] = useState(true);
   const [answer, setAnswer] = useState();
@@ -93,15 +97,15 @@ export default function SimpleQuiz() {
               {answer?.map((item, index) => (
                 <div
                   key={`${index + 1}`}
-                  className={
-                    `option${
-                      questions[currentQuestion].checked && !item.correct
-                        ? ' dim'
-                        : ''
-                    }${questions[currentQuestion].checked && item.correct
+                  className={`option${
+                    questions[currentQuestion].checked && !item.correct
+                      ? ' dim'
+                      : ''
+                  }${
+                    questions[currentQuestion].checked && item.correct
                       ? ' correct'
-                      : ''}`
-                  }
+                      : ''
+                  }`}
                 >
                   <input
                     id={`radio-${index}`}
@@ -116,12 +120,6 @@ export default function SimpleQuiz() {
               ))}
             </form>
             <div className="bottom">
-              {/*  {
-                questions[currentQuestion].feedback
-                && questions[currentQuestion].checked
-                && <p>{questions[currentQuestion].feedback}</p>
-              } */}
-
               {!questions[currentQuestion].checked && (
                 <button
                   type="button"
@@ -131,20 +129,18 @@ export default function SimpleQuiz() {
                   Check Answer
                 </button>
               )}
-              {currentQuestion + 1 < questions.length
-                && questions[currentQuestion].checked && (
+              {currentQuestion + 1 < questions.length &&
+                questions[currentQuestion].checked && (
                   <button
                     className="fade-in next"
                     type="button"
                     onClick={nextQuestion}
                   >
-                    Next
-                    {' '}
-                    <i className="fa fa-arrow-right" />
+                    Next <i className="fa fa-arrow-right" />
                   </button>
-              )}
-              {currentQuestion + 1 === questions.length
-                && questions[currentQuestion].checked && (
+                )}
+              {currentQuestion + 1 === questions.length &&
+                questions[currentQuestion].checked && (
                   <button
                     type="button"
                     className="get-results pulses"
@@ -152,7 +148,7 @@ export default function SimpleQuiz() {
                   >
                     Get Result
                   </button>
-              )}
+                )}
             </div>
           </div>
         </div>

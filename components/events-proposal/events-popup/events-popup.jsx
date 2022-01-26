@@ -10,9 +10,7 @@ import { errorToast, successToast } from '../../../contexts/utils/toasts';
 
 Moment.locale('en');
 
-const EventsPopup = function ({
-  event, popup, togglePopup, token,
-}) {
+const EventsPopup = ({ event, popup, togglePopup, token }) => {
   const [value, setValue] = useState('');
   const {
     EventPicture,
@@ -42,7 +40,7 @@ const EventsPopup = function ({
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        },
+        }
       );
       successToast(`Event ${feedback} successfully`);
       togglePopup();
@@ -60,21 +58,25 @@ const EventsPopup = function ({
           <img className={styles.image} src={EventPicture} alt="" />
         </div>
         <div className={styles.detailsContainer}>
-          <div onClick={togglePopup} className={styles.close}><i className="fas fa-times" /></div>
+          <div onClick={togglePopup} className={styles.close}>
+            <i className="fas fa-times" />
+          </div>
           <div className={styles.imageContainerMobile}>
             <img className={styles.image} src={EventPicture} alt="" />
           </div>
           <div className={styles.profile}>
             <div className={styles.picture}>
-              {
-              host && host.profilePicture
-                ? <img src={host.profilePicture} alt="" />
-                : <i className="fas fa-user" />
-            }
+              {host && host.profilePicture ? (
+                <img src={host.profilePicture} alt="" />
+              ) : (
+                <i className="fas fa-user" />
+              )}
             </div>
             <div className={styles.name}>
               <div className={styles.key}>Host</div>
-              <div className={styles.value}>{host && `${host.firstName} ${host.lastName}`}</div>
+              <div className={styles.value}>
+                {host && `${host.firstName} ${host.lastName}`}
+              </div>
             </div>
           </div>
           <div className={styles.details}>
@@ -87,25 +89,42 @@ const EventsPopup = function ({
               </div>
             </div>
             <div className={styles.other}>
-
               <div className={styles.eventType}>
-                <div className={styles.typeName}>{Virtual ? 'Virtual Event' : 'In Person Event'}</div>
-                <div className={styles.typeDate}>{Moment(time).format('LL')}</div>
+                <div className={styles.typeName}>
+                  {Virtual ? 'Virtual Event' : 'In Person Event'}
+                </div>
+                <div className={styles.typeDate}>
+                  {Moment(time).format('LL')}
+                </div>
               </div>
 
               <div className={styles.created}>
                 <div className={styles.createdLabel}>Created:</div>
-                <div className={styles.createdDate}>{Moment(time).format('LL')}</div>
+                <div className={styles.createdDate}>
+                  {Moment(time).format('LL')}
+                </div>
               </div>
-              {
-                eventStatus === 'pending'
-                  ? <ReviewAction reveiwFeedback={handleReviewFeedback} value={value} setValue={(e) => setValue(e.target.value)} />
-                  : eventStatus === 'approved'
-                    ? <ApproveAction popup={popup} reveiwFeedback={handleReviewFeedback} value={value} setValue={(e) => setValue(e.target.value)} />
-                    : eventStatus === 'rejected'
-                      ? <RejectAction popup={popup} reveiwFeedback={handleReviewFeedback} value={value} setValue={(e) => setValue(e.target.value)} />
-                      : null
-              }
+              {eventStatus === 'pending' ? (
+                <ReviewAction
+                  reveiwFeedback={handleReviewFeedback}
+                  value={value}
+                  setValue={(e) => setValue(e.target.value)}
+                />
+              ) : eventStatus === 'approved' ? (
+                <ApproveAction
+                  popup={popup}
+                  reveiwFeedback={handleReviewFeedback}
+                  value={value}
+                  setValue={(e) => setValue(e.target.value)}
+                />
+              ) : eventStatus === 'rejected' ? (
+                <RejectAction
+                  popup={popup}
+                  reveiwFeedback={handleReviewFeedback}
+                  value={value}
+                  setValue={(e) => setValue(e.target.value)}
+                />
+              ) : null}
             </div>
           </div>
         </div>
