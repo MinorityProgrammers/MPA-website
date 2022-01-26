@@ -11,7 +11,6 @@ const Sprint = ({
   courses,
   capstones,
   events,
-  /* mentor, */
   mentee,
   setCurrentRes,
   setEdit,
@@ -43,21 +42,17 @@ const Sprint = ({
       />
     </div>
   );
-  // Delete Req
   const DeleteHandler = (id, currentModel) => {
     const token = window.localStorage.getItem('jwtToken');
 
     if (token != null) {
       axios
-        .delete(
-          `${process.env.BASE_URI}/mentorship/${currentModel}/${id}`,
-          {
-            headers: {
-              'Access-Control-Allow-Origin': '*',
-              Authorization: `Bearer ${token}`,
-            },
+        .delete(`${process.env.BASE_URI}/mentorship/${currentModel}/${id}`, {
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            Authorization: `Bearer ${token}`,
           },
-        )
+        })
         .then((res) => {
           successToast(`${currentModel} Deleted successfully!`);
           setUpdate(!update);
@@ -84,11 +79,11 @@ const Sprint = ({
           <div className={styles.colTitle}>Mentees</div>
           <div className={styles.menteesIcon}>
             <OverlayTrigger
-              overlay={(
+              overlay={
                 <Tooltip>
                   {`${mentee.user_id.firstName} ${mentee.user_id.lastName}`}
                 </Tooltip>
-              )}
+              }
             >
               <img
                 style={{ height: '35px', width: '35px', borderRadius: '50px' }}

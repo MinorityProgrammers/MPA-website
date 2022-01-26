@@ -1,20 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
-// Styles
 import styles from '../../styles/MentorCSS/Dashboard.module.css';
-// leftBar view
 import Resources from './Resources';
 import CalendarEvent from './Calender';
 import Evaluations from './Evaluations';
-// Navbar comps view
 import Course from './Course';
 import Event from './Event';
 import Capstone from './Capstone';
 import Workshop from './Workshop';
 import Job from './Job';
 import MenteeSprint from './MenteeSprint';
-// import { menteeData } from "./data";
 const MenteeDashboard = ({
   setData,
   setActive: setMenteeActive,
@@ -74,9 +70,7 @@ const MenteeDashboard = ({
     <div>
       <div className={styles.userName}>
         Welcome Back,
-        {' '}
-        {menteeData.mentorship.mentee_id.user_id.firstName}
-        !
+        {menteeData.mentorship.mentee_id.user_id.firstName}!
       </div>
       <div className={`${styles.navBar} ${styles.navBarMentee}`}>
         <FontAwesomeIcon
@@ -288,10 +282,7 @@ const MenteeDashboard = ({
           {actionActive.sprintsViewActive && navActive.capstone && (
             <>
               <div className={styles.teamImg}>
-                <img
-                  src="/assets/images/mentor/capstone.png"
-                  alt="capstone"
-                />
+                <img src="/assets/images/mentor/capstone.png" alt="capstone" />
                 <p>MY CAPSTONE</p>
               </div>
               <div className={styles.sprintsContainer}>
@@ -437,13 +428,15 @@ const MenteeDashboard = ({
               <p>Communication</p>
             </div>
             <div
-              onClick={() => setActionActive({
-                sprintsViewActive: false,
-                calendarActive: false,
-                eventActive: false,
-                resourceActive: true,
-                evaluations: false,
-              })}
+              onClick={() =>
+                setActionActive({
+                  sprintsViewActive: false,
+                  calendarActive: false,
+                  eventActive: false,
+                  resourceActive: true,
+                  evaluations: false,
+                })
+              }
               className={
                 actionActive.resourceActive
                   ? styles.mentorRowE
@@ -460,13 +453,15 @@ const MenteeDashboard = ({
             </div>
 
             <div
-              onClick={() => setActionActive({
-                sprintsViewActive: false,
-                calendarActive: false,
-                eventActive: true,
-                resourceActive: false,
-                evaluations: false,
-              })}
+              onClick={() =>
+                setActionActive({
+                  sprintsViewActive: false,
+                  calendarActive: false,
+                  eventActive: true,
+                  resourceActive: false,
+                  evaluations: false,
+                })
+              }
               className={
                 actionActive.eventActive ? styles.mentorRowE : styles.mentorRow
               }
@@ -496,13 +491,15 @@ const MenteeDashboard = ({
               <p>Calender/Bi-Weekly</p>
             </div>
             <div
-              onClick={() => setActionActive({
-                sprintsViewActive: false,
-                calendarActive: false,
-                eventActive: false,
-                resourceActive: false,
-                evaluations: true,
-              })}
+              onClick={() =>
+                setActionActive({
+                  sprintsViewActive: false,
+                  calendarActive: false,
+                  eventActive: false,
+                  resourceActive: false,
+                  evaluations: true,
+                })
+              }
               style={{ borderRadius: '0px 0 30px 0px' }}
               className={
                 actionActive.evaluations ? styles.mentorRowE : styles.mentorRow

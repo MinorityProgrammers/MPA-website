@@ -5,11 +5,7 @@ import styles from '../../styles/MentorCSS/Course.module.css';
 const Job = ({ job }) => (
   <div className={styles.container}>
     <div className={`${styles.containerTitle} ${styles.capstoneTitle}`}>
-      <div>
-        {' '}
-        {job.title}
-        {' '}
-      </div>
+      <div>{job.title}</div>
       <div>
         <Button
           bsPrefix={`btn btn-secondary btn-sm ${styles.reviewBtn}`}
@@ -24,22 +20,15 @@ const Job = ({ job }) => (
     <div className={styles.grid}>
       <div>
         <div className={styles.companyDetail}>
-          <p style={{ fontWeight: 'bold' }}>
-            {job.company.name}
-            {' '}
-          </p>
-          <p>
-            {' '}
-            {job.company.location}
-          </p>
+          <p style={{ fontWeight: 'bold' }}>{job.company.name} </p>
+          <p> {job.company.location}</p>
           <p>{job.company.size}</p>
         </div>
         <div className={styles.capstoneDate}>
           <span>Posted:</span>
-          {' '}
-          {`${job.createdAt.split('T')[0]
-          } at ${
-            job.createdAt.split('T')[1].split('.')[0]}`}
+          {`${job.createdAt.split('T')[0]} at ${
+            job.createdAt.split('T')[1].split('.')[0]
+          }`}
         </div>
       </div>
 

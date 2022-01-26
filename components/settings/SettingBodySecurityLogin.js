@@ -11,7 +11,7 @@ import { uprContext } from '../../contexts/settingsPagesProvider/settingsPagesPr
 import findUserNames from '../../helpers/userNames';
 import findUserEmails from '../../helpers/userEmails';
 
-const SettingBodySecurityLogin = function ({ settingsPage, data, userID }) {
+const SettingBodySecurityLogin = ({ settingsPage, data, userID }) => {
   const router = useRouter();
   const [changePassword, setChangePassword] = useState(false);
   const [usernames, setUsernames] = useState([]);
@@ -21,9 +21,12 @@ const SettingBodySecurityLogin = function ({ settingsPage, data, userID }) {
   const [emailWarning, setEmailWarning] = useState(false);
   const [wrongEmailWarning, setWrongEmailWarning] = useState(false);
 
-  const { updatePasswordRedirection, setUpdatePasswordRedirection } = useContext(uprContext);
+  const { updatePasswordRedirection, setUpdatePasswordRedirection } =
+    useContext(uprContext);
   useEffect(() => {
-    if (updatePasswordRedirection) { setChangePassword(true); }
+    if (updatePasswordRedirection) {
+      setChangePassword(true);
+    }
   }, []);
 
   useEffect(() => {
@@ -35,7 +38,8 @@ const SettingBodySecurityLogin = function ({ settingsPage, data, userID }) {
       });
   }, []);
 
-  const regEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  const regEmail =
+    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
   const inputFields = [
     all.emailField,
@@ -47,17 +51,16 @@ const SettingBodySecurityLogin = function ({ settingsPage, data, userID }) {
 
   const initialInputState = {};
 
-  inputFields.forEach(
-    (field) => { initialInputState[field.name] = ''; },
-    // ex. {someInputFieldName: "inputFieldValue", ...}
-  );
+  inputFields.forEach((field) => {
+    initialInputState[field.name] = '';
+  });
 
   const [inputStates, setInputStates] = useState(initialInputState);
 
   useEffect(() => {
-    inputFields.forEach(
-      (field) => { initialInputState[field.name] = data?.[field.name] || ''; },
-    );
+    inputFields.forEach((field) => {
+      initialInputState[field.name] = data?.[field.name] || '';
+    });
 
     setInputStates(initialInputState);
   }, [data]);
@@ -97,7 +100,8 @@ const SettingBodySecurityLogin = function ({ settingsPage, data, userID }) {
   const toggleWrongUsernameWarning = (on) => {
     if (on) {
       if (!wrongUsernameWarning) {
-        const warning = "<p class='cp-warning'>Wrong username, allowed: letters, numbers and dashes</p>";
+        const warning =
+          "<p class='cp-warning'>Wrong username, allowed: letters, numbers and dashes</p>";
         document
           .getElementsByClassName('securityLoginPasswordInput')[0]
           .insertAdjacentHTML('afterend', warning);
@@ -141,10 +145,10 @@ const SettingBodySecurityLogin = function ({ settingsPage, data, userID }) {
 
   const handleChange = (name, value) => {
     if (
-      name === 'userName'
-      && usernames.includes(value)
-      && data?.userName !== value
-      && !(value === '')
+      name === 'userName' &&
+      usernames.includes(value) &&
+      data?.userName !== value &&
+      !(value === '')
     ) {
       toggleUsernameWarning(true);
     } else {
@@ -158,10 +162,10 @@ const SettingBodySecurityLogin = function ({ settingsPage, data, userID }) {
     }
 
     if (
-      name === 'email'
-      && emails.includes(value)
-      && data?.email !== value
-      && !(value === '')
+      name === 'email' &&
+      emails.includes(value) &&
+      data?.email !== value &&
+      !(value === '')
     ) {
       toggleEmailWarning(true);
     } else {
@@ -169,9 +173,9 @@ const SettingBodySecurityLogin = function ({ settingsPage, data, userID }) {
     }
 
     if (
-      name === 'email'
-      && (value.trim().length < 5
-        || (value.trim().length >= 5 && !regEmail.test(value.trim())))
+      name === 'email' &&
+      (value.trim().length < 5 ||
+        (value.trim().length >= 5 && !regEmail.test(value.trim())))
     ) {
       toggleWrongEmailWarning(true);
     } else {
@@ -184,31 +188,31 @@ const SettingBodySecurityLogin = function ({ settingsPage, data, userID }) {
   const handleSubmit = () => {
     if (
       // email already exists
-      emails.includes(inputStates?.email)
-      && data?.email !== inputStates?.email
-      && !(inputStates?.email === '')
+      emails.includes(inputStates?.email) &&
+      data?.email !== inputStates?.email &&
+      !(inputStates?.email === '')
     ) {
       toggleEmailWarning(true);
     } else if (
-      inputStates?.email.trim().length < 5
-      || (inputStates?.email.trim().length >= 5
-        && !regEmail.test(inputStates?.email.trim()))
+      inputStates?.email.trim().length < 5 ||
+      (inputStates?.email.trim().length >= 5 &&
+        !regEmail.test(inputStates?.email.trim()))
     ) {
       // email format is wrong
       toggleWrongEmailWarning(true);
     } else if (
       // username already exists
-      usernames.includes(inputStates?.userName)
-      && data?.userName !== inputStates?.userName
-      && !(inputStates?.userName === '')
+      usernames.includes(inputStates?.userName) &&
+      data?.userName !== inputStates?.userName &&
+      !(inputStates?.userName === '')
     ) {
       toggleUsernameWarning(true);
     } else if (/[^\w\-]/.test(inputStates?.userName)) {
       // username contains symbols
       toggleWrongUsernameWarning(true);
     } else if (
-      data?.email === inputStates?.email
-      && data?.userName === inputStates?.userName
+      data?.email === inputStates?.email &&
+      data?.userName === inputStates?.userName
     ) {
       // email and username remains unchanged
       const warning = "<p class='cp-warning'>No changes made to save</p>";
@@ -227,12 +231,16 @@ const SettingBodySecurityLogin = function ({ settingsPage, data, userID }) {
 
       if (data?.userName === inputStates?.userName) {
         const slug = data?.userName;
-        if (slug) { router.push(`/user/${slug}`); }
+        if (slug) {
+          router.push(`/user/${slug}`);
+        }
       } else {
         // wait until username updates to generate new route for user profile page
         setTimeout(() => {
           const slug = inputStates?.userName;
-          if (slug) { router.push(`/user/${slug}`); }
+          if (slug) {
+            router.push(`/user/${slug}`);
+          }
         }, 3000);
       }
     }
@@ -241,7 +249,9 @@ const SettingBodySecurityLogin = function ({ settingsPage, data, userID }) {
   const closeProfileSetup = () => {
     // discard changes
     const slug = data?.userName;
-    if (slug) { router.push(`/user/${slug}`); }
+    if (slug) {
+      router.push(`/user/${slug}`);
+    }
   };
 
   return (
@@ -279,16 +289,18 @@ const SettingBodySecurityLogin = function ({ settingsPage, data, userID }) {
           <h5>
             <span
               onClick={() => {
-                if (updatePasswordRedirection) { setUpdatePasswordRedirection(false); }
+                if (updatePasswordRedirection) {
+                  setUpdatePasswordRedirection(false);
+                }
                 setChangePassword((state) => !state);
               }}
             >
               Change Password
             </span>
           </h5>
-          {changePassword
+          {changePassword &&
             // display an input component for each input field
-            && [
+            [
               all.currentPasswordField,
               all.newPasswordField,
               all.confirmNewPasswordField,

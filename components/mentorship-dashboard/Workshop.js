@@ -5,11 +5,7 @@ import styles from '../../styles/MentorCSS/Course.module.css';
 const Workshop = ({ workshop, mentor, mentee }) => (
   <div className={styles.container}>
     <div className={styles.containerTitle}>
-      <div>
-        {' '}
-        {workshop.title}
-        {' '}
-      </div>
+      <div>{workshop.title}</div>
     </div>
     <div className={styles.line} />
     <div className={styles.grid}>
@@ -19,18 +15,18 @@ const Workshop = ({ workshop, mentor, mentee }) => (
             <div className={styles.colTitle}>Mentor</div>
             <div className={styles.menteesIcon}>
               <OverlayTrigger
-                overlay={(
+                overlay={
                   <Tooltip>
                     {`${mentor.user_id.firstName} ${mentor.user_id.lastName}`}
                   </Tooltip>
-                  )}
+                }
               >
                 <img
                   src={
-                      mentor.user_id.profilePicture
-                        ? mentor.user_id.profilePicture
-                        : '/assets/images/mentor/unknown-pic.jfif'
-                    }
+                    mentor.user_id.profilePicture
+                      ? mentor.user_id.profilePicture
+                      : '/assets/images/mentor/unknown-pic.jfif'
+                  }
                   alt={mentor.user_id.lastName}
                 />
               </OverlayTrigger>
@@ -40,18 +36,18 @@ const Workshop = ({ workshop, mentor, mentee }) => (
             <div className={styles.colTitle}>Mentees</div>
             <div className={styles.menteesIcon}>
               <OverlayTrigger
-                overlay={(
+                overlay={
                   <Tooltip>
                     {`${mentee.user_id.firstName} ${mentee.user_id.lastName}`}
                   </Tooltip>
-                  )}
+                }
               >
                 <img
                   src={
-                      mentee.user_id.profilePicture
-                        ? mentee.user_id.profilePicture
-                        : '/assets/images/mentor/unknown-pic.jfif'
-                    }
+                    mentee.user_id.profilePicture
+                      ? mentee.user_id.profilePicture
+                      : '/assets/images/mentor/unknown-pic.jfif'
+                  }
                   alt={mentee.user_id.lastName}
                 />
               </OverlayTrigger>
@@ -87,10 +83,9 @@ const Workshop = ({ workshop, mentor, mentee }) => (
             </div>
             <div className={styles.capstoneDate}>
               <span>Posted:</span>
-              {' '}
-              {`${workshop.createdAt.split('T')[0]
-              } at ${
-                workshop.createdAt.split('T')[1].split('.')[0]}`}
+              {`${workshop.createdAt.split('T')[0]} at ${
+                workshop.createdAt.split('T')[1].split('.')[0]
+              }`}
             </div>
           </div>
         </div>

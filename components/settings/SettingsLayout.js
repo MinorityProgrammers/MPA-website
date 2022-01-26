@@ -1,6 +1,4 @@
-import React, {
-  useEffect, useState, useContext, useRef,
-} from 'react';
+import React, { useEffect, useState, useContext, useRef } from 'react';
 import { useRouter } from 'next/router';
 import decode from 'jwt-decode';
 import Layout from '../Layout';
@@ -15,13 +13,11 @@ import ComingSoon from '../ComingSoon';
 import useDetectOutsideClick from '../UseDetectOutsideClick';
 import styles from '../../styles/settings/settingsLayout.module.css';
 
-const SettingsLayout = function ({ setData, children, settingsPage }) {
+const SettingsLayout = ({ setData, children, settingsPage }) => {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef(null);
   const [hide, setHide] = useDetectOutsideClick(dropdownRef, false);
   const [userData, setUserData] = useState({});
-  // const [isLoggedIn, setIsLoggedIn] = useState(false);
-  // const [ownsProfile, setOwnsProfile] = useState(false);
 
   const router = useRouter();
 
@@ -30,26 +26,14 @@ const SettingsLayout = function ({ setData, children, settingsPage }) {
   };
 
   // states from global context
-  const {
-    profileDispatch,
-    authDispatch,
-  } = useContext(GlobalContext);
+  const { profileDispatch, authDispatch } = useContext(GlobalContext);
 
   // grab a token from local storage so as user info
   useEffect(() => {
-    // console.log(window.localStorage.getItem("jwtToken"));
     if (window.localStorage.getItem('jwtToken')) {
       getProfile(setUserData)(profileDispatch);
     }
   }, []);
-
-  // // grab a user info from local storage
-  //   useEffect(() => {
-  //     if (window.localStorage.getItem("userInfo")) {
-  //       const userInfo = JSON.parse(localStorage.getItem("userInfo"));
-  //     //   console.log(userInfo.user)
-  //     }
-  //   }, []);
 
   useEffect(() => {
     const token = window.localStorage.getItem('jwtToken');
@@ -76,22 +60,22 @@ const SettingsLayout = function ({ setData, children, settingsPage }) {
   };
 
   useEffect(() => {
-    const token = typeof window !== 'undefined'
-      ? window.localStorage.getItem('jwtToken')
-      : null;
+    const token =
+      typeof window !== 'undefined'
+        ? window.localStorage.getItem('jwtToken')
+        : null;
     if (token) {
       const decodedToken = decode(token);
       if (decodedToken.exp * 1000 < new Date().getTime()) handleLogout();
     }
   }, []);
 
-  const toTitleCase = (str) => str?.replace(
-    /\w\S*/g,
-    (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(),
-  );
+  const toTitleCase = (str) =>
+    str?.replace(
+      /\w\S*/g,
+      (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
+    );
 
-  // console.log(userData);
-  // console.log(children);
   return (
     <Layout pageTitle={`Settings: ${toTitleCase(settingsPage)}`}>
       <HomepageNav
@@ -256,7 +240,9 @@ const SettingsLayout = function ({ setData, children, settingsPage }) {
                       <img
                         src="../../assets/images/settings/wallet.svg"
                         alt="wallet icon"
-                        onClick={() => router.push('/settings/wallet/my-wallet')}
+                        onClick={() =>
+                          router.push('/settings/wallet/my-wallet')
+                        }
                       />
                     </div>
                     <span
@@ -272,7 +258,9 @@ const SettingsLayout = function ({ setData, children, settingsPage }) {
                             : '../../assets/images/settings/arrow.svg'
                         }
                         alt="arrow icon"
-                        onClick={() => router.push('/settings/wallet/my-wallet')}
+                        onClick={() =>
+                          router.push('/settings/wallet/my-wallet')
+                        }
                       />
                     </div>
                   </h2>
@@ -289,11 +277,15 @@ const SettingsLayout = function ({ setData, children, settingsPage }) {
                       <img
                         src="../../assets/images/settings/notifications.svg"
                         alt="notifications icon"
-                        onClick={() => router.push('/settings/notifications/notifications')}
+                        onClick={() =>
+                          router.push('/settings/notifications/notifications')
+                        }
                       />
                     </div>
                     <span
-                      onClick={() => router.push('/settings/notifications/notifications')}
+                      onClick={() =>
+                        router.push('/settings/notifications/notifications')
+                      }
                     >
                       Notifications
                     </span>
@@ -305,7 +297,9 @@ const SettingsLayout = function ({ setData, children, settingsPage }) {
                             : '../../assets/images/settings/arrow.svg'
                         }
                         alt="arrow icon"
-                        onClick={() => router.push('/settings/notifications/notifications')}
+                        onClick={() =>
+                          router.push('/settings/notifications/notifications')
+                        }
                       />
                     </div>
                   </h2>

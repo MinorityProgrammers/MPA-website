@@ -3,10 +3,8 @@ import Link from 'next/link';
 import styles from './startups-card.module.css';
 import { numFormat, percentFund } from '../../../helpers/formatIncubator';
 
-const StartupsCard = function ({ data }) {
-  const {
-    startupImage, name, about, targetAmount, amount, _id,
-  } = data;
+const StartupsCard = ({ data }) => {
+  const { startupImage, name, about, targetAmount, amount, _id } = data;
 
   return (
     <div className={styles.container}>
@@ -23,19 +21,20 @@ const StartupsCard = function ({ data }) {
       <div className={styles.fundContainer}>
         <div className={styles.fundTitle}>Fundraised</div>
         <div className={styles.fundRate}>
-          {percentFund(targetAmount, amount)}
-          % complete
+          {percentFund(targetAmount, amount)}% complete
         </div>
       </div>
 
       <div className={styles.fundRaised}>
-        $
-        {numFormat(amount)}
+        ${numFormat(amount)}
         /$
         {numFormat(targetAmount)}
       </div>
       <div className={styles.fundBar}>
-        <div style={{ width: `${percentFund(targetAmount, amount)}%` }} className={styles.reading} />
+        <div
+          style={{ width: `${percentFund(targetAmount, amount)}%` }}
+          className={styles.reading}
+        />
       </div>
       <Link href={`/startup/${_id}`}>
         <a>

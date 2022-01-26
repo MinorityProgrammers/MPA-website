@@ -3,9 +3,17 @@ import Moment from 'react-moment';
 import { FaSortUp, FaSortDown } from 'react-icons/fa';
 import axios from 'axios';
 
-const Proposal = function (props) {
+const Proposal = (props) => {
   const {
-    title, type, Category, proposal, createdAt, description, userName, _id, image,
+    title,
+    type,
+    Category,
+    proposal,
+    createdAt,
+    description,
+    userName,
+    _id,
+    image,
   } = props;
 
   const [reply, setReply] = useState();
@@ -45,11 +53,14 @@ const Proposal = function (props) {
   // upVotes _______________
 
   useEffect(() => {
-    const res = axios.get(`${process.env.BASE_URI}/upVotes/proposalUpvote/${_id}`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    const res = axios.get(
+      `${process.env.BASE_URI}/upVotes/proposalUpvote/${_id}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
     res.then((data) => setUpVotes(data));
   }, []);
 
@@ -58,36 +69,30 @@ const Proposal = function (props) {
   // downVotes _______________
 
   useEffect(() => {
-    const res = axios.get(`${process.env.BASE_URI}/downVotes/proposalDownvote/${_id}`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    const res = axios.get(
+      `${process.env.BASE_URI}/downVotes/proposalDownvote/${_id}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
     res.then((data) => setDownVotes(data));
   }, []);
 
   // downVotes _______________
   return (
-    <div
-      className="single-proposal tw-bg-white tw-p-10 tw-mb-10"
-      key={_id}
-    >
+    <div className="single-proposal tw-bg-white tw-p-10 tw-mb-10" key={_id}>
       <div className="s-p-title tw-mb-3 tw-flex tw-justify-between">
         <div>
-          <h3 className="tw-text-2xl tw-font-semibold">
-            {title}
-          </h3>
+          <h3 className="tw-text-2xl tw-font-semibold">{title}</h3>
           <p>
             <span className="tw-mr-3">
-              <strong>Type:</strong>
-              {' '}
-              {type}
+              <strong>Type:</strong> {type}
             </span>
 
             <span>
-              <strong>Category:</strong>
-              {' '}
-              {Category}
+              <strong>Category:</strong> {Category}
             </span>
           </p>
         </div>
@@ -107,20 +112,13 @@ const Proposal = function (props) {
 
           <div className=" tw-mr-3 -mt-1">
             <p>
-              Created by
-              {' '}
-              <br />
-              {' '}
-              <strong>{userName}</strong>
+              Created by <br /> <strong>{userName}</strong>
             </p>
           </div>
 
           <div className="">
             <p>
-              Created on
-              {' '}
-              <br />
-              {' '}
+              Created on <br />
               <strong>
                 <Moment format="MMM D" withTitle>
                   {createdAt}
@@ -132,28 +130,22 @@ const Proposal = function (props) {
         <div className="count tw-flex tw-self-center mr-t">
           <div className=" tw-mr-3">
             <p>
-              <strong>{reply}</strong>
-              {' '}
-              <br />
-              {' '}
-              Replies
+              <strong>{reply}</strong> <br /> Replies
             </p>
           </div>
 
           <div className=" tw-mr-3">
             <p>
-              <strong>{views.data.data.length}</strong>
-              {' '}
-              <br />
-              {' '}
-              Views
+              <strong>{views.data.data.length}</strong> <br /> Views
             </p>
           </div>
           <div className=" ">
             <p className="tw-flex tw-flex-col">
               <FaSortUp onClick={() => setVotes(upVotes.data.data.length)} />
               <strong className="tw--my-3">{votes || defaultVotes}</strong>
-              <FaSortDown onClick={() => setVotes(downVotes.data.data.length)} />
+              <FaSortDown
+                onClick={() => setVotes(downVotes.data.data.length)}
+              />
             </p>
           </div>
         </div>

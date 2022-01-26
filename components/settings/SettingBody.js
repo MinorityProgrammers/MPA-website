@@ -3,19 +3,20 @@ import { useRouter } from 'next/router';
 import styles from '../../styles/settings/settingBody.module.css';
 import getSpecificSettingsLayoutNavigationList from '../../helpers/getSpecificSettingsLayoutNavigationList';
 
-const SettingBody = function ({
+const SettingBody = ({
   settingsPage,
   children,
   closeProfileSetup,
   handleSubmit,
-}) {
+}) => {
   const router = useRouter();
 
   const settingsSubPage = router.pathname.substring(
-    router.pathname.lastIndexOf('/') + 1,
+    router.pathname.lastIndexOf('/') + 1
   );
 
-  const settingsNameAndList = getSpecificSettingsLayoutNavigationList(settingsPage);
+  const settingsNameAndList =
+    getSpecificSettingsLayoutNavigationList(settingsPage);
 
   return (
     <div className={styles.detailSettings}>
@@ -23,7 +24,7 @@ const SettingBody = function ({
         <h1>
           {
             settingsNameAndList?.content?.find(
-              (dataObj) => dataObj.subPath === settingsSubPage,
+              (dataObj) => dataObj.subPath === settingsSubPage
             )?.name
           }
         </h1>
@@ -31,17 +32,17 @@ const SettingBody = function ({
       <div
         className={styles.settingContent}
         style={
-          settingsSubPage === 'my-wallet'
-          || settingsSubPage === 'votes'
-          || settingsSubPage === 'management'
+          settingsSubPage === 'my-wallet' ||
+          settingsSubPage === 'votes' ||
+          settingsSubPage === 'management'
             ? { height: '94%' }
             : {}
         }
       >
         {children}
-        {settingsSubPage !== 'my-wallet'
-          && settingsSubPage !== 'votes'
-          && settingsSubPage !== 'management' && (
+        {settingsSubPage !== 'my-wallet' &&
+          settingsSubPage !== 'votes' &&
+          settingsSubPage !== 'management' && (
             <div className={styles.footerButtons}>
               <button
                 type="button"
@@ -64,7 +65,7 @@ const SettingBody = function ({
                 Save Changes
               </button>
             </div>
-        )}
+          )}
       </div>
     </div>
   );

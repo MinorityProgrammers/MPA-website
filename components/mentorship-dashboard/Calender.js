@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { isSameDay, set } from 'date-fns';
+import { isSameDay } from 'date-fns';
 import { enGB } from 'date-fns/locale';
 import { Calendar } from 'react-nice-dates';
 import 'react-nice-dates/build/style.css';
@@ -18,8 +18,7 @@ export default function CalendarEvent({
   const [selectedDates, setSelectedDates] = useState([]);
   const [date, setDate] = useState([]);
   const [events, setEvents] = useState([]);
-  // const [ampm, setAmpm] = useState("");
-  // console.log(selectedDates);
+
   useEffect(() => {
     const arr = [];
     data.forEach((d) => {
@@ -33,13 +32,16 @@ export default function CalendarEvent({
   }, []);
 
   const modifiers = {
-    selected: (_date) => selectedDates.some((selectedDate) => isSameDay(selectedDate, _date)),
+    selected: (_date) =>
+      selectedDates.some((selectedDate) => isSameDay(selectedDate, _date)),
   };
   const handleDayClick = (_date) => {
-    const day = _date.getDate() < 10 ? `0${_date.getDate()}` : `${_date.getDate()}`;
-    const month = _date.getMonth() + 1 < 10
-      ? `0${_date.getMonth() + 1}`
-      : `${_date.getMonth() + 1}`;
+    const day =
+      _date.getDate() < 10 ? `0${_date.getDate()}` : `${_date.getDate()}`;
+    const month =
+      _date.getMonth() + 1 < 10
+        ? `0${_date.getMonth() + 1}`
+        : `${_date.getMonth() + 1}`;
     const newDate = `${_date.getFullYear()}-${month}-${day}`;
     setDate(newDate);
     setModalShow(true);
