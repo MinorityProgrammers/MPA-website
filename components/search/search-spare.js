@@ -80,13 +80,23 @@ const JobsCard = ({ click, popup, data }) => {
           <>
             <div className={styles.sect}>
               <div className={styles.sectTitle}>Requirements</div>
-              {min_requirements &&
-                min_requirements.map(({ skill, years }) => (
+              {min_requirements
+                && min_requirements.map(({ skill, years }) => (
                   <div
                     className={`${styles.list} ${popup ? styles.expand : null}`}
                   >
-                    <span className={`${styles.listStyle} ${styles.disc}`} />{' '}
-                    Skill: {skill} Experience: {years} year(s){' '}
+                    <span className={`${styles.listStyle} ${styles.disc}`} />
+                    {' '}
+                    Skill:
+                    {' '}
+                    {skill}
+                    {' '}
+                    Experience:
+                    {' '}
+                    {years}
+                    {' '}
+                    year(s)
+                    {' '}
                   </div>
                 ))}
             </div>

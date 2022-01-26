@@ -15,7 +15,7 @@ import NFT from '../../artifacts/contracts/NFT.sol/NFT.json';
 const CourseCategories = ({ user, certificates, loading }) => {
   const pageCount = Math.ceil(certificates.length / 4);
   const [currentCertificates, setCurrentCertificates] = useState(
-    certificates.slice(0, 4)
+    certificates.slice(0, 4),
   );
   const [isActive, setIsActive] = useState(false);
   const [isMinting, setIsMinting] = useState(false);
@@ -74,7 +74,7 @@ const CourseCategories = ({ user, certificates, loading }) => {
         let contract = new ethers.Contract(nftaddress, NFT.abi, signer);
         let transaction = await contract.mintNFT(
           nftaddress,
-          mintedMetadata.ipfs()
+          mintedMetadata.ipfs(),
         );
         const tx = await transaction.wait();
         const event = tx.events[0];

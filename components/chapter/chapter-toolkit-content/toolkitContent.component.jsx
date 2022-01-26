@@ -4,7 +4,9 @@ import styles from './toolkitContent.module.css';
 import Document from '../chapter-document/document.component';
 
 const ToolkitContent = ({ data, links }) => {
-  const { name, subtitle, description, documents, slug } = data;
+  const {
+    name, subtitle, description, documents, slug,
+  } = data;
   const [scrollPos, setScrollPos] = useState(0);
   const menuRef = useRef(null);
 
@@ -31,7 +33,8 @@ const ToolkitContent = ({ data, links }) => {
               className={styles.arrow}
               src="/assets/images/chapter/arrow-double-left.png"
               alt="arrow-left"
-            />{' '}
+            />
+            {' '}
           </div>
           <div
             className={styles.links}
@@ -63,7 +66,8 @@ const ToolkitContent = ({ data, links }) => {
               className={styles.arrow}
               src="/assets/images/chapter/arrow-double-right.png"
               alt="arrow-right"
-            />{' '}
+            />
+            {' '}
           </div>
         </div>
 

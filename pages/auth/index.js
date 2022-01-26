@@ -33,9 +33,8 @@ const Index = () => {
   const router = useRouter();
 
   useEffect(() => {
-    const user =
-      JSON.parse(window?.localStorage.getItem('userInfo'))?.user ||
-      JSON.parse(window?.localStorage.getItem('userInfo'));
+    const user = JSON.parse(window?.localStorage.getItem('userInfo'))?.user
+      || JSON.parse(window?.localStorage.getItem('userInfo'));
     if (user?.isUpdated === true) {
       const slug = user?.userName;
       router.push(`/user/${slug}`);

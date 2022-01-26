@@ -22,10 +22,10 @@ const SponsorshipCheckout = ({
           sponsorshipOption === 'ally'
             ? 'assets/images/sponsorship/ally.svg'
             : sponsorshipOption === 'friend'
-            ? 'assets/images/sponsorship/friend.svg'
-            : sponsorshipOption === 'mafia'
-            ? 'assets/images/sponsorship/mafia.png'
-            : 'assets/images/sponsorship/ally.svg'
+              ? 'assets/images/sponsorship/friend.svg'
+              : sponsorshipOption === 'mafia'
+                ? 'assets/images/sponsorship/mafia.png'
+                : 'assets/images/sponsorship/ally.svg'
         }
         alt="ally icon"
       />
@@ -35,10 +35,10 @@ const SponsorshipCheckout = ({
           sponsorshipOption === 'ally'
             ? 'assets/images/sponsorship/ally.svg'
             : sponsorshipOption === 'friend'
-            ? 'assets/images/sponsorship/friend.svg'
-            : sponsorshipOption === 'mafia'
-            ? 'assets/images/sponsorship/mafia.png'
-            : 'assets/images/sponsorship/friend.svg'
+              ? 'assets/images/sponsorship/friend.svg'
+              : sponsorshipOption === 'mafia'
+                ? 'assets/images/sponsorship/mafia.png'
+                : 'assets/images/sponsorship/friend.svg'
         }
         alt="ally icon"
       />
@@ -49,10 +49,10 @@ const SponsorshipCheckout = ({
           {sponsorshipOption === 'ally'
             ? 'MINORITY ALLY'
             : sponsorshipOption === 'friend'
-            ? 'MINORITY FRIEND'
-            : sponsorshipOption === 'mafia'
-            ? 'MINORITY MAFIA'
-            : 'SPONSORSHIP'}
+              ? 'MINORITY FRIEND'
+              : sponsorshipOption === 'mafia'
+                ? 'MINORITY MAFIA'
+                : 'SPONSORSHIP'}
         </h1>
       </div>
 

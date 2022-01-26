@@ -5,7 +5,9 @@ import decode from 'jwt-decode';
 import { signOut } from 'next-auth/client';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, {
+  useContext, useEffect, useRef, useState,
+} from 'react';
 import { BiMenuAltLeft } from 'react-icons/bi';
 import { useMoralis } from 'react-moralis';
 import Web3 from 'web3';
@@ -101,7 +103,9 @@ async function onDisconnect() {
   selectedAccount = null;
 }
 
-const HomepageNav = ({ setToken, setData, page, open, setOpen = () => {} }) => {
+const HomepageNav = ({
+  setToken, setData, page, open, setOpen = () => {},
+}) => {
   const dropdownRef = useRef(null);
   const dropdownMobileRef = useRef(null);
   const searchMobileRef = useRef(null);
@@ -115,11 +119,11 @@ const HomepageNav = ({ setToken, setData, page, open, setOpen = () => {} }) => {
   const [searchValue, setSearch] = useState('');
   const [isActiveMobile, setIsActiveMobile] = useDetectOutsideClick(
     dropdownMobileRef,
-    false
+    false,
   );
   const [isActiveSearch, setIsActiveSearch] = useDetectOutsideClick(
     searchMobileRef,
-    false
+    false,
   );
   const [, setConnect] = useState(false);
 
@@ -171,54 +175,52 @@ const HomepageNav = ({ setToken, setData, page, open, setOpen = () => {} }) => {
   } = useContext(GlobalContext || {});
 
   useEffect(() => {
-    const token =
-      typeof window !== 'undefined'
-        ? window.localStorage.getItem('jwtToken')
-        : null;
-    const userInfo =
-      typeof window !== 'undefined'
-        ? window.localStorage.getItem('userInfo')
-        : null;
+    const token = typeof window !== 'undefined'
+      ? window.localStorage.getItem('jwtToken')
+      : null;
+    const userInfo = typeof window !== 'undefined'
+      ? window.localStorage.getItem('userInfo')
+      : null;
 
     if (token === null || userInfo === {}) {
       setUserData(null);
       if (
-        page === 'MentorshipProgram' ||
-        page === 'Consultancy' ||
-        page === 'learn-page' ||
-        page === 'About' ||
-        page === 'Careers' ||
-        page === 'auth' ||
-        page === 'Incubator' ||
-        page === 'Chat' ||
-        page === 'CreateProfile' ||
-        page === 'user' ||
-        page === 'settings-overview' ||
-        page === 'settings-profile' ||
-        page === 'settings-security' ||
-        page === 'settings-wallet' ||
-        page === 'settings-notifications'
+        page === 'MentorshipProgram'
+        || page === 'Consultancy'
+        || page === 'learn-page'
+        || page === 'About'
+        || page === 'Careers'
+        || page === 'auth'
+        || page === 'Incubator'
+        || page === 'Chat'
+        || page === 'CreateProfile'
+        || page === 'user'
+        || page === 'settings-overview'
+        || page === 'settings-profile'
+        || page === 'settings-security'
+        || page === 'settings-wallet'
+        || page === 'settings-notifications'
       ) {
         setData(null);
       }
     } else {
       getProfile(setUserData)(profileDispatch);
       if (
-        page === 'MentorshipProgram' ||
-        page === 'Consultancy' ||
-        page === 'About' ||
-        page === 'Careers' ||
-        page === 'learn-page' ||
-        page === 'auth' ||
-        page === 'Incubator' ||
-        page === 'Chat' ||
-        page === 'CreateProfile' ||
-        page === 'user' ||
-        page === 'settings-overview' ||
-        page === 'settings-profile' ||
-        page === 'settings-security' ||
-        page === 'settings-wallet' ||
-        page === 'settings-notifications'
+        page === 'MentorshipProgram'
+        || page === 'Consultancy'
+        || page === 'About'
+        || page === 'Careers'
+        || page === 'learn-page'
+        || page === 'auth'
+        || page === 'Incubator'
+        || page === 'Chat'
+        || page === 'CreateProfile'
+        || page === 'user'
+        || page === 'settings-overview'
+        || page === 'settings-profile'
+        || page === 'settings-security'
+        || page === 'settings-wallet'
+        || page === 'settings-notifications'
       ) {
         getProfile(setData)(profileDispatch);
       }
@@ -252,10 +254,9 @@ const HomepageNav = ({ setToken, setData, page, open, setOpen = () => {} }) => {
   };
 
   useEffect(() => {
-    const token =
-      typeof window !== 'undefined'
-        ? window.localStorage.getItem('jwtToken')
-        : null;
+    const token = typeof window !== 'undefined'
+      ? window.localStorage.getItem('jwtToken')
+      : null;
     if (token) {
       const decodedToken = decode(token);
       if (decodedToken.exp * 1000 < new Date().getTime()) handleLogout();
@@ -561,8 +562,8 @@ const HomepageNav = ({ setToken, setData, page, open, setOpen = () => {} }) => {
 
               <li
                 className={
-                  router.pathname ===
-                  'https://snapshot.org/#/minorityprogrammers.eth'
+                  router.pathname
+                  === 'https://snapshot.org/#/minorityprogrammers.eth'
                     ? 'nav-item active-link'
                     : 'nav-item'
                 }

@@ -13,9 +13,19 @@ const SponsorshipPaymentDetails = ({
     <div className="container">
       <h1>Sponsorship Payment complete!</h1>
       <p>
-        Your MINORITY {sponsorshipOption?.toUpperCase()} sponsorship payment of
-        ${Number(amount).toFixed(2)} has been processed. An e-mail has been sent
-        to {billingDetails?.payer?.email_address}. Please save this for your
+        Your MINORITY
+        {' '}
+        {sponsorshipOption?.toUpperCase()}
+        {' '}
+        sponsorship payment of
+        $
+        {Number(amount).toFixed(2)}
+        {' '}
+        has been processed. An e-mail has been sent
+        to
+        {' '}
+        {billingDetails?.payer?.email_address}
+        . Please save this for your
         records.
       </p>
       <i className="fas fa-check-circle icon" />

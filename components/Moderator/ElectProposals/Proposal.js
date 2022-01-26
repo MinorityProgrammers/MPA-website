@@ -44,7 +44,7 @@ const Proposal = ({ proposal }) => {
         headers: {
           Authorization: `Bearer ${token}`,
         },
-      }
+      },
     );
     res.then((data) => setUpVotes(data));
   }, []);
@@ -60,7 +60,7 @@ const Proposal = ({ proposal }) => {
         headers: {
           Authorization: `Bearer ${token}`,
         },
-      }
+      },
     );
     res.then((data) => setDownVotes(data));
   }, []);
@@ -79,7 +79,9 @@ const Proposal = ({ proposal }) => {
         </h3>
         <p>
           <span className="tw-mr-3">
-            <strong>Type:</strong> {proposal.type}
+            <strong>Type:</strong>
+            {' '}
+            {proposal.type}
           </span>
 
           <span>
@@ -101,13 +103,19 @@ const Proposal = ({ proposal }) => {
 
           <div className=" tw-mr-3 -mt-1">
             <p>
-              Created by <br /> <strong>{proposal.userId.userName}</strong>
+              Created by
+              {' '}
+              <br />
+              {' '}
+              <strong>{proposal.userId.userName}</strong>
             </p>
           </div>
 
           <div className="">
             <p>
-              Created on <br />
+              Created on
+              {' '}
+              <br />
               <strong>
                 <Moment format="MMM D" withTitle>
                   {proposal.createdAt}
@@ -119,14 +127,21 @@ const Proposal = ({ proposal }) => {
         <div className="count tw-flex tw-self-center mr-t">
           <div className=" tw-mr-3">
             <p>
-              {reply === 0 ? <strong> 1 </strong> : <strong>{reply}</strong>}{' '}
-              <br /> Replies
+              {reply === 0 ? <strong> 1 </strong> : <strong>{reply}</strong>}
+              {' '}
+              <br />
+              {' '}
+              Replies
             </p>
           </div>
 
           <div className=" tw-mr-3">
             <p>
-              <strong>{views.data.data.length}</strong> <br /> Views
+              <strong>{views.data.data.length}</strong>
+              {' '}
+              <br />
+              {' '}
+              Views
             </p>
           </div>
           <div className=" ">

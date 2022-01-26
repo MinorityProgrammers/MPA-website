@@ -6,7 +6,7 @@ import styles from '../../styles/settings/createSettingAddition.module.css';
 const CreateSettingAddition = ({ values, setValue }) => {
   const router = useRouter();
   const settingsSubPage = router.pathname.substring(
-    router.pathname.lastIndexOf('/') + 1
+    router.pathname.lastIndexOf('/') + 1,
   );
 
   const checkedValues = values.filter((value) => value !== '');
@@ -21,22 +21,21 @@ const CreateSettingAddition = ({ values, setValue }) => {
   return (
     <div className={styles.cpSkillsContainer}>
       {checkedValues.map(
-        (value, key) =>
-          value !== '' && (
-            <span
-              className={
-                `${styles.cpSkill} ` +
-                `${settingsSubPage === 'background' && styles.bgcpSkill}`
+        (value, key) => value !== '' && (
+        <span
+          className={
+                `${styles.cpSkill} `
+                + `${settingsSubPage === 'background' && styles.bgcpSkill}`
               }
-              key={`${key + 1}`}
-            >
-              {value}
-              <AiFillCloseCircle
-                className={styles.deleteSkill}
-                onClick={() => deleteValue(value)}
-              />
-            </span>
-          )
+          key={`${key + 1}`}
+        >
+          {value}
+          <AiFillCloseCircle
+            className={styles.deleteSkill}
+            onClick={() => deleteValue(value)}
+          />
+        </span>
+        ),
       )}
     </div>
   );

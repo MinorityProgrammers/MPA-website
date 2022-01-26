@@ -1,7 +1,9 @@
 import React from 'react';
 import styles from './interview_card.module.css';
 
-const InterviewCard = ({ date, time, name, description, image }) => (
+const InterviewCard = ({
+  date, time, name, description, image,
+}) => (
   <div>
     <div className={styles.root}>
       <div className={styles.head}>

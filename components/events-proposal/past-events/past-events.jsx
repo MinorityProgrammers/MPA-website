@@ -44,18 +44,18 @@ const PastEvents = ({ eventStatus, events, token }) => {
           {eventStatus === 'pending'
             ? 'Waiting for'
             : eventStatus === 'approved'
-            ? 'Events'
-            : eventStatus === 'rejected'
-            ? 'Events'
-            : ''}
+              ? 'Events'
+              : eventStatus === 'rejected'
+                ? 'Events'
+                : ''}
           <br />
           {eventStatus === 'pending'
             ? 'approval'
             : eventStatus === 'approved'
-            ? 'Approved'
-            : eventStatus === 'rejected'
-            ? 'Rejected'
-            : ''}
+              ? 'Approved'
+              : eventStatus === 'rejected'
+                ? 'Rejected'
+                : ''}
         </div>
 
         {view.length ? (
@@ -67,7 +67,10 @@ const PastEvents = ({ eventStatus, events, token }) => {
                 <img src="/assets/images/events-arrow-left.png" alt="" />
               </div>
               <div className={styles.count}>
-                {count} - {maxCount}
+                {count}
+                {' '}
+                -
+                {maxCount}
               </div>
               <div onClick={handleUp} className={styles.arrowRight}>
                 <img src="/assets/images/events-arrow-right.png" alt="" />
@@ -95,7 +98,10 @@ const PastEvents = ({ eventStatus, events, token }) => {
               <img src="/assets/images/events-arrow-left.png" alt="" />
             </div>
             <div className={styles.count}>
-              {count} - {maxCount}
+              {count}
+              {' '}
+              -
+              {maxCount}
             </div>
             <div onClick={handleUp} className={styles.arrowRight}>
               <img src="/assets/images/events-arrow-right.png" alt="" />

@@ -46,8 +46,8 @@ const UserCourses = ({ enrolledCourses, user }) => {
           }
         >
           <Slider {...conditionalInfinite}>
-            {enrolledCourses &&
-              enrolledCourses.map((course) => (
+            {enrolledCourses
+              && enrolledCourses.map((course) => (
                 <UserCoursesList
                   enrolledCourse={course}
                   key={course._id}

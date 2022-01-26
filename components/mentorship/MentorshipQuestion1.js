@@ -15,7 +15,7 @@ export default class MentorshipQuestion1 extends Component {
         },
         () => {
           console.log();
-        }
+        },
       );
   }
 

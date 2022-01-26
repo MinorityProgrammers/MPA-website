@@ -5,7 +5,9 @@ import axios from 'axios';
 const UserCoursesList = ({ enrolledCourse }) => {
   const [modules, setModules] = useState([]);
   const [userModules, setUserModules] = useState([]);
-  const { name, description, earn, _id } = enrolledCourse.courseId;
+  const {
+    name, description, earn, _id,
+  } = enrolledCourse.courseId;
 
   useEffect(() => {
     const userToken = JSON.parse(localStorage.getItem('userInfo')).token;
@@ -33,9 +35,7 @@ const UserCoursesList = ({ enrolledCourse }) => {
       });
   }, [_id]);
 
-  const totalUserModules = userModules.filter((eModule) =>
-    modules.some((module) => eModule.moduleId._id === module._id)
-  );
+  const totalUserModules = userModules.filter((eModule) => modules.some((module) => eModule.moduleId._id === module._id));
   const totalModulesLength = modules.length;
 
   // user progress
@@ -80,7 +80,11 @@ const UserCoursesList = ({ enrolledCourse }) => {
       <div>
         <div className="module-rate d-flex justify-content-center">
           <span>
-            {completedModules}/{totalModulesLength} Modules
+            {completedModules}
+            /
+            {totalModulesLength}
+            {' '}
+            Modules
           </span>
         </div>
         <div className="progress mt-1 mb-1 mx-4">
@@ -98,7 +102,8 @@ const UserCoursesList = ({ enrolledCourse }) => {
             className="text-center pb-3"
             style={{ fontSize: '14px', fontWeight: '300' }}
           >
-            {userPercentages}% Completed
+            {userPercentages}
+            % Completed
           </p>
         )}
       </div>

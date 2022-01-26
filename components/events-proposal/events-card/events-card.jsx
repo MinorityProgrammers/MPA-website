@@ -8,7 +8,9 @@ Moment.locale('en');
 const EventsCard = ({ pastEvent, event, token }) => {
   const [popup, togglePopup] = useState(false);
 
-  const { EventPicture, eventName, time, catName, host, eventStatus } = event;
+  const {
+    EventPicture, eventName, time, catName, host, eventStatus,
+  } = event;
 
   return (
     <div className={`${pastEvent && styles.pastEvent} ${styles.container}`}>
@@ -39,7 +41,9 @@ const EventsCard = ({ pastEvent, event, token }) => {
           <div className={styles.noAttended}>{event.attendance}</div>
         )}
         <div onClick={() => togglePopup(true)} className={styles.info}>
-          <i className="fas fa-plus" /> More Info
+          <i className="fas fa-plus" />
+          {' '}
+          More Info
         </div>
         {eventStatus !== 'pending' && (
           <div className={styles.review}>

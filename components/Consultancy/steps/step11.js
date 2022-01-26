@@ -33,20 +33,36 @@ const Page11 = ({
             </h1>
             <section className="thank-you">
               <span>
-                <span className="pink">Thank you!</span> Your payment of{' '}
-                {paymentReceived} has been received.
+                <span className="pink">Thank you!</span>
+                {' '}
+                Your payment of
+                {' '}
+                {paymentReceived}
+                {' '}
+                has been received.
               </span>
             </section>
             <section className="payment-detail">
-              Project ID: {projectId} / Transaction ID: #{transactionId} / Date:{' '}
+              Project ID:
+              {' '}
+              {projectId}
+              {' '}
+              / Transaction ID: #
+              {transactionId}
+              {' '}
+              / Date:
+              {' '}
               {date}
             </section>
             <article className="response-info">
               <div>
                 {' '}
-                Please allow upto <span className="blue">
+                Please allow upto
+                {' '}
+                <span className="blue">
                   5 business days
-                </span>{' '}
+                </span>
+                {' '}
                 for an MPA project manager to take charge of your project. You
                 will be notified and he will be in touch with you.
               </div>
@@ -78,8 +94,11 @@ const Page11 = ({
             </article>
           </div>
           <div className="response-time">
-            *Project Managers generally take{' '}
-            <span className="bold">1-2 weeks</span> to prepare a quote.
+            *Project Managers generally take
+            {' '}
+            <span className="bold">1-2 weeks</span>
+            {' '}
+            to prepare a quote.
           </div>
         </div>
       </QuestionContainer>

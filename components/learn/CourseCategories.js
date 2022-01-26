@@ -71,20 +71,17 @@ const CourseCategories = ({ user, enrolledCourses, usersCourses }) => {
       });
   };
 
-  const recommendedCourses =
-    courses &&
-    courses.filter((course) =>
-      enrolledCourses.every((eCourse) => course._id !== eCourse.courseId._id)
-    );
+  const recommendedCourses = courses
+    && courses.filter((course) => enrolledCourses.every((eCourse) => course._id !== eCourse.courseId._id));
 
   const handleCourseInfo = (course) => {
     setSingleCourse(course);
     const usersCoursesInfo = usersCourses?.filter(
-      (usersCourse) => usersCourse.courseId._id === course._id
+      (usersCourse) => usersCourse.courseId._id === course._id,
     );
     setTotalEnrolledCourse(usersCoursesInfo);
     const singleEnrolledCourse = enrolledCourses?.filter(
-      (eCourse) => eCourse.courseId._id === course._id
+      (eCourse) => eCourse.courseId._id === course._id,
     );
     const _singleCourse = singleEnrolledCourse[0];
     const enrolledCourseId = _singleCourse?.courseId;

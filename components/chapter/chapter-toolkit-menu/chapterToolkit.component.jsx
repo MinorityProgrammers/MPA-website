@@ -12,8 +12,8 @@ const Toolkit = () => (
         Check out our valuable resources to get insight on our chapters.
       </div>
       <div className={styles.menu}>
-        {toolkits &&
-          toolkits.map((toolkit) => (
+        {toolkits
+          && toolkits.map((toolkit) => (
             <ToolkitItem key={toolkit.slug} {...toolkit} />
           ))}
       </div>

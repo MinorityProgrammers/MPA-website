@@ -1,4 +1,6 @@
-import React, { useEffect, useState, useContext, useRef } from 'react';
+import React, {
+  useEffect, useState, useContext, useRef,
+} from 'react';
 import { useRouter } from 'next/router';
 import decode from 'jwt-decode';
 import Layout from '../Layout';
@@ -59,21 +61,19 @@ const SettingsLayout = ({ setData, children, settingsPage }) => {
   };
 
   useEffect(() => {
-    const token =
-      typeof window !== 'undefined'
-        ? window.localStorage.getItem('jwtToken')
-        : null;
+    const token = typeof window !== 'undefined'
+      ? window.localStorage.getItem('jwtToken')
+      : null;
     if (token) {
       const decodedToken = decode(token);
       if (decodedToken.exp * 1000 < new Date().getTime()) handleLogout();
     }
   }, []);
 
-  const toTitleCase = (str) =>
-    str?.replace(
-      /\w\S*/g,
-      (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
-    );
+  const toTitleCase = (str) => str?.replace(
+    /\w\S*/g,
+    (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(),
+  );
 
   return (
     <Layout pageTitle={`Settings: ${toTitleCase(settingsPage)}`}>
@@ -275,15 +275,11 @@ const SettingsLayout = ({ setData, children, settingsPage }) => {
                       <img
                         src="../../assets/images/settings/notifications.svg"
                         alt="notifications icon"
-                        onClick={() =>
-                          router.push('/settings/notifications/notifications')
-                        }
+                        onClick={() => router.push('/settings/notifications/notifications')}
                       />
                     </div>
                     <span
-                      onClick={() =>
-                        router.push('/settings/notifications/notifications')
-                      }
+                      onClick={() => router.push('/settings/notifications/notifications')}
                     >
                       Notifications
                     </span>
@@ -295,9 +291,7 @@ const SettingsLayout = ({ setData, children, settingsPage }) => {
                             : '../../assets/images/settings/arrow.svg'
                         }
                         alt="arrow icon"
-                        onClick={() =>
-                          router.push('/settings/notifications/notifications')
-                        }
+                        onClick={() => router.push('/settings/notifications/notifications')}
                       />
                     </div>
                   </h2>

@@ -56,7 +56,7 @@ const ResourcesModel = ({
                 'Access-Control-Allow-Origin': '*',
                 Authorization: `Bearer ${token}`,
               },
-            }
+            },
           )
           .then((/* res */) => {
             successToast('Resource created!');
@@ -75,7 +75,7 @@ const ResourcesModel = ({
                 'Access-Control-Allow-Origin': '*',
                 Authorization: `Bearer ${token}`,
               },
-            }
+            },
           )
           .then((/* res */) => {
             successToast('Resource updated!');

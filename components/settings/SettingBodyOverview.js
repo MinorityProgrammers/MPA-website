@@ -16,14 +16,14 @@ const SettingBodyOverview = ({ data }) => {
   const completeRedirection = () => {
     if (
       !(
-        !!data?.firstName &&
-        !!data?.lastName &&
-        !!data?.birthday &&
-        !!data?.Gender &&
-        !!data?.phoneNumber &&
-        !!data?.location &&
-        !!data?.Nationality &&
-        !!data?.Ethnicity.length
+        !!data?.firstName
+        && !!data?.lastName
+        && !!data?.birthday
+        && !!data?.Gender
+        && !!data?.phoneNumber
+        && !!data?.location
+        && !!data?.Nationality
+        && !!data?.Ethnicity.length
       )
     ) {
       router.push('/settings/profile/details');
@@ -31,24 +31,24 @@ const SettingBodyOverview = ({ data }) => {
       router.push('/settings/profile/overview');
     } else if (
       !(
-        !!data?.FacebookLink &&
-        !!data?.LinkedinLink &&
-        !!data?.GithubLink &&
-        !!data?.GoogleLink &&
-        !!data?.FigmaLink &&
-        !!data?.DribbleLink &&
-        !!data?.ClickupLink
+        !!data?.FacebookLink
+        && !!data?.LinkedinLink
+        && !!data?.GithubLink
+        && !!data?.GoogleLink
+        && !!data?.FigmaLink
+        && !!data?.DribbleLink
+        && !!data?.ClickupLink
       )
     ) {
       router.push('/settings/profile/media');
     } else if (
       !(
-        !!data?.passions.length &&
-        (data.passions.length === 1 ? data.passions[0] !== '' : true) &&
-        !!data?.softSkills.length &&
-        (data.softSkills.length === 1 ? data.softSkills[0] !== '' : true) &&
-        !!data?.programmingSkills.length &&
-        (data.programmingSkills.length === 1
+        !!data?.passions.length
+        && (data.passions.length === 1 ? data.passions[0] !== '' : true)
+        && !!data?.softSkills.length
+        && (data.softSkills.length === 1 ? data.softSkills[0] !== '' : true)
+        && !!data?.programmingSkills.length
+        && (data.programmingSkills.length === 1
           ? data.programmingSkills[0] !== ''
           : true)
       )
@@ -56,12 +56,12 @@ const SettingBodyOverview = ({ data }) => {
       router.push('/settings/profile/background');
     } else if (
       !(
-        !!data?.educationLevel &&
-        !!data?.schoolName &&
-        !!data?.enteredHighSchoolYear &&
-        !!data?.expectedGraduationYear &&
-        !!data?.studentStatus &&
-        !!data?.degree
+        !!data?.educationLevel
+        && !!data?.schoolName
+        && !!data?.enteredHighSchoolYear
+        && !!data?.expectedGraduationYear
+        && !!data?.studentStatus
+        && !!data?.degree
       )
     ) {
       router.push('/settings/profile/education');
@@ -79,10 +79,9 @@ const SettingBodyOverview = ({ data }) => {
     el.style.opacity = '0';
     document.body.appendChild(el);
 
-    const selected =
-      document.getSelection().rangeCount > 0
-        ? document.getSelection().getRangeAt(0)
-        : false;
+    const selected = document.getSelection().rangeCount > 0
+      ? document.getSelection().getRangeAt(0)
+      : false;
 
     el.select();
     document.execCommand('copy');
@@ -122,7 +121,7 @@ const SettingBodyOverview = ({ data }) => {
               <circle
                 style={{
                   strokeDashoffset: `calc(220 - (220 * ${getProgressPercentage(
-                    data
+                    data,
                   )}) / 100)`,
                 }}
                 cx="35"
@@ -338,10 +337,14 @@ const SettingBodyOverview = ({ data }) => {
               <h6>$MINORITY </h6>
               <div className={styles.card}>
                 <div className={styles.amountInfo}>
-                  $MINORITY Earned <div>$150</div>
+                  $MINORITY Earned
+                  {' '}
+                  <div>$150</div>
                 </div>
                 <div className={styles.amountInfo}>
-                  $MINORITY Balance <div>$350</div>
+                  $MINORITY Balance
+                  {' '}
+                  <div>$350</div>
                 </div>
               </div>
             </div>
@@ -349,10 +352,14 @@ const SettingBodyOverview = ({ data }) => {
               <h6>$MPA Tokens </h6>
               <div className={styles.card}>
                 <div className={styles.amountInfo}>
-                  $MPA Tokens Earned <div>$35</div>
+                  $MPA Tokens Earned
+                  {' '}
+                  <div>$35</div>
                 </div>
                 <div className={styles.amountInfo}>
-                  $MPA Tokens Balance <div>$65</div>
+                  $MPA Tokens Balance
+                  {' '}
+                  <div>$65</div>
                 </div>
               </div>
             </div>

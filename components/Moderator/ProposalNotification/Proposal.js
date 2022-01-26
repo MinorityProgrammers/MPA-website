@@ -59,7 +59,7 @@ const Proposal = (props) => {
         headers: {
           Authorization: `Bearer ${token}`,
         },
-      }
+      },
     );
     res.then((data) => setUpVotes(data));
   }, []);
@@ -75,7 +75,7 @@ const Proposal = (props) => {
         headers: {
           Authorization: `Bearer ${token}`,
         },
-      }
+      },
     );
     res.then((data) => setDownVotes(data));
   }, []);
@@ -88,11 +88,15 @@ const Proposal = (props) => {
           <h3 className="tw-text-2xl tw-font-semibold">{title}</h3>
           <p>
             <span className="tw-mr-3">
-              <strong>Type:</strong> {type}
+              <strong>Type:</strong>
+              {' '}
+              {type}
             </span>
 
             <span>
-              <strong>Category:</strong> {Category}
+              <strong>Category:</strong>
+              {' '}
+              {Category}
             </span>
           </p>
         </div>
@@ -112,13 +116,19 @@ const Proposal = (props) => {
 
           <div className=" tw-mr-3 -mt-1">
             <p>
-              Created by <br /> <strong>{userName}</strong>
+              Created by
+              {' '}
+              <br />
+              {' '}
+              <strong>{userName}</strong>
             </p>
           </div>
 
           <div className="">
             <p>
-              Created on <br />
+              Created on
+              {' '}
+              <br />
               <strong>
                 <Moment format="MMM D" withTitle>
                   {createdAt}
@@ -130,13 +140,21 @@ const Proposal = (props) => {
         <div className="count tw-flex tw-self-center mr-t">
           <div className=" tw-mr-3">
             <p>
-              <strong>{reply}</strong> <br /> Replies
+              <strong>{reply}</strong>
+              {' '}
+              <br />
+              {' '}
+              Replies
             </p>
           </div>
 
           <div className=" tw-mr-3">
             <p>
-              <strong>{views.data.data.length}</strong> <br /> Views
+              <strong>{views.data.data.length}</strong>
+              {' '}
+              <br />
+              {' '}
+              Views
             </p>
           </div>
           <div className=" ">

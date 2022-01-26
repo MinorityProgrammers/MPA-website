@@ -23,9 +23,15 @@ const PresaleHeroSection = () => (
         price
       </div>
       <div className="text2">
-        initial <br />
-        minority <br />
-        offering <br />
+        initial
+        {' '}
+        <br />
+        minority
+        {' '}
+        <br />
+        offering
+        {' '}
+        <br />
       </div>
     </div>
   </>

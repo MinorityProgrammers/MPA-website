@@ -29,17 +29,17 @@ const ElectProposals = () => {
 
     if (sortType === 'amountAsc') {
       const sorted = [...actions].sort(
-        (a, b) => a[sortProperty] - b[sortProperty]
+        (a, b) => a[sortProperty] - b[sortProperty],
       );
       setActions(sorted);
     } else if (sortType === 'amountDesc') {
       const sorted = [...actions].sort(
-        (a, b) => b[sortProperty] - a[sortProperty]
+        (a, b) => b[sortProperty] - a[sortProperty],
       );
       setActions(sorted);
     } else if (sortType === 'date') {
       const sorted = [...actions].sort(
-        (a, b) => new Date(a[sortProperty]) - new Date(b[sortProperty])
+        (a, b) => new Date(a[sortProperty]) - new Date(b[sortProperty]),
       );
       setActions(sorted);
     } else {
@@ -53,7 +53,7 @@ const ElectProposals = () => {
       for (let i = 0; i < categories.length; i += 1) {
         if (filter === categories[i]) {
           const filtered = [...allData].filter(
-            (action) => action.category === categories[i]
+            (action) => action.category === categories[i],
           );
           setActions(filtered);
         }
@@ -136,7 +136,10 @@ const ElectProposals = () => {
               <img src="/assets/images/moderator/mod.png" alt="moderator" />
               <h2 className="text-center">Choose proposals to be elected</h2>
               <p className="text-center">
-                You can elect upto 3 proposals a again day from the <br />{' '}
+                You can elect upto 3 proposals a again day from the
+                {' '}
+                <br />
+                {' '}
                 proposals that made it to the 10 % percentile.
               </p>
             </div>
@@ -168,7 +171,9 @@ const ElectProposals = () => {
                   </h3>
                   <p>
                     <span className="tw-mr-3">
-                      <strong>Type:</strong> {proposal.type}
+                      <strong>Type:</strong>
+                      {' '}
+                      {proposal.type}
                     </span>
 
                     <span>
@@ -190,14 +195,18 @@ const ElectProposals = () => {
 
                     <div className=" tw-mr-3 -mt-1">
                       <p>
-                        Created by <br />
+                        Created by
+                        {' '}
+                        <br />
                         <strong>{proposal.userId.userName}</strong>
                       </p>
                     </div>
 
                     <div className="">
                       <p>
-                        Created on <br />
+                        Created on
+                        {' '}
+                        <br />
                         <strong>
                           <Moment format="MMM D" withTitle>
                             {proposal.createdAt}
@@ -212,7 +221,9 @@ const ElectProposals = () => {
                         <strong>
                           {proposal.replies ? proposal.replies : '58'}
                         </strong>
-                        <br /> Replies
+                        <br />
+                        {' '}
+                        Replies
                       </p>
                     </div>
 
@@ -221,7 +232,9 @@ const ElectProposals = () => {
                         <strong>
                           {proposal.views ? proposal.views : '75'}
                         </strong>
-                        <br /> Views
+                        <br />
+                        {' '}
+                        Views
                       </p>
                     </div>
                     <div className=" ">

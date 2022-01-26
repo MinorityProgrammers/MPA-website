@@ -59,7 +59,7 @@ const TopHeader = (props) => {
 
   const filterJobs = () => {
     fetch(
-      `${process.env.BASE_URI}/job?pay=${filter.pay}&remote=${filter.remote}&job_type=${filter.job_type}&date_posted=${filter.date_posted}&job_industry=${filter.job_industry}`
+      `${process.env.BASE_URI}/job?pay=${filter.pay}&remote=${filter.remote}&job_type=${filter.job_type}&date_posted=${filter.date_posted}&job_industry=${filter.job_industry}`,
     )
       .then((response) => response.json())
       .then((response) => {
@@ -160,19 +160,19 @@ const TopHeader = (props) => {
   function containerReset() {
     if (window.innerWidth > 991 && document.querySelector('.jobsMain')) {
       document.getElementsByClassName(
-        'jobs-main-container-list'
+        'jobs-main-container-list',
       )[0].style.display = 'block';
       document.getElementsByClassName(
-        'jobs-main-container-single'
+        'jobs-main-container-single',
       )[0].style.display = 'block';
 
       winSize.current = 'large';
     } else if (
-      winSize.current === 'large' &&
-      document.querySelector('.jobsMain')
+      winSize.current === 'large'
+      && document.querySelector('.jobsMain')
     ) {
       document.getElementsByClassName(
-        'jobs-main-container-single'
+        'jobs-main-container-single',
       )[0].style.display = 'none';
       winSize.current = 'small';
     }
@@ -186,34 +186,28 @@ const TopHeader = (props) => {
     setActiveJobIndex(idx);
     changeCurrentJob(() => currJob);
     if (window.innerWidth <= 991) {
-      document.getElementsByClassName('jobsMain-search')[0].style.display =
-        'none';
+      document.getElementsByClassName('jobsMain-search')[0].style.display = 'none';
       document.getElementsByClassName(
-        'jobs-main-container-list'
+        'jobs-main-container-list',
       )[0].style.display = 'none';
-      document.getElementsByClassName('jobs-main-filters')[0].style.display =
-        'none';
-      document.getElementsByClassName('jobsMain-perPage')[0].style.display =
-        'none';
+      document.getElementsByClassName('jobs-main-filters')[0].style.display = 'none';
+      document.getElementsByClassName('jobsMain-perPage')[0].style.display = 'none';
       document.getElementsByClassName(
-        'jobs-main-container-single'
+        'jobs-main-container-single',
       )[0].style.display = 'block';
     }
   }
 
   function closeSingle() {
-    document.getElementsByClassName('jobsMain-search')[0].style.display =
-      'block';
-    document.getElementsByClassName('jobs-main-filters')[0].style.display =
-      'block';
-    document.getElementsByClassName('jobsMain-perPage')[0].style.display =
-      'block';
+    document.getElementsByClassName('jobsMain-search')[0].style.display = 'block';
+    document.getElementsByClassName('jobs-main-filters')[0].style.display = 'block';
+    document.getElementsByClassName('jobsMain-perPage')[0].style.display = 'block';
     document.getElementsByClassName(
-      'jobs-main-container-single'
+      'jobs-main-container-single',
     )[0].style.display = 'none';
     document.getElementsByClassName('jobsMain')[0].style.height = 'auto';
     document.getElementsByClassName(
-      'jobs-main-container-list'
+      'jobs-main-container-list',
     )[0].style.display = 'block';
   }
 
@@ -233,14 +227,12 @@ const TopHeader = (props) => {
     }
   }
 
-  const token =
-    typeof window !== 'undefined'
-      ? window.localStorage.getItem('jwtToken')
-      : null;
-  const userInfo =
-    typeof window !== 'undefined'
-      ? window.localStorage.getItem('userInfo')
-      : null;
+  const token = typeof window !== 'undefined'
+    ? window.localStorage.getItem('jwtToken')
+    : null;
+  const userInfo = typeof window !== 'undefined'
+    ? window.localStorage.getItem('userInfo')
+    : null;
 
   const fetchSavedJobs = () => {
     if (token) {
@@ -268,7 +260,7 @@ const TopHeader = (props) => {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        }
+        },
       )
       .then((/* response */) => {
         successToast('Job Saved Successfully!');
@@ -304,7 +296,7 @@ const TopHeader = (props) => {
   }, []);
 
   const savedJobsId = savedJobs.map(
-    (singleSavedJob) => singleSavedJob.job_id._id
+    (singleSavedJob) => singleSavedJob.job_id._id,
   );
 
   const authPlease = () => {
@@ -317,43 +309,44 @@ const TopHeader = (props) => {
     }
   };
 
-  const jobStubs =
-    jobs != null
-      ? jobs.map((job, idx) => (
-          <div
-            className={idx === activeJobIndex ? 'job-stub active' : 'job-stub'}
-            key={job._id}
-            onClick={(e) => changeJobAndColor(e, job, idx)}
-          >
-            <div className="job-stub-header">
-              <div className="job-stub-title">{job.job_title}</div>
-              <div className="job-stub-company">{job.company_name}</div>
-              <div className="job-stub-location">{job.location}</div>
-            </div>
-            <div className="job-stub-description">{job.job_description}</div>
-            <div className="job-stub-footer">
-              <div className="job-stub-postDate">
-                Posted: {new Date(job.updatedAt).toDateString().substr(3)}
-              </div>
-              {userInfo != null ? (
-                savedJobsId.includes(job._id) ? (
-                  <button type="button" disabled className="job-stub-saved">
-                    Saved
-                  </button>
-                ) : (
-                  <a className="job-stub-saveLink" onClick={() => saveJob(job)}>
-                    Save Job
-                  </a>
-                )
-              ) : (
-                <a className="job-stub-saveLink" onClick={authPlease}>
-                  Save Job
-                </a>
-              )}
-            </div>
+  const jobStubs = jobs != null
+    ? jobs.map((job, idx) => (
+      <div
+        className={idx === activeJobIndex ? 'job-stub active' : 'job-stub'}
+        key={job._id}
+        onClick={(e) => changeJobAndColor(e, job, idx)}
+      >
+        <div className="job-stub-header">
+          <div className="job-stub-title">{job.job_title}</div>
+          <div className="job-stub-company">{job.company_name}</div>
+          <div className="job-stub-location">{job.location}</div>
+        </div>
+        <div className="job-stub-description">{job.job_description}</div>
+        <div className="job-stub-footer">
+          <div className="job-stub-postDate">
+            Posted:
+            {' '}
+            {new Date(job.updatedAt).toDateString().substr(3)}
           </div>
-        ))
-      : '';
+          {userInfo != null ? (
+            savedJobsId.includes(job._id) ? (
+              <button type="button" disabled className="job-stub-saved">
+                Saved
+              </button>
+            ) : (
+              <a className="job-stub-saveLink" onClick={() => saveJob(job)}>
+                Save Job
+              </a>
+            )
+          ) : (
+            <a className="job-stub-saveLink" onClick={authPlease}>
+              Save Job
+            </a>
+          )}
+        </div>
+      </div>
+    ))
+    : '';
 
   const perPage = 10;
   const totalPages = Math.ceil(102 / perPage); // 11
@@ -443,20 +436,16 @@ const TopHeader = (props) => {
       queryObj.description = e.target.childNodes[0].value;
       blank = false;
       setJobs(
-        jobs.filter((job) =>
-          job.job_description
-            .toLowerCase()
-            .includes(queryObj.description.toLowerCase())
-        )
+        jobs.filter((job) => job.job_description
+          .toLowerCase()
+          .includes(queryObj.description.toLowerCase())),
       );
     }
     if (e.target.childNodes[1].value) {
       queryObj.location = e.target.childNodes[1].value;
       blank = false;
       setJobs(
-        jobs.filter((job) =>
-          job.location.toLowerCase().includes(queryObj.location.toLowerCase())
-        )
+        jobs.filter((job) => job.location.toLowerCase().includes(queryObj.location.toLowerCase())),
       );
     }
 

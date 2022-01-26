@@ -15,11 +15,11 @@ const Workshop = ({ workshop, mentor, mentee }) => (
             <div className={styles.colTitle}>Mentor</div>
             <div className={styles.menteesIcon}>
               <OverlayTrigger
-                overlay={
+                overlay={(
                   <Tooltip>
                     {`${mentor.user_id.firstName} ${mentor.user_id.lastName}`}
                   </Tooltip>
-                }
+                )}
               >
                 <img
                   src={
@@ -36,11 +36,11 @@ const Workshop = ({ workshop, mentor, mentee }) => (
             <div className={styles.colTitle}>Mentees</div>
             <div className={styles.menteesIcon}>
               <OverlayTrigger
-                overlay={
+                overlay={(
                   <Tooltip>
                     {`${mentee.user_id.firstName} ${mentee.user_id.lastName}`}
                   </Tooltip>
-                }
+                )}
               >
                 <img
                   src={

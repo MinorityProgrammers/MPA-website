@@ -33,7 +33,9 @@ const JobCard = ({
             </div>
             <div className={styles.footer}>
               <span>
-                Posted: {new Date(item.updatedAt).toDateString().substr(3)}
+                Posted:
+                {' '}
+                {new Date(item.updatedAt).toDateString().substr(3)}
               </span>
               <button type="button" onClick={() => buttonClick(item)}>
                 {savejob}

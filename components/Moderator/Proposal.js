@@ -33,7 +33,7 @@ const Proposal = ({ proposal }) => {
         headers: {
           Authorization: `Bearer ${token}`,
         },
-      }
+      },
     );
     res.then((data) => setViews(data));
   }, [proposal._id]);
@@ -49,7 +49,7 @@ const Proposal = ({ proposal }) => {
         headers: {
           Authorization: `Bearer ${token}`,
         },
-      }
+      },
     );
     res.then((data) => setUpVotes(data));
   }, []);
@@ -65,7 +65,7 @@ const Proposal = ({ proposal }) => {
         headers: {
           Authorization: `Bearer ${token}`,
         },
-      }
+      },
     );
     res.then((data) => setDownVotes(data));
   }, []);
@@ -82,11 +82,14 @@ const Proposal = ({ proposal }) => {
           <h3 className="tw-text-2xl tw-font-semibold">{proposal.title}</h3>
           <p>
             <span className="tw-mr-3">
-              <strong>Type:</strong> {proposal.type}
+              <strong>Type:</strong>
+              {' '}
+              {proposal.type}
             </span>
 
             <span>
-              <strong>Category:</strong>{' '}
+              <strong>Category:</strong>
+              {' '}
               {proposal.Category ? proposal.Category : 'Incubator'}
             </span>
           </p>
@@ -121,16 +124,29 @@ const Proposal = ({ proposal }) => {
       <div className="views-replies tw-flex tw-flex-col">
         <div className=" tw-flex tw-mx-auto">
           <p className=" tw-mr-3 tw-text-center">
-            <strong>{reply}</strong> <br /> Replies
+            <strong>{reply}</strong>
+            {' '}
+            <br />
+            {' '}
+            Replies
           </p>
           <p className="tw-text-center">
-            <strong>{views.data.data.length}</strong> <br /> Views
+            <strong>{views.data.data.length}</strong>
+            {' '}
+            <br />
+            {' '}
+            Views
           </p>
         </div>
 
         <div className="elected ">
           <p className="tw-text-center">
-            You <span className="tw-font-bold">Elected</span> this proposal on{' '}
+            You
+            {' '}
+            <span className="tw-font-bold">Elected</span>
+            {' '}
+            this proposal on
+            {' '}
             <br />
             <span>
               <Moment format="MMM D" withTitle>

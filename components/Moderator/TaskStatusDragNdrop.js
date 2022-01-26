@@ -25,9 +25,7 @@ const TaskStatusDnD = () => {
   const movePlayer = (item) => {
     if (item && item.type === 'proposal') {
       setList(() => [...list, proposals[item.index]]);
-      setProposals((_proposals) =>
-        _proposals.filter((_, idx) => idx !== item.index)
-      );
+      setProposals((_proposals) => _proposals.filter((_, idx) => idx !== item.index));
     } else {
       setProposals((_proposals) => [..._proposals, list[item.index]]);
       setList((_list) => _list.filter((_, idx) => idx !== item.index));
@@ -108,7 +106,9 @@ const TaskStatusDnD = () => {
   );
 };
 
-const ProposalList = ({ sDes, flag, index, boardType, onDropPlayer }) => {
+const ProposalList = ({
+  sDes, flag, index, boardType, onDropPlayer,
+}) => {
   const [{ isDragging }, dragRef] = useDrag({
     item: {
       type: boardType,

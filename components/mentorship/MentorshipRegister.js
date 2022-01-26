@@ -47,26 +47,26 @@ export class MentorshipRegister extends Component {
         step: step + 1,
       });
     } else if (
-      step === 2 &&
-      Object.keys(this.state.interest).length > 0 &&
-      Object.keys(this.state.learningStyle).length > 0 &&
-      Object.keys(this.state.personlityType).length > 0 &&
-      Object.keys(this.state.availability).length > 0 &&
-      this.state.occupationPlace.length > 0 &&
-      this.state.occupation.length > 0
+      step === 2
+      && Object.keys(this.state.interest).length > 0
+      && Object.keys(this.state.learningStyle).length > 0
+      && Object.keys(this.state.personlityType).length > 0
+      && Object.keys(this.state.availability).length > 0
+      && this.state.occupationPlace.length > 0
+      && this.state.occupation.length > 0
     ) {
       this.setState({
         isErrorMessage: false,
         step: step + 1,
       });
     } else if (
-      step === 3 &&
-      Object.keys(this.state.lookingForEdu).length > 0 &&
-      Object.keys(this.state.lookingForExp).length > 0 &&
-      Object.keys(this.state.lookingForAvailability).length > 0 &&
-      Object.keys(this.state.lookingForGender).length > 0 &&
-      Object.keys(this.state.lookingForLang).length > 0 &&
-      Object.keys(this.state.lookingForEthnicity).length > 0
+      step === 3
+      && Object.keys(this.state.lookingForEdu).length > 0
+      && Object.keys(this.state.lookingForExp).length > 0
+      && Object.keys(this.state.lookingForAvailability).length > 0
+      && Object.keys(this.state.lookingForGender).length > 0
+      && Object.keys(this.state.lookingForLang).length > 0
+      && Object.keys(this.state.lookingForEthnicity).length > 0
     ) {
       this.setState({
         isErrorMessage: false,

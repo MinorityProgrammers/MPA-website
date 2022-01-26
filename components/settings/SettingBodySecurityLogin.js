@@ -21,8 +21,7 @@ const SettingBodySecurityLogin = ({ settingsPage, data, userID }) => {
   const [emailWarning, setEmailWarning] = useState(false);
   const [wrongEmailWarning, setWrongEmailWarning] = useState(false);
 
-  const { updatePasswordRedirection, setUpdatePasswordRedirection } =
-    useContext(uprContext);
+  const { updatePasswordRedirection, setUpdatePasswordRedirection } = useContext(uprContext);
   useEffect(() => {
     if (updatePasswordRedirection) {
       setChangePassword(true);
@@ -38,8 +37,7 @@ const SettingBodySecurityLogin = ({ settingsPage, data, userID }) => {
       });
   }, []);
 
-  const regEmail =
-    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  const regEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
   const inputFields = [
     all.emailField,
@@ -100,8 +98,7 @@ const SettingBodySecurityLogin = ({ settingsPage, data, userID }) => {
   const toggleWrongUsernameWarning = (on) => {
     if (on) {
       if (!wrongUsernameWarning) {
-        const warning =
-          "<p class='cp-warning'>Wrong username, allowed: letters, numbers and dashes</p>";
+        const warning = "<p class='cp-warning'>Wrong username, allowed: letters, numbers and dashes</p>";
         document
           .getElementsByClassName('securityLoginPasswordInput')[0]
           .insertAdjacentHTML('afterend', warning);
@@ -145,10 +142,10 @@ const SettingBodySecurityLogin = ({ settingsPage, data, userID }) => {
 
   const handleChange = (name, value) => {
     if (
-      name === 'userName' &&
-      usernames.includes(value) &&
-      data?.userName !== value &&
-      !(value === '')
+      name === 'userName'
+      && usernames.includes(value)
+      && data?.userName !== value
+      && !(value === '')
     ) {
       toggleUsernameWarning(true);
     } else {
@@ -162,10 +159,10 @@ const SettingBodySecurityLogin = ({ settingsPage, data, userID }) => {
     }
 
     if (
-      name === 'email' &&
-      emails.includes(value) &&
-      data?.email !== value &&
-      !(value === '')
+      name === 'email'
+      && emails.includes(value)
+      && data?.email !== value
+      && !(value === '')
     ) {
       toggleEmailWarning(true);
     } else {
@@ -173,9 +170,9 @@ const SettingBodySecurityLogin = ({ settingsPage, data, userID }) => {
     }
 
     if (
-      name === 'email' &&
-      (value.trim().length < 5 ||
-        (value.trim().length >= 5 && !regEmail.test(value.trim())))
+      name === 'email'
+      && (value.trim().length < 5
+        || (value.trim().length >= 5 && !regEmail.test(value.trim())))
     ) {
       toggleWrongEmailWarning(true);
     } else {
@@ -188,31 +185,31 @@ const SettingBodySecurityLogin = ({ settingsPage, data, userID }) => {
   const handleSubmit = () => {
     if (
       // email already exists
-      emails.includes(inputStates?.email) &&
-      data?.email !== inputStates?.email &&
-      !(inputStates?.email === '')
+      emails.includes(inputStates?.email)
+      && data?.email !== inputStates?.email
+      && !(inputStates?.email === '')
     ) {
       toggleEmailWarning(true);
     } else if (
-      inputStates?.email.trim().length < 5 ||
-      (inputStates?.email.trim().length >= 5 &&
-        !regEmail.test(inputStates?.email.trim()))
+      inputStates?.email.trim().length < 5
+      || (inputStates?.email.trim().length >= 5
+        && !regEmail.test(inputStates?.email.trim()))
     ) {
       // email format is wrong
       toggleWrongEmailWarning(true);
     } else if (
       // username already exists
-      usernames.includes(inputStates?.userName) &&
-      data?.userName !== inputStates?.userName &&
-      !(inputStates?.userName === '')
+      usernames.includes(inputStates?.userName)
+      && data?.userName !== inputStates?.userName
+      && !(inputStates?.userName === '')
     ) {
       toggleUsernameWarning(true);
     } else if (/[^\w\-]/.test(inputStates?.userName)) {
       // username contains symbols
       toggleWrongUsernameWarning(true);
     } else if (
-      data?.email === inputStates?.email &&
-      data?.userName === inputStates?.userName
+      data?.email === inputStates?.email
+      && data?.userName === inputStates?.userName
     ) {
       // email and username remains unchanged
       const warning = "<p class='cp-warning'>No changes made to save</p>";
@@ -298,9 +295,9 @@ const SettingBodySecurityLogin = ({ settingsPage, data, userID }) => {
               Change Password
             </span>
           </h5>
-          {changePassword &&
+          {changePassword
             // display an input component for each input field
-            [
+            && [
               all.currentPasswordField,
               all.newPasswordField,
               all.confirmNewPasswordField,

@@ -17,8 +17,8 @@ const Input = ({
         inputValue === undefined
           ? ''
           : inputValue instanceof Array
-          ? 'error'
-          : 'success'
+            ? 'error'
+            : 'success'
       }`}
       defaultValue={defaultValue}
       placeholder={placeholder}

@@ -42,12 +42,11 @@ const SettingBodyProfileDetails = ({ settingsPage, data, userID }) => {
 
   useEffect(() => {
     inputFields.forEach((field) => {
-      initialInputState[field.name] =
-        field.name === 'birthday'
-          ? data?.birthday
-            ? new Date(data.birthday)
-            : ''
-          : data?.[field.name] || '';
+      initialInputState[field.name] = field.name === 'birthday'
+        ? data?.birthday
+          ? new Date(data.birthday)
+          : ''
+        : data?.[field.name] || '';
     });
 
     setInputStates(initialInputState);
@@ -63,7 +62,7 @@ const SettingBodyProfileDetails = ({ settingsPage, data, userID }) => {
   // get value from select field within same parent and add it as an array element to state
   const handleAdd = (e, name, reset) => {
     const value = e.target.parentNode.querySelector(
-      '.css-1uccc91-singleValue'
+      '.css-1uccc91-singleValue',
     )?.textContent;
 
     if (value) {
@@ -73,7 +72,7 @@ const SettingBodyProfileDetails = ({ settingsPage, data, userID }) => {
 
       // wrong code syntax and "addedText" is unused
       const addedText = (e.target.parentNode.querySelector(
-        '.css-1uccc91-singleValue'
+        '.css-1uccc91-singleValue',
       ).textContent = reset);
     }
   };

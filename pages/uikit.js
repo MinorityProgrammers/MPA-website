@@ -8,8 +8,7 @@ import links from '../contexts/utils/links';
 
 const UIKit = () => {
   const [open, setOpen] = useState(false);
-  const bannerImgLink =
-    'https://lh3.googleusercontent.com/proxy/kebLnb_ZXHeYtyuRXNNA_etHIRqPHEu9eawDUk7Y6Asmk9t75_ZuOTSrgDflrCo4S6_Ch80FUANkfLHMrLC-Ygw4';
+  const bannerImgLink = 'https://lh3.googleusercontent.com/proxy/kebLnb_ZXHeYtyuRXNNA_etHIRqPHEu9eawDUk7Y6Asmk9t75_ZuOTSrgDflrCo4S6_Ch80FUANkfLHMrLC-Ygw4';
   return (
     <Layout pageTitle="UI Kit">
       <HomepageNav open={open} setOpen={setOpen} page="UIKit" />

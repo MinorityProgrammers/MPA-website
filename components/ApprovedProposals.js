@@ -46,10 +46,14 @@ const ApprovedProposals = () => {
             </h1>
             <div className="tw-flex sm:tw-grid  sm:tw-grid-cols-1">
               <h1 className="tw-text-red-700 md:tw-m-2 tw-m-2 sm:tw-text-sm sm:tw-font-bold">
-                Type: {proposal.type}
+                Type:
+                {' '}
+                {proposal.type}
               </h1>
               <h1 className="tw-text-red-700 md:tw-m-2 tw-m-2 sm:tw-text-sm sm:tw-font-bold">
-                Category: {proposal.category}
+                Category:
+                {' '}
+                {proposal.category}
               </h1>
             </div>
             <div className="tw-flex">

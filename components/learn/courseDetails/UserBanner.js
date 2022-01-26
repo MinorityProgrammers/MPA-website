@@ -52,7 +52,10 @@ const UserBanner = ({ userInfo, userPercentages }) => {
               </h1>
             )}
             {!Number.isNaN(userPercentages) && (
-              <p className="mt-3">{userPercentages}% Completed</p>
+              <p className="mt-3">
+                {userPercentages}
+                % Completed
+              </p>
             )}
           </div>
           <div className="ml-5 mt-5 pb-4">

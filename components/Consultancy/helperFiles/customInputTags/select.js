@@ -1,4 +1,6 @@
-import React, { useMemo, useState, useRef, useEffect } from 'react';
+import React, {
+  useMemo, useState, useRef, useEffect,
+} from 'react';
 import ErrorPrint from '../errorPrint';
 
 const Select = ({
@@ -28,17 +30,16 @@ const Select = ({
   } = colorScheme;
 
   const selectedIndex = useRef(
-    defaultValue === undefined ? 0 : defaultValue + 1
+    defaultValue === undefined ? 0 : defaultValue + 1,
   );
   const invalidSymbol = useRef(undefined);
 
   function validateSubmission() {
     setSelected([questionStr, updatedOptions[selectedIndex.current]]);
   }
-  const getRootVariable = (str) =>
-    parseInt(
-      window.getComputedStyle(document.body).getPropertyValue(`--${str}`)
-    );
+  const getRootVariable = (str) => parseInt(
+    window.getComputedStyle(document.body).getPropertyValue(`--${str}`),
+  );
 
   const maximumOptionHeight = getRootVariable('maximumOptionPerScrollable');
   const optionHeight = getRootVariable('optionHeight');
@@ -140,9 +141,9 @@ const Select = ({
                     color:
                       selectedIndex.current === index
                         ? `${
-                            selectedFontColor ||
-                            'var(--customTagBackgroundColor)'
-                          }`
+                          selectedFontColor
+                            || 'var(--customTagBackgroundColor)'
+                        }`
                         : null,
                   }}
                 >

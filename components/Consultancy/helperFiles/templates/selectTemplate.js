@@ -32,11 +32,11 @@ const SelectTemplate = ({
 
   function childFound() {
     return (
-      children &&
-      Number.isInteger(childRenderInfo.renderWhenOptionIs) &&
-      selected &&
-      childRenderInfo.renderWhenOptionIs ===
-        (selected[1] ? options.indexOf(selected[1]) : -1)
+      children
+      && Number.isInteger(childRenderInfo.renderWhenOptionIs)
+      && selected
+      && childRenderInfo.renderWhenOptionIs
+        === (selected[1] ? options.indexOf(selected[1]) : -1)
     );
   }
   const childStarted = useRef(false);

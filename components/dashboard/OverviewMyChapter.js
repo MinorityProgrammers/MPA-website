@@ -103,7 +103,7 @@ const OverviewMyChatper = () => {
         )}
       </div>
     ),
-    []
+    [],
   );
 
   const ChapterCard = useCallback(
@@ -147,13 +147,17 @@ const OverviewMyChatper = () => {
               className="overview-chapter-card-description"
               style={{ fontSize: '10px', fontWeight: 400 }}
             >
-              <strong>Next Meeting:</strong> 24th Oct, 2021 @ 5:00pm EST
+              <strong>Next Meeting:</strong>
+              {' '}
+              24th Oct, 2021 @ 5:00pm EST
             </p>
             <p
               className="overview-chapter-card-description"
               style={{ fontSize: '10px', fontWeight: 400 }}
             >
-              <strong>Member Since:</strong> June 2021
+              <strong>Member Since:</strong>
+              {' '}
+              June 2021
             </p>
           </div>
         </div>
@@ -174,7 +178,7 @@ const OverviewMyChatper = () => {
         </div>
       </div>
     ),
-    []
+    [],
   );
 
   return (

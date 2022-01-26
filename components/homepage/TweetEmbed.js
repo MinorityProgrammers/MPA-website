@@ -34,8 +34,9 @@ const TweetEmbed = ({
       twt.widgets
         .createTweetEmbed(tweetId, document.getElementById(tweetId), {
           theme: 'light',
-          align: 'center',
-
+          // align: 'center',
+          // Min 220px, Max 550px
+          width: '350px',
           cards: options.cards,
           conversation: options.conversation,
         })
@@ -48,7 +49,6 @@ const TweetEmbed = ({
         .catch(() => console.log(`Failed to load Tweet ${tweetId}.`));
     }
   }, [loading]);
-
   return (
     <div id={tweetId} />
   );

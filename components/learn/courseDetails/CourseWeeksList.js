@@ -68,8 +68,8 @@ const CourseWeeksList = (props) => {
   };
   const goToAdvancedModules = () => {
     if (
-      intermediateLength === completedIntermediate &&
-      completedIntermediate !== 0
+      intermediateLength === completedIntermediate
+      && completedIntermediate !== 0
     ) {
       const advancedModules = `/courses/${courseId}/modules/advanced`;
       router.push(advancedModules);
@@ -97,16 +97,16 @@ const CourseWeeksList = (props) => {
                     <p className="green-status ml-auto">
                       <span>completed</span>
                     </p>
-                  ) : uncompletedStatusBeginner > 0 ||
-                    completedStatusBeginner > 0 ? (
-                    <p className="red-status ml-auto">
-                      <span>uncompleted</span>
-                    </p>
-                  ) : (
-                    <p className="white-status ml-auto">
-                      <span>Start</span>
-                    </p>
-                  )}
+                  ) : uncompletedStatusBeginner > 0
+                    || completedStatusBeginner > 0 ? (
+                      <p className="red-status ml-auto">
+                        <span>uncompleted</span>
+                      </p>
+                    ) : (
+                      <p className="white-status ml-auto">
+                        <span>Start</span>
+                      </p>
+                    )}
                 </>
               )}
             </div>
@@ -132,7 +132,10 @@ const CourseWeeksList = (props) => {
             </div>
             <p className="text-center text-white pb-3">
               {!Number.isNaN(beginnerPercentage) && (
-                <span className="">{beginnerPercentage}% completed</span>
+                <span className="">
+                  {beginnerPercentage}
+                  % completed
+                </span>
               )}
             </p>
           </div>
@@ -149,16 +152,16 @@ const CourseWeeksList = (props) => {
                     <p className="green-status ml-auto">
                       <span>completed</span>
                     </p>
-                  ) : uncompletedStatusIntermediate > 0 ||
-                    completedStatusIntermediate > 0 ? (
-                    <p className="red-status ml-auto">
-                      <span>uncompleted</span>
-                    </p>
-                  ) : (
-                    <p className="white-status ml-auto">
-                      <span>Start</span>
-                    </p>
-                  )}
+                  ) : uncompletedStatusIntermediate > 0
+                    || completedStatusIntermediate > 0 ? (
+                      <p className="red-status ml-auto">
+                        <span>uncompleted</span>
+                      </p>
+                    ) : (
+                      <p className="white-status ml-auto">
+                        <span>Start</span>
+                      </p>
+                    )}
                 </>
               )}
             </div>
@@ -184,7 +187,10 @@ const CourseWeeksList = (props) => {
             </div>
             <p className="text-center text-white pb-3">
               {!Number.isNaN(intermediatePercentage) && (
-                <span className="">{intermediatePercentage}% completed</span>
+                <span className="">
+                  {intermediatePercentage}
+                  % completed
+                </span>
               )}
             </p>
           </div>
@@ -201,16 +207,16 @@ const CourseWeeksList = (props) => {
                     <p className="green-status ml-auto">
                       <span>completed</span>
                     </p>
-                  ) : uncompletedStatusAdvanced > 0 ||
-                    completedStatusAdvanced > 0 ? (
-                    <p className="red-status ml-auto">
-                      <span>uncompleted</span>
-                    </p>
-                  ) : (
-                    <p className="white-status ml-auto">
-                      <span>Start</span>
-                    </p>
-                  )}
+                  ) : uncompletedStatusAdvanced > 0
+                    || completedStatusAdvanced > 0 ? (
+                      <p className="red-status ml-auto">
+                        <span>uncompleted</span>
+                      </p>
+                    ) : (
+                      <p className="white-status ml-auto">
+                        <span>Start</span>
+                      </p>
+                    )}
                 </>
               )}
             </div>
@@ -236,7 +242,10 @@ const CourseWeeksList = (props) => {
             </div>
             <p className="text-center text-white pb-3">
               {!Number.isNaN(advancedPercentage) && (
-                <span className="">{advancedPercentage}% completed</span>
+                <span className="">
+                  {advancedPercentage}
+                  % completed
+                </span>
               )}
             </p>
           </div>

@@ -14,10 +14,16 @@ const SettingBodySecurityManagementModal = ({
       <div className={styles.modalADD}>
         <h1>
           Are you sure you want to
-          {`${modal}`} your account?
+          {`${modal}`}
+          {' '}
+          your account?
         </h1>
         <p>
-          Please leave a feedback why you are {`${modal.slice(0, -1)}ing`} your
+          Please leave a feedback why you are
+          {' '}
+          {`${modal.slice(0, -1)}ing`}
+          {' '}
+          your
           account:
         </p>
         <textarea

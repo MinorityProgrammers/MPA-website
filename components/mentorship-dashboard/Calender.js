@@ -32,16 +32,13 @@ export default function CalendarEvent({
   }, []);
 
   const modifiers = {
-    selected: (_date) =>
-      selectedDates.some((selectedDate) => isSameDay(selectedDate, _date)),
+    selected: (_date) => selectedDates.some((selectedDate) => isSameDay(selectedDate, _date)),
   };
   const handleDayClick = (_date) => {
-    const day =
-      _date.getDate() < 10 ? `0${_date.getDate()}` : `${_date.getDate()}`;
-    const month =
-      _date.getMonth() + 1 < 10
-        ? `0${_date.getMonth() + 1}`
-        : `${_date.getMonth() + 1}`;
+    const day = _date.getDate() < 10 ? `0${_date.getDate()}` : `${_date.getDate()}`;
+    const month = _date.getMonth() + 1 < 10
+      ? `0${_date.getMonth() + 1}`
+      : `${_date.getMonth() + 1}`;
     const newDate = `${_date.getFullYear()}-${month}-${day}`;
     setDate(newDate);
     setModalShow(true);

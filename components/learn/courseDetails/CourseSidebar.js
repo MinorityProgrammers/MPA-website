@@ -6,17 +6,19 @@ import BeginnerModules from './courseSidebarItems/BeginnerModules';
 import IntermediateModules from './courseSidebarItems/IntermediateModules';
 import AdvancedModules from './courseSidebarItems/AdvancedModules';
 
-const CourseSidebar = ({ course, modules, courseId, userModules }) => {
+const CourseSidebar = ({
+  course, modules, courseId, userModules,
+}) => {
   const router = useRouter();
 
   const beginnerModules = modules.filter(
-    (module) => module.level === 'beginner'
+    (module) => module.level === 'beginner',
   );
   const intermediateModules = modules.filter(
-    (module) => module.level === 'intermediate'
+    (module) => module.level === 'intermediate',
   );
   const advancedModules = modules.filter(
-    (module) => module.level === 'advanced'
+    (module) => module.level === 'advanced',
   );
 
   return (
@@ -32,8 +34,8 @@ const CourseSidebar = ({ course, modules, courseId, userModules }) => {
         <h5>{course.name}</h5>
         <div className="mt-4 pt-3">
           <h5 className="mb-3 week-name text-capitalize">Beginner Level</h5>
-          {beginnerModules &&
-            beginnerModules.map((module) => (
+          {beginnerModules
+            && beginnerModules.map((module) => (
               <BeginnerModules
                 module={module}
                 key={module._id}
@@ -45,8 +47,8 @@ const CourseSidebar = ({ course, modules, courseId, userModules }) => {
 
         <div className="mt-4 pt-3">
           <h5 className="mb-3 week-name text-capitalize">Intermediate Level</h5>
-          {intermediateModules &&
-            intermediateModules.map((module) => (
+          {intermediateModules
+            && intermediateModules.map((module) => (
               <IntermediateModules
                 module={module}
                 key={module._id}
@@ -58,8 +60,8 @@ const CourseSidebar = ({ course, modules, courseId, userModules }) => {
 
         <div className="mt-4 pt-3">
           <h5 className="mb-3 week-name text-capitalize">Advanced Level</h5>
-          {advancedModules &&
-            advancedModules.map((module) => (
+          {advancedModules
+            && advancedModules.map((module) => (
               <AdvancedModules
                 module={module}
                 key={module._id}

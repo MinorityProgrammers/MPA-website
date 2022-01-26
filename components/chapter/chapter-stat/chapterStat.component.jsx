@@ -1,7 +1,9 @@
 import React from 'react';
 import styles from './chapterStat.module.css';
 
-const ChapterStat = ({ number, place, amount, name, time, idx }) => {
+const ChapterStat = ({
+  number, place, amount, name, time, idx,
+}) => {
   const d = new Date(time);
   const h = d.getHours();
   const m = d.getMinutes();
@@ -34,8 +36,10 @@ const ChapterStat = ({ number, place, amount, name, time, idx }) => {
         <div className={styles.timeAndPoints}>
           <div className={styles.amount}>
             {amount}
-            <span className={styles.points}>points</span>{' '}
-            <div className={styles.pts}>pts</div>{' '}
+            <span className={styles.points}>points</span>
+            {' '}
+            <div className={styles.pts}>pts</div>
+            {' '}
           </div>
           <div className={styles.time}>{`${h}:${m}:${s}`}</div>
         </div>

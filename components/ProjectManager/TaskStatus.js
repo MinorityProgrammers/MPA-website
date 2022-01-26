@@ -15,7 +15,7 @@ const TaskStatus = ({ item, handlePriority }) => {
 
   const handleRemoveUser = (id) => {
     const afterRemovedUser = userCart.filter(
-      (_removedUser) => _removedUser.id !== id
+      (_removedUser) => _removedUser.id !== id,
     );
     setUserCart(afterRemovedUser);
   };
@@ -40,14 +40,12 @@ const TaskStatus = ({ item, handlePriority }) => {
           </p>
           <div className="tw-grid tw-grid-cols-1">
             <div className="tw-flex">
-              {userCart.length &&
-                userCart.forEach((user) => {
+              {userCart.length
+                && userCart.forEach((user) => {
                   <img
                     src={user.img}
                     className="tw-h-6 tw-w-6 tw-rounded-full tw-place-self-center tw-mb-1 tw-mt-2"
-                    onClick={(id) =>
-                      handleRemoveUser(id, setCreators(!creators))
-                    }
+                    onClick={(id) => handleRemoveUser(id, setCreators(!creators))}
                     alt=""
                   />;
                 })}
@@ -83,21 +81,15 @@ const TaskStatus = ({ item, handlePriority }) => {
                 <div className="tw-absolute tw-z-20">
                   <RiFlag2Fill
                     className="tw-text-red-500 tw-m-1 tw-mt-2"
-                    onClick={() =>
-                      handlePriority(setPriority('red'), setOpen(!open))
-                    }
+                    onClick={() => handlePriority(setPriority('red'), setOpen(!open))}
                   />
                   <RiFlag2Fill
                     className="tw-text-pink-500 tw-m-1 tw-mt-2"
-                    onClick={() =>
-                      handlePriority(setPriority('pink'), setOpen(!open))
-                    }
+                    onClick={() => handlePriority(setPriority('pink'), setOpen(!open))}
                   />
                   <RiFlag2Fill
                     className="tw-text-yellow-500 tw-m-1 tw-mt-2"
-                    onClick={() =>
-                      handlePriority(setPriority('yellow'), setOpen(!open))
-                    }
+                    onClick={() => handlePriority(setPriority('yellow'), setOpen(!open))}
                   />
                 </div>
               )}

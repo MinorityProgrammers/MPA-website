@@ -14,7 +14,9 @@ const Notifications = () => (
       </h3>
 
       <span className="tw-flex tw-text-xs tw-pt-1 ">
-        <MdDateRange className="tw-text-sm tw-mr-1 " /> Feb 2 2020
+        <MdDateRange className="tw-text-sm tw-mr-1 " />
+        {' '}
+        Feb 2 2020
       </span>
     </div>
   </div>

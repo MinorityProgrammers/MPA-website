@@ -4,8 +4,7 @@ import styles from '../../styles/MentorCSS/Calendar.module.css';
 
 function makeid(length) {
   let result = '';
-  const characters =
-    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
   const charactersLength = characters.length;
   for (let i = 0; i < length; i += 1) {
     result += characters.charAt(Math.floor(Math.random() * charactersLength));
@@ -50,7 +49,7 @@ export const Events = ({
               'Content-Type': 'application/json',
               Authorization: `Bearer ${token}`,
             },
-          }
+          },
         )
         .then((res) => {
           // console.log(res.data);

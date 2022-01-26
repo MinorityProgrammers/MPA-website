@@ -9,7 +9,7 @@ const HomepageTestimonials = () => {
 
   const updateIndex = useCallback(
     () => updateCurrentIndex(swiper.realIndex),
-    [swiper]
+    [swiper],
   );
 
   const goNext = () => {

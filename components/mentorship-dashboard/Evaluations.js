@@ -3,7 +3,7 @@ import stylesD from '../../styles/MentorCSS/Dashboard.module.css';
 import styles from '../../styles/MentorCSS/Course.module.css';
 
 const Evaluations = () => (
- 
+
   <div>
     <div className={stylesD.teamImg}>
       <img src="/assets/images/mentor/sprint.png" alt="sprint" />
