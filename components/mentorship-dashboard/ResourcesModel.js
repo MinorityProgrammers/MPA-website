@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Modal } from 'react-bootstrap';
-import { Alert, Upload/* , message */ } from 'antd';
+import { Alert, Upload /* , message */ } from 'antd';
 import 'antd/lib/alert/style/index.css';
 import { InboxOutlined } from '@ant-design/icons';
 import axios from 'axios';
@@ -56,7 +56,7 @@ const ResourcesModel = ({
                 'Access-Control-Allow-Origin': '*',
                 Authorization: `Bearer ${token}`,
               },
-            },
+            }
           )
           .then((/* res */) => {
             successToast('Resource created!');
@@ -75,7 +75,7 @@ const ResourcesModel = ({
                 'Access-Control-Allow-Origin': '*',
                 Authorization: `Bearer ${token}`,
               },
-            },
+            }
           )
           .then((/* res */) => {
             successToast('Resource updated!');
@@ -217,10 +217,6 @@ const ResourcesModel = ({
                   <p className="ant-upload-text">
                     Click or drag file to this area to upload
                   </p>
-                  {/* <p className="ant-upload-hint">
-                    Support for a single or bulk upload. Strictly prohibit from
-                    uploading company data or other band files
-                  </p> */}
                 </Dragger>
               </div>
             </div>

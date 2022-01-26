@@ -1,14 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import {
-  Modal, Form, /* Dropdown, ListGroup, */
-} from 'react-bootstrap';
+import { Modal, Form } from 'react-bootstrap';
 import { Alert } from 'antd';
 import 'antd/lib/alert/style/index.css';
 import axios from 'axios';
-// import FormData from 'form-data';
 import 'antd/lib/upload/style/index.css';
-// import { event } from 'jquery';
-// import { set } from 'date-fns';
 import CreatableInputOnly from './InputSelect.tsx';
 import styles from '../../styles/MentorCSS/Calendar.module.css';
 import stylesE from '../../styles/MentorCSS/Mentor.module.css';
@@ -57,13 +52,13 @@ const MentorModel = ({
                 'Access-Control-Allow-Origin': '*',
                 Authorization: `Bearer ${token}`,
               },
-            },
+            }
           )
-          .then((/* res */) => {
+          .then(() => {
             successToast(`${currentModel} created!`);
             setUpdate(!update);
           })
-          .catch((/* err */) => {
+          .catch(() => {
             errorToast('Something went wrong, please contact us.');
           });
       } else if (token != null && edit === true) {
@@ -76,13 +71,13 @@ const MentorModel = ({
                 'Access-Control-Allow-Origin': '*',
                 Authorization: `Bearer ${token}`,
               },
-            },
+            }
           )
           .then((/* res */) => {
             successToast(`${currentModel} updated!`);
             setUpdate(!update);
           })
-          .catch((/* err */) => {
+          .catch(() => {
             errorToast('Something went wrong, please contact us.');
           });
       }

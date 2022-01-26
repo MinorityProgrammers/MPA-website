@@ -5,7 +5,7 @@ import { uprContext } from '../../contexts/settingsPagesProvider/settingsPagesPr
 import getProgressPercentage from '../../contexts/utils/settings/getProgressPercentage';
 import Account from '../Account';
 
-const SettingBodyOverview = function ({ data }) {
+const SettingBodyOverview = ({ data }) => {
   const router = useRouter();
 
   const { setUpdatePasswordRedirection } = useContext(uprContext);
@@ -16,14 +16,14 @@ const SettingBodyOverview = function ({ data }) {
   const completeRedirection = () => {
     if (
       !(
-        !!data?.firstName
-        && !!data?.lastName
-        && !!data?.birthday
-        && !!data?.Gender
-        && !!data?.phoneNumber
-        && !!data?.location
-        && !!data?.Nationality
-        && !!data?.Ethnicity.length
+        !!data?.firstName &&
+        !!data?.lastName &&
+        !!data?.birthday &&
+        !!data?.Gender &&
+        !!data?.phoneNumber &&
+        !!data?.location &&
+        !!data?.Nationality &&
+        !!data?.Ethnicity.length
       )
     ) {
       router.push('/settings/profile/details');
@@ -31,24 +31,24 @@ const SettingBodyOverview = function ({ data }) {
       router.push('/settings/profile/overview');
     } else if (
       !(
-        !!data?.FacebookLink
-        && !!data?.LinkedinLink
-        && !!data?.GithubLink
-        && !!data?.GoogleLink
-        && !!data?.FigmaLink
-        && !!data?.DribbleLink
-        && !!data?.ClickupLink
+        !!data?.FacebookLink &&
+        !!data?.LinkedinLink &&
+        !!data?.GithubLink &&
+        !!data?.GoogleLink &&
+        !!data?.FigmaLink &&
+        !!data?.DribbleLink &&
+        !!data?.ClickupLink
       )
     ) {
       router.push('/settings/profile/media');
     } else if (
       !(
-        !!data?.passions.length
-        && (data.passions.length === 1 ? data.passions[0] !== '' : true)
-        && !!data?.softSkills.length
-        && (data.softSkills.length === 1 ? data.softSkills[0] !== '' : true)
-        && !!data?.programmingSkills.length
-        && (data.programmingSkills.length === 1
+        !!data?.passions.length &&
+        (data.passions.length === 1 ? data.passions[0] !== '' : true) &&
+        !!data?.softSkills.length &&
+        (data.softSkills.length === 1 ? data.softSkills[0] !== '' : true) &&
+        !!data?.programmingSkills.length &&
+        (data.programmingSkills.length === 1
           ? data.programmingSkills[0] !== ''
           : true)
       )
@@ -56,12 +56,12 @@ const SettingBodyOverview = function ({ data }) {
       router.push('/settings/profile/background');
     } else if (
       !(
-        !!data?.educationLevel
-        && !!data?.schoolName
-        && !!data?.enteredHighSchoolYear
-        && !!data?.expectedGraduationYear
-        && !!data?.studentStatus
-        && !!data?.degree
+        !!data?.educationLevel &&
+        !!data?.schoolName &&
+        !!data?.enteredHighSchoolYear &&
+        !!data?.expectedGraduationYear &&
+        !!data?.studentStatus &&
+        !!data?.degree
       )
     ) {
       router.push('/settings/profile/education');
@@ -79,9 +79,10 @@ const SettingBodyOverview = function ({ data }) {
     el.style.opacity = '0';
     document.body.appendChild(el);
 
-    const selected = document.getSelection().rangeCount > 0
-      ? document.getSelection().getRangeAt(0)
-      : false;
+    const selected =
+      document.getSelection().rangeCount > 0
+        ? document.getSelection().getRangeAt(0)
+        : false;
 
     el.select();
     document.execCommand('copy');
@@ -121,7 +122,7 @@ const SettingBodyOverview = function ({ data }) {
               <circle
                 style={{
                   strokeDashoffset: `calc(220 - (220 * ${getProgressPercentage(
-                    data,
+                    data
                   )}) / 100)`,
                 }}
                 cx="35"
@@ -169,7 +170,11 @@ const SettingBodyOverview = function ({ data }) {
               <div className={styles.info}>
                 <div className={styles.infoKey}>Email</div>
                 <div className={styles.infoValue}>
-                  <a target="_blank" href={`mailto:${data.email}`} rel="noreferrer">
+                  <a
+                    target="_blank"
+                    href={`mailto:${data.email}`}
+                    rel="noreferrer"
+                  >
                     {data.email}
                   </a>
                 </div>
@@ -323,17 +328,7 @@ const SettingBodyOverview = function ({ data }) {
       <div className={styles.fright}>
         <div className={`${styles.fItem} ${styles.fIWallet}`}>
           <h5>Wallet</h5>
-          {/* <div className={styles.connectWrapper}>
-            <button
-              type="button"
-              onClick={(e) => {
-                e.preventDefault();
-                router.push('/settings/wallet/my-wallet');
-              }}
-            >
-              Connect Wallet
-            </button>
-          </div> */}
+
           <div className="tw-m-4">
             <Account />
           </div>

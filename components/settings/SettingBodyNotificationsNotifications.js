@@ -8,7 +8,7 @@ import styles from '../../styles/settings/settingBodyNotificationsNotifications.
 import CreateSettingInput from './CreateSettingInput';
 import SettingBody from './SettingBody';
 
-const SettingBodyNotificationsNotifications = function ({ settingsPage, data, userID }) {
+const SettingBodyNotificationsNotifications =  ({ settingsPage, data, userID }) {
   const router = useRouter();
 
   const inputFields = [
@@ -22,8 +22,7 @@ const SettingBodyNotificationsNotifications = function ({ settingsPage, data, us
 
   inputFields.forEach(
     (field) => { initialInputState[field.name] = ''; },
-    // ex. {someInputFieldName: "inputFieldValue", ...}
-  );
+   );
 
   const [inputStates, setInputStates] = useState(initialInputState);
 

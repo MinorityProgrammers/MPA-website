@@ -5,7 +5,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { useRouter } from 'next/router';
 import styles from '../../styles/settings/createSettingInput.module.css';
 
-const CreateSettingInput = function ({
+const CreateSettingInput = ({
   label,
   type,
   name,
@@ -17,7 +17,7 @@ const CreateSettingInput = function ({
   halfWidth,
   rightSpaced,
   leftSpaced,
-}) {
+}) => {
   const router = useRouter();
 
   const handleChange = (e) => {
@@ -27,18 +27,19 @@ const CreateSettingInput = function ({
     }
   };
 
-  const handleSwitchChange = () => (setValue
-    ? {
-      value: options.find((option) => option.label === value),
-      onChange: (e) => {
-        setValue(e.value);
-      },
-    }
-    : {});
+  const handleSwitchChange = () =>
+    setValue
+      ? {
+          value: options.find((option) => option.label === value),
+          onChange: (e) => {
+            setValue(e.value);
+          },
+        }
+      : {};
 
-  const reactSelectKey = `${router.pathname.substring(router.pathname.lastIndexOf('/') + 1)
-  }-select-key-${
-    Math.floor(Math.random() * 10)}`;
+  const reactSelectKey = `${router.pathname.substring(
+    router.pathname.lastIndexOf('/') + 1
+  )}-select-key-${Math.floor(Math.random() * 10)}`;
 
   switch (type) {
     case 'select':
@@ -70,10 +71,10 @@ const CreateSettingInput = function ({
             halfWidth
               ? styles.halfInputLabel
               : name === 'Ethnicity'
-                ? `${styles.ethnInputLabel} ${styles.rightSpaced}`
-                : name === 'proficiency'
-                  ? `${styles.profPassInputLabel} ${styles.rightSpaced}`
-                  : styles.inputLabel
+              ? `${styles.ethnInputLabel} ${styles.rightSpaced}`
+              : name === 'proficiency'
+              ? `${styles.profPassInputLabel} ${styles.rightSpaced}`
+              : styles.inputLabel
           } ${halfWidth && rightSpaced ? styles.rightSpaced : ''}`}
         >
           {![
@@ -114,9 +115,9 @@ const CreateSettingInput = function ({
           </p>
           <DatePicker
             minDate={
-              (name === 'birthday' && new Date(1950, 0, 1))
-              || (name === 'enteredHighSchoolYear' && new Date(1968, 0, 1))
-              || (name === 'expectedGraduationYear' && new Date(1970, 0, 1))
+              (name === 'birthday' && new Date(1950, 0, 1)) ||
+              (name === 'enteredHighSchoolYear' && new Date(1968, 0, 1)) ||
+              (name === 'expectedGraduationYear' && new Date(1970, 0, 1))
             }
             maxDate={name === 'birthday' && new Date(2010, 11, 31)}
             className="datepicker"
@@ -155,17 +156,17 @@ const CreateSettingInput = function ({
           <div className={styles.inputRadioLabel}>
             <div className={styles.visibility} onClick={() => setValue(true)}>
               <div
-                className={
-                  `${styles.radioBtn} ${value ? styles.checkedRadioBtn : ''}`
-                }
+                className={`${styles.radioBtn} ${
+                  value ? styles.checkedRadioBtn : ''
+                }`}
               />
               <span>Public</span>
             </div>
             <div className={styles.visibility} onClick={() => setValue(false)}>
               <div
-                className={
-                  `${styles.radioBtn} ${!value ? styles.checkedRadioBtn : ''}`
-                }
+                className={`${styles.radioBtn} ${
+                  !value ? styles.checkedRadioBtn : ''
+                }`}
               />
               <span>Private</span>
             </div>
@@ -207,12 +208,12 @@ const CreateSettingInput = function ({
             name === 'userName'
               ? 'securityLoginPasswordInput'
               : name === 'email'
-                ? 'securityEmailInput'
-                : ' '
+              ? 'securityEmailInput'
+              : ' '
           }`}
         >
-          {!leftSpaced
-            && ![
+          {!leftSpaced &&
+            ![
               'proficiency',
               'passions',
               'softSkills',
@@ -222,7 +223,7 @@ const CreateSettingInput = function ({
                 {label}
                 {required ? <span className="cp-required">*</span> : ''}
               </p>
-          )}
+            )}
           <input
             type={type}
             name={name}

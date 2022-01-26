@@ -9,7 +9,7 @@ import CreateSettingAddition from './CreateSettingAddition';
 import SettingBody from './SettingBody';
 import findUserNames from '../../helpers/userNames';
 
-const SettingBodyProfileDetails = function ({ settingsPage, data, userID }) {
+const SettingBodyProfileDetails = ({ settingsPage, data, userID }) => {
   const [, setUsernames] = useState([]);
   const router = useRouter();
 
@@ -34,23 +34,21 @@ const SettingBodyProfileDetails = function ({ settingsPage, data, userID }) {
 
   const initialInputState = {};
 
-  inputFields.forEach(
-    (field) => { initialInputState[field.name] = ''; },
-    // ex. {someInputFieldName: "inputFieldValue", ...}
-  );
+  inputFields.forEach((field) => {
+    initialInputState[field.name] = '';
+  });
 
   const [inputStates, setInputStates] = useState(initialInputState);
 
   useEffect(() => {
-    inputFields.forEach(
-      (field) => {
-        initialInputState[field.name] = field.name === 'birthday'
+    inputFields.forEach((field) => {
+      initialInputState[field.name] =
+        field.name === 'birthday'
           ? data?.birthday
             ? new Date(data.birthday)
             : ''
           : data?.[field.name] || '';
-      },
-    );
+    });
 
     setInputStates(initialInputState);
   }, [data]);
@@ -65,7 +63,7 @@ const SettingBodyProfileDetails = function ({ settingsPage, data, userID }) {
   // get value from select field within same parent and add it as an array element to state
   const handleAdd = (e, name, reset) => {
     const value = e.target.parentNode.querySelector(
-      '.css-1uccc91-singleValue',
+      '.css-1uccc91-singleValue'
     )?.textContent;
 
     if (value) {
@@ -75,7 +73,7 @@ const SettingBodyProfileDetails = function ({ settingsPage, data, userID }) {
 
       // wrong code syntax and "addedText" is unused
       const addedText = (e.target.parentNode.querySelector(
-        '.css-1uccc91-singleValue',
+        '.css-1uccc91-singleValue'
       ).textContent = reset);
     }
   };
@@ -94,13 +92,17 @@ const SettingBodyProfileDetails = function ({ settingsPage, data, userID }) {
     updateProfileJSON(userID, JSON.stringify(inputStates))(profileDispatch);
 
     const slug = data?.userName;
-    if (slug) { router.push(`/user/${slug}`); }
+    if (slug) {
+      router.push(`/user/${slug}`);
+    }
   };
 
   const closeProfileSetup = () => {
     // discard changes
     const slug = data?.userName;
-    if (slug) { router.push(`/user/${slug}`); }
+    if (slug) {
+      router.push(`/user/${slug}`);
+    }
   };
 
   return (

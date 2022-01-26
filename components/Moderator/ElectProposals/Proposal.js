@@ -3,7 +3,7 @@ import { FaSortUp, FaSortDown } from 'react-icons/fa';
 import Moment from 'react-moment';
 import axios from 'axios';
 
-const Proposal = function ({ proposal }) {
+const Proposal = ({ proposal }) => {
   const [views, setViews] = useState({ data: { data: [] } });
   const [reply, setReply] = useState();
   const [upVotes, setUpVotes] = useState({ data: { data: 0 } });
@@ -38,11 +38,14 @@ const Proposal = function ({ proposal }) {
   // upVotes _______________
 
   useEffect(() => {
-    const res = axios.get(`${process.env.BASE_URI}/upVotes/proposalUpvote/${proposal._id}`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    const res = axios.get(
+      `${process.env.BASE_URI}/upVotes/proposalUpvote/${proposal._id}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
     res.then((data) => setUpVotes(data));
   }, []);
 
@@ -51,11 +54,14 @@ const Proposal = function ({ proposal }) {
   // downVotes _______________
 
   useEffect(() => {
-    const res = axios.get(`${process.env.BASE_URI}/downVotes/proposalDownvote/${proposal._id}`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    const res = axios.get(
+      `${process.env.BASE_URI}/downVotes/proposalDownvote/${proposal._id}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
     res.then((data) => setDownVotes(data));
   }, []);
 
@@ -73,15 +79,12 @@ const Proposal = function ({ proposal }) {
         </h3>
         <p>
           <span className="tw-mr-3">
-            <strong>Type:</strong>
-            {' '}
-            {proposal.type}
+            <strong>Type:</strong> {proposal.type}
           </span>
 
           <span>
             <strong>Category:</strong>
-            {' '}
-            {proposal.Category ? proposal.Category : 'Incubator' }
+            {proposal.Category ? proposal.Category : 'Incubator'}
           </span>
         </p>
       </div>
@@ -89,62 +92,50 @@ const Proposal = function ({ proposal }) {
       <div className="s-p-user d-flex-wrp tw-justify-between my-1">
         <div className="info tw-flex tw-self-center">
           <div className=" tw-mr-3">
-            <img src={proposal.userId.profilePicture} className="user-img" alt="user" />
+            <img
+              src={proposal.userId.profilePicture}
+              className="user-img"
+              alt="user"
+            />
           </div>
 
           <div className=" tw-mr-3 -mt-1">
             <p>
-              Created by
-              {' '}
-              <br />
-              {' '}
-              <strong>{proposal.userId.userName}</strong>
+              Created by <br /> <strong>{proposal.userId.userName}</strong>
             </p>
           </div>
 
           <div className="">
             <p>
-              Created on
-              {' '}
-              <br />
-              {' '}
+              Created on <br />
               <strong>
-
                 <Moment format="MMM D" withTitle>
                   {proposal.createdAt}
                 </Moment>
-
               </strong>
-              {' '}
-
             </p>
           </div>
         </div>
         <div className="count tw-flex tw-self-center mr-t">
           <div className=" tw-mr-3">
             <p>
-              {reply === 0 ? <strong> 1 </strong> : <strong>{reply}</strong> }
-              {' '}
-              <br />
-              {' '}
-              Replies
+              {reply === 0 ? <strong> 1 </strong> : <strong>{reply}</strong>}{' '}
+              <br /> Replies
             </p>
           </div>
 
           <div className=" tw-mr-3">
             <p>
-              <strong>{views.data.data.length}</strong>
-              {' '}
-              <br />
-              {' '}
-              Views
+              <strong>{views.data.data.length}</strong> <br /> Views
             </p>
           </div>
           <div className=" ">
             <p className="tw-flex tw-flex-col">
               <FaSortUp onClick={() => setVotes(upVotes.data.data.length)} />
               <strong className="tw--my-3">{votes || defaultVotes}</strong>
-              <FaSortDown onClick={() => setVotes(downVotes.data.data.length)} />
+              <FaSortDown
+                onClick={() => setVotes(downVotes.data.data.length)}
+              />
             </p>
           </div>
         </div>

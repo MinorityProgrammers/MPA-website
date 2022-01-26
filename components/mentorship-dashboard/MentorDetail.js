@@ -62,8 +62,7 @@ const MentorDetail = ({
       />
       <div className={stylesE.userName}>
         Meet Your Mentor,
-        {` ${menteeData.user_id.firstName} ${menteeData.user_id.lastName}`}
-        !
+        {` ${menteeData.user_id.firstName} ${menteeData.user_id.lastName}`}!
       </div>
       <div className={styles.container}>
         <div className={styles.grid}>
@@ -89,8 +88,7 @@ const MentorDetail = ({
                   </div>
                   <div className={stylesE.menteeSocial}>
                     <div>
-                      @
-                      {menteeData.user_id.GithubLink.split('/')[3]}
+                      @{menteeData.user_id.GithubLink.split('/')[3]}
                       <img
                         className={stylesE.qrCode}
                         onClick={() => setModalShow(true)}
@@ -131,16 +129,12 @@ const MentorDetail = ({
                 </div>
                 <div className={stylesE.role}>
                   Been with MPA:
-                  {' '}
                   {menteeData.duration}
                 </div>
                 <div className={stylesE.tags}>
                   {menteeData.user_id.programmingSkills.map((tag) => (
                     <div key={tag}>
-                      <a>
-                        {' '}
-                        {tag}
-                      </a>
+                      <a>{tag}</a>
                     </div>
                   ))}
                 </div>
@@ -222,13 +216,15 @@ const MentorDetail = ({
                 <p>Communication</p>
               </div>
               <div
-                onClick={() => setActionActive({
-                  sprintsViewActive: false,
-                  calendarActive: false,
-                  eventActive: false,
-                  resourceActive: true,
-                  evaluations: false,
-                })}
+                onClick={() =>
+                  setActionActive({
+                    sprintsViewActive: false,
+                    calendarActive: false,
+                    eventActive: false,
+                    resourceActive: true,
+                    evaluations: false,
+                  })
+                }
                 className={
                   actionActive.resourceActive
                     ? styles.mentorRowE
@@ -245,13 +241,15 @@ const MentorDetail = ({
               </div>
 
               <div
-                onClick={() => setActionActive({
-                  sprintsViewActive: false,
-                  calendarActive: false,
-                  eventActive: true,
-                  resourceActive: false,
-                  evaluations: false,
-                })}
+                onClick={() =>
+                  setActionActive({
+                    sprintsViewActive: false,
+                    calendarActive: false,
+                    eventActive: true,
+                    resourceActive: false,
+                    evaluations: false,
+                  })
+                }
                 className={
                   actionActive.eventActive
                     ? styles.mentorRowE
@@ -283,13 +281,15 @@ const MentorDetail = ({
                 <p>Calender/Bi-Weekly</p>
               </div>
               <div
-                onClick={() => setActionActive({
-                  sprintsViewActive: false,
-                  calendarActive: false,
-                  eventActive: false,
-                  resourceActive: false,
-                  evaluations: true,
-                })}
+                onClick={() =>
+                  setActionActive({
+                    sprintsViewActive: false,
+                    calendarActive: false,
+                    eventActive: false,
+                    resourceActive: false,
+                    evaluations: true,
+                  })
+                }
                 style={{ borderRadius: '0px 0 30px 0px' }}
                 className={
                   actionActive.evaluations

@@ -53,9 +53,7 @@ const PresalePreorder = () => (
     <div className="minority-amount">
       <div className="number">20</div>
       <div className="text">
-        <b className="text-larger">BILLION MINORITY</b>
-        {' '}
-        <br />
+        <b className="text-larger">BILLION MINORITY</b> <br />
         FINITE MAX SUPPLY
       </div>
     </div>
@@ -63,35 +61,20 @@ const PresalePreorder = () => (
       <div className="some-text">
         <div className="sometext1">
           <div className="title-header">$MINORITY</div>
-          The utility token behind the
-          {' '}
-          <br />
-          App that supports the
-          {' '}
-          <br />
-          {' '}
-          careers of Minority
-          {' '}
-          <br />
-          {' '}
-          Programmers
+          The utility token behind the <br />
+          App that supports the <br /> careers of Minority <br /> Programmers
           <div className="sometext2">
             <div className="title-header">$MPA</div>
-            airdropped to $MINORITY
-            {' '}
-            <br />
-            {' '}
-            holderS for voting power
-            {' '}
-            <br />
-            {' '}
-            in
+            airdropped to $MINORITY <br /> holderS for voting power <br /> in
             MPA DAPP
           </div>
         </div>
       </div>
       <div className="image-container">
-        <img src="/assets/images/presale/minorityTOKEN.png" alt="minorityToken" />
+        <img
+          src="/assets/images/presale/minorityTOKEN.png"
+          alt="minorityToken"
+        />
       </div>
     </div>
     <div className="component-buttons">
@@ -108,15 +91,14 @@ const PresalePreorder = () => (
       <div className="token-title">TOKEN THAT GIVES BACK</div>
       <div className="aka">aka “da Secret Sauce”</div>
       <div className="token-text">
-        10% Tax on Each transaction to benefit
-        {' '}
-        <br />
-        {' '}
-        ECOSYSTEM & token holders
+        10% Tax on Each transaction to benefit <br /> ECOSYSTEM & token holders
       </div>
     </div>
     <div className="image-content">
-      <img src="/assets/images/presale/transactional-burn-tax.png" alt="transactional-burn-tax" />
+      <img
+        src="/assets/images/presale/transactional-burn-tax.png"
+        alt="transactional-burn-tax"
+      />
     </div>
     <>
       <div className="create-account">
@@ -137,12 +119,13 @@ const PresalePreorder = () => (
         <div className="testimonial1">
           <div className="inner-container">
             <div className="avatar-image">
-              <img src="/assets/images/presale/svga group humanwrap move.png" alt="group_humanwrap_move" />
+              <img
+                src="/assets/images/presale/svga group humanwrap move.png"
+                alt="group_humanwrap_move"
+              />
             </div>
             <div className="inner-text">
-              “Minority for a penny? A Majority get many.
-              {' '}
-              <br />
+              “Minority for a penny? A Majority get many. <br />
               <div className="user-name">-wise rapper off the street</div>
             </div>
           </div>
@@ -150,20 +133,25 @@ const PresalePreorder = () => (
         <div className="testimonial2">
           <div className="inner-container">
             <div className="inner-text">
-              I can own a minority on-chain. Wait this isn’t slavery right?
-              {' '}
+              I can own a minority on-chain. Wait this isn’t slavery right?{' '}
               <br />
               <div className="user-name">-Concerned citizen</div>
             </div>
             <div className="avatar-image2">
-              <img src="/assets/images/presale/svga group humanwrap (1).png" alt="group_humanwrap_1" />
+              <img
+                src="/assets/images/presale/svga group humanwrap (1).png"
+                alt="group_humanwrap_1"
+              />
             </div>
           </div>
         </div>
         <div className="testimonial1">
           <div className="inner-container">
             <div className="avatar-image">
-              <img src="/assets/images/presale/svga group humanwrap.png" alt="group_humanwrap" />
+              <img
+                src="/assets/images/presale/svga group humanwrap.png"
+                alt="group_humanwrap"
+              />
             </div>
             <div className="inner-text">
               I’m a minority, & I be tokin’. I support the movement and what you
@@ -187,14 +175,20 @@ const PresalePreorder = () => (
               </div>
             </div>
             <div className="avatar-image2">
-              <img src="/assets/images/presale/svga group humanwrap move (2).png" alt="group_humanwrap_move_2" />
+              <img
+                src="/assets/images/presale/svga group humanwrap move (2).png"
+                alt="group_humanwrap_move_2"
+              />
             </div>
           </div>
         </div>
         <div className="testimonial1">
           <div className="inner-container">
             <div className="avatar-image">
-              <img src="/assets/images/presale/svga group humanwrap move (1).png" alt="group_humanwrap_move_1" />
+              <img
+                src="/assets/images/presale/svga group humanwrap move (1).png"
+                alt="group_humanwrap_move_1"
+              />
             </div>
             <div className="inner-text">
               Won’t be the first time $minority made it to the moon.
