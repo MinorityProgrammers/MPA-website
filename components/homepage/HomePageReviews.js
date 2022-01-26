@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Swiper from 'react-id-swiper';
 import 'swiper/css/swiper.css';
 import TweetEmbed from './TweetEmbed';
@@ -15,12 +15,7 @@ const HomePageReviews = () => {
     { tweetId: '1486289656203427845' },
     { tweetId: '1484447708668649475' },
     { tweetId: '1484833789058633729' },
-<<<<<<< HEAD
-    { tweetId: '1444383109307412487' },
     { tweetId: '1484692573713276935', loading: false },
-=======
-    { tweetId: '1484692573713276935' },
->>>>>>> 8110b78 (tweets style)
 
   ];
   const params = {
@@ -73,6 +68,13 @@ const HomePageReviews = () => {
     }
     return num;
   };
+  const last_tweet = document.getElementById(`twitter-widget-${data.length - 1}`);
+  useEffect(() => {
+    if (last_tweet) {
+      setTweetsLoading(false);
+    }
+  }, [last_tweet]);
+  console.log(last_tweet);
   return (
     <section className="homepage__Reviews">
       <div className="heading__number">
