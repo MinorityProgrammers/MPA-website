@@ -8,19 +8,19 @@ const HomePageReviews = () => {
   const [tweetsLoading, setTweetsLoading] = useState(true);
 
   const data = [
-    { tweetId: '1484447708668649475' },
-    { tweetId: '1486289656203427845' },
-    { tweetId: '1484769427489009670' },
-    { tweetId: '1484692573713276935' },
+    { tweetId: '1444383109307412487' },
     { tweetId: '1431364200132190219', options: { cards: 'hidden' } },
-    { tweetId: '1484833789058633729' },
     { tweetId: '1455675414765051905' },
     { tweetId: '1484769427489009670' },
     { tweetId: '1486289656203427845' },
     { tweetId: '1484447708668649475' },
     { tweetId: '1484833789058633729' },
+<<<<<<< HEAD
     { tweetId: '1444383109307412487' },
     { tweetId: '1484692573713276935', loading: false },
+=======
+    { tweetId: '1484692573713276935' },
+>>>>>>> 8110b78 (tweets style)
 
   ];
   const params = {
