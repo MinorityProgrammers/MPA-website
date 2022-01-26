@@ -8,13 +8,11 @@ import { GlobalContext } from '../contexts/provider';
 import { storeOne, storeThree, storeTwo } from '../contexts/utils/fields';
 import { CustomInput } from './form-elements/inputs';
 
-const UpdateProfileTwo = function ({ open = true, setOpen = () => {}, userData }) {
+const UpdateProfileTwo = ({ open = true, setOpen = () => {}, userData }) => {
   const {
     profileDispatch,
     profileState: {
-      profile: {
-        profileError, profileData,
-      },
+      profile: { profileError, profileData },
     },
   } = useContext(GlobalContext);
 
@@ -36,12 +34,12 @@ const UpdateProfileTwo = function ({ open = true, setOpen = () => {}, userData }
   const [newlastName, setNewLastName] = useState(userData.lastName || '');
   const [newEmail, setNewEmail] = useState(userData.email || '');
   const [newPhoneNumber, setNewPhoneNumber] = useState(
-    userData.phoneNumber || '',
+    userData.phoneNumber || ''
   );
   const [newLocation, setNewLocation] = useState(userData.location || '');
   const [newBirthDate, setNewBirthDate] = useState(userData.birthday || '');
   const [newNationality, setNewNationality] = useState(
-    userData.Nationality || '',
+    userData.Nationality || ''
   );
   const [newEthnicity, setNewEthnicity] = useState(userData.Ethnicity || '');
   const [newGender, setNewGender] = useState(userData.Gender || '');
@@ -319,7 +317,9 @@ const UpdateProfileTwo = function ({ open = true, setOpen = () => {}, userData }
             <div className="up-modal-section">
               <div className="up-modal-section-body">
                 <div className="up-button-row">
-                  <button type="button" onClick={handleCancel}>Cancel</button>
+                  <button type="button" onClick={handleCancel}>
+                    Cancel
+                  </button>
                   <button className="green" type="submit">
                     Save
                   </button>

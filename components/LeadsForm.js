@@ -1,6 +1,4 @@
-import React, {
-  useState, useEffect, useMemo, useCallback,
-} from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import Calendar from 'react-calendar';
 import Axios from 'axios';
 
@@ -75,13 +73,12 @@ const LeadsForm = () => {
         <h4>{index === undefined ? errorMsg : errorMsg[index]}</h4>
       </div>
     ),
-    [errorMsg],
+    [errorMsg]
   );
 
   const KeepingUpWithStep = useCallback(({ selected }) => {
-    const calculateLinePercentage = () => (
-      selected === 0 ? 0 : ((selected - 1) / (totalSteps - 1)) * 100
-    );
+    const calculateLinePercentage = () =>
+      selected === 0 ? 0 : ((selected - 1) / (totalSteps - 1)) * 100;
 
     const percentageOfBlueLine = Number.isInteger(selected)
       ? calculateLinePercentage()
@@ -117,9 +114,7 @@ const LeadsForm = () => {
   }, []);
 
   const Buttons = useCallback(
-    ({
-      left, right, marginTop, customPlusFunction,
-    }) => (
+    ({ left, right, marginTop, customPlusFunction }) => (
       <div className="service_buttons">
         {left ? (
           <button
@@ -146,13 +141,11 @@ const LeadsForm = () => {
         ) : null}
       </div>
     ),
-    [plus, minus],
+    [plus, minus]
   );
 
   const QuestionContainer = useCallback(
-    ({
-      children, left, right, marginBottom, customPlusFunction,
-    }) => (
+    ({ children, left, right, marginBottom, customPlusFunction }) => (
       <div className="service_container">
         <div className="questions">
           {children}
@@ -166,7 +159,7 @@ const LeadsForm = () => {
         </div>
       </div>
     ),
-    [Buttons, step],
+    [Buttons, step]
   );
   const CustomSelectTag = ({
     options,
@@ -177,16 +170,17 @@ const LeadsForm = () => {
     const [dropDown, setDropDown] = useState(optionsShowByDefault);
     const updatedOptions = useMemo(
       () => ['...select an option', ...options],
-      [options],
+      [options]
     );
 
     useEffect(() => {
       setSelected(0);
     }, []);
 
-    const getRootVariable = (str) => parseInt(
-      window.getComputedStyle(document.body).getPropertyValue(`--${str}`),
-    );
+    const getRootVariable = (str) =>
+      parseInt(
+        window.getComputedStyle(document.body).getPropertyValue(`--${str}`)
+      );
 
     const maximumOptionHeight = getRootVariable('maximumOptionPerScrollable');
     const optionHeight = getRootVariable('optionHeight');
@@ -262,7 +256,7 @@ const LeadsForm = () => {
             arr.push(obj);
           }
           return arr;
-        }()),
+        })(),
       ]);
     }, []);
 
@@ -282,8 +276,8 @@ const LeadsForm = () => {
             >
               <i
                 className={
-                  'fa fa-check '
-                  + `${checkbox.checked ? 'checkVisible' : 'checkInvisible'}`
+                  'fa fa-check ' +
+                  `${checkbox.checked ? 'checkVisible' : 'checkInvisible'}`
                 }
                 aria-hidden="true"
               />
@@ -298,7 +292,7 @@ const LeadsForm = () => {
     prev,
     lengthOfPageQuestions,
     questionIndex,
-    errorStr,
+    errorStr
   ) => {
     let errorList = [];
     if (prev instanceof Array) {
@@ -317,15 +311,17 @@ const LeadsForm = () => {
     index,
     question,
     questionIndex,
-    lengthOfPageQuestions,
+    lengthOfPageQuestions
   ) => {
     if (!index) {
-      setErrorMsg((prev) => setCustomTagError(
-        prev,
-        lengthOfPageQuestions,
-        questionIndex,
-        'You must select at least one option.',
-      ));
+      setErrorMsg((prev) =>
+        setCustomTagError(
+          prev,
+          lengthOfPageQuestions,
+          questionIndex,
+          'You must select at least one option.'
+        )
+      );
       setDisplayError(true);
     } else {
       return [question, options[index - 1]];
@@ -335,7 +331,7 @@ const LeadsForm = () => {
     checkboxes,
     question,
     questionIndex,
-    lengthOfPageQuestions,
+    lengthOfPageQuestions
   ) => {
     const checkedCheckboxes = checkboxes
       .filter((checkbox) => {
@@ -347,12 +343,14 @@ const LeadsForm = () => {
       .map((checkbox) => checkbox.label);
 
     if (checkedCheckboxes.length === 0) {
-      setErrorMsg((prev) => setCustomTagError(
-        prev,
-        lengthOfPageQuestions,
-        questionIndex,
-        'You must check at least one checkbox.',
-      ));
+      setErrorMsg((prev) =>
+        setCustomTagError(
+          prev,
+          lengthOfPageQuestions,
+          questionIndex,
+          'You must check at least one checkbox.'
+        )
+      );
     } else {
       return [question, checkedCheckboxes];
     }
@@ -407,7 +405,7 @@ const LeadsForm = () => {
         {displayError === true ? <ErrorEle /> : null}
       </QuestionContainer>
     ),
-    [displayError, QuestionContainer],
+    [displayError, QuestionContainer]
   );
   const Page3 = useCallback(() => {
     const [selected, setSelected] = useState();
@@ -441,13 +439,13 @@ const LeadsForm = () => {
         selected,
         question1,
         currentQuestionIndex,
-        lenght_of_questions,
+        lenght_of_questions
       );
       const questionSheetTwo = validateCheckBox(
         checkboxes,
         question2,
         currentQuestionIndex + 1,
-        lenght_of_questions,
+        lenght_of_questions
       );
       if (questionSheetOne && questionSheetTwo) {
         setstep((prev) => prev + 1);
@@ -650,7 +648,11 @@ const LeadsForm = () => {
         <div className="questions">
           <div className="service_sub">
             <h2 id="nomarg">Thank you for submitting your idea!</h2>
-            <button type="button" className="service_leftbutton" onClick={() => plus()}>
+            <button
+              type="button"
+              className="service_leftbutton"
+              onClick={() => plus()}
+            >
               Submit another idea
             </button>
           </div>
@@ -667,8 +669,8 @@ const LeadsForm = () => {
             inputValue !== ' '
               ? inputValue
               : questions.question1
-                ? questions.question1
-                : ''
+              ? questions.question1
+              : ''
           }
         />
       )}

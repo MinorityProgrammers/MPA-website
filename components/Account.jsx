@@ -1,11 +1,7 @@
 /* eslint-disable max-len */
-import React, {
-  useState, useEffect, useContext, useCallback,
-} from 'react';
+import React, { useState, useEffect, useContext, useCallback } from 'react';
 import { useMoralis } from 'react-moralis';
-import {
-  Button, Card, Modal, Row, Col,
-} from 'antd';
+import { Button, Card, Modal, Row, Col } from 'antd';
 import { SelectOutlined } from '@ant-design/icons';
 import { Signer } from 'casper-js-sdk';
 import { GlobalContext } from '../contexts/provider';
@@ -20,7 +16,7 @@ import {
   isConnectedCasper,
 } from '../contexts/actions/signer/index';
 
-const Account = function () {
+const Account = () => {
   const { authenticate, isAuthenticated, logout } = useMoralis();
   const { walletAddress, chainId } = useMoralisDapp();
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -28,14 +24,11 @@ const Account = function () {
     showModalState: { showModal },
     setShowModal,
     signerState: {
-      signer: {
-        error, isConnected, /* isUnlocked, */ activeKey,
-      },
+      signer: { error, isConnected, activeKey },
     },
     setSignerState,
   } = useContext(GlobalContext);
 
-  // console.log(await window.casperlabsHelper.isConnected())
   const SIGNER_EVENTS = {
     connected: 'signer:connected',
     disconnected: 'signer:disconnected',
@@ -49,7 +42,7 @@ const Account = function () {
     (event) => {
       handleUnlockSigner(event.detail)(setSignerState);
     },
-    [isConnected, setSignerState],
+    [isConnected, setSignerState]
   );
 
   const dispatchDisconnectedSinger = useCallback(() => {
@@ -62,15 +55,21 @@ const Account = function () {
       SIGNER_EVENTS.activeKeyChanged,
       SIGNER_EVENTS.connected,
     ].forEach((event) => window.addEventListener(event, dispatchUnlockSinger));
-    [SIGNER_EVENTS.locked, SIGNER_EVENTS.disconnected].forEach((event) => window.addEventListener(event, dispatchDisconnectedSinger));
+    [SIGNER_EVENTS.locked, SIGNER_EVENTS.disconnected].forEach((event) =>
+      window.addEventListener(event, dispatchDisconnectedSinger)
+    );
 
     return () => {
       [
         SIGNER_EVENTS.unlocked,
         SIGNER_EVENTS.activeKeyChanged,
         SIGNER_EVENTS.connected,
-      ].forEach((event) => window.removeEventListener(event, dispatchUnlockSinger));
-      [SIGNER_EVENTS.locked, SIGNER_EVENTS.disconnected].forEach((event) => window.removeEventListener(event, dispatchDisconnectedSinger));
+      ].forEach((event) =>
+        window.removeEventListener(event, dispatchUnlockSinger)
+      );
+      [SIGNER_EVENTS.locked, SIGNER_EVENTS.disconnected].forEach((event) =>
+        window.removeEventListener(event, dispatchDisconnectedSinger)
+      );
     };
   });
 
@@ -80,7 +79,9 @@ const Account = function () {
         SIGNER_EVENTS.unlocked,
         SIGNER_EVENTS.activeKeyChanged,
         SIGNER_EVENTS.connected,
-      ].forEach((event) => window.addEventListener(event, dispatchUnlockSinger));
+      ].forEach((event) =>
+        window.addEventListener(event, dispatchUnlockSinger)
+      );
     });
     if (error) {
       errorToast(error);
@@ -110,8 +111,8 @@ const Account = function () {
 
   const metamaskConnectWallet = async () => {
     if (
-      chainId === process.env.NEXT_PUBLIC_NETWORK_ID_MAINNET
-      || chainId === process.env.NEXT_PUBLIC_NETWORK_ID_TESTNET
+      chainId === process.env.NEXT_PUBLIC_NETWORK_ID_MAINNET ||
+      chainId === process.env.NEXT_PUBLIC_NETWORK_ID_TESTNET
     ) {
       authenticate({ signingMessage: 'connected!' });
       if (isConnected === true) {
@@ -125,9 +126,9 @@ const Account = function () {
 
   useEffect(async () => {
     if (
-      chainId !== process.env.NEXT_PUBLIC_NETWORK_ID_MAINNET
-      && chainId !== process.env.NEXT_PUBLIC_NETWORK_ID_TESTNET
-      && showModal === true
+      chainId !== process.env.NEXT_PUBLIC_NETWORK_ID_MAINNET &&
+      chainId !== process.env.NEXT_PUBLIC_NETWORK_ID_TESTNET &&
+      showModal === true
     ) {
       errorToast('Wrong Chain, please connect to Polygon chain');
 
@@ -196,9 +197,11 @@ const Account = function () {
                 align="middle"
                 span={11}
                 className="tw-py-3 tw-cursor-pointer hover:tw-bg-gray-100 hover:tw-shadow-xl tw-transition-all tw-duration-500 tw-mb-10"
-                onClick={() => (wallet.id === 'MetaMask'
-                  ? metamaskConnectWallet()
-                  : casperConnectWallet())}
+                onClick={() =>
+                  wallet.id === 'MetaMask'
+                    ? metamaskConnectWallet()
+                    : casperConnectWallet()
+                }
               >
                 <img
                   alt="wallet"
@@ -219,7 +222,11 @@ const Account = function () {
                   Metamask
                 </span>
               </a>
-              <a href="https://casper.network/en/network" target="_blank" rel="noreferrer">
+              <a
+                href="https://casper.network/en/network"
+                target="_blank"
+                rel="noreferrer"
+              >
                 <span className="tw-cursor-pointer hover:tw-text-gray-500 tw-transition-all tw-duration-500">
                   Casper
                 </span>
@@ -307,7 +314,8 @@ const Account = function () {
             logout();
             await window.casperlabsHelper.disconnectFromSite();
             [SIGNER_EVENTS.locked, SIGNER_EVENTS.disconnected].forEach(
-              (event) => window.addEventListener(event, dispatchDisconnectedSinger),
+              (event) =>
+                window.addEventListener(event, dispatchDisconnectedSinger)
             );
             setIsModalVisible(false);
           }}
