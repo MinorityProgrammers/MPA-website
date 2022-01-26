@@ -22,7 +22,7 @@ const CourseSidebar = ({ course, modules, courseId, userModules }) => {
   return (
     <div className="course-sidebar pt-5">
       <div className="ml-md-4 back-course mb-3">
-        <div onClick={() => router.push('/learn-page')}>
+        <div onClick={() => router.push('/learn')}>
           <FontAwesomeIcon icon={faChevronLeft} />
           <span className="ml-2">Courses</span>
         </div>

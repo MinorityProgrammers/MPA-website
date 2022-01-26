@@ -15,7 +15,7 @@ const JoinCard =  () =>(
         </span>
       </a>
       <div className="join-nav-container-right">
-        <a href="/learn-page">LEARN</a>
+        <a href="/learn">LEARN</a>
         <a href="/incubator">INCUBATOR</a>
         <a href="/mentorshipProgram">MENTORSHIP</a>
         <a href="/events">EVENTS</a>

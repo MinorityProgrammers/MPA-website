@@ -60,7 +60,7 @@ export default function QuizResult(props) {
 
   const handleCongratsModal = () => {
     setIsOpen(false);
-    window.location.href = '/learn-page/certificates';
+    window.location.href = '/learn/certificates';
   };
 
   const congratsClose = {

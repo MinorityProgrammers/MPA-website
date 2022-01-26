@@ -9,7 +9,6 @@ import { LOGOUT_USER } from '../../contexts/actions/actionTypes';
 import getProfile from '../../contexts/actions/profile/getProfile';
 import links from '../../contexts/utils/links';
 import Footer from '../Footer';
-import ComingSoon from '../ComingSoon';
 import useDetectOutsideClick from '../UseDetectOutsideClick';
 import styles from '../../styles/settings/settingsLayout.module.css';
 
@@ -91,7 +90,10 @@ const SettingsLayout = ({ setData, children, settingsPage }) => {
         active="Home"
         handleClick={handleClick}
       />
+<<<<<<< HEAD
       {/* {hide === false && <ComingSoon closeClick={handleClick} />} */}
+=======
+>>>>>>> 8750ad6 (add tweets)
       <div className={styles.settingsContainer}>
         <div className={styles.accountSettings}>
           <div className={styles.settingsNavigation}>

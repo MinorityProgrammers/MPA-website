@@ -139,6 +139,7 @@ const CourseCategories = ({ user, certificates, loading }) => {
           </div>
           <div className="learn-items mb-2">
             <ul className="tw-flex tw-flex-row tw-justify-center tw-pt-2">
+<<<<<<< HEAD
               <li
                 className={`tw-cursor-pointer ${
                   router.pathname.split('/').length !== 3
@@ -147,11 +148,16 @@ const CourseCategories = ({ user, certificates, loading }) => {
                 }`}
               >
                 <Link href="/learn-page">
+=======
+              <li className={`tw-cursor-pointer ${router.pathname.split('/').length !== 3 ? 'tw-bg-blue-700 tw-w-36 tw-text-center tw-p-2 tw-mx-2 tw-rounded-md tw-shadow-lg' : 'menu tw-text-center'}`}>
+                <Link href="/learn">
+>>>>>>> 8750ad6 (add tweets)
                   <p className="learn-item-active hover:tw-text-blue-600">
                     COURSES
                   </p>
                 </Link>
               </li>
+<<<<<<< HEAD
               <li
                 className={`tw-cursor-pointer ${
                   router.pathname.split('/').length === 3
@@ -160,6 +166,10 @@ const CourseCategories = ({ user, certificates, loading }) => {
                 }`}
               >
                 <Link href="/learn-page/certificates">
+=======
+              <li className={`tw-cursor-pointer ${router.pathname.split('/').length === 3 ? 'tw-bg-blue-700 tw-w-36 tw-text-center tw-p-2 tw-mx-2 tw-rounded-md tw-shadow-lg' : 'menu tw-text-center'}`}>
+                <Link href="/learn/certificates">
+>>>>>>> 8750ad6 (add tweets)
                   <p className="hover:tw-text-blue-600">MY CERTIFICATES</p>
                 </Link>
               </li>

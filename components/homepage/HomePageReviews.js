@@ -8,13 +8,19 @@ const HomePageReviews = () => {
   const [loading, setLoading] = useState(true);
 
   const data = [
-    { tweetId: '1444383109307412487' },
+    { tweetId: '1484447708668649475' },
+    { tweetId: '1486289656203427845' },
+    { tweetId: '1484769427489009670' },
+    { tweetId: '1484692573713276935' },
     { tweetId: '1431364200132190219', options: { cards: 'hidden' } },
+    { tweetId: '1484833789058633729' },
     { tweetId: '1455675414765051905' },
+    { tweetId: '1444383109307412487' },
   ];
   const params = {
-    slidesPerView: data.length,
-    loop: data.length > 3,
+    slidesPerView: 3,
+    // loop: true,
+    slidesPerGroup: 3,
     speed: 700,
     noSwiping: true,
     navigation: {
@@ -26,21 +32,27 @@ const HomePageReviews = () => {
     breakpoints: {
       1440: {
         slidesPerView: data.length >= 3 ? 3 : data.length,
+        slidesPerGroup: 3,
       },
       1025: {
         slidesPerView: data.length >= 3 ? 3 : data.length,
+        slidesPerGroup: 3,
       },
       1024: {
         slidesPerView: data.length >= 2 ? 2 : data.length,
+        slidesPerGroup: 1,
       },
       769: {
         slidesPerView: data.length >= 2 ? 2 : data.length,
+        slidesPerGroup: 1,
       },
       768: {
         slidesPerView: data.length >= 2 ? 1 : data.length,
+        slidesPerGroup: 1,
       },
       320: {
         slidesPerView: 1,
+        slidesPerGroup: 1,
       },
     },
   };
@@ -72,7 +84,7 @@ const HomePageReviews = () => {
               }
             </Swiper>
           )}
-        <Swiper {...params} grabCursor>
+        <Swiper {...params}>
           { data.map((tweet) => (
             <div className="item tweet__card" id={`tweet-${tweet.tweetId}`} key={tweet.tweetId}>
               <div className="card card__container homepage__comment">
