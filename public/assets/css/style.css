@@ -9078,6 +9078,9 @@ blockquote.twitter-tweet {
   display: flex;
   justify-content: space-between;
 }
+.skelton-container .swiper-button-prev,.skelton-container .swiper-button-next{
+  display: none;
+}
 @media only screen and (max-width: 992px) {
   .homepage__Reviews .container .swiper-container .swiper-button-prev{
     left: 82%;

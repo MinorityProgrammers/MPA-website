@@ -1,11 +1,11 @@
+import React, { useState, useEffect } from 'react';
 import Swiper from 'react-id-swiper';
 import 'swiper/css/swiper.css';
-import React, { useState } from 'react';
 import TweetEmbed from './TweetEmbed';
 import TweetSkeltonLoader from './TweetSkeltonLoader';
 
 const HomePageReviews = () => {
-  const [loading, setLoading] = useState(true);
+  const [tweetsLoading, setTweetsLoading] = useState(true);
 
   const data = [
     { tweetId: '1444383109307412487' },
@@ -15,7 +15,7 @@ const HomePageReviews = () => {
     { tweetId: '1486289656203427845' },
     { tweetId: '1484447708668649475' },
     { tweetId: '1484833789058633729' },
-    { tweetId: '1484692573713276935' },
+    { tweetId: '1484692573713276935', loading: false },
 
   ];
   const params = {
@@ -68,6 +68,13 @@ const HomePageReviews = () => {
     }
     return num;
   };
+  const last_tweet = document.getElementById(`twitter-widget-${data.length - 1}`);
+  useEffect(() => {
+    if (last_tweet) {
+      setTweetsLoading(false);
+    }
+  }, [last_tweet]);
+  console.log(last_tweet);
   return (
     <section className="homepage__Reviews">
       <div className="heading__number">
@@ -77,14 +84,15 @@ const HomePageReviews = () => {
         <h2 className="heading__title mt-5 mb-5 tw-text-blue-900">
           &lsaquo;testimonials/&rsaquo;
         </h2>
-        {loading
+        {tweetsLoading
           && (
-            <Swiper wrapperClass="skelton-wrapper" slidesPerView={skeltonCount()} {...params} grabCursor>
+            <Swiper containerClass="skelton-container" wrapperClass="skelton-wrapper" slidesPerView={skeltonCount()} {...params} grabCursor>
               {
               Array.apply(0, Array(skeltonCount())).map(() => (<TweetSkeltonLoader />))
               }
             </Swiper>
           )}
+
         <Swiper {...params}>
           { data.map((tweet) => (
             <div className="item tweet__card" id={`tweet-${tweet.tweetId}`} key={tweet.tweetId}>
@@ -92,8 +100,6 @@ const HomePageReviews = () => {
                 <TweetEmbed
                   tweetId={tweet.tweetId}
                   options={tweet.options}
-                  loading={loading}
-                  setLoading={setLoading}
                 />
               </div>
             </div>

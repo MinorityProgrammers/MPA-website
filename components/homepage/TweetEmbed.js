@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import twitterWidget from './twitterWidget';
 
+<<<<<<< HEAD
 const TweetEmbed = ({ tweetId = '', options = '', loading, setLoading }) => {
+=======
+const TweetEmbed = ({
+  tweetId = '', options = '',
+}) => {
+  const [loading, setLoading] = useState(true);
+>>>>>>> 3cedcb0 (update loading time)
   const [widget, setWidget] = useState();
   const [twt, setTwttr] = useState();
 
@@ -31,14 +38,8 @@ const TweetEmbed = ({ tweetId = '', options = '', loading, setLoading }) => {
       twt.widgets
         .createTweetEmbed(tweetId, document.getElementById(tweetId), {
           theme: 'light',
-<<<<<<< HEAD
           align: 'center',
 
-=======
-          // align: 'center',
-          // Min 220px, Max 550px
-          width: '350px',
->>>>>>> 8750ad6 (add tweets)
           cards: options.cards,
           conversation: options.conversation,
         })
@@ -46,14 +47,9 @@ const TweetEmbed = ({ tweetId = '', options = '', loading, setLoading }) => {
         .catch(() => console.log(`Failed to load Tweet ${tweetId}.`));
     }
   }, [loading]);
-<<<<<<< HEAD
-  console.log(loading);
-  return <div id={tweetId} />;
-=======
   return (
     <div id={tweetId} />
   );
->>>>>>> 8750ad6 (add tweets)
 };
 
 export default TweetEmbed;
