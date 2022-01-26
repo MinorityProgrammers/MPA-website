@@ -58,10 +58,9 @@ const Sprint = ({
             },
           },
         )
-        .then((res) => {
+        .then((/* res */) => {
           successToast(`${currentModel} Deleted successfully!`);
           setUpdate(!update);
-          console.log(res.data);
         })
         .catch((err) => {
           errorToast('Something went wrong, please contact us.');

@@ -117,9 +117,6 @@ const ElectProposals = function () {
     }
     setCurrentPage(currentPage - 1);
   };
-  // console.log('proposal Data', proposals);
-  // console.log('all data', allData);
-  // console.log('actions', actions);
 
   if (loading) {
     return (

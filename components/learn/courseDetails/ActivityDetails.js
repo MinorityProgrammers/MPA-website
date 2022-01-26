@@ -115,7 +115,6 @@ const ActivityDetails = function ({
         .then((res) => res.json())
         .then((data) => {
           if (data) {
-            // console.log(data);
             setDisable(true);
             setTimeout(() => {
               window.location.href = nextModuleInfo;

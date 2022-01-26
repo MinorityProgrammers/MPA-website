@@ -29,7 +29,6 @@ const Search = function ({ token }) {
     try {
       const res = await axios.post(url, { keyword: input });
       const { data } = res.data;
-      console.log(data);
       setResult(data);
     } catch (error) {
       console.error(error);

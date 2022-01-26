@@ -39,7 +39,6 @@ const ActivityList = function ({ module, userModules, specificUModules }) {
         .then((res) => res.json())
         .then((data) => {
           if (data) {
-            // console.log(data);
             setTimeout(() => {
               router.push(moduleDetails);
             }, 1000);

@@ -78,7 +78,6 @@ const MyElectedProposal = function () {
           setAllData(response.data.reverse());
           setActions(response.data);
           setLoading(false);
-          console.log(response);
 
           // Set unique categories for filter dropdown
           response.data.forEach((action) => {

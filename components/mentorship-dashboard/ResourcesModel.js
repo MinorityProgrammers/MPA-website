@@ -107,17 +107,16 @@ const ResourcesModel = ({
     onChange(info) {
       const { status } = info.file;
       if (status !== 'uploading') {
-        console.log(info.file, info.fileList);
+        // console.log(info.file, info.fileList);
       }
       if (status === 'done') {
-        console.log(`${info.file.name} file uploaded successfully.`);
         newPic(info.file.originFileObj);
       } else if (status === 'error') {
-        console.log(`${info.file.name} file upload failed.`);
+        // console.log(`${info.file.name} file upload failed.`);
       }
     },
     onDrop(e) {
-      console.log('Dropped files', e.dataTransfer.files);
+      // console.log('Dropped files', e.dataTransfer.files);
     },
   };
 

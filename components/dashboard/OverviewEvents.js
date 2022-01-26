@@ -24,7 +24,7 @@ const OverviewEvents = ({ token }) => {
         .then((res) => {
           setLoading(false);
           const userEventsData = res.data.data.filter(
-            (event) => event?.time !== null
+            (event) => event?.time !== null,
           );
 
           setUserEvents(userEventsData.slice(0, 2));

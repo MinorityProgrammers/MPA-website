@@ -37,7 +37,6 @@ const SettingsLayout = function ({ setData, children, settingsPage }) {
 
   // grab a token from local storage so as user info
   useEffect(() => {
-    // console.log(window.localStorage.getItem("jwtToken"));
     if (window.localStorage.getItem('jwtToken')) {
       getProfile(setUserData)(profileDispatch);
     }
@@ -47,7 +46,6 @@ const SettingsLayout = function ({ setData, children, settingsPage }) {
   //   useEffect(() => {
   //     if (window.localStorage.getItem("userInfo")) {
   //       const userInfo = JSON.parse(localStorage.getItem("userInfo"));
-  //     //   console.log(userInfo.user)
   //     }
   //   }, []);
 
@@ -90,8 +88,6 @@ const SettingsLayout = function ({ setData, children, settingsPage }) {
     (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(),
   );
 
-  // console.log(userData);
-  // console.log(children);
   return (
     <Layout pageTitle={`Settings: ${toTitleCase(settingsPage)}`}>
       <HomepageNav

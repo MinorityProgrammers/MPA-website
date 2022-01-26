@@ -60,7 +60,6 @@ const SettingBodyProfileOverview = function ({
     if (slug) { router.push(`/user/${slug}`); }
   };
 
-  // console.log({ inputStates });
   return (
     <SettingBody
       settingsPage={settingsPage}

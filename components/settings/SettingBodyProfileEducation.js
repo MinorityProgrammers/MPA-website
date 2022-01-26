@@ -72,7 +72,6 @@ const SettingBodyProfileEducation = function ({ settingsPage, data, userID }) {
     if (slug) { router.push(`/user/${slug}`); }
   };
 
-  // console.log(inputStates);
   return (
     <SettingBody
       settingsPage={settingsPage}
