@@ -1,3 +1,5 @@
+/* eslint-disable */
+import axios from "axios";
 import { Form, Formik } from "formik";
 import { getProviders, getSession, signIn, useSession } from "next-auth/client";
 import { useRouter } from "next/router";
@@ -7,11 +9,13 @@ import * as Yup from "yup";
 import { googleAuth, nextAuth } from "../../contexts/actions/auth/googleAuth";
 import { login } from "../../contexts/actions/auth/login";
 import { GlobalContext } from "../../contexts/provider";
+import { successToast, errorToast } from "../../contexts/utils/toasts";
 import TextField from "../TextField";
 
 const HomepageNavLogin = ({ onCloseMobileMenu }) => {
   const router = useRouter();
   const googleClientId = process.env.CLIENT_ID;
+  const [switchToReset, setSwitchToReset] = useState(false);
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
   const [loginSubmit, setLoginSubmit] = useState(false);
@@ -83,6 +87,21 @@ const HomepageNavLogin = ({ onCloseMobileMenu }) => {
     setLoginSubmit(false);
   };
 
+  const onReset = async (e) => {
+    setLoginSubmit(true);
+    try {
+      const request = await axios.post(
+        "http://localhost:5000/api/v1/user/forgotPassword",
+        {
+          email: e.email,
+        }
+      );
+      successToast(request.data.message);
+    } catch (error) {
+      errorToast("User with the given email doesn't exist");
+    }
+  };
+
   return (
     <div className={click ? "dropdown-login clicked" : "dropdown-login"}>
       <button
@@ -125,56 +144,98 @@ const HomepageNavLogin = ({ onCloseMobileMenu }) => {
         </div>
       </div>
       <div className="login-form mt-2">
-        <Formik
-          initialValues={{
-            email: "",
-            password: "",
-          }}
-          validationSchema={Yup.object({
-            email: Yup.string().email("Invalid Email").required("Required"),
-            password: Yup.string().required("Required"),
-          })}
-          onSubmit={onSubmit}
-        >
-          {() => (
-            <Form>
-              <div className="form-group login-input">
-                <TextField
-                  label="Email Address"
-                  name="email"
-                  type="email"
-                  placeholder="&#xf0e0; Enter email"
-                  required
-                  textStyle="form-control fas"
-                  alertStyle="form-text dropdown-form-text mb-3 tw-text-red-400"
-                />
-              </div>
-              <div className="form-group login-input">
-                <TextField
-                  label="Password"
-                  name="password"
-                  type="password"
-                  placeholder="&#xf023; Password"
-                  textStyle="form-control fas"
-                  alertStyle="form-text dropdown-form-text mb-3 tw-text-red-400"
-                />
-              </div>
-              <div id="password" className="form-text dropdown-form-text mb-3">
-                {/* <p>Forgot password?</p> */}
-              </div>
-              <button
-                type="submit"
-                className="btn btn-warning btn-dropdown-filled"
-              >
-                {loading ? "Signing In..." : "Sign In"}
-              </button>
-            </Form>
-          )}
-        </Formik>
+        {!switchToReset && (
+          <Formik
+            initialValues={{
+              email: "",
+              password: "",
+            }}
+            validationSchema={Yup.object({
+              email: Yup.string().email("Invalid Email").required("Required"),
+              password: Yup.string().required("Required"),
+            })}
+            onSubmit={onSubmit}
+          >
+            {() => (
+              <Form>
+                <div className="form-group login-input">
+                  <TextField
+                    label="Email Address"
+                    name="email"
+                    type="email"
+                    placeholder="&#xf0e0; Enter email"
+                    required
+                    textStyle="form-control fas"
+                    alertStyle="form-text dropdown-form-text mb-3 tw-text-red-400"
+                  />
+                </div>
+                <div className="form-group login-input">
+                  <TextField
+                    label="Password"
+                    name="password"
+                    type="password"
+                    placeholder="&#xf023; Password"
+                    textStyle="form-control fas"
+                    alertStyle="form-text dropdown-form-text mb-3 tw-text-red-400"
+                  />
+                </div>
+                <div
+                  id="password"
+                  className="form-text dropdown-form-text mb-3"
+                >
+                  {/* <p>Forgot password?</p> */}
+                </div>
+                <button
+                  type="submit"
+                  className="btn btn-warning btn-dropdown-filled"
+                >
+                  {loading ? "Signing In..." : "Sign In"}
+                </button>
+              </Form>
+            )}
+          </Formik>
+        )}
+        {switchToReset && (
+          <Formik
+            initialValues={{
+              email: "",
+            }}
+            validationSchema={Yup.object({
+              email: Yup.string().email("Invalid Email").required("Required"),
+            })}
+            onSubmit={onReset}
+          >
+            {() => (
+              <Form>
+                <div className="form-group login-input">
+                  <TextField
+                    label="Email Address"
+                    name="email"
+                    type="email"
+                    placeholder="&#xf0e0; Enter email"
+                    required
+                    textStyle="form-control fas"
+                    alertStyle="form-text dropdown-form-text mb-3 tw-text-red-400"
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className="btn btn-warning btn-dropdown-filled"
+                >
+                  {loading ? "Loading..." : "Reset Password"}
+                </button>
+              </Form>
+            )}
+          </Formik>
+        )}
       </div>
 
       <div className="login-register mt-2">
-        <p className="tw-cursor-pointer tw-hover:text-blue-700 tw-mb-4">
+        <p
+          onClick={() => setSwitchToReset(true)}
+          className="tw-cursor-pointer tw-hover:text-blue-700 tw-mb-4"
+        >
           Forget password?
         </p>
         <p className="mb-2">Don't have an account?</p>
