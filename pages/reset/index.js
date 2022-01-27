@@ -44,8 +44,9 @@ const Index = () => {
           password: e.password,
         }
       );
-      console.log(resp.data);
       successToast(resp.data.message);
+      successToast("Try logging in with new Password");
+      router.push("/");
     } catch (error) {
       errorToast(resp.data.message);
     }
