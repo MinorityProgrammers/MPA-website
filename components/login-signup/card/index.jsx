@@ -136,7 +136,10 @@ export default function Index() {
   }, [session]);
 
   return (
-    <div className={styles.cardContainer}>
+    <div
+      className={styles.cardContainer + ' overview-courses-list'}
+      style={{ overflowY: 'scroll', borderRadius: '20px' }}
+    >
       <ToastContainer limit={3} />
       <div
         className={`${styles.cardLeft} ${
@@ -171,7 +174,6 @@ export default function Index() {
               className="tw-text-blue-800"
               onClick={handleClick}
             >
-              {' '}
               {cardText.link}
             </a>
           </p>
@@ -185,7 +187,6 @@ export default function Index() {
               alt="icon"
             />
           </li>
-
           <li>
             <img
               onClick={() => signIn(providers.facebook.id)}

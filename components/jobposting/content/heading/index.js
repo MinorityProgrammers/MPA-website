@@ -253,13 +253,11 @@ const TopHeader = (props) => {
         .then((response) => {
           setSavedJobs(response.data.data);
           setLoading(false);
-          console.log('Saved Jobs', response);
         });
     }
   };
 
   const saveJob = (job) => {
-    console.log(job);
     axios
       .post(
         `${process.env.BASE_URI}/savejob`,
@@ -272,8 +270,7 @@ const TopHeader = (props) => {
           },
         }
       )
-      .then((response) => {
-        console.log('Saved', response);
+      .then((/* response */) => {
         successToast('Job Saved Successfully!');
         fetchSavedJobs();
       })
@@ -297,7 +294,6 @@ const TopHeader = (props) => {
         .then((response) => {
           setAppliedJobs(response.data.data);
           setLoading(false);
-          console.log('Applied Jobs', response.data);
         });
     }
   };
@@ -363,7 +359,6 @@ const TopHeader = (props) => {
   const totalPages = Math.ceil(102 / perPage); // 11
 
   function pageSelector(page) {
-    console.log(page);
     const _queryObj = { ...props.query };
     if (page === 1 && _queryObj.page) {
       delete _queryObj.page;
@@ -425,14 +420,12 @@ const TopHeader = (props) => {
       _queryObj.page = 2;
     } else {
       _queryObj.page = Number(_queryObj.page) + 1;
-      console.log(typeof _queryObj.page);
     }
 
     router.push({ query: _queryObj });
   }
 
   function prevButton() {
-    console.log('prev');
     const _queryObj = { ...props.query };
     if (_queryObj.page === 2) {
       delete _queryObj.page;

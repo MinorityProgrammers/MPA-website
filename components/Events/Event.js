@@ -145,9 +145,9 @@ class Event extends Component {
         AllEvent: response.data.data.filter((event) => {
           const eventTime = new Date(event.time).getTime();
           if (
-            dateNow < eventTime &&
-            event.approved !== null &&
-            event.approved === true
+            dateNow < eventTime
+            && event.approved !== null
+            && event.approved === true
           ) {
             return event;
           }
@@ -168,9 +168,9 @@ class Event extends Component {
           .filter((event) => {
             const eventTime = new Date(event.time).getTime();
             if (
-              dateNow > eventTime &&
-              event.approved !== null &&
-              event.approved === true
+              dateNow > eventTime
+              && event.approved !== null
+              && event.approved === true
             ) {
               return event;
             }
@@ -230,9 +230,9 @@ class Event extends Component {
       AllEvent: response.data.filter((event) => {
         const eventTime = new Date(event.time).getTime();
         if (
-          dateNow < eventTime &&
-          event.approved !== null &&
-          event.approved === true
+          dateNow < eventTime
+          && event.approved !== null
+          && event.approved === true
         ) {
           return event;
         }
@@ -251,9 +251,9 @@ class Event extends Component {
         .filter((event) => {
           const eventTime = new Date(event.time).getTime();
           if (
-            dateNow > eventTime &&
-            event.approved !== null &&
-            event.approved === true
+            dateNow > eventTime
+            && event.approved !== null
+            && event.approved === true
           ) {
             return event;
           }
@@ -267,7 +267,7 @@ class Event extends Component {
     const { filter } = this.state;
     this.setState({ catergoryFilterLoading: true });
     fetch(
-      `${process.env.BASE_URI}/event/?Virtual=${filter.Virtual}&event_time=${filter.event_time}&catName=${filter.catName}`
+      `${process.env.BASE_URI}/event/?Virtual=${filter.Virtual}&event_time=${filter.event_time}&catName=${filter.catName}`,
     )
       .then((response) => response.json())
       .then((response) => {
@@ -282,9 +282,9 @@ class Event extends Component {
       this.state.userEvents.map((all) => {
         if (all.event_id !== null) {
           if (
-            all.user_id._id === this.props.userData._id &&
-            all.event_id.approved !== null &&
-            all.event_id.approved === true
+            all.user_id._id === this.props.userData._id
+            && all.event_id.approved !== null
+            && all.event_id.approved === true
           ) {
             this.setState({
               userSavedEvents: [...this.state.userSavedEvents, all],
@@ -294,7 +294,7 @@ class Event extends Component {
       });
       this.setState({
         userSavedEvents: this.state.allsavedEvents.filter(
-          (event) => event.user_id._id === this.props.userData._id
+          (event) => event.user_id._id === this.props.userData._id,
         ),
       });
 
@@ -304,8 +304,9 @@ class Event extends Component {
   };
 
   render() {
-    const { userData, active, clickRegister, setClickRegister, token } =
-      this.props;
+    const {
+      userData, active, clickRegister, setClickRegister, token,
+    } = this.props;
     const { userSavedEvents, allsavedEvents } = this.state;
 
     const options = [
@@ -338,19 +339,13 @@ class Event extends Component {
       if (e.target.childNodes[0].value) {
         const searchValue = e.target.childNodes[0].value;
         this.setState({
-          AllEvent: [...this.state.AllEvent].filter((event) =>
-            event.eventName.toLowerCase().includes(searchValue.toLowerCase())
-          ),
+          AllEvent: [...this.state.AllEvent].filter((event) => event.eventName.toLowerCase().includes(searchValue.toLowerCase())),
         });
         this.setState({
-          PastEvent: [...this.state.PastEvent].filter((event) =>
-            event.eventName.toLowerCase().includes(searchValue.toLowerCase())
-          ),
+          PastEvent: [...this.state.PastEvent].filter((event) => event.eventName.toLowerCase().includes(searchValue.toLowerCase())),
         });
         this.setState({
-          Swiperdata: [...this.state.Swiperdata].filter((event) =>
-            event.eventName.toLowerCase().includes(searchValue.toLowerCase())
-          ),
+          Swiperdata: [...this.state.Swiperdata].filter((event) => event.eventName.toLowerCase().includes(searchValue.toLowerCase())),
         });
       } else {
         this.filterEvents();
@@ -388,12 +383,9 @@ class Event extends Component {
     const handleError = (input) => {
       let changedState = { ...this.state.createEventData };
       if (input === 'isError') {
-        console.log('if input is Error passed');
         if (this.state.createEventData.isError === false) {
-          console.log('if error is false');
           changedState = { ...this.state.createEventData, [input]: true };
         } else {
-          console.log('if error is true or else');
           changedState = { ...this.state.createEventData, [input]: false };
         }
         this.setState({ createEventData: changedState });
@@ -407,12 +399,9 @@ class Event extends Component {
       const changedState = [this.state.createEventData];
       changedState[0].time = inputDateTime.toISOString();
       this.setState({ changedState });
-      console.log('habdleEventDateTime', this.state.changedState);
     };
 
     const handleCreateEventData = (input) => (e) => {
-      console.log('input', this.state.createEventData);
-
       if (input === 'step') {
         const { step } = this.state.createEventData;
         const changedState = {
@@ -565,9 +554,9 @@ class Event extends Component {
         Swiperdata: response.data.data.filter((event) => {
           const eventTime = new Date(event.time).getTime();
           if (
-            dateNow < eventTime &&
-            event.approved !== null &&
-            event.approved === true
+            dateNow < eventTime
+            && event.approved !== null
+            && event.approved === true
           ) {
             return event.Featured === true;
           }
@@ -577,9 +566,9 @@ class Event extends Component {
         AllEvent: response.data.data.filter((event) => {
           const eventTime = new Date(event.time).getTime();
           if (
-            dateNow < eventTime &&
-            event.approved !== null &&
-            event.approved === true
+            dateNow < eventTime
+            && event.approved !== null
+            && event.approved === true
           ) {
             return event;
           }
@@ -589,9 +578,9 @@ class Event extends Component {
         PastEvent: response.data.data.filter((event) => {
           const eventTime = new Date(event.time).getTime();
           if (
-            dateNow > eventTime &&
-            event.approved !== null &&
-            event.approved === true
+            dateNow > eventTime
+            && event.approved !== null
+            && event.approved === true
           ) {
             return event;
           }
@@ -660,12 +649,12 @@ class Event extends Component {
       if (idx !== -1) {
         if (idx === 0) {
           if (
-            (await this.state.categories.includes('Webinar')) ||
-            this.state.categories.includes('Lecture')
+            (await this.state.categories.includes('Webinar'))
+            || this.state.categories.includes('Lecture')
           ) {
             this.setState({
               categories: [...this.state.categories].filter(
-                (category) => category !== 'Webinar' && category !== 'Lecture'
+                (category) => category !== 'Webinar' && category !== 'Lecture',
               ),
             });
           } else {
@@ -682,13 +671,12 @@ class Event extends Component {
         }));
         if (idx === 1) {
           if (
-            this.state.categories.includes('Workshop') ||
-            this.state.categories.includes('Conference')
+            this.state.categories.includes('Workshop')
+            || this.state.categories.includes('Conference')
           ) {
             this.setState({
               categories: [...this.state.categories].filter(
-                (category) =>
-                  category !== 'Workshop' && category !== 'Conference'
+                (category) => category !== 'Workshop' && category !== 'Conference',
               ),
             });
           } else {
@@ -707,7 +695,7 @@ class Event extends Component {
           if (this.state.categories.includes('Hackathon')) {
             this.setState({
               categories: [...this.state.categories].filter(
-                (category) => category !== 'Hackathon'
+                (category) => category !== 'Hackathon',
               ),
             });
           } else {
@@ -724,13 +712,12 @@ class Event extends Component {
         }));
         if (idx === 3) {
           if (
-            this.state.categories.includes('Incubator') ||
-            this.state.categories.includes('Accelerator')
+            this.state.categories.includes('Incubator')
+            || this.state.categories.includes('Accelerator')
           ) {
             this.setState({
               categories: [...this.state.categories].filter(
-                (category) =>
-                  category !== 'Incubator' && category !== 'Accelerator'
+                (category) => category !== 'Incubator' && category !== 'Accelerator',
               ),
             });
           } else {
@@ -773,8 +760,6 @@ class Event extends Component {
       });
       this.filterEvents();
     };
-
-    console.log(this.state.userEvents);
 
     return (
       <div className="event_wrapper">
@@ -823,12 +808,12 @@ class Event extends Component {
 
             {[...categoryButtons].filter((button) => button.activebtn === true)
               .length > 0 ? (
-              <button type="button" onClick={() => resetFilter()}>
-                Reset
-              </button>
-            ) : (
-              ''
-            )}
+                <button type="button" onClick={() => resetFilter()}>
+                  Reset
+                </button>
+              ) : (
+                ''
+              )}
           </div>
 
           <div className="event_divide">
@@ -1046,10 +1031,9 @@ class Event extends Component {
                     <div className="swiper-wrapper">
                       {this.state.userEvents
                         .filter(
-                          (e) =>
-                            (e.attending === 'yes' ||
-                              e.attending === 'maybe') &&
-                            e.event_id !== null
+                          (e) => (e.attending === 'yes'
+                              || e.attending === 'maybe')
+                            && e.event_id !== null,
                         )
                         .map((events, index) => (
                           <div

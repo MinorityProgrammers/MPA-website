@@ -49,7 +49,6 @@ const MentorshipQuestion6 = (props) => {
           'userInfo',
           JSON.stringify({ token, user: res.data.data })
         );
-        console.log(res.data.data);
       })
       .catch(() => {
         errorToast('Something went wrong, please contact us.');
@@ -87,7 +86,6 @@ const MentorshipQuestion6 = (props) => {
           pathname: '/mentorshipApp',
           query: { object: JSON.stringify(res.data.data) },
         });
-        console.log(res.data.data);
       })
       .catch(() => {
         errorToast('Something went wrong, please contact us.');

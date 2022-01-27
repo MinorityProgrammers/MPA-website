@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 import { Form, Formik } from 'formik';
 import { getProviders, getSession, signIn, useSession } from 'next-auth/client';
 import { useRouter } from 'next/router';

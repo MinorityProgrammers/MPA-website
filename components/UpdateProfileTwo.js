@@ -308,8 +308,6 @@ const UpdateProfileTwo = ({ open = true, setOpen = () => {}, userData }) => {
                   value={newBio}
                   onChange={(e) => {
                     setNewBio(e.target.value);
-                    // console.log(userData);
-                    // console.log(newBio);
                   }}
                 />
               </div>

@@ -30,7 +30,7 @@ export default NextAuth({
   },
   events: {
     signIn: (user) => {
-      console.log(`user: ${JSON.stringify(user)}`);
+      // console.log(`user: ${JSON.stringify(user)}`);
     },
   },
   debug: true,

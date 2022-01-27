@@ -109,7 +109,7 @@ const MenteeDetail = ({
       setUpdatedSprints(sprints);
     }
   }, [sprints]);
-  console.log(sprints);
+
   return (
     <div>
       <VerticalModel

@@ -23,11 +23,9 @@ const OverviewMentor = ({ token }) => {
         })
         .then((res) => {
           const tempMentors = res?.data?.data;
-          console.log('Mentors: ', tempMentors);
           setMentors(tempMentors);
           if (tempMentors?.length > 0) {
             setMentorInfo(tempMentors[0]);
-            console.log('Mentor: ', tempMentors[0]?.user_id);
           }
           return true;
         })
@@ -186,7 +184,9 @@ const OverviewComponent = ({ mentorInfo }) => (
             marginBottom: '2%',
           }}
         >
-          {mentorInfo?.user_id?.firstName} {mentorInfo?.user_id?.lastName}
+          {mentorInfo?.user_id?.firstName}
+          {' '}
+          {mentorInfo?.user_id?.lastName}
         </p>
         <p
           style={{
@@ -233,7 +233,8 @@ const OverviewComponent = ({ mentorInfo }) => (
             marginBottom: '2%',
           }}
         >
-          <strong>Number of Mentees: </strong>4
+          <strong>Number of Mentees: </strong>
+          4
         </p>
       </div>
     </div>

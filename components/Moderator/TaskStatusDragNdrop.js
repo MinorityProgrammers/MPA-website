@@ -23,7 +23,6 @@ const TaskStatusDnD = () => {
   });
 
   const movePlayer = (item) => {
-    console.log(item);
     if (item && item.type === 'proposal') {
       setList(() => [...list, proposals[item.index]]);
       setProposals((_proposals) =>

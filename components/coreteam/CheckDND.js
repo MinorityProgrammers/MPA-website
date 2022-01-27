@@ -30,8 +30,8 @@ const CheckDND = () => {
     if (!result.destination) return;
     const { source, destination } = result;
     if (
-      destination.droppableId === source.droppableId &&
-      destination.index === source.index
+      destination.droppableId === source.droppableId
+      && destination.index === source.index
     ) {
       return;
     }
@@ -70,29 +70,21 @@ const CheckDND = () => {
     if (result.destination.droppableId === 1) {
       task = 'Planned Task';
 
-      console.log(task);
       const newResult = [...plannedTasks, result];
       setPlannedTasks(newResult);
-      console.log(plannedTasks);
     } else if (result.destination.droppableId === 2) {
       const newResult = [...inProgress, result];
       setInProgress(newResult);
-      console.log(inProgress);
     } else if (result.destination.droppableId === 3) {
       task = 'Ready For Review Tasks';
-      console.log(task);
       const newResult = [...readyReview, result];
       setReadyReview(newResult);
-      console.log(readyReview);
     } else if (result.destination.droppableId === 4) {
       task = 'In Review Tasks';
-      console.log(task);
     } else if (result.destination.droppableId === 5) {
       task = 'Revision Required Tasks';
-      console.log(task);
     } else {
       task = 'Completed Task';
-      console.log(task);
     }
   };
 

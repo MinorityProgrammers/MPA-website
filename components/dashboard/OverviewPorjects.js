@@ -200,7 +200,8 @@ const OverviewProjects = ({ token }) => {
                 }}
                 className="text-center"
               >
-                {project.projectName}{' '}
+                {project.projectName}
+                {' '}
               </p>
             </div>
           ))}

@@ -91,7 +91,7 @@ const SettingsLayout = ({ setData, children, settingsPage }) => {
         active="Home"
         handleClick={handleClick}
       />
-      {hide === false && <ComingSoon closeClick={handleClick} />}
+      {/* {hide === false && <ComingSoon closeClick={handleClick} />} */}
       <div className={styles.settingsContainer}>
         <div className={styles.accountSettings}>
           <div className={styles.settingsNavigation}>
@@ -230,7 +230,7 @@ const SettingsLayout = ({ setData, children, settingsPage }) => {
                     </div>
                   </h2>
                 </li>
-                <li
+                {/* <li
                   className={`${styles.navHeader} ${
                     settingsPage === 'wallet' && styles.activeLi
                   }`}
@@ -264,7 +264,7 @@ const SettingsLayout = ({ setData, children, settingsPage }) => {
                       />
                     </div>
                   </h2>
-                </li>
+                </li> */}
                 <li
                   className={`${styles.navHeader} ${
                     settingsPage === 'notifications' && styles.activeLi

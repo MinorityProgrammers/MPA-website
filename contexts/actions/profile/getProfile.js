@@ -19,7 +19,6 @@ const getProfile = (setUserData) => (dispatch) => {
         payload: res.data.data,
       });
       setUserData(res.data.data);
-      // console.log(res.data.data)
     })
     .catch((err) => {
       errorToast('failed to get profile');

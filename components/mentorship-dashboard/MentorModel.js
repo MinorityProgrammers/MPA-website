@@ -73,9 +73,8 @@ const MentorModel = ({
               },
             }
           )
-          .then((res) => {
+          .then((/* res */) => {
             successToast(`${currentModel} updated!`);
-            console.log(res.data);
             setUpdate(!update);
           })
           .catch(() => {
@@ -93,7 +92,6 @@ const MentorModel = ({
   };
   useEffect(() => {
     if (edit) {
-      console.log(currentRes);
       setTitle(currentRes.title);
       setDescription(currentRes.description);
       setProgressPercentage(currentRes.progress_percentage);
@@ -111,7 +109,6 @@ const MentorModel = ({
     <Form.Control
       onChange={(event) => {
         event.persist();
-        console.log(event.target.value);
         setCurrentModel(event.target.value);
       }}
       id="controlId"
@@ -127,7 +124,7 @@ const MentorModel = ({
       <option value="event">Upcoming Event</option>
     </Form.Control>
   );
-  console.log(currentModel);
+
   return (
     <Modal
       {...propsR}

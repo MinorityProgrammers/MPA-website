@@ -29,9 +29,6 @@ const ApprovedProposals = () => {
       body: JSON.stringify(votes),
     })
       .then((response) => response.json())
-      .then(() => {
-        console.log('saved to server');
-      })
       .catch((error) => {
         console.error(error);
       });
