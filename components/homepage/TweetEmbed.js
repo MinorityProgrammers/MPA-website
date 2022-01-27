@@ -1,14 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import twitterWidget from './twitterWidget';
 
-<<<<<<< HEAD
-const TweetEmbed = ({ tweetId = '', options = '', loading, setLoading }) => {
-=======
 const TweetEmbed = ({
-  tweetId = '', options = '',
+  tweetId = '', options = '', setTweetsLoading, tweetsLoading = null,
 }) => {
   const [loading, setLoading] = useState(true);
->>>>>>> 3cedcb0 (update loading time)
   const [widget, setWidget] = useState();
   const [twt, setTwttr] = useState();
 
@@ -43,10 +39,16 @@ const TweetEmbed = ({
           cards: options.cards,
           conversation: options.conversation,
         })
-        .then(() => console.log(`Loaded Tweet ${tweetId} successfully.`))
+        .then(() => {
+          console.log(`Loaded Tweet ${tweetId} successfully.`);
+          if (tweetsLoading === false) {
+            setTweetsLoading(tweetsLoading);
+          }
+        })
         .catch(() => console.log(`Failed to load Tweet ${tweetId}.`));
     }
   }, [loading]);
+
   return (
     <div id={tweetId} />
   );

@@ -90,10 +90,6 @@ const SettingsLayout = ({ setData, children, settingsPage }) => {
         active="Home"
         handleClick={handleClick}
       />
-<<<<<<< HEAD
-      {/* {hide === false && <ComingSoon closeClick={handleClick} />} */}
-=======
->>>>>>> 8750ad6 (add tweets)
       <div className={styles.settingsContainer}>
         <div className={styles.accountSettings}>
           <div className={styles.settingsNavigation}>

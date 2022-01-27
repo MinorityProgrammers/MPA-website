@@ -8970,10 +8970,6 @@ html {
 .item .homepage__comment{
   margin: 0;
   margin-right: 10px;
-  min-height: 400px;
-  /* max-height: 450px; */
-  /* max-width: 300px; */
- /* overflow: hidden; */
   border: none;
 }
 #tweet-1455675414765051905 .homepage__comment{
@@ -9078,8 +9074,11 @@ blockquote.twitter-tweet {
   display: flex;
   justify-content: space-between;
 }
+.swiper-container-unloaded{
+  opacity:0 !important;
+}
 .skelton-container .swiper-button-prev,.skelton-container .swiper-button-next{
-  display: none;
+  display: none !important;
 }
 @media only screen and (max-width: 992px) {
   .homepage__Reviews .container .swiper-container .swiper-button-prev{

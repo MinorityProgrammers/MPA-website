@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Swiper from 'react-id-swiper';
 import 'swiper/css/swiper.css';
 import TweetEmbed from './TweetEmbed';
@@ -68,13 +68,6 @@ const HomePageReviews = () => {
     }
     return num;
   };
-  const last_tweet = document.getElementById(`twitter-widget-${data.length - 1}`);
-  useEffect(() => {
-    if (last_tweet) {
-      setTweetsLoading(false);
-    }
-  }, [last_tweet]);
-  console.log(last_tweet);
   return (
     <section className="homepage__Reviews">
       <div className="heading__number">
@@ -86,20 +79,22 @@ const HomePageReviews = () => {
         </h2>
         {tweetsLoading
           && (
-            <Swiper containerClass="skelton-container" wrapperClass="skelton-wrapper" slidesPerView={skeltonCount()} {...params} grabCursor>
+            <Swiper containerClass="swiper-container skelton-container" wrapperClass="swiper-wrapper skelton-wrapper" slidesPerView={skeltonCount()} {...params} observer={false} grabCursor>
               {
               Array.apply(0, Array(skeltonCount())).map(() => (<TweetSkeltonLoader />))
               }
             </Swiper>
           )}
 
-        <Swiper {...params}>
+        <Swiper containerClass={`${!tweetsLoading ? 'swiper-container' : 'swiper-container swiper-container-unloaded'}`} {...params}>
           { data.map((tweet) => (
             <div className="item tweet__card" id={`tweet-${tweet.tweetId}`} key={tweet.tweetId}>
               <div className="card card__container homepage__comment">
                 <TweetEmbed
                   tweetId={tweet.tweetId}
                   options={tweet.options}
+                  tweetsLoading={tweet.loading}
+                  setTweetsLoading={setTweetsLoading}
                 />
               </div>
             </div>
