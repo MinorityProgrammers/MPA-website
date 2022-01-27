@@ -146,7 +146,8 @@ const OverviewStatistic = () => {
               <p
                 style={{ fontSize: '16px', color: '#151371', fontWeight: 700 }}
               >
-                ${current[1]}
+                $
+                {current[1]}
               </p>
             </div>
             <div style={{ position: 'relative', height: '50%', width: '100%' }}>

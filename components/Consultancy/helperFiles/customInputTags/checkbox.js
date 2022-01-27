@@ -60,15 +60,14 @@ const Checkboxes = ({
             <div
               className="checkbox"
               onClick={() => {
-                options.current[index].checked =
-                  !options.current[index].checked;
+                options.current[index].checked = !options.current[index].checked;
                 validateCheckBox();
               }}
             >
               <i
                 className={
-                  'fa fa-check ' +
-                  `${checkbox.checked ? 'checkVisible' : 'checkInvisible'}`
+                  'fa fa-check '
+                  + `${checkbox.checked ? 'checkVisible' : 'checkInvisible'}`
                 }
                 aria-hidden="true"
               />

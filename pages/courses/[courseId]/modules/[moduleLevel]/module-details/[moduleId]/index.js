@@ -23,7 +23,7 @@ const ActivityPage = ({ params }) => {
   const [loading, setLoading] = useState(true);
 
   const redirect = () => {
-    window.location.href = '/learn-page';
+    window.location.href = '/learn';
   };
 
   useEffect(() => {
@@ -90,7 +90,7 @@ const ActivityPage = ({ params }) => {
   }, [courseId]);
 
   const singleUserModule = userModules?.filter(
-    (userModule) => userModule.moduleId._id === moduleId
+    (userModule) => userModule.moduleId._id === moduleId,
   );
   const singleUserModuleInfo = singleUserModule[0];
 
@@ -98,12 +98,12 @@ const ActivityPage = ({ params }) => {
     <Layout pageTitle="Module Details - Minority Programmers Association">
       {loading === true ? (
         <>
-          <HomepageNav page="learn-page" setData={setData} />
+          <HomepageNav page="learn" setData={setData} />
           <SkeletonElement />
         </>
       ) : (
         <>
-          <HomepageNav page="learn-page" setData={setData} />
+          <HomepageNav page="learn" setData={setData} />
           <ActivityDetails
             userInfo={data}
             enrolledCourses={enrolledCourses}

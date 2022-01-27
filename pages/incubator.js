@@ -1,7 +1,6 @@
 /* eslint-disable consistent-return */
 import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react';
-import ComingSoon from '../components/ComingSoon';
 import LoginPage from '../components/Consultancy/helperFiles/LoginPage';
 import FeaturedAdvice from '../components/featured/FeaturedAdvice';
 import FeaturedMyStartup from '../components/featured/FeaturedMyStartup';
@@ -83,7 +82,6 @@ const IncubatorPage = () => {
         active="Home"
         handleClick={handleClick}
       />
-      {hide === false && <ComingSoon closeClick={handleClick} />}
       <IncubatorHero />
       {loading ? (
         <section className="section__incubator">

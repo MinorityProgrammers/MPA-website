@@ -10,7 +10,8 @@ const ConsultancyHero = () => (
             <p className="consultancyHero-txt">
               Get your idea turned into a complete web application ready for
               market with our transparent task-based escrow system that gives
-              you as client, the control over how your product is being built.{' '}
+              you as client, the control over how your product is being built.
+              {' '}
             </p>
             <div className="incubator__button">
               <div className="button btn-gradient">Get Quote</div>

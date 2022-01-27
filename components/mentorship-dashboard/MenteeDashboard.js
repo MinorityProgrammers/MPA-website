@@ -11,6 +11,7 @@ import Capstone from './Capstone';
 import Workshop from './Workshop';
 import Job from './Job';
 import MenteeSprint from './MenteeSprint';
+
 const MenteeDashboard = ({
   setData,
   setActive: setMenteeActive,
@@ -70,7 +71,8 @@ const MenteeDashboard = ({
     <div>
       <div className={styles.userName}>
         Welcome Back,
-        {menteeData.mentorship.mentee_id.user_id.firstName}!
+        {menteeData.mentorship.mentee_id.user_id.firstName}
+        !
       </div>
       <div className={`${styles.navBar} ${styles.navBarMentee}`}>
         <FontAwesomeIcon
@@ -428,15 +430,13 @@ const MenteeDashboard = ({
               <p>Communication</p>
             </div>
             <div
-              onClick={() =>
-                setActionActive({
-                  sprintsViewActive: false,
-                  calendarActive: false,
-                  eventActive: false,
-                  resourceActive: true,
-                  evaluations: false,
-                })
-              }
+              onClick={() => setActionActive({
+                sprintsViewActive: false,
+                calendarActive: false,
+                eventActive: false,
+                resourceActive: true,
+                evaluations: false,
+              })}
               className={
                 actionActive.resourceActive
                   ? styles.mentorRowE
@@ -453,15 +453,13 @@ const MenteeDashboard = ({
             </div>
 
             <div
-              onClick={() =>
-                setActionActive({
-                  sprintsViewActive: false,
-                  calendarActive: false,
-                  eventActive: true,
-                  resourceActive: false,
-                  evaluations: false,
-                })
-              }
+              onClick={() => setActionActive({
+                sprintsViewActive: false,
+                calendarActive: false,
+                eventActive: true,
+                resourceActive: false,
+                evaluations: false,
+              })}
               className={
                 actionActive.eventActive ? styles.mentorRowE : styles.mentorRow
               }
@@ -491,15 +489,13 @@ const MenteeDashboard = ({
               <p>Calender/Bi-Weekly</p>
             </div>
             <div
-              onClick={() =>
-                setActionActive({
-                  sprintsViewActive: false,
-                  calendarActive: false,
-                  eventActive: false,
-                  resourceActive: false,
-                  evaluations: true,
-                })
-              }
+              onClick={() => setActionActive({
+                sprintsViewActive: false,
+                calendarActive: false,
+                eventActive: false,
+                resourceActive: false,
+                evaluations: true,
+              })}
               style={{ borderRadius: '0px 0 30px 0px' }}
               className={
                 actionActive.evaluations ? styles.mentorRowE : styles.mentorRow

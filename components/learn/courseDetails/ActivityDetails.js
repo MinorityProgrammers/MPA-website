@@ -32,12 +32,13 @@ const ActivityDetails = ({
   const [disable, setDisable] = useState(false);
   const router = useRouter();
   const { courseId, moduleLevel, moduleId } = router.query;
-  const { completionStatus, completionRate, completed, _id } =
-    singleUserModuleInfo;
+  const {
+    completionStatus, completionRate, completed, _id,
+  } = singleUserModuleInfo;
 
   useEffect(() => {
     const singleCourse = enrolledCourses?.filter(
-      (_course) => _course.courseId._id === courseId
+      (_course) => _course.courseId._id === courseId,
     );
     singleCourse.forEach((_course) => {
       setCourse(_course?.courseId);
@@ -45,7 +46,7 @@ const ActivityDetails = ({
   }, [courseId]);
 
   const specificModules = modules.filter(
-    (module) => module.level === moduleLevel
+    (module) => module.level === moduleLevel,
   );
   for (let i = 0; i < specificModules.length; i + 1) {
     specificModules[i].elementKey = i;
@@ -56,11 +57,8 @@ const ActivityDetails = ({
     return null;
   }
 
-  const specificUserModules =
-    userModules &&
-    userModules.filter((eModule) =>
-      specificModules.some((module) => eModule.moduleId._id === module._id)
-    );
+  const specificUserModules = userModules
+    && userModules.filter((eModule) => specificModules.some((module) => eModule.moduleId._id === module._id));
 
   const userModulesId = [];
   specificUserModules.forEach((module) => {
@@ -90,7 +88,7 @@ const ActivityDetails = ({
 
   const nextElementKey = moduleInfo.elementKey + 1;
   const nextModuleDetails = specificModules?.find(
-    (module) => module.elementKey === nextElementKey
+    (module) => module.elementKey === nextElementKey,
   );
 
   const forwardInfo = () => {
@@ -131,7 +129,7 @@ const ActivityDetails = ({
   };
 
   const advancedModules = modules.filter(
-    (module) => module.level === 'advanced'
+    (module) => module.level === 'advanced',
   );
   const lastAdvancedModules = advancedModules[advancedModules.length - 1];
 
@@ -295,7 +293,10 @@ const ActivityDetails = ({
                   ;
                 </div>
                 <p className="mt-3 mb-4 pb-1" style={{ fontWeight: '500' }}>
-                  <span className="">{completionRate}% Completed</span>
+                  <span className="">
+                    {completionRate}
+                    % Completed
+                  </span>
                 </p>
                 <h6
                   className="pb-2"

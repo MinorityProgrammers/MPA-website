@@ -1,4 +1,6 @@
-import React, { useRef, useState, useEffect, useContext } from 'react';
+import React, {
+  useRef, useState, useEffect, useContext,
+} from 'react';
 import { QuizContext } from '../courseDetails/ActivityDetails';
 import QuizProgress from './QuizProgress';
 import QuizResult from './QuizResult';
@@ -13,7 +15,7 @@ export default function SimpleQuiz() {
   } = useContext(QuizContext);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [questions, setQuestions] = useState(
-    singleUserModuleInfo.moduleId.content.questions
+    singleUserModuleInfo.moduleId.content.questions,
   );
   const [correct, setCorrect] = useState(0);
   const [inprogress, setInprogress] = useState(true);
@@ -129,18 +131,20 @@ export default function SimpleQuiz() {
                   Check Answer
                 </button>
               )}
-              {currentQuestion + 1 < questions.length &&
-                questions[currentQuestion].checked && (
+              {currentQuestion + 1 < questions.length
+                && questions[currentQuestion].checked && (
                   <button
                     className="fade-in next"
                     type="button"
                     onClick={nextQuestion}
                   >
-                    Next <i className="fa fa-arrow-right" />
+                    Next
+                    {' '}
+                    <i className="fa fa-arrow-right" />
                   </button>
-                )}
-              {currentQuestion + 1 === questions.length &&
-                questions[currentQuestion].checked && (
+              )}
+              {currentQuestion + 1 === questions.length
+                && questions[currentQuestion].checked && (
                   <button
                     type="button"
                     className="get-results pulses"
@@ -148,7 +152,7 @@ export default function SimpleQuiz() {
                   >
                     Get Result
                   </button>
-                )}
+              )}
             </div>
           </div>
         </div>

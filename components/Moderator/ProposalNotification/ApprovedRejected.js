@@ -28,17 +28,17 @@ const ApprovedRejected = (props) => {
 
     if (sortType === 'amountAsc') {
       const sorted = [...actions].sort(
-        (a, b) => a[sortProperty] - b[sortProperty]
+        (a, b) => a[sortProperty] - b[sortProperty],
       );
       setActions(sorted);
     } else if (sortType === 'amountDesc') {
       const sorted = [...actions].sort(
-        (a, b) => b[sortProperty] - a[sortProperty]
+        (a, b) => b[sortProperty] - a[sortProperty],
       );
       setActions(sorted);
     } else if (sortType === 'date') {
       const sorted = [...actions].sort(
-        (a, b) => new Date(a[sortProperty]) - new Date(b[sortProperty])
+        (a, b) => new Date(a[sortProperty]) - new Date(b[sortProperty]),
       );
       setActions(sorted);
     } else {
@@ -53,7 +53,7 @@ const ApprovedRejected = (props) => {
       for (let i = 0; i < categories.length; i += 1) {
         if (filter === categories[i]) {
           const filtered = [...allData].filter(
-            (action) => action.category === categories[i]
+            (action) => action.category === categories[i],
           );
           setActions(filtered);
         }

@@ -51,7 +51,9 @@ const EventsPopup = ({ data, togglePopup }) => {
                   <div>
                     <div
                       className={styles.profileName}
-                    >{`${host.lastName} ${host.firstName}`}</div>
+                    >
+                      {`${host.lastName} ${host.firstName}`}
+                    </div>
                     <div className={styles.location}>{location}</div>
                   </div>
                 </div>

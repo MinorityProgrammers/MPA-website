@@ -148,7 +148,8 @@ const JoinCard = () => {
           <p className="card-text">
             {' '}
             Unsure how to get involved? Schedule a one-on-one video chat with
-            the MPA President & learn how to get started.{' '}
+            the MPA President & learn how to get started.
+            {' '}
           </p>
         </div>
         <Link href="https://calendly.com/minorityprogrammers/join?month=2021-09">

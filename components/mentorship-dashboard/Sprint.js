@@ -79,11 +79,11 @@ const Sprint = ({
           <div className={styles.colTitle}>Mentees</div>
           <div className={styles.menteesIcon}>
             <OverlayTrigger
-              overlay={
+              overlay={(
                 <Tooltip>
                   {`${mentee.user_id.firstName} ${mentee.user_id.lastName}`}
                 </Tooltip>
-              }
+              )}
             >
               <img
                 style={{ height: '35px', width: '35px', borderRadius: '50px' }}

@@ -39,7 +39,8 @@ const JobsPopup = ({ togglePopup, data }) => {
           </a>
         </div>
         <div className={styles.location}>
-          {location}{' '}
+          {location}
+          {' '}
           {remote ? <span className={styles.remote}>Remote</span> : null}
         </div>
         <a href={application_link}>
@@ -84,8 +85,11 @@ const JobsPopup = ({ togglePopup, data }) => {
                 key={`${idx + 1}`}
                 className={`${styles.list} ${styles.expand}`}
               >
-                <span className={`${styles.listStyle} ${styles.disc}`} /> Lorem
-                ipsum dolor, sit amet consectetur adipisicing elit.{' '}
+                <span className={`${styles.listStyle} ${styles.disc}`} />
+                {' '}
+                Lorem
+                ipsum dolor, sit amet consectetur adipisicing elit.
+                {' '}
               </div>
             ))}
           </div>
@@ -137,7 +141,9 @@ const JobsPopup = ({ togglePopup, data }) => {
           <div className={styles.sect_}>
             <div className={styles.sectTitle_}>
               Salary:
-              {pay} USD
+              {pay}
+              {' '}
+              USD
             </div>
           </div>
         ) : null}

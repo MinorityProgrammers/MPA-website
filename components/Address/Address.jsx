@@ -15,7 +15,9 @@ const styles = {
 };
 
 const Address = (props) => {
-  const { address: propsAddress, avatar, copyable, size, style } = props;
+  const {
+    address: propsAddress, avatar, copyable, size, style,
+  } = props;
   const { walletAddress } = useMoralisDapp();
   const [address, setAddress] = useState();
   const [isClicked, setIsClicked] = useState(false);
@@ -31,8 +33,8 @@ const Address = (props) => {
       {avatar === 'left' && <Blockie address={address} size={7} />}
       <p>{size ? getEllipsisTxt(address, size) : address}</p>
       {avatar === 'right' && <Blockie address={address} size={7} />}
-      {copyable &&
-        (isClicked ? (
+      {copyable
+        && (isClicked ? (
           <Check />
         ) : (
           <Copy

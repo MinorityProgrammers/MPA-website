@@ -9,7 +9,7 @@ const AdvancedModules = ({ module, courseId, userModules }) => {
   const { name, level, _id } = module;
 
   const specificUserModules = userModules.filter(
-    (_module) => _module.moduleId._id === _id
+    (_module) => _module.moduleId._id === _id,
   );
   useEffect(() => {
     specificUserModules?.forEach((_module) => {

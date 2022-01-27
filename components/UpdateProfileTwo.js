@@ -34,12 +34,12 @@ const UpdateProfileTwo = ({ open = true, setOpen = () => {}, userData }) => {
   const [newlastName, setNewLastName] = useState(userData.lastName || '');
   const [newEmail, setNewEmail] = useState(userData.email || '');
   const [newPhoneNumber, setNewPhoneNumber] = useState(
-    userData.phoneNumber || ''
+    userData.phoneNumber || '',
   );
   const [newLocation, setNewLocation] = useState(userData.location || '');
   const [newBirthDate, setNewBirthDate] = useState(userData.birthday || '');
   const [newNationality, setNewNationality] = useState(
-    userData.Nationality || ''
+    userData.Nationality || '',
   );
   const [newEthnicity, setNewEthnicity] = useState(userData.Ethnicity || '');
   const [newGender, setNewGender] = useState(userData.Gender || '');

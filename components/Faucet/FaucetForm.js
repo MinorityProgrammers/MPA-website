@@ -25,7 +25,7 @@ const FaucetForm = () => {
       try {
         await contract.mint(address);
         alert(
-          'Token sent, check your wallet, Contract address: 0x316748158Bf8a5C50cfF39aef9AC44aD0a9579B6'
+          'Token sent, check your wallet, Contract address: 0x316748158Bf8a5C50cfF39aef9AC44aD0a9579B6',
         );
       } catch (err) {
         if (err.code === 4001) {
@@ -38,7 +38,7 @@ const FaucetForm = () => {
               err.data.message === 'execution reverted'
                 ? 'check that you have not recieved $MPA token before'
                 : 'check that your wallet contains some $Minority token'
-            }`
+            }`,
           );
         }
         setErrorState('');

@@ -52,7 +52,7 @@ const MentorModel = ({
                 'Access-Control-Allow-Origin': '*',
                 Authorization: `Bearer ${token}`,
               },
-            }
+            },
           )
           .then(() => {
             successToast(`${currentModel} created!`);
@@ -71,7 +71,7 @@ const MentorModel = ({
                 'Access-Control-Allow-Origin': '*',
                 Authorization: `Bearer ${token}`,
               },
-            }
+            },
           )
           .then((/* res */) => {
             successToast(`${currentModel} updated!`);

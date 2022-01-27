@@ -50,8 +50,8 @@ const RecommendedCourses = ({
           }
         >
           <Slider {...conditionalInfinite}>
-            {recommendedCourses &&
-              recommendedCourses.map((course) => (
+            {recommendedCourses
+              && recommendedCourses.map((course) => (
                 <RecommendedCourseList
                   showModal={showModal}
                   course={course}

@@ -144,7 +144,8 @@ const MenteeDetail = ({
                   </div>
                   <div className={stylesE.menteeSocial}>
                     <div>
-                      @{menteeData.user_id.GithubLink.split('/')[3]}
+                      @
+                      {menteeData.user_id.GithubLink.split('/')[3]}
                       <img
                         className={stylesE.qrCode}
                         onClick={() => setModalShow(true)}
@@ -184,7 +185,10 @@ const MenteeDetail = ({
                 <div className={stylesE.tags}>
                   {menteeData.user_id.programmingSkills.map((tag) => (
                     <div key={tag}>
-                      <a> {tag}</a>
+                      <a>
+                        {' '}
+                        {tag}
+                      </a>
                     </div>
                   ))}
                 </div>
@@ -225,7 +229,8 @@ const MenteeDetail = ({
                           <div className={stylesE.sprintInfo}>
                             <div>{sprint.title}</div>
                             <div style={{ color: '#40BF7B', fontSize: '14px' }}>
-                              Completion time:{' '}
+                              Completion time:
+                              {' '}
                               {sprint.completion_time
                                 ? sprint.completion_time
                                 : '-'}
@@ -239,7 +244,10 @@ const MenteeDetail = ({
                               Notes by Mentor:
                               <ul className={stylesE.notesList}>
                                 {sprint.notes.map((note) => (
-                                  <li key={note}> {note}</li>
+                                  <li key={note}>
+                                    {' '}
+                                    {note}
+                                  </li>
                                 ))}
                                 {!sprint.notes.length && <li>-</li>}
                               </ul>
@@ -274,9 +282,7 @@ const MenteeDetail = ({
                     ? styles.mentorRowE
                     : styles.mentorRow
                 }
-                onClick={() =>
-                  menteeHandler(mentorshipData.mentorship.mentee_id)
-                }
+                onClick={() => menteeHandler(mentorshipData.mentorship.mentee_id)}
               >
                 <div
                   className={
@@ -335,28 +341,24 @@ const MenteeDetail = ({
                 <p>Calender/Events</p>
               </div>
               <div
-                onClick={() =>
-                  setActionActive({
-                    resourceActive: false,
-                    sprintsViewActive: false,
-                    calendarActive: false,
-                    evaluationActive: true,
-                  })
-                }
+                onClick={() => setActionActive({
+                  resourceActive: false,
+                  sprintsViewActive: false,
+                  calendarActive: false,
+                  evaluationActive: true,
+                })}
                 className={styles.mentorRow}
               >
                 <img src="/assets/images/mentor/Rectangle 1977.png" alt="" />
                 <p>Evaluations</p>
               </div>
               <div
-                onClick={() =>
-                  setActionActive({
-                    sprintsViewActive: false,
-                    calendarActive: false,
-                    evaluationActive: false,
-                    resourceActive: true,
-                  })
-                }
+                onClick={() => setActionActive({
+                  sprintsViewActive: false,
+                  calendarActive: false,
+                  evaluationActive: false,
+                  resourceActive: true,
+                })}
                 style={{ borderRadius: '0px 0 30px 0px' }}
                 className={
                   actionActive.resourceActive

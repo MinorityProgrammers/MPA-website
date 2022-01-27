@@ -41,9 +41,8 @@ const SettingBodyProfileBackground = ({ settingsPage, data, userID }) => {
 
   const formData = new FormData();
   Object.keys(inputStates).forEach(
-    (inputName) =>
-      Array.isArray(inputStates[inputName]) &&
-      inputStates[inputName].map((item) => formData.append(inputName, item))
+    (inputName) => Array.isArray(inputStates[inputName])
+      && inputStates[inputName].map((item) => formData.append(inputName, item)),
   );
 
   const handleChange = (name, value) => {
@@ -51,12 +50,9 @@ const SettingBodyProfileBackground = ({ settingsPage, data, userID }) => {
   };
 
   // Get multiple values from multiple input fields within the same parent element
-  const getFieldValues = (element, names) =>
-    names.map((name) =>
-      element.parentNode.parentNode.parentNode.querySelector(
-        `input[name='${name}']`
-      )
-    );
+  const getFieldValues = (element, names) => names.map((name) => element.parentNode.parentNode.parentNode.querySelector(
+    `input[name='${name}']`,
+  ));
   // get values from input fields within same parent and add it as an array element to state
   const handleAdd = (e, names, reset) => {
     const fieldValues = getFieldValues(e.target, names);
@@ -65,11 +61,10 @@ const SettingBodyProfileBackground = ({ settingsPage, data, userID }) => {
     const value = Array.from(fieldValues)
       .map((fieldValue) => fieldValue.value)
       .join(' - ');
-    (() =>
-      value !== ' - ' &&
-      !/^[ \- ]/.test(value) &&
-      !/[ \- ]$/.test(value) &&
-      handleChange(name, [...new Set([...prevValues, value])]))();
+    (() => value !== ' - '
+      && !/^[ \- ]/.test(value)
+      && !/[ \- ]$/.test(value)
+      && handleChange(name, [...new Set([...prevValues, value])]))();
     const addedText = document.querySelectorAll('.css-1uccc91-singleValue');
     addedText.forEach((singleText) => {
       singleText.textContent = reset;
@@ -134,13 +129,11 @@ const SettingBodyProfileBackground = ({ settingsPage, data, userID }) => {
                 <div className={styles.btnWrap}>
                   <div
                     className={styles.addBtn}
-                    onClick={(e) =>
-                      handleAdd(
-                        e,
-                        [all.softSkillsField.name, all.proficiencyField.name],
-                        ''
-                      )
-                    }
+                    onClick={(e) => handleAdd(
+                      e,
+                      [all.softSkillsField.name, all.proficiencyField.name],
+                      '',
+                    )}
                   >
                     Add
                   </div>
@@ -185,16 +178,14 @@ const SettingBodyProfileBackground = ({ settingsPage, data, userID }) => {
                 <div className={styles.btnWrap}>
                   <div
                     className={styles.addBtn}
-                    onClick={(e) =>
-                      handleAdd(
-                        e,
-                        [
-                          all.programmingLanguagesField.name,
-                          all.proficiencyField.name,
-                        ],
-                        ''
-                      )
-                    }
+                    onClick={(e) => handleAdd(
+                      e,
+                      [
+                        all.programmingLanguagesField.name,
+                        all.proficiencyField.name,
+                      ],
+                      '',
+                    )}
                   >
                     Add
                   </div>

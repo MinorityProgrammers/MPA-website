@@ -8,16 +8,14 @@ let swipeClick = 0;
 
 const MentorshipAppSwipeCards = (props) => {
   const childRefs = useMemo(
-    () =>
-      Array(props.values.length)
-        .fill(0)
-        .map(() => React.createRef()),
-    []
+    () => Array(props.values.length)
+      .fill(0)
+      .map(() => React.createRef()),
+    [],
   );
-  const sleep = (milliseconds) =>
-    new Promise((resolve) => {
-      setTimeout(resolve, milliseconds);
-    });
+  const sleep = (milliseconds) => new Promise((resolve) => {
+    setTimeout(resolve, milliseconds);
+  });
 
   async function toggleUndo() {
     const activeBtn = document.getElementById('active_replay_button');
@@ -61,7 +59,7 @@ const MentorshipAppSwipeCards = (props) => {
 
   const swipe = (dir) => {
     const cardsLeft = props.values.filter(
-      (person) => !alreadyRemoved.includes(person)
+      (person) => !alreadyRemoved.includes(person),
     );
     if (cardsLeft.length) {
       const toBeRemoved = cardsLeft[cardsLeft.length - 1];

@@ -29,12 +29,11 @@ const SettingBodyProfileEducation = ({ settingsPage, data, userID }) => {
 
   useEffect(() => {
     inputFields.forEach((field) => {
-      initialInputState[field.name] =
-        field.name === 'enteredHighSchoolYear'
-          ? data?.enteredHighSchoolYear
-            ? new Date(data.enteredHighSchoolYear)
-            : ''
-          : field.name === 'expectedGraduationYear'
+      initialInputState[field.name] = field.name === 'enteredHighSchoolYear'
+        ? data?.enteredHighSchoolYear
+          ? new Date(data.enteredHighSchoolYear)
+          : ''
+        : field.name === 'expectedGraduationYear'
           ? data?.expectedGraduationYear
             ? new Date(data.expectedGraduationYear)
             : ''

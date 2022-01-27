@@ -27,7 +27,9 @@ const Wireframe1 = ({ step }) => {
         <div className="body">
           <div className="inner-body">
             <header>
-              Your project ID is <span>{projectId}</span>
+              Your project ID is
+              {' '}
+              <span>{projectId}</span>
             </header>
             <article>
               Due to heavy traffic of projects, no MPA project manager could

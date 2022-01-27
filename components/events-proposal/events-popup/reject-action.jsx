@@ -5,7 +5,9 @@ import ReviewAction from './review-action';
 
 Moment.locale('en');
 
-const RejectAction = ({ reveiwFeedback, value, setValue, popup }) => {
+const RejectAction = ({
+  reveiwFeedback, value, setValue, popup,
+}) => {
   const [changeStatus, setStatus] = useState(false);
 
   useEffect(() => {

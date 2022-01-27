@@ -6,51 +6,51 @@ import ChaptersCard from '../chapters-card/chapters-card';
 import UsersCard from '../users-card/users-card';
 import styles from './search.module.css';
 
-const SearchResult = ({ result, token, userJoinRequests, category }) => (
+const SearchResult = ({
+  result, token, userJoinRequests, category,
+}) => (
   <>
     {category === 'all' ? (
-      Object.keys(result).map((key) =>
-        key === 'jobs' ? (
-          result[key].length ? (
-            result[key].map((data) => <JobsCard key={data._id} data={data} />)
-          ) : (
-            <div className={styles.noResult} />
-          )
-        ) : key === 'startups' ? (
-          result[key].length ? (
-            result[key].map((data) => (
-              <StartupsCard key={data._id} data={data} />
-            ))
-          ) : (
-            <div className={styles.noResult} />
-          )
-        ) : key === 'events' ? (
-          result[key].length ? (
-            result[key].map((data) => <EventsCard key={data._id} data={data} />)
-          ) : (
-            <div className={styles.noResult} />
-          )
-        ) : key === 'users' ? (
-          result[key].length ? (
-            result[key].map((data) => <UsersCard key={data._id} data={data} />)
-          ) : (
-            <div className={styles.noResult} />
-          )
-        ) : key === 'chapter' ? (
-          result[key].length ? (
-            result[key].map((data) => (
-              <ChaptersCard
-                key={data._id}
-                data={data}
-                userJoinRequests={userJoinRequests}
-                token={token}
-              />
-            ))
-          ) : (
-            <div className={styles.noResult} />
-          )
-        ) : null
-      )
+      Object.keys(result).map((key) => (key === 'jobs' ? (
+        result[key].length ? (
+          result[key].map((data) => <JobsCard key={data._id} data={data} />)
+        ) : (
+          <div className={styles.noResult} />
+        )
+      ) : key === 'startups' ? (
+        result[key].length ? (
+          result[key].map((data) => (
+            <StartupsCard key={data._id} data={data} />
+          ))
+        ) : (
+          <div className={styles.noResult} />
+        )
+      ) : key === 'events' ? (
+        result[key].length ? (
+          result[key].map((data) => <EventsCard key={data._id} data={data} />)
+        ) : (
+          <div className={styles.noResult} />
+        )
+      ) : key === 'users' ? (
+        result[key].length ? (
+          result[key].map((data) => <UsersCard key={data._id} data={data} />)
+        ) : (
+          <div className={styles.noResult} />
+        )
+      ) : key === 'chapter' ? (
+        result[key].length ? (
+          result[key].map((data) => (
+            <ChaptersCard
+              key={data._id}
+              data={data}
+              userJoinRequests={userJoinRequests}
+              token={token}
+            />
+          ))
+        ) : (
+          <div className={styles.noResult} />
+        )
+      ) : null))
     ) : category === 'jobs' ? (
       result[category].length ? (
         result[category].map((data) => <JobsCard key={data._id} data={data} />)

@@ -21,14 +21,16 @@ const RecentEvents = ({ events, eventStatus, token }) => {
   return (
     <div className={styles.container}>
       <div className={styles.title}>
-        Recently <br />
+        Recently
+        {' '}
+        <br />
         {eventStatus === 'pending'
           ? 'Added'
           : eventStatus === 'approved'
-          ? 'Approved'
-          : eventStatus === 'rejected'
-          ? 'Rejected'
-          : ''}
+            ? 'Approved'
+            : eventStatus === 'rejected'
+              ? 'Rejected'
+              : ''}
       </div>
       {recentEvents.length ? (
         <>

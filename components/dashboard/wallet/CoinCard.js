@@ -1,10 +1,9 @@
 import React from 'react';
 
 const CoinCard = ({ info, view }) => {
-  const localCurrentView =
-    view === 'Daily'
-      ? 'percent_change_24h'
-      : view === 'Weekly'
+  const localCurrentView = view === 'Daily'
+    ? 'percent_change_24h'
+    : view === 'Weekly'
       ? 'percent_change_7d'
       : 'percent_change_30d';
   const coinInfo = info;
@@ -48,7 +47,8 @@ const CoinCard = ({ info, view }) => {
             fontSize: '12px',
           }}
         >
-          ${coinInfo.price.toFixed(2)}
+          $
+          {coinInfo.price.toFixed(2)}
         </p>
         <p
           style={{
@@ -57,7 +57,8 @@ const CoinCard = ({ info, view }) => {
           }}
         >
           {coinInfo[localCurrentView] >= 0 ? '+' : ''}
-          {coinInfo[localCurrentView]}%
+          {coinInfo[localCurrentView]}
+          %
         </p>
       </div>
     </div>

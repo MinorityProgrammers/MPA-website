@@ -23,42 +23,40 @@ const HomepageDonate = () => {
     });
   };
 
-  const createOrder = (data, actions) =>
-    actions.order
-      .create({
-        purchase_units: [
-          {
-            amount: {
-              value: amount,
-            },
+  const createOrder = (data, actions) => actions.order
+    .create({
+      purchase_units: [
+        {
+          amount: {
+            value: amount,
           },
-        ],
-        application_context: {
-          shipping_preference: 'NO_SHIPPING',
         },
-      })
-      .then((orderID) => {
-        setOrderID(orderID);
-        return orderID;
-      });
+      ],
+      application_context: {
+        shipping_preference: 'NO_SHIPPING',
+      },
+    })
+    .then((orderID) => {
+      setOrderID(orderID);
+      return orderID;
+    });
   const createSubscription = (data, action) => {};
 
-  const onApprove = (data, actions) =>
-    actions.order.capture().then((details) => {
-      const { purchase_units } = details;
-      setBillingDetails(details);
-      setPayment(purchase_units);
-      setSucceeded(true);
-      setIsDone(true);
-      setCount(count + 1);
-    });
+  const onApprove = (data, actions) => actions.order.capture().then((details) => {
+    const { purchase_units } = details;
+    setBillingDetails(details);
+    setPayment(purchase_units);
+    setSucceeded(true);
+    setIsDone(true);
+    setCount(count + 1);
+  });
 
   const scrollTo = () => {
     const currentLocation = window.location.href;
     const hasAnchor = currentLocation.includes('/#');
     if (hasAnchor) {
       const anchorId = `${currentLocation.substring(
-        currentLocation.indexOf('#') + 1
+        currentLocation.indexOf('#') + 1,
       )}`;
       const anchor = document.getElementById(anchorId);
       if (anchor) {

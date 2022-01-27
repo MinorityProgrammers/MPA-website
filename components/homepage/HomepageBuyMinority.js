@@ -20,7 +20,9 @@ const HomepageBuyMinority = () => (
             <Link href="#/register">
               <a>
                 <div className="link-buy">
-                  LEARN MORE <i className="fas fa-caret-down" />
+                  LEARN MORE
+                  {' '}
+                  <i className="fas fa-caret-down" />
                 </div>
               </a>
             </Link>

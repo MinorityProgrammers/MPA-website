@@ -37,11 +37,8 @@ const FeaturedCourses = ({
       },
     ],
   };
-  const sameUserCourses =
-    courses &&
-    courses.filter((course) =>
-      enrolledCourses.some((eCourse) => course._id === eCourse.courseId._id)
-    );
+  const sameUserCourses = courses
+    && courses.filter((course) => enrolledCourses.some((eCourse) => course._id === eCourse.courseId._id));
 
   return (
     <div>
@@ -57,8 +54,8 @@ const FeaturedCourses = ({
           }
         >
           <Slider {...conditionalInfinite}>
-            {courses &&
-              courses.map((course) => (
+            {courses
+              && courses.map((course) => (
                 <FeaturedCourseList
                   showModal={showModal}
                   course={course}

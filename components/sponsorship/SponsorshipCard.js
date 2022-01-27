@@ -12,45 +12,42 @@ const SponsorshipCard = ({ sponsorshipOption }) => {
   const [billingDetails, setBillingDetails] = useState([]);
   const [, setPayment] = useState([]);
 
-  const amount =
-    sponsorshipOption === 'ally'
-      ? 5000
-      : sponsorshipOption === 'friend'
+  const amount = sponsorshipOption === 'ally'
+    ? 5000
+    : sponsorshipOption === 'friend'
       ? 3000
       : sponsorshipOption === 'mafia'
-      ? 1000
-      : 0;
+        ? 1000
+        : 0;
 
   // creates one time paypal order
-  const createOrder = (data, actions) =>
-    actions.order
-      .create({
-        purchase_units: [
-          {
-            amount: {
-              value: amount,
-            },
+  const createOrder = (data, actions) => actions.order
+    .create({
+      purchase_units: [
+        {
+          amount: {
+            value: amount,
           },
-        ],
-        application_context: {
-          shipping_preference: 'NO_SHIPPING',
         },
-      })
-      .then((_orderID) => {
-        setOrderID(_orderID);
-        return _orderID;
-      });
+      ],
+      application_context: {
+        shipping_preference: 'NO_SHIPPING',
+      },
+    })
+    .then((_orderID) => {
+      setOrderID(_orderID);
+      return _orderID;
+    });
 
   // handles when a payment is confirmed for paypal
-  const onApprove = (data, actions) =>
-    actions.order.capture().then((details) => {
-      const { purchase_units } = details;
-      setBillingDetails(details);
-      setPayment(purchase_units);
-      setSucceeded(true);
-      setIsDone(true);
-      setCount(count + 1); // this was changed from count++ to setCount(count+1)
-    });
+  const onApprove = (data, actions) => actions.order.capture().then((details) => {
+    const { purchase_units } = details;
+    setBillingDetails(details);
+    setPayment(purchase_units);
+    setSucceeded(true);
+    setIsDone(true);
+    setCount(count + 1); // this was changed from count++ to setCount(count+1)
+  });
 
   return (
     <div className="sponsor-card-wrapper">

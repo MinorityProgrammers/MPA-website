@@ -122,7 +122,8 @@ const Leaderboard = () => {
                   borderBottom: pointer === link ? '2px solid white' : '',
                 }}
               >
-                P{link}
+                P
+                {link}
               </div>
             ))}
             {pageLink.length !== viewToDisplay[viewToDisplay.length - 1] && (
@@ -147,8 +148,8 @@ const Leaderboard = () => {
         </div>
 
         <div className={styles.stats}>
-          {pageToDisplay &&
-            pageToDisplay.map((stat, idx) => (
+          {pageToDisplay
+            && pageToDisplay.map((stat, idx) => (
               <ChapterStat key={stat._id} {...stat} idx={idx} />
             ))}
         </div>

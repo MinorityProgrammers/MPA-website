@@ -8,7 +8,7 @@ const ActivityList = ({ module, userModules, specificUModules }) => {
   const { courseId, moduleLevel } = router.query;
 
   const specificUserModules = userModules.filter(
-    (_module) => _module.moduleId._id === _id
+    (_module) => _module.moduleId._id === _id,
   );
   useEffect(() => {
     specificUserModules.forEach((_module) => {

@@ -136,10 +136,14 @@ const SettingBodyWalletMyWallet = ({ settingsPage, data, userID }) => {
             <h6>$MINORITY </h6>
             <div className={stylesOverview.card}>
               <div className={stylesOverview.amountInfo}>
-                $MINORITY Earned <div>$150</div>
+                $MINORITY Earned
+                {' '}
+                <div>$150</div>
               </div>
               <div className={stylesOverview.amountInfo}>
-                $MINORITY Balance <div>$350</div>
+                $MINORITY Balance
+                {' '}
+                <div>$350</div>
               </div>
               <div className={stylesOverview.addBtn}>Add $MINORITY Funds</div>
             </div>
@@ -168,10 +172,14 @@ const SettingBodyWalletMyWallet = ({ settingsPage, data, userID }) => {
             <h6>$MPA Tokens </h6>
             <div className={stylesOverview.card}>
               <div className={stylesOverview.amountInfo}>
-                $MPA Tokens Earned <div>$35</div>
+                $MPA Tokens Earned
+                {' '}
+                <div>$35</div>
               </div>
               <div className={stylesOverview.amountInfo}>
-                $MPA Tokens Balance <div>$65</div>
+                $MPA Tokens Balance
+                {' '}
+                <div>$65</div>
               </div>
               <div className={stylesOverview.addBtn}>Add $MPA Tokens</div>
             </div>

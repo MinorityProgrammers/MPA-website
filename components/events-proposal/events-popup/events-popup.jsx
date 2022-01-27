@@ -10,7 +10,9 @@ import { errorToast, successToast } from '../../../contexts/utils/toasts';
 
 Moment.locale('en');
 
-const EventsPopup = ({ event, popup, togglePopup, token }) => {
+const EventsPopup = ({
+  event, popup, togglePopup, token,
+}) => {
   const [value, setValue] = useState('');
   const {
     EventPicture,
@@ -40,7 +42,7 @@ const EventsPopup = ({ event, popup, togglePopup, token }) => {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        }
+        },
       );
       successToast(`Event ${feedback} successfully`);
       togglePopup();

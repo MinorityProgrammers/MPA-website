@@ -105,8 +105,8 @@ const Search = ({ token }) => {
               >
                 All
               </li>
-              {searchCategories &&
-                searchCategories.map((_category, idx) => (
+              {searchCategories
+                && searchCategories.map((_category, idx) => (
                   <SearchCategory
                     key={`${`category${idx}`}`}
                     category={_category}
@@ -133,8 +133,8 @@ const Search = ({ token }) => {
           <div className={styles.searchTags}>
             <h3 className={styles.tagTitle}>Popular Searches</h3>
             <ul className={styles.tagsList}>
-              {popularSearches &&
-                popularSearches.map((tag, idx) => (
+              {popularSearches
+                && popularSearches.map((tag, idx) => (
                   <PopularSearch
                     key={`${`tag${idx}`}`}
                     handleTags={handleTags}

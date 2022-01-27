@@ -4,7 +4,9 @@ import styles from './startups-card.module.css';
 import { numFormat, percentFund } from '../../../helpers/formatIncubator';
 
 const StartupsCard = ({ data }) => {
-  const { startupImage, name, about, targetAmount, amount, _id } = data;
+  const {
+    startupImage, name, about, targetAmount, amount, _id,
+  } = data;
 
   return (
     <div className={styles.container}>
@@ -21,12 +23,14 @@ const StartupsCard = ({ data }) => {
       <div className={styles.fundContainer}>
         <div className={styles.fundTitle}>Fundraised</div>
         <div className={styles.fundRate}>
-          {percentFund(targetAmount, amount)}% complete
+          {percentFund(targetAmount, amount)}
+          % complete
         </div>
       </div>
 
       <div className={styles.fundRaised}>
-        ${numFormat(amount)}
+        $
+        {numFormat(amount)}
         /$
         {numFormat(targetAmount)}
       </div>

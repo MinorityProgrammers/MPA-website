@@ -37,10 +37,15 @@ const UsersCard = ({ data }) => {
         </div>
         <div className={styles.detailsContainer}>
           <div className={styles.name}>
-            <span>Full Name: </span> {`${lastName} ${firstName}`}{' '}
+            <span>Full Name: </span>
+            {' '}
+            {`${lastName} ${firstName}`}
+            {' '}
           </div>
           <div className={styles.userName}>
-            <span>Username: </span> {userName}
+            <span>Username: </span>
+            {' '}
+            {userName}
           </div>
         </div>
         <div className={styles.otherInfo}>

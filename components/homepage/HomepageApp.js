@@ -25,7 +25,7 @@ const HomepageApp = () => (
 
       <div className="row">
         <ImageCard
-          href="/learn-page"
+          href="/learn"
           bkgImgSrc="/assets/images/app2.png"
           iconSrc="/assets/images/banner2.svg"
           text="Learn"

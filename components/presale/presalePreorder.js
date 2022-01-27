@@ -53,7 +53,9 @@ const PresalePreorder = () => (
     <div className="minority-amount">
       <div className="number">20</div>
       <div className="text">
-        <b className="text-larger">BILLION MINORITY</b> <br />
+        <b className="text-larger">BILLION MINORITY</b>
+        {' '}
+        <br />
         FINITE MAX SUPPLY
       </div>
     </div>
@@ -61,11 +63,29 @@ const PresalePreorder = () => (
       <div className="some-text">
         <div className="sometext1">
           <div className="title-header">$MINORITY</div>
-          The utility token behind the <br />
-          App that supports the <br /> careers of Minority <br /> Programmers
+          The utility token behind the
+          {' '}
+          <br />
+          App that supports the
+          {' '}
+          <br />
+          {' '}
+          careers of Minority
+          {' '}
+          <br />
+          {' '}
+          Programmers
           <div className="sometext2">
             <div className="title-header">$MPA</div>
-            airdropped to $MINORITY <br /> holderS for voting power <br /> in
+            airdropped to $MINORITY
+            {' '}
+            <br />
+            {' '}
+            holderS for voting power
+            {' '}
+            <br />
+            {' '}
+            in
             MPA DAPP
           </div>
         </div>
@@ -91,7 +111,11 @@ const PresalePreorder = () => (
       <div className="token-title">TOKEN THAT GIVES BACK</div>
       <div className="aka">aka “da Secret Sauce”</div>
       <div className="token-text">
-        10% Tax on Each transaction to benefit <br /> ECOSYSTEM & token holders
+        10% Tax on Each transaction to benefit
+        {' '}
+        <br />
+        {' '}
+        ECOSYSTEM & token holders
       </div>
     </div>
     <div className="image-content">
@@ -125,7 +149,9 @@ const PresalePreorder = () => (
               />
             </div>
             <div className="inner-text">
-              “Minority for a penny? A Majority get many. <br />
+              “Minority for a penny? A Majority get many.
+              {' '}
+              <br />
               <div className="user-name">-wise rapper off the street</div>
             </div>
           </div>
@@ -133,7 +159,8 @@ const PresalePreorder = () => (
         <div className="testimonial2">
           <div className="inner-container">
             <div className="inner-text">
-              I can own a minority on-chain. Wait this isn’t slavery right?{' '}
+              I can own a minority on-chain. Wait this isn’t slavery right?
+              {' '}
               <br />
               <div className="user-name">-Concerned citizen</div>
             </div>

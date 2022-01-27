@@ -113,9 +113,7 @@ const Events = ({ token }) => {
   const getSearch = (e) => {
     if (e.target.value) {
       const searchValue = e.target.value;
-      const newEvents = events.filter((event) =>
-        event.eventName.toLowerCase().includes(searchValue.toLowerCase())
-      );
+      const newEvents = events.filter((event) => event.eventName.toLowerCase().includes(searchValue.toLowerCase()));
       setEvents(newEvents);
     } else {
       fetchEvents();

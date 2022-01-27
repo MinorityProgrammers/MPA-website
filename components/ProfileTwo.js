@@ -1012,7 +1012,7 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
               <h2 className="tw-relative tw-text-xl tw-font-bold tw-mb-3 tw-text-black">
                 Enrolled Courses
                 <span className="tw-absolute tw-top-0 tw-right-0 tw-text-xs tw-cursor-pointer">
-                  <a className="pp-view-all" href="/learn-page">
+                  <a className="pp-view-all" href="/learn">
                     View All
                   </a>
                 </span>

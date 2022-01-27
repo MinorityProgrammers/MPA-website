@@ -12,11 +12,10 @@ const SettingBody = ({
   const router = useRouter();
 
   const settingsSubPage = router.pathname.substring(
-    router.pathname.lastIndexOf('/') + 1
+    router.pathname.lastIndexOf('/') + 1,
   );
 
-  const settingsNameAndList =
-    getSpecificSettingsLayoutNavigationList(settingsPage);
+  const settingsNameAndList = getSpecificSettingsLayoutNavigationList(settingsPage);
 
   return (
     <div className={styles.detailSettings}>
@@ -24,7 +23,7 @@ const SettingBody = ({
         <h1>
           {
             settingsNameAndList?.content?.find(
-              (dataObj) => dataObj.subPath === settingsSubPage
+              (dataObj) => dataObj.subPath === settingsSubPage,
             )?.name
           }
         </h1>
@@ -32,17 +31,17 @@ const SettingBody = ({
       <div
         className={styles.settingContent}
         style={
-          settingsSubPage === 'my-wallet' ||
-          settingsSubPage === 'votes' ||
-          settingsSubPage === 'management'
+          settingsSubPage === 'my-wallet'
+          || settingsSubPage === 'votes'
+          || settingsSubPage === 'management'
             ? { height: '94%' }
             : {}
         }
       >
         {children}
-        {settingsSubPage !== 'my-wallet' &&
-          settingsSubPage !== 'votes' &&
-          settingsSubPage !== 'management' && (
+        {settingsSubPage !== 'my-wallet'
+          && settingsSubPage !== 'votes'
+          && settingsSubPage !== 'management' && (
             <div className={styles.footerButtons}>
               <button
                 type="button"
@@ -65,7 +64,7 @@ const SettingBody = ({
                 Save Changes
               </button>
             </div>
-          )}
+        )}
       </div>
     </div>
   );

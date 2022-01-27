@@ -1,6 +1,8 @@
 /* eslint-disable consistent-return */
 import { Form, Formik } from 'formik';
-import { getProviders, getSession, signIn, useSession } from 'next-auth/client';
+import {
+  getProviders, getSession, signIn, useSession,
+} from 'next-auth/client';
 import { useRouter } from 'next/router';
 import React, { useContext, useEffect, useState } from 'react';
 import 'react-toastify/dist/ReactToastify.css';
@@ -94,11 +96,9 @@ const HomepageNavLogin = ({ onCloseMobileMenu }) => {
           <img
             src="/assets/images/github.svg"
             alt="github icon"
-            onClick={() =>
-              signIn(providers.github.id, {
-                callbackUrl: 'https://minorityprogrammers.com/auth',
-              })
-            }
+            onClick={() => signIn(providers.github.id, {
+              callbackUrl: 'https://minorityprogrammers.com/auth',
+            })}
           />
         </div>
       </div>
@@ -140,7 +140,7 @@ const HomepageNavLogin = ({ onCloseMobileMenu }) => {
               <div
                 id="password"
                 className="form-text dropdown-form-text mb-3"
-              ></div>
+              />
               <button
                 type="submit"
                 className="btn btn-warning btn-dropdown-filled"

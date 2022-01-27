@@ -13,8 +13,11 @@ const JoinHerosection = () => (
     <div className="col-md-6">
       <h1>Code, Culture, Community</h1>
       <p>
-        We are an international network of developers{' '}
-        <span style={{ color: '#474bfd' }}>unifying together</span> to build
+        We are an international network of developers
+        {' '}
+        <span style={{ color: '#474bfd' }}>unifying together</span>
+        {' '}
+        to build
         socially impactful products & spread STEM education to marginalized
         communities.
       </p>

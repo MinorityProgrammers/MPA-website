@@ -1,4 +1,6 @@
-import { getProviders, getSession, signIn, useSession } from 'next-auth/client';
+import {
+  getProviders, getSession, signIn, useSession,
+} from 'next-auth/client';
 import { useRouter } from 'next/router';
 import React, { useContext, useEffect, useState } from 'react';
 import { ToastContainer } from 'react-toastify';
@@ -63,8 +65,8 @@ export default function Index() {
 
   useEffect(() => {
     if (
-      window.localStorage.getItem('jwtToken') &&
-      window.localStorage.getItem('userInfo')
+      window.localStorage.getItem('jwtToken')
+      && window.localStorage.getItem('userInfo')
     ) {
       setSignedIn(true);
     }
@@ -75,7 +77,7 @@ export default function Index() {
       router.push(router.pathname);
       if (router.pathname === '/auth') {
         const loginSignUp = document.querySelector(
-          '.card_cardContainer__12vmM'
+          '.card_cardContainer__12vmM',
         );
         loginSignUp.style.display = 'none';
       } else {
@@ -100,7 +102,11 @@ export default function Index() {
         h1Title: 'register for MPA',
         p: (
           <p>
-            To keep connecting with us please <br /> register with your personal
+            To keep connecting with us please
+            {' '}
+            <br />
+            {' '}
+            register with your personal
             info
           </p>
         ),
@@ -114,7 +120,11 @@ export default function Index() {
         h1Title: 'welcome back',
         p: (
           <p>
-            To keep connecting with us please <br /> sign-in with your personal
+            To keep connecting with us please
+            {' '}
+            <br />
+            {' '}
+            sign-in with your personal
             info
           </p>
         ),
@@ -137,7 +147,7 @@ export default function Index() {
 
   return (
     <div
-      className={styles.cardContainer + ' overview-courses-list'}
+      className={`${styles.cardContainer} overview-courses-list`}
       style={{ overflowY: 'scroll', borderRadius: '20px' }}
     >
       <ToastContainer limit={3} />

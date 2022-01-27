@@ -44,7 +44,7 @@ const JobsCard = ({ data }) => {
                 <span className={`${styles.listStyle} ${styles.circle}`} />
                 {`${'Lorem ipsum dolor, sit amet consectetur adipisicing elit.'.substring(
                   0,
-                  40
+                  40,
                 )}...`}
               </div>
             ))}

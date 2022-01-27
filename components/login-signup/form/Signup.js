@@ -14,12 +14,11 @@ const Signup = ({ setSubmit }) => {
     },
   } = useContext(GlobalContext);
 
-  const displaySuccess = () =>
-    data && (
-      <div className={styles.sucess}>
-        <p>{data.message}</p>
-      </div>
-    );
+  const displaySuccess = () => data && (
+  <div className={styles.sucess}>
+    <p>{data.message}</p>
+  </div>
+  );
 
   const onSubmit = async (e) => {
     setSubmit(true);
@@ -68,7 +67,7 @@ const Signup = ({ setSubmit }) => {
             .required('Required'),
           confirmPassword: Yup.string().oneOf(
             [Yup.ref('password'), null],
-            'Passwords must match'
+            'Passwords must match',
           ),
         })}
         onSubmit={onSubmit}

@@ -39,7 +39,7 @@ const NotFound = () => {
           <div>
             <NavItem href="/" text="Home" />
 
-            <NavItem href="/learn-page" text="Learn" />
+            <NavItem href="/learn" text="Learn" />
 
             <NavItem href="/events" text="Events" />
 

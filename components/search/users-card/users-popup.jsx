@@ -37,10 +37,14 @@ const UsersPopup = ({ data, togglePopup }) => {
         <div className={styles.detailsContainer}>
           <div className={styles.title}>Details</div>
           <div className={styles.name}>
-            <span>Full Name: </span> {`${lastName} ${firstName}`}
+            <span>Full Name: </span>
+            {' '}
+            {`${lastName} ${firstName}`}
           </div>
           <div className={styles.userName}>
-            <span>Username: </span> {userName}
+            <span>Username: </span>
+            {' '}
+            {userName}
           </div>
         </div>
 

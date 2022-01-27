@@ -10,7 +10,9 @@ const SponsorshipPaymentCompleted = ({
 }) => (
   <div className="step__completed">
     <h2 style={{ textAlign: 'center' }}>
-      Hi, {billingDetails?.payer?.name?.given_name}
+      Hi,
+      {' '}
+      {billingDetails?.payer?.name?.given_name}
     </h2>
     <h2 style={{ textAlign: 'center' }}>Thank you for your sponsorship</h2>
 
@@ -29,7 +31,11 @@ const SponsorshipPaymentCompleted = ({
             marginBottom: '20px',
           }}
         >
-          Details of MINORITY {sponsorshipOption?.toUpperCase()} sponsorship
+          Details of MINORITY
+          {' '}
+          {sponsorshipOption?.toUpperCase()}
+          {' '}
+          sponsorship
           Payment:
         </p>
         <div className="row">
@@ -45,7 +51,10 @@ const SponsorshipPaymentCompleted = ({
             <p>Amount:</p>
           </div>
           <div className="col">
-            <p>${Number(amount).toFixed(2)}</p>
+            <p>
+              $
+              {Number(amount).toFixed(2)}
+            </p>
           </div>
         </div>
         <div className="row">

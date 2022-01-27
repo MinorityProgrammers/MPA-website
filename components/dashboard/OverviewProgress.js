@@ -122,7 +122,7 @@ const OverviewProgress = ({ userData, renderMobile }) => {
         </div>
       </div>
     ),
-    []
+    [],
   );
 
   const ProgressComponent = useCallback(
@@ -158,7 +158,8 @@ const OverviewProgress = ({ userData, renderMobile }) => {
                 }}
               >
                 30%
-              </em>{' '}
+              </em>
+              {' '}
               of the tasks available on Minority Programmers Association.
               <br style={{ marginTop: '2%', border: '0px' }} />
               Complete task, earn crypto!
@@ -229,7 +230,7 @@ const OverviewProgress = ({ userData, renderMobile }) => {
         </div>
       </div>
     ),
-    []
+    [],
   );
 
   return (

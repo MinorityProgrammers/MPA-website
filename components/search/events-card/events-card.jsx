@@ -9,7 +9,9 @@ const EventsCard = ({ data }) => {
   const [popup, togglePopup] = useState(false);
   const [isImage, setImage] = useState(false);
 
-  const { EventPicture, eventName, catName, Virtual, time } = data;
+  const {
+    EventPicture, eventName, catName, Virtual, time,
+  } = data;
 
   const handleClick = () => {
     togglePopup(true);

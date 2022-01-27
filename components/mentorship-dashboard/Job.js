@@ -20,8 +20,14 @@ const Job = ({ job }) => (
     <div className={styles.grid}>
       <div>
         <div className={styles.companyDetail}>
-          <p style={{ fontWeight: 'bold' }}>{job.company.name} </p>
-          <p> {job.company.location}</p>
+          <p style={{ fontWeight: 'bold' }}>
+            {job.company.name}
+            {' '}
+          </p>
+          <p>
+            {' '}
+            {job.company.location}
+          </p>
           <p>{job.company.size}</p>
         </div>
         <div className={styles.capstoneDate}>

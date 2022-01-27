@@ -94,7 +94,8 @@ const CoinsLegend = ({ walletInfo }) => (
             style={{ marginRight: '3px' }}
           >
             <p style={{ color: 'gray', fontSize: '12px' }}>
-              ${ownedCoin.AmountInUSD.toFixed(2).toLocaleString()}
+              $
+              {ownedCoin.AmountInUSD.toFixed(2).toLocaleString()}
             </p>
           </div>
           <div

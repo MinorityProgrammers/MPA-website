@@ -5,7 +5,9 @@ import styles from './ChapterDirectory.module.css';
 import ChapterMenu from '../ChapterMenu/ChapterMenu.component';
 import InterestForm from '../InterestForm/InterestForm.component';
 
-const ChapterDirectory = ({ setOpen, token, active, userData }) => {
+const ChapterDirectory = ({
+  setOpen, token, active, userData,
+}) => {
   const [startedAChapter, setStartedAChapter] = useState(null);
   const [locationDetails, setLocationDetails] = useState(null);
 
@@ -26,18 +28,17 @@ const ChapterDirectory = ({ setOpen, token, active, userData }) => {
   }, []);
 
   useEffect(() => {
-    const result =
-      locationDetails &&
-      locationDetails
+    const result = locationDetails
+      && locationDetails
         .reduce(
           (acc, { added_by }) => [
             ...acc,
             { firstName: added_by.firstName, lastName: added_by.lastName },
           ],
-          []
+          [],
         )
         .find(
-          (details) => JSON.stringify(details) === JSON.stringify(userDetails)
+          (details) => JSON.stringify(details) === JSON.stringify(userDetails),
         );
     setStartedAChapter(result);
   }, [locationDetails]);

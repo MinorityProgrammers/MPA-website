@@ -13,13 +13,15 @@ const options = [
   'Delegate review and approval to the MPA Project Manager.',
   'No, I prefer reviewing tasks on my own.',
 ];
-const Page6 = ({ step, setstep, questions, setQuestions }) => {
+const Page6 = ({
+  step, setstep, questions, setQuestions,
+}) => {
   const [showConfirmation, setShowConfirmation] = useState(0);
   const defaultValue = useDefaultValue(questions, step, 0);
   const selectedOption = useRef(
     defaultValue.selectedOption !== undefined
       ? options.indexOf(defaultValue.selectedOption)
-      : defaultRadio
+      : defaultRadio,
   );
 
   const fullname = useRef();
@@ -41,8 +43,7 @@ const Page6 = ({ step, setstep, questions, setQuestions }) => {
   function checksForInputs(string, errorIndex) {
     setErrorMsg((prev) => {
       const prevArr = [...prev];
-      if (string.length === 0)
-        prevArr[errorIndex].push('This field cannot be left empty');
+      if (string.length === 0) prevArr[errorIndex].push('This field cannot be left empty');
       else prevArr[errorIndex] = [];
 
       return prevArr;
@@ -137,8 +138,15 @@ const Page6 = ({ step, setstep, questions, setQuestions }) => {
           {/* page header */}
           <h1>
             You have the option to delegate the review and approval of task
-            increments to the <span>PM who send you the quote</span> or{' '}
-            <span>a representative you trust!</span> This person would need a
+            increments to the
+            {' '}
+            <span>PM who send you the quote</span>
+            {' '}
+            or
+            {' '}
+            <span>a representative you trust!</span>
+            {' '}
+            This person would need a
             MPA account.
           </h1>
           {/* checkbox option 1 */}
