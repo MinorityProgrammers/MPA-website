@@ -186,12 +186,11 @@ export default function Index() {
   }, [session]);
 
   return (
-    <div className={styles.cardContainer}>
+    <div className={styles.cardContainer + ' overview-courses-list'} style={{ overflowY: 'scroll', borderRadius: '20px' }}>
       <ToastContainer limit={3} />
       <div
-        className={`${styles.cardLeft} ${
-          router.pathname.endsWith('/auth') ? 'tw-mt-40' : ''
-        }`}
+        className={`${styles.cardLeft} ${router.pathname.endsWith('/auth') ? 'tw-mt-40' : ''
+          }`}
       >
         <div className={styles.contentContainer}>
           <div className={styles.cardLeftLogo}>
@@ -208,9 +207,8 @@ export default function Index() {
         </div>
       </div>
       <div
-        className={`${styles.cardRight} ${
-          router.pathname.endsWith('/auth') ? 'tw-mt-40' : ''
-        }`}
+        className={`${styles.cardRight} ${router.pathname.endsWith('/auth') ? 'tw-mt-40' : ''
+          }`}
       >
         <div className={styles.cardRightText}>
           <h2>{cardText.h2Title}</h2>
