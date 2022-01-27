@@ -4,7 +4,7 @@ import styles from './dropdown.module.css';
 const Dropdown = ({ heading, list, handleClick, toggle, setMap }) => (
   <div className={styles.dropdownContainer}>
     <div onClick={handleClick} className={styles.dropdownHeading}>
-      <div>{heading}</div>{' '}
+      <div>{heading}</div>
       <i
         style={{
           transform: toggle ? 'rotate(180deg)' : 'rotate(0deg)',
