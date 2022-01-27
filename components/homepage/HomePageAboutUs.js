@@ -4,10 +4,11 @@ import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css';
 
 function HomePageAboutUs() {
   return (
-    <section className="homepage__about">
+    <section className="homepage__about tw-relative tw-overflow-x-clip">
+      <div className="homepage__abou-bg"><img src="/assets/images/home-page/about-us-bg.svg" alt="about-us bg" /></div>
       <div className="container tw-relative tw-w-full tw-h-full">
         <div className="row tw-justify-between">
-          <div className="tw-h-full col-lg-8  video-container tw-flex-col">
+          <div className="tw-h-full col-lg-8 col-md-12  video-container tw-flex-col">
             <LiteYouTubeEmbed
               playerClass="yt-playbtn"
               activeClass="lyt-activated"
@@ -16,7 +17,7 @@ function HomePageAboutUs() {
               title="minority programmers introduction video"
             />
           </div>
-          <div className="homepage__about-right col-lg-4 tw-flex-col">
+          <div className="homepage__about-right col-lg-4 col-md-12 tw-flex-col">
             <h2 className="about-us__title top__part__title">
               About Us
               <img
