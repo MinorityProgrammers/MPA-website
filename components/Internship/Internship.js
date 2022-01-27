@@ -4,8 +4,6 @@ import React from 'react';
 //   Modal.setAppElement('#yourAppElement');
 
 const Internship = function ({ data }) {
-  console.log(data);
-
   return (
     <section>
       <div className="internship__intro pl-5 pr-5">

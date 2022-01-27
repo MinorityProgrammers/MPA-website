@@ -17,7 +17,7 @@ const MentorshipAppSwipeCards = (props) => {
       .map((/* i */) => React.createRef()),
     [],
   );
-  // console.log(props.values);
+
   const sleep = (milliseconds) => new Promise((resolve) => { setTimeout(resolve, milliseconds); });
 
   async function toggleUndo() {
@@ -66,12 +66,12 @@ const MentorshipAppSwipeCards = (props) => {
     );
     if (cardsLeft.length) {
       const toBeRemoved = cardsLeft[cardsLeft.length - 1];
-      // console.log(toBeRemoved); // Find the card object to be removed
+      // Find the card object to be removed
       const index = props.values.indexOf(toBeRemoved); // Find the index of which to make the reference to
       if (!alreadyRemoved.includes(toBeRemoved)) {
         alreadyRemoved.push(toBeRemoved); // Make sure the next card gets removed next time if this card do not have time to exit the screen
       }
-      // console.log("childRefs[index]", childRefs[index]);
+
       if (childRefs[index]) {
         childRefs[index].current.swipe(dir);
       }

@@ -136,9 +136,7 @@ export class MentorshipRegister extends Component {
     this.setState({ [e]: selected });
   };
 
-  // componentDidMount() {
-  //   console.log(this.state.interest);
-  // }
+  // componentDidMount() {}
 
   render() {
     const { step } = this.state;

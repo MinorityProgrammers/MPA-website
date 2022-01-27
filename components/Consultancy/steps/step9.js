@@ -5,7 +5,9 @@ import ErrorPrint from '../helperFiles/errorPrint';
 import useDefaultValue from '../helperFiles/getDefaultValue';
 import SelectTemplate from '../helperFiles/templates/selectTemplate';
 
-const Page8 = ({ step, setstep, questions, setQuestions }) => {
+const Page8 = ({
+  step, setstep, questions, setQuestions,
+}) => {
   const inputRef = useRef();
   const [errorMsg, setErrorMsg] = useState([]);
   const [messageChanged, setMessageChanged] = useState(0);
@@ -15,7 +17,7 @@ const Page8 = ({ step, setstep, questions, setQuestions }) => {
       setErrorMsg(['An email address must be entered.']);
     } else if (
       !/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
-        inputRef.current.value
+        inputRef.current.value,
       )
     ) {
       setErrorMsg(['Email address is invalid!']);
@@ -31,7 +33,7 @@ const Page8 = ({ step, setstep, questions, setQuestions }) => {
     childChanged: messageChanged,
   };
   const defaultValue = useDefaultValue(questions, step, 1);
-  console.log(defaultValue);
+
   return (
     <SelectTemplate
       step={step}

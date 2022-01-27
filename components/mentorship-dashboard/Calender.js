@@ -19,7 +19,7 @@ export default function CalendarEvent({
   const [date, setDate] = useState([]);
   const [events, setEvents] = useState([]);
   // const [ampm, setAmpm] = useState("");
-  // console.log(selectedDates);
+
   useEffect(() => {
     const arr = [];
     data.forEach((d) => {

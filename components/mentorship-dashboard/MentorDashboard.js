@@ -49,7 +49,6 @@ const MentorDashboard = ({
   useEffect(() => {
     window.addEventListener('resize', () => {
       if ($(window).width() >= 650) {
-        console.log(active);
         setActive(false);
       }
     });

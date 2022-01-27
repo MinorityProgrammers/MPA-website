@@ -58,7 +58,6 @@ const CreateProfileSidebar = function ({
     if (x !== 6) {
       if ((step === 1 && usernames.includes(state[step].userName)) || (step === 1 && /[^\w\-]/.test(state[step].userName))) {
         toggleWarning(true);
-        // console.log('HAVE USER');
       } else {
         const inputFieldNames = Object.keys(state[step]);
         const findInputField = (inputFields, nameOfField) => inputFields.find(

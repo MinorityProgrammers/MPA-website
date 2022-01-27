@@ -30,7 +30,6 @@ export default function QuizResult(props) {
       .then((res) => res.json())
       .then((data) => {
         if (data) {
-          // console.log(data);
           if (!lastAdvancedModules._id.includes(userModuleId._id)) {
             setTimeout(() => {
               window.location.href = router.asPath;

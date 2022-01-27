@@ -11,8 +11,6 @@ const JobsCard = function ({ click, popup, data }) {
     remote, min_requirements, weekly_hours, benefits, additional_compensation,
   } = data;
 
-  // console.log(data);
-
   return (
     <div onClick={click} className={`${styles.container} ${popup ? styles.popupView : null}`}>
       <section className={`${popup ? styles.header : null}`}>

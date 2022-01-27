@@ -57,17 +57,17 @@ const Notification = () => {
 
     if (sortType === 'amountAsc') {
       const sorted = [...actions].sort(
-        (a, b) => a[sortProperty] - b[sortProperty]
+        (a, b) => a[sortProperty] - b[sortProperty],
       );
       setActions(sorted);
     } else if (sortType === 'amountDesc') {
       const sorted = [...actions].sort(
-        (a, b) => b[sortProperty] - a[sortProperty]
+        (a, b) => b[sortProperty] - a[sortProperty],
       );
       setActions(sorted);
     } else if (sortType === 'date') {
       const sorted = [...actions].sort(
-        (a, b) => new Date(a[sortProperty]) - new Date(b[sortProperty])
+        (a, b) => new Date(a[sortProperty]) - new Date(b[sortProperty]),
       );
       setActions(sorted);
     } else {
@@ -81,7 +81,7 @@ const Notification = () => {
       for (let i = 0; i < categories.length; i += 1) {
         if (filter === categories[i]) {
           const filtered = [...allData].filter(
-            (action) => action.category === categories[i]
+            (action) => action.category === categories[i],
           );
           setActions(filtered);
         }
@@ -118,9 +118,6 @@ const Notification = () => {
     }
     setCurrentPage(currentPage - 1);
   };
-  console.log('proposal Data', proposals);
-  console.log('all data', allData);
-  console.log('actions', actions);
 
   useEffect(() => {
     const url = `${process.env.BASE_URI}/proposal/`;
@@ -133,7 +130,6 @@ const Notification = () => {
     const newApprovedProposals = [...approvedProposals, approved];
     setApprovedProposals(newApprovedProposals);
   };
-  console.log('apporoved', approvedProposals);
 
   return (
     <div className=" page-gradient">
@@ -159,7 +155,8 @@ const Notification = () => {
       {/* New element */}
 
       <div className="tw-flex new  tw-my-4 align-items-center container tw-py-3 my-5 tw-pb-10">
-        <h3 className="text-uppercase tw-text-2xl">new </h3>{' '}
+        <h3 className="text-uppercase tw-text-2xl">new </h3>
+        {' '}
         <div className="tw-bg-indigo-900 hr-line  tw-ml-3" />
       </div>
       {currentActions.length ? (
@@ -187,7 +184,11 @@ const Notification = () => {
                         </h1>
                         <p>
                           {' '}
-                          <small>Type :{info.type}</small>{' '}
+                          <small>
+                            Type :
+                            {info.type}
+                          </small>
+                          {' '}
                           <small>
                             Catergory :
                             {info.category ? info.category : 'Incubator'}
@@ -212,7 +213,8 @@ const Notification = () => {
                         />
                         <div className="tw-mr-3">
                           <p className="tw-text-muted">
-                            <small>Created by</small>{' '}
+                            <small>Created by</small>
+                            {' '}
                           </p>
                           <h4 className="tw-text-black">
                             {info.userId.userName
@@ -222,7 +224,8 @@ const Notification = () => {
                         </div>
                         <div>
                           <p className="tw-text-muted">
-                            <small>Created on</small>{' '}
+                            <small>Created on</small>
+                            {' '}
                           </p>
                           <Moment format="MMM D" withTitle>
                             {info.createdAt ? info.createdAt : 'Mar 25'}
@@ -263,7 +266,10 @@ const Notification = () => {
                     <hr />
                     <div className="s-p-description tw-flex tw-justify-between tw-items-center">
                       <div className="description tw-w-4/5">
-                        <p>{info.description} </p>
+                        <p>
+                          {info.description}
+                          {' '}
+                        </p>
                       </div>
                       <div className="s-p-view tw-w-1/5 tw-text-center ">
                         <p>
@@ -358,7 +364,10 @@ const Notification = () => {
                 <hr />
                 <div className="s-p-description tw-flex tw-justify-between tw-items-center">
                   <div className="description tw-w-4/5">
-                    <p>{info.description} </p>
+                    <p>
+                      {info.description}
+                      {' '}
+                    </p>
                   </div>
                   <div className="s-p-view tw-w-1/5 tw-text-center">
                     <p>
@@ -622,7 +631,8 @@ const Notification = () => {
         </div>
       </div>
       <div className="tw-flex new  tw-my-4 align-items-center container tw-py-3 my-5">
-        <h3 className="text-uppercase tw-text-2xl">earlier</h3>{' '}
+        <h3 className="text-uppercase tw-text-2xl">earlier</h3>
+        {' '}
         <div className="tw-bg-indigo-900 hr-line  tw-ml-3" />
       </div>
       <div className="tw-container tw-mx-auto ">
@@ -643,7 +653,8 @@ const Notification = () => {
                     <h1 className="parsonal-title ">Proposal Title</h1>
                     <p>
                       {' '}
-                      <small>Type : Enhancement</small>{' '}
+                      <small>Type : Enhancement</small>
+                      {' '}
                       <small>Catergory : Incubator</small>
                     </p>
                   </div>
@@ -691,7 +702,10 @@ const Notification = () => {
                 <hr />
                 <div className="s-p-description tw-flex tw-justify-between tw-items-center">
                   <div className="description tw-w-4/5">
-                    <p>{info.description} </p>
+                    <p>
+                      {info.description}
+                      {' '}
+                    </p>
                   </div>
                   <div className="s-p-view tw-w-1/5 tw-text-center">
                     <p>

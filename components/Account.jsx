@@ -35,7 +35,6 @@ const Account = function () {
     setSignerState,
   } = useContext(GlobalContext);
 
-  // console.log(await window.casperlabsHelper.isConnected())
   const SIGNER_EVENTS = {
     connected: 'signer:connected',
     disconnected: 'signer:disconnected',

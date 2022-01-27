@@ -22,7 +22,7 @@ const LeadsForm = () => {
         project_name: 'TEST',
         email: 'TEST',
       })
-      .then((res) => console.log(res))
+      .then(() => {})
       .catch((error) => console.log(error));
   };
 

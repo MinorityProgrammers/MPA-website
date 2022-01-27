@@ -47,11 +47,11 @@ const TweetEmbed = ({
           conversation: options.conversation,
         },
       )
-        .then(() => console.log(`Loaded Tweet ${tweetId} successfully.`))
+        .then(() => {})
         .catch(() => console.log(`Failed to load Tweet ${tweetId}.`));
     }
   }, [loading]);
-  console.log(loading);
+
   return (
     <div id={tweetId} />
   );

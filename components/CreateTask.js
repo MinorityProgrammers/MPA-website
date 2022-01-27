@@ -34,9 +34,8 @@ const CreateTask = () => {
     await setSelectedValue(Array.isArray(e) ? e.map((user) => user.value) : []);
   };
 
-  const handleExpand = () => {
-    console.log('you have assigned to the task');
-  };
+  const handleExpand = () => {};
+
   const handleUpload = () => {
     const readyTask = {
       description,
@@ -49,7 +48,6 @@ const CreateTask = () => {
         body: JSON.stringify({ readyTask }),
       })
         .then((res) => res.json())
-        .then((data) => console.log(data))
         .catch((err) => console.log(err));
     }, []);
   };

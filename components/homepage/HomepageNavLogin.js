@@ -72,9 +72,7 @@ const HomepageNavLogin = ({ onCloseMobileMenu }) => {
     googleAuth({ tokenId: res.tokenId })(authDispatch);
   };
 
-  /* const handleLoginFailure = (res) => {
-    // console.log(res);
-  }; */
+  /* const handleLoginFailure = (res) => { }; */
 
   const onSubmit = async (e) => {
     setLoginSubmit(true);

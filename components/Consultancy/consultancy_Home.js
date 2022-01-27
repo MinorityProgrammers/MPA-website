@@ -18,7 +18,6 @@ const localStorageStepKey = 'consultancy-step';
 const Consultancy = ({ data, clickRegister, setClickRegister }) => {
   const [step, setstep] = useState(0);
   const [questions, setQuestions] = useState({});
-  console.log(questions);
 
   useEffect(() => {
     if (data === null) {
@@ -28,7 +27,6 @@ const Consultancy = ({ data, clickRegister, setClickRegister }) => {
 
   function getLocalVariables(key, wrapFxn, defaultValue) {
     const hasKey = window.localStorage.getItem(key);
-    console.log(hasKey);
     if (hasKey) {
       return wrapFxn(hasKey);
     }
@@ -36,22 +34,15 @@ const Consultancy = ({ data, clickRegister, setClickRegister }) => {
   }
 
   useEffect(() => {
-    setQuestions((prev) =>
-      getLocalVariables(
-        localStorageConsultancyKey,
-        (value) => {
-          console.log(value);
-          return JSON.parse(JSON.parse(JSON.stringify(value)));
-        },
-        prev
-      )
-    );
+    setQuestions((prev) => getLocalVariables(
+      localStorageConsultancyKey,
+      (value) => JSON.parse(JSON.parse(JSON.stringify(value))),
+      prev,
+    ));
     if (data === null) {
       setClickRegister(true);
     } else {
-      setstep((prev) =>
-        getLocalVariables(localStorageStepKey, (value) => parseInt(value), prev)
-      );
+      setstep((prev) => getLocalVariables(localStorageStepKey, (value) => parseInt(value), prev));
     }
   }, []);
   useEffect(() => {
@@ -59,7 +50,7 @@ const Consultancy = ({ data, clickRegister, setClickRegister }) => {
     if (lenght_of_questions > 0 && lenght_of_questions + 1 >= step) {
       window.localStorage.setItem(
         localStorageConsultancyKey,
-        JSON.stringify(questions)
+        JSON.stringify(questions),
       );
     }
   }, [questions, step]);

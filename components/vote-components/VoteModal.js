@@ -8,7 +8,7 @@ const VoteModal = function ({ showModal, setShowModal, selectedCard }) {
       setShowModal(false);
     }
   };
-  // console.log(selectedCard)
+
   useEffect(() => {
     if (showModal) {
       document.body.style.overflow = 'hidden';

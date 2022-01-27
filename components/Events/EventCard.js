@@ -32,10 +32,10 @@ const EventCardFeatured = (props) => {
     if (val === 'Register') {
       for (let i = 0; i < userSavedEvents.length; i += 1) {
         if (
-          userSavedEvents !== null &&
-          userSavedEvents[i].event_id?._id === props.item._id &&
-          (userSavedEvents[i].attending === 'yes' ||
-            userSavedEvents[i].attending === 'maybe')
+          userSavedEvents !== null
+          && userSavedEvents[i].event_id?._id === props.item._id
+          && (userSavedEvents[i].attending === 'yes'
+            || userSavedEvents[i].attending === 'maybe')
         ) {
           return (
             <button type="button" className="button_register">
@@ -58,9 +58,8 @@ const EventCardFeatured = (props) => {
           Authorization: `Bearer ${_token}`,
         },
       })
-      .then((res) => {
+      .then((/* res */) => {
         successToast('You have already cancel your registration');
-        console.log('cancel:', res);
         setLoading(false);
         getUserSavedEvents();
       })
@@ -91,11 +90,10 @@ const EventCardFeatured = (props) => {
                 Accept: 'application/json',
                 Authorization: `Bearer ${token}`,
               },
-            }
+            },
           )
-          .then((res) => {
+          .then((/* res */) => {
             successToast('You are registered!');
-            console.log('register:', res);
             setLoading(false);
             getUserSavedEvents();
           })
@@ -119,10 +117,9 @@ const EventCardFeatured = (props) => {
                 Accept: 'application/json',
                 Authorization: `Bearer ${token}`,
               },
-            }
+            },
           )
-          .then((res) => {
-            console.log('register:', res);
+          .then((/* res */) => {
             setLoading(false);
             successToast('Event saved!');
             getUserSavedEvents();
@@ -149,8 +146,8 @@ const EventCardFeatured = (props) => {
         for (let i = 0; i < userSavedEvents.length; i += 1) {
           if (userSavedEvents[i].event_id?._id === eventId) {
             if (
-              userSavedEvents[i].attending === 'yes' ||
-              userSavedEvents[i].attending === 'maybe'
+              userSavedEvents[i].attending === 'yes'
+              || userSavedEvents[i].attending === 'maybe'
             ) {
               cancelEvent(e, userSavedEvents[i]._id, token);
               return;
@@ -164,13 +161,15 @@ const EventCardFeatured = (props) => {
 
   const checkAttend = () => {
     if (
-      userSavedEvents.map((se) => se.event_id) !== null &&
-      (sId.includes(props.item._id) ? props.item._id : '') &&
-      (sAtt.includes('maybe') || sAtt.includes('yes'))
+      userSavedEvents.map((se) => se.event_id) !== null
+      && (sId.includes(props.item._id) ? props.item._id : '')
+      && (sAtt.includes('maybe') || sAtt.includes('yes'))
     ) {
       return (
         <>
-          <i className="fas fa-heart" /> Saved
+          <i className="fas fa-heart" />
+          {' '}
+          Saved
         </>
       );
     }
@@ -190,8 +189,8 @@ const EventCardFeatured = (props) => {
     for (let i = 0; i < allsavedEvents.length; i += 1) {
       if (allsavedEvents[i].event_id !== null) {
         if (
-          allsavedEvents[i].attending === 'yes' &&
-          allsavedEvents[i].event_id._id === eventId
+          allsavedEvents[i].attending === 'yes'
+          && allsavedEvents[i].event_id._id === eventId
         ) {
           count += 1;
         }
@@ -253,10 +252,12 @@ const EventCardFeatured = (props) => {
             <p className="attending">no attendee</p>
           ) : (
             <p className="attending">
-              {totalAttendees(props.item ? props.item._id : '')}{' '}
+              {totalAttendees(props.item ? props.item._id : '')}
+              {' '}
               {totalAttendees(props.item ? props.item._id : '') > 2
                 ? 'people'
-                : 'person'}{' '}
+                : 'person'}
+              {' '}
               {eventTime < dateNow ? 'attended' : 'attending'}
             </p>
           )}
@@ -274,12 +275,16 @@ const EventCardFeatured = (props) => {
                 checkAttend()
               ) : (
                 <>
-                  <i className="far fa-heart" /> Save for later
+                  <i className="far fa-heart" />
+                  {' '}
+                  Save for later
                 </>
               )}
               {userData !== null && !checkAttend() ? (
                 <>
-                  <i className="far fa-heart" /> Save for later
+                  <i className="far fa-heart" />
+                  {' '}
+                  Save for later
                 </>
               ) : (
                 ''
@@ -292,7 +297,9 @@ const EventCardFeatured = (props) => {
             onClick={() => props.handleMoreInfo(props.item ? props.item : '')}
           >
             {' '}
-            <i className="fas fa-plus" /> More Info
+            <i className="fas fa-plus" />
+            {' '}
+            More Info
           </button>
           {/* Check save events Register label */}
           {eventTime < dateNow ? (

@@ -88,7 +88,7 @@ const SettingBodyProfileBackground = function ({ settingsPage, data, userID }) {
     const slug = data?.userName;
     if (slug) { router.push(`/user/${slug}`); }
   };
-  // console.log(inputStates);
+
   return (
     <SettingBody
       settingsPage={settingsPage}
