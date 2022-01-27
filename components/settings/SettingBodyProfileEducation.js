@@ -7,7 +7,7 @@ import all from '../../contexts/utils/settings/settingsInputFields';
 import CreateSettingInput from './CreateSettingInput';
 import SettingBody from './SettingBody';
 
-const SettingBodyProfileEducation = function ({ settingsPage, data, userID }) {
+const SettingBodyProfileEducation = ({ settingsPage, data, userID }) => {
   const router = useRouter();
 
   const inputFields = [
@@ -21,27 +21,25 @@ const SettingBodyProfileEducation = function ({ settingsPage, data, userID }) {
 
   const initialInputState = {};
 
-  inputFields.forEach(
-    (field) => { initialInputState[field.name] = ''; },
-    // ex. {someInputFieldName: "inputFieldValue", ...}
-  );
+  inputFields.forEach((field) => {
+    initialInputState[field.name] = '';
+  });
 
   const [inputStates, setInputStates] = useState(initialInputState);
 
   useEffect(() => {
-    inputFields.forEach(
-      (field) => {
-        initialInputState[field.name] = field.name === 'enteredHighSchoolYear'
+    inputFields.forEach((field) => {
+      initialInputState[field.name] =
+        field.name === 'enteredHighSchoolYear'
           ? data?.enteredHighSchoolYear
             ? new Date(data.enteredHighSchoolYear)
             : ''
           : field.name === 'expectedGraduationYear'
-            ? data?.expectedGraduationYear
-              ? new Date(data.expectedGraduationYear)
-              : ''
-            : data?.[field.name] || '';
-      },
-    );
+          ? data?.expectedGraduationYear
+            ? new Date(data.expectedGraduationYear)
+            : ''
+          : data?.[field.name] || '';
+    });
 
     setInputStates(initialInputState);
   }, [data]);
@@ -63,13 +61,17 @@ const SettingBodyProfileEducation = function ({ settingsPage, data, userID }) {
     updateProfile(userID, formData)(profileDispatch);
 
     const slug = data?.userName;
-    if (slug) { router.push(`/user/${slug}`); }
+    if (slug) {
+      router.push(`/user/${slug}`);
+    }
   };
 
   const closeProfileSetup = () => {
     // discard changes
     const slug = data?.userName;
-    if (slug) { router.push(`/user/${slug}`); }
+    if (slug) {
+      router.push(`/user/${slug}`);
+    }
   };
 
   return (

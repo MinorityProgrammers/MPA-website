@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { isSameDay, set } from 'date-fns';
+import { isSameDay } from 'date-fns';
 import { enGB } from 'date-fns/locale';
 import { Calendar } from 'react-nice-dates';
 import 'react-nice-dates/build/style.css';
@@ -18,7 +18,6 @@ export default function CalendarEvent({
   const [selectedDates, setSelectedDates] = useState([]);
   const [date, setDate] = useState([]);
   const [events, setEvents] = useState([]);
-  // const [ampm, setAmpm] = useState("");
 
   useEffect(() => {
     const arr = [];

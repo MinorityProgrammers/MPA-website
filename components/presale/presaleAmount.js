@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 const PresaleAmount = () => {
   const divisor = 10000;
-  const [price/* , setPrice */] = useState(69000);
+  const [price] = useState(69000);
   const [softCap] = useState('100,000');
   const [hardCap] = useState('1,000,000');
   const percentage = price / divisor;
@@ -10,15 +10,10 @@ const PresaleAmount = () => {
   return (
     <>
       <div className="price-container">
-        <div className="price">
-          $
-          {price}
-        </div>
+        <div className="price">${price}</div>
         <div className="logo" />
         <div className="usd-locked">
-          USDC LOCKED
-          {' '}
-          <br />
+          USDC LOCKED <br />
           <div className="toggle-slide">
             <div className="holders">HOLDERS</div>
             <div className="amount">25</div>
@@ -31,8 +26,7 @@ const PresaleAmount = () => {
             className="percentage-indicator"
             style={{ width: `${percentage}%` }}
           >
-            {percentage.toFixed(1)}
-            %
+            {percentage.toFixed(1)}%
           </div>
           <div className="presale-assured">
             {' '}
@@ -55,27 +49,13 @@ const PresaleAmount = () => {
       </div>
       <div className="button-cap">
         <div className="refund">
-          GUARANTEED
-          {' '}
-          <br />
-          {' '}
-          REFUND
+          GUARANTEED <br /> REFUND
           <div className="softcap">
-            $
-            {softCap}
-            {' '}
-            <br />
-            {' '}
-            SOFTCAP
+            ${softCap} <br /> SOFTCAP
           </div>
         </div>
         <div className="hardCap">
-          $
-          {hardCap}
-          {' '}
-          <br />
-          {' '}
-          HARDCAP
+          ${hardCap} <br /> HARDCAP
         </div>
       </div>
     </>

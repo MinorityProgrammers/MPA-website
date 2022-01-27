@@ -1,17 +1,16 @@
 import React from 'react';
 
-const JoinCard = function () {
-  return (
+const JoinCard =  () =>(
     <div className="join-nav-container align-items-center;
         justify-content-center"
     >
       <a href="/" className="logo d-flex">
         <img src="./assets/images/login-signup/mp-icon.png" alt="" />
-        {' '}
+        
         <span>
           Minority Programmers
           <br />
-          {' '}
+          
           Association
         </span>
       </a>

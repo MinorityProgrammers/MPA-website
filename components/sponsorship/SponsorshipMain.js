@@ -6,7 +6,7 @@ import SidebarTwo from '../sidebar/SidebarTwo';
 import links from '../../contexts/utils/links';
 import useDetectOutsideClick from '../UseDetectOutsideClick';
 
-const SponsorshipMain = function (props) {
+const SponsorshipMain = (props) => {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef(null);
   const [hide, setHide] = useDetectOutsideClick(dropdownRef, false);
@@ -29,7 +29,6 @@ const SponsorshipMain = function (props) {
         active="Home"
         handleClick={handleClick}
       />
-      {/* {hide == false && <ComingSoon closeClick={handleClick} />} */}
       {props.children}
       <Footer />
     </Layout>

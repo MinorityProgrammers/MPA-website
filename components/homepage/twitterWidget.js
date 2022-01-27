@@ -13,7 +13,7 @@ const twitterWidget = () => {
       t._e.push(f);
     };
     return t;
-  }(document, 'script', 'twitter-wjs'));
+  })(document, 'script', 'twitter-wjs');
 };
 
 export default twitterWidget;

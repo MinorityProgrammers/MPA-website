@@ -8,7 +8,7 @@ import styles from '../../styles/settings/settingBodyProfileMedia.module.css';
 import CreateSettingInput from './CreateSettingInput';
 import SettingBody from './SettingBody';
 
-const SettingBodyProfileMedia = function ({ settingsPage, data, userID }) {
+const SettingBodyProfileMedia = ({ settingsPage, data, userID }) => {
   const router = useRouter();
 
   const inputFields = [
@@ -23,17 +23,16 @@ const SettingBodyProfileMedia = function ({ settingsPage, data, userID }) {
 
   const initialInputState = {};
 
-  inputFields.forEach(
-    (field) => { initialInputState[field.name] = ''; },
-    // ex. {someInputFieldName: "inputFieldValue", ...}
-  );
+  inputFields.forEach((field) => {
+    initialInputState[field.name] = '';
+  });
 
   const [inputStates, setInputStates] = useState(initialInputState);
 
   useEffect(() => {
-    inputFields.forEach(
-      (field) => { initialInputState[field.name] = data?.[field.name] || ''; },
-    );
+    inputFields.forEach((field) => {
+      initialInputState[field.name] = data?.[field.name] || '';
+    });
 
     setInputStates(initialInputState);
   }, [data]);
@@ -55,7 +54,9 @@ const SettingBodyProfileMedia = function ({ settingsPage, data, userID }) {
     updateProfile(userID, formData)(profileDispatch);
 
     const slug = data?.userName;
-    if (slug) { router.push(`/user/${slug}`); }
+    if (slug) {
+      router.push(`/user/${slug}`);
+    }
   };
 
   const closeProfileSetup = () => {
@@ -63,7 +64,9 @@ const SettingBodyProfileMedia = function ({ settingsPage, data, userID }) {
     setInputStates(initialInputState);
 
     const slug = data?.userName;
-    if (slug) { router.push(`/user/${slug}`); }
+    if (slug) {
+      router.push(`/user/${slug}`);
+    }
   };
 
   return (

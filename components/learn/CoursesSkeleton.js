@@ -4,7 +4,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import RecommendedCoursesListSkeleton from './RecommendedCoursesListSkeleton';
 
-const CoursesSkeleton = function ({ title }) {
+const CoursesSkeleton = ({ title }) => {
   const coursesLength = 4;
 
   const conditionalInfinite = {

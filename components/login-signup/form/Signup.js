@@ -6,7 +6,7 @@ import { GlobalContext } from '../../../contexts/provider';
 import TextField from '../../TextField';
 import styles from './form.module.css';
 
-const Signup = function ({ setSubmit }) {
+const Signup = ({ setSubmit }) => {
   const {
     authDispatch,
     authState: {
@@ -14,13 +14,12 @@ const Signup = function ({ setSubmit }) {
     },
   } = useContext(GlobalContext);
 
-  const displaySuccess = () => (
+  const displaySuccess = () =>
     data && (
-    <div className={styles.sucess}>
-      <p>{data.message}</p>
-    </div>
-    )
-  );
+      <div className={styles.sucess}>
+        <p>{data.message}</p>
+      </div>
+    );
 
   const onSubmit = async (e) => {
     setSubmit(true);
@@ -69,7 +68,7 @@ const Signup = function ({ setSubmit }) {
             .required('Required'),
           confirmPassword: Yup.string().oneOf(
             [Yup.ref('password'), null],
-            'Passwords must match',
+            'Passwords must match'
           ),
         })}
         onSubmit={onSubmit}

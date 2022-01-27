@@ -4,9 +4,8 @@ import Link from 'next/link';
 import { errorToast } from '../../contexts/utils/toasts';
 import { GlobalContext } from '../../contexts/provider';
 
-const JoinCard = function () {
+const JoinCard = () => {
   const router = useRouter();
-  // Auth States
   const [active, setActive] = useState('');
   const [, setUserData] = useState([]);
 
@@ -27,7 +26,6 @@ const JoinCard = function () {
       setUserData(Object.values(JSON.parse(userInfo))[1]);
       setActive(true);
     }
-    // cleanup toggles value, if unmounted
     return () => {
       setUserData(null);
       setActive(false);
@@ -60,25 +58,12 @@ const JoinCard = function () {
             rewarded today.
           </p>
         </div>
-        {/* <span className="d-flex justify-content-evenly">
-          <Link href="/chapter">
-            <button type="button" className="mpa-joinpage-btns hover:tw-shadow-xl-2">
-              Find Chapter
-            </button>
-          </Link>
-
-          <button
-            type="button"
-            style={{ color: '#151371' }}
-            className="mpa-joinpage-btns hover:tw-shadow-xl-2 bg-warning"
-            onClick={handleStart}
-          >
-            Start Chapter
-          </button>
-        </span> */}
       </div>
 
-      <div className="card m-5 align-items-center tw-shadow-xl tw-cursor-pointer" style={{ width: '19rem' }}>
+      <div
+        className="card m-5 align-items-center tw-shadow-xl tw-cursor-pointer"
+        style={{ width: '19rem' }}
+      >
         <img
           src="./assets/images/join/mpa-startup.png"
           className="card-img-top"
@@ -91,13 +76,19 @@ const JoinCard = function () {
           </p>
         </div>
         <Link href="/incubator">
-          <button type="button" className="mpa-joinpage-btns hover:tw-shadow-xl">
+          <button
+            type="button"
+            className="mpa-joinpage-btns hover:tw-shadow-xl"
+          >
             Get Funding
           </button>
         </Link>
       </div>
 
-      <div className="card m-5 align-items-center tw-shadow-xl tw-cursor-pointer" style={{ width: '19rem' }}>
+      <div
+        className="card m-5 align-items-center tw-shadow-xl tw-cursor-pointer"
+        style={{ width: '19rem' }}
+      >
         <img
           src="./assets/images/join/mpa-intern.png"
           className="card-img-top"
@@ -110,12 +101,18 @@ const JoinCard = function () {
           </p>
         </div>
         <Link href="/careers">
-          <button type="button" className="mpa-joinpage-btns hover:tw-shadow-xl">
+          <button
+            type="button"
+            className="mpa-joinpage-btns hover:tw-shadow-xl"
+          >
             View Internships
           </button>
         </Link>
       </div>
-      <div className="card m-5 align-items-center tw-shadow-xl tw-cursor-pointer" style={{ width: '19rem' }}>
+      <div
+        className="card m-5 align-items-center tw-shadow-xl tw-cursor-pointer"
+        style={{ width: '19rem' }}
+      >
         <img
           src="./assets/images/join/mpa-mentor.png"
           className="card-img-top"
@@ -129,12 +126,18 @@ const JoinCard = function () {
           </p>
         </div>
         <Link href="/mentorshipProgram">
-          <button type="button" className="mpa-joinpage-btns hover:tw-shadow-xl">
+          <button
+            type="button"
+            className="mpa-joinpage-btns hover:tw-shadow-xl"
+          >
             Become a Mentor
           </button>
         </Link>
       </div>
-      <div className="card m-5 align-items-center tw-shadow-xl tw-cursor-pointer" style={{ width: '19rem' }}>
+      <div
+        className="card m-5 align-items-center tw-shadow-xl tw-cursor-pointer"
+        style={{ width: '19rem' }}
+      >
         <img
           src="./assets/images/join/meet-president.png"
           className="card-img-top"
@@ -144,20 +147,25 @@ const JoinCard = function () {
           <h4 className="card-title">Meet the President</h4>
           <p className="card-text">
             {' '}
-            Unsure how to get involved? Schedule a one-on-one video chat with the
-            MPA President & learn how to get started.
-            {' '}
+            Unsure how to get involved? Schedule a one-on-one video chat with
+            the MPA President & learn how to get started.{' '}
           </p>
         </div>
         <Link href="https://calendly.com/minorityprogrammers/join?month=2021-09">
           <a target="_blank">
-            <button type="button" className="mpa-joinpage-btns hover:tw-shadow-xl">
+            <button
+              type="button"
+              className="mpa-joinpage-btns hover:tw-shadow-xl"
+            >
               Schedule Meeting
             </button>
           </a>
         </Link>
       </div>
-      <div className="card m-5 align-items-center tw-shadow-xl tw-cursor-pointer" style={{ width: '19rem' }}>
+      <div
+        className="card m-5 align-items-center tw-shadow-xl tw-cursor-pointer"
+        style={{ width: '19rem' }}
+      >
         <img
           src="./assets/images/join/mpa-discord.png"
           className="card-img-top"
@@ -172,7 +180,10 @@ const JoinCard = function () {
         </div>
         <Link href="https://discord.com/invite/NhCq4Y6AQV">
           <a target="_blank">
-            <button type="button" className="mpa-joinpage-btns hover:tw-shadow-xl">
+            <button
+              type="button"
+              className="mpa-joinpage-btns hover:tw-shadow-xl"
+            >
               Join us on Discord
             </button>
           </a>

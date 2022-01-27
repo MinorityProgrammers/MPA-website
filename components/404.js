@@ -10,7 +10,7 @@ const NavItem = ({ href, text }) => (
   </div>
 );
 
-const NotFound = function () {
+const NotFound = () => {
   const router = useRouter();
   // Redirects to homepage after 3 sec.
   useEffect(() => {
