@@ -136,11 +136,15 @@ export default function Index() {
   }, [session]);
 
   return (
-    <div className={styles.cardContainer + ' overview-courses-list'} style={{ overflowY: 'scroll', borderRadius: '20px' }}>
+    <div
+      className={styles.cardContainer + ' overview-courses-list'}
+      style={{ overflowY: 'scroll', borderRadius: '20px' }}
+    >
       <ToastContainer limit={3} />
       <div
-        className={`${styles.cardLeft} ${router.pathname.endsWith('/auth') ? 'tw-mt-40' : ''
-          }`}
+        className={`${styles.cardLeft} ${
+          router.pathname.endsWith('/auth') ? 'tw-mt-40' : ''
+        }`}
       >
         <div className={styles.contentContainer}>
           <div className={styles.cardLeftLogo}>
@@ -157,8 +161,9 @@ export default function Index() {
         </div>
       </div>
       <div
-        className={`${styles.cardRight} ${router.pathname.endsWith('/auth') ? 'tw-mt-40' : ''
-          }`}
+        className={`${styles.cardRight} ${
+          router.pathname.endsWith('/auth') ? 'tw-mt-40' : ''
+        }`}
       >
         <div className={styles.cardRightText}>
           <h2>{cardText.h2Title}</h2>
@@ -169,44 +174,27 @@ export default function Index() {
               className="tw-text-blue-800"
               onClick={handleClick}
             >
-              {' '}
               {cardText.link}
             </a>
           </p>
         </div>
         <ul className={styles.socialMedia}>
-          {/* <li>
+          <li>
             <img
               onClick={() => signIn(providers.google.id)}
               src="./assets/images/login-signup/google.png"
               className="tw-mx-4"
               alt="icon"
             />
-          </li> */}
-          <li>
-            <img
-              onClick={() => signIn(providers.linkedin.id)}
-              src="./assets/images/login-signup/linkin.png"
-              alt="icon"
-            />
           </li>
           <li>
-            <img
-              onClick={() => signIn(providers.github.id, {
-                callbackUrl: 'https://minorityprogrammers.com/auth',
-              })}
-              src="./assets/images/login-signup/github.png"
-              alt="icon"
-            />
-          </li>
-          {/* <li>
             <img
               onClick={() => signIn(providers.facebook.id)}
               src="./assets/images/login-signup/facebook.png"
               className="tw-mx-4"
               alt="icon"
             />
-          </li> */}
+          </li>
         </ul>
         <div className={styles.mid}>
           <div className={styles.line} />

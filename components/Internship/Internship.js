@@ -20,11 +20,7 @@ const Internship = ({ data }) => (
           interns will have a portfolio or relevant projects and industry
           knowledge that will prepare them for the workforce.
         </p>
-        <span>
-          Hello, (
-          {data.firstName}
-          )
-        </span>
+        <span>Hello, ({data.firstName})</span>
       </div>
     </div>
   </section>

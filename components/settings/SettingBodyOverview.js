@@ -338,46 +338,22 @@ const SettingBodyOverview = ({ data }) => {
               <h6>$MINORITY </h6>
               <div className={styles.card}>
                 <div className={styles.amountInfo}>
-                  $MINORITY Earned
-                  {' '}
-                  <div>$0</div>
+                  $MINORITY Earned <div>$150</div>
                 </div>
                 <div className={styles.amountInfo}>
-                  $MINORITY Balance
-                  {' '}
-                  <div>$0</div>
+                  $MINORITY Balance <div>$350</div>
                 </div>
-                {/* <div
-                  className={styles.addBtn}
-                  onClick={() => {
-                    router.push('/settings/wallet/my-wallet');
-                  }}
-                >
-                  Add $MINORITY Funds
-                </div> */}
               </div>
             </div>
             <div className={styles.cardWrapper}>
               <h6>$MPA Tokens </h6>
               <div className={styles.card}>
                 <div className={styles.amountInfo}>
-                  $MPA Tokens Earned
-                  {' '}
-                  <div>$0</div>
+                  $MPA Tokens Earned <div>$35</div>
                 </div>
                 <div className={styles.amountInfo}>
-                  $MPA Tokens Balance
-                  {' '}
-                  <div>$0</div>
+                  $MPA Tokens Balance <div>$65</div>
                 </div>
-                {/* <div
-                  className={styles.addBtn}
-                  onClick={() => {
-                    router.push('/settings/wallet/my-wallet');
-                  }}
-                >
-                  Add $MPA Tokens
-                </div> */}
               </div>
             </div>
           </div>

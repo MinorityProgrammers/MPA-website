@@ -14,8 +14,10 @@ const MentorshipAppSwipeCards = (props) => {
         .map(() => React.createRef()),
     []
   );
-
-  const sleep = (milliseconds) => new Promise((resolve) => { setTimeout(resolve, milliseconds); });
+  const sleep = (milliseconds) =>
+    new Promise((resolve) => {
+      setTimeout(resolve, milliseconds);
+    });
 
   async function toggleUndo() {
     const activeBtn = document.getElementById('active_replay_button');

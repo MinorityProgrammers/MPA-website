@@ -24,6 +24,7 @@ const MentorshipQuestion6 = (props) => {
   if (values.iAMa === 'Mentee') {
     lookingTitle = 'Mentor';
   }
+  console.log(values);
   const submitHandler = () => {
     const userUpdate = {
       is_mentor: values.iAMa === 'Mentor',

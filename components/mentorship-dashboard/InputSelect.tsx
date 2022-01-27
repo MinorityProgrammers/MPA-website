@@ -39,6 +39,10 @@ export default class CreatableInputOnly extends Component<Props, State> {
     value: OnChangeValue<Option, true>,
     actionMeta: ActionMeta<Option>
   ) => {
+    console.group('Value Changed');
+    console.log(value);
+    console.log(`action: ${actionMeta.action}`);
+    console.groupEnd();
     this.setState({ value });
   };
   handleInputChange = (inputValue: string) => {
@@ -48,8 +52,11 @@ export default class CreatableInputOnly extends Component<Props, State> {
     const { inputValue, value } = this.state;
     if (!inputValue) return;
     switch (event.key) {
-      case "Enter":
-      case "Tab":
+      case 'Enter':
+      case 'Tab':
+        console.group('Value Added');
+        console.log(value);
+        console.groupEnd();
         this.setState({
           inputValue: '',
           value: [...value, createOption(inputValue)],
