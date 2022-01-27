@@ -94,7 +94,7 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
   const [ProIMG, setProIMG] = useState('');
 
   const router = useRouter();
-  const { Moralis } = useMoralis();
+  const { Moralis, isAuthenticated } = useMoralis();
 
   const axiosFunc = (url, token, setState) => {
     axios
@@ -446,55 +446,59 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
   };
 
   const onMint = async () => {
-    const file = new Moralis.File('avatar.png', {
-      base64: userData.profilePicture,
-    });
-    setIsMinting(true);
-    try {
-      await file.saveIPFS();
-      if (file.ipfs()) {
-        const metadata = {
-          name: `${userData.firstName} ${userData.lastName}`,
-          image: file.ipfs() || '',
-          description: userData?.bio || '',
-          attributes: userData.avatarOptions,
-        };
+    if (isAuthenticated) {
+      const file = new Moralis.File('avatar.png', {
+        base64: userData.profilePicture,
+      });
+      setIsMinting(true);
+      try {
+        await file.saveIPFS();
+        if (file.ipfs()) {
+          const metadata = {
+            name: `${userData.firstName} ${userData.lastName}`,
+            image: file.ipfs() || '',
+            description: userData?.bio || '',
+            attributes: userData.avatarOptions,
+          };
 
-        const JsonFormat = JSON.stringify(metadata);
+          const JsonFormat = JSON.stringify(metadata);
 
-        const mintedMetadata = new Moralis.File('metadata.json', {
-          base64: btoa(JsonFormat),
-        });
-        await mintedMetadata.saveIPFS();
-
-        if (mintedMetadata.ipfs()) {
-          const web3Modal = new Web3Modal();
-          const connection = await web3Modal.connect();
-          const provider = new ethers.providers.Web3Provider(connection);
-          const signer = provider.getSigner();
-
-          let contract = new ethers.Contract(nftaddress, NFT.abi, signer);
-          let transaction = await contract.mintNFT(
-            nftaddress,
-            mintedMetadata.ipfs(),
-          );
-          const tx = await transaction.wait();
-          const event = tx.events[0];
-          const value = event.args[2];
-          const tokenId = value.toNumber();
-          contract = new ethers.Contract(nftaddress, NFT.abi, signer);
-          transaction = await contract.giveOwnership(nftaddress, tokenId, {
-            value: 10,
+          const mintedMetadata = new Moralis.File('metadata.json', {
+            base64: btoa(JsonFormat),
           });
-          await transaction.wait();
-          setDoneMinting(true);
-          setIsMinting(false);
-          countDown(mintedMetadata.ipfs(), tx);
+          await mintedMetadata.saveIPFS();
+
+          if (mintedMetadata.ipfs()) {
+            const web3Modal = new Web3Modal();
+            const connection = await web3Modal.connect();
+            const provider = new ethers.providers.Web3Provider(connection);
+            const signer = provider.getSigner();
+
+            let contract = new ethers.Contract(nftaddress, NFT.abi, signer);
+            let transaction = await contract.mintNFT(
+              nftaddress,
+              mintedMetadata.ipfs(),
+            );
+            const tx = await transaction.wait();
+            const event = tx.events[0];
+            const value = event.args[2];
+            const tokenId = value.toNumber();
+            contract = new ethers.Contract(nftaddress, NFT.abi, signer);
+            transaction = await contract.giveOwnership(nftaddress, tokenId, {
+              value: 10,
+            });
+            await transaction.wait();
+            setDoneMinting(true);
+            setIsMinting(false);
+            countDown(mintedMetadata.ipfs(), tx);
+          }
         }
+      } catch (e) {
+        setIsMinting(false);
+        console.log(e);
       }
-    } catch (e) {
-      setIsMinting(false);
-      console.log(e);
+    } else {
+      errorToast('You need to connect your wallet');
     }
   };
 

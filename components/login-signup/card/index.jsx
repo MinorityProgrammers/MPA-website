@@ -221,30 +221,15 @@ export default function Index() {
           </p>
         </div>
         <ul className={styles.socialMedia}>
-          <li>
-            {/* <GoogleLogin
-              clientId={googleClientId}
-              render={(renderProps) => (
-                <img
-                  src="./assets/images/login-signup/google.png"
-                  alt="icon"
-                  onClick={renderProps.onClick}
-                  disabled={renderProps.disabled}
-                />
-              )}
-              buttonText="Login"
-              onSuccess={handleLoginSuccess}
-              onFailure={handleLoginFailure}
-              cookiePolicy="single_host_origin"
-            /> */}
+          {/* <li>
             <img
               onClick={() => signIn(providers.google.id)}
               src="./assets/images/login-signup/google.png"
               className="tw-mx-4"
               alt="icon"
             />
-          </li>
-          {/* <li>
+          </li> */}
+          <li>
             <img
               onClick={() => signIn(providers.linkedin.id)}
               src="./assets/images/login-signup/linkin.png"
@@ -259,15 +244,15 @@ export default function Index() {
               src="./assets/images/login-signup/github.png"
               alt="icon"
             />
-          </li> */}
-          <li>
+          </li>
+          {/* <li>
             <img
               onClick={() => signIn(providers.facebook.id)}
               src="./assets/images/login-signup/facebook.png"
               className="tw-mx-4"
               alt="icon"
             />
-          </li>
+          </li> */}
         </ul>
         <div className={styles.mid}>
           <div className={styles.line} />
