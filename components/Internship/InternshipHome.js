@@ -254,7 +254,7 @@ const InternshipHome = ({ data, active, clickRegister, setClickRegister }) => {
           <div className="intern__more">
             <div className="download__app">
               <p>Learn, earn, certification with our</p>
-              <Link href="/learn-page" target="_blank">
+              <Link href="/learn" target="_blank">
                 <button type="button" className="btn-download">
                   Learning dApp
                 </button>

@@ -1,3 +1,7 @@
+/* eslint-disable no-unsafe-optional-chaining */
+/* eslint-disable react/no-array-index-key */
+/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable no-unused-expressions */
 import React, { useState, useEffect, useCallback } from 'react';
 import {
   FaFacebook,
@@ -13,8 +17,6 @@ import jwt from 'jsonwebtoken';
 import { useRouter } from 'next/router';
 import { Tooltip, Button, Modal } from 'antd';
 import { useMoralis } from 'react-moralis';
-import { ethers } from 'ethers';
-import Web3Modal from 'web3modal';
 import moment from 'moment';
 import DatePicker from 'react-datepicker';
 import FormData from 'form-data';
@@ -23,15 +25,12 @@ import ProfileTwoGenerateAvatarPopUp from './ProfileTwoGenerateAvatarPopUp';
 import getProgressPercentage from '../contexts/utils/settings/getProgressPercentage';
 import getLevelUpTips from '../contexts/utils/settings/getLevelUpTips';
 import { useMoralisDapp } from '../MoralisDappProvider/MoralisDappProvider';
-import NFT from '../artifacts/contracts/NFT.sol/NFT.json';
-
-const nftaddress = process.env.ADDRESS;
 
 function countDown(mintedURL, tx) {
   let secondsToGo = 30;
   const modal = Modal.success({
     title: 'Successfully minted Your profile',
-    content: `Checkout your minted profile metadata ${mintedURL}, transaction id: ${process.env.NETWORK_URL}/tx/${tx.transactionHash}`,
+    content: `Checkout your minted profile metadata ${mintedURL}, transaction id: ${process.env.NETWORK_URL}/tx/${tx}`,
   });
   const timer = setInterval(() => {
     secondsToGo -= 1;
@@ -206,6 +205,24 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
 
   /*  const downloadProfilePDF = () => {}; // this function is unused */
 
+  const clearEduAdd = () => {
+    document.getElementsByClassName('edu-data-warn')?.[0]?.remove();
+    setUploadedEduImg('');
+    setEduTitleInput('');
+    setEduDateInput('');
+    setEducationMajor('');
+    setEduAddMode(false);
+  };
+
+  const clearProAdd = () => {
+    document.getElementsByClassName('edu-data-warn')?.[0]?.remove();
+    setUploadedProImg('');
+    setProTitleInput('');
+    setProDateInput('');
+    setProjectRole('');
+    setProAddMode(false);
+  };
+
   const copyWallet = () => {
     setCopyText('Copied');
     navigator.clipboard.writeText(walletAddress);
@@ -216,11 +233,19 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
       setUploadedExpImg(URL.createObjectURL(file));
     }
   };
+
+  const handleEduImgUpload = (file) => {
+    if (file) {
+      setUploadedEduImg(URL.createObjectURL(file));
+    }
+  };
+
   const clearExpAdd = () => {
     document.getElementsByClassName('exp-data-warn')?.[0]?.remove();
     setUploadedExpImg('');
     setExpJobTitleInput('');
-    setExpDateInput('');
+    setExpDateInputFrom('');
+    setExpDateInputTo('');
     setExpLocationInput('');
     setExpAddMode(false);
   };
@@ -389,24 +414,6 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
     }
   };
 
-  const clearEduAdd = () => {
-    document.getElementsByClassName('edu-data-warn')?.[0]?.remove();
-    setUploadedEduImg('');
-    setEduTitleInput('');
-    setEduDateInput('');
-    setEducationMajor('');
-    setEduAddMode(false);
-  };
-
-  const clearProAdd = () => {
-    document.getElementsByClassName('edu-data-warn')?.[0]?.remove();
-    setUploadedProImg('');
-    setProTitleInput('');
-    setProDateInput('');
-    setProjectRole('');
-    setProAddMode(false);
-  };
-
   const removeEdu = (eduId) => {
     educationCards.length === 1 && setEduEditMode(false);
     setEducationCards((prevCards) => prevCards.filter((card) => card._id !== eduId));
@@ -469,28 +476,27 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
           await mintedMetadata.saveIPFS();
 
           if (mintedMetadata.ipfs()) {
-            const web3Modal = new Web3Modal();
-            const connection = await web3Modal.connect();
-            const provider = new ethers.providers.Web3Provider(connection);
-            const signer = provider.getSigner();
-
-            let contract = new ethers.Contract(nftaddress, NFT.abi, signer);
-            let transaction = await contract.mintNFT(
-              nftaddress,
-              mintedMetadata.ipfs(),
-            );
-            const tx = await transaction.wait();
-            const event = tx.events[0];
-            const value = event.args[2];
-            const tokenId = value.toNumber();
-            contract = new ethers.Contract(nftaddress, NFT.abi, signer);
-            transaction = await contract.giveOwnership(nftaddress, tokenId, {
-              value: 10,
-            });
-            await transaction.wait();
-            setDoneMinting(true);
-            setIsMinting(false);
-            countDown(mintedMetadata.ipfs(), tx);
+            const userToken = JSON.parse(localStorage.getItem('userInfo'));
+            axios
+              .post(`${process.env.BASE_URI}/user/mintProfile`, { metadata: mintedMetadata.ipfs(), userAddress: walletAddress }, {
+                headers: {
+                  Authorization: `Bearer ${userToken.token}`,
+                },
+              })
+              .then((res) => {
+                console.log(res);
+                successToast(res.data.message);
+                setDoneMinting(true);
+                setIsMinting(false);
+                countDown(mintedMetadata.ipfs(), res.data.data.transaction);
+              })
+              .catch((e) => {
+                console.log(e);
+                setIsMinting(false);
+                errorToast(e?.response?.data?.data?.message?.msg
+                  ? e.response.data.data.message.msg
+                  : 'something went wrong');
+              });
           }
         }
       } catch (e) {
@@ -612,14 +618,14 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                   <div className="social-link">
                     <div className="sl-wrap">
                       <div>
-                        {socialLinks.map((link) => (
+                        {socialLinks.map((linkSocial) => (
                           <a
-                            key={link.id}
+                            key={linkSocial.id}
                             target="_blank"
                             rel="noreferrer"
-                            href={link.url || '#'}
+                            href={linkSocial.url || '#'}
                           >
-                            <span className="social">{link.slink}</span>
+                            <span className="social">{linkSocial.slink}</span>
                           </a>
                         ))}
                       </div>

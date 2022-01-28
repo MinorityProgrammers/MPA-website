@@ -151,7 +151,7 @@ const CourseCategories = ({ user, enrolledCourses, usersCourses }) => {
                     : 'menu tw-text-center'
                 }`}
               >
-                <Link href="/learn-page">
+                <Link href="/learn">
                   <p className="learn-item-active hover:tw-text-blue-600">
                     COURSES
                   </p>
@@ -165,7 +165,7 @@ const CourseCategories = ({ user, enrolledCourses, usersCourses }) => {
                       : 'menu tw-text-center'
                   }`}
                 >
-                  <Link href="/learn-page/certificates">
+                  <Link href="/learn/certificates">
                     <p className="hover:tw-text-blue-600">MY CERTIFICATES</p>
                   </Link>
                 </li>
