@@ -14,22 +14,20 @@ import TextField from "../TextField";
 
 const HomepageNavLogin = ({ onCloseMobileMenu }) => {
   const router = useRouter();
-  const googleClientId = process.env.CLIENT_ID;
   const [switchToReset, setSwitchToReset] = useState(false);
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
-  const [loginSubmit, setLoginSubmit] = useState(false);
-  const [session, isLoading] = useSession();
+  const [, setLoginSubmit] = useState(false);
+  const [session] = useSession();
   const [providers, setPrivders] = useState([]);
 
   const {
     authDispatch,
     authState: {
-      auth: { loading, error, data },
+      auth: { loading, data },
     },
   } = useContext(GlobalContext);
 
-  // user redirect
   useEffect(() => {
     const token = window.localStorage.getItem("jwtToken");
     let timerId;
@@ -40,20 +38,16 @@ const HomepageNavLogin = ({ onCloseMobileMenu }) => {
         onCloseMobileMenu();
       }, 2000);
     } else {
-      // router.push('/login')
-      // window.location.href = '/login'
       setLoginSubmit(false);
     }
     return () => timerId && clearTimeout(timerId);
   }, [data]);
 
-  // const { walletAddress, chainId } = useMoralisDapp();
-
   useEffect(() => {
     const setupProviders = async () => {
-      const providers = await getProviders();
+      const _providers = await getProviders();
 
-      setPrivders(providers);
+      setPrivders(_providers);
     };
     setupProviders();
   }, []);
@@ -69,13 +63,7 @@ const HomepageNavLogin = ({ onCloseMobileMenu }) => {
   }, [session]);
 
   const handleLoginSuccess = (res) => {
-    // keep this
-
     googleAuth({ tokenId: res.tokenId })(authDispatch);
-  };
-
-  const handleLoginFailure = (res) => {
-    // console.log(res);
   };
 
   const onSubmit = async (e) => {
@@ -112,15 +100,11 @@ const HomepageNavLogin = ({ onCloseMobileMenu }) => {
         <i className="fas fa-times" />
       </button>
       <div className="dropdown-login-icons">
-        <img
-          onClick={() => signIn(providers.google.id)}
-          src="./assets/images/login-signup/google.png"
-          alt="icon"
-        />
         <div>
           <img
             src="/assets/images/linkedin-white.png"
             alt="linkedin icon"
+            className="tw-mx-4"
             onClick={() => signIn(providers.linkedin.id)}
           />
         </div>
@@ -133,13 +117,6 @@ const HomepageNavLogin = ({ onCloseMobileMenu }) => {
                 callbackUrl: "https://minorityprogrammers.com/auth",
               })
             }
-          />
-        </div>
-        <div>
-          <img
-            src="/assets/images/facebook.svg"
-            alt="facebook icon"
-            onClick={() => signIn(providers.facebook.id)}
           />
         </div>
       </div>
