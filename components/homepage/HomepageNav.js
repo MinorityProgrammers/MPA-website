@@ -1,6 +1,3 @@
-import Portis from '@portis/web3';
-import WalletConnectProvider from '@walletconnect/web3-provider';
-import Fortmatic from 'fortmatic';
 import decode from 'jwt-decode';
 import { signOut } from 'next-auth/client';
 import Link from 'next/link';
@@ -10,8 +7,6 @@ import React, {
 } from 'react';
 import { BiMenuAltLeft } from 'react-icons/bi';
 import { useMoralis } from 'react-moralis';
-import Web3 from 'web3';
-import Web3Modal from 'web3modal';
 import { LOGOUT_USER } from '../../contexts/actions/actionTypes';
 import getProfile from '../../contexts/actions/profile/getProfile';
 import { GlobalContext } from '../../contexts/provider';
@@ -19,89 +14,6 @@ import Account from '../Account';
 import useDetectOutsideClick from '../UseDetectOutsideClick';
 import HomepageNavLoggedin from './HomepageNavLoggedin';
 import HomepageNavLogin from './HomepageNavLogin';
-
-let web3Modal;
-let selectedAccount = null;
-let provider;
-
-async function fetchAccountData() {
-  const web3 = new Web3(provider);
-
-  const accounts = await web3.eth.getAccounts();
-
-  selectedAccount = accounts[0];
-}
-
-async function refreshAccountData() {
-  await fetchAccountData(provider);
-}
-
-/**
- * Connect wallet button pressed.
- */
-async function onConnect() {
-  const providerOptions = {
-    portis: {
-      package: Portis,
-      options: {
-        id: 'PORTIS_ID',
-      },
-    },
-    walletconnect: {
-      package: WalletConnectProvider,
-      options: {
-        infuraId: 'INFURA_ID',
-      },
-    },
-    fortmatic: {
-      package: Fortmatic,
-      options: {
-        key: 'FORTMATIC_KEY',
-      },
-    },
-  };
-
-  web3Modal = new Web3Modal({
-    cacheProvider: false,
-    providerOptions,
-    disableInjectedProvider: false,
-  });
-
-  try {
-    provider = await web3Modal.connect();
-  } catch (e) {
-    console.log('Could not get a wallet connection', e);
-    return;
-  }
-
-  // Subscribe to accounts change
-  provider.on('accountsChanged', (/* accounts */) => {
-    fetchAccountData();
-  });
-
-  // Subscribe to chainId change
-  provider.on('chainChanged', (/* chainId */) => {
-    fetchAccountData();
-  });
-
-  // Subscribe to networkId change
-  provider.on('networkChanged', (/* networkId */) => {
-    fetchAccountData();
-  });
-
-  await refreshAccountData();
-}
-
-async function onDisconnect() {
-  if (provider.close) {
-    await provider.close();
-
-    await web3Modal.clearCachedProvider();
-    provider = null;
-  }
-
-  selectedAccount = null;
-}
 
 const HomepageNav = ({
   setToken, setData, page, open, setOpen = () => {},
@@ -111,7 +23,6 @@ const HomepageNav = ({
   const searchMobileRef = useRef(null);
   const [userData, setUserData] = useState([]);
   const [click, setClick] = useState(false);
-  const [dropdown, setDropdown] = useState(false);
   const [sticky, setSticky] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
   const router = useRouter();
@@ -187,7 +98,7 @@ const HomepageNav = ({
       if (
         page === 'MentorshipProgram'
         || page === 'Consultancy'
-        || page === 'learn-page'
+        || page === 'learn'
         || page === 'About'
         || page === 'Careers'
         || page === 'auth'
@@ -210,7 +121,7 @@ const HomepageNav = ({
         || page === 'Consultancy'
         || page === 'About'
         || page === 'Careers'
-        || page === 'learn-page'
+        || page === 'learn'
         || page === 'auth'
         || page === 'Incubator'
         || page === 'Chat'
@@ -262,16 +173,6 @@ const HomepageNav = ({
       if (decodedToken.exp * 1000 < new Date().getTime()) handleLogout();
     }
   }, []);
-
-  const onMouseEnter = () => {
-    setDropdown(true);
-  };
-
-  const onMouseLeave = () => {
-    setDropdown(false);
-  };
-
-  const extendEle = () => (dropdown ? setDropdown(false) : setDropdown(true));
 
   const showSearchIconMobile = () => (
     <div

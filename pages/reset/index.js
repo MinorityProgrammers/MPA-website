@@ -12,7 +12,7 @@ import SidebarTwo from "../../components/sidebar/SidebarTwo";
 import links from "../../contexts/utils/links";
 import ComingSoon from "../../components/ComingSoon";
 import * as Yup from "yup";
-import { useDetectOutsideClick } from "../../components/UseDetectOutsideClick";
+import useDetectOutsideClick from '../../components/UseDetectOutsideClick';
 import "react-toastify/dist/ReactToastify.css";
 import { ResetInput } from "../../components/TextField";
 import axios from "axios";
@@ -39,13 +39,12 @@ const Index = () => {
 
     try {
       const resp = await axios.post(
-        `http://localhost:5000/api/v1/user/password-reset/${userId}/${token}`,
+        `${process.env.BASE_URI}/user/password-reset/${userId}/${token}`,
         {
           password: e.password,
         }
       );
       successToast(resp.data.message);
-      successToast("Try logging in with new Password");
       router.push("/");
     } catch (error) {
       errorToast(resp.data.message);

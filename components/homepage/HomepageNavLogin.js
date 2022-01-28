@@ -79,7 +79,7 @@ const HomepageNavLogin = ({ onCloseMobileMenu }) => {
     setLoginSubmit(true);
     try {
       const request = await axios.post(
-        "http://localhost:5000/api/v1/user/forgotPassword",
+        `${process.env.BASE_URI}/user/forgotPassword`,
         {
           email: e.email,
         }
