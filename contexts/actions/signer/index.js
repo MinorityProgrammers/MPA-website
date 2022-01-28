@@ -1,6 +1,5 @@
 /* eslint-disable max-len */
 import { Signer } from 'casper-js-sdk';
-// import { SIGNER, USERS } from '../actionTypes';
 import {
   CONNECT_SUCCESS,
   DISCONNECT_USER,

@@ -10,7 +10,7 @@ const StartupLeftBar = ({ data }) => {
     .split('.')[0];
 
   useEffect(() => {
-    const l = location.map((lo) => {
+    location.forEach((lo) => {
       setCity(lo.city);
       setCountry(lo.state);
     });
@@ -128,7 +128,7 @@ const StartupLeftBar = ({ data }) => {
               <h2 className="left__topic mb-3 mt-1">Tags</h2>
               <div className="tags-container">
                 {tags.map((t, i) => (
-                  <a href="#" className="badge left__badge" key={i}>
+                  <a href="#" className="badge left__badge" key={`${i + 1}`}>
                     {t}
                   </a>
                 ))}

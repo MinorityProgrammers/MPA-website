@@ -1,8 +1,8 @@
 /* eslint-disable react/jsx-no-constructed-context-values */
 import React, { useReducer, createContext } from 'react';
-import { auth } from './reducers/auth';
-import { profile } from './reducers/profile';
-import { donate } from './reducers/donate';
+import auth from './reducers/auth';
+import profile from './reducers/profile';
+import donate from './reducers/donate';
 import authInitialStates from './initialStates/authInitialStates';
 import profileInitialStates from './initialStates/profileInitialStates';
 import authModalInitialStates from './initialStates/authModalInitialStates';

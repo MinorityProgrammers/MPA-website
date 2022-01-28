@@ -1,20 +1,20 @@
-import { Fragment, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import ErrorPrint from '../errorPrint';
 
-const Checkboxes = function ({
+const Checkboxes = ({
   checkboxes,
   setCheckboxes,
   checkBoxLabels,
   questionStr,
   minimumCheckBoxes = 1,
   defaultValue,
-}) {
+}) => {
   const invalidSymbol = useRef(undefined);
 
   const options = useRef([
-    ...(function () {
+    ...(() => {
       const arr = [];
-      for (let i = 0; i < checkBoxLabels.length; i++) {
+      for (let i = 0; i < checkBoxLabels.length; i += 1) {
         const bool = defaultValue
           ? defaultValue.indexOf(checkBoxLabels[i]) !== -1
           : false;
@@ -22,7 +22,7 @@ const Checkboxes = function ({
         arr.push(obj);
       }
       return arr;
-    }()),
+    })(),
   ]);
   function validateSubmission(validList) {
     setCheckboxes([questionStr, validList]);
@@ -56,7 +56,7 @@ const Checkboxes = function ({
     <>
       <div className="checkboxWrapper">
         {options.current.map((checkbox, index) => (
-          <div className="row" key={index}>
+          <div className="row" key={`${`checkbox${index}`}`}>
             <div
               className="checkbox"
               onClick={() => {
@@ -66,9 +66,9 @@ const Checkboxes = function ({
             >
               <i
                 className={
-                    'fa fa-check '
-                    + `${checkbox.checked ? 'checkVisible' : 'checkInvisible'}`
-                  }
+                  'fa fa-check '
+                  + `${checkbox.checked ? 'checkVisible' : 'checkInvisible'}`
+                }
                 aria-hidden="true"
               />
             </div>

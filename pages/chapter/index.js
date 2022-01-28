@@ -11,7 +11,7 @@ import SidebarTwo from '../../components/sidebar/SidebarTwo';
 import links from '../../contexts/utils/links';
 import Leaderboard from '../../components/chapter/chapter-leaderboard/leaderboard.component';
 import ChapterWrapper from '../../components/chapter/chapter-wrapper/ChapterWrapper.component';
-import { useDetectOutsideClick } from '../../components/UseDetectOutsideClick';
+import useDetectOutsideClick from '../../components/UseDetectOutsideClick';
 import { GlobalContext } from '../../contexts/provider';
 
 const index = () => {
@@ -21,17 +21,16 @@ const index = () => {
   const [token, setToken] = useState(null);
 
   const {
-    authDispatch,
     authState: {
-      auth: { loading, error, data },
+      auth: { data },
     },
   } = useContext(GlobalContext);
 
   useEffect(() => {
-    const token = window.localStorage.getItem('jwtToken');
+    const userToken = window.localStorage.getItem('jwtToken');
     const userInfo = window.localStorage.getItem('userInfo');
 
-    if (token == null || userInfo === {}) {
+    if (userToken == null || userInfo === {}) {
       setUserData(null);
       setActive(false);
     } else {

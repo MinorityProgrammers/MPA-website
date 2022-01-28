@@ -1,20 +1,17 @@
-import { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import TagInput from '../helperFiles/customInputTags/tagInput';
 import QuestionContainer from '../helperFiles/questionContainer';
-import { useDefaultValue } from '../helperFiles/getDefaultValue';
+import useDefaultValue from '../helperFiles/getDefaultValue';
 import addQuestion from '../helperFiles/addQuestion';
 import ErrorPrint from '../helperFiles/errorPrint';
 
-const Page5 = function ({
+const Page5 = ({
   step, setstep, questions, setQuestions,
-}) {
+}) => {
   const minimumChar = 150;
-  // get default values
   const defaultProjectDetail = useDefaultValue(questions, step, 0);
   const defaultInspitation = useDefaultValue(questions, step, 1);
   const defaultTags = useDefaultValue(questions, step, 2);
-  console.log(defaultProjectDetail, defaultTags, defaultTags);
-  // all question
   const question1 = 'Project details';
   const question2 = 'Any inspiration websites?';
   const question3 = 'Any preferred tech stack?';
@@ -23,12 +20,9 @@ const Page5 = function ({
   const question3Placeholder3 = 'Please enter to add back end tag.';
   const question3Placeholder4 = 'Please enter to add UI UX tag.';
   const question3Placeholder5 = 'Please enter to add blockchain tag.';
-  // references for the inputs
   const projectDetails = useRef();
   const inspirationLink = useRef();
-  // should print error message?
   const [errorMessage, setErrorMessage] = useState(undefined);
-  // states for my tag inputs
   const [listOfTagsA, updateListOfTagsA] = useState(
     defaultTags ? defaultTags[0] : [],
   );
@@ -67,7 +61,6 @@ const Page5 = function ({
       },
     ]);
   }
-  // error messsage reporting
   function setInvalidMessage() {
     setErrorMessage([
       `This field must have a minimum of ${
@@ -99,7 +92,6 @@ const Page5 = function ({
       }
     }
   }
-  // end of error message reporting
   function prevPage() {
     addToQuestion();
     setstep((prev) => prev - 1);
@@ -146,7 +138,7 @@ const Page5 = function ({
             id="page5-input"
             ref={inspirationLink}
             defaultValue={defaultInspitation || ''}
-            onChange={(e) => {
+            onChange={() => {
               addToQuestion();
             }}
           />

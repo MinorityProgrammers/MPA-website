@@ -1,11 +1,10 @@
 import React, { useRef, useState } from 'react';
 import ComingSoon from '../../../components/ComingSoon';
 import Content from '../../../components/employers-page/sidenav';
-// components
 import HomepageNav from '../../../components/homepage/HomepageNav';
 import Layout from '../../../components/Layout';
 import SidebarTwo from '../../../components/sidebar/SidebarTwo';
-import { useDetectOutsideClick } from '../../../components/UseDetectOutsideClick';
+import useDetectOutsideClick from '../../../components/UseDetectOutsideClick';
 import links from '../../../contexts/utils/links';
 
 const EmployersDashboard = () => {

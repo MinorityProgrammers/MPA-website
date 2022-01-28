@@ -30,7 +30,7 @@ export default NextAuth({
   },
   events: {
     signIn: (user) => {
-      console.log(`user: ${JSON.stringify(user)}`);
+      // console.log(`user: ${JSON.stringify(user)}`);
     },
   },
   debug: true,
@@ -38,7 +38,7 @@ export default NextAuth({
     error: '/auth', // Error code passed in query string as ?error=
   },
   callbacks: {
-    async session(session, user) {
+    async session(session) {
       return session;
     },
   },

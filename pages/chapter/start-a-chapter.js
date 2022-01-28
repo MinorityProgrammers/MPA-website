@@ -4,31 +4,30 @@ import React, {
 import Layout from '../../components/Layout';
 import Footer from '../../components/Footer';
 import HomepageNav from '../../components/homepage/HomepageNav';
-import { useDetectOutsideClick } from '../../components/UseDetectOutsideClick';
+import useDetectOutsideClick from '../../components/UseDetectOutsideClick';
 import ChapterHeader from '../../components/chapterHeader/chapterHeader.component';
 import ChapterDirectory from '../../components/ChapterDirectory/ChapterDirectory.component';
 import SidebarTwo from '../../components/sidebar/SidebarTwo';
 import links from '../../contexts/utils/links';
 import { GlobalContext } from '../../contexts/provider';
 
-const Chapter = function () {
+const Chapter = () => {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState('');
   const [userData, setUserData] = useState([]);
   const [token, setToken] = useState('');
   const dropdownRef = useRef(null);
   const {
-    authDispatch,
     authState: {
-      auth: { loading, error, data },
+      auth: { data },
     },
   } = useContext(GlobalContext);
 
   useEffect(() => {
-    const token = window.localStorage.getItem('jwtToken');
+    const userToken = window.localStorage.getItem('jwtToken');
     const userInfo = window.localStorage.getItem('userInfo');
 
-    if (token == null || userInfo === {}) {
+    if (userToken == null || userInfo === {}) {
       setUserData(null);
       setActive(false);
     } else {

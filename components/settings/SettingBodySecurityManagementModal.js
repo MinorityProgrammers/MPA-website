@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import styles from '../../styles/settings/settingBodySecurityManagementModal.module.css';
 
-const SettingBodySecurityManagementModal = function ({
+const SettingBodySecurityManagementModal = ({
   modal,
   goBack,
   deactivateAccount,
   deleteAccount,
-}) {
+}) => {
   const [feedBack, setFeedBack] = useState('');
 
   return (

@@ -1,4 +1,4 @@
-export const getSpecificSettingsLayoutNavigationList = (settingsPath) => {
+const getSpecificSettingsLayoutNavigationList = (settingsPath) => {
   switch (settingsPath) {
     case 'profile':
       return {
@@ -94,3 +94,5 @@ export const getSpecificSettingsLayoutNavigationList = (settingsPath) => {
       return {};
   }
 };
+
+export default getSpecificSettingsLayoutNavigationList;

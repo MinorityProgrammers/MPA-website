@@ -1,16 +1,16 @@
 import { Form, Formik } from 'formik';
 import React, { useContext } from 'react';
 import * as Yup from 'yup';
-import { login } from '../../../contexts/actions/auth/login';
+import login from '../../../contexts/actions/auth/login';
 import { GlobalContext } from '../../../contexts/provider';
 import TextField from '../../TextField';
 import styles from './form.module.css';
 
-const Login = function ({ setSubmit }) {
+const Login = ({ setSubmit }) => {
   const {
     authDispatch,
     authState: {
-      auth: { loading, data },
+      auth: { loading },
     },
   } = useContext(GlobalContext);
 

@@ -1,16 +1,14 @@
-import { useEffect, Fragment } from 'react';
-import BlurBackground from '../helperFiles/blurBackground';
+import React, { useEffect } from 'react';
 import NeedHelp from '../helperFiles/needHelp';
-import OverlayCard from '../helperFiles/overlayCard';
 import QuestionContainer from '../helperFiles/questionContainer';
 
-const Page11 = function ({
+const Page11 = ({
   step,
   localStorageConsultancyKey,
   localStorageStepKey,
   setstep,
   setQuestions,
-}) {
+}) => {
   const paymentReceived = '$XX.00';
   const projectId = 'XXALD4';
   const transactionId = '58';
@@ -30,7 +28,7 @@ const Page11 = function ({
         <div className="body">
           <div className="wrap-pad">
             <h1>
-              <img src="/assets/images/icons/Group 1725.png" />
+              <img src="/assets/images/icons/Group 1725.png" alt="" />
               Payment Successful!
             </h1>
             <section className="thank-you">
@@ -70,6 +68,7 @@ const Page11 = function ({
               </div>
               <a href="/">
                 <button
+                  type="button"
                   style={{
                     marginRight: '2rem',
                     color: 'var(--mpa-navy)',
@@ -82,6 +81,7 @@ const Page11 = function ({
               </a>
 
               <button
+                type="button"
                 onClick={() => {
                   setstep(0);
                   setQuestions({});

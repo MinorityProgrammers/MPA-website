@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Select from 'react-select';
 
-export class MentorshipQuestion3 extends Component {
+export default class MentorshipQuestion3 extends Component {
   continue = (e) => {
     e.preventDefault();
     this.props.nextStep();
@@ -14,7 +14,6 @@ export class MentorshipQuestion3 extends Component {
 
   render() {
     const { values, handleDropDown, handleChange } = this.props;
-    this.props.values;
 
     const interestOptions = [
       { label: 'Front-end Development', value: 'Front-end Development' },
@@ -64,7 +63,6 @@ export class MentorshipQuestion3 extends Component {
       { label: '20-40 hours a week', value: '20-40 hours a week' },
       { label: '40+ hours a week', value: '40+ hours a week' },
     ];
-    // console.log(Object.keys(values.primaryLang).length);
     return (
       <div className="tw-relative tw-mt-20 tw-font-redhat tw-bg-white tw-h-660px tw-w-950px tw-px-24 tw-pt-16 tw-pb-36 tw-rounded-3xl tw-shadow-mentor md:tw-h-auto md:tw-px-10 md:tw-py-30 tw-select-none">
         <form className="tw-pb-20">
@@ -211,12 +209,14 @@ export class MentorshipQuestion3 extends Component {
         <div className="tw-absolute tw-w-full tw-bottom-12 tw-pr-48 md:tw-pr-20 md:tw-bottom-7 tw-text-center">
           <div className="tw-w-140px tw-mx-auto tw-flex tw-justify-between">
             <button
+              type="button"
               className="tw-bg-NavDark tw-outline-none tw-rounded-md tw-w-14 tw-mb-8 tw-text-white hover:tw-text-NavDark hover:tw-bg-white tw-duration-500 tw-mx-auto"
               onClick={this.back}
             >
               <i className="fas fa-arrow-left tw-text-2xl tw-p-2" />
             </button>
             <button
+              type="button"
               className="tw-bg-NavDark tw-outline-none tw-rounded-md tw-w-14 tw-mb-8 tw-text-white hover:tw-text-NavDark hover:tw-bg-white tw-duration-500 tw-mx-auto"
               onClick={this.continue}
             >
@@ -236,5 +236,3 @@ export class MentorshipQuestion3 extends Component {
     );
   }
 }
-
-export default MentorshipQuestion3;

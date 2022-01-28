@@ -1,13 +1,8 @@
-import { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import Select from '../customInputTags/select';
 import QuestionContainer from '../questionContainer';
-import { useDefaultValue } from '../getDefaultValue';
+import useDefaultValue from '../getDefaultValue';
 import addQuestion from '../addQuestion';
-
-// structure of childRenderInfo
-// --->renderWhenOptionIs = 0
-// --->answerToInput = ''
-// --->validationFxn = ()=>{}
 
 const default_childRenderInfo = {
   renderWhenOptionIs: 0,
@@ -17,7 +12,7 @@ const default_childRenderInfo = {
   childChanged: false,
 };
 
-const SelectTemplate = function ({
+const SelectTemplate = ({
   step,
   setstep,
   questions,
@@ -27,7 +22,7 @@ const SelectTemplate = function ({
   question1 = '',
   children,
   childRenderInfo = default_childRenderInfo,
-}) {
+}) => {
   const defaultValueSelected = useDefaultValue(questions, step, 0);
   const defaultSecondValueSelected = useDefaultValue(questions, step, 1);
 
@@ -52,25 +47,22 @@ const SelectTemplate = function ({
         childStarted.current = true;
       }
     } catch (e) {
-      console.log();
+      console.log(e);
     }
   }, [selected]);
   function pageFourQuestion() {
     function defineAnswers() {
       const answers = [];
-      // first answer
       answers.push({
         question: selected ? selected[0] : '',
         answer: selected ? selected[1] : '',
       });
-      // if we have a second input
       if (secondOptions) {
         answers.push({
           question: secondSelected ? secondSelected[0] : '',
           answer: secondSelected ? secondSelected[1] : '',
         });
       }
-      // if child, add answer of child
       if (childFound()) {
         answers.push({
           question: selected ? selected[0] : '',

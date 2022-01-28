@@ -28,10 +28,9 @@ const allSections = [
   },
 ];
 
-// component's function
 const CareerExplainer = (props) => {
   const {
-    data, setClickRegister, active, clickRegister, navBarRef,
+    data, setClickRegister, clickRegister, navBarRef,
   } = props;
 
   const [marginTop, setMarginTop] = useState(0);
@@ -42,7 +41,7 @@ const CareerExplainer = (props) => {
         window.getComputedStyle(navBarRef.current).height,
       );
       if (typeof currHeight === 'number' && currHeight > marginTop) {
-        setMarginTop((prev) => `${currHeight}px`);
+        setMarginTop((/* prev */) => `${currHeight}px`);
       }
     }
   }, []);
@@ -68,9 +67,9 @@ const CareerExplainer = (props) => {
             </article>
           </div>
           <div className={styles.restOfBody}>
-            {allSections.map((category, index) => (
+            {allSections.map((category) => (
               <Category
-                key={index}
+                key={category.header}
                 innerText={category.innerText}
                 header={category.header}
                 src={category.src}

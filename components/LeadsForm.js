@@ -22,7 +22,7 @@ const LeadsForm = () => {
         project_name: 'TEST',
         email: 'TEST',
       })
-      .then((res) => console.log(res))
+      .then(() => {})
       .catch((error) => console.log(error));
   };
 
@@ -51,7 +51,7 @@ const LeadsForm = () => {
           ...questions,
           [`question${step.toString()}`]: inputValue,
         });
-        setstep((prev) => step + 1);
+        setstep(() => step + 1);
         if (errorMsg) {
           setErrorMsg('');
         }
@@ -96,7 +96,7 @@ const LeadsForm = () => {
           {[
             ...(() => {
               const range = [];
-              for (let i = 0; i < totalSteps; i++) range.push(i + 1);
+              for (let i = 0; i < totalSteps; i += 1) range.push(i + 1);
               return range;
             })(),
           ].map((index) => (
@@ -121,6 +121,7 @@ const LeadsForm = () => {
       <div className="service_buttons">
         {left ? (
           <button
+            type="button"
             onClick={() => {
               minus();
             }}
@@ -131,6 +132,7 @@ const LeadsForm = () => {
         ) : null}
         {right ? (
           <button
+            type="button"
             onClick={() => {
               if (!customPlusFunction) plus();
               else customPlusFunction();
@@ -300,7 +302,7 @@ const LeadsForm = () => {
     if (prev instanceof Array) {
       errorList = [...prev];
     } else {
-      for (let i = 0; i < lengthOfPageQuestions; i++) {
+      for (let i = 0; i < lengthOfPageQuestions; i += 1) {
         errorList.push('');
       }
     }
@@ -368,6 +370,7 @@ const LeadsForm = () => {
             with our transparent task-based escrow system
           </h5>
           <button
+            type="button"
             onClick={() => {
               plus();
             }}
@@ -628,10 +631,10 @@ const LeadsForm = () => {
           />
           <br />
           <div className="service_page8Btns">
-            <button id="leftsubmitBtn" onClick={() => minus()}>
+            <button type="button" id="leftsubmitBtn" onClick={() => minus()}>
               <span>&#8592;</span>
             </button>
-            <button id="submitBtn" onClick={() => plus()}>
+            <button type="button" id="submitBtn" onClick={() => plus()}>
               Submit
             </button>
           </div>
@@ -645,7 +648,11 @@ const LeadsForm = () => {
         <div className="questions">
           <div className="service_sub">
             <h2 id="nomarg">Thank you for submitting your idea!</h2>
-            <button className="service_leftbutton" onClick={() => plus()}>
+            <button
+              type="button"
+              className="service_leftbutton"
+              onClick={() => plus()}
+            >
               Submit another idea
             </button>
           </div>
@@ -655,8 +662,8 @@ const LeadsForm = () => {
   };
   return (
     <div className="service tw-mt-12" key="rigid">
-      {step == 0 && <Page1 />}
-      {step == 1 && (
+      {step === 0 && <Page1 />}
+      {step === 1 && (
         <Page2
           inputValue={
             inputValue !== ' '
@@ -667,13 +674,13 @@ const LeadsForm = () => {
           }
         />
       )}
-      {step == 2 && <Page3 />}
-      {step == 3 && <Page4 />}
-      {step == 4 && <Page5 />}
-      {step == 5 && <Page6 />}
-      {step == 6 && <Page7 />}
-      {step == 7 && <Page8 />}
-      {step == 8 && <Page9 />}
+      {step === 2 && <Page3 />}
+      {step === 3 && <Page4 />}
+      {step === 4 && <Page5 />}
+      {step === 5 && <Page6 />}
+      {step === 6 && <Page7 />}
+      {step === 7 && <Page8 />}
+      {step === 8 && <Page9 />}
     </div>
   );
 };

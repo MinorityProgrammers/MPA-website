@@ -4,7 +4,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import UserCoursesList from './UserCourseList';
 
-const UserCourses = function ({ enrolledCourses, user }) {
+const UserCourses = ({ enrolledCourses, user }) => {
   const coursesLength = enrolledCourses.length;
 
   const conditionalInfinite = {
@@ -38,9 +38,22 @@ const UserCourses = function ({ enrolledCourses, user }) {
         <div className="course-category d-flex font-weight-bold tw-justify-center">
           <h1 className="courseCategory-title">My Courses</h1>
         </div>
-        <div className={coursesLength > 2 ? 'mt-3 courses-info pt-2' : 'mt-3 courses-info pt-2 user-courses'}>
+        <div
+          className={
+            coursesLength > 2
+              ? 'mt-3 courses-info pt-2'
+              : 'mt-3 courses-info pt-2 user-courses'
+          }
+        >
           <Slider {...conditionalInfinite}>
-            {enrolledCourses && enrolledCourses.map((course) => <UserCoursesList enrolledCourse={course} key={course._id} userInfo={user} />)}
+            {enrolledCourses
+              && enrolledCourses.map((course) => (
+                <UserCoursesList
+                  enrolledCourse={course}
+                  key={course._id}
+                  userInfo={user}
+                />
+              ))}
           </Slider>
         </div>
       </div>

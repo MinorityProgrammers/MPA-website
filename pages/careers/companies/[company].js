@@ -1,4 +1,3 @@
-import { useRouter } from 'next/router';
 import React, { useEffect, useRef, useState } from 'react';
 import ArrowLeftIconSvg from '../../../components/career-components/svgs/ArrowLeftIconSvg';
 import CheckIconSvg from '../../../components/career-components/svgs/CheckIconSvg';
@@ -11,12 +10,12 @@ import Footer from '../../../components/Footer';
 import HomepageNav from '../../../components/homepage/HomepageNav';
 import Layout from '../../../components/Layout';
 import SidebarTwo from '../../../components/sidebar/SidebarTwo';
-import { useDetectOutsideClick } from '../../../components/UseDetectOutsideClick';
+import useDetectOutsideClick from '../../../components/UseDetectOutsideClick';
 import links from '../../../contexts/utils/links';
 
 const CompanyDetails = ({ id }) => {
   const [company, setCompany] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [, setLoading] = useState(false);
 
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef(null);
@@ -46,12 +45,6 @@ const CompanyDetails = ({ id }) => {
   useEffect(() => {
     fetchCompany();
   }, []);
-
-  const router = useRouter();
-
-  function goBack() {
-    router.back();
-  }
 
   return (
     <Layout>
@@ -140,7 +133,7 @@ const CompanyDetails = ({ id }) => {
               <div className="companyDetails-container-specialties-list">
                 {company.specialties
                   ? company.specialties.map((specialty, idx) => (
-                    <div key={idx}>
+                    <div key={`${specialty + idx}`}>
                       <CheckIconSvg />
                       <div>{specialty}</div>
                     </div>

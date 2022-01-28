@@ -5,7 +5,7 @@ import HomepageNav from '../components/homepage/HomepageNav';
 import Layout from '../components/Layout';
 import SidebarTwo from '../components/sidebar/SidebarTwo';
 import links from '../contexts/utils/links';
-import { useDetectOutsideClick } from '../components/UseDetectOutsideClick';
+import useDetectOutsideClick from '../components/UseDetectOutsideClick';
 import MentorshipProgramHero from '../components/mentorship/MentorshipProgramHero';
 import MentorshipProgramHome from '../components/mentorship/MentorshipProgramHome';
 
@@ -26,11 +26,14 @@ const mentorshipProgram = () => {
   }
 
   useEffect(() => {
-    const userInfo = JSON.parse(window.localStorage.getItem('userInfo')).user;
-    if (userInfo.has_mentorship) {
-      window.location.href = userInfo.is_mentor
-        ? 'mentorship/mentor'
-        : 'mentorship/mentee';
+    let userInfo = JSON.parse(window.localStorage.getItem('userInfo'));
+    if (userInfo) {
+      userInfo = userInfo.user;
+      if (userInfo.has_mentorship) {
+        window.location.href = userInfo.is_mentor
+          ? 'mentorship/mentor'
+          : 'mentorship/mentee';
+      }
     }
     if (data === null) {
       setActive(false);

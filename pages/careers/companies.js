@@ -1,3 +1,4 @@
+/* eslint-disable react/destructuring-assignment */
 import { useRouter } from 'next/router';
 import React, { useEffect, useRef, useState } from 'react';
 import CareersMainComponent from '../../components/career-components/CareersMainComponent';
@@ -68,7 +69,6 @@ const CompaniesMain = (props) => {
     </a>
   ));
 
-  // const totalCount = 102;
   const perPage = 10;
   const totalPages = Math.ceil(102 / perPage); // 11
 
@@ -93,13 +93,10 @@ const CompaniesMain = (props) => {
     if (page) {
       pageArray.push(page);
 
-      // push page to first placeholder if page number is greater than 1
-      // and there are more than one pages
       if (page > 1) {
         pageArray.unshift(1);
       }
 
-      // push page to second placeholder if page number is less than the last page
       if (page < totPages) {
         pageArray.push(totPages);
       }
@@ -118,7 +115,10 @@ const CompaniesMain = (props) => {
       }
 
       return (
-        <a key={page} style={currPage === page ? { background: '#151371' } : {}}>
+        <a
+          key={page}
+          style={currPage === page ? { background: '#151371' } : {}}
+        >
           <button
             type="button"
             style={currPage === page ? { color: 'white' } : {}}
@@ -161,9 +161,7 @@ const CompaniesMain = (props) => {
       queryObj.company = nameRef.current.value;
       blank = false;
       setCompanies(
-        companies.filter(
-          (company) => company.company_name.toLowerCase().includes(nameRef.current.value),
-        ),
+        companies.filter((company) => company.company_name.toLowerCase().includes(nameRef.current.value)),
       );
     }
 
@@ -181,9 +179,7 @@ const CompaniesMain = (props) => {
       queryObj.location = locationRef.current.value;
       blank = false;
       setCompanies(
-        companies.filter(
-          (company) => company.headquarter.toLowerCase().includes(locationRef.current.value),
-        ),
+        companies.filter((company) => company.headquarter.toLowerCase().includes(locationRef.current.value)),
       );
     }
 

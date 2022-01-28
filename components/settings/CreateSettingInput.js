@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Select, { components } from 'react-select';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useRouter } from 'next/router';
 import styles from '../../styles/settings/createSettingInput.module.css';
 
-const CreateSettingInput = function ({
+const CreateSettingInput = ({
   label,
   type,
   name,
@@ -17,7 +17,7 @@ const CreateSettingInput = function ({
   halfWidth,
   rightSpaced,
   leftSpaced,
-}) {
+}) => {
   const router = useRouter();
 
   const handleChange = (e) => {
@@ -29,20 +29,20 @@ const CreateSettingInput = function ({
 
   const handleSwitchChange = () => (setValue
     ? {
-      value: options.find((option) => option.label == value),
+      value: options.find((option) => option.label === value),
       onChange: (e) => {
         setValue(e.value);
       },
     }
     : {});
 
-  const reactSelectKey = `${router.pathname.substring(router.pathname.lastIndexOf('/') + 1)
-  }-select-key-${
-    Math.floor(Math.random() * 10)}`;
+  const reactSelectKey = `${router.pathname.substring(
+    router.pathname.lastIndexOf('/') + 1,
+  )}-select-key-${Math.floor(Math.random() * 10)}`;
 
   switch (type) {
     case 'select':
-      var DropdownIndicator = function (props) {
+      const DropdownIndicator = function (props) {
         return (
           <components.DropdownIndicator {...props}>
             <img
@@ -100,6 +100,7 @@ const CreateSettingInput = function ({
           />
         </label>
       );
+
     case 'date':
       return (
         <label
@@ -126,6 +127,7 @@ const CreateSettingInput = function ({
             }}
             dateFormat="MM/dd/yyyy"
             placeholder="mm/dd/yyyy"
+            autoComplete="false"
             required
           />
         </label>
@@ -153,17 +155,17 @@ const CreateSettingInput = function ({
           <div className={styles.inputRadioLabel}>
             <div className={styles.visibility} onClick={() => setValue(true)}>
               <div
-                className={
-                  `${styles.radioBtn} ${value ? styles.checkedRadioBtn : ''}`
-                }
+                className={`${styles.radioBtn} ${
+                  value ? styles.checkedRadioBtn : ''
+                }`}
               />
               <span>Public</span>
             </div>
             <div className={styles.visibility} onClick={() => setValue(false)}>
               <div
-                className={
-                  `${styles.radioBtn} ${!value ? styles.checkedRadioBtn : ''}`
-                }
+                className={`${styles.radioBtn} ${
+                  !value ? styles.checkedRadioBtn : ''
+                }`}
               />
               <span>Private</span>
             </div>

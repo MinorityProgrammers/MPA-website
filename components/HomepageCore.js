@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+/* import React, { useState } from 'react';
 import Swiper from 'react-id-swiper';
 import 'swiper/css/swiper.css';
 
@@ -261,7 +261,7 @@ const Popup = ({
         <div className="popup_content-core">
           <div className="popup_heading-core">
             <div className={`popup_image_container-core ${color}`}>
-              <img className="popup_img-core" src={icon} />
+              <img className="popup_img-core" src={icon} alt="popup_img-icon" />
             </div>
             <div className={`popup_title_container-core ${color}`}>
               <div className="popup_title-core">{title}</div>
@@ -273,3 +273,4 @@ const Popup = ({
     </div>
   </div>
 );
+ */

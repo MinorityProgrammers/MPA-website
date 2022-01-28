@@ -1,10 +1,8 @@
-import { useState } from 'react';
 import {
   languages, degrees, universities, polars, softSkills, programmingLanguages, proficiencies,
 } from './fields';
-import CustomDate from './CustomDate';
 
-export const all = {
+const all = {
   usernameField: {
     name: 'userName',
     type: 'text',
@@ -115,3 +113,5 @@ export const all = {
   },
 
 };
+
+export default all;

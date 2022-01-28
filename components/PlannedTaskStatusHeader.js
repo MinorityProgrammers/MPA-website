@@ -86,7 +86,7 @@ const PlannedTaskStatusHeader = () => (
         </div>
         <div className="s-p-view tw-w-1/5 tw-text-center">
           <p>
-            <button className="elect-p-btn tw-shadow-lg">Read more</button>
+            <button type="button" className="elect-p-btn tw-shadow-lg">Read more</button>
           </p>
         </div>
       </div>

@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './documents.module.css';
 
-const Document = function ({
+const Document = ({
   title, subtitle, download_link, id,
-}) {
+}) => {
   const [blob, setBlob] = useState(null);
 
   useEffect(() => {
@@ -22,15 +22,15 @@ const Document = function ({
   };
 
   return (
-    <div className={`${styles.container} ${isEven() ? styles.even : styles.odd}`}>
+    <div
+      className={`${styles.container} ${isEven() ? styles.even : styles.odd}`}
+    >
       <div className={styles.info}>
         <div className={styles.title}>{title}</div>
         <div className={styles.subtitle}>{subtitle}</div>
       </div>
       <a href={blob} className={styles.downloadButton} download={title}>
-        <div>
-          Download
-        </div>
+        <div>Download</div>
       </a>
     </div>
   );

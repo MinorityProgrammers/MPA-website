@@ -12,7 +12,7 @@ import { GlobalContext } from '../contexts/provider';
 import { useMoralisDapp } from '../MoralisDappProvider/MoralisDappProvider';
 import { getEllipsisTxt } from '../helpers/formatters';
 import Address from './Address/Address';
-import { successToast, errorToast } from '../contexts/utils/toasts';
+import { errorToast } from '../contexts/utils/toasts';
 import changeAuthModal from '../contexts/actions/authModal/index';
 import {
   handleLockSigner,
@@ -20,7 +20,7 @@ import {
   isConnectedCasper,
 } from '../contexts/actions/signer/index';
 
-const Account = function () {
+const Account = () => {
   const { authenticate, isAuthenticated, logout } = useMoralis();
   const { walletAddress, chainId } = useMoralisDapp();
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -28,14 +28,11 @@ const Account = function () {
     showModalState: { showModal },
     setShowModal,
     signerState: {
-      signer: {
-        error, isConnected, isUnlocked, activeKey,
-      },
+      signer: { error, isConnected, activeKey },
     },
     setSignerState,
   } = useContext(GlobalContext);
 
-  // console.log(await window.casperlabsHelper.isConnected())
   const SIGNER_EVENTS = {
     connected: 'signer:connected',
     disconnected: 'signer:disconnected',
@@ -219,7 +216,11 @@ const Account = function () {
                   Metamask
                 </span>
               </a>
-              <a href="https://casper.network/en/network" target="_blank" rel="noreferrer">
+              <a
+                href="https://casper.network/en/network"
+                target="_blank"
+                rel="noreferrer"
+              >
                 <span className="tw-cursor-pointer hover:tw-text-gray-500 tw-transition-all tw-duration-500">
                   Casper
                 </span>

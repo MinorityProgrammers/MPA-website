@@ -2,7 +2,7 @@ import React from 'react';
 import classes from '../../../public/assets/css/career.module.css';
 
 const Category = ({
-  header, innerText, src, redirectTo, data, setClickRegister,
+  header, innerText, src, redirectTo,
 }) => (
   <div className={classes.category}>
     <div className={classes.imageSection}>

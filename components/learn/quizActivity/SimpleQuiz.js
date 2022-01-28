@@ -7,10 +7,16 @@ import QuizResult from './QuizResult';
 
 export default function SimpleQuiz() {
   const {
-    singleUserModuleInfo, forwardInfo, course, setWatched, lastAdvancedModules,
+    singleUserModuleInfo,
+    forwardInfo,
+    course,
+    setWatched,
+    lastAdvancedModules,
   } = useContext(QuizContext);
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [questions, setQuestions] = useState(singleUserModuleInfo.moduleId.content.questions);
+  const [questions, setQuestions] = useState(
+    singleUserModuleInfo.moduleId.content.questions,
+  );
   const [correct, setCorrect] = useState(0);
   const [inprogress, setInprogress] = useState(true);
   const [answer, setAnswer] = useState();
@@ -32,13 +38,13 @@ export default function SimpleQuiz() {
     radioRef.current.reset();
   };
   const getResult = () => {
-    let answer = correct;
+    let _answer = correct;
     questions.forEach((item, index) => {
       if (item.answerCorrect) {
-        ++answer;
+        _answer += 1;
       }
       if (index === questions.length - 1) {
-        setCorrect(answer);
+        setCorrect(_answer);
         setInprogress(false);
       }
     });
@@ -92,16 +98,16 @@ export default function SimpleQuiz() {
             <form ref={radioRef}>
               {answer?.map((item, index) => (
                 <div
-                  key={index}
-                  className={
-                    `option${
-                      questions[currentQuestion].checked && !item.correct
-                        ? ' dim'
-                        : ''
-                    }${questions[currentQuestion].checked && item.correct
+                  key={`${index + 1}`}
+                  className={`option${
+                    questions[currentQuestion].checked && !item.correct
+                      ? ' dim'
+                      : ''
+                  }${
+                    questions[currentQuestion].checked && item.correct
                       ? ' correct'
-                      : ''}`
-                  }
+                      : ''
+                  }`}
                 >
                   <input
                     id={`radio-${index}`}
@@ -116,7 +122,6 @@ export default function SimpleQuiz() {
               ))}
             </form>
             <div className="bottom">
-              {/* {questions[currentQuestion].feedback && questions[currentQuestion].checked && <p>{questions[currentQuestion].feedback}</p>} */}
               {!questions[currentQuestion].checked && (
                 <button
                   type="button"

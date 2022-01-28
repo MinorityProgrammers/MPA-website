@@ -1,12 +1,9 @@
-import {
-  useMemo, useState, useRef, useEffect, Fragment,
+import React, {
+  useMemo, useState, useRef, useEffect,
 } from 'react';
 import ErrorPrint from '../errorPrint';
 
-// --->undefined means waiting on submission
-// --->null means invalid entry
-// -->[] means correct entry
-const Select = function ({
+const Select = ({
   options,
   setSelected,
   selected,
@@ -23,7 +20,7 @@ const Select = function ({
     hoverColor: '',
     selectedFontColor: '',
   },
-}) {
+}) => {
   const [dropDown, setDropDown] = useState(optionsShowByDefault);
   const updatedOptions = useMemo(() => [defaultStr, ...options], [options]);
   const {
@@ -76,24 +73,21 @@ const Select = function ({
   return (
     <>
       <div
-        style={{ width: '100%', display: 'flex' }}
+        style={{ width: '100%', display: 'flex', color: mainColor }}
         id="selectCustomTag"
-        style={{ color: mainColor }}
       >
         <style>
           {`
             #selectCustomTag .option-item:hover {
-              background-color: ${
-                hoverColor || 'var(--transparentNavy)'
-              };
+              background-color: ${hoverColor || 'var(--transparentNavy)'};
             }
           `}
         </style>
 
         <div
-          className={
-            `customSelectTag ${dropDown ? 'select-border-bottom ' : ' '}`
-          }
+          className={`customSelectTag ${
+            dropDown ? 'select-border-bottom ' : ' '
+          }`}
           style={{
             width: children ? `${sizeOfParent}%` : '',
             borderTopRightRadius: children ? 0 : '',
@@ -103,9 +97,9 @@ const Select = function ({
           }}
         >
           <div
-            className={
-              `selectDisplay ${dropDown ? 'select-border-bottom' : ''}`
-            }
+            className={`selectDisplay ${
+              dropDown ? 'select-border-bottom' : ''
+            }`}
           >
             <span>{updatedOptions[selectedIndex.current]}</span>
             <i
@@ -130,11 +124,9 @@ const Select = function ({
           >
             {updatedOptions.map((option, index) => (
               <div
-                key={index}
+                key={`${`option${index}`}`}
                 className={`option-item ${
-                  selectedIndex.current === index
-                    ? 'selected-option-item'
-                    : ''
+                  selectedIndex.current === index ? 'selected-option-item' : ''
                 }`}
                 onClick={() => {
                   selectedIndex.current = index;
@@ -147,11 +139,12 @@ const Select = function ({
                 <span
                   style={{
                     color:
-                        selectedIndex.current === index
-                          ? `${
-                            selectedFontColor || 'var(--customTagBackgroundColor)'
-                          }`
-                          : null,
+                      selectedIndex.current === index
+                        ? `${
+                          selectedFontColor
+                            || 'var(--customTagBackgroundColor)'
+                        }`
+                        : null,
                   }}
                 >
                   {option}

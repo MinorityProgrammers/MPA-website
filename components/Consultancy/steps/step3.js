@@ -1,13 +1,13 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Checkboxes from '../helperFiles/customInputTags/checkbox';
 import Select from '../helperFiles/customInputTags/select';
 import QuestionContainer from '../helperFiles/questionContainer';
-import { useDefaultValue } from '../helperFiles/getDefaultValue';
+import useDefaultValue from '../helperFiles/getDefaultValue';
 import addQuestion from '../helperFiles/addQuestion';
 
-const Page3 = function ({
+const Page3 = ({
   step, setstep, questions, setQuestions,
-}) {
+}) => {
   const defaultValueSelected = useDefaultValue(questions, step, 0);
   const defaultValueCheckboxes = useDefaultValue(questions, step, 1);
 

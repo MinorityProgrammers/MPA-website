@@ -1,24 +1,27 @@
-import React, { useEffect, useState } from 'react';
-import DatePicker from 'react-datepicker';
+import React, { useState } from 'react';
+import { AiFillCloseCircle, AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai';
 import CreateProfileForm from './CreateProfileForm';
 import CreateProfileInput from './CreateProfileInput';
-import CreateProfileSkills from './CreateProfileSkills';
 import 'react-datepicker/dist/react-datepicker.css';
-import { AiFillCloseCircle, AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai';
-import {
-  all,
-} from '../../contexts/utils/profileInputFields1';
+import all from '../../contexts/utils/profileInputFields1';
 
 const CreateProfileQuestions3 = function ({
   state, setState, step, setStep, inputStates, closeProfileSetup,
 }) {
-  const [startDate, setStartDate] = useState(new Date());
-  const handleChange = (step, name, value) => {
-    setState({ ...state, [step]: { ...state[step], [name]: value } });
+  const handleChange = (_step, name, value) => {
+    setState({ ...state, [_step]: { ...state[_step], [name]: value } });
   };
-  const allInputFields = [all.firstNameField, all.lastNameField, all.birthdateField, all.hometownField, all.primaryLanguageField];
+
+  const allInputFields = [
+    all.firstNameField,
+    all.lastNameField,
+    all.birthdateField,
+    all.hometownField,
+    all.primaryLanguageField,
+  ];
 
   const [displayWarning, setDisplayWarning] = useState(false);
+
   const toggleWarning = (on) => {
     if (on) {
       if (!displayWarning) {
@@ -31,16 +34,18 @@ const CreateProfileQuestions3 = function ({
       setDisplayWarning(false);
     }
   };
+
   // go back one step
   const handlePrev = () => {
     setStep(step - 1);
     toggleWarning(false);
   };
+
   // go forward one step
   const handleNext = () => {
     const inputFieldNames = Object.keys(state[step]);
     const allRequiredFilled = inputFieldNames.every((fieldName) => {
-      const inputField = allInputFields.find((inputField) => inputField.name == fieldName);
+      const inputField = allInputFields.find((_inputField) => _inputField.name === fieldName);
       return (inputField.required && state[step][fieldName]) || !inputField.required;
     });
     if (allRequiredFilled) {
@@ -59,35 +64,29 @@ const CreateProfileQuestions3 = function ({
       <AiFillCloseCircle className="cp-close" onClick={closeProfileSetup} style={{ cursor: 'pointer' }} />
       <div className="cp-top cp-top-border">
         <h1>Setup Profile Page</h1>
-        <h2>It's quick and easy!</h2>
+        <h2>It&apos;s quick and easy!</h2>
       </div>
       <CreateProfileForm>
         <div className="cp-formGrid">
           { // display an input component for each input field
-                        [
-                          all.firstNameField,
-                          all.lastNameField,
-                          all.birthdateField,
-                          all.hometownField,
-                          all.primaryLanguageField,
-                        ].map((field, key) => (
-                          <CreateProfileInput
-                            name={field.name}
-                            type={field.type}
-                            label={field.label}
-                            options={field.options}
-                            required={field.required}
-                            value={state[step][field.name]}
-                            setValue={(value) => { handleChange(step, field.name, value); }}
-                            key={key}
-                          />
-                        ))
-                    }
+              allInputFields.map((field) => (
+                <CreateProfileInput
+                  name={field.name}
+                  type={field.type}
+                  label={field.label}
+                  options={field.options}
+                  required={field.required}
+                  value={state[step][field.name]}
+                  setValue={(value) => { handleChange(step, field.name, value); }}
+                  key={field.name}
+                />
+              ))
+          }
         </div>
       </CreateProfileForm>
       <div className="cp-navButtonsContainer">
-        <button className="cp-navButton" onClick={handlePrev}><AiOutlineArrowLeft /></button>
-        <button className="cp-navButton" onClick={handleNext}><AiOutlineArrowRight /></button>
+        <button type="button" className="cp-navButton" onClick={handlePrev}><AiOutlineArrowLeft /></button>
+        <button type="button" className="cp-navButton" onClick={handleNext}><AiOutlineArrowRight /></button>
       </div>
     </div>
   );

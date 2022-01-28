@@ -1,3 +1,4 @@
+import React from 'react';
 import { Tooltip, OverlayTrigger } from 'react-bootstrap';
 import styles from '../../styles/MentorCSS/Course.module.css';
 

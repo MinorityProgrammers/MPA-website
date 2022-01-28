@@ -20,7 +20,7 @@ import {
   backgroundColorField,
 } from '../contexts/utils/avatarFields';
 import { GlobalContext } from '../contexts/provider';
-import { updateProfile } from '../contexts/actions/profile/updateProfile';
+import updateProfile from '../contexts/actions/profile/updateProfile';
 
 const ProfileTwoGenerateAvatarPopUp = ({
   loggedInUserData,
@@ -127,14 +127,7 @@ const ProfileTwoGenerateAvatarPopUp = ({
   }, [state?.avatarOptions]);
 
   // update userData
-  const {
-    profileDispatch,
-    profileState: {
-      profile: {
-        profileLoading, profileError, profileData, profileIsUpdated,
-      },
-    },
-  } = useContext(GlobalContext);
+  const { profileDispatch } = useContext(GlobalContext);
 
   const handleSubmit = () => {
     const formData = new FormData();
@@ -145,10 +138,11 @@ const ProfileTwoGenerateAvatarPopUp = ({
   };
 
   const submitData = () => {
-    // update userData
+    // these set of codes is not used, check if it is needed before deleting
+    /*  // update userData
     const data = getSVG();
     const svg = new Blob([data], { type: 'image/svg+xml' });
-    const svgURL = URL.createObjectURL(svg);
+    const svgURL = URL.createObjectURL(svg); */
     setState((prevState) => ({
       ...prevState,
       profilePicture: state.profilePicture,
@@ -156,7 +150,7 @@ const ProfileTwoGenerateAvatarPopUp = ({
     handleSubmit();
     setGenerateAvatarPopUp(false);
     router.push(`/user/${loggedInUserData.userName}`);
-    settingsSubPage === '[username]' && router.reload();
+    if (settingsSubPage === '[username]') { router.reload(); }
   };
   return (
     <div className="cp-body">
@@ -167,7 +161,7 @@ const ProfileTwoGenerateAvatarPopUp = ({
       />
       <div className="cp-top">
         <h1>Ready to make your avatar?</h1>
-        <h2>Let's begin, it's easy</h2>
+        <h2>Let&apos;s begin, it&apos;s easy</h2>
       </div>
       <CreateProfileForm>
         <div className="cp-formGrid">
@@ -188,7 +182,7 @@ const ProfileTwoGenerateAvatarPopUp = ({
                 background: state?.avatarOptions?.backgroundColor || '#fff',
                 borderRadius: '100%',
               }}
-              ref={(ref) => (avatarRef = ref)}
+              ref={(ref) => { avatarRef = ref; }}
               {...state?.avatarOptions}
             />
           </div>
@@ -211,7 +205,7 @@ const ProfileTwoGenerateAvatarPopUp = ({
             eyebrowTypeField,
             mouthTypeField,
             skinColorField,
-          ].map((field, key) => (
+          ].map((field) => (
             <CreateProfileInput
               name={field.name}
               type={field.type}
@@ -220,17 +214,17 @@ const ProfileTwoGenerateAvatarPopUp = ({
               required={field.required}
               value={loggedInUserData.avatarOptions.length !== 0 ? state?.avatarOptions[field.name] : '#a55728'}
               setValue={(value) => handleAvatarChange(field.name, value)}
-              key={key}
+              key={field.name}
             />
           ))}
         </div>
         <div className="cp-downloadButtonsContainer">
-          <button onClick={onDownloadSVG}>Download SVG</button>
-          <button onClick={onDownloadPNG}>Download PNG</button>
+          <button type="button" onClick={onDownloadSVG}>Download SVG</button>
+          <button type="button" onClick={onDownloadPNG}>Download PNG</button>
         </div>
       </CreateProfileForm>
       <div className="cp-navButtonsContainer">
-        <button className="cp-navButton" onClick={submitData}>
+        <button type="button" className="cp-navButton" onClick={submitData}>
           Finish
         </button>
       </div>

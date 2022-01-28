@@ -1,12 +1,12 @@
 import { Form, Formik } from 'formik';
 import React, { useContext } from 'react';
 import * as Yup from 'yup';
-import { register } from '../../../contexts/actions/auth/register';
+import register from '../../../contexts/actions/auth/register';
 import { GlobalContext } from '../../../contexts/provider';
 import TextField from '../../TextField';
 import styles from './form.module.css';
 
-const Signup = function ({ setSubmit }) {
+const Signup = ({ setSubmit }) => {
   const {
     authDispatch,
     authState: {
@@ -14,12 +14,10 @@ const Signup = function ({ setSubmit }) {
     },
   } = useContext(GlobalContext);
 
-  const displaySuccess = () => (
-    data && (
-    <div className={styles.sucess}>
-      <p>{data.message}</p>
-    </div>
-    )
+  const displaySuccess = () => data && (
+  <div className={styles.sucess}>
+    <p>{data.message}</p>
+  </div>
   );
 
   const onSubmit = async (e) => {

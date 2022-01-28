@@ -68,7 +68,7 @@ const HomepageCore = () => {
     <section className="homepage__core">
       <Popup {...popupInfo} togglePopup={handleTogglePopup} />
       <div className="heading__number">
-        <h3 className="tw-text-blue-900">03</h3>
+        <h3 className="tw-text-blue-900">02</h3>
       </div>
       <div className="container">
         <h2 className="heading__title mt-5 mb-5 tw-text-blue-900">
@@ -128,34 +128,27 @@ const HomepageCore = () => {
 
 export default HomepageCore;
 
-const Popup = function ({
-  image,
-  icon,
-  color,
-  title,
-  description,
-  togglePopup,
-}) {
-  return (
-    <div className="popup_wrapper-core">
-      <div onClick={togglePopup} className="popup_btn_close-core">
-        <i className="fas fa-times" />
-      </div>
-      <div className="popup-core">
-        <div style={{ background: `url(${image})` }} className="popup_bg-core">
-          <div className="popup_content-core">
-            <div className="popup_heading-core">
-              <div className={`popup_image_container-core ${color}`}>
-                <img className="popup_img-core" src={icon} alt="" />
-              </div>
-              <div className={`popup_title_container-core ${color}`}>
-                <div className="popup_title-core">{title}</div>
-              </div>
+const Popup = ({
+  image, icon, color, title, description, togglePopup,
+}) => (
+  <div className="popup_wrapper-core">
+    <div onClick={togglePopup} className="popup_btn_close-core">
+      <i className="fas fa-times" />
+    </div>
+    <div className="popup-core">
+      <div style={{ background: `url(${image})` }} className="popup_bg-core">
+        <div className="popup_content-core">
+          <div className="popup_heading-core">
+            <div className={`popup_image_container-core ${color}`}>
+              <img className="popup_img-core" src={icon} alt="popup_img-icon" />
             </div>
-            <div className="popup_text-core">{description}</div>
+            <div className={`popup_title_container-core ${color}`}>
+              <div className="popup_title-core">{title}</div>
+            </div>
           </div>
+          <div className="popup_text-core">{description}</div>
         </div>
       </div>
     </div>
-  );
-};
+  </div>
+);

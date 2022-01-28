@@ -59,6 +59,7 @@ const HomepageMemberModal = ({
               </div>
             </div>
             <button
+              type="button"
               className="member__btn-close"
               onClick={() => setShowModal((prev) => !prev)}
             >

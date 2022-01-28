@@ -96,7 +96,7 @@ export class mentorshipApp extends Component {
     const token = window.localStorage.getItem('jwtToken');
     const userInfo = JSON.parse(window.localStorage.getItem('userInfo')).user;
 
-    if (token == null || userInfo == {}) {
+    if (token == null || userInfo === {}) {
       this.redirect();
     }
     let url;
@@ -105,7 +105,7 @@ export class mentorshipApp extends Component {
     } else if (userInfo.is_mentor) {
       url = `${process.env.BASE_URI}/suggestions/mentes/${userInfo._id}`;
     }
-    console.log(url);
+
     axios
       .get(url, {
         headers: {
@@ -114,7 +114,6 @@ export class mentorshipApp extends Component {
         },
       })
       .then((res) => {
-        console.log(res.data.message.mentorshipInfo);
         const sugggestions = res.data.message.sgs.map((mentorship) => ({
           id: mentorship._id,
           url: mentorship.user_id.profilePicture,
@@ -124,7 +123,6 @@ export class mentorshipApp extends Component {
           description: mentorship.user_id.bio,
           country: mentorship.user_id.location,
         }));
-        // console.log(sugggestions);
         this.setState({
           swipeCards: sugggestions,
           show: true,
@@ -132,27 +130,24 @@ export class mentorshipApp extends Component {
           is_mentor: !!userInfo.is_mentor,
         });
       })
-      .catch((err) => {
+      .catch((/* err */) => {
         errorToast('Something went wrong, please contact us.');
       });
   }
 
   messagesStep = () => {
-    const { step } = this.state;
     this.setState({
       step: 1,
     });
   };
 
   todoStep = () => {
-    const { step } = this.state;
     this.setState({
       step: 2,
     });
   };
 
   chatRedirectStep = (character) => {
-    const { step } = this.state;
     this.setState({
       openedChatCharacter: character,
       step: 3,
@@ -181,7 +176,7 @@ export class mentorshipApp extends Component {
         mentor_id: character.id,
       };
     }
-    console.log(mentorship);
+
     const updateUser = () => {
       const userUpdate = {
         has_mentorship: true,
@@ -203,21 +198,19 @@ export class mentorshipApp extends Component {
             'userInfo',
             JSON.stringify({ token, user: res.data.data }),
           );
-          console.log(res.data.data);
         })
-        .catch((err) => {
+        .catch((/* err */) => {
           errorToast('Something went wrong, please contact us.');
         });
     };
     axios
-      .post('${process.env.BASE_URI}/mentorship/', mentorship, {
+      .post(`${process.env.BASE_URI}/mentorship`, mentorship, {
         headers: {
           'Access-Control-Allow-Origin': '*',
           Authorization: `Bearer ${token}`,
         },
       })
-      .then((res) => {
-        console.log(res.data);
+      .then((/* res */) => {
         successToast('Mentorship Added!');
         updateUser();
         window.location.href = this.state.is_mentor
@@ -225,7 +218,7 @@ export class mentorshipApp extends Component {
           : 'mentorship/mentee';
       })
       .catch((err) => {
-        errorToast('Something went wrong, please contact us.');
+        errorToast('Something went wrong, please contact us.', err);
       });
   };
 

@@ -25,6 +25,7 @@ const PresalePreorder = () => (
             className="chain"
             src="/assets/images/presale/chain.png"
             style={{ width: '100px', height: '100px' }}
+            alt=""
           />
           <div className="button2">
             <span style={{ fontSize: '2rem' }}> 0 $MINORITY RESERVED</span>
@@ -90,7 +91,10 @@ const PresalePreorder = () => (
         </div>
       </div>
       <div className="image-container">
-        <img src="/assets/images/presale/minorityTOKEN.png" />
+        <img
+          src="/assets/images/presale/minorityTOKEN.png"
+          alt="minorityToken"
+        />
       </div>
     </div>
     <div className="component-buttons">
@@ -101,7 +105,7 @@ const PresalePreorder = () => (
       <div className="contract yellow-btn">CONTRACT</div>
     </div>
     <div className="tokenamics-chart">
-      <img src="/assets/images/presale/token-chart.png" />
+      <img src="/assets/images/presale/token-chart.png" alt="token_chart" />
     </div>
     <div className="token">
       <div className="token-title">TOKEN THAT GIVES BACK</div>
@@ -115,7 +119,10 @@ const PresalePreorder = () => (
       </div>
     </div>
     <div className="image-content">
-      <img src="/assets/images/presale/transactional-burn-tax.png" />
+      <img
+        src="/assets/images/presale/transactional-burn-tax.png"
+        alt="transactional-burn-tax"
+      />
     </div>
     <>
       <div className="create-account">
@@ -136,7 +143,10 @@ const PresalePreorder = () => (
         <div className="testimonial1">
           <div className="inner-container">
             <div className="avatar-image">
-              <img src="/assets/images/presale/svga group humanwrap move.png" />
+              <img
+                src="/assets/images/presale/svga group humanwrap move.png"
+                alt="group_humanwrap_move"
+              />
             </div>
             <div className="inner-text">
               “Minority for a penny? A Majority get many.
@@ -155,14 +165,20 @@ const PresalePreorder = () => (
               <div className="user-name">-Concerned citizen</div>
             </div>
             <div className="avatar-image2">
-              <img src="/assets/images/presale/svga group humanwrap (1).png" />
+              <img
+                src="/assets/images/presale/svga group humanwrap (1).png"
+                alt="group_humanwrap_1"
+              />
             </div>
           </div>
         </div>
         <div className="testimonial1">
           <div className="inner-container">
             <div className="avatar-image">
-              <img src="/assets/images/presale/svga group humanwrap.png" />
+              <img
+                src="/assets/images/presale/svga group humanwrap.png"
+                alt="group_humanwrap"
+              />
             </div>
             <div className="inner-text">
               I’m a minority, & I be tokin’. I support the movement and what you
@@ -186,14 +202,20 @@ const PresalePreorder = () => (
               </div>
             </div>
             <div className="avatar-image2">
-              <img src="/assets/images/presale/svga group humanwrap move (2).png" />
+              <img
+                src="/assets/images/presale/svga group humanwrap move (2).png"
+                alt="group_humanwrap_move_2"
+              />
             </div>
           </div>
         </div>
         <div className="testimonial1">
           <div className="inner-container">
             <div className="avatar-image">
-              <img src="/assets/images/presale/svga group humanwrap move (1).png" />
+              <img
+                src="/assets/images/presale/svga group humanwrap move (1).png"
+                alt="group_humanwrap_move_1"
+              />
             </div>
             <div className="inner-text">
               Won’t be the first time $minority made it to the moon.

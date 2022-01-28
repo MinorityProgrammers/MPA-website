@@ -2,11 +2,11 @@ import React, { useState, useRef } from 'react';
 import Layout from '../components/Layout';
 import Defisummer from '../components/defisummer';
 import HomepageNav from '../components/homepage/HomepageNav';
-import { useDetectOutsideClick } from '../components/UseDetectOutsideClick';
+import useDetectOutsideClick from '../components/UseDetectOutsideClick';
 
 import Footer from '../components/Footer';
 
-const DefisummerHome = function () {
+const DefisummerHome = () => {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef(null);
   const navBarRef = useRef();

@@ -34,9 +34,8 @@ const CreateTask = () => {
     await setSelectedValue(Array.isArray(e) ? e.map((user) => user.value) : []);
   };
 
-  const handleExpand = () => {
-    console.log('you have assigned to the task');
-  };
+  const handleExpand = () => {};
+
   const handleUpload = () => {
     const readyTask = {
       description,
@@ -49,7 +48,6 @@ const CreateTask = () => {
         body: JSON.stringify({ readyTask }),
       })
         .then((res) => res.json())
-        .then((data) => console.log(data))
         .catch((err) => console.log(err));
     }, []);
   };
@@ -68,26 +66,32 @@ const CreateTask = () => {
             <img
               src="/assets/images/project/riflag.png"
               className="tw-h-8 tw-w-8 tw-place-self-center tw-ml-2 tw-mb-4"
+              alt="riflag"
             />
             <img
               src="/assets/images/project/clipboard.png"
               className="tw-h-8 tw-w-8 tw-place-self-center tw-ml-2 tw-mb-4"
+              alt="clipboard"
             />
             <img
               src="/assets/images/project/clip.png"
               className="tw-h-8 tw-w-8 tw-place-self-center tw-ml-2 tw-mb-4"
+              alt="clip"
             />
             <img
               src="/assets/images/project/sandclock.png"
               className="tw-h-8 tw-w-8 tw-place-self-center tw-ml-2 tw-mb-4"
+              alt="sandclock"
             />
             <img
               src="/assets/images/project/datastack.png"
               className="tw-h-8 tw-w-8 tw-place-self-center tw-ml-2 tw-mb-4"
+              alt="datastack"
             />
             <img
               src="/assets/images/project/eyeplus.png"
               className="tw-h-9 tw-w-13 tw-place-self-center tw-ml-2 tw-mb-4"
+              alt="eyeplus"
             />
           </div>
           <div className="tw-flex tw-justify-evenly">
@@ -111,6 +115,7 @@ const CreateTask = () => {
                 onClick={handleAssignTask}
                 src="/assets/images/project/people.png"
                 className="tw-h-8 tw-w-8 tw-place-self-center tw-cursor-pointer tw-ml-3 tw-mb-1"
+                alt="people"
               />
               {open && (
                 <div className="tw-flex-col tw-m-1 tw--mb-32 tw-bg-blue-900 tw-absolute tw-z-20">
@@ -118,10 +123,12 @@ const CreateTask = () => {
                     onClick={handleExpand}
                     src={loggedInUser || '/assets/images/project/people.png'}
                     className="tw-h-8 tw-w-8 tw-place-self-center tw-cursor-pointer tw--mt-18 tw-ml-2 tw-mb-1"
+                    alt="people"
                   />
                   <img
                     src={loggedInUser || '/assets/images/project/people.png'}
                     className="tw-h-8 tw-w-8 tw-place-self-center tw--mt-3 tw-ml-2 tw-mb-1"
+                    alt="people"
                   />
                 </div>
               )}
@@ -142,6 +149,7 @@ const CreateTask = () => {
                 onClick={handleSubtask}
                 src="/assets/images/project/plus.png"
                 className="tw-h-8 tw-cursor-pointer tw-w-8 tw-place-self-center tw-ml-2 tw-mb-4"
+                alt="plus"
               />
               <p className="tw-ml-2">Add Subtask</p>
             </div>
@@ -162,6 +170,7 @@ const CreateTask = () => {
                 onClick={handleOpenDefinition}
                 src="/assets/images/project/plus.png"
                 className="tw-h-8 tw-cursor-pointer tw-w-8 tw-place-self-center tw-ml-2 tw-mb-4"
+                alt="plus"
               />
             </div>
             {openDefinition && (
@@ -189,6 +198,7 @@ const CreateTask = () => {
           <div />
           <div className="tw-mr-16 tw-p-16">
             <button
+              type="button"
               onClick={handleUpload}
               className="tw-text-white tw-text-xl tw-rounded tw-h-10 tw-w-36 tw-mt-4 tw-bg-indigo-900"
             >

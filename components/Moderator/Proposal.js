@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { FaSortUp, FaSortDown } from 'react-icons/fa';
 import Moment from 'react-moment';
 
-const Proposal = function ({ proposal }) {
+const Proposal = ({ proposal }) => {
   const [reply, setReply] = useState();
   const [views, setViews] = useState({ data: { data: [] } });
   const [upVotes, setUpVotes] = useState({ data: { data: 0 } });
@@ -27,11 +27,14 @@ const Proposal = function ({ proposal }) {
   // Views _______________
 
   useEffect(() => {
-    const res = axios.get(`${process.env.BASE_URI}/proposalViews/userProposalView`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
+    const res = axios.get(
+      `${process.env.BASE_URI}/proposalViews/userProposalView`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       },
-    });
+    );
     res.then((data) => setViews(data));
   }, [proposal._id]);
 
@@ -40,11 +43,14 @@ const Proposal = function ({ proposal }) {
   // upVotes _______________
 
   useEffect(() => {
-    const res = axios.get(`${process.env.BASE_URI}/upVotes/proposalUpvote/${proposal._id}`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
+    const res = axios.get(
+      `${process.env.BASE_URI}/upVotes/proposalUpvote/${proposal._id}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       },
-    });
+    );
     res.then((data) => setUpVotes(data));
   }, []);
 
@@ -53,11 +59,14 @@ const Proposal = function ({ proposal }) {
   // downVotes _______________
 
   useEffect(() => {
-    const res = axios.get(`${process.env.BASE_URI}/downVotes/proposalDownvote/${proposal._id}`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
+    const res = axios.get(
+      `${process.env.BASE_URI}/downVotes/proposalDownvote/${proposal._id}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       },
-    });
+    );
     res.then((data) => setDownVotes(data));
   }, []);
 
@@ -70,9 +79,7 @@ const Proposal = function ({ proposal }) {
     >
       <div className="s-p-title tw-mb-3">
         <div>
-          <h3 className="tw-text-2xl tw-font-semibold">
-            {proposal.title}
-          </h3>
+          <h3 className="tw-text-2xl tw-font-semibold">{proposal.title}</h3>
           <p>
             <span className="tw-mr-3">
               <strong>Type:</strong>
@@ -83,7 +90,7 @@ const Proposal = function ({ proposal }) {
             <span>
               <strong>Category:</strong>
               {' '}
-              {proposal.Category ? proposal.Category : 'Incubator' }
+              {proposal.Category ? proposal.Category : 'Incubator'}
             </span>
           </p>
         </div>
@@ -138,8 +145,7 @@ const Proposal = function ({ proposal }) {
             {' '}
             <span className="tw-font-bold">Elected</span>
             {' '}
-            this
-            proposal on
+            this proposal on
             {' '}
             <br />
             <span>
@@ -152,7 +158,7 @@ const Proposal = function ({ proposal }) {
       </div>
       <div className="btn-p tw-self-center">
         <p className="">
-          <button className="elect-p-btn tw-shadow-lg">
+          <button type="button" className="elect-p-btn tw-shadow-lg">
             View Proposal
           </button>
         </p>
@@ -165,7 +171,6 @@ const Proposal = function ({ proposal }) {
         </p>
       </div>
     </div>
-
   );
 };
 

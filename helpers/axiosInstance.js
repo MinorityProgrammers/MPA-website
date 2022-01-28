@@ -15,7 +15,7 @@ export default (history = null) => {
   });
 
   axiosInstance.interceptors.response.use(
-    (response) => new Promise((resolve, reject) => {
+    (response) => new Promise((resolve) => {
       resolve(response);
     }),
     (error) => {
@@ -38,6 +38,7 @@ export default (history = null) => {
           reject(error);
         });
       }
+      return error;
     },
   );
 

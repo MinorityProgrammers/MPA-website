@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 const PresaleAmount = () => {
   const divisor = 10000;
-  const [price, setPrice] = useState(69000);
+  const [price] = useState(69000);
   const [softCap] = useState('100,000');
   const [hardCap] = useState('1,000,000');
   const percentage = price / divisor;

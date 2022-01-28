@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import styles from './sidenav.module.css';
@@ -26,13 +26,14 @@ const menu = [
   },
 ];
 
-const Content = function (props) {
+const Content = (props) => {
+  const { children } = props;
   const router = useRouter();
   return (
     <div className={styles.root}>
       <section className={styles.container}>
-        {menu.map((item, index) => (
-          <Link key={index} href={item.path}>
+        {menu.map((item) => (
+          <Link key={item.title} href={item.path}>
             <div className={styles.home}>
               <a className={router.pathname === item.path ? styles.active : ''}>
                 <i className={item.class} />
@@ -43,7 +44,7 @@ const Content = function (props) {
         ))}
       </section>
       <main className={styles.main_content}>
-        <div className={styles.child_content}>{props.children}</div>
+        <div className={styles.child_content}>{children}</div>
       </main>
     </div>
   );

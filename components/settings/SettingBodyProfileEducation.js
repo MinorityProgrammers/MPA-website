@@ -2,12 +2,12 @@ import React, { useState, useEffect, useContext } from 'react';
 import FormData from 'form-data';
 import { useRouter } from 'next/router';
 import { GlobalContext } from '../../contexts/provider';
-import { updateProfile } from '../../contexts/actions/profile/updateProfile';
-import { all } from '../../contexts/utils/settings/settingsInputFields';
+import updateProfile from '../../contexts/actions/profile/updateProfile';
+import all from '../../contexts/utils/settings/settingsInputFields';
 import CreateSettingInput from './CreateSettingInput';
 import SettingBody from './SettingBody';
 
-const SettingBodyProfileEducation = function ({ settingsPage, data, userID }) {
+const SettingBodyProfileEducation = ({ settingsPage, data, userID }) => {
   const router = useRouter();
 
   const inputFields = [
@@ -21,16 +21,15 @@ const SettingBodyProfileEducation = function ({ settingsPage, data, userID }) {
 
   const initialInputState = {};
 
-  inputFields.forEach(
-    (field) => (initialInputState[field.name] = ''),
-    // ex. {someInputFieldName: "inputFieldValue", ...}
-  );
+  inputFields.forEach((field) => {
+    initialInputState[field.name] = '';
+  });
 
   const [inputStates, setInputStates] = useState(initialInputState);
 
   useEffect(() => {
-    inputFields.forEach(
-      (field) => (initialInputState[field.name] = field.name === 'enteredHighSchoolYear'
+    inputFields.forEach((field) => {
+      initialInputState[field.name] = field.name === 'enteredHighSchoolYear'
         ? data?.enteredHighSchoolYear
           ? new Date(data.enteredHighSchoolYear)
           : ''
@@ -38,21 +37,14 @@ const SettingBodyProfileEducation = function ({ settingsPage, data, userID }) {
           ? data?.expectedGraduationYear
             ? new Date(data.expectedGraduationYear)
             : ''
-          : data?.[field.name] || ''),
-    );
+          : data?.[field.name] || '';
+    });
 
     setInputStates(initialInputState);
   }, [data]);
 
   // update userData
-  const {
-    profileDispatch,
-    profileState: {
-      profile: {
-        profileLoading, profileError, profileData, profileIsUpdated,
-      },
-    },
-  } = useContext(GlobalContext);
+  const { profileDispatch } = useContext(GlobalContext);
 
   const formData = new FormData();
   Object.keys(inputStates).forEach((inputName) => {
@@ -68,16 +60,19 @@ const SettingBodyProfileEducation = function ({ settingsPage, data, userID }) {
     updateProfile(userID, formData)(profileDispatch);
 
     const slug = data?.userName;
-    slug && router.push(`/user/${slug}`);
+    if (slug) {
+      router.push(`/user/${slug}`);
+    }
   };
 
   const closeProfileSetup = () => {
     // discard changes
     const slug = data?.userName;
-    slug && router.push(`/user/${slug}`);
+    if (slug) {
+      router.push(`/user/${slug}`);
+    }
   };
 
-  // console.log(inputStates);
   return (
     <SettingBody
       settingsPage={settingsPage}
@@ -96,7 +91,7 @@ const SettingBodyProfileEducation = function ({ settingsPage, data, userID }) {
             all.expectedGraduationYearField,
             all.studentStatusField,
             all.degreeField,
-          ].map((field, key) => (
+          ].map((field) => (
             <CreateSettingInput
               name={field.name}
               type={field.type}
@@ -109,7 +104,7 @@ const SettingBodyProfileEducation = function ({ settingsPage, data, userID }) {
               setValue={(value) => {
                 handleChange(field.name, value);
               }}
-              key={key}
+              key={field.name}
             />
           ))
         }

@@ -12,7 +12,7 @@ import {
   proficiencies,
 } from '../fields';
 
-export const all = {
+const all = {
   // profile page details
   firstNameField: {
     name: 'firstName',
@@ -332,3 +332,5 @@ export const all = {
     required: false,
   },
 };
+
+export default all;

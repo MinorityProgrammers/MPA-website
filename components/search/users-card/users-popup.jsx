@@ -1,22 +1,38 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import styles from './users-popup.module.css';
 
-const UsersPopup = function ({ data, togglePopup }) {
+const UsersPopup = ({ data, togglePopup }) => {
   const [isImage, setImage] = useState(false);
 
   const {
-    profilePicture, firstName, lastName, role, skills, passions, programmingSkills, userName, isMentor, isMentee,
+    profilePicture,
+    firstName,
+    lastName,
+    role,
+    skills,
+    passions,
+    programmingSkills,
+    userName,
+    isMentor,
+    isMentee,
   } = data;
 
   return (
     <div className={styles.container}>
-
       <div className={styles.info}>
         <div className={styles.imageContainer}>
-          {
-            !isImage ? <div className={styles.imagePlaceholder}><i className="fas fa-user" /></div> : null
-          }
-          <img style={{ display: isImage ? 'inline-block' : 'hidden' }} className={styles.image} src={profilePicture} onLoad={() => setImage(true)} alt="user" />
+          {!isImage ? (
+            <div className={styles.imagePlaceholder}>
+              <i className="fas fa-user" />
+            </div>
+          ) : null}
+          <img
+            style={{ display: isImage ? 'inline-block' : 'hidden' }}
+            className={styles.image}
+            src={profilePicture}
+            onLoad={() => setImage(true)}
+            alt="user"
+          />
         </div>
         <div className={styles.detailsContainer}>
           <div className={styles.title}>Details</div>
@@ -32,14 +48,25 @@ const UsersPopup = function ({ data, togglePopup }) {
           </div>
         </div>
 
-        <i onClick={() => togglePopup(false)} className={`${styles.closePopup} fas fa-times`} />
+        <i
+          onClick={() => togglePopup(false)}
+          className={`${styles.closePopup} fas fa-times`}
+        />
       </div>
 
       <div className={styles.otherInfo}>
         <div className={styles.title}>Other Information</div>
         <div className={styles.mentorship}>
-          <div className={`${styles.mentor} ${isMentor ? styles.isMentor : null}`}>Mentor</div>
-          <div className={`${styles.mentee} ${isMentee ? styles.isMentee : null}`}>Mentee</div>
+          <div
+            className={`${styles.mentor} ${isMentor ? styles.isMentor : null}`}
+          >
+            Mentor
+          </div>
+          <div
+            className={`${styles.mentee} ${isMentee ? styles.isMentee : null}`}
+          >
+            Mentee
+          </div>
         </div>
 
         <div className={styles.role}>
@@ -50,36 +77,29 @@ const UsersPopup = function ({ data, togglePopup }) {
         <div className={styles.skills}>
           <div className={styles.title}>Skills</div>
           <ul>
-            {
-              skills.map((skill, idx) => (
-                <li key={idx}>{skill}</li>
-              ))
-            }
+            {skills.map((skill) => (
+              <li key={skill}>{skill}</li>
+            ))}
           </ul>
         </div>
 
         <div className={styles.programmingSkills}>
           <div className={styles.title}>Programming Skills</div>
           <ul>
-            {
-              programmingSkills.map((skill, idx) => (
-                <li key={idx}>{skill}</li>
-              ))
-            }
+            {programmingSkills.map((skill) => (
+              <li key={skill}>{skill}</li>
+            ))}
           </ul>
         </div>
 
         <div className={styles.passion}>
           <div className={styles.title}>Passion</div>
           <div className={styles.values}>
-            {
-              passions.map((passio, idx) => (
-                <span key={idx}>{passio}</span>
-              ))
-            }
+            {passions.map((passio) => (
+              <span key={passio}>{passio}</span>
+            ))}
           </div>
         </div>
-
       </div>
     </div>
   );

@@ -1,9 +1,6 @@
-export const findUserNames = (users) => {
-  const allUserNames = [];
-
-  users.map((user) => {
-    allUserNames.push(user.userName);
-  });
-
+const findUserNames = (users) => {
+  const allUserNames = users.map((user) => user.userName);
   return allUserNames;
 };
+
+export default findUserNames;

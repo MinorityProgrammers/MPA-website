@@ -92,7 +92,9 @@ const InterestForm = function ({ token }) {
       const newSectionsArray = Object.keys(newSections);
       let id = null;
       newSectionsArray.forEach((_, idx, arr) => {
-        newSections[arr[idx]] && (id = idx);
+        if (newSections[arr[idx]]) {
+          id = idx;
+        }
       });
       newSections[newSectionsArray[id]] = false;
       newSections[newSectionsArray[id + 1]] = true;
@@ -107,7 +109,9 @@ const InterestForm = function ({ token }) {
     const newSectionsArray = Object.keys(newSections);
     let id = null;
     newSectionsArray.forEach((_, idx, arr) => {
-      newSections[arr[idx]] && (id = idx);
+      if (newSections[arr[idx]]) {
+        id = idx;
+      }
     });
     newSections[newSectionsArray[id]] = false;
     newSections[newSectionsArray[id - 1]] = true;
@@ -120,7 +124,8 @@ const InterestForm = function ({ token }) {
     const result = (validateForm(values));
     if (Object.keys(result).length === 0) {
       let _values = { ...values };
-      for (const key in _values) {
+
+      Object.keys(_values).forEach((key) => {
         if (key === 'passion' || key === 'interest') {
           const objToArr = _values[key].map((val) => {
             if (typeof val === 'object') {
@@ -130,7 +135,7 @@ const InterestForm = function ({ token }) {
           });
           _values = { ..._values, [key]: objToArr };
         }
-      }
+      });
 
       if (token) {
         axios.post(`${process.env.BASE_URI}/chapter`, {
@@ -140,7 +145,7 @@ const InterestForm = function ({ token }) {
             Authorization: ` Bearer ${token}`,
           },
         })
-          .then((response) => {
+          .then(() => {
             setSubmitError('');
             successToast('Your chapter was successfully created');
             toggleSubmit(true);
@@ -335,7 +340,9 @@ const InterestForm = function ({ token }) {
                   </section>
 
                   <section className={styles.question} style={{ display: sections.section_4 ? 'block' : 'none' }}>
-                    <label className={styles.label}>4. What is your reason for wanting to start a chapter?</label>
+                    <label className={styles.label}>
+                      4. What is your reason for wanting to start a chapter?
+                    </label>
                     <textarea
                       name="reasons"
                       value={values.reasons}
@@ -349,7 +356,9 @@ const InterestForm = function ({ token }) {
                   </section>
 
                   <section className={styles.question} style={{ display: sections.section_5 ? 'block' : 'none' }}>
-                    <label className={styles.label}>5. What kind of support would you like for starting a chapter?</label>
+                    <label className={styles.label}>
+                      5. What kind of support would you like for starting a chapter?
+                    </label>
                     <textarea
                       name="support"
                       value={values.support}
@@ -363,7 +372,9 @@ const InterestForm = function ({ token }) {
                   </section>
 
                   <section className={styles.question} style={{ display: sections.section_6 ? 'block' : 'none' }}>
-                    <label className={styles.label}>6. How many interested members do you have right now?</label>
+                    <label className={styles.label}>
+                      6. How many interested members do you have right now?
+                    </label>
                     <input
                       name="interestedMembers"
                       type="number"

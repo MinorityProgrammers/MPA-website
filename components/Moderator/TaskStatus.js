@@ -3,7 +3,7 @@ import { RiFlag2Fill } from 'react-icons/ri';
 import { BsThreeDotsVertical } from 'react-icons/bs';
 import electProposal from './electProposal.json';
 
-const TaskStatus = function () {
+const TaskStatus = () => {
   const [proposals, setProposals] = useState([]);
 
   useEffect(() => {
@@ -74,34 +74,33 @@ const TaskStatus = function () {
   );
 };
 
-const ProposalList = function ({ id, sDes, flag }) {
-  return (
-    <div className="task-card tw-col-span-1 tw-mr-2 tw-mb-2">
-      <div className="task-des tw-flex">
-        <p className="tw-mr-3">{sDes}</p>
-        <p>
-          <img src="/assets/images/moderator/user.png" alt="" />
-        </p>
+const ProposalList = ({ sDes, flag }) => (
+  <div className="task-card tw-col-span-1 tw-mr-2 tw-mb-2">
+    <div className="task-des tw-flex">
+      <p className="tw-mr-3">{sDes}</p>
+      <p>
+        <img src="/assets/images/moderator/user.png" alt="" />
+      </p>
+    </div>
+    <div className="task-date tw-flex tw-items-center tw-mt-4">
+      <p className={`flag ${flag}`}>
+        <RiFlag2Fill />
+      </p>
+      <p className=" tw-text-center tw-text-sm tw-text-black">May 27</p>
+    </div>
+    <div className="tw-flex tw-justify-between tw-mt-2">
+      <div className="tw-text-blue-800">
+        <p className=" design tw-text-sm tw-mb-3">Design</p>
+        <p className=" develop tw-text-sm">Develop</p>
       </div>
-      <div className="task-date tw-flex tw-items-center tw-mt-4">
-        <p className={`flag ${flag}`}>
-          <RiFlag2Fill />
+      <div className="more-option tw-flex tw-self-center tw-h-auto">
+        <p className="tw-text-blue-800">More Options</p>
+        <p className="tw-text-black">
+          <BsThreeDotsVertical />
         </p>
-        <p className=" tw-text-center tw-text-sm tw-text-black">May 27</p>
-      </div>
-      <div className="tw-flex tw-justify-between tw-mt-2">
-        <div className="tw-text-blue-800">
-          <p className=" design tw-text-sm tw-mb-3">Design</p>
-          <p className=" develop tw-text-sm">Develop</p>
-        </div>
-        <div className="more-option tw-flex tw-self-center tw-h-auto">
-          <p className="tw-text-blue-800">More Options</p>
-          <p className="tw-text-black">
-            <BsThreeDotsVertical />
-          </p>
-        </div>
       </div>
     </div>
-  );
-};
+  </div>
+);
+
 export default TaskStatus;

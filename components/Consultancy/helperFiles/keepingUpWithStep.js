@@ -1,11 +1,11 @@
-import { Fragment } from 'react';
+import React from 'react';
 
 const totalSteps = 9;
-const KeepingUpWithStep = function ({ selected, marginTop = 0 }) {
-  const calculateLinePercentage = () => (selected === 0 ? 0 : ((selected - 1) / (totalSteps - 1)) * 100);
-
+const KeepingUpWithStep = ({ selected, marginTop = 0 }) => {
   const percentageOfBlueLine = Number.isInteger(selected)
-    ? calculateLinePercentage()
+    ? selected === 0
+      ? 0
+      : ((selected - 1) / (totalSteps - 1)) * 100
     : '';
 
   return (
@@ -20,11 +20,11 @@ const KeepingUpWithStep = function ({ selected, marginTop = 0 }) {
         >
           <div className="keepingUpItemContainer">
             {[
-              ...(function () {
+              ...(() => {
                 const range = [];
-                for (let i = 0; i < totalSteps; i++) range.push(i + 1);
+                for (let i = 0; i < totalSteps; i += 1) range.push(i + 1);
                 return range;
-              }()),
+              })(),
             ].map((index) => (
               <span
                 key={index}

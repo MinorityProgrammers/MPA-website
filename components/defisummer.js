@@ -63,7 +63,7 @@ const Defisummer = ({ navBarRef }) => {
                 referrerPolicy="no-referrer"
                 rel="noreferrer"
               >
-                <button>Signup as a speaker</button>
+                <button type="button">Signup as a speaker</button>
               </a>
 
               <a
@@ -72,7 +72,7 @@ const Defisummer = ({ navBarRef }) => {
                 referrerPolicy="no-referrer"
                 rel="noreferrer"
               >
-                <button>Pre-Register</button>
+                <button type="button">Pre-Register</button>
               </a>
 
               <a
@@ -81,7 +81,7 @@ const Defisummer = ({ navBarRef }) => {
                 referrerPolicy="no-referrer"
                 rel="noreferrer"
               >
-                <button>Go to live - event</button>
+                <button type="button">Go to live - event</button>
               </a>
             </section>
             {/* first section */}

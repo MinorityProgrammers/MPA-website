@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react';
+/* eslint-disable no-undef */
+import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import styles from '../../styles/MentorCSS/Dashboard.module.css';
@@ -49,7 +50,6 @@ const MentorDashboard = ({
   useEffect(() => {
     window.addEventListener('resize', () => {
       if ($(window).width() >= 650) {
-        console.log(active);
         setActive(false);
       }
     });
@@ -115,7 +115,7 @@ const MentorDashboard = ({
           <div className={styles.mentors}>
             <div
               className={
-                mentorshipData.mentorship.mentee_id._id == currentMentor
+                mentorshipData.mentorship.mentee_id._id === currentMentor
                   ? styles.mentorRowE
                   : styles.mentorRow
               }
@@ -123,7 +123,7 @@ const MentorDashboard = ({
             >
               <div
                 className={
-                  mentorshipData.mentorship.mentee_id._id == currentMentor
+                  mentorshipData.mentorship.mentee_id._id === currentMentor
                     ? styles.sideBar
                     : styles.hide
                 }

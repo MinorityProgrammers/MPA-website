@@ -2,13 +2,13 @@ import React, { useState, useEffect, useContext } from 'react';
 import FormData from 'form-data';
 import { useRouter } from 'next/router';
 import { GlobalContext } from '../../contexts/provider';
-import { updateProfile } from '../../contexts/actions/profile/updateProfile';
-import { all } from '../../contexts/utils/settings/settingsInputFields';
+import updateProfile from '../../contexts/actions/profile/updateProfile';
+import all from '../../contexts/utils/settings/settingsInputFields';
 import styles from '../../styles/settings/settingBodySecurityPrivacy.module.css';
 import CreateSettingInput from './CreateSettingInput';
 import SettingBody from './SettingBody';
 
-const SettingBodySecurityPrivacy = function ({ settingsPage, data, userID }) {
+const SettingBodySecurityPrivacy = ({ settingsPage, data, userID }) => {
   const router = useRouter();
 
   const inputFields = [
@@ -20,30 +20,22 @@ const SettingBodySecurityPrivacy = function ({ settingsPage, data, userID }) {
 
   const initialInputState = {};
 
-  inputFields.forEach(
-    (field) => (initialInputState[field.name] = ''),
-    // ex. {someInputFieldName: "inputFieldValue", ...}
-  );
+  inputFields.forEach((field) => {
+    initialInputState[field.name] = '';
+  });
 
   const [inputStates, setInputStates] = useState(initialInputState);
 
   useEffect(() => {
-    inputFields.forEach(
-      (field) => (initialInputState[field.name] = data?.[field.name] || ''),
-    );
+    inputFields.forEach((field) => {
+      initialInputState[field.name] = data?.[field.name] || '';
+    });
 
     setInputStates(initialInputState);
   }, [data]);
 
   // update userData
-  const {
-    profileDispatch,
-    profileState: {
-      profile: {
-        profileLoading, profileError, profileData, profileIsUpdated,
-      },
-    },
-  } = useContext(GlobalContext);
+  const { profileDispatch } = useContext(GlobalContext);
 
   const formData = new FormData();
   Object.keys(inputStates).forEach((inputName) => {
@@ -59,16 +51,19 @@ const SettingBodySecurityPrivacy = function ({ settingsPage, data, userID }) {
     updateProfile(userID, formData)(profileDispatch);
 
     const slug = data?.userName;
-    slug && router.push(`/user/${slug}`);
+    if (slug) {
+      router.push(`/user/${slug}`);
+    }
   };
 
   const closeProfileSetup = () => {
     // discard changes
     const slug = data?.userName;
-    slug && router.push(`/user/${slug}`);
+    if (slug) {
+      router.push(`/user/${slug}`);
+    }
   };
 
-  // console.log(inputStates)
   return (
     <SettingBody
       settingsPage={settingsPage}
@@ -85,7 +80,7 @@ const SettingBodySecurityPrivacy = function ({ settingsPage, data, userID }) {
             all.birthdayVisibilityField,
             all.locationVisibilityField,
             all.emailVisibilityField,
-          ].map((field, key) => (
+          ].map((field) => (
             <CreateSettingInput
               name={field.name}
               type={field.type}
@@ -96,7 +91,7 @@ const SettingBodySecurityPrivacy = function ({ settingsPage, data, userID }) {
               setValue={(value) => {
                 handleChange(field.name, value);
               }}
-              key={key}
+              key={field.name}
             />
           ))
         }

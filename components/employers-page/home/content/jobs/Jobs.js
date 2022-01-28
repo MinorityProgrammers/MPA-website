@@ -1,37 +1,10 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 import styles from './jobs.module.css';
 import Card from '../../Card/Card';
 
-const contents = [
-  {
-    title: 'Front End Developer',
-    status: '21',
-    date: '4/12/2021',
-    progress: 'in Progress',
-  },
-  {
-    title: 'Front End Developer',
-    status: '21',
-    date: '4/12/2021',
-    progress: 'in Progress',
-  },
-  {
-    title: 'Front End Developer',
-    status: '21',
-    date: '4/12/2021',
-    progress: 'in Progress',
-  },
-  {
-    title: 'Front End Developer',
-    status: '21',
-    date: '4/12/2021',
-    progress: 'in Progress',
-  },
-];
-
-const Jobs = function ({ load }) {
+const Jobs = ({ load }) => {
   const [jobs, setJobs] = useState([]);
   useEffect(() => {
     const userToken = window.localStorage.getItem('jwtToken');
@@ -55,7 +28,7 @@ const Jobs = function ({ load }) {
       <hr className={styles.horizontal} />
       {jobs.length >= 1 ? (
         jobs.slice(0, load).map((item, index) => (
-          <div key={index} className={styles.card}>
+          <div key={`${index + 1}`} className={styles.card}>
             <Card
               title={item.job_title}
               status={item.job_title.length}

@@ -1,16 +1,19 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React from 'react';
 import { useRouter } from 'next/router';
 import stylesOverview from '../../styles/settings/settingBodyOverview.module.css';
 import styles from '../../styles/settings/settingBodyWalletMyWallet.module.css';
 import SettingBody from './SettingBody';
 
-const SettingBodyWalletMyWallet = function ({ settingsPage, data, userID }) {
+const SettingBodyWalletMyWallet = ({ settingsPage, data, userID }) => {
+  const router = useRouter();
   const handleSubmit = () => {};
 
   const closeProfileSetup = () => {
     // discard changes
     const slug = data?.userName;
-    slug && router.push(`/user/${slug}`);
+    if (slug) {
+      router.push(`/user/${slug}`);
+    }
   };
 
   const wallets = [
@@ -80,6 +83,7 @@ const SettingBodyWalletMyWallet = function ({ settingsPage, data, userID }) {
                     {wallet.isLinked ? (
                       <div className={styles.linked}>
                         <button
+                          type="button"
                           className={styles.aAddressWrap}
                           onClick={(e) => {
                             e.preventDefault();
@@ -97,6 +101,7 @@ const SettingBodyWalletMyWallet = function ({ settingsPage, data, userID }) {
                           </div>
                         </button>
                         <button
+                          type="button"
                           className={styles.unlink}
                           onClick={(e) => {
                             e.preventDefault();
@@ -108,6 +113,7 @@ const SettingBodyWalletMyWallet = function ({ settingsPage, data, userID }) {
                       </div>
                     ) : (
                       <button
+                        type="button"
                         className={styles.link}
                         onClick={(e) => {
                           e.preventDefault();
@@ -143,6 +149,7 @@ const SettingBodyWalletMyWallet = function ({ settingsPage, data, userID }) {
             </div>
             <div className={styles.btns}>
               <button
+                type="button"
                 className={styles.btnBuy}
                 onClick={(e) => {
                   e.preventDefault();
@@ -151,6 +158,7 @@ const SettingBodyWalletMyWallet = function ({ settingsPage, data, userID }) {
                 Buy
               </button>
               <button
+                type="button"
                 className={styles.btnSell}
                 onClick={(e) => {
                   e.preventDefault();
@@ -177,6 +185,7 @@ const SettingBodyWalletMyWallet = function ({ settingsPage, data, userID }) {
             </div>
             <div className={styles.btns}>
               <button
+                type="button"
                 className={styles.btnBuy}
                 onClick={(e) => {
                   e.preventDefault();
@@ -185,6 +194,7 @@ const SettingBodyWalletMyWallet = function ({ settingsPage, data, userID }) {
                 Buy
               </button>
               <button
+                type="button"
                 className={styles.btnSell}
                 onClick={(e) => {
                   e.preventDefault();

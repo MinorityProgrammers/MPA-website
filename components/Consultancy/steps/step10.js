@@ -1,70 +1,19 @@
-import {
-  useRef, useState, useEffect, Fragment,
-} from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import Axios from 'axios';
 import QuestionContainer from '../helperFiles/questionContainer';
 import InputWithIcon from '../helperFiles/customInputTags/inputWithIcon';
 import ErrorPrint from '../helperFiles/errorPrint';
 import addQuestion from '../helperFiles/addQuestion';
+import getFormattedOutput from '../helperFiles/getFormattedOutput';
+import Radio from '../helperFiles/Radio';
+import Dependency from '../helperFiles/dependency';
 
-const getFormattedOutput = (questions, myEmail) => {
-  const prefix = 'question';
-  const getArray = (index, innerIndex) => questions[prefix + index][innerIndex];
-  return {
-    project_name: getArray(0, 0).answer,
-    industry: getArray(1, 0).answer,
-    project_budget: getArray(2, 0).answer,
-    budget_currency: getArray(2, 1).answer,
-    project_stacks: getArray(3, 2).answer,
-    PM_fullName: getArray(4, 0).answer?.otherInfo[0],
-    Agree_terms: true,
-    project_size: getArray(5, 0).answer,
-    project_details: getArray(3, 0).answer,
-    webiste: getArray(3, 1).answer,
-    project_tags: getArray(1, 1).answer,
-    PM_email: getArray(4, 0).answer?.otherInfo[1],
-    contact_email:
-      questions[prefix + 7].length === 2 ? getArray(7, 1).answer : myEmail,
-
-    launch_date: getArray(6, 0).answer,
-    pay_option: getArray(8, 0).answer.paymentMethod,
-  };
-};
-
-// AXIOS INSTANCE
 const axios = Axios.create({
   baseURL: `${process.env.BASE_URI}/service`,
 });
 
 const defaultChecked = 0;
-class dependency {
-  constructor(
-    label,
-    placeholder,
-    ref,
-    type,
-    validationFxn,
-    onInput = () => {},
-    correctLength,
-  ) {
-    this.label = label;
-    this.placeholder = placeholder;
-    this.ref = ref;
-    this.type = type;
-    this.validationFxn = validationFxn;
-    this.onInput = onInput;
-    this.maxLength = this.placeholder.length;
-    this.correctLength = correctLength;
-  }
-}
 
-class Radio {
-  constructor(label, id, dependencies = []) {
-    this.label = label;
-    this.id = `page10${id}`;
-    this.dependencies = dependencies;
-  }
-}
 function try_catch(fxn, invalid) {
   try {
     return fxn();
@@ -85,15 +34,11 @@ function basic_number_validation(value, correctLength) {
   const invalid = 'Incorrect entry';
   return try_catch(() => {
     const valid_arr = value.match(/[0-9]/g);
-    console.log(valid_arr, correctLength);
     if (valid_arr) {
       return valid_arr.length === correctLength ? '' : invalid;
     }
     return invalid;
   }, invalid);
-}
-function basic_date_validation() {
-  return '';
 }
 
 function createEntry(e) {
@@ -103,14 +48,14 @@ function createEntry(e) {
   if (matches) cursor -= matches.length;
   value = value.replace(/[^0-9]/g, '').substring(0, 16);
   let formatted = '';
-  for (let i = 0, n = value.length; i < n; i++) {
-    if (i && i % 4 == 0) {
+  for (let i = 0, n = value.length; i < n; i += 1) {
+    if (i && i % 4 === 0) {
       if (formatted.length <= cursor) cursor += 2;
       formatted += '  ';
     }
     formatted += value[i];
   }
-  if (formatted == e.target.value) return;
+  if (formatted === e.target.value) return;
   e.target.value = formatted;
   e.target.selectionEnd = cursor;
 }
@@ -121,20 +66,21 @@ function createDateEntry(e) {
   if (matches) cursor -= matches.length;
   value = value.replace(/[^0-9]/g, '').substring(0, 6);
   let formatted = '';
-  for (let i = 0, n = value.length; i < n; i++) {
-    if (i == 2) {
+  for (let i = 0, n = value.length; i < n; i += 1) {
+    if (i === 2) {
       if (formatted.length <= cursor) cursor += 1;
       formatted += '/';
     }
     formatted += value[i];
   }
-  if (formatted == e.target.value) return;
+  if (formatted === e.target.value) return;
   e.target.value = formatted;
   e.target.selectionEnd = cursor;
 }
-const Page10 = function ({
+
+const Page10 = ({
   step, setstep, questions, setQuestions, data,
-}) {
+}) => {
   const card_full_name = useRef();
   const card_number = useRef();
   const card_expiry_date = useRef();
@@ -156,21 +102,24 @@ const Page10 = function ({
       [
         'Credit Card/Debit Card',
         <div className="contain-label-second-part">
-          <img src="/assets/images/icons/kissclipart-mastercard-logo-png-clipart-mastercard-credit-card-4497856f6840bcae 1.png" />
-          <img src="/assets/images/icons/pngwing 1.png" />
+          <img
+            src="/assets/images/icons/kissclipart-mastercard-logo-png-clipart-mastercard-credit-card-4497856f6840bcae 1.png"
+            alt=""
+          />
+          <img src="/assets/images/icons/pngwing 1.png" alt="" />
           and more...
         </div>,
       ],
       'card',
       [
-        new dependency(
+        new Dependency(
           '* Card Owner',
           'Full Name',
           card_full_name,
           'text',
           basic_text_validation,
         ),
-        new dependency(
+        new Dependency(
           '* Card Number',
           '****  ****  ****  ****',
           card_number,
@@ -179,7 +128,7 @@ const Page10 = function ({
           createEntry,
           16,
         ),
-        new dependency(
+        new Dependency(
           '* Card Expiry Date',
           'mm/yyyy',
           card_expiry_date,
@@ -188,7 +137,7 @@ const Page10 = function ({
           createDateEntry,
           6,
         ),
-        new dependency(
+        new Dependency(
           '* Card Security Code (CVV2)',
           '***',
           card_security_code,
@@ -203,7 +152,7 @@ const Page10 = function ({
       [
         'Pay Pal',
         <div className="contain-label-second-part">
-          <img src="/assets/images/icons/pngaaa 1.png" />
+          <img src="/assets/images/icons/pngaaa 1.png" alt="" />
         </div>,
       ],
       'paypal',
@@ -214,7 +163,6 @@ const Page10 = function ({
 
   useEffect(() => {
     if (shouldSubmit) {
-      console.log(window.localStorage.getItem('jwtToken'));
       const config = {
         headers: {
           'Content-Type': 'application/json',
@@ -266,7 +214,7 @@ const Page10 = function ({
       return prevObj;
     });
   }
-  function validateAgreement(e) {
+  function validateAgreement() {
     setErrors((prev) => {
       const prevObj = { ...prev };
       prevObj.agreement[0] = agreement.current.checked
@@ -286,7 +234,7 @@ const Page10 = function ({
     }
     const dependency_arr = allRadios[checked].dependencies;
     const paymentInfo = {};
-    for (let i = 0; i < dependency_arr.length; i++) {
+    for (let i = 0; i < dependency_arr.length; i += 1) {
       if (errors.inputs[i][0] === undefined) {
         const validation = dependency_arr[i].validationFxn(
           dependency_arr[i].ref.current.value,
@@ -309,7 +257,6 @@ const Page10 = function ({
   function prevPage() {
     setstep((prev) => prev - 1);
   }
-  // let pop = "popup";
   function toggle() {
     const popup = document.getElementById('myPopup');
     popup.classList.toggle('show');
@@ -326,9 +273,9 @@ const Page10 = function ({
       marginBottom="1rem"
     >
       <div className="body">
-        A MPA project manager will translate you requirements to a PROJECT
-        QUOTE (budget, staffing, timeline, with a complete task break down and
-        vesting schedule). You would be charged a fee of $40 for this!
+        A MPA project manager will translate you requirements to a PROJECT QUOTE
+        (budget, staffing, timeline, with a complete task break down and vesting
+        schedule). You would be charged a fee of $40 for this!
         <table>
           <tbody>
             <tr>
@@ -360,7 +307,6 @@ const Page10 = function ({
         {serverError.length !== 0 ? (
           <div
             className="alert alert-danger"
-              // role="alert"
             style={{
               textAlign: 'left',
               fontWeight: '200',
@@ -368,7 +314,9 @@ const Page10 = function ({
             }}
           >
             <ul>
-              {serverError.map((error, index) => <li key={index}>{error}</li>)}
+              {serverError.map((error, index) => (
+                <li key={`error${index + 1}`}>{error}</li>
+              ))}
             </ul>
             <div
               style={{
@@ -387,7 +335,10 @@ const Page10 = function ({
           </div>
         ) : null}
         {allRadios.map((radio, index) => (
-          <div className="contain-options edit-payment-options" key={index}>
+          <div
+            className="contain-options edit-payment-options"
+            key={`radio${index + 1}`}
+          >
             <div className="wrap">
               {/* checkbox input */}
               <input
@@ -403,9 +354,9 @@ const Page10 = function ({
               <div className="inline-block" style={{ width: '100%' }}>
                 {/* create label for the radio */}
                 <label htmlFor={radio.id} className="bold">
-                  {radio.label.map((label, index) => (
+                  {radio.label.map((label, idx) => (
                     <span
-                      key={index}
+                      key={`label${idx + 1}`}
                       style={{
                         width: `${(radio.label.length / 2) * 100}%`,
                       }}
@@ -417,13 +368,13 @@ const Page10 = function ({
                 {/* inner hidden text */}
                 {checked === index ? (
                   <div className="grid">
-                    {radio.dependencies.map((dependency, index) => (
+                    {radio.dependencies.map((dependency, idx) => (
                       <div
                         style={{
                           display: 'flex',
                           flexDirection: 'column',
                         }}
-                        key={index}
+                        key={`dependency${idx + 1}`}
                       >
                         <InputWithIcon
                           id={`paymentOption${index}`}
@@ -438,11 +389,10 @@ const Page10 = function ({
                           hideIcon
                           width="100%"
                           maxLength={
-                                  dependency.maxLength
-                                  && dependency.type === 'tel'
-                                    ? dependency.maxLength
-                                    : ''
-                                }
+                            dependency.maxLength && dependency.type === 'tel'
+                              ? dependency.maxLength
+                              : ''
+                          }
                           type={dependency.type}
                           onInput={(e) => {
                             dependency.onInput(e);
@@ -458,13 +408,9 @@ const Page10 = function ({
                           }}
                         />
                         {errors.inputs.length > 0
-                              && errors.inputs[index][0] !== undefined
-                              && errors.inputs[index][0] !== '' ? (
-                                <ErrorPrint
-                                  errors={errors.inputs[index]}
-                                  red
-                                  left
-                                />
+                        && errors.inputs[index][0] !== undefined
+                        && errors.inputs[index][0] !== '' ? (
+                          <ErrorPrint errors={errors.inputs[index]} red left />
                           ) : null}
                       </div>
                     ))}
@@ -479,20 +425,14 @@ const Page10 = function ({
             type="checkbox"
             id="agree"
             ref={agreement}
-            onChange={(e) => {
+            onChange={() => {
               if (errors.agreement[0] !== undefined) {
                 validateAgreement();
               }
             }}
           />
           <label id="agree" onClick={toggle}>
-            {/* <a
-                href="https://drive.google.com/file/d/1ZvUac-yvEb-OR2KC8mGmIybU7yIDPuCA/view?usp=sharing"
-                target="_blank"
-              > */}
-            {' '}
             I have read &amp; agree to the terms/warranty
-            {/* </a> */}
           </label>
         </span>
         {errors.agreement[0] !== undefined && errors.agreement[0] !== '' ? (
@@ -502,7 +442,7 @@ const Page10 = function ({
       <div className="popup" id="myPopup">
         <div>
           <h1>Terms / Warranty </h1>
-          <button onClick={toggle} id="pop-btn">
+          <button type="button" onClick={toggle} id="pop-btn">
             X
           </button>
         </div>

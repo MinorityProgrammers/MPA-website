@@ -9,29 +9,22 @@ import {
   googleAuth,
   nextAuth,
 } from '../../../contexts/actions/auth/googleAuth';
-import { getProfile } from '../../../contexts/actions/profile/getProfile';
+import getProfile from '../../../contexts/actions/profile/getProfile';
 import { GlobalContext } from '../../../contexts/provider';
 import Form from '../form/index';
 import styles from './card.module.css';
 
 export default function Index() {
-  // USED FOR SOCIAL AUTHENTICATION
+  const [session] = useSession();
 
-  const googleClientId = process.env.CLIENT_ID;
-  const [session, isLoading] = useSession();
-
-  // Instead of another page we will set the text to variables
   const [cardText, setCardText] = useState({
     signIn: false,
     h1Title: 'welcome',
     p: (
       <p>
         To keep connecting with us please
-        {' '}
         <br />
-        {' '}
-        register with your personal
-        info
+        register with your personal info
       </p>
     ),
     h2Title: 'sign up',
@@ -39,20 +32,14 @@ export default function Index() {
     link: 'sign in',
   });
 
-  // STATES USED THROUGHOUT THE COMPONENT
   const [submit, setSubmit] = useState(false);
-  const [spin, setSpin] = useState(false);
-  const [signedIn, setSignedIn] = useState(false);
-  const [userData, setUserData] = useState([]);
+  const [, setSpin] = useState(false);
+  const [, setSignedIn] = useState(false);
+  const [, setUserData] = useState([]);
   const [providers, setPrivders] = useState([]);
   const router = useRouter();
 
-  const {
-    profileDispatch,
-    profileState: {
-      profile: { profileLoading, profileError, profileData },
-    },
-  } = useContext(GlobalContext);
+  const { profileDispatch } = useContext(GlobalContext);
 
   useEffect(() => {
     if (window.localStorage.getItem('jwtToken')) {
@@ -62,49 +49,25 @@ export default function Index() {
 
   useEffect(() => {
     const setupProviders = async () => {
-      const providers = await getProviders();
+      const _providers = await getProviders();
 
-      setPrivders(providers);
+      setPrivders(_providers);
     };
     setupProviders();
   }, []);
 
-  // user redirection's
-  // useEffect(() => {
-  //     if (userData?.isUpdated === true) {
-  //         const slug = userData?.userName
-  //         router.push(`/user/${slug}`)
-  //     }
-  //     if (userData?.isUpdated === false) {
-  //         router.push(`/create-profile`)
-  //     }
-  // }, [userData])
-
-  // useEffect(() => {
-  //     if (profileData?.isUpdated === true) {
-  //         const slug = profileData?.userName
-  //         router.push(`/user/${slug}`)
-  //     }
-  //     if (profileData?.isUpdated === false) {
-  //         router.push(`/create-profile`)
-  //     }
-  // }, [profileData])
-
-  // states from global context
   const {
     authDispatch,
     authState: {
-      auth: { loading, error, data },
+      auth: { loading, data },
     },
   } = useContext(GlobalContext);
 
-  // redirecting the user
   useEffect(() => {
     if (
       window.localStorage.getItem('jwtToken')
       && window.localStorage.getItem('userInfo')
     ) {
-      // UPDATE SIGNIN STATE
       setSignedIn(true);
     }
   }, []);
@@ -124,18 +87,12 @@ export default function Index() {
     }
   }, [data]);
 
-  // NEED TO CHECK IF ACCOUNT EXISTS, TRY REQUEST TO SEE IF USER EXISTS
-  // SOCIAL AUTHENTICATION
   const handleLoginSuccess = (res) => {
-    // keep this
     googleAuth({ tokenId: res.tokenId })(authDispatch);
   };
 
-  const handleLoginFailure = (res) => {
-    // console.log(res);
-  };
+  const handleLoginFailure = (res) => {};
 
-  // CHANGES CARD FROM SIGN UP TO SIGN IN
   const handleClick = (event) => {
     event.preventDefault();
 
@@ -189,7 +146,10 @@ export default function Index() {
   }, [session]);
 
   return (
-    <div className={styles.cardContainer}>
+    <div
+      className={`${styles.cardContainer} overview-courses-list`}
+      style={{ overflowY: 'scroll', borderRadius: '20px' }}
+    >
       <ToastContainer limit={3} />
       <div
         className={`${styles.cardLeft} ${
@@ -219,48 +179,21 @@ export default function Index() {
           <h2>{cardText.h2Title}</h2>
           <p>
             {cardText.para}
-            <a href={`#${cardText.link}`} className="tw-text-blue-800" onClick={handleClick}>
-              {' '}
+            <a
+              href={`#${cardText.link}`}
+              className="tw-text-blue-800"
+              onClick={handleClick}
+            >
               {cardText.link}
             </a>
           </p>
         </div>
         <ul className={styles.socialMedia}>
           <li>
-            {/* <GoogleLogin
-              clientId={googleClientId}
-              render={(renderProps) => (
-                <img
-                  src="./assets/images/login-signup/google.png"
-                  alt="icon"
-                  onClick={renderProps.onClick}
-                  disabled={renderProps.disabled}
-                />
-              )}
-              buttonText="Login"
-              onSuccess={handleLoginSuccess}
-              onFailure={handleLoginFailure}
-              cookiePolicy="single_host_origin"
-            /> */}
             <img
               onClick={() => signIn(providers.google.id)}
               src="./assets/images/login-signup/google.png"
-              alt="icon"
-            />
-          </li>
-          <li>
-            <img
-              onClick={() => signIn(providers.linkedin.id)}
-              src="./assets/images/login-signup/linkin.png"
-              alt="icon"
-            />
-          </li>
-          <li>
-            <img
-              onClick={() => signIn(providers.github.id, {
-                callbackUrl: 'https://minorityprogrammers.com/auth',
-              })}
-              src="./assets/images/login-signup/github.png"
+              className="tw-mx-4"
               alt="icon"
             />
           </li>
@@ -268,6 +201,7 @@ export default function Index() {
             <img
               onClick={() => signIn(providers.facebook.id)}
               src="./assets/images/login-signup/facebook.png"
+              className="tw-mx-4"
               alt="icon"
             />
           </li>

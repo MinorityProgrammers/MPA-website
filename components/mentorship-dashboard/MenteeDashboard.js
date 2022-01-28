@@ -1,20 +1,17 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
-// Styles
 import styles from '../../styles/MentorCSS/Dashboard.module.css';
-// leftBar view
 import Resources from './Resources';
 import CalendarEvent from './Calender';
 import Evaluations from './Evaluations';
-// Navbar comps view
 import Course from './Course';
 import Event from './Event';
 import Capstone from './Capstone';
 import Workshop from './Workshop';
 import Job from './Job';
 import MenteeSprint from './MenteeSprint';
-// import { menteeData } from "./data";
+
 const MenteeDashboard = ({
   setData,
   setActive: setMenteeActive,
@@ -74,7 +71,6 @@ const MenteeDashboard = ({
     <div>
       <div className={styles.userName}>
         Welcome Back,
-        {' '}
         {menteeData.mentorship.mentee_id.user_id.firstName}
         !
       </div>
@@ -288,10 +284,7 @@ const MenteeDashboard = ({
           {actionActive.sprintsViewActive && navActive.capstone && (
             <>
               <div className={styles.teamImg}>
-                <img
-                  src="/assets/images/mentor/capstone.png"
-                  alt="capstone"
-                />
+                <img src="/assets/images/mentor/capstone.png" alt="capstone" />
                 <p>MY CAPSTONE</p>
               </div>
               <div className={styles.sprintsContainer}>
@@ -394,7 +387,7 @@ const MenteeDashboard = ({
           <div className={styles.mentors}>
             <div
               className={
-                menteeData.mentorship.mentor_id._id == currentMentee
+                menteeData.mentorship.mentor_id._id === currentMentee
                   ? styles.mentorRowE
                   : styles.mentorRow
               }
@@ -402,7 +395,7 @@ const MenteeDashboard = ({
             >
               <div
                 className={
-                  menteeData.mentorship.mentor_id._id == currentMentee
+                  menteeData.mentorship.mentor_id._id === currentMentee
                     ? styles.sideBar
                     : styles.hide
                 }

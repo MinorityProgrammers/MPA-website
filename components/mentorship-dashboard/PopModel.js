@@ -38,7 +38,7 @@ const PopModel = ({
   const { is_mentor } = user.user;
   const onSubmit = (e) => {
     e.preventDefault();
-    if (eventName == '' || description == '') {
+    if (eventName === '' || description === '') {
       setErr(true);
     } else {
       const year = date.split('-')[0];
@@ -73,13 +73,12 @@ const PopModel = ({
             },
           )
           .then((res) => {
-            console.log(res.data);
             setSelectedDates([...selectedDates, newDate]);
             setEvents(res.data.data.calender_events);
             setUpdate(!update);
           })
-          .catch((err) => {
-            console.log(err);
+          .catch((error) => {
+            console.log(error);
           });
       }
 

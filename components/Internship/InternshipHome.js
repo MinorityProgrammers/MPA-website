@@ -1,13 +1,8 @@
-import React, {
-  useEffect, useContext, useState, useRef,
-} from 'react';
-import { useRouter } from 'next/router';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import ModalVideo from 'react-modal-video';
-import { FaAngleDown, FaAngleLeft } from 'react-icons/fa';
 import datas from './data.json';
 import InternshipModal from './InternshipModal';
-import { useDetectOutsideClick } from '../UseDetectOutsideClick';
 import Card from '../login-signup/card';
 
 const customStyles = {
@@ -21,20 +16,12 @@ const customStyles = {
     zIndex: 999999,
   },
 };
-const InternshipHome = function ({
-  data, active, clickRegister, setClickRegister,
-}) {
+const InternshipHome = ({ data, active, clickRegister, setClickRegister }) => {
   const [isOpen, setOpen] = useState(false);
-  const router = useRouter();
   const [modalIsOpen, setIsOpen] = useState(false);
   const [show, setShow] = useState('1');
   const [toggle, setToggle] = useState('2');
-  const [myData, setMyData] = useState(datas);
-
-  const [click, setClick] = useState(false);
-  const dropdownRef = useRef(null);
-  const [isActive, setIsActive] = useDetectOutsideClick(dropdownRef, false);
-  const onClick = () => setIsActive(!isActive);
+  const [myData] = useState(datas);
 
   function openModal(x, y) {
     setIsOpen(true);
@@ -57,9 +44,22 @@ const InternshipHome = function ({
       <div className="internship__intro pl-5 pr-5">
         <div className="internship__info p-2">
           <p>
-            Students across the world are given hands-on experience working with corporate teams (15-20 hours weekly). Implementing Agile SCRUM methodologies, interns use the leading project management tool ClickUp, have tri-weekly daily standups, bi-monthly sprint review, retrospective, and backlog grooming sessions with 24/7 support from mentors and other developers.
+            Students across the world are given hands-on experience working with
+            corporate teams (15-20 hours weekly). Implementing Agile SCRUM
+            methodologies, interns use the leading project management tool
+            ClickUp, have tri-weekly daily standups, bi-monthly sprint review,
+            retrospective, and backlog grooming sessions with 24/7 support from
+            mentors and other developers.
           </p>
-          <p>  Interns are assigned to complete a 3-month roadmap and SMART goal for their internship after which the hiring team evaluates  to best place the intern in teams and project tasks that give the most exposure to what that intern wants to learn. After this tailored experience, interns will have a portfolio or relevant projects and industry knowledge that will prepare them for the workforce.</p>
+          <p>
+            {' '}
+            Interns are assigned to complete a 3-month roadmap and SMART goal
+            for their internship after which the hiring team evaluates to best
+            place the intern in teams and project tasks that give the most
+            exposure to what that intern wants to learn. After this tailored
+            experience, interns will have a portfolio or relevant projects and
+            industry knowledge that will prepare them for the workforce.
+          </p>
         </div>
         <div className="internship__info--img">
           <img src="/assets/images/internshipIntro.png" alt="" />
@@ -78,21 +78,24 @@ const InternshipHome = function ({
               <p>Gain working experience on STEM field</p>
               {data ? (
                 <Link href="/careers_explainer">
-                  <button className="btn btn-orange">
+                  <button type="button" className="btn btn-orange">
                     {' '}
                     <span>Apply</span>
                     <i className="fas fa-angle-right" />
                   </button>
                 </Link>
-              )
-                : (
-                  <button onClick={() => { setClickRegister(true); }} className="btn btn-orange tw-cursor-pointer">
-                    {' '}
-                    <span>Apply</span>
-                    <i className="fas fa-angle-right" />
-                  </button>
-                )}
-
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => {
+                    setClickRegister(true);
+                  }}
+                  className="btn btn-orange tw-cursor-pointer"
+                >
+                  <span>Apply</span>
+                  <i className="fas fa-angle-right" />
+                </button>
+              )}
             </div>
             <div className="col-lg-3 text-center intern__type--card">
               <div className="type__logo--image">
@@ -102,23 +105,21 @@ const InternshipHome = function ({
               <p>Gain working experience on STEM field</p>
               {data ? (
                 <Link href="/volunteer">
-                  <button className="btn btn-orange">
-                    {' '}
-                    <span>Build</span>
-                    {' '}
-                    <i className="fas fa-angle-right" />
+                  <button type="button" className="btn btn-orange">
+                    <span>Build</span> <i className="fas fa-angle-right" />
                   </button>
                 </Link>
-              )
-                : (
-                  <button onClick={() => { setClickRegister(true); }} className="btn btn-orange tw-cursor-pointer">
-                    {' '}
-                    <span>Build</span>
-                    {' '}
-                    <i className="fas fa-angle-right" />
-                  </button>
-                )}
-
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => {
+                    setClickRegister(true);
+                  }}
+                  className="btn btn-orange tw-cursor-pointer"
+                >
+                  <span>Build</span> <i className="fas fa-angle-right" />
+                </button>
+              )}
             </div>
             <div className="col-lg-3 text-center intern__type--card">
               <div className="type__logo--image">
@@ -128,23 +129,21 @@ const InternshipHome = function ({
               <p>Gain working experience on STEM field</p>
               {data ? (
                 <Link href="/partner">
-                  <button className="btn btn-orange">
-                    {' '}
-                    <span>Hire</span>
-                    {' '}
-                    <i className="fas fa-angle-right" />
+                  <button type="button" className="btn btn-orange">
+                    <span>Hire</span> <i className="fas fa-angle-right" />
                   </button>
                 </Link>
-              )
-                : (
-                  <button onClick={() => { setClickRegister(true); }} className="btn btn-orange tw-cursor-pointer">
-                    {' '}
-                    <span>Hire</span>
-                    {' '}
-                    <i className="fas fa-angle-right" />
-                  </button>
-                )}
-
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => {
+                    setClickRegister(true);
+                  }}
+                  className="btn btn-orange tw-cursor-pointer"
+                >
+                  <span>Hire</span> <i className="fas fa-angle-right" />
+                </button>
+              )}
             </div>
           </div>
         </div>
@@ -157,8 +156,15 @@ const InternshipHome = function ({
           <div className="intern__speciality--cards">
             <div className="intern__speciality--card">
               <h1>Software Engineering</h1>
-              <div onClick={() => openModal('1', '2')} className="img-banner-app">
-                <img src="/assets/images/Internship/computer.png" alt="" className="card-img-top rounded-0" />
+              <div
+                onClick={() => openModal('1', '2')}
+                className="img-banner-app"
+              >
+                <img
+                  src="/assets/images/Internship/computer.png"
+                  alt=""
+                  className="card-img-top rounded-0"
+                />
               </div>
               <InternshipModal
                 myData={myData}
@@ -173,9 +179,16 @@ const InternshipHome = function ({
               />
             </div>
             <div className="intern__speciality--card">
-              <h1>UI/UX  Design</h1>
-              <div onClick={() => openModal('2', '6')} className="img-banner-app">
-                <img src="/assets/images/Internship/ui-ux.png" alt="" className="card-img-top rounded-0" />
+              <h1>UI/UX Design</h1>
+              <div
+                onClick={() => openModal('2', '6')}
+                className="img-banner-app"
+              >
+                <img
+                  src="/assets/images/Internship/ui-ux.png"
+                  alt=""
+                  className="card-img-top rounded-0"
+                />
               </div>
               <InternshipModal
                 myData={myData}
@@ -191,8 +204,15 @@ const InternshipHome = function ({
             </div>
             <div className="intern__speciality--card">
               <h1>Business Marketing</h1>
-              <div onClick={() => openModal('3', '14')} className="img-banner-app">
-                <img src="/assets/images/Internship/marketing.png" alt="" className="card-img-top rounded-0" />
+              <div
+                onClick={() => openModal('3', '14')}
+                className="img-banner-app"
+              >
+                <img
+                  src="/assets/images/Internship/marketing.png"
+                  alt=""
+                  className="card-img-top rounded-0"
+                />
               </div>
               <InternshipModal
                 myData={myData}
@@ -208,8 +228,15 @@ const InternshipHome = function ({
             </div>
             <div className="intern__speciality--card">
               <h1>Cryptocurrency/Blockchain</h1>
-              <div onClick={() => openModal('4', '18')} className="img-banner-app">
-                <img src="/assets/images/Internship/blokchain.png" alt="" className="card-img-top rounded-0" />
+              <div
+                onClick={() => openModal('4', '18')}
+                className="img-banner-app"
+              >
+                <img
+                  src="/assets/images/Internship/blokchain.png"
+                  alt=""
+                  className="card-img-top rounded-0"
+                />
               </div>
               <InternshipModal
                 myData={myData}
@@ -228,21 +255,38 @@ const InternshipHome = function ({
             <div className="download__app">
               <p>Learn, earn, certification with our</p>
               <Link href="/learn-page" target="_blank">
-                <button className="btn-download">Learning dApp</button>
+                <button type="button" className="btn-download">
+                  Learning dApp
+                </button>
               </Link>
             </div>
             <div className="about__internship">
               <p>Minority Programers Internship Experience </p>
               <div className="img-banner-app">
-                <img src="/assets/images/Internship/videoback.png" className="heading__img card-img-top rounded-0" />
-                <button name="play" onClick={() => setOpen(true)} />
+                <img
+                  src="/assets/images/Internship/videoback.png"
+                  className="heading__img card-img-top rounded-0"
+                  alt=""
+                />
+                <button
+                  type="button"
+                  name="play"
+                  onClick={() => setOpen(true)}
+                />
               </div>
-              <ModalVideo channel="youtube" isOpen={isOpen} videoId="VZmd8EOj3UA" onClose={() => setOpen(false)} />
+              <ModalVideo
+                channel="youtube"
+                isOpen={isOpen}
+                videoId="VZmd8EOj3UA"
+                onClose={() => setOpen(false)}
+              />
             </div>
             <div className="mentorship__card">
               <p>Fast track your career with our</p>
               <Link href="/mentorship" target="_blank">
-                <button className="btn-download">Mentorship Program</button>
+                <button type="button" className="btn-download">
+                  Mentorship Program
+                </button>
               </Link>
             </div>
           </div>
@@ -258,10 +302,23 @@ const InternshipHome = function ({
               <h1>MPA - Website</h1>
               <div className="about__internship intern__built--video">
                 <div className="img-banner-app">
-                  <img src="/assets/images/Internship/mpa.png" className="heading__img card-img-top rounded-0" />
-                  <button name="play" onClick={() => setOpen(true)} />
+                  <img
+                    src="/assets/images/Internship/mpa.png"
+                    className="heading__img card-img-top rounded-0"
+                    alt=""
+                  />
+                  <button
+                    type="button"
+                    name="play"
+                    onClick={() => setOpen(true)}
+                  />
                 </div>
-                <ModalVideo channel="youtube" isOpen={isOpen} videoId="VZmd8EOj3UA" onClose={() => setOpen(false)} />
+                <ModalVideo
+                  channel="youtube"
+                  isOpen={isOpen}
+                  videoId="VZmd8EOj3UA"
+                  onClose={() => setOpen(false)}
+                />
               </div>
             </div>
             <div className="intern__speciality--card">
@@ -270,16 +327,23 @@ const InternshipHome = function ({
               </Link>
               <div className="about__internship intern__built--video">
                 <div className="img-banner-app">
-                  <img src="/assets/images/Internship/defisummer.png" alt="" className=" heading__img card-img-top rounded-0" />
+                  <img
+                    src="/assets/images/Internship/defisummer.png"
+                    alt=""
+                    className=" heading__img card-img-top rounded-0"
+                  />
                 </div>
               </div>
-
             </div>
             <div className="intern__speciality--card">
               <h1>Global Outsourcing - Research </h1>
               <div className="about__internship intern__built--video">
                 <div className="img-banner-app">
-                  <img src="/assets/images/Internship/global.png" alt="" className="heading__img card-img-top rounded-0" />
+                  <img
+                    src="/assets/images/Internship/global.png"
+                    alt=""
+                    className="heading__img card-img-top rounded-0"
+                  />
                 </div>
               </div>
             </div>
@@ -287,65 +351,108 @@ const InternshipHome = function ({
               <h1>DefiSummer - Website</h1>
               <div className="about__internship intern__built--video">
                 <div className="img-banner-app">
-                  <img src="/assets/images/Internship/defi.png" className="heading__img card-img-top rounded-0" />
-                  <button name="play" onClick={() => setOpen(true)} />
+                  <img
+                    src="/assets/images/Internship/defi.png"
+                    className="heading__img card-img-top rounded-0"
+                    alt=""
+                  />
+                  <button
+                    type="button"
+                    name="play"
+                    onClick={() => setOpen(true)}
+                  />
                 </div>
-                <ModalVideo channel="youtube" isOpen={isOpen} videoId="VZmd8EOj3UA" onClose={() => setOpen(false)} />
+                <ModalVideo
+                  channel="youtube"
+                  isOpen={isOpen}
+                  videoId="VZmd8EOj3UA"
+                  onClose={() => setOpen(false)}
+                />
               </div>
             </div>
             <div className="intern__speciality--card">
               <h1>Coding</h1>
               <div className="about__internship intern__built--video">
                 <div className="img-banner-app">
-                  <img src="/assets/images/Internship/coding.png" className="heading__img card-img-top rounded-0" />
-                  <button name="play" onClick={() => setOpen(true)} />
+                  <img
+                    src="/assets/images/Internship/coding.png"
+                    className="heading__img card-img-top rounded-0"
+                    alt=""
+                  />
+                  <button
+                    type="button"
+                    name="play"
+                    onClick={() => setOpen(true)}
+                  />
                 </div>
-                <ModalVideo channel="youtube" isOpen={isOpen} videoId="VZmd8EOj3UA" onClose={() => setOpen(false)} />
+                <ModalVideo
+                  channel="youtube"
+                  isOpen={isOpen}
+                  videoId="VZmd8EOj3UA"
+                  onClose={() => setOpen(false)}
+                />
               </div>
             </div>
             <div className="intern__speciality--card">
               <h1>UX Design</h1>
               <div className="about__internship intern__built--video">
                 <div className="img-banner-app">
-                  <img src="/assets/images/Internship/ui-uxdesign.png" className="heading__img card-img-top rounded-0" />
-                  <button name="play" onClick={() => setOpen(true)} />
+                  <img
+                    src="/assets/images/Internship/ui-uxdesign.png"
+                    className="heading__img card-img-top rounded-0"
+                    alt=""
+                  />
+                  <button
+                    type="button"
+                    name="play"
+                    onClick={() => setOpen(true)}
+                  />
                 </div>
-                <ModalVideo channel="youtube" isOpen={isOpen} videoId="VZmd8EOj3UA" onClose={() => setOpen(false)} />
+                <ModalVideo
+                  channel="youtube"
+                  isOpen={isOpen}
+                  videoId="VZmd8EOj3UA"
+                  onClose={() => setOpen(false)}
+                />
               </div>
             </div>
           </div>
           <div className="intern__more">
             <div className="event">
               <img src="/assets/images/Internship/defisummer.png" alt="" />
-              <h1>
-                The History of Defi Summer-
-                Yudhisitra Fitriansyah
-              </h1>
+              <h1>The History of Defi Summer- Yudhisitra Fitriansyah</h1>
               <p>
-                “DeFiSummer” came to life during the summer of 2020 after the crypto space saw a huge advantage with liquidity mining and how it brought monetary value and some governance control. The hype created major buzz and everyone was getting into it.
+                “DeFiSummer” came to life during the summer of 2020 after the
+                crypto space saw a huge advantage with liquidity mining and how
+                it brought monetary value and some governance control. The hype
+                created major buzz and everyone was getting into it.
               </p>
             </div>
           </div>
         </div>
       </div>
 
-      {clickRegister && active
-        ? (
-          <div className="create_event">
-            <div
-              className="create_event-shadow"
-              onClick={() => {
-                setClickRegister(false);
-              }}
-            />
-            <div id="create_event-container" className="create_event-container">
-              <Card />
-            </div>
-            <i className="close_icon fas fa-times close-icon tw-text-white" onClick={() => { setClickRegister(false); }} />
+      {clickRegister && active ? (
+        <div className="create_event">
+          <div
+            className="create_event-shadow"
+            onClick={() => {
+              setClickRegister(false);
+            }}
+          />
+          <div id="create_event-container" className="create_event-container">
+            <Card />
           </div>
-        )
-        : ''}
-
+          <i
+            className="close_icon fas fa-times close-icon tw-text-white"
+            onClick={() => {
+              setClickRegister(false);
+            }}
+          />
+        </div>
+      ) : (
+        ''
+      )}
     </section>
   );
 };

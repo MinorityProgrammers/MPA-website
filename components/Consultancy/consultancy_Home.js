@@ -1,6 +1,4 @@
-import { useEffect, useState, Fragment } from 'react';
-import Wireframe1 from './wireframes/wireframe1';
-// import Card from "../login-signup/card";
+import React, { useEffect, useState } from 'react';
 import LoginPage from './helperFiles/LoginPage';
 import Page1 from './steps/step1';
 import Page2 from './steps/step2';
@@ -16,12 +14,10 @@ import Page11 from './steps/step11';
 
 const localStorageConsultancyKey = 'consultancy-questions';
 const localStorageStepKey = 'consultancy-step';
-const Consultancy = function ({
-  data, active, clickRegister, setClickRegister,
-}) {
+
+const Consultancy = ({ data, clickRegister, setClickRegister }) => {
   const [step, setstep] = useState(0);
   const [questions, setQuestions] = useState({});
-  console.log(questions);
 
   useEffect(() => {
     if (data === null) {
@@ -31,7 +27,6 @@ const Consultancy = function ({
 
   function getLocalVariables(key, wrapFxn, defaultValue) {
     const hasKey = window.localStorage.getItem(key);
-    console.log(hasKey);
     if (hasKey) {
       return wrapFxn(hasKey);
     }
@@ -41,20 +36,13 @@ const Consultancy = function ({
   useEffect(() => {
     setQuestions((prev) => getLocalVariables(
       localStorageConsultancyKey,
-      (value) => {
-        console.log(value);
-        return JSON.parse(JSON.parse(JSON.stringify(value)));
-      },
+      (value) => JSON.parse(JSON.parse(JSON.stringify(value))),
       prev,
     ));
     if (data === null) {
       setClickRegister(true);
     } else {
-      setstep((prev) => getLocalVariables(
-        localStorageStepKey,
-        (value) => parseInt(value),
-        prev,
-      ));
+      setstep((prev) => getLocalVariables(localStorageStepKey, (value) => parseInt(value), prev));
     }
   }, []);
   useEffect(() => {
@@ -75,14 +63,14 @@ const Consultancy = function ({
   return (
     <>
       <div className="service tw-mt-12" key="rigid">
-        {step == 0 && (
+        {step === 0 && (
           <Page1
             setstep={setstep}
             data={data}
             setClickRegister={setClickRegister}
           />
         )}
-        {step == 1 && (
+        {step === 1 && (
           <Page2
             setstep={setstep}
             step={step}
@@ -90,7 +78,7 @@ const Consultancy = function ({
             setQuestions={setQuestions}
           />
         )}
-        {step == 2 && (
+        {step === 2 && (
           <Page3
             setstep={setstep}
             step={step}
@@ -98,7 +86,7 @@ const Consultancy = function ({
             setQuestions={setQuestions}
           />
         )}
-        {step == 3 && (
+        {step === 3 && (
           <Page4
             setstep={setstep}
             step={step}
@@ -106,7 +94,7 @@ const Consultancy = function ({
             setQuestions={setQuestions}
           />
         )}
-        {step == 4 && (
+        {step === 4 && (
           <Page5
             setstep={setstep}
             step={step}
@@ -115,7 +103,7 @@ const Consultancy = function ({
           />
         )}
 
-        {step == 5 && (
+        {step === 5 && (
           <Page7
             setstep={setstep}
             step={step}
@@ -123,7 +111,7 @@ const Consultancy = function ({
             setQuestions={setQuestions}
           />
         )}
-        {step == 6 && (
+        {step === 6 && (
           <Page8
             setstep={setstep}
             step={step}
@@ -131,7 +119,7 @@ const Consultancy = function ({
             setQuestions={setQuestions}
           />
         )}
-        {step == 7 && (
+        {step === 7 && (
           <Page9
             setstep={setstep}
             step={step}
@@ -139,7 +127,7 @@ const Consultancy = function ({
             setQuestions={setQuestions}
           />
         )}
-        {step == 8 && (
+        {step === 8 && (
           <Page6
             setstep={setstep}
             step={step}
@@ -147,7 +135,7 @@ const Consultancy = function ({
             setQuestions={setQuestions}
           />
         )}
-        {step == 9 && (
+        {step === 9 && (
           <Page10
             setstep={setstep}
             step={step}
@@ -156,7 +144,7 @@ const Consultancy = function ({
             data={data}
           />
         )}
-        {step == 10 && (
+        {step === 10 && (
           <Page11
             step={step}
             localStorageConsultancyKey={localStorageConsultancyKey}
@@ -165,7 +153,6 @@ const Consultancy = function ({
             setQuestions={setQuestions}
           />
         )}
-        {/* <Wireframe1 step={100} /> */}
       </div>
 
       <LoginPage

@@ -6,10 +6,10 @@ import Layout from '../components/Layout';
 import SidebarTwo from '../components/sidebar/SidebarTwo';
 import links from '../contexts/utils/links';
 
-const DevxDaoMilestonesPage = function () {
+const DevxDaoMilestonesPage = () => {
   const [open, setOpen] = useState(false);
   const bannerImgLink = 'https://www.devxdao.com/wp-content/uploads/2020/10/favicon-01-300x300.png';
-  const termsText = '';
+
   return (
     <Layout pageTitle="DevXDao Milestones">
       <HomepageNav open={open} setOpen={setOpen} page="Milestones" />
@@ -19,11 +19,7 @@ const DevxDaoMilestonesPage = function () {
         subtitle="For MPA career development dApp grant application."
         bannerImgLink={bannerImgLink}
       />
-      {/*
-          <UnderBannerBody text=
-          "The following is terms and conditions for the Minority Programmers Association"
-          />
-      */}
+
       <iframe
         title="Presentation Docs Embed"
         src="https://docs.google.com/presentation/d/e/2PACX-1vTeEIq7kLhw_4hHdH35ZsF7rHqdwYZR7gM41TmtLQ8LoVtQGSFI2HPqlgM5nmZ_S2c7MF3nX_nZGFBk/embed?start=false&loop=false&delayms=15000"
@@ -42,7 +38,6 @@ const DevxDaoMilestonesPage = function () {
         height="1000px"
         styles="background: transparent; border: 1px solid #ccc;"
       />
-      {/* <iframe className="legal-frame"src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRih2lxPJmVGM9NB76xjOe6JX_2JVCE-1NPZnsGXaikOpFnHkWPSnnJT6iLcDr_AiobRvknX2jzHihN/pubhtml?widget=true&amp;headers=false"></iframe> */}
       <Footer />
     </Layout>
   );

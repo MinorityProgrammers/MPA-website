@@ -1,8 +1,6 @@
-import {
-  useRef, useState, useEffect, Fragment,
-} from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import addQuestion from '../helperFiles/addQuestion';
-import { useDefaultValue } from '../helperFiles/getDefaultValue';
+import useDefaultValue from '../helperFiles/getDefaultValue';
 import QuestionContainer from '../helperFiles/questionContainer';
 import ErrorPrint from '../helperFiles/errorPrint';
 import BlurBackground from '../helperFiles/blurBackground';
@@ -15,14 +13,11 @@ const options = [
   'Delegate review and approval to the MPA Project Manager.',
   'No, I prefer reviewing tasks on my own.',
 ];
-const Page6 = function ({
+const Page6 = ({
   step, setstep, questions, setQuestions,
-}) {
+}) => {
   const [showConfirmation, setShowConfirmation] = useState(0);
-
-  // get default values
   const defaultValue = useDefaultValue(questions, step, 0);
-  // inputs
   const selectedOption = useRef(
     defaultValue.selectedOption !== undefined
       ? options.indexOf(defaultValue.selectedOption)
@@ -32,11 +27,8 @@ const Page6 = function ({
   const fullname = useRef();
   const mpa_identity = useRef();
   const needs_input = useRef();
-  // error
   const errorMsgDefault = [[], []];
   const [errorMsg, setErrorMsg] = useState(errorMsgDefault);
-
-  // add new question
   function addToQuestion() {
     addQuestion(setQuestions, step, [
       {
@@ -48,7 +40,6 @@ const Page6 = function ({
       },
     ]);
   }
-  // create an error message based on the string in the input field
   function checksForInputs(string, errorIndex) {
     setErrorMsg((prev) => {
       const prevArr = [...prev];
@@ -58,21 +49,17 @@ const Page6 = function ({
       return prevArr;
     });
   }
-  // run a function when the needs_input reference is defined
   function checkInputChanges(fxn = () => {}) {
     if (needs_input.current.checked) {
       fxn();
     }
   }
-  // validate the first input
   function validateTextOne() {
     checksForInputs(fullname.current.value, 0);
   }
-  // validate the second input
   function validateTextTwo() {
     checksForInputs(mpa_identity.current.value, 1);
   }
-  // when radio input changes
   function onChangeRadio(index) {
     selectedOption.current = index;
     if (needs_input.current) {
@@ -85,52 +72,41 @@ const Page6 = function ({
       }
     }
   }
-  // when a text input changes
   function onChangeText(fxn) {
     if (needs_input.current) {
       checkInputChanges(fxn);
     }
   }
-
-  // navigate to next page
   function nextPage() {
-    // if inputs are invalid, submission should be voided for the first radio
     if (errorMsg[0].length === 0 && errorMsg[1].length === 0) {
       if (selectedOption.current === 0) {
         setShowConfirmation(1);
       }
     }
-    // add second radio to the question and submit
     if (selectedOption.current === 2) {
       addToQuestion();
       setstep((prev) => prev + 1);
     }
-    // add third radio to the question and submit
     if (selectedOption.current === 1) {
       setShowConfirmation(2);
     }
   }
-  // return to prev page
   function prevPage() {
     addToQuestion();
     setstep((prev) => prev - 1);
   }
-  // remove overflow blockage on body
   function overflow() {
     document.body.classList.remove('hide-overflow');
   }
-  // agree to the terms
   function agree() {
     overflow();
     addToQuestion();
     setstep((prev) => prev + 1);
   }
-  // edit choices
   function makeChanges() {
     overflow();
     setShowConfirmation(0);
   }
-  // Ensure that using default value does not cause incorrect passage
   useEffect(() => {
     onChangeRadio(selectedOption.current);
   }, []);
@@ -139,10 +115,10 @@ const Page6 = function ({
   }, [selectedOption.current]);
   const buttons = (
     <div className="contain-buttons">
-      <button className="btn-1" onClick={agree}>
+      <button type="button" className="btn-1" onClick={agree}>
         Agree
       </button>
-      <button className="btn-2" onClick={makeChanges}>
+      <button type="button" className="btn-2" onClick={makeChanges}>
         Cancel &amp; Close
       </button>
     </div>
@@ -184,8 +160,7 @@ const Page6 = function ({
                 id="rep"
                 name="page-selection"
                 defaultChecked={selectedOption.current === 0}
-                onChange={(e) => {
-                  // addToQuestion();
+                onChange={() => {
                   onChangeRadio(0);
                 }}
                 ref={needs_input}
@@ -246,8 +221,7 @@ const Page6 = function ({
                 id="manager"
                 name="page-selection"
                 defaultChecked={selectedOption.current === 1}
-                onChange={(e) => {
-                  // addToQuestion();
+                onChange={() => {
                   onChangeRadio(1);
                 }}
               />
@@ -268,7 +242,7 @@ const Page6 = function ({
                 id="myself"
                 name="page-selection"
                 defaultChecked={selectedOption.current === 2}
-                onChange={(e) => {
+                onChange={() => {
                   onChangeRadio(2);
                 }}
               />

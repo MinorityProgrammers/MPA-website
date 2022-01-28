@@ -2,13 +2,13 @@ import React, { useState, useEffect, useContext } from 'react';
 import FormData from 'form-data';
 import { useRouter } from 'next/router';
 import { GlobalContext } from '../../contexts/provider';
-import { updateProfile } from '../../contexts/actions/profile/updateProfile';
-import { all } from '../../contexts/utils/settings/settingsInputFields';
+import updateProfile from '../../contexts/actions/profile/updateProfile';
+import all from '../../contexts/utils/settings/settingsInputFields';
 import styles from '../../styles/settings/settingBodyProfileMedia.module.css';
 import CreateSettingInput from './CreateSettingInput';
 import SettingBody from './SettingBody';
 
-const SettingBodyProfileMedia = function ({ settingsPage, data, userID }) {
+const SettingBodyProfileMedia = ({ settingsPage, data, userID }) => {
   const router = useRouter();
 
   const inputFields = [
@@ -23,30 +23,22 @@ const SettingBodyProfileMedia = function ({ settingsPage, data, userID }) {
 
   const initialInputState = {};
 
-  inputFields.forEach(
-    (field) => (initialInputState[field.name] = ''),
-    // ex. {someInputFieldName: "inputFieldValue", ...}
-  );
+  inputFields.forEach((field) => {
+    initialInputState[field.name] = '';
+  });
 
   const [inputStates, setInputStates] = useState(initialInputState);
 
   useEffect(() => {
-    inputFields.forEach(
-      (field) => (initialInputState[field.name] = data?.[field.name] || ''),
-    );
+    inputFields.forEach((field) => {
+      initialInputState[field.name] = data?.[field.name] || '';
+    });
 
     setInputStates(initialInputState);
   }, [data]);
 
   // update userData
-  const {
-    profileDispatch,
-    profileState: {
-      profile: {
-        profileLoading, profileError, profileData, profileIsUpdated,
-      },
-    },
-  } = useContext(GlobalContext);
+  const { profileDispatch } = useContext(GlobalContext);
 
   const formData = new FormData();
   Object.keys(inputStates).forEach((inputName) => {
@@ -57,23 +49,26 @@ const SettingBodyProfileMedia = function ({ settingsPage, data, userID }) {
     setInputStates({ ...inputStates, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = () => {
     // submit data
     updateProfile(userID, formData)(profileDispatch);
 
     const slug = data?.userName;
-    slug && router.push(`/user/${slug}`);
+    if (slug) {
+      router.push(`/user/${slug}`);
+    }
   };
 
-  const closeProfileSetup = (e) => {
+  const closeProfileSetup = () => {
     // discard changes
     setInputStates(initialInputState);
 
     const slug = data?.userName;
-    slug && router.push(`/user/${slug}`);
+    if (slug) {
+      router.push(`/user/${slug}`);
+    }
   };
 
-  // console.log({ inputStates });
   return (
     <SettingBody
       settingsPage={settingsPage}
@@ -94,8 +89,8 @@ const SettingBodyProfileMedia = function ({ settingsPage, data, userID }) {
             all.FigmaLinkField,
             all.DribbbleLinkField,
             all.ClickupLinkField,
-          ].map((field, key) => (
-            <div className={styles.inputWrapper} key={key}>
+          ].map((field) => (
+            <div className={styles.inputWrapper} key={field.name}>
               <img
                 src={`../../assets/images/settings/media-${field.label
                   .split(' ')[0]

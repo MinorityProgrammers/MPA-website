@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { RiFlag2Fill } from 'react-icons/ri';
 import { BsThreeDotsVertical } from 'react-icons/bs';
 import { useDrag, useDrop } from 'react-dnd';
 import electProposal from './electProposal.json';
 
-const TaskStatusDnD = function () {
+const TaskStatusDnD = () => {
   const [proposals, setProposals] = useState(() => electProposal);
   const [list, setList] = useState([]);
 
@@ -23,9 +23,8 @@ const TaskStatusDnD = function () {
   });
 
   const movePlayer = (item) => {
-    console.log(item);
     if (item && item.type === 'proposal') {
-      setList((_list) => [...list, proposals[item.index]]);
+      setList(() => [...list, proposals[item.index]]);
       setProposals((_proposals) => _proposals.filter((_, idx) => idx !== item.index));
     } else {
       setProposals((_proposals) => [..._proposals, list[item.index]]);
@@ -107,9 +106,9 @@ const TaskStatusDnD = function () {
   );
 };
 
-const ProposalList = function ({
-  id, sDes, flag, index, boardType, onDropPlayer,
-}) {
+const ProposalList = ({
+  sDes, flag, index, boardType, onDropPlayer,
+}) => {
   const [{ isDragging }, dragRef] = useDrag({
     item: {
       type: boardType,

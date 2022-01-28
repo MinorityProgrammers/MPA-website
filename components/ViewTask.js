@@ -1,43 +1,12 @@
-import { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import {
   DragDropContext,
   Draggable,
   Droppable,
   resetServerContext,
 } from 'react-beautiful-dnd';
-import { v4 as uuidv4 } from 'uuid';
 import itemsFromBackEnd from './ProjectManager/viewtask.json';
 import TaskStatus, { UserContext } from './ProjectManager/TaskStatus';
-// Currently using JSON data for dynamic loading
-// After completing backend JSON should be removed and tasks data will be loading-
-//  through getStaticProps and getStaticPaths function instead of useEffect hooks
-// export const getStaticPaths = async () => {
-//   const res = await fetch("http://localhost:3000/viewtaskData");
-//   const data = await res.json();
-
-//   const paths = data.map((task) => {
-//     return {
-//       params: { id: task.id },
-//     };
-//   });
-
-//   return {
-//     paths: paths,
-//     fallback: false,
-//   };
-// };
-
-// export const getStaticProps = async (context) => {
-//   const id = context.params.id;
-//   const res = await fetch(`http://localhost:3000/getProposalsdata/${id}`);
-//   const data = await res.json();
-
-//   return {
-//     props: {
-//       task: data,
-//     },
-//   };
-// };
 
 const columnsFromBackend = {
   1: { name: 'Planned Task', items: itemsFromBackEnd },
@@ -45,13 +14,17 @@ const columnsFromBackend = {
   3: { name: 'Completed Task', items: [] },
 };
 
+let task;
+
 const onDragEnd = (result, columns, setColumns) => {
   const { source, destination } = result;
   if (source.droppableId !== destination?.droppableId) {
     const sourceColumn = columns[source.droppableId];
     const destinationColumn = columns[destination?.droppableId];
     const sourceItems = [...sourceColumn.items];
-    const destinationItems = [...destinationColumn?.items];
+    const destinationItems = [
+      ...(destinationColumn || destinationColumn.items),
+    ];
     const [removed] = sourceItems.splice(source.index, 1);
     destinationItems.splice(destination.index, 0, removed);
     setColumns({
@@ -78,21 +51,19 @@ const onDragEnd = (result, columns, setColumns) => {
       },
     });
   }
-  let task;
-  if (result.destination.droppableId == 1) {
+
+  if (result.destination.droppableId === 1) {
     task = 'Planned Task';
-  } else if (result.destination.droppableId == 2) {
+  } else if (result.destination.droppableId === 2) {
     task = 'Review Task';
   } else {
     task = 'Completed Task';
   }
 };
 
-const ViewTask = function () {
-  const [plannedTasks, setPlannedTasks] = useState([]);
+const ViewTask = () => {
   const [columns, setColumms] = useState(columnsFromBackend);
   const priorityStatus = useContext(UserContext);
-  // schema for backend connection
   useEffect(() => {
     const handleTask = () => {
       const taskDetails = {
@@ -108,12 +79,12 @@ const ViewTask = function () {
         body: JSON.stringify(taskDetails),
       })
         .then((res) => res.json())
-        .then((data) => {
+        .then(() => {
           alert('Task submitted successfully');
         });
     };
+    handleTask();
   }, []);
-  // handlePriority function sent to TaskStatus component as props to set the priority flag
   const handlePriority = () => {};
 
   return (
@@ -127,11 +98,12 @@ const ViewTask = function () {
               <img
                 className="tw-h-8 tw-w-8 tw-m-2"
                 src="/assets/images/project/tick.png"
+                alt="tick_image"
               />
               <p className="tw-text-white tw-text-3xl">{column.name}</p>
             </div>
             <Droppable droppableId={id} key={id}>
-              {(provided, snapshot) => (
+              {(provided /* , snapshot */) => (
                 <div
                   className="tw-grid tw-grid-cols-2"
                   {...provided.droppableProps}
@@ -143,11 +115,11 @@ const ViewTask = function () {
                       index={index}
                       draggableId={item.id}
                     >
-                      {(provided, snapshot) => (
+                      {(_provided) => (
                         <div
-                          ref={provided.innerRef}
-                          {...provided.draggableProps}
-                          {...provided.dragHandleProps}
+                          ref={_provided.innerRef}
+                          {..._provided.draggableProps}
+                          {..._provided.dragHandleProps}
                           className="tw-justify-center"
                         >
                           <TaskStatus

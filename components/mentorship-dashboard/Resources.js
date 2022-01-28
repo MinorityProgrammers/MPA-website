@@ -49,11 +49,11 @@ const Resources = ({
             Authorization: `Bearer ${token}`,
           },
         })
-        .then((res) => {
+        .then((/* res */) => {
           successToast('Resource Deleted successfully!');
           setUpdate(!update);
         })
-        .catch((err) => {
+        .catch((/* err */) => {
           errorToast('Something went wrong, please contact us.');
         });
     }

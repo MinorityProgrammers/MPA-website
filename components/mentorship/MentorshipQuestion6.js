@@ -6,9 +6,10 @@ import { successToast, errorToast } from '../../contexts/utils/toasts';
 
 const MentorshipQuestion6 = (props) => {
   const [user, setUser] = useState('');
+  const router = useRouter();
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem('userInfo'));
-    setUser(user.user);
+    const _user = JSON.parse(localStorage.getItem('userInfo'));
+    setUser(_user.user);
   }, []);
   const back = (e) => {
     e.preventDefault();
@@ -17,15 +18,14 @@ const MentorshipQuestion6 = (props) => {
 
   const { values } = props;
   let lookingTitle = '';
-  if (values.iAMa == 'Mentor') {
+  if (values.iAMa === 'Mentor') {
     lookingTitle = 'Mentee';
   }
-  if (values.iAMa == 'Mentee') {
+  if (values.iAMa === 'Mentee') {
     lookingTitle = 'Mentor';
   }
   console.log(values);
-  const submitHandler = (e) => {
-    // e.preventDefault();
+  const submitHandler = () => {
     const userUpdate = {
       is_mentor: values.iAMa === 'Mentor',
       is_mentee: values.iAMa === 'Mentee',
@@ -49,9 +49,8 @@ const MentorshipQuestion6 = (props) => {
           'userInfo',
           JSON.stringify({ token, user: res.data.data }),
         );
-        console.log(res.data.data);
       })
-      .catch((err) => {
+      .catch(() => {
         errorToast('Something went wrong, please contact us.');
       });
 
@@ -87,9 +86,8 @@ const MentorshipQuestion6 = (props) => {
           pathname: '/mentorshipApp',
           query: { object: JSON.stringify(res.data.data) },
         });
-        console.log(res.data.data);
       })
-      .catch((err) => {
+      .catch(() => {
         errorToast('Something went wrong, please contact us.');
       });
   };
@@ -103,7 +101,7 @@ const MentorshipQuestion6 = (props) => {
           <div className="row tw tw-mx-0">
             <h2 className="tw-text-center tw-text-3xl tw-text-#222222 tw-font-bold tw-pb-4 col">
               {values.iAMa}
-              's Registration
+              &apos;s Registration
             </h2>
           </div>
           <div className="row tw tw-mx-0">
@@ -182,13 +180,11 @@ const MentorshipQuestion6 = (props) => {
             <div className="col">
               <h5 className="tw-font-bold tw-text-#222222">Interest:</h5>
               <p className="tw-m-0">
-                {/* {values.interest.map((item) => ( */}
                 <span>
                   {' '}
                   {values.interest.label}
                   {' '}
                 </span>
-                {/* ))} */}
               </p>
             </div>
           </div>
@@ -196,34 +192,28 @@ const MentorshipQuestion6 = (props) => {
             <div className="col-sm-12 col-md-4">
               <h5 className="tw-font-bold tw-text-#222222">Learning Style</h5>
               <p className="tw-m-0">
-                {/* {values.learningStyle.map((item) => ( */}
                 <p className="tw-m-0">
                   {values.learningStyle.label}
                   {' '}
                 </p>
-                {/* ))} */}
               </p>
             </div>
             <div className="tw-text-center md:tw-text-left col-sm-12 col-md-4">
               <h5 className="tw-font-bold tw-text-#222222">Personality Type</h5>
               <p className="tw-m-0">
-                {/* {values.personlityType.map((item) => ( */}
                 <p className="tw-m-0">
                   {values.personlityType.label}
                   {' '}
                 </p>
-                {/* ))} */}
               </p>
             </div>
             <div className="tw-text-right md:tw-text-left col-sm-12 col-md-4">
               <h5 className="tw-font-bold tw-text-#222222">Languages</h5>
               <p className="tw-m-0">
-                {/* {values.primaryLang.map((item) => ( */}
                 <p className="tw-m-0">
                   {user.primaryLanguage}
                   {' '}
                 </p>
-                {/* ))} */}
               </p>
             </div>
           </div>
@@ -244,43 +234,37 @@ const MentorshipQuestion6 = (props) => {
             <div className="col-sm-12 col-md-4">
               <h5 className="tw-font-bold tw-text-#222222">
                 {lookingTitle}
-                's Education
+                &apos;s Education
               </h5>
               <p className="tw-m-0">
-                {/* {values.lookingForEdu.map((item) => ( */}
                 <p className="tw-m-0">
                   {values.lookingForEdu.label}
                   {' '}
                 </p>
-                {/* ))} */}
               </p>
             </div>
             <div className="tw-text-center md:tw-text-left col-sm-12 col-md-4">
               <h5 className="tw-font-bold tw-text-#222222">
                 {lookingTitle}
-                's Experience
+                &apos;s Experience
               </h5>
               <p className="tw-m-0">
-                {/* {values.lookingForExp.map((item) => ( */}
                 <p className="tw-m-0">
                   {values.lookingForExp.label}
                   {' '}
                 </p>
-                {/* ))} */}
               </p>
             </div>
             <div className="tw-text-right md:tw-text-left col-sm-12 col-md-4">
               <h5 className="tw-font-bold tw-text-#222222">
                 {lookingTitle}
-                's Gender
+                &apos;s Gender
               </h5>
               <p className="tw-m-0">
-                {/* {values.lookingForGender.map((item) => ( */}
                 <p className="tw-m-0">
                   {values.lookingForGender.label}
                   {' '}
                 </p>
-                {/* ))} */}
               </p>
             </div>
           </div>
@@ -288,40 +272,34 @@ const MentorshipQuestion6 = (props) => {
             <div className="col-sm-12 col-md-4">
               <h5 className="tw-font-bold tw-text-#222222">
                 {lookingTitle}
-                's Availability
+                &apos;s Availability
               </h5>
               <p className="tw-m-0">
-                {/* {values.lookingForAvailability.map((item) => ( */}
                 <p className="tw-m-0">{values.lookingForAvailability.label}</p>
-                {/* ))} */}
               </p>
             </div>
             <div className="tw-text-center md:tw-text-left col-sm-12 col-md-4">
               <h5 className="tw-font-bold tw-text-#222222">
                 {lookingTitle}
-                's Language
+                &apos;s Language
               </h5>
               <p className="tw-m-0">
-                {/* {values.lookingForLang.map((item) => ( */}
                 <p className="tw-m-0">
                   {values.lookingForLang.label}
                   {' '}
                 </p>
-                {/* ))} */}
               </p>
             </div>
             <div className="tw-text-right md:tw-text-left col-sm-12 col-md-4">
               <h5 className="tw-font-bold tw-text-#222222">
                 {lookingTitle}
-                's Ethnicity
+                &apos;s Ethnicity
               </h5>
               <p className="tw-m-0">
-                {/* {values.lookingForEthnicity.map((item) => ( */}
                 <p className="tw-m-0">
                   {values.lookingForEthnicity.label}
                   {' '}
                 </p>
-                {/* ))} */}
               </p>
             </div>
           </div>
@@ -330,6 +308,7 @@ const MentorshipQuestion6 = (props) => {
       <div className="tw-absolute tw-w-full tw-bottom-12 tw-pr-48 md:tw-pr-20 md:tw-bottom-7 tw-text-center">
         <div className="tw-w-280px tw-mx-auto tw-flex tw-justify-between">
           <button
+            type="button"
             className="tw-bg-NavDark tw-outline-none tw-rounded-md tw-w-32 tw-py-2 tw-mb-6 tw-text-white hover:tw-text-NavDark hover:tw-bg-white tw-duration-500"
             onClick={back}
           >
@@ -341,6 +320,7 @@ const MentorshipQuestion6 = (props) => {
             }}
           >
             <button
+              type="button"
               onClick={submitHandler}
               className="tw-bg-activeOrange tw-outline-none tw-rounded-md tw-w-32 tw-py-2 tw-mb-6 tw-text-white hover:tw-text-NavDark hover:tw-bg-white tw-duration-500"
             >

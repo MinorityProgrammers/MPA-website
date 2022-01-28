@@ -3,15 +3,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { useRouter } from 'next/router';
 
-const AdvancedModules = function ({ module, courseId, userModules }) {
+const AdvancedModules = ({ module, courseId, userModules }) => {
   const [userModule, setUserModule] = useState([]);
   const router = useRouter();
   const { name, level, _id } = module;
 
-  const specificUserModules = userModules.filter((module) => module.moduleId._id == _id);
+  const specificUserModules = userModules.filter(
+    (_module) => _module.moduleId._id === _id,
+  );
   useEffect(() => {
-    specificUserModules?.forEach((module) => {
-      setUserModule(module);
+    specificUserModules?.forEach((_module) => {
+      setUserModule(_module);
     });
   }, [specificUserModules]);
 
@@ -23,26 +25,30 @@ const AdvancedModules = function ({ module, courseId, userModules }) {
   return (
     <div>
       <div className="mb-2">
-        {userModule.completed
-          ? <span className="green-check mr-2"><FontAwesomeIcon icon={faCheck} /></span>
-          : <span className="white-check mr-2"><FontAwesomeIcon icon={faCheck} /></span>}
-        {userModule.completed
-          ? (
-            <a
-              className="mb-2 text-decoration-none text-white sidebar-weeks completedItem"
-              course_id={courseId}
-              module_level={level}
-              module_id={_id}
-              onClick={handleModuleInfo}
-            >
-              {name}
-            </a>
-          )
-          : (
-            <a className="mb-2 text-decoration-none text-white sidebar-weeks">
-              {name}
-            </a>
-          )}
+        {userModule.completed ? (
+          <span className="green-check mr-2">
+            <FontAwesomeIcon icon={faCheck} />
+          </span>
+        ) : (
+          <span className="white-check mr-2">
+            <FontAwesomeIcon icon={faCheck} />
+          </span>
+        )}
+        {userModule.completed ? (
+          <a
+            className="mb-2 text-decoration-none text-white sidebar-weeks completedItem"
+            course_id={courseId}
+            module_level={level}
+            module_id={_id}
+            onClick={handleModuleInfo}
+          >
+            {name}
+          </a>
+        ) : (
+          <a className="mb-2 text-decoration-none text-white sidebar-weeks">
+            {name}
+          </a>
+        )}
       </div>
     </div>
   );

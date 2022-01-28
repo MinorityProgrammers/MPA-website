@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import styles from './content.module.css';
 import Jobs from './jobs/Jobs';
 import Candidates from './candidates/Candidates';
 import Interview from './interview/Interview';
 
-const EmployerContent = function () {
+const EmployerContent = () => {
   const [load, setLoad] = useState(3);
 
   const loadmore = () => {
@@ -19,7 +19,9 @@ const EmployerContent = function () {
         <Interview scheduled={7} />
       </div>
       <div className={styles.footer}>
-        <button onClick={loadmore}>load more</button>
+        <button type="button" onClick={loadmore}>
+          load more
+        </button>
       </div>
     </div>
   );

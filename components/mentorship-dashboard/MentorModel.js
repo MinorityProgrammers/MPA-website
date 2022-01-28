@@ -1,14 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import {
-  Modal, Dropdown, Form, ListGroup,
-} from 'react-bootstrap';
+import { Modal, Form } from 'react-bootstrap';
 import { Alert } from 'antd';
 import 'antd/lib/alert/style/index.css';
 import axios from 'axios';
-import FormData from 'form-data';
 import 'antd/lib/upload/style/index.css';
-import { event } from 'jquery';
-import { set } from 'date-fns';
 import CreatableInputOnly from './InputSelect.tsx';
 import styles from '../../styles/MentorCSS/Calendar.module.css';
 import stylesE from '../../styles/MentorCSS/Mentor.module.css';
@@ -44,10 +39,10 @@ const MentorModel = ({
       notes,
     };
     const token = window.localStorage.getItem('jwtToken');
-    if (title == '' || description == '') {
+    if (title === '' || description === '') {
       setErr(true);
     } else {
-      if (token != null && edit == false) {
+      if (token != null && edit === false) {
         axios
           .post(
             `${process.env.BASE_URI}/mentorship/${currentModel}/${mentorship_id}`,
@@ -59,14 +54,14 @@ const MentorModel = ({
               },
             },
           )
-          .then((res) => {
+          .then(() => {
             successToast(`${currentModel} created!`);
             setUpdate(!update);
           })
-          .catch((err) => {
+          .catch(() => {
             errorToast('Something went wrong, please contact us.');
           });
-      } else if (token != null && edit == true) {
+      } else if (token != null && edit === true) {
         axios
           .patch(
             `${process.env.BASE_URI}/mentorship/${currentModel}/${currentRes._id}`,
@@ -78,12 +73,11 @@ const MentorModel = ({
               },
             },
           )
-          .then((res) => {
+          .then((/* res */) => {
             successToast(`${currentModel} updated!`);
-            console.log(res.data);
             setUpdate(!update);
           })
-          .catch((err) => {
+          .catch(() => {
             errorToast('Something went wrong, please contact us.');
           });
       }
@@ -98,7 +92,6 @@ const MentorModel = ({
   };
   useEffect(() => {
     if (edit) {
-      console.log(currentRes);
       setTitle(currentRes.title);
       setDescription(currentRes.description);
       setProgressPercentage(currentRes.progress_percentage);
@@ -116,7 +109,6 @@ const MentorModel = ({
     <Form.Control
       onChange={(event) => {
         event.persist();
-        console.log(event.target.value);
         setCurrentModel(event.target.value);
       }}
       id="controlId"
@@ -132,7 +124,7 @@ const MentorModel = ({
       <option value="event">Upcoming Event</option>
     </Form.Control>
   );
-  console.log(currentModel);
+
   return (
     <Modal
       {...propsR}
@@ -188,7 +180,7 @@ const MentorModel = ({
               </div>
             </div>
 
-            {currentModel == 'sprint' && (
+            {currentModel === 'sprint' && (
               <div className={styles.row}>
                 <div className={styles.col}>
                   <label>Notes</label>
@@ -197,7 +189,7 @@ const MentorModel = ({
               </div>
             )}
             <div className={styles.row}>
-              {currentModel != 'event' && (
+              {currentModel !== 'event' && (
                 <div
                   style={{ width: '25%', marginRight: '1rem' }}
                   className={styles.col}
@@ -213,7 +205,7 @@ const MentorModel = ({
                   />
                 </div>
               )}
-              {currentModel == 'sprint' && (
+              {currentModel === 'sprint' && (
                 <div
                   className={styles.col}
                   style={{ width: '40%', marginRight: '10px' }}

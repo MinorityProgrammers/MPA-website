@@ -1,10 +1,5 @@
 import { USERS, SIGNER } from '../actionTypes';
 
-// export const getUserDetails = (publicKey) => ({
-//   type: USERS.FETCH_USER_DETAILS,
-//   request: { url: `/user/${publicKey}` },
-// });
-
 export const updatePublicKeyFromSigner = (publicKey) => (dispatch) => {
   try {
     dispatch({ type: USERS.SET_USER_ADDRESS, payload: { publicKey } });

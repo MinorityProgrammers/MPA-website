@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
 import Binary from './Binary';
 
-const ProposalBox = function () {
-  const [myProposals, setMyProposals] = useState(92);
-  const [otherActions, setOtherActions] = useState(60);
-  const [spent, setSpent] = useState(12);
-  const [total, setTotal] = useState(140);
+const ProposalBox = () => {
+  const [myProposals] = useState(92);
+  const [otherActions] = useState(60);
+  const [spent] = useState(12);
+  const [total] = useState(140);
 
   return (
     <div className="proposal__box__container">
-
       <div className="proposal">
         <Binary />
         <div className="back__to__proposals">
@@ -18,12 +17,11 @@ const ProposalBox = function () {
             <span className="bold">My Proposals</span>
             .
           </p>
-          <button className="go__back">
+          <button type="button" className="go__back">
             <i className="fas fa-chevron-left mobile-arrow" />
             <p className="go__back__text">Back</p>
           </button>
         </div>
-
       </div>
 
       <div className="net">
@@ -59,9 +57,7 @@ const ProposalBox = function () {
             <span>{total}</span>
           </p>
         </div>
-
       </div>
-
     </div>
   );
 };

@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Chart } from 'react-google-charts';
-import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const MarketChart = (props) => {
+const MarketChart = () => {
   const [currentView, setCurrentView] = useState('Daily');
   return (
     <div className="d-flex flex-column align-items-center" style={{ width: '100%', height: '100%' }}>
@@ -14,7 +12,6 @@ const MarketChart = (props) => {
             fontSize: '20px', fontWeight: '700', color: 'black', marginRight: '5px',
           }}
           >
-            {' '}
             Market Chart
           </p>
           <select name="crypto" className="btn btn-primary" style={{ background: '#474BFF' }}>

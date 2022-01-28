@@ -1,12 +1,11 @@
 import React, { useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import { useDetectOutsideClick } from '../UseDetectOutsideClick';
+import useDetectOutsideClick from '../UseDetectOutsideClick';
 import Card from '../login-signup/card';
 
 const MentorshipProgramHome = ({
   data,
-  onCloseMobileMenu,
   active,
   clickRegister,
   setClickRegister,
@@ -20,23 +19,6 @@ const MentorshipProgramHome = ({
   return (
     <section>
       <div className="container">
-        <div className="login__reg flex d-flex justify-content-end mb-5 mt-2 pr-5">
-          <div>
-            {data === null ? (
-              <a
-                onClick={() => {
-                  setClickRegister(true);
-                }}
-                className="btn mentorshipBTN"
-              >
-                Register
-              </a>
-            ) : (
-              ' '
-            )}
-          </div>
-        </div>
-
         <div className="signup__program">
           <div className="row">
             <div className="col-lg-4">
@@ -57,17 +39,15 @@ const MentorshipProgramHome = ({
             </div>
             <div className="col-lg-8 d-flex align-items-center mshipProgram__w_list">
               <ul className="">
-                <h1> Sign Up Program</h1>
+                <h1> Sign Up For The Program</h1>
                 <li>
                   {' '}
                   REGISTER for a Minority Programmers Association account.
                 </li>
                 <li>
-                  {' '}
                   SIGN UP, have access to training and growth opportunities.
                 </li>
                 <li>
-                  {' '}
                   Being part of the Mentorship Program offers guidance to
                   SUCCESS
                 </li>
@@ -84,14 +64,11 @@ const MentorshipProgramHome = ({
                 <h1>Start Matching</h1>
                 <li>Tell us about your GOALS and needs.</li>
                 <li>
-                  {' '}
                   CHOOSE from the mentoring suggestions made by machine
                   learning.
                 </li>
                 <li>
-                  {' '}
-                  Choose a mentorship track & start CHAT with your match.
-                  {' '}
+                  Choose a mentorship track & start a chat with your match.
                 </li>
               </ul>
             </div>
@@ -193,6 +170,7 @@ const MentorshipProgramHome = ({
               <div className="row">
                 <div className="col-lg-6 d-flex justify-content-center">
                   <button
+                    type="button"
                     onClick={() => {
                       setClickRegister(true);
                     }}
@@ -203,6 +181,7 @@ const MentorshipProgramHome = ({
                 </div>
                 <div className="col-lg-6 d-flex justify-content-center">
                   <button
+                    type="button"
                     onClick={() => {
                       setClickRegister(true);
                     }}
@@ -234,7 +213,10 @@ const MentorshipProgramHome = ({
         ) : (
           <div className="mentorshipP__login d-flex justify-content-center mt-4 mb-5">
             <Link href="/mentorship">
-              <button className="font-weight-bold h3 myButton mb-5">
+              <button
+                type="button"
+                className="font-weight-bold h3 myButton mb-5"
+              >
                 Get Started
               </button>
             </Link>

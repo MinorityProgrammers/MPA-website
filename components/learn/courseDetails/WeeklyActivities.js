@@ -5,28 +5,32 @@ import { useRouter } from 'next/router';
 import CourseSidebar from './CourseSidebar';
 import ActivityList from './ActivityList';
 
-const WeeklyActivities = function ({ enrolledCourses, modules, userModules }) {
+const WeeklyActivities = ({ enrolledCourses, modules, userModules }) => {
   const [course, setCourse] = useState({});
   const router = useRouter();
   const { courseId, moduleLevel } = router.query;
 
-  const singleCourse = enrolledCourses?.filter((course) => course.courseId._id === courseId);
+  const singleCourse = enrolledCourses?.filter(
+    (_course) => _course.courseId._id === courseId,
+  );
   useEffect(() => {
-    singleCourse.forEach((course) => {
-      setCourse(course.courseId);
+    singleCourse.forEach((_course) => {
+      setCourse(_course.courseId);
     });
   }, [singleCourse]);
 
-  const specificModules = modules.filter((module) => module.level == moduleLevel);
+  const specificModules = modules.filter(
+    (module) => module.level === moduleLevel,
+  );
 
-  // progress
   const totalModules = specificModules.length;
-  const specificUserModules = userModules && userModules.filter((eModule) => specificModules.some((module) => eModule.moduleId._id === module._id));
+  const specificUserModules = userModules
+    && userModules.filter((eModule) => specificModules.some((module) => eModule.moduleId._id === module._id));
 
   let completedModules = 0;
-  specificUserModules.map((module) => {
+  specificUserModules.forEach((module) => {
     if (module.completed) {
-      completedModules++;
+      completedModules += 1;
     }
   });
 
@@ -36,10 +40,12 @@ const WeeklyActivities = function ({ enrolledCourses, modules, userModules }) {
   });
   const totalPercentage = Math.round(totalCompletionRate / totalModules);
 
-  // Forward button functionality
   const handleForwardLevelInfo = () => {
     if (moduleLevel === 'beginner') {
-      const forwardLevelInfo = router.asPath.replace(moduleLevel, 'intermediate');
+      const forwardLevelInfo = router.asPath.replace(
+        moduleLevel,
+        'intermediate',
+      );
       router.push(forwardLevelInfo);
     } else if (moduleLevel === 'intermediate') {
       const forwardLevelInfo = router.asPath.replace(moduleLevel, 'advanced');
@@ -51,7 +57,12 @@ const WeeklyActivities = function ({ enrolledCourses, modules, userModules }) {
     <div className="courses-details banner-bg">
       <div className="row" style={{ backgroundColor: '#474BFF' }}>
         <div className="col-12 col-md-3 pr-0 scroll-sidebar">
-          <CourseSidebar course={course} courseId={courseId} modules={modules} userModules={userModules} />
+          <CourseSidebar
+            course={course}
+            courseId={courseId}
+            modules={modules}
+            userModules={userModules}
+          />
         </div>
         <div className="col-12 col-md-9 pl-0">
           <div className="activities-banner">
@@ -69,16 +80,22 @@ const WeeklyActivities = function ({ enrolledCourses, modules, userModules }) {
                   {totalModules}
                 </p>
                 <div className="progress mt-2 mb-2">
-                  <div className="progress-bar" style={{ width: `${totalPercentage}%` }} role="progressbar" aria-valuenow={totalPercentage} aria-valuemin="0" aria-valuemax="100" />
+                  <div
+                    className="progress-bar"
+                    style={{ width: `${totalPercentage}%` }}
+                    role="progressbar"
+                    aria-valuenow={totalPercentage}
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  />
                 </div>
                 <p className="text-center">
-                  {!isNaN(totalPercentage)
-                                        && (
-                                        <span className="">
-                                          {totalPercentage}
-                                          % completed
-                                        </span>
-                                        )}
+                  {!Number.isNaN(totalPercentage) && (
+                    <span className="">
+                      {totalPercentage}
+                      % completed
+                    </span>
+                  )}
                 </p>
               </div>
             </div>
@@ -87,33 +104,51 @@ const WeeklyActivities = function ({ enrolledCourses, modules, userModules }) {
           <div className="pt-4">
             <div className="menu-items">
               <div className="d-flex justify-content-between mx-5 nextPrev-icons">
-                <button onClick={() => router.back()} className="icon">
+                <button
+                  type="button"
+                  onClick={() => router.back()}
+                  className="icon"
+                >
                   <FontAwesomeIcon icon={faArrowLeft} />
                 </button>
-                {specificModules.length === specificUserModules.length && specificUserModules.length !== 0
-                  ? (
-                    <>
-                      {specificUserModules.length === completedModules
-                                            && (
-                                            <>
-                                              {moduleLevel !== 'advanced' && (
-                                              <button onClick={handleForwardLevelInfo}>
-                                                <FontAwesomeIcon icon={faArrowRight} className="icon" />
-                                              </button>
-                                              )}
-                                            </>
-                                            )}
-                    </>
-                  )
-                  : (
-                    <button disabled style={{ pointerEvents: 'none' }}>
+                {specificModules.length === specificUserModules.length
+                && specificUserModules.length !== 0 ? (
+                  <>
+                    {specificUserModules.length === completedModules && (
+                      <>
+                        {moduleLevel !== 'advanced' && (
+                          <button
+                            type="button"
+                            onClick={handleForwardLevelInfo}
+                          >
+                            <FontAwesomeIcon
+                              icon={faArrowRight}
+                              className="icon"
+                            />
+                          </button>
+                        )}
+                      </>
+                    )}
+                  </>
+                  ) : (
+                    <button
+                      type="button"
+                      disabled
+                      style={{ pointerEvents: 'none' }}
+                    >
                       <FontAwesomeIcon icon={faArrowRight} />
                     </button>
                   )}
               </div>
-              {
-                                specificModules && specificModules.map((module) => <ActivityList module={module} key={module._id} userModules={userModules} specificUModules={specificUserModules} />)
-                            }
+              {specificModules
+                && specificModules.map((module) => (
+                  <ActivityList
+                    module={module}
+                    key={module._id}
+                    userModules={userModules}
+                    specificUModules={specificUserModules}
+                  />
+                ))}
             </div>
           </div>
         </div>

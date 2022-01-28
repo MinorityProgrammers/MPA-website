@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Router, { useRouter } from 'next/router';
 import axios from 'axios';
 import Skeleton from 'react-loading-skeleton';
@@ -8,8 +8,10 @@ import SearchResult from './search-result';
 import PopularSearch from './popular-search';
 import SearchCategory from './search-category';
 
-const Search = function ({ token }) {
-  const { query: { _q } } = useRouter();
+const Search = ({ token }) => {
+  const {
+    query: { _q },
+  } = useRouter();
 
   const searchUrl = `${process.env.BASE_URI}/search`;
 
@@ -29,7 +31,6 @@ const Search = function ({ token }) {
     try {
       const res = await axios.post(url, { keyword: input });
       const { data } = res.data;
-      console.log(data);
       setResult(data);
     } catch (error) {
       console.error(error);
@@ -37,9 +38,9 @@ const Search = function ({ token }) {
     setLoading(false);
   };
 
-  const handleCategory = (category) => {
-    setCategory(category);
-    setActiveSearch(category);
+  const handleCategory = (_category) => {
+    setCategory(_category);
+    setActiveSearch(_category);
   };
 
   const handleTags = (tag) => {
@@ -51,7 +52,7 @@ const Search = function ({ token }) {
 
   const handleChange = (e) => {
     const regex = /\b\w+/;
-    if (!(regex.test(e.target.value)) && e.target.value !== '') return;
+    if (!regex.test(e.target.value) && e.target.value !== '') return;
     Router.push({
       pathname: '/search',
       query: { _q: e.target.value },
@@ -68,18 +69,14 @@ const Search = function ({ token }) {
     return resArr.some((el) => res[el].length > 0);
   };
 
-  /*
-the code below is for the chapter result to enable
-users join chapter from the search page.
-*/
-
   useEffect(() => {
     if (token) {
-      axios.get(`${process.env.BASE_URI}/joinChapter/userJoinedRequests`, {
-        headers: {
-          Authorization: `Bearer ${token || ''}`,
-        },
-      })
+      axios
+        .get(`${process.env.BASE_URI}/joinChapter/userJoinedRequests`, {
+          headers: {
+            Authorization: `Bearer ${token || ''}`,
+          },
+        })
         .then((data) => {
           setJoinRequests(data.data.data);
         })
@@ -88,21 +85,11 @@ users join chapter from the search page.
   }, []);
 
   const findrequests = (requests) => {
-    const allRequests = [];
-
-    requests.map((all) => {
-      allRequests.push(all.chapterLocation_id);
-    });
-
+    const allRequests = requests.map((all) => all.chapterLocation_id);
     return allRequests;
   };
 
   const userJoinRequests = findrequests(joinRequests);
-
-  /*
-  the code above is for the chapter result to enable
-  users join chapter from the search page.
-  */
 
   return (
     <div className={styles.wrapper}>
@@ -112,61 +99,74 @@ users join chapter from the search page.
             <ul className={styles.categoriesList}>
               <li
                 onClick={() => handleCategory('all')}
-                className={`${styles.categoriesItem} ${category === 'all' ? styles.clicked : null}`}
+                className={`${styles.categoriesItem} ${
+                  category === 'all' ? styles.clicked : null
+                }`}
               >
                 All
               </li>
-              {
-                searchCategories && searchCategories.map((category, idx) => (
+              {searchCategories
+                && searchCategories.map((_category, idx) => (
                   <SearchCategory
-                    key={idx}
-                    category={category}
+                    key={`${`category${idx}`}`}
+                    category={_category}
                     activeSearch={activeSearch}
                     handleCategory={handleCategory}
                   />
-                ))
-              }
+                ))}
             </ul>
           </div>
 
           <div className={styles.searchBox}>
-            <label className={styles.searchLabel} htmlFor="search"><i className=" fas fa-search" /></label>
-            <input className={styles.searchInput} type="text" value={searchValue} onChange={handleChange} placeholder="Events, Jobs, Etc..." />
+            <label className={styles.searchLabel} htmlFor="search">
+              <i className=" fas fa-search" />
+            </label>
+            <input
+              className={styles.searchInput}
+              type="text"
+              value={searchValue}
+              onChange={handleChange}
+              placeholder="Events, Jobs, Etc..."
+            />
           </div>
 
           <div className={styles.searchTags}>
             <h3 className={styles.tagTitle}>Popular Searches</h3>
             <ul className={styles.tagsList}>
-              {
-                popularSearches && popularSearches.map((tag, idx) => (
+              {popularSearches
+                && popularSearches.map((tag, idx) => (
                   <PopularSearch
-                    key={idx}
+                    key={`${`tag${idx}`}`}
                     handleTags={handleTags}
                     tag={tag}
                     activeSearch={activeSearch}
                   />
-                ))
-              }
+                ))}
             </ul>
           </div>
         </section>
         <section className={styles.resultSection}>
-          {
-            loading
-              ? (new Array(4).fill(null)).map((_, idx) => (
-                <div key={idx} style={{ width: '100%' }}>
-                  <Skeleton width={320} height={160} />
-                  <br />
-                  <br />
-                  <Skeleton width={320} height={30} />
-                  <br />
-                  <Skeleton width={320} height={30} />
-                </div>
-              ))
-              : isResult(result)
-                ? <SearchResult result={result} category={category} token={token} userJoinRequests={userJoinRequests} />
-                : <div className={styles.no_result}>No result found</div>
-          }
+          {loading ? (
+            new Array(4).fill(null).map((_, idx) => (
+              <div key={`${idx + 1}`} style={{ width: '100%' }}>
+                <Skeleton width={320} height={160} />
+                <br />
+                <br />
+                <Skeleton width={320} height={30} />
+                <br />
+                <Skeleton width={320} height={30} />
+              </div>
+            ))
+          ) : isResult(result) ? (
+            <SearchResult
+              result={result}
+              category={category}
+              token={token}
+              userJoinRequests={userJoinRequests}
+            />
+          ) : (
+            <div className={styles.no_result}>No result found</div>
+          )}
         </section>
       </main>
     </div>

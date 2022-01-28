@@ -9,7 +9,7 @@ const ApplyModal = ({
 
   const requirements = loadingReq === true && job !== null && job.min_requirements
     ? job.min_requirements.map((skill, idx) => (
-      <div className="applyModal-content-box-form-reqs-req" key={idx}>
+      <div className="applyModal-content-box-form-reqs-req" key={`${skill.skill + idx}`}>
         <label className="applyModal-content-box-form-reqs-req-label">
           How many years of experience do you have in
           {skill.skill}

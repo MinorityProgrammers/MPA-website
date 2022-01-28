@@ -9,25 +9,20 @@ const HomepageDonate = () => {
   const { amount, donateDispatch } = useContext(GlobalContext);
   const [isDone, setIsDone] = useState(false);
   const [count, setCount] = useState(1);
-  const [value, setValue] = useState(0);
   const [monthly, setMonthly] = useState(false);
 
   const [succeeded, setSucceeded] = useState(false);
-  const [paypalErrorMessage, setPaypalErrorMessage] = useState('');
-  const [orderID, setOrderID] = useState(false);
+  const [, setOrderID] = useState(false);
   const [billingDetails, setBillingDetails] = useState([]);
-  const [payment, setPayment] = useState([]);
+  const [, setPayment] = useState([]);
 
-  // get donate amount when click
   const handleValue = (e) => {
-    // dispatch
     donateDispatch({
       type: 'UPDATE_DONATE_AMOUNT',
       amount: e.target.value,
     });
   };
 
-  // creates one time paypal order
   const createOrder = (data, actions) => actions.order
     .create({
       purchase_units: [
@@ -45,27 +40,16 @@ const HomepageDonate = () => {
       setOrderID(orderID);
       return orderID;
     });
+  const createSubscription = (data, action) => {};
 
-  // create paypal subscription
-  const createSubscription = (data, action) => {
-    // return actions.subscription.create({
-    //     'plan_id': 'P-2UF78835G6983425GLSM44MA'
-    // })
-  };
-
-  // handles when a payment is confirmed for paypal
   const onApprove = (data, actions) => actions.order.capture().then((details) => {
     const { purchase_units } = details;
     setBillingDetails(details);
     setPayment(purchase_units);
     setSucceeded(true);
     setIsDone(true);
-    count++; // Instead of count++ use setCount(count+1)
+    setCount(count + 1);
   });
-  // handles payment errors
-  const onError = () => {
-    setPaypalErrorMessage('Something went wrong with your payment');
-  };
 
   const scrollTo = () => {
     const currentLocation = window.location.href;
@@ -86,7 +70,7 @@ const HomepageDonate = () => {
   return (
     <section id="donate" className="homepage__donate">
       <div className="heading__number">
-        <h3 className="tw-text-blue-900">07</h3>
+        <h3 className="tw-text-blue-900">05</h3>
       </div>
       <div className="container donate__container">
         <h2 className="heading__title mt-5 mb-5 tw-text-blue-900">
@@ -109,7 +93,6 @@ const HomepageDonate = () => {
               {isDone && amount !== 0 ? (
                 <i className="far fa-check-circle" />
               ) : null}
-              {' '}
               Amount
             </div>
             <div
@@ -120,7 +103,6 @@ const HomepageDonate = () => {
               {isDone && succeeded ? (
                 <i className="far fa-check-circle" />
               ) : null}
-              {' '}
               Payments
             </div>
             <div
@@ -193,15 +175,6 @@ const HomepageDonate = () => {
             >
               <i className="fab fa-bitcoin" />
             </a>
-            <a href="sponsorship" target="_blank" rel="noreferrer">
-              <i className="fas fa-gift" />
-            </a>
-            <a href="sponsorship" target="_blank" rel="noreferrer">
-              <i className="fas fa-hand-holding-usd" />
-            </a>
-            <a href="sponsorship" target="_blank" rel="noreferrer">
-              <i className="fab fa-twitch" />
-            </a>
           </div>
         </div>
       </div>
@@ -210,9 +183,3 @@ const HomepageDonate = () => {
 };
 
 export default HomepageDonate;
-
-// Paypal subscription
-// https://medium.com/analytics-vidhya/paypal-subscription-in-react-1121c39b26be
-// https://github.com/skydiver/nextjs-paypal-integration
-
-// Stripe subscription

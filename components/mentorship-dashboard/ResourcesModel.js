@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Modal } from 'react-bootstrap';
-import { Alert, Upload, message } from 'antd';
+import { Alert, Upload /* , message */ } from 'antd';
 import 'antd/lib/alert/style/index.css';
 import { InboxOutlined } from '@ant-design/icons';
 import axios from 'axios';
@@ -43,10 +43,10 @@ const ResourcesModel = ({
     formData.append('description', description);
     formData.append('icon', picObject);
     const token = window.localStorage.getItem('jwtToken');
-    if (title == '' || description == '' || link == '' || picObject == {}) {
+    if (title === '' || description === '' || link === '' || picObject === {}) {
       setErr(true);
     } else {
-      if (token != null && edit == false) {
+      if (token != null && edit === false) {
         axios
           .post(
             `${process.env.BASE_URI}/mentorship/resource/${mentorship_id}`,
@@ -58,14 +58,14 @@ const ResourcesModel = ({
               },
             },
           )
-          .then((res) => {
+          .then((/* res */) => {
             successToast('Resource created!');
             setUpdate(!update);
           })
-          .catch((err) => {
+          .catch((/* err */) => {
             errorToast('Something went wrong, please contact us.');
           });
-      } else if (token != null && edit == true) {
+      } else if (token != null && edit === true) {
         axios
           .patch(
             `${process.env.BASE_URI}/mentorship/resource/${currentRes._id}`,
@@ -77,11 +77,11 @@ const ResourcesModel = ({
               },
             },
           )
-          .then((res) => {
+          .then((/* res */) => {
             successToast('Resource updated!');
             setUpdate(!update);
           })
-          .catch((err) => {
+          .catch((/* err */) => {
             errorToast('Something went wrong, please contact us.');
           });
       }
@@ -107,17 +107,16 @@ const ResourcesModel = ({
     onChange(info) {
       const { status } = info.file;
       if (status !== 'uploading') {
-        console.log(info.file, info.fileList);
+        // console.log(info.file, info.fileList);
       }
       if (status === 'done') {
-        console.log(`${info.file.name} file uploaded successfully.`);
         newPic(info.file.originFileObj);
       } else if (status === 'error') {
-        mconsole.log(`${info.file.name} file upload failed.`);
+        // console.log(`${info.file.name} file upload failed.`);
       }
     },
     onDrop(e) {
-      console.log('Dropped files', e.dataTransfer.files);
+      // console.log('Dropped files', e.dataTransfer.files);
     },
   };
 
@@ -218,10 +217,6 @@ const ResourcesModel = ({
                   <p className="ant-upload-text">
                     Click or drag file to this area to upload
                   </p>
-                  {/* <p className="ant-upload-hint">
-                    Support for a single or bulk upload. Strictly prohibit from
-                    uploading company data or other band files
-                  </p> */}
                 </Dragger>
               </div>
             </div>

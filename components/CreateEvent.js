@@ -9,8 +9,8 @@ import { successToast, errorToast } from '../contexts/utils/toasts';
 import 'react-datepicker/dist/react-datepicker.css';
 
 const CreateEvent = (props) => {
-  const { userData, token, createEventData } = props;
-  const [loading, setLoading] = useState(false);
+  const { token } = props;
+  const [, setLoading] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
 
   const handleDate = (date) => {
@@ -80,20 +80,20 @@ const CreateEvent = (props) => {
 
   const handlePreview = () => {
     if (
-      props.data.EventPicture.length == 0
-      || props.data.eventName.length == 0
-      || props.data.EventDescription.length == 0
-      || props.data.eventLink.length == 0
-      || props.data.time.length == 0
-      || props.data.catName.length == 0
-      || props.data.Virtual.length == 0
+      props.data.EventPicture.length === 0
+      || props.data.eventName.length === 0
+      || props.data.EventDescription.length === 0
+      || props.data.eventLink.length === 0
+      || props.data.time.length === 0
+      || props.data.catName.length === 0
+      || props.data.Virtual.length === 0
     ) {
-      if (props.data.isError == false) {
+      if (props.data.isError === false) {
         props.handleError('isError');
       }
     } else {
       props.handleMoreInfo();
-      if (props.data.isError == true) {
+      if (props.data.isError === true) {
         props.handleError('isError');
       }
     }
@@ -111,7 +111,7 @@ const CreateEvent = (props) => {
   formData.append('approved', true);
 
   useEffect(() => {
-    if (props.data.step == 3) {
+    if (props.data.step === 3) {
       setLoading(true);
       axios
         .post(`${process.env.BASE_URI}/event`, formData, {
@@ -121,11 +121,11 @@ const CreateEvent = (props) => {
             'content-type': 'multipart/form-data',
           },
         })
-        .then((res) => {
+        .then(() => {
           setLoading(false);
           successToast('Event created!');
         })
-        .catch((err) => {
+        .catch(() => {
           setLoading(false);
           errorToast('Something went wrong, please contact us.');
         });
@@ -206,19 +206,20 @@ const CreateEvent = (props) => {
 
     return (
       <div className="event_thankyou">
-        <img src="/assets/images/Idea_icon.png" />
+        <img src="/assets/images/Idea_icon.png" alt="icon" />
         <h1>Thank you for submitting an event.</h1>
         <p>
           Your Event is currently under review. Visit the Dashboard to check on
           the status of the event.
         </p>
         <div className="buttons">
-          <button>
+          <button type="button">
             <Link href="/dashboard">
               <a>See events in Dashboard</a>
             </Link>
           </button>
           <button
+            type="button"
             onClick={() => {
               window.location.reload();
             }}
@@ -242,11 +243,12 @@ const CreateEvent = (props) => {
           />
           <div id="create_event-container" className="create_event-container">
             <div id="container_left" className="create_event-container-left">
-              {props.data.EventPicture != '' && (
+              {props.data.EventPicture !== '' && (
                 <img
                   id="the_background_img"
                   className="the_background_img"
                   src={props.data.EventPicture}
+                  alt="event_picture"
                 />
               )}
               <div id="delete_image-container" />
@@ -257,6 +259,7 @@ const CreateEvent = (props) => {
                 <h6>Are you sure you want to delete this image?</h6>
                 <div className="delete_image-question-buttons">
                   <button
+                    type="button"
                     onClick={() => {
                       removePicture();
                     }}
@@ -266,6 +269,7 @@ const CreateEvent = (props) => {
                     Yes, delete
                   </button>
                   <button
+                    type="button"
                     onClick={() => {
                       removePictureDeny();
                     }}
@@ -284,6 +288,7 @@ const CreateEvent = (props) => {
                 }}
               />
               <button
+                type="button"
                 className="eventpopup_imgrm"
                 id="delete_upload"
                 onClick={() => {
@@ -354,8 +359,9 @@ const CreateEvent = (props) => {
                 {props.data.step > 1 && pop3()}
               </div>
               <div className="create_event-container-right-bottom">
-                {props.data.step == 2 && (
+                {props.data.step === 2 && (
                   <button
+                    type="button"
                     id="preview_event"
                     onClick={() => {
                       handlePreview();
@@ -367,6 +373,7 @@ const CreateEvent = (props) => {
                 )}
                 {props.data.step < 2 && (
                   <button
+                    type="button"
                     className="eventpopupcontinue"
                     id="continue_submit"
                     onClick={props.handleCreateEventData('step')}
@@ -376,7 +383,7 @@ const CreateEvent = (props) => {
                 )}
               </div>
             </div>
-            {props.data.step == 3 && popSubmitted()}
+            {props.data.step === 3 && popSubmitted()}
           </div>
         </div>
       ) : (

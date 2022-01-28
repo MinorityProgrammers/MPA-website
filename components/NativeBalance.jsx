@@ -1,4 +1,5 @@
-import { useNativeBalance } from '../helpers/useNativeBalance';
+import React from 'react';
+import useNativeBalance from '../helpers/useNativeBalance';
 import { n4 } from '../helpers/formatters';
 
 const NativeBalance = (props) => {

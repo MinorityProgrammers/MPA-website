@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-constructed-context-values */
 import React, { useEffect, useState } from 'react';
 import { useMoralis } from 'react-moralis';
 import MoralisDappContext from './context';

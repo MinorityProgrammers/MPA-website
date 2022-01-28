@@ -1,10 +1,11 @@
-import { useState, useEffect, useRef } from 'react';
+/* eslint-disable react/destructuring-assignment */
+import React, { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
 import axios from 'axios';
 import styles from './topheader.module.css';
-import { JobsFilters } from '../../../career-components/JobsFilters';
-import JobsMainContent from '../JobsMainContent';
 import Loader from '../../../Loader';
+import { errorToast, successToast } from '../../../../contexts/utils/toasts';
+import JobsFilters from '../../../career-components/JobsFilters';
 
 export async function getServerSideProps(context) {
   return {
@@ -14,16 +15,15 @@ export async function getServerSideProps(context) {
   };
 }
 
-const TopHeader = function (props) {
-  const [currentJob, changeCurrentJob] = useState({});
+const TopHeader = (props) => {
+  const [, changeCurrentJob] = useState({});
   const [savedJobs, setSavedJobs] = useState([]);
-  const [appliedJobs, setAppliedJobs] = useState([]);
-  const [modalView, toggleModalView] = useState(false);
+  const [, setAppliedJobs] = useState([]);
   const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [loadingReq, setLoadingReq] = useState(false);
-  const [allJobs, setAllJobs] = useState([]);
-  const [filter, setFilter] = useState({
+  const [, setLoadingReq] = useState(false);
+  const [, setAllJobs] = useState([]);
+  const [filter] = useState({
     pay: '0',
     job_type: '',
     remote: '',
@@ -32,14 +32,10 @@ const TopHeader = function (props) {
     description: '',
     location: '',
   });
-  const [queryObj, setQueryObj] = useState({});
+  const [queryObj] = useState({});
   const [activeJobIndex, setActiveJobIndex] = useState(0);
   const descriptionInput = useRef();
   const locationInput = useRef();
-
-  useEffect(() => {
-    fetchData();
-  }, []);
 
   const fetchData = () => {
     setLoading(true);
@@ -57,13 +53,16 @@ const TopHeader = function (props) {
       .catch((error) => console.log(error));
   };
 
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   const filterJobs = () => {
     fetch(
       `${process.env.BASE_URI}/job?pay=${filter.pay}&remote=${filter.remote}&job_type=${filter.job_type}&date_posted=${filter.date_posted}&job_industry=${filter.job_industry}`,
     )
       .then((response) => response.json())
       .then((response) => {
-        // setAllJobs(response.data)
         if (response.data.length >= 1) {
           changeCurrentJob(response.data[0]);
           setJobs(response.data);
@@ -81,24 +80,22 @@ const TopHeader = function (props) {
   const router = useRouter();
 
   function changePerPage(e) {
-    const queryObj = { ...props.query };
-    queryObj.per_page = e.target.value;
-    router.push({ query: queryObj });
+    const _queryObj = { ...props.query };
+    _queryObj.per_page = e.target.value;
+    router.push({ query: _queryObj });
   }
 
   function submitForm(btn) {
-    // reset to page 1
     if (queryObj.page) {
       delete queryObj.page;
     }
 
-    // closes form
-    if (btn.target.name != 'remote') {
+    if (btn.target.name !== 'remote') {
       btn.target.parentNode.parentNode.parentNode.style.display = 'none';
     }
 
-    if (btn.target.name == 'pay') {
-      if (btn.target.value != '0') {
+    if (btn.target.name === 'pay') {
+      if (btn.target.value !== '0') {
         queryObj.pay = btn.target.value;
         filter.pay = btn.target.value;
       } else {
@@ -108,8 +105,8 @@ const TopHeader = function (props) {
       router.push({ query: queryObj });
     }
 
-    if (btn.target.name == 'remote') {
-      if (btn.target.checked == true) {
+    if (btn.target.name === 'remote') {
+      if (btn.target.checked === true) {
         queryObj.remote = true;
         filter.remote = true;
       } else {
@@ -119,8 +116,8 @@ const TopHeader = function (props) {
       router.push({ query: queryObj });
     }
 
-    if (btn.target.name == 'job_type') {
-      if (btn.target.checked == true) {
+    if (btn.target.name === 'job_type') {
+      if (btn.target.checked === true) {
         queryObj.job_type = btn.target.value;
         filter.job_type = btn.target.value;
       } else {
@@ -130,8 +127,8 @@ const TopHeader = function (props) {
       router.push({ query: queryObj });
     }
 
-    if (btn.target.name == 'job_industry') {
-      if (btn.target.checked == true) {
+    if (btn.target.name === 'job_industry') {
+      if (btn.target.checked === true) {
         queryObj.job_industry = btn.target.value;
         filter.job_industry = btn.target.value;
       } else {
@@ -141,8 +138,8 @@ const TopHeader = function (props) {
       router.push({ query: queryObj });
     }
 
-    if (btn.target.name == 'date_posted') {
-      if (btn.target.value != '0') {
+    if (btn.target.name === 'date_posted') {
+      if (btn.target.value !== '0') {
         queryObj.date_posted = btn.target.value;
         filter.date_posted = btn.target.value;
       } else {
@@ -171,7 +168,7 @@ const TopHeader = function (props) {
 
       winSize.current = 'large';
     } else if (
-      winSize.current == 'large'
+      winSize.current === 'large'
       && document.querySelector('.jobsMain')
     ) {
       document.getElementsByClassName(
@@ -187,7 +184,7 @@ const TopHeader = function (props) {
 
   function changeJobAndColor(e, currJob, idx) {
     setActiveJobIndex(idx);
-    changeCurrentJob((prevJob) => currJob);
+    changeCurrentJob(() => currJob);
     if (window.innerWidth <= 991) {
       document.getElementsByClassName('jobsMain-search')[0].style.display = 'none';
       document.getElementsByClassName(
@@ -215,19 +212,16 @@ const TopHeader = function (props) {
   }
 
   function openFilterForm(btn) {
-    // if the form is open, close it and return
-    // console.log(window.getComputedStyle(btn.nextSibling).display)
-    if (window.getComputedStyle(btn.nextSibling).display == 'block') {
+    if (window.getComputedStyle(btn.nextSibling).display === 'block') {
       btn.nextSibling.style.display = 'none';
       return;
     }
 
-    // close all other forms when any form button is clicked on
-    for (const i of document.getElementsByClassName('job-filter-item-form')) {
-      i.style.display = 'none';
+    const elements = document.getElementsByClassName('job-filter-item-form');
+    for (let i = 0; i < elements.length; i + 1) {
+      elements[i].style.display = 'none';
     }
 
-    // open the form which is the next sibling of the button that was clicked
     if (btn.nextSibling) {
       btn.nextSibling.style.display = 'block';
     }
@@ -240,8 +234,22 @@ const TopHeader = function (props) {
     ? window.localStorage.getItem('userInfo')
     : null;
 
+  const fetchSavedJobs = () => {
+    if (token) {
+      axios
+        .get(`${process.env.BASE_URI}/savejob/userjobs`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((response) => {
+          setSavedJobs(response.data.data);
+          setLoading(false);
+        });
+    }
+  };
+
   const saveJob = (job) => {
-    console.log(job);
     axios
       .post(
         `${process.env.BASE_URI}/savejob`,
@@ -254,8 +262,7 @@ const TopHeader = function (props) {
           },
         },
       )
-      .then((response) => {
-        console.log('Saved', response);
+      .then((/* response */) => {
         successToast('Job Saved Successfully!');
         fetchSavedJobs();
       })
@@ -266,50 +273,22 @@ const TopHeader = function (props) {
       });
   };
 
-  const fetchSavedJobs = () => {
-    if (token) {
-      // setLoading(true)
-
-      axios
-        .get(
-          `${process.env.BASE_URI}/savejob/userjobs`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          },
-        )
-        .then((response) => {
-          setSavedJobs(response.data.data);
-          setLoading(false);
-          console.log('Saved Jobs', response);
-        });
-    }
-  };
-
   const getAppliedJobs = () => {
     if (token) {
       setLoading(true);
 
       axios
-        .get(
-          `${process.env.BASE_URI}/easyApply/userApplied`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
+        .get(`${process.env.BASE_URI}/easyApply/userApplied`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
           },
-        )
+        })
         .then((response) => {
           setAppliedJobs(response.data.data);
           setLoading(false);
-          console.log('Applied Jobs', response.data);
         });
     }
   };
-
-  // <button disabled className="job-stub-saved">Saved</button> :
-  // <a className="job-stub-saveLink" onClick={() => saveJob(job)}>Save Job</a>
 
   useEffect(() => {
     fetchSavedJobs();
@@ -318,9 +297,6 @@ const TopHeader = function (props) {
 
   const savedJobsId = savedJobs.map(
     (singleSavedJob) => singleSavedJob.job_id._id,
-  );
-  const appliedJobsId = appliedJobs.map(
-    (singleAppliedJob) => singleAppliedJob.job_id._id,
   );
 
   const authPlease = () => {
@@ -333,12 +309,11 @@ const TopHeader = function (props) {
     }
   };
 
-  // jobStubs will be fetched from database and then map... the fetch will have ALL query parameters(search description, search location, filters, jobs per page, current page)
   const jobStubs = jobs != null
     ? jobs.map((job, idx) => (
       <div
-        className={idx == activeJobIndex ? 'job-stub active' : 'job-stub'}
-        key={idx}
+        className={idx === activeJobIndex ? 'job-stub active' : 'job-stub'}
+        key={job._id}
         onClick={(e) => changeJobAndColor(e, job, idx)}
       >
         <div className="job-stub-header">
@@ -355,7 +330,7 @@ const TopHeader = function (props) {
           </div>
           {userInfo != null ? (
             savedJobsId.includes(job._id) ? (
-              <button disabled className="job-stub-saved">
+              <button type="button" disabled className="job-stub-saved">
                 Saved
               </button>
             ) : (
@@ -373,26 +348,34 @@ const TopHeader = function (props) {
     ))
     : '';
 
-  const totalCount = 102;
   const perPage = 10;
   const totalPages = Math.ceil(102 / perPage); // 11
+
+  function pageSelector(page) {
+    const _queryObj = { ...props.query };
+    if (page === 1 && _queryObj.page) {
+      delete _queryObj.page;
+    } else if (page !== 1) {
+      _queryObj.page = page;
+    }
+
+    router.push({ query: queryObj });
+  }
 
   function makePages() {
     const totPages = totalPages;
 
-    const queryObj = { ...props.query };
-    const { page } = queryObj;
+    const _queryObj = { ...props.query };
+    const { page } = _queryObj;
     const pageArray = [];
 
     if (page) {
       pageArray.push(page);
 
-      // push page to first placeholder if page number is greater than 1 and there are more than one pages
       if (page > 1) {
         pageArray.unshift(1);
       }
 
-      // push page to second placeholder if page number is less than the last page
       if (page < totPages) {
         pageArray.push(totPages);
       }
@@ -402,7 +385,7 @@ const TopHeader = function (props) {
         pageArray.push(totPages);
       }
     }
-    return pageArray.map((page) => {
+    return pageArray.map((pg) => {
       let currPage;
       if (!props.query.page) {
         currPage = 1;
@@ -411,58 +394,43 @@ const TopHeader = function (props) {
       }
 
       return (
-        <a style={currPage == page ? { background: '#151371' } : {}} key={page}>
+        <a style={currPage === pg ? { background: '#151371' } : {}} key={pg}>
           <button
-            style={currPage == page ? { color: 'white' } : {}}
-            onClick={() => pageSelector(page)}
+            type="button"
+            style={currPage === pg ? { color: 'white' } : {}}
+            onClick={() => pageSelector(pg)}
           >
-            {page}
+            {pg}
           </button>
         </a>
       );
     });
   }
 
-  function pageSelector(page) {
-    console.log(page);
-    const queryObj = { ...props.query };
-    if (page == 1 && queryObj.page) {
-      delete queryObj.page;
-    } else if (page != 1) {
-      queryObj.page = page;
-    }
-
-    router.push({ query: queryObj });
-  }
-
   function nextButton() {
-    const queryObj = { ...props.query };
-    if (!queryObj.page) {
-      queryObj.page = 2;
+    const _queryObj = { ...props.query };
+    if (!_queryObj.page) {
+      _queryObj.page = 2;
     } else {
-      queryObj.page = Number(queryObj.page) + 1;
-      console.log(typeof queryObj.page);
+      _queryObj.page = Number(_queryObj.page) + 1;
     }
 
-    router.push({ query: queryObj });
+    router.push({ query: _queryObj });
   }
 
   function prevButton() {
-    console.log('prev');
-    const queryObj = { ...props.query };
-    if (queryObj.page == 2) {
-      delete queryObj.page;
+    const _queryObj = { ...props.query };
+    if (_queryObj.page === 2) {
+      delete _queryObj.page;
     } else {
-      queryObj.page = Number(queryObj.page) - 1;
+      _queryObj.page = Number(_queryObj.page) - 1;
     }
 
-    router.push({ query: queryObj });
+    router.push({ query: _queryObj });
   }
 
   function inputSearchSubmit(e) {
-    // if nothing is changed in the input searches, rerun query with same parameters
     e.preventDefault();
-    // let queryObj={};
     let blank = true;
     if (e.target.childNodes[0].value) {
       queryObj.description = e.target.childNodes[0].value;
@@ -538,6 +506,7 @@ const TopHeader = function (props) {
           <div className="jobs-paginator">
             <a>
               <button
+                type="button"
                 className="jobs-paginator-btn"
                 disabled={!props.query.page}
                 onClick={prevButton}
@@ -548,8 +517,9 @@ const TopHeader = function (props) {
             <div className="jobs-paginator-numbers">{makePages()}</div>
             <a>
               <button
+                type="button"
                 className="jobs-paginator-btn"
-                disabled={props.query.page == totalPages}
+                disabled={props.query.page === totalPages}
                 onClick={nextButton}
               >
                 {'>'}

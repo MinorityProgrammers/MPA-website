@@ -1,3 +1,4 @@
+import React from 'react';
 import { FiFacebook, FiTwitter, FiInstagram } from 'react-icons/fi';
 import { IoPaperPlaneOutline } from 'react-icons/io5';
 import { VscGithubAlt } from 'react-icons/vsc';
@@ -9,23 +10,34 @@ import { errorToast, successToast } from '../../../contexts/utils/toasts';
 
 Moment.locale('en');
 
-const ChaptersCard = function ({ data, token, userJoinRequests }) {
+const ChaptersCard = ({ data, token, userJoinRequests }) => {
   const {
-    location, description, chapter_leader, chapter_type, member_size, date_founded, _id,
+    location,
+    description,
+    chapter_leader,
+    chapter_type,
+    member_size,
+    date_founded,
+    _id,
   } = data;
 
   const handleJoin = () => {
     if (token) {
-      axios.post(`${process.env.BASE_URI}/joinChapter`, {
-        chapterLocation_id: _id,
-      }, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-        .then((response) => {
+      axios
+        .post(
+          `${process.env.BASE_URI}/joinChapter`,
+          {
+            chapterLocation_id: _id,
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          },
+        )
+        .then(() => {
           successToast('You have successfully joined a chapter');
-          setTimeout('location.reload(true);', 2000);
+          setTimeout(window.location.reload(true), 2000);
         })
         .catch((err) => {
           try {
@@ -44,7 +56,9 @@ const ChaptersCard = function ({ data, token, userJoinRequests }) {
       <div className={styles.logo}>
         <img src="/assets/images/mp_gradient_rock.svg" alt="logo" />
       </div>
-      <div className={styles.name}>{typeof (location) !== 'object' && location}</div>
+      <div className={styles.name}>
+        {typeof location !== 'object' && location}
+      </div>
       <div className={styles.description}>{description}</div>
       <div className={styles.leaderAndSize}>
         <div>
@@ -59,18 +73,26 @@ const ChaptersCard = function ({ data, token, userJoinRequests }) {
       <div className={styles.dateAndType}>
         <div>
           <div className={styles.title}>date founded</div>
-          <div className={styles.content}>{Moment(date_founded).format('LL')}</div>
+          <div className={styles.content}>
+            {Moment(date_founded).format('LL')}
+          </div>
         </div>
         <div className={styles.end}>
           <div className={styles.title}>chapter type</div>
           <div className={styles.content}>{chapter_type}</div>
         </div>
       </div>
-      {
-        !userJoinRequests
-          ? <div onClick={handleJoin} className={styles.joinButton}>Join</div>
-          : !userJoinRequests.includes(_id) ? <div onClick={handleJoin} className={styles.joinButton}>Join</div> : <div className={styles.joinButton}>Cancel Request</div>
-      }
+      {!userJoinRequests ? (
+        <div onClick={handleJoin} className={styles.joinButton}>
+          Join
+        </div>
+      ) : !userJoinRequests.includes(_id) ? (
+        <div onClick={handleJoin} className={styles.joinButton}>
+          Join
+        </div>
+      ) : (
+        <div className={styles.joinButton}>Cancel Request</div>
+      )}
       <div className={styles.icons}>
         <FiFacebook />
         <FiTwitter className={styles.icon} />

@@ -1,6 +1,6 @@
-import { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 
-const BlurBackground = function ({ children }) {
+const BlurBackground = ({ children }) => {
   useEffect(() => {
     document.body.classList.add('hide-overflow');
   }, []);

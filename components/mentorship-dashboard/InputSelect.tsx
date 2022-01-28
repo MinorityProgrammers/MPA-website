@@ -1,6 +1,6 @@
-import React, { Component, KeyboardEventHandler } from "react";
-import CreatableSelect from "react-select/creatable";
-import { ActionMeta, OnChangeValue } from "react-select";
+import React, { Component, KeyboardEventHandler } from 'react';
+import CreatableSelect from 'react-select/creatable';
+import { ActionMeta, OnChangeValue } from 'react-select';
 
 const components = {
   DropdownIndicator: null,
@@ -30,20 +30,16 @@ export default class CreatableInputOnly extends Component<Props, State> {
     super(props);
     this.state = {
       setNotesValue: props.setNotesValue,
-      inputValue: "",
+      inputValue: '',
       value: [],
     };
   }
-  // state: State = {
-  //   setNotesValue:this.,
 
-  //   value: [],
-  // };
   handleChange = (
     value: OnChangeValue<Option, true>,
     actionMeta: ActionMeta<Option>
   ) => {
-    console.group("Value Changed");
+    console.group('Value Changed');
     console.log(value);
     console.log(`action: ${actionMeta.action}`);
     console.groupEnd();
@@ -56,13 +52,13 @@ export default class CreatableInputOnly extends Component<Props, State> {
     const { inputValue, value } = this.state;
     if (!inputValue) return;
     switch (event.key) {
-      case "Enter":
-      case "Tab":
-        console.group("Value Added");
+      case 'Enter':
+      case 'Tab':
+        console.group('Value Added');
         console.log(value);
         console.groupEnd();
         this.setState({
-          inputValue: "",
+          inputValue: '',
           value: [...value, createOption(inputValue)],
         });
         event.preventDefault();
@@ -73,9 +69,6 @@ export default class CreatableInputOnly extends Component<Props, State> {
     const { inputValue, value } = this.state;
     this.state.setNotesValue(value);
 
-    //  this.componentDidUpdate(prevProps, prevState) {
-    //     this.state.setNotesValue(value);
-    //   }
     return (
       <CreatableSelect
         className="menorship-mentor-model"

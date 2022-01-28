@@ -1,10 +1,11 @@
+/* eslint-disable react/jsx-no-constructed-context-values */
 import React, { useState, createContext } from 'react';
 
 export const uprContext = createContext();
 
 // settings pages provider
 
-export var SettingsPagesProvider = function ({ children }) {
+export const SettingsPagesProvider = function ({ children }) {
   const [updatePasswordRedirection, setUpdatePasswordRedirection] = useState(false);
 
   return (

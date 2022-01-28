@@ -1,12 +1,11 @@
+/* eslint-disable consistent-return */
 import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react';
-import ComingSoon from '../components/ComingSoon';
 import LoginPage from '../components/Consultancy/helperFiles/LoginPage';
 import FeaturedAdvice from '../components/featured/FeaturedAdvice';
 import FeaturedMyStartup from '../components/featured/FeaturedMyStartup';
 import FeaturedMyStartupSkeleton from '../components/featured/FeaturedMyStartupSkeleton';
 import FeaturedStartups from '../components/featured/FeaturedStartups';
-// Skeletons
 import FeaturedStartupsSkeleton from '../components/featured/FeaturedStartupsSkeleton';
 import FeaturedUpcoming from '../components/featured/FeaturedUpcoming';
 import FeaturedUpcomingSkeleton from '../components/featured/FeaturedUpcomingSkeleton';
@@ -15,10 +14,10 @@ import HomepageNav from '../components/homepage/HomepageNav';
 import IncubatorHero from '../components/IncubatorHero';
 import Layout from '../components/Layout';
 import SidebarTwo from '../components/sidebar/SidebarTwo';
-import { useDetectOutsideClick } from '../components/UseDetectOutsideClick';
+import useDetectOutsideClick from '../components/UseDetectOutsideClick';
 import links from '../contexts/utils/links';
 
-const IncubatorPage = function () {
+const IncubatorPage = () => {
   const [startups, setStartups] = useState([]);
   const [loading, setLoading] = useState(true);
   const [open, setOpen] = useState(false);
@@ -38,25 +37,21 @@ const IncubatorPage = function () {
     }, 60000);
   }
 
-  const allfunded = [];
-
-  funded.map((all) => {
-    allfunded.push(all.startup_id._id);
-  });
+  const allfunded = funded.map((all) => all.startup_id._id);
 
   useEffect(() => {
-    const token = window.localStorage.getItem('jwtToken');
+    const _token = window.localStorage.getItem('jwtToken');
     axios
       .get(`${process.env.BASE_URI}/startup/`)
       .then((res) => {
         setStartups(res.data.data);
       })
-      .then((res) => {
-        if (token) {
+      .then(() => {
+        if (_token) {
           return axios
             .get(`${process.env.BASE_URI}/funded/userFunded`, {
               headers: {
-                Authorization: `Bearer ${token || ''}`,
+                Authorization: `Bearer ${_token || ''}`,
               },
             })
             .then((response) => {
@@ -87,7 +82,6 @@ const IncubatorPage = function () {
         active="Home"
         handleClick={handleClick}
       />
-      {hide === false && <ComingSoon closeClick={handleClick} />}
       <IncubatorHero />
       {loading ? (
         <section className="section__incubator">

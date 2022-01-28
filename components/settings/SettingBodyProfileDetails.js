@@ -1,24 +1,23 @@
 import React, { useState, useEffect, useContext } from 'react';
-import FormData from 'form-data';
 import { useRouter } from 'next/router';
 import { GlobalContext } from '../../contexts/provider';
-import { updateProfileJSON } from '../../contexts/actions/profile/updateProfileJSON';
-import { all } from '../../contexts/utils/settings/settingsInputFields';
+import updateProfileJSON from '../../contexts/actions/profile/updateProfileJSON';
+import all from '../../contexts/utils/settings/settingsInputFields';
 import styles from '../../styles/settings/settingBodyProfileDetails.module.css';
 import CreateSettingInput from './CreateSettingInput';
 import CreateSettingAddition from './CreateSettingAddition';
 import SettingBody from './SettingBody';
-import { findUserNames } from '../../helpers/userNames';
+import findUserNames from '../../helpers/userNames';
 
-const SettingBodyProfileDetails = function ({ settingsPage, data, userID }) {
-  const [usernames, setUsernames] = useState([]);
+const SettingBodyProfileDetails = ({ settingsPage, data, userID }) => {
+  const [, setUsernames] = useState([]);
   const router = useRouter();
 
   useEffect(() => {
     fetch(`${process.env.BASE_URI}/user`)
       .then((response) => response.json())
-      .then((data) => {
-        setUsernames(findUserNames(data.data));
+      .then((_data) => {
+        setUsernames(findUserNames(_data.data));
       });
   }, []);
 
@@ -35,34 +34,26 @@ const SettingBodyProfileDetails = function ({ settingsPage, data, userID }) {
 
   const initialInputState = {};
 
-  inputFields.forEach(
-    (field) => (initialInputState[field.name] = ''),
-    // ex. {someInputFieldName: "inputFieldValue", ...}
-  );
+  inputFields.forEach((field) => {
+    initialInputState[field.name] = '';
+  });
 
   const [inputStates, setInputStates] = useState(initialInputState);
 
   useEffect(() => {
-    inputFields.forEach(
-      (field) => (initialInputState[field.name] = field.name === 'birthday'
+    inputFields.forEach((field) => {
+      initialInputState[field.name] = field.name === 'birthday'
         ? data?.birthday
           ? new Date(data.birthday)
           : ''
-        : data?.[field.name] || ''),
-    );
+        : data?.[field.name] || '';
+    });
 
     setInputStates(initialInputState);
   }, [data]);
 
   // update userData
-  const {
-    profileDispatch,
-    profileState: {
-      profile: {
-        profileLoading, profileError, profileData, profileIsUpdated,
-      },
-    },
-  } = useContext(GlobalContext);
+  const { profileDispatch } = useContext(GlobalContext);
 
   const handleChange = (name, value) => {
     setInputStates({ ...inputStates, [name]: value });
@@ -79,6 +70,7 @@ const SettingBodyProfileDetails = function ({ settingsPage, data, userID }) {
 
       handleChange(name, [...new Set([...prevValues, value])]);
 
+      // wrong code syntax and "addedText" is unused
       const addedText = (e.target.parentNode.querySelector(
         '.css-1uccc91-singleValue',
       ).textContent = reset);
@@ -99,16 +91,19 @@ const SettingBodyProfileDetails = function ({ settingsPage, data, userID }) {
     updateProfileJSON(userID, JSON.stringify(inputStates))(profileDispatch);
 
     const slug = data?.userName;
-    slug && router.push(`/user/${slug}`);
+    if (slug) {
+      router.push(`/user/${slug}`);
+    }
   };
 
   const closeProfileSetup = () => {
     // discard changes
     const slug = data?.userName;
-    slug && router.push(`/user/${slug}`);
+    if (slug) {
+      router.push(`/user/${slug}`);
+    }
   };
 
-  // console.log(inputStates);
   return (
     <SettingBody
       settingsPage={settingsPage}
@@ -132,7 +127,7 @@ const SettingBodyProfileDetails = function ({ settingsPage, data, userID }) {
           ].map((field, key) => {
             if (field.name === 'Ethnicity') {
               return (
-                <div key={key}>
+                <div key={`${key + 1}`}>
                   <CreateSettingInput
                     name={field.name}
                     type={field.type}
@@ -144,6 +139,7 @@ const SettingBodyProfileDetails = function ({ settingsPage, data, userID }) {
                     value={inputStates[field.name]}
                   />
                   <button
+                    type="button"
                     className={styles.addBtn}
                     onClick={(e) => handleAdd(e, field.name, '')}
                   >
@@ -173,7 +169,7 @@ const SettingBodyProfileDetails = function ({ settingsPage, data, userID }) {
                 setValue={(value) => {
                   handleChange(field.name, value);
                 }}
-                key={key}
+                key={field.name}
               />
             );
           })

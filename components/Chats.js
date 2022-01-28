@@ -43,9 +43,7 @@ const Chats = ({ data }) => {
     }
 
     socket.current = io('ws://localhost:8900');
-    socket.current.on('connection', (msg) => {
-      console.log(msg);
-    });
+    socket.current.on('connection', (/* msg */) => { });
 
     socket.current.on('getUsers', (users) => {
       setOnlineUsers(users);
@@ -99,58 +97,52 @@ const Chats = ({ data }) => {
     if (socketContent.type === 'blockedChat') {
       const { chat } = socketContent;
       chat.blocked = true;
-      const newall = allchats.filter((c) => c._id != chat._id);
+      const newall = allchats.filter((c) => c._id !== chat._id);
       setAllchats(newall);
       setBlockedchats([...blockedchats, chat]);
-      if (currentChat._id == chat._id) {
+      if (currentChat._id === chat._id) {
         setCurrentChat(allchats[0]);
       }
-      console.log('Chat been blocked');
     }
 
     if (socketContent.type === 'unblockedChat') {
       const { chat } = socketContent;
       chat.blocked = false;
-      const newblocked = blockedchats.filter((c) => c._id != chat._id);
+      const newblocked = blockedchats.filter((c) => c._id !== chat._id);
       setBlockedchats(newblocked);
       setAllchats([chat, ...allchats]);
-      console.log('Chat been unblocked');
     }
 
     if (socketContent.type === 'addedToChat') {
       const { chat } = socketContent;
       setPendingchats([chat, ...pendingchats]);
-      console.log('added to a chat');
     }
 
     if (socketContent.type === 'rejectedChat') {
       const { chat } = socketContent;
-      const newpending = pendingchats.filter((c) => c._id != chat._id);
+      const newpending = pendingchats.filter((c) => c._id !== chat._id);
       setPendingchats(newpending);
-      console.log('chat been rejected');
     }
 
     if (socketContent.type === 'acceptedChat') {
       const { chat } = socketContent;
-      const newpending = pendingchats.filter((c) => c._id != chat._id);
+      const newpending = pendingchats.filter((c) => c._id !== chat._id);
       setPendingchats(newpending);
       const tempallchats = allchats;
       setAllchats([chat, ...tempallchats]);
-      console.log('chat been accepted');
     }
 
     if (socketContent.type === 'gotMessage') {
       const { chatId } = socketContent;
       const { text } = socketContent;
-      if (currentChat?._id == chatId) {
+      if (currentChat?._id === chatId) {
         setMessages([...messages, text]);
       } else {
-        let chatty = allchats.find((c) => c._id == chatId);
-        const newAllchats = allchats.filter((c) => c._id != chatId);
+        let chatty = allchats.find((c) => c._id === chatId);
+        const newAllchats = allchats.filter((c) => c._id !== chatId);
         chatty = { ...chatty, newMessage: true };
         setAllchats([chatty, ...newAllchats]);
       }
-      console.log('got a message');
     }
   }, [socketContent]);
 
@@ -231,7 +223,7 @@ const Chats = ({ data }) => {
 
   useEffect(() => {
     const searchChat = async () => {
-      if (chatSearch == '') {
+      if (chatSearch === '') {
         setSearchResults(null);
       } else {
         try {
@@ -255,7 +247,7 @@ const Chats = ({ data }) => {
 
   // To ensure correct results are shown
   useEffect(() => {
-    if (tempResults.query == chatSearch) {
+    if (tempResults.query === chatSearch) {
       setSearchResults(tempResults.results);
     }
   }, [tempResults]);
@@ -268,9 +260,7 @@ const Chats = ({ data }) => {
     });
   }, [messages]);
 
-  const deleteMessage = () => {
-    console.log('deleteclicked');
-  };
+  const deleteMessage = () => {};
 
   const blockUser = async () => {
     try {
@@ -283,9 +273,9 @@ const Chats = ({ data }) => {
             Authorization: `Bearer ${token}`,
           },
         })
-        .then((res) => {
+        .then(() => {
           // If the user is online, tell socket
-          if (onlineUsers.find((u) => u.userId == recipient._id)) {
+          if (onlineUsers.find((u) => u.userId === recipient._id)) {
             socket.current.emit('blockUser', {
               receiverId: recipient._id,
               chat: currentChat,
@@ -293,8 +283,8 @@ const Chats = ({ data }) => {
           }
 
           // update all chats and blocked chats
-          const newBlocked = allchats.find((c) => c._id == chatid);
-          const newAllchats = allchats.filter((c) => c._id != chatid);
+          const newBlocked = allchats.find((c) => c._id === chatid);
+          const newAllchats = allchats.filter((c) => c._id !== chatid);
           setAllchats(newAllchats);
           newBlocked.blocked = true;
           newBlocked.blocking_user = user._id;
@@ -324,10 +314,10 @@ const Chats = ({ data }) => {
             Authorization: `Bearer ${token}`,
           },
         })
-        .then((res) => {
+        .then(() => {
           // If the user is online, tell socket
-          const receiver = chat.users.find((m) => m._id !== user._id);
-          if (onlineUsers.find((u) => u.userId == receiver._id)) {
+          const receiver = chat.users.find((m) => m._id === user._id);
+          if (onlineUsers.find((u) => u.userId === receiver._id)) {
             socket.current.emit('acceptChat', {
               receiverId: receiver._id,
               chat,
@@ -335,7 +325,7 @@ const Chats = ({ data }) => {
           }
 
           // update all chats and pending chats
-          const newPendingchats = pendingchats.filter((c) => c._id != chat._id);
+          const newPendingchats = pendingchats.filter((c) => c._id !== chat._id);
           setPendingchats(newPendingchats);
           chat.accepted = true;
           setAllchats([chat, ...allchats]);
@@ -358,10 +348,10 @@ const Chats = ({ data }) => {
             Authorization: `Bearer ${token}`,
           },
         })
-        .then((res) => {
+        .then(() => {
           // If the user is online, tell socket
           const receiver = chat.users.find((m) => m._id !== user._id);
-          if (onlineUsers.find((u) => u.userId == receiver._id)) {
+          if (onlineUsers.find((u) => u.userId === receiver._id)) {
             socket.current.emit('rejectChat', {
               receiverId: receiver._id,
               chat,
@@ -369,7 +359,7 @@ const Chats = ({ data }) => {
           }
 
           // update pending chats
-          const newPendingchats = pendingchats.filter((c) => c._id != chat._id);
+          const newPendingchats = pendingchats.filter((c) => c._id !== chat._id);
           setPendingchats(newPendingchats);
           setpopUp(false);
           setCurrentChat(null);
@@ -391,10 +381,10 @@ const Chats = ({ data }) => {
             Authorization: `Bearer ${token}`,
           },
         })
-        .then((res) => {
+        .then(() => {
           // If the user is online, tell socket
           const receiver = chat.users.find((m) => m._id !== user._id);
-          if (onlineUsers.find((u) => u.userId == receiver._id)) {
+          if (onlineUsers.find((u) => u.userId === receiver._id)) {
             socket.current.emit('unblockUser', {
               receiverId: receiver._id,
               chat,
@@ -402,7 +392,7 @@ const Chats = ({ data }) => {
           }
 
           // update all chats and blocked chats
-          const newBlockedchats = blockedchats.filter((c) => c._id != chat._id);
+          const newBlockedchats = blockedchats.filter((c) => c._id !== chat._id);
           setBlockedchats(newBlockedchats);
           chat.blocked = false;
           chat.blocking_user = null;
@@ -465,7 +455,7 @@ const Chats = ({ data }) => {
       if (allchats === []) {
         return (
           <span style={{ textAlign: 'center' }}>
-            You don't have any chats, click the create chat button to start one!
+            You don&apos;t have any chats, click the create chat button to start one!
           </span>
         );
       }
@@ -497,7 +487,7 @@ const Chats = ({ data }) => {
       if (blockedchats?.length === 0) {
         return (
           <span style={{ textAlign: 'center' }}>
-            You don't have any blocked chats!
+            You don&apos;t have any blocked chats!
           </span>
         );
       }
@@ -527,7 +517,7 @@ const Chats = ({ data }) => {
       if (pendingchats?.length === 0) {
         return (
           <span style={{ textAlign: 'center' }}>
-            You don't have any pending chats!
+            You don&apos;t have any pending chats!
           </span>
         );
       }
@@ -554,6 +544,7 @@ const Chats = ({ data }) => {
         </>
       );
     }
+    return null;
   };
 
   const setUpResults = () => {
@@ -587,7 +578,7 @@ const Chats = ({ data }) => {
         <>
           <span style={{ alignSelf: 'center' }}>Messages</span>
           {searchResults.messages.map((m) => {
-            const muser = m.chat.users.find((m) => m._id !== user._id);
+            const muser = m.chat.users.find((_m) => _m._id !== user._id);
             return (
               <div
                 key={m._id}
@@ -607,6 +598,7 @@ const Chats = ({ data }) => {
                       muser.profilePicture || '../../assets/images/profile.png'
                     }
                     className="conversation-img"
+                    alt="profile_pic"
                   />
                   <div style={{ display: 'flex', flexDirection: 'column' }}>
                     <span className="conversation-brief">
@@ -632,8 +624,8 @@ const Chats = ({ data }) => {
     }
     if (
       searchResults
-      && searchResults.messages.length == 0
-      && searchResults.chats.length == 0
+      && searchResults.messages.length === 0
+      && searchResults.chats.length === 0
     ) {
       chatRes = (
         <span style={{ alignSelf: 'center' }}>
@@ -654,6 +646,7 @@ const Chats = ({ data }) => {
       <div className="chat-menu">
         <div className="chat-menu-btn-container">
           <button
+            type="button"
             className="chat-menu-btn"
             onClick={() => setChatlist('all')}
             style={
@@ -669,6 +662,7 @@ const Chats = ({ data }) => {
             All
           </button>
           <button
+            type="button"
             className="chat-menu-btn"
             onClick={() => setChatlist('pending')}
             style={
@@ -684,6 +678,7 @@ const Chats = ({ data }) => {
             Pending
           </button>
           <button
+            type="button"
             className="chat-menu-btn"
             onClick={() => setChatlist('blocked')}
             style={
@@ -715,7 +710,7 @@ const Chats = ({ data }) => {
           onChange={(e) => setChatSearch(e.target.value)}
         />
         <div className="conversation-container">
-          {chatSearch == '' ? setUpChats() : setUpResults()}
+          {chatSearch === '' ? setUpChats() : setUpResults()}
         </div>
       </div>
       {/* pop up for searching users */}
@@ -743,6 +738,7 @@ const Chats = ({ data }) => {
                   recipient.profilePicture || '../../assets/images/profile.png'
                 }
                 className="chat-header-img"
+                alt=""
               />
               <span className="chat-header-name">
                 {recipient.firstName}
@@ -765,7 +761,7 @@ const Chats = ({ data }) => {
                 return (
                   <div
                     key={m._id}
-                    ref={(el) => (messageReferences[m._id] = el)}
+                    ref={(el) => { messageReferences[m._id] = el; }}
                   >
                     <Message
                       user={m.user}
@@ -787,7 +783,7 @@ const Chats = ({ data }) => {
                   onChange={(e) => setNewMessage(e.target.value)}
                   value={newMessage}
                 />
-                <button className="chat-submit-button" onClick={handleSubmit}>
+                <button type="button" className="chat-submit-button" onClick={handleSubmit}>
                   Send
                 </button>
               </div>
@@ -814,6 +810,7 @@ const Chats = ({ data }) => {
         <img
           src={recipient.profilePicture || '../../assets/images/profile.png'}
           className="chat-info-img"
+          alt=""
         />
         <span className="chat-info-name">
           {recipient.firstName}

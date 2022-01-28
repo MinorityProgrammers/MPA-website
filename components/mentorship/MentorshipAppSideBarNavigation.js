@@ -6,9 +6,9 @@ const MentorshipAppSideBarNavigation = (props) => {
   let totalChatsNumber = 0;
   let totalToDoNumber = 0;
 
-  props.values.map((character) => {
+  props.values.forEach((character) => {
     if (character.messages.length > 0) {
-      totalChatsNumber++;
+      totalChatsNumber += 1;
     }
     totalToDoNumber += character.toDo.length;
   });
@@ -24,7 +24,7 @@ const MentorshipAppSideBarNavigation = (props) => {
             </h2>
             <div className="matches tw-flex tw-py-4 tw-overflow-scroll">
               {props.values.map((character, index) => (
-                <div id={`matched_id_${index}`} key={`key_${index}`}>
+                <div id={`matched_id_${index}`} key={`${`key_${index}`}`}>
                   <div className="tw-w-full tw-h-full">
                     <div
                       className="tw-w-full tw-px-4 tw-h-1/3 tw-cursor-pointer"
@@ -34,10 +34,9 @@ const MentorshipAppSideBarNavigation = (props) => {
                     >
                       <div className="img tw-w-20 tw-h-20">
                         <img
-                          className="tw-object-cover
-                                    tw-h-full tw-w-full tw-rounded-full"
+                          className="tw-object-cover tw-h-full tw-w-full tw-rounded-full"
                           src={character.url}
-                          alt="avatar image"
+                          alt="avatar_image"
                         />
                       </div>
                     </div>
@@ -77,7 +76,7 @@ const MentorshipAppSideBarNavigation = (props) => {
               {props.values.map((character, index) => (
                 <div
                   id={`message_from_${index}`}
-                  key={`key_${index}`}
+                  key={`${`key_${index}`}`}
                   className="tw-relative tw-w-full"
                   onClick={() => {
                     props.chatRedirectStep(character);
@@ -87,10 +86,9 @@ const MentorshipAppSideBarNavigation = (props) => {
                     <div className="active-bar tw-absolute tw-h-full tw-w-2 tw-top-0 tw-left-0 tw-bg-gradient-to-b tw-from-FF00B8 tw-to-FFC700 tw-hidden" />
                     <div className="img tw-w-20 tw-h-20  tw-relative">
                       <img
-                        className="tw-object-cover tw-rounded-full
-                                                tw-h-full tw-w-full"
+                        className="tw-object-cover tw-rounded-full tw-h-full tw-w-full"
                         src={character.url}
-                        alt="avatar image"
+                        alt="avatar_image"
                       />
                       {character.messages[character.messages.length - 1]
                         .read ? (
@@ -136,7 +134,7 @@ const MentorshipAppSideBarNavigation = (props) => {
             </h2>
             <div className="matches tw-flex tw-py-4 tw-overflow-scroll">
               {props.values.map((character, index) => (
-                <div id={`matched_id_${index}`} key={`key_${index}`}>
+                <div id={`matched_id_${index}`} key={`${`key_${index}`}`}>
                   <div className="tw-w-full tw-h-full">
                     <div
                       className="tw-w-full tw-px-4 tw-h-1/3 tw-cursor-pointer"
@@ -146,10 +144,9 @@ const MentorshipAppSideBarNavigation = (props) => {
                     >
                       <div className="img tw-w-20 tw-h-20">
                         <img
-                          className="tw-object-cover
-                                    tw-h-full tw-w-full tw-rounded-full"
+                          className="tw-object-cover tw-h-full tw-w-full tw-rounded-full"
                           src={character.url}
-                          alt="avatar image"
+                          alt="avatar_image"
                         />
                       </div>
                     </div>
@@ -187,16 +184,16 @@ const MentorshipAppSideBarNavigation = (props) => {
             </nav>
             <div className="messages tw-bg-#F9F9F9 tw-w-full tw-flex-auto tw-rounded-br-3xl tw-shadow-mentorAppMessagesInner tw-overflow-y-auto ">
               {props.values.map((character, index) => (
-                <div id={`todo_from_${index}`} key={`key_${index}`}>
+                <div id={`todo_from_${index}`} key={`${`key_${index}`}`}>
                   {character.toDo.map((task, id) => (
-                    <div key={id} className="tw-relative tw-w-full tw-h-full">
+                    <div key={`${`task_${id}`}`} className="tw-relative tw-w-full tw-h-full">
                       <div className="message tw-w-full tw-flex tw-justify-between tw-items-end tw-p-4 tw-h-1/3 tw-cursor-pointer hover:tw-bg-#F9F9F9 hover:tw-shadow-mentorAppMessagesOuter">
                         <div className="active-bar tw-absolute tw-h-full tw-w-2 tw-top-0 tw-left-0 tw-bg-gradient-to-b tw-from-FF00B8 tw-to-FFC700 tw-hidden" />
                         <div className="img tw-w-20 tw-h-20">
                           <img
                             className="tw-object-cover tw-rounded-full tw-h-full tw-w-full"
                             src={character.url}
-                            alt="avatar image"
+                            alt="avatar_image"
                           />
                         </div>
                         <div className="text tw-flex-1 tw-px-6 tw-pb-4">

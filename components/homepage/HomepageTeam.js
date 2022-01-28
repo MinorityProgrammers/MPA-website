@@ -37,13 +37,24 @@ const HomepageTeam = () => {
   const [showModal, setShowModal] = useState(false);
   const [currentMembers, setCurrentMembers] = useState([]);
 
+  function getDates(startDate, stopDate) {
+    const today = new Date();
+    const from = new Date(startDate);
+    const to = new Date(stopDate);
+
+    if (today >= from && today <= to) {
+      return true;
+    }
+    return false;
+  }
+
   // get data from csv file
   function getData(data) {
     // Split Department and trim string
-    for (let i = 0; i < data.length - 1; i++) {
+    for (let i = 0; i < data.length - 1; i + 1) {
       if (data[i].Department !== null) {
         data[i].Department = data[i].Department.split(',');
-        for (let j = 0; j < data[i].Department.length; j++) {
+        for (let j = 0; j < data[i].Department.length; j + 1) {
           if (data[i].Department[j] !== undefined) {
             data[i].Department[j] = data[i].Department[j].trim();
           }
@@ -57,7 +68,7 @@ const HomepageTeam = () => {
     }
 
     // Check if still an internship
-    data.map((d) => {
+    data.forEach((d) => {
       const result = getDates(d.StartDate, d.EndDate);
       if (!d.EndDate) {
         setCurrentMembers((prevArr) => {
@@ -89,17 +100,6 @@ const HomepageTeam = () => {
         callBack(results.data);
       },
     });
-  }
-
-  function getDates(startDate, stopDate) {
-    const today = new Date();
-    const from = new Date(startDate);
-    const to = new Date(stopDate);
-
-    if (today >= from && today <= to) {
-      return true;
-    }
-    return false;
   }
 
   useEffect(() => {

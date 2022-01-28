@@ -2,7 +2,7 @@
 import { useField } from "formik";
 import React from "react";
 
-const TextField = function ({ label, alertStyle, textStyle, ...props }) {
+const TextField = ({ label, alertStyle, textStyle, ...props }) => {
   const [field, meta] = useField(props);
 
   return (

@@ -1,15 +1,18 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React from 'react';
 import { useRouter } from 'next/router';
 import SettingBody from './SettingBody';
 import styles from '../../styles/settings/settingBodyWalletVotes.module.css';
 
-const SettingBodyWalletVotes = function ({ settingsPage, data, userID }) {
+const SettingBodyWalletVotes = ({ settingsPage, data, userID }) => {
+  const router = useRouter();
   const handleSubmit = () => {};
 
   const closeProfileSetup = () => {
     // discard changes
     const slug = data?.userName;
-    slug && router.push(`/user/${slug}`);
+    if (slug) {
+      router.push(`/user/${slug}`);
+    }
   };
 
   const votes = [

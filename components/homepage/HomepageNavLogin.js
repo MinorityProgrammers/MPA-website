@@ -7,7 +7,7 @@ import React, { useContext, useEffect, useState } from "react";
 import "react-toastify/dist/ReactToastify.css";
 import * as Yup from "yup";
 import { googleAuth, nextAuth } from "../../contexts/actions/auth/googleAuth";
-import { login } from "../../contexts/actions/auth/login";
+import login from "../../contexts/actions/auth/login";
 import { GlobalContext } from "../../contexts/provider";
 import { successToast, errorToast } from "../../contexts/utils/toasts";
 import TextField from "../TextField";
@@ -236,7 +236,7 @@ const HomepageNavLogin = ({ onCloseMobileMenu }) => {
           onClick={() => setSwitchToReset(true)}
           className="tw-cursor-pointer tw-hover:text-blue-700 tw-mb-4"
         >
-          Forget password?
+          Forgot password?
         </p>
         <p className="mb-2">Don't have an account?</p>
         <div className="dropdown-login-button">

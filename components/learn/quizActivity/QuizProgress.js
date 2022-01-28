@@ -1,19 +1,24 @@
 import React from 'react';
 
 export default function QuizProgress(props) {
+  const { currentQuestion, questionLength } = props;
   return (
     <div>
       <div className="progress">
         <p className="counter">
           <span>
             Question
-            {props.currentQuestion + 1}
-            {' '}
+            {currentQuestion + 1}
             of
-            {props.questionLength}
+            {questionLength}
           </span>
         </p>
-        <div className="progress-bar" style={{ width: `${((props.currentQuestion + 1) / props.questionLength) * 100}%` }} />
+        <div
+          className="progress-bar"
+          style={{
+            width: `${((currentQuestion + 1) / questionLength) * 100}%`,
+          }}
+        />
       </div>
     </div>
   );

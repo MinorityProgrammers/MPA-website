@@ -19,7 +19,7 @@ const Service = () => {
     <div className="service_container" id="title">
       <div className="service_icon">
         <span>
-          <img src="/assets/images/Idea_icon.png" />
+          <img src="/assets/images/Idea_icon.png" alt="service_icon" />
         </span>
       </div>
 
@@ -30,6 +30,7 @@ const Service = () => {
           we would support you
         </h5>
         <button
+          type="button"
           onClick={() => {
             plus();
           }}
@@ -42,10 +43,10 @@ const Service = () => {
   );
   const buttons = () => (
     <div>
-      <button className="service_leftbutton" onClick={() => minus()}>
+      <button type="button" className="service_leftbutton" onClick={() => minus()}>
         <span>&#8592;</span>
       </button>
-      <button className="service_rightbutton" onClick={() => plus()}>
+      <button type="button" className="service_rightbutton" onClick={() => plus()}>
         <span>&#8594;</span>
       </button>
     </div>
@@ -160,10 +161,10 @@ const Service = () => {
         className="service_input"
       />
       <br />
-      <button className="service_leftbutton" onClick={() => minus()}>
+      <button type="button" className="service_leftbutton" onClick={() => minus()}>
         <span>&#8592;</span>
       </button>
-      <button className="service_submitbutton" onClick={() => plus()}>
+      <button type="button" className="service_submitbutton" onClick={() => plus()}>
         Submit
       </button>
     </div>
@@ -171,17 +172,17 @@ const Service = () => {
 
   return (
     <div className="service">
-      {step == 0 && page1()}
-      {step == 1 && page2()}
+      {step === 0 && page1()}
+      {step === 1 && page2()}
 
       <div className="service_container">
         <div className="service_question_block">
-          {step == 2 && page3()}
-          {step == 3 && page4()}
-          {step == 4 && page5()}
-          {step == 5 && page6()}
-          {step == 6 && page7()}
-          {step == 7 && page8()}
+          {step === 2 && page3()}
+          {step === 3 && page4()}
+          {step === 4 && page5()}
+          {step === 5 && page6()}
+          {step === 6 && page7()}
+          {step === 7 && page8()}
         </div>
       </div>
     </div>

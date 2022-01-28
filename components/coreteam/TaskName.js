@@ -1,19 +1,14 @@
 import React from 'react';
 import TaskNameHeader from './TaskNameHeader';
-import Footer from '../Footer';
-// import TaskNameDescription from "./TaskNameDescription";
 import TaskNameDescription from './TaskNameDescription';
 
-const TaskName = function () {
-  return (
-    <div className=" page-gradient">
-      <div className="tw-container tw-mx-auto">
-        <TaskNameHeader />
-        {/* <TaskNameDescription /> */}
-        <TaskNameDescription />
-      </div>
+const TaskName = () => (
+  <div className=" page-gradient">
+    <div className="tw-container tw-mx-auto">
+      <TaskNameHeader />
+      <TaskNameDescription />
     </div>
-  );
-};
+  </div>
+);
 
 export default TaskName;

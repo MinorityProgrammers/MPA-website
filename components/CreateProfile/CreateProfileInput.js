@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Select from 'react-select';
 import { CirclePicker, ChromePicker } from 'react-color';
 import DatePicker from 'react-datepicker';
@@ -18,35 +18,37 @@ const CreateProfileInput = function ({
     }
     return null;
   };
+
   const handleFocus = (e) => {
-    const label = findLabel(e.target);
-    if (label) {
-      label.classList.add('cp-highlight');
+    const _label = findLabel(e.target);
+    if (_label) {
+      _label.classList.add('cp-highlight');
     }
   };
+
   const handleBlur = (e) => {
-    const label = findLabel(e.target);
-    if (label) {
-      label.classList.remove('cp-highlight');
+    const _label = findLabel(e.target);
+    if (_label) {
+      _label.classList.remove('cp-highlight');
     }
   };
+
   const handleChange = (e) => {
     e.preventDefault();
     if (setValue) {
       setValue(e.target.value);
     }
   };
-  const handleDateChange = (e) => {
-    setStartDate(startDate);
-    // setValue(e.target.value);
-  };
+
   const handleSwitchChange = () => (setValue ? {
-    value: options.find((option) => option.label == value),
+    value: options.find((option) => option.label === value),
     onChange: (e) => { setValue(e.value); },
   } : {});
-  const handleColorChange = (color, e) => {
+
+  const handleColorChange = (color) => {
     setValue(color.hex);
   };
+
   switch (type) {
     case 'select':
       return (
@@ -118,6 +120,7 @@ const CreateProfileInput = function ({
             required
             onFocus={handleFocus}
             onBlur={handleBlur}
+            autoComplete="false"
           />
         </label>
       );
