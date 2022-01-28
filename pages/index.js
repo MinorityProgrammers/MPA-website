@@ -1,13 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 import ComingSoon from '../components/ComingSoon';
 import Footer from '../components/Footer';
-// import HomepageAbout from '../components/homepage/HomepageAbout';
-// import HomepageApp from '../components/homepage/HomepageApp';
 import HomepageCore from '../components/homepage/HomepageCore';
 import HomepageDonate from '../components/homepage/HomepageDonate';
 import HomepageNav from '../components/homepage/HomepageNav';
 import HomePageNewTopSection from '../components/homepage/HomePageNewTopSection';
-// import HomepageTeam from '../components/homepage/HomepageTeam';
+import HomePageGetStarted from '../components/homepage/HomePageGetStarted';
 import HomepageTestimonials from '../components/homepage/HomepageTestimonials';
 import HomePageAboutUs from '../components/homepage/HomePageAboutUs';
 // import HomepageWave from '../components/homepage/HomepageWave';
@@ -66,11 +64,8 @@ const HomepageFour = function () {
               {hide === false && <ComingSoon closeClick={handleClick} />}
               <HomePageNewTopSection />
               <HomePageAboutUs />
-              {/* <HomepageAbout /> */}
-              {/* <HomepageApp /> */}
+              <HomePageGetStarted />
               <HomepageCore />
-              {/* <HomepageWave /> */}
-              {/* <HomepageTeam /> */}
               <HomepageTestimonials />
               <HomepageDonate />
               <Footer />
