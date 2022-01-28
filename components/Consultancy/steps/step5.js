@@ -5,12 +5,13 @@ import useDefaultValue from '../helperFiles/getDefaultValue';
 import addQuestion from '../helperFiles/addQuestion';
 import ErrorPrint from '../helperFiles/errorPrint';
 
-const Page5 = ({ step, setstep, questions, setQuestions }) => {
+const Page5 = ({
+  step, setstep, questions, setQuestions,
+}) => {
   const minimumChar = 150;
   const defaultProjectDetail = useDefaultValue(questions, step, 0);
   const defaultInspitation = useDefaultValue(questions, step, 1);
   const defaultTags = useDefaultValue(questions, step, 2);
-  console.log(defaultProjectDetail, defaultTags, defaultTags);
   const question1 = 'Project details';
   const question2 = 'Any inspiration websites?';
   const question3 = 'Any preferred tech stack?';
@@ -23,19 +24,19 @@ const Page5 = ({ step, setstep, questions, setQuestions }) => {
   const inspirationLink = useRef();
   const [errorMessage, setErrorMessage] = useState(undefined);
   const [listOfTagsA, updateListOfTagsA] = useState(
-    defaultTags ? defaultTags[0] : []
+    defaultTags ? defaultTags[0] : [],
   );
   const [listOfTagsB, updateListOfTagsB] = useState(
-    defaultTags ? defaultTags[1] : []
+    defaultTags ? defaultTags[1] : [],
   );
   const [listOfTagsC, updateListOfTagsC] = useState(
-    defaultTags ? defaultTags[2] : []
+    defaultTags ? defaultTags[2] : [],
   );
   const [listOfTagsD, updateListOfTagsD] = useState(
-    defaultTags ? defaultTags[3] : []
+    defaultTags ? defaultTags[3] : [],
   );
   const [listOfTagsE, updateListOfTagsE] = useState(
-    defaultTags ? defaultTags[4] : []
+    defaultTags ? defaultTags[4] : [],
   );
 
   function addToQuestion() {
@@ -63,15 +64,15 @@ const Page5 = ({ step, setstep, questions, setQuestions }) => {
   function setInvalidMessage() {
     setErrorMessage([
       `This field must have a minimum of ${
-        minimumChar -
-        (projectDetails.current ? projectDetails.current.value.length : 0)
+        minimumChar
+        - (projectDetails.current ? projectDetails.current.value.length : 0)
       } character(s)`,
     ]);
   }
   function ValidateCompulsoryMessage() {
     return (
-      projectDetails.current &&
-      projectDetails.current.value.length >= minimumChar
+      projectDetails.current
+      && projectDetails.current.value.length >= minimumChar
     );
   }
   function nextPage() {
@@ -111,7 +112,10 @@ const Page5 = ({ step, setstep, questions, setQuestions }) => {
     >
       <div className="flex-row">
         <section className="space1">
-          <label htmlFor="page5-textarea">*{question1}</label>
+          <label htmlFor="page5-textarea">
+            *
+            {question1}
+          </label>
           <textarea
             id="page5-textarea"
             className="page5-textarea"

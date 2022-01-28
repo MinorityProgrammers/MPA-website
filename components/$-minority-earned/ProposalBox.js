@@ -14,7 +14,8 @@ const ProposalBox = () => {
         <div className="back__to__proposals">
           <p className="proposal__text">
             Go Back to
-            <span className="bold">My Proposals</span>.
+            <span className="bold">My Proposals</span>
+            .
           </p>
           <button type="button" className="go__back">
             <i className="fas fa-chevron-left mobile-arrow" />
@@ -29,24 +30,31 @@ const ProposalBox = () => {
         <div className="earned">
           <p>
             $ Minority earned through
-            <span className="light__purple">My Proposals</span> -
+            <span className="light__purple">My Proposals</span>
+            {' '}
+            -
             <span className="light__purple">{myProposals}</span>
           </p>
           <p>
             $ Minority earned through
-            <span className="pink">Other Actions</span> -
+            <span className="pink">Other Actions</span>
+            {' '}
+            -
             <span className="purple">{otherActions}</span>
           </p>
           <p>
             $ Minority
-            <span className="light__purple">Spent</span> over 2 months -
+            <span className="light__purple">Spent</span>
+            {' '}
+            over 2 months -
             <span className="light__purple">{spent}</span>
           </p>
         </div>
 
         <div className="total__earned">
           <p>
-            Total net $ Minority -<span>{total}</span>
+            Total net $ Minority -
+            <span>{total}</span>
           </p>
         </div>
       </div>

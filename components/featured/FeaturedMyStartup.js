@@ -3,9 +3,7 @@ import Swiper from 'react-id-swiper';
 import 'swiper/css/swiper.css';
 import FeaturedMyCard from './FeaturedMyCard';
 
-const FeaturedMyStartup = ({
-  data/* , token */, setClickRegister, userData,
-}) => {
+const FeaturedMyStartup = ({ data, setClickRegister, userData }) => {
   const params = {
     slidesPerView: data.length,
     loop: data.length >= 3,
@@ -22,7 +20,6 @@ const FeaturedMyStartup = ({
     observeParents: true,
     observer: true,
     rebuildOnUpdate: true,
-    // Responsive breakpoints
     breakpoints: {
       1440: {
         slidesPerView: data.length >= 3 ? 3 : data.length,

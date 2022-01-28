@@ -1,157 +1,148 @@
 .faucet-section {
-    color: #fff;
-    position: relative;
-    height: 100%; 
-    padding: 120px 0 0 0;
-    background: linear-gradient(90deg, #FF00B8 0%, #FF655B 50.8%, #FFC700 100%);
-    font-family: 'Red Hat Display', sans-serif;
+  color: #fff;
+  position: relative;
+  height: 100%;
+  padding: 120px 0 0 0;
+  background: linear-gradient(90deg, #ff00b8 0%, #ff655b 50.8%, #ffc700 100%);
+  font-family: 'Red Hat Display', sans-serif;
 }
 
 .faucet-section.guide {
-    padding: 60px 0 60px 0;
+  padding: 60px 0 60px 0;
 }
 
 .faucet-header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 1.2rem;
-    background: linear-gradient(87.05deg, rgba(0, 0, 0, 0) 2.5%, rgba(0, 0, 0, 0.2) 48.74%, rgba(0, 0, 0, 0) 96.32%);
-    
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.2rem;
+  background: linear-gradient(
+    87.05deg,
+    rgba(0, 0, 0, 0) 2.5%,
+    rgba(0, 0, 0, 0.2) 48.74%,
+    rgba(0, 0, 0, 0) 96.32%
+  );
 }
 
 .faucet-form {
-    width: 30rem;
-    height: 2rem;
-    border-radius: .25rem;
-    outline: 2px solid transparent;
-    padding-top: .75rem;
-    padding-bottom: .75rem;
-    padding-left: .75rem;
-    padding-right: .75rem;
-    outline-offset: 2px;
-    color: black;
+  width: 30rem;
+  height: 2rem;
+  border-radius: 0.25rem;
+  outline: 2px solid transparent;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  outline-offset: 2px;
+  color: black;
 }
 
 .eligibility-info {
-    position: relative;
-    margin: 5px;
-
+  position: relative;
+  margin: 5px;
 }
 
 .icon-bg {
-    --size: 1rem;
-    position: absolute;
-    text-align: center;
-    margin-top: 5px;
-    border-radius: 50%;
-    background-color: rgb(202, 199, 199);
-    font-size: var(--size);
-    --dimension: calc(1.5 * var(--size));
-    width: var(--dimension);
-    height: var(--dimension);
-    color: #ffffff;
-    margin: 5px;
-  }
+  --size: 1rem;
+  position: absolute;
+  text-align: center;
+  margin-top: 5px;
+  border-radius: 50%;
+  background-color: rgb(202, 199, 199);
+  font-size: var(--size);
+  --dimension: calc(1.5 * var(--size));
+  width: var(--dimension);
+  height: var(--dimension);
+  color: #ffffff;
+  margin: 5px;
+}
 
 .eligibility-info:hover::after {
-    --dimension: calc(1.6 * var(--size));
-	color: #64bb5d;
-    width: var(--dimension);
+  --dimension: calc(1.6 * var(--size));
+  color: #64bb5d;
+  width: var(--dimension);
 }
 
 .icon-bg:hover .tooltiptext {
-    visibility: visible;
+  visibility: visible;
 }
-  /* Tooltip text */
+/* Tooltip text */
 .tooltiptext {
-    visibility: hidden;
-    width: 150px;
-    background-color: black;
-    color: #fff;
-    text-align: center;
-    padding: 5px 0;
-    border-radius: 6px;
-    position: absolute;
-    z-index: 1;
-    top: -5px;
-    left: 105%;
-    /* margin-left: -60px; */
-  }
+  visibility: hidden;
+  width: 150px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+  top: -5px;
+  left: 105%;
+}
 
 .tooltiptext::after {
-    content: "";
-    position: absolute;
-    top: 10%;
-    right: 100%;
-    margin-top: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: transparent black transparent transparent;
-  }
-
-
-
+  content: '';
+  position: absolute;
+  top: 10%;
+  right: 100%;
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent black transparent transparent;
+}
 
 .faucet-btn {
-    color: rgb(252, 249, 250);
-    opacity: 1;
-    border-style: solid;
-    border-width: 1px;
-    border-radius: .25rem;
-    margin-right: .25rem;
-    margin-bottom: .25rem;
-    margin-top: .75rem;
-    border-color: rgba(236,72,153);
-    padding-top: .4rem;
-    padding-bottom: .75rem;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-    font-size: .875rem;
-    line-height: 1.25rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    outline: 2px solid transparent;
-    outline-offset: 2px;
+  color: rgb(252, 249, 250);
+  opacity: 1;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 0.25rem;
+  margin-right: 0.25rem;
+  margin-bottom: 0.25rem;
+  margin-top: 0.75rem;
+  border-color: rgba(236, 72, 153);
+  padding-top: 0.4rem;
+  padding-bottom: 0.75rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
 }
 
 .faucet-btn:hover {
-    color: white;
-    background-color: rgba(236,72,153);
+  color: white;
+  background-color: rgba(236, 72, 153);
 }
 
 .vote-header h2 {
-    font-size: 2.125rem;
-    text-transform: uppercase;
-    font-weight: bold;
-    line-height: 45px;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  font-size: 2.125rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  line-height: 45px;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .faucet-header p {
-    font-size: 1rem;
+  font-size: 1rem;
 }
 .ghost {
-    display: none;
+  display: none;
 }
 .error-message {
-    color: rgb(231, 1, 1);
+  color: rgb(231, 1, 1);
 }
 
 @media only screen and (max-width: 500px) {
-    .faucet-form {
-        width: 15rem;
-        /* height: 2rem;
-        border-radius: .25rem;
-        outline: 2px solid transparent;
-        padding-top: .75rem;
-        padding-bottom: .75rem;
-        padding-left: .75rem;
-        padding-right: .75rem;
-        outline-offset: 2px; */
-    }
-    input::placeholder {
-        font-size: 10px;
-        font-weight: 700;
-    }
+  .faucet-form {
+    width: 15rem;
+  }
+  input::placeholder {
+    font-size: 10px;
+    font-weight: 700;
+  }
 }

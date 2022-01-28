@@ -3,7 +3,7 @@ import styles from '../../styles/settings/settingBodySecurityManagement.module.c
 import SettingBody from './SettingBody';
 import SettingBodySecurityManagementModal from './SettingBodySecurityManagementModal';
 
-const SettingBodySecurityManagement = function ({ settingsPage, data, userID }) {
+const SettingBodySecurityManagement = ({ settingsPage, data, userID }) => {
   const [modal, openModal] = useState('');
 
   const goBack = () => {

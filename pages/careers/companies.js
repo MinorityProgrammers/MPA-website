@@ -161,9 +161,7 @@ const CompaniesMain = (props) => {
       queryObj.company = nameRef.current.value;
       blank = false;
       setCompanies(
-        companies.filter((company) =>
-          company.company_name.toLowerCase().includes(nameRef.current.value)
-        )
+        companies.filter((company) => company.company_name.toLowerCase().includes(nameRef.current.value)),
       );
     }
 
@@ -172,9 +170,8 @@ const CompaniesMain = (props) => {
       blank = false;
       setCompanies(
         companies.filter(
-          (company) =>
-            company.diversity_score === diversityScoreRef.current.value
-        )
+          (company) => company.diversity_score === diversityScoreRef.current.value,
+        ),
       );
     }
 
@@ -182,9 +179,7 @@ const CompaniesMain = (props) => {
       queryObj.location = locationRef.current.value;
       blank = false;
       setCompanies(
-        companies.filter((company) =>
-          company.headquarter.toLowerCase().includes(locationRef.current.value)
-        )
+        companies.filter((company) => company.headquarter.toLowerCase().includes(locationRef.current.value)),
       );
     }
 

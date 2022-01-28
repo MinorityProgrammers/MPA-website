@@ -42,9 +42,11 @@ const Footer = () => {
                           rel="noreferrer"
                         >
                           OpenSea
-                        </a></li>
+                        </a>
+
+                      </li>
                       <li>
-                        <a href="/learn-page">Learn</a>
+                        <a href="/learn">Learn</a>
                       </li>
                       <li>
                         <a
@@ -65,7 +67,7 @@ const Footer = () => {
                   <div className="footer-widget__link-wrap">
                     <ul className="list-unstyled footer-widget__link-list">
                       <li>
-                      <a href="/learn-page">Learn</a>
+                        <a href="/learn">Learn</a>
                       </li>
                       <li>
                         <a href="/partner">Partner</a>
@@ -92,7 +94,7 @@ const Footer = () => {
                     <a href="/join" className="thm-btn">
                       Join
                     </a>
-                    <a href="/learn-page" className="thm-btn">
+                    <a href="/learn" className="thm-btn">
                       Learn
                     </a>
                   </div>

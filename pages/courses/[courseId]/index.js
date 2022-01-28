@@ -23,7 +23,7 @@ const CoursePage = ({ params }) => {
   const [loading, setLoading] = useState(true);
 
   const redirect = () => {
-    window.location.href = '/learn-page';
+    window.location.href = '/learn';
   };
 
   useEffect(() => {
@@ -60,7 +60,7 @@ const CoursePage = ({ params }) => {
   }, []);
 
   const singleCourse = enrolledCourses?.filter(
-    (courseItem) => courseItem.courseId._id === courseId
+    (courseItem) => courseItem.courseId._id === courseId,
   );
   useEffect(() => {
     singleCourse.forEach((courseItem) => {
@@ -87,12 +87,12 @@ const CoursePage = ({ params }) => {
     <Layout pageTitle="Course - Minority Programmers Association">
       {loading === true ? (
         <>
-          <HomepageNav page="learn-page" setData={setData} />
+          <HomepageNav page="learn" setData={setData} />
           <SkeletonElement />
         </>
       ) : (
         <>
-          <HomepageNav page="learn-page" setData={setData} />
+          <HomepageNav page="learn" setData={setData} />
           <Course userInfo={data} course={course} modules={modules} />
           <Footer />
         </>

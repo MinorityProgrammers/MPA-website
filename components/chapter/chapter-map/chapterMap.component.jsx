@@ -100,8 +100,7 @@ const ChapterMap = ({ google, token }) => {
     };
     const newLocations = locations.filter((_location) => {
       if (category === 'all') return _location;
-      if (category === 'member_size')
-        return getNumFromStr(_location.member_size) >= getNumFromStr(val);
+      if (category === 'member_size') return getNumFromStr(_location.member_size) >= getNumFromStr(val);
       return _location[category] === val || _location[category] === val;
     });
     setFilteredLocations(newLocations);
@@ -191,8 +190,8 @@ const ChapterMap = ({ google, token }) => {
           initialCenter={{ lat: 47.444, lng: -122.176 }}
           onClick={handleMapClick}
         >
-          {filteredLocations &&
-            filteredLocations.map((place) => (
+          {filteredLocations
+            && filteredLocations.map((place) => (
               <Marker
                 key={place._id}
                 onClick={() => handleLocation({ ...place })}

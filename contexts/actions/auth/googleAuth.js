@@ -20,8 +20,6 @@ const postData = (route, body, dispatch) => {
     // //   setAuthorizationToken(token)
     localStorage.setItem('userInfo', JSON.stringify(res.data.data));
 
-    console.log(res);
-
     if (res.data.status === 'success') {
       successToast(res.data.message);
       window.location.href = '/';

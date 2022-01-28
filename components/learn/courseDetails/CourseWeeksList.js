@@ -4,7 +4,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-const CourseWeeksList = function (props) {
+const CourseWeeksList = (props) => {
   const toastId = useRef(null);
   const router = useRouter();
   const {
@@ -20,7 +20,6 @@ const CourseWeeksList = function (props) {
     advancedLength,
   } = props;
 
-  // Beginner level completion status
   let completedStatusBeginner = 0;
   let uncompletedStatusBeginner = 0;
   let completedBeginner = 0;
@@ -33,7 +32,6 @@ const CourseWeeksList = function (props) {
     }
   });
 
-  // Intermediate level completion status
   let completedStatusIntermediate = 0;
   let uncompletedStatusIntermediate = 0;
   let completedIntermediate = 0;
@@ -46,7 +44,6 @@ const CourseWeeksList = function (props) {
     }
   });
 
-  // Advanced level completion status
   let completedStatusAdvanced = 0;
   let uncompletedStatusAdvanced = 0;
   specificUAdvancedModules.forEach((module) => {
@@ -70,7 +67,10 @@ const CourseWeeksList = function (props) {
     }
   };
   const goToAdvancedModules = () => {
-    if (intermediateLength === completedIntermediate && completedIntermediate !== 0) {
+    if (
+      intermediateLength === completedIntermediate
+      && completedIntermediate !== 0
+    ) {
       const advancedModules = `/courses/${courseId}/modules/advanced`;
       router.push(advancedModules);
     } else {
@@ -84,40 +84,59 @@ const CourseWeeksList = function (props) {
 
   return (
     <>
-      <Link href={`/courses/${courseId}/modules/beginner`} className="text-decoration-none">
+      <Link
+        href={`/courses/${courseId}/modules/beginner`}
+        className="text-decoration-none"
+      >
         <div className="px-md-3 mx-md-5 mt-4 pt-2 all-weeks">
           <div className="course-weeks mb-4 moduleInfo">
-
             <div className="pt-3 pr-3">
-              {
-                !Number.isNaN(beginnerPercentage) && (
-                  <>
-                    {
-                      completedStatusBeginner === beginnerLength ? <p className="green-status ml-auto"><span>completed</span></p>
-                        : uncompletedStatusBeginner > 0 || completedStatusBeginner > 0 ? <p className="red-status ml-auto"><span>uncompleted</span></p>
-                          : <p className="white-status ml-auto"><span>Start</span></p>
-                    }
-                  </>
-                )
-              }
+              {!Number.isNaN(beginnerPercentage) && (
+                <>
+                  {completedStatusBeginner === beginnerLength ? (
+                    <p className="green-status ml-auto">
+                      <span>completed</span>
+                    </p>
+                  ) : uncompletedStatusBeginner > 0
+                    || completedStatusBeginner > 0 ? (
+                      <p className="red-status ml-auto">
+                        <span>uncompleted</span>
+                      </p>
+                    ) : (
+                      <p className="white-status ml-auto">
+                        <span>Start</span>
+                      </p>
+                    )}
+                </>
+              )}
             </div>
             <div className="d-pb-1 text-center">
-              <h4 className="mt-2 mb-2 text-white text-capitalize">Beginner Level</h4>
+              <h4 className="mt-2 mb-2 text-white text-capitalize">
+                Beginner Level
+              </h4>
             </div>
-            <div className="d-flex justify-content-center mb-1" style={{ padding: '0px 115px' }}>
+            <div
+              className="d-flex justify-content-center mb-1"
+              style={{ padding: '0px 115px' }}
+            >
               <div className="progress mt-1">
-                <div className="progress-bar" style={{ width: `${beginnerPercentage}%` }} role="progressbar" aria-valuenow={beginnerPercentage} aria-valuemin="0" aria-valuemax="100" />
+                <div
+                  className="progress-bar"
+                  style={{ width: `${beginnerPercentage}%` }}
+                  role="progressbar"
+                  aria-valuenow={beginnerPercentage}
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                />
               </div>
             </div>
             <p className="text-center text-white pb-3">
-              {
-                !Number.isNaN(beginnerPercentage) && (
-                  <span className="">
-                    {beginnerPercentage}
-                    % completed
-                  </span>
-                )
-              }
+              {!Number.isNaN(beginnerPercentage) && (
+                <span className="">
+                  {beginnerPercentage}
+                  % completed
+                </span>
+              )}
             </p>
           </div>
         </div>
@@ -127,35 +146,52 @@ const CourseWeeksList = function (props) {
         <div className="px-md-3 mx-md-5 mt-4 pt-2 all-weeks">
           <div className="course-weeks mb-4 moduleInfo">
             <div className="pt-3 pr-3">
-              {
-                !Number.isNaN(intermediatePercentage) && (
-                  <>
-                    {
-                      completedStatusIntermediate === intermediateLength ? <p className="green-status ml-auto"><span>completed</span></p>
-                        : uncompletedStatusIntermediate > 0 || completedStatusIntermediate > 0 ? <p className="red-status ml-auto"><span>uncompleted</span></p>
-                          : <p className="white-status ml-auto"><span>Start</span></p>
-                    }
-                  </>
-                )
-              }
+              {!Number.isNaN(intermediatePercentage) && (
+                <>
+                  {completedStatusIntermediate === intermediateLength ? (
+                    <p className="green-status ml-auto">
+                      <span>completed</span>
+                    </p>
+                  ) : uncompletedStatusIntermediate > 0
+                    || completedStatusIntermediate > 0 ? (
+                      <p className="red-status ml-auto">
+                        <span>uncompleted</span>
+                      </p>
+                    ) : (
+                      <p className="white-status ml-auto">
+                        <span>Start</span>
+                      </p>
+                    )}
+                </>
+              )}
             </div>
             <div className="d-pb-1 text-center">
-              <h4 className="mt-2 mb-2 text-white text-capitalize">Intermediate Level</h4>
+              <h4 className="mt-2 mb-2 text-white text-capitalize">
+                Intermediate Level
+              </h4>
             </div>
-            <div className="d-flex justify-content-center mb-1" style={{ padding: '0px 115px' }}>
+            <div
+              className="d-flex justify-content-center mb-1"
+              style={{ padding: '0px 115px' }}
+            >
               <div className="progress mt-1">
-                <div className="progress-bar" style={{ width: `${intermediatePercentage}%` }} role="progressbar" aria-valuenow={intermediatePercentage} aria-valuemin="0" aria-valuemax="100" />
+                <div
+                  className="progress-bar"
+                  style={{ width: `${intermediatePercentage}%` }}
+                  role="progressbar"
+                  aria-valuenow={intermediatePercentage}
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                />
               </div>
             </div>
             <p className="text-center text-white pb-3">
-              {
-                !Number.isNaN(intermediatePercentage) && (
-                  <span className="">
-                    {intermediatePercentage}
-                    % completed
-                  </span>
-                )
-              }
+              {!Number.isNaN(intermediatePercentage) && (
+                <span className="">
+                  {intermediatePercentage}
+                  % completed
+                </span>
+              )}
             </p>
           </div>
         </div>
@@ -165,35 +201,52 @@ const CourseWeeksList = function (props) {
         <div className="px-md-3 mx-md-5 mt-4 pt-2 all-weeks">
           <div className="course-weeks mb-4 moduleInfo">
             <div className="pt-3 pr-3">
-              {
-                !Number.isNaN(advancedPercentage) && (
-                  <>
-                    {
-                      completedStatusAdvanced === advancedLength ? <p className="green-status ml-auto"><span>completed</span></p>
-                        : uncompletedStatusAdvanced > 0 || completedStatusAdvanced > 0 ? <p className="red-status ml-auto"><span>uncompleted</span></p>
-                          : <p className="white-status ml-auto"><span>Start</span></p>
-                    }
-                  </>
-                )
-              }
+              {!Number.isNaN(advancedPercentage) && (
+                <>
+                  {completedStatusAdvanced === advancedLength ? (
+                    <p className="green-status ml-auto">
+                      <span>completed</span>
+                    </p>
+                  ) : uncompletedStatusAdvanced > 0
+                    || completedStatusAdvanced > 0 ? (
+                      <p className="red-status ml-auto">
+                        <span>uncompleted</span>
+                      </p>
+                    ) : (
+                      <p className="white-status ml-auto">
+                        <span>Start</span>
+                      </p>
+                    )}
+                </>
+              )}
             </div>
             <div className="d-pb-1 text-center">
-              <h4 className="mt-2 mb-2 text-white text-capitalize">Advanced Level</h4>
+              <h4 className="mt-2 mb-2 text-white text-capitalize">
+                Advanced Level
+              </h4>
             </div>
-            <div className="d-flex justify-content-center mb-1" style={{ padding: '0px 115px' }}>
+            <div
+              className="d-flex justify-content-center mb-1"
+              style={{ padding: '0px 115px' }}
+            >
               <div className="progress mt-1">
-                <div className="progress-bar" style={{ width: `${advancedPercentage}%` }} role="progressbar" aria-valuenow={advancedPercentage} aria-valuemin="0" aria-valuemax="100" />
+                <div
+                  className="progress-bar"
+                  style={{ width: `${advancedPercentage}%` }}
+                  role="progressbar"
+                  aria-valuenow={advancedPercentage}
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                />
               </div>
             </div>
             <p className="text-center text-white pb-3">
-              {
-                !Number.isNaN(advancedPercentage) && (
-                  <span className="">
-                    {advancedPercentage}
-                    % completed
-                  </span>
-                )
-              }
+              {!Number.isNaN(advancedPercentage) && (
+                <span className="">
+                  {advancedPercentage}
+                  % completed
+                </span>
+              )}
             </p>
           </div>
         </div>

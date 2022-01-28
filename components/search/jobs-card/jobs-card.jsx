@@ -2,11 +2,16 @@ import React, { useState } from 'react';
 import styles from './jobs-card.module.css';
 import JobsPopup from './jobs-popup';
 
-const JobsCard = function ({ data }) {
+const JobsCard = ({ data }) => {
   const [popup, togglePopup] = useState(false);
 
   const {
-    easy_apply, job_title, location, pay, job_type, companyId: { company_name },
+    easy_apply,
+    job_title,
+    location,
+    pay,
+    job_type,
+    companyId: { company_name },
   } = data;
 
   const handleClick = () => {
@@ -15,7 +20,11 @@ const JobsCard = function ({ data }) {
 
   return (
     <div className={styles.wrapper}>
-      <div className={`${styles.popupContainer} ${popup ? styles.show : styles.hide}`}>
+      <div
+        className={`${styles.popupContainer} ${
+          popup ? styles.show : styles.hide
+        }`}
+      >
         <JobsPopup data={data} togglePopup={togglePopup} />
       </div>
 
@@ -24,26 +33,21 @@ const JobsCard = function ({ data }) {
         <div className={styles.industry}>{company_name}</div>
         <div className={styles.location}>{location}</div>
         <div className={styles.amountPaid}>{pay}</div>
-        {
-          job_type ? <div className={styles.easyapply}>{job_type}</div> : null
-        }
-        {
-          easy_apply ? <div className={styles.easyapply}>Easy Apply</div> : null
-        }
+        {job_type ? <div className={styles.easyapply}>{job_type}</div> : null}
+        {easy_apply ? <div className={styles.easyapply}>Easy Apply</div> : null}
         <div className={styles.sect}>
-          {
-           /*  this code should be replaced with job responsibilities when added to the database.
-               Lorem ipsum should be replaced with an actual responsibility.
-            */
-            (new Array(6).fill(null))
-              .filter((_, idx) => idx < 4)
-              .map((_, idx) => (
-                <div key={`${idx + 1}`} className={styles.list}>
-                  <span className={`${styles.listStyle} ${styles.circle}`} />
-                  {`${'Lorem ipsum dolor, sit amet consectetur adipisicing elit.'.substring(0, 40)}...`}
-                </div>
-              ))
-          }
+          {new Array(6)
+            .fill(null)
+            .filter((_, idx) => idx < 4)
+            .map((_, idx) => (
+              <div key={`${idx + 1}`} className={styles.list}>
+                <span className={`${styles.listStyle} ${styles.circle}`} />
+                {`${'Lorem ipsum dolor, sit amet consectetur adipisicing elit.'.substring(
+                  0,
+                  40,
+                )}...`}
+              </div>
+            ))}
         </div>
       </div>
     </div>

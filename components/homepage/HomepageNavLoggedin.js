@@ -3,7 +3,7 @@ import React, { useContext, useState } from 'react';
 import { LOGOUT_USER } from '../../contexts/actions/actionTypes';
 import { GlobalContext } from '../../contexts/provider';
 
-const HomepageNavLoggedin = function ({ onCloseMobileMenu, userInfo }) {
+const HomepageNavLoggedin = ({ onCloseMobileMenu, userInfo }) => {
   const { authDispatch } = useContext(GlobalContext);
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
@@ -19,7 +19,11 @@ const HomepageNavLoggedin = function ({ onCloseMobileMenu, userInfo }) {
 
   return (
     <div className={click ? 'dropdown-login clicked' : 'dropdown-login right'}>
-      <button type="button" className="dropdown-login-btn-close" onClick={onCloseMobileMenu}>
+      <button
+        type="button"
+        className="dropdown-login-btn-close"
+        onClick={onCloseMobileMenu}
+      >
         <i className="fas fa-times" />
       </button>
       <p className="mb-3">

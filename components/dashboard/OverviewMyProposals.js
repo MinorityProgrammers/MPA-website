@@ -25,7 +25,7 @@ const OverviewMyProposals = () => {
         Approved
       </button>
     ),
-    []
+    [],
   );
 
   const ProposalCard = useCallback(
@@ -64,7 +64,7 @@ const OverviewMyProposals = () => {
         </div>
       </div>
     ),
-    []
+    [],
   );
 
   return (

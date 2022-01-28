@@ -3,20 +3,19 @@ import axios from 'axios';
 import Layout from '../../components/Layout';
 import HomepageNav from '../../components/homepage/HomepageNav';
 import Footer from '../../components/Footer';
-import CourseCategories from '../../components/learn/CourseCategories';
+import Certificates from '../../components/learn/Certificates';
 import SidebarTwo from '../../components/sidebar/SidebarTwo';
 import links from '../../contexts/utils/links';
-import LearnHero from '../../components/learn/LearnHero';
+import ComingSoon from '../../components/ComingSoon';
 import useDetectOutsideClick from '../../components/UseDetectOutsideClick';
 
 const LearnPage = () => {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef(null);
-  const [hide, setHide] = useDetectOutsideClick(dropdownRef, false);
+  const [hide, setHide] = useDetectOutsideClick(dropdownRef, true);
   const [data, setData] = useState([]);
-  const [usersCourses, setUsersCourses] = useState([]);
-  const [enrolledCourses, setEnrolledCourses] = useState([]);
-
+  const [certificate, setCertificate] = useState([]);
+  const [loading, setLoading] = useState(true);
   const handleClick = () => {
     setHide(!hide);
   };
@@ -30,25 +29,18 @@ const LearnPage = () => {
     const userToken = JSON.parse(localStorage.getItem('userInfo'));
     if (userToken !== null) {
       axios
-        .get(`${process.env.BASE_URI}/learn/userCourses`, {
+        .get(`${process.env.BASE_URI}/certificate/getUserCertificate`, {
           headers: {
             Authorization: `Bearer ${userToken.token}`,
           },
         })
         .then((res) => {
-          setEnrolledCourses(res.data.data);
+          setCertificate(res.data.data);
+          setTimeout(() => {
+            setLoading(false);
+          }, 3000);
         });
     }
-  }, [
-    typeof window !== 'undefined'
-      ? window.localStorage.getItem('jwtToken')
-      : null,
-  ]);
-
-  useEffect(() => {
-    axios.get(`${process.env.BASE_URI}/learn/`).then((res) => {
-      setUsersCourses(res.data.data);
-    });
   }, [
     typeof window !== 'undefined'
       ? window.localStorage.getItem('jwtToken')
@@ -60,7 +52,7 @@ const LearnPage = () => {
       <HomepageNav
         open={open}
         setOpen={setOpen}
-        page="learn-page"
+        page="learn"
         setData={setData}
       />
       <SidebarTwo
@@ -70,14 +62,20 @@ const LearnPage = () => {
         active="Home"
         handleClick={handleClick}
       />
-      <div>
-        <LearnHero />
-        <CourseCategories
-          user={data}
-          usersCourses={usersCourses}
-          enrolledCourses={enrolledCourses}
-        />
-      </div>
+      {hide === false && <ComingSoon closeClick={handleClick} />}
+      {
+        loading
+          ? (<> </>)
+          : (
+            <div className="tw-py-20 certificate">
+              <Certificates
+                user={data}
+                certificates={certificate}
+                loading={loading}
+              />
+            </div>
+          )
+      }
       <Footer />
     </Layout>
   );

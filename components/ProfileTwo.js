@@ -23,7 +23,6 @@ import ProfileTwoGenerateAvatarPopUp from './ProfileTwoGenerateAvatarPopUp';
 import getProgressPercentage from '../contexts/utils/settings/getProgressPercentage';
 import getLevelUpTips from '../contexts/utils/settings/getLevelUpTips';
 import { useMoralisDapp } from '../MoralisDappProvider/MoralisDappProvider';
-import pinnedCards from '../contexts/utils/profile/pinnedCards.json';
 import NFT from '../artifacts/contracts/NFT.sol/NFT.json';
 
 const nftaddress = process.env.ADDRESS;
@@ -50,8 +49,6 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
     courseEnroll: '/assets/images/course_enroll.png',
     courseFinish: '/assets/images/course_finish.png',
   };
-
-  console.log(userData);
 
   const [generateAvatarPopUp, setGenerateAvatarPopUp] = useState(false);
   const [socialLinks, setSocialLinks] = useState([]);
@@ -97,9 +94,7 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
   const [ProIMG, setProIMG] = useState('');
 
   const router = useRouter();
-  const { Moralis } = useMoralis();
-
-  console.log(proEditMode);
+  const { Moralis, isAuthenticated } = useMoralis();
 
   const axiosFunc = (url, token, setState) => {
     axios
@@ -121,13 +116,13 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
       axiosFunc(
         'experience/userExperience',
         userToken.token,
-        setExperienceCards
+        setExperienceCards,
       );
       axiosFunc('education/userEducation', userToken.token, setEducationCards);
       axiosFunc(
         'personalProject/userPersonalProject',
         userToken.token,
-        setProjectCards
+        setProjectCards,
       );
     }
   }, []);
@@ -232,12 +227,12 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
 
   const completeExpAdd = () => {
     if (
-      uploadedExpImg &&
-      expJobTitleInput &&
-      expDateInputFrom &&
-      expDateInputTo &&
-      expLocationInput &&
-      link
+      uploadedExpImg
+      && expJobTitleInput
+      && expDateInputFrom
+      && expDateInputTo
+      && expLocationInput
+      && link
     ) {
       const newCard = {
         image: uploadedExpImg,
@@ -279,7 +274,7 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
       const el = document.getElementById('add-exp-fields');
       el.insertAdjacentHTML(
         'afterend',
-        '<div class="exp-data-warn tw-ml-4 tw-mb-3 tw-self-end tw-text-red-500 tw-font-bold">Please add an image and fill in all fields</div>'
+        '<div class="exp-data-warn tw-ml-4 tw-mb-3 tw-self-end tw-text-red-500 tw-font-bold">Please add an image and fill in all fields</div>',
       );
     }
   };
@@ -287,9 +282,7 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
   const removeExp = (expId) => {
     const userToken = JSON.parse(localStorage.getItem('userInfo'));
     experienceCards.length === 1 && setExpEditMode(false);
-    setExperienceCards((prevCards) =>
-      prevCards.filter((card) => card._id !== expId)
-    );
+    setExperienceCards((prevCards) => prevCards.filter((card) => card._id !== expId));
     axios
       .delete(`${process.env.BASE_URI}/experience/${expId}`, {
         headers: {
@@ -348,7 +341,7 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
       const el = document.getElementById('add-edu-fields');
       el.insertAdjacentHTML(
         'afterend',
-        '<div class="edu-data-warn tw-ml-4 tw-mb-3 tw-self-end tw-text-red-500 tw-font-bold">Please add an image and fill in all fields</div>'
+        '<div class="edu-data-warn tw-ml-4 tw-mb-3 tw-self-end tw-text-red-500 tw-font-bold">Please add an image and fill in all fields</div>',
       );
     }
   };
@@ -391,7 +384,7 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
       const el = document.getElementById('add-edu-fields');
       el.insertAdjacentHTML(
         'afterend',
-        '<div class="edu-data-warn tw-ml-4 tw-mb-3 tw-self-end tw-text-red-500 tw-font-bold">Please add an image and fill in all fields</div>'
+        '<div class="edu-data-warn tw-ml-4 tw-mb-3 tw-self-end tw-text-red-500 tw-font-bold">Please add an image and fill in all fields</div>',
       );
     }
   };
@@ -416,9 +409,7 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
 
   const removeEdu = (eduId) => {
     educationCards.length === 1 && setEduEditMode(false);
-    setEducationCards((prevCards) =>
-      prevCards.filter((card) => card._id !== eduId)
-    );
+    setEducationCards((prevCards) => prevCards.filter((card) => card._id !== eduId));
     const userToken = JSON.parse(localStorage.getItem('userInfo'));
     axios
       .delete(`${process.env.BASE_URI}/education/${eduId}`, {
@@ -437,9 +428,7 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
 
   const removePro = (eduId) => {
     projectCards.length === 1 && setProEditMode(false);
-    setProjectCards((prevCards) =>
-      prevCards.filter((card) => card._id !== eduId)
-    );
+    setProjectCards((prevCards) => prevCards.filter((card) => card._id !== eduId));
     const userToken = JSON.parse(localStorage.getItem('userInfo'));
     axios
       .delete(`${process.env.BASE_URI}/personalProject/${eduId}`, {
@@ -457,55 +446,59 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
   };
 
   const onMint = async () => {
-    const file = new Moralis.File('avatar.png', {
-      base64: userData.profilePicture,
-    });
-    setIsMinting(true);
-    try {
-      await file.saveIPFS();
-      if (file.ipfs()) {
-        const metadata = {
-          name: `${userData.firstName} ${userData.lastName}`,
-          image: file.ipfs() || '',
-          description: userData?.bio || '',
-          attributes: userData.avatarOptions,
-        };
+    if (isAuthenticated) {
+      const file = new Moralis.File('avatar.png', {
+        base64: userData.profilePicture,
+      });
+      setIsMinting(true);
+      try {
+        await file.saveIPFS();
+        if (file.ipfs()) {
+          const metadata = {
+            name: `${userData.firstName} ${userData.lastName}`,
+            image: file.ipfs() || '',
+            description: userData?.bio || '',
+            attributes: userData.avatarOptions,
+          };
 
-        const JsonFormat = JSON.stringify(metadata);
+          const JsonFormat = JSON.stringify(metadata);
 
-        const mintedMetadata = new Moralis.File('metadata.json', {
-          base64: btoa(JsonFormat),
-        });
-        await mintedMetadata.saveIPFS();
-
-        if (mintedMetadata.ipfs()) {
-          const web3Modal = new Web3Modal();
-          const connection = await web3Modal.connect();
-          const provider = new ethers.providers.Web3Provider(connection);
-          const signer = provider.getSigner();
-
-          let contract = new ethers.Contract(nftaddress, NFT.abi, signer);
-          let transaction = await contract.mintNFT(
-            nftaddress,
-            mintedMetadata.ipfs()
-          );
-          const tx = await transaction.wait();
-          const event = tx.events[0];
-          const value = event.args[2];
-          const tokenId = value.toNumber();
-          contract = new ethers.Contract(nftaddress, NFT.abi, signer);
-          transaction = await contract.giveOwnership(nftaddress, tokenId, {
-            value: 10,
+          const mintedMetadata = new Moralis.File('metadata.json', {
+            base64: btoa(JsonFormat),
           });
-          await transaction.wait();
-          setDoneMinting(true);
-          setIsMinting(false);
-          countDown(mintedMetadata.ipfs(), tx);
+          await mintedMetadata.saveIPFS();
+
+          if (mintedMetadata.ipfs()) {
+            const web3Modal = new Web3Modal();
+            const connection = await web3Modal.connect();
+            const provider = new ethers.providers.Web3Provider(connection);
+            const signer = provider.getSigner();
+
+            let contract = new ethers.Contract(nftaddress, NFT.abi, signer);
+            let transaction = await contract.mintNFT(
+              nftaddress,
+              mintedMetadata.ipfs(),
+            );
+            const tx = await transaction.wait();
+            const event = tx.events[0];
+            const value = event.args[2];
+            const tokenId = value.toNumber();
+            contract = new ethers.Contract(nftaddress, NFT.abi, signer);
+            transaction = await contract.giveOwnership(nftaddress, tokenId, {
+              value: 10,
+            });
+            await transaction.wait();
+            setDoneMinting(true);
+            setIsMinting(false);
+            countDown(mintedMetadata.ipfs(), tx);
+          }
         }
+      } catch (e) {
+        setIsMinting(false);
+        console.log(e);
       }
-    } catch (e) {
-      setIsMinting(false);
-      console.log(e);
+    } else {
+      errorToast('You need to connect your wallet');
     }
   };
 
@@ -636,9 +629,7 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                             <div>
                               <span
                                 className="note"
-                                onClick={() =>
-                                  router.push('/settings/profile/media')
-                                }
+                                onClick={() => router.push('/settings/profile/media')}
                               >
                                 Please Add Social Links...
                               </span>
@@ -647,9 +638,7 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                           <div className="pencil tw-cursor-pointer">
                             <HiOutlinePencil
                               style={{ fontSize: '1.5rem' }}
-                              onClick={() =>
-                                router.push('/settings/profile/media')
-                              }
+                              onClick={() => router.push('/settings/profile/media')}
                             />
                           </div>
                         </div>
@@ -679,41 +668,38 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                     <p className="tw-font-bold">Passions & Skills</p>
 
                     <p className="all-skills tw-flex tw-justify-start  tw-flex-wrap ">
-                      {userData?.passions?.length &&
-                      !(
-                        userData.passions.length === 1 &&
-                        userData.passions[0] === ''
+                      {userData?.passions?.length
+                      && !(
+                        userData.passions.length === 1
+                        && userData.passions[0] === ''
                       ) ? (
-                        userData.passions.map(
-                          (passion, index) =>
-                            passion && (
+                          userData.passions.map(
+                            (passion, index) => passion && (
                               <span
                                 key={`${index + 1}`}
                                 className="tw-inline-block tw-px-2 tw-py-1 tw-mr-1 tw-text-xs tw-text-gray-500 tw-border-gray-500 tw-mb-1 tw-rounded-md tw-border"
                               >
                                 {passion}
                               </span>
-                            )
-                        )
-                      ) : (
-                        <span
-                          className="note"
-                          onClick={() =>
-                            isLoggedIn &&
-                            ownsProfile &&
-                            router.push('/settings/profile/background')
-                          }
-                          style={
+                            ),
+                          )
+                        ) : (
+                          <span
+                            className="note"
+                            onClick={() => isLoggedIn
+                            && ownsProfile
+                            && router.push('/settings/profile/background')}
+                            style={
                             isLoggedIn && ownsProfile
                               ? { cursor: 'pointer' }
                               : { cursor: 'default' }
                           }
-                        >
-                          {isLoggedIn && ownsProfile
-                            ? 'Please Add Passions...'
-                            : 'N/A'}
-                        </span>
-                      )}
+                          >
+                            {isLoggedIn && ownsProfile
+                              ? 'Please Add Passions...'
+                              : 'N/A'}
+                          </span>
+                        )}
                     </p>
                   </div>
 
@@ -749,8 +735,8 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
           </div>
         </section>
 
-        {getProgressPercentage(userData) &&
-          getProgressPercentage(userData) < 100 && (
+        {getProgressPercentage(userData)
+          && getProgressPercentage(userData) < 100 && (
             <section className="tw-mb-8 tw-container ">
               <div className="profile-strength tw-p-6  tw-rounded-md tw-grid tw-grid-flow-row tw-auto-rows-max">
                 <div
@@ -761,16 +747,18 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                   }tw-group tw-block tw-rounded-lg tw-p-4 tw-border-gray-300 tw-border tw-bg-white`}
                 >
                   <h2 className="tw-relative tw-text-xl tw-font-bold tw-mb-3 tw-text-black">
-                    Profile Strength:{' '}
+                    Profile Strength:
+                    {' '}
                     <span className="tw-font-medium">
                       {`${
                         getProgressPercentage(userData) <= 33
                           ? 'Low'
                           : getProgressPercentage(userData) <= 66
-                          ? 'Intermediate'
-                          : 'High'
+                            ? 'Intermediate'
+                            : 'High'
                       }`}
-                    </span>{' '}
+                    </span>
+                    {' '}
                     {`${getProgressPercentage(userData)}%`}
                     <span
                       className="ps-arrow tw-absolute tw-top-0 tw-right-0 tw-text-xs tw-cursor-pointer"
@@ -817,7 +805,9 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                             className="il-step tw-cursor-pointer tw-inline-block tw-px-2 tw-py-1 tw-rounded-md tw-m-2"
                             onClick={() => router.push(missingData.route)}
                           >
-                            Add a {`${missingData.name}`}
+                            Add a
+                            {' '}
+                            {`${missingData.name}`}
                           </div>
                         ))}
                     </div>
@@ -825,7 +815,7 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                 )}
               </div>
             </section>
-          )}
+        )}
 
         <section className="tw-mb-8 tw-container ">
           <div className="pp-exp-edu-area tw-p-6  tw-rounded-md tw-grid tw-grid-flow-row tw-auto-rows-max">
@@ -853,8 +843,8 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                   </div>
                 )}
 
-                {!!projectCards?.length &&
-                  projectCards.map((card, idx) => (
+                {!!projectCards?.length
+                  && projectCards.map((card, idx) => (
                     <div
                       className={`add-exp-edu tw-relative tw-flex tw-items-center tw-mb-4 ${
                         !(idx === projectCards?.length - 1)
@@ -898,9 +888,9 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                     </div>
                   ))}
 
-                {isLoggedIn &&
-                  ownsProfile &&
-                  (!projectCards?.length || !proEditMode) && (
+                {isLoggedIn
+                  && ownsProfile
+                  && (!projectCards?.length || !proEditMode) && (
                     <form
                       id="add-edu-fields"
                       className="add-exp-edu tw-flex tw-items-center"
@@ -922,8 +912,8 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                             />
                             <img
                               src={
-                                uploadedProImg ||
-                                '/assets/images/profile/add-image.svg'
+                                uploadedProImg
+                                || '/assets/images/profile/add-image.svg'
                               }
                               alt="add item"
                               className="tw-w-full"
@@ -1010,7 +1000,7 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                         </>
                       )}
                     </form>
-                  )}
+                )}
               </div>
             </div>
           </div>
@@ -1022,7 +1012,7 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
               <h2 className="tw-relative tw-text-xl tw-font-bold tw-mb-3 tw-text-black">
                 Enrolled Courses
                 <span className="tw-absolute tw-top-0 tw-right-0 tw-text-xs tw-cursor-pointer">
-                  <a className="pp-view-all" href="/learn-page">
+                  <a className="pp-view-all" href="/learn">
                     View All
                   </a>
                 </span>
@@ -1045,8 +1035,8 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                       style={
                         enrolledCourses.length < 3
                           ? {
-                              width: '33%',
-                            }
+                            width: '33%',
+                          }
                           : {}
                       }
                     >
@@ -1111,8 +1101,8 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                   </div>
                 )}
 
-                {!!experienceCards?.length &&
-                  experienceCards.map((card, idx) => (
+                {!!experienceCards?.length
+                  && experienceCards.map((card, idx) => (
                     <div
                       className={`add-exp-edu tw-relative tw-flex tw-items-center tw-mb-4 ${
                         !(idx === experienceCards || experienceCards.length - 1)
@@ -1140,7 +1130,10 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                           {card.jobTitle}
                         </p>
                         <p className="tw-block tw-rounded tw-px-2 tw-my-2 tw-w-full">
-                          {moment(card?.from).calendar()} -{' '}
+                          {moment(card?.from).calendar()}
+                          {' '}
+                          -
+                          {' '}
                           {moment(card?.to).calendar()}
                         </p>
                         <p className="tw-block tw-rounded tw-px-2 tw-w-full">
@@ -1159,9 +1152,9 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                     </div>
                   ))}
 
-                {isLoggedIn &&
-                  ownsProfile &&
-                  (!experienceCards?.length || !expEditMode) && (
+                {isLoggedIn
+                  && ownsProfile
+                  && (!experienceCards?.length || !expEditMode) && (
                     <form
                       id="add-exp-fields"
                       className="add-exp-edu tw-flex tw-items-center"
@@ -1184,8 +1177,8 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
 
                             <img
                               src={
-                                uploadedExpImg ||
-                                '/assets/images/profile/add-image.svg'
+                                uploadedExpImg
+                                || '/assets/images/profile/add-image.svg'
                               }
                               alt="add item"
                               className="tw-w-full"
@@ -1211,9 +1204,7 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                             name="jobTitle"
                             className="tw-block tw-rounded tw-px-2 tw-font-bold tw-w-full"
                             value={expJobTitleInput}
-                            onChange={(e) =>
-                              setExpJobTitleInput(e.target.value)
-                            }
+                            onChange={(e) => setExpJobTitleInput(e.target.value)}
                           />
                           <input
                             type="text"
@@ -1263,9 +1254,7 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                             name="location"
                             className="tw-block tw-rounded tw-px-2 tw-w-full tw-my-1"
                             value={expLocationInput}
-                            onChange={(e) =>
-                              setExpLocationInput(e.target.value)
-                            }
+                            onChange={(e) => setExpLocationInput(e.target.value)}
                           />
                           <input
                             type="text"
@@ -1301,7 +1290,7 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                         </>
                       )}
                     </form>
-                  )}
+                )}
               </div>
             </div>
           </div>
@@ -1333,8 +1322,8 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                   </div>
                 )}
 
-                {!!educationCards?.length &&
-                  educationCards.map((card, idx) => (
+                {!!educationCards?.length
+                  && educationCards.map((card, idx) => (
                     <div
                       className={`add-exp-edu tw-relative tw-flex tw-items-center tw-mb-4 ${
                         !(idx === educationCards || educationCards.length - 1)
@@ -1361,7 +1350,10 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                           {card.name}
                         </p>
                         <p className="tw-block tw-rounded tw-px-2 tw-my-2 tw-w-full">
-                          {moment(card.date).calendar()} -{' '}
+                          {moment(card.date).calendar()}
+                          {' '}
+                          -
+                          {' '}
                           {moment(card.gradDate).calendar()}
                         </p>
                         <p className="tw-block tw-rounded tw-px-2 tw-w-full">
@@ -1379,9 +1371,9 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                     </div>
                   ))}
 
-                {isLoggedIn &&
-                  ownsProfile &&
-                  (!educationCards?.length || !eduEditMode) && (
+                {isLoggedIn
+                  && ownsProfile
+                  && (!educationCards?.length || !eduEditMode) && (
                     <form
                       id="add-edu-fields"
                       className="add-exp-edu tw-flex tw-items-center"
@@ -1403,8 +1395,8 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                             />
                             <img
                               src={
-                                uploadedEduImg ||
-                                '/assets/images/profile/add-image.svg'
+                                uploadedEduImg
+                                || '/assets/images/profile/add-image.svg'
                               }
                               alt="add item"
                               className="tw-w-full"
@@ -1507,7 +1499,7 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
                         </>
                       )}
                     </form>
-                  )}
+                )}
               </div>
             </div>
           </div>

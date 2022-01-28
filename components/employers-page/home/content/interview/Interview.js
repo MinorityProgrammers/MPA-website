@@ -33,7 +33,11 @@ const Interview = ({ scheduled }) => (
   <div className={styles.root}>
     <div className={styles.header}>
       <h1>Interview schedule</h1>
-      <span>({scheduled}) scheduled</span>
+      <span>
+        (
+        {scheduled}
+        ) scheduled
+      </span>
     </div>
     <div>
       <hr className={styles.horizontal} />

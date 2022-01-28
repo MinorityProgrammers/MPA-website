@@ -1,4 +1,6 @@
-import React, { useEffect, useState, useContext, useRef } from 'react';
+import React, {
+  useEffect, useState, useContext, useRef,
+} from 'react';
 import { useRouter } from 'next/router';
 import NotFoundPage from '../404';
 import Layout from '../../components/Layout';
@@ -23,10 +25,9 @@ const User = ({ user }) => {
 
   useEffect(() => {
     const timeoutID = setTimeout(
-      () =>
-        !((isLoggedIn && ownsProfile) || user[0]?.profileVisibility) &&
-        setHiddenProfileValidated(true),
-      2000
+      () => !((isLoggedIn && ownsProfile) || user[0]?.profileVisibility)
+        && setHiddenProfileValidated(true),
+      2000,
     );
     return () => {
       clearTimeout(timeoutID);
@@ -54,8 +55,8 @@ const User = ({ user }) => {
 
   useEffect(() => {
     setOwnsProfile(
-      userData?.userName === user[0]?.userName ||
-        profileData?.userName === user[0]?.userName
+      userData?.userName === user[0]?.userName
+        || profileData?.userName === user[0]?.userName,
     );
   }, [user, userData, profileData]);
 
@@ -84,8 +85,8 @@ const User = ({ user }) => {
 
   return (
     <Layout pageTitle="Profile">
-      {(isLoggedIn && ownsProfile && user?.[0]) ||
-      user[0]?.profileVisibility !== false ? (
+      {(isLoggedIn && ownsProfile && user?.[0])
+      || user[0]?.profileVisibility !== false ? (
         <>
           <HomepageNav
             setData={setUserData}
@@ -109,11 +110,11 @@ const User = ({ user }) => {
           />
           <Footer />
         </>
-      ) : hiddenProfileValidated ? (
-        <NotFoundPage />
-      ) : (
-        <></>
-      )}
+        ) : hiddenProfileValidated ? (
+          <NotFoundPage />
+        ) : (
+          <></>
+        )}
     </Layout>
   );
 };

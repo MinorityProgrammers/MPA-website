@@ -10,7 +10,8 @@ const ErrorPrint = ({ errors = [], red, left }) => (
           textAlign: left ? 'left' : '',
         }}
       >
-        -{error}
+        -
+        {error}
       </h4>
     ))}
   </div>

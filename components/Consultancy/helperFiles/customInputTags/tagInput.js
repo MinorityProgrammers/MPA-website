@@ -24,8 +24,8 @@ const TagInput = ({
         }
       }
       if (
-        rr.code === targetCode &&
-        inputRef.current === document.activeElement
+        rr.code === targetCode
+        && inputRef.current === document.activeElement
       ) {
         try {
           criteriaCheck(
@@ -33,7 +33,7 @@ const TagInput = ({
               callback();
             },
             inputRef.current.value,
-            [...listOfTags]
+            [...listOfTags],
           );
         } catch (err) {
           defaultCriteriaCheck(
@@ -41,7 +41,7 @@ const TagInput = ({
               callback();
             },
             inputRef.current.value,
-            [...listOfTags]
+            [...listOfTags],
           );
         }
       }

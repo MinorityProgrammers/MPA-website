@@ -59,8 +59,8 @@ const Select = ({
         />
       </div>
       <div className={`${styles.selectList} ${toggle && styles.toggle}`}>
-        {list &&
-          list.map((item, idx) => (
+        {list
+          && list.map((item, idx) => (
             <div
               key={`${idx + 1}`}
               onClick={() => handleSelect(item)}

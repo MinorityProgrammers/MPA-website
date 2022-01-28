@@ -5,15 +5,24 @@ import styles from './events-popup.module.css';
 
 Moment.locale('en');
 
-const EventsPopup = function ({ data, togglePopup }) {
+const EventsPopup = ({ data, togglePopup }) => {
   const {
-    EventPicture, eventName, location, Virtual, EventDescription, time, host,
+    EventPicture,
+    eventName,
+    location,
+    Virtual,
+    EventDescription,
+    time,
+    host,
   } = data;
 
   return (
     <div className={styles.container}>
       <div className={styles.closePopupContainer}>
-        <i onClick={() => togglePopup(false)} className={`${styles.closePopup} fas fa-times`} />
+        <i
+          onClick={() => togglePopup(false)}
+          className={`${styles.closePopup} fas fa-times`}
+        />
       </div>
       <div className={styles.image_host_theme}>
         <div className={styles.imageContainer}>
@@ -22,32 +31,39 @@ const EventsPopup = function ({ data, togglePopup }) {
         <div className={styles.host_theme}>
           <div className={styles.theme}>{eventName}</div>
           <div className={styles.hostContainer}>
-            {
-              host
-                ? (
-                  <>
-                    <h3 className={styles.hostTitle}>Hosted by</h3>
-                    <div className={styles.profile}>
-                      <div className={styles.profileImageContainer}>
-                        {
-                        host.profilePicture
-                          ? <img className={styles.Profilemage} src={host.profilePicture} alt="event-banner" />
-                          : <div className={styles.imagePlaceholder}><i className="fas fa-user" /></div>
-                      }
+            {host ? (
+              <>
+                <h3 className={styles.hostTitle}>Hosted by</h3>
+                <div className={styles.profile}>
+                  <div className={styles.profileImageContainer}>
+                    {host.profilePicture ? (
+                      <img
+                        className={styles.Profilemage}
+                        src={host.profilePicture}
+                        alt="event-banner"
+                      />
+                    ) : (
+                      <div className={styles.imagePlaceholder}>
+                        <i className="fas fa-user" />
                       </div>
-                      <div>
-                        <div className={styles.profileName}>{`${host.lastName} ${host.firstName}`}</div>
-                        <div className={styles.location}>{location}</div>
-                      </div>
+                    )}
+                  </div>
+                  <div>
+                    <div
+                      className={styles.profileName}
+                    >
+                      {`${host.lastName} ${host.firstName}`}
                     </div>
-                  </>
-                )
-                : <div>NO HOST</div>
-            }
+                    <div className={styles.location}>{location}</div>
+                  </div>
+                </div>
+              </>
+            ) : (
+              <div>NO HOST</div>
+            )}
           </div>
           <div className={styles.date}>
             <div className={styles.time}>{Moment(time).format('LL')}</div>
-            {/* <div className={styles.endDate}>10:00am to Oct 30, 12:00pm EDT</div> */}
           </div>
           <h3 className={styles.venue}>
             Event is hosted

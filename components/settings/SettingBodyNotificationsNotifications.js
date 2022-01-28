@@ -8,7 +8,11 @@ import styles from '../../styles/settings/settingBodyNotificationsNotifications.
 import CreateSettingInput from './CreateSettingInput';
 import SettingBody from './SettingBody';
 
-const SettingBodyNotificationsNotifications = function ({ settingsPage, data, userID }) {
+const SettingBodyNotificationsNotifications = ({
+  settingsPage,
+  data,
+  userID,
+}) => {
   const router = useRouter();
 
   const inputFields = [
@@ -20,17 +24,16 @@ const SettingBodyNotificationsNotifications = function ({ settingsPage, data, us
 
   const initialInputState = {};
 
-  inputFields.forEach(
-    (field) => { initialInputState[field.name] = ''; },
-    // ex. {someInputFieldName: "inputFieldValue", ...}
-  );
+  inputFields.forEach((field) => {
+    initialInputState[field.name] = '';
+  });
 
   const [inputStates, setInputStates] = useState(initialInputState);
 
   useEffect(() => {
-    inputFields.forEach(
-      (field) => { initialInputState[field.name] = data?.[field.name] || false; },
-    );
+    inputFields.forEach((field) => {
+      initialInputState[field.name] = data?.[field.name] || false;
+    });
 
     setInputStates(initialInputState);
   }, [data]);
@@ -51,14 +54,18 @@ const SettingBodyNotificationsNotifications = function ({ settingsPage, data, us
     updateProfile(userID, formData)(profileDispatch);
 
     const slug = data?.userName;
-    if (slug) { router.push(`/user/${slug}`); }
+    if (slug) {
+      router.push(`/user/${slug}`);
+    }
   };
 
   const closeProfileSetup = () => {
     setInputStates(initialInputState);
 
     const slug = data?.userName;
-    if (slug) { router.push(`/user/${slug}`); }
+    if (slug) {
+      router.push(`/user/${slug}`);
+    }
   };
   return (
     <SettingBody

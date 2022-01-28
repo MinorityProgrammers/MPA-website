@@ -2,23 +2,37 @@ import React, { useState } from 'react';
 import styles from './users-card.module.css';
 import UsersPopup from './users-popup';
 
-const UsersCard = function ({ data }) {
+const UsersCard = ({ data }) => {
   const [popup, togglePopup] = useState(false);
 
   const {
-    profilePicture, firstName, lastName, role, userName, isMentor, isMentee,
+    profilePicture,
+    firstName,
+    lastName,
+    role,
+    userName,
+    isMentor,
+    isMentee,
   } = data;
 
   return (
     <div className={styles.wrapper}>
-      <div className={`${styles.popupContainer} ${popup ? styles.show : styles.hide}`}>
+      <div
+        className={`${styles.popupContainer} ${
+          popup ? styles.show : styles.hide
+        }`}
+      >
         <UsersPopup data={data} togglePopup={togglePopup} />
       </div>
 
       <div onClick={() => togglePopup(true)} className={styles.container}>
         <div className={styles.imageContainerWrapper}>
           <div className={styles.imageContainer}>
-            <img className={styles.image} src={profilePicture || '/assets/images/profile.png'} alt="user" />
+            <img
+              className={styles.image}
+              src={profilePicture || '/assets/images/profile.png'}
+              alt="user"
+            />
           </div>
         </div>
         <div className={styles.detailsContainer}>
@@ -37,8 +51,20 @@ const UsersCard = function ({ data }) {
         <div className={styles.otherInfo}>
           <div className={styles.title}>Other Information</div>
           <div className={styles.mentorship}>
-            <div className={`${styles.mentor} ${isMentor ? styles.isMentor : null}`}>Mentor</div>
-            <div className={`${styles.mentee} ${isMentee ? styles.isMentee : null}`}>Mentee</div>
+            <div
+              className={`${styles.mentor} ${
+                isMentor ? styles.isMentor : null
+              }`}
+            >
+              Mentor
+            </div>
+            <div
+              className={`${styles.mentee} ${
+                isMentee ? styles.isMentee : null
+              }`}
+            >
+              Mentee
+            </div>
           </div>
 
           <div className={styles.roleContainer}>

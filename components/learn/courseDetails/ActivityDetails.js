@@ -15,13 +15,13 @@ import 'react-circular-progressbar/dist/styles.css';
 
 export const QuizContext = createContext();
 
-const ActivityDetails = function ({
+const ActivityDetails = ({
   userInfo,
   enrolledCourses,
   modules,
   singleUserModuleInfo,
   userModules,
-}) {
+}) => {
   if (!singleUserModuleInfo) {
     return null;
   }
@@ -57,9 +57,8 @@ const ActivityDetails = function ({
     return null;
   }
 
-  const specificUserModules = userModules && userModules.filter(
-    (eModule) => specificModules.some((module) => eModule.moduleId._id === module._id),
-  );
+  const specificUserModules = userModules
+    && userModules.filter((eModule) => specificModules.some((module) => eModule.moduleId._id === module._id));
 
   const userModulesId = [];
   specificUserModules.forEach((module) => {
@@ -82,13 +81,11 @@ const ActivityDetails = function ({
         .then((res) => res.json())
         .then((data) => {
           if (data) {
-            // console.log(data);
           }
         });
     }
   };
 
-  // For forward module functionality
   const nextElementKey = moduleInfo.elementKey + 1;
   const nextModuleDetails = specificModules?.find(
     (module) => module.elementKey === nextElementKey,
@@ -115,7 +112,6 @@ const ActivityDetails = function ({
         .then((res) => res.json())
         .then((data) => {
           if (data) {
-            // console.log(data);
             setDisable(true);
             setTimeout(() => {
               window.location.href = nextModuleInfo;
@@ -127,13 +123,11 @@ const ActivityDetails = function ({
     setIsOpen(false);
   };
 
-  // quiz functionality
   const handleWatch = () => {
     setWatched(true);
     setIsOpen(true);
   };
 
-  // for congrats button
   const advancedModules = modules.filter(
     (module) => module.level === 'advanced',
   );

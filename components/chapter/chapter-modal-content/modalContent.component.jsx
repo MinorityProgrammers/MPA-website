@@ -29,7 +29,7 @@ const ModalContent = ({
             headers: {
               Authorization: `Bearer ${token}`,
             },
-          }
+          },
         )
         .then(() => {
           successToast('You have successfully joined a chapter');

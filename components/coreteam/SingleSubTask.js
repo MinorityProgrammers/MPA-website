@@ -3,7 +3,9 @@ import { AiFillEdit, AiFillDelete } from 'react-icons/ai';
 import ReactTooltip from 'react-tooltip';
 import userinfo from './User.json';
 
-const SingleSubTask = ({ index, todo, todos, setTodos }) => {
+const SingleSubTask = ({
+  index, todo, todos, setTodos,
+}) => {
   const [edit, setEdit] = useState(false);
   const [editTodo, setEditTodo] = useState(todo.todo);
 
@@ -15,9 +17,7 @@ const SingleSubTask = ({ index, todo, todos, setTodos }) => {
   const handleEdit = (e, id) => {
     e.preventDefault();
     setTodos(
-      todos.map((_todo) =>
-        _todo.id === id ? { ..._todo, todo: editTodo } : _todo
-      )
+      todos.map((_todo) => (_todo.id === id ? { ..._todo, todo: editTodo } : _todo)),
     );
     setEdit(false);
   };
@@ -28,9 +28,7 @@ const SingleSubTask = ({ index, todo, todos, setTodos }) => {
 
   const handleDone = (id) => {
     setTodos(
-      todos.map((_todo) =>
-        _todo.id === id ? { ..._todo, isDone: !_todo.isDone } : _todo
-      )
+      todos.map((_todo) => (_todo.id === id ? { ..._todo, isDone: !_todo.isDone } : _todo)),
     );
   };
 
@@ -53,9 +51,7 @@ const SingleSubTask = ({ index, todo, todos, setTodos }) => {
   const HandleRemoveUser = (id) => {
     const afterRemoveUsers = userCart.filter((remo) => remo.id !== id);
     setUserCart(afterRemoveUsers);
-    console.log(afterRemoveUsers);
   };
-  console.log('players', userCart);
 
   return (
     <div>
@@ -73,7 +69,7 @@ const SingleSubTask = ({ index, todo, todos, setTodos }) => {
               <div
                 className="tw-cursor-pointer tw-btn"
                 key={u.id}
-                onClick={() => HandleUserRemove(u.id)}
+                onClick={() => HandleRemoveUser(u.id)}
                 data-tip={u.name}
               >
                 <img className="tw-h-5 tw-w-5" src={u.image} alt="" />

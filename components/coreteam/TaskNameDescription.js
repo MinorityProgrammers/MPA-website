@@ -14,7 +14,6 @@ const TaskNameDescription = () => {
     setTextDescription(newTextDecription);
     e.preventDefault();
   };
-  console.log(textDescription);
   const handleTaskDescriptionFormSubmit = () => {
     const formData = new FormData();
     formData.append('text', textDescription.text);
@@ -27,7 +26,6 @@ const TaskNameDescription = () => {
     for (let i = 0; i < newSubTakText.length; i += 1) {
       newSubTakText[i].id = i;
     }
-    console.log(newSubTakText);
     setSubTaskText(newSubTakText);
     e.target.reset();
   });
@@ -171,7 +169,8 @@ const TaskNameDescription = () => {
                               className="tw-h-5 tw-w-5"
                               src="/assets/images/coreteamimg/user.png"
                               alt=""
-                            />{' '}
+                            />
+                            {' '}
                             <span>{user.name}</span>
                           </div>
                         </a>
@@ -304,7 +303,9 @@ const TaskNameDescription = () => {
       <section className="  move-task  tw-mx-auto">
         <div className="tw-my-8 tw-p-3 tw-container text-center">
           <h1 className="tw-lg tw-green-600 tw-my-4 parsonal-title">
-            MOVE TASK TO <span className="tw-uppercase">In-Progress</span>
+            MOVE TASK TO
+            {' '}
+            <span className="tw-uppercase">In-Progress</span>
           </h1>
           <p>
             Claim task and notify project manager that the task is being done.

@@ -3,19 +3,20 @@ import axios from 'axios';
 import Layout from '../../components/Layout';
 import HomepageNav from '../../components/homepage/HomepageNav';
 import Footer from '../../components/Footer';
-import Certificates from '../../components/learn/Certificates';
+import CourseCategories from '../../components/learn/CourseCategories';
 import SidebarTwo from '../../components/sidebar/SidebarTwo';
 import links from '../../contexts/utils/links';
-import ComingSoon from '../../components/ComingSoon';
+import LearnHero from '../../components/learn/LearnHero';
 import useDetectOutsideClick from '../../components/UseDetectOutsideClick';
 
 const LearnPage = () => {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef(null);
-  const [hide, setHide] = useDetectOutsideClick(dropdownRef, true);
+  const [hide, setHide] = useDetectOutsideClick(dropdownRef, false);
   const [data, setData] = useState([]);
-  const [certificate, setCertificate] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [usersCourses, setUsersCourses] = useState([]);
+  const [enrolledCourses, setEnrolledCourses] = useState([]);
+
   const handleClick = () => {
     setHide(!hide);
   };
@@ -29,16 +30,13 @@ const LearnPage = () => {
     const userToken = JSON.parse(localStorage.getItem('userInfo'));
     if (userToken !== null) {
       axios
-        .get(`${process.env.BASE_URI}/certificate/getUserCertificate`, {
+        .get(`${process.env.BASE_URI}/learn/userCourses`, {
           headers: {
             Authorization: `Bearer ${userToken.token}`,
           },
         })
         .then((res) => {
-          setCertificate(res.data.data);
-          setTimeout(() => {
-            setLoading(false);
-          }, 3000);
+          setEnrolledCourses(res.data.data);
         });
     }
   }, [
@@ -47,12 +45,22 @@ const LearnPage = () => {
       : null,
   ]);
 
+  useEffect(() => {
+    axios.get(`${process.env.BASE_URI}/learn/`).then((res) => {
+      setUsersCourses(res.data.data);
+    });
+  }, [
+    typeof window !== 'undefined'
+      ? window.localStorage.getItem('jwtToken')
+      : null,
+  ]);
+
   return (
-    <Layout pageTitle="Learn Page - Minority Programmers Association">
+    <Layout pageTitle="MPA - Learn">
       <HomepageNav
         open={open}
         setOpen={setOpen}
-        page="learn-page"
+        page="learn"
         setData={setData}
       />
       <SidebarTwo
@@ -62,20 +70,14 @@ const LearnPage = () => {
         active="Home"
         handleClick={handleClick}
       />
-      {hide === false && <ComingSoon closeClick={handleClick} />}
-      {
-        loading
-          ? (<> </>)
-          : (
-            <div className="tw-py-20 certificate">
-              <Certificates
-                user={data}
-                certificates={certificate}
-                loading={loading}
-              />
-            </div>
-          )
-      }
+      <div>
+        <LearnHero />
+        <CourseCategories
+          user={data}
+          usersCourses={usersCourses}
+          enrolledCourses={enrolledCourses}
+        />
+      </div>
       <Footer />
     </Layout>
   );

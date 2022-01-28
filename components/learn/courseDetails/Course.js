@@ -4,7 +4,7 @@ import axios from 'axios';
 import CourseSidebar from './CourseSidebar';
 import MainCourseInfo from './MainCourseInfo';
 
-const Course = function ({ userInfo, course, modules }) {
+const Course = ({ userInfo, course, modules }) => {
   const [userModules, setUserModules] = useState([]);
   const router = useRouter();
   const { courseId } = router.query;
@@ -15,11 +15,12 @@ const Course = function ({ userInfo, course, modules }) {
 
   useEffect(() => {
     const userToken = JSON.parse(localStorage.getItem('userInfo')).token;
-    axios.get(`${process.env.BASE_URI}/learn/${courseId}/userModules`, {
-      headers: {
-        Authorization: `Bearer ${userToken}`,
-      },
-    })
+    axios
+      .get(`${process.env.BASE_URI}/learn/${courseId}/userModules`, {
+        headers: {
+          Authorization: `Bearer ${userToken}`,
+        },
+      })
       .then((res) => {
         setUserModules(res.data.data);
       });

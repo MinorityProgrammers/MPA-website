@@ -11,7 +11,6 @@ const OverviewStartups = ({ userData, token }) => {
   const [startups, setStartups] = useState([]);
 
   useEffect(() => {
-    console.log('userData: ', userData);
     if (token !== null) {
       axios
         .get(`${process.env.BASE_URI}/startup`, {
@@ -29,7 +28,7 @@ const OverviewStartups = ({ userData, token }) => {
             const tempAmount = parseInt(startup.amount);
             startup.amount = tempAmount;
             startup.percentRaised = Math.ceil(
-              (tempAmount * 100) / startup.targetAmount
+              (tempAmount * 100) / startup.targetAmount,
             );
             startup.isFounder = userData._id === startup.startupOwner._id;
           });
@@ -65,7 +64,7 @@ const OverviewStartups = ({ userData, token }) => {
         }}
       />
     ),
-    []
+    [],
   );
 
   const ProgressBar = useCallback((props) => {
@@ -90,7 +89,6 @@ const OverviewStartups = ({ userData, token }) => {
       startupData = startups.filter((startup) => startup.isFounder);
     } else if (currentView === 'staked') {
       startupData = startups.filter((startup) => startup.shareOwner);
-      console.log(startups.length);
     } else {
       startupData = startups;
     }
@@ -126,7 +124,9 @@ const OverviewStartups = ({ userData, token }) => {
                     className="overview-course-card-description"
                     style={{ marginBottom: 0 }}
                   >
-                    {startup.shareOffered.toLocaleString()} Shares offered
+                    {startup.shareOffered.toLocaleString()}
+                    {' '}
+                    Shares offered
                   </p>
                 </div>
               </div>
@@ -146,8 +146,11 @@ const OverviewStartups = ({ userData, token }) => {
                     marginTop: '5px',
                   }}
                 >
-                  ${(startup.amount / 1000).toLocaleString()}k / $
-                  {(startup.targetAmount / 1000).toLocaleString()}k Raised
+                  $
+                  {(startup.amount / 1000).toLocaleString()}
+                  k / $
+                  {(startup.targetAmount / 1000).toLocaleString()}
+                  k Raised
                 </p>
               </div>
               {/* Fourth and Fifth Column */}
@@ -167,7 +170,8 @@ const OverviewStartups = ({ userData, token }) => {
                       color: '#151371',
                     }}
                   >
-                    {startup.percentRaised}%
+                    {startup.percentRaised}
+                    %
                   </p>
                 </div>
                 {/* Fifth Column */}

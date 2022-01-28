@@ -17,9 +17,6 @@ const Sidebar = ({
   const [pages, setPages] = useState(false);
   const [users, setUser] = useState(false);
   const { role } = authUser || 'student';
-  // const { lastName } = authUser || 'user';
-  // const { profileImage } = authUser || './assets/images/mpcircle.svg';
-  // const { firstName } = authUser || 'user';
 
   return (
     <div
@@ -116,7 +113,6 @@ const Sidebar = ({
             sidebar={sidebar}
             setSidebar={setSidebar}
           />
-          {/* ***************************** components ****************************** */}
           <article className="tw-pl-2">
             <div className="tw-my-2 tw-mx-1 tw-font-bold">
               <span>Owner</span>
