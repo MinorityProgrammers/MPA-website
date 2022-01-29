@@ -13,7 +13,6 @@ const CourseCatOne = () => {
       disableOnInteraction: false,
     },
 
-    // Responsive breakpoints
     breakpoints: {
       1024: {
         slidesPerView: 6,

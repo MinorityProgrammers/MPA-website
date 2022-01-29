@@ -5,6 +5,7 @@ const Layout = ({ pageTitle, children }) => (
   <div>
     <Head>
       <title>{pageTitle}</title>
+      <meta name="facebook-domain-verification" content="zqzl2e8e5d36a5deejlx4414qaenkl" />
       <meta charSet="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta httpEquiv="X-UA-Compatible" content="ie=edge" />

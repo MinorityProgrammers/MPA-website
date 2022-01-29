@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import styles from '../../styles/settings/specificSettingsLayoutNavigation.module.css';
 import getSpecificSettingsLayoutNavigationList from '../../helpers/getSpecificSettingsLayoutNavigationList';
 
-const SettingsLayout = function ({ settingsPage }) {
+const SettingsLayout = ({ settingsPage }) => {
   const router = useRouter();
 
   const settingsSubPage = router.pathname.substring(

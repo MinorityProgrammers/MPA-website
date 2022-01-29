@@ -28,7 +28,6 @@ const allSections = [
   },
 ];
 
-// component's function
 const CareerExplainer = (props) => {
   const {
     data, setClickRegister, clickRegister, navBarRef,

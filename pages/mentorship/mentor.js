@@ -34,13 +34,10 @@ const Mentor = () => {
   const handleClick = () => {
     setHide(!hide);
   };
-  // console.log(mentorshipData.mentorship);
-  // Get User Data
+
   useEffect(() => {
     const user = JSON.parse(window.localStorage.getItem('userInfo'));
     const token = window.localStorage.getItem('jwtToken');
-    // you can use this user_id for testing 6112814512ba1a43bd29c7ec or
-    //  create a new mentee and mentorship with the user_id you want to use. || user.user._id
 
     if (token != null) {
       axios
@@ -51,7 +48,6 @@ const Mentor = () => {
           },
         })
         .then((res) => {
-          // console.log(res.data.data);
           setMentorshipData(res.data.data);
         });
     }

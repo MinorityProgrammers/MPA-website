@@ -7121,7 +7121,7 @@ html {
 }
 .dropdown-login-icons {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   border-bottom: 1px solid rgba(255, 255, 255, 0.568);
   padding-bottom: 1.5rem;
 }
@@ -8624,6 +8624,13 @@ html {
   .card-body-app p {
     font-size: 0.75rem;
   }
+  .homepage__Reviews .container .swiper-container .swiper-button-next{
+    top: 90%;
+  }
+  .homepage__Reviews .container .swiper-container .swiper-button-prev{
+    top: 90%;
+    left: 70%;
+  }
 }
 
 @media only screen and (max-width: 500px) {
@@ -9005,6 +9012,163 @@ html {
 .sponsor-item:hover {
   transform: translateY(-5%);
 }
+/* the minority comments section */
+.homepage__Reviews {
+  padding: 60px 0;
+}
+.homepage__Reviews .container .swiper-container {
+  padding-bottom: 60px;
+}
+.homepage__Reviews .container .swiper-container .swiper-button-next{
+  top: 94%;
+}
+.homepage__Reviews .container .swiper-container .swiper-button-prev{
+  top: 94%;
+  left: 88%;
+}
+.item .homepage__comment{
+  margin: 0;
+  margin-right: 10px;
+  border: none;
+}
+#tweet-1455675414765051905 .homepage__comment{
+  max-width: 270px !important;
+  margin: auto;
+}
+.homepage__comment div div{
+  margin-top: 0 !important;
+}
+.homepage__Reviews .container .swiper-container .swiper-wrapper{
+  margin-bottom: 30px;
+}
+.homepage__Reviews .container .swiper-container{
+  cursor: grab;
+}
+#tweet-1444383109307412487 .homepage__comment div iframe{
+  max-width: 300px !important;
+}
+#tweet-1455675414765051905 .homepage__comment div iframe{
+  max-width: 280px !important;
+}
+#tweet-1431364200132190219 .homepage__comment div iframe{
+  max-width: 355px !important;
+}
+#tweet-1444383109307412487,#tweet-1455675414765051905,#tweet-1431364200132190219{
+  margin-top: 0;
+} 
+.tweet__card{
+  margin: auto 0;
+}
+#twitter-widget-2{
+  display: none;
+}
+.homepage__comment .card-body .card__header img{
+  width: 75px;
+  height: 75px;
+  background: none;
+  border-radius: 50px;
+}
+.homepage__comment .card-body .card__header h2{
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+}
+.homepage__comment .card-body {
+  padding: 1rem 1rem 0;
+  height: fit-content;
+}
+.homepage__comment .card-body .card__bottom{
+  position: absolute;
+  bottom: 2%;
+  right: 5%;
+}
+.card__quote{
+  padding: 1rem 0;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+}
+.card__header__position{
+  color: #a7a7a7;
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+  letter-spacing: 3.2px;
+}
+.card__quote i {
+  margin-left: 10px;
+  font-size: 25px;
+  color: #1DA1F2;
+}
+.card__quote p sub{
+  bottom: -1.1em;
+}
+.swiper__counter{
+  position: absolute;
+  font-size: 24px;
+  font-weight: bold;
+  z-index: 100;
+  right: 18%;
+  margin-top: -80px;
+}
+.r-iphfwy{
+  height: 400px !important;
+}
+blockquote.twitter-tweet {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 16px;
+  border-color: #eee #ddd #bbb;
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 1px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  margin: 10px 5px;
+  padding: 0 16px 16px 16px;
+  max-width: 468px;
+}
+.skelton-wrapper{
+  display: flex;
+  justify-content: space-between;
+}
+.swiper-container-unloaded{
+  opacity:0 !important;
+}
+.skelton-container .swiper-button-prev,.skelton-container .swiper-button-next{
+  display: none !important;
+}
+@media only screen and (max-width: 992px) {
+  .homepage__Reviews .container .swiper-container .swiper-button-prev{
+    left: 82%;
+  }
+} 
+@media only screen and (max-width: 768px) {
+  .skelton-wrapper{
+    justify-content: space-around;
+  }
+  .homepage__Reviews .container .swiper-container .swiper-button-prev{
+    top: 94%;
+    left: 75%;
+  }
+  .homepage__Reviews .container .swiper-container .swiper-button-next{
+    top: 94%;
+  }
+  .homepage__comment{
+    width: 300px;
+    margin: auto !important;
+  }
+}
+@media only screen and (max-width: 450px) {
+  .homepage__Reviews .container .swiper-container .swiper-button-prev{
+    top: 94%;
+    left: 67%;
+  }
+  .homepage__Reviews .container .swiper-container .swiper-button-next{
+    top: 94%;
+  }
+} 
 
 /* the minority donate section */
 /* Donate amount */
@@ -9831,6 +9995,7 @@ html {
 #not-found {
   height: 100vh;
 }
+
 @media (max-height: 636px) {
   #not-found {
     height: 636px;

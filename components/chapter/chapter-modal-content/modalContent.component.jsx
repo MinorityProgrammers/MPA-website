@@ -6,7 +6,7 @@ import axios from 'axios';
 import styles from './modalContent.module.css';
 import { errorToast, successToast } from '../../../contexts/utils/toasts';
 
-const ModalContent = function ({
+const ModalContent = ({
   token,
   location,
   description,
@@ -16,16 +16,21 @@ const ModalContent = function ({
   date_founded,
   _id,
   userJoinRequests,
-}) {
+}) => {
   const handleJoin = () => {
     if (token) {
-      axios.post(`${process.env.BASE_URI}/joinChapter`, {
-        chapterLocation_id: _id,
-      }, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
+      axios
+        .post(
+          `${process.env.BASE_URI}/joinChapter`,
+          {
+            chapterLocation_id: _id,
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          },
+        )
         .then(() => {
           successToast('You have successfully joined a chapter');
           setTimeout(location.reload(true), 2000);
@@ -44,10 +49,10 @@ const ModalContent = function ({
 
   return (
     <div
-      onMouseOver={() => { }}
-      onFocus={() => { }}
-      onMouseOut={() => { }}
-      onBlur={() => { }}
+      onMouseOver={() => {}}
+      onFocus={() => {}}
+      onMouseOut={() => {}}
+      onBlur={() => {}}
       className={styles.container}
     >
       <div className={styles.logo}>
@@ -75,14 +80,13 @@ const ModalContent = function ({
           <div className={styles.content}>{chapter_type}</div>
         </div>
       </div>
-      {
-        !userJoinRequests.includes(_id)
-          ? (
-            <div onClick={handleJoin} className={styles.joinButton}>
-              Join
-            </div>
-          ) : <div className={styles.joinButton}>Cancel Request</div>
-      }
+      {!userJoinRequests.includes(_id) ? (
+        <div onClick={handleJoin} className={styles.joinButton}>
+          Join
+        </div>
+      ) : (
+        <div className={styles.joinButton}>Cancel Request</div>
+      )}
 
       <div className={styles.icons}>
         <FiFacebook />

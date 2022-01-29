@@ -131,16 +131,12 @@ const MentorDetail = ({
                 </div>
                 <div className={stylesE.role}>
                   Been with MPA:
-                  {' '}
                   {menteeData.duration}
                 </div>
                 <div className={stylesE.tags}>
                   {menteeData.user_id.programmingSkills.map((tag) => (
                     <div key={tag}>
-                      <a>
-                        {' '}
-                        {tag}
-                      </a>
+                      <a>{tag}</a>
                     </div>
                   ))}
                 </div>

@@ -9,7 +9,7 @@ import CreateSettingAddition from './CreateSettingAddition';
 import SettingBody from './SettingBody';
 import findUserNames from '../../helpers/userNames';
 
-const SettingBodyProfileDetails = function ({ settingsPage, data, userID }) {
+const SettingBodyProfileDetails = ({ settingsPage, data, userID }) => {
   const [, setUsernames] = useState([]);
   const router = useRouter();
 
@@ -34,23 +34,20 @@ const SettingBodyProfileDetails = function ({ settingsPage, data, userID }) {
 
   const initialInputState = {};
 
-  inputFields.forEach(
-    (field) => { initialInputState[field.name] = ''; },
-    // ex. {someInputFieldName: "inputFieldValue", ...}
-  );
+  inputFields.forEach((field) => {
+    initialInputState[field.name] = '';
+  });
 
   const [inputStates, setInputStates] = useState(initialInputState);
 
   useEffect(() => {
-    inputFields.forEach(
-      (field) => {
-        initialInputState[field.name] = field.name === 'birthday'
-          ? data?.birthday
-            ? new Date(data.birthday)
-            : ''
-          : data?.[field.name] || '';
-      },
-    );
+    inputFields.forEach((field) => {
+      initialInputState[field.name] = field.name === 'birthday'
+        ? data?.birthday
+          ? new Date(data.birthday)
+          : ''
+        : data?.[field.name] || '';
+    });
 
     setInputStates(initialInputState);
   }, [data]);
@@ -94,16 +91,19 @@ const SettingBodyProfileDetails = function ({ settingsPage, data, userID }) {
     updateProfileJSON(userID, JSON.stringify(inputStates))(profileDispatch);
 
     const slug = data?.userName;
-    if (slug) { router.push(`/user/${slug}`); }
+    if (slug) {
+      router.push(`/user/${slug}`);
+    }
   };
 
   const closeProfileSetup = () => {
     // discard changes
     const slug = data?.userName;
-    if (slug) { router.push(`/user/${slug}`); }
+    if (slug) {
+      router.push(`/user/${slug}`);
+    }
   };
 
-  // console.log(inputStates);
   return (
     <SettingBody
       settingsPage={settingsPage}

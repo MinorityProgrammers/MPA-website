@@ -26,7 +26,7 @@ const menu = [
   },
 ];
 
-const Content = function (props) {
+const Content = (props) => {
   const { children } = props;
   const router = useRouter();
   return (

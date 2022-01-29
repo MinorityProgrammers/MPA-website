@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import CourseSidebar from './CourseSidebar';
 import ActivityList from './ActivityList';
 
-const WeeklyActivities = function ({ enrolledCourses, modules, userModules }) {
+const WeeklyActivities = ({ enrolledCourses, modules, userModules }) => {
   const [course, setCourse] = useState({});
   const router = useRouter();
   const { courseId, moduleLevel } = router.query;
@@ -23,11 +23,9 @@ const WeeklyActivities = function ({ enrolledCourses, modules, userModules }) {
     (module) => module.level === moduleLevel,
   );
 
-  // progress
   const totalModules = specificModules.length;
-  const specificUserModules = userModules && userModules.filter(
-    (eModule) => specificModules.some((module) => eModule.moduleId._id === module._id),
-  );
+  const specificUserModules = userModules
+    && userModules.filter((eModule) => specificModules.some((module) => eModule.moduleId._id === module._id));
 
   let completedModules = 0;
   specificUserModules.forEach((module) => {
@@ -42,7 +40,6 @@ const WeeklyActivities = function ({ enrolledCourses, modules, userModules }) {
   });
   const totalPercentage = Math.round(totalCompletionRate / totalModules);
 
-  // Forward button functionality
   const handleForwardLevelInfo = () => {
     if (moduleLevel === 'beginner') {
       const forwardLevelInfo = router.asPath.replace(

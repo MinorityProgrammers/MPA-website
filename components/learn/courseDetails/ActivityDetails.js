@@ -1,3 +1,4 @@
+
 /* eslint-disable react/jsx-no-constructed-context-values */
 import React, { useEffect, useState, createContext } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -15,13 +16,13 @@ import 'react-circular-progressbar/dist/styles.css';
 
 export const QuizContext = createContext();
 
-const ActivityDetails = function ({
+const ActivityDetails = ({
   userInfo,
   enrolledCourses,
   modules,
   singleUserModuleInfo,
   userModules,
-}) {
+}) => {
   if (!singleUserModuleInfo) {
     return null;
   }
@@ -48,7 +49,7 @@ const ActivityDetails = function ({
   const specificModules = modules.filter(
     (module) => module.level === moduleLevel,
   );
-  for (let i = 0; i < specificModules.length; i + 1) {
+  for (let i = 0; i < specificModules.length; i += 1) {
     specificModules[i].elementKey = i;
   }
 
@@ -57,9 +58,8 @@ const ActivityDetails = function ({
     return null;
   }
 
-  const specificUserModules = userModules && userModules.filter(
-    (eModule) => specificModules.some((module) => eModule.moduleId._id === module._id),
-  );
+  const specificUserModules = userModules
+    && userModules.filter((eModule) => specificModules.some((module) => eModule.moduleId._id === module._id));
 
   const userModulesId = [];
   specificUserModules.forEach((module) => {
@@ -79,16 +79,10 @@ const ActivityDetails = function ({
           completionRate: 50,
         }),
       })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data) {
-            // console.log(data);
-          }
-        });
+        .then((res) => res.json());
     }
   };
 
-  // For forward module functionality
   const nextElementKey = moduleInfo.elementKey + 1;
   const nextModuleDetails = specificModules?.find(
     (module) => module.elementKey === nextElementKey,
@@ -115,7 +109,6 @@ const ActivityDetails = function ({
         .then((res) => res.json())
         .then((data) => {
           if (data) {
-            // console.log(data);
             setDisable(true);
             setTimeout(() => {
               window.location.href = nextModuleInfo;
@@ -127,13 +120,11 @@ const ActivityDetails = function ({
     setIsOpen(false);
   };
 
-  // quiz functionality
   const handleWatch = () => {
     setWatched(true);
     setIsOpen(true);
   };
 
-  // for congrats button
   const advancedModules = modules.filter(
     (module) => module.level === 'advanced',
   );

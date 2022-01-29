@@ -46,12 +46,6 @@ const CompanyDetails = ({ id }) => {
     fetchCompany();
   }, []);
 
-  // const router = useRouter();
-
-  // function goBack() {
-  //   router.back();
-  // }
-
   return (
     <Layout>
       <HomepageNav open={open} setOpen={setOpen} page="Company" />

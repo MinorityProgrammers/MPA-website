@@ -1,39 +1,12 @@
 import React, { useEffect, useState, useContext } from 'react';
 import {
-  DragDropContext, Draggable, Droppable, resetServerContext,
+  DragDropContext,
+  Draggable,
+  Droppable,
+  resetServerContext,
 } from 'react-beautiful-dnd';
 import itemsFromBackEnd from './taskCardData.json';
 import TestTaskCard, { UserContext } from './TestTaskCard';
-// Currently using JSON data for dynamic loading
-// After completing backend JSON should be removed and tasks data will be loading-
-//  through getStaticProps and getStaticPaths function instead of useEffect hooks
-// export const getStaticPaths = async () => {
-//   const res = await fetch("http://localhost:3000/viewtaskData");
-//   const data = await res.json();
-
-//   const paths = data.map((task) => {
-//     return {
-//       params: { id: task.id },
-//     };
-//   });
-
-//   return {
-//     paths: paths,
-//     fallback: false,
-//   };
-// };
-
-// export const getStaticProps = async (context) => {
-//   const id = context.params.id;
-//   const res = await fetch(`http://localhost:3000/getProposalsdata/${id}`);
-//   const data = await res.json();
-
-//   return {
-//     props: {
-//       task: data,
-//     },
-//   };
-// };
 
 const columnsFromBackend = {
   1: { name: 'Planned Task', items: itemsFromBackEnd },
@@ -42,10 +15,9 @@ const columnsFromBackend = {
   4: { name: 'In Review Tasks', items: [] },
   5: { name: 'Revision Required Tasks', items: [] },
   6: { name: 'Completed Task', items: [] },
-
 };
 
-const CheckDND = function () {
+const CheckDND = () => {
   const [plannedTasks, setPlannedTasks] = useState([]);
   const [inProgress, setInProgress] = useState([]);
   const [readyReview, setReadyReview] = useState([]);
@@ -59,7 +31,7 @@ const CheckDND = function () {
     const { source, destination } = result;
     if (
       destination.droppableId === source.droppableId
-            && destination.index === source.index
+      && destination.index === source.index
     ) {
       return;
     }
@@ -95,38 +67,24 @@ const CheckDND = function () {
       });
     }
 
-    // let add;
-    // const active = plannedTasks;
-    // const inPro = inProgress;
     if (result.destination.droppableId === 1) {
       task = 'Planned Task';
 
-      console.log(task);
       const newResult = [...plannedTasks, result];
       setPlannedTasks(newResult);
-      console.log(plannedTasks);
     } else if (result.destination.droppableId === 2) {
-      // task = "In-Progress Tasks";
-      // add = active[source.index];
-      // active.splice(source.index, 1);
       const newResult = [...inProgress, result];
       setInProgress(newResult);
-      console.log(inProgress);
     } else if (result.destination.droppableId === 3) {
       task = 'Ready For Review Tasks';
-      console.log(task);
       const newResult = [...readyReview, result];
       setReadyReview(newResult);
-      console.log(readyReview);
     } else if (result.destination.droppableId === 4) {
       task = 'In Review Tasks';
-      console.log(task);
     } else if (result.destination.droppableId === 5) {
       task = 'Revision Required Tasks';
-      console.log(task);
     } else {
       task = 'Completed Task';
-      console.log(task);
     }
   };
 
@@ -136,7 +94,6 @@ const CheckDND = function () {
     setReadyReview(readyReview);
   }, []);
 
-  // schema for backend connection
   useEffect(() => {
     const handleTask = () => {
       const taskDetails = {
@@ -157,23 +114,8 @@ const CheckDND = function () {
         });
     };
   }, []);
-  // const onDragEnd = (result) => {
-  //     const { destination, source } = result;
-  //     console.log(result);
-  //     if (!destination) {
-  //         return;
-  //     }
-  //     if (
-  //         destination.droppableId === source.droppableId &&
-  //         destination.index === source.index
-  //     ) {
-  //         return;
-  //     }
 
-  // }
-  // handlePriority function sent to TaskStatus component as props to set the priority flag
-  const handlePriority = () => { };
-  // (result) => onDragEnd(result, columns, setColumms)
+  const handlePriority = () => {};
   return (
     <div className="tw-grid tw-grid-cols-3 tw-container tw-mx-auto tw-mt-12">
       <DragDropContext
@@ -209,12 +151,10 @@ const CheckDND = function () {
                           {...provided.dragHandleProps}
                           className="tw-justify-center"
                         >
-
                           <TestTaskCard
                             item={item}
                             handlePriority={handlePriority}
                           />
-
                         </div>
                       )}
                     </Draggable>

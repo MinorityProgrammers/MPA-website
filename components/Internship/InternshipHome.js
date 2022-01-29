@@ -3,7 +3,6 @@ import Link from 'next/link';
 import ModalVideo from 'react-modal-video';
 import datas from './data.json';
 import InternshipModal from './InternshipModal';
-// import useDetectOutsideClick from '../UseDetectOutsideClick';
 import Card from '../login-signup/card';
 
 const customStyles = {
@@ -17,23 +16,12 @@ const customStyles = {
     zIndex: 999999,
   },
 };
-const InternshipHome = function ({
-  data,
-  active,
-  clickRegister,
-  setClickRegister,
-}) {
+const InternshipHome = ({ data, active, clickRegister, setClickRegister }) => {
   const [isOpen, setOpen] = useState(false);
   const [modalIsOpen, setIsOpen] = useState(false);
   const [show, setShow] = useState('1');
   const [toggle, setToggle] = useState('2');
   const [myData] = useState(datas);
-
-  /* // this set of codes is not used in the file.... it needs to be addressed
-  const [click, setClick] = useState(false);
-  const dropdownRef = useRef(null);
-  const [isActive, setIsActive] = useDetectOutsideClick(dropdownRef, false);
-  const onClick = () => setIsActive(!isActive); */
 
   function openModal(x, y) {
     setIsOpen(true);
@@ -104,7 +92,6 @@ const InternshipHome = function ({
                   }}
                   className="btn btn-orange tw-cursor-pointer"
                 >
-                  {' '}
                   <span>Apply</span>
                   <i className="fas fa-angle-right" />
                 </button>
@@ -119,10 +106,7 @@ const InternshipHome = function ({
               {data ? (
                 <Link href="/volunteer">
                   <button type="button" className="btn btn-orange">
-                    {' '}
-                    <span>Build</span>
-                    {' '}
-                    <i className="fas fa-angle-right" />
+                    <span>Build</span> <i className="fas fa-angle-right" />
                   </button>
                 </Link>
               ) : (
@@ -133,10 +117,7 @@ const InternshipHome = function ({
                   }}
                   className="btn btn-orange tw-cursor-pointer"
                 >
-                  {' '}
-                  <span>Build</span>
-                  {' '}
-                  <i className="fas fa-angle-right" />
+                  <span>Build</span> <i className="fas fa-angle-right" />
                 </button>
               )}
             </div>
@@ -149,10 +130,7 @@ const InternshipHome = function ({
               {data ? (
                 <Link href="/partner">
                   <button type="button" className="btn btn-orange">
-                    {' '}
-                    <span>Hire</span>
-                    {' '}
-                    <i className="fas fa-angle-right" />
+                    <span>Hire</span> <i className="fas fa-angle-right" />
                   </button>
                 </Link>
               ) : (
@@ -163,10 +141,7 @@ const InternshipHome = function ({
                   }}
                   className="btn btn-orange tw-cursor-pointer"
                 >
-                  {' '}
-                  <span>Hire</span>
-                  {' '}
-                  <i className="fas fa-angle-right" />
+                  <span>Hire</span> <i className="fas fa-angle-right" />
                 </button>
               )}
             </div>
@@ -279,8 +254,10 @@ const InternshipHome = function ({
           <div className="intern__more">
             <div className="download__app">
               <p>Learn, earn, certification with our</p>
-              <Link href="/learn-page" target="_blank">
-                <button type="button" className="btn-download">Learning dApp</button>
+              <Link href="/learn" target="_blank">
+                <button type="button" className="btn-download">
+                  Learning dApp
+                </button>
               </Link>
             </div>
             <div className="about__internship">
@@ -291,7 +268,11 @@ const InternshipHome = function ({
                   className="heading__img card-img-top rounded-0"
                   alt=""
                 />
-                <button type="button" name="play" onClick={() => setOpen(true)} />
+                <button
+                  type="button"
+                  name="play"
+                  onClick={() => setOpen(true)}
+                />
               </div>
               <ModalVideo
                 channel="youtube"
@@ -303,7 +284,9 @@ const InternshipHome = function ({
             <div className="mentorship__card">
               <p>Fast track your career with our</p>
               <Link href="/mentorship" target="_blank">
-                <button type="button" className="btn-download">Mentorship Program</button>
+                <button type="button" className="btn-download">
+                  Mentorship Program
+                </button>
               </Link>
             </div>
           </div>
@@ -324,7 +307,11 @@ const InternshipHome = function ({
                     className="heading__img card-img-top rounded-0"
                     alt=""
                   />
-                  <button type="button" name="play" onClick={() => setOpen(true)} />
+                  <button
+                    type="button"
+                    name="play"
+                    onClick={() => setOpen(true)}
+                  />
                 </div>
                 <ModalVideo
                   channel="youtube"
@@ -369,7 +356,11 @@ const InternshipHome = function ({
                     className="heading__img card-img-top rounded-0"
                     alt=""
                   />
-                  <button type="button" name="play" onClick={() => setOpen(true)} />
+                  <button
+                    type="button"
+                    name="play"
+                    onClick={() => setOpen(true)}
+                  />
                 </div>
                 <ModalVideo
                   channel="youtube"
@@ -388,7 +379,11 @@ const InternshipHome = function ({
                     className="heading__img card-img-top rounded-0"
                     alt=""
                   />
-                  <button type="button" name="play" onClick={() => setOpen(true)} />
+                  <button
+                    type="button"
+                    name="play"
+                    onClick={() => setOpen(true)}
+                  />
                 </div>
                 <ModalVideo
                   channel="youtube"
@@ -407,7 +402,11 @@ const InternshipHome = function ({
                     className="heading__img card-img-top rounded-0"
                     alt=""
                   />
-                  <button type="button" name="play" onClick={() => setOpen(true)} />
+                  <button
+                    type="button"
+                    name="play"
+                    onClick={() => setOpen(true)}
+                  />
                 </div>
                 <ModalVideo
                   channel="youtube"

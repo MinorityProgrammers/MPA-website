@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-// import Link from 'next/link';
 import styles from '../../styles/MentorCSS/Dashboard.module.css';
 import stylesE from '../../styles/MentorCSS/Mentor.module.css';
 import VerticalModel from './VerticalModel';
@@ -110,7 +109,7 @@ const MenteeDetail = ({
       setUpdatedSprints(sprints);
     }
   }, [sprints]);
-  console.log(sprints);
+
   return (
     <div>
       <VerticalModel
@@ -118,9 +117,7 @@ const MenteeDetail = ({
         show={modalShow}
         onHide={() => setModalShow(false)}
       />
-      <div
-        className={stylesE.userName}
-      >
+      <div className={stylesE.userName}>
         {` ${menteeData.user_id.firstName} ${menteeData.user_id.lastName}`}
       </div>
       <div className={styles.container}>
@@ -157,23 +154,19 @@ const MenteeDetail = ({
                       />
                     </div>
                     <div className={stylesE.socialIcon}>
-                      {/* <Link href={menteeData.user_id.FacebookLink}> */}
                       <a target="_blank">
                         <img
                           src="/assets/images/mentor/Facebook.svg"
                           alt="facebook"
                         />
                       </a>
-                      {/* </Link> */}
-                      {/* <Link href={menteeData.user_id.LinkedinLink}> */}
+
                       <a target="_blank">
                         <img
                           src="/assets/images/mentor/Linkedin.svg"
                           alt="Linkedin"
                         />
                       </a>
-                      {' '}
-                      {/* </Link> */}
                       <img
                         src="/assets/images/mentor/Twitter.svg"
                         alt="Twitter"

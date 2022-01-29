@@ -14,7 +14,7 @@ export async function getServerSideProps(context) {
   };
 }
 
-const ActivityPage = function ({ params }) {
+const ActivityPage = ({ params }) => {
   const { courseId, moduleId } = params;
   const [data, setData] = useState([]);
   const [enrolledCourses, setEnrolledCourses] = useState([]);
@@ -23,7 +23,7 @@ const ActivityPage = function ({ params }) {
   const [loading, setLoading] = useState(true);
 
   const redirect = () => {
-    window.location.href = '/learn-page';
+    window.location.href = '/learn';
   };
 
   useEffect(() => {
@@ -44,14 +44,11 @@ const ActivityPage = function ({ params }) {
     const userToken = JSON.parse(localStorage.getItem('userInfo'));
     if (userToken !== null) {
       axios
-        .get(
-          `${process.env.BASE_URI}/learn/userCourses`,
-          {
-            headers: {
-              Authorization: `Bearer ${userToken.token}`,
-            },
+        .get(`${process.env.BASE_URI}/learn/userCourses`, {
+          headers: {
+            Authorization: `Bearer ${userToken.token}`,
           },
-        )
+        })
         .then((res) => {
           if (res.data.data.length > 0) {
             setEnrolledCourses(res.data.data);
@@ -66,14 +63,11 @@ const ActivityPage = function ({ params }) {
     const userToken = JSON.parse(localStorage.getItem('userInfo'));
     if (userToken !== null) {
       axios
-        .get(
-          `${process.env.BASE_URI}/course/${courseId}/module`,
-          {
-            headers: {
-              Authorization: `Bearer ${userToken.token}`,
-            },
+        .get(`${process.env.BASE_URI}/course/${courseId}/module`, {
+          headers: {
+            Authorization: `Bearer ${userToken.token}`,
           },
-        )
+        })
         .then((res) => {
           setModules(res.data.data);
         });
@@ -84,14 +78,11 @@ const ActivityPage = function ({ params }) {
     const userToken = JSON.parse(localStorage.getItem('userInfo'));
     if (userToken !== null) {
       axios
-        .get(
-          `${process.env.BASE_URI}/learn/${courseId}/userModules`,
-          {
-            headers: {
-              Authorization: `Bearer ${userToken.token}`,
-            },
+        .get(`${process.env.BASE_URI}/learn/${courseId}/userModules`, {
+          headers: {
+            Authorization: `Bearer ${userToken.token}`,
           },
-        )
+        })
         .then((res) => {
           setUserModules(res.data.data);
         });
@@ -107,12 +98,12 @@ const ActivityPage = function ({ params }) {
     <Layout pageTitle="Module Details - Minority Programmers Association">
       {loading === true ? (
         <>
-          <HomepageNav page="learn-page" setData={setData} />
+          <HomepageNav page="learn" setData={setData} />
           <SkeletonElement />
         </>
       ) : (
         <>
-          <HomepageNav page="learn-page" setData={setData} />
+          <HomepageNav page="learn" setData={setData} />
           <ActivityDetails
             userInfo={data}
             enrolledCourses={enrolledCourses}

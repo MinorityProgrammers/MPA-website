@@ -45,7 +45,7 @@ const JobsMain = () => {
   const [loading, setLoading] = useState(false);
   const [loadingReq, setLoadingReq] = useState(false);
   const [allJobs, setAllJobs] = useState([]);
-  const [filter/* , setFilter */] = useState({
+  const [filter] = useState({
     pay: '',
     job_type: '',
     remote: '',
@@ -54,7 +54,7 @@ const JobsMain = () => {
     description: '',
     location: '',
   });
-  const [queryObj/* , setQueryObj */] = useState({});
+  const [queryObj] = useState({});
   const [activeJobIndex, setActiveJobIndex] = useState(0);
   const descriptionInput = useRef();
 
@@ -66,7 +66,6 @@ const JobsMain = () => {
         setJobs(response.data);
         setAllJobs(response.data);
 
-        // check if the views is mobile or desktop to display "current view job"
         if (window.innerWidth <= 991) {
           changeCurrentJob(null);
         } else {
@@ -74,7 +73,6 @@ const JobsMain = () => {
         }
 
         setTimeout(() => {
-          // TO TEST LOADING SKELETON COMMENT OUT setLoading(false);
           setLoading(false);
           setLoadingReq(true);
         }, 1);
@@ -122,7 +120,6 @@ const JobsMain = () => {
       delete queryObj.page;
     }
 
-    // closes form
     if (btn.target.name !== 'remote') {
       btn.target.parentNode.parentNode.parentNode.style.display = 'none';
     }
@@ -243,19 +240,16 @@ const JobsMain = () => {
   }
 
   function openFilterForm(btn) {
-    // if the form is open, close it and return
     if (window.getComputedStyle(btn.nextSibling).display === 'block') {
       btn.nextSibling.style.display = 'none';
       return;
     }
 
-    // close all other forms when any form button is clicked on
     const elements = document.getElementsByClassName('job-filter-item-form');
     for (let i = 0; i < elements.length; i += 1) {
       elements[i].style.display = 'none';
     }
 
-    // open the form which is the next sibling of the button that was clicked
     if (btn.nextSibling) {
       btn.nextSibling.style.display = 'block';
     }
@@ -344,8 +338,6 @@ const JobsMain = () => {
   const jobsPerPage = 5;
   const pagesVisited = pageNumber * jobsPerPage;
 
-  // jobStubs will be fetched from database and then map... the fetch will have ALL query parameters
-  // (search description, search location, filters, jobs per page, current page)
   const jobStubs = jobs?.length > 0 ? (
     jobs.slice(pagesVisited, pagesVisited + jobsPerPage).map((job, idx) => (
       <div
@@ -396,24 +388,16 @@ const JobsMain = () => {
       <h3>No Jobs Available</h3>
     </div>
   );
-  // TODO 1
   function inputSearchSubmit(e) {
-    // if nothing is changed in the input searches, rerun query with same parameters
     e.preventDefault();
-    // let queryObj={};
     let blank = true;
     if (e.target.childNodes[0].value) {
       queryObj.search = e.target.childNodes[0].value;
       blank = false;
-      // search the jobs using title
-      const filterJobsByTitle = allJobs.filter(
-        (job) => job.job_title.toLowerCase().includes(queryObj.search.toLowerCase()),
-      );
-      // search the jobs using description
+      const filterJobsByTitle = allJobs.filter((job) => job.job_title.toLowerCase().includes(queryObj.search.toLowerCase()));
       const filterJobsByDes = allJobs.filter((job) => job.job_description
         .toLowerCase()
         .includes(queryObj.search.toLowerCase()));
-      // convert min_requirements list to string
       const requirements = (reqs) => {
         const arr = reqs.map((item) => {
           if (item.skill) return item.skill;
@@ -421,7 +405,6 @@ const JobsMain = () => {
         });
         return arr.toString().toLowerCase();
       };
-      // search the jobs using requirements(skills)
       const filterJobsByReq = allJobs.filter((job) => {
         const min_requirements = requirements(job.min_requirements);
         return min_requirements
@@ -430,9 +413,6 @@ const JobsMain = () => {
           .includes(queryObj.search.toLowerCase());
       });
 
-      /* changing the jobs if the search result is found
-        based on the title then description then skills
-      */
       if (filterJobsByTitle.length > 0) {
         setJobs(filterJobsByTitle);
         changeCurrentJob(filterJobsByTitle[0]);
@@ -462,22 +442,10 @@ const JobsMain = () => {
     inputSearchSubmit(e);
   };
 
-  /*
-  // this function is not used in this file.... check if it is needed before deleting
-  const onEmptySearchFields = () => {
-    if (!descriptionInput.current.value) {
-      delete queryObj.description;
-      router.push({ query: queryObj });
-      filterJobs();
-    }
-  };
- */
-
   const changePage = ({ selected }) => {
     setPageNumber(selected);
   };
 
-  // renders jsx elements (page contents)
   return (
     <CareersMainComponent
       jobsOn

@@ -5,7 +5,7 @@ import NeedHelp from '../helperFiles/needHelp';
 import OverlayCard from '../helperFiles/overlayCard';
 import QuestionContainer from '../helperFiles/questionContainer';
 
-const Wireframe1 = function ({ step }) {
+const Wireframe1 = ({ step }) => {
   const [showBlur, setShowBlur] = useState(0);
   const projectId = 'XXALD4';
   const option = 2;

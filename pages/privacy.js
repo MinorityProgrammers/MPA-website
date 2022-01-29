@@ -7,7 +7,7 @@ import Footer from '../components/Footer';
 import SidebarTwo from '../components/sidebar/SidebarTwo';
 import links from '../contexts/utils/links';
 
-const PrivacyPage = function () {
+const PrivacyPage = () => {
   const [open, setOpen] = useState(false);
   const bannerImgLink = 'https://www.washingtonian.com/wp-content/uploads/2020/01/iStock-1028373274-2048x1366.jpg';
   return (

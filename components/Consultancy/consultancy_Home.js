@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-// import Card from "../login-signup/card";
 import LoginPage from './helperFiles/LoginPage';
 import Page1 from './steps/step1';
 import Page2 from './steps/step2';
@@ -16,12 +15,9 @@ import Page11 from './steps/step11';
 const localStorageConsultancyKey = 'consultancy-questions';
 const localStorageStepKey = 'consultancy-step';
 
-const Consultancy = function ({
-  data, clickRegister, setClickRegister,
-}) {
+const Consultancy = ({ data, clickRegister, setClickRegister }) => {
   const [step, setstep] = useState(0);
   const [questions, setQuestions] = useState({});
-  console.log(questions);
 
   useEffect(() => {
     if (data === null) {
@@ -31,7 +27,6 @@ const Consultancy = function ({
 
   function getLocalVariables(key, wrapFxn, defaultValue) {
     const hasKey = window.localStorage.getItem(key);
-    console.log(hasKey);
     if (hasKey) {
       return wrapFxn(hasKey);
     }
@@ -41,20 +36,13 @@ const Consultancy = function ({
   useEffect(() => {
     setQuestions((prev) => getLocalVariables(
       localStorageConsultancyKey,
-      (value) => {
-        console.log(value);
-        return JSON.parse(JSON.parse(JSON.stringify(value)));
-      },
+      (value) => JSON.parse(JSON.parse(JSON.stringify(value))),
       prev,
     ));
     if (data === null) {
       setClickRegister(true);
     } else {
-      setstep((prev) => getLocalVariables(
-        localStorageStepKey,
-        (value) => parseInt(value),
-        prev,
-      ));
+      setstep((prev) => getLocalVariables(localStorageStepKey, (value) => parseInt(value), prev));
     }
   }, []);
   useEffect(() => {
@@ -165,7 +153,6 @@ const Consultancy = function ({
             setQuestions={setQuestions}
           />
         )}
-        {/* <Wireframe1 step={100} /> */}
       </div>
 
       <LoginPage

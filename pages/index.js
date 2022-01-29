@@ -8,14 +8,14 @@ import HomePageNewTopSection from '../components/homepage/HomePageNewTopSection'
 import HomePageGetStarted from '../components/homepage/HomePageGetStarted';
 import HomepageTestimonials from '../components/homepage/HomepageTestimonials';
 import HomePageAboutUs from '../components/homepage/HomePageAboutUs';
-// import HomepageWave from '../components/homepage/HomepageWave';
+import HomePageReviews from '../components/homepage/HomePageReviews';
 import Layout from '../components/Layout';
 import MpaBuilder from '../components/mpa-builder/builder';
 import SidebarTwo from '../components/sidebar/SidebarTwo';
 import useDetectOutsideClick from '../components/UseDetectOutsideClick';
 import links from '../contexts/utils/links';
 
-const HomepageFour = function () {
+const HomepageFour = () => {
   const [open, setOpen] = useState(false);
   const [builder, setBuilder] = useState(true);
   const [mount, setMount] = useState(false);
@@ -67,6 +67,7 @@ const HomepageFour = function () {
               <HomePageGetStarted />
               <HomepageCore />
               <HomepageTestimonials />
+              <HomePageReviews />
               <HomepageDonate />
               <Footer />
             </>

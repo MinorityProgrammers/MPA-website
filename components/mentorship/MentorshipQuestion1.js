@@ -13,7 +13,7 @@ export default class MentorshipQuestion1 extends Component {
             countries.push(country);
           }
         },
-        (/* error */) => {
+        () => {
           console.log();
         },
       );

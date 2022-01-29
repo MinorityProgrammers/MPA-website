@@ -5,7 +5,7 @@ import { uprContext } from '../../contexts/settingsPagesProvider/settingsPagesPr
 import getProgressPercentage from '../../contexts/utils/settings/getProgressPercentage';
 import Account from '../Account';
 
-const SettingBodyOverview = function ({ data }) {
+const SettingBodyOverview = ({ data }) => {
   const router = useRouter();
 
   const { setUpdatePasswordRedirection } = useContext(uprContext);
@@ -169,7 +169,11 @@ const SettingBodyOverview = function ({ data }) {
               <div className={styles.info}>
                 <div className={styles.infoKey}>Email</div>
                 <div className={styles.infoValue}>
-                  <a target="_blank" href={`mailto:${data.email}`} rel="noreferrer">
+                  <a
+                    target="_blank"
+                    href={`mailto:${data.email}`}
+                    rel="noreferrer"
+                  >
                     {data.email}
                   </a>
                 </div>
@@ -323,17 +327,7 @@ const SettingBodyOverview = function ({ data }) {
       <div className={styles.fright}>
         <div className={`${styles.fItem} ${styles.fIWallet}`}>
           <h5>Wallet</h5>
-          {/* <div className={styles.connectWrapper}>
-            <button
-              type="button"
-              onClick={(e) => {
-                e.preventDefault();
-                router.push('/settings/wallet/my-wallet');
-              }}
-            >
-              Connect Wallet
-            </button>
-          </div> */}
+
           <div className="tw-m-4">
             <Account />
           </div>
@@ -352,14 +346,6 @@ const SettingBodyOverview = function ({ data }) {
                   {' '}
                   <div>$350</div>
                 </div>
-                <div
-                  className={styles.addBtn}
-                  onClick={() => {
-                    router.push('/settings/wallet/my-wallet');
-                  }}
-                >
-                  Add $MINORITY Funds
-                </div>
               </div>
             </div>
             <div className={styles.cardWrapper}>
@@ -374,14 +360,6 @@ const SettingBodyOverview = function ({ data }) {
                   $MPA Tokens Balance
                   {' '}
                   <div>$65</div>
-                </div>
-                <div
-                  className={styles.addBtn}
-                  onClick={() => {
-                    router.push('/settings/wallet/my-wallet');
-                  }}
-                >
-                  Add $MPA Tokens
                 </div>
               </div>
             </div>

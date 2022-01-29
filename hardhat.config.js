@@ -6,9 +6,7 @@ require('@nomiclabs/hardhat-waffle');
 task('accounts', 'Prints the list of accounts', async (taskArgs, hre) => {
   const accounts = await hre.ethers.getSigners();
 
-  accounts.forEach((account) => {
-    console.log(account.address);
-  });
+  accounts.forEach((/* account */) => { });
 });
 
 // You need to export an object to set up your config

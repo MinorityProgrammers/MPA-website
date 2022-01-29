@@ -3,9 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { FaTimes } from 'react-icons/fa';
 import Modal from 'react-modal';
 import Card from '../login-signup/card';
-// import useDetectOutsideClick from '../UseDetectOutsideClick';
 
-const InternshipModal = function ({
+const InternshipModal = ({
   modalIsOpen,
   closeModal,
   customStyles,
@@ -15,15 +14,9 @@ const InternshipModal = function ({
   showHandler,
   toggleHandler,
   data,
-}) {
-  // const dropdownRef = useRef(null);
+}) => {
   const [clickRegister, setClickRegister] = useState(false);
   const [active, setActive] = useState(false);
-  // const [hide, setHide] = useDetectOutsideClick(dropdownRef, false);
-
-  // const redirectCareers = () => {
-  //   window.location.href = '/careers';
-  // };
 
   useEffect(() => {
     if (data === null) {
@@ -32,11 +25,6 @@ const InternshipModal = function ({
       setActive(true);
     }
   }, []);
-
-  /* // this set of code is not used in the file.... it needs to be addressed
-    const [isActive, setIsActive] = useDetectOutsideClick(dropdownRef, false);
-    const onClick = () => setIsActive(!isActive);
-  */
 
   return (
     <>

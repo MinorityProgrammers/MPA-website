@@ -6,7 +6,7 @@ import editTagsData from './editTagsData.json';
 import piorityflagData from './piorityflagData.json';
 import ModalComp from './ModalComp';
 
-const TaskNameHeader = function () {
+const TaskNameHeader = () => {
   const [newUser, setNewUser] = useState(false);
   const [editTags, setEditTags] = useState(false);
   const [users, setUsers] = useState({});
@@ -21,36 +21,25 @@ const TaskNameHeader = function () {
     setAllEditTags(editTagsData);
     setAllPiorityFlag(piorityflagData);
   }, []);
-  // add---------selected------user
   const handleUserCart = (addnew) => {
     const newUsers = [...userCart, addnew];
     setUserCart(newUsers);
   };
-  console.log(userCart);
 
-  // remove---------selected------user
   const HandleRemoveUser = (id) => {
     const afterRemoveUsers = userCart.filter((remo) => remo.id !== id);
     setUserCart(afterRemoveUsers);
   };
-  // add--------selected-----tags
 
   const handleEditTagsCat = (newtag) => {
     const newEditTags = [...editTagCart, newtag];
     setEditTagCart(newEditTags);
-    // if (newtag.tagName === "bug") {
-
-    //     document.querySelector('.feature').style.backgroundColor = 'red';
-    // }
-    console.log(newtag.tagName);
   };
-  console.log(editTagCart);
-  // remove---------selected------editTag
+
   const HandleRemoveEditTag = (id) => {
     const afterRemoveEditTags = editTagCart.filter((remo) => remo.id !== id);
     setEditTagCart(afterRemoveEditTags);
   };
-  // add--------selected-----piority----flag
 
   const handlePiorityflagCart = (newFlag) => {
     const newFlagCat = [...piorityFlagCart, newFlag];
@@ -61,14 +50,12 @@ const TaskNameHeader = function () {
       document.querySelector('#check').style.display = 'none';
     }
   };
-  console.log(piorityFlagCart);
-  // remove---------selected------Flag
+
   const HandleRemoveFlag = (id) => {
     const afterRemoveFlagCat = piorityFlagCart.filter((remo) => remo.id !== id);
     setPiorityFlagCart(afterRemoveFlagCat);
     document.querySelector('#check').style.display = 'inline-block';
   };
-  // Modal Functionality--------
   const [modalIsOpen, setIsOpen] = useState(false);
 
   function openModal() {
@@ -83,7 +70,6 @@ const TaskNameHeader = function () {
           <RiArrowRightSLine />
           {' '}
           <p>Sub Category</p>
-          {' '}
           <p className="tw-ml-2">For</p>
           <img
             src="/assets/images/coreteamimg/user.png"
@@ -124,7 +110,6 @@ const TaskNameHeader = function () {
                         src="/assets/images/coreteamimg/user.png"
                         alt=""
                       />
-                      {' '}
                       <span>{user.name}</span>
                     </div>
                   </a>
@@ -323,7 +308,6 @@ const TaskNameHeader = function () {
               <span className="sm:tw-text-sm ">CREATED</span>
             </p>
             <p>
-              {' '}
               <span className="sm:tw-text-sm ">Jun 11th, 3:00 pm</span>
             </p>
           </div>
@@ -370,14 +354,12 @@ const TaskNameHeader = function () {
           <div>
             <h3 className="sm:tw-text-sm ">START DATE</h3>
             <h3 className="sm:tw-text-sm ">
-              {' '}
               <span>Jun 12</span>
             </h3>
           </div>
           <div>
             <h3 className="sm:tw-text-sm ">DUE DATE</h3>
             <h3>
-              {' '}
               <span className=" tw-text-pink-500 sm:tw-text-sm">Jun 15</span>
             </h3>
           </div>

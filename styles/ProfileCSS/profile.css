@@ -546,3 +546,15 @@
     padding: 5px !important;
   }
 }
+
+.react-datepicker-wrapper{
+  margin-top: 5px;
+  margin-bottom: 5px;
+  width: 100%;
+}
+
+.pp-exp-edu-area .add-exp-edu .ee-fields input{
+  height: 30px;
+  color: rgb(173, 173, 173);
+  font-weight: bold;
+}

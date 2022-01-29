@@ -11,7 +11,7 @@ import SidebarTwo from '../../components/sidebar/SidebarTwo';
 import links from '../../contexts/utils/links';
 import { GlobalContext } from '../../contexts/provider';
 
-const Chapter = function () {
+const Chapter = () => {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState('');
   const [userData, setUserData] = useState([]);

@@ -14,7 +14,7 @@ export async function getServerSideProps(context) {
   };
 }
 
-const WeekPage = function ({ params }) {
+const WeekPage = ({ params }) => {
   const { courseId } = params;
   const [enrolledCourses, setEnrolledCourses] = useState([]);
   const [modules, setModules] = useState([]);
@@ -22,7 +22,7 @@ const WeekPage = function ({ params }) {
   const [loading, setLoading] = useState(true);
 
   const redirect = () => {
-    window.location.href = '/learn-page';
+    window.location.href = '/learn';
   };
 
   useEffect(() => {
@@ -43,14 +43,11 @@ const WeekPage = function ({ params }) {
     const userToken = JSON.parse(localStorage.getItem('userInfo'));
     if (userToken != null) {
       axios
-        .get(
-          `${process.env.BASE_URI}/learn/userCourses`,
-          {
-            headers: {
-              Authorization: `Bearer ${userToken.token}`,
-            },
+        .get(`${process.env.BASE_URI}/learn/userCourses`, {
+          headers: {
+            Authorization: `Bearer ${userToken.token}`,
           },
-        )
+        })
         .then((res) => {
           if (res.data.data.length > 0) {
             setEnrolledCourses(res.data.data);
@@ -65,14 +62,11 @@ const WeekPage = function ({ params }) {
     const userToken = JSON.parse(localStorage.getItem('userInfo'));
     if (userToken !== null) {
       axios
-        .get(
-          `${process.env.BASE_URI}/course/${courseId}/module`,
-          {
-            headers: {
-              Authorization: `Bearer ${userToken.token}`,
-            },
+        .get(`${process.env.BASE_URI}/course/${courseId}/module`, {
+          headers: {
+            Authorization: `Bearer ${userToken.token}`,
           },
-        )
+        })
         .then((res) => {
           setModules(res.data.data);
         });
@@ -83,14 +77,11 @@ const WeekPage = function ({ params }) {
     const userToken = JSON.parse(localStorage.getItem('userInfo'));
     if (userToken !== null) {
       axios
-        .get(
-          `${process.env.BASE_URI}/learn/${courseId}/userModules`,
-          {
-            headers: {
-              Authorization: `Bearer ${userToken.token}`,
-            },
+        .get(`${process.env.BASE_URI}/learn/${courseId}/userModules`, {
+          headers: {
+            Authorization: `Bearer ${userToken.token}`,
           },
-        )
+        })
         .then((res) => {
           setUserModules(res.data.data);
         });

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Binary from './Binary';
 
-const ProposalBox = function () {
+const ProposalBox = () => {
   const [myProposals] = useState(92);
   const [otherActions] = useState(60);
   const [spent] = useState(12);
@@ -9,7 +9,6 @@ const ProposalBox = function () {
 
   return (
     <div className="proposal__box__container">
-
       <div className="proposal">
         <Binary />
         <div className="back__to__proposals">
@@ -23,7 +22,6 @@ const ProposalBox = function () {
             <p className="go__back__text">Back</p>
           </button>
         </div>
-
       </div>
 
       <div className="net">
@@ -59,9 +57,7 @@ const ProposalBox = function () {
             <span>{total}</span>
           </p>
         </div>
-
       </div>
-
     </div>
   );
 };
