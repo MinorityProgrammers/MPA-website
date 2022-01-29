@@ -1,5 +1,5 @@
 import React from 'react';
-import handShake from "../../../public/assets/images/home-page/principles/handshake.png";
+// import handShake from "../../../public/assets/images/home-page/principles/handshake.png";
 
 const PrincipleCard = () => {
     return (
