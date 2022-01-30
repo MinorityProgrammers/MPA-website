@@ -13,10 +13,10 @@ const HomepageNewTopSection = () => (
       <div className="tw-flex tw-flex-col tw-pb-20 top__part__content lg:tw-pt-2 tw-z-10">
         {/* content sections */}
         <div className="tw-mt-4">
-          <p className="top__part__title">Diversity meets web3</p>
+          <p className="top__part__title">Minority Programmers Association</p>
         </div>
         <div className="tw-mt-4 tw-font-medium">
-          <p className="tw-text-xl tw-pr-32 lg:tw-text-sm tw-text-white">
+          <p className="tw-text-xl tw-pr-32 md:tw-text-base tw-text-white sm:tw-pr-0">
             Join an international network of developers unifying together
             to build socially impactful projects & spread STEM education
             to marginalized communities
@@ -27,7 +27,7 @@ const HomepageNewTopSection = () => (
             <span>REGISTER FOR FREE!</span>
           </p>
         </div>
-        <div className="tw-mt-11 tw-w-11/12 tw-grid tw-grid-cols-2">
+        <div className="tw-mt-11 tw-w-11/12 tw-grid tw-grid-cols-2 sm:tw-w-full">
           <div className="hero__join__button">
             {' '}
             <p>Join Us</p>
