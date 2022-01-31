@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Swiper from 'react-id-swiper';
 import 'swiper/css/swiper.css';
 import TweetEmbed from './TweetEmbed';
@@ -68,22 +68,16 @@ const HomePageReviews = () => {
     }
     return num;
   };
-  const last_tweet = document.getElementById(`twitter-widget-${data.length - 1}`);
-  useEffect(() => {
-    if (last_tweet) {
-      setTweetsLoading(false);
-    }
-  }, [last_tweet]);
-  console.log(last_tweet);
+
   return (
     <section className="homepage__Reviews">
-      <div className="heading__number">
-        <h3 className="tw-text-blue-900">04</h3>
-      </div>
       <div className="container">
-        <h2 className="heading__title mt-5 mb-5 tw-text-blue-900">
-          &lsaquo;testimonials/&rsaquo;
+        <h2 style={{ textAlign: 'center' }} className="top__part__title">
+          See what people are saying”
         </h2>
+        <p className="tw-text-2xl tw-text-center md:tw-w-full tw-mt-5 tw-mx-auto md:tw-text-base tw-mb-16 tw-text-white">
+          Still not sure ?  Learn from other People how MPA is a big impact
+        </p>
         {tweetsLoading
           && (
             <Swiper containerClass="swiper-container skelton-container" wrapperClass="swiper-wrapper skelton-wrapper" slidesPerView={skeltonCount()} {...params} observer={false} grabCursor>

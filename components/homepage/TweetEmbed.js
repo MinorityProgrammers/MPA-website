@@ -33,7 +33,7 @@ const TweetEmbed = ({
     if (!loading) {
       twt.widgets
         .createTweetEmbed(tweetId, document.getElementById(tweetId), {
-          theme: 'light',
+          theme: 'dark',
           // align: 'center',
           // Min 220px, Max 550px
           width: '350px',
