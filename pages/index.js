@@ -71,9 +71,9 @@ const HomepageFour = () => {
               <HomePageGetStarted />
               <HomePageParteners />
               <HomePageReviews />
-              <HomepageCore />
+              {/* <HomepageCore />
               <HomepageTestimonials />
-              <HomepageDonate />
+              <HomepageDonate /> */}
               <Footer />
             </>
           )}
