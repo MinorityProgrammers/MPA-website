@@ -3,7 +3,7 @@ import ComingSoon from '../components/ComingSoon';
 import Footer from '../components/Footer';
 // import HomepageAbout from '../components/homepage/HomepageAbout';
 // import HomepageApp from '../components/homepage/HomepageApp';
-import HomepageCore from '../components/homepage/HomepageCore';
+// import HomepageCore from '../components/homepage/HomepageCore';
 import HomepageCore1 from '../components/homepage/hompage-core-principles/HomepageCore1';
 import HomepageDonate from '../components/homepage/HomepageDonate';
 import HomepageNav from '../components/homepage/HomepageNav';
@@ -69,7 +69,7 @@ const HomepageFour = function () {
               <HomePageAboutUs />
               {/* <HomepageAbout /> */}
               {/* <HomepageApp /> */}
-                <HomepageCore />
+                {/* <HomepageCore /> */}
                 <HomepageCore1 />
               {/* <HomepageWave /> */}
               {/* <HomepageTeam /> */}
