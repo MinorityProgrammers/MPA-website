@@ -25,7 +25,7 @@ contract NFT is ERC721URIStorage , ReentrancyGuard {
   uint256 indexed tokenId,
   address owner
 );
-    constructor() public ERC721("MinorityNFT", "MPANFT") {}
+    constructor() public ERC721("dResume", "dResume") {}
 
     function mintNFT(address recipient, string memory tokenURI)
         public

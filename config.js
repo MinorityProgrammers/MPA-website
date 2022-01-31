@@ -1,3 +1,3 @@
-const nftaddress = '0x87aD91c765a4555bcd410a142299169453A3ba0C';
+const nftaddress = '0x9473887Ea79352EdC12Db94552985A419327666F';
 
 export default nftaddress;
