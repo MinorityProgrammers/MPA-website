@@ -11,7 +11,7 @@ import { GlobalContext } from '../../contexts/provider';
 import getProfile from '../../contexts/actions/profile/getProfile';
 import links from '../../contexts/utils/links';
 import Footer from '../../components/Footer';
-import ComingSoon from '../../components/ComingSoon';
+import TopSection from '../../components/profile/TopSection';
 import useDetectOutsideClick from '../../components/UseDetectOutsideClick';
 
 const User = ({ user }) => {
@@ -101,13 +101,14 @@ const User = ({ user }) => {
             active="Home"
             handleClick={handleClick}
           />
-          <ProfileTwo
+          {/* <ProfileTwo
             userData={
               isLoggedIn && ownsProfile ? userData || profileData : user[0]
             }
             isLoggedIn={isLoggedIn}
             ownsProfile={ownsProfile}
-          />
+          /> */}
+          <TopSection />
           <Footer />
         </>
         ) : hiddenProfileValidated ? (

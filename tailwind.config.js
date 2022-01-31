@@ -10,6 +10,7 @@ module.exports = {
         redhat: ['Red Hat Display', 'ui-serif'],
       },
       backgroundColor: {
+        new: 'a159fe',
         main: '#269DF8',
         surface: '#eff6fc',
         dark: '#232B3E',
