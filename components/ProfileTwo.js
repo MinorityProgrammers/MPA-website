@@ -465,7 +465,7 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
             name: `${userData.firstName} ${userData.lastName}`,
             image: file.ipfs() || '',
             description: userData?.bio || '',
-            attributes: userData.avatarOptions,
+            attributes: [userData.avatarOptions, enrolledCourses, projectCards, educationCards],
           };
 
           const JsonFormat = JSON.stringify(metadata);
