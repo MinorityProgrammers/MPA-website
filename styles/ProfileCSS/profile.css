@@ -1,5 +1,5 @@
 .profile_container {
-  padding-top: 100px;
+  padding-top: 50px;
 }
 .profile_container a:hover {
   color: inherit;
@@ -334,14 +334,20 @@
 }
 
 .topSection{
-  border: #a159fe;
+  border:0.5px solid #9b4fff9b;
   background: #14152B;
+}
+
+.Biosection{
+  border-bottom: 1px solid #a159fe;
 }
 
 .newColor{
   color: #a159fe;
 }
-
+.editSection{
+  margin-right: -800px;
+}
 .absoluteUser{
   position: absolute;
   top: 70%;
@@ -486,8 +492,8 @@ background-color: #a159fe;
   z-index: 99;
 }
 .profile-two-generate-avatar-popup {
-  background: white;
-  color: #81868a;
+  background: #1C1D37;
+  color: #fff;
   position: absolute;
   top: 120px;
   right: 10vw;
@@ -511,6 +517,16 @@ background-color: #a159fe;
   transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
+.css-1s2u09g-control{
+  background-color: transparent !important;
+}
+
+.css-qc6sy-singleValue{
+  color: hsl(0deg 1% 60%) !important;
+}
+.css-25l3qy-menu{
+  background-color: transparent !important;
+}
 .profile-two-generate-avatar-popup .cp-body .cp-formGrid {
   grid-template-columns: 49% 49%;
   gap: 2%;
@@ -518,6 +534,7 @@ background-color: #a159fe;
 .profile-two-generate-avatar-popup .cp-body .cp-formGrid .cp-input {
   align-self: center;
   margin: 0;
+  background-color: #1C1D37;
 }
 .profile-two-generate-avatar-popup .cp-body .cp-formGrid .color-picker-toggle {
   display: flex;

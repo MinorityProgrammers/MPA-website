@@ -49,6 +49,18 @@ const CreateProfileInput = function ({
     setValue(color.hex);
   };
 
+  const colourStyles = {
+    control: (styles) => ({ ...styles, backgroundColor: '#1C1D37' }),
+    option: (styles, {
+      data, isDisabled, isFocused, isSelected,
+    }) => ({
+      ...styles,
+      backgroundColor: '#1C1D37',
+      color: '#ddd',
+      cursor: isDisabled ? 'not-allowed' : 'default',
+    }),
+  };
+
   switch (type) {
     case 'select':
       return (
@@ -58,12 +70,13 @@ const CreateProfileInput = function ({
             {required ? <span className="cp-required">*</span> : ''}
           </p>
           <Select
-            className="tw-text-md"
+            className="tw-text-md tw-bg-transparent tw-cursor-pointer"
             options={options}
             name={name}
             onFocus={handleFocus}
             onBlur={handleBlur}
             {...handleSwitchChange()}
+            styles={colourStyles}
           />
         </label>
       );
@@ -88,7 +101,7 @@ const CreateProfileInput = function ({
             <div
               className="cpt-btn"
               onClick={() => setColorPickerVisibility(!colorPickerVisibility)}
-              style={colorPickerVisibility ? { backgroundColor: '#8a8a8a' } : { backgroundColor: '#393b97' }}
+              style={colorPickerVisibility ? { backgroundColor: '#a159fe' } : { backgroundColor: '#a159fe' }}
             >
               {!colorPickerVisibility ? 'Pick a Color' : 'Close Color Picker'}
             </div>
