@@ -228,22 +228,6 @@ const Account = () => {
                 Dont have a wallet? Sign up using{"  "}
                 <span className="tw-text-blue-600">Email</span>
               </span>
-              {/* <div className="tw-flex tw-flex-row tw-justify-evenly tw-w-full tw-mt-4">
-                <a href="https://metamask.io/" target="_blank" rel="noreferrer">
-                  <span className="tw-cursor-pointer hover:tw-text-gray-500 tw-transition-all tw-duration-500">
-                    Metamask
-                  </span>
-                </a>
-                <a
-                  href="https://casper.network/en/network"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <span className="tw-cursor-pointer hover:tw-text-gray-500 tw-transition-all tw-duration-500">
-                    Casper
-                  </span>
-                </a>
-              </div> */}
             </div>
           </Modal>
         </div>
