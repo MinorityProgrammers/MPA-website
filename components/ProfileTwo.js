@@ -25,6 +25,9 @@ import ProfileTwoGenerateAvatarPopUp from './ProfileTwoGenerateAvatarPopUp';
 import getProgressPercentage from '../contexts/utils/settings/getProgressPercentage';
 import getLevelUpTips from '../contexts/utils/settings/getLevelUpTips';
 import { useMoralisDapp } from '../MoralisDappProvider/MoralisDappProvider';
+import TopSection from './profile/TopSection';
+import ProfileStength from './profile/ProfileStength';
+import UserDatas from './profile/UserDatas';
 
 function countDown(mintedURL, tx) {
   let secondsToGo = 30;
@@ -41,7 +44,10 @@ function countDown(mintedURL, tx) {
   }, secondsToGo * 1000);
 }
 
-const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
+const ProfileTwo = function ({
+  userData, isLoggedIn, ownsProfile,
+  profileDispatch, setChangeInProfile,
+}) {
   const reputationBadge = {
     jobApplyCount: '/assets/images/job_apply.png',
     eventRegisterCount: '/assets/images/event_badge.png',
@@ -226,6 +232,9 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
   const copyWallet = () => {
     setCopyText('Copied');
     navigator.clipboard.writeText(walletAddress);
+    setTimeout(() => {
+      setCopyText('Click to copy');
+    }, 5000);
   };
 
   const handleExpImgUpload = (file) => {
@@ -531,297 +540,34 @@ const ProfileTwo = function ({ userData, isLoggedIn, ownsProfile }) {
               loggedInUserData={userData}
               userID={userID}
               setGenerateAvatarPopUp={setGenerateAvatarPopUp}
+              setChangeInProfile={setChangeInProfile}
             />
           </div>
         </div>
       )}
-      <div className="tw-container tw-mx-auto ">
-        <svg width="1em" height="1em">
-          <linearGradient
-            id="pink-gradient"
-            x1="0%"
-            y1="0%"
-            x2="100%"
-            y2="100%"
-          >
-            <stop stopColor="#FF00B8" offset="0%" />
-            <stop stopColor="#FF655B" offset="50.8%" />
-            <stop stopColor="#FFC700" offset="100%" />
-          </linearGradient>
-        </svg>
+      <div className="">
+        <TopSection
+          userData={userData}
+          isLoggedIn={isLoggedIn}
+          ownsProfile={ownsProfile}
+          setGenerateAvatarPopUp={setGenerateAvatarPopUp}
+          isMinting={isMinting}
+          onMint={onMint}
+          socialLinks={socialLinks}
+          walletAddress={walletAddress}
+          copyText={copyText}
+          copyWallet={copyWallet}
+          profileDispatch={profileDispatch}
+          setChangeInProfile={setChangeInProfile}
+        />
 
-        <section className="user-info tw-bg-gray-300 tw-rounded-xl">
-          <div className="user-details tw-mb-2 tw-flex md:tw-flex-wrap sm:tw-flex-wrap tw-p-5 ">
-            <div className=" avatar-area lg:tw-mr-5 xl:tw-mr-5 md:tw-mr-4 2xl:tw-mr-4  sm:tw-grid-col-span-4">
-              <div className="avatar">
-                <img
-                  className="tw-h-330px tw-w-full tw-rounded-2xl"
-                  src={userData?.profilePicture || '/assets/images/profile.png'}
-                  alt="avatar"
-                />
-                {isLoggedIn && ownsProfile && (
-                  <div className="avatar-btn">
-                    <p
-                      className="generate-avatar lg:tw-p-0 tw-text-sm"
-                      onClick={() => setGenerateAvatarPopUp(true)}
-                    >
-                      <span id="generate-avatar-text"> Generate Avatar</span>
-                    </p>
-                  </div>
-                )}
-              </div>
-            </div>
+        <ProfileStength
+          userData={userData}
+          setPsArrowUp={setPsArrowUp}
+          psArrowUp={psArrowUp}
+        />
 
-            <div className="user-data-area">
-              <div
-                className="tw-flex tw-bg-white tw-p-4 tw-rounded-md tw-flex-wrap"
-                style={{ height: '100%' }}
-              >
-                <div className="user lg:tw-w-5/5 md:tw-w-5/5 xl:tw-2/5">
-                  <div className="user-title">
-                    <h3 className="tw-text-2xl tw-font-bold">
-                      {`${userData?.firstName} ${userData?.lastName}`}
-                      <small className="tw-font-medium tw-text-gray-300 tw-text-base">
-                        {userData?.userName
-                          ? `@${userData?.userName}`
-                          : 'no username'}
-                      </small>
-                    </h3>
-                    {/* <p className="tw-text-sm tw-text-gray-500">
-                      UX Design Intern, Minority Programmers
-                    </p> */}
-                    {userData?.locationVisibility && (
-                      <h4 className="tw-mt-2 tw-font-medium">
-                        {userData?.location}
-                      </h4>
-                    )}
-                    {isLoggedIn && ownsProfile && (
-                      <Button
-                        onClick={() => {
-                          onMint();
-                        }}
-                        className="tw-mt-2"
-                      >
-                        {isMinting ? (
-                          <img
-                            src="/assets/spinner.png"
-                            className="tw-h-5 tw-animate-spin"
-                            alt="spinner"
-                          />
-                        ) : (
-                          'Mint profile'
-                        )}
-                      </Button>
-                    )}
-                  </div>
-
-                  <div className="social-link">
-                    <div className="sl-wrap">
-                      <div>
-                        {socialLinks.map((linkSocial) => (
-                          <a
-                            key={linkSocial.id}
-                            target="_blank"
-                            rel="noreferrer"
-                            href={linkSocial.url || '#'}
-                          >
-                            <span className="social">{linkSocial.slink}</span>
-                          </a>
-                        ))}
-                      </div>
-                      {isLoggedIn && ownsProfile && (
-                        <div className="add-or-edit-links">
-                          {!socialLinks.length && (
-                            <div>
-                              <span
-                                className="note"
-                                onClick={() => router.push('/settings/profile/media')}
-                              >
-                                Please Add Social Links...
-                              </span>
-                            </div>
-                          )}
-                          <div className="pencil tw-cursor-pointer">
-                            <HiOutlinePencil
-                              style={{ fontSize: '1.5rem' }}
-                              onClick={() => router.push('/settings/profile/media')}
-                            />
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                    <div className="cw-wrap">
-                      {isLoggedIn && ownsProfile && walletAddress && (
-                        <Tooltip placement="top" title={copyText}>
-                          <div
-                            className="copy-wallet"
-                            onClick={() => copyWallet()}
-                          >
-                            Copy Wallet
-                            <img
-                              src="/assets/images/profile/copy-wallet.png"
-                              alt="copy wallet icon"
-                            />
-                          </div>
-                        </Tooltip>
-                      )}
-                    </div>
-                  </div>
-                </div>
-
-                <div className="skills-and-badges">
-                  <div className="skills tw-mt-5 tw-w-full">
-                    <p className="tw-font-bold">Passions & Skills</p>
-
-                    <p className="all-skills tw-flex tw-justify-start  tw-flex-wrap ">
-                      {userData?.passions?.length
-                      && !(
-                        userData.passions.length === 1
-                        && userData.passions[0] === ''
-                      ) ? (
-                          userData.passions.map(
-                            (passion, index) => passion && (
-                              <span
-                                key={`${index + 1}`}
-                                className="tw-inline-block tw-px-2 tw-py-1 tw-mr-1 tw-text-xs tw-text-gray-500 tw-border-gray-500 tw-mb-1 tw-rounded-md tw-border"
-                              >
-                                {passion}
-                              </span>
-                            ),
-                          )
-                        ) : (
-                          <span
-                            className="note"
-                            onClick={() => isLoggedIn
-                            && ownsProfile
-                            && router.push('/settings/profile/background')}
-                            style={
-                            isLoggedIn && ownsProfile
-                              ? { cursor: 'pointer' }
-                              : { cursor: 'default' }
-                          }
-                          >
-                            {isLoggedIn && ownsProfile
-                              ? 'Please Add Passions...'
-                              : 'N/A'}
-                          </span>
-                        )}
-                    </p>
-                  </div>
-
-                  <div className="badges tw-mt-4">
-                    <p className="tw-font-bold">Reputation Badges</p>
-
-                    <p className="all-badges tw-flex tw-justify-start  tw-flex-wrap ">
-                      {reputation?.length ? (
-                        reputation.map((badge) => (
-                          <div
-                            key={badge._id}
-                            className="tw-inline-block tw-p-1 tw-mr-1 tw-cursor-pointer"
-                          >
-                            <Tooltip placement="top" title={badge.title}>
-                              <img
-                                className="tw-w-10 tw-h-10"
-                                src={reputationBadge[badge.type]}
-                                alt={badge.title}
-                              />
-                            </Tooltip>
-                          </div>
-                        ))
-                      ) : (
-                        <span className="note" style={{ cursor: 'default' }}>
-                          No badge yet
-                        </span>
-                      )}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {getProgressPercentage(userData)
-          && getProgressPercentage(userData) < 100 && (
-            <section className="tw-mb-8 tw-container ">
-              <div className="profile-strength tw-p-6  tw-rounded-md tw-grid tw-grid-flow-row tw-auto-rows-max">
-                <div
-                  className={`${
-                    !psArrowUp
-                      ? 'hover:tw-bg-light-blue-500 hover:tw-border-transparent hover:tw-shadow-lg '
-                      : 'tw-shadow-lg tw-bg-light-blue-500'
-                  }tw-group tw-block tw-rounded-lg tw-p-4 tw-border-gray-300 tw-border tw-bg-white`}
-                >
-                  <h2 className="tw-relative tw-text-xl tw-font-bold tw-mb-3 tw-text-black">
-                    Profile Strength:
-                    {' '}
-                    <span className="tw-font-medium">
-                      {`${
-                        getProgressPercentage(userData) <= 33
-                          ? 'Low'
-                          : getProgressPercentage(userData) <= 66
-                            ? 'Intermediate'
-                            : 'High'
-                      }`}
-                    </span>
-                    {' '}
-                    {`${getProgressPercentage(userData)}%`}
-                    <span
-                      className="ps-arrow tw-absolute tw-top-0 tw-right-0 tw-text-xs tw-cursor-pointer"
-                      onClick={() => setPsArrowUp(!psArrowUp)}
-                    >
-                      <img
-                        src={`/assets/images/profile/${
-                          psArrowUp ? 'arrow-up' : 'arrow-down'
-                        }.svg`}
-                        alt={`arrow ${psArrowUp ? 'up' : 'down'}`}
-                      />
-                    </span>
-                  </h2>
-                  <div className="ps-pb-wrapper">
-                    <div
-                      className="ps-progress-bar tw-h-6 tw-rounded-md"
-                      onClick={() => setPsArrowUp(!psArrowUp)}
-                    >
-                      <div
-                        className="progress-fill"
-                        style={{ width: `${getProgressPercentage(userData)}%` }}
-                      />
-                    </div>
-                    <div className="pb-tick tw-h-6 tw-rounded-md">
-                      <img
-                        src="/assets/images/profile/pb-tick.svg"
-                        alt="tick"
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                {psArrowUp && (
-                  <div className="steps-note tw-bg-transparent hover:tw-bg-light-blue-500 hover:tw-border-transparent hover:tw-shadow-lg tw-group tw-block tw-rounded-lg tw-rounded-t-none tw-p-4 tw-border-gray-300 tw-border-r tw-border-b tw-border-l tw--my-2">
-                    <h2 className="tw-relative tw-text-xl tw-font-bold tw-mb-3 tw-text-black">
-                      Your profile is at an intermediate level. Do the following
-                      to increase your level
-                    </h2>
-                    <div className="increase-level-steps tw-flex tw-flex-wrap">
-                      {getLevelUpTips(userData)
-                        .filter((data) => data.missing)
-                        .map((missingData) => (
-                          <div
-                            className="il-step tw-cursor-pointer tw-inline-block tw-px-2 tw-py-1 tw-rounded-md tw-m-2"
-                            onClick={() => router.push(missingData.route)}
-                          >
-                            Add a
-                            {' '}
-                            {`${missingData.name}`}
-                          </div>
-                        ))}
-                    </div>
-                  </div>
-                )}
-              </div>
-            </section>
-        )}
+        {/* <UserDatas enrolledCourses={enrolledCourses} /> */}
 
         <section className="tw-mb-8 tw-container ">
           <div className="pp-exp-edu-area tw-p-6  tw-rounded-md tw-grid tw-grid-flow-row tw-auto-rows-max">

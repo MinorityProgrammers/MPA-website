@@ -19,7 +19,7 @@ const Loading = ({ isRouteChanging }) => {
         <div
           className="bar"
           style={{
-            background: '#474BFD',
+            background: '#a159fe',
             height: '2px',
             left: 0,
             marginLeft: `${(-1 + progress) * 100}%`,
@@ -33,7 +33,7 @@ const Loading = ({ isRouteChanging }) => {
           <div
             className="spinner"
             style={{
-              boxShadow: '0 0 10px #474BFD, 0 0 5px #474BFD',
+              boxShadow: '0 0 10px #a159fe, 0 0 5px #a159fe',
               display: 'block',
               height: '100%',
               opacity: 1,

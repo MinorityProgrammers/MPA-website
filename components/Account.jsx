@@ -235,7 +235,7 @@ const Account = () => {
   return (
     <>
       <div
-        className="tw-bg-blue-600 hover:tw-bg-blue-700 tw-text-white tw-font-bold tw-text-center tw-py-2 tw-px-2 tw-rounded tw-cursor-pointer tw-w-11/12"
+        className="new-bg tw-text-white tw-font-bold tw-text-center tw-py-2 tw-px-2 tw-rounded tw-cursor-pointer tw-w-11/12"
         onClick={() => setIsModalVisible(true)}
       >
         <p className="tw-text-sm">
