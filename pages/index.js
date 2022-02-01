@@ -5,10 +5,10 @@ import HomePageNewTopSection from '../components/homepage/HomePageNewTopSection'
 import HomePageAboutUs from '../components/homepage/HomePageAboutUs';
 import HomePageGetStarted from '../components/homepage/HomePageGetStarted';
 import HomePageParteners from '../components/homepage/HomePageParteners';
-import HomepageCore from '../components/homepage/HomepageCore';
+// import HomepageCore from '../components/homepage/HomepageCore';
 import HomepageDonate from '../components/homepage/HomepageDonate';
 import HomepageNav from '../components/homepage/HomepageNav';
-import HomepageTestimonials from '../components/homepage/HomepageTestimonials';
+// import HomepageTestimonials from '../components/homepage/HomepageTestimonials';
 import HomePageReviews from '../components/homepage/HomePageReviews';
 import Layout from '../components/Layout';
 import MpaBuilder from '../components/mpa-builder/builder';
@@ -69,8 +69,8 @@ const HomepageFour = () => {
               <HomePageParteners />
               <HomePageReviews />
               {/* <HomepageCore />
-              <HomepageTestimonials />
-              <HomepageDonate /> */}
+              <HomepageTestimonials /> */}
+              <HomepageDonate />
               <Footer />
             </>
           )}
