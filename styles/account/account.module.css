@@ -1,0 +1,48 @@
+.modalHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.account {
+  width: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 12px;
+  height: 180px;
+  background: #272948;
+  border: 1px solid #272948;
+  cursor: pointer;
+}
+
+.account:hover {
+  border: 1px solid #a259ff;
+}
+
+.modalImage {
+  width: 70px;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #cc00ff;
+  border-radius: 50%;
+}
+.modalWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+}
+
+.modalWrapper h2 {
+  margin-top: 10px;
+}
+
+.modalImage img {
+  width: 40px;
+  height: 20px;
+}
