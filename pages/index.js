@@ -67,8 +67,8 @@ const HomepageFour = () => {
               {hide === false && <ComingSoon closeClick={handleClick} />}
               <HomePageNewTopSection />
               <HomePageAboutUs />
-              <HomePageGetStarted />
               <HomepageExploreMinorityApps />
+              <HomePageGetStarted />
               <HomePageParteners />
               <HomePageReviews />
               {/* <HomepageCore />
