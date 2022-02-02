@@ -7,6 +7,7 @@ import HomepageCore from '../components/homepage/HomepageCore';
 import HomepageDonate from '../components/homepage/HomepageDonate';
 import HomepageNav from '../components/homepage/HomepageNav';
 import HomePageNewTopSection from '../components/homepage/HomePageNewTopSection';
+import HomepageExploreMinorityApps from '../components/homepage/HomepageExploreMinorityApps';
 // import HomepageTeam from '../components/homepage/HomepageTeam';
 import HomepageTestimonials from '../components/homepage/HomepageTestimonials';
 import HomePageAboutUs from '../components/homepage/HomePageAboutUs';
@@ -69,6 +70,7 @@ const HomepageFour = function () {
               {/* <HomepageAbout /> */}
               {/* <HomepageApp /> */}
               <HomepageCore />
+              <HomepageExploreMinorityApps />
               {/* <HomepageWave /> */}
               {/* <HomepageTeam /> */}
               <HomepageTestimonials />
