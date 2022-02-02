@@ -1,12 +1,12 @@
 import React from 'react';
 
-const FeaturedCourseList = function ({
+const FeaturedCourseList = ({
   course,
   sameUserCourses,
   handleCourseInfo,
   enrolledBtn,
   showModal,
-}) {
+}) => {
   const {
     earn, name, description, _id,
   } = course;
@@ -17,19 +17,7 @@ const FeaturedCourseList = function ({
   });
   return (
     <div className="courses-items px-3 mb-4 mx-2 tw-bg-white tw-shadow-lg">
-      <div className="pt-3">
-        {/* <div className="earn-rate ml-auto d-flex align-items-center">
-          <img
-            src="https://i.ibb.co/Yjpy6PN/dot.png"
-            className="img-fluid ml-2"
-            alt=""
-          />
-          <span className="pl-4">
-            Earn &nbsp;
-            {earn}
-          </span>
-        </div> */}
-      </div>
+      <div className="pt-3" />
       <div className="d-pb-1 ml-2">
         <h3 className="course-name mt-3 mb-0">{name}</h3>
       </div>

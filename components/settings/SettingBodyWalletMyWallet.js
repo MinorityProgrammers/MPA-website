@@ -4,14 +4,16 @@ import stylesOverview from '../../styles/settings/settingBodyOverview.module.css
 import styles from '../../styles/settings/settingBodyWalletMyWallet.module.css';
 import SettingBody from './SettingBody';
 
-const SettingBodyWalletMyWallet = function ({ settingsPage, data, userID }) {
+const SettingBodyWalletMyWallet = ({ settingsPage, data, userID }) => {
   const router = useRouter();
   const handleSubmit = () => {};
 
   const closeProfileSetup = () => {
     // discard changes
     const slug = data?.userName;
-    if (slug) { router.push(`/user/${slug}`); }
+    if (slug) {
+      router.push(`/user/${slug}`);
+    }
   };
 
   const wallets = [

@@ -15,16 +15,15 @@ export async function getServerSideProps(context) {
   };
 }
 
-const TopHeader = function (props) {
+const TopHeader = (props) => {
   const [, changeCurrentJob] = useState({});
   const [savedJobs, setSavedJobs] = useState([]);
   const [, setAppliedJobs] = useState([]);
-  // const [modalView, toggleModalView] = useState(false);
   const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(false);
   const [, setLoadingReq] = useState(false);
   const [, setAllJobs] = useState([]);
-  const [filter/* , setFilter */] = useState({
+  const [filter] = useState({
     pay: '0',
     job_type: '',
     remote: '',
@@ -33,7 +32,7 @@ const TopHeader = function (props) {
     description: '',
     location: '',
   });
-  const [queryObj/* , setQueryObj */] = useState({});
+  const [queryObj] = useState({});
   const [activeJobIndex, setActiveJobIndex] = useState(0);
   const descriptionInput = useRef();
   const locationInput = useRef();
@@ -64,7 +63,6 @@ const TopHeader = function (props) {
     )
       .then((response) => response.json())
       .then((response) => {
-        // setAllJobs(response.data)
         if (response.data.length >= 1) {
           changeCurrentJob(response.data[0]);
           setJobs(response.data);
@@ -88,12 +86,10 @@ const TopHeader = function (props) {
   }
 
   function submitForm(btn) {
-    // reset to page 1
     if (queryObj.page) {
       delete queryObj.page;
     }
 
-    // closes form
     if (btn.target.name !== 'remote') {
       btn.target.parentNode.parentNode.parentNode.style.display = 'none';
     }
@@ -216,20 +212,16 @@ const TopHeader = function (props) {
   }
 
   function openFilterForm(btn) {
-    // if the form is open, close it and return
-    // console.log(window.getComputedStyle(btn.nextSibling).display)
     if (window.getComputedStyle(btn.nextSibling).display === 'block') {
       btn.nextSibling.style.display = 'none';
       return;
     }
 
-    // close all other forms when any form button is clicked on
     const elements = document.getElementsByClassName('job-filter-item-form');
     for (let i = 0; i < elements.length; i + 1) {
       elements[i].style.display = 'none';
     }
 
-    // open the form which is the next sibling of the button that was clicked
     if (btn.nextSibling) {
       btn.nextSibling.style.display = 'block';
     }
@@ -244,27 +236,20 @@ const TopHeader = function (props) {
 
   const fetchSavedJobs = () => {
     if (token) {
-      // setLoading(true)
-
       axios
-        .get(
-          `${process.env.BASE_URI}/savejob/userjobs`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
+        .get(`${process.env.BASE_URI}/savejob/userjobs`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
           },
-        )
+        })
         .then((response) => {
           setSavedJobs(response.data.data);
           setLoading(false);
-          console.log('Saved Jobs', response);
         });
     }
   };
 
   const saveJob = (job) => {
-    console.log(job);
     axios
       .post(
         `${process.env.BASE_URI}/savejob`,
@@ -277,8 +262,7 @@ const TopHeader = function (props) {
           },
         },
       )
-      .then((response) => {
-        console.log('Saved', response);
+      .then((/* response */) => {
         successToast('Job Saved Successfully!');
         fetchSavedJobs();
       })
@@ -294,24 +278,17 @@ const TopHeader = function (props) {
       setLoading(true);
 
       axios
-        .get(
-          `${process.env.BASE_URI}/easyApply/userApplied`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
+        .get(`${process.env.BASE_URI}/easyApply/userApplied`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
           },
-        )
+        })
         .then((response) => {
           setAppliedJobs(response.data.data);
           setLoading(false);
-          console.log('Applied Jobs', response.data);
         });
     }
   };
-
-  // <button disabled className="job-stub-saved">Saved</button> :
-  // <a className="job-stub-saveLink" onClick={() => saveJob(job)}>Save Job</a>
 
   useEffect(() => {
     fetchSavedJobs();
@@ -321,11 +298,6 @@ const TopHeader = function (props) {
   const savedJobsId = savedJobs.map(
     (singleSavedJob) => singleSavedJob.job_id._id,
   );
-
-  /*  // this function is not used in the file.... it needs to be addressed
-  const appliedJobsId = appliedJobs.map(
-    (singleAppliedJob) => singleAppliedJob.job_id._id,
-  ); */
 
   const authPlease = () => {
     errorToast('Please, Sign in your account and after save and apply jobs.');
@@ -337,9 +309,6 @@ const TopHeader = function (props) {
     }
   };
 
-  /* jobStubs will be fetched from database and then map... the fetch will have ALL
-     query parameters(search description, search location, filters, jobs per page, current page)
-   */
   const jobStubs = jobs != null
     ? jobs.map((job, idx) => (
       <div
@@ -379,12 +348,10 @@ const TopHeader = function (props) {
     ))
     : '';
 
-  // const totalCount = 102;
   const perPage = 10;
   const totalPages = Math.ceil(102 / perPage); // 11
 
   function pageSelector(page) {
-    console.log(page);
     const _queryObj = { ...props.query };
     if (page === 1 && _queryObj.page) {
       delete _queryObj.page;
@@ -405,14 +372,10 @@ const TopHeader = function (props) {
     if (page) {
       pageArray.push(page);
 
-      /* push page to first placeholder if page number is
-         greater than 1 and there are more than one pages
-      */
       if (page > 1) {
         pageArray.unshift(1);
       }
 
-      // push page to second placeholder if page number is less than the last page
       if (page < totPages) {
         pageArray.push(totPages);
       }
@@ -450,14 +413,12 @@ const TopHeader = function (props) {
       _queryObj.page = 2;
     } else {
       _queryObj.page = Number(_queryObj.page) + 1;
-      console.log(typeof _queryObj.page);
     }
 
     router.push({ query: _queryObj });
   }
 
   function prevButton() {
-    console.log('prev');
     const _queryObj = { ...props.query };
     if (_queryObj.page === 2) {
       delete _queryObj.page;
@@ -469,9 +430,7 @@ const TopHeader = function (props) {
   }
 
   function inputSearchSubmit(e) {
-    // if nothing is changed in the input searches, rerun query with same parameters
     e.preventDefault();
-    // let queryObj={};
     let blank = true;
     if (e.target.childNodes[0].value) {
       queryObj.description = e.target.childNodes[0].value;

@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import Swiper from 'react-id-swiper';
 import 'swiper/css/swiper.css';
-import { allies, sponsors, TestimonialsCollection } from './testimonialSectionData';
+import { allies, sponsors } from './testimonialSectionData';
 
 const HomepageTestimonials = () => {
   const [swiper, setSwiper] = useState(null);
@@ -63,15 +63,6 @@ const HomepageTestimonials = () => {
                 : 'sponsor__title heading-clicked'
             }
           >
-            &lsaquo;Testimonials/&rsaquo;
-          </h2>
-          <h2
-            className={
-              currentIndex === 2
-                ? 'sponsor__title tw-text-blue-900'
-                : 'sponsor__title heading-clicked'
-            }
-          >
             &lsaquo;Allies/&rsaquo;
           </h2>
         </div>
@@ -81,7 +72,10 @@ const HomepageTestimonials = () => {
           <div className="container" style={{ margin: '-3rem 0 0 0' }}>
             <div className="row homepage__testimonials-sponsor">
               {sponsors.map((sponsor, index) => (
-                <div className="col-lg-3 col-md-4 sponsor-col" key={`${`sponsor${index}`}`}>
+                <div
+                  className="col-lg-3 col-md-4 sponsor-col"
+                  key={`${`sponsor${index}`}`}
+                >
                   <a
                     href={sponsor.sponsorLink}
                     target="_blank"
@@ -99,32 +93,14 @@ const HomepageTestimonials = () => {
               ))}
             </div>
           </div>
-          <div className="container">
-            {TestimonialsCollection.map((t) => (
-              <div
-                className="row homepage__testimonials-container mt-3"
-                key={t.name}
-              >
-                <div className="homepage__testimonials-left m-2">
-                  <img src={t.imgSrc} className="rounded-circle" alt={t.name} />
-                </div>
-                <div className="homepage__testimonials-right m-4">
-                  <h4>{t.quote}</h4>
-                  <p className="overline">
-                    {t.name}
-                    ,
-                    {t.position}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-
           {/* Ally */}
           <div className="container" style={{ margin: '-3rem 0 0 0' }}>
             <div className="row homepage__testimonials-sponsor">
               {allies.map((ally, index) => (
-                <div className="col-lg-3 col-md-4 sponsor-col" key={`${`ally${index}`}`}>
+                <div
+                  className="col-lg-3 col-md-4 sponsor-col"
+                  key={`${`ally${index}`}`}
+                >
                   <a href={ally.allyLink} target="_blank" rel="noreferrer">
                     <div className="item sponsor-item">
                       <img

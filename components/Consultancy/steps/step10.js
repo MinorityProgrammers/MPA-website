@@ -1,6 +1,4 @@
-import React, {
-  useRef, useState, useEffect,
-} from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import Axios from 'axios';
 import QuestionContainer from '../helperFiles/questionContainer';
 import InputWithIcon from '../helperFiles/customInputTags/inputWithIcon';
@@ -10,7 +8,6 @@ import getFormattedOutput from '../helperFiles/getFormattedOutput';
 import Radio from '../helperFiles/Radio';
 import Dependency from '../helperFiles/dependency';
 
-// AXIOS INSTANCE
 const axios = Axios.create({
   baseURL: `${process.env.BASE_URI}/service`,
 });
@@ -37,7 +34,6 @@ function basic_number_validation(value, correctLength) {
   const invalid = 'Incorrect entry';
   return try_catch(() => {
     const valid_arr = value.match(/[0-9]/g);
-    console.log(valid_arr, correctLength);
     if (valid_arr) {
       return valid_arr.length === correctLength ? '' : invalid;
     }
@@ -82,9 +78,9 @@ function createDateEntry(e) {
   e.target.selectionEnd = cursor;
 }
 
-const Page10 = function ({
+const Page10 = ({
   step, setstep, questions, setQuestions, data,
-}) {
+}) => {
   const card_full_name = useRef();
   const card_number = useRef();
   const card_expiry_date = useRef();
@@ -106,7 +102,10 @@ const Page10 = function ({
       [
         'Credit Card/Debit Card',
         <div className="contain-label-second-part">
-          <img src="/assets/images/icons/kissclipart-mastercard-logo-png-clipart-mastercard-credit-card-4497856f6840bcae 1.png" alt="" />
+          <img
+            src="/assets/images/icons/kissclipart-mastercard-logo-png-clipart-mastercard-credit-card-4497856f6840bcae 1.png"
+            alt=""
+          />
           <img src="/assets/images/icons/pngwing 1.png" alt="" />
           and more...
         </div>,
@@ -164,7 +163,6 @@ const Page10 = function ({
 
   useEffect(() => {
     if (shouldSubmit) {
-      console.log(window.localStorage.getItem('jwtToken'));
       const config = {
         headers: {
           'Content-Type': 'application/json',
@@ -259,7 +257,6 @@ const Page10 = function ({
   function prevPage() {
     setstep((prev) => prev - 1);
   }
-  // let pop = "popup";
   function toggle() {
     const popup = document.getElementById('myPopup');
     popup.classList.toggle('show');
@@ -276,9 +273,9 @@ const Page10 = function ({
       marginBottom="1rem"
     >
       <div className="body">
-        A MPA project manager will translate you requirements to a PROJECT
-        QUOTE (budget, staffing, timeline, with a complete task break down and
-        vesting schedule). You would be charged a fee of $40 for this!
+        A MPA project manager will translate you requirements to a PROJECT QUOTE
+        (budget, staffing, timeline, with a complete task break down and vesting
+        schedule). You would be charged a fee of $40 for this!
         <table>
           <tbody>
             <tr>
@@ -310,7 +307,6 @@ const Page10 = function ({
         {serverError.length !== 0 ? (
           <div
             className="alert alert-danger"
-              // role="alert"
             style={{
               textAlign: 'left',
               fontWeight: '200',
@@ -318,7 +314,9 @@ const Page10 = function ({
             }}
           >
             <ul>
-              {serverError.map((error, index) => <li key={`error${index + 1}`}>{error}</li>)}
+              {serverError.map((error, index) => (
+                <li key={`error${index + 1}`}>{error}</li>
+              ))}
             </ul>
             <div
               style={{
@@ -337,7 +335,10 @@ const Page10 = function ({
           </div>
         ) : null}
         {allRadios.map((radio, index) => (
-          <div className="contain-options edit-payment-options" key={`radio${index + 1}`}>
+          <div
+            className="contain-options edit-payment-options"
+            key={`radio${index + 1}`}
+          >
             <div className="wrap">
               {/* checkbox input */}
               <input
@@ -388,11 +389,10 @@ const Page10 = function ({
                           hideIcon
                           width="100%"
                           maxLength={
-                                  dependency.maxLength
-                                  && dependency.type === 'tel'
-                                    ? dependency.maxLength
-                                    : ''
-                                }
+                            dependency.maxLength && dependency.type === 'tel'
+                              ? dependency.maxLength
+                              : ''
+                          }
                           type={dependency.type}
                           onInput={(e) => {
                             dependency.onInput(e);
@@ -408,13 +408,9 @@ const Page10 = function ({
                           }}
                         />
                         {errors.inputs.length > 0
-                              && errors.inputs[index][0] !== undefined
-                              && errors.inputs[index][0] !== '' ? (
-                                <ErrorPrint
-                                  errors={errors.inputs[index]}
-                                  red
-                                  left
-                                />
+                        && errors.inputs[index][0] !== undefined
+                        && errors.inputs[index][0] !== '' ? (
+                          <ErrorPrint errors={errors.inputs[index]} red left />
                           ) : null}
                       </div>
                     ))}
@@ -436,13 +432,7 @@ const Page10 = function ({
             }}
           />
           <label id="agree" onClick={toggle}>
-            {/* <a
-                href="https://drive.google.com/file/d/1ZvUac-yvEb-OR2KC8mGmIybU7yIDPuCA/view?usp=sharing"
-                target="_blank"
-              > */}
-            {' '}
             I have read &amp; agree to the terms/warranty
-            {/* </a> */}
           </label>
         </span>
         {errors.agreement[0] !== undefined && errors.agreement[0] !== '' ? (

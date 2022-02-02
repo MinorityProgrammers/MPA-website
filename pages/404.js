@@ -5,7 +5,7 @@ import HomepageNav from '../components/homepage/HomepageNav';
 import useDetectOutsideClick from '../components/UseDetectOutsideClick';
 import Footer from '../components/Footer';
 
-const NotFoundPage = function () {
+const NotFoundPage = () => {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef(null);
   const navBarRef = useRef();
@@ -20,11 +20,7 @@ const NotFoundPage = function () {
   return (
     <Layout pageTitle="MPA - Not Found">
       <div className="quickswap-wrapper tw-pt-28">
-        <HomepageNav
-          open={open}
-          setOpen={setOpen}
-          navBarRef={navBarRef}
-        />
+        <HomepageNav open={open} setOpen={setOpen} navBarRef={navBarRef} />
         <NotFound navBarRef={navBarRef} />
       </div>
       <Footer />

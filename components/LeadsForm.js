@@ -22,7 +22,7 @@ const LeadsForm = () => {
         project_name: 'TEST',
         email: 'TEST',
       })
-      .then((res) => console.log(res))
+      .then(() => {})
       .catch((error) => console.log(error));
   };
 
@@ -79,9 +79,7 @@ const LeadsForm = () => {
   );
 
   const KeepingUpWithStep = useCallback(({ selected }) => {
-    const calculateLinePercentage = () => (
-      selected === 0 ? 0 : ((selected - 1) / (totalSteps - 1)) * 100
-    );
+    const calculateLinePercentage = () => (selected === 0 ? 0 : ((selected - 1) / (totalSteps - 1)) * 100);
 
     const percentageOfBlueLine = Number.isInteger(selected)
       ? calculateLinePercentage()
@@ -650,7 +648,11 @@ const LeadsForm = () => {
         <div className="questions">
           <div className="service_sub">
             <h2 id="nomarg">Thank you for submitting your idea!</h2>
-            <button type="button" className="service_leftbutton" onClick={() => plus()}>
+            <button
+              type="button"
+              className="service_leftbutton"
+              onClick={() => plus()}
+            >
               Submit another idea
             </button>
           </div>

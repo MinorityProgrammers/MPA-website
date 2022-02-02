@@ -5,22 +5,17 @@ import { BsThreeDotsVertical } from 'react-icons/bs';
 import userinfo from './User.json';
 
 export const UserContext = createContext();
-const TestTaskCard = function ({ item, handlePriority }) {
-  // priority-----flag
+const TestTaskCard = ({ item, handlePriority }) => {
   const [open, setOpen] = useState(false);
   const [priority, setPriority] = useState('gray');
-  // for-----------user
   const [newUser, setNewUser] = useState(false);
   const [users] = useState(userinfo);
   const [userCart, setUserCart] = useState([]);
-  // add---------selected------user
   const handleUserCart = (addnew) => {
     const newUsers = [...userCart, addnew];
     setUserCart(newUsers);
   };
-  console.log(userCart);
 
-  // remove---------selected------user
   const HandleRemoveUser = (id) => {
     const afterRemoveUsers = userCart.filter((remo) => remo.id !== id);
     setUserCart(afterRemoveUsers);
@@ -53,7 +48,6 @@ const TestTaskCard = function ({ item, handlePriority }) {
                         src="/assets/images/coreteamimg/user.png"
                         alt=""
                       />
-                      {' '}
                       <span>{user.name}</span>
                     </div>
                   </a>

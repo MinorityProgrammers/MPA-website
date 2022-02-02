@@ -2,13 +2,13 @@ import React, { useEffect } from 'react';
 import NeedHelp from '../helperFiles/needHelp';
 import QuestionContainer from '../helperFiles/questionContainer';
 
-const Page11 = function ({
+const Page11 = ({
   step,
   localStorageConsultancyKey,
   localStorageStepKey,
   setstep,
   setQuestions,
-}) {
+}) => {
   const paymentReceived = '$XX.00';
   const projectId = 'XXALD4';
   const transactionId = '58';

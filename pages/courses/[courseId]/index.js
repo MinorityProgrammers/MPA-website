@@ -14,7 +14,7 @@ export async function getServerSideProps(context) {
   };
 }
 
-const CoursePage = function ({ params }) {
+const CoursePage = ({ params }) => {
   const [data, setData] = useState([]);
   const { courseId } = params;
   const [enrolledCourses, setEnrolledCourses] = useState([]);
@@ -23,7 +23,7 @@ const CoursePage = function ({ params }) {
   const [loading, setLoading] = useState(true);
 
   const redirect = () => {
-    window.location.href = '/learn-page';
+    window.location.href = '/learn';
   };
 
   useEffect(() => {
@@ -44,14 +44,11 @@ const CoursePage = function ({ params }) {
     const userToken = JSON.parse(localStorage.getItem('userInfo'));
     if (userToken !== null) {
       axios
-        .get(
-          `${process.env.BASE_URI}/learn/userCourses`,
-          {
-            headers: {
-              Authorization: `Bearer ${userToken.token}`,
-            },
+        .get(`${process.env.BASE_URI}/learn/userCourses`, {
+          headers: {
+            Authorization: `Bearer ${userToken.token}`,
           },
-        )
+        })
         .then((res) => {
           if (res.data.data.length > 0) {
             setEnrolledCourses(res.data.data);
@@ -75,14 +72,11 @@ const CoursePage = function ({ params }) {
     const userToken = JSON.parse(localStorage.getItem('userInfo'));
     if (userToken !== null) {
       axios
-        .get(
-          `${process.env.BASE_URI}/course/${courseId}/module`,
-          {
-            headers: {
-              Authorization: `Bearer ${userToken.token}`,
-            },
+        .get(`${process.env.BASE_URI}/course/${courseId}/module`, {
+          headers: {
+            Authorization: `Bearer ${userToken.token}`,
           },
-        )
+        })
         .then((res) => {
           setModules(res.data.data);
         });
@@ -93,12 +87,12 @@ const CoursePage = function ({ params }) {
     <Layout pageTitle="Course - Minority Programmers Association">
       {loading === true ? (
         <>
-          <HomepageNav page="learn-page" setData={setData} />
+          <HomepageNav page="learn" setData={setData} />
           <SkeletonElement />
         </>
       ) : (
         <>
-          <HomepageNav page="learn-page" setData={setData} />
+          <HomepageNav page="learn" setData={setData} />
           <Course userInfo={data} course={course} modules={modules} />
           <Footer />
         </>

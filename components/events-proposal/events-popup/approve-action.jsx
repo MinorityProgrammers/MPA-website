@@ -5,9 +5,9 @@ import ReviewAction from './review-action';
 
 Moment.locale('en');
 
-const ApproveAction = function ({
+const ApproveAction = ({
   reveiwFeedback, value, setValue, popup,
-}) {
+}) => {
   const [changeStatus, setStatus] = useState(false);
 
   useEffect(() => {
@@ -16,31 +16,28 @@ const ApproveAction = function ({
 
   return (
     <div>
-      {
-        !changeStatus
-          ? (
-            <div className={styles.approveActionWrapper}>
-              <div className={styles.approveActionContainer}>
-                <div>Approved</div>
-                <div>
-                  {' '}
-                  By:
-                  Shot
-                </div>
-                <div className={styles.reviewedDate}>
-                  Date:
-                  {Moment(Date.now()).format('LL')}
-                </div>
-              </div>
-
-              <div onClick={() => setStatus(true)} className={styles.actionButton}>
-                Change Status
-              </div>
+      {!changeStatus ? (
+        <div className={styles.approveActionWrapper}>
+          <div className={styles.approveActionContainer}>
+            <div>Approved</div>
+            <div> By: Shot</div>
+            <div className={styles.reviewedDate}>
+              Date:
+              {Moment(Date.now()).format('LL')}
             </div>
-          )
-          : <ReviewAction reveiwFeedback={reveiwFeedback} value={value} setValue={setValue} />
+          </div>
 
-      }
+          <div onClick={() => setStatus(true)} className={styles.actionButton}>
+            Change Status
+          </div>
+        </div>
+      ) : (
+        <ReviewAction
+          reveiwFeedback={reveiwFeedback}
+          value={value}
+          setValue={setValue}
+        />
+      )}
     </div>
   );
 };

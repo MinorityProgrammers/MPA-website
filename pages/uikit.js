@@ -6,7 +6,7 @@ import HomepageNav from '../components/homepage/HomepageNav';
 import Layout from '../components/Layout';
 import links from '../contexts/utils/links';
 
-const UIKit = function () {
+const UIKit = () => {
   const [open, setOpen] = useState(false);
   const bannerImgLink = 'https://lh3.googleusercontent.com/proxy/kebLnb_ZXHeYtyuRXNNA_etHIRqPHEu9eawDUk7Y6Asmk9t75_ZuOTSrgDflrCo4S6_Ch80FUANkfLHMrLC-Ygw4';
   return (

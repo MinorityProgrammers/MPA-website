@@ -3,7 +3,7 @@ import Applied from '../components/career-components/Applied';
 import CareersMainComponent from '../components/career-components/CareersMainComponent';
 import Saved from '../components/career-components/Saved';
 
-const SavedJobs = function () {
+const SavedJobs = () => {
   const [currentView, changeCurrentView] = useState('saved');
 
   const loadApplied = () => {
@@ -33,7 +33,9 @@ const SavedJobs = function () {
           <button type="button" className="tw-mr-4" onClick={loadSaved}>
             Saved
           </button>
-          <button type="button" onClick={loadApplied}>Applied</button>
+          <button type="button" onClick={loadApplied}>
+            Applied
+          </button>
         </div>
         <div>
           {currentView === 'saved' && <Saved />}

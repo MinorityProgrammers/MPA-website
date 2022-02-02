@@ -7,7 +7,7 @@ function HomePageAboutUs() {
     <section className="homepage__about tw-relative tw-overflow-x-clip">
       <div className="homepage__abou-bg"><img src="/assets/images/home-page/about-us-bg.svg" alt="about-us bg" style={{ overflow: 'hidden' }} /></div>
       <div className="container tw-relative tw-w-full tw-h-full">
-        <div className="row tw-justify-between">
+        <div className="about-container row">
           <div className="tw-h-full col-lg-8 col-md-12  video-container tw-flex-col">
             <LiteYouTubeEmbed
               playerClass="yt-playbtn"
@@ -25,7 +25,7 @@ function HomePageAboutUs() {
                 alt="blockchain"
               />
             </h2>
-            <p className="about-us__text tw-text-xl tw-text-white">
+            <p className="about-us__text tw-text-xl tw-text-white md:tw-text-base">
               We are an international network of developers unifying together to
               build socially impactful projects & spread STEM education to marginalized communitie
             </p>

@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unstable-nested-components */
 import React from 'react';
 import axios from 'axios';
 import { Tooltip, OverlayTrigger } from 'react-bootstrap';
@@ -11,7 +12,6 @@ const Sprint = ({
   courses,
   capstones,
   events,
-  /* mentor, */
   mentee,
   setCurrentRes,
   setEdit,
@@ -43,25 +43,20 @@ const Sprint = ({
       />
     </div>
   );
-  // Delete Req
   const DeleteHandler = (id, currentModel) => {
     const token = window.localStorage.getItem('jwtToken');
 
     if (token != null) {
       axios
-        .delete(
-          `${process.env.BASE_URI}/mentorship/${currentModel}/${id}`,
-          {
-            headers: {
-              'Access-Control-Allow-Origin': '*',
-              Authorization: `Bearer ${token}`,
-            },
+        .delete(`${process.env.BASE_URI}/mentorship/${currentModel}/${id}`, {
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            Authorization: `Bearer ${token}`,
           },
-        )
+        })
         .then((res) => {
           successToast(`${currentModel} Deleted successfully!`);
           setUpdate(!update);
-          console.log(res.data);
         })
         .catch((err) => {
           errorToast('Something went wrong, please contact us.');

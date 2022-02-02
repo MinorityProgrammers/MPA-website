@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import styles from './select.module.css';
 
-const Select = function ({
-  items, setItems, onClick, onChange, toggle, defaultValue,
-}) {
+const Select = ({
+  items,
+  setItems,
+  onClick,
+  onChange,
+  toggle,
+  defaultValue,
+}) => {
   const [heading, setHeading] = useState(defaultValue);
   const [list, setList] = useState([]);
 
@@ -44,14 +49,26 @@ const Select = function ({
     <div className={styles.selectContainer}>
       <div onClick={onClick} className={styles.selectHeading}>
         {heading}
-        <i style={{ transform: toggle ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.2s', marginLeft: '0.5em' }} className="fas fa-angle-down" />
+        <i
+          style={{
+            transform: toggle ? 'rotate(180deg)' : 'rotate(0deg)',
+            transition: 'transform 0.2s',
+            marginLeft: '0.5em',
+          }}
+          className="fas fa-angle-down"
+        />
       </div>
       <div className={`${styles.selectList} ${toggle && styles.toggle}`}>
-        {
-            list && list.map((item, idx) => (
-              <div key={`${idx + 1}`} onClick={() => handleSelect(item)} className={styles.selectItem}>{item}</div>
-            ))
-          }
+        {list
+          && list.map((item, idx) => (
+            <div
+              key={`${idx + 1}`}
+              onClick={() => handleSelect(item)}
+              className={styles.selectItem}
+            >
+              {item}
+            </div>
+          ))}
       </div>
     </div>
   );

@@ -73,7 +73,6 @@ const PopModel = ({
             },
           )
           .then((res) => {
-            console.log(res.data);
             setSelectedDates([...selectedDates, newDate]);
             setEvents(res.data.data.calender_events);
             setUpdate(!update);

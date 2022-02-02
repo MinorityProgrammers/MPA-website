@@ -43,9 +43,7 @@ const Chats = ({ data }) => {
     }
 
     socket.current = io('ws://localhost:8900');
-    socket.current.on('connection', (msg) => {
-      console.log(msg);
-    });
+    socket.current.on('connection', (/* msg */) => { });
 
     socket.current.on('getUsers', (users) => {
       setOnlineUsers(users);
@@ -105,7 +103,6 @@ const Chats = ({ data }) => {
       if (currentChat._id === chat._id) {
         setCurrentChat(allchats[0]);
       }
-      console.log('Chat been blocked');
     }
 
     if (socketContent.type === 'unblockedChat') {
@@ -114,20 +111,17 @@ const Chats = ({ data }) => {
       const newblocked = blockedchats.filter((c) => c._id !== chat._id);
       setBlockedchats(newblocked);
       setAllchats([chat, ...allchats]);
-      console.log('Chat been unblocked');
     }
 
     if (socketContent.type === 'addedToChat') {
       const { chat } = socketContent;
       setPendingchats([chat, ...pendingchats]);
-      console.log('added to a chat');
     }
 
     if (socketContent.type === 'rejectedChat') {
       const { chat } = socketContent;
       const newpending = pendingchats.filter((c) => c._id !== chat._id);
       setPendingchats(newpending);
-      console.log('chat been rejected');
     }
 
     if (socketContent.type === 'acceptedChat') {
@@ -136,7 +130,6 @@ const Chats = ({ data }) => {
       setPendingchats(newpending);
       const tempallchats = allchats;
       setAllchats([chat, ...tempallchats]);
-      console.log('chat been accepted');
     }
 
     if (socketContent.type === 'gotMessage') {
@@ -150,7 +143,6 @@ const Chats = ({ data }) => {
         chatty = { ...chatty, newMessage: true };
         setAllchats([chatty, ...newAllchats]);
       }
-      console.log('got a message');
     }
   }, [socketContent]);
 
@@ -268,9 +260,7 @@ const Chats = ({ data }) => {
     });
   }, [messages]);
 
-  const deleteMessage = () => {
-    console.log('deleteclicked');
-  };
+  const deleteMessage = () => {};
 
   const blockUser = async () => {
     try {

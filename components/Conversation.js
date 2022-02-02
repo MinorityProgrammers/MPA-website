@@ -51,13 +51,14 @@ const Conversation = ({
             {' '}
             {user?.lastName}
           </span>
-          {type === 'blocked' && conversation.blocking_user === currentUser._id && (
-            <div
-              className="conversation-blocked-btn"
-              onClick={() => setPopup(true)}
-            >
-              Unblock
-            </div>
+          {type === 'blocked'
+            && conversation.blocking_user === currentUser._id && (
+              <div
+                className="conversation-blocked-btn"
+                onClick={() => setPopup(true)}
+              >
+                Unblock
+              </div>
           )}
           {type === 'blocked'
             && conversation.blocking_user !== currentUser._id && (

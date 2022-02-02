@@ -8,7 +8,7 @@ import links from '../contexts/utils/links';
 import ComingSoon from '../components/ComingSoon';
 import useDetectOutsideClick from '../components/UseDetectOutsideClick';
 
-const MinorityEarnedPage = function () {
+const MinorityEarnedPage = () => {
   const [open, setOpen] = useState(false);
   const [, setData] = useState([]);
   const dropdownRef = useRef(null);

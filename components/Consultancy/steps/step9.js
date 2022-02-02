@@ -5,9 +5,9 @@ import ErrorPrint from '../helperFiles/errorPrint';
 import useDefaultValue from '../helperFiles/getDefaultValue';
 import SelectTemplate from '../helperFiles/templates/selectTemplate';
 
-const Page8 = function ({
+const Page8 = ({
   step, setstep, questions, setQuestions,
-}) {
+}) => {
   const inputRef = useRef();
   const [errorMsg, setErrorMsg] = useState([]);
   const [messageChanged, setMessageChanged] = useState(0);
@@ -32,10 +32,8 @@ const Page8 = function ({
     onStart: inputValidation,
     childChanged: messageChanged,
   };
-
-  // get default values
   const defaultValue = useDefaultValue(questions, step, 1);
-  console.log(defaultValue);
+
   return (
     <SelectTemplate
       step={step}

@@ -4,7 +4,7 @@ import { BsThreeDotsVertical } from 'react-icons/bs';
 import React, { useState, useEffect } from 'react';
 import taskNotification from './taskNotification.json';
 
-const TaskNotification = function () {
+const TaskNotification = () => {
   const [notifications, setNotifications] = useState([]);
 
   useEffect(() => {

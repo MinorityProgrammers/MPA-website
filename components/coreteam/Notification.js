@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { ImCross } from 'react-icons/im';
 import { RiFlag2Fill } from 'react-icons/ri';
 import { BsThreeDotsVertical } from 'react-icons/bs';
-// import coreteamInfo from './coreteamInfo.json';
-// import Pagination from './Pagination';
 import Link from 'next/link';
 import { FaSortUp, FaSortDown } from 'react-icons/fa';
 import axios from 'axios';
@@ -13,11 +11,10 @@ import Pagination from '../Moderator/ElectProposals/Pagination';
 import Loader from '../Loader';
 import ApprovedProposal from './ApprovedProposal';
 
-const Notification = function () {
+const Notification = () => {
   const [infomations, setInformations] = useState([]);
   const [proposals, setProposals] = useState([]);
   const [approvedProposals, setApprovedProposals] = useState([]);
-  // new add for feach
   const [actions, setActions] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [actionsPerPage] = useState(4);
@@ -30,9 +27,6 @@ const Notification = function () {
   useEffect(() => {
     let uniqueCategories = [];
     let allCategories = [];
-
-    // Fetch the action data. Set loading state to true before fetch,
-    // back to false after the fetch is complete
     const fetchData = () => {
       setLoading(true);
       fetch(`${process.env.BASE_URI}/proposal/`)
@@ -43,7 +37,6 @@ const Notification = function () {
           setActions(response.data);
           setLoading(false);
 
-          // Set unique categories for filter dropdown
           allCategories = response.data.map((action) => action.category);
           uniqueCategories = [...new Set(allCategories)];
           setCategories(uniqueCategories);
@@ -53,7 +46,6 @@ const Notification = function () {
     fetchData();
   }, []);
 
-  // Function to sort the actions by amount or date
   const sortArray = (type) => {
     const types = {
       amountAsc: 'amount',
@@ -83,7 +75,6 @@ const Notification = function () {
     }
   };
 
-  // Filter the array, sets current page back to 1 after filtering
   const filterArray = () => {
     setCurrentPage(1);
     if (filter !== 'all') {
@@ -108,11 +99,9 @@ const Notification = function () {
     sortArray(sortType);
   }, [sortType]);
 
-  // Get current actions
   const indexOfLastAction = currentPage * actionsPerPage;
   const indexOfFirstAction = indexOfLastAction - actionsPerPage;
   const currentActions = actions.slice(indexOfFirstAction, indexOfLastAction);
-  // Change page
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
@@ -129,24 +118,11 @@ const Notification = function () {
     }
     setCurrentPage(currentPage - 1);
   };
-  console.log('proposal Data', proposals);
-  console.log('all data', allData);
-  console.log('actions', actions);
 
-  // if (loading) {
-  //     return (
-  //         <div className='minority__earned__actions'>
-  //             <Loader />
-  //         </div>
-  //     )
-  // }
-
-  // This useEffect is used for render api data from backend
   useEffect(() => {
     const url = `${process.env.BASE_URI}/proposal/`;
     axios(url).then((data) => setProposals(data.data.data));
   }, []);
-  // console.log("notification proposals", proposals);
   useEffect(() => {
     setInformations(coreteamInfo);
   }, []);
@@ -154,11 +130,9 @@ const Notification = function () {
     const newApprovedProposals = [...approvedProposals, approved];
     setApprovedProposals(newApprovedProposals);
   };
-  console.log('apporoved', approvedProposals);
 
   return (
     <div className=" page-gradient">
-      {/* Banner ----------------part */}
       <section className="  tw-w-100 tw-mt-20 ">
         <div className="banner  tw-flex tw-items-center  ">
           <div className="banner-left  tw-self-center tw-w-1/2">
@@ -185,7 +159,6 @@ const Notification = function () {
         {' '}
         <div className="tw-bg-indigo-900 hr-line  tw-ml-3" />
       </div>
-      {/* Proposals to be voted / revoted.-----page */}
       {currentActions.length ? (
         <div className="tw-container tw-mx-auto voted tw-rounded-lg">
           <div className=" tw-rounded-lg voted">
@@ -257,10 +230,6 @@ const Notification = function () {
                           <Moment format="MMM D" withTitle>
                             {info.createdAt ? info.createdAt : 'Mar 25'}
                           </Moment>
-                          {/* <h4 className="tw-text-black">
-                                {info.createdOn ? info.createdOn : "Mar 25"}
-                              </h4>
-                           */}
                         </div>
                       </div>
                       <div className="tw-flex tw-items-center">
@@ -268,19 +237,12 @@ const Notification = function () {
                           <h3>{info.replies ? info.replies : '58'}</h3>
                           <p className="text-muted">Replies</p>
                         </div>
-                        {/* <div className="tw-text-center">
 
-                                                <MdArrowDropUp size="40px" />
-
-                                                <span className="mutaed">{info.count} </span>
-                                                < MdArrowDropDown size="40px" />
-                                            </div> */}
                         <p className="tw-flex tw-flex-col tw-items-center">
                           <FaSortUp size="27px" />
                           <strong className="tw--my-3">
                             {info.voteCount ? info.voteCount : '74'}
                           </strong>
-
                           <FaSortDown size="27px" />
                         </p>
                         <div className="tw-ml-3 tw-text-center">
@@ -338,9 +300,7 @@ const Notification = function () {
           <Loader />
         </div>
       )}
-      {/* approved Proposals.------########### */}
       <ApprovedProposal />
-      {/* rejected Proposals.-------------page */}
       <div className="tw-container tw-mx-auto ">
         <div className=" tw-rounded-lg rejected">
           <div className="tw-p-4 tw-text-white tw-m-4">
@@ -349,7 +309,6 @@ const Notification = function () {
               <small>The following proposals you voted got rejected.</small>
             </p>
           </div>
-          {/* mapping--------- */}
           {infomations.slice(0, 1).map((info) => (
             <div
               className={`tw-p-4 tw-m-8   tw-bg-white tw-text-dark tw-mb-6 tw-border-t-8  tw-border-${info.borderColor}-500`}
@@ -359,9 +318,7 @@ const Notification = function () {
                   <div className="">
                     <h1 className="parsonal-title ">Proposal Title</h1>
                     <p>
-                      {' '}
                       <small>Type : Enhancement</small>
-                      {' '}
                       <small>Catergory : Incubator</small>
                     </p>
                   </div>
@@ -393,14 +350,6 @@ const Notification = function () {
                       <h3>{info.replies}</h3>
                       <p className="text-muted">Replies</p>
                     </div>
-                    {/* <div className="tw-text-center">
-
-                                                <MdArrowDropUp size="40px" />
-
-                                                <span className="mutaed">{info.count} </span>
-                                                < MdArrowDropDown size="40px" />
-                                            </div> */}
-
                     <div className="tw-ml-3 tw-text-center">
                       <h3>{info.views}</h3>
                       <p className="text-muted">Views</p>
@@ -408,7 +357,6 @@ const Notification = function () {
                     <p className="tw-flex tw-flex-col tw-items-center tw-ml-3">
                       <FaSortUp size="27px" />
                       <strong className="tw--my-3">{info.voteCount}</strong>
-
                       <FaSortDown size="27px" />
                     </p>
                   </div>
@@ -437,8 +385,6 @@ const Notification = function () {
           ))}
         </div>
       </div>
-
-      {/* task-card-----------part */}
       <div className="tw-flex tw-my-20 tw-container tw-mx-auto">
         <div className="customCard tw-w-1/2 tw-mr-10">
           <div className="customCard-title tw-flex  tw-justify-center ">
@@ -684,13 +630,11 @@ const Notification = function () {
           ))}
         </div>
       </div>
-      {/* earlier------------part */}
       <div className="tw-flex new  tw-my-4 align-items-center container tw-py-3 my-5">
         <h3 className="text-uppercase tw-text-2xl">earlier</h3>
         {' '}
         <div className="tw-bg-indigo-900 hr-line  tw-ml-3" />
       </div>
-      {/* rejected Proposals.-------------page */}
       <div className="tw-container tw-mx-auto ">
         <div className=" tw-rounded-lg rejected">
           <div className="tw-p-4 tw-text-white tw-m-4">
@@ -699,7 +643,6 @@ const Notification = function () {
               <small>The following proposals you voted got rejected.</small>
             </p>
           </div>
-          {/* mapping--------- */}
           {infomations.slice(0, 1).map((info) => (
             <div
               className={`tw-p-4 tw-m-8   tw-bg-white tw-text-dark tw-mb-6 tw-border-t-8  tw-border-${info.borderColor}-500`}

@@ -8,26 +8,28 @@ import styles from '../../styles/settings/settingBodyProfileOverview.module.css'
 import CreateSettingInput from './CreateSettingInput';
 import SettingBody from './SettingBody';
 
-const SettingBodyProfileOverview = function ({
-  settingsPage, data, userID, setGenerateAvatarPopUp,
-}) {
+const SettingBodyProfileOverview = ({
+  settingsPage,
+  data,
+  userID,
+  setGenerateAvatarPopUp,
+}) => {
   const router = useRouter();
 
   const inputFields = [all.bioField, all.languageField];
 
   const initialInputState = {};
 
-  inputFields.forEach(
-    (field) => { initialInputState[field.name] = ''; },
-    // ex. {someInputFieldName: "inputFieldValue", ...}
-  );
+  inputFields.forEach((field) => {
+    initialInputState[field.name] = '';
+  });
 
   const [inputStates, setInputStates] = useState(initialInputState);
 
   useEffect(() => {
-    inputFields.forEach(
-      (field) => { initialInputState[field.name] = data?.[field.name] || ''; },
-    );
+    inputFields.forEach((field) => {
+      initialInputState[field.name] = data?.[field.name] || '';
+    });
 
     setInputStates(initialInputState);
   }, [data]);
@@ -49,7 +51,9 @@ const SettingBodyProfileOverview = function ({
     updateProfile(userID, formData)(profileDispatch);
 
     const slug = data?.userName;
-    if (slug) { router.push(`/user/${slug}`); }
+    if (slug) {
+      router.push(`/user/${slug}`);
+    }
   };
 
   const closeProfileSetup = () => {
@@ -57,10 +61,11 @@ const SettingBodyProfileOverview = function ({
     setInputStates(initialInputState);
 
     const slug = data?.userName;
-    if (slug) { router.push(`/user/${slug}`); }
+    if (slug) {
+      router.push(`/user/${slug}`);
+    }
   };
 
-  // console.log({ inputStates });
   return (
     <SettingBody
       settingsPage={settingsPage}

@@ -3,7 +3,6 @@ import ComingSoon from '../../../components/ComingSoon';
 import EmployerContent from '../../../components/employers-page/home/content';
 import Header from '../../../components/employers-page/home/header/Header';
 import Content from '../../../components/employers-page/sidenav';
-// components
 import HomepageNav from '../../../components/homepage/HomepageNav';
 import Layout from '../../../components/Layout';
 import SidebarTwo from '../../../components/sidebar/SidebarTwo';
@@ -42,7 +41,6 @@ const EmployersDashboard = () => {
         </div>
       </Layout>
       <main>
-        {/** Content Renders Body Side Navigation && Main Body */}
         <Content>
           <Header />
           <EmployerContent />

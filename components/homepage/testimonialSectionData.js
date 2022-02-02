@@ -5,7 +5,7 @@ export const TestimonialsCollection = [
     position: 'Social Media Manager',
     quote:
         'MPA hits different. Its a whole gang of coders trying to put on for the world.',
-    imgSrc: 'https://minorityprogrammers.com/assets/images/Bryanna.svg',
+    imgSrc: 'assets/images/testimonials/Bryanna.svg',
   },
   {
     id: 2,
@@ -13,7 +13,28 @@ export const TestimonialsCollection = [
     position: 'Software Engineer Intern',
     quote:
         'MPA is the most fun work experience I had and I always had a place to express my ideas!',
-    imgSrc: 'https://minorityprogrammers.com/assets/images/Seemaab.svg',
+    imgSrc: 'assets/images/testimonials/Seemaab.svg',
+  },
+  {
+    id: 3,
+    name: 'Eurvin.eth',
+    position: 'Software Enineer',
+    quote: 'You may want to get @minority program on board. They already do outstanding job!',
+    imgSrc: 'assets/images/testimonials/Eurvin.svg',
+  },
+  {
+    id: 4,
+    name: 'Nadre Dabit',
+    position: 'Web3 Developer',
+    quote: 'Today I met the founder of @minorityprogram, who are working to help onboard new developers from underrepresented groups into web3. This space is ....',
+    imgSrc: 'assets/images/testimonials/nadre.svg',
+  },
+  {
+    id: 5,
+    name: 'SAAS',
+    position: 'ClickUp',
+    quote: 'Always happy to help amazing friends! You’re our whole galaxy, friends! We are so exicted to see you do amazing things and bring peaceand justice to the republic',
+    imgSrc: 'assets/images/testimonials/saas.svg',
   },
 ];
 

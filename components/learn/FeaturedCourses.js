@@ -4,9 +4,13 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import FeaturedCourseList from './FeaturedCourseList';
 
-const FeaturedCourses = function ({
-  courses, handleCourseInfo, enrolledCourses, enrolledBtn, showModal,
-}) {
+const FeaturedCourses = ({
+  courses,
+  handleCourseInfo,
+  enrolledCourses,
+  enrolledBtn,
+  showModal,
+}) => {
   const coursesLength = courses.length;
 
   const conditionalInfinite = {
@@ -33,9 +37,8 @@ const FeaturedCourses = function ({
       },
     ],
   };
-  const sameUserCourses = courses && courses.filter(
-    (course) => enrolledCourses.some((eCourse) => course._id === eCourse.courseId._id),
-  );
+  const sameUserCourses = courses
+    && courses.filter((course) => enrolledCourses.some((eCourse) => course._id === eCourse.courseId._id));
 
   return (
     <div>
@@ -43,18 +46,25 @@ const FeaturedCourses = function ({
         <div className="course-category d-flex font-weight-bold tw-justify-center">
           <h1 className="courseCategory-title ">Featured Courses</h1>
         </div>
-        <div className={coursesLength > 2 ? 'mt-3 courses-info pt-2 FRCourses' : 'mt-3 courses-info pt-2 featured-courses'}>
+        <div
+          className={
+            coursesLength > 2
+              ? 'mt-3 courses-info pt-2 FRCourses'
+              : 'mt-3 courses-info pt-2 featured-courses'
+          }
+        >
           <Slider {...conditionalInfinite}>
-            {courses && courses.map((course) => (
-              <FeaturedCourseList
-                showModal={showModal}
-                course={course}
-                handleCourseInfo={handleCourseInfo}
-                key={course._id}
-                sameUserCourses={sameUserCourses}
-                enrolledBtn={enrolledBtn}
-              />
-            ))}
+            {courses
+              && courses.map((course) => (
+                <FeaturedCourseList
+                  showModal={showModal}
+                  course={course}
+                  handleCourseInfo={handleCourseInfo}
+                  key={course._id}
+                  sameUserCourses={sameUserCourses}
+                  enrolledBtn={enrolledBtn}
+                />
+              ))}
           </Slider>
         </div>
       </div>

@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import styles from './intro.module.css';
 import { errorToast } from '../../../contexts/utils/toasts';
 
-const Intro = function ({ active }) {
+const Intro = ({ active }) => {
   const [isOpen, setOpen] = useState(false);
   const router = useRouter();
 
@@ -27,19 +27,32 @@ const Intro = function ({ active }) {
             Start a community of diverse developers today, and get
             <span className={styles.hideText}>the support of</span>
             {' '}
-            an international network
+            an
+            international network
             <span className={styles.showText}>of support!</span>
             {' '}
-            <span className={styles.hideText}>of diverse talent here to empower the world!</span>
+            <span className={styles.hideText}>
+              of diverse talent here to empower the world!
+            </span>
           </p>
-          <div onClick={handleStart} className={styles.button}>Start Today</div>
+          <div onClick={handleStart} className={styles.button}>
+            Start Today
+          </div>
         </div>
         <div className={styles.globeContainer}>
           <img src="/assets/images/chapter/world.png" alt="map" />
-          <div onClick={() => setOpen(true)} className={styles.playIcon}><FaPlay /></div>
+          <div onClick={() => setOpen(true)} className={styles.playIcon}>
+            <FaPlay />
+          </div>
         </div>
 
-        <ModalVideo channel="youtube" autoplay isOpen={isOpen} videoId="VZmd8EOj3UA" onClose={() => setOpen(false)} />
+        <ModalVideo
+          channel="youtube"
+          autoplay
+          isOpen={isOpen}
+          videoId="VZmd8EOj3UA"
+          onClose={() => setOpen(false)}
+        />
       </div>
     </div>
   );

@@ -1,24 +1,24 @@
 import React, { useEffect, useRef, useState } from 'react';
 import ComingSoon from '../components/ComingSoon';
 import Footer from '../components/Footer';
-// import HomepageAbout from '../components/homepage/HomepageAbout';
-// import HomepageApp from '../components/homepage/HomepageApp';
+import HomePageNewTopSection from '../components/homepage/HomePageNewTopSection';
+import HomePageAboutUs from '../components/homepage/HomePageAboutUs';
+import HomePageGetStarted from '../components/homepage/HomePageGetStarted';
+import HomePageParteners from '../components/homepage/HomePageParteners';
 import HomepageCore from '../components/homepage/HomepageCore';
 import HomepageDonate from '../components/homepage/HomepageDonate';
 import HomepageNav from '../components/homepage/HomepageNav';
-import HomePageNewTopSection from '../components/homepage/HomePageNewTopSection';
 import HomepageExploreMinorityApps from '../components/homepage/HomepageExploreMinorityApps';
 // import HomepageTeam from '../components/homepage/HomepageTeam';
 import HomepageTestimonials from '../components/homepage/HomepageTestimonials';
-import HomePageAboutUs from '../components/homepage/HomePageAboutUs';
-// import HomepageWave from '../components/homepage/HomepageWave';
+import HomePageReviews from '../components/homepage/HomePageReviews';
 import Layout from '../components/Layout';
 import MpaBuilder from '../components/mpa-builder/builder';
 import SidebarTwo from '../components/sidebar/SidebarTwo';
 import useDetectOutsideClick from '../components/UseDetectOutsideClick';
 import links from '../contexts/utils/links';
 
-const HomepageFour = function () {
+const HomepageFour = () => {
   const [open, setOpen] = useState(false);
   const [builder, setBuilder] = useState(true);
   const [mount, setMount] = useState(false);
@@ -67,14 +67,13 @@ const HomepageFour = function () {
               {hide === false && <ComingSoon closeClick={handleClick} />}
               <HomePageNewTopSection />
               <HomePageAboutUs />
-              {/* <HomepageAbout /> */}
-              {/* <HomepageApp /> */}
-              <HomepageCore />
+              <HomePageGetStarted />
               <HomepageExploreMinorityApps />
-              {/* <HomepageWave /> */}
-              {/* <HomepageTeam /> */}
+              <HomePageParteners />
+              <HomePageReviews />
+              {/* <HomepageCore />
               <HomepageTestimonials />
-              <HomepageDonate />
+              <HomepageDonate /> */}
               <Footer />
             </>
           )}

@@ -1,12 +1,6 @@
 import React from 'react';
 
 const MentorshipProgramHero = () => (
-  // this function is was not used... check if it is needed before deleting
-  /* const scrollTo = () => {
-    const section = document.querySelector('#all-startups');
-    section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }; */
-
   <section className="incubator-wrapper">
     <div className="mentorshipP-header">
       <div className="container">

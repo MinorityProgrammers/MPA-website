@@ -12,7 +12,6 @@ const MarketChart = () => {
             fontSize: '20px', fontWeight: '700', color: 'black', marginRight: '5px',
           }}
           >
-            {' '}
             Market Chart
           </p>
           <select name="crypto" className="btn btn-primary" style={{ background: '#474BFF' }}>

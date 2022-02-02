@@ -3,7 +3,7 @@ import Footer from '../../components/Footer';
 import HomepageNav from '../../components/homepage/HomepageNav';
 import Layout from '../../components/Layout';
 
-const ProposalInfoPage = function () {
+const ProposalInfoPage = () => {
   const [open, setOpen] = useState(false);
   return (
     <Layout>

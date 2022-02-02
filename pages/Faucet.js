@@ -7,7 +7,7 @@ import SidebarTwo from '../components/sidebar/SidebarTwo';
 import links from '../contexts/utils/links';
 import FaucetForm from '../components/Faucet/FaucetForm';
 
-const FaucetPage = function () {
+const FaucetPage = () => {
   const [open, setOpen] = useState(false);
   return (
     <Layout pageTitle="Governance Token Faucet">

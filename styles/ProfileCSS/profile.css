@@ -1,5 +1,5 @@
 .profile_container {
-  padding-top: 100px;
+  padding-top: 50px;
 }
 .profile_container a:hover {
   color: inherit;
@@ -328,6 +328,47 @@
   font-size: 1rem;
   font-weight: 600;
 }
+
+.profileTopSection{
+  background: #14152B;
+}
+
+.topSection{
+  border:0.5px solid #9b4fff9b;
+  background: #14152B;
+}
+
+.Biosection{
+  border-bottom: 1px solid #a159fe;
+}
+
+.newColor{
+  color: #a159fe;
+}
+.editSection{
+  margin-right: -800px;
+}
+.absoluteUser{
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.colorSecond{
+  color: #FFA959;
+}
+.gradientBg{
+  background: rgba(62, 56, 93, 0.54);
+}
+.mintBTN{
+  border: 1px solid #a159fe
+}
+
+.mintBTN:hover{
+background-color: #a159fe;
+}
+
 @media screen and (max-width: 950px) {
   .user-data-area .user {
     flex-direction: column;
@@ -451,8 +492,8 @@
   z-index: 99;
 }
 .profile-two-generate-avatar-popup {
-  background: white;
-  color: #81868a;
+  background: #1C1D37;
+  color: #fff;
   position: absolute;
   top: 120px;
   right: 10vw;
@@ -476,6 +517,16 @@
   transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
+.css-1s2u09g-control{
+  background-color: transparent !important;
+}
+
+.css-qc6sy-singleValue{
+  color: hsl(0deg 1% 60%) !important;
+}
+.css-25l3qy-menu{
+  background-color: transparent !important;
+}
 .profile-two-generate-avatar-popup .cp-body .cp-formGrid {
   grid-template-columns: 49% 49%;
   gap: 2%;
@@ -483,6 +534,7 @@
 .profile-two-generate-avatar-popup .cp-body .cp-formGrid .cp-input {
   align-self: center;
   margin: 0;
+  background-color: #1C1D37;
 }
 .profile-two-generate-avatar-popup .cp-body .cp-formGrid .color-picker-toggle {
   display: flex;
@@ -545,4 +597,16 @@
     text-align: center;
     padding: 5px !important;
   }
+}
+
+.react-datepicker-wrapper{
+  margin-top: 5px;
+  margin-bottom: 5px;
+  width: 100%;
+}
+
+.pp-exp-edu-area .add-exp-edu .ee-fields input{
+  height: 30px;
+  color: rgb(173, 173, 173);
+  font-weight: bold;
 }

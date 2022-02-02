@@ -4,7 +4,7 @@ import SponsorshipCard from '../../components/sponsorship/SponsorshipCard';
 import SponsorshipCheckout from '../../components/sponsorship/SponsorshipCheckout';
 import SponsorshipMain from '../../components/sponsorship/SponsorshipMain';
 
-const SponsorshipPage = function () {
+const SponsorshipPage = () => {
   const [SponsorshipDisplay, setSponsorshipDisplay] = useState('sponsorship');
 
   const [organization, setOrganization] = useState('');

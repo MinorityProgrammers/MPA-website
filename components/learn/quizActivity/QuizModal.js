@@ -4,7 +4,7 @@ import { QuizContext } from '../courseDetails/ActivityDetails';
 import SimpleQuiz from './SimpleQuiz';
 
 export default function QuizModal() {
-  const { isOpen/* , setIsOpen  */ } = useContext(QuizContext);
+  const { isOpen } = useContext(QuizContext);
 
   return (
     <Modal

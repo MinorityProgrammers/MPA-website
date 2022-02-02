@@ -4,34 +4,7 @@ import axios from 'axios';
 import styles from './jobs.module.css';
 import Card from '../../Card/Card';
 
-// const contents = [
-//   {
-//     title: 'Front End Developer',
-//     status: '21',
-//     date: '4/12/2021',
-//     progress: 'in Progress',
-//   },
-//   {
-//     title: 'Front End Developer',
-//     status: '21',
-//     date: '4/12/2021',
-//     progress: 'in Progress',
-//   },
-//   {
-//     title: 'Front End Developer',
-//     status: '21',
-//     date: '4/12/2021',
-//     progress: 'in Progress',
-//   },
-//   {
-//     title: 'Front End Developer',
-//     status: '21',
-//     date: '4/12/2021',
-//     progress: 'in Progress',
-//   },
-// ];
-
-const Jobs = function ({ load }) {
+const Jobs = ({ load }) => {
   const [jobs, setJobs] = useState([]);
   useEffect(() => {
     const userToken = window.localStorage.getItem('jwtToken');

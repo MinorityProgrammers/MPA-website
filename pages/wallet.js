@@ -13,7 +13,6 @@ const index = () => {
   const [loading, setLoading] = useState(true);
   const [open, setOpen] = useState(false);
   const [, setData] = useState([]);
-  // states from global context
 
   const {
     authState: {
@@ -21,19 +20,14 @@ const index = () => {
     },
   } = useContext(GlobalContext);
 
-  // redirect unauthorized users
-
   const redirect = () => {
     window.location.href = '/';
   };
-  // spinner loading
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
     }, 500);
   }, []);
-
-  // grab a token from local storage so as user info
 
   useEffect(() => {
     document.title = 'Dashboard';
@@ -48,7 +42,6 @@ const index = () => {
 
   return (
     <Layout pageTitle="Dashboard">
-      {/* <DashboardNavbar /> */}
       <HomepageNav
         open={open}
         setData={setData}
@@ -56,12 +49,17 @@ const index = () => {
         page="CreateProfile"
       />
       <SidebarTwo open={open} setOpen={setOpen} links={links} active="Home" />
-      <div className="container dashboard-overall-container d-flex" style={{ padding: 0 }}>
+      <div
+        className="container dashboard-overall-container d-flex"
+        style={{ padding: 0 }}
+      >
         <div className="outer-dashboard-container">
           <div className="container inner-dashboard-container  tw-mt-28 tw-mb-10">
-            {loading
-              ? <></>
-              : <WalletComponent userData={userData} token={token} />}
+            {loading ? (
+              <></>
+            ) : (
+              <WalletComponent userData={userData} token={token} />
+            )}
           </div>
         </div>
       </div>
