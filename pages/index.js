@@ -5,7 +5,7 @@ import HomePageNewTopSection from '../components/homepage/HomePageNewTopSection'
 import HomePageAboutUs from '../components/homepage/HomePageAboutUs';
 import HomePageGetStarted from '../components/homepage/HomePageGetStarted';
 import HomePageParteners from '../components/homepage/HomePageParteners';
-import HomepageCore from '../components/homepage/HomepageCore';
+// import HomepageCore from '../components/homepage/HomepageCore';
 import HomepageExploreMinorityApps from '../components/homepage/HomepageExploreMinorityApps';
 import HomepageDonate from '../components/homepage/HomepageDonate';
 import HomepageNav from '../components/homepage/HomepageNav';
@@ -66,8 +66,8 @@ const HomepageFour = () => {
               {hide === false && <ComingSoon closeClick={handleClick} />}
               <HomePageNewTopSection />
               <HomePageAboutUs />
+              <HomepageExploreMinorityApps />
               <HomePageGetStarted />
-              <HomepageCore />
               <HomePageParteners />
               <HomePageReviews />
               {/* <HomepageTestimonials />
