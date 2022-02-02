@@ -21,13 +21,16 @@ import {
 } from '../contexts/utils/avatarFields';
 import { GlobalContext } from '../contexts/provider';
 import updateProfile from '../contexts/actions/profile/updateProfile';
+import ButtonComponent from './profile/ButtonComponent';
 
 const ProfileTwoGenerateAvatarPopUp = ({
   loggedInUserData,
   userID,
   setGenerateAvatarPopUp,
+  setChangeInProfile,
 }) => {
   const router = useRouter();
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const settingsSubPage = router.pathname.substring(
     router.pathname.lastIndexOf('/') + 1,
@@ -135,6 +138,12 @@ const ProfileTwoGenerateAvatarPopUp = ({
     formData.append('profilePicture', state.profilePicture);
     // submit all data
     updateProfile(userID, formData)(profileDispatch);
+    setTimeout(() => {
+      setGenerateAvatarPopUp(false);
+      setIsSubmitting(false);
+      router.push(`/user/${loggedInUserData.userName}`);
+      if (settingsSubPage === '[username]') { router.reload(); }
+    }, 3000);
   };
 
   const submitData = () => {
@@ -143,14 +152,12 @@ const ProfileTwoGenerateAvatarPopUp = ({
     const data = getSVG();
     const svg = new Blob([data], { type: 'image/svg+xml' });
     const svgURL = URL.createObjectURL(svg); */
+    setIsSubmitting(true);
     setState((prevState) => ({
       ...prevState,
       profilePicture: state.profilePicture,
     }));
     handleSubmit();
-    setGenerateAvatarPopUp(false);
-    router.push(`/user/${loggedInUserData.userName}`);
-    if (settingsSubPage === '[username]') { router.reload(); }
   };
   return (
     <div className="cp-body">
@@ -224,9 +231,7 @@ const ProfileTwoGenerateAvatarPopUp = ({
         </div>
       </CreateProfileForm>
       <div className="cp-navButtonsContainer">
-        <button type="button" className="cp-navButton" onClick={submitData}>
-          Finish
-        </button>
+        <ButtonComponent func={submitData} text="Finish" state={isSubmitting} />
       </div>
     </div>
   );

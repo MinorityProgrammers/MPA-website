@@ -1,24 +1,22 @@
 /* eslint-disable max-len */
-import React, {
-  useState, useEffect, useContext, useCallback,
-} from 'react';
-import { useMoralis } from 'react-moralis';
-import {
-  Button, Card, Modal, Row, Col,
-} from 'antd';
-import { SelectOutlined } from '@ant-design/icons';
-import { Signer } from 'casper-js-sdk';
-import { GlobalContext } from '../contexts/provider';
-import { useMoralisDapp } from '../MoralisDappProvider/MoralisDappProvider';
-import { getEllipsisTxt } from '../helpers/formatters';
-import Address from './Address/Address';
-import { errorToast } from '../contexts/utils/toasts';
-import changeAuthModal from '../contexts/actions/authModal/index';
+/* eslint-disable */
+import React, { useState, useEffect, useContext, useCallback } from "react";
+import { useMoralis } from "react-moralis";
+import { Button, Card, Modal, Row, Col } from "antd";
+import { SelectOutlined } from "@ant-design/icons";
+import { Signer } from "casper-js-sdk";
+import { GlobalContext } from "../contexts/provider";
+import { useMoralisDapp } from "../MoralisDappProvider/MoralisDappProvider";
+import { getEllipsisTxt } from "../helpers/formatters";
+import Address from "./Address/Address";
+import { errorToast } from "../contexts/utils/toasts";
+import changeAuthModal from "../contexts/actions/authModal/index";
 import {
   handleLockSigner,
   handleUnlockSigner,
   isConnectedCasper,
-} from '../contexts/actions/signer/index';
+} from "../contexts/actions/signer/index";
+import styles from "../styles/account/account.module.css";
 
 const Account = () => {
   const { authenticate, isAuthenticated, logout } = useMoralis();
@@ -34,19 +32,19 @@ const Account = () => {
   } = useContext(GlobalContext);
 
   const SIGNER_EVENTS = {
-    connected: 'signer:connected',
-    disconnected: 'signer:disconnected',
-    tabUpdated: 'signer:tabUpdated',
-    activeKeyChanged: 'signer:activeKeyChanged',
-    locked: 'signer:locked',
-    unlocked: 'signer:unlocked',
+    connected: "signer:connected",
+    disconnected: "signer:disconnected",
+    tabUpdated: "signer:tabUpdated",
+    activeKeyChanged: "signer:activeKeyChanged",
+    locked: "signer:locked",
+    unlocked: "signer:unlocked",
   };
 
   const dispatchUnlockSinger = useCallback(
     (event) => {
       handleUnlockSigner(event.detail)(setSignerState);
     },
-    [isConnected, setSignerState],
+    [isConnected, setSignerState]
   );
 
   const dispatchDisconnectedSinger = useCallback(() => {
@@ -59,15 +57,21 @@ const Account = () => {
       SIGNER_EVENTS.activeKeyChanged,
       SIGNER_EVENTS.connected,
     ].forEach((event) => window.addEventListener(event, dispatchUnlockSinger));
-    [SIGNER_EVENTS.locked, SIGNER_EVENTS.disconnected].forEach((event) => window.addEventListener(event, dispatchDisconnectedSinger));
+    [SIGNER_EVENTS.locked, SIGNER_EVENTS.disconnected].forEach((event) =>
+      window.addEventListener(event, dispatchDisconnectedSinger)
+    );
 
     return () => {
       [
         SIGNER_EVENTS.unlocked,
         SIGNER_EVENTS.activeKeyChanged,
         SIGNER_EVENTS.connected,
-      ].forEach((event) => window.removeEventListener(event, dispatchUnlockSinger));
-      [SIGNER_EVENTS.locked, SIGNER_EVENTS.disconnected].forEach((event) => window.removeEventListener(event, dispatchDisconnectedSinger));
+      ].forEach((event) =>
+        window.removeEventListener(event, dispatchUnlockSinger)
+      );
+      [SIGNER_EVENTS.locked, SIGNER_EVENTS.disconnected].forEach((event) =>
+        window.removeEventListener(event, dispatchDisconnectedSinger)
+      );
     };
   });
 
@@ -77,7 +81,9 @@ const Account = () => {
         SIGNER_EVENTS.unlocked,
         SIGNER_EVENTS.activeKeyChanged,
         SIGNER_EVENTS.connected,
-      ].forEach((event) => window.addEventListener(event, dispatchUnlockSinger));
+      ].forEach((event) =>
+        window.addEventListener(event, dispatchUnlockSinger)
+      );
     });
     if (error) {
       errorToast(error);
@@ -86,14 +92,14 @@ const Account = () => {
 
   const wallets = [
     {
-      icon: '/assets/images/metamask.png',
-      label: 'MetaMask',
-      id: 'MetaMask',
+      icon: "/assets/images/metamask.png",
+      label: "MetaMask",
+      id: "MetaMask",
     },
     {
-      icon: '/assets/images/casper.png',
-      label: 'Casper',
-      id: 'Casper',
+      icon: "/assets/images/casper.png",
+      label: "Casper",
+      id: "Casper",
     },
   ];
 
@@ -107,26 +113,26 @@ const Account = () => {
 
   const metamaskConnectWallet = async () => {
     if (
-      chainId === process.env.NEXT_PUBLIC_NETWORK_ID_MAINNET
-      || chainId === process.env.NEXT_PUBLIC_NETWORK_ID_TESTNET
+      chainId === process.env.NEXT_PUBLIC_NETWORK_ID_MAINNET ||
+      chainId === process.env.NEXT_PUBLIC_NETWORK_ID_TESTNET
     ) {
-      authenticate({ signingMessage: 'connected!' });
+      authenticate({ signingMessage: "connected!" });
       if (isConnected === true) {
         await window.casperlabsHelper.disconnectFromSite();
       }
     } else {
-      errorToast('Wrong Chain, please connect to Polygon chain');
+      errorToast("Wrong Chain, please connect to Polygon chain");
       logout();
     }
   };
 
   useEffect(async () => {
     if (
-      chainId !== process.env.NEXT_PUBLIC_NETWORK_ID_MAINNET
-      && chainId !== process.env.NEXT_PUBLIC_NETWORK_ID_TESTNET
-      && showModal === true
+      chainId !== process.env.NEXT_PUBLIC_NETWORK_ID_MAINNET &&
+      chainId !== process.env.NEXT_PUBLIC_NETWORK_ID_TESTNET &&
+      showModal === true
     ) {
-      errorToast('Wrong Chain, please connect to Polygon chain');
+      errorToast("Wrong Chain, please connect to Polygon chain");
 
       try {
         logout();
@@ -150,84 +156,81 @@ const Account = () => {
     return (
       <>
         <div
-          className="tw-text-white tw-text-center tw-font-bold tw-py-2 tw-px-5 tw-w-11/12 tw-cursor-pointer connect__button"
+          className="tw-text-white  tw-text-center tw-font-bold tw-py-2 tw-px-5 tw-w-11/12 tw-cursor-pointer connect__button"
           onClick={() => {
             openAuthModal();
           }}
         >
           <p className="tw-text-sm">Connect Wallet</p>
         </div>
-        <Modal
-          title={false}
-          footer={false}
-          visible={showModal}
-          onCancel={closeAuthModal}
-          closable={false}
-        >
-          <Row className="tw-mb-5">
-            <Col span={20} className="tw-flex-1 tw-font-bold tw-text-lg">
-              Connect wallet
-            </Col>
-            <Col span={4} className="flex-1">
-              <svg
+        <div>
+          <Modal
+            style={{
+              background: "#1c1d37",
+              border: "1px solid #A259FF",
+              borderRadius: "20px",
+            }}
+            bodyStyle={{
+              marginTop: "30px",
+              background: "#1c1d37",
+            }}
+            title={false}
+            footer={false}
+            visible={showModal}
+            onCancel={closeAuthModal}
+            closable={false}
+            width={"700px"}
+          >
+            <div className={styles.modalHeader}>
+              <div />
+              <div className={styles.modalWrapper}>
+                <div className={styles.modalImage}>
+                  <img src="/assets/images/mpicon.svg" alt="logo" />
+                </div>
+                <h2 className="tw-flex-1 tw-text-white tw-text-center tw-w-full tw-font-bold tw-text-lg">
+                  Connect Wallet
+                </h2>
+              </div>
+              <h1
+                className="tw-text-white tw-font-bold tw-text-2xl hover:tw-text-gray-500 tw-cursor-pointer"
                 onClick={closeAuthModal}
-                xmlns="http://www.w3.org/2000/svg"
-                className="tw-h-5 tw-w-5 tw-ml-6 tw-cursor-pointer"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M18 12H6"
-                />
-              </svg>
-            </Col>
-          </Row>
-          <Row justify="center">
-            {wallets.map((wallet) => (
-              <Col
-                key={wallet.id}
-                align="middle"
-                span={11}
-                className="tw-py-3 tw-cursor-pointer hover:tw-bg-gray-100 hover:tw-shadow-xl tw-transition-all tw-duration-500 tw-mb-10"
-                onClick={() => (wallet.id === 'MetaMask'
-                  ? metamaskConnectWallet()
-                  : casperConnectWallet())}
-              >
-                <img
-                  alt="wallet"
-                  className="tw-w-32 tw-h-32"
-                  src={wallet.icon}
-                />
-                <div className="tw-mt-2 tw-font-bold">{wallet.label}</div>
-              </Col>
-            ))}
-          </Row>
-          <div className="tw-text-center tw-font-bold tw-pt-10">
-            <span className="tw-cursor-pointer hover:tw-text-gray-500 tw-transition-all tw-duration-500">
-              Dont have a wallet? Get one
-            </span>
-            <div className="tw-flex tw-flex-row tw-justify-evenly tw-w-full tw-mt-4">
-              <a href="https://metamask.io/" target="_blank" rel="noreferrer">
-                <span className="tw-cursor-pointer hover:tw-text-gray-500 tw-transition-all tw-duration-500">
-                  Metamask
-                </span>
-              </a>
-              <a
-                href="https://casper.network/en/network"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <span className="tw-cursor-pointer hover:tw-text-gray-500 tw-transition-all tw-duration-500">
-                  Casper
-                </span>
-              </a>
+                X
+              </h1>
             </div>
-          </div>
-        </Modal>
+            <Row className="tw-mb-5">
+              <Col span={4} className="flex-1"></Col>
+            </Row>
+            <Row justify="center">
+              {wallets.map((wallet) => (
+                <div
+                  key={wallet.id}
+                  className={`${styles.account} tw-py-3 tw-cursor-pointer tw-mr-6 hover:tw-shadow-xl tw-transition-all tw-duration-500 tw-mb-10`}
+                  onClick={() =>
+                    wallet.id === "MetaMask"
+                      ? metamaskConnectWallet()
+                      : casperConnectWallet()
+                  }
+                >
+                  <img
+                    alt="wallet"
+                    className={`tw-w-32 tw-h-32`}
+                    src={wallet.icon}
+                  />
+                  <div className="tw-mt-2 tw-text-white tw-font-bold">
+                    {wallet.label}
+                  </div>
+                </div>
+              ))}
+            </Row>
+            <div className="tw-text-center tw-font-bold tw-pt-2">
+              <span className=" tw-text-white  tw-transition-all tw-duration-500">
+                Dont have a wallet? Sign up using{"  "}
+                <span className="tw-text-blue-600">Email</span>
+              </span>
+            </div>
+          </Modal>
+        </div>
       </>
     );
   }
@@ -235,7 +238,7 @@ const Account = () => {
   return (
     <>
       <div
-        className="tw-bg-blue-600 hover:tw-bg-blue-700 tw-text-white tw-font-bold tw-text-center tw-py-2 tw-px-2 tw-rounded tw-cursor-pointer tw-w-11/12"
+        className="new-bg tw-text-white tw-font-bold tw-text-center tw-py-2 tw-px-2 tw-rounded tw-cursor-pointer tw-w-11/12"
         onClick={() => setIsModalVisible(true)}
       >
         <p className="tw-text-sm">
@@ -249,36 +252,36 @@ const Account = () => {
         footer={null}
         onCancel={() => setIsModalVisible(false)}
         bodyStyle={{
-          padding: '15px',
-          fontSize: '17px',
-          fontWeight: '500',
+          padding: "15px",
+          fontSize: "17px",
+          fontWeight: "500",
         }}
-        style={{ fontSize: '16px', fontWeight: '500', zIndex: '100' }}
+        style={{ fontSize: "16px", fontWeight: "500", zIndex: "100" }}
         width="400px"
       >
         Account
         <Card
           style={{
-            marginTop: '10px',
-            borderRadius: '1rem',
+            marginTop: "10px",
+            borderRadius: "1rem",
           }}
-          bodyStyle={{ padding: '15px' }}
+          bodyStyle={{ padding: "15px" }}
         >
           <Address
             avatar="left"
             size={6}
             copyable
-            style={{ fontSize: '20px' }}
+            style={{ fontSize: "20px" }}
             address={activeKey}
           />
-          <div style={{ marginTop: '10px', padding: '0 10px' }}>
+          <div style={{ marginTop: "10px", padding: "0 10px" }}>
             {!isConnected && activeKey === null ? (
               <a
                 href={`${process.env.NETWORK_URL}/address/${walletAddress}`}
                 target="_blank"
                 rel="noreferrer"
               >
-                <SelectOutlined style={{ marginRight: '5px' }} />
+                <SelectOutlined style={{ marginRight: "5px" }} />
                 View on Explorer
               </a>
             ) : (
@@ -287,7 +290,7 @@ const Account = () => {
                 target="_blank"
                 rel="noreferrer"
               >
-                <SelectOutlined style={{ marginRight: '5px' }} />
+                <SelectOutlined style={{ marginRight: "5px" }} />
                 View on CSPR live
               </a>
             )}
@@ -297,18 +300,19 @@ const Account = () => {
           size="large"
           type="primary"
           style={{
-            width: '100%',
-            marginTop: '10px',
-            borderRadius: '0.5rem',
-            fontSize: '16px',
-            fontWeight: '500',
-            backgroundColor: '#2364EB',
+            width: "100%",
+            marginTop: "10px",
+            borderRadius: "0.5rem",
+            fontSize: "16px",
+            fontWeight: "500",
+            backgroundColor: "#2364EB",
           }}
           onClick={async () => {
             logout();
             await window.casperlabsHelper.disconnectFromSite();
             [SIGNER_EVENTS.locked, SIGNER_EVENTS.disconnected].forEach(
-              (event) => window.addEventListener(event, dispatchDisconnectedSinger),
+              (event) =>
+                window.addEventListener(event, dispatchDisconnectedSinger)
             );
             setIsModalVisible(false);
           }}
