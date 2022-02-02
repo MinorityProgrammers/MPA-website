@@ -74,11 +74,20 @@ const HomepageDonate = () => {
           <h2 className="top__part__title">
             Donate
           </h2>
-          <p className="donate__container-subtitle">
-            We rely on donations from everyday people just like you to fund our strategic activism.
-            Please make a recurring donation to our organization so we can continue to fight to
-            bring marginalized communities into the STEM workforce.
-          </p>
+          <div className="tw-flex">
+            <img
+              src="/assets/images/home-page/about-title-icon.svg"
+              style={{ marginTop: '-30px' }}
+              className="donate__header-img"
+              alt="blockchain"
+            />
+            <p className="donate__container-subtitle md:tw-text-base">
+              We rely on donations from everyday people just
+              like you to fund our strategic activism.
+              Please make a recurring donation to our organization so we can continue to fight to
+              bring marginalized communities into the STEM workforce.
+            </p>
+          </div>
         </div>
         <div className="container">
           <div className="row step__header">
