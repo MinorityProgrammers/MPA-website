@@ -72,7 +72,7 @@ const HomePageParteners = () => {
               ))}
             </div>
             <p className="tw-text-xl see-all" onClick={() => setIndex(index === 8 ? sponsors.length : 8)}>
-              <div className="see-all__line" />
+              <span className="see-all__line" />
               See
               {index === 8 ? ' All' : ' Less'}
             </p>

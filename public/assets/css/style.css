@@ -4641,7 +4641,6 @@ a:visited {
   -ms-flex-align: center;
   align-items: center;
   position: relative;
-  width: 800px;
   justify-content: space-between;
 }
 
@@ -4658,13 +4657,8 @@ a:visited {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-.medium-icon:hover {
-  fill: linear-gradient(273.08deg, #ff47a7 -19.63%, #474bff 141.17%);
-  /* -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; */
-}
 .site-footer__social a + a {
-  margin-left: 40px;
+  /* margin-left: 40px; */
 }
 .site-footer__scroll-top {
   display: -webkit-box;
@@ -4758,7 +4752,7 @@ a:visited {
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  justify-content: center;
+  justify-content: left;
 }
 .footer-widget__gallery {
   position: relative;
@@ -4827,7 +4821,7 @@ a:visited {
   transition: all 0.4s ease;
 }
 .footer-widget__link-list li a:hover {
-  color: #FF2FEA;
+  color: #8040D2;
 }
 .footer-widget__course-list li + li {
   margin-top: 38px;
@@ -7986,6 +7980,7 @@ html {
   cursor: pointer;
 }
 .see-all__line{
+  display: block;
   background-image: url('/assets/images/home-page/line.png');
   height: 2px;
   background-size: contain;
