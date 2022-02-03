@@ -38,13 +38,20 @@ const FeaturedCourses = ({
     ],
   };
   const sameUserCourses = courses
-    && courses.filter((course) => enrolledCourses.some((eCourse) => course._id === eCourse.courseId._id));
+    && courses.filter((course) => enrolledCourses.some((eCourse) => (
+      course._id === eCourse.courseId._id)));
 
   return (
     <div>
+      <div className="tw-relative">
+        <div className="bg-circle-featured-top" />
+      </div>
+      <div className="tw-relative">
+        <div className="bg-circle-featured-right" />
+      </div>
       <div className="mb-5 pb-3">
-        <div className="course-category d-flex font-weight-bold tw-justify-center">
-          <h1 className="courseCategory-title ">Featured Courses</h1>
+        <div className="course-category d-flex font-weight-bold">
+          <h1 className="courseCategory-title">Featured Courses</h1>
         </div>
         <div
           className={

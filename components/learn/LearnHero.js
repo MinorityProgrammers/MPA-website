@@ -7,7 +7,10 @@ const LearnHero = () => {
   return (
     <section className="incubator-wrapper">
       <div className="mentorshipP-header">
-        <div className="container ">
+        <div className="container tw-relative">
+          <div>
+            <img src="/assets/images/bg-shadow-circle.png" className="tw-absolute" style={{ top: '10%' }} alt="background" />
+          </div>
           <div className="consultancyHero-container">
             <div>
               <h1 className="consultancyHero-title">Learn</h1>

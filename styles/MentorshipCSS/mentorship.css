@@ -121,12 +121,13 @@
   margin-bottom: 100px;
 }
 .consultancyHero-title {
+  color: #fff;
   font-family: 'Graphik', sans-serif;
   font-size: 3em;
   font-weight: 700;
 }
 .consultancyHero-txt {
-  color: #3e385d;
+  color: #ffffff;
   font-size: 100%;
   width: 30vw;
   font-size: 1.1rem;

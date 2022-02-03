@@ -33,9 +33,9 @@ const UserCourses = ({ enrolledCourses, user }) => {
   };
 
   return (
-    <div>
+    <div className="tw-relative">
       <div className="mb-5 pb-3">
-        <div className="course-category d-flex font-weight-bold tw-justify-center">
+        <div className="course-category d-flex font-weight-bold">
           <h1 className="courseCategory-title">My Courses</h1>
         </div>
         <div

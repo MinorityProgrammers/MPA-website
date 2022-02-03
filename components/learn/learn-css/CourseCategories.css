@@ -1,5 +1,5 @@
 .courses{
-    background-color: #EFEFEF;
+    background: #14152B;
     color: white;
 }
 .search-input{
@@ -139,9 +139,57 @@
 }
 .courseCategory-title{
     font-size: 20px;
-    color: #151371;
+    color: #ffffff;
     text-align: center !important;
 }
+.courses .bg-circle-featured-top{
+    background: rgb(143 0 255 / 61%);
+    mix-blend-mode: hard-light;
+    box-shadow: inset 0px 4px 4px rgb(0 0 0 / 25%);
+    filter: blur(113.94px);
+    position: absolute;
+    border-radius: 50%;
+    right: 30%;
+    top: -60px;
+    width: 140px;
+    height: 140px;
+}
+.courses .bg-circle-featured-right{
+    position: absolute;
+    width: 130.95px;
+    height: 140.28px;
+    background: rgb(204 0 255 / 87%);
+    border-radius: 50%;
+    mix-blend-mode: hard-light;
+    box-shadow: inset 0px 4px 4px rgb(0 0 0 / 25%);
+    filter: blur(113.94px);
+    right: 0%;
+    top: 20%;
+}
+.courses .bg-circle-recomended-left{
+    position: absolute;
+    width: 130.95px;
+    height: 140.28px;
+    background: rgb(204 0 255 / 87%);
+    border-radius: 50%;
+    mix-blend-mode: hard-light;
+    box-shadow: inset 0px 4px 4px rgb(0 0 0 / 25%);
+    filter: blur(113.94px);
+    left: 15%;
+}
+.courses .bg-circle-recomended-right{
+    top: 60px;
+    right: 0%;
+    height: 120px;
+    width: 120px;
+    background: rgb(143 0 255);
+    mix-blend-mode: hard-light;
+    box-shadow: inset 0px 4px 4px rgb(0 0 0 / 25%);
+    filter: blur(113.94px);
+    position: absolute;
+    border-radius: 50%;
+}
+
 .learnSearch-btn {
     background-color: white;
     display: flex;

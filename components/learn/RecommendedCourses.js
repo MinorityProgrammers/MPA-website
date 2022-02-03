@@ -38,9 +38,23 @@ const RecommendedCourses = ({
 
   return (
     <div>
+      <div className="tw-relative">
+        <div className="bg-circle-recomended-left" />
+      </div>
+      <div className="tw-relative">
+        <div className="bg-circle-recomended-right" />
+      </div>
       <div className="mb-5 pb-3">
-        <div className="course-category d-flex font-weight-bold tw-justify-center">
-          <h1 className="courseCategory-title ">Recommended Courses</h1>
+        <div className="course-category d-flex font-weight-bold" style={{ marginLeft: '-80px' }}>
+
+          <img
+            src="/assets/images/home-page/about-title-icon.svg"
+            style={{ maxWidth: '100px', marginRight: '-20px' }}
+            alt="bg"
+          />
+          <div className="tw-flex">
+            <h1 className="courseCategory-title" style={{ marginTop: '30%' }}>Recommended Courses</h1>
+          </div>
         </div>
         <div
           className={
