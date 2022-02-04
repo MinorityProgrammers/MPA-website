@@ -1,16 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import Link from 'next/link';
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import Link from "next/link";
+import axios from "axios";
 
 const UserCoursesList = ({ enrolledCourse }) => {
   const [modules, setModules] = useState([]);
   const [userModules, setUserModules] = useState([]);
-  const {
-    name, description, earn, _id,
-  } = enrolledCourse.courseId;
+  const { name, description, earn, _id, tags } = enrolledCourse.courseId;
 
   useEffect(() => {
-    const userToken = JSON.parse(localStorage.getItem('userInfo')).token;
+    const userToken = JSON.parse(localStorage.getItem("userInfo")).token;
     axios
       .get(`${process.env.BASE_URI}/course/${_id}/module`, {
         headers: {
@@ -23,7 +21,7 @@ const UserCoursesList = ({ enrolledCourse }) => {
   }, [_id]);
 
   useEffect(() => {
-    const userToken = JSON.parse(localStorage.getItem('userInfo')).token;
+    const userToken = JSON.parse(localStorage.getItem("userInfo")).token;
     axios
       .get(`${process.env.BASE_URI}/learn/${_id}/userModules`, {
         headers: {
@@ -35,7 +33,9 @@ const UserCoursesList = ({ enrolledCourse }) => {
       });
   }, [_id]);
 
-  const totalUserModules = userModules.filter((eModule) => modules.some((module) => eModule.moduleId._id === module._id));
+  const totalUserModules = userModules.filter((eModule) =>
+    modules.some((module) => eModule.moduleId._id === module._id)
+  );
   const totalModulesLength = modules.length;
 
   // user progress
@@ -50,26 +50,29 @@ const UserCoursesList = ({ enrolledCourse }) => {
   const userPercentages = Math.round(completionRate / totalModulesLength);
 
   return (
-    <div className="courses-items px-3 mb-4 mx-2 tw-bg-white tw-shadow-lg">
-      <div className="pt-3">
-        <div className="earn-rate ml-auto d-flex align-items-center">
-          <img
-            src="https://i.ibb.co/Yjpy6PN/dot.png"
-            className="img-fluid ml-2"
-            alt=""
-          />
-          <span className="pl-4">
-            Earn
-            {earn}
-          </span>
-        </div>
-      </div>
-      <div className="d-pb-1 ml-2">
-        <h3 className="course-name mt-3 mb-0">{name}</h3>
+    <div className="courses-items px-3 mx-2 mb-4 pt-1 tw-bg-white tw-shadow-lg">
+      <div className="d-pb-1 ml-2 tw-mt-3 tw-flex tw-justify-between tw-items-center">
+        <h3 className="course-name mb-0">{name}</h3>
+        <span className="course-earn-style tw-font-semibold tw-text-base">
+          <span className="mr-1"> Earn</span>
+          {earn}
+        </span>
       </div>
       <p className="course-des ml-2">{description}</p>
-
-      <div className="text-center pb-4">
+      <p className="tw-flex tw-flex-row tw-mt-2">
+        {tags.map((tag) => (
+          <p className="tw-mr-2 course-tag-style">{tag}</p>
+        ))}
+      </p>
+      <div className="text-center  tw-flex tw-flex-row tw-items-center tw-justify-between tw-mt-4">
+        {!Number.isNaN(userPercentages) && (
+          <p
+            className="text-center pb-1"
+            style={{ fontSize: "18px", fontWeight: "600" }}
+          >
+            {userPercentages}% Completed
+          </p>
+        )}
         <Link href={`/courses/${_id}`}>
           <button type="button" className="btn px-5 banner-btn mt-3">
             Learn
@@ -78,16 +81,7 @@ const UserCoursesList = ({ enrolledCourse }) => {
       </div>
 
       <div>
-        <div className="module-rate d-flex justify-content-center">
-          <span>
-            {completedModules}
-            /
-            {totalModulesLength}
-            {' '}
-            Modules
-          </span>
-        </div>
-        <div className="progress mt-1 mb-1 mx-4">
+        <div className="progress tw-mt-6">
           <div
             className="progress-bar"
             style={{ width: `${userPercentages}%` }}
@@ -97,15 +91,6 @@ const UserCoursesList = ({ enrolledCourse }) => {
             aria-valuemax="100"
           />
         </div>
-        {!Number.isNaN(userPercentages) && (
-          <p
-            className="text-center pb-3"
-            style={{ fontSize: '14px', fontWeight: '300' }}
-          >
-            {userPercentages}
-            % Completed
-          </p>
-        )}
       </div>
     </div>
   );

@@ -1,8 +1,8 @@
-import React from 'react';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import UserCoursesList from './UserCourseList';
+import React from "react";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import UserCoursesList from "./UserCourseList";
 
 const UserCourses = ({ enrolledCourses, user }) => {
   const coursesLength = enrolledCourses.length;
@@ -14,6 +14,7 @@ const UserCourses = ({ enrolledCourses, user }) => {
     infinite: coursesLength > 3,
     autoplay: true,
     slidesToScroll: 1,
+    variableWidth: true,
     responsive: [
       {
         breakpoint: 991,
@@ -41,13 +42,13 @@ const UserCourses = ({ enrolledCourses, user }) => {
         <div
           className={
             coursesLength > 2
-              ? 'mt-3 courses-info pt-2'
-              : 'mt-3 courses-info pt-2 user-courses'
+              ? "mt-3 courses-info pt-2"
+              : "mt-3 courses-info pt-2 user-courses"
           }
         >
           <Slider {...conditionalInfinite}>
-            {enrolledCourses
-              && enrolledCourses.map((course) => (
+            {enrolledCourses &&
+              enrolledCourses.map((course) => (
                 <UserCoursesList
                   enrolledCourse={course}
                   key={course._id}
