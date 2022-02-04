@@ -30,7 +30,7 @@ const HomepageNewTopSection = () => (
         <div className="tw-mt-11 tw-w-11/12 tw-grid tw-grid-cols-2 sm:tw-w-full">
           <div className="hero__join__button">
             {' '}
-            <p>Join Us</p>
+            <p><a href="https://snapshot.org/#/minorityprogrammers.eth">Join Us</a></p>
           </div>
           <div className="hero__connect__button">
             {' '}
