@@ -28,19 +28,22 @@ const FeaturedCourseList = ({
 
       <div className="text-center pb-4">
         {userCoursesId.includes(_id) ? (
-          <button
-            type="button"
-            disabled={enrolledBtn}
-            onClick={() => {
-              showModal();
-              handleCourseInfo(course);
-            }}
-            className="btn px-5 banner-btn mt-3"
-            data-toggle="modal"
-            data-target="#exampleModal"
-          >
-            Enrolled
-          </button>
+          <div className="course-items-footer">
+            <div />
+            <button
+              type="button"
+              disabled={enrolledBtn}
+              onClick={() => {
+                showModal();
+                handleCourseInfo(course);
+              }}
+              className="btn px-3 banner-btn mt-3"
+              data-toggle="modal"
+              data-target="#exampleModal"
+            >
+              Enrolled
+            </button>
+          </div>
         ) : !userCoursesId.includes(_id) ? (
           <div className="course-items-footer">
             <p className="course-earn-style">Earn {earn}</p>
