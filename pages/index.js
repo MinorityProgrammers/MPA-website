@@ -11,7 +11,7 @@ import HomepageNav from '../components/homepage/HomepageNav';
 import HomepageTestimonials from '../components/homepage/HomepageTestimonials';
 // import HomepageWave from '../components/homepage/HomepageWave';
 import HomePageReviews from '../components/homepage/HomePageReviews';
-import HomePageAboutUs from '../components/homepage/HomePageAboutUs';
+// import HomePageAboutUs from '../components/homepage/HomePageAboutUs';
 // import HomepageWave from '../components/homepage/HomepageWave';
 import Layout from '../components/Layout';
 import MpaBuilder from '../components/mpa-builder/builder';
