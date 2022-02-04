@@ -10,8 +10,11 @@ import UserCourses from './UserCourses';
 import RecommendedCourses from './RecommendedCourses';
 import CoursesSkeleton from './CoursesSkeleton';
 import FeaturedCourses from './FeaturedCourses';
+import Certificates from './Certificates';
 
-const CourseCategories = ({ user, enrolledCourses, usersCourses }) => {
+const CourseCategories = ({
+  user, enrolledCourses, usersCourses, tabsActive,
+}) => {
   const [isActive, setIsActive] = useState(false);
   const [loading, setLoading] = useState(true);
   const [singleCourse, setSingleCourse] = useState({});
@@ -20,6 +23,7 @@ const CourseCategories = ({ user, enrolledCourses, usersCourses }) => {
   const [enrolledCourse, setEnrolledCourse] = useState({});
   const [enrolledBtn, setEnrolledBtn] = useState(false);
   const [disable, setDisable] = useState(false);
+  const [certificate, setCertificate] = useState([]);
   const router = useRouter();
 
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -100,18 +104,43 @@ const CourseCategories = ({ user, enrolledCourses, usersCourses }) => {
     setIsActive(!isActive);
   };
 
+  console.log(recommendedCourses);
+
   const goToCourseInfo = () => {
     setEnrolledBtn(true);
     const userCourse = `/courses/${singleCourse._id}`;
     router.push(userCourse);
   };
 
+  // Certificates
+  useEffect(() => {
+    const userToken = JSON.parse(localStorage.getItem('userInfo'));
+    if (userToken !== null) {
+      axios
+        .get(`${process.env.BASE_URI}/certificate/getUserCertificate`, {
+          headers: {
+            Authorization: `Bearer ${userToken.token}`,
+          },
+        })
+        .then((res) => {
+          setCertificate(res.data.data);
+          setTimeout(() => {
+            setLoading(false);
+          }, 3000);
+        });
+    }
+  }, [
+    typeof window !== 'undefined'
+      ? window.localStorage.getItem('jwtToken')
+      : null,
+  ]);
+
   return (
     <>
       <div className="courses pb-5">
         <div className="container tw-mb-32">
 
-          <div className="row">
+          {/* <div className="row">
             <div className="col-md-3" />
             <div className="col-md-6 pb-2">
               <div className="search-items pt-5">
@@ -143,8 +172,8 @@ const CourseCategories = ({ user, enrolledCourses, usersCourses }) => {
               </div>
             </div>
             <div className="col-md-3" />
-          </div>
-          <div className="learn-items mb-5">
+          </div> */}
+          {/* <div className="learn-items mb-5">
             <ul className="tw-flex tw-flex-row tw-justify-center tw-pt-2">
               <li
                 className={`tw-cursor-pointer ${
@@ -159,22 +188,15 @@ const CourseCategories = ({ user, enrolledCourses, usersCourses }) => {
                   </p>
                 </Link>
               </li>
-              {!isActive && user !== null && (
-                <li
-                  className={`tw-cursor-pointer ${
-                    router.pathname.split('/').length === 3
-                      ? 'tw-bg-blue-700 tw-w-36 tw-text-center tw-p-2 tw-mx-2 tw-rounded-md tw-shadow-lg'
-                      : 'menu tw-text-center'
-                  }`}
-                >
-                  <Link href="/learn/certificates">
-                    <p>MY CERTIFICATES</p>
-                  </Link>
-                </li>
-              )}
             </ul>
-          </div>
-
+          </div> */}
+          {tabsActive.certificates && (
+          <Certificates
+            certificates={certificate}
+            loading={loading}
+          />
+          )}
+          {tabsActive.userCourses && (
           <div className="courses">
             {loading ? (
               <CoursesSkeleton title="My Courses" />
@@ -189,29 +211,13 @@ const CourseCategories = ({ user, enrolledCourses, usersCourses }) => {
                   </h1>
                 </div>
                 <div className="mt-3 courses-info">
-                  {user !== null && user !== undefined ? (
-                    <h1 className="tw-text-white">
-                      No enrolled courses yet
-                    </h1>
-                  ) : (
-                    <h1 className="tw-text-white">
-                      Login to view your courses
-                    </h1>
-                  )}
+                  <h1 className="tw-text-white">
+                    No enrolled courses yet
+                  </h1>
                 </div>
               </div>
             )}
-            {loading ? (
-              <CoursesSkeleton title="Featured Courses" />
-            ) : (
-              <FeaturedCourses
-                showModal={showModal}
-                courses={courses}
-                enrolledCourses={enrolledCourses}
-                handleCourseInfo={handleCourseInfo}
-                enrolledBtn={enrolledBtn}
-              />
-            )}
+
             {loading ? (
               <CoursesSkeleton title="Recommended Courses" />
             ) : (
@@ -224,7 +230,45 @@ const CourseCategories = ({ user, enrolledCourses, usersCourses }) => {
               )
             )}
           </div>
+          )}
+          {tabsActive.courses && (
+          <div className="courses">
+            {loading ? (
+              <CoursesSkeleton title="Recommended Courses" />
+            ) : (
+              recommendedCourses.length > 0 && (
+              <RecommendedCourses
+                showModal={showModal}
+                recommendedCourses={recommendedCourses}
+                handleCourseInfo={handleCourseInfo}
+              />
+              )
+            )}
 
+            {loading ? (
+              <CoursesSkeleton title="Featured Courses" />
+            ) : (
+              <FeaturedCourses
+                showModal={showModal}
+                courses={courses}
+                enrolledCourses={enrolledCourses}
+                handleCourseInfo={handleCourseInfo}
+                enrolledBtn={enrolledBtn}
+              />
+            )}
+            {/* {loading ? (
+              <CoursesSkeleton title="Recommended Courses" />
+            ) : (
+              recommendedCourses.length > 0 && (
+              <RecommendedCourses
+                showModal={showModal}
+                recommendedCourses={recommendedCourses}
+                handleCourseInfo={handleCourseInfo}
+              />
+              )
+            )} */}
+          </div>
+          ) }
         </div>
 
         {/* Modal */}
