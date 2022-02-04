@@ -26,7 +26,7 @@ const HomePageGetStarted = () => (
                 courses and Hackathons.
               </p>
               <div className="learn-bottom">
-                <a href="https://www.minorityprogrammers.com/course">Start Learning </a>
+                <a href="/learn">Start Learning </a>
                 <p>Explore Hackathons</p>
               </div>
             </div>
