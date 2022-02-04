@@ -7,6 +7,7 @@ import CourseCategories from '../../components/learn/CourseCategories';
 import SidebarTwo from '../../components/sidebar/SidebarTwo';
 import links from '../../contexts/utils/links';
 import LearnHero from '../../components/learn/LearnHero';
+import LearnHeroTabs from '../../components/learn/LearnHeroTabs';
 import useDetectOutsideClick from '../../components/UseDetectOutsideClick';
 
 const LearnPage = () => {
@@ -16,6 +17,9 @@ const LearnPage = () => {
   const [data, setData] = useState([]);
   const [usersCourses, setUsersCourses] = useState([]);
   const [enrolledCourses, setEnrolledCourses] = useState([]);
+  const [tabsActive, setTabsActive] = useState(
+    { courses: true, userCourses: false, certificates: false },
+  );
 
   const handleClick = () => {
     setHide(!hide);
@@ -67,15 +71,19 @@ const LearnPage = () => {
         open={open}
         setOpen={setOpen}
         links={links}
-        active="Home"
+        tabsActive="Home"
         handleClick={handleClick}
       />
       <div>
-        <LearnHero />
+        {!data && <LearnHero />}
+        {data && <LearnHeroTabs tabsActive={tabsActive} setTabsActive={setTabsActive} />}
+
         <CourseCategories
           user={data}
           usersCourses={usersCourses}
           enrolledCourses={enrolledCourses}
+          tabsActive={tabsActive}
+          setTabsActive={setTabsActive}
         />
       </div>
       <Footer />
