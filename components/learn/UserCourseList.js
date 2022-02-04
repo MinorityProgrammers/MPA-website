@@ -74,8 +74,8 @@ const UserCoursesList = ({ enrolledCourse }) => {
           </p>
         )}
         <Link href={`/courses/${_id}`}>
-          <button type="button" className="btn px-5 banner-btn mt-3">
-            Learn
+          <button type="button" className="btn px-3 banner-btn mt-3">
+            Learn <span className="tw-ml-2"> &#8594;</span>
           </button>
         </Link>
       </div>
