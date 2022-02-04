@@ -1,8 +1,8 @@
-import React from 'react';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import RecommendedCourseList from './RecommendedCourseList';
+import React from "react";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import RecommendedCourseList from "./RecommendedCourseList";
 
 const RecommendedCourses = ({
   recommendedCourses,
@@ -17,6 +17,7 @@ const RecommendedCourses = ({
     slidesToShow: 3,
     infinite: coursesLength > 3,
     autoplay: true,
+    variableWidth: true,
     slidesToScroll: 1,
     responsive: [
       {
@@ -59,13 +60,13 @@ const RecommendedCourses = ({
         <div
           className={
             coursesLength > 2
-              ? 'mt-3 pt-2 FRCourses'
-              : 'mt-3 courses-info pt-2 recommended-courses'
+              ? "mt-3 pt-2 FRCourses"
+              : "mt-3 courses-info pt-2 recommended-courses"
           }
         >
           <Slider {...conditionalInfinite}>
-            {recommendedCourses
-              && recommendedCourses.map((course) => (
+            {recommendedCourses &&
+              recommendedCourses.map((course) => (
                 <RecommendedCourseList
                   showModal={showModal}
                   course={course}

@@ -1,17 +1,22 @@
-import React from 'react';
+import React from "react";
 
 const RecommendedCourseList = ({ course, handleCourseInfo, showModal }) => {
-  const { earn, name, description } = course;
-
+  const { earn, name, description, tags } = course;
   return (
-    <div className="courses-items px-3 mb-4 mx-2 tw-bg-white tw-shadow-lg ">
+    <div className="courses-items px-3 mb-4 mx-2 tw-shadow-lg ">
       <div className="pt-3" />
-      <div className="d-pb-1 ml-2">
-        <h3 className="course-name mt-3 mb-0">{name}</h3>
+      <div className="d-pb-1 ml-2 tw-mb-1">
+        <h3 className="course-name mt-3 ">{name}</h3>
       </div>
-      <p className="course-des ml-2">{description}</p>
+      <p className="course-des ml-2 mb-3">{description}</p>
+      <p className="tw-flex tw-flex-row ">
+        {tags.map((tag) => (
+          <p className="tw-mr-2 course-tag-style">{tag}</p>
+        ))}
+      </p>
 
-      <div className="text-center pb-4">
+      <div className="course-items-footer">
+        <p className="course-earn-style">Earn {earn}</p>
         <button
           type="button"
           onClick={() => {
@@ -20,9 +25,9 @@ const RecommendedCourseList = ({ course, handleCourseInfo, showModal }) => {
           }}
           data-toggle="modal"
           data-target="#exampleModal"
-          className="btn px-5 banner-btn mt-3"
+          className=" px-3 banner-btn tw-mt-4 tw-mr-3"
         >
-          Enroll
+          Enroll Now <span className="tw-ml-2"> &#8594;</span>
         </button>
       </div>
     </div>

@@ -20,6 +20,7 @@ const FeaturedCourses = ({
     infinite: coursesLength > 3,
     autoplay: true,
     slidesToScroll: 1,
+    variableWidth: true,
     responsive: [
       {
         breakpoint: 991,
