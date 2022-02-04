@@ -26,7 +26,7 @@ const HomePageGetStarted = () => (
                 courses and Hackathons.
               </p>
               <div className="learn-bottom">
-                <a href="">Start Learning </a>
+                <a href="/learn">Start Learning </a>
                 <p>Explore Hackathons</p>
               </div>
             </div>
@@ -42,7 +42,7 @@ const HomePageGetStarted = () => (
                 is a reward for everyone. Sign up for our mentorship Program.
               </p>
               <div className="learn-bottom">
-                <a href="">Get started</a>
+                <a href="/mentorship">Get started</a>
               </div>
             </div>
             <div className="col-lg-6"><img style={{ marginBottom: '-140px' }} src="/assets/images/home-page/get-started2.png" alt="learn" /></div>

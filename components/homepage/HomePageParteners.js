@@ -32,7 +32,7 @@ const HomePageParteners = () => {
                 If your goal is to Invest in Minority Startup, or hire talent
                 to build your product and more, consider partnering with us.
               </p>
-              <a className="btn-become-partner" href="">Become a partner</a>
+              <a className="btn-become-partner" href="/partner">Become a partner</a>
             </div>
 
           </div>
