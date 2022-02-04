@@ -118,6 +118,13 @@
   width: 110px;
 }
 
+.course-earn-style:hover {
+  background: #8040d2;
+  cursor: pointer;
+  border: 1px solid #8040d2;
+  transition: all 0.6s ease-in-out;
+}
+
 .module-rate span {
   font-size: 17px;
   font-weight: 300 !important;
