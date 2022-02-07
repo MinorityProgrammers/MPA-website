@@ -34,6 +34,12 @@
   top: -13.8%;
   right: 4.5%;
 }
+.course-tag-style:hover {
+  color: black;
+  background-color: #ffffff;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
 .courses-info .slick-prev {
   left: 91%;
   top: -13.8%;
@@ -54,7 +60,11 @@
   opacity: 0.8;
 }
 .progress-bar {
-  background-color: #06a94f;
+  background: linear-gradient(
+    270deg,
+    #fd05b3 1.84%,
+    rgba(253, 5, 179, 0.15) 100%
+  );
 }
 .btn-outline-white {
   color: #fff !important;
@@ -106,6 +116,13 @@
   border-radius: 12px;
   padding: 10px 14px;
   width: 110px;
+}
+
+.course-earn-style:hover {
+  background: #8040d2;
+  cursor: pointer;
+  border: 1px solid #8040d2;
+  transition: all 0.6s ease-in-out;
 }
 
 .module-rate span {

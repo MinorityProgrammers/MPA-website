@@ -27,5 +27,8 @@
   margin-left: 12rem;
 }
 .courses-items .progress {
-  height: 0.2rem !important;
+  height: 0.75rem !important;
+  margin-top: 1.65rem;
+  background: rgba(162, 89, 255, 0.4);
+  border-radius: 17px;
 }
