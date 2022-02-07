@@ -54,7 +54,7 @@ const HomepageNewTopSection = () => (
       <div className="tw-pt-20 tw-z-10 tw-h-full homepage__hero__img">
         {/* image sections */}
         <img
-          src="/assets/images/home-page/meta.svg"
+          src="/assets/images/home-page/MPA-image.png"
           alt="blockchain"
           className="tw-w-full tw-h-ful tw-max-w-lg"
         />
