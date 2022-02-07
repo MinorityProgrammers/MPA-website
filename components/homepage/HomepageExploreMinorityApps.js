@@ -79,14 +79,16 @@ const HomepageExploreMinorityApps = () => {
                 >
                   Join Our Discord
                 </a>
-                <p style={
-                  {
-                    margin: 0, color: 'black', fontSize: '20px', textAlign: 'center', width: '50%', fontWeight: '700',
+                <a href="https://genadrop.vercel.app/" target="_blank" rel="noreferrer">
+                  <p style={
+                    {
+                      margin: 0, color: 'black', fontSize: '20px', textAlign: 'center', width: '50%', fontWeight: '700',
+                    }
                   }
-                }
-                >
-                  Learn More
-                </p>
+                  >
+                    Learn More
+                  </p>
+                </a>
               </div>
             </div>
 
@@ -156,7 +158,7 @@ const HomepageExploreMinorityApps = () => {
           </div>
         </div>
       </div>
-    </section>
+    </section >
   );
 };
 
