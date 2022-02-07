@@ -9349,8 +9349,9 @@ p.donate__container-subtitle {
   padding-left: 4em;
   padding-bottom: 4em;
   border-radius: 2em;
-  background: white;
-  color: black;
+  background: #14152B;
+  color: white;
+  border: 1.2px solid #8040d2;
 }
 
 .popup_heading-core {
@@ -9395,7 +9396,7 @@ p.donate__container-subtitle {
 }
 
 .popup_image_container-core.blue::before {
-  border: 2px solid #474bfd;
+  border: 2px solid #8040D2;
 }
 
 .popup_image_container-core:hover::before {
@@ -9423,7 +9424,7 @@ p.donate__container-subtitle {
 
 .popup_image_container-core.blue,
 .popup_title_container-core.blue {
-  background: #474bfd;
+  background: #8040D2;
 }
 
 .popup_title-core {
