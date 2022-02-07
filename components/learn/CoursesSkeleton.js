@@ -1,8 +1,8 @@
-import React from 'react';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import RecommendedCoursesListSkeleton from './RecommendedCoursesListSkeleton';
+import React from "react";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import RecommendedCoursesListSkeleton from "./RecommendedCoursesListSkeleton";
 
 const CoursesSkeleton = ({ title }) => {
   const coursesLength = 4;
@@ -10,8 +10,8 @@ const CoursesSkeleton = ({ title }) => {
   const conditionalInfinite = {
     dots: false,
     speed: 2000,
-    slidesToShow: 3,
-    infinite: coursesLength > 3,
+    slidesToShow: 2,
+    infinite: coursesLength > 2,
     autoplay: true,
     slidesToScroll: 1,
     responsive: [

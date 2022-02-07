@@ -12,6 +12,39 @@
   width: 480px;
 }
 
+@media only screen and (max-width: 500px) {
+  .courses-items {
+    width: 90%;
+    height: 18rem !important;
+    margin-left: 20px;
+  }
+  .courses-width {
+    width: 100%;
+  }
+}
+@media only screen and (min-width: 700px) {
+  .courses-items {
+    width: 90%;
+    height: 300px !important;
+    margin-left: 20px;
+    position: relative;
+  }
+  .course-items-footer {
+    position: absolute;
+    display: flex;
+    bottom: 20px;
+  }
+  .course-earn-style {
+    margin-right: 70px;
+  }
+  .banner-btn {
+    padding: 5px 19px !important;
+  }
+  .enroll-arrow {
+    display: none;
+  }
+}
+
 .earn-rate {
   background-color: #9cff83;
   border-radius: 10px;
