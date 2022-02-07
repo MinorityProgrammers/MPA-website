@@ -75,7 +75,6 @@ const HomepageFour = () => {
               <HomePageReviews />
               {/* <HomepageTestimonials />
               <HomepageDonate /> */}
-              <HomepageExploreMinorityApps />
               {/* <HomepageWave /> */}
               {/* <HomepageTeam /> */}
               <HomepageDonate />

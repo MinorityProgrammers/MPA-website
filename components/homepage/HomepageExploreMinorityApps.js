@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { saveAs } from "file-saver";
+import { saveAs } from 'file-saver';
 import { AiOutlineDownload } from 'react-icons/ai';
 import Countdown from 'react-countdown';
 
@@ -13,13 +13,26 @@ const HomepageExploreMinorityApps = () => {
   const renderer = (
     {
       days, hours, minutes, seconds, completed,
-    }
+    },
   ) => {
     if (completed) { // Render a completed state
       return <Completionist />;
-    } else { // Render a countdown
-      return <span>{days}d  {hours}hr  {minutes}m  {seconds}s</span>;
-    }
+    } // Render a countdown
+    return (
+      <span>
+        {days}
+        d
+        {' '}
+        {hours}
+        hr
+        {' '}
+        {minutes}
+        m
+        {' '}
+        {seconds}
+        s
+      </span>
+    );
   };
 
   return (
@@ -38,70 +51,75 @@ const HomepageExploreMinorityApps = () => {
               />
               Explore Minority Apps
             </div>
-            <strong style={{ fontSize: '52px', textAlign: 'center' }}>
+            <strong className="tw-text-center tw-text-4xl lg:tw-text-xl">
               We love NFTs
             </strong>
           </h2>
           <div
-            className="d-flex flex-row"
+            className="tw-flex tw-flex-row md:tw-flex-col"
             style={{
-              background: 'white', padding: '20px', borderRadius: '40px', margin: '20px', width: '100%',
+              background: 'white', padding: '10px', borderRadius: '40px', margin: '5px', width: '100%',
             }}
           >
-            <div className="d-flex flex-column" style={{ width: '55%', padding: '30px' }}>
-              <p style={
+            <div className="tw-flex tw-flex-col tw-w-1/2 lg:tw-w-full tw-p-5">
+              <p
+                className="tw-text-3xl tw-text-gray-600 tw-mb-10 lg:tw-text-xl "
+                style={
                 {
-                  fontSize: '52px', margin: '0', color: '#926DC2', fontWeight: '500', lineHeight: '72px', marginBottom: '20px',
+                  margin: '0', color: '#926DC2', fontWeight: '500',
                 }
               }
               >
                 GET IN EARLY !!!
               </p>
-              <p style={
-                {
-                  fontSize: '32px', margin: '0', color: 'black', lineHeight: '60px', marginBottom: '20px'
-                }
-              }
+              <p
+                className="tw-text-2xl tw-text-gray-600 tw-mb-10 lg:tw-text-xl "
               >
                 The official NFT drop for creative and builders promoting diversity
               </p>
-              <div className="d-flex flex-row justify-content-between align-items-center">
+              <div className="tw-flex tw-flex-row lg:tw-flex-col justify-content-between align-items-center">
                 <a
-                  className="hover:tw-text-black hover:tw-bg-color-[A259FF]"
+                  className=" tw-text-lg tw-p-5 tw-w-10/12 hover:tw-opacity-70"
                   href="https://discord.gg/wmCtA4xAgd"
                   target="_blank"
                   rel="noreferrer"
                   style={
                     {
-                      background: '#8040D2', borderRadius: '40px', fontSize: '24px', padding: '20px', fontWeight: '700', width: '50%', textAlign: 'center',
+                      background: '#8040D2', borderRadius: '40px', fontWeight: '500', textAlign: 'center',
                     }
                   }
                 >
-                  Join Our Discord
+                  <p className="tw-text-white hover:tw-text-gray-300 ">Join Our Discord</p>
                 </a>
-                <p style={
+                <a
+                  href="https://genadrop.vercel.app/"
+                  target="_blank"
+                  rel="noreferrer"
+                  style={
                   {
-                    margin: 0, color: 'black', fontSize: '20px', textAlign: 'center', width: '50%', fontWeight: '700',
+                    margin: 0, fontSize: '20px', textAlign: 'center', width: '50%',
                   }
                 }
                 >
-                  Learn More
-                </p>
+                  <p
+                    className="tw-text-gray-700 hover:tw-text-gray-500 tw-font-medium tw-cursor-pointer tw-text-lg"
+                  >
+                    Learn More
+                  </p>
+                </a>
               </div>
             </div>
 
             <div
-              className="d-flex flex-column justify-content-between align-items-center"
+              className="tw--flex tw-flex-col justify-content-between align-items-center tw-p-5 tw-w-1/2 lg:tw-w-full"
               style={
-                {
-                  width: '45%', background: 'linear-gradient(180deg, #009CDF 0%, #A259FF 100%)', padding: '20px', borderTopRightRadius: '40px', borderBottomRightRadius: '40px',
-                }
+                { background: 'linear-gradient(180deg, #009CDF 0%, #A259FF 100%)', borderTopRightRadius: '40px', borderBottomRightRadius: '40px' }
               }
             >
               <img src="/assets/images/MinorityDropLogo.svg" alt="mdl" />
               <p style={
                 {
-                  margin: 0, color: 'white', weight: '500', fontSize: '42px'
+                  margin: 0, color: 'white', weight: '500', fontSize: '32px',
                 }
               }
               >
@@ -109,7 +127,7 @@ const HomepageExploreMinorityApps = () => {
               </p>
               <p style={
                 {
-                  margin: 0, color: 'white', weight: '500', fontSize: '32px'
+                  margin: 0, color: 'white', weight: '500', fontSize: '24px',
                 }
               }
               >
@@ -119,21 +137,23 @@ const HomepageExploreMinorityApps = () => {
           </div>
         </div>
         {/* nft generator introduction */}
-        <div className="d-flex flex-row justify-content-between" style={{ padding: '20px' }}>
+        <div className="tw-flex tw-flex-row md:tw-flex-col justify-content-between" style={{ padding: '20px' }}>
           <div
-            className="d-flex justify-content-center align-items-center"
+            className="d-flex justify-content-center align-items-center tw-w-1/2 lg:tw-w-full"
             style={
               {
-                width: '55%', padding: '30px', background: 'linear-gradient(180deg, #009CDF 0%, #A259FF 100%)', borderRadius: '40px',
+                padding: '30px', background: 'linear-gradient(180deg, #009CDF 0%, #A259FF 100%)', borderRadius: '40px',
               }
             }
           >
             <img src="/assets/images/GenadropLogo_White.svg" alt="gdl" />
           </div>
-          <div className="d-flex flex-column justify-content-between align-items-center" style={{ width: '45%', padding: '40px', paddingTop: '0px' }}>
-            <p style={
+          <div className="d-flex flex-column justify-content-between align-items-center tw-w-2/5 lg:tw-w-full" style={{ padding: '40px', paddingTop: '0px' }}>
+            <p
+              className="tw-text-4xl lg:tw-text-xl"
+              style={
               {
-                color: 'white', fontWeight: '900', fontSize: '42px', marginBottom: '20px'
+                color: 'white', fontWeight: '900', marginBottom: '20px', marginTop: '20px',
               }
             }
             >
@@ -142,11 +162,11 @@ const HomepageExploreMinorityApps = () => {
             </p>
             <a href="https://genadrop.vercel.app/" target="_blank" rel="noreferrer">
               <button
-                className="tw-bg-black hover:tw-bg-transparent"
+                className="tw-bg-black hover:tw-bg-transparent lg:tw-w-full"
                 type="button"
                 style={
                   {
-                    border: '3px solid white', fontSize: '24px', fontWeight: '700', padding: '20px 50px', borderRadius: '100px',
+                    border: '3px solid white', fontSize: '24px', fontWeight: '700', padding: '20px 20px', borderRadius: '100px',
                   }
                 }
               >
