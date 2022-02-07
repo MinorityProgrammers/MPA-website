@@ -10,8 +10,8 @@ const UserCourses = ({ enrolledCourses, user }) => {
   const conditionalInfinite = {
     dots: false,
     speed: 2000,
-    slidesToShow: 3,
-    infinite: coursesLength > 3,
+    slidesToShow: 2,
+    infinite: coursesLength > 2,
     autoplay: true,
     slidesToScroll: 1,
     variableWidth: true,

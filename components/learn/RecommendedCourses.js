@@ -14,10 +14,9 @@ const RecommendedCourses = ({
   const conditionalInfinite = {
     dots: false,
     speed: 2000,
-    slidesToShow: 3,
-    infinite: coursesLength > 3,
+    slidesToShow: 2,
+    infinite: coursesLength > 2,
     autoplay: true,
-    variableWidth: true,
     slidesToScroll: 1,
     responsive: [
       {
@@ -46,15 +45,19 @@ const RecommendedCourses = ({
         <div className="bg-circle-recomended-right" />
       </div>
       <div className="mb-5 pb-3">
-        <div className="course-category d-flex font-weight-bold" style={{ marginLeft: '-80px' }}>
-
+        <div
+          className="course-category d-flex font-weight-bold"
+          style={{ marginLeft: "-80px" }}
+        >
           <img
             src="/assets/images/home-page/about-title-icon.svg"
-            style={{ maxWidth: '100px', marginRight: '-20px' }}
+            style={{ maxWidth: "100px", marginRight: "-20px" }}
             alt="bg"
           />
           <div className="tw-flex">
-            <h1 className="courseCategory-title" style={{ marginTop: '30%' }}>Recommended Courses</h1>
+            <h1 className="courseCategory-title" style={{ marginTop: "30%" }}>
+              Recommended Courses
+            </h1>
           </div>
         </div>
         <div
