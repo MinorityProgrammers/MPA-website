@@ -25,9 +25,16 @@ const HomePageGetStarted = () => (
                 reasons our students love learning with us. There are 80+ web3
                 courses and Hackathons.
               </p>
-              <div className="learn-bottom">
-                <a href="/learn">Start Learning </a>
-                <p>Explore Hackathons</p>
+              <div className="">
+                <a href="/learn">
+                  <button type="button" className="md:tw-w-11/12 md:tw-my-2 mintBTN tw-outline-none focus:tw-ring-offset-0 focus:tw-border-opacity-0 tw-ring-offset-0 tw-transition tw-ease-in-out tw-delay-150 duration-300 tw-w-10/12 tw-p-3 tw-rounded-3xl tw-h-12 tw-flex tw-flex-row tw-justify-center tw-my-4">
+                    <p className="tw-text-white tw-text-md tw-text-center">
+                      Start Learning
+                    </p>
+                  </button>
+
+                </a>
+                {/* <p>Explore Hackathons</p> */}
               </div>
             </div>
           </div>
@@ -41,8 +48,15 @@ const HomePageGetStarted = () => (
                 opportunity to help a student learn a course. There
                 is a reward for everyone. Sign up for our mentorship Program.
               </p>
-              <div className="learn-bottom">
-                <a href="/mentorship">Get started</a>
+              <div className="">
+                <a href="/mentorship">
+                  <button type="button" className="md:tw-w-11/12 md:tw-my-2 mintBTN tw-outline-none focus:tw-ring-offset-0 focus:tw-border-opacity-0 tw-ring-offset-0 tw-transition tw-ease-in-out tw-delay-150 duration-300 tw-w-10/12 tw-p-3 tw-rounded-3xl tw-h-12 tw-flex tw-flex-row tw-justify-center tw-my-4">
+                    <p className="tw-text-white tw-text-md tw-text-center">
+                      Get started
+                    </p>
+                  </button>
+
+                </a>
               </div>
             </div>
             <div className="col-lg-6"><img style={{ marginBottom: '-140px' }} src="/assets/images/home-page/get-started2.png" alt="learn" /></div>
