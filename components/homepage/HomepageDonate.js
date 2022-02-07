@@ -40,7 +40,7 @@ const HomepageDonate = () => {
       setOrderID(orderID);
       return orderID;
     });
-  const createSubscription = (data, action) => {};
+  // const createSubscription = (data, action) => {};
 
   const onApprove = (data, actions) => actions.order.capture().then((details) => {
     const { purchase_units } = details;
@@ -69,20 +69,26 @@ const HomepageDonate = () => {
 
   return (
     <section id="donate" className="homepage__donate">
-      <div className="heading__number">
-        <h3 className="tw-text-blue-900">05</h3>
-      </div>
-      <div className="container donate__container">
-        <h2 className="heading__title mt-5 mb-5 tw-text-blue-900">
-          &lsaquo;Donate/&rsaquo;
-        </h2>
-        <p className="donate__container-subtitle">
-          We rely on donations from everyday people just like you to fund our
-          strategic activism. Please make a recurring donation to our
-          organization so we can continue to fight to bring marginalized
-          communities into the STEM workforce.
-        </p>
-
+      <div className="donate__container">
+        <div className="container">
+          <h2 className="top__part__title">
+            Donate
+          </h2>
+          <div className="tw-flex">
+            <img
+              src="/assets/images/home-page/about-title-icon.svg"
+              style={{ marginTop: '-30px' }}
+              className="donate__header-img"
+              alt="blockchain"
+            />
+            <p className="donate__container-subtitle md:tw-text-base">
+              We rely on donations from everyday people just
+              like you to fund our strategic activism.
+              Please make a recurring donation to our organization so we can continue to fight to
+              bring marginalized communities into the STEM workforce.
+            </p>
+          </div>
+        </div>
         <div className="container">
           <div className="row step__header">
             <div
@@ -117,7 +123,34 @@ const HomepageDonate = () => {
             </div>
           </div>
         </div>
+        <div style={{ background: '#1C1D37', padding: '2.5rem 0' }} className="tw-my-20">
+          <div className="container step__payment-monthly">
+            <div className="">
+              <input
+                type="radio"
+                className="step__payment-option"
+                name="month_sub"
+                onClick={() => {
+                  setMonthly(true);
+                }}
+              />
+              <label>Monthly Donation</label>
 
+            </div>
+            <div className="">
+              <input
+                type="radio"
+                className="step__payment-option"
+                name="month_sub"
+                onClick={() => {
+                  setMonthly(false);
+                }}
+              />
+              <label>I want to make a single  donation</label>
+            </div>
+          </div>
+
+        </div>
         <div>
           {count === 1 ? (
             <DonateAmount
@@ -141,7 +174,7 @@ const HomepageDonate = () => {
                 monthly={monthly}
                 createOrder={createOrder}
                 onApprove={onApprove}
-                createSubscription={createSubscription}
+                // createSubscription={createSubscription}
               />
             ) : (
               <DonateCompleted
@@ -165,7 +198,7 @@ const HomepageDonate = () => {
             />
           ) : null}
         </div>
-        <div className="donate__options">
+        {/* <div className="donate__options">
           <h2 className="tw-text-blue-900">Other ways to support us:</h2>
           <div className="donation__option">
             <a
@@ -176,7 +209,7 @@ const HomepageDonate = () => {
               <i className="fab fa-bitcoin" />
             </a>
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );

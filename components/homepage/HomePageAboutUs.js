@@ -22,7 +22,7 @@ function HomePageAboutUs() {
               About Us
               <img
                 src="/assets/images/home-page/about-title-icon.svg"
-                alt="blockchain"
+                alt="bg"
               />
             </h2>
             <p className="about-us__text tw-text-xl tw-text-white md:tw-text-base">

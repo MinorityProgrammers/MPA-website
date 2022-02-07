@@ -82,7 +82,8 @@ const HomePageReviews = () => {
           && (
             <Swiper containerClass="swiper-container skelton-container" wrapperClass="swiper-wrapper skelton-wrapper" slidesPerView={skeltonCount()} {...params} observer={false} grabCursor>
               {
-              Array.apply(0, Array(skeltonCount())).map(() => (<TweetSkeltonLoader />))
+              Array.apply(0, Array(skeltonCount())).map((element) => (
+                <TweetSkeltonLoader key={element} />))
               }
             </Swiper>
           )}

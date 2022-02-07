@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUsers, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faUsers } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import axios from 'axios';
@@ -89,6 +89,7 @@ const CourseCategories = ({ user, enrolledCourses, usersCourses }) => {
       return null;
     }
     setEnrolledCourse(enrolledCourseId);
+    return null;
   };
 
   const handleSubmit = (e) => {
@@ -108,7 +109,8 @@ const CourseCategories = ({ user, enrolledCourses, usersCourses }) => {
   return (
     <>
       <div className="courses pb-5">
-        <div className="container">
+        <div className="container tw-mb-32">
+
           <div className="row">
             <div className="col-md-3" />
             <div className="col-md-6 pb-2">
@@ -121,9 +123,9 @@ const CourseCategories = ({ user, enrolledCourses, usersCourses }) => {
                         className="course-search search-input"
                         placeholder="Search Courses"
                       />
-                      <button className="courseSearch-btn">
+                      <a className="courseSearch-btn">
                         <i className="fas fa-search" />
-                      </button>
+                      </a>
                     </div>
                   </div>
 
@@ -152,7 +154,7 @@ const CourseCategories = ({ user, enrolledCourses, usersCourses }) => {
                 }`}
               >
                 <Link href="/learn">
-                  <p className="learn-item-active hover:tw-text-blue-600">
+                  <p className="learn-item-active">
                     COURSES
                   </p>
                 </Link>
@@ -166,7 +168,7 @@ const CourseCategories = ({ user, enrolledCourses, usersCourses }) => {
                   }`}
                 >
                   <Link href="/learn/certificates">
-                    <p className="hover:tw-text-blue-600">MY CERTIFICATES</p>
+                    <p>MY CERTIFICATES</p>
                   </Link>
                 </li>
               )}
@@ -180,37 +182,25 @@ const CourseCategories = ({ user, enrolledCourses, usersCourses }) => {
               <UserCourses enrolledCourses={enrolledCourses} user={user} />
             ) : (
               <div className="mb-5 pb-3">
+
                 <div className="course-category d-flex font-weight-bold">
-                  <h1 className="tw-text-blue-900" style={{ fontSize: '30px' }}>
+                  <h1 className="tw-text-white" style={{ fontSize: '30px' }}>
                     My Courses
                   </h1>
                 </div>
                 <div className="mt-3 courses-info">
                   {user !== null && user !== undefined ? (
-                    <h1 className="tw-text-blue-900">
+                    <h1 className="tw-text-white">
                       No enrolled courses yet
                     </h1>
                   ) : (
-                    <h1 className="tw-text-blue-900">
+                    <h1 className="tw-text-white">
                       Login to view your courses
                     </h1>
                   )}
                 </div>
               </div>
             )}
-
-            {loading ? (
-              <CoursesSkeleton title="Recommended Courses" />
-            ) : (
-              recommendedCourses.length > 0 && (
-                <RecommendedCourses
-                  showModal={showModal}
-                  recommendedCourses={recommendedCourses}
-                  handleCourseInfo={handleCourseInfo}
-                />
-              )
-            )}
-
             {loading ? (
               <CoursesSkeleton title="Featured Courses" />
             ) : (
@@ -222,7 +212,19 @@ const CourseCategories = ({ user, enrolledCourses, usersCourses }) => {
                 enrolledBtn={enrolledBtn}
               />
             )}
+            {loading ? (
+              <CoursesSkeleton title="Recommended Courses" />
+            ) : (
+              recommendedCourses.length > 0 && (
+              <RecommendedCourses
+                showModal={showModal}
+                recommendedCourses={recommendedCourses}
+                handleCourseInfo={handleCourseInfo}
+              />
+              )
+            )}
           </div>
+
         </div>
 
         {/* Modal */}
@@ -311,6 +313,9 @@ const CourseCategories = ({ user, enrolledCourses, usersCourses }) => {
             </div>
           </div>
         </Modal>
+        <div className="tw-relative">
+          <img src="/assets/images/bg-shadow-circle.png" className="tw-absolute" style={{ bottom: '0%', right: '20%' }} alt="background" />
+        </div>
       </div>
 
       {/* Login Modal */}
