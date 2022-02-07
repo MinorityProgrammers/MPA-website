@@ -51,7 +51,7 @@ const FeaturedCourses = ({
       <div className="tw-relative">
         <div className="bg-circle-featured-right" />
       </div>
-      <div className="mb-5 pb-3">
+      <div className="courses-width mb-5 pb-3">
         <div className="course-category d-flex font-weight-bold">
           <h1 className="courseCategory-title">Featured Courses</h1>
         </div>

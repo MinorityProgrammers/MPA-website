@@ -18,6 +18,9 @@
     height: 280px !important;
     margin-left: 20px;
   }
+  .courses-width {
+    width: 100%;
+  }
 }
 
 .earn-rate {
