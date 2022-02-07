@@ -12,6 +12,14 @@
   width: 480px;
 }
 
+@media only screen and (max-width: 500px) {
+  .courses-items {
+    width: 90%;
+    height: 280px !important;
+    margin-left: 20px;
+  }
+}
+
 .earn-rate {
   background-color: #9cff83;
   border-radius: 10px;

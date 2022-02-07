@@ -22,7 +22,7 @@ const FeaturedCourseList = ({
       <p className="course-des ml-2 tw-mb-3">{description}</p>
       <p className="tw-flex tw-flex-row ">
         {tags.map((tag) => (
-          <p className="tw-mr-2 course-tag-style">{tag}</p>
+          <p className="tw-mr-2 course-tag-style tw-m-1">{tag}</p>
         ))}
       </p>
 
