@@ -9,7 +9,7 @@ const RecommendedCourseList = ({ course, handleCourseInfo, showModal }) => {
         <h3 className="course-name mt-3 ">{name}</h3>
       </div>
       <p className="course-des ml-2 mb-3">{description}</p>
-      <p className="tw-flex tw-flex-row ">
+      <p className="tw-flex tw-flex-row tw-flex-wrap">
         {tags.map((tag) => (
           <p className="tw-mr-2 course-tag-style tw-m-1">{tag}</p>
         ))}
@@ -27,7 +27,7 @@ const RecommendedCourseList = ({ course, handleCourseInfo, showModal }) => {
           data-target="#exampleModal"
           className=" px-3 banner-btn tw-mt-4 tw-mr-3"
         >
-          Enroll Now <span className="tw-ml-2"> &#8594;</span>
+          Enroll <span className="tw-ml-2 enroll-arrow"> &#8594;</span>
         </button>
       </div>
     </div>

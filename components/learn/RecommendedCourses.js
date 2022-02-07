@@ -54,7 +54,7 @@ const RecommendedCourses = ({
             style={{ maxWidth: "100px", marginRight: "-20px" }}
             alt="bg"
           />
-          <div className="tw-flex">
+          <div className=" tw-flex">
             <h1 className="courseCategory-title" style={{ marginTop: "30%" }}>
               Recommended Courses
             </h1>

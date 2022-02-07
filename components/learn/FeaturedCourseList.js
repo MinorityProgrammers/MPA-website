@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const FeaturedCourseList = ({
   course,
@@ -7,7 +7,9 @@ const FeaturedCourseList = ({
   enrolledBtn,
   showModal,
 }) => {
-  const { earn, name, description, _id, tags } = course;
+  const {
+    earn, name, description, _id, tags,
+  } = course;
 
   const userCoursesId = [];
   sameUserCourses.forEach((userCourse) => {
@@ -20,7 +22,7 @@ const FeaturedCourseList = ({
         <h3 className="course-name mt-3 tw-mb-1">{name}</h3>
       </div>
       <p className="course-des ml-2 tw-mb-3">{description}</p>
-      <p className="tw-flex tw-flex-row ">
+      <p className="tw-flex course-tag-array tw-flex-row tw-flex-wrap">
         {tags.map((tag) => (
           <p className="tw-mr-2 course-tag-style tw-m-1">{tag}</p>
         ))}
@@ -28,8 +30,8 @@ const FeaturedCourseList = ({
 
       <div className="text-center pb-4">
         {userCoursesId.includes(_id) ? (
-          <div className="course-items-footer">
-            <div />
+          <>
+            <div className="tw-mb-16" />
             <button
               type="button"
               disabled={enrolledBtn}
@@ -37,16 +39,20 @@ const FeaturedCourseList = ({
                 showModal();
                 handleCourseInfo(course);
               }}
-              className="btn px-3 banner-btn mt-3"
+              className="btn px-5 tw-flex tw-items-end banner-btn"
               data-toggle="modal"
               data-target="#exampleModal"
             >
               Enrolled
             </button>
-          </div>
+          </>
         ) : !userCoursesId.includes(_id) ? (
           <div className="course-items-footer">
-            <p className="course-earn-style">Earn {earn}</p>
+            <p className="course-earn-style">
+              Earn
+              {' '}
+              {earn}
+            </p>
             <button
               type="button"
               onClick={() => {
@@ -57,11 +63,13 @@ const FeaturedCourseList = ({
               data-toggle="modal"
               data-target="#exampleModal"
             >
-              Enroll <span className="tw-ml-2"> &#8594;</span>
+              Enroll
+              {' '}
+              <span className="tw-ml-2 enroll-arrow"> &#8594;</span>
             </button>
           </div>
         ) : (
-          ""
+          ''
         )}
       </div>
     </div>
