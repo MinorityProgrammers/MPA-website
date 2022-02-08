@@ -505,10 +505,17 @@ const HomepageNav = ({
               {userData !== null && userData !== undefined ? (
                 <div className="tw-mx-2">
                   <li>
-                    <i
+                    {userData.profilePicture ?
+                      <img
+                        className="tw-content-center tw-text-center tw-cursor-pointer tw-mt-2 tw-h-9 tw-rounded-full tw-w-9"
+                      onClick={onClick}
+                      src={userData.profilePicture}
+                      alt="profile"
+                      />
+                      :<i
                       className="fa-user-circle fas tw-content-center tw-text-center NavIcon tw-cursor-pointer tw-mt-2"
                       onClick={onClick}
-                    />
+                    />}
 
                     {isActive ? (
                       <HomepageNavLoggedin
