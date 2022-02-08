@@ -1,5 +1,6 @@
 .overviewContent {
   display: flex;
+  flex-direction: column;
   margin: 2vw;
   width: 100%;
 }
@@ -18,7 +19,6 @@
 .fiCompletion button,
 .fIProfile .userContent,
 .fIProfile .quickLink {
-  background-color: white;
   border-radius: 0.5vw;
 }
 /* END STYLING COMMONS */
@@ -33,26 +33,23 @@
 }
 
 .fItem {
-  background-color: #393b97;
   border-radius: 1vw;
   padding: 1vw;
 }
 
 /* STYLING Completion */
 .fiCompletion {
-  background-color: #226fee;
   display: flex;
   flex-wrap: wrap;
-  height: 30%;
 }
-.fiCompletion .progress {
+/* .fiCompletion .progress {
   display: flex;
   justify-content: space-between;
   color: white;
   position: relative;
   height: 75px;
-  width: 75px;
-}
+  width: 75px; */
+/* } */
 .fiCompletion .progress svg {
   height: 75px;
   width: 75px;
@@ -70,13 +67,12 @@
   height: 100%;
 }
 .fiCompletion .progress svg circle {
-  fill: #377eef;
-  stroke: white;
-  stroke-width: 5;
+  fill: #1C1D37;
+  stroke: #8040D2;
+  stroke-width: 8;
   transform: translate(2.5px, 2.5px);
   stroke-dasharray: 220;
-  /* stroke dashoffset style comes dynamically from component itself */
-  /* stroke-dashoffset: calc(220 - (220 * 75) / 100); */
+  stroke-dashoffset: calc(220 - (220 * 75) / 100);
   stroke-linecap: round;
 }
 .fiCompletion .info {
@@ -491,3 +487,144 @@
   }
 }
 /* END OF STYLING Notifications */
+/* Progress Styleing */
+.progress {
+  width: 100px;
+  height: 100px !important;
+  float: left;
+  line-height: 150px;
+  background: none;
+  margin: 20px;
+  box-shadow: none;
+  position: relative
+}
+
+.progress:after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 12px solid #3E385D;
+  ;
+  position: absolute;
+  top: 0;
+  left: 0
+}
+
+.progress>span {
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  z-index: 1
+}
+
+.progress .progressLeft {
+  left: 0
+}
+
+.progress .progressBar {
+  width: 100%;
+  height: 100%;
+  background: none;
+  border-width: 12px;
+  border-style: solid;
+  position: absolute;
+  top: 0
+}
+
+.progress .progressLeft .progressBar {
+  left: 100%;
+  border-top-right-radius: 80px;
+  border-bottom-right-radius: 80px;
+  border-left: 0;
+  -webkit-transform-origin: center left;
+  transform-origin: center left
+}
+
+.progress .progressRight {
+  right: 0
+}
+
+.progress .progressRight .progressBar {
+  left: -100%;
+  border-top-left-radius: 80px;
+  border-bottom-left-radius: 80px;
+  border-right: 0;
+  -webkit-transform-origin: center right;
+  transform-origin: center right;
+  animation: loading-1 1.8s linear forwards
+}
+
+.progress .progressValue {
+  width: 90%;
+  height: 90%;
+  border-radius: 50%;
+  background: #1C1D37;
+  font-size: 24px;
+  color: #fff;
+  line-height: 135px;
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+}
+
+.progress.blue .progressBar {
+  border-color: #8040D2;
+}
+
+.progress.blue .progressLeft .progressBar {
+  animation: loading-2 1.5s linear forwards 1.8s
+}
+
+.progress.yellow .progressBar {
+  border-color: #fdba04
+}
+
+.progress.yellow .progressRight .progressBar {
+  animation: loading-3 1.8s linear forwards
+}
+
+.progress.yellow .progressLeft .progressBar {
+  animation: none
+}
+
+@keyframes loading-1 {
+  0% {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg)
+  }
+
+  100% {
+      -webkit-transform: rotate(180deg);
+      transform: rotate(180deg)
+  }
+}
+
+@keyframes loading-2 {
+  0% {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg)
+  }
+
+  100% {
+      -webkit-transform: rotate(144deg);
+      transform: rotate(144deg)
+  }
+}
+
+@keyframes loading-3 {
+  0% {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg)
+  }
+
+  100% {
+      -webkit-transform: rotate(135deg);
+      transform: rotate(135deg)
+  }
+}

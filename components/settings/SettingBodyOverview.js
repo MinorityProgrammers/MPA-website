@@ -114,46 +114,61 @@ const SettingBodyOverview = ({ data }) => {
 
   return (
     <div className={styles.overviewContent}>
-      <div className={styles.fleft}>
-        <div className={`${styles.fItem} ${styles.fiCompletion}`}>
-          <div className={styles.progress}>
-            <svg>
-              <circle
-                style={{
-                  strokeDashoffset: `calc(220 - (220 * ${getProgressPercentage(
-                    data,
-                  )}) / 100)`,
-                }}
-                cx="35"
-                cy="35"
-                r="35"
-              />
-            </svg>
-            <h6>
-              {getProgressPercentage(data)}
-              <span>%</span>
-            </h6>
-          </div>
-          <div className={styles.info}>
-            <h5>Profile</h5>
-            <p>Complete your profile and explore all features across MPA.</p>
-          </div>
-          {getProgressPercentage(data) === 100 ? (
-            <div className={styles.completedProfile}>
-              Your Profile Is Complete
-            </div>
-          ) : (
-            <button
-              type="button"
-              onClick={(e) => {
-                e.preventDefault();
-                completeRedirection();
+      <div className={`${styles.fItem} ${styles.fiCompletion}`}>
+        <div className={styles.ffg}>
+          {/* <svg>
+            <circle
+              style={{
+                strokeDashoffset: `calc(220 - (220 * ${getProgressPercentage(
+                  data,
+                )}) / 100)`,
               }}
-            >
-              Complete My Profile
-            </button>
-          )}
+              cx="35"
+              cy="35"
+              r="35"
+            />
+          </svg>
+          <h6>
+            {getProgressPercentage(data)}
+            <span>%</span>
+          </h6> */}
+          <div className={`${styles.progress} ${styles.blue}`}>
+            <span className={styles.progressLeft}>
+              <span className={styles.progressBar} />
+            </span>
+            <span className={styles.progressRight}>
+              <span className={styles.progressBar} />
+            </span>
+            <div className={styles.progressValue}>
+              <p>
+                {getProgressPercentage(data)}
+                <span>%</span>
+
+              </p>
+            </div>
+          </div>
         </div>
+        <div className={styles.info}>
+          <h5>Profile</h5>
+          <p>Complete your profile and explore all features across MPA.</p>
+        </div>
+        {getProgressPercentage(data) === 100 ? (
+          <div className={styles.completedProfile}>
+            Your Profile Is Complete
+          </div>
+        ) : (
+          <button
+            type="button"
+            onClick={(e) => {
+              e.preventDefault();
+              completeRedirection();
+            }}
+          >
+            Complete My Profile
+          </button>
+        )}
+      </div>
+      <div className={styles.fleft}>
         <div className={`${styles.fItem} ${styles.fIProfile}`}>
           <h5>Profile</h5>
           <div className={styles.userContent}>

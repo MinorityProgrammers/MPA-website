@@ -9,3 +9,10 @@
       stroke: none;
     }
   }
+
+  .setting__profile-img-model div{
+    width:fit-content ;
+  }
+  .setting__profile-img-model div .ant-modal-content .ant-modal-body{
+    padding: 0;
+  }

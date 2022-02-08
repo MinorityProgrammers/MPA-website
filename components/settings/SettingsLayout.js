@@ -3,6 +3,7 @@ import React, {
 } from 'react';
 import { useRouter } from 'next/router';
 import decode from 'jwt-decode';
+import { Modal } from 'antd';
 import Layout from '../Layout';
 import HomepageNav from '../homepage/HomepageNav';
 import SidebarTwo from '../sidebar/SidebarTwo';
@@ -19,9 +20,9 @@ const SettingsLayout = ({ setData, children, settingsPage }) => {
   const dropdownRef = useRef(null);
   const [hide, setHide] = useDetectOutsideClick(dropdownRef, false);
   const [userData, setUserData] = useState({});
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   const router = useRouter();
-
   const handleClick = () => {
     setHide(!hide);
   };
@@ -74,7 +75,18 @@ const SettingsLayout = ({ setData, children, settingsPage }) => {
     /\w\S*/g,
     (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(),
   );
+    // Model
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
 
+  const handleOk = () => {
+    setIsModalVisible(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
   return (
     <Layout pageTitle={`Settings: ${toTitleCase(settingsPage)}`}>
       <HomepageNav
@@ -90,219 +102,169 @@ const SettingsLayout = ({ setData, children, settingsPage }) => {
         active="Home"
         handleClick={handleClick}
       />
+      <Modal
+        visible={isModalVisible}
+        onOk={handleOk}
+        onCancel={handleCancel}
+        footer={null}
+        closable={false}
+        // width="fit-contnet"
+        style={{ width: 'fit-contnet' }}
+        wrapClassName="setting__profile-img-model"
+      >
+        <img
+          src={userData?.profilePicture || '/assets/images/profile.png'}
+          alt="avatar"
+        />
+      </Modal>
       <div className={styles.settingsContainer}>
-        <div className={styles.accountSettings}>
-          <div className={styles.settingsNavigation}>
-            <div className={styles.userDataHeader}>
-              <div className={styles.imgDiv}>
-                <img
-                  src={userData?.profilePicture || '/assets/images/profile.png'}
-                  alt="avatar"
-                  onClick={() => router.push(`/user/${userData?.userName}`)}
-                />
-              </div>
-              <div className={styles.textDiv}>
-                <h3>
-                  {userData?.firstName && userData?.lastName
-                    ? `${userData?.firstName} ${userData?.lastName}`
-                    : 'no name'}
-                </h3>
-                <h4>
-                  {userData?.userName
-                    ? `@${userData?.userName}`
-                    : 'no username'}
-                </h4>
-                <p>
-                  <span onClick={() => handleLogout()}>Logout</span>
-                </p>
-              </div>
-            </div>
-            <nav>
-              <div className={styles.navHeader}>
-                <h1
-                  style={
-                    settingsPage === 'overview' ? { borderBottom: 'none' } : {}
-                  }
-                >
-                  Account Settings
-                </h1>
-              </div>
-              <ul>
-                <li
-                  className={`${styles.navHeader} ${
-                    settingsPage === 'overview' && styles.activeLi
-                  }`}
-                >
-                  <h2
-                    style={{
-                      borderBottom: settingsPage === 'profile' && 'none',
-                    }}
-                  >
-                    <div className={styles.icon}>
-                      <img
-                        src="../../assets/images/settings/overview.svg"
-                        alt="overview icon"
-                        onClick={() => router.push('/settings/overview')}
-                      />
-                    </div>
-                    <span onClick={() => router.push('/settings/overview')}>
-                      Settings Overview
-                    </span>
-                    <div className={styles.arrow}>
-                      <img
-                        src={
-                          settingsPage === 'overview'
-                            ? '../../assets/images/settings/arrow-white.svg'
-                            : '../../assets/images/settings/arrow.svg'
-                        }
-                        alt="arrow icon"
-                        onClick={() => router.push('/settings/overview')}
-                      />
-                    </div>
-                  </h2>
-                </li>
-                <li
-                  className={`${styles.navHeader} ${
-                    settingsPage === 'profile' && styles.activeLi
-                  }`}
-                >
-                  <h2>
-                    <div className={styles.icon}>
-                      <img
-                        src="../../assets/images/settings/profile.svg"
-                        alt="profile icon"
-                        onClick={() => router.push('/settings/profile/details')}
-                      />
-                    </div>
-                    <span
-                      onClick={() => router.push('/settings/profile/details')}
-                    >
-                      Profile
-                    </span>
-                    <div className={styles.arrow}>
-                      <img
-                        src={
-                          settingsPage === 'profile'
-                            ? '../../assets/images/settings/arrow-white.svg'
-                            : '../../assets/images/settings/arrow.svg'
-                        }
-                        alt="arrow icon"
-                        onClick={() => router.push('/settings/profile/details')}
-                      />
-                    </div>
-                  </h2>
-                </li>
-                <li
-                  className={`${styles.navHeader} ${
-                    settingsPage === 'security' && styles.activeLi
-                  }`}
-                >
-                  <h2
-                    style={{
-                      borderTop: settingsPage === 'profile' && 'none',
-                      borderBottom: settingsPage === 'wallet' && 'none',
-                    }}
-                  >
-                    <div className={styles.icon}>
-                      <img
-                        src="../../assets/images/settings/security.svg"
-                        alt="security icon"
-                        onClick={() => router.push('/settings/security/login')}
-                      />
-                    </div>
-                    <span
-                      onClick={() => router.push('/settings/security/login')}
-                    >
-                      Security & Login
-                    </span>
-                    <div className={styles.arrow}>
-                      <img
-                        src={
-                          settingsPage === 'security'
-                            ? '../../assets/images/settings/arrow-white.svg'
-                            : '../../assets/images/settings/arrow.svg'
-                        }
-                        alt="arrow icon"
-                        onClick={() => router.push('/settings/security/login')}
-                      />
-                    </div>
-                  </h2>
-                </li>
-                {/* <li
-                  className={`${styles.navHeader} ${
-                    settingsPage === 'wallet' && styles.activeLi
-                  }`}
-                >
-                  <h2>
-                    <div className={styles.icon}>
-                      <img
-                        src="../../assets/images/settings/wallet.svg"
-                        alt="wallet icon"
-                        onClick={() =>
-                          router.push('/settings/wallet/my-wallet')
-                        }
-                      />
-                    </div>
-                    <span
-                      onClick={() => router.push('/settings/wallet/my-wallet')}
-                    >
-                      Wallet
-                    </span>
-                    <div className={styles.arrow}>
-                      <img
-                        src={
-                          settingsPage === 'wallet'
-                            ? '../../assets/images/settings/arrow-white.svg'
-                            : '../../assets/images/settings/arrow.svg'
-                        }
-                        alt="arrow icon"
-                        onClick={() =>
-                          router.push('/settings/wallet/my-wallet')
-                        }
-                      />
-                    </div>
-                  </h2>
-                </li> */}
-                <li
-                  className={`${styles.navHeader} ${
-                    settingsPage === 'notifications' && styles.activeLi
-                  }`}
-                >
-                  <h2
-                    style={{ borderTop: settingsPage === 'wallet' && 'none' }}
-                  >
-                    <div className={styles.icon}>
-                      <img
-                        src="../../assets/images/settings/notifications.svg"
-                        alt="notifications icon"
-                        onClick={() => router.push('/settings/notifications/notifications')}
-                      />
-                    </div>
-                    <span
-                      onClick={() => router.push('/settings/notifications/notifications')}
-                    >
-                      Notifications
-                    </span>
-                    <div className={styles.arrow}>
-                      <img
-                        src={
-                          settingsPage === 'notifications'
-                            ? '../../assets/images/settings/arrow-white.svg'
-                            : '../../assets/images/settings/arrow.svg'
-                        }
-                        alt="arrow icon"
-                        onClick={() => router.push('/settings/notifications/notifications')}
-                      />
-                    </div>
-                  </h2>
-                </li>
-              </ul>
-            </nav>
+        <div className="container tw-flex-col tw-justify-center">
+          <div className={styles.headerSection}>
+            <img src="/assets/images/arrow-left-circle.svg" alt="complete" />
+            <p>Complete Setup</p>
           </div>
-          <div className={styles.specificSettings}>
-            {settingsPage === 'overview'
-              ? children
-              : [children && children[0], children && children[1]]}
+          <div className={`${styles.accountSettings}`}>
+            <div className={styles.settingsNavigation}>
+              <div className={styles.userDataHeader}>
+                <div className={styles.imgDiv} onClick={showModal}>
+                  <img
+                    src={userData?.profilePicture || '/assets/images/profile.png'}
+                    alt="avatar"
+                  />
+                  <div>View</div>
+                </div>
+                <div className={styles.textDiv}>
+                  <p>
+                    <span>{userData.email}</span>
+                  </p>
+                  <h3>
+                    {userData?.firstName && userData?.lastName
+                      ? `${userData?.firstName} ${userData?.lastName}`
+                      : 'no name'}
+                  </h3>
+                  <h4>
+                    {userData?.userName
+                      ? `@${userData?.userName}`
+                      : 'no username'}
+                  </h4>
+                </div>
+              </div>
+              <nav>
+                <ul>
+                  <li
+                    className={`${styles.navHeader} ${
+                      settingsPage === 'overview' && styles.activeLi
+                    }`}
+                  >
+                    <h2>
+                      <div className={styles.icon}>
+                        <img
+                          src="../../assets/images/settings/overview.svg"
+                          alt="overview icon"
+                          onClick={() => router.push('/settings/overview')}
+                        />
+                      </div>
+                      <span onClick={() => router.push('/settings/overview')}>
+                        Settings Overview
+                      </span>
+                    </h2>
+                  </li>
+                  <li
+                    className={`${styles.navHeader} ${
+                      settingsPage === 'profile' && styles.activeLi
+                    }`}
+                  >
+                    <h2>
+                      <div className={styles.icon}>
+                        <img
+                          src="../../assets/images/settings/profile.svg"
+                          alt="profile icon"
+                          onClick={() => router.push('/settings/profile/details')}
+                        />
+                      </div>
+                      <span
+                        onClick={() => router.push('/settings/profile/details')}
+                      >
+                        Profile
+                      </span>
+                    </h2>
+                  </li>
+                  <li
+                    className={`${styles.navHeader} ${
+                      settingsPage === 'wallet' && styles.activeLi
+                    }`}
+                  >
+                    <h2>
+                      <div className={styles.icon}>
+                        <img
+                          src="../../assets/images/settings/wallet.svg"
+                          alt="wallet icon"
+                          onClick={() => router.push('/settings/wallet/my-wallet')}
+                        />
+                      </div>
+                      <span
+                        onClick={() => router.push('/settings/wallet/my-wallet')}
+                      >
+                        Wallet
+                      </span>
+                    </h2>
+                  </li>
+                  <li
+                    className={`${styles.navHeader} ${
+                      settingsPage === 'notifications' && styles.activeLi
+                    }`}
+                  >
+                    <h2
+                      style={{ borderTop: settingsPage === 'wallet' && 'none' }}
+                    >
+                      <div className={styles.icon}>
+                        <img
+                          src="../../assets/images/settings/notifications.svg"
+                          alt="notifications icon"
+                          onClick={() => router.push('/settings/notifications/notifications')}
+                        />
+                      </div>
+                      <span
+                        onClick={() => router.push('/settings/notifications/notifications')}
+                      >
+                        Notifications
+                      </span>
+                    </h2>
+                  </li>
+                  <li
+                    className={`${styles.navHeader} ${
+                      settingsPage === 'security' && styles.activeLi
+                    }`}
+                  >
+                    <h2
+                      style={{
+                        borderTop: settingsPage === 'profile' && 'none',
+                        borderBottom: settingsPage === 'wallet' && 'none',
+                      }}
+                    >
+                      <div className={styles.icon}>
+                        <img
+                          src="../../assets/images/settings/security.svg"
+                          alt="security icon"
+                          onClick={() => router.push('/settings/security/login')}
+                        />
+                      </div>
+                      <span
+                        onClick={() => router.push('/settings/security/login')}
+                      >
+                        Security & Login
+                      </span>
+                    </h2>
+                  </li>
+
+                </ul>
+              </nav>
+            </div>
+            <div className={styles.specificSettings}>
+              {settingsPage === 'overview'
+                ? children
+                : [children && children[0], children && children[1]]}
+            </div>
           </div>
         </div>
       </div>
