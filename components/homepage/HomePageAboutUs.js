@@ -18,6 +18,7 @@ function HomePageAboutUs() {
             />
           </div>
           <div className="homepage__about-right col-lg-4 col-md-12 tw-flex-col">
+            <div>
             <h2 className="about-us__title top__part__title">
               About Us
               <img
@@ -28,7 +29,22 @@ function HomePageAboutUs() {
             <p className="about-us__text tw-text-xl tw-text-white md:tw-text-base">
               We are an international network of developers unifying together to
               build socially impactful projects & spread STEM education to marginalized communitie
-            </p>
+              </p>
+            </div>
+            <div className='tw-flex tw-flex-row tw-justify-between about-us__num-section'>
+              <div>
+                <p className="about-us__text tw-text-xl tw-text-white md:tw-text-base">Interns</p>
+                <h3 className='about-us__title about-us__numbers'>500+</h3>
+              </div>
+              <div>
+                <p className="about-us__text tw-text-xl tw-text-white md:tw-text-base">Hackathons</p>
+                <h3 className='about-us__title about-us__numbers'>200+</h3>
+              </div>
+              <div>
+                <p className="about-us__text tw-text-xl tw-text-white md:tw-text-base">Courses</p>
+                <h3 className='about-us__title about-us__numbers'>500+</h3>
+              </div>
+            </div>
           </div>
         </div>
       </div>
