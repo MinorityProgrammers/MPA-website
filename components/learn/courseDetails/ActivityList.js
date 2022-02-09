@@ -52,8 +52,7 @@ const ActivityList = ({ module, userModules, specificUModules }) => {
   return (
     <a onClick={handleModuleInfo} className="text-decoration-none">
       <div className="">
-        <h1 className="tw-text-white tw-text-2xl">Resume Learning</h1>
-        <div className="course-weeks px-5 mb-4 mx-2">
+        <div className="course-weeks px-5 mb-4 mx-5">
           <div className="row">
             <div className="col-md-4 mb-2" style={{ marginTop: "0.8rem" }}>
               <img src={image} className="img-fluid" alt="" />

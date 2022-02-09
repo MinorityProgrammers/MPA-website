@@ -126,6 +126,12 @@ const WeeklyActivities = ({ enrolledCourses, modules, userModules }) => {
                   </button>
                 )}
               </div>
+              <div>
+                {" "}
+                <h1 className="tw-text-white tw-text-2xl tw-px-3 tw-font-semibold tw-py-4">
+                  Resume Learning
+                </h1>
+              </div>
               {specificModules &&
                 specificModules.map((module) => (
                   <ActivityList
