@@ -22,7 +22,7 @@
     width: 100%;
   }
 }
-@media only screen and (min-width: 700px) {
+@media only screen and (max-width: 700px) {
   .courses-items {
     width: 90%;
     height: 300px !important;

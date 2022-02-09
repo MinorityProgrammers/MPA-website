@@ -1,27 +1,31 @@
-import React from 'react';
-import CourseWeeksList from './CourseWeeksList';
-import UserBanner from './UserBanner';
+import React from "react";
+import CourseWeeksList from "./CourseWeeksList";
+import UserBanner from "./UserBanner";
 
-const MainCourseInfo = ({
-  courseId, userInfo, modules, userModules,
-}) => {
+const MainCourseInfo = ({ courseId, userInfo, modules, userModules }) => {
   const beginnerModules = modules.filter(
-    (module) => module.level === 'beginner',
+    (module) => module.level === "beginner"
   );
   const intermediateModules = modules.filter(
-    (module) => module.level === 'intermediate',
+    (module) => module.level === "intermediate"
   );
   const advancedModules = modules.filter(
-    (module) => module.level === 'advanced',
+    (module) => module.level === "advanced"
   );
 
   const totalBeginnerLength = beginnerModules.length;
   const totalIntermediateLength = intermediateModules.length;
   const totalAdvancedLength = advancedModules.length;
 
-  const specificUBeginnerModules = userModules.filter((eModule) => beginnerModules.some((module) => eModule.moduleId._id === module._id));
-  const specificUIntermediateModules = userModules.filter((eModule) => intermediateModules.some((module) => eModule.moduleId._id === module._id));
-  const specificUAdvancedModules = userModules.filter((eModule) => advancedModules.some((module) => eModule.moduleId._id === module._id));
+  const specificUBeginnerModules = userModules.filter((eModule) =>
+    beginnerModules.some((module) => eModule.moduleId._id === module._id)
+  );
+  const specificUIntermediateModules = userModules.filter((eModule) =>
+    intermediateModules.some((module) => eModule.moduleId._id === module._id)
+  );
+  const specificUAdvancedModules = userModules.filter((eModule) =>
+    advancedModules.some((module) => eModule.moduleId._id === module._id)
+  );
 
   // Beginner level progress
   let beginnerCompletionRate = 0;
@@ -29,7 +33,7 @@ const MainCourseInfo = ({
     beginnerCompletionRate += module.completionRate;
   });
   const totalBeginnerPercentage = Math.round(
-    beginnerCompletionRate / totalBeginnerLength,
+    beginnerCompletionRate / totalBeginnerLength
   );
 
   // Intermediate level progress
@@ -38,7 +42,7 @@ const MainCourseInfo = ({
     intermediateCompletionRate += module.completionRate;
   });
   const totalIntermediatePercentage = Math.round(
-    intermediateCompletionRate / totalIntermediateLength,
+    intermediateCompletionRate / totalIntermediateLength
   );
 
   // Advanced level progress
@@ -47,27 +51,28 @@ const MainCourseInfo = ({
     advancedCompletionRate += module.completionRate;
   });
   const totalAdvancedPercentage = Math.round(
-    advancedCompletionRate / totalAdvancedLength,
+    advancedCompletionRate / totalAdvancedLength
   );
 
   // User progress
-  const totalCompletionRate = beginnerCompletionRate
-    + intermediateCompletionRate
-    + advancedCompletionRate;
-  const totalModulesLength = totalBeginnerLength + totalIntermediateLength + totalAdvancedLength;
+  const totalCompletionRate =
+    beginnerCompletionRate +
+    intermediateCompletionRate +
+    advancedCompletionRate;
+  const totalModulesLength =
+    totalBeginnerLength + totalIntermediateLength + totalAdvancedLength;
   const userPercentages = Math.round(totalCompletionRate / totalModulesLength);
 
   return (
     <>
-      <div className="user-bannerBG">
-        <UserBanner userInfo={userInfo} userPercentages={userPercentages} />
-      </div>
-
-      <div className="modules-details pt-4">
+      <div className="modules-details">
+        <div className="user-bannerBG">
+          <UserBanner userInfo={userInfo} userPercentages={userPercentages} />
+        </div>
         <div className="menu-items d-md-flex ml-5 pl-3">
           <ul>
             <li>
-              <a className="course-item-active" style={{ fontWeight: 'bold' }}>
+              <a className="course-item-active" style={{ fontWeight: "bold" }}>
                 Modules
               </a>
             </li>

@@ -1,99 +1,108 @@
 /* CourseSidebar CSS */
-.weeks-info h5{
-    font-size: 1.25rem;
-    font-weight: 500;
-    color: #fff;
+.weeks-info h5 {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #fff;
 }
-.course-sidebar{
-    background-color: #474BFF;
-    color: #fff;
-    padding-bottom: 8rem;
-    border-top: 2px solid gray;
+.course-sidebar {
+  background-color: #1c1d37;
+  color: #fff;
+  padding-bottom: 8rem;
+  border: 1px solid #a259ff;
+  box-sizing: border-box;
+  border-radius: 16px;
 }
-.course-sidebar ul li{
-    list-style: none;
+.course-sidebar ul li {
+  list-style: none;
 }
-.back-course{
-    color: #dedcdc;
-    cursor: pointer;
-    transition: 0.3s;
+.back-course {
+  color: #dedcdc;
+  cursor: pointer;
+  transition: 0.3s;
 }
-.back-course:hover{
-    color: #b9b8b8;
+.back-course:hover {
+  color: #b9b8b8;
 }
-.back-course a{
-    text-decoration: none;
-    color: #dedcdc;
+.back-course a {
+  text-decoration: none;
+  color: #dedcdc;
 }
-.course-sidebar .completedItem{
-    transition: .2s;
+.course-sidebar .completedItem {
+  transition: 0.2s;
 }
-.course-sidebar .completedItem:hover{
-    color: rgb(192, 191, 191) !important;
+.course-sidebar .completedItem:hover {
+  color: rgb(192, 191, 191) !important;
 }
 .green-check,
-.white-check{
-    width: 25px;
-    height: 25px;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 22px;
-    cursor: pointer;
-    font-size: 12px;
+.white-check {
+  width: 25px;
+  height: 25px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 22px;
+  cursor: pointer;
+  font-size: 12px;
 }
-.green-check{
-    background-color:#00AA4F;
-    border: 1px solid #018b41;
+.green-check {
+  background-color: #a259ff;
+  border: 1px solid #7044a8;
 }
-.white-check{
-    background-color:#fff;
-    border: 1px solid rgb(223, 222, 222);
-    color: rgb(61, 61, 61) !important;
+.white-check {
+  background-color: #fff;
+  border: 1px solid rgb(223, 222, 222);
+  color: rgb(61, 61, 61) !important;
 }
 
 /* User Banner */
-.user-bannerBG,
-.activities-banner{
-    background-color: #fff;
+.user-bannerBG {
+  background-color: #3e385d;
+  border-radius: 16px 16px 0px 0px;
+}
+.activities-banner {
+  background-color: #3e385d;
+  width: 80%;
+
+  border-radius: 16px 16px 0px 0px;
 }
 .CircularProgressbar-background {
-    fill: green;
-  }
+  fill: green;
+}
+
 .progress-circle {
-    padding: 15px;
-    width: 250px;
-    margin-top: 2px;
-    height: 250px;
-    border-radius: 50%;
+  width: 70px;
+  margin-top: 2px;
+  height: 70px;
+  border-radius: 50%;
+  border: 1px solid #fff;
 }
-.use-image{
-    margin-bottom: 4rem;
+.use-image {
+  margin-bottom: 4rem;
 }
-.btn-blue{
-    background:  linear-gradient(0deg, #151371, #151371);
-    color: #fff;
-    border-radius: 15px;
-    transition: .3s;
+.btn-blue {
+  background: linear-gradient(0deg, #151371, #151371);
+  color: #fff;
+  border-radius: 15px;
+  transition: 0.3s;
 }
-.btn-blue:hover{
-    color: #fff;
-    background:  linear-gradient(0deg, #100f52, #0f0e55);
+.btn-blue:hover {
+  color: #fff;
+  background: linear-gradient(0deg, #100f52, #0f0e55);
 }
-.user-info h1{
-    color: #000;
-    font-weight: bold;
-    font-size: 42px;
+.user-info h1 {
+  color: white;
+  font-weight: bold;
+  font-size: 32px;
 }
-.user-info p{
-    font-size: 20px;
-    font-weight: 500;
-    color: #000;
+.user-info p {
+  font-size: 15px;
+  font-weight: 500;
+  color: white;
 }
 
 /* CourseWeeks CSS */
-.learn-items{
-    font-size: 14px;
+.learn-items {
+  font-size: 14px;
 }
 
 /* .learn-items ul li a:hover{
@@ -109,283 +118,313 @@
     margin-left: auto;
     margin-right: auto;
 } */
-.menu-items ul{
-    display: flex;
+.menu-items ul {
+  display: flex;
 }
-.menu-items ul li{
-    list-style: none;
-    font-size: 28px;
+.menu-items ul li {
+  list-style: none;
+  font-size: 28px;
 }
-.menu-item-active{
-    font-weight: bold;
+.menu-item-active {
+  font-weight: bold;
 }
-.course-item-active::after{
-    content: "";
-    width: 100%;
-    height: 4px;
-    border: 2px solid#FFC700;
-    border-radius: 5px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+.course-item-active::after {
+  content: "";
+  width: 100%;
+  height: 4px;
+  border: 2px solid #b3aebb;
+  border-radius: 5px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
-.menu{
-    color: #3E385D;
-    text-decoration: none;
-    font-weight: 500;
-    transition: .2s;
-    margin-top: 6px;
-}
-
-.menu-items ul li a:hover{
-    color: rgb(204, 203, 203);
-}
-.course-weeks{
-    background: #3E385D;
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    background-position: 50%;
-    border-radius: 15px;
-    cursor: pointer;
-    padding: 20px 0;
-}
-.course-weeks .progress{
-    height: 0.2rem !important;
-    width:50%;
-}
-.courses-details{
-    padding-top: 6rem;
-}
-.modules-details{
-    background-color: #474BFF;
-}
-.modules-details .menu-items ul li a{
-    font-size: 1.8rem;
-    color: #fff;
-    cursor: pointer;
-    transition: 2s;
-}
-.course-status{
-    background-color: #00AA4F;
-    border-radius: 10px;
-    color: #fff;
-    width: 100px;
-    text-align: center;
-    font-size: 14px;
+.menu {
+  color: #3e385d;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.2s;
+  margin-top: 6px;
 }
 
-.banner-bg{
-    background: #151371;
+.menu-items ul li a:hover {
+  color: rgb(204, 203, 203);
+}
+.course-weeks {
+  background: linear-gradient(
+    116.82deg,
+    #21175f 32.9%,
+    rgba(36, 14, 98, 0) 148.54%
+  );
+  box-shadow: inset -7px -7px 24px rgba(255, 255, 255, 0.04),
+    inset 7px 7px 14px rgba(255, 255, 255, 0.09);
+  border-radius: 16px;
+  cursor: pointer;
+  padding: 20px 0;
+}
+.course-weeks .progress {
+  height: 0.2rem !important;
+  width: 50%;
+}
+.courses-details {
+  padding-top: 6rem;
+  display: flex;
+  margin-left: 3rem;
+  justify-content: space-between;
+  background: #14152b;
+}
+.modules-details {
+  background-color: #1c1d37;
+  border: 1px solid #a259ff;
+  border-radius: 16px;
+}
+.modules-details .menu-items ul li a {
+  font-size: 1.8rem;
+  color: #fff;
+  cursor: pointer;
+  transition: 2s;
+}
+.course-status {
+  background-color: #00aa4f;
+  border-radius: 10px;
+  color: #fff;
+  width: 100px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.banner-bg {
+  background: #14152b;
 }
 
 /* WeeklyActivities CSS */
-.week-info{
-    color: #000;
+.week-info {
+  color: #000;
 }
-.week-info h1{
-    font-weight: 600;
-    font-size: 42px;
+.week-info h1 {
+  font-weight: 600;
+  font-size: 42px;
 }
-.week-info h5{
-    font-size: 25px;
+.week-info h5 {
+  font-size: 25px;
 }
-.week-info p{
-    color:#000;
-    font-weight: 700;
+.week-info p {
+  color: #000;
+  font-weight: 700;
 }
-.week-info .progress{
-    background-color: rgb(218, 218, 218) !important;
-    height: 10px !important;
+.week-info .progress {
+  background-color: rgba(28, 29, 55, 0.61) !important;
+  height: 8px !important;
 }
-.nextPrev-icons button{
-    font-size: 25px;
-    /* color: white; */
-    transition: .2s;
+
+.progress {
+  background: rgba(28, 29, 55, 0.61);
+  height: 10px;
+  border-radius: 6px;
+  margin: 15px 0;
+  width: 80%;
 }
-.nextPrev-icons .icon{
-    color: white;
+
+.nextPrev-icons button {
+  font-size: 25px;
+  /* color: white; */
+  transition: 0.2s;
 }
-.nextPrev-icons .icon:hover{
-    color: gray; 
+.nextPrev-icons .icon {
+  color: white;
+}
+.nextPrev-icons .icon:hover {
+  color: gray;
 }
 
 /* ActivityDetails */
-.activityDetails{
-    border-radius: 20px !important;
+.activityDetails {
+  border-radius: 20px !important;
 }
-.video-js{
-    width: 100% !important;
+.video-js {
+  width: 100% !important;
 }
-.modal-content{
-    background: #fff !important;
-    box-shadow: 0px 5px 40px 5px rgba(0, 0, 0, 0.25);
-    border-radius: 15px;
-    color: #000;
+.modal-content {
+  background: #fff !important;
+  box-shadow: 0px 5px 40px 5px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+  color: #000;
 }
-.user-img2{
-    border: 10px solid #FFC700;
-    border-radius: 50%;
-    padding: 10px;
-    width: 200px;
+.user-img2 {
+  border: 10px solid #ffc700;
+  border-radius: 50%;
+  padding: 10px;
+  width: 200px;
 }
 
-.activity-pad{
-    /* margin-top: 6rem; */
-    padding-top: 6rem;
+.activity-pad {
+  /* margin-top: 6rem; */
+  padding-top: 6rem;
 }
-.nextPrev-icons a{
-    cursor: pointer;
+.nextPrev-icons a {
+  cursor: pointer;
 }
 .green-status,
 .red-status,
 .white-status,
 .green-activityStatus,
-.red-activityStatus{
-    border-radius: 10px;
-    width: 100px;
-    text-align: center;
-    font-size: 14px;
+.red-activityStatus {
+  border-radius: 10px;
+  width: 100px;
+  text-align: center;
+  font-size: 14px;
 }
-.green-status{
-    color: #fff;
-    background-color: #00AA4F;
+.green-status {
+  color: #fff;
+  background-color: #00aa4f;
 }
-.red-status{
-    color: #fff;
-    background-color: #FF655B;
+.red-status {
+  color: #fff;
+  background-color: #ff655b;
 }
-.white-status{
-    color: rgb(90, 89, 89);
-    background-color: #fff;
+.white-status {
+  color: rgb(90, 89, 89);
+  background-color: #fff;
 }
-.red-activityStatus{
-    color: #fff;
-    border: 3px solid #FF655B;
+.red-activityStatus {
+  color: #fff;
+  border: 3px solid #ff655b;
 }
-.green-activityStatus{
-    color: #fff;
-    border: 3px solid #00AA4F;
+.green-activityStatus {
+  color: #fff;
+  border: 3px solid #00aa4f;
 }
-.activity-details h3{
-    font-size: 1.75rem;
+.activity-details h3 {
+  font-size: 1.75rem;
 }
-.activity-details .duration{
-    font-size: 16px;
+.activity-details .duration {
+  font-size: 16px;
 }
-.activity-details h4{
-    font-size: 1.5rem;
+.activity-details h4 {
+  font-size: 1.5rem;
 }
-.activity-details p{
-    font-size: 14px;
+.activity-details p {
+  font-size: 14px;
 }
-.sidebar-weeks{
-    cursor: pointer;
+.sidebar-weeks {
+  cursor: pointer;
 }
-.scroll-sidebar{
-   height: 100vh;
-   overflow-y: auto !important;
+.scroll-sidebar {
+  overflow-y: auto !important;
 }
-.scroll-sidebar{
-    scrollbar-width: thin;
-    scrollbar-color: #C0C0C0 transparent;
+.scroll-sidebar {
+  scrollbar-width: thin;
+  scrollbar-color: #c0c0c0 transparent;
 }
-.scroll-sidebar::-webkit-scrollbar{
-    width: 10px;
-    background-color: #F1F1F1;
-    display: block !important;
+.scroll-sidebar::-webkit-scrollbar {
+  width: 10px;
+  background-color: #f1f1f1;
+  display: block !important;
 }
-.scroll-sidebar::-webkit-scrollbar-track{
-    background: transparent;
-    display: block !important;
+.scroll-sidebar::-webkit-scrollbar-track {
+  background: transparent;
+  display: block !important;
 }
-.scroll-sidebar::-webkit-scrollbar-thumb{
-    background-color: #C0C0C0;
-    border-radius: 30px;
-    border: transparent;
-    transition: 2s;
+.scroll-sidebar::-webkit-scrollbar-thumb {
+  background-color: #c0c0c0;
+  border-radius: 30px;
+  border: transparent;
+  transition: 2s;
 }
-.scroll-sidebar::-webkit-scrollbar-thumb:hover{
-    background-color: #a8a5a5;
+.scroll-sidebar::-webkit-scrollbar-thumb:hover {
+  background-color: #a8a5a5;
 }
-.moduleInfo h4{
-    font-size: 1.6rem !important;
+.moduleInfo h4 {
+  font-size: 1.6rem !important;
 }
 
-.activity-modal .modal-content{
-    width: 100% !important;
-    padding: 0px !important;
+.activity-modal .modal-content {
+  width: 100% !important;
+  padding: 0px !important;
 }
-.nextPrev-icons button:focus, .button:focus, [type="submit"]:focus {
-    outline: none;
+.nextPrev-icons button:focus,
+.button:focus,
+[type="submit"]:focus {
+  outline: none;
 }
-.matTail-style .grid{
-    grid-template-columns: repeat(1, 1fr) !important;
+.matTail-style .grid {
+  grid-template-columns: repeat(1, 1fr) !important;
+}
+
+.course-sidebar-width {
+  width: 20%;
+  margin-left: 3rem;
+  margin-top: 10rem;
+}
+
+.module-sidebar-width {
+  width: 75%;
+  margin-top: 10rem;
 }
 
 /* Responsive Styles */
-@media (max-width: 767px){
-    .menu-items ul{
-        flex-direction: column;
-    }
-    .menu-items ul li{
-        padding-top: 0.5rem;
-    }
-    .modules-details .menu-items{
-        margin-left: 2rem !important; 
-        margin-right: 2rem !important;
-        padding-top: 2rem;
-    }
-    .all-weeks{
-        margin-left: 1.5rem !important; 
-        margin-right: 1.5rem !important;
-    }
-    .course-weeks{
-        margin-top: 2rem;
-        margin-left: 1.5rem !important;
-        margin-right: 1.5rem !important;
-    }
-    .course-weeks .course-status{
-        margin-bottom: 1rem;
-    }
+@media (max-width: 767px) {
+  .menu-items ul {
+    flex-direction: column;
+  }
+  .menu-items ul li {
+    padding-top: 0.5rem;
+  }
+  .modules-details .menu-items {
+    margin-left: 2rem !important;
+    margin-right: 2rem !important;
+    padding-top: 2rem;
+  }
+  .all-weeks {
+    margin-left: 1.5rem !important;
+    margin-right: 1.5rem !important;
+  }
+  .course-weeks {
+    margin-top: 2rem;
+    margin-left: 1.5rem !important;
+    margin-right: 1.5rem !important;
+  }
+  .course-weeks .course-status {
+    margin-bottom: 1rem;
+  }
 
-    .course-sidebar{
-        width: 100%;
-        padding-bottom: 2rem !important;
-    }
-    .back-course{
-        margin-left: 4px;
-    }
-    .weeks-info{
-        padding: 0px 15px;
-    }
+  .course-sidebar {
+    width: 100%;
+    padding-bottom: 2rem !important;
+  }
+  .back-course {
+    margin-left: 4px;
+  }
+  .weeks-info {
+    padding: 0px 15px;
+  }
 
-    .activityStatus{
-        padding-bottom: 1rem !important;
-    }
-    .user-info h1{
-        font-size: 25px !important;
-    }
-    .use-image{
-        margin-left: 3rem !important;
-    }
-    /* .learn-item-active::after{
+  .activityStatus {
+    padding-bottom: 1rem !important;
+  }
+  .user-info h1 {
+    font-size: 25px !important;
+  }
+  .use-image {
+    margin-left: 3rem !important;
+  }
+  /* .learn-item-active::after{
         height: 1px;
         border: 1px solid #fff !important;
     } */
-    .learn-items ul li a{
-        font-size: 12px;
-    }
-    .scroll-sidebar{
-        height: unset!important;
-        max-height: 400px;
-        overflow-y: auto !important;
-    }
+  .learn-items ul li a {
+    font-size: 12px;
+  }
+  .scroll-sidebar {
+    height: unset !important;
+    max-height: 400px;
+    overflow-y: auto !important;
+  }
 }
-@media (min-width: 768px) and (max-width: 991px){
-    .user-info h1{
-        font-size: 25px !important;
-    }
-    .use-image{
-        margin-left: 3rem !important;
-    }
+@media (min-width: 768px) and (max-width: 991px) {
+  .user-info h1 {
+    font-size: 25px !important;
+  }
+  .use-image {
+    margin-left: 3rem !important;
+  }
 }
