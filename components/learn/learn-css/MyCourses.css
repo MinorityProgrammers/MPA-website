@@ -61,6 +61,7 @@
 }
 .courses-items .progress {
   height: 0.75rem !important;
+  width: 100%;
   margin-top: 1.65rem;
   background: rgba(162, 89, 255, 0.4);
   border-radius: 17px;

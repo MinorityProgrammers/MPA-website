@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const FeaturedCourseList = ({
   course,
@@ -7,9 +7,7 @@ const FeaturedCourseList = ({
   enrolledBtn,
   showModal,
 }) => {
-  const {
-    earn, name, description, _id, tags,
-  } = course;
+  const { earn, name, description, _id, tags } = course;
 
   const userCoursesId = [];
   sameUserCourses.forEach((userCourse) => {
@@ -31,7 +29,7 @@ const FeaturedCourseList = ({
       <div className="text-center pb-4">
         {userCoursesId.includes(_id) ? (
           <>
-            <div className="tw-mb-16" />
+            <div className="tw-mb-10 tw-ml-10" />
             <button
               type="button"
               disabled={enrolledBtn}
@@ -39,7 +37,7 @@ const FeaturedCourseList = ({
                 showModal();
                 handleCourseInfo(course);
               }}
-              className="btn px-5 tw-flex tw-items-end banner-btn"
+              className="btn px-5 banner-btn  tw-ml-10"
               data-toggle="modal"
               data-target="#exampleModal"
             >
@@ -48,28 +46,22 @@ const FeaturedCourseList = ({
           </>
         ) : !userCoursesId.includes(_id) ? (
           <div className="course-items-footer">
-            <p className="course-earn-style">
-              Earn
-              {' '}
-              {earn}
-            </p>
+            <p className="course-earn-style">Earn {earn}</p>
             <button
               type="button"
               onClick={() => {
                 showModal();
                 handleCourseInfo(course);
               }}
-              className="btn px-5 banner-btn mt-3"
+              className="btn px-3 banner-btn mt-3"
               data-toggle="modal"
               data-target="#exampleModal"
             >
-              Enroll
-              {' '}
-              <span className="tw-ml-2 enroll-arrow"> &#8594;</span>
+              Enroll <span className="tw-ml-2 enroll-arrow"> &#8594;</span>
             </button>
           </div>
         ) : (
-          ''
+          ""
         )}
       </div>
     </div>
