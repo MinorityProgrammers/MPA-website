@@ -58,8 +58,8 @@ const WeeklyActivities = ({ enrolledCourses, modules, userModules }) => {
 
   return (
     <div className="courses-details banner-bg">
-      <div className="row" style={{ backgroundColor: "#14152b" }}>
-        <div className="col-2 course-sidebar-width col-md-3 pr-0 scroll-sidebar">
+      <div className="row week-row" style={{ backgroundColor: "#14152b" }}>
+        <div className="col-12 course-sidebar-width col-md-3 pr-0 scroll-sidebar">
           <CourseSidebar
             course={course}
             courseId={courseId}
@@ -67,35 +67,35 @@ const WeeklyActivities = ({ enrolledCourses, modules, userModules }) => {
             userModules={userModules}
           />
         </div>
-        <div className="col-6 module-sidebar-width tw-ml-4 col-md-7 pl-0">
-          <div className="pt-10">
-            <div className="activities-banner">
-              <div className="pt-5 mx-5  ps-md-5 pb-5">
-                <div className="week-info">
-                  <h1 className="mb-4 text-capitalize">Welcome, {}</h1>
-                  <h5 style={{ fontWeight: "600" }}>Progress</h5>
-                  <p className="text-center mt-4 pt-2 mb-0">
-                    {completedModules}/{totalModules}
-                  </p>
-                  <div className="progress mt-2 mb-2">
-                    <div
-                      className="progress-bar"
-                      style={{ width: `${totalPercentage}%` }}
-                      role="progressbar"
-                      aria-valuenow={totalPercentage}
-                      aria-valuemin="0"
-                      aria-valuemax="100"
-                    />
+        <div className="col-12 week-sidebar-width tw-ml-4 col-md-7 pl-0">
+          <div className="pt-10 week-width">
+            <div className="module-menu-items tw-flex tw-flex-col tw-justify-center">
+              <div className="activities-banner px-md-1 mb-2">
+                <div className="pt-5 mx-2  ps-md-2 pb-2">
+                  <div className="week-info">
+                    <h1 className="mb-4 text-capitalize">Welcome, {}</h1>
+                    <h5 style={{ fontWeight: "600" }}>Progress</h5>
+                    <p className="text-center mt-4 pt-2 mb-0">
+                      {completedModules}/{totalModules}
+                    </p>
+                    <div className="progress mt-2 mb-2">
+                      <div
+                        className="progress-bar"
+                        style={{ width: `${totalPercentage}%` }}
+                        role="progressbar"
+                        aria-valuenow={totalPercentage}
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      />
+                    </div>
+                    <p className="text-center">
+                      {!Number.isNaN(totalPercentage) && (
+                        <span className="">{totalPercentage}% completed</span>
+                      )}
+                    </p>
                   </div>
-                  <p className="text-center">
-                    {!Number.isNaN(totalPercentage) && (
-                      <span className="">{totalPercentage}% completed</span>
-                    )}
-                  </p>
                 </div>
               </div>
-            </div>
-            <div className="menu-items">
               <div className="d-flex justify-content-between mx-5 nextPrev-icons">
                 {specificModules.length === specificUserModules.length &&
                 specificUserModules.length !== 0 ? (

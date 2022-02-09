@@ -61,12 +61,18 @@
 }
 .activities-banner {
   background-color: #3e385d;
-  width: 80%;
 
   border-radius: 16px 16px 0px 0px;
 }
 .CircularProgressbar-background {
   fill: green;
+}
+
+.module-menu-items {
+  width: 100%;
+  margin-left: 2rem;
+  border: 1px solid #a259ff;
+  border-radius: 16px;
 }
 
 .progress-circle {
@@ -193,6 +199,21 @@
 
 .banner-bg {
   background: #14152b;
+}
+
+.week-row {
+  width: 100%;
+}
+
+.week-sidebar-width {
+  width: 100%;
+  margin-top: 10rem;
+}
+.week-width {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* WeeklyActivities CSS */
