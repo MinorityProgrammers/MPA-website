@@ -71,12 +71,13 @@ const WeeklyActivities = ({ enrolledCourses, modules, userModules }) => {
           <div className="pt-10 week-width">
             <div className="module-menu-items tw-flex tw-flex-col tw-justify-center">
               <div className="activities-banner px-md-1 mb-2">
-                <div className="pt-5 mx-2  ps-md-2 pb-2">
+                <div className="pt-4 mx-2  ps-md-2 pb-2">
                   <div className="week-info">
-                    <h1 className="mb-4 text-capitalize">Welcome, {}</h1>
-                    <h5 style={{ fontWeight: "600" }}>Progress</h5>
-                    <p className="text-center mt-4 pt-2 mb-0">
-                      {completedModules}/{totalModules}
+                    <h1 className="mb-2 text-capitalize tw-text-white">
+                      {moduleLevel} level
+                    </h1>
+                    <p className="mt-2 pt-2 mb-4">
+                      {completedModules}/{totalModules} modules completed
                     </p>
                     <div className="progress mt-2 mb-2">
                       <div

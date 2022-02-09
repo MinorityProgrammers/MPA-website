@@ -74,6 +74,7 @@
   border: 1px solid #a259ff;
   border-radius: 16px;
   margin-bottom: 2rem;
+  background: #1c1d37;
 }
 
 .progress-circle {
@@ -182,6 +183,7 @@
   background-color: #1c1d37;
   border: 1px solid #a259ff;
   border-radius: 16px;
+  margin-bottom: 2rem;
 }
 .modules-details .menu-items ul li a {
   font-size: 1.8rem;
@@ -219,18 +221,18 @@
 
 /* WeeklyActivities CSS */
 .week-info {
-  color: #000;
+  color: white;
 }
 .week-info h1 {
   font-weight: 600;
-  font-size: 42px;
+  font-size: 32px;
 }
 .week-info h5 {
   font-size: 25px;
 }
 .week-info p {
-  color: #000;
-  font-weight: 700;
+  color: white;
+  font-weight: 500;
 }
 .week-info .progress {
   background-color: rgba(28, 29, 55, 0.61) !important;

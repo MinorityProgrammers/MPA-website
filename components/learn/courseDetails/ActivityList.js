@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 
 const ActivityList = ({ module, userModules, specificUModules }) => {
   const [userModule, setUserModule] = useState([]);
-  const { name, image, _id } = module;
+  const { name, image, _id, description } = module;
   const router = useRouter();
   const { courseId, moduleLevel } = router.query;
 
@@ -52,23 +52,26 @@ const ActivityList = ({ module, userModules, specificUModules }) => {
   return (
     <a onClick={handleModuleInfo} className="text-decoration-none">
       <div className="">
-        <div className="course-weeks px-5 mb-4 mx-5">
+        <div className="course-weeks px-2 mb-4 mx-5">
           <div className="row">
-            <div className="col-md-4 mb-2" style={{ marginTop: "0.8rem" }}>
+            <div className="col-md-3 mb-2" style={{ marginTop: "0.8rem" }}>
               <img src={image} className="img-fluid" alt="" />
             </div>
-            <div className="col-md-5 d-flex align-items-center ml-3">
+            <div className="col-md-6 d-flex  ml-1">
               <div className="d-pb-1">
                 <h4
-                  className="mt-3 mb-2 text-white"
-                  style={{ fontSize: "1.5rem" }}
+                  className="mt-3 mb-2 text-white tw-font-bold"
+                  style={{ fontSize: "1.2rem" }}
                 >
                   {name}
                 </h4>
+                <span style={{ fontSize: "14px", color: "#fff" }}>
+                  {description}
+                </span>
               </div>
             </div>
             <div className="col-md-2">
-              <div className="pt-3 pl-4 ml-4 activityStatus">
+              <div className="pt-3 pl-1 ml-1 activityStatus">
                 {userModule.completionStatus === "uncompleted" ? (
                   <p className="red-status ml-auto">uncompleted</p>
                 ) : userModule.completionStatus === "completed" ? (
