@@ -8,8 +8,15 @@
 /* STYLING COMMONS */
 .overviewContent h5 {
   color: white;
-  font-size: 1.3vw;
+  font-size: 20px;
   font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 20px;
+}
+.overviewContent h5 i{
+  cursor: pointer; 
 }
 .overviewContent h6 {
   font-size: 1vw;
@@ -23,33 +30,10 @@
 }
 /* END STYLING COMMONS */
 
-.fleft {
-  width: 50%;
-  margin-right: 2vw;
-}
-
-.fright {
-  width: 50%;
-}
-
-.fItem {
-  border-radius: 1vw;
-  padding: 1vw;
-}
-
 /* STYLING Completion */
 .fiCompletion {
   display: flex;
-  flex-wrap: wrap;
 }
-/* .fiCompletion .progress {
-  display: flex;
-  justify-content: space-between;
-  color: white;
-  position: relative;
-  height: 75px;
-  width: 75px; */
-/* } */
 .fiCompletion .progress svg {
   height: 75px;
   width: 75px;
@@ -79,22 +63,23 @@
   color: white;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  margin-left: 20px;
-  width: calc(100% - 100px);
+  margin: auto;
+  width: 50%;
 }
 .fiCompletion .info p {
-  font-size: 1vw;
+  font-size: 20px;
 }
 .fiCompletion .completedProfile,
 .fiCompletion button {
-  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-  color: #226fee;
-  font-size: 1.2vw;
+  background: #8040D2;
+  color: #ffffff;
+  font-size: 20px;
   font-weight: bold;
   margin-top: 10px;
+  border-radius: 100px;
+  width: fit-content;
   width: 100%;
+  padding: .9rem;
 }
 .fiCompletion .completedProfile {
   color: #00aa4f;
@@ -118,28 +103,30 @@
 
 /* STYLING Profile */
 .fIProfile {
-  color: black;
-  margin: 2vw 0;
-  height: calc(45% - 2vw);
+  color: white;
+  margin: 20px 0;
+  border: 1px solid #8040D2;
+  box-shadow: 0px 17px 25px rgb(0 0 0 / 25%);
+  border-radius: 15px;
+  padding-top: 15px;
 }
-.fIProfile h5 {
-  height: 10%;
+.fIProfile h5{
+  padding-left: 50px;
 }
 .fIProfile .userContent {
   display: flex;
-  padding: 0.5vw;
-  margin: 0.5vw 0;
-  height: calc(55% - 1vw);
+  padding-left: 50px;
 }
 .fIProfile .userContent .uCLeft {
   width: 70%;
 }
 .fIProfile .userContent .info {
   display: flex;
-  font-size: 1.5vh;
+  font-size: 16px;
+  font-weight: 500;
+  margin: 10px 0;
 }
 .fIProfile .userContent .info .infoKey {
-  font-weight: bold;
   text-overflow: ellipsis;
   white-space: nowrap;
   width: 35%;
@@ -149,6 +136,20 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   width: 65%;
+  font-weight: 400;
+}
+.infoValue a:hover{
+  color: #8040D2;
+}
+.lineContainer{
+  padding: 0 10px;
+  width: 100%;
+}
+.line{
+  background: rgba(147, 121, 255, 0.52);
+  height: 1px;
+  width: 100%;
+  margin: 11px auto;
 }
 @media only screen and (max-width: 1024px) {
   .fIProfile .userContent .uCLeft {
@@ -487,14 +488,15 @@
   }
 }
 /* END OF STYLING Notifications */
+
 /* Progress Styleing */
 .progress {
-  width: 100px;
-  height: 100px !important;
+  width: 110px;
+  height: 110px !important;
   float: left;
   line-height: 150px;
   background: none;
-  margin: 20px;
+  margin: 20px 0px 0px 20px;
   box-shadow: none;
   position: relative
 }
@@ -504,7 +506,7 @@
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  border: 12px solid #3E385D;
+  border: 20px solid #3E385D;
   ;
   position: absolute;
   top: 0;
@@ -528,7 +530,7 @@
   width: 100%;
   height: 100%;
   background: none;
-  border-width: 12px;
+  border-width:20px;
   border-style: solid;
   position: absolute;
   top: 0
@@ -554,7 +556,6 @@
   border-right: 0;
   -webkit-transform-origin: center right;
   transform-origin: center right;
-  animation: loading-1 1.8s linear forwards
 }
 
 .progress .progressValue {
@@ -562,7 +563,8 @@
   height: 90%;
   border-radius: 50%;
   background: #1C1D37;
-  font-size: 24px;
+  font-size: 20px;
+  font-weight: bold;
   color: #fff;
   line-height: 135px;
   position: absolute;
@@ -571,60 +573,121 @@
   display: flex;
   justify-content: center; 
   align-items: center;
+  font-weight: bold;
 }
 
 .progress.blue .progressBar {
-  border-color: #8040D2;
+  border-color: #A259FF;
 }
 
-.progress.blue .progressLeft .progressBar {
-  animation: loading-2 1.5s linear forwards 1.8s
+/* Bottom body Items */
+.bodyBottom{
+  display: grid;
+  grid-template-columns: 48% 48%;
+  grid-column-gap:4%;
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+}
+.bottomItem{
+  display: flex;
+  padding: 1rem 0rem;
+  flex-direction: column;
+  background: #1C1D37;
+  border: 1px solid #8040D2;
+  box-sizing: border-box;
+  box-shadow: 0px 32px 41px rgb(0 0 0 / 25%);
+  border-radius: 15px;
+}
+.bottomItem div{
+  padding-left: 50px;
+}
+.lineContainer{
+  padding: 0 10px !important;
+}
+.bottomItem div h2{
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 20px;
+}
+.bottomItem div h2 i{
+ cursor: pointer; 
+}  
+.itemElement{
+  display: flex;
+  justify-content: space-between;
+  padding-right: 2rem;
+  cursor: pointer;
+}
+.itemElement img{
+  max-height: 24px;
 }
 
-.progress.yellow .progressBar {
-  border-color: #fdba04
-}
-
-.progress.yellow .progressRight .progressBar {
-  animation: loading-3 1.8s linear forwards
-}
-
-.progress.yellow .progressLeft .progressBar {
-  animation: none
-}
-
-@keyframes loading-1 {
-  0% {
-      -webkit-transform: rotate(0deg);
-      transform: rotate(0deg)
+@media only screen and (max-width: 600px) {
+  .fiCompletion{
+    flex-flow: column;
+    align-items: center;
   }
-
-  100% {
-      -webkit-transform: rotate(180deg);
-      transform: rotate(180deg)
-  }
 }
-
-@keyframes loading-2 {
-  0% {
-      -webkit-transform: rotate(0deg);
-      transform: rotate(0deg)
+@media only screen and (max-width: 450px) {
+  .overviewContent h5{
+    font-size: 18px;
   }
-
-  100% {
-      -webkit-transform: rotate(144deg);
-      transform: rotate(144deg)
+  .infoKey{
+    font-size: 16px;
   }
-}
-
-@keyframes loading-3 {
-  0% {
-      -webkit-transform: rotate(0deg);
-      transform: rotate(0deg)
+  .bottomItem{
+    margin-bottom: 20px;
   }
-
-  100% {
-      -webkit-transform: rotate(135deg);
-      transform: rotate(135deg)
+  .bottomItem div h2{
+    font-size: 18px;
   }
+  .bottomItem div{
+    padding-left: 20px;
+  }
+  .itemElement{
+    padding-right: 0px;
+  }
+  .userContent{
+    padding-left: 20px !important;
+  }
+  .fIProfile h5{
+    padding-left: 20px;
+  }
+  .walletContainer {
+    padding-left: 5px !important;
+  }
+  .walletRow{
+    width: 100%;
+  }
+  .bodyBottom{
+    grid-template-columns: 100%;
+  }
+  .itemElement img{
+    margin: 0 !important;
+  }
+  .fiCompletion button{
+    font-size: 18px;
+  }
+  .info p{
+    font-size: 16px;
+  }
+  .fIProfile, .userContent, .uCLeft{
+    width: 100% !important;
+  }
+  .fIProfile .userContent .info:nth-child(-n + 2) .infoValue {
+    width: 100% !important;
+  }
+  .walletRow h3{
+    font-size: 14px;
+  }  
+  .walletRow p{
+    font-size: 14px;
+    margin-left: 4px;
+    white-space: nowrap;
+  }  
 }

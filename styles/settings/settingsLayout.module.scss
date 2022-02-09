@@ -21,8 +21,12 @@
   box-sizing: border-box;
   box-shadow: 0px 32px 41px rgba(0, 0, 0, 0.25);
   border-radius: 15px;
+  display: flex;
 }
-
+.navContainer{
+  margin: auto 0;
+  width: 100%;
+}
 .settingsNavigation h1,
 .settingsNavigation h2 {
   color: #ffffff;
@@ -48,19 +52,33 @@
   font-weight: 600;
   color: #ffffff;
   cursor: pointer;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity .2s ease-out;
 }
-.settingsNavigation .userDataHeader .imgDiv img {
+.settingsNavigation .userDataHeader .imgDiv:hover{
+  div{
+  opacity: 1; 
+  }
+  .profileImg {
+    opacity: 0.7;
+  }
+} 
+.settingsNavigation .userDataHeader .imgDiv .profileImg {
   cursor: pointer;
   border-radius: 100%;
   width: 100%;
   height: 100%;
   max-width: 170px;
-  opacity: 0.7;
+  opacity: 1;
   cursor: pointer;
+  transition: opacity .2s ease-out;
 }
-.settingsNavigation .userDataHeader .imgDiv img::after{
-  
-}
+
 .settingsNavigation .userDataHeader .textDiv {
   align-self: center;
   text-align: center;
@@ -106,10 +124,7 @@
   padding-bottom: 10px;
   font-size: 16px;
 }
-.settingsNavigation nav .navHeader.activeLi {
-  /* background-color: #474BFD;
-  color: white; */
-}
+
 .settingsNavigation nav .navHeader.activeLi h2 {
   background: #8040D2;
   border-radius: 44px;
@@ -121,17 +136,12 @@
   text-align: center;
   padding-bottom: 1vw;
 }
-.settingsNavigation nav .navHeader:nth-child(odd) h2 {
-  /* border-top: 2px solid #afafb3;
-  border-bottom: 2px solid #afafb3; */
-}
 .settingsNavigation nav .navHeader:first-child h2 {
   border-top: none;
 }
 .settingsNavigation nav .navHeader h2 {
   display: flex;
   align-items: center;
-  /* justify-content: space-between; */
   padding: 0.6rem 1rem;
   width: 100%;
 }
@@ -146,10 +156,6 @@
   align-items: center;
   width: 30px;
   margin-right: 20px;
-}
-.settingsNavigation nav .navHeader h2 .icon img {
-  /* width: 60%;
-  height: 60%; */
 }
 .settingsNavigation nav .navHeader h2 .arrow {
   display: flex;
@@ -193,48 +199,40 @@
   margin-right: 30px;
   cursor: pointer;
 }
-@media only screen and (max-width: 768px) {
-  .settingsNavigation {
-    width: 11%;
-  }
-  .specificSettings {
-    width: 89%;
-  }
-  .settingsNavigation .userDataHeader {
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-left: 0;
-  }
-  .settingsNavigation .userDataHeader > div {
-    text-align: center;
-    width: 100%;
-  }
-  .settingsNavigation .userDataHeader .imgDiv {
-    margin: 0 0 5% 0;
-    width: 60%;
-  }
-  .settingsNavigation .userDataHeader .textDiv {
-    align-self: auto;
-    margin-right: 0;
-    width: 40%;
-  }
-  .settingsNavigation .userDataHeader .textDiv h4 {
-    max-height: 25vw;
-    overflow-y: scroll;
-    word-break: break-all;
-  }
-  .settingsNavigation nav ul li h2 {
-    justify-content: center !important;
-    padding: 2vw 0 !important;
-    margin-right: 0 !important;
-  }
-  .settingsNavigation nav ul li h2 .icon {
-    width: 5vw !important;
-    height: 5vw !important;
-  }
-  .settingsNavigation nav ul li h2 span,
-  .settingsNavigation nav ul li h2 .arrow {
-    display: none !important;
-  }
+img.editIcon {
+  position: absolute;
+  width: 25%;
+  height: 25%;
+  top: 70%;
+  right: -5%;
+  cursor: pointer;
 }
+.lineContainer{
+  padding: 0 10px;
+  width: 100%;
+}
+.line{
+  background: rgba(147, 121, 255, 0.52);
+  height: 1px;
+  width: 90%;
+  margin: 11px auto;
+}
+.btnSignOut{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 16px;
+  font-weight: normal;
+  cursor: pointer;
+  width: fit-content;
+}
+.btnSignOut:hover {
+  color: #8040D2;
+}
+@media only screen and (max-width: 992px) {
+  .accountSettings {
+    grid-template-columns: 100%;
+    grid-row-gap: 20px;
+  }
+}  
