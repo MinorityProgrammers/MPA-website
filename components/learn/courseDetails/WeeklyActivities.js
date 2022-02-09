@@ -16,7 +16,6 @@ const WeeklyActivities = ({ enrolledCourses, modules, userModules }) => {
   useEffect(() => {
     singleCourse.forEach((_course) => {
       setCourse(_course.courseId);
-      console.log(userModules);
     });
   }, [singleCourse]);
 
@@ -60,7 +59,7 @@ const WeeklyActivities = ({ enrolledCourses, modules, userModules }) => {
   return (
     <div className="courses-details banner-bg">
       <div className="row" style={{ backgroundColor: "#14152b" }}>
-        <div className="col-4 col-md-3 tw-mt-6 pr-0 scroll-sidebar">
+        <div className="col-2 course-sidebar-width col-md-3 pr-0 scroll-sidebar">
           <CourseSidebar
             course={course}
             courseId={courseId}
@@ -68,7 +67,7 @@ const WeeklyActivities = ({ enrolledCourses, modules, userModules }) => {
             userModules={userModules}
           />
         </div>
-        <div className="col-8 col-md-9 pl-0">
+        <div className="col-6 module-sidebar-width tw-ml-4 col-md-7 pl-0">
           <div className="pt-10">
             <div className="activities-banner">
               <div className="pt-5 mx-5  ps-md-5 pb-5">
