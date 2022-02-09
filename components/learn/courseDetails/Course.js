@@ -28,7 +28,7 @@ const Course = ({ userInfo, course, modules }) => {
 
   return (
     <div className="courses-detail row banner-bg">
-      <div className="col-2 course-sidebar-width col-md-3 pr-0 scroll-sidebar">
+      <div className="col-10 course-sidebar-width col-md-3 pr-0 scroll-sidebar">
         <CourseSidebar
           course={course}
           courseId={courseId}
@@ -36,7 +36,7 @@ const Course = ({ userInfo, course, modules }) => {
           userModules={userModules}
         />
       </div>
-      <div className="col-6 module-sidebar-width tw-ml-4 col-md-7 pl-0">
+      <div className="col-12 module-sidebar-width tw-ml-4 col-md-7 pl-0">
         <MainCourseInfo
           courseId={courseId}
           userInfo={userInfo}

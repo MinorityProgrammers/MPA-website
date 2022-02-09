@@ -386,6 +386,10 @@
 
 /* Responsive Styles */
 @media (max-width: 767px) {
+  .module-sidebar-width {
+    margin-left: 2.5rem !important;
+    margin-top: 5rem !important;
+  }
   .menu-items ul {
     flex-direction: column;
   }
@@ -437,10 +441,10 @@
   .learn-items ul li a {
     font-size: 12px;
   }
+  .course-sidebar-width {
+    margin-left: 1rem;
+  }
   .scroll-sidebar {
-    height: unset !important;
-    max-height: 400px;
-    overflow-y: auto !important;
   }
 }
 @media (min-width: 768px) and (max-width: 991px) {
