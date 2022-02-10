@@ -68,8 +68,8 @@ function TopSection({
           />
         </div>
         <div className="tw-my-5">
-          <div className="tw-m-8 tw-flex tw-flex-row tw-justify-start tw-w-1/6 xl:tw-w-1/3">
-            <img onClick={() => { router.back(); }} className="tw-w-12 tw-mt-1 xl:tw-w-8 xl:tw-mt-3 tw-cursor-pointer" src="/assets/new/arrow-down-circle.png" alt="back arrow" />
+          <div className="tw-m-8 tw-flex tw-flex-row tw-justify-start tw-w-1/6 lg:tw-w-1/2">
+            <img onClick={() => { router.back(); }} className="tw-w-12 tw-h-12 tw-mt-1 xl:tw-w-8 xl:tw-mt-3 tw-cursor-pointer" src="/assets/new/arrow-down-circle.png" alt="back arrow" />
             <p className="tw-text-white tw-mx-3 tw-mt-3 tw-text-2xl xl:tw-text-xl">My Profile</p>
           </div>
         </div>
@@ -182,28 +182,40 @@ function TopSection({
               </>
 
             ) : (
-              <div className="tw-p-5 tw-flex tw-flex-col tw-justify-center">
-                <div className="tw-flex tw-flex-row tw-justify-between">
-                  <textarea
-                    maxLength={600}
-                    className="tw-text-lg tw-font-normal
+              <>
+                {ownsProfile ? (
+                  <div className="tw-p-5 tw-flex tw-flex-col tw-justify-center">
+                    <div className="tw-flex tw-flex-row tw-justify-between">
+                      <textarea
+                        maxLength={600}
+                        className="tw-text-lg tw-font-normal
                tw-my-2 tw-text-gray-500 tw-bg-transparent tw-w-11/12 tw-outline-none"
-                    placeholder="Tell us about you"
-                    value={bio}
-                    onChange={(e) => { setBio(e.target.value); }}
-                  />
-                  {' '}
-                  <p className="tw-text-gray-500 tw-my-6 tw-w-1/6">600 words</p>
+                        placeholder="Tell us about you"
+                        value={bio}
+                        onChange={(e) => { setBio(e.target.value); }}
+                      />
+                      {' '}
+                      <p className="tw-text-gray-500 tw-my-6 tw-w-1/6">600 words</p>
 
-                </div>
+                    </div>
 
-                {stateChanged && (
-                <div className="tw-my-2 tw-justify-center tw-flex-end tw-w-full">
-                  <ButtonComponent func={() => { handleSubmit(); }} text="save" state={isSaving} />
-                </div>
+                    {stateChanged && (
+                    <div className="tw-my-2 tw-justify-center tw-flex-end tw-w-full">
+                      <ButtonComponent func={() => { handleSubmit(); }} text="save" state={isSaving} />
+                    </div>
+                    )}
+
+                  </div>
+                ) : (
+                  <p className="tw-text-lg tw-font-normal
+                tw-my-2 tw-text-gray-500 tw-bg-transparent tw-w-full tw-outline-none"
+                  >
+                    No Bio!
+                  </p>
                 )}
 
-              </div>
+              </>
+
             )}
           </div>
 

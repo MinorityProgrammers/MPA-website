@@ -109,6 +109,7 @@ const User = ({ user }) => {
             ownsProfile={ownsProfile}
             profileDispatch={profileDispatch}
             setChangeInProfile={setChangeInProfile}
+            userId={user[0]?._id}
           />
           <Footer />
         </>
