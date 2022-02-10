@@ -50,7 +50,7 @@ const UserCoursesList = ({ enrolledCourse }) => {
   const userPercentages = Math.round(completionRate / totalModulesLength);
 
   return (
-    <div className="courses-items px-3 mx-2 mb-4 pt-1 tw-bg-white tw-shadow-lg">
+    <div className="courses-items px-3 mx-2 mb-4 pt-1 tw-shadow-lg">
       <div className="d-pb-1 ml-2 tw-mt-3 tw-flex tw-justify-between tw-items-center">
         <h3 className="course-name mb-0">{name}</h3>
         <span className="course-earn-style tw-font-semibold tw-text-base">

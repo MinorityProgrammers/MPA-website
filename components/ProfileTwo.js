@@ -28,6 +28,12 @@ import { useMoralisDapp } from '../MoralisDappProvider/MoralisDappProvider';
 import TopSection from './profile/TopSection';
 import ProfileStength from './profile/ProfileStength';
 import UserDatas from './profile/UserDatas';
+import Tabs from './profile/Tabs';
+import Reputation from './profile/Reputation';
+import CoursesSkeleton from './learn/CoursesSkeleton';
+import UserCourses from './learn/UserCourses';
+import NoDataFound from './learn/NoDataFound';
+import Experience from './profile/Experience';
 
 function countDown(mintedURL, tx) {
   let secondsToGo = 30;
@@ -46,7 +52,7 @@ function countDown(mintedURL, tx) {
 
 const ProfileTwo = function ({
   userData, isLoggedIn, ownsProfile,
-  profileDispatch, setChangeInProfile,
+  profileDispatch, setChangeInProfile, userId,
 }) {
   const reputationBadge = {
     jobApplyCount: '/assets/images/job_apply.png',
@@ -69,7 +75,7 @@ const ProfileTwo = function ({
   const [expDateInputFrom, setExpDateInputFrom] = useState('');
   const [expDateInputTo, setExpDateInputTo] = useState('');
   const [expLocationInput, setExpLocationInput] = useState('');
-  const { walletAddress } = useMoralisDapp();
+  const { walletAddress, chainId } = useMoralisDapp();
   const [educationCards, setEducationCards] = useState([]);
   const [projectCards, setProjectCards] = useState([]);
   const [eduAddMode, setEduAddMode] = useState(false);
@@ -90,6 +96,7 @@ const ProfileTwo = function ({
   // const [mintedURL, setMintedURl] = useState('');
   const [reputation, setReputation] = useState([]);
   const [enrolledCourses, setEnrolledCourses] = useState([]);
+  const [userNfts, setUserNFTs] = useState([]);
   const [company, setCompany] = useState('');
   const [link, setLink] = useState('');
   const [eduDateGrad, setEduDateGrad] = useState('');
@@ -97,9 +104,30 @@ const ProfileTwo = function ({
   const [UnIMG, setUnIMG] = useState('');
   const [project, setProject] = useState('');
   const [ProIMG, setProIMG] = useState('');
+  const [tabsActive, setTabsActive] = useState(
+    { nfts: false, userCourses: true, badges: false },
+  );
+  const [loading, setLoading] = useState(true);
 
   const router = useRouter();
   const { Moralis, isAuthenticated } = useMoralis();
+
+  const getNFTs = async () => {
+    if (chainId === process.env.NEXT_PUBLIC_NETWORK_ID_MAINNET && walletAddress !== '' && isAuthenticated) {
+      const options = { chain: 'matic', address: walletAddress };
+      const polygonNFTs = await Moralis.Web3.getNFTs(options);
+      setUserNFTs(polygonNFTs);
+    } if (chainId === process.env.NEXT_PUBLIC_NETWORK_ID_TESTNET && walletAddress !== '' && isAuthenticated) {
+      const options = { chain: 'mumbai', address: walletAddress };
+      const polygonNFTs = await Moralis.Web3.getNFTs(options);
+      setUserNFTs(polygonNFTs);
+    }
+  };
+
+  useEffect(() => {
+    getNFTs();
+  }, [walletAddress, isAuthenticated, chainId]);
+  console.log(userNfts);
 
   const axiosFunc = (url, token, setState) => {
     axios
@@ -110,13 +138,14 @@ const ProfileTwo = function ({
       })
       .then((res) => {
         setState(res.data.data);
+        setLoading(false);
       });
   };
 
   useEffect(() => {
     const userToken = JSON.parse(localStorage.getItem('userInfo'));
     if (userToken !== null) {
-      axiosFunc(`learn/user/${userData._id}`, userToken.token, setEnrolledCourses);
+      axiosFunc(`learn/user/${userId}`, userToken.token, setEnrolledCourses);
       axiosFunc('reputation/userReputations', userToken.token, setReputation);
       axiosFunc(
         'experience/userExperience',
@@ -560,14 +589,54 @@ const ProfileTwo = function ({
           profileDispatch={profileDispatch}
           setChangeInProfile={setChangeInProfile}
         />
-
+        {ownsProfile && (
         <ProfileStength
           userData={userData}
           setPsArrowUp={setPsArrowUp}
           psArrowUp={psArrowUp}
         />
+        )}
 
         {/* <UserDatas enrolledCourses={enrolledCourses} /> */}
+
+        <Tabs tabsActive={tabsActive} setTabsActive={setTabsActive} />
+
+        {tabsActive.userCourses && (
+          <div className="courses tw-px-5">
+            {loading ? (
+              <CoursesSkeleton title="My Courses" />
+            ) : enrolledCourses.length > 0 ? (
+              <UserCourses enrolledCourses={enrolledCourses} user={userData} />
+            ) : (
+              <div className="mb-5 pb-3">
+                <div className="courses-info tw-px-10">
+                  <NoDataFound title="Courses" isActionable action="/learn" textAction="Start Learning" description={`${ownsProfile ? 'When you enroll for courses, we will display it here.' : 'This User has not enrolled in any course yet!'}`} />
+                </div>
+              </div>
+            )}
+
+          </div>
+        )}
+
+        {tabsActive.badges && (
+          <div className="courses tw-p-5">
+            {loading ? (
+              <CoursesSkeleton title="My Badges" />
+            ) : reputation.length > 0 ? (
+              <Reputation reputation={reputation} reputationBadge={reputationBadge} />
+            ) : (
+              <div className="mb-5 pb-3">
+                <div className="courses-info tw-px-10">
+                  <NoDataFound title="Courses" isActionable={false} action="" textAction="" description={`${ownsProfile ? 'You will see your badges here as activity reward!' : 'This User has not Earned a Badge yet!'}`} />
+                </div>
+              </div>
+            )}
+
+          </div>
+        )}
+
+        {/* <Experience experienceCards={experienceCards} /> */}
+
 
         <section className="tw-mb-8 tw-container ">
           <div className="pp-exp-edu-area tw-p-6  tw-rounded-md tw-grid tw-grid-flow-row tw-auto-rows-max">
@@ -759,75 +828,6 @@ const ProfileTwo = function ({
         </section>
 
         <section className="tw-mb-8 tw-container ">
-          <div className="pp-card-area pp-projects pp-courses tw-p-6  tw-rounded-md tw-grid tw-grid-flow-row tw-auto-rows-max">
-            <div className="hover:tw-bg-light-blue-500 hover:tw-border-transparent hover:tw-shadow-lg tw-group tw-block tw-rounded-lg tw-p-4 tw-border-gray-300 tw-border tw-bg-white">
-              <h2 className="tw-relative tw-text-xl tw-font-bold tw-mb-3 tw-text-black">
-                Enrolled Courses
-                <span className="tw-absolute tw-top-0 tw-right-0 tw-text-xs tw-cursor-pointer">
-                  <a className="pp-view-all" href="/learn">
-                    View All
-                  </a>
-                </span>
-              </h2>
-
-              {enrolledCourses.length ? (
-                <ul
-                  className="tw-grid tw-grid-cols-3 md:tw-grid-cols-1"
-                  style={
-                    enrolledCourses.length < 3
-                      ? { display: 'flex', justifyContent: 'center' }
-                      : {}
-                  }
-                >
-                  {enrolledCourses.map((courseCard) => (
-                    <li
-                      x-for="item in items"
-                      key={Math.floor(Math.random() * 100000)}
-                      className="tw-mx-2 tw-mb-4 tw-rounded-2xl tw-filter tw-drop-shadow-lg"
-                      style={
-                        enrolledCourses.length < 3
-                          ? {
-                            width: '33%',
-                          }
-                          : {}
-                      }
-                    >
-                      <div className="pp-card-content tw-flex tw-flex-col tw-items-center tw-justify-center hover:tw-bg-light-blue-500 tw-block tw-p-4">
-                        <h3 className="tw-text-center tw-font-bold tw-text-black tw-cursor-text">
-                          {courseCard.courseId.name}
-                        </h3>
-                        <p className="tw-text-center tw-mb-2 tw-text-xs tw-font-medium tw-text-current tw-text-gray-500 tw-cursor-text">
-                          {courseCard.courseId.description}
-                        </p>
-                        <div className="imgDiv tw-mb-6">
-                          <img
-                            src={courseCard.courseId.image}
-                            alt={`${courseCard.courseId.name} Course`}
-                            className="tw-block tw-w-11/12 tw-h-48 tw-rounded-md"
-                          />
-                        </div>
-                        <div className="cd-btn tw-rounded-md tw-text-white">
-                          <a
-                            href={`/courses/${courseCard.courseId._id}`}
-                            className="tw-block tw-py-1 tw-px-5"
-                          >
-                            View Course Details
-                          </a>
-                        </div>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              ) : (
-                <div className="no-content">
-                  <h3>No Courses to Display</h3>
-                </div>
-              )}
-            </div>
-          </div>
-        </section>
-
-        <section className="tw-mb-8 tw-container ">
           <div className="pp-exp-edu-area tw-p-6  tw-rounded-md tw-grid tw-grid-flow-row tw-auto-rows-max">
             <div className="hover:tw-bg-light-blue-500 hover:tw-border-transparent hover:tw-shadow-lg tw-group tw-block tw-rounded-lg tw-p-4 tw-border-gray-300 tw-border tw-bg-white">
               <h2 className="tw-relative tw-text-xl tw-font-bold tw-mb-3 tw-text-black">
@@ -861,7 +861,7 @@ const ProfileTwo = function ({
                           ? 'tw-border-b border-gray-500'
                           : ''
                       }`}
-                      key={card.cardId}
+                      key={card._id}
                     >
                       <div className="addImg tw-mr-4 tw-mb-6 tw-cursor-pointer">
                         <a
