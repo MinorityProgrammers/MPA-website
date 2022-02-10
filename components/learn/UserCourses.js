@@ -14,13 +14,12 @@ const UserCourses = ({ enrolledCourses, user }) => {
     infinite: coursesLength > 2,
     autoplay: true,
     slidesToScroll: 1,
-    variableWidth: true,
     responsive: [
       {
         breakpoint: 991,
         settings: {
-          slidesToShow: 2,
-          infinite: coursesLength > 2,
+          slidesToShow: 1,
+          infinite: coursesLength > 1,
         },
       },
       {
