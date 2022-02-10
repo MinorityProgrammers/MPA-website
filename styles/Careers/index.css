@@ -44,7 +44,7 @@
 }
 
 .saved-job-stub-description:before {
-  content: '';
+  content: "";
   height: 10px;
   width: 10px;
   background: red;
@@ -250,11 +250,11 @@
   border-radius: 10px 10px 0px 0px;
 }
 
-@import './normalizer.css';
+@import "./normalizer.css";
 
 * {
   --mpa-navy: #151371;
-  --mpa-pink: #474BFF;
+  --mpa-pink: #474bff;
   --mpa-yellow: #ffc700;
 }
 
@@ -386,7 +386,7 @@
 }
 
 .company-stub-box3-diversity::after {
-  content: '';
+  content: "";
   position: absolute;
   height: 100%;
   width: 50%;
@@ -404,7 +404,7 @@
 }
 
 .company-stub-box3-diversity-score::before {
-  content: '';
+  content: "";
   height: 1.5px;
   width: 100%;
   position: absolute;
@@ -467,7 +467,7 @@
 
 * {
   --mpa-navy: #151371;
-  --mpa-pink: #474BFF;
+  --mpa-pink: #474bff;
   --mpa-yellow: #ffc700;
 }
 
@@ -671,7 +671,7 @@
 }
 
 .create-new-company-page {
-  background: linear-gradient(to right, #ffc700 10%, #474BFF);
+  background: linear-gradient(to right, #ffc700 10%, #474bff);
 }
 
 .companyType-label {
@@ -687,7 +687,7 @@
 }
 
 .companyType-custom-checkbox:after {
-  content: '';
+  content: "";
   height: 13px;
   width: 13px;
   border: solid 1px #151371;
@@ -700,7 +700,7 @@
 
 .companyType-custom-checkbox:before {
   display: none;
-  content: '';
+  content: "";
   position: absolute;
   height: 12px;
   width: 6px;
@@ -711,11 +711,11 @@
   transform: rotateZ(40deg);
 }
 
-input[type='date']::-webkit-calendar-picker-indicator {
+input[type="date"]::-webkit-calendar-picker-indicator {
   filter: invert(1);
 }
 
-input[type='time']::-webkit-calendar-picker-indicator {
+input[type="time"]::-webkit-calendar-picker-indicator {
   filter: invert(1);
 }
 
@@ -726,7 +726,7 @@ input[type='time']::-webkit-calendar-picker-indicator {
 }
 
 .create-new-job-page {
-  background: linear-gradient(to bottom right, #151371 50%, #474BFF);
+  background: linear-gradient(to bottom right, #151371 50%, #474bff);
 }
 
 .company-name {
@@ -750,7 +750,7 @@ input[type='time']::-webkit-calendar-picker-indicator {
 }
 
 .jobType-custom-checkbox:after {
-  content: '';
+  content: "";
   height: 13px;
   width: 13px;
   border: solid 1px white;
@@ -763,7 +763,7 @@ input[type='time']::-webkit-calendar-picker-indicator {
 
 .jobType-custom-checkbox:before {
   display: none;
-  content: '';
+  content: "";
   position: absolute;
   height: 12px;
   width: 6px;
@@ -774,11 +774,11 @@ input[type='time']::-webkit-calendar-picker-indicator {
   transform: rotateZ(40deg);
 }
 
-input[type='date']::-webkit-calendar-picker-indicator {
+input[type="date"]::-webkit-calendar-picker-indicator {
   filter: invert(1);
 }
 
-input[type='time']::-webkit-calendar-picker-indicator {
+input[type="time"]::-webkit-calendar-picker-indicator {
   filter: invert(1);
 }
 
@@ -788,6 +788,7 @@ input[type='time']::-webkit-calendar-picker-indicator {
 .jobFilters {
   display: flex;
   flex-direction: row;
+  align-items: center;
   justify-content: space-between;
 }
 
@@ -802,21 +803,22 @@ input[type='time']::-webkit-calendar-picker-indicator {
   min-width: 90px;
   max-width: 100px;
 }
-.job-filter-item:nth-child(6) {
+/* .job-filter-item:nth-child(6) {
   min-width: 90px;
   max-width: 100px;
-}
+} */
 
 .job-filter-item-title {
   color: white;
-  padding: 0.5rem;
-  width: 100%;
-  background: #474BFF;
   font-family: "Red Hat Display";
-  border: 1px solid #474BFF;
+  background: #1c1d37;
+  border: 1px solid #8040d2;
+  width: 100%;
+  box-sizing: border-box;
+  box-shadow: 10px 32px 41px rgba(0, 0, 0, 0.25);
+  border-radius: 100px;
   white-space: nowrap;
-  padding: 3px 12px;
-  border-radius: 10px;
+  padding: 15px 20px;
   font-weight: 500;
 }
 
@@ -832,15 +834,15 @@ input[type='time']::-webkit-calendar-picker-indicator {
 
 .job-filter-item-form {
   color: white;
-  background: #474BFF;
-  margin-top: 2px;
+  background: #1c1d37;
+  margin-top: 8px;
   padding: 12px;
   border-radius: 10px;
   display: none;
   position: absolute;
   min-width: 140px;
   /* background: white; */
-  box-shadow: 0 0 12px grey;
+  box-shadow: 0 0 12px #8040d2;
   z-index: 2;
   /* color: black; */
 }
@@ -849,11 +851,9 @@ input[type='time']::-webkit-calendar-picker-indicator {
 }
 
 .job-filter-reset {
-  background-color: white;
   border-radius: 10px;
   padding: 3px 12px;
-  border: 1px solid #474BFF;
-  color: black;
+  color: white;
   font-weight: bold;
   /* margin: 12px 20px 12px 0px; */
 }
@@ -865,7 +865,7 @@ input[type='time']::-webkit-calendar-picker-indicator {
   cursor: pointer;
 }
 
-.job-filter-item-form-list li:hover{
+.job-filter-item-form-list li:hover {
   font-weight: 600;
 }
 
@@ -873,14 +873,37 @@ input[type='time']::-webkit-calendar-picker-indicator {
   display: flex;
   flex-direction: row;
   width: 100%;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
+  margin-bottom: 20px;
   flex-grow: 1;
 }
 
+.jobs-search-button {
+  background: #8040d2;
+  border: 1px solid #8040d2;
+  box-sizing: border-box;
+  border-radius: 100px;
+  padding: 16px 50px;
+  color: white;
+}
+
+.filter-button-search {
+  font-size: 1rem;
+  color: white;
+  background: #8040d2;
+  padding: 10px 20px;
+  border-radius: 100px;
+  box-shadow: 0px 10px 10px #151371;
+}
+
+.filter-button-search:focus {
+  outline: none;
+}
+
 @media screen and (max-width: 768px) {
-  .jobs-main-filter{
-    float:right;
+  .jobs-main-filter {
+    float: right;
   }
   .options {
     flex-direction: row;
@@ -896,7 +919,7 @@ input[type='time']::-webkit-calendar-picker-indicator {
 @media screen and (max-width: 575px) {
   .options {
     flex-direction: row;
-    margin-right: 7rem;
+    width: 100% !important;
   }
   .job-search-filter {
     flex-direction: row;
@@ -904,7 +927,6 @@ input[type='time']::-webkit-calendar-picker-indicator {
   }
 
   .job-search-filter > input {
-    
     font-size: 0.6rem;
   }
 }
@@ -915,13 +937,25 @@ input[type='time']::-webkit-calendar-picker-indicator {
 }
 
 .job-search-filter > input {
-  border-radius: 5px;
-  border: 2px solid #474BFF;
-  /* width: 20rem; */
+  background: rgba(58, 53, 81, 0.55);
+  border: 1px solid #8040d2;
+  box-sizing: border-box;
+  box-shadow: 0px 32px 41px rgba(0, 0, 0, 0.25);
+  border-radius: 100px;
+  height: 60px;
+  width: 75%;
   display: inline-block;
+  color: white;
+  font-size: 15px;
   font-family: "Red Hat Display", sans-serif;
   /* padding: 1rem 1rem 1rem 2.5rem; */
   font-size: 0.8rem;
+}
+
+.job-search-filter > input:focus {
+  background: rgba(58, 53, 81, 0.55);
+  color: white;
+  outline: none;
 }
 
 .job-search-filter input:focus {
@@ -970,8 +1004,72 @@ input[type='time']::-webkit-calendar-picker-indicator {
   outline: none;
 }
 
-input[type='checkbox'] {
+input[type="checkbox"] {
   margin-right: 6px;
+}
+
+.jobs-search-switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 20px;
+}
+
+.jobs-search-switch input[type="checkbox"] {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.jobs-search-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.jobs-search-slider:after {
+  right: 4px;
+}
+
+.jobs-search-slider:before {
+  position: absolute;
+  content: "";
+  height: 12px;
+  width: 12px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input[type="checkbox"]:checked + .jobs-search-slider {
+  background-color: #8040d2;
+}
+
+input[type="checkbox"]:focus + .jobs-search-slider {
+  box-shadow: 0 0 1px #8040d2;
+}
+
+input[type="checkbox"]:checked + .jobs-search-slider:before {
+  -webkit-transform: translateX(15px);
+  -ms-transform: translateX(15px);
+  transform: translateX(15px);
+}
+
+/* Rounded jobs-search-sliders */
+.jobs-search-slider.round {
+  border-radius: 34px;
+}
+
+.jobs-search-slider.round:before {
+  border-radius: 50%;
 }
 
 .filters-open-btn {
@@ -985,7 +1083,6 @@ input[type='checkbox'] {
 .remote-item {
   padding: 5px;
   display: flex;
-  align-items: center;
 }
 
 .remote__check {
@@ -1004,11 +1101,13 @@ input[type='checkbox'] {
     display: block;
     position: relative;
   }
-  .options{
-    justify-content: flex-end;
-
+  .filters-open-btn:focus {
+    outline: none;
   }
-  .jobs-main-filters{
+  .options {
+    justify-content: flex-end;
+  }
+  .jobs-main-filters {
     justify-self: flex-start;
   }
   .jobFilters {
@@ -1027,35 +1126,33 @@ input[type='checkbox'] {
     width: 50%;
     z-index: 99999;
   }
-  .job-filter-item:nth-child(6){
-    width: 100%;
-    min-width: 100%;
+  .job-filter-item:nth-child(6) {
   }
-  .job-filter-reset{
+  .job-filter-reset {
     width: 100%;
     border-radius: 0 0 1rem 1rem;
     color: white;
-    background: #474BFF;
+    background: #1c1d37;
   }
-  .remote-item{
+  .remote-item {
     padding: 0;
     text-align: start;
     /* border-radius: 0; */
     color: white;
     background: transparent;
   }
-  .remote-label{
+  .remote-label {
     color: white;
     padding: 3px 12px;
   }
 
-  .job-filter-item-title{
+  .job-filter-item-title {
     /* width: 100%; */
     border-radius: 0;
     text-align: start;
   }
-  #first-item-title{
-    border-radius: 1rem 1rem 0 0 ;
+  #first-item-title {
+    border-radius: 1rem 1rem 0 0;
   }
 
   .job-filter-item {
@@ -1063,11 +1160,11 @@ input[type='checkbox'] {
     width: 100%;
   }
 
-  .job-filter-item-form{
+  .job-filter-item-form {
     margin-top: 0;
     position: relative;
     width: 100%;
-    background: #F57ED8;
+    background: #8040d2;
     border-radius: 0;
   }
   .job-filter-item-form-options {
@@ -1082,7 +1179,12 @@ input[type='checkbox'] {
 }
 
 .jobsMain-search {
-  /* max-width: 80%; */
+  background-color: #1c1d37;
+  padding-top: 20px;
+  border: 1px solid #8040d2;
+  box-sizing: border-box;
+  border-radius: 15px;
+  margin-bottom: 20px;
 }
 
 .jobsMain-search-heading {
@@ -1172,8 +1274,8 @@ input[type='checkbox'] {
   /* grid-column-gap: 1rem; */
   color: black;
   grid-template-areas:
-    'list job'
-    'pagination job';
+    "list job"
+    "pagination job";
   row-gap: 25px;
 }
 
@@ -1345,7 +1447,7 @@ input[type='checkbox'] {
 }
 
 .current-job-view-box1-companyInfo-diversity::after {
-  content: '';
+  content: "";
   position: absolute;
   height: 100%;
   width: 50%;
@@ -1366,7 +1468,7 @@ input[type='checkbox'] {
 }
 
 .current-job-view-box1-companyInfo-diversity-score::before {
-  content: '';
+  content: "";
   height: 1.5px;
   width: 100%;
   position: absolute;
@@ -1534,7 +1636,7 @@ input[type='checkbox'] {
   box-sizing: border-box;
 }
 
-.job-stub:hover{
+.job-stub:hover {
   background: rgb(233, 233, 233);
 }
 
@@ -1563,7 +1665,6 @@ input[type='checkbox'] {
   color: #ccc !important;
 }
 
-
 .job-stub-location {
   line-height: 16px;
   font-size: 14px;
@@ -1579,7 +1680,7 @@ input[type='checkbox'] {
 }
 
 .job-stub-description:before {
-  content: '';
+  content: "";
   height: 10px;
   width: 10px;
   background: red;
@@ -1840,7 +1941,7 @@ input[type='checkbox'] {
 }
 
 .saved-job-stub-description:before {
-  content: '';
+  content: "";
   height: 10px;
   width: 10px;
   background: red;
@@ -1991,7 +2092,7 @@ input[type='checkbox'] {
 .apply-button button {
   /* margin-right: 2rem; */
   padding: 0.6rem 3.5rem;
-  background: #474BFF;
+  background: #474bff;
   border-radius: 1rem;
   color: #fff;
   font-weight: bold;
@@ -2015,7 +2116,7 @@ input[type='checkbox'] {
 
 .header_searchbar {
   color: black;
-  font-family: 'Red Hat Display', sans-serif;
+  font-family: "Red Hat Display", sans-serif;
   font-size: 2rem;
   margin-bottom: 1.5rem;
   display: flex;
@@ -2024,13 +2125,20 @@ input[type='checkbox'] {
   font-weight: bold;
 }
 
+.search-grid {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .options {
   display: flex;
   padding: 0 1%;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  width: 70%;
   margin-bottom: 3rem;
   /* margin: 0.5rem 4rem 0.2rem 7rem; */
 }
@@ -2047,7 +2155,7 @@ input[type='checkbox'] {
 }
 
 .remote-checkmate {
-  border: 1px solid #474BFF;
+  border: 1px solid #474bff;
 }
 
 ul.list-style-square {
