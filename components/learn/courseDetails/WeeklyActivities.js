@@ -97,7 +97,7 @@ const WeeklyActivities = ({ enrolledCourses, modules, userModules }) => {
                   </div>
                 </div>
               </div>
-              <div className="d-flex justify-content-between mx-5 nextPrev-icons">
+              {/* <div className="d-flex justify-content-between mx-5 nextPrev-icons">
                 {specificModules.length === specificUserModules.length &&
                 specificUserModules.length !== 0 ? (
                   <>
@@ -126,7 +126,7 @@ const WeeklyActivities = ({ enrolledCourses, modules, userModules }) => {
                     <FontAwesomeIcon icon={faArrowRight} />
                   </button>
                 )}
-              </div>
+              </div> */}
               <div>
                 {" "}
                 <h1 className="tw-text-white tw-text-2xl tw-px-3 tw-font-semibold tw-py-4">

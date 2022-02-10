@@ -185,6 +185,12 @@
   border-radius: 16px;
   margin-bottom: 2rem;
 }
+.align-div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
 .modules-details .menu-items ul li a {
   font-size: 1.8rem;
   color: #fff;
