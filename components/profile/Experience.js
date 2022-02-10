@@ -1,0 +1,35 @@
+import React from 'react';
+
+function Experience({ experienceCards }) {
+  return (
+    <div className="profileTopSection tw-relative tw-z-10">
+      <section className="tw-max-w-6xl tw-mx-auto tw-rounded-xl tw-shadow-md md:tw-max-w-3xl topSection tw-py-10 tw-p-20 tw-flex tw-flex-col tw-justify-center">
+        <div className="tw-m-14 tw-text-3xl lg:tw-text-xl tw-font-medium tw-text-left tw-px-10 tw-text-gray-600">Experience</div>
+        <div className="tw-m-8 tw-px-10 tw-my-1">
+          {experienceCards?.length ? (
+            experienceCards.map((exp) => (
+              <div
+                key={exp._id}
+                className="tw-h-24 tw-w-24 tw-flex tw-justify-center tw-py-5 tw-m-1 tw-cursor-pointer topSection tw-rounded-md"
+              >
+
+                <img
+                  className="tw-w-10 tw-h-10"
+                  src={exp.image}
+                  alt={exp.title}
+                />
+              </div>
+            ))
+          ) : (
+            <span className="note" style={{ cursor: 'default' }}>
+              No badge yet
+            </span>
+          )}
+        </div>
+
+      </section>
+    </div>
+  );
+}
+
+export default Experience;
