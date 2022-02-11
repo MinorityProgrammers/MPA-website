@@ -80,7 +80,6 @@ const SettingBodyOverview = ({ data }) => {
     }
     return { barPrg1, barPrg2 };
   };
-  getProgressBar();
   return (
     <div className={styles.overviewContent}>
       <div className={`${styles.fItem} ${styles.fiCompletion}`}>

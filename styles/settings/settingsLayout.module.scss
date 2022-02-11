@@ -15,17 +15,26 @@
 }
 
 .settingsNavigation {
-  /* width: 30%; */
+  display: flex;
+  flex-direction: column;  
+}
+.settingsNavigation > div{
   background: #1C1D37;
   border: 1px solid #8040D2;
   box-sizing: border-box;
   box-shadow: 0px 32px 41px rgba(0, 0, 0, 0.25);
   border-radius: 15px;
-  display: flex;
-}
+  height: 100%;
+} 
 .navContainer{
-  margin: auto 0;
+  // margin: auto 0;
   width: 100%;
+  margin-bottom: 20px;
+}
+.navProfile{
+  height: 100%;
+  margin-bottom: 0;
+  display: flex;
 }
 .settingsNavigation h1,
 .settingsNavigation h2 {
@@ -236,3 +245,104 @@ img.editIcon {
     grid-row-gap: 20px;
   }
 }  
+/* Progress Styleing */
+.progress {
+  width: 130px;
+  height: 130px !important;
+  float: left;
+  line-height: 130px;
+  background: none;
+  box-shadow: none;
+  position: relative
+}
+
+.progress:after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 25px solid #3E385D;
+  position: absolute;
+  top: 0;
+  left: 0
+}
+
+.progress>span {
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  z-index: 1
+}
+
+.progress .progressLeft {
+  left: 0
+}
+
+.progress .progressBar {
+  width: 100%;
+  height: 100%;
+  background: none;
+  border-width:25px;
+  border-style: solid;
+  position: absolute;
+  top: 0
+}
+
+.progress .progressLeft .progressBar {
+  left: 100%;
+  border-top-right-radius: 80px;
+  border-bottom-right-radius: 80px;
+  border-left: 0;
+  -webkit-transform-origin: center left;
+  transform-origin: center left
+}
+
+.progress .progressRight {
+  right: 0
+}
+
+.progress .progressRight .progressBar {
+  left: -100%;
+  border-top-left-radius: 80px;
+  border-bottom-left-radius: 80px;
+  border-right: 0;
+  -webkit-transform-origin: center right;
+  transform-origin: center right;
+}
+
+.progress .progressValue {
+  width: 90%;
+  height: 90%;
+  border-radius: 50%;
+  background: #1C1D37;
+  font-size: 20px;
+  font-weight: bold;
+  color: #fff;
+  line-height: 135px;
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  font-weight: bold;
+}
+
+.progress.blue .progressBar {
+  border-color: #A259FF;
+}
+.layoutProgress{
+  display: flex;
+  padding: 1rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.layoutProgress >p{
+  font-size: 24px;
+  font-weight: 700;
+  color: white;
+  margin: 50px 0 10px; 
+} 

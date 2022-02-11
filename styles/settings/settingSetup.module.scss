@@ -1,0 +1,176 @@
+.setupContainer{
+    width: 100%;
+    padding: 60px 30px;
+}
+// Steps
+.stepperWrapper {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+.stepperItem {
+position: relative;
+display: flex;
+flex-direction: column;
+align-items: center;
+flex: 1;
+
+@media (max-width: 768px) {
+    font-size: 12px;
+}
+}
+  
+.stepperItem::before {
+position: absolute;
+content: "";
+border-bottom: 6px solid #3E385D;
+width: 100%;
+top: 30px;
+left: -50%;
+z-index: 2;
+}
+  
+//   .stepperItem::after {
+//     position: absolute;
+//     content: "";
+//     border-bottom: 2px solid #ccc;
+//     width: 100%;
+//     top: 30px;
+//     left: 50%;
+//     z-index: 2;
+//   }
+  
+.stepperItem .stepCounter {
+position: relative;
+z-index: 5;
+display: flex;
+justify-content: center;
+// align-items: center;
+width: 60px;
+height: 60px;
+padding: 10px;
+border-radius: 50%;
+background: rgba(62, 56, 93, 0.87);
+margin-bottom: 6px;
+color: #979797;
+font-size: 20px;
+font-weight: 800;
+}
+.stepperItem .stepCounter img{
+    width: 100%;
+    height: 100%;
+}
+.stepperItem.active  .stepCounter{
+font-weight: bold;
+background: #fff;
+}
+
+.stepperItem.completed .stepCounter {
+background: #8040D2;
+}
+
+.stepperItem.completed::after {
+position: absolute;
+content: "";
+border-bottom: 2px solid #8040D2;
+width: 100%;
+top: 30px;
+left: 50%;
+z-index: 3;
+}
+
+.stepperItem:first-child::before {
+content: none;
+}
+.stepperItem:last-child::after {
+content: none;
+}
+.stepName,.stepNameEven{
+    position: absolute;
+    color: #696969;
+    font-weight: 700;
+    font-size: 18px;
+}
+.active .stepName,.active .stepNameEven{
+    color: #fff;
+}
+.stepName{
+    top: -50%;
+}
+  .stepNameEven{
+    bottom: -50%;
+}
+// Input Fields
+.nameRow div input,.nameRow div select{
+    background: #24203B;
+    border-radius: 8px;
+    border: 1px solid #8040D2;
+    height: 60px;
+    width: 100%;
+    color: rgb(255, 255, 255);
+    padding: 1rem;
+    outline: none;
+    font-size: 18px;
+    font-weight: 500;
+}
+.nameRow div select,.nameRow .DatePicker input{
+    -moz-appearance:none; /* Firefox */
+    -webkit-appearance:none; /* Safari and Chrome */
+    appearance:none;
+    background-image: url("/assets/images/settings/arrow-down.svg");
+    background-repeat: no-repeat;
+    background-position-x: 96%;
+    background-position-y: 10px;
+    cursor: pointer;
+}
+.DatePicker .react-datepicker-wrapper{
+    padding: 0;
+}
+.nameRow {
+    margin: 20px 0;
+}
+.nameRow div label{
+    font-weight: bold;
+    color: #FFFFFF;
+    font-size: 20px;
+}
+.nameRow div input:focus{
+    border: 1px solid #8040D2;
+    background: #fff;
+    color: #1C1D37;
+}
+.title h2{
+    color: white;
+    font-size: 24px;
+    font-weight: 600;
+    margin: 50px 0;
+}
+.submitRow{
+    margin: 60px auto;
+    width: 80%;
+}
+.submitRow > div{
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+}
+.submitRow div a{
+    outline: none;
+    color: #FFFFFF!important;
+    background: transparent;
+    border-radius: 44px;
+    border: 1px solid #6938EF;
+    font-weight: 600;
+    font-size: 18px;
+    padding: 1rem 2rem;
+}
+.submitRow div input{
+    outline: none;
+    color: #FFFFFF;
+    border-radius: 44px;
+    font-weight: 600;
+    font-size: 18px;
+    padding: 1rem 2rem;
+    background: #6938EF;
+}
