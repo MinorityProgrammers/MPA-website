@@ -946,7 +946,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   width: 75%;
   display: inline-block;
   color: white;
-  font-size: 15px;
+  font-size: 17px;
   font-family: "Red Hat Display", sans-serif;
   /* padding: 1rem 1rem 1rem 2.5rem; */
   font-size: 0.8rem;
@@ -1133,6 +1133,9 @@ input[type="checkbox"]:checked + .jobs-search-slider:before {
     border-radius: 0 0 1rem 1rem;
     color: white;
     background: #1c1d37;
+  }
+  .job-filter-reset:focus {
+    outline: none;
   }
   .remote-item {
     padding: 0;
