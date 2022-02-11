@@ -7474,7 +7474,7 @@ html {
 .nav-item.active-link {
   padding: 6px 10px;
   background-color: transparent;
-  color: #474bfd !important;
+  color: #9379ff !important;
   transition: all 0.2s ease-in-out;
   font-weight: 600;
 }
@@ -7483,7 +7483,7 @@ html {
 .nav-item.active-link a:hover,
 .nav-item.active-link a:active,
 .nav-item.active-link a:focus {
-  color: #474bfd !important;
+  color: #9379ff !important;
 }
 
 .nav-item a {
@@ -7497,7 +7497,7 @@ html {
 }
 
 .nav-item a:active {
-  color: #474bfd !important;
+  color: #9379ff !important;
 }
 
 .nav-links-icon {

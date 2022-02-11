@@ -1,19 +1,28 @@
+@import '../global-variables.css';
 /*
 * 24. Incubator styles
 */
 
+h1, h2, h3, h4 {
+  color: var(--light-main);
+}
+
+hr {
+  background: var(--secondary-accent-1);
+}
+
 .section__styles {
-  background: #efefef;
+  background: var(--secondary-main);
   padding: 120px 0;
 }
 
 .section__styles__ {
-  background: #fff;
+  background: var(--secondary-main);
   padding-top: 120px;
 }
 
 .section__incubator {
-  background: #efefef;
+  background: var(--secondary-main);
   padding: 25px 0;
 }
 
@@ -26,15 +35,15 @@
   border-radius: 5px;
   display: inline-block;
   background: #fff;
-  color: #141471;
-  border: 1px solid #474bff;
+  color: var(--tertiary-main);
+  border: 1px solid var(--tertiary-main);
   cursor: pointer;
   margin: 0.2rem;
   text-align: center;
 }
 
 .btn-gradient {
-  background-color: #474bff;
+  background-color: var(--tertiary-main);
   color: #fff;
   width: 200px;
   padding: 1rem;
@@ -43,7 +52,7 @@
 }
 
 .btn-blued {
-  background: #474bff;
+  background: var(--tertiary-main);
   color: #fff;
   width: 200px;
   padding: 1rem;
@@ -61,8 +70,8 @@
 .btn-filled {
   font-size: 0.75rem;
   padding: 12px;
-  color: #fff;
-  background: #474bff;
+  color: var(--light-main);
+  background: var(--tertiary-main);
   transition: all 0.2s ease-in;
   width: 100%;
 }
@@ -88,13 +97,9 @@
   width: 100%;
 }
 
-.card__button-container .btn-filled:hover {
-  background: rgba(20, 20, 113, 0.9);
-  color: #fff;
-}
-
+.card__button-container .btn-filled:hover,
 .card__button-container .btn-outline:hover {
-  background: rgba(20, 20, 113, 0.9);
+  background: var(--tertiary-low-contrast);
   color: #fff;
 }
 
@@ -109,12 +114,13 @@
   color: #fff;
   display: flex;
   height: 100%;
-  padding: 40px 0 0 0;
-  background: #14152B;
+  padding: 80px 0 0 0;
+  background: var(--secondary-main);
 }
 
 .incubator-header {
   width: 100%;
+  margin-top: 2rem;
 }
 
 .incubator__image {
@@ -177,7 +183,7 @@
 }
 
 .btn__container .btn-filled:hover {
-  background: rgba(20, 20, 113, 0.9);
+  background: var(--tertiary-low-contrast);
   color: #fff;
 }
 
@@ -208,13 +214,26 @@
   line-height: 1.5;
   letter-spacing: 1;
   margin-bottom: 0.75rem;
-  color: #333;
+  color: var(--light-main);
 }
 
 .featured__subtitle {
   font-size: 18px;
-  color: black;
+  color: var(--light-main);
   width: 100%;
+}
+
+/* Search input */
+.form-control {
+  background: var(--secondary-high-contrast);
+  border: 1px solid var(--secondary-high-contrast);
+}
+
+.form-control:focus {
+  color: var(--light-high-contrast);
+  background-color: var(--secondary-high-contrast);
+  border-color: var(--tertiary-high-contrast);
+  box-shadow: 0 0 0 .2rem rgba(161, 30, 236, 0.25);
 }
 
 /* Card */
@@ -226,10 +245,12 @@
 .card {
   padding: 0;
   margin: 1rem;
+  background: var(--secondary-high-contrast);
+  border: 1px solid var(--secondary-accent-1);
 }
 
 .card__container {
-  color: #000;
+  color: var(--light-high-contrast);
   border-radius: 10px;
 }
 
@@ -246,7 +267,7 @@
 .card__header img {
   width: 60px;
   height: 60px;
-  background: #eee;
+  background: var(--secondary-low-contrast);
   padding: 0.5rem;
   border-radius: 5px;
   margin-right: 1rem;
@@ -255,6 +276,7 @@
 .card__header-title {
   font-size: 20px;
   font-weight: 700;
+  color: var(--light-main);
 }
 
 .card__text {
@@ -277,9 +299,14 @@
 }
 
 .featured__card-empty {
-  background: #fff;
-  color: #000;
+  background: var(--secondary-high-contrast);
+  color: var(--light-high-contrast);
   border-radius: 10px;
+}
+
+.featured__card-empty *,
+.fund__container *{
+  color: var(--light-high-contrast);
 }
 
 .fund__container {
@@ -305,6 +332,15 @@
   margin-bottom: 0.5rem;
   font-weight: 700;
   font-size: 1rem;
+}
+
+.progress {
+  background: var(--secondary-low-contrast);
+  width: 100%;
+}
+
+.progress div {
+  background: var(--tertiary-accent-1);
 }
 
 .progressbar__bg {
@@ -350,8 +386,8 @@ div.swiper-button-prev {
   font-weight: 900;
   padding: 1rem;
   font-size: 1.2rem;
-  background: rgb(243, 239, 239, 0.8);
-  border: 1px solid rgb(168, 168, 168);
+  background: var(--secondary-accent);
+  border: 1px solid var(--dark-accent);
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -365,8 +401,8 @@ div.swiper-button-next {
   font-weight: 900;
   padding: 1rem;
   font-size: 1.2rem;
-  background: rgb(243, 239, 239, 0.8);
-  border: 1px solid rgb(168, 168, 168);
+  background: var(--secondary-accent);
+  border: 1px solid var(--dark-accent);
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -374,7 +410,7 @@ div.swiper-button-next {
 }
 
 div.swiper-button-prev {
-  color: rgb(168, 168, 168);
+  color: var(--light-low-contrast);
   left: 0;
   z-index: 1;
   position: absolute;
@@ -382,7 +418,7 @@ div.swiper-button-prev {
 }
 
 div.swiper-button-next {
-  color: rgb(168, 168, 168);
+  color: var(--light-low-contrast);
   right: 0px;
   z-index: 1;
   position: absolute;
@@ -454,8 +490,8 @@ div.swiper-button-next {
 
 .top__container {
   font-family: 'Red Hat Display', sans-serif;
-  background: #fff;
-  color: #000;
+  background: var(--secondary-high-contrast);
+  color: var(--light-main);
   width: 100%;
   padding: 2rem;
   border-radius: 3rem 3rem 0 0;
@@ -476,10 +512,10 @@ div.swiper-button-next {
   width: 50px;
   height: 50px;
   border-radius: 999px;
-  background: rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(0, 0, 0, 0.4);
+  background: var(--secondary-accent);
+  border: 1px solid var(--dark-accent);
   cursor: pointer;
-  color: #000;
+  color: var(--light-low-contrast);
   transition: all 0.2s ease-in;
   margin-right: 1rem;
 }
@@ -505,7 +541,7 @@ div.swiper-button-next {
 .top__detail-container img {
   width: 50px;
   height: 50px;
-  background: #eee;
+  background: var(--secondary-low-contrast);
   padding: 0.5rem;
   border-radius: 5px;
   margin-right: 1rem;
@@ -514,7 +550,7 @@ div.swiper-button-next {
 .top__name {
   font-size: 20px;
   font-weight: 700;
-  color: #000;
+  color: var(--light-main);
 }
 
 .top__center-container {
@@ -561,8 +597,16 @@ div.swiper-button-next {
   justify-content: center;
 }
 
+.top__button a {
+  background: transparent;
+  color: var(--tertiary-accent-1);
+  border: 1px solid var(--tertiary-accent-1);
+}
+
 .top__button a:hover {
   color: #fff;
+  background: var(--tertiary-main);
+  border: none;
 }
 
 .top__shares p {
@@ -577,18 +621,18 @@ div.swiper-button-next {
 .leftbar {
   padding: 0 1rem 0 0;
   font-family: 'Red Hat Display', sans-serif;
-  color: #000;
+  color: var(--light-main);
 }
 
 .rightbar {
   padding: 0;
   font-family: 'Red Hat Display', sans-serif;
-  color: #000;
+  color: var(--light-main);
 }
 
 .left__container,
 .right__container {
-  background: #fff;
+  background: var(--secondary-high-contrast);
   height: auto;
   width: 100%;
   margin: 1rem 0 0;
@@ -597,7 +641,7 @@ div.swiper-button-next {
 .portfolio__header {
   font-size: 1rem;
   font-weight: 700;
-  color: #000;
+  color: var(--light-main);
 }
 
 .portfolio__items {
@@ -648,15 +692,15 @@ div.swiper-button-next {
 }
 
 .left__badge {
-  border: 1px solid #cccccc;
+  border: 1px solid var(--tertiary-main);
   padding: 0.5rem;
   margin: 0.5rem 0.5rem 0 0;
-  color: #000;
+  color: var(--light-low-contrast);
 }
 
 .badge:hover {
-  color: #000;
-  background: rgba(0, 0, 0, 0.05);
+  color: var(--light-low-contrast);
+  background: var(--tertiary-main);
   cursor: pointer;
 }
 
@@ -689,32 +733,32 @@ div.swiper-button-next {
   padding: 10px;
   margin: 8px;
   border-radius: 5px;
-  border: 1px solid #fff;
+  border: 1px solid var(--secondary-high-contrast);
   color: #fff;
-  background: #474bfe;
+  background: var(--tertiary-main);
   cursor: pointer;
   transition: all 0.3s ease-in-out;
 }
 .previousBttn a {
   color: #fff;
-  background: #474bfe;
+  background: var(--tertiary-main);
 }
 .paginationBttns a:hover {
-  color: #474bfe;
+  color: var(--tertiary-main);
   border-radius: 5px;
-  border: 1px solid #474bfe;
-  background-color: rgb(255, 255, 255);
+  border: 1px solid var(--tertiary-main);
+  background-color: var(--secondary-high-contrast);
 }
 
 .paginationActive a {
-  color: #474bfe;
+  color: var(--tertiary-main);
   border-radius: 5px;
-  border: 1px solid #474bfe;
-  background-color: rgb(255, 255, 255);
+  border: 1px solid var(--tertiary-main);
+  background-color: var(--secondary-high-contrast);
 }
 
 .paginationDisabled a {
-  color: rgb(255, 255, 255);
+  color: var(--light-low-contrast);
 }
 
 .break-me {
@@ -823,7 +867,7 @@ div.swiper-button-next {
 }
 
 .market__size {
-  background-color: blue;
+  background-color: var(--tertiary-accent-2);
   color: white;
   padding: 0px 8px 0px 8px;
   font-weight: bold;
@@ -833,21 +877,22 @@ div.swiper-button-next {
 .tam__sam__som {
   height: 200px;
   width: 100%;
-  border: 1px solid black;
-  background-color: #0c0c72;
+  border: 1px solid var(--secondary-low-contrast);
+  background-color: var(--secondary-main);
   display: flex;
   position: relative;
   color: white;
   font-weight: bold;
 }
 .tam_sam_som_box {
-  border: 1px solid black;
-  background-color: white;
+  border: 1px solid var(--secondary-main);
+  background-color: var(--secondary-main);
   border-radius: 10px;
+  color: var(--light-main);
 }
 .tam {
   flex: 1;
-  background-color: #0c0c72;
+  background-color: var(--secondary-high-contrast);
   margin: 20px;
   display: flex;
   justify-content: center;
@@ -856,7 +901,7 @@ div.swiper-button-next {
 }
 .sam {
   flex: 1;
-  background-color: #3131ab;
+  background-color: var(--secondary-high-contrast);
   margin: 20px;
   display: flex;
   justify-content: center;
@@ -865,7 +910,7 @@ div.swiper-button-next {
 }
 .sam-price {
   flex: 1;
-  background-color: #3131ab;
+  background-color: var(--secondary-high-contrast);
   margin: 20px;
   display: flex;
   justify-content: center;
@@ -876,16 +921,16 @@ div.swiper-button-next {
   height: 14%;
   width: 50%;
   position: absolute;
-  background-color: white;
+  background-color: var(--secondary-main);
   padding: 10px;
   right: 50px;
-  border: 1px solid gray;
+  border: 1px solid var(--tertiary-low-contrast);
   border-radius: 10px;
 }
 
 .tam-sam-som-text {
   font-weight: bold;
-  color: var(--mpa-navy);
+  color: var(--light-low-contrast);
 }
 .tam-sam-som-buttons {
   display: flex;
@@ -893,24 +938,33 @@ div.swiper-button-next {
   width: 100%;
 }
 .tam-sam-som-buttons button {
-  background-color: var(--mpa-navy);
+  background-color: var(--tertiary-main);
   color: white;
   padding: 5px;
   border-radius: 10px;
 }
 
+.roadmap {
+  margin-right: 10px;
+  position: relative;
+}
 .roadmap-hover {
-  border: 1px solid black;
+  border: 1px solid var(--tertiary-low-contrast);
   margin-top: 10px;
   padding: 5px;
   position: absolute;
-  background-color: white;
+  background-color: var(--secondary-low-contrast);
   z-index: 100;
   width: 300px;
   font-size: 12px;
 }
 .roadmap-header {
   text-align: center;
-  background-color: var(--mpa-pink);
+  background-color: var(--tertiary-low-contrast);
   color: white;
+}
+.roadmap-content { 
+  border: 1px solid var(--secondary-accent-1);
+  margin-top: 10px;
+  padding: 5px;
 }
