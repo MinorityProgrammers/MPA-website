@@ -127,7 +127,7 @@ const JobsFilters = ({
   return (
     <>
       <button type="button" className="filters-open-btn " onClick={openFilters}>
-        <span className="filter-button-search">Filter</span>
+        <span className="filter-button-search">Filter Search</span>
       </button>
 
       <div className="jobFilters">

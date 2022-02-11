@@ -1140,6 +1140,8 @@ input[type="checkbox"]:checked + .jobs-search-slider:before {
   .remote-item {
     padding: 0;
     text-align: start;
+    margin-left: 20px !important;
+    margin-top: 10px !important;
     /* border-radius: 0; */
     color: white;
     background: transparent;
