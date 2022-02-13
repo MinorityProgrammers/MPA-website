@@ -21,7 +21,7 @@ const index = () => {
       {tabsActive.overview
       && <SettingBodyOverview data={data} />}
       {tabsActive.profile
-      && <SettingSetup data={data} />}
+      && <SettingSetup setData={setData} data={data} />}
     </SettingsLayout>
   );
 };

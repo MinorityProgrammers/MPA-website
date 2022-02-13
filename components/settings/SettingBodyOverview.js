@@ -72,10 +72,10 @@ const SettingBodyOverview = ({ data }) => {
     let barPrg1 = 0;
     let barPrg2 = 0;
     if (prg <= 50) {
-      barPrg1 = (prg / 100) * 180;
+      barPrg1 = (prg / 100) * 185;
     }
     if (prg > 50) {
-      barPrg1 = 180;
+      barPrg1 = 185;
       barPrg2 = ((prg - 50) / 100) * 360;
     }
     return { barPrg1, barPrg2 };
