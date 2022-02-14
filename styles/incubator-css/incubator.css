@@ -133,7 +133,7 @@ hr {
   justify-content: flex-start;
   align-content: flex-start;
   padding: 1rem;
-  color: #3e385d;
+  color: var(--light-low-contrast);
 }
 .incubator__text h2 {
   font-size: 1.5rem;

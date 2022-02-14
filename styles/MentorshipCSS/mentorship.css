@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,400;0,700;1,400&display=swap');
+@import '../global-variables.css';
+
 .home-section {
   min-height: 811px;
   max-height: -webkit-fit-content;
@@ -20,6 +22,7 @@
 
 .section__mentorshipProgram {
   padding: 25px 0;
+  background: var(--secondary-main);
 }
 
 /* MentorshipHome Component style */
@@ -30,8 +33,8 @@
 .signup__program {
   background: linear-gradient(
     270deg,
-    #474bfd 37.54%,
-    rgba(21, 19, 113, 0) 82.06%
+    var(--tertiary-accent-3) 37.54%,
+    var(--secondary-main) 82.06%
   );
   border-radius: 20px 20px 20px 0px;
   padding: 5rem;
@@ -43,8 +46,8 @@
 .start__matching {
   background: linear-gradient(
     89.82deg,
-    #ffffff 32.74%,
-    rgba(255, 255, 255, 0) 93.35%
+    var(--secondary-main) 32.74%,
+    var(--secondary-high-contrast) 93.35%
   );
   /* opacity: 0.8; */
   border-radius: 20px;
@@ -82,10 +85,10 @@
   color: #fff;
   font-size: 20px;
 }
-.mshipProgram__b_list {
+/* .mshipProgram__b_list {
   opacity: 0.8;
-}
-.mshipProgram__b_list .mentorship__SUPIMG {
+} */
+.mentorship__SUPIMG {
   opacity: 0.8;
 }
 .mshipProgram__w_list ul li,
@@ -96,16 +99,16 @@
   margin-bottom: 14px;
   font-size: 46px;
   font-weight: bold;
-  color: #151371;
+  color: var(--light-main);
 }
 .mshipProgram__b_list ul {
-  color: #151371;
+  color: var(--light-main);
   font-size: 20px;
 }
 
 .mentorshipBTN {
   color: #fff !important;
-  background: #474bfd;
+  background: var(--tertiary-main);
   cursor: pointer;
 }
 
