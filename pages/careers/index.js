@@ -65,6 +65,7 @@ const JobsMain = () => {
       .then((response) => {
         setJobs(response.data);
         setAllJobs(response.data);
+        console.log(jobs);
 
         if (window.innerWidth <= 991) {
           changeCurrentJob(null);
@@ -347,8 +348,35 @@ const JobsMain = () => {
       >
         <div className="job-stub-header">
           <div className="job-stub-title">{job.job_title}</div>
-          <div className="job-stub-company">
-            {job?.companyId?.company_name}
+          <div className="job-stub-company tw-mb-2 tw-flex tw-flex-row tw-items-center">
+            <img src="/assets/images/c-build.svg" alt="career" width={23} />
+            <span className="tw-text-white tw-ml-3 tw-font-medium">
+              {job?.companyId?.company_name}
+            </span>
+          </div>
+          <div>
+            {job?.remote && (
+            <div className="tw-flex tw-mb-2 tw-flex-row  tw-items-center">
+              <img
+                src="/assets/images/career-pin.svg"
+                alt="career"
+                width={23}
+              />
+              <span className="tw-text-white tw-font-medium tw-ml-3">
+                Fully Remote
+              </span>
+            </div>
+            )}
+          </div>
+          <div className="tw-flex tw-flex-row tw-items-center">
+            <img
+              src="/assets/images/career-business.svg"
+              alt="career"
+              width={23}
+            />
+            <span className="tw-text-white tw-font-medium tw-ml-3">
+              Full time
+            </span>
           </div>
         </div>
         <div className="job-stub-footer">
@@ -465,191 +493,210 @@ const JobsMain = () => {
           handleClick={handleClick}
         />
         {hide === false && <ComingSoon closeClick={handleClick} />}
-        <div id="join" />
-        <div className="container jobsMain">
-          <div className="jobsMain-search">
-            <div className="container">
-              <h1 className="header_searchbar">Search for Jobs</h1>
-            </div>
-            <div className="options">
-              <div className="jobs-main-filters" onClick={() => openModal()}>
-                <JobsFilters
-                  submitForm={submitForm}
-                  openFilterForm={openFilterForm}
-                  filter={filter}
-                  fetchData={fetchData}
-                  showModal={showModal}
-                  setShowModal={setShowModal}
-                  queryObj={queryObj}
-                />
-              </div>
-              <form
-                className="job-search-filter"
-                onSubmit={(e) => onFormSubmit(e)}
-              >
-                <input
-                  className="form-control mx-1"
-                  type="search"
-                  name="description"
-                  ref={descriptionInput}
-                  placeholder="Search job description"
-                />
-                <button
-                  className="search-btn btn tw-bg-blue-600 tw-text-white hover:tw-text-white tw-px-3"
-                  type="submit"
-                >
-                  Search
-                </button>
-              </form>
-            </div>
-          </div>
-
-          {/* LOADING SKELETON HERE */}
-          {loading ? (
-            <LoadingSkeleton showCurrent={!(window.innerWidth < 1000)} />
-          ) : (
-            <div className="jobs-main-container">
-              <div className="jobs-main-container-list">
-                {jobStubs}
-                <div className="jobs-paginator">
-                  {jobs.length > 0 && (
-                    <ReactPaginate
-                      previousLabel="<"
-                      nextLabel=">"
-                      pageCount={pageCount}
-                      onPageChange={changePage}
-                      initialPage={0}
-                      containerClassName="paginationBttns"
-                      previousLinkClassName="previousBttn"
-                      nextLinkClassName="paginationDisabled"
-                      activeClassName="activePage"
+        <div style={{ background: '#14152A' }}>
+          <div id="join" />
+          <div className="container jobsMain">
+            <div className="jobsMain-search">
+              <div className="search-grid">
+                <div className="options">
+                  <form
+                    className="job-search-filter"
+                    onSubmit={(e) => onFormSubmit(e)}
+                  >
+                    <input
+                      className="form-control mx-1"
+                      type="search"
+                      name="description"
+                      ref={descriptionInput}
+                      placeholder="Search job description"
                     />
-                  )}
+                    <button
+                      className="search-btn btn jobs-search-button"
+                      type="submit"
+                    >
+                      Search
+                    </button>
+                  </form>
+                  <div
+                    className="jobs-main-filters"
+                    onClick={() => openModal()}
+                  >
+                    <JobsFilters
+                      submitForm={submitForm}
+                      openFilterForm={openFilterForm}
+                      filter={filter}
+                      fetchData={fetchData}
+                      showModal={showModal}
+                      setShowModal={setShowModal}
+                      queryObj={queryObj}
+                    />
+                  </div>
                 </div>
               </div>
-              {/* CURRENT JOB NOT SHOWN WHILE IN MOBILE VIEW */}
-              <div
-                className="right-grid jobs-main-container-single"
-                style={{ display: currentJob == null && 'none' }}
-              >
-                {currentJob != null && (
-                  <>
-                    <div className="current-job__header">
-                      <div className="float-current-job__title">
-                        <h1 className="current-job__title">
-                          {currentJob.job_title}
-                        </h1>
-                        <button
-                          type="button"
-                          className="close-single-padding jobs-main-container-single-close"
-                          onClick={closeSingle}
-                        >
-                          <i className="fas fa-times" />
-                        </button>
-                        <span>{currentJob.location}</span>
-                      </div>
-                      <div className="apply-button">
-                        <span>
-                          {userInfo != null ? (
-                            appliedJobsId.includes(currentJob._id) ? (
-                              <button
-                                type="button"
-                                disabled
-                                className="current-job-view-box1-jobInfo-postSave-apply applied-btn"
-                              >
-                                Applied
-                              </button>
+            </div>
+
+            {/* LOADING SKELETON HERE */}
+            {loading ? (
+              <LoadingSkeleton showCurrent={!(window.innerWidth < 1000)} />
+            ) : (
+              <div className="jobs-main-container">
+                <div className="jobs-main-container-list">
+                  {jobStubs}
+                  <div className="jobs-paginator">
+                    {jobs.length > 0 && (
+                      <ReactPaginate
+                        previousLabel="<"
+                        nextLabel=">"
+                        pageCount={pageCount}
+                        onPageChange={changePage}
+                        initialPage={0}
+                        containerClassName="paginationBttns"
+                        previousLinkClassName="previousBttn"
+                        nextLinkClassName="paginationDisabled"
+                        activeClassName="activePage"
+                      />
+                    )}
+                  </div>
+                </div>
+                {/* CURRENT JOB NOT SHOWN WHILE IN MOBILE VIEW */}
+                <div
+                  className="right-grid jobs-main-container-single"
+                  style={{ display: currentJob == null && 'none' }}
+                >
+                  {currentJob != null && (
+                    <>
+                      <div className="current-job__header">
+                        <div className="float-current-job__title">
+                          <h1 className="current-job__title">
+                            {currentJob.job_title}
+                          </h1>
+                          <button
+                            type="button"
+                            className="close-single-padding jobs-main-container-single-close"
+                            onClick={closeSingle}
+                          >
+                            <i className="fas fa-times" />
+                          </button>
+                          <span className="tw-text-white">
+                            {currentJob.location}
+                          </span>
+                        </div>
+                        <div className="apply-button">
+                          <span>
+                            {userInfo != null ? (
+                              appliedJobsId.includes(currentJob._id) ? (
+                                <button
+                                  type="button"
+                                  disabled
+                                  className="current-job-view-box1-jobInfo-postSave-apply applied-btn"
+                                >
+                                  Applied
+                                </button>
+                              ) : (
+                                <button
+                                  type="button"
+                                  onClick={() => {
+                                    toggleModalView(true);
+                                  }}
+                                  className="current-job-view-box1-jobInfo-postSave-apply"
+                                >
+                                  Apply
+                                </button>
+                              )
                             ) : (
                               <button
                                 type="button"
-                                onClick={() => {
-                                  toggleModalView(true);
-                                }}
+                                onClick={authPlease}
                                 className="current-job-view-box1-jobInfo-postSave-apply"
                               >
                                 Apply
                               </button>
-                            )
-                          ) : (
-                            <button
-                              type="button"
-                              onClick={authPlease}
-                              className="current-job-view-box1-jobInfo-postSave-apply"
-                            >
-                              Apply
-                            </button>
-                          )}
-                        </span>
-                      </div>
-                    </div>
-                    <hr className="current-job__rule" />
-                    <div className="apply__section">
-                      <div className="apply__section-header">
-                        <h2 className="description-header">Job Description</h2>
-                      </div>
-                      <span>{currentJob.job_description}</span>
-                      <div>
-                        <hr className="current-job__rule" />
-                        <div>
-                          <h2 className="description-header">
-                            Min Requirements
-                          </h2>
-                          <div>
-                            {loadingReq === true && (
-                              <div>
-                                {currentJob.min_requirements
-                                  ? currentJob.min_requirements.map(
-                                    (skill, index) => (
-                                      <ul key={`${index + 1}`}>
-                                        <li className="list-style-square">
-                                          <span>
-                                            {skill.years}
-                                            {' '}
-                                            {skill.years === 1
-                                              ? 'year '
-                                              : 'years '}
-                                          </span>
-                                          <span>
-                                            {' '}
-                                            {skill.skill}
-                                          </span>
-                                        </li>
-                                      </ul>
-                                    ),
-                                  )
-                                  : ''}
-                              </div>
                             )}
+                          </span>
+                        </div>
+                      </div>
+                      {/* <hr className="current-job__rule" /> */}
+                      <div className="apply__section">
+                        <div
+                          style={{
+                            borderBottom: '1px solid #8040d2',
+                            paddingBottom: '1rem',
+                          }}
+                        >
+                          <div className="apply__section-header">
+                            <h2 className="description-header">
+                              Job Description
+                            </h2>
                           </div>
+                          <span className="tw-text-white">
+                            {currentJob.job_description}
+                          </span>
                         </div>
                         <div>
-                          <h2 className="description-header">
-                            Additional Information
-                          </h2>
-                          <div className="current-job-view-box5-container">
+                          {/* <hr className="current-job__rule" /> */}
+                          <div>
+                            <h2 className="description-header">
+                              Min Requirements
+                            </h2>
                             <div>
-                              <span>Salary</span>
-                              <div>{`${currentJob.pay}`}</div>
+                              {loadingReq === true && (
+                                <div>
+                                  {currentJob.min_requirements
+                                    ? currentJob.min_requirements.map(
+                                      (skill, index) => (
+                                        <ul key={`${index + 1}`}>
+                                          <li className="list-style-square">
+                                            <span className="tw-text-white">
+                                              {skill.years}
+                                              {' '}
+                                              {skill.years === 1
+                                                ? 'year '
+                                                : 'years '}
+                                            </span>
+                                            <span className="tw-text-gray-300 skill">
+                                              {' '}
+                                              {skill.skill}
+                                            </span>
+                                          </li>
+                                        </ul>
+                                      ),
+                                    )
+                                    : ''}
+                                </div>
+                              )}
                             </div>
-                            <div>
-                              <span>Job Type</span>
-                              <div>{currentJob.job_type}</div>
-                            </div>
-                            <div>
-                              <span>Remote</span>
+                          </div>
+                          <div>
+                            <h2 className="description-header">
+                              Additional Information
+                            </h2>
+                            <div className="current-job-view-box5-container">
                               <div>
-                                {currentJob.remote === true ? 'Yes' : 'No'}
+                                <span className="tw-text-white">Salary</span>
+                                <div className="tw-text-white">{`${currentJob.pay}`}</div>
+                              </div>
+                              <div>
+                                <span className="tw-text-white">Job Type</span>
+                                <div className="tw-text-white">
+                                  {currentJob.job_type}
+                                </div>
+                              </div>
+                              <div>
+                                <span className="tw-text-white">Remote</span>
+                                <div className="tw-text-white">
+                                  {currentJob.remote === true ? 'Yes' : 'No'}
+                                </div>
                               </div>
                             </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  </>
-                )}
+                    </>
+                  )}
+                </div>
               </div>
-            </div>
-          )}
+            )}
+          </div>
         </div>
       </Layout>
     </CareersMainComponent>
