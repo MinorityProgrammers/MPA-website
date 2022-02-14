@@ -880,8 +880,8 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 }
 
 .jobs-search-button {
-  background: #8040d2;
-  border: 1px solid #8040d2;
+  background: #6938ef;
+  border: 1px solid #6938ef;
   box-sizing: border-box;
   border-radius: 100px;
   padding: 16px 50px;
@@ -891,7 +891,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 .filter-button-search {
   font-size: 1rem;
   color: white;
-  background: #8040d2;
+  background: #6938ef;
   padding: 10px 20px;
   border-radius: 100px;
   box-shadow: 0px 10px 10px #151371;
@@ -1180,6 +1180,7 @@ input[type="checkbox"]:checked + .jobs-search-slider:before {
 .jobsMain {
   padding: 24px;
   position: relative;
+  background: #14152a;
   min-height: 50vh;
 }
 
@@ -1288,7 +1289,7 @@ input[type="checkbox"]:checked + .jobs-search-slider:before {
   .jobs-main-container {
     display: block;
     width: 100vw;
-    margin: 1rem 0;
+    padding: 1rem 0;
   }
   .jobs-main-container-list {
     max-width: max-content;
@@ -1297,7 +1298,7 @@ input[type="checkbox"]:checked + .jobs-search-slider:before {
 }
 
 .jobs-main-container-list {
-  background: white;
+  background: #14152a;
   display: block;
   height: 100%;
   /* overflow-y: scroll; */
@@ -1345,8 +1346,9 @@ input[type="checkbox"]:checked + .jobs-search-slider:before {
 }
 
 .jobs-main-container-single {
-  background: white;
-  border-radius: 16px;
+  background: #1c1d37;
+  box-shadow: 0px 32px 41px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
   padding: 20px;
   overflow-y: scroll;
   position: relative;
@@ -1632,17 +1634,18 @@ input[type="checkbox"]:checked + .jobs-search-slider:before {
 }
 
 .job-stub {
-  background: white;
-  box-shadow: 0 0 7px rgb(162, 144, 147);
-  border-radius: 16px;
+  background: #1c1d37;
+  box-shadow: 0px 32px 41px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
   padding: 20px;
   cursor: pointer;
+  border: 3px solid #1c1d37;
   margin: 20px 0;
   box-sizing: border-box;
 }
 
 .job-stub:hover {
-  background: rgb(233, 233, 233);
+  border: 3px solid #8040d2;
 }
 
 .job-stub:first-of-type {
@@ -1657,6 +1660,7 @@ input[type="checkbox"]:checked + .jobs-search-slider:before {
   font-size: 1.05rem;
   font-weight: bolder;
   margin-bottom: 0.7rem;
+  color: white;
   text-transform: uppercase;
 }
 
@@ -1704,12 +1708,19 @@ input[type="checkbox"]:checked + .jobs-search-slider:before {
 }
 
 .job-stub-saveLink {
-  color: var(--mpa-pink) !important;
-  margin-left: 20px;
+  color: white !important;
+  margin-left: 15px;
+  padding: 4px 15px;
   justify-content: flex-end;
   font-size: 14px !important;
-  text-decoration: underline !important;
+  border-radius: 50px;
+  border: 1px solid #8040d2;
 }
+
+.job-stub-saveLink:hover {
+  background-color: #8040d2;
+}
+
 .job-stub-saved {
   justify-content: flex-end;
   color: #b7b7bb !important;
@@ -2016,7 +2027,7 @@ input[type="checkbox"]:checked + .jobs-search-slider:before {
   position: absolute;
 }
 .right-grid {
-  border: 0.5px solid gray;
+  border: 0.5px solid #8040d2;
   box-shadow: 2px 2px 2px rgba(69, 63, 63, 0.2);
   border-radius: 1.1rem;
   padding: 2.5rem 2.2rem;
@@ -2037,6 +2048,9 @@ input[type="checkbox"]:checked + .jobs-search-slider:before {
   .jobs-main-container {
     width: 100%;
   }
+  .jobs-main-container-single {
+    background: #1c1d37;
+  }
   .right-grid {
     padding: 1rem;
     border: none;
@@ -2054,8 +2068,9 @@ input[type="checkbox"]:checked + .jobs-search-slider:before {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    /* padding: 1rem; */
+    padding-bottom: 1rem;
     margin-top: 1rem;
+
     width: 100%;
     position: unset;
   }
@@ -2079,7 +2094,7 @@ input[type="checkbox"]:checked + .jobs-search-slider:before {
 .current-job__title {
   font-weight: bold;
   font-size: 1.5rem;
-  color: black;
+  color: white;
 }
 
 @media screen and (max-width: 575px) {
@@ -2092,12 +2107,14 @@ input[type="checkbox"]:checked + .jobs-search-slider:before {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #8040d2;
 }
 
 .apply-button button {
   /* margin-right: 2rem; */
   padding: 0.6rem 3.5rem;
-  background: #474bff;
+  background: #6938ef;
   border-radius: 1rem;
   color: #fff;
   font-weight: bold;
@@ -2105,7 +2122,7 @@ input[type="checkbox"]:checked + .jobs-search-slider:before {
 
 .current-job__rule {
   width: 100%;
-  border: 0.3px solid #d0cece;
+  border: 0.1px solid #6938ef;
   margin-top: 2rem;
 }
 
@@ -2114,13 +2131,13 @@ input[type="checkbox"]:checked + .jobs-search-slider:before {
 }
 
 .description-header {
-  color: black;
+  color: white;
   font-weight: 600;
   margin-top: 1.2rem;
 }
 
 .header_searchbar {
-  color: black;
+  color: white;
   font-family: "Red Hat Display", sans-serif;
   font-size: 2rem;
   margin-bottom: 1.5rem;
@@ -2156,7 +2173,8 @@ input[type="checkbox"]:checked + .jobs-search-slider:before {
 
 .activePage a {
   color: white;
-  background-color: #2b2eff;
+  border: 1px solid #fff;
+  border-radius: 100%;
 }
 
 .remote-checkmate {
