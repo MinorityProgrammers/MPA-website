@@ -105,7 +105,7 @@ const ProfileTwo = function ({
   const [project, setProject] = useState('');
   const [ProIMG, setProIMG] = useState('');
   const [tabsActive, setTabsActive] = useState(
-    { nfts: false, userCourses: true, badges: false },
+    { nfts: false, userCourses: false, badges: true },
   );
   const [loading, setLoading] = useState(true);
 
@@ -334,11 +334,12 @@ const ProfileTwo = function ({
         });
       clearExpAdd();
     } else if (!document.getElementsByClassName('exp-data-warn')?.[0]) {
-      const el = document.getElementById('add-exp-fields');
-      el.insertAdjacentHTML(
-        'afterend',
-        '<div class="exp-data-warn tw-ml-4 tw-mb-3 tw-self-end tw-text-red-500 tw-font-bold">Please add an image and fill in all fields</div>',
-      );
+      // const el = document.getElementById('add-exp-fields');
+      // el.insertAdjacentHTML(
+      //   'afterend',
+      //   '<div class="exp-data-warn tw-ml-4 tw-self-end tw-text-red-300 ">Please add an image and fill in all fields</div>',
+      // );
+      errorToast('Please add an image and fill in all fields');
     }
   };
 
@@ -635,8 +636,31 @@ const ProfileTwo = function ({
           </div>
         )}
 
-        {/* <Experience experienceCards={experienceCards} /> */}
-
+        <Experience
+          experienceCards={experienceCards}
+          isLoggedIn={isLoggedIn}
+          ownsProfile={ownsProfile}
+          expEditMode={expEditMode}
+          expAddMode={expAddMode}
+          handleExpImgUpload={handleExpImgUpload}
+          setExpImg={setExpImg}
+          uploadedExpImg={uploadedExpImg}
+          setExpAddMode={setExpAddMode}
+          expDateInputTo={expDateInputTo}
+          setExpDateInputFrom={setExpDateInputFrom}
+          setExpDateInputTo={setExpDateInputTo}
+          setExpJobTitleInput={setExpJobTitleInput}
+          expDateInputFrom={expDateInputFrom}
+          expJobTitleInput={expJobTitleInput}
+          company={company}
+          setCompany={setCompany}
+          clearExpAdd={clearExpAdd}
+          expLocationInput={expLocationInput}
+          setExpLocationInput={setExpLocationInput}
+          link={link}
+          completeExpAdd={completeExpAdd}
+          setLink={setLink}
+        />
 
         <section className="tw-mb-8 tw-container ">
           <div className="pp-exp-edu-area tw-p-6  tw-rounded-md tw-grid tw-grid-flow-row tw-auto-rows-max">
@@ -827,7 +851,7 @@ const ProfileTwo = function ({
           </div>
         </section>
 
-        <section className="tw-mb-8 tw-container ">
+        <section className="tw-mb-8 tw-container">
           <div className="pp-exp-edu-area tw-p-6  tw-rounded-md tw-grid tw-grid-flow-row tw-auto-rows-max">
             <div className="hover:tw-bg-light-blue-500 hover:tw-border-transparent hover:tw-shadow-lg tw-group tw-block tw-rounded-lg tw-p-4 tw-border-gray-300 tw-border tw-bg-white">
               <h2 className="tw-relative tw-text-xl tw-font-bold tw-mb-3 tw-text-black">

@@ -250,22 +250,40 @@
   background-color: #151371;
 }
 
-.pp-exp-edu-area .add-exp-edu .addImg {
-  width: 10%;
+.addImg {
+  width: 30%;
 }
-.pp-exp-edu-area .add-exp-edu .addImg label {
+.addImg label {
   cursor: pointer;
 }
-.pp-exp-edu-area .add-exp-edu .addImg label input {
+.addImg label input {
   opacity: 0;
   position: absolute;
   width: 0;
   z-index: -10;
 }
-.pp-exp-edu-area .add-exp-edu .ee-fields {
-  width: 30%;
+.ee-fields {
+  width: 80%;
 }
-.pp-exp-edu-area .add-exp-edu .ee-fields input {
+
+/* .react-datepicker__month-container{
+  background: #14152A;
+}
+
+.react-datepicker__header{
+  background: #14152A !important;
+} */
+/* 
+.react-datepicker__current-month, .react-datepicker-time__header, .react-datepicker-year-header{
+  color: #fff !important;
+}
+
+.react-datepicker__day-name, .react-datepicker__day, .react-datepicker__time-name{
+  color: rgb(168, 167, 167) !important;
+} */
+
+
+/* .pp-exp-edu-area .add-exp-edu .ee-fields input {
   border: 1px solid #8a8a8a;
   color: black;
   text-transform: capitalize;
@@ -278,7 +296,7 @@
 .pp-exp-edu-area .add-exp-edu .ee-rm-btn {
   font-size: 1vw;
   background-color: #fb3f4a;
-}
+} */
 
 .circle {
   width: 25px;
@@ -367,6 +385,11 @@
 
 .mintBTN:hover {
   background-color: #a159fe;
+}
+
+.careerPic img{
+  border-radius: 30px;
+  border: 5px solid #a159ff6e;
 }
 
 @media screen and (max-width: 950px) {
