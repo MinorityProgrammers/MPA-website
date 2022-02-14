@@ -64,6 +64,12 @@ const SettingsLayout = ({
     window.location.href = '/';
   };
 
+  const returnHandler = () => {
+    const slug = userData?.userName;
+    if (slug) {
+      router.push(`/user/${slug}`);
+    }
+  };
   useEffect(() => {
     const token = typeof window !== 'undefined'
       ? window.localStorage.getItem('jwtToken')
@@ -136,8 +142,12 @@ const SettingsLayout = ({
       </Modal>
       <div className={styles.settingsContainer}>
         <div className="container tw-flex-col tw-justify-center">
+          <div className={`tw-relative ${styles.backgroundShdow}`}>
+            <div />
+            <img src="/assets/images/home-page/about-title-icon.svg" alt="bg" />
+          </div>
           <div className={styles.headerSection}>
-            <img src="/assets/images/arrow-left-circle.svg" alt="complete" />
+            <img src="/assets/images/arrow-left-circle.svg" alt="complete" onClick={returnHandler} />
             <p>Complete Setup</p>
           </div>
           <div className={`${styles.accountSettings}`}>

@@ -2,6 +2,7 @@
   font-family: 'Poppins', sans-serif;
   background: #14152b;
   padding-top: 120px;
+  overflow-x: clip;
 }
 
 .accountSettings {
@@ -12,6 +13,24 @@
   display: grid;
   grid-template-columns: 25% 70%;
   grid-column-gap: 50px;
+  position: relative;
+}
+.backgroundShdow div{
+  top: 400px;
+  right: -70px;
+  height: 320px;
+  width: 120px;
+  background: rgb(143 0 255);
+  mix-blend-mode: hard-light;
+  box-shadow: inset 0px 4px 4px rgb(0 0 0 / 25%);
+  filter: blur(120.94px);
+  position: absolute;
+  border-radius: 50%;
+}
+.backgroundShdow img{
+  top: 400px;
+  right: -100px;
+  position: absolute;
 }
 
 .settingsNavigation {
@@ -203,6 +222,10 @@
   display: flex;  
   margin: 30px 0;
   width: fit-content;
+  background: linear-gradient(90.87deg, #9379FF -2.84%, #33D2FF 82.04%);
+  -webkit-background-clip: text;
+  background-clip:text;
+  -webkit-text-fill-color: transparent;
 }
 .headerSection p{
   display: flex;

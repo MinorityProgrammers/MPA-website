@@ -121,6 +121,20 @@ content: none;
     font-size: 18px;
     font-weight: 500;
 }
+.nameRow div select {
+    option {
+        font-size: 18px;
+        font-weight: 700;
+    }
+    option:checked {  
+        border: 3px solid #6938EF;
+        background: #6938EF;
+    }
+    option:hover {  
+        border: 3px solid #6938EF;
+        box-shadow: 0 0 10px 100px #2c3235 inset;
+    }
+}    
 .nameRow div select,.nameRow .DatePicker input{
     -moz-appearance:none; /* Firefox */
     -webkit-appearance:none; /* Safari and Chrome */
@@ -225,6 +239,11 @@ content: none;
     outline: none;
     font-size: 18px;
     text-align: center;
+    transition: 0.3s ease;
+}
+
+.addButton a:hover{
+    background: #6938EF;
 }
 // Fourth Step
 .socialRow{
