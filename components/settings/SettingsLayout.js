@@ -1,5 +1,5 @@
 import React, {
-  useEffect, useState, useContext, useRef,
+  useEffect, useState, useContext, useRef, useCallback,
 } from 'react';
 import { useRouter } from 'next/router';
 import decode from 'jwt-decode';
@@ -7,6 +7,7 @@ import { Modal } from 'antd';
 import Layout from '../Layout';
 import HomepageNav from '../homepage/HomepageNav';
 import SidebarTwo from '../sidebar/SidebarTwo';
+import ProfileTwoGenerateAvatarPopUp from '../ProfileTwoGenerateAvatarPopUp';
 import { GlobalContext } from '../../contexts/provider';
 import { LOGOUT_USER } from '../../contexts/actions/actionTypes';
 import getProfile from '../../contexts/actions/profile/getProfile';
@@ -24,6 +25,9 @@ const SettingsLayout = ({
   const [hide, setHide] = useDetectOutsideClick(dropdownRef, false);
   const [userData, setUserData] = useState({});
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [generateAvatarPopUp, setGenerateAvatarPopUp] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [changeInProfile, setChangeInProfile] = useState(false);
 
   const router = useRouter();
   const handleClick = () => {
@@ -39,6 +43,24 @@ const SettingsLayout = ({
       getProfile(setUserData)(profileDispatch);
     }
   }, []);
+  useEffect(() => {
+    if (!isLoggedIn) {
+      setGenerateAvatarPopUp(false);
+    }
+  }, [isLoggedIn]);
+  const clickOutsideAvatarPopup = useCallback((e) => {
+    if (e.target.className === 'avatar-popup-wrap') {
+      setGenerateAvatarPopUp(false);
+      window.removeEventListener('click', clickOutsideAvatarPopup);
+    }
+  }, []);
+  useEffect(() => {
+    if (generateAvatarPopUp) {
+      window.addEventListener('click', clickOutsideAvatarPopup);
+    } else {
+      window.removeEventListener('click', clickOutsideAvatarPopup);
+    }
+  }, [generateAvatarPopUp]);
 
   useEffect(() => {
     const token = window.localStorage.getItem('jwtToken');
@@ -46,8 +68,17 @@ const SettingsLayout = ({
 
     if (token == null || userInfo === {}) {
       router.push('/auth');
+      setIsLoggedIn(false);
+    } else {
+      setIsLoggedIn(true);
     }
   }, [userData]);
+
+  useEffect(() => {
+    if (window.localStorage.getItem('jwtToken')) {
+      getProfile(setUserData)(profileDispatch);
+    }
+  }, [changeInProfile]);
 
   if (hide === false) {
     setTimeout(() => {
@@ -86,7 +117,9 @@ const SettingsLayout = ({
   );
     // Model
   const showModal = () => {
-    setIsModalVisible(true);
+    if (userData.profilePicture) {
+      setIsModalVisible(true);
+    }
   };
 
   const handleOk = () => {
@@ -141,6 +174,18 @@ const SettingsLayout = ({
         />
       </Modal>
       <div className={styles.settingsContainer}>
+        {generateAvatarPopUp && (
+        <div className="avatar-popup-wrap">
+          <div className="profile-two-generate-avatar-popup">
+            <ProfileTwoGenerateAvatarPopUp
+              loggedInUserData={userData}
+              userID={userData._id}
+              setGenerateAvatarPopUp={setGenerateAvatarPopUp}
+              setChangeInProfile={setChangeInProfile}
+            />
+          </div>
+        </div>
+        )}
         <div className="container tw-flex-col tw-justify-center">
           <div className={`tw-relative ${styles.backgroundShdow}`}>
             <div />
@@ -155,18 +200,20 @@ const SettingsLayout = ({
               <div className={`${styles.navContainer} ${tabsActive.profile ? '' : styles.navProfile}`}>
                 <div className={`tw-w-full ${tabsActive.profile ? '' : 'm-auto'}`}>
                   <div className={styles.userDataHeader}>
-                    <div className={styles.imgDiv} onClick={showModal}>
+                    <div className={styles.imgDiv}>
                       <img
                         src={userData?.profilePicture || '/assets/images/profile.png'}
                         className={styles.profileImg}
+                        onClick={showModal}
                         alt="avatar"
                       />
                       <img
                         src="../../assets/images/settings/camera-icon.svg"
                         alt="change avater"
+                        onClick={() => { setIsModalVisible(false); setGenerateAvatarPopUp(true); }}
                         className={styles.editIcon}
                       />
-                      <div>View</div>
+                      <div onClick={showModal}>View</div>
                     </div>
                     <div className={styles.textDiv}>
                       <p>

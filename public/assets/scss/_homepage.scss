@@ -9,15 +9,19 @@
       stroke: none;
     }
   }
-// profile settings
-  .setting__profile-img-model div{
-    width:fit-content ;
-  }
-  .setting__profile-img-model div .ant-modal-content .ant-modal-body{
+// profile settings profile image model
+.setting__profile-img-model div{
+  margin: auto;
+  .ant-modal-content .ant-modal-body{
     padding: 0;
+    img{
+      width: 100%;
+    }
   }
-  .settings-birthday-field .react-datepicker-wrapper{
-    padding: 0;
+}
+// profile settings data picker styels 
+.settings-birthday-field .react-datepicker-wrapper{
+  padding: 0;
 }
 .settings-phone-field .react-tel-input{
   font-family: 'Poppins', sans-serif;
@@ -25,6 +29,7 @@
 .settings-phone-field .react-tel-input .special-label{
   display: none;
 }
+// profile settings phoneNumber field
 .settings-phone-field .react-tel-input input{
   background: #24203B;
   border-radius: 8px;
