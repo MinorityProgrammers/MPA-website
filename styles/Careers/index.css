@@ -1267,6 +1267,10 @@ input[type="checkbox"]:checked + .jobs-search-slider:before {
   margin: 0 0 12px;
 }
 
+.skill {
+  color: rgb(141, 141, 141) !important;
+}
+
 .jobsMain-perPage select {
   color: black;
   border: 1px solid black;
@@ -1278,7 +1282,7 @@ input[type="checkbox"]:checked + .jobs-search-slider:before {
   grid-template-columns: 24rem 1fr;
   grid-template-rows: 1fr 50px;
   /* grid-column-gap: 1rem; */
-  color: black;
+  /* color: black; */
   grid-template-areas:
     "list job"
     "pagination job";
@@ -1613,8 +1617,8 @@ input[type="checkbox"]:checked + .jobs-search-slider:before {
 }
 
 .current-job-view-box5-container > div:nth-child(2) {
-  border-left: solid 1px var(--mpa-navy);
-  border-right: solid 1px var(--mpa-navy);
+  border-left: solid 1px #A259FF;
+  border-right: solid 1px #A259FF;
   width: 100%;
   margin: 0px 50px;
 }
