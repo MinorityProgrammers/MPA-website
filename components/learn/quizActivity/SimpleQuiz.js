@@ -132,7 +132,8 @@ export default function SimpleQuiz() {
                 </button>
               )}
               {currentQuestion + 1 < questions.length
-                && questions[currentQuestion].checked && (
+                  && questions[currentQuestion].checked && (
+                  /* Add other buttons here */
                   <button
                     className="fade-in next"
                     type="button"
