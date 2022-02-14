@@ -53,6 +53,13 @@
   border: 1px solid rgb(223, 222, 222);
   color: rgb(61, 61, 61) !important;
 }
+.lesson-button:hover{
+  background: #6938EF;
+}
+.quiz-button:hover{
+  background: white;
+  color: #6938EF;
+}
 
 /* User Banner */
 .user-bannerBG {
@@ -158,15 +165,12 @@
   color: rgb(204, 203, 203);
 }
 .course-weeks {
-  background: linear-gradient(
-    116.82deg,
-    #21175f 32.9%,
-    rgba(36, 14, 98, 0) 148.54%
-  );
+  background: #1C1D37;
   box-shadow: inset -7px -7px 24px rgba(255, 255, 255, 0.04),
     inset 7px 7px 14px rgba(255, 255, 255, 0.09);
   border-radius: 16px;
   cursor: pointer;
+  border: 3px solid #6938EF;
   padding: 20px 0;
 }
 .course-weeks .progress {
