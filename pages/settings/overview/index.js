@@ -6,6 +6,7 @@ import SettingBodyOverview from '../../../components/settings/SettingBodyOvervie
 function overview() {
   const [data, setData] = useState([]);
   const [, setUserID] = useState('');
+  const [tabsActive, setTabsActive] = useState({ overview: true, profile: false });
 
   useEffect(() => {
     const token = window.localStorage.getItem('jwtToken');
@@ -15,7 +16,7 @@ function overview() {
   }, []);
 
   return (
-    <SettingsLayout setData={setData} settingsPage="overview">
+    <SettingsLayout setData={setData} settingsPage="overview" tabsActive={tabsActive} setTabsActive={setTabsActive}>
       <SettingBodyOverview data={data} />
     </SettingsLayout>
   );
