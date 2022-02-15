@@ -57,7 +57,7 @@ const index = () => {
   return (
     <SettingsLayout setData={setData} settingsPage="overview" tabsActive={tabsActive} setTabsActive={setTabsActive}>
       {tabsActive.overview
-      && <SettingBodyOverview data={data} />}
+      && <SettingBodyOverview setTabsActive={setTabsActive} data={data} />}
       {tabsActive.profile
       && <SettingSetup setData={setData} data={data} />}
       {tabsActive.notification

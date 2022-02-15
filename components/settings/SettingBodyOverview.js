@@ -1,72 +1,15 @@
 import React, { useEffect, useContext } from 'react';
-import { useRouter } from 'next/router';
 import styles from '../../styles/settings/settingBodyOverview.module.css';
 import { uprContext } from '../../contexts/settingsPagesProvider/settingsPagesProvider';
 import getProgressPercentage from '../../contexts/utils/settings/getProgressPercentage';
 import Account from '../Account';
 
-const SettingBodyOverview = ({ data }) => {
-  const router = useRouter();
-
+const SettingBodyOverview = ({ data, setTabsActive }) => {
   const { setUpdatePasswordRedirection } = useContext(uprContext);
   useEffect(() => {
     setUpdatePasswordRedirection(false);
   }, []);
 
-  const completeRedirection = () => {
-    if (
-      !(
-        !!data?.firstName
-        && !!data?.lastName
-        && !!data?.birthday
-        && !!data?.Gender
-        && !!data?.phoneNumber
-        && !!data?.location
-        && !!data?.Nationality
-        && !!data?.Ethnicity.length
-      )
-    ) {
-      router.push('/settings/profile/details');
-    } else if (!(!!data?.bio && !!data?.primaryLanguage)) {
-      router.push('/settings/profile/overview');
-    } else if (
-      !(
-        !!data?.FacebookLink
-        && !!data?.LinkedinLink
-        && !!data?.GithubLink
-        && !!data?.GoogleLink
-        && !!data?.FigmaLink
-        && !!data?.DribbleLink
-        && !!data?.ClickupLink
-      )
-    ) {
-      router.push('/settings/profile/media');
-    } else if (
-      !(
-        !!data?.passions.length
-        && (data.passions.length === 1 ? data.passions[0] !== '' : true)
-        && !!data?.softSkills.length
-        && (data.softSkills.length === 1 ? data.softSkills[0] !== '' : true)
-        && !!data?.programmingSkills.length
-        && (data.programmingSkills.length === 1
-          ? data.programmingSkills[0] !== ''
-          : true)
-      )
-    ) {
-      router.push('/settings/profile/background');
-    } else if (
-      !(
-        !!data?.educationLevel
-        && !!data?.schoolName
-        && !!data?.enteredHighSchoolYear
-        && !!data?.expectedGraduationYear
-        && !!data?.studentStatus
-        && !!data?.degree
-      )
-    ) {
-      router.push('/settings/profile/education');
-    }
-  };
   const getProgressBar = () => {
     const prg = getProgressPercentage(data);
     let barPrg1 = 0;
@@ -115,10 +58,9 @@ const SettingBodyOverview = ({ data }) => {
 
             <button
               type="button"
-              onClick={(e) => {
-                e.preventDefault();
-                completeRedirection();
-              }}
+              onClick={() => setTabsActive({
+                overview: false, profile: true, notification: false, security: false,
+              })}
             >
               Complete setup
             </button>
