@@ -13,14 +13,15 @@ export default function QuizProgress(props) {
         />
       </div>
       <p className="counter">
-          <span>
-            Question
-            {currentQuestion + 1}
+        <span>
+          Question
+          {currentQuestion + 1}
           <span className="total-questions">
-            /{questionLength}
-        </span>
+            /
+            {questionLength}
           </span>
-        </p>
+        </span>
+      </p>
     </div>
   );
 }
