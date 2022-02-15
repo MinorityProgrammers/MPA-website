@@ -7,6 +7,7 @@ import SettingBodyWalletMyWallet from '../../../components/settings/SettingBodyW
 function myWallet() {
   const [data, setData] = useState([]);
   const [userID, setUserID] = useState('');
+  const [tabsActive, setTabsActive] = useState({ overview: true, profile: false });
 
   useEffect(() => {
     const token = window.localStorage.getItem('jwtToken');
@@ -16,7 +17,7 @@ function myWallet() {
   }, []);
 
   return (
-    <SettingsLayout setData={setData} settingsPage="wallet">
+    <SettingsLayout setData={setData} settingsPage="overview" tabsActive={tabsActive} setTabsActive={setTabsActive}>
       <SpecificSettingsLayout settingsPage="wallet" />
       <SettingBodyWalletMyWallet
         settingsPage="wallet"

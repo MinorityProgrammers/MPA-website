@@ -7,6 +7,7 @@ import SpecificSettingsLayout from '../../../components/settings/SpecificSetting
 function notifications() {
   const [data, setData] = useState([]);
   const [userID, setUserID] = useState('');
+  const [tabsActive, setTabsActive] = useState({ overview: true, profile: false });
 
   useEffect(() => {
     const token = window.localStorage.getItem('jwtToken');
@@ -16,7 +17,7 @@ function notifications() {
   }, []);
 
   return (
-    <SettingsLayout setData={setData} settingsPage="notifications">
+    <SettingsLayout setData={setData} settingsPage="overview" tabsActive={tabsActive} setTabsActive={setTabsActive}>
       <SpecificSettingsLayout settingsPage="notifications" />
       <SettingBodyNotificationsNotifications
         settingsPage="notifications"

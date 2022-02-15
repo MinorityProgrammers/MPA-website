@@ -7,6 +7,7 @@ import SettingBodyProfileBackground from '../../../components/settings/SettingBo
 function background() {
   const [data, setData] = useState([]);
   const [userID, setUserID] = useState('');
+  const [tabsActive, setTabsActive] = useState({ overview: true, profile: false });
 
   useEffect(() => {
     const token = window.localStorage.getItem('jwtToken');
@@ -16,7 +17,7 @@ function background() {
   }, []);
 
   return (
-    <SettingsLayout setData={setData} settingsPage="profile">
+    <SettingsLayout setData={setData} settingsPage="overview" tabsActive={tabsActive} setTabsActive={setTabsActive}>
       <SpecificSettingsLayout settingsPage="profile" />
       <SettingBodyProfileBackground
         settingsPage="profile"

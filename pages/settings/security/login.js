@@ -7,6 +7,7 @@ import SettingBodySecurityLogin from '../../../components/settings/SettingBodySe
 function login() {
   const [data, setData] = useState([]);
   const [userID, setUserID] = useState('');
+  const [tabsActive, setTabsActive] = useState({ overview: true, profile: false });
 
   useEffect(() => {
     const token = window.localStorage.getItem('jwtToken');
@@ -16,7 +17,7 @@ function login() {
   }, []);
 
   return (
-    <SettingsLayout setData={setData} settingsPage="security">
+    <SettingsLayout setData={setData} settingsPage="overview" tabsActive={tabsActive} setTabsActive={setTabsActive}>
       <SpecificSettingsLayout settingsPage="security" />
       <SettingBodySecurityLogin
         settingsPage="security"

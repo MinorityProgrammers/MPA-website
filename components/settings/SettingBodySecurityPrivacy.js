@@ -8,7 +8,9 @@ import styles from '../../styles/settings/settingBodySecurityPrivacy.module.css'
 import CreateSettingInput from './CreateSettingInput';
 import SettingBody from './SettingBody';
 
-const SettingBodySecurityPrivacy = ({ settingsPage, data, userID }) => {
+const SettingBodySecurityPrivacy = ({
+  settingsPage, data, userID, inputStates, setInputStates,
+}) => {
   const router = useRouter();
 
   const inputFields = [
@@ -24,7 +26,7 @@ const SettingBodySecurityPrivacy = ({ settingsPage, data, userID }) => {
     initialInputState[field.name] = '';
   });
 
-  const [inputStates, setInputStates] = useState(initialInputState);
+  // const [inputStates, setInputStates] = useState(initialInputState);
 
   useEffect(() => {
     inputFields.forEach((field) => {

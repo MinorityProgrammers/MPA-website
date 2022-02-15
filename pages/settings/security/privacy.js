@@ -7,6 +7,7 @@ import SettingBodySecurityPrivacy from '../../../components/settings/SettingBody
 function privacy() {
   const [data, setData] = useState([]);
   const [userID, setUserID] = useState('');
+  const [tabsActive, setTabsActive] = useState({ overview: true, profile: false });
 
   useEffect(() => {
     const token = window.localStorage.getItem('jwtToken');
@@ -16,7 +17,7 @@ function privacy() {
   }, []);
 
   return (
-    <SettingsLayout setData={setData} settingsPage="security">
+    <SettingsLayout setData={setData} settingsPage="overview" tabsActive={tabsActive} setTabsActive={setTabsActive}>
       <SpecificSettingsLayout settingsPage="security" />
       <SettingBodySecurityPrivacy
         settingsPage="security"

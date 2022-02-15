@@ -12,6 +12,9 @@
 // profile settings profile image model
 .setting__profile-img-model div{
   margin: auto;
+  .ant-modal-content{
+    box-shadow: none;
+  }
   .ant-modal-content .ant-modal-body{
     padding: 0;
     img{

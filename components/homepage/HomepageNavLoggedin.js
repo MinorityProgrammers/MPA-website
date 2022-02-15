@@ -50,7 +50,7 @@ const HomepageNavLoggedin = ({ onCloseMobileMenu, userInfo }) => {
         >
           <p className="login-options-profile">Profile</p>
         </a>
-        <a href="/settings/overview" onClick={() => handleClick()}>
+        <a href="/settings" onClick={() => handleClick()}>
           <p className="login-options-setting">Settings</p>
         </a>
       </div>

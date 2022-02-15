@@ -239,7 +239,9 @@ const SettingsLayout = ({
                         }`}
                       >
                         <h2
-                          onClick={() => setTabsActive({ overview: true, profile: false })}
+                          onClick={() => setTabsActive({
+                            overview: true, profile: false, notification: false, security: false,
+                          })}
                         >
                           <div className={styles.icon}>
                             <img
@@ -258,7 +260,9 @@ const SettingsLayout = ({
                         }`}
                       >
                         <h2
-                          onClick={() => setTabsActive({ overview: false, profile: true })}
+                          onClick={() => setTabsActive({
+                            overview: false, profile: true, notification: false, security: false,
+                          })}
                         >
                           <div
                             className={styles.icon}
@@ -273,7 +277,7 @@ const SettingsLayout = ({
                           </span>
                         </h2>
                       </li>
-                      <li
+                      {/* <li
                         className={`${styles.navHeader} ${
                           settingsPage === 'wallet' && styles.activeLi
                         }`}
@@ -292,50 +296,45 @@ const SettingsLayout = ({
                             Wallet
                           </span>
                         </h2>
-                      </li>
+                      </li> */}
                       <li
                         className={`${styles.navHeader} ${
-                          settingsPage === 'notifications' && styles.activeLi
+                          tabsActive.notification && styles.activeLi
                         }`}
                       >
                         <h2
-                          style={{ borderTop: settingsPage === 'wallet' && 'none' }}
+                          onClick={() => setTabsActive({
+                            overview: false, profile: false, notification: true, security: false,
+                          })}
                         >
                           <div className={styles.icon}>
                             <img
                               src="../../assets/images/settings/notifications.svg"
                               alt="notifications icon"
-                              onClick={() => router.push('/settings/notifications/notifications')}
                             />
                           </div>
-                          <span
-                            onClick={() => router.push('/settings/notifications/notifications')}
-                          >
+                          <span>
                             Notifications
                           </span>
                         </h2>
                       </li>
                       <li
                         className={`${styles.navHeader} ${
-                          settingsPage === 'security' && styles.activeLi
+                          tabsActive.security && styles.activeLi
                         }`}
                       >
                         <h2
-                          style={{
-                            borderTop: settingsPage === 'profile' && 'none',
-                            borderBottom: settingsPage === 'wallet' && 'none',
-                          }}
+                          onClick={() => setTabsActive({
+                            overview: false, profile: false, notification: false, security: true,
+                          })}
                         >
                           <div className={styles.icon}>
                             <img
                               src="../../assets/images/settings/security.svg"
                               alt="security icon"
-                              onClick={() => router.push('/settings/security/login')}
                             />
                           </div>
-                          <span
-                            onClick={() => router.push('/settings/security/login')}
-                          >
+                          <span>
                             Security & Login
                           </span>
                         </h2>
