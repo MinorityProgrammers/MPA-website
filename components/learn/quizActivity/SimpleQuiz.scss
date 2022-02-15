@@ -225,4 +225,435 @@
 }
 .quiz .results button {
   margin-top: 1em;
+}@font-face {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/opensans/v20/mem8YaGs126MiZpBA-UFVZ0e.ttf) format("truetype");
+}
+
+@keyframes roll-in {
+  0% {
+    top: 10px;
+    opacity: 0;
+  }
+
+  100% {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pulses {
+  from {
+    transform: scale3d(1, 1, 1);
+  }
+
+  50% {
+    transform: scale3d(1.05, 1.05, 1.05);
+  }
+
+  to {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+.CustomOverlay {
+  position: fixed;
+  inset: 0px;
+  background-color: rgba(233, 222, 222, 0.877) !important;
+  z-index: 1000;
+
+  .Modal {
+    width: 50vw;
+    // height: 50vh;
+    overflow: inherit !important;
+    top: 45%;
+    left: 60%;
+    right: auto;
+    bottom: auto;
+    border-radius: 1em;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    // background-image: linear-gradient(110.62deg, rgb(70 70 117) 6.39%, rgb(32 31 94) 53.34%);
+    background: #1C1D37;
+    border: 1px solid #6938EF;
+    position: absolute;
+    padding: 1em 2em !important;
+  }
+}
+
+.pulses {
+  animation: pulses 1s infinite;
+}
+
+.fade-in {
+  animation: fade 0.75s ease;
+}
+
+.quiz {
+  margin: 0em auto;
+  min-height: 40vh;
+  font-size: 16px;
+
+  .progress {
+    position: relative;
+    margin-top: 1.3rem;
+    transition: width 0.4s ease;
+    background: rgba(82, 85, 141, 0.61);
+    border-radius: 1em;
+    width: 100%;
+    height: 12px;
+    font-family: "Open Sans", "Helvetica", "Arial", sans-serif;
+
+    .progress-bar {
+      background: linear-gradient(270deg, #FD05B3 1.84%, rgba(253, 5, 179, 0.15) 100%) !important;
+      border-radius: 17px;
+    }
+  }
+
+  .counter {
+    position: relative;
+    font-weight: 510;
+    color: #CFCFCF;
+    height: 100%;
+    font-family: "Open Sans", "Helvetica", "Arial", sans-serif;
+    font-size: 1.25em;
+    margin: auto 0.5em;
+    margin-top: 0.1em;
+    margin-bottom: 1.2rem;
+    letter-spacing: 0.025em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .total-questions {
+      font-size: 0.6em;
+    }
+  }
+
+  form {
+    width: 90%;
+    margin: 0.8em auto;
+  }
+
+  .img-fluid {
+    margin: 2em auto;
+    max-width: 360px;
+    display: block;
+  }
+
+  .question {
+    color: white;
+    font-weight: bold;
+    line-height: 1.35;
+    margin-bottom: 0.75em;
+    margin-left: 1em;
+  }
+
+  .option {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    align-content: center;
+    column-gap: 0.8em;
+    margin-bottom: 1.25em;
+    transition: all 0.25s ease;
+    font-size: 0.9em;
+    background: #1C1D37;
+    border: 1px solid #6938EF;
+    padding: 0.7em;
+    border-radius: 1rem;
+
+    input[type="radio"] {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      align-content: center;
+      appearance: none;
+      -webkit-appearance: none;
+      background-color: #B3AFC4;
+      margin: 0;
+      font: inherit;
+      transform: scale(-15px);
+      color: currentColor;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      cursor: pointer;
+      outline: rgb(0, 152, 0);
+
+      &::before {
+        content: "";
+        transform: scale(0);
+        transition: transform 120ms ease-in-out;
+      }
+
+      &:checked {
+        &::before {
+          content: "\f00c";
+          font-family: 'Font Awesome 5 Free' !important;
+          color: white;
+          transform: scale(1);
+          outline: rgb(0, 152, 0);
+          background-color: rgb(0, 152, 0);
+        }
+      }
+
+      &:checked {
+        content: "\f00c";
+        font-size: 0.6em;
+        font-family: 'Font Awesome 5 Free' !important;
+        outline: rgb(0, 152, 0);
+        background-color: rgb(0, 152, 0);
+      }
+
+      &:focus {
+        border: 2px solid rgb(0, 152, 0);
+      }
+
+      &::checked {
+        &:not(:focus) {
+          border: 2px solid rgb(0, 152, 0);
+          outline: none;
+        }
+      }
+
+      &:checked {
+        &::after {
+          content: "";
+          width: 12px;
+          height: 12px;
+          background-color: #222;
+          position: absolute;
+          top: 4px;
+          left: 4px;
+          border-radius: 100%;
+          transition: all 0.2s ease;
+        }
+      }
+    }
+
+    .q_main {
+      color: white;
+    }
+  }
+
+  button {
+    padding: 0.75em;
+    font-family: "Open Sans", "Helvetica", "Arial", sans-serif;
+    // background-image: linear-gradient(270deg, #ff00b8 2.65%, #ff655b 51.83%, #ffc700) !important;
+    background: linear-gradient(270deg, #FD05B3 1.84%, rgba(253, 5, 179, 0.15) 100%);
+    border: 0;
+    color: #fff;
+    font-size: 1em;
+    transition: 0.25s all;
+    white-space: nowrap;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 0.5em auto;
+    border-radius: 0.5em !important;
+    outline: #ff00b8;
+
+    i {
+      margin-left: 0.15em;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      margin: 0.5em auto;
+      border-radius: 00.5em;
+    }
+  }
+
+  // &:not(:checked) {
+  //   + {
+  //     label {
+  //       &:after {
+  //         opacity: 0;
+  //         transform: scale(0);
+  //       }
+  //     }
+  //   }
+  // }
+
+  // &:checked {
+  //   + {
+  //     label {
+  //       &:after {
+  //         opacity: 1;
+  //         transform: scale(1);
+  //       }
+  //     }
+  //   }
+  // }
+}
+
+.dim {
+  input[type="radio"] {
+    &::before {
+      content: "";
+      transform: scale(0);
+      border: 0;
+      font-size: 1.2em;
+      transform: scale(1);
+      animation: 0.25s roll-in ease;
+    }
+
+    &::after {
+      display: none;
+    }
+
+    &:checked {
+      &::before {
+        font-family: "Font Awesome 5 Free" !important;
+        content: "\f00d";
+        transform: scale(1);
+        color: #ff1100;
+        font-weight: 900;
+      }
+    }
+
+    &:checked {
+      font-family: "Font Awesome 5 Free" !important;
+      content: "\f00d";
+      color: #ff1100;
+      font-weight: 900;
+    }
+  }
+
+  opacity: 0.5;
+}
+
+.correct {
+  input[type="radio"] {
+    &::before {
+      border: 0;
+      font-size: 1.2em;
+      animation: 0.25s roll-in ease;
+    }
+
+    &::after {
+      display: none;
+    }
+
+    &:before {
+      font-family: "Font Awesome 5 Free" !important;
+      content: "\f00C";
+      color: #36ad3b;
+      font-weight: 900;
+      transform: scale(1);
+      outline: rgb(0, 152, 0);
+      background-color: rgb(0, 152, 0);
+    }
+  }
+}
+
+.bottom {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  margin: 0 auto;
+
+  .spread-bottom {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1 1 100%;
+    font-size: 0.9em;
+    align-content: center;
+
+    .left_bottom {
+      display: flex;
+      align-items: center;
+      column-gap: 0.6em;
+      align-content: center;
+      cursor: pointer;
+
+      p {
+        color: white;
+      }
+    }
+
+    button.next {
+      margin: 0px;
+      background: none;
+      background-color: #6938EF !important;
+      border-radius: 100px;
+      padding: 0.45em 1em;
+      outline: #6938EF;
+      border: 1px solid #6938EF;
+    }
+  }
+}
+
+.get-results {
+  display: block;
+  margin: 0.5em auto;
+}
+
+.results {
+  font-size: 1.1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 40vh;
+
+  h1 {
+    font-family: "Open Sans", "Helvetica", "Arial", sans-serif;
+  }
+
+  button {
+    margin-top: 1em;
+    border-radius: 0.5em !important;
+  }
+
+  .score {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .quiz {
+    .bottom {
+      p {
+        width: 100vw;
+        text-align: justify;
+      }
+
+      div {
+        flex-basis: 100%;
+      }
+
+      .next {
+        // flex-basis: 100%;
+        margin: 1em auto;
+      }
+    }
+  }
+
+  .CustomOverlay {
+    .modal {
+      top: 50%;
+      bottom: 50%;
+    }
+  }
 }
