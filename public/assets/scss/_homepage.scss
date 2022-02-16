@@ -9,10 +9,146 @@
       stroke: none;
     }
   }
-
-  .setting__profile-img-model div{
-    width:fit-content ;
+// profile settings profile image model
+.setting__profile-img-model div{
+  margin: auto;
+  .ant-modal-content{
+    box-shadow: none;
   }
-  .setting__profile-img-model div .ant-modal-content .ant-modal-body{
+  .ant-modal-content .ant-modal-body{
     padding: 0;
+    img{
+      width: 100%;
+    }
   }
+}
+// profile settings data picker styels 
+.settings-birthday-field .react-datepicker-wrapper{
+  padding: 0;
+}
+.settings-phone-field .react-tel-input{
+  font-family: 'Poppins', sans-serif;
+}
+.settings-phone-field .react-tel-input .special-label{
+  display: none;
+}
+// profile settings phoneNumber field
+.settings-phone-field .react-tel-input input{
+  background: #24203B;
+  border-radius: 8px;
+  border: 1px solid #6938EF;
+  height: 60px;
+  width: 100%;
+  color: rgb(255, 255, 255);
+  padding: 1rem 3.5rem;
+  outline: none;
+  font-size: 18px;
+  font-weight: 500;
+}
+.settings-phone-field .react-tel-input input:focus{
+  border: 1px solid #6938EF;
+  background: #fff;
+  color: #1C1D37;
+}
+.settings-phone-field .react-tel-input input:hover{
+  border: 1px solid #6938EF;
+  background: #24203B;
+  color: #ffffff;
+} 
+.settings-phone-field .css-b62m3t-container .css-1s2u09g-control{
+  background: #24203B;
+  border-radius: 8px;
+  border: 1px solid #6938EF;
+  min-height: 60px;
+  width: 100%;
+  color: rgb(3, 3, 3);
+  outline: none;
+  font-size: 18px;
+  font-weight: 500;
+  padding-right: 70px;
+}
+.settings-phone-field .css-b62m3t-container .css-1s2u09g-control{
+  -moz-appearance:none; /* Firefox */
+  -webkit-appearance:none; /* Safari and Chrome */
+  appearance:none;
+  background-image: url("/assets/images/settings/arrow-down.svg");
+  background-repeat: no-repeat;
+  background-position-x: 96%;
+  background-position-y: 10px;
+}
+.settings-phone-field .css-b62m3t-container .css-1s2u09g-control >div{
+  height: 100%;
+}
+.settings-phone-field .css-g1d714-ValueContainer{
+  padding: 1rem;
+}
+.settings-phone-field .css-b62m3t-container .css-1s2u09g-control  .css-319lph-ValueContainer{
+  height: 100%;
+  padding: 0px 8px;
+}
+.settings-phone-field .css-1okebmr-indicatorSeparator{
+  display: none;
+}
+[class~='css-tlfecz-indicatorContainer']:last-of-type  {
+  display: none;
+}
+.settings-phone-field .css-1hb7zxy-IndicatorsContainer{
+  // border-right: 2px solid #8040D2;
+  margin-top: 10px;
+}
+.settings-phone-field .css-1pahdxg-control:hover{
+  border-color: #6938EF;
+}
+.settings-phone-field .css-1pahdxg-control{
+  border-radius: 8px !important;
+  border: 1px solid #6938EF !important;
+  background: #fff !important;
+  box-shadow: none;
+  .css-1rhbuit-multiValue{
+    background: #1C1D37 !important;
+  }
+  .css-12jo7m5{
+    color: #fff;
+  }
+  .css-tj5bde-Svg{
+    fill: white;
+  }
+}
+.settings-phone-field .css-1rhbuit-multiValue{
+  margin-right: 10px;
+}
+// Settings Profile Fourthstep
+.add-socail-links{
+  padding: 0 !important;
+}
+.add-socail-links > div{
+  margin: 0 !important;
+  display: flex;
+  align-items: center;
+}
+.add-socail-links div .ant-dropdown-trigger{
+  margin: 0 1rem;
+}
+.add-socail-links div .ant-dropdown-trigger img{
+  border: 1px solid #6938EF;
+  border-radius: 50%;
+  padding: 5px 5px 3px;
+  max-width: 40px;
+}
+.settings_socail-links-contaner ul{
+  background: #24203B;
+  color: #fff;
+}
+.settings_socail-links-contaner li{
+  color: #fff;
+}
+.settings_socail-links-contaner{
+  color: #fff;
+}
+.settings_socail-links-contaner ul .ant-dropdown-menu-item:hover {
+  background: #6938EF;
+}
+.add-socail-links input{
+  text-align: left;
+  font-weight: bold !important;
+}
