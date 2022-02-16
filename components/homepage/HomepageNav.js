@@ -15,9 +15,7 @@ import useDetectOutsideClick from '../UseDetectOutsideClick';
 import HomepageNavLoggedin from './HomepageNavLoggedin';
 import HomepageNavLogin from './HomepageNavLogin';
 
-const HomepageNav = ({
-  setToken, setData, page, open, setOpen = () => {},
-}) => {
+const HomepageNav = ({ setToken, setData, page, open, setOpen = () => {} }) => {
   const dropdownRef = useRef(null);
   const dropdownMobileRef = useRef(null);
   const searchMobileRef = useRef(null);
@@ -27,14 +25,14 @@ const HomepageNav = ({
   const [isLogin, setIsLogin] = useState(false);
   const router = useRouter();
   const [isActive, setIsActive] = useDetectOutsideClick(dropdownRef, false);
-  const [searchValue, setSearch] = useState('');
+  const [searchValue, setSearch] = useState("");
   const [isActiveMobile, setIsActiveMobile] = useDetectOutsideClick(
     dropdownMobileRef,
-    false,
+    false
   );
   const [isActiveSearch, setIsActiveSearch] = useDetectOutsideClick(
     searchMobileRef,
-    false,
+    false
   );
   const [, setConnect] = useState(false);
   const [session] = useSession();
@@ -49,7 +47,7 @@ const HomepageNav = ({
 
   const handleSearch = (e) => {
     const regex = /\b\w+/;
-    if (!regex.test(e.target.value) && e.target.value !== '') return;
+    if (!regex.test(e.target.value) && e.target.value !== "") return;
     setSearch(e.target.value);
     router.push({
       pathname: router.pathname,
@@ -60,9 +58,9 @@ const HomepageNav = ({
   const handleSubmit = () => {
     const regex = /\b\w+/;
     if (!regex.test(searchValue)) return;
-    setSearch('');
+    setSearch("");
     router.push({
-      pathname: '/search',
+      pathname: "/search",
       query: { _q: searchValue },
     });
   };
@@ -87,56 +85,58 @@ const HomepageNav = ({
   } = useContext(GlobalContext || {});
 
   useEffect(() => {
-    const token = typeof window !== 'undefined'
-      ? window.localStorage.getItem('jwtToken')
-      : null;
-    const userInfo = typeof window !== 'undefined'
-      ? window.localStorage.getItem('userInfo')
-      : null;
+    const token =
+      typeof window !== "undefined"
+        ? window.localStorage.getItem("jwtToken")
+        : null;
+    const userInfo =
+      typeof window !== "undefined"
+        ? window.localStorage.getItem("userInfo")
+        : null;
 
     if (token === null || userInfo === {}) {
       setUserData(null);
       if (
-        page === 'MentorshipProgram'
-        || page === 'Consultancy'
-        || page === 'learn'
-        || page === 'About'
-        || page === 'Careers'
-        || page === 'auth'
-        || page === 'Incubator'
-        || page === 'Chat'
-        || page === 'CreateProfile'
-        || page === 'user'
-        || page === 'settings-overview'
-        || page === 'settings-profile'
-        || page === 'settings-security'
-        || page === 'settings-wallet'
-        || page === 'settings-notifications'
+        page === "MentorshipProgram" ||
+        page === "Consultancy" ||
+        page === "learn" ||
+        page === "About" ||
+        page === "Careers" ||
+        page === "auth" ||
+        page === "Incubator" ||
+        page === "Chat" ||
+        page === "CreateProfile" ||
+        page === "user" ||
+        page === "settings-overview" ||
+        page === "settings-profile" ||
+        page === "settings-security" ||
+        page === "settings-wallet" ||
+        page === "settings-notifications"
       ) {
         setData(null);
       }
     } else {
       getProfile(setUserData)(profileDispatch);
       if (
-        page === 'MentorshipProgram'
-        || page === 'Consultancy'
-        || page === 'About'
-        || page === 'Careers'
-        || page === 'learn'
-        || page === 'auth'
-        || page === 'Incubator'
-        || page === 'Chat'
-        || page === 'CreateProfile'
-        || page === 'user'
-        || page === 'settings-overview'
-        || page === 'settings-profile'
-        || page === 'settings-security'
-        || page === 'settings-wallet'
-        || page === 'settings-notifications'
+        page === "MentorshipProgram" ||
+        page === "Consultancy" ||
+        page === "About" ||
+        page === "Careers" ||
+        page === "learn" ||
+        page === "auth" ||
+        page === "Incubator" ||
+        page === "Chat" ||
+        page === "CreateProfile" ||
+        page === "user" ||
+        page === "settings-overview" ||
+        page === "settings-profile" ||
+        page === "settings-security" ||
+        page === "settings-wallet" ||
+        page === "settings-notifications"
       ) {
         getProfile(setData)(profileDispatch);
       }
-      if (page === 'Events') {
+      if (page === "Events") {
         setToken(token);
       }
     }
@@ -152,15 +152,15 @@ const HomepageNav = ({
         setSticky(false);
       }
     };
-    document.addEventListener('scroll', handleScroll);
+    document.addEventListener("scroll", handleScroll);
     return () => {
-      document.removeEventListener('scroll', handleScroll);
+      document.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
   const handleLogout = () => {
-    localStorage.removeItem('userInfo');
-    localStorage.removeItem('jwtToken');
+    localStorage.removeItem("userInfo");
+    localStorage.removeItem("jwtToken");
     authDispatch({
       type: LOGOUT_USER,
     });
@@ -170,9 +170,10 @@ const HomepageNav = ({
   };
 
   useEffect(() => {
-    const token = typeof window !== 'undefined'
-      ? window.localStorage.getItem('jwtToken')
-      : null;
+    const token =
+      typeof window !== "undefined"
+        ? window.localStorage.getItem("jwtToken")
+        : null;
     if (token) {
       const decodedToken = decode(token);
       if (decodedToken.exp * 1000 < new Date().getTime()) handleLogout();
@@ -181,7 +182,7 @@ const HomepageNav = ({
 
   const showSearchIconMobile = () => (
     <div
-      className={`nav__mobile-search ${sticky ? 'sticky' : ''}`}
+      className={`nav__mobile-search ${sticky ? "sticky" : ""}`}
       ref={searchMobileRef}
     >
       <div className="mobile-searchBox">
@@ -207,7 +208,7 @@ const HomepageNav = ({
 
   const menuMobile = () => (
     <div
-      className={`nav__mobile ${sticky ? 'sticky' : ''}`}
+      className={`nav__mobile ${sticky ? "sticky" : ""}`}
       ref={dropdownMobileRef}
     >
       {userData !== null && userData !== undefined ? (
@@ -217,7 +218,7 @@ const HomepageNav = ({
               src={
                 userData.profilePicture
                   ? userData.profilePicture
-                  : '/assets/images/profile.png'
+                  : "/assets/images/profile.png"
               }
               alt="profile"
               className="rounded-circle mb-3"
@@ -301,7 +302,7 @@ const HomepageNav = ({
             href={`${
               userData.userName
                 ? `/user/${userData.userName}`
-                : '/create-profile'
+                : "/create-profile"
             }`}
             onClick={closeMobileMenu}
           >
@@ -311,7 +312,7 @@ const HomepageNav = ({
           </a>
         </ul>
       ) : (
-        ''
+        ""
       )}
       <Account />
     </div>
@@ -321,16 +322,16 @@ const HomepageNav = ({
     <header
       className="homepage__header"
       style={
-        router.pathname === '/auth'
-          ? { top: '0rem', paddingBottom: '28px' }
+        router.pathname === "/auth"
+          ? { top: "0rem", paddingBottom: "28px" }
           : {}
       }
     >
       <nav
         className={` ${
           sticky
-            ? 'sticky-menu tw-flex tw-flex-row tw-justify-between tw-w-full'
-            : 'tw-flex tw-flex-row tw-justify-between tw-w-full'
+            ? "sticky-menu tw-flex tw-flex-row tw-justify-between tw-w-full"
+            : "tw-flex tw-flex-row tw-justify-between tw-w-full"
         }`}
       >
         {isLogin === true && (
@@ -364,51 +365,55 @@ const HomepageNav = ({
                   <li onClick={() => setOpen(!open)}>
                     <span
                       className="tw-cursor-pointer tw-text-blue-700 tw-hover:text-white"
+<<<<<<< HEAD
                       style={{ fontSize: '1.1rem' }}
+=======
+                      style={{ fontSize: "1.1rem" }}
+>>>>>>> c50aeb5 (nav-item)
                     >
                       All
                     </span>
                   </li>
                 ) : (
-                  ''
+                  ""
                 )}
 
                 <li onClick={onClickMobile}>
                   <i
                     className={
                       isActiveMobile
-                        ? 'fas fa-times tw-text-blue-700'
-                        : 'fas fa-bars tw-text-blue-700'
+                        ? "fas fa-times tw-text-blue-700"
+                        : "fas fa-bars tw-text-blue-700"
                     }
                   />
                 </li>
               </ul>
             </div>
-            {isActiveMobile ? menuMobile() : ''}
-            {isActiveSearch ? showSearchIconMobile() : ''}
+            {isActiveMobile ? menuMobile() : ""}
+            {isActiveSearch ? showSearchIconMobile() : ""}
 
             <ul className="nav-menu tw-py-0 md:tw-py-4">
               {userData !== null && userData !== undefined ? (
                 <li
-                  className={open ? 'nav-item active-link' : 'nav-item'}
+                  className={open ? "nav-item active-link" : "nav-item"}
                   onClick={() => setOpen(!open)}
                 >
                   <div
                     className="tw-cursor-pointer"
-                    style={{ display: 'flex' }}
+                    style={{ display: "flex" }}
                   >
                     <BiMenuAltLeft />
                     <a>All</a>
                   </div>
                 </li>
               ) : (
-                ''
+                ""
               )}
               <li
                 className={
-                  router.pathname === '/learn'
-                    ? 'nav-item active-link tw-cursor-pointer'
-                    : 'nav-item'
+                  router.pathname === "/learn"
+                    ? "nav-item active-link tw-cursor-pointer"
+                    : "nav-item"
                 }
               >
                 <Link
@@ -421,9 +426,9 @@ const HomepageNav = ({
               </li>
               <li
                 className={
-                  router.pathname === '/incubator'
-                    ? 'nav-item active-link'
-                    : 'nav-item'
+                  router.pathname === "/incubator"
+                    ? "nav-item active-link"
+                    : "nav-item"
                 }
               >
                 <Link
@@ -437,9 +442,9 @@ const HomepageNav = ({
 
               <li
                 className={
-                  router.pathname === '/events'
-                    ? 'nav-item active-link'
-                    : 'nav-item'
+                  router.pathname === "/events"
+                    ? "nav-item active-link"
+                    : "nav-item"
                 }
               >
                 <Link
@@ -452,9 +457,9 @@ const HomepageNav = ({
               </li>
               <li
                 className={
-                  router.pathname === '/careers'
-                    ? 'nav-item active-link'
-                    : 'nav-item'
+                  router.pathname === "/careers"
+                    ? "nav-item active-link"
+                    : "nav-item"
                 }
               >
                 <Link
@@ -468,10 +473,10 @@ const HomepageNav = ({
 
               <li
                 className={
-                  router.pathname
-                  === 'https://snapshot.org/#/minorityprogrammers.eth'
-                    ? 'nav-item active-link'
-                    : 'nav-item'
+                  router.pathname ===
+                  "https://snapshot.org/#/minorityprogrammers.eth"
+                    ? "nav-item active-link"
+                    : "nav-item"
                 }
               >
                 <Link
@@ -512,6 +517,7 @@ const HomepageNav = ({
                   <li>
                     {userData.profilePicture ? (
                       <img
+<<<<<<< HEAD
                         className="tw-content-center tw-text-center tw-cursor-pointer tw-h-9 tw-rounded-full tw-w-9"
                         onClick={onClick}
                         src={userData.profilePicture}
@@ -522,6 +528,18 @@ const HomepageNav = ({
                         className="fa-user-circle fas tw-content-center tw-text-center NavIcon tw-cursor-pointer tw-mt-2"
                         onClick={onClick}
                       />
+=======
+                        className="tw-content-center tw-text-center tw-cursor-pointer tw-mt-2 tw-h-9 tw-rounded-full tw-w-9"
+                        onClick={onClick}
+                        src={userData.profilePicture}
+                        alt="profile"
+                      />
+                    ) : (
+                      <i
+                        className="fa-user-circle fas tw-content-center tw-text-center NavIcon tw-cursor-pointer tw-mt-2"
+                        onClick={onClick}
+                      />
+>>>>>>> c50aeb5 (nav-item)
                     )}
 
                     {isActive ? (
@@ -530,7 +548,7 @@ const HomepageNav = ({
                         userInfo={userData}
                       />
                     ) : (
-                      ''
+                      ""
                     )}
                   </li>
                 </div>
@@ -544,7 +562,7 @@ const HomepageNav = ({
                   {isActive ? (
                     <HomepageNavLogin onCloseMobileMenu={onClick} />
                   ) : (
-                    ''
+                    ""
                   )}
                 </li>
               )}
