@@ -2,6 +2,7 @@ import React, {
   useEffect, useState, useContext, useRef, useCallback,
 } from 'react';
 import { useRouter } from 'next/router';
+import { signOut } from 'next-auth/client';
 import decode from 'jwt-decode';
 import { Modal } from 'antd';
 import Layout from '../Layout';
@@ -93,6 +94,7 @@ const SettingsLayout = ({
       type: LOGOUT_USER,
     });
     window.location.href = '/';
+    signOut();
   };
 
   const returnHandler = () => {
