@@ -2,7 +2,7 @@
 import { Form, Formik, useField } from "formik";
 import React, { useRef, useState, useEffect } from "react";
 import { ToastContainer } from "react-toastify";
-import styles from "./Reset.module.scss";
+import styles from "../../styles/auth/auth.module.scss";
 import { useRouter } from "next/router";
 import Layout from "../../components/Layout";
 import HomepageNav from "../../components/homepage/HomepageNav";

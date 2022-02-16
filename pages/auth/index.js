@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import Styles from './auth.module.css';
+import styles from '../../styles/auth/auth.module.scss';
 import Card from '../../components/login-signup/card/index';
 import Layout from '../../components/Layout';
 import HomepageNav from '../../components/homepage/HomepageNav';
@@ -45,7 +45,7 @@ const Index = () => {
   }, [data]);
 
   return (
-    <div className={Styles.container}>
+    <div className={styles.container}>
       <Layout pageTitle="MPA - Authentication">
         <HomepageNav
           open={open}

@@ -3,8 +3,8 @@ import React, { useContext } from 'react';
 import * as Yup from 'yup';
 import login from '../../../contexts/actions/auth/login';
 import { GlobalContext } from '../../../contexts/provider';
-import TextField from '../../TextField';
-import styles from './form.module.css';
+import { InputField } from '../../TextField';
+import styles from '../../../styles/auth/auth.module.scss';
 
 const Login = ({ setSubmit }) => {
   const {
@@ -28,48 +28,56 @@ const Login = ({ setSubmit }) => {
   };
 
   return (
-    <div className={styles.container}>
-      <Formik
-        initialValues={{
-          email: '',
-          password: '',
-        }}
-        onSubmit={onSubmit}
-        validationSchema={Yup.object({
-          email: Yup.string().email('Invalid Email').required('Required'),
-          password: Yup.string().required('Required'),
-        })}
-      >
-        {({ isSubmitting }) => (
-          <Form className={styles.form}>
-            <TextField
-              label="email address"
-              name="email"
-              type="email"
-              alertStyle={styles.alert}
-            />
-            <TextField
-              label="password"
-              name="password"
-              type="password"
-              alertStyle={styles.alert}
-            />
-            <div className={styles.buttonContainer}>
-              <p>
-                <a href="#">Forgot Password?</a>
-              </p>
-              <button
-                className={styles.button}
-                type="submit"
-                disabled={isSubmitting}
-              >
-                {loading ? 'Signing In...' : 'Sign In'}
-              </button>
+    <Formik
+      initialValues={{
+        email: '',
+        password: '',
+      }}
+      onSubmit={onSubmit}
+      validationSchema={Yup.object({
+        email: Yup.string().email('Invalid Email').required('Required'),
+        password: Yup.string().required('Required'),
+      })}
+    >
+      {({ isSubmitting }) => (
+        <Form>
+          <div className="form-group login-input">
+            <div className="mb-3">
+              <span className={`${styles.inputLabel} form-label`}>
+                Email Address
+              </span>
+              <InputField
+                name="email"
+                type="email"
+                textStyle={styles.fieldInput}
+                alertStyle={styles.errorText}
+              />
             </div>
-          </Form>
-        )}
-      </Formik>
-    </div>
+            <div className="mb-3">
+              <span className={`${styles.inputLabel} form-label`}>
+                Password
+              </span>
+              <InputField
+                name="password"
+                type="password"
+                textStyle={styles.fieldInput}
+                alertStyle={styles.errorText}
+              />
+            </div>
+          </div>
+          <p className={styles.forgotPassword}>
+            <a href="#">Forgot Password?</a>
+          </p>
+          <button
+            className={styles.submit}
+            type="submit"
+            disabled={isSubmitting}
+          >
+            {loading ? 'Signing In...' : 'Sign In'}
+          </button>
+        </Form>
+      )}
+    </Formik>
   );
 };
 
