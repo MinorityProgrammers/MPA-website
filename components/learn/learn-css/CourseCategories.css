@@ -139,12 +139,6 @@
 }
 
 .course-specific-info .user-enroll {
-  background-image: linear-gradient(
-    to top right,
-    #ffc700 2.65%,
-    #ff975b 51.83%,
-    #ff655b 100%
-  );
   border-radius: 10px;
   color: white;
   font-weight: bold;
@@ -160,6 +154,10 @@
 }
 .course-specific-info .modal-center:hover {
   color: #545353;
+}
+
+.courseModal {
+  background-color: #13152A;
 }
 .search-items .search-input {
   font-size: 15px !important;
