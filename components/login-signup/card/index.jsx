@@ -12,7 +12,7 @@ import {
 import getProfile from '../../../contexts/actions/profile/getProfile';
 import { GlobalContext } from '../../../contexts/provider';
 import Form from '../form/index';
-import styles from './card.module.css';
+import styles from '../../../styles/auth/auth.module.scss';
 
 export default function Index() {
   const [session] = useSession();
@@ -28,7 +28,7 @@ export default function Index() {
       </p>
     ),
     h2Title: 'sign up',
-    para: 'already have an account?',
+    para: 'already have an account? ',
     link: 'sign in',
   });
 
@@ -101,17 +101,17 @@ export default function Index() {
         signIn: false,
         h1Title: 'register for MPA',
         p: (
-          <p>
+          <span>
             To keep connecting with us please
             {' '}
             <br />
             {' '}
             register with your personal
             info
-          </p>
+          </span>
         ),
         h2Title: 'sign up',
-        para: 'already have an account?',
+        para: 'already have an account? ',
         link: 'sign in',
       });
     } else if (cardText.signIn === false) {
@@ -119,17 +119,17 @@ export default function Index() {
         signIn: true,
         h1Title: 'welcome back',
         p: (
-          <p>
+          <span>
             To keep connecting with us please
             {' '}
             <br />
             {' '}
             sign-in with your personal
             info
-          </p>
+          </span>
         ),
         h2Title: 'sign in',
-        para: 'new to register?',
+        para: 'new to register? ',
         link: 'sign up',
       });
     }
@@ -146,10 +146,7 @@ export default function Index() {
   }, [session]);
 
   return (
-    <div
-      className={`${styles.cardContainer} overview-courses-list`}
-      style={{ overflowY: 'scroll', borderRadius: '20px' }}
-    >
+    <div className={styles.cardContainer}>
       <ToastContainer limit={3} />
       <div
         className={`${styles.cardLeft} ${
