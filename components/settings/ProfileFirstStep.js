@@ -57,7 +57,6 @@ const ProfileFirstStep = ({
     )(profileDispatch);
     setStep(step === 4 ? 4 : step + 1);
   };
-
   return (
     <div>
       <div className={styles.title}>

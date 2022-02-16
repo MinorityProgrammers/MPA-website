@@ -2,85 +2,86 @@ export default (data) => [
   {
     name: 'First name',
     missing: !data?.firstName,
-    route: '/settings/profile/details',
+    step: 1,
   },
   {
     name: 'Last name',
     missing: !data?.lastName,
-    route: '/settings/profile/details',
+    step: 1,
   },
   {
     name: 'Birthday',
     missing: !data?.birthday,
-    route: '/settings/profile/details',
+    step: 1,
   },
   {
     name: 'Gender',
     missing: !data?.Gender,
-    route: '/settings/profile/details',
+    step: 1,
   },
   {
     name: 'Phone number',
     missing: !data?.phoneNumber,
-    route: '/settings/profile/details',
+    step: 1,
   },
   {
     name: 'Location',
     missing: !data?.location,
-    route: '/settings/profile/details',
+    step: 1,
   },
   {
     name: 'Nationality',
     missing: !data?.Nationality,
-    route: '/settings/profile/details',
+    step: 1,
   },
   {
     name: 'Ethnicity',
     missing: !data?.Ethnicity?.length,
     route: '/settings/profile/details',
+    step: 1,
   },
 
-  { name: 'Bio', missing: !data?.bio, route: '/settings/profile/overview' },
+  { name: 'Bio', missing: !data?.bio, route: '/settings' },
   {
     name: 'Primary language',
     missing: !data?.primaryLanguage,
-    route: '/settings/profile/overview',
+    step: 1,
   },
 
   {
     name: 'Facebook link',
     missing: !data?.FacebookLink,
-    route: '/settings/profile/media',
+    step: 4,
   },
   {
     name: 'Linkedin link',
     missing: !data?.LinkedinLink,
-    route: '/settings/profile/media',
+    step: 4,
   },
   {
     name: 'Github link',
     missing: !data?.GithubLink,
-    route: '/settings/profile/media',
+    step: 4,
   },
   {
     name: 'Google link',
     missing: !data?.GoogleLink,
-    route: '/settings/profile/media',
+    step: 4,
   },
   {
     name: 'Figma link',
     missing: !data?.FigmaLink,
-    route: '/settings/profile/media',
+    step: 4,
   },
   {
     name: 'Dribble link',
     missing: !data?.DribbleLink,
-    route: '/settings/profile/media',
+    step: 4,
   },
   {
     name: 'Clickup link',
     missing: !data?.ClickupLink,
-    route: '/settings/profile/media',
+    step: 4,
   },
 
   {
@@ -89,7 +90,7 @@ export default (data) => [
       !!data?.passions?.length
         && (data.passions.length === 1 ? data.passions[0] !== '' : true)
     ),
-    route: '/settings/profile/background',
+    step: 3,
   },
 
   {
@@ -98,7 +99,7 @@ export default (data) => [
       !!data?.softSkills?.length
         && (data.softSkills.length === 1 ? data.softSkills[0] !== '' : true)
     ),
-    route: '/settings/profile/background',
+    step: 3,
   },
 
   {
@@ -109,37 +110,37 @@ export default (data) => [
           ? data.programmingSkills[0] !== ''
           : true)
     ),
-    route: '/settings/profile/background',
+    step: 3,
   },
 
   {
     name: 'Education level',
     missing: !data?.educationLevel,
-    route: '/settings/profile/education',
+    step: 2,
   },
   {
     name: 'School name',
     missing: !data?.schoolName,
-    route: '/settings/profile/education',
+    step: 2,
   },
   {
     name: 'Entered high school year',
     missing: !data?.enteredHighSchoolYear,
-    route: '/settings/profile/education',
+    step: 2,
   },
   {
     name: 'Expected graduation year',
     missing: !data?.expectedGraduationYear,
-    route: '/settings/profile/education',
+    step: 2,
   },
   {
     name: 'Student status',
     missing: !data?.studentStatus,
-    route: '/settings/profile/education',
+    step: 2,
   },
   {
     name: 'Degree',
     missing: !data?.degree,
-    route: '/settings/profile/education',
+    step: 2,
   },
 ];

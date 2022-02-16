@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import styles from '../../styles/settings/settingSetup.module.scss';
 import 'react-datepicker/dist/react-datepicker.css';
 import 'react-phone-input-2/lib/material.css';
@@ -7,8 +7,9 @@ import ProfileSecondStep from './ProfileSecondStep';
 import ProfileThirdStep from './ProfileThirdStep';
 import ProfileFourthStep from './ProfileFourthStep';
 
-const SettingSetup = ({ data, setData }) => {
-  const [step, setStep] = useState(1);
+const SettingSetup = ({
+  data, setData, step, setStep, completeStep,
+}) => {
   const dates = {
     HighSchoolYear: data.enteredHighSchoolYear ? new Date(data.enteredHighSchoolYear) : new Date(),
     birthdayDate: data.birthday ? new Date(data.birthday) : new Date(),
@@ -17,7 +18,6 @@ const SettingSetup = ({ data, setData }) => {
       : new Date(),
   };
   useEffect(() => {
-    // const userInfo = JSON.parse(localStorage.getItem('userInfo')).user;
     setData(JSON.parse(localStorage.getItem('userInfo')).user);
   }, [step]);
   return (
@@ -118,6 +118,7 @@ const SettingSetup = ({ data, setData }) => {
         step={step}
         setStep={setStep}
         dates={dates}
+        completeStep={completeStep}
       />
       )}
       {step === 2

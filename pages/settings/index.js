@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import jwt from 'jsonwebtoken';
+import { useRouter } from 'next/router';
 // settings nav
 import SettingsLayout from '../../components/settings/SettingsLayout';
 // Overview
@@ -16,14 +17,29 @@ import SettingBodySecurityManagement from '../../components/settings/SettingBody
 import SettingBodySecurityPrivacy from '../../components/settings/SettingBodySecurityPrivacy';
 
 const index = () => {
-  const [data, setData] = useState([]);
+  const router = useRouter();
+
+  const [data, setData] = useState({});
   const [userID, setUserID] = useState('');
   const [tabsActive, setTabsActive] = useState({
     overview: true, profile: false, notification: false, security: false,
   });
+  const [step, setStep] = useState(1);
+  const [profileStep, setProfileStep] = useState(router.query.step);
+
   // Security tabs
   const [subActive, setSubActive] = useState({
   });
+
+  useEffect(() => {
+    if (profileStep && Object.keys(data).length > 0) {
+      setTabsActive({
+        overview: false, profile: true, notification: false, security: false,
+      });
+      setStep(parseInt(router.query.step));
+      setProfileStep(0);
+    }
+  }, [data]);
   // Notifications
   const inputFields = tabsActive.notification ? [
     all.notifyMessagesField,
@@ -59,7 +75,14 @@ const index = () => {
       {tabsActive.overview
       && <SettingBodyOverview setTabsActive={setTabsActive} data={data} />}
       {tabsActive.profile
-      && <SettingSetup setData={setData} data={data} />}
+      && (
+      <SettingSetup
+        setData={setData}
+        data={data}
+        setStep={setStep}
+        step={step}
+      />
+      )}
       {tabsActive.notification
       && (
         <>
