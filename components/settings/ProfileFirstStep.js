@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import DatePicker from 'react-datepicker';
 import PhoneInput from 'react-phone-input-2';
 import Select from 'react-select';
@@ -12,16 +12,15 @@ import { GlobalContext } from '../../contexts/provider';
 import updateProfileJSON from '../../contexts/actions/profile/updateProfileJSON';
 
 const ProfileFirstStep = ({
-  data, setStep, step, setData, initValues,
+  data, setStep, step, dates,
 }) => {
-  const [startDate, setStartDate] = useState(new Date(data.birthday));
   const [firstName, setFirstName] = useState(data.firstName);
   const [lastName, setLastName] = useState(data.lastName);
   const [gender, setGender] = useState(data.Gender);
   const [phoneNumber, setPhoneNumber] = useState(`+${data.phoneNumber}`);
   const [nationality, setNationality] = useState(data.Nationality);
   const [ethnicity, setEthnicity] = useState(data.Ethnicity);
-  // const [show, setShow] = useState(true);
+  const [startDate, setStartDate] = useState(dates.birthdayDate);
   // update userData
   const { profileDispatch } = useContext(GlobalContext);
 
@@ -32,7 +31,7 @@ const ProfileFirstStep = ({
 
   // Discard Changes
   const discard = () => {
-    setStartDate(initValues.birthday);
+    setStartDate(dates.birthdayDate);
     setFirstName(data.firstName);
     setLastName(data.lastName);
     setGender(data.Gender);
@@ -58,6 +57,7 @@ const ProfileFirstStep = ({
     )(profileDispatch);
     setStep(step === 4 ? 4 : step + 1);
   };
+
   return (
     <div>
       <div className={styles.title}>
@@ -92,7 +92,7 @@ const ProfileFirstStep = ({
           <label>Phone </label>
           <PhoneInput
             country="us"
-            value={phoneNumber || initValues.phoneNumber}
+            value={phoneNumber}
             onChange={(phone) => setPhoneNumber(phone)}
             placeholder="Enter Number"
           />

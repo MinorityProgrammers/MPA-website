@@ -8,25 +8,24 @@ import { GlobalContext } from '../../contexts/provider';
 import updateProfileJSON from '../../contexts/actions/profile/updateProfileJSON';
 
 const ProfileSecondStep = ({
-  data, setStep, step, setData,
+  data, setStep, step, setData, dates,
 }) => {
-  const [enteredHighSchoolYear, setEnteredHighSchoolYear] = useState(
-    new Date(data.enteredHighSchoolYear),
-  );
-  const [expectedGraduationYear, setExpectedGraduationYear] = useState(
-    new Date(data.expectedGraduationYear),
-  );
   const [schoolName, setSchoolName] = useState(data.schoolName);
   const [degree, setDegree] = useState(data.degree);
   const [studentStatus, setStudentStatus] = useState(data.studentStatus);
-
+  const [enteredHighSchoolYear, setEnteredHighSchoolYear] = useState(
+    dates.HighSchoolYear,
+  );
+  const [expectedGraduationYear, setExpectedGraduationYear] = useState(
+    dates.GraduationYear,
+  );
   // update userData
   const { profileDispatch } = useContext(GlobalContext);
 
   // Discard Changes
   const discard = () => {
-    setEnteredHighSchoolYear(new Date(data.enteredHighSchoolYear));
-    setExpectedGraduationYear(new Date(data.expectedGraduationYear));
+    setEnteredHighSchoolYear(dates.HighSchoolYear);
+    setExpectedGraduationYear(dates.GraduationYear);
     setSchoolName(data.schoolName);
     setDegree(data.degree);
     setStudentStatus(data.studentStatus);
@@ -50,8 +49,6 @@ const ProfileSecondStep = ({
   useEffect(() => {
     const userInfo = JSON.parse(localStorage.getItem('userInfo')).user;
     setData(userInfo);
-    console.log(userInfo);
-    // discard(userInfo);
   }, [step]);
   return (
     <>

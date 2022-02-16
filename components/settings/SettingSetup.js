@@ -9,14 +9,13 @@ import ProfileFourthStep from './ProfileFourthStep';
 
 const SettingSetup = ({ data, setData }) => {
   const [step, setStep] = useState(1);
-  const [initValues, setinitValues] = useState({
-    firstName: data.firstName,
-    birthday: new Date(data.birthday ? data.birthday : ''),
-    Ethnicity: data.Ethnicity,
-    Nationality: data.Nationality,
-    Gender: data.Gender,
-    phoneNumber: data.phoneNumber,
-  });
+  const dates = {
+    HighSchoolYear: data.enteredHighSchoolYear ? new Date(data.enteredHighSchoolYear) : new Date(),
+    birthdayDate: data.birthday ? new Date(data.birthday) : new Date(),
+    GraduationYear: data.expectedGraduationYear
+      ? new Date(data.expectedGraduationYear)
+      : new Date(),
+  };
   useEffect(() => {
     // const userInfo = JSON.parse(localStorage.getItem('userInfo')).user;
     setData(JSON.parse(localStorage.getItem('userInfo')).user);
@@ -114,11 +113,11 @@ const SettingSetup = ({ data, setData }) => {
       {step === 1
       && (
       <ProfileFirstStep
-        initValues={initValues}
         setData={setData}
         data={data}
         step={step}
         setStep={setStep}
+        dates={dates}
       />
       )}
       {step === 2
@@ -128,6 +127,7 @@ const SettingSetup = ({ data, setData }) => {
         data={data}
         step={step}
         setStep={setStep}
+        dates={dates}
       />
       )}
       {step === 3
