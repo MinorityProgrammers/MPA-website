@@ -157,21 +157,37 @@ const SettingBodyOverview = ({ data, setTabsActive }) => {
               <div className={styles.line} />
             </div>
             <div className={styles.itemElement}>
-              <p>Message</p>
+              <p
+                onClick={() => setTabsActive({
+                  overview: false, profile: false, notification: true, security: false,
+                })}
+              >
+                Message
+
+              </p>
               <img
                 src="../../assets/images/settings/angle-right.svg"
+                onClick={() => setTabsActive({
+                  overview: false, profile: false, notification: true, security: false,
+                })}
                 alt="arrow"
               />
 
             </div>
             <div className={styles.itemElement}>
-              <p>
+              <p onClick={() => setTabsActive({
+                overview: false, profile: false, notification: true, security: false,
+              })}
+              >
                 Manage message delivery
                 Notification
               </p>
               <img
                 className="m-auto"
                 src="../../assets/images/settings/angle-right.svg"
+                onClick={() => setTabsActive({
+                  overview: false, profile: false, notification: true, security: false,
+                })}
                 alt="arrow"
               />
 
@@ -189,18 +205,36 @@ const SettingBodyOverview = ({ data, setTabsActive }) => {
               <div className={styles.line} />
             </div>
             <div className={styles.itemElement}>
-              <p>Change Password</p>
+              <p onClick={() => setTabsActive({
+                overview: false, profile: false, notification: false, security: true,
+              })}
+              >
+                Change Password
+
+              </p>
               <img
                 src="../../assets/images/settings/angle-right.svg"
                 alt="arrow"
+                onClick={() => setTabsActive({
+                  overview: false, profile: false, notification: false, security: true,
+                })}
               />
 
             </div>
             <div style={{ marginTop: '8px' }} className={styles.itemElement}>
-              <p>Change Username</p>
+              <p onClick={() => setTabsActive({
+                overview: false, profile: false, notification: false, security: true,
+              })}
+              >
+                Change Username
+
+              </p>
               <img
                 src="../../assets/images/settings/angle-right.svg"
                 alt="arrow"
+                onClick={() => setTabsActive({
+                  overview: false, profile: false, notification: false, security: true,
+                })}
               />
 
             </div>

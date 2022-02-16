@@ -621,10 +621,13 @@
   display: flex;
   justify-content: space-between;
   padding-right: 2rem;
-  cursor: pointer;
 }
 .itemElement img{
   max-height: 24px;
+  cursor: pointer;
+}
+.itemElement p{
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 600px) {
