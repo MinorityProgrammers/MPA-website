@@ -42,7 +42,7 @@ const ProfileFourthStep = ({
   const [missingLinks, setMissingLinks] = useState(
     [
       { label: facebookLink ? '' : 'Facebook', value: 'facebook' },
-      { label: clickupLink ? '' : 'Figma', value: 'figma' },
+      { label: figmaLink ? '' : 'Figma', value: 'figma' },
       { label: clickupLink ? '' : 'Click up', value: 'clickup' },
       { label: linkedinLink ? '' : 'LinkedIn', value: 'linkedin' },
       { label: githubLink ? '' : 'Github', value: 'github' },
@@ -160,6 +160,10 @@ const ProfileFourthStep = ({
       padding: 5,
       border: '1px solid #6938EF',
 
+    }),
+    container: (provided) => ({
+      ...provided,
+      cursor: 'pointer',
     }),
     placeholder: (provided) => ({
       ...provided,

@@ -20,6 +20,59 @@ const SettingSetup = ({
   useEffect(() => {
     setData(JSON.parse(localStorage.getItem('userInfo')).user);
   }, [step]);
+  const customStyles = {
+    option: (provided, state) => ({
+      ...provided,
+      // borderBottom: '1px dotted pink',
+      color: 'white',
+      border: state.isSelected ? '2px solid #6938EF' : state.isFocused ? '2px solid #6938EF' : '2px solid transparent',
+      background: '#1C1D37',
+      borderRadius: '8px',
+      padding: 20,
+      marginTop: 8,
+      width: '100%',
+      cursor: 'pointer',
+      fontWeight: 'bold',
+      ':active': {
+        ...styles[':active'],
+        background: '#1C1D37',
+      },
+    }),
+    control: () => ({
+      // none of react-select's styles are passed to <Control />
+      // width: ,
+      display: 'flex',
+      height: '100%',
+    }),
+    menu: (provided) => ({
+      ...provided,
+      // borderBottom: '1px dotted pink',
+      background: '#1C1D37',
+      padding: 5,
+      border: '1px solid #6938EF',
+
+    }),
+    container: (provided) => ({
+      ...provided,
+      height: '100%',
+      margin: '0 !important',
+      cursor: 'pointer',
+      paddingLeft: '8px',
+    }),
+    indicatorSeparator: (provided) => ({
+      ...provided,
+      display: 'none',
+    }),
+    singleValue: (provided) => {
+      const opacity = 1;
+      const color = '#fff';
+      const transition = 'opacity 300ms';
+
+      return {
+        ...provided, opacity, transition, color,
+      };
+    },
+  };
   return (
     <div className={styles.setupContainer}>
       <div className={styles.stepperWrapper}>
@@ -119,6 +172,7 @@ const SettingSetup = ({
         setStep={setStep}
         dates={dates}
         completeStep={completeStep}
+        customStyles={customStyles}
       />
       )}
       {step === 2
@@ -129,6 +183,7 @@ const SettingSetup = ({
         step={step}
         setStep={setStep}
         dates={dates}
+        customStyles={customStyles}
       />
       )}
       {step === 3
@@ -138,6 +193,7 @@ const SettingSetup = ({
         data={data}
         step={step}
         setStep={setStep}
+        customStyles={customStyles}
       />
       )}
       {step === 4

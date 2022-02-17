@@ -1,5 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import DatePicker from 'react-datepicker';
+import Select from 'react-select';
+import DropdownIndicator from './DropdownIndicator';
 import {
   status,
 } from '../../contexts/utils/fields';
@@ -8,11 +10,13 @@ import { GlobalContext } from '../../contexts/provider';
 import updateProfileJSON from '../../contexts/actions/profile/updateProfileJSON';
 
 const ProfileSecondStep = ({
-  data, setStep, step, setData, dates,
+  data, setStep, step, setData, dates, customStyles,
 }) => {
   const [schoolName, setSchoolName] = useState(data.schoolName);
   const [degree, setDegree] = useState(data.degree);
-  const [studentStatus, setStudentStatus] = useState(data.studentStatus);
+  const [studentStatus, setStudentStatus] = useState(
+    { label: data.studentStatus, value: data.studentStatus },
+  );
   const [enteredHighSchoolYear, setEnteredHighSchoolYear] = useState(
     dates.HighSchoolYear,
   );
@@ -28,7 +32,7 @@ const ProfileSecondStep = ({
     setExpectedGraduationYear(dates.GraduationYear);
     setSchoolName(data.schoolName);
     setDegree(data.degree);
-    setStudentStatus(data.studentStatus);
+    setStudentStatus({ label: data.studentStatus, value: data.studentStatus });
   };
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -37,7 +41,7 @@ const ProfileSecondStep = ({
       degree,
       enteredHighSchoolYear,
       expectedGraduationYear,
-      studentStatus,
+      studentStatus: studentStatus.label,
     };
       // submit data
     updateProfileJSON(
@@ -50,6 +54,8 @@ const ProfileSecondStep = ({
     const userInfo = JSON.parse(localStorage.getItem('userInfo')).user;
     setData(userInfo);
   }, [step]);
+  // Add link Dropdown options
+
   return (
     <>
       <div className={styles.title}>
@@ -62,14 +68,20 @@ const ProfileSecondStep = ({
         </div>
       </div>
       <div className={`row ${styles.nameRow}`}>
-        <div className="settings-phone-field col">
-          <label>Current Status </label>
-          <select placeholder="Select Status" value={studentStatus} onChange={(e) => setStudentStatus(e.target.value)}>
-            {status.map((s) => (
-              <option value={s.label} key={s.label}>{s.label}</option>
-            ))}
-          </select>
-
+        <div className="col-12">
+          <label>Current Status</label>
+        </div>
+        <div style={{ display: 'unset', padding: '0' }} className={`col ${styles.socialCol}`}>
+          <Select
+            styles={customStyles}
+            components={{ DropdownIndicator }}
+            isClearable={false}
+            isSearchable
+            onChange={(newValue) => setStudentStatus(newValue)}
+            options={status}
+            placeholder="Select Status"
+            value={studentStatus}
+          />
         </div>
       </div>
       <div className={`row ${styles.nameRow}`}>

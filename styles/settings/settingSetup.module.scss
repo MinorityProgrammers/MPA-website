@@ -115,7 +115,7 @@ content: none;
     background: #24203B;
     border-radius: 8px;
     border: 1px solid #6938EF;
-    height: 60px;
+    // height: 60px;
     width: 100%;
     color: rgb(255, 255, 255);
     padding: 1rem;
@@ -330,4 +330,13 @@ content: none;
 }
 .submitLinkBtn:hover{
     background: #6938EF;
+}
+.selectRow{
+    margin:0;
+}
+.selectRow >div{
+    padding: 0px;
+}
+.selectRow .socialCol{
+    margin: 5px 0;
 }
