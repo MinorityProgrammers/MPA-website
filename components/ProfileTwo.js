@@ -22,18 +22,16 @@ import DatePicker from 'react-datepicker';
 import FormData from 'form-data';
 import { errorToast, successToast } from '../contexts/utils/toasts';
 import ProfileTwoGenerateAvatarPopUp from './ProfileTwoGenerateAvatarPopUp';
-import getProgressPercentage from '../contexts/utils/settings/getProgressPercentage';
-import getLevelUpTips from '../contexts/utils/settings/getLevelUpTips';
 import { useMoralisDapp } from '../MoralisDappProvider/MoralisDappProvider';
 import TopSection from './profile/TopSection';
 import ProfileStength from './profile/ProfileStength';
-import UserDatas from './profile/UserDatas';
 import Tabs from './profile/Tabs';
 import Reputation from './profile/Reputation';
 import CoursesSkeleton from './learn/CoursesSkeleton';
 import UserCourses from './learn/UserCourses';
 import NoDataFound from './learn/NoDataFound';
 import Experience from './profile/Experience';
+import Education from './profile/Education';
 
 function countDown(mintedURL, tx) {
   let secondsToGo = 30;
@@ -334,11 +332,6 @@ const ProfileTwo = function ({
         });
       clearExpAdd();
     } else if (!document.getElementsByClassName('exp-data-warn')?.[0]) {
-      // const el = document.getElementById('add-exp-fields');
-      // el.insertAdjacentHTML(
-      //   'afterend',
-      //   '<div class="exp-data-warn tw-ml-4 tw-self-end tw-text-red-300 ">Please add an image and fill in all fields</div>',
-      // );
       errorToast('Please add an image and fill in all fields');
     }
   };
@@ -402,11 +395,7 @@ const ProfileTwo = function ({
 
       clearEduAdd();
     } else if (!document.getElementsByClassName('edu-data-warn')?.[0]) {
-      const el = document.getElementById('add-edu-fields');
-      el.insertAdjacentHTML(
-        'afterend',
-        '<div class="edu-data-warn tw-ml-4 tw-mb-3 tw-self-end tw-text-red-500 tw-font-bold">Please add an image and fill in all fields</div>',
-      );
+      errorToast('Please add an image and fill in all fields');
     }
   };
 
@@ -445,11 +434,7 @@ const ProfileTwo = function ({
 
       clearProAdd();
     } else if (!document.getElementsByClassName('edu-data-warn')?.[0]) {
-      const el = document.getElementById('add-edu-fields');
-      el.insertAdjacentHTML(
-        'afterend',
-        '<div class="edu-data-warn tw-ml-4 tw-mb-3 tw-self-end tw-text-red-500 tw-font-bold">Please add an image and fill in all fields</div>',
-      );
+      errorToast('Please add an image and fill in all fields');
     }
   };
 
@@ -605,9 +590,25 @@ const ProfileTwo = function ({
         {tabsActive.userCourses && (
           <div className="courses tw-px-5">
             {loading ? (
-              <CoursesSkeleton title="My Courses" />
+              <div className="profileTopSection tw-relative tw-z-10">
+                <section className="tw-w-11/12 tw-mx-auto tw-rounded-xl tw-shadow-md topSection tw-py-10 tw-flex tw-flex-col tw-justify-center">
+                  <div className="tw-text-3xl lg:tw-text-xl tw-font-medium tw-text-left tw-px-10 tw-text-gray-600">Enrolled courses</div>
+                  <div className="tw-px-4 tw-my-1">
+                    <CoursesSkeleton title="My Courses" />
+                  </div>
+                </section>
+
+              </div>
             ) : enrolledCourses.length > 0 ? (
-              <UserCourses enrolledCourses={enrolledCourses} user={userData} />
+              <div className="profileTopSection tw-relative tw-z-10">
+                <section className="tw-w-11/12 tw-mx-auto tw-rounded-xl tw-shadow-md topSection tw-py-10 tw-flex tw-flex-col tw-justify-center">
+                  <div className="tw-text-3xl lg:tw-text-xl tw-font-medium tw-text-left tw-px-10 tw-text-gray-600">Enrolled courses</div>
+                  <div className="tw-px-4 tw-my-1">
+                    <UserCourses enrolledCourses={enrolledCourses} user={userData} />
+                  </div>
+                </section>
+
+              </div>
             ) : (
               <div className="mb-5 pb-3">
                 <div className="courses-info tw-px-10">
@@ -622,7 +623,15 @@ const ProfileTwo = function ({
         {tabsActive.badges && (
           <div className="courses tw-p-5">
             {loading ? (
-              <CoursesSkeleton title="My Badges" />
+              <div className="profileTopSection tw-relative tw-z-10">
+                <section className="tw-w-11/12 tw-mx-auto tw-rounded-xl tw-shadow-md topSection tw-py-10 tw-flex tw-flex-col tw-justify-center">
+                  <div className="tw-text-3xl lg:tw-text-xl tw-font-medium tw-text-left tw-px-10 tw-text-gray-600">Enrolled courses</div>
+                  <div className="tw-px-4 tw-my-1">
+                    <CoursesSkeleton title="My Badges" />
+                  </div>
+                </section>
+
+              </div>
             ) : reputation.length > 0 ? (
               <Reputation reputation={reputation} reputationBadge={reputationBadge} />
             ) : (
@@ -660,626 +669,36 @@ const ProfileTwo = function ({
           link={link}
           completeExpAdd={completeExpAdd}
           setLink={setLink}
+          setExpEditMode={setExpEditMode}
+          removeExp={removeExp}
         />
 
-        <section className="tw-mb-8 tw-container ">
-          <div className="pp-exp-edu-area tw-p-6  tw-rounded-md tw-grid tw-grid-flow-row tw-auto-rows-max">
-            <div className="hover:tw-bg-light-blue-500 hover:tw-border-transparent hover:tw-shadow-lg tw-group tw-block tw-rounded-lg tw-p-4 tw-border-gray-300 tw-border tw-bg-white">
-              <h2 className="tw-relative tw-text-xl tw-font-bold tw-mb-3 tw-text-black">
-                Projects
-                {isLoggedIn && ownsProfile && !!projectCards?.length && (
-                  <span className="tw-absolute tw-top-0 tw-right-0 tw-text-xs tw-cursor-pointer">
-                    <div
-                      className="pencil tw-cursor-pointer tw-m-0"
-                      onClick={() => {
-                        setProEditMode(!proEditMode);
-                      }}
-                    >
-                      <HiOutlinePencil style={{ fontSize: '1.5rem' }} />
-                    </div>
-                  </span>
-                )}
-              </h2>
+        <Education
+          isLoggedIn={isLoggedIn}
+          ownsProfile={ownsProfile}
+          educationCards={educationCards}
+          eduEditMode={eduEditMode}
+          setEduEditMode={setEduEditMode}
+          removeEdu={removeEdu}
+          eduAddMode={eduAddMode}
+          eduDateGrad={eduDateGrad}
+          eduDateInput={eduDateInput}
+          eduTitleInput={eduTitleInput}
+          EducationMajor={EducationMajor}
+          setEduTitleInput={setEduTitleInput}
+          setUnIMG={setUnIMG}
+          setEduDateInput={setEduDateInput}
+          setEduDateGrad={setEduDateGrad}
+          setEducationMajor={setEducationMajor}
+          handleEduImgUpload={handleEduImgUpload}
+          uploadedEduImg={uploadedEduImg}
+          setUniversity={setUniversity}
+          setEduAddMode={setEduAddMode}
+          University={University}
+          clearEduAdd={clearEduAdd}
+          completeEduAdd={completeEduAdd}
+        />
 
-              <div className="exp-edu-content">
-                {!projectCards?.length && (
-                  <div className="no-content">
-                    <h3>No Project to Display</h3>
-                  </div>
-                )}
-
-                {!!projectCards?.length
-                  && projectCards.map((card, idx) => (
-                    <div
-                      className={`add-exp-edu tw-relative tw-flex tw-items-center tw-mb-4 ${
-                        !(idx === projectCards?.length - 1)
-                          ? 'tw-border-b border-gray-500'
-                          : ''
-                      }`}
-                      key={idx}
-                    >
-                      <div className="addImg tw-mr-4 tw-mb-6 tw-cursor-pointer">
-                        <a
-                          href={card.link ? card.link : '#'}
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          <img
-                            src={card.image}
-                            alt="add item"
-                            className="tw-w-full"
-                          />
-                        </a>
-                      </div>
-                      <div className="ee-fields tw-flex tw-flex-col tw-items-start tw-mb-2">
-                        <p className="tw-block tw-rounded tw-px-2 tw-text-black tw-font-bold tw-w-full">
-                          {card.title}
-                        </p>
-                        <p className="tw-block tw-rounded tw-px-2 tw-my-2 tw-w-full">
-                          {moment(card.date).calendar()}
-                        </p>
-                        <p className="tw-block tw-rounded tw-px-2 tw-w-full">
-                          {card.role}
-                        </p>
-                      </div>
-                      {proEditMode && (
-                        <span
-                          className="tw-absolute tw-top-1/3 tw-right-0 tw-text-xs tw-font-bold tw-text-red-500 tw-cursor-pointer hover:tw-text-gray-500"
-                          onClick={() => removePro(card._id)}
-                        >
-                          Remove
-                        </span>
-                      )}
-                    </div>
-                  ))}
-
-                {isLoggedIn
-                  && ownsProfile
-                  && (!projectCards?.length || !proEditMode) && (
-                    <form
-                      id="add-edu-fields"
-                      className="add-exp-edu tw-flex tw-items-center"
-                    >
-                      <div className="addImg tw-mr-4 tw-cursor-pointer">
-                        {proAddMode ? (
-                          <label
-                            htmlFor="upload-edu-image"
-                            className="tw-m-0 tw-w-full"
-                          >
-                            <input
-                              type="file"
-                              name="image"
-                              id="upload-edu-image"
-                              onChange={(e) => {
-                                handleProImgUpload(e.target.files[0]);
-                                setProIMG(e.target.files[0]);
-                              }}
-                            />
-                            <img
-                              src={
-                                uploadedProImg
-                                || '/assets/images/profile/add-image.svg'
-                              }
-                              alt="add item"
-                              className="tw-w-full"
-                            />
-                            <p className="tw-text-sm tw-text-gray-500">
-                              add Project's image
-                            </p>
-                          </label>
-                        ) : (
-                          <img
-                            src="/assets/images/profile/add-image.svg"
-                            alt="add item"
-                            className="tw-w-full"
-                            onClick={() => setProAddMode(true)}
-                          />
-                        )}
-                      </div>
-                      {proAddMode ? (
-                        <div className="ee-fields tw-flex tw-flex-col tw-items-start tw-mb-2">
-                          <input
-                            type="text"
-                            name="title"
-                            placeholder="Project Name"
-                            className="tw-block tw-rounded tw-px-2 tw-font-bold tw-w-full tw-my-1"
-                            value={proTitleInput}
-                            onChange={(e) => setProTitleInput(e.target.value)}
-                          />
-                          <input
-                            type="text"
-                            placeholder="Role"
-                            name="role"
-                            className="tw-block tw-rounded tw-px-2 tw-w-full tw-my-1"
-                            value={ProjectRole}
-                            onChange={(e) => setProjectRole(e.target.value)}
-                          />
-                          <DatePicker
-                            className="tw-block tw-rounded tw-px-2 tw-w-full tw-text-gray-400"
-                            name="date"
-                            value={
-                              ProDateInput === ''
-                                ? 'Project Date'
-                                : ProDateInput
-                            }
-                            selected={ProDateInput}
-                            onChange={(date) => {
-                              setProDateInput(date);
-                            }}
-                            dateFormat="MM/dd/yyyy"
-                            placeholder="Project Date"
-                            autoComplete="false"
-                            required
-                          />
-                          <input
-                            type="text"
-                            placeholder="Project link"
-                            name="link"
-                            className="tw-block tw-rounded tw-px-2 tw-w-full tw-my-1"
-                            value={project}
-                            onChange={(e) => setProject(e.target.value)}
-                          />
-                        </div>
-                      ) : (
-                        <h3
-                          className="tw-font-bold tw-cursor-pointer"
-                          onClick={() => setProAddMode(true)}
-                        >
-                          Add Project
-                        </h3>
-                      )}
-                      {proAddMode && (
-                        <>
-                          <div
-                            className="ee-add-btn tw-px-2 tw-py-1 tw-ml-4 tw-mb-3 tw-self-end tw-rounded tw-cursor-pointer tw-text-white"
-                            onClick={() => completeProAdd()}
-                          >
-                            Add
-                          </div>
-                          <div
-                            className="ee-rm-btn tw-px-2 tw-py-1 tw-ml-4 tw-mb-3 tw-self-end tw-rounded tw-cursor-pointer tw-text-white"
-                            onClick={() => clearProAdd()}
-                          >
-                            Cancel
-                          </div>
-                        </>
-                      )}
-                    </form>
-                )}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="tw-mb-8 tw-container">
-          <div className="pp-exp-edu-area tw-p-6  tw-rounded-md tw-grid tw-grid-flow-row tw-auto-rows-max">
-            <div className="hover:tw-bg-light-blue-500 hover:tw-border-transparent hover:tw-shadow-lg tw-group tw-block tw-rounded-lg tw-p-4 tw-border-gray-300 tw-border tw-bg-white">
-              <h2 className="tw-relative tw-text-xl tw-font-bold tw-mb-3 tw-text-black">
-                Experience
-                {isLoggedIn && ownsProfile && !!experienceCards?.length && (
-                  <span className="tw-absolute tw-top-0 tw-right-0 tw-text-xs tw-cursor-pointer">
-                    <div
-                      className="pencil tw-cursor-pointer tw-m-0"
-                      onClick={() => {
-                        setExpEditMode(!expEditMode);
-                      }}
-                    >
-                      <HiOutlinePencil style={{ fontSize: '1.5rem' }} />
-                    </div>
-                  </span>
-                )}
-              </h2>
-
-              <div className="exp-edu-content">
-                {!experienceCards?.length && (
-                  <div className="no-content">
-                    <h3>No Experience to Display</h3>
-                  </div>
-                )}
-
-                {!!experienceCards?.length
-                  && experienceCards.map((card, idx) => (
-                    <div
-                      className={`add-exp-edu tw-relative tw-flex tw-items-center tw-mb-4 ${
-                        !(idx === experienceCards || experienceCards.length - 1)
-                          ? 'tw-border-b border-gray-500'
-                          : ''
-                      }`}
-                      key={card._id}
-                    >
-                      <div className="addImg tw-mr-4 tw-mb-6 tw-cursor-pointer">
-                        <a
-                          href={card.link ? card.link : '#'}
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          <img
-                            src={card.image}
-                            alt="add item"
-                            className="tw-w-full"
-                          />
-                        </a>
-                      </div>
-
-                      <div className="ee-fields tw-flex tw-flex-col tw-items-start tw-mb-2">
-                        <p className="tw-block tw-rounded tw-px-2 tw-text-black tw-font-bold tw-w-full">
-                          {card.jobTitle}
-                        </p>
-                        <p className="tw-block tw-rounded tw-px-2 tw-my-2 tw-w-full">
-                          {moment(card?.from).calendar()}
-                          {' '}
-                          -
-                          {' '}
-                          {moment(card?.to).calendar()}
-                        </p>
-                        <p className="tw-block tw-rounded tw-px-2 tw-w-full">
-                          {card.company}
-                        </p>
-                      </div>
-                      {expEditMode && (
-                        <span
-                          className="tw-absolute tw-top-1/3
-                          tw-right-0 tw-text-xs tw-font-bold tw-text-red-500 tw-cursor-pointer hover:tw-text-gray-500"
-                          onClick={() => removeExp(card._id)}
-                        >
-                          Remove
-                        </span>
-                      )}
-                    </div>
-                  ))}
-
-                {isLoggedIn
-                  && ownsProfile
-                  && (!experienceCards?.length || !expEditMode) && (
-                    <form
-                      id="add-exp-fields"
-                      className="add-exp-edu tw-flex tw-items-center"
-                    >
-                      <div className="addImg tw-mr-4 tw-cursor-pointer">
-                        {expAddMode ? (
-                          <label
-                            htmlFor="upload-exp-image"
-                            className="tw-m-0 tw-w-full"
-                          >
-                            <input
-                              type="file"
-                              name="image"
-                              id="upload-exp-image"
-                              onChange={(e) => {
-                                handleExpImgUpload(e.target.files[0]);
-                                setExpImg(e.target.files[0]);
-                              }}
-                            />
-
-                            <img
-                              src={
-                                uploadedExpImg
-                                || '/assets/images/profile/add-image.svg'
-                              }
-                              alt="add item"
-                              className="tw-w-full"
-                            />
-                            <p className="tw-text-sm tw-text-gray-500">
-                              add company's image (logo)
-                            </p>
-                          </label>
-                        ) : (
-                          <img
-                            src="/assets/images/profile/add-image.svg"
-                            alt="add item"
-                            className="tw-w-full"
-                            onClick={() => setExpAddMode(true)}
-                          />
-                        )}
-                      </div>
-                      {expAddMode ? (
-                        <div className="ee-fields tw-flex tw-flex-col tw-items-start tw-mb-2">
-                          <input
-                            type="text"
-                            placeholder="Job Title"
-                            name="jobTitle"
-                            className="tw-block tw-rounded tw-px-2 tw-font-bold tw-w-full"
-                            value={expJobTitleInput}
-                            onChange={(e) => setExpJobTitleInput(e.target.value)}
-                          />
-                          <input
-                            type="text"
-                            placeholder="Company name"
-                            name="company"
-                            className="tw-block tw-rounded tw-px-2 tw-w-full tw-my-1"
-                            value={company}
-                            onChange={(e) => setCompany(e.target.value)}
-                          />
-                          <DatePicker
-                            className="tw-block tw-rounded tw-px-2 tw-w-full tw-text-gray-400"
-                            value={
-                              expDateInputFrom === ''
-                                ? 'From'
-                                : expDateInputFrom
-                            }
-                            selected={expDateInputFrom}
-                            name="from"
-                            onChange={(date) => {
-                              setExpDateInputFrom(date);
-                            }}
-                            dateFormat="MM/dd/yyyy"
-                            placeholder="from"
-                            autoComplete="false"
-                            required
-                          />
-                          <DatePicker
-                            className="tw-block tw-rounded tw-px-2 tw-w-full tw-text-gray-400"
-                            minDate={new Date(expDateInputFrom)}
-                            maxDate={moment().toDate()}
-                            name="to"
-                            value={
-                              expDateInputTo === '' ? 'To' : expDateInputTo
-                            }
-                            selected={expDateInputTo}
-                            onChange={(date) => {
-                              setExpDateInputTo(date);
-                            }}
-                            dateFormat="MM/dd/yyyy"
-                            placeholder="to"
-                            autoComplete="false"
-                            required
-                          />
-                          <input
-                            type="text"
-                            placeholder="Location"
-                            name="location"
-                            className="tw-block tw-rounded tw-px-2 tw-w-full tw-my-1"
-                            value={expLocationInput}
-                            onChange={(e) => setExpLocationInput(e.target.value)}
-                          />
-                          <input
-                            type="text"
-                            placeholder="Link"
-                            name="link"
-                            className="tw-block tw-rounded tw-px-2 tw-w-full tw-my-1"
-                            value={link}
-                            onChange={(e) => setLink(e.target.value)}
-                          />
-                        </div>
-                      ) : (
-                        <h3
-                          className="tw-font-bold tw-cursor-pointer"
-                          onClick={() => setExpAddMode(true)}
-                        >
-                          Add Experience
-                        </h3>
-                      )}
-                      {expAddMode && (
-                        <>
-                          <div
-                            className="ee-add-btn tw-px-2 tw-py-1 tw-ml-4 tw-mb-3 tw-self-end tw-rounded tw-cursor-pointer tw-text-white"
-                            onClick={() => completeExpAdd()}
-                          >
-                            Add
-                          </div>
-                          <div
-                            className="ee-rm-btn tw-px-2 tw-py-1 tw-ml-4 tw-mb-3 tw-self-end tw-rounded tw-cursor-pointer tw-text-white"
-                            onClick={() => clearExpAdd()}
-                          >
-                            Cancel
-                          </div>
-                        </>
-                      )}
-                    </form>
-                )}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="tw-mb-8 tw-container ">
-          <div className="pp-exp-edu-area tw-p-6  tw-rounded-md tw-grid tw-grid-flow-row tw-auto-rows-max">
-            <div className="hover:tw-bg-light-blue-500 hover:tw-border-transparent hover:tw-shadow-lg tw-group tw-block tw-rounded-lg tw-p-4 tw-border-gray-300 tw-border tw-bg-white">
-              <h2 className="tw-relative tw-text-xl tw-font-bold tw-mb-3 tw-text-black">
-                Education
-                {isLoggedIn && ownsProfile && !!educationCards?.length && (
-                  <span className="tw-absolute tw-top-0 tw-right-0 tw-text-xs tw-cursor-pointer">
-                    <div
-                      className="pencil tw-cursor-pointer tw-m-0"
-                      onClick={() => {
-                        setEduEditMode(!eduEditMode);
-                      }}
-                    >
-                      <HiOutlinePencil style={{ fontSize: '1.5rem' }} />
-                    </div>
-                  </span>
-                )}
-              </h2>
-
-              <div className="exp-edu-content">
-                {!educationCards?.length && (
-                  <div className="no-content">
-                    <h3>No Education to Display</h3>
-                  </div>
-                )}
-
-                {!!educationCards?.length
-                  && educationCards.map((card, idx) => (
-                    <div
-                      className={`add-exp-edu tw-relative tw-flex tw-items-center tw-mb-4 ${
-                        !(idx === educationCards || educationCards.length - 1)
-                          ? 'tw-border-b border-gray-500'
-                          : ''
-                      }`}
-                      key={`${idx + 1}`}
-                    >
-                      <div className="addImg tw-mr-4 tw-mb-6 tw-cursor-pointer">
-                        <a
-                          href={card.link ? card.link : '#'}
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          <img
-                            src={card.image}
-                            alt="add item"
-                            className="tw-w-full"
-                          />
-                        </a>
-                      </div>
-                      <div className="ee-fields tw-flex tw-flex-col tw-items-start tw-mb-2">
-                        <p className="tw-block tw-rounded tw-px-2 tw-text-black tw-font-bold tw-w-full">
-                          {card.name}
-                        </p>
-                        <p className="tw-block tw-rounded tw-px-2 tw-my-2 tw-w-full">
-                          {moment(card.date).calendar()}
-                          {' '}
-                          -
-                          {' '}
-                          {moment(card.gradDate).calendar()}
-                        </p>
-                        <p className="tw-block tw-rounded tw-px-2 tw-w-full">
-                          {card.major}
-                        </p>
-                      </div>
-                      {eduEditMode && (
-                        <span
-                          className="tw-absolute tw-top-1/3 tw-right-0 tw-text-xs tw-font-bold tw-text-red-500 tw-cursor-pointer hover:tw-text-gray-500"
-                          onClick={() => removeEdu(card._id)}
-                        >
-                          Remove
-                        </span>
-                      )}
-                    </div>
-                  ))}
-
-                {isLoggedIn
-                  && ownsProfile
-                  && (!educationCards?.length || !eduEditMode) && (
-                    <form
-                      id="add-edu-fields"
-                      className="add-exp-edu tw-flex tw-items-center"
-                    >
-                      <div className="addImg tw-mr-4 tw-cursor-pointer">
-                        {eduAddMode ? (
-                          <label
-                            htmlFor="upload-edu-image"
-                            className="tw-m-0 tw-w-full"
-                          >
-                            <input
-                              type="file"
-                              name="image"
-                              id="upload-edu-image"
-                              onChange={(e) => {
-                                handleEduImgUpload(e.target.files[0]);
-                                setUnIMG(e.target.files[0]);
-                              }}
-                            />
-                            <img
-                              src={
-                                uploadedEduImg
-                                || '/assets/images/profile/add-image.svg'
-                              }
-                              alt="add item"
-                              className="tw-w-full"
-                            />
-                            <p className="tw-text-sm tw-text-gray-500">
-                              add University's image (logo)
-                            </p>
-                          </label>
-                        ) : (
-                          <img
-                            src="/assets/images/profile/add-image.svg"
-                            alt="add item"
-                            className="tw-w-full"
-                            onClick={() => setEduAddMode(true)}
-                          />
-                        )}
-                      </div>
-                      {eduAddMode ? (
-                        <div className="ee-fields tw-flex tw-flex-col tw-items-start tw-mb-2">
-                          <input
-                            type="text"
-                            name="name"
-                            placeholder="Institute Name"
-                            className="tw-block tw-rounded tw-px-2 tw-font-bold tw-w-full tw-my-1"
-                            value={eduTitleInput}
-                            onChange={(e) => setEduTitleInput(e.target.value)}
-                          />
-                          <DatePicker
-                            className="tw-block tw-rounded tw-px-2 tw-w-full tw-text-gray-400"
-                            value={
-                              eduDateInput === ''
-                                ? 'Date attended'
-                                : eduDateInput
-                            }
-                            name="date"
-                            selected={eduDateInput}
-                            onChange={(date) => {
-                              setEduDateInput(date);
-                            }}
-                            dateFormat="MM/dd/yyyy"
-                            placeholder="Started"
-                            autoComplete="false"
-                            required
-                          />
-                          <DatePicker
-                            className="tw-block tw-rounded tw-px-2 tw-w-full tw-text-gray-400"
-                            minDate={new Date(eduDateInput)}
-                            name="gradDate"
-                            value={
-                              eduDateGrad === '' ? 'Graduate Date' : eduDateGrad
-                            }
-                            selected={eduDateGrad}
-                            onChange={(date) => {
-                              setEduDateGrad(date);
-                            }}
-                            dateFormat="MM/dd/yyyy"
-                            placeholder="Graduate Date"
-                            autoComplete="false"
-                            required
-                          />
-                          <input
-                            type="text"
-                            placeholder="Major"
-                            name="major"
-                            className="tw-block tw-rounded tw-px-2 tw-w-full tw-my-1"
-                            value={EducationMajor}
-                            onChange={(e) => setEducationMajor(e.target.value)}
-                          />
-                          <input
-                            type="text"
-                            placeholder="School link"
-                            name="link"
-                            className="tw-block tw-rounded tw-px-2 tw-w-full tw-my-1"
-                            value={University}
-                            onChange={(e) => setUniversity(e.target.value)}
-                          />
-                        </div>
-                      ) : (
-                        <h3
-                          className="tw-font-bold tw-cursor-pointer"
-                          onClick={() => setEduAddMode(true)}
-                        >
-                          Add Education
-                        </h3>
-                      )}
-                      {eduAddMode && (
-                        <>
-                          <div
-                            className="ee-add-btn tw-px-2 tw-py-1 tw-ml-4 tw-mb-3 tw-self-end tw-rounded tw-cursor-pointer tw-text-white"
-                            onClick={() => completeEduAdd()}
-                          >
-                            Add
-                          </div>
-                          <div
-                            className="ee-rm-btn tw-px-2 tw-py-1 tw-ml-4 tw-mb-3 tw-self-end tw-rounded tw-cursor-pointer tw-text-white"
-                            onClick={() => clearEduAdd()}
-                          >
-                            Cancel
-                          </div>
-                        </>
-                      )}
-                    </form>
-                )}
-              </div>
-            </div>
-          </div>
-        </section>
       </div>
     </div>
   );
