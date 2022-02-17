@@ -10,7 +10,7 @@ function ProfileStength({ userData, setPsArrowUp, psArrowUp }) {
       {getProgressPercentage(userData)
               && getProgressPercentage(userData) < 100 && (
                 <div className="tw-py-2 profileTopSection tw-relative tw-z-10">
-                  <section className="tw-max-w-6xl tw-mx-auto tw-rounded-xl tw-shadow-md tw-overflow-hidden md:tw-max-w-3xl topSection">
+                  <section className="tw-w-11/12 tw-mx-auto tw-rounded-xl tw-shadow-md tw-overflow-hidden topSection">
                     <div className="profile-strength tw-p-6  tw-rounded-md tw-grid tw-grid-flow-row tw-auto-rows-max">
                       <div
                         className={`${

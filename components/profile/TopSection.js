@@ -74,7 +74,7 @@ function TopSection({
           </div>
         </div>
 
-        <div className="tw-max-w-6xl tw-mx-auto tw-rounded-xl tw-shadow-md tw-overflow-hidden md:tw-max-w-3xl topSection">
+        <div className="tw-w-11/12 tw-mx-auto tw-rounded-xl tw-shadow-md tw-overflow-hidden md:tw-max-w-3xl topSection">
           <div className="md:tw-flex tw-relative tw-w-full">
             <div className="new-bg tw-w-full tw-h-28 tw-flex tw-justify-end tw-p-5 editSection">
               <div onClick={() => router.push('/settings')} className="tw-bg-white tw-rounded-3xl tw-w-1/5 xl:tw-w-1/3 tw-h-14 tw-p-4 md:tw-p-3 tw-flex tw-flex-row tw-justify-center tw-cursor-pointer hover:tw-bg-gray-200">
