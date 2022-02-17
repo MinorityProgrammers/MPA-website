@@ -1,12 +1,20 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { Menu, Dropdown } from 'antd';
+import Select from 'react-select';
 import { useRouter } from 'next/router';
 import styles from '../../styles/settings/settingSetup.module.scss';
 import { GlobalContext } from '../../contexts/provider';
 import updateProfileJSON from '../../contexts/actions/profile/updateProfileJSON';
 
+const DropdownIndicator = () => (
+  <img
+    style={{ maxWidth: '20px', marginRight: '10px' }}
+    src="/assets/images/settings/link-drop-down.svg"
+    alt="link"
+  />
+);
+
 const ProfileFourthStep = ({
-  data, step, setData, setStep,
+  data, step, setData,
 }) => {
   const [googleLink, setGoogleLink] = useState(data.GoogleLink);
   const [figmaLink, setFigmaLink] = useState(data.FigmaLink);
@@ -15,8 +23,12 @@ const ProfileFourthStep = ({
   const [linkedinLink, setLinkedinLink] = useState(data.LinkedinLink);
   const [githubLink, setGithubLink] = useState(data.GithubLink);
   const [dribbleLink, setDribbleLink] = useState(data.DribbleLink);
+  // website
   const [link, setLink] = useState('');
-  const [AddIcon, setAddIcon] = useState('');
+  // new Link
+  const [newLink, setNewLink] = useState('');
+
+  const [addActive, setAddActive] = useState(false);
   const [edit, setEdit] = useState({
     googleLink: true,
     figmaLink: true,
@@ -27,6 +39,18 @@ const ProfileFourthStep = ({
     dribbleLink: true,
   });
   const [show, setShow] = useState(true);
+  const [missingLinks, setMissingLinks] = useState(
+    [
+      { label: facebookLink ? '' : 'Facebook', value: 'facebook' },
+      { label: clickupLink ? '' : 'Figma', value: 'figma' },
+      { label: clickupLink ? '' : 'Click up', value: 'clickup' },
+      { label: linkedinLink ? '' : 'LinkedIn', value: 'linkedin' },
+      { label: githubLink ? '' : 'Github', value: 'github' },
+      { label: dribbleLink ? '' : 'Dribble', value: 'dribble' },
+      { label: googleLink ? '' : 'Google', value: 'google' },
+    ],
+  );
+
   // const [update, setUpdate] = useState(false);
 
   // update userData
@@ -67,140 +91,100 @@ const ProfileFourthStep = ({
   };
   //   Add new Link
   const addHandler = () => {
-    if (AddIcon !== 'clickup') {
-      const field = AddIcon.split('-')[1];
-      switch (field) {
-        case 'google':
-          setGoogleLink(link);
-          if (facebookLink
-            && linkedinLink
-            && dribbleLink
-            && figmaLink
-            && clickupLink
-            && githubLink) setShow(false);
-
-          break;
-        case 'facebook':
-          setFacebookLink(link);
-          if (linkedinLink
-            && dribbleLink
-            && figmaLink
-            && clickupLink
-            && githubLink
-            && googleLink) setShow(false);
-          break;
-        case 'linkedin':
-          setLinkedinLink(link);
-          if (facebookLink
-            && dribbleLink
-            && figmaLink
-            && clickupLink
-            && githubLink
-            && googleLink) setShow(false);
-          break;
-        case 'github':
-          if (facebookLink
-            && linkedinLink
-            && dribbleLink
-            && figmaLink
-            && clickupLink
-            && googleLink) setShow(false);
-          setGithubLink(link);
-          break;
-        case 'figma':
-          setFigmaLink(link);
-          if (facebookLink
-            && linkedinLink
-            && dribbleLink
-            && clickupLink
-            && githubLink
-            && googleLink) setShow(false);
-          break;
-        case 'basketball':
-          setDribbleLink(link);
-          if (facebookLink
-            && linkedinLink
-            && figmaLink
-            && clickupLink
-            && githubLink
-            && googleLink) setShow(false);
-          break;
-        default:
-          break;
-      }
-    } else {
-      setClickupLink(link);
-      if (facebookLink
-        && linkedinLink
-        && dribbleLink
-        && figmaLink
-        && githubLink
-        && googleLink) setShow(false);
+    switch (link.value) {
+      case 'google':
+        setGoogleLink(newLink);
+        break;
+      case 'facebook':
+        setFacebookLink(newLink);
+        break;
+      case 'linkedin':
+        setLinkedinLink(newLink);
+        break;
+      case 'github':
+        setGithubLink(newLink);
+        break;
+      case 'figma':
+        setFigmaLink(newLink);
+        break;
+      case 'dribble':
+        setDribbleLink(newLink);
+        break;
+      case 'clickup':
+        setClickupLink(newLink);
+        break;
+      default:
+        break;
     }
-    setAddIcon('');
-    setLink('');
+    const updatedLinks = missingLinks.filter((item) => item.value !== link.value);
+    setMissingLinks(updatedLinks);
     if (facebookLink
-        && linkedinLink
-        && dribbleLink
-        && figmaLink
-        && clickupLink
-        && githubLink
-        && googleLink) {
+      && linkedinLink
+      && dribbleLink
+      && figmaLink
+      && clickupLink
+      && githubLink
+      && googleLink) {
       setShow(false);
     }
+    setLink('');
+    setNewLink('');
   };
-  //  Add link Dropdown options
-  const menu = (
-    <Menu>
-      {!googleLink && (
-        <Menu.Item key="0" onClick={() => setAddIcon('fab fa-google')}>
-          <i className="fab fa-google" />
-        </Menu.Item>
-      )}
-      {!facebookLink && (
-      <Menu.Item key="1" onClick={() => setAddIcon('fab fa-facebook-f')}>
-        <i className="fab fa-facebook-f" />
-      </Menu.Item>
-      )}
-      {!linkedinLink && (
-      <Menu.Item key="3" onClick={() => setAddIcon('fab fa-linkedin-in')}>
-        <i className="fab fa-linkedin-in" />
-      </Menu.Item>
-      )}
-      {!githubLink && (
-      <Menu.Item key="4" onClick={() => setAddIcon('fab fa-github-alt')}>
-        <i className="fab fa-github-alt" />
-      </Menu.Item>
-      )}
-      {!figmaLink && (
-      <Menu.Item key="5" onClick={() => setAddIcon('fab fa-figma')}>
-        <i className="fab fa-figma" />
-      </Menu.Item>
-      )}
-      {!dribbleLink && (
-      <Menu.Item key="6">
-        <i className="fas fa-basketball-ball" onClick={() => setAddIcon('fas fa-basketball-ball')} />
-      </Menu.Item>
-      )}
-      {!clickupLink && (
-      <Menu.Item key="7" onClick={() => setAddIcon('clickup')}>
-        <img
-          src="/assets/images/settings/clickup-icon.svg"
-          style={{ maxHeight: '22px' }}
-          alt="clickup-icon"
-        />
-      </Menu.Item>
-      )}
+  // //  Add link Dropdown options
+  const customStyles = {
+    option: (provided, state) => ({
+      ...provided,
+      // borderBottom: '1px dotted pink',
+      color: 'white',
+      border: state.isSelected ? '2px solid #6938EF' : state.isFocused ? '2px solid #6938EF' : '2px solid transparent',
+      background: '#1C1D37',
+      borderRadius: '8px',
+      padding: 20,
+      width: '100%',
+      cursor: 'pointer',
+      ':active': {
+        ...styles[':active'],
+        background: '#1C1D37',
+      },
+    }),
+    control: () => ({
+      // none of react-select's styles are passed to <Control />
+      // width: ,
+      display: 'flex',
+      height: '100%',
+    }),
+    menu: (provided) => ({
+      ...provided,
+      // borderBottom: '1px dotted pink',
+      background: '#1C1D37',
+      padding: 5,
+      border: '1px solid #6938EF',
 
-    </Menu>
-  );
+    }),
+    placeholder: (provided) => ({
+      ...provided,
+      color: '#fff',
+    }),
+    indicatorSeparator: (provided) => ({
+      ...provided,
+      display: 'none',
+    }),
+    singleValue: (provided) => {
+      const opacity = 1;
+      const color = '#fff';
+      const transition = 'opacity 300ms';
+
+      return {
+        ...provided, opacity, transition, color,
+      };
+    },
+  };
   //   update the data upon submitting
   useEffect(() => {
     const userInfo = JSON.parse(localStorage.getItem('userInfo')).user;
     setData(userInfo);
-    // discard(userInfo);
   }, [step]);
-  // console.log(data.FacebookLink, facebookLink);
+
   return (
     <>
       <div className={styles.title}>
@@ -248,7 +232,7 @@ const ProfileFourthStep = ({
         </div>
       </div>
       )}
-      {facebookLink
+      {(facebookLink || facebookLink === '')
       && (
       <div className={`row ${styles.socialRow}`}>
         <div className={`col ${styles.socialCol}`}>
@@ -290,7 +274,7 @@ const ProfileFourthStep = ({
         </div>
       </div>
       )}
-      {linkedinLink
+      {(linkedinLink || linkedinLink === '')
       && (
       <div className={`row ${styles.socialRow}`}>
         <div className={`col ${styles.socialCol}`}>
@@ -331,7 +315,7 @@ const ProfileFourthStep = ({
         </div>
       </div>
       )}
-      {githubLink
+      {(githubLink || githubLink === '')
       && (
       <div className={`row ${styles.socialRow}`}>
         <div className={`col ${styles.socialCol}`}>
@@ -372,7 +356,7 @@ const ProfileFourthStep = ({
         </div>
       </div>
       )}
-      {figmaLink
+      {(figmaLink || figmaLink === '')
       && (
       <div className={`row ${styles.socialRow}`}>
         <div className={`col ${styles.socialCol}`}>
@@ -413,7 +397,7 @@ const ProfileFourthStep = ({
         </div>
       </div>
       )}
-      {dribbleLink
+      {(dribbleLink || dribbleLink === '')
        && (
        <div className={`row ${styles.socialRow}`}>
          <div className={`col ${styles.socialCol}`}>
@@ -454,7 +438,7 @@ const ProfileFourthStep = ({
          </div>
        </div>
        )}
-      {clickupLink
+      {(clickupLink || clickupLink === '')
       && (
       <div className={`row ${styles.socialRow}`}>
         <div className={`col ${styles.socialCol}`}>
@@ -501,45 +485,55 @@ const ProfileFourthStep = ({
       )}
       {show && (
       <div className={`row ${styles.socialRow}`}>
-        <div className={`col ${styles.socialCol} add-socail-links`}>
-          <div>
-            <Dropdown overlay={menu} trigger={['click']} overlayClassName="settings_socail-links-contaner">
-              <div className={styles.addLinkBtn}>
-                {!AddIcon && (
-                <img
-                  src="/assets/images/settings/plus.svg"
-                  alt="clickup-icon"
-                />
-                )}
-                {AddIcon && AddIcon !== 'clickup' && (
-                <i className={AddIcon} />
-                )}
-                {AddIcon === 'clickup' && (
-                <img
-                  src="/assets/images/settings/clickup-icon.svg"
-                // style={{ maxHeight: '22px' }}
-                  alt="clickup-icon"
-                />
-                )}
+        <div className={`col ${styles.socialCol} ${addActive && styles.socailAdd} add-socail-links`}>
+          <div className="tw-flex">
 
-              </div>
-            </Dropdown>
+            <div className={`${styles.addLinkBtn} ${addActive && styles.socailAddBtn}`}>
+              <img
+                src="/assets/images/settings/plus.svg"
+                alt="clickup-icon"
+                onClick={() => setAddActive(!addActive)}
+              />
+            </div>
           </div>
-          {!AddIcon && <input type="button" value="Add a Social Links" />}
-          {AddIcon && (
-          <>
-            <input type="text" value={link} onChange={(e) => setLink(e.target.value)} />
-            <img
-              src="/assets/images/settings/white-check.svg"
-              className={styles.newSocialLink}
-              onClick={addHandler}
-              alt="add-icon"
-            />
-          </>
-          )}
-
+          <input type="button" style={{ cursor: 'default' }} value="Add a Social Links" />
         </div>
       </div>
+      )}
+      {addActive && (
+        <>
+          <div className={`row ${styles.socialAddLink}`}>
+            <div className={`col-7 ${styles.socialCol}`}>
+              <input type="text" value={newLink} onChange={(e) => setNewLink(e.target.value)} placeholder="Username/Link" />
+            </div>
+            <div className="col-1" />
+            <div style={{ padding: '0' }} className={`col-4 ${styles.socialCol}`}>
+              <Select
+                styles={customStyles}
+                components={{ DropdownIndicator }}
+                menuColor="#1C1D37"
+                isClearable={false}
+                isSearchable={false}
+                onChange={(newValue) => setLink(newValue)}
+                options={missingLinks.filter((item) => item.label !== '')}
+                placeholder="Website"
+                value={link}
+              />
+            </div>
+          </div>
+          <div className={`row ${styles.socialAddLink}`}>
+            <div className="col-8" />
+            <div className={`col-4 ${styles.socialCol} ${styles.submitLinkBtn}`}>
+              <div onClick={addHandler} className="tw-w-full tw-flex tw-cursor-pointer tw-justify-evenly">
+                <img
+                  src="/assets/images/settings/plus.svg"
+                  alt="plus"
+                />
+                <p>Add  a social link</p>
+              </div>
+            </div>
+          </div>
+        </>
       )}
       <div className={`row ${styles.submitRow}`}>
         <div className="col">
