@@ -28,7 +28,7 @@ hr {
 
 /* Buttons */
 .button {
-  font-family: 'Red Hat Display', sans-serif;
+  font-family: "Red Hat Display", sans-serif;
   text-transform: capitalize;
   font-size: 1rem;
   font-weight: 700;
@@ -133,7 +133,7 @@ hr {
   justify-content: flex-start;
   align-content: flex-start;
   padding: 1rem;
-  color: #3e385d;
+  color: var(--light-low-contrast);
 }
 .incubator__text h2 {
   font-size: 1.5rem;
@@ -144,7 +144,7 @@ hr {
   color: #fff;
 }
 .incubator__title {
-  font-family: 'Graphik', sans-serif;
+  font-family: "Graphik", sans-serif;
   font-size: 3rem;
   font-weight: 700;
   line-height: 1.2;
@@ -195,12 +195,12 @@ hr {
   align-content: center;
   align-items: center;
   color: #fff;
-  font-family: 'Red Hat Display', sans-serif;
+  font-family: "Red Hat Display", sans-serif;
   padding: 80px 0 0 0;
 }
 
 .featured__text {
-  font-family: 'Red Hat Display', sans-serif;
+  font-family: "Red Hat Display", sans-serif;
   display: flex;
   flex-direction: column;
   align-content: center;
@@ -361,8 +361,8 @@ hr {
 /* Swiper Carousel */
 
 div.swiper-button-next:after {
-  font-family: 'Font Awesome 5 Free';
-  content: '\f061';
+  font-family: "Font Awesome 5 Free";
+  content: "\f061";
   vertical-align: middle;
   font-weight: 900;
   padding: 1rem;
@@ -370,8 +370,8 @@ div.swiper-button-next:after {
 }
 
 div.swiper-button-prev:after {
-  font-family: 'Font Awesome 5 Free';
-  content: '\f060';
+  font-family: "Font Awesome 5 Free";
+  content: "\f060";
   vertical-align: middle;
   font-weight: 900;
   padding: 1rem;
@@ -379,8 +379,8 @@ div.swiper-button-prev:after {
 }
 
 div.swiper-button-prev {
-  font-family: 'Font Awesome 5 Free';
-  content: '\f060';
+  font-family: "Font Awesome 5 Free";
+  content: "\f060";
 
   vertical-align: middle;
   font-weight: 900;
@@ -395,8 +395,8 @@ div.swiper-button-prev {
 }
 
 div.swiper-button-next {
-  font-family: 'Font Awesome 5 Free';
-  content: '\f061';
+  font-family: "Font Awesome 5 Free";
+  content: "\f061";
   vertical-align: middle;
   font-weight: 900;
   padding: 1rem;
@@ -444,7 +444,7 @@ div.swiper-button-next {
   align-content: center;
   align-items: center;
   color: #fff;
-  font-family: 'Red Hat Display', sans-serif;
+  font-family: "Red Hat Display", sans-serif;
   padding: 80px 0 0 0;
 }
 
@@ -730,7 +730,7 @@ div.swiper-button-next {
 }
 
 .paginationBttns a {
-  padding: 10px;
+  padding: 10px 15px;
   margin: 8px;
   border-radius: 5px;
   border: 1px solid var(--secondary-high-contrast);

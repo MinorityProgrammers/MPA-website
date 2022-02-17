@@ -28,7 +28,7 @@
 }
 
 #MentorshipRegister .MentorshipRegister__circle {
-  background: #fff;
+  background: var(--tertiary-low-contrast);
   position: relative;
   /* If you want text inside of it */
   width: 70%;
@@ -49,7 +49,7 @@
 
 #MentorshipRegister .MentorshipRegister__circle h1 {
   font-family: 'Red Hat Display', sans-serif;
-  color: #151371;
+  color: var(--light-low-contrast);
   font-size: 4em;
   font-weight: 700;
   text-align: center;
@@ -73,7 +73,7 @@
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  border: 3px solid #fff;
+  border: 3px solid  var(--tertiary-low-contrast);
 }
 
 #MentorshipRegister p {
@@ -86,7 +86,7 @@
 #MentorshipRegister button {
   margin-top: 15px;
   padding: 0.4em 3.5em;
-  background: #151565;
+  background:  var(--tertiary-main);
   border-radius: 4px;
   text-transform: uppercase;
   cursor: pointer;
@@ -98,7 +98,7 @@
 
 #MentorshipRegister button:hover {
   background: #fff;
-  color: #151565;
+  color:  var(--tertiary-main);
 }
 
 @media only screen and (max-width: 645px) {

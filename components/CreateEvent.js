@@ -67,14 +67,40 @@ const CreateEvent = (props) => {
   };
 
   const selectStyles = {
+    menu: (provided) => ({
+      ...provided,
+      padding: 10,
+      cursor: 'pointer',
+      backgroundColor: 'var(--secondary-high-contrast)',
+      border: '1.2px solid var(--secondary-accent-1)',
+      zIndex: '2',
+    }),
     control: () => ({
-      background: 'rgb(223, 223, 223)',
+      background: 'var(--secondary-high-contrast)',
       width: '100%',
       height: '58px',
-      border: '1px solid #222',
+      border: '1px solid var(--secondary-accent-1)',
       borderRadius: '5px',
-      padding: '10px',
+      padding: 0,
       display: 'flex',
+      alignItems: 'center',
+      '&:focus-within': {
+        outline: 'none',
+        boxShadow: '0 0 0 0.2rem rgba(161, 30, 236, 0.25)',
+      },
+    }),
+    placeholder: (base) => ({
+      ...base,
+      color: '#858b99',
+    }),
+    option: (provided, state) => ({
+      ...provided,
+      backgroundColor: state.isSelected ? 'var(--tertiary-low-contrast)' : 'none',
+      '&:hover': { backgroundColor: 'var(--tertiary-high-contrast)' },
+      '&:focused': { backgroundColor: 'none' },
+      color: '#fff',
+      cursor: 'pointer',
+      padding: 10,
     }),
   };
 

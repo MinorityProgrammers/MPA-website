@@ -4,7 +4,7 @@ import { AiOutlineDownload } from 'react-icons/ai';
 import Countdown from 'react-countdown';
 
 const HomepageExploreMinorityApps = () => {
-  const dropDate = new Date(1645160400000);
+  const dropDate = new Date("3/08/2022");
   const [loading, setLoading] = useState(false);
   const saveFile = () => {
     saveAs('https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf', 'example.pdf');

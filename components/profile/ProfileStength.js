@@ -68,7 +68,10 @@ function ProfileStength({ userData, setPsArrowUp, psArrowUp }) {
                             .map((missingData) => (
                               <div
                                 className="md:tw-w-1/5 tw-m-2 mintBTN tw-outline-none focus:tw-ring-offset-0 focus:tw-border-opacity-0 tw-ring-offset-0 tw-transition tw-ease-in-out tw-delay-150 duration-300 tw-w-1/5 tw-text-white tw-p-2 tw-rounded-3xl tw-h-10 tw-cursor-pointer tw-flex tw-flex-row tw-justify-center tw-mx-2"
-                                onClick={() => router.push(missingData.route)}
+                                onClick={() => router.push({
+                                  pathname: '/settings',
+                                  query: { step: missingData.step },
+                                })}
                               >
                                 Add
                                 {' '}

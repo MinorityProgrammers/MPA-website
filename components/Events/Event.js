@@ -475,6 +475,8 @@ class Event extends Component {
         ...provided,
         padding: 10,
         cursor: 'pointer',
+        backgroundColor: 'var(--secondary-high-contrast)',
+        zIndex: '2',
       }),
       input: (provided) => ({
         ...provided,
@@ -507,8 +509,9 @@ class Event extends Component {
       }),
       control: (base) => ({
         ...base,
-        '&:hover': { borderColor: 'gray' },
-        border: '1px solid lightgray',
+        backgroundColor: 'var(--secondary-high-contrast)',
+        '&:hover': { borderColor: 'var(--tertiary-accent-3)' },
+        border: '1px solid var(--secondary-accent)',
         boxShadow: 'none',
         padding: 0,
         height: 50,
@@ -516,17 +519,17 @@ class Event extends Component {
       }),
       option: (provided, state) => ({
         ...provided,
-        backgroundColor: state.isSelected ? '#fff1bd' : 'none',
-        '&:hover': { backgroundColor: '#fff1bd' },
+        backgroundColor: state.isSelected ? 'var(--tertiary-low-contrast)' : 'none',
+        '&:hover': { backgroundColor: 'var(--tertiary-high-contrast)' },
         '&:focused': { backgroundColor: 'none' },
-        color: '#222222',
+        color: '#fff',
         cursor: 'pointer',
         padding: 10,
       }),
       placeholder: (base) => ({
         ...base,
         fontSize: '1em',
-        color: '#151371',
+        color: 'var(--light-low-contrast)',
         fontWeight: 500,
       }),
       indicatorSeparator: (base) => ({
@@ -536,7 +539,7 @@ class Event extends Component {
       groupHeading: (base) => ({
         ...base,
         fontSize: '1.02em',
-        color: '#888',
+        color: '#afafaf',
         fontWeight: 700,
       }),
     };

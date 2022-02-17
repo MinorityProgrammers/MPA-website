@@ -1,13 +1,27 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 .container {
-  background: #efefef;
+  background: var(--secondary-main);
   width: 100%;
   height: auto;
 }
 
+
 .errorText {
   font-size: 14px;
-  color: red;
+  color: rgb(184, 2, 2);
+}
+
+.sucess {
+  background: #60e522cd;
+  width: 100%;
+  height: 40px;
+  border: 2px solid #00FF00;
+  border-radius: 8px;
+  margin: 10px auto;
+  padding-top: 5px;
+  padding-left: 10px;
+  color: #fff;
+  font-size: 0.7rem;
 }
 
 .cardContainer {
@@ -21,6 +35,11 @@
   flex-direction: row;
   text-transform: capitalize;
 }
+
+.cardLeft, .cardRight {
+  box-shadow: -4px 4px 40px rgba(84, 48, 209, 0.25);
+}
+
 /* LEFT SIDE OF CARD */
 .cardLeft {
   /* margin-top: 8rem; */
@@ -84,8 +103,9 @@
   flex-direction: column;
   font-size: 1.3rem;
   text-transform: capitalize;
-  background: rgba(255, 255, 255, 0.3);
-  border: 3px solid #ffffff;
+  background: var(--secondary-high-contrast);
+  border: 1.5px solid var(--secondary-accent-1);
+  border-left: none;
   box-sizing: border-box;
   border-radius: 0px 30px 30px 0px;
   border-top-right-radius: 20px;
@@ -94,7 +114,7 @@
 .cardRightText {
   width: 100%;
   height: auto;
-  margin-bottom: 90px;
+  margin-bottom: 80px;
   padding: 0;
   display: flex;
   flex-direction: column;
@@ -117,70 +137,99 @@
 }
 .cardRightText h2 {
   font-size: 34px;
-  margin: 0 0 1vh -20px;
+  // margin: 0 0 1vh -20px;
   font-style: normal;
   font-weight: 600;
   text-transform: uppercase;
-  color: #3e385d;
+  color: var(--light-low-contrast);
 }
 .cardRightText p {
   font-size: 1rem;
   color: #b9bcc1;
 }
+
+.cardRightText a,
+.forgotPassword a {
+  color: var(--tertiary-high-contrast);
+  opacity: 0.65;
+}
+.cardRightText a:hover,
+.forgotPassword a:hover {
+  color: var(--tertiary-high-contrast);
+  opacity: 1;
+}
+
 .socialMedia {
   width: 80%;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  margin: 50px auto 5px auto;
+  margin: 5px auto;
 }
 .socialMedia li img {
-  width: 70%;
+  width: 40%;
   height: auto;
   cursor: pointer;
 }
 .mid {
   width: 90%;
-  margin: 0 auto;
+  margin: 0 auto 20px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  color: var(--tertiary-high-contrast);
+  opacity: 0.6;
 }
 .line {
-  background-color: #000;
+  background-color: var(--tertiary-high-contrast);
   width: 45%;
   height: 2px;
 }
 
 .inputLabel {
-  color: #000;
+  color: var(--light-low-contrast);
+  opacity: 0.65;
   font-size: 20px;
   line-height: 15px;
   letter-spacing: 0.03em;
 }
+.forgotPassword {
+  text-align: end;
+  margin-top: 10px;
+  font-weight: 300;
+}
 .submit {
-  margin-top: 70px;
-  background: #474bff;
+  margin: 70px auto 50px;
+  background: var(--tertiary-main);
   width: 100%;
   height: 52px;
   border-radius: 5px;
   font-size: 20px;
   color: #ffffff;
 }
-.passInput {
-  background: transparent;
+.submit:hover {
+  background: var(--tertiary-low-contrast);
+}
+.passInput, .fieldInput {
+  background: var(--secondary-accent);
+  color: var(--light-accent);
   font-size: 20px;
-  padding: 5px 2.2rem;
+  padding: 5px 2.4rem;
   width: 100%;
   height: 40px;
-  border: 1px solid rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--secondary-accent-1);
   border-radius: 4px;
   background-position-x: 12px;
   background-position-y: center;
   background-repeat: no-repeat;
   outline: none;
 }
+.fieldInput {
+  padding: 5px 0.8rem;
+} 
+
+
 /* MEDIA QUERIES */
 @media (max-width: 1300px) {
   .socialMedia,
@@ -207,6 +256,9 @@
 
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
+    border-top-right-radius: 0;
+    border: 1.5px solid var(--secondary-accent-1);
+    border-top: none;
   }
   .imgContainer #closeIcon {
     width: 3%;
@@ -220,14 +272,11 @@
   .socialMedia,
   .mid {
     width: 100%;
-    margin: 2vh auto 0;
+    // margin: 2vh auto 0;
   }
   .socialMedia li img {
     width: 55%;
     margin: 0 auto;
-  }
-  .cardRight {
-    border-top-right-radius: 0px;
   }
 }
 @media (max-width: 500px) {
@@ -252,8 +301,5 @@
   }
   .cardRightText {
     margin-top: 0;
-  }
-  .cardRight {
-    border-top-right-radius: 0px;
   }
 }
