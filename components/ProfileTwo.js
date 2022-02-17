@@ -628,11 +628,7 @@ const ProfileTwo = function ({
             ) : reputation.length > 0 ? (
               <Reputation reputation={reputation} reputationBadge={reputationBadge} />
             ) : (
-              <div className="mb-5 pb-3">
-                <div className="courses-info tw-px-10">
-                  <NoDataFound title="Badges" isActionable={false} action="" textAction="" description={`${ownsProfile ? 'You will see your badges here as activity reward!' : 'This User has not Earned a Badge yet!'}`} />
-                </div>
-              </div>
+              <NoDataFound title="Badges" isActionable={false} action="" textAction="" description={`${ownsProfile ? 'You will see your badges here as activity reward!' : 'This User has not Earned a Badge yet!'}`} />
             )}
 
           </div>
