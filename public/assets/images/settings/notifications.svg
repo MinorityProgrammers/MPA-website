@@ -1,38 +1,4 @@
-<svg width="64" height="66" viewBox="0 0 64 66" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g filter="url(#filter0_d)">
-<mask id="mask0" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="4" y="0" width="56" height="58">
-<rect x="4" width="56" height="58" fill="url(#pattern0)"/>
-</mask>
-<g mask="url(#mask0)">
-<g filter="url(#filter1_d)">
-<rect x="4.00903" width="55.1515" height="60" rx="8.23876" fill="white"/>
-</g>
-</g>
-</g>
-<defs>
-<filter id="filter0_d" x="0.0090332" y="0" width="63.1515" height="66" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feOffset dy="4"/>
-<feGaussianBlur stdDeviation="2"/>
-<feComposite in2="hardAlpha" operator="out"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
-<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
-<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
-</filter>
-<pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
-<use xlink:href="#image0" transform="translate(-0.0178571) scale(0.0107887 0.0104167)"/>
-</pattern>
-<filter id="filter1_d" x="-0.140058" y="0" width="63.4497" height="68.2982" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feOffset dy="4.14909"/>
-<feGaussianBlur stdDeviation="2.07455"/>
-<feComposite in2="hardAlpha" operator="out"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
-<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
-<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
-</filter>
-<image id="image0" width="96" height="96" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAABmJLR0QA/wD/AP+gvaeTAAADJ0lEQVR4nO3cS2sTURjG8b+F2lKLineoggVrNeBS3OpSQfwC6kqhBe1GBfErWIsu3bpTcW8FVypWLF7qwr1rqbaxurAXF0kgRJpkMuc971yeH7xQaJJzzvtMZjLNdEBERERERCT7BoApYA74Va854Hr9d2JoBPgEbGxSH+uPEQMDtG9+cwh6JxiYonPzG3XNaY6F9o7uA3jrNMdCq9J9AFWnOSa2xXsCCWwkfHwu1tbnPYGyy0sAeyI9R5rsACaB18Aq3e//G7UKvAImgO2R555r+4Fpame4SZve7qB8F9gXcR250w/cJNmnnaS1DNyojyVNRoE32DW+td4DY1FWlgPnsd3q270bzkVYX6ZN0NsBNlStAlfNV5lRk8A6fs1v1DolDOEsvlt+a60BF0xXnCHj+OzzO9UyJTgwbwU+4N/szWqegn9EvYN/kzvVLbPVOxsBVvBvcKeqAgeMevCfmH+Muw0MRRyvV8MU8F2wG/iD/9bdba0AO0060SLWO+AyMBhprBCGgEvekwhpHv+tOmnNmXTCwQjZOONNWmtEOBjH2AWdISffz7boA07HGMTayQhjWDllPUCMACoRxrBy3HqAGAEcjjCGlVHrAWIEsDfCGFbMr6yIEUAezn43M2w9QIxPJxsRxrBk2qO8XJhVWArAmQJwpgCcKQBnCsCZAnCmAJwpAGcKwJkCcKYAnCkAZwrAmQJwpgCcKQBnCsCZAnCmAJwpAGcKwJkCcGYZwCDw0PD1Y3kEbPOeRFLjwGf8r/EPVV+BE0E7ZOgi2fxH7LT1G7gSsE/BDQIP8G+UdWVyl3QUWMC/ObFqob7mTBgDFvFvSuxaBI4E6F9qz/Bvhlc9Tdu8EJde/6R2h8My+gHsSvMCIc4Dynwyl3rtIZr3MsBr5NWs9wSgdtJVxoPwd+BggP4FcQh4Aizh3xjrWgIek6Hmi4iIWFkm3QEz0/JwEvXN6blR5CGAFyme+zzYLEqsQm+3Of4LHHOYbyH18kXPjMtMC6qf2q6o2+bPUvBbEHvoB+5T27W02+3MoOabqgD3gC/Uvvyv1n+eJsItxkRERERERNL6B3NMZ7ydYcojAAAAAElFTkSuQmCC"/>
-</defs>
+<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M16.667 8.33333C16.667 6.49238 18.1594 5 20.0003 5C21.8413 5 23.3337 6.49238 23.3337 8.33333C27.2339 10.1776 29.798 14.0237 30.0003 18.3333V23.3333C30.2547 25.4347 31.4918 27.2903 33.3337 28.3333H6.66699C8.50885 27.2903 9.74597 25.4347 10.0003 23.3333V18.3333C10.2026 14.0237 12.7667 10.1776 16.667 8.33333" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M15 28.3334V30C15 32.7615 17.2386 35 20 35C22.7614 35 25 32.7615 25 30V28.3334" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>

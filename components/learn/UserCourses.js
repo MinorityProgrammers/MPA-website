@@ -10,16 +10,16 @@ const UserCourses = ({ enrolledCourses, user }) => {
   const conditionalInfinite = {
     dots: false,
     speed: 2000,
-    slidesToShow: 3,
-    infinite: coursesLength > 3,
+    slidesToShow: 2,
+    infinite: coursesLength > 2,
     autoplay: true,
     slidesToScroll: 1,
     responsive: [
       {
         breakpoint: 991,
         settings: {
-          slidesToShow: 2,
-          infinite: coursesLength > 2,
+          slidesToShow: 1,
+          infinite: coursesLength > 1,
         },
       },
       {
@@ -33,16 +33,13 @@ const UserCourses = ({ enrolledCourses, user }) => {
   };
 
   return (
-    <div>
-      <div className="mb-5 pb-3">
-        <div className="course-category d-flex font-weight-bold tw-justify-center">
-          <h1 className="courseCategory-title">My Courses</h1>
-        </div>
+    <div className="tw-relative">
+      <div className="">
         <div
           className={
             coursesLength > 2
-              ? 'mt-3 courses-info pt-2'
-              : 'mt-3 courses-info pt-2 user-courses'
+              ? 'courses-info pt-2'
+              : 'courses-info pt-2 user-courses'
           }
         >
           <Slider {...conditionalInfinite}>

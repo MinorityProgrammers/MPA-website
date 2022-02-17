@@ -1,0 +1,43 @@
+.alliesHeader h2 {
+    cursor: pointer;
+    text-align: center;
+    margin-bottom: 30px;
+    letter-spacing: 0.03em;
+    font-weight: bold;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 40px;
+    color: #FFFFFF;
+}
+  
+.line {
+    margin-bottom: 100px;
+    height: 4px;
+    background: rgba(204, 210, 227, 0.31);
+}
+.lineActive {
+  background: #8040d2;
+}
+h2.inactive {
+    color: rgba(196, 196, 196, 0.26) ;  
+}
+@media (max-width: 992px){
+    .alliesHeader h2{
+        font-size: 25px;
+    }
+}
+@media only screen and (max-width: 768px) {
+    .alliesHeader h2{
+        font-size: 16px;
+    }
+    .line{
+        margin-bottom: 40px;
+    }
+}
+@media only screen and (max-width: 438px) {
+    .alliesHeader h2{
+        font-size: 14px;
+        letter-spacing: normal;
+    }
+}

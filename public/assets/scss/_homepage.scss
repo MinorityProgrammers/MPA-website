@@ -1,0 +1,18 @@
+.site-footer__social a svg:hover{
+    path,rect,circle{
+      stroke: #8040D2;
+    }
+  }
+  .site-footer__social a #github-icon:hover{
+    path{
+      fill: #8040D2;
+      stroke: none;
+    }
+  }
+
+  .setting__profile-img-model div{
+    width:fit-content ;
+  }
+  .setting__profile-img-model div .ant-modal-content .ant-modal-body{
+    padding: 0;
+  }

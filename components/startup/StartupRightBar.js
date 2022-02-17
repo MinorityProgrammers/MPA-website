@@ -67,7 +67,7 @@ const StartupRightBar = ({ data }) => {
       <div className="container p-4">
         <div className="row container">
           <h2 className="right__topic mb-3 mt-1">
-            About
+            About &nbsp;
             {data.name}
           </h2>
         </div>
@@ -159,7 +159,7 @@ const StartupRightBar = ({ data }) => {
         </div>
         <div className="row container">
           <h2 className="right__topic mb-3 mt-1">
-            Market Size(TAM, SAM, SOM)
+            Market Size(TAM, SAM, SOM)&nbsp;
             <button
               type="button"
               className="market__size"
@@ -177,10 +177,15 @@ const StartupRightBar = ({ data }) => {
         <div className="row container market-size">
           <div className="tam__sam__som">
             <div className="tam">
-              <div>
+              <div
+                style={{
+                  flex: '1',
+                  margin: '20px',
+                }}
+              >
                 <div>TAM - in$USD</div>
                 <div className="tam_sam_som_box">
-                  <span style={{ color: 'black' }}>{data.TAM}</span>
+                  <span>{data.TAM}</span>
                 </div>
               </div>
             </div>
@@ -188,13 +193,12 @@ const StartupRightBar = ({ data }) => {
               <div
                 style={{
                   flex: '1',
-                  backgroundColor: '#3131ab',
                   margin: '20px',
                 }}
               >
                 <div>SAM</div>
                 <div className="tam_sam_som_box">
-                  <span style={{ color: 'black' }}>{data.SAM}</span>
+                  <span>{data.SAM}</span>
                 </div>
               </div>
             </div>
@@ -202,20 +206,19 @@ const StartupRightBar = ({ data }) => {
               <div
                 style={{
                   flex: '1',
-                  backgroundColor: '#3131ab',
                   margin: '20px',
                 }}
               >
                 <div>SOM</div>
                 <div className="tam_sam_som_box">
-                  <span style={{ color: 'black' }}>{data.SOM}</span>
+                  <span>{data.SOM}</span>
                 </div>
               </div>
             </div>
           </div>
           {hover && (
             <div className="row container tam-sam-som-info">
-              <div style={{ fontWeight: 'bold', color: 'black' }}>
+              <div style={{ fontWeight: 'bold' }}>
                 What is TAM, SAM,SOM?
               </div>
               <div>

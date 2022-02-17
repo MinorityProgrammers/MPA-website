@@ -67,82 +67,53 @@ const SettingBodyOverview = ({ data }) => {
       router.push('/settings/profile/education');
     }
   };
-
-  const copyToClipboard = (link) => {
-    const el = document.createElement('textarea');
-    el.value = link;
-    el.style.position = 'absolute';
-    el.style.height = '0.1px';
-    el.style.width = '0.1px';
-    el.style.left = '-100px';
-    el.style.top = '-100px';
-    el.style.opacity = '0';
-    document.body.appendChild(el);
-
-    const selected = document.getSelection().rangeCount > 0
-      ? document.getSelection().getRangeAt(0)
-      : false;
-
-    el.select();
-    document.execCommand('copy');
-
-    document.body.removeChild(el);
-
-    if (selected) {
-      document.getSelection().removeAllRanges();
-      document.getSelection().addRange(selected);
+  const getProgressBar = () => {
+    const prg = getProgressPercentage(data);
+    let barPrg1 = 0;
+    let barPrg2 = 0;
+    if (prg <= 50) {
+      barPrg1 = (prg / 100) * 180;
     }
-  };
-
-  const copied = (haveLink) => {
-    const el = document.getElementsByClassName('overviewContentSpanWrap');
-
-    if (!el[0].hasChildNodes()) {
-      el[0].style.backgroundColor = haveLink ? '#00aa4f' : '#fb3f4a';
-
-      const spanEl = document.createElement('span');
-      spanEl.style.padding = '.2vw .3vw';
-      spanEl.innerText = haveLink ? 'Link Copied' : 'No link';
-
-      el[0].appendChild(spanEl);
-
-      setTimeout(() => {
-        el[0].removeChild(spanEl);
-      }, 500);
+    if (prg > 50) {
+      barPrg1 = 180;
+      barPrg2 = ((prg - 50) / 100) * 360;
     }
+    return { barPrg1, barPrg2 };
   };
-
+  getProgressBar();
   return (
     <div className={styles.overviewContent}>
-      <div className={styles.fleft}>
-        <div className={`${styles.fItem} ${styles.fiCompletion}`}>
-          <div className={styles.progress}>
-            <svg>
-              <circle
-                style={{
-                  strokeDashoffset: `calc(220 - (220 * ${getProgressPercentage(
-                    data,
-                  )}) / 100)`,
-                }}
-                cx="35"
-                cy="35"
-                r="35"
-              />
-            </svg>
-            <h6>
-              {getProgressPercentage(data)}
-              <span>%</span>
-            </h6>
+      <div className={`${styles.fItem} ${styles.fiCompletion}`}>
+        <div>
+          <div className={`${styles.progress} ${styles.blue}`}>
+            <span className={styles.progressLeft}>
+              <span style={{ transform: `rotate(${getProgressBar().barPrg2}deg)` }} className={styles.progressBar} />
+            </span>
+            <span className={styles.progressRight}>
+              <span style={{ transform: `rotate(${getProgressBar().barPrg1}deg)` }} className={styles.progressBar} />
+            </span>
+            <div className={styles.progressValue}>
+              <p>
+                {getProgressPercentage(data)}
+                <span>%</span>
+
+              </p>
+            </div>
           </div>
+        </div>
+        {getProgressPercentage(data) === 100 ? (
           <div className={styles.info}>
-            <h5>Profile</h5>
-            <p>Complete your profile and explore all features across MPA.</p>
-          </div>
-          {getProgressPercentage(data) === 100 ? (
+
             <div className={styles.completedProfile}>
               Your Profile Is Complete
             </div>
-          ) : (
+          </div>
+
+        ) : (
+          <div className={styles.info}>
+
+            <p>Your profile is at intermediate level, complete setup to increase your level</p>
+
             <button
               type="button"
               onClick={(e) => {
@@ -150,12 +121,23 @@ const SettingBodyOverview = ({ data }) => {
                 completeRedirection();
               }}
             >
-              Complete My Profile
+              Complete setup
             </button>
-          )}
-        </div>
+          </div>
+
+        )}
+
+      </div>
+      <div className={styles.fleft}>
         <div className={`${styles.fItem} ${styles.fIProfile}`}>
-          <h5>Profile</h5>
+          <h5>
+            Profile
+            {' '}
+            <i className="fas fa-ellipsis-v" />
+          </h5>
+          <div className={styles.lineContainer}>
+            <div className={styles.line} />
+          </div>
           <div className={styles.userContent}>
             <div className={styles.uCLeft}>
               <div className={styles.info}>
@@ -191,195 +173,96 @@ const SettingBodyOverview = ({ data }) => {
                 </div>
               </div>
             </div>
-            <div className={styles.uCRight}>
-              <div className={styles.uCRwrapper}>
-                <div className={styles.imgDiv}>
-                  <img
-                    src={data?.profilePicture || '/assets/images/profile.png'}
-                    alt="avatar"
-                    className={styles.avatarImage}
-                    onClick={() => router.push('/settings/profile/overview')}
-                  />
-                  <img
-                    src="../../assets/images/settings/edit-avatar.svg"
-                    alt="edit icon"
-                    className={styles.editIcon}
-                  />
-                </div>
-                <h6>{`${data.firstName} ${data.lastName}`}</h6>
+          </div>
+        </div>
+        <div className={`${styles.fItem} ${styles.fIProfile}`}>
+          <h5>
+            Wallet
+            <i className="fas fa-ellipsis-v" />
+          </h5>
+          <div className={styles.lineContainer}>
+            <div className={styles.line} />
+          </div>
+          <div style={{ paddingLeft: '35px', paddingBottom: '8px' }} className={`${styles.userContent} ${styles.walletContainer}`}>
+            <div className="col-6">
+              <div>Connected</div>
+              <div className="tw-mt-2">
+                <Account />
+              </div>
+            </div>
+            <div className="col-6">
+              <div style={{ fontSize: '20px', fontWeight: 'bold' }}>Balance</div>
+              <div className={`tw-flex tw-w-8/12 tw-justify-between ${styles.walletRow}`}>
+                <h3 className="tw-text-white tw-flex tw-items-center">$ Minority Earned</h3>
+                <p style={{ color: '#FF8947' }} className="tw-text-lg tw-font-bold">$ 0</p>
+              </div>
+              <div className={`tw-flex tw-w-8/12 tw-justify-between ${styles.walletRow}`}>
+                <h3 className="tw-text-white tw-flex tw-items-center">$ MPA Earned</h3>
+                <p style={{ color: '#FF8947' }} className="tw-text-lg tw-font-bold">$ 0</p>
               </div>
             </div>
           </div>
-          <div className={styles.quickLink}>
-            <div className={styles.qlHeader}>
-              <h6>Quick Link</h6>
-              <p>
-                Click icon to copy URL
-                <img
-                  src="../../assets/images/settings/link-icon.png"
-                  alt="copy link"
-                />
-              </p>
+        </div>
+        <div className={`${styles.bodyBottom}`}>
+          <div className={`${styles.bottomItem}`}>
+            <div>
+              <h2>
+                Notification
+                {' '}
+                <i className="fas fa-ellipsis-v" />
+              </h2>
             </div>
-            <div className={styles.links}>
-              <div
-                className="overviewContentSpanWrap"
-                style={{
-                  position: 'absolute',
-                  backgroundColor: '#00aa4f',
-                  borderRadius: '.5vw',
-                  color: 'white',
-                  fontSize: '.6vw',
-                  fontWeight: 'bold',
-                  top: '.5vw',
-                  right: '7.1vw',
-                }}
-              />
+            <div className={styles.lineContainer}>
+              <div className={styles.line} />
+            </div>
+            <div className={styles.itemElement}>
+              <p>Message</p>
               <img
-                src="../../assets/images/settings/media-facebook.svg"
-                alt="facebook icon"
-                onClick={() => {
-                  copyToClipboard(data?.FacebookLink);
-                  (() => (data?.FacebookLink ? copied(true) : copied(false)))();
-                }}
+                src="../../assets/images/settings/angle-right.svg"
+                alt="arrow"
               />
+
+            </div>
+            <div className={styles.itemElement}>
+              <p>
+                Manage message delivery
+                Notification
+              </p>
               <img
-                src="../../assets/images/settings/media-linkedin.svg"
-                alt="linkedin icon"
-                onClick={() => {
-                  copyToClipboard(data?.LinkedinLink);
-                  (() => (data?.LinkedinLink ? copied(true) : copied(false)))();
-                }}
+                className="m-auto"
+                src="../../assets/images/settings/angle-right.svg"
+                alt="arrow"
               />
-              <img
-                src="../../assets/images/settings/media-github.svg"
-                alt="github icon"
-                onClick={() => {
-                  copyToClipboard(data?.GithubLink);
-                  (() => (data?.GithubLink ? copied(true) : copied(false)))();
-                }}
-              />
-              <img
-                src="../../assets/images/settings/media-google.svg"
-                alt="google icon"
-                onClick={() => {
-                  copyToClipboard(data?.GoogleLink);
-                  (() => (data?.GoogleLink ? copied(true) : copied(false)))();
-                }}
-              />
-              <img
-                src="../../assets/images/settings/media-figma.svg"
-                alt="figma icon"
-                onClick={() => {
-                  copyToClipboard(data?.FigmaLink);
-                  (() => (data?.FigmaLink ? copied(true) : copied(false)))();
-                }}
-              />
-              <img
-                src="../../assets/images/settings/media-dribbble.svg"
-                alt="dribbble icon"
-                onClick={() => {
-                  copyToClipboard(data?.DribbleLink);
-                  (() => (data?.DribbleLink ? copied(true) : copied(false)))();
-                }}
-              />
-              <img
-                src="../../assets/images/settings/media-clickup.svg"
-                alt="clickup icon"
-                onClick={() => {
-                  copyToClipboard(data?.ClickupLink);
-                  (() => (data?.ClickupLink ? copied(true) : copied(false)))();
-                }}
-              />
+
             </div>
           </div>
-        </div>
-        <div className={`${styles.fItem} ${styles.fISecurity}`}>
-          <h5>Security & Login</h5>
-          <div className={styles.updateAccountLogin}>
-            <div
-              className={styles.username}
-              onClick={() => router.push('/settings/security/login')}
-            >
-              <p>Change Username</p>
-              <img
-                src="../../assets/images/settings/change-arrow.svg"
-                alt="change arrow"
-              />
+          <div className={`${styles.bottomItem}`}>
+            <div>
+              <h2>
+                Security and  Login
+                {' '}
+                <i className="fas fa-ellipsis-v" />
+              </h2>
             </div>
-            <div
-              className={styles.password}
-              onClick={() => {
-                setUpdatePasswordRedirection(true);
-                router.push('/settings/security/login');
-              }}
-            >
+            <div className={styles.lineContainer}>
+              <div className={styles.line} />
+            </div>
+            <div className={styles.itemElement}>
               <p>Change Password</p>
               <img
-                src="../../assets/images/settings/change-arrow.svg"
-                alt="change arrow"
+                src="../../assets/images/settings/angle-right.svg"
+                alt="arrow"
               />
-            </div>
-          </div>
-        </div>
-      </div>
 
-      <div className={styles.fright}>
-        <div className={`${styles.fItem} ${styles.fIWallet}`}>
-          <h5>Wallet</h5>
+            </div>
+            <div style={{ marginTop: '8px' }} className={styles.itemElement}>
+              <p>Change Username</p>
+              <img
+                src="../../assets/images/settings/angle-right.svg"
+                alt="arrow"
+              />
 
-          <div className="tw-m-4">
-            <Account />
-          </div>
-          <div className={styles.balances}>
-            <h5>Balances</h5>
-            <div className={styles.cardWrapper}>
-              <h6>$MINORITY </h6>
-              <div className={styles.card}>
-                <div className={styles.amountInfo}>
-                  $MINORITY Earned
-                  {' '}
-                  <div>$150</div>
-                </div>
-                <div className={styles.amountInfo}>
-                  $MINORITY Balance
-                  {' '}
-                  <div>$350</div>
-                </div>
-              </div>
             </div>
-            <div className={styles.cardWrapper}>
-              <h6>$MPA Tokens </h6>
-              <div className={styles.card}>
-                <div className={styles.amountInfo}>
-                  $MPA Tokens Earned
-                  {' '}
-                  <div>$35</div>
-                </div>
-                <div className={styles.amountInfo}>
-                  $MPA Tokens Balance
-                  {' '}
-                  <div>$65</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className={`${styles.fItem} ${styles.fINotifications}`}>
-          <h5>Notifications</h5>
-          <div className={styles.messages} onClick={() => router.push('/chat')}>
-            <h6>Messages</h6>
-            <div className={styles.inboxCounter}>{0}</div>
-          </div>
-          <div
-            className={styles.notifyMessages}
-            onClick={() => router.push('/settings/notifications/notifications')}
-          >
-            <p>Manage Message Delivery Notifications</p>
-            <img
-              src="../../assets/images/settings/change-arrow.svg"
-              alt="change arrow"
-            />
           </div>
         </div>
       </div>
