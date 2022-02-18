@@ -5,14 +5,6 @@ export default function QuizProgress(props) {
   return (
     <div>
       <div className="progress">
-        <p className="counter">
-          <span>
-            Question
-            {currentQuestion + 1}
-            of
-            {questionLength}
-          </span>
-        </p>
         <div
           className="progress-bar"
           style={{
@@ -20,6 +12,16 @@ export default function QuizProgress(props) {
           }}
         />
       </div>
+      <p className="counter">
+        <span>
+          Question
+          {currentQuestion + 1}
+          <span className="total-questions">
+            /
+            {questionLength}
+          </span>
+        </span>
+      </p>
     </div>
   );
 }
