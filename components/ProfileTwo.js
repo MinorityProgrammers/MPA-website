@@ -32,6 +32,7 @@ import UserCourses from './learn/UserCourses';
 import NoDataFound from './learn/NoDataFound';
 import Experience from './profile/Experience';
 import Education from './profile/Education';
+import Projects from './profile/Projects';
 
 function countDown(mintedURL, tx) {
   let secondsToGo = 30;
@@ -75,22 +76,26 @@ const ProfileTwo = function ({
   const [expLocationInput, setExpLocationInput] = useState('');
   const { walletAddress, chainId } = useMoralisDapp();
   const [educationCards, setEducationCards] = useState([]);
-  const [projectCards, setProjectCards] = useState([]);
   const [eduAddMode, setEduAddMode] = useState(false);
-  const [proAddMode, setProAddMode] = useState(false);
-  const [eduEditMode, setEduEditMode] = useState(false);
   const [proEditMode, setProEditMode] = useState(false);
   const [uploadedEduImg, setUploadedEduImg] = useState('');
-  const [uploadedProImg, setUploadedProImg] = useState('');
   const [eduTitleInput, setEduTitleInput] = useState('');
-  const [proTitleInput, setProTitleInput] = useState('');
   const [eduDateInput, setEduDateInput] = useState('');
-  const [ProDateInput, setProDateInput] = useState('');
   const [EducationMajor, setEducationMajor] = useState('');
-  const [ProjectRole, setProjectRole] = useState('');
   const [copyText, setCopyText] = useState('Click to copy');
   const [isMinting, setIsMinting] = useState(false);
   const [, setDoneMinting] = useState(false);
+  // project
+  const [eduEditMode, setEduEditMode] = useState(false);
+  const [proAddMode, setProAddMode] = useState(false);
+  const [uploadedProImg, setUploadedProImg] = useState('');
+  const [projectCards, setProjectCards] = useState([]);
+  const [ProjectRole, setProjectRole] = useState('');
+  const [ProDateInput, setProDateInput] = useState('');
+  const [proTitleInput, setProTitleInput] = useState('');
+  const [ProIMG, setProIMG] = useState('');
+  const [project, setProject] = useState('');
+
   // const [mintedURL, setMintedURl] = useState('');
   const [reputation, setReputation] = useState([]);
   const [enrolledCourses, setEnrolledCourses] = useState([]);
@@ -100,8 +105,6 @@ const ProfileTwo = function ({
   const [eduDateGrad, setEduDateGrad] = useState('');
   const [University, setUniversity] = useState('');
   const [UnIMG, setUnIMG] = useState('');
-  const [project, setProject] = useState('');
-  const [ProIMG, setProIMG] = useState('');
   const [tabsActive, setTabsActive] = useState(
     { nfts: false, userCourses: false, badges: true },
   );
@@ -670,6 +673,7 @@ const ProfileTwo = function ({
           setEduEditMode={setEduEditMode}
           removeEdu={removeEdu}
           eduAddMode={eduAddMode}
+          setEduAddMode={setEduAddMode}
           eduDateGrad={eduDateGrad}
           eduDateInput={eduDateInput}
           eduTitleInput={eduTitleInput}
@@ -682,10 +686,40 @@ const ProfileTwo = function ({
           handleEduImgUpload={handleEduImgUpload}
           uploadedEduImg={uploadedEduImg}
           setUniversity={setUniversity}
-          setEduAddMode={setEduAddMode}
           University={University}
           clearEduAdd={clearEduAdd}
           completeEduAdd={completeEduAdd}
+        />
+        <Projects
+          // project data
+          projectCards={projectCards}
+          isLoggedIn={isLoggedIn}
+          ownsProfile={ownsProfile}
+          // remove project
+          removePro={removePro}
+          // edit project toggle
+          setProEditMode={setProEditMode}
+          proEditMode={proEditMode}
+          // Add project toggle
+          proAddMode={proAddMode}
+          setProAddMode={setProAddMode}
+          // project form
+          uploadedProImg={uploadedProImg}
+          proTitleInput={proTitleInput}
+          setProTitleInput={setProTitleInput}
+          ProDateInput={ProDateInput}
+          setProDateInput={setProDateInput}
+          ProjectRole={ProjectRole}
+          setProjectRole={setProjectRole}
+          project={project}
+          setProject={setProject}
+          // create project
+          handleProImgUpload={handleProImgUpload}
+          completeProAdd={completeProAdd}
+          // discard  changes
+          clearProAdd={clearProAdd}
+          // project Cover
+          setProIMG={setProIMG}
         />
 
       </div>
