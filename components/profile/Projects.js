@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
-// import Swiper from 'react-id-swiper';
-// import 'swiper/css/swiper.css';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -13,75 +11,33 @@ function Projects({
   handleProImgUpload, uploadedProImg, setProjectRole,
   setProAddMode, ProjectRole, clearProAdd, completeProAdd, setProject, project,
 }) {
-  // const [swiper, setSwiper] = useState(null);
-  const [show, setShow] = useState(false);
-  //   const [currentIndex, setCurrentIndex] = useState('');
-  //   const [total, setTotal] = useState('');
-  // const speed = 1000;
-  // const goNext = () => {
-  //   if (swiper !== null) {
-  //     swiper.slideNext(speed);
-  //   }
-  // };
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [sliderRef, setSliderRef] = useState(null);
 
-  // const goPrev = () => {
-  //   if (swiper !== null) {
-  //     swiper.slidePrev(speed);
-  //   }
-  // };
-  // const params = {
-  //   slidesPerView: 3,
-  //   loop: projectCards.length > 3,
-  //   speed: 1000,
-  //   // freeMode: true,
-  //   spaceBetween: 30,
-  //   rebuildOnUpdate: true,
-  //   getSwiper: setSwiper,
-  //   // autoplay: {
-  //   //   delay: 3000,
-  //   //   disableOnInteraction: true,
-  //   // },
-  //   pagination: {
-  //     el: '.swiper-pagination .fraction-p',
-  //     type: 'fraction',
-  //   },
-  //   // Responsive breakpoints
-  //   breakpoints: {
-  //     1024: {
-  //       slidesPerView: 3,
-  //     },
-  //     768: {
-  //       slidesPerView: 2,
-  //     },
-  //     640: {
-  //       slidesPerView: 2,
-  //     },
-  //     320: {
-  //       slidesPerView: 1,
-  //     },
-  //   },
-
-  // };
+  // Slider Settings
   const conditionalInfinite = {
+    arrows: false,
     dots: false,
     speed: 2000,
-    slidesToShow: 2,
-    infinite: projectCards > 2,
+    slidesToShow: 3,
+    infinite: projectCards.length > 3,
     autoplay: true,
     slidesToScroll: 1,
+    className: 'profile__projects-slider',
+    afterChange: (current) => setCurrentIndex(current),
     responsive: [
       {
-        breakpoint: 991,
+        breakpoint: 1755,
         settings: {
           slidesToShow: 2,
-          infinite: projectCards > 2,
+          infinite: projectCards.length > 2,
         },
       },
       {
-        breakpoint: 768,
+        breakpoint: 1180,
         settings: {
           slidesToShow: 1,
-          infinite: projectCards >= 1,
+          infinite: projectCards.length > 1,
         },
       },
     ],
@@ -112,28 +68,14 @@ function Projects({
               />
             )}
           </div>
-          {isLoggedIn && ownsProfile && !!projectCards?.length && (
-          <div className="tw-flex tw-align-center">
-            <h2
-              onClick={() => setShow(!show)}
-              className="tw-m-2 tw-text-xl tw-cursor-pointer lg:tw-text-xl tw-font-medium tw-text-left tw-px-10 tw-text-white show-full-projects"
-            >
-              See
-              {' '}
-              {!show && 'all'}
-              {show && 'less'}
-
-            </h2>
-          </div>
-          )}
         </div>
 
-        <div className="tw-m-4 lg:tw-m-4 lg:tw-px-4 tw-my-1 tw-w-full tw-flex tw-flex-col">
-          <div className="tw-flex tw-flex-row tw-flex-wrap lg:tw-w-col container">
-            {projectCards?.length ? !show ? (
+        <div className="profile__project-container tw-m-4 lg:tw-m-4 lg:tw-px-4 sm:tw-px-0 tw-my-1 tw-w-full tw-flex tw-flex-col">
+          <div className="">
+            {projectCards?.length ? (
 
               <>
-                <Slider {...conditionalInfinite}>
+                <Slider ref={setSliderRef} {...conditionalInfinite}>
                   {projectCards.map(
                     (projectItem) => (
                       <div className="profile__project-card" key={projectItem._id}>
@@ -160,55 +102,18 @@ function Projects({
                     ),
                   )}
                 </Slider>
-                {/* <div className="profile-projects-controllers">
+                <div className="profile-projects-controllers">
                   <div>
-                    <img onClick={goPrev} style={{ transform: 'rotate(180deg)' }} src="/assets/images/arrow-righ-circle.svg" alt="control" />
-                    <p />
-                    <img onClick={goNext} src="/assets/images/arrow-righ-circle.svg" alt="control" />
+                    <img onClick={sliderRef?.slickPrev} style={{ transform: 'rotate(180deg)' }} src="/assets/images/arrow-righ-circle.svg" alt="control" />
+                    <p>
+                      {projectCards.length > 3
+                        ? `${currentIndex + 1}/${projectCards.length}` : '1/1'}
+                    </p>
+                    <img onClick={sliderRef?.slickNext} src="/assets/images/arrow-righ-circle.svg" alt="control" />
                   </div>
-                </div> */}
+                </div>
               </>
 
-            ) : (
-              projectCards.map((edu) => (
-
-                <div
-                  key={edu._id}
-                  className="tw-flex tw-py-5 tw-mx-2 lg:tw-mx-2 tw-w-full lg:tw-w-full  tw-rounded-md tw-cursor-pointer"
-                >
-                  <div className="tw-flex tw-flex-row tw-w-full">
-                    <div className="tw-rounded-md tw-flex tw-flex-col tw-mx-4">
-                      <a href={edu?.link} target="_blank" rel="noreferrer">
-                        <img
-                          className="tw-w-40 tw-h-40 tw-mx-6 tw-rounded-md"
-                          src={edu.image}
-                          alt={edu.title}
-                        />
-                      </a>
-                      {proEditMode === true && (
-                      <span
-                        className="tw-my-4 tw-mx-6 tw-text-xs tw-font-bold tw-text-red-500 tw-cursor-pointer hover:tw-text-gray-500"
-                        onClick={() => removePro(edu?._id)}
-                      >
-                        Remove
-                      </span>
-                      )}
-                    </div>
-                    <div className="tw-flex tw-flex-col">
-                      <p className="tw-text-white tw-text-2xl">{edu.title}</p>
-                      <div className="tw-flex tw-flex-row tw-my-2">
-                        <p className="tw-text-white">{edu?.role}</p>
-                      </div>
-                      <div className="tw-flex tw-flex-row tw-my-2">
-                        <p className="tw-text-white">
-                          {edu?.date.split('T')[0]}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                </div>
-              ))
             ) : (
               <span className="note tw-text-white tw-m-4 tw" style={{ cursor: 'default' }}>
                 No Projects yet
