@@ -495,7 +495,7 @@ const JobsMain = () => {
         {hide === false && <ComingSoon closeClick={handleClick} />}
         <div style={{ background: '#14152A' }}>
           <div id="join" />
-          <div className="container jobsMain">
+          <div className="jobsMain">
             <div className="jobsMain-search">
               <div className="search-grid">
                 <div className="options">

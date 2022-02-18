@@ -89,7 +89,7 @@
 .settings-phone-field .css-1okebmr-indicatorSeparator{
   display: none;
 }
-[class~='css-tlfecz-indicatorContainer']:last-of-type  {
+.settings-phone-field [class~='css-tlfecz-indicatorContainer']:last-of-type  {
   display: none;
 }
 .settings-phone-field .css-1hb7zxy-IndicatorsContainer{
@@ -121,33 +121,32 @@
 .add-socail-links{
   padding: 0 !important;
 }
-.add-socail-links > div{
-  margin: 0 !important;
-  display: flex;
-  align-items: center;
-}
-.add-socail-links div .ant-dropdown-trigger{
-  margin: 0 1rem;
-}
-.add-socail-links div .ant-dropdown-trigger img{
-  border: 1px solid #6938EF;
-  border-radius: 50%;
-  padding: 5px 5px 3px;
-  max-width: 40px;
-}
-.settings_socail-links-contaner ul{
-  background: #24203B;
-  color: #fff;
-}
-.settings_socail-links-contaner li{
-  color: #fff;
-}
-.settings_socail-links-contaner{
-  color: #fff;
-}
-.settings_socail-links-contaner ul .ant-dropdown-menu-item:hover {
-  background: #6938EF;
-}
+// .add-socail-links > div{
+//   margin: 0 !important;
+//   display: flex;
+//   align-items: center;
+// }
+// .add-socail-links div .ant-dropdown-trigger{
+//   margin: 0 1rem;
+// }
+// .add-socail-links div .ant-dropdown-trigger img{
+//   border: 1px solid #6938EF;
+//   border-radius: 50%;
+//   padding: 5px 5px 3px;
+// }
+// .settings_socail-links-contaner ul{
+//   background: #24203B;
+//   color: #fff;
+// }
+// .settings_socail-links-contaner li{
+//   color: #fff;
+// }
+// .settings_socail-links-contaner{
+//   color: #fff;
+// }
+// .settings_socail-links-contaner ul .ant-dropdown-menu-item:hover {
+//   background: #6938EF;
+// }
 .add-socail-links input{
   text-align: left;
   font-weight: bold !important;
