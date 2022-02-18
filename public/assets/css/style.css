@@ -7951,14 +7951,14 @@ html {
 }
 
 .btn-pink {
-  background-color: #A059FD;
+  background-color: #ff00b8;
   color: #fff;
 }
 
 .btn-pink:hover {
   background-color: transparent;
-  color: #A059FD;
-  border: 1px solid #A059FD;
+  color: #ff00b8;
+  border: 1px solid #ff00b8;
 }
 
 .btn-yellow {
