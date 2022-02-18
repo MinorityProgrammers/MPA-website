@@ -2,7 +2,7 @@ import React, {
   useEffect, useState, useContext, useRef, useCallback,
 } from 'react';
 import { useRouter } from 'next/router';
-import { signOut } from 'next-auth/client';
+import { signOut, useSession } from 'next-auth/client';
 import decode from 'jwt-decode';
 import { Modal } from 'antd';
 import Layout from '../Layout';
@@ -29,6 +29,7 @@ const SettingsLayout = ({
   const [generateAvatarPopUp, setGenerateAvatarPopUp] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [changeInProfile, setChangeInProfile] = useState(false);
+  const [session] = useSession();
 
   const router = useRouter();
   const handleClick = () => {
@@ -94,7 +95,9 @@ const SettingsLayout = ({
       type: LOGOUT_USER,
     });
     window.location.href = '/';
-    signOut();
+    if (session) {
+      signOut();
+    }
   };
 
   const returnHandler = () => {

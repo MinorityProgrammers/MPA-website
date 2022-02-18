@@ -610,11 +610,8 @@ const ProfileTwo = function ({
 
               </div>
             ) : (
-              <div className="mb-5 pb-3">
-                <div className="courses-info tw-px-10">
-                  <NoDataFound title="Courses" isActionable action="/learn" textAction="Start Learning" description={`${ownsProfile ? 'When you enroll for courses, we will display it here.' : 'This User has not enrolled in any course yet!'}`} />
-                </div>
-              </div>
+
+              <NoDataFound title="Courses" isActionable action="/learn" textAction="Start Learning" description={`${ownsProfile ? 'When you enroll for courses, we will display it here.' : 'This User has not enrolled in any course yet!'}`} />
             )}
 
           </div>

@@ -7474,7 +7474,7 @@ html {
 .nav-item.active-link {
   padding: 6px 10px;
   background-color: transparent;
-  color: #9379ff !important;
+  color: #474bfd !important;
   transition: all 0.2s ease-in-out;
   font-weight: 600;
 }
@@ -7483,7 +7483,7 @@ html {
 .nav-item.active-link a:hover,
 .nav-item.active-link a:active,
 .nav-item.active-link a:focus {
-  color: #9379ff !important;
+  color: #474bfd !important;
 }
 
 .nav-item a {
@@ -7497,7 +7497,7 @@ html {
 }
 
 .nav-item a:active {
-  color: #9379ff !important;
+  color: #474bfd !important;
 }
 
 .nav-links-icon {
@@ -7562,7 +7562,7 @@ html {
 }
 
 .connect__button {
-  background: #6938EF;
+  background: #8040d2;
   border-radius: 100px;
   max-width: 200px;
   line-height: 30px;
@@ -7950,14 +7950,14 @@ html {
 }
 
 .btn-pink {
-  background-color: #A059FD;
+  background-color: #ff00b8;
   color: #fff;
 }
 
 .btn-pink:hover {
   background-color: transparent;
-  color: #A059FD;
-  border: 1px solid #A059FD;
+  color: #ff00b8;
+  border: 1px solid #ff00b8;
 }
 
 .btn-yellow {
@@ -10397,7 +10397,8 @@ p.donate__container-subtitle {
 
 .homepage_core_body {
   height: 40%;
-  width: 340px;
+  width: 240px;
+  margin: 6px;
 }
 
 .img-banner-core-root {

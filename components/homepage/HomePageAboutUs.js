@@ -31,7 +31,7 @@ function HomePageAboutUs() {
               build socially impactful projects & spread STEM education to marginalized communitie
               </p>
             </div>
-            <div className='tw-flex tw-flex-row tw-justify-between about-us__num-section'>
+            {/* <div className='tw-flex tw-flex-row tw-justify-between about-us__num-section'>
               <div>
                 <p className="about-us__text tw-text-xl tw-text-white md:tw-text-base">Interns</p>
                 <h3 className='about-us__title about-us__numbers'>500+</h3>
@@ -44,7 +44,7 @@ function HomePageAboutUs() {
                 <p className="about-us__text tw-text-xl tw-text-white md:tw-text-base">Courses</p>
                 <h3 className='about-us__title about-us__numbers'>500+</h3>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
