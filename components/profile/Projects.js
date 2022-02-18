@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-
 import DatePicker from 'react-datepicker';
-import Swiper from 'react-id-swiper';
-import 'swiper/css/swiper.css';
+// import Swiper from 'react-id-swiper';
+// import 'swiper/css/swiper.css';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 function Projects({
   isLoggedIn, ownsProfile, projectCards, proEditMode,
@@ -11,54 +13,79 @@ function Projects({
   handleProImgUpload, uploadedProImg, setProjectRole,
   setProAddMode, ProjectRole, clearProAdd, completeProAdd, setProject, project,
 }) {
-  const [swiper, setSwiper] = useState(null);
+  // const [swiper, setSwiper] = useState(null);
   const [show, setShow] = useState(false);
   //   const [currentIndex, setCurrentIndex] = useState('');
   //   const [total, setTotal] = useState('');
-  const goNext = () => {
-    if (swiper !== null) {
-      swiper.slideNext();
-    }
-  };
+  // const speed = 1000;
+  // const goNext = () => {
+  //   if (swiper !== null) {
+  //     swiper.slideNext(speed);
+  //   }
+  // };
 
-  const goPrev = () => {
-    if (swiper !== null) {
-      swiper.slidePrev();
-    }
-  };
-  const params = {
-    slidesPerView: 3,
-    loop: true,
-    speed: 1000,
-    freeMode: true,
-    spaceBetween: 30,
-    getSwiper: setSwiper,
-    autoplay: {
-      delay: 3000,
-      disableOnInteraction: false,
-    },
-    pagination: {
-      el: '.swiper-pagination .fraction-p',
-      type: 'fraction',
-    },
-    // Responsive breakpoints
-    breakpoints: {
-      1024: {
-        slidesPerView: 3,
-      },
-      768: {
-        slidesPerView: 2,
-      },
-      640: {
-        slidesPerView: 2,
-      },
-      320: {
-        slidesPerView: 1,
-      },
-    },
+  // const goPrev = () => {
+  //   if (swiper !== null) {
+  //     swiper.slidePrev(speed);
+  //   }
+  // };
+  // const params = {
+  //   slidesPerView: 3,
+  //   loop: projectCards.length > 3,
+  //   speed: 1000,
+  //   // freeMode: true,
+  //   spaceBetween: 30,
+  //   rebuildOnUpdate: true,
+  //   getSwiper: setSwiper,
+  //   // autoplay: {
+  //   //   delay: 3000,
+  //   //   disableOnInteraction: true,
+  //   // },
+  //   pagination: {
+  //     el: '.swiper-pagination .fraction-p',
+  //     type: 'fraction',
+  //   },
+  //   // Responsive breakpoints
+  //   breakpoints: {
+  //     1024: {
+  //       slidesPerView: 3,
+  //     },
+  //     768: {
+  //       slidesPerView: 2,
+  //     },
+  //     640: {
+  //       slidesPerView: 2,
+  //     },
+  //     320: {
+  //       slidesPerView: 1,
+  //     },
+  //   },
 
+  // };
+  const conditionalInfinite = {
+    dots: false,
+    speed: 2000,
+    slidesToShow: 2,
+    infinite: projectCards > 2,
+    autoplay: true,
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 991,
+        settings: {
+          slidesToShow: 2,
+          infinite: projectCards > 2,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          infinite: projectCards >= 1,
+        },
+      },
+    ],
   };
-
   const yyyymmdd = (date) => {
     const mm = date.getMonth() + 1; // getMonth() is zero-based
     const dd = date.getDate();
@@ -102,11 +129,11 @@ function Projects({
         </div>
 
         <div className="tw-m-4 lg:tw-m-4 lg:tw-px-4 tw-my-1 tw-w-full tw-flex tw-flex-col">
-          <div className="tw-flex tw-flex-row tw-flex-wrap lg:tw-w-col">
+          <div className="tw-flex tw-flex-row tw-flex-wrap lg:tw-w-col container">
             {projectCards?.length ? !show ? (
 
               <>
-                <Swiper {...params}>
+                <Slider {...conditionalInfinite}>
                   {projectCards.map(
                     (projectItem) => (
                       <div className="profile__project-card" key={projectItem._id}>
@@ -132,14 +159,14 @@ function Projects({
                       </div>
                     ),
                   )}
-                </Swiper>
-                <div className="profile-projects-controllers">
+                </Slider>
+                {/* <div className="profile-projects-controllers">
                   <div>
                     <img onClick={goPrev} style={{ transform: 'rotate(180deg)' }} src="/assets/images/arrow-righ-circle.svg" alt="control" />
                     <p />
                     <img onClick={goNext} src="/assets/images/arrow-righ-circle.svg" alt="control" />
                   </div>
-                </div>
+                </div> */}
               </>
 
             ) : (
@@ -234,7 +261,7 @@ function Projects({
 
                           <input
                             type="text"
-                            placeholder="School Role"
+                            placeholder="Role"
                             name="link"
                             className="topSection tw-p-4 tw-rounded-md focus:tw-outline-none tw-bg-gray-600 tw-text-white"
                             value={ProjectRole}
