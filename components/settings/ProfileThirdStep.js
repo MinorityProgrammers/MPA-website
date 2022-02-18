@@ -1,4 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
+import Select from 'react-select';
+import DropdownIndicator from './DropdownIndicator';
 import {
   proficiencies,
   programmingLanguages, softSkills as softSkillsList,
@@ -8,16 +10,17 @@ import { GlobalContext } from '../../contexts/provider';
 import updateProfileJSON from '../../contexts/actions/profile/updateProfileJSON';
 
 const ProfileThirdStep = ({
-  data, setStep, step, setData,
+  data, setStep, step, setData, customStyles,
 }) => {
   const [passion, setPassion] = useState('');
   const [passions, setPassions] = useState(data.passions);
   const [softSkills, setSoftSkills] = useState(data.softSkills);
-  const [currentSoftSkills, setCurrentSoftSkills] = useState('communication');
-  const [currentSoftProficiency, setCurrentSoftProficiency] = useState('Novice Low');
+  const [currentSoftSkills, setCurrentSoftSkills] = useState(softSkillsList[0]);
+  const [currentSoftProficiency, setCurrentSoftProficiency] = useState(proficiencies[0]);
   const [programmingSkills, setProgrammingSkills] = useState(data.programmingSkills);
-  const [currentProgrammingSkill, setCurrentProgrammingSkill] = useState('Java');
-  const [currentProgrammingProficiency, setCurrentProgrammingProficiency] = useState('Novice Low');
+  const [currentProgrammingSkill, setCurrentProgrammingSkill] = useState(programmingLanguages[0]);
+  const [currentProgrammingProficiency,
+    setCurrentProgrammingProficiency] = useState(proficiencies[0]);
 
   // update userData
   const { profileDispatch } = useContext(GlobalContext);
@@ -26,10 +29,10 @@ const ProfileThirdStep = ({
   const discard = () => {
     setSoftSkills(data.softSkills);
     setProgrammingSkills(data.programmingSkills);
-    setCurrentSoftSkills('communication');
-    setCurrentSoftProficiency('Novice Low');
-    setCurrentProgrammingSkill('Java');
-    setCurrentProgrammingProficiency('Novice Low');
+    setCurrentSoftSkills(softSkillsList[0]);
+    setCurrentSoftProficiency(proficiencies[0]);
+    setCurrentProgrammingSkill(programmingLanguages[0]);
+    setCurrentProgrammingProficiency(proficiencies[0]);
     setPassions(data.passions);
     setPassion('');
   };
@@ -55,9 +58,9 @@ const ProfileThirdStep = ({
     else setProgrammingSkills(result);
   };
   const addHandler = (skills, softActive) => {
-    const result = skills.filter((skill) => (skill.split(' - ')[0] !== (softActive ? currentSoftSkills : currentProgrammingSkill)));
-    if (softActive) setSoftSkills([`${currentSoftSkills} - ${currentSoftProficiency}`, ...result]);
-    else setProgrammingSkills([`${currentProgrammingSkill} - ${currentProgrammingProficiency}`, ...result]);
+    const result = skills.filter((skill) => (skill.split(' - ')[0] !== (softActive ? currentSoftSkills.label : currentProgrammingSkill.label)));
+    if (softActive) setSoftSkills([`${currentSoftSkills.label} - ${currentSoftProficiency.label}`, ...result]);
+    else setProgrammingSkills([`${currentProgrammingSkill.label} - ${currentProgrammingProficiency.label}`, ...result]);
   };
   //   Passions Handlers
   const deletePassion = (addedPassion) => {
@@ -79,24 +82,39 @@ const ProfileThirdStep = ({
         <h2>Background</h2>
       </div>
       <div className={`row ${styles.nameRow}`}>
-        <div className="settings-phone-field col">
+        <div className="col-12">
           <label>Skillset</label>
-          <select placeholder="Select Skill" value={currentSoftSkills} onChange={(e) => setCurrentSoftSkills(e.target.value)}>
-            {softSkillsList.map((s) => (
-              <option value={s.label} key={s.label}>{s.label}</option>
-            ))}
-          </select>
-
+        </div>
+        <div style={{ display: 'unset', padding: '0' }} className={`col ${styles.socialCol}`}>
+          <Select
+            styles={customStyles}
+            components={{ DropdownIndicator }}
+            isClearable={false}
+            isSearchable
+            onChange={(newValue) => setCurrentSoftSkills(newValue)}
+            options={softSkillsList}
+            value={currentSoftSkills}
+          />
         </div>
       </div>
       <div className={`row ${styles.nameRow}`}>
         <div className="col-8">
-          <label>Proficiency Level</label>
-          <select placeholder="Select Skill" value={currentSoftProficiency} onChange={(e) => setCurrentSoftProficiency(e.target.value)}>
-            {proficiencies.map((p) => (
-              <option value={p.label} key={p.label}>{p.label}</option>
-            ))}
-          </select>
+          <div className={`row ${styles.selectRow}`}>
+            <div className="col-12">
+              <label>Proficiency Level</label>
+            </div>
+            <div style={{ display: 'unset', padding: '0' }} className={`col ${styles.socialCol}`}>
+              <Select
+                styles={customStyles}
+                components={{ DropdownIndicator }}
+                isClearable={false}
+                isSearchable
+                onChange={(newValue) => setCurrentSoftProficiency(newValue)}
+                options={proficiencies}
+                value={currentSoftProficiency}
+              />
+            </div>
+          </div>
 
         </div>
         <div className={`${styles.addButton} col-4`}>
@@ -120,25 +138,39 @@ const ProfileThirdStep = ({
         }
       </div>
       <div className={`row ${styles.nameRow}`}>
-        <div className="settings-phone-field col">
+        <div className="col-12">
           <label>Programming Skills</label>
-          <select placeholder="Programming skill" value={currentProgrammingSkill} onChange={(e) => setCurrentProgrammingSkill(e.target.value)}>
-            {programmingLanguages.map((p) => (
-              <option value={p.label} key={p.label}>{p.label}</option>
-            ))}
-          </select>
-
+        </div>
+        <div style={{ display: 'unset', padding: '0' }} className={`col ${styles.socialCol}`}>
+          <Select
+            styles={customStyles}
+            components={{ DropdownIndicator }}
+            isClearable={false}
+            isSearchable
+            onChange={(newValue) => setCurrentProgrammingSkill(newValue)}
+            options={programmingLanguages}
+            value={currentProgrammingSkill}
+          />
         </div>
       </div>
       <div className={`row ${styles.nameRow}`}>
         <div className="col-8">
-          <label>Proficiency Level</label>
-          <select placeholder="Select Skill" value={currentProgrammingProficiency} onChange={(e) => setCurrentProgrammingProficiency(e.target.value)}>
-            {proficiencies.map((p) => (
-              <option value={p.label} key={p.label}>{p.label}</option>
-            ))}
-          </select>
-
+          <div className={`row ${styles.selectRow}`}>
+            <div className="col-12">
+              <label>Proficiency Level</label>
+            </div>
+            <div style={{ display: 'unset', padding: '0' }} className={`col ${styles.socialCol}`}>
+              <Select
+                styles={customStyles}
+                components={{ DropdownIndicator }}
+                isClearable={false}
+                isSearchable
+                onChange={(newValue) => setCurrentProgrammingProficiency(newValue)}
+                options={proficiencies}
+                value={currentProgrammingProficiency}
+              />
+            </div>
+          </div>
         </div>
         <div className={`${styles.addButton} col-4`}>
           <a onClick={() => addHandler(programmingSkills, false)}>

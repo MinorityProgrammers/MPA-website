@@ -74,8 +74,10 @@
         border-radius: 50%;
     }
 }
-.completed .stepName{
+.completed{
+    .stepName,.stepNameEven{
     color: #fff;
+    }
 }
 .stepperItem.completed::after {
     position: absolute;
@@ -113,7 +115,7 @@ content: none;
     background: #24203B;
     border-radius: 8px;
     border: 1px solid #6938EF;
-    height: 60px;
+    // height: 60px;
     width: 100%;
     color: rgb(255, 255, 255);
     padding: 1rem;
@@ -266,7 +268,7 @@ content: none;
     margin: 0 15px;
     display: flex;
 }
-.socialCol div {
+.socialCol> div {
     margin: 0 1.7rem 0 1rem;
 }
 .socialCol img {
@@ -287,6 +289,13 @@ content: none;
 }
 .addLinkBtn{
     padding: 6px;
+    min-width: 52px;
+    margin: auto;
+}
+.addLinkBtn img{
+    border: 1px solid #6938EF;
+    border-radius: 50%;
+    padding: 5px;
 }
 .add-socail-links .addLinkBtn{
     margin: 0;
@@ -295,4 +304,39 @@ content: none;
     max-height: 30px;
     margin: auto;
     margin-right: 15px;
+}
+.socailAdd{
+    background: #6938EF;
+}
+.socailAddBtn img{
+    border-color: #fff;
+    transform: rotate(135deg);
+    transition: .4s ease;
+}
+.socialAddLink{
+    margin: 20px 0;
+    padding: 0 15px;
+}
+.socialAddLink .socialCol{
+    margin: 0;
+}
+.socialAddLink .socialCol >div{
+    margin: 0;
+}
+.submitLinkBtn{
+    transition:  .4s ease;
+    cursor: pointer;
+    padding: 1rem 5px;
+}
+.submitLinkBtn:hover{
+    background: #6938EF;
+}
+.selectRow{
+    margin:0;
+}
+.selectRow >div{
+    padding: 0px;
+}
+.selectRow .socialCol{
+    margin: 5px 0;
 }

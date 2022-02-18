@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import DatePicker from 'react-datepicker';
 import PhoneInput from 'react-phone-input-2';
 import Select from 'react-select';
+import DropdownIndicator from './DropdownIndicator';
 import {
   ethnicities,
   nationalities,
@@ -12,13 +13,15 @@ import { GlobalContext } from '../../contexts/provider';
 import updateProfileJSON from '../../contexts/actions/profile/updateProfileJSON';
 
 const ProfileFirstStep = ({
-  data, setStep, step, dates,
+  data, setStep, step, dates, customStyles,
 }) => {
   const [firstName, setFirstName] = useState(data.firstName);
   const [lastName, setLastName] = useState(data.lastName);
-  const [gender, setGender] = useState(data.Gender);
+  const [gender, setGender] = useState({ label: data.Gender, value: data.Gender });
   const [phoneNumber, setPhoneNumber] = useState(`+${data.phoneNumber}`);
-  const [nationality, setNationality] = useState(data.Nationality);
+  const [nationality, setNationality] = useState(
+    { label: data.Nationality, value: data.Nationality },
+  );
   const [ethnicity, setEthnicity] = useState(data.Ethnicity);
   const [startDate, setStartDate] = useState(dates.birthdayDate);
   // update userData
@@ -34,9 +37,9 @@ const ProfileFirstStep = ({
     setStartDate(dates.birthdayDate);
     setFirstName(data.firstName);
     setLastName(data.lastName);
-    setGender(data.Gender);
+    setGender({ label: data.Gender, value: data.Gender });
     setPhoneNumber(`+${data.phoneNumber}`);
-    setNationality(data.Nationality);
+    setNationality({ label: data.Nationality, value: data.Nationality });
     setEthnicity(data.Ethnicity);
   };
   const submitHandler = (e) => {
@@ -47,8 +50,8 @@ const ProfileFirstStep = ({
       phoneNumber,
       birthday: startDate,
       Ethnicity: ethnicity,
-      Nationality: nationality,
-      Gender: gender,
+      Nationality: nationality.label,
+      Gender: gender.label,
     };
       // submit data
     updateProfileJSON(
@@ -78,12 +81,23 @@ const ProfileFirstStep = ({
           {startDate && <DatePicker placeholderText="Select" selected={startDate} onChange={(date) => setStartDate(date)} />}
         </div>
         <div className="col-lg-6">
-          <label>Gender </label>
-          <select placeholder="Select" value={gender} onChange={(e) => setGender(e.target.value)}>
-            {genders.map((g) => (
-              <option value={g.label} key={g.label}>{g.label}</option>
-            ))}
-          </select>
+          <div className={`row ${styles.selectRow}`}>
+            <div className="col-12">
+              <label>Gender</label>
+            </div>
+            <div style={{ display: 'unset', padding: '0' }} className={`col ${styles.socialCol}`}>
+              <Select
+                styles={customStyles}
+                components={{ DropdownIndicator }}
+                isClearable={false}
+                isSearchable
+                onChange={(newValue) => setGender(newValue)}
+                options={genders}
+                placeholder="Select  Nationality"
+                value={gender}
+              />
+            </div>
+          </div>
         </div>
       </div>
       <div className={`row ${styles.nameRow}`}>
@@ -99,22 +113,32 @@ const ProfileFirstStep = ({
         </div>
       </div>
       <div className={`row ${styles.nameRow}`}>
-        <div className="settings-phone-field col">
+        <div className="col-12">
           <label>Nationality </label>
-          <select placeholder="Select  Nationality" value={nationality} onChange={(e) => setNationality(e.target.value)}>
-            {nationalities.map((country) => (
-              <option value={country.label} key={country.label}>{country.label}</option>
-            ))}
-          </select>
-
+        </div>
+        <div style={{ display: 'unset', padding: '0' }} className={`col ${styles.socialCol}`}>
+          <Select
+            styles={customStyles}
+            components={{ DropdownIndicator }}
+            isClearable={false}
+            isSearchable
+            onChange={(newValue) => setNationality(newValue)}
+            options={nationalities}
+            placeholder="Select  Nationality"
+            value={nationality}
+          />
         </div>
       </div>
       <div className={`row ${styles.nameRow}`}>
-        <div className="settings-phone-field col">
-          <label>Ethnicity</label>
+        <div className="col-12">
+          <label>Ethnicity </label>
+        </div>
+        <div style={{ display: 'unset', padding: '0' }} className={`col ${styles.socialCol}`}>
           <Select
             isMulti
             isClearable
+            styles={customStyles}
+            components={{ DropdownIndicator }}
             onChange={handleChange}
             options={ethnicities}
             placeholder="Select Ethnicity"
