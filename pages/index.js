@@ -3,7 +3,8 @@ import ComingSoon from '../components/ComingSoon';
 import Footer from '../components/Footer';
 // import HomepageAbout from '../components/homepage/HomepageAbout';
 // import HomepageApp from '../components/homepage/HomepageApp';
-import HomepageCore from '../components/homepage/HomepageCore';
+// import HomepageCore from '../components/homepage/HomepageCore';
+import HomepageCore2 from '../components/homepage/HomepageCore2';
 import HomepageDonate from '../components/homepage/HomepageDonate';
 import HomepageNav from '../components/homepage/HomepageNav';
 import HomePageNewTopSection from '../components/homepage/HomePageNewTopSection';
@@ -16,6 +17,9 @@ import MpaBuilder from '../components/mpa-builder/builder';
 import SidebarTwo from '../components/sidebar/SidebarTwo';
 import useDetectOutsideClick from '../components/UseDetectOutsideClick';
 import links from '../contexts/utils/links';
+import HomeCorePrinciples from '../components/homepage/HomeCorePrinciples'
+import ExploreMA from '../components/homepage/ExploreMA'
+import Donate from '../components/homepage/Donate'
 
 const HomepageFour = () => {
   const [open, setOpen] = useState(false);
@@ -65,10 +69,15 @@ const HomepageFour = () => {
               />
               {hide === false && <ComingSoon closeClick={handleClick} />}
               <HomePageNewTopSection />
-              <HomepageCore />
-              <HomepageTestimonials />
-              <HomePageReviews />
-              <HomepageDonate />
+              <HomepageCore2 />
+              <HomeCorePrinciples />
+              <ExploreMA />
+              <Donate />
+              {/**
+              // <HomepageTestimonials />
+              // <HomePageReviews />
+              // <HomepageDonate />
+              */}
               <Footer />
             </>
           )}

@@ -153,12 +153,13 @@ const Account = function () {
     return (
       <>
         <div
-          className="tw-bg-blue-600 hover:tw-bg-blue-700 tw-text-white tw-text-center tw-font-bold tw-py-1.5 tw-px-1.5 tw-rounded tw-w-11/12 tw-cursor-pointer"
+          className="tw-bg-blue-600 hover:tw-bg-blue-700 tw-text-white tw-text-center tw-py-1.5 tw-px-1.5 tw-rounded tw-w-11/12 tw-cursor-pointer"
           onClick={() => {
             openAuthModal();
           }}
+          style={{ background: '#8040D2', borderRadius: '100px', padding: '7px 0px', width: '140px' }}
         >
-          <p className="tw-text-sm">Connect</p>
+          <p className="tw-text-sm">Connect Wallet</p>
         </div>
         <Modal
           title={false}
@@ -168,7 +169,7 @@ const Account = function () {
           closable={false}
         >
           <Row className="tw-mb-5">
-            <Col span={20} className="tw-flex-1 tw-font-bold tw-text-lg">
+            <Col span={20} className="tw-flex-1 tw-text-lg">
               Connect wallet
             </Col>
             <Col span={4} className="flex-1">

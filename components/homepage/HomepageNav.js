@@ -20,6 +20,11 @@ import useDetectOutsideClick from '../UseDetectOutsideClick';
 import HomepageNavLoggedin from './HomepageNavLoggedin';
 import HomepageNavLogin from './HomepageNavLogin';
 
+// the main stylesheet
+import styles from '../module-css/header/home_page_nav.module.css';
+
+// tw-flex tw-flex-row tw-justify-around tw-w-1/4 tw-my-8 navbar__right md:tw-hidden
+
 let web3Modal;
 let selectedAccount = null; // address the use of this variable
 let provider;
@@ -482,7 +487,7 @@ const HomepageNav = ({
 
   return (
     <header
-      className="homepage__header"
+      className={styles.header}
       style={
         router.pathname === '/auth'
           ? { top: '0rem', paddingBottom: '28px' }
@@ -507,9 +512,9 @@ const HomepageNav = ({
 
         <div className="tw-flex tw-flex-row tw-justify-between tw-w-full">
           <div className="3xl:tw-block md:tw-block">
-            <div className="navbar-logo">
+            <div className={styles.navbar_logo_format}>
               <Link href="/" onClick={closeMobileMenu}>
-                <img src="/assets/images/mpicon.svg" alt="" />
+                <img src="/assets/images/mpicon.svg" alt="" className={styles.main_logo} />
               </Link>
             </div>
           </div>
@@ -597,7 +602,7 @@ const HomepageNav = ({
                   <a>INCUBATOR</a>
                 </Link>
               </li>
-              {/* <li
+              <li
                 className={
                   router.pathname === '/mentorshipProgram'
                     ? 'nav-item active-link'
@@ -611,7 +616,7 @@ const HomepageNav = ({
                 >
                   <a>MENTORSHIP</a>
                 </Link>
-              </li> */}
+              </li> 
               <li
                 className={
                   router.pathname === '/events'
@@ -642,23 +647,26 @@ const HomepageNav = ({
                   <a>CAREERS</a>
                 </Link>
               </li>
-              {/* <li
-                className={
-                  router.pathname === '/consultancy_explainer'
-                    ? 'nav-item active-link'
-                    : 'nav-item'
-                }
-                onMouseEnter={onMouseEnter}
-                onMouseLeave={onMouseLeave}
-              >
-                <Link
-                  href="/consultancy_explainer"
-                  className="nav-links"
-                  onClick={extendEle}
+
+                <li
+                        className={
+                                router.pathname === '/consultancy_explainer'
+                                ? 'nav-item active-link'
+                                : 'nav-item'
+                        }
+                        onMouseEnter={onMouseEnter}
+                        onMouseLeave={onMouseLeave}
                 >
-                  <a>CONSULTANCY</a>
-                </Link>
-              </li> */}
+                        <Link
+                                href="/consultancy_explainer"
+                                className="nav-links"
+                                onClick={extendEle}
+                        >
+                        <a>CONSULTANCY</a>
+                        </Link>
+                </li> 
+
+              {/*
               <li
                 className={
                   router.pathname === 'https://snapshot.org/#/minorityprogrammers.eth'
@@ -674,8 +682,11 @@ const HomepageNav = ({
                   <a>JOIN</a>
                 </Link>
               </li>
+               */}
             </ul>
-            <ul className="tw-flex tw-flex-row tw-justify-around tw-w-1/4 tw-my-8 navbar__right md:tw-hidden">
+            {/** added an inline style because tailwing configuration is 25% */}
+            <ul className="tw-flex tw-flex-row tw-justify-around tw-w-1/4 tw-my-8 navbar__right md:tw-hidden" style={{width: '18%'}}>
+               {/**  ** SEARCH FUNCTIONALITY IS COMMENTED
               <li>
                 <div className="tw-flex tw-flex-row tw-w-full tw-border tw-border-gray-700 tw-rounded-md tw-px-1 tw-text-gray-500">
                   <input
@@ -694,6 +705,7 @@ const HomepageNav = ({
                   </button>
                 </div>
               </li>
+              */}
               <li>
                 <div className="tw-w-full tw-mx-2 tw-cursor-pointer">
                   <Account />
@@ -727,6 +739,7 @@ const HomepageNav = ({
                   <i
                     aria-hidden
                     className="fas fa-user-circle tw-content-center tw-text-center NavIcon tw-cursor-pointer tw-mt-2"
+                    style={{margin: 0 }}
                     onClick={onClick}
                   />
                   {isActive ? (
@@ -737,7 +750,7 @@ const HomepageNav = ({
                 </li>
               )}
               {/* <li>
-              <NativeBalance />
+              <NativeBalance /> 
             </li> */}
             </ul>
           </div>

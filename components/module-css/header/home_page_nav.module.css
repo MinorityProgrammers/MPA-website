@@ -1,0 +1,20 @@
+/* .navbar logo removed */
+
+
+header.header {
+
+        background: #14152A !important;
+        padding: 13px 0 13px 0;
+        border-bottom: 1px solid #8040D2;
+
+}
+
+.navbar_logo_format {
+        height: 20px;
+        width: 60px;
+}
+
+.main_logo {
+        margin: 30px 30px 30px 70px;
+}
+

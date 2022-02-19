@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;700&display=swap');
 
 /*
-* 1. common styles
+* 1. common styles homepage__hero
 */
 
 /* h1,
@@ -6882,9 +6882,9 @@ html {
   position: relative;
   font-family: 'Graphik', sans-serif;
   letter-spacing: 0.5px;
-  font-size: 0.9rem;
+  font-size: 0.7rem;
   font-weight: 500;
-  color: #3e385d;
+  color: white;
   -webkit-transition: all 0.4s ease;
   transition: all 0.4s ease;
   
@@ -7189,13 +7189,13 @@ html {
   display: flex;
   align-items: center;
   font-size: 1.2rem;
-  margin-top: -1rem;
+  margin-top: 0rem;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 999;
-  background-color: #efefef;
+  background-color: #14152A;
   -webkit-box-shadow: 0px 6px 13px 0px rgba(0, 0, 0, 0.06);
   box-shadow: 0px 6px 13px 0px rgba(167, 167, 167, 0.11);
   -webkit-animation: fadeInDown 0.3s ease-in-out 0s 1 normal none running;
@@ -7208,10 +7208,10 @@ html {
 }
 
 .sticky-menu ul.nav-menu > li > a {
-  font-size: 16px;
+  font-size: 12px;
 }
 .sticky-menu .navbar-logo {
-  width: 180px;
+  width: 120px;
 }
 .sticky-menu .dropdown-menu {
   top: 58px;
@@ -7642,11 +7642,11 @@ html {
 /* Hero */
 .homepage__hero {
   position: relative;
-  padding-top: 60px;
+  padding-top: 1px;
   font-family: 'Red Hat Display', sans-serif;
   color: #fff;
   /* background: linear-gradient(90deg, #ff00b8 0%, #ff655b 50.8%, #ffc700 100%); */
-  background-color: #efefef;
+  background-color: #14152A;
 }
 .homepage__hero .container {
   margin-top: 2rem;

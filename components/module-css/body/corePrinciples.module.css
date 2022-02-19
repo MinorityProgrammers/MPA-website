@@ -1,0 +1,46 @@
+
+.root{
+        text-align: center;
+        color: white;
+        background: #14152A;
+}
+
+.root h2 {
+        background: linear-gradient(to right, #9379FF 0%, #33D2FF 95.31%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        
+        font-weight: bold;
+        font-family: 'poppins';
+        font-size: 40px;
+        padding: 50px;
+}
+
+.flex_con {
+        display: flex;
+        justify-content: space-around;
+}
+
+.flex_con > div {
+        border: 1px solid #6938EF;
+        border-radius: 20px;
+        width: 300px;
+        padding: 20px;
+        margin: 20px;
+}
+
+.h3 {
+        color: white;
+        font-size: 26px;
+        line-height: 3em;
+}
+
+.flex_con_img {
+
+}
+
+.flex_con_img img {
+
+        margin: auto;
+        padding: 10px;
+}

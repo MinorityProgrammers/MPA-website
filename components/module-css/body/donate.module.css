@@ -1,0 +1,18 @@
+.head {  
+        font-family: SF Pro Display;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 72px;
+        line-height: 86px;
+        /* identical to box height */
+        
+        letter-spacing: 0.03em;
+        
+        color: #33D2FF;
+}
+
+
+.root {
+        text-align: center;
+        background: #14152A;
+}

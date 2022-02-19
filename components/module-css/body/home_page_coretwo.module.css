@@ -1,0 +1,107 @@
+.parent {
+        height: 500px;
+        background: #14152A;
+        color: white;
+}
+
+
+.color_gradient_head {
+            
+        background: linear-gradient(to right, #9379FF 0%, #33D2FF 95.31%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        
+        font-weight: bold;
+        font-family: 'poppins';
+        
+        letter-spacing: 1px;
+        font-size: 37px;
+        line-height: 85px;
+
+}
+
+.color_gradient_number {
+            
+        background: linear-gradient(to right, #9379FF 0%, #33D2FF 95.31%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        
+        font-weight: bold;
+        font-family: 'poppins';
+        font-size: 20px;
+}
+
+.inner_second_div {
+
+        display: flex;
+        justify-content: space-between;
+
+}
+
+.hp_first_div {
+
+        display: flex;
+        height: 350px;
+        margin: 10px;
+        
+}
+
+.down_button {
+        color: white;
+        display: flex;
+        align-items: flex-end;
+}
+
+.down_button button a{
+        color: white;
+        text-transform: capitalize;
+}
+
+.down_button button {
+        background: linear-gradient(to right, #9379FF 15.63%, #6854BA 100%);
+        padding: 10px 30px;
+}
+
+
+.play_button {
+        color: white;
+        justify-content: center;
+        display: flex;
+        width: 50%;
+        align-items: center;
+}
+
+.text_note {
+        font-size: 17px;
+}
+
+.inner_second_div_first_p {
+        line-height: 36px;
+}
+
+.parent2_h2 {
+
+        background: linear-gradient(to right, #9379FF 0%, #33D2FF 95.31%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        
+        font-weight: bold;
+        font-family: 'poppins';
+        font-size: 42px;
+        padding: 25px 25px 0px 25px;
+        text-align: center;
+
+}
+
+.parent2_p {
+
+        color: white;
+        font-size: 17px;
+        padding: 20px;
+        width: 51%;
+        margin: auto;
+    
+        text-align: center;
+
+
+}

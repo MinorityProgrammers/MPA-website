@@ -1,0 +1,84 @@
+
+.root {
+        text-align: center;
+        background: #14152A;
+}
+
+
+.h2 {
+        background: linear-gradient(to right, #9379FF 25%, #33D2FF 85.31%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        
+        font-weight: bold;
+        font-family: 'poppins';
+        font-size: 37px;
+        padding: 10px;
+}
+
+.h3 {    
+        background: linear-gradient(to right, #33D2FF 35%, #9379FF 57%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        
+        padding: 10px;
+        font-weight: bold;
+        font-family: 'poppins';
+        font-size: 30px;
+}
+
+.main_div {
+
+        background: white;
+        /* margin: 20px; */
+        border-radius: 20px;
+        margin: auto;
+        width: 80%;
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        border: 4px solid #6938EF;
+
+
+}
+.main_div_in1 {
+        text-align: left;
+}
+
+.main_div_in1 h3{    
+        color: #926DC2;
+        line-height: 20px;
+        font-weight: 800;
+        font-size: 23px;
+        letter-spacing: 1px;
+        padding: 20px 0px;
+}
+
+.main_div_in1 p{
+        color: black;
+        line-height: 20px;
+}
+
+
+.main_div_in2 {
+        background: linear-gradient(180deg, #009CDF 0%, #A259FF 100%);
+        border-radius: 0px 60px 60px 0px;
+}
+.main_div_in2 span {
+        color: white;
+        font-weight: bold;
+        padding: 10px;
+        letter-spacing: 1px;
+        font-size: 22px;
+}
+.main_div_in2 div p {
+        color: white;
+        padding: 10px;
+        letter-spacing: 1px;
+        font-size: 20px;
+}
+
+.root2 {
+        text-align: center;
+        background: #14152A;
+}
