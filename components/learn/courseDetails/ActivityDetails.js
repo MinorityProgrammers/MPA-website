@@ -377,7 +377,7 @@ const ActivityDetails = ({
           </div>
         </div>
       </div>
-    </div>
+    </div >
   );
 };
 

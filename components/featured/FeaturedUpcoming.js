@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import ReactPaginate from 'react-paginate';
-import { Form } from 'react-bootstrap';
-import FeaturedCard from './FeaturedCard';
+import React, { useState, useEffect } from "react";
+import ReactPaginate from "react-paginate";
+import { Form } from "react-bootstrap";
+import FeaturedCard from "./FeaturedCard";
 
-const FeaturedUpcoming = ({
-  data, setClickRegister, userData, allfunded,
-}) => {
+const FeaturedUpcoming = ({ data, setClickRegister, userData, allfunded }) => {
   const [pageNumber, setPageNumber] = useState(0);
   const [search, setSearch] = useState();
   const [searchResults, setSearchResults] = useState(data);
@@ -33,7 +31,8 @@ const FeaturedUpcoming = ({
   const changePage = ({ selected }) => {
     setPageNumber(selected);
   };
-  const filterNames = ({ name }) => name.toLowerCase().indexOf(search.toLowerCase()) !== -1;
+  const filterNames = ({ name }) =>
+    name.toLowerCase().indexOf(search.toLowerCase()) !== -1;
 
   useEffect(() => {
     if (!search) return setSearchResults(data);
@@ -46,16 +45,19 @@ const FeaturedUpcoming = ({
       <div className="container">
         <div className="row">
           <div className="col-lg-12 featured__text">
-            <h2 className="featured__title">All Startups</h2>
-            <Form.Control
-              className="search__bar"
-              placeholder="Search Startup"
-              onChange={(e) => setSearch(e.target.value)}
-            />
-            <p className="featured__subtitle tw-mt-3">
-              These visionary companies and disruptors are on their journey to
-              change the world.
-            </p>
+            <h2 className="featured__title mb-4">All Startups</h2>
+            <div className="tw-flex tw-flex-row tw-justify-around tw-items-center">
+              <Form.Control
+                className="search__bar"
+                placeholder="Search Startup"
+                onChange={(e) => setSearch(e.target.value)}
+              />
+              <div>
+                <button className="searchBtn" type="submit">
+                  Search
+                </button>
+              </div>
+            </div>
           </div>
           {!data ? (
             <div className="container text-center mt-3 mb-3 featured__card-empty">
@@ -72,8 +74,8 @@ const FeaturedUpcoming = ({
             <>
               {displayStartups}
               <ReactPaginate
-                previousLabel="Previous"
-                nextLabel="Next"
+                previousLabel="<"
+                nextLabel=">"
                 marginPagesDisplayed={0}
                 pageRangeDisplayed={2}
                 breakLabel="..."
