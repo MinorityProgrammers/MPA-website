@@ -1,7 +1,7 @@
-import React from 'react';
-import Swiper from 'react-id-swiper';
-import 'swiper/css/swiper.css';
-import FeaturedMyCard from './FeaturedMyCard';
+import React from "react";
+import Swiper from "react-id-swiper";
+import "swiper/css/swiper.css";
+import FeaturedMyCard from "./FeaturedMyCard";
 
 const FeaturedMyStartup = ({ data, setClickRegister, userData }) => {
   const params = {
@@ -10,8 +10,8 @@ const FeaturedMyStartup = ({ data, setClickRegister, userData }) => {
     speed: 700,
     spaceBetween: 0,
     navigation: {
-      nextEl: data.length >= 3 ? '.swiper-button-next' : '',
-      prevEl: data.length >= 3 ? '.swiper-button-prev' : '',
+      nextEl: data.length >= 3 ? ".swiper-button-next" : "",
+      prevEl: data.length >= 3 ? ".swiper-button-prev" : "",
     },
     autoplay: {
       delay: 3000,
@@ -45,14 +45,11 @@ const FeaturedMyStartup = ({ data, setClickRegister, userData }) => {
   return (
     <section className="featured__wrapper">
       <div className="container">
-        <div className="row">
-          <div className="col-lg-3 col-md-12 featured__text">
+        <div className="">
+          <div className=" featured__text">
             <h2 className="featured__title">My Startups</h2>
-            <p className="featured__subtitle">
-              These are startups you have some shares in
-            </p>
           </div>
-          <div className="col-lg-9 col-md-12 d-flex align-items-center justify-content-center ">
+          <div className="col-lg-12 col-md-12 d-flex align-items-center justify-content-center ">
             {userData === null && (
               <div className="container text-center mt-3 mb-3 featured__card-empty">
                 <h1 className="featured__card-title mb-3">
