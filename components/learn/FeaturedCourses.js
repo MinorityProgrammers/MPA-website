@@ -1,8 +1,8 @@
-import React from "react";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import FeaturedCourseList from "./FeaturedCourseList";
+import React, { useState } from 'react';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import FeaturedCourseList from './FeaturedCourseList';
 
 const FeaturedCourses = ({
   courses,
@@ -11,10 +11,12 @@ const FeaturedCourses = ({
   enrolledBtn,
   showModal,
 }) => {
+  const [sliderRef, setSliderRef] = useState(null);
   const coursesLength = courses.length;
 
   const conditionalInfinite = {
     dots: false,
+    arrows: false,
     speed: 2000,
     slidesToShow: 2,
     infinite: coursesLength > 2,
@@ -24,24 +26,14 @@ const FeaturedCourses = ({
       {
         breakpoint: 991,
         settings: {
-          slidesToShow: 2,
-          infinite: coursesLength > 2,
-        },
-      },
-      {
-        breakpoint: 768,
-        settings: {
           slidesToShow: 1,
-          infinite: coursesLength >= 1,
+          infinite: coursesLength > 1,
         },
       },
     ],
   };
-  const sameUserCourses =
-    courses &&
-    courses.filter((course) =>
-      enrolledCourses.some((eCourse) => course._id === eCourse.courseId._id)
-    );
+  const sameUserCourses = courses
+    && courses.filter((course) => enrolledCourses.some((eCourse) => course._id === eCourse.courseId._id));
 
   return (
     <div>
@@ -58,13 +50,21 @@ const FeaturedCourses = ({
         <div
           className={
             coursesLength > 2
-              ? "mt-3 courses-info pt-2 FRCourses"
-              : "mt-3 courses-info pt-2 featured-courses"
+              ? 'mt-3 courses-info pt-2 FRCourses'
+              : 'mt-3 courses-info pt-2 featured-courses'
           }
         >
-          <Slider {...conditionalInfinite}>
-            {courses &&
-              courses.map((course) => (
+          <div className="courses-slider-controllers">
+            <div onClick={sliderRef?.slickPrev}>
+              <i className="fas fa-chevron-circle-left" />
+            </div>
+            <div onClick={sliderRef?.slickNext}>
+              <i className="fas fa-chevron-circle-right" />
+            </div>
+          </div>
+          <Slider ref={setSliderRef} {...conditionalInfinite}>
+            {courses
+              && courses.map((course) => (
                 <FeaturedCourseList
                   showModal={showModal}
                   course={course}

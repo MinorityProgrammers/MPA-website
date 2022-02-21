@@ -270,7 +270,10 @@
   -webkit-transform: scale(1.015);
   transform: scale(1.015);
 }
-
+/* .FRCourses .slick-slide >div {
+  display: flex;
+  justify-content: center;
+} */
 @media (min-width: 769px) {
   .recommended-courses .slick-track,
   .user-courses .slick-track,
@@ -286,7 +289,12 @@
     right: 4.5%;
   }
 }
-
+@media (max-width: 992px) {
+  .FRCourses .slick-prev {
+    left: 89%;
+    top: -17.5%;
+  }
+}
 @media (max-width: 767px) {
   .my-courses h1 {
     font-size: 27px;

@@ -8,29 +8,54 @@
   box-shadow: inset -7px -7px 24px rgba(255, 255, 255, 0.04),
     inset 7px 7px 14px rgba(255, 255, 255, 0.09);
   border-radius: 16px;
-  height: 250px;
-  width: 480px;
+  /* height: 250px; */
+  width: 100%;
+  margin: 0 !important;
+  padding-bottom: 20px;
+}
+.FRCourses .slick-slide{
+  display: flex;
+}
+.FRCourses .slick-slide >div {
+  display: flex;
+  padding-right: 40px;
+}
+.courses-slider-controllers{
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+}
+.courses-slider-controllers div{
+  margin:15px 15px 20px 0;
+  cursor: pointer;
+}
+.courses-slider-controllers div i{
+  color: #fff;
+  font-size: 18px
+}
+.courses-slider-controllers div i:hover{
+  color: rgb(165, 165, 165);
+}
+@media only screen and (max-width: 1200px) {
+  .FRCourses .slick-slide >div {
+    display: flex;
+    padding-right: 25px;
+  }
 }
 
-@media only screen and (max-width: 500px) {
-  .courses-items {
-    width: 90%;
-    height: 18rem !important;
-    margin-left: 20px;
-  }
-  .courses-width {
-    width: 100%;
-  }
-}
 @media only screen and (max-width: 700px) {
   .courses-items {
-    width: 90%;
-    height: 300px !important;
-    margin-left: 20px;
+    /* width: 90%; */
+    /* height: 300px !important; */
+    /* margin-left: 20px; */
     position: relative;
+    display: flex;
+    flex-direction: column;
   }
   .course-items-footer {
-    position: absolute;
+    /* position: absolute; */
+    padding-top: 30px;
+    margin-top: auto;
     display: flex;
     bottom: 20px;
   }
@@ -43,8 +68,23 @@
   .enroll-arrow {
     display: none;
   }
+  .FRCourses .slick-slide >div{
+    padding-right: 0;
+  }
 }
-
+@media only screen and (max-width: 500px) {
+  .courses-items {
+    /* width: 90%; */
+    /* height: 18rem !important; */
+    margin-left: 20px;
+  }
+  .courses-width {
+    width: 100%;
+  }
+  .FRCourses .slick-slide >div{
+    padding: 0 20px;
+  }
+}
 .earn-rate {
   background-color: #8040D2;
   border-radius: 10px;
