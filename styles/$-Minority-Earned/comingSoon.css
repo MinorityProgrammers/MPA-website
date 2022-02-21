@@ -36,6 +36,7 @@
 
 .comingsoon-container > div > button{
   background: var(--tertiary-main);
+  border: 1px solid var(--tertiary-main);
 }
 
 @media only screen and (max-width: 500px) {

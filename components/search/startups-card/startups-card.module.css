@@ -5,9 +5,9 @@
   font-size: 1rem;
   cursor: pointer;
   padding: 1em;
-  border: 1px solid rgb(190, 193, 204);
+  border: 1px solid var(--secondary-accent-1);
   border-radius: 0.5em;
-  background: white;
+  background: var(--secondary-high-contrast);
   overflow: hidden;
   position: relative;
 }
@@ -23,7 +23,7 @@
 .imageContainer {
   width: 3em;
   height: 3em;
-  background: rgb(233, 233, 233);
+  background: var(--secondary-low-contrast);
   padding: 0.5em;
   margin-right: 2em;
 }
@@ -41,7 +41,7 @@
 
 .about {
   margin-bottom: 1em;
-  color: rgb(59, 59, 59);
+  color: var(--light-main);
 }
 
 .fundContainer {
@@ -62,7 +62,7 @@
 }
 
 .fundRate {
-  color: rgb(59, 59, 59);
+  color: var(--light-high-contrast);
 }
 
 .fundBar {
@@ -70,14 +70,14 @@
   margin-bottom: 1.5em;
   border-radius: 1em;
   height: 1em;
-  background: rgb(243, 239, 239);
+  background: var(--secondary-low-contrast);
   overflow: hidden;
   padding: 1px;
 }
 
 .reading {
   width: 70%;
-  background: #474BFF;
+  background: var(--tertiary-accent-1);
   height: 100%;
   border-radius: 1em;
 }
@@ -87,12 +87,12 @@
   padding: 0.5em;
   text-align: center;
   border-radius: 0.3em;
-  border: 1px solid #151371;
-  color: #151371;
+  border: 1px solid var(--tertiary-main);
+  color: white;
   transition: all 150ms;
 }
 
 .more:hover {
-  background: #151371;
+  background: var(--tertiary-main);
   color: white;
 }
