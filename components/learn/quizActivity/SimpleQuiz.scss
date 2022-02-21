@@ -1,4 +1,231 @@
+
 @font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/opensans/v20/mem8YaGs126MiZpBA-UFVZ0e.ttf) format('truetype');
+}
+@keyframes roll-in {
+  0% {
+    top: 10px;
+    opacity: 0;
+  }
+  100% {
+    top: 0;
+    opacity: 1;
+  }
+}
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes pulse {
+  from {
+    transform: scale3d(1, 1, 1);
+  }
+  50% {
+    transform: scale3d(1.05, 1.05, 1.05);
+  }
+  to {
+    transform: scale3d(1, 1, 1);
+  }
+}
+.pulse {
+  animation: pulse 1s infinite;
+}
+.fade-in {
+  animation: fade 0.75s ease;
+}
+.quiz {
+  margin: 2em auto;
+  min-height: 40vh;
+  font-size: 16px;
+}
+.quiz .progress {
+  position: relative;
+  transition: width 0.4s ease;
+  margin-bottom: 1em;
+  background: #b5b5b5;
+  border-radius: 0;
+  width: 100%;
+  height: 2em;
+  font-family: "Open Sans", "Helvetica", "Arial", sans-serif;
+}
+
+.quiz .progress .progress-bar {
+  background-color: #1d77cc;
+}
+.quiz .progress .counter {
+  position: absolute;
+  right: 5px;
+  top: 0;
+  font-weight: normal;
+  color: #fff;
+  height: 100%;
+  font-family: "Open Sans", "Helvetica", "Arial", sans-serif;
+  font-size: 1.25em;
+  margin: auto 0.5em;
+  letter-spacing: 0.025em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.quiz form {
+  width: 90%;
+  margin: 1.5em auto;
+}
+.quiz .img-fluid {
+  margin: 2em auto;
+  max-width: 360px;
+  display: block;
+}
+.quiz .question {
+  font-weight: bold;
+  line-height: 1.35;
+  margin-bottom: 0.75em;
+}
+.quiz .option {
+  margin-bottom: 0.25em;
+  transition: all 0.25s ease;
+  font-size: 0.9em;
+}
+.quiz button {
+  padding: 0.75em;
+  font-family: "Open Sans", "Helvetica", "Arial", sans-serif;
+  background-color: #1d77cc;
+  border: 0;
+  color: #fff;
+  font-size: 1em;
+  transition: 0.25s all;
+  white-space: nowrap;
+  font-weight: bold;
+  cursor: pointer;
+}
+.quiz button i {
+  margin-left: 0.15em;
+}
+.quiz button:disabled {
+  opacity: 0.5;
+}
+.quiz input[type="radio"] {
+  position: absolute;
+  left: -9999px;
+}
+.quiz input[type="radio"] + label {
+  position: relative;
+  font-weight: normal;
+  padding-left: 28px;
+  cursor: pointer;
+  line-height: 20px;
+  display: inline-block;
+  color: #666;
+}
+.quiz input[type="radio"] + label::before {
+  text-align: center;
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #ddd;
+  border-radius: 100%;
+  background: #fff;
+}
+.quiz input[type="radio"] + label::after {
+  content: '';
+  width: 12px;
+  height: 12px;
+  background-color: #222;
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  border-radius: 100%;
+  transition: all 0.2s ease;
+}
+.quiz .dim input[type="radio"] + label::before,
+.quiz .correct input[type="radio"] + label::before {
+  border: 0;
+  font-size: 1.2em;
+  animation: 0.25s roll-in ease;
+}
+.quiz .dim input[type="radio"] + label::after,
+.quiz .correct input[type="radio"] + label::after {
+  display: none;
+}
+.quiz .correct input[type="radio"] + label:before {
+  font-family: "Font Awesome 5 Free" !important;
+  content: '\f00C';
+  /* font-family: "FontAwesome" !important; */
+  
+  color: #36ad3b;
+}
+.quiz .dim input[type="radio"]:checked + label:before {
+  font-family: "Font Awesome 5 Free" !important;
+  content: '\f00d';
+  /* font-family: "FontAwesome" !important; */
+  
+  color: #ff1100;
+}
+.quiz input[type="radio"]:not(:checked) + label:after {
+  opacity: 0;
+  transform: scale(0);
+}
+.quiz input[type="radio"]:checked + label:after {
+  opacity: 1;
+  transform: scale(1);
+}
+.quiz .dim {
+  opacity: 0.5;
+}
+.quiz .bottom {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.quiz .bottom div {
+  flex: 1 1 70%;
+  font-size: 0.9em;
+}
+.quiz .bottom .next {
+  flex: 0 1 10%;
+  margin-left: 3em;
+}
+@media (max-width: 600px) {
+  .quiz .bottom div,
+  .quiz .bottom .next {
+    flex-basis: 100%;
+  }
+  .quiz .bottom .next {
+    margin-left: 0;
+  }
+}
+.quiz .get-results {
+  display: block;
+  margin: 2em auto;
+}
+.quiz .results {
+  
+  font-size: 1.1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 40vh;
+}
+.quiz .results h1 {
+  font-family: "Open Sans", "Helvetica", "Arial", sans-serif;
+}
+.quiz .results button {
+  margin-top: 1em;
+}@font-face {
   font-family: "Open Sans";
   font-style: normal;
   font-weight: 400;

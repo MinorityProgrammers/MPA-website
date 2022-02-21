@@ -1,4 +1,3 @@
-
 /* eslint-disable react/jsx-no-constructed-context-values */
 import React, { useEffect, useState, createContext } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -239,7 +238,7 @@ const ActivityDetails = ({
                           fontSize: '17px',
                           width: 'auto',
                           paddingLeft: '10px',
-                          paddingRight: '10px'
+                          paddingRight: '10px',
                         }
                       }
                     >
@@ -264,8 +263,12 @@ const ActivityDetails = ({
                 <div className="d-flex flex-row">
                   <button
                     type="button"
-                    onClick={() => { (setWatched(true), setIsOpen(true)) }}
-                    className="quiz-button p-3" style={{ lineHeight: '20px', border: '1px solid #6938EF', borderRadius: '20px', background: '#6938EF' }}>
+                    onClick={() => { (setWatched(true), setIsOpen(true)); }}
+                    className="quiz-button p-3"
+                    style={{
+                      lineHeight: '20px', border: '1px solid #6938EF', borderRadius: '20px', background: '#6938EF',
+                    }}
+                  >
                     <p style={{ fontSize: '17px', color: 'white' }}>
                       Take Quiz
                     </p>
@@ -374,7 +377,7 @@ const ActivityDetails = ({
           </div>
         </div>
       </div>
-    </div >
+    </div>
   );
 };
 

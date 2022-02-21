@@ -96,11 +96,11 @@ export default function SimpleQuiz() {
           <div className="question-container">
             <p className="question">{questions[currentQuestion].question}</p>
             <form ref={radioRef}>
-                {answer?.map((item, index) => (
-                <label 
-               htmlFor={`radio-${index}`} 
+              {answer?.map((item, index) => (
+                <label
+                  htmlFor={`radio-${index}`}
                 // class="input_radio"
-                key={`${index + 1}`}
+                  key={`${index + 1}`}
                   className={`option${
                     questions[currentQuestion].checked && !item.correct
                       ? ' dim'
@@ -111,15 +111,18 @@ export default function SimpleQuiz() {
                       : ''
                   }`}
                 >
-                <input id={`radio-${index}`}
+                  <input
+                    id={`radio-${index}`}
                     type="radio"
                     name="option"
                     value={item.correct}
                     disabled={questions[currentQuestion].checked}
-                      onClick={updateAnswer}
-                      className="input_tag"
-                    />
-        <span className="q_main">{item.option}</span></label>
+                    onClick={updateAnswer}
+                    className="input_tag"
+                  />
+                  <span className="q_main">{item.option}</span>
+
+                </label>
                 /* <div
                   key={`${index + 1}`}
                   className={`option${
@@ -156,26 +159,26 @@ export default function SimpleQuiz() {
               )}
               {currentQuestion + 1 < questions.length
                   && questions[currentQuestion].checked && (
-                <div className="spread-bottom">
+                  <div className="spread-bottom">
                     <div className="left_bottom">
                       <svg className="arrow_circle" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <circle cx="12" cy="12" r="9" transform="rotate(90 12 12)" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
-                      <path d="M12 8L8 12" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
-                      <path d="M16 12L8 12" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
-                      <path d="M12 16L8 12" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="12" cy="12" r="9" transform="rotate(90 12 12)" stroke="white" strokeLinecap="round" strokeLinejoin="round" />
+                        <path d="M12 8L8 12" stroke="white" strokeLinecap="round" strokeLinejoin="round" />
+                        <path d="M16 12L8 12" stroke="white" strokeLinecap="round" strokeLinejoin="round" />
+                        <path d="M12 16L8 12" stroke="white" strokeLinecap="round" strokeLinejoin="round" />
                       </svg>
                       <p className="back">back</p>
                     </div>
-                  <button
-                    className="fade-in next"
-                    type="button"
-                    onClick={nextQuestion}
-                  >
-                    Next
-                    {' '}
-                    <i className="fa fa-arrow-right" />
-                  </button>
-                </div>
+                    <button
+                      className="fade-in next"
+                      type="button"
+                      onClick={nextQuestion}
+                    >
+                      Next
+                      {' '}
+                      <i className="fa fa-arrow-right" />
+                    </button>
+                  </div>
               )}
               {currentQuestion + 1 === questions.length
                 && questions[currentQuestion].checked && (

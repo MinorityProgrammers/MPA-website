@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import decode from 'jwt-decode';
 import { signOut, useSession } from 'next-auth/client';
 import Link from 'next/link';
