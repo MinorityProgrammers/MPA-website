@@ -9,64 +9,95 @@ function Experience({
   expEditMode, expAddMode, handleExpImgUpload, setExpImg,
   uploadedExpImg, setExpAddMode, expDateInputTo, setExpDateInputFrom,
   setExpDateInputTo, setExpJobTitleInput, expDateInputFrom, expJobTitleInput,
-  company, setCompany, clearExpAdd, expLocationInput,
-  setExpLocationInput, link, completeExpAdd, setLink,
+  company, setCompany, clearExpAdd, expLocationInput, removeExp,
+  setExpLocationInput, link, completeExpAdd, setLink, setExpEditMode,
 }) {
   return (
     <div className="profileTopSection tw-relative tw-py-10 tw-z-10">
-      <section className="tw-max-w-6xl tw-mx-auto tw-rounded-xl tw-shadow-md md:tw-max-w-3xl topSection tw-py-10 tw-p-12 tw-flex tw-flex-col tw-justify-start">
-        <div className="tw-m-14 tw-text-3xl lg:tw-text-xl tw-font-medium tw-text-left tw-px-10 tw-text-gray-600">Experience</div>
-        <div className="tw-m-8 tw-px-10 tw-my-1 tw-w-full tw-flex tw-flex-col">
-          <div className="tw-flex tw-flex-row tw-flex-wrap">
+      <section className="tw-w-11/12 tw-mx-auto tw-rounded-xl tw-shadow-md topSection tw-py-10 tw-p-6 lg:tw-p-3 tw-flex tw-flex-col tw-justify-start">
+        <div className="tw-w-full tw-flex tw-flex-row ">
+          <div className="tw-m-2 tw-text-3xl lg:tw-text-xl tw-font-medium tw-text-left tw-px-10 tw-text-gray-600">Experience</div>
+          {isLoggedIn && ownsProfile && !!experienceCards?.length && (
+          <img
+            onClick={() => {
+              setExpEditMode(!expEditMode);
+            }}
+            className="tw-w-8 tw-h-8 tw-mt-2 tw-cursor-pointer"
+            src="/assets/new/edit.png"
+            alt="edit icon"
+          />
+          )}
+
+        </div>
+
+        <div className="tw-m-4 lg:tw-m-4 tw-px-8 lg:tw-px-4 tw-my-1 tw-w-full tw-flex tw-flex-col">
+          <div className="tw-flex tw-flex-row tw-flex-wrap lg:tw-w-col">
             {experienceCards?.length ? (
               experienceCards.map((exp) => (
-                <a href={exp?.link} target="_blank" rel="noreferrer">
-                  <div
-                    key={exp._id}
-                    className="tw-flex tw-py-5 tw-mx-8 tw-w-full tw-rounded-md tw-cursor-pointer"
-                  >
-                    <div className="tw-flex tw-flex-row tw-justify-around tw-w-full">
-                      <div className="careerPic tw-rounded-md">
+
+                <div
+                  key={exp._id}
+                  className="tw-flex tw-py-5 tw-mx-4 lg:tw-mx-2 tw-w-1/3 lg:tw-w-full  tw-rounded-md tw-cursor-pointer"
+                >
+                  <div className="tw-flex tw-flex-row tw-w-full">
+                    <div className="careerPic tw-rounded-md tw-flex tw-flex-col tw-mx-4">
+                      <a href={exp?.link} target="_blank" rel="noreferrer">
                         <img
-                          className="tw-w-20 tw-h-20"
+                          className="tw-w-20 tw-h-20 tw-mx-6"
                           src={exp.image}
                           alt={exp.title}
                         />
+                      </a>
+                      {expEditMode === true && (
+                        <span
+                          className="tw-my-4 tw-mx-3 tw-text-xs tw-font-bold tw-text-red-500 tw-cursor-pointer hover:tw-text-gray-500"
+                          onClick={() => removeExp(exp?._id)}
+                        >
+                          Remove
+                        </span>
+                      )}
+                    </div>
+                    <div className="tw-flex tw-flex-col">
+                      <p className="tw-text-white">{exp.company}</p>
+                      <div className="tw-flex tw-flex-row tw-my-2">
+                        <img
+                          className="tw-w-6 tw-h-6 tw-mr-4"
+                          src="/assets/images/profile/pin_alt.png"
+                          alt="Location"
+                        />
+                        <p className="tw-text-white">{exp?.location}</p>
                       </div>
-                      <div className="tw-flex tw-flex-col">
-                        <p className="tw-text-white">{exp.company}</p>
-                        <div className="tw-flex tw-flex-row tw-my-2">
-                          <img
-                            className="tw-w-6 tw-h-6 tw-mr-4"
-                            src="/assets/images/profile/pin_alt.png"
-                            alt="Location"
-                          />
-                          <p className="tw-text-white">{exp?.location}</p>
-                        </div>
-                        <div className="tw-flex tw-flex-row tw-my-2">
-                          <img
-                            className="tw-w-6 tw-h-6 tw-mr-4"
-                            src="/assets/images/profile/user.png"
-                            alt="user"
-                          />
-                          <p className="tw-text-white">{exp?.jobTitle}</p>
-                        </div>
-                        <div className="tw-flex tw-flex-row tw-my-2">
-                          <img
-                            className="tw-w-6 tw-h-6 tw-mr-4"
-                            src="/assets/images/profile/calendar.png"
-                            alt="calendar"
-                          />
-                          <p className="tw-text-white">{exp?.jobTitle}</p>
-                        </div>
+                      <div className="tw-flex tw-flex-row tw-my-2">
+                        <img
+                          className="tw-w-6 tw-h-6 tw-mr-4"
+                          src="/assets/images/profile/user.png"
+                          alt="user"
+                        />
+                        <p className="tw-text-white">{exp?.jobTitle}</p>
+                      </div>
+                      <div className="tw-flex tw-flex-row tw-my-2">
+                        <img
+                          className="tw-w-6 tw-h-6 tw-mr-4"
+                          src="/assets/images/profile/calendar.png"
+                          alt="calendar"
+                        />
+                        <p className="tw-text-white">
+                          {' '}
+                          {moment(exp?.from).calendar()}
+                          {' '}
+                          -
+                          {' '}
+                          {moment(exp?.to).calendar()}
+
+                        </p>
                       </div>
                     </div>
-
                   </div>
-                </a>
+
+                </div>
               ))
             ) : (
-              <span className="note tw-text-white tw-mx-4" style={{ cursor: 'default' }}>
+              <span className="note tw-text-white tw-m-4" style={{ cursor: 'default' }}>
                 No Experience yet
               </span>
             )}
@@ -77,7 +108,7 @@ function Experience({
                   && (!experienceCards?.length || !expEditMode) && (
                     <form
                       id="add-exp-fields"
-                      className="add-exp-edu tw-flex tw-items-center tw-w-full tw-m-8"
+                      className="add-exp-edu tw-flex lg:tw-flex-col tw-items-center tw-w-full tw-m-8 lg:tw-m-2"
                     >
                       {expAddMode && (
                       <div className="ee-fields tw-flex tw-flex-col tw-items-start tw-mb-2">
@@ -159,7 +190,7 @@ function Experience({
                         </div>
 
                         <div className="tw-flex tw-flex-col tw-my-2 tw-w-10/12">
-                          <label className="tw-text-white tw-my-1">Location</label>
+                          <label className="tw-text-white tw-my-1">Link</label>
                           <input
                             type="text"
                             placeholder="Link"
@@ -220,13 +251,16 @@ function Experience({
                       </div>
                     </form>
           )}
-          <div
-            className={`tw-m-8 tw-flex tw-flex-row tw-justify-evenly tw-rounded-md tw-cursor-pointer hover:tw-bg-gray-800 tw-w-1/4 topSection ${expAddMode ? 'new-bg' : ''}`}
-            onClick={() => setExpAddMode(!expAddMode)}
-          >
-            <img className="tw-w-10 tw-h-10" src="/assets/images/profile/add.png" alt="add" />
-            <p className="tw-text-gray-500 tw-mt-2">Add Experience</p>
-          </div>
+          {isLoggedIn && ownsProfile && (
+            <div
+              className="tw-m-8 tw-flex tw-flex-row tw-justify-evenly tw-rounded-md tw-cursor-pointer hover:tw-bg-gray-800 tw-w-1/4 lg:tw-w-1/2 topSection"
+              onClick={() => setExpAddMode(!expAddMode)}
+            >
+              <img className="tw-w-10 tw-h-10" src="/assets/images/profile/add.png" alt="add" />
+              <p className="tw-text-gray-500 tw-mt-2">Add Experience</p>
+            </div>
+          )}
+
         </div>
       </section>
     </div>

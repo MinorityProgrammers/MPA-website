@@ -239,7 +239,7 @@ const Account = () => {
   return (
     <>
       <div
-        className="new-bg tw-text-white tw-font-bold tw-text-center tw-py-2 tw-px-2 tw-rounded tw-cursor-pointer tw-w-11/12"
+        className="new-bg tw-text-white tw-font-bold tw-text-center tw-py-2 tw-px-2 tw-rounded tw-cursor-pointer tw-w-11/12 tw-ml-6"
         onClick={() => setIsModalVisible(true)}
       >
         <p className="tw-text-sm">
@@ -277,7 +277,7 @@ const Account = () => {
               </div>
               <h1
                 className="tw-text-white tw-font-bold tw-text-2xl hover:tw-text-gray-500 tw-cursor-pointer"
-                onClick={closeAuthModal}
+                onClick={() => setIsModalVisible(false)}
               >
                 X
               </h1>

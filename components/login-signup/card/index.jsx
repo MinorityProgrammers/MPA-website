@@ -72,20 +72,20 @@ export default function Index() {
     }
   }, []);
 
-  useEffect(() => {
-    if (data && submit) {
-      router.push(router.pathname);
-      if (router.pathname === '/auth') {
-        const loginSignUp = document.querySelector(
-          '.card_cardContainer__12vmM',
-        );
-        loginSignUp.style.display = 'none';
-      } else {
-        const loginSignUp = document.querySelector('.create_event');
-        loginSignUp.style.display = 'none';
-      }
-    }
-  }, [data]);
+  // useEffect(() => {
+  //   if (data && submit) {
+  //     router.push(router.pathname);
+  //     if (router.pathname === '/auth') {
+  //       const loginSignUp = document.querySelector(
+  //         '.card_cardContainer__12vmM',
+  //       );
+  //       loginSignUp.style.display = 'none';
+  //     } else {
+  //       const loginSignUp = document.querySelector('.create_event');
+  //       loginSignUp.style.display = 'none';
+  //     }
+  //   }
+  // }, [data]);
 
   const handleLoginSuccess = (res) => {
     googleAuth({ tokenId: res.tokenId })(authDispatch);
@@ -188,20 +188,21 @@ export default function Index() {
         <ul className={styles.socialMedia}>
           <li>
             <img
-              onClick={() => signIn(providers.google.id)}
-              src="./assets/images/login-signup/google.png"
-              className="tw-mx-4"
+              onClick={() => signIn(providers.linkedin.id)}
+              src="./assets/images/login-signup/linkin.png"
               alt="icon"
             />
           </li>
           <li>
             <img
-              onClick={() => signIn(providers.facebook.id)}
-              src="./assets/images/login-signup/facebook.png"
-              className="tw-mx-4"
+              onClick={() => signIn(providers.github.id, {
+                callbackUrl: 'https://minorityprogrammers.com/auth',
+              })}
+              src="./assets/images/login-signup/github.png"
               alt="icon"
             />
           </li>
+
         </ul>
         <div className={styles.mid}>
           <div className={styles.line} />

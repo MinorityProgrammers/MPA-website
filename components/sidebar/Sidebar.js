@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { IoLogOutOutline } from 'react-icons/io5';
-import { signOut } from 'next-auth/client';
+import { signOut, useSession } from 'next-auth/client';
 import { AiOutlineDown, AiOutlineMessage, AiOutlineUser } from 'react-icons/ai';
 import { FiUser } from 'react-icons/fi';
 import { BiKey } from 'react-icons/bi';
@@ -16,6 +16,8 @@ const Sidebar = ({
   const [sidebar, setSidebar] = useState(false);
   const [pages, setPages] = useState(false);
   const [users, setUser] = useState(false);
+  const [session] = useSession();
+
   const { role } = authUser || 'student';
 
   return (
@@ -94,7 +96,7 @@ const Sidebar = ({
                   <Tooltip title="Logout">
                     <span
                       className="tw-cursor-pointer"
-                      onClick={() => signOut()}
+                      onClick={() => { if (session) signOut(); }}
                     >
                       <IoLogOutOutline />
                     </span>
@@ -249,7 +251,7 @@ const Sidebar = ({
                         </div>
                         <span
                           className="tw-text-sm tw-cursor-pointer"
-                          onClick={() => signOut()}
+                          onClick={() => { if (session) signOut(); }}
                         >
                           Logout
                         </span>

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import decode from "jwt-decode";
 import { signOut } from "next-auth/client";
 import Link from "next/link";
@@ -12,6 +13,24 @@ import Account from "../Account";
 import useDetectOutsideClick from "../UseDetectOutsideClick";
 import HomepageNavLoggedin from "./HomepageNavLoggedin";
 import HomepageNavLogin from "./HomepageNavLogin";
+=======
+import decode from 'jwt-decode';
+import { signOut, useSession } from 'next-auth/client';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import React, {
+  useContext, useEffect, useRef, useState,
+} from 'react';
+import { BiMenuAltLeft } from 'react-icons/bi';
+import { useMoralis } from 'react-moralis';
+import { LOGOUT_USER } from '../../contexts/actions/actionTypes';
+import getProfile from '../../contexts/actions/profile/getProfile';
+import { GlobalContext } from '../../contexts/provider';
+import Account from '../Account';
+import useDetectOutsideClick from '../UseDetectOutsideClick';
+import HomepageNavLoggedin from './HomepageNavLoggedin';
+import HomepageNavLogin from './HomepageNavLogin';
+>>>>>>> 80f60c2bd87ae99326c5b932f7441df0f44c0087
 
 const HomepageNav = ({ setToken, setData, page, open, setOpen = () => {} }) => {
   const dropdownRef = useRef(null);
@@ -33,6 +52,7 @@ const HomepageNav = ({ setToken, setData, page, open, setOpen = () => {} }) => {
     false
   );
   const [, setConnect] = useState(false);
+  const [session] = useSession();
 
   const { isWeb3Enabled, isAuthenticated, isWeb3EnableLoading } = useMoralis();
 
@@ -137,7 +157,9 @@ const HomepageNav = ({ setToken, setData, page, open, setOpen = () => {} }) => {
         setToken(token);
       }
     }
-  }, [data]);
+  }, [data, typeof window !== 'undefined'
+    ? window.localStorage.getItem('jwtToken')
+    : null]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -159,7 +181,9 @@ const HomepageNav = ({ setToken, setData, page, open, setOpen = () => {} }) => {
     authDispatch({
       type: LOGOUT_USER,
     });
-    signOut();
+    if (session) {
+      signOut();
+    }
   };
 
   useEffect(() => {
@@ -358,7 +382,7 @@ const HomepageNav = ({ setToken, setData, page, open, setOpen = () => {} }) => {
                   <li onClick={() => setOpen(!open)}>
                     <span
                       className="tw-cursor-pointer tw-text-blue-700 tw-hover:text-white"
-                      style={{ fontSize: "1.1rem" }}
+                      style={{ fontSize: '1.1rem' }}
                     >
                       All
                     </span>
@@ -506,6 +530,7 @@ const HomepageNav = ({ setToken, setData, page, open, setOpen = () => {} }) => {
                   <li>
                     {userData.profilePicture ? (
                       <img
+<<<<<<< HEAD
                         className="tw-content-center tw-text-center tw-cursor-pointer tw-mt-2 tw-h-9 tw-rounded-full tw-w-9"
                         onClick={onClick}
                         src={userData.profilePicture}
@@ -516,6 +541,18 @@ const HomepageNav = ({ setToken, setData, page, open, setOpen = () => {} }) => {
                         className="fa-user-circle fas tw-content-center tw-text-center NavIcon tw-cursor-pointer tw-mt-2"
                         onClick={onClick}
                       />
+=======
+                        className="tw-content-center tw-text-center tw-cursor-pointer tw-h-9 tw-rounded-full tw-w-9"
+                        onClick={onClick}
+                        src={userData.profilePicture}
+                        alt="profile"
+                      />
+                    ) : (
+                      <i
+                        className="fa-user-circle fas tw-content-center tw-text-center NavIcon tw-cursor-pointer tw-mt-2"
+                        onClick={onClick}
+                      />
+>>>>>>> 80f60c2bd87ae99326c5b932f7441df0f44c0087
                     )}
 
                     {isActive ? (
