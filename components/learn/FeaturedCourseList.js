@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const FeaturedCourseList = ({
   course,
@@ -7,7 +7,9 @@ const FeaturedCourseList = ({
   enrolledBtn,
   showModal,
 }) => {
-  const { earn, name, description, _id, tags } = course;
+  const {
+    earn, name, description, _id, tags,
+  } = course;
 
   const userCoursesId = [];
   sameUserCourses.forEach((userCourse) => {
@@ -26,7 +28,7 @@ const FeaturedCourseList = ({
         ))}
       </p>
 
-      <div className="text-center pb-4">
+      <div className="text-cente">
         {userCoursesId.includes(_id) ? (
           <>
             <div className="align-div">
@@ -48,7 +50,11 @@ const FeaturedCourseList = ({
           </>
         ) : !userCoursesId.includes(_id) ? (
           <div className="course-items-footer">
-            <p className="course-earn-style">Earn {earn}</p>
+            <p className="course-earn-style">
+              Earn
+              {' '}
+              {earn}
+            </p>
             <button
               type="button"
               onClick={() => {
@@ -59,11 +65,13 @@ const FeaturedCourseList = ({
               data-toggle="modal"
               data-target="#exampleModal"
             >
-              Enroll <span className="tw-ml-2 enroll-arrow"> &#8594;</span>
+              Enroll
+              {' '}
+              <span className="tw-ml-2 enroll-arrow"> &#8594;</span>
             </button>
           </div>
         ) : (
-          ""
+          ''
         )}
       </div>
     </div>

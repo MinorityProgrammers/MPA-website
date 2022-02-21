@@ -1,8 +1,8 @@
-import React from "react";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import FeaturedCourseList from "./FeaturedCourseList";
+import React from 'react';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import FeaturedCourseList from './FeaturedCourseList';
 
 const FeaturedCourses = ({
   courses,
@@ -18,30 +18,20 @@ const FeaturedCourses = ({
     speed: 2000,
     slidesToShow: 2,
     infinite: coursesLength > 2,
-    autoplay: true,
+    autoplay: false,
     slidesToScroll: 1,
     responsive: [
       {
         breakpoint: 991,
         settings: {
-          slidesToShow: 2,
-          infinite: coursesLength > 2,
-        },
-      },
-      {
-        breakpoint: 768,
-        settings: {
           slidesToShow: 1,
-          infinite: coursesLength >= 1,
+          infinite: coursesLength > 1,
         },
       },
     ],
   };
-  const sameUserCourses =
-    courses &&
-    courses.filter((course) =>
-      enrolledCourses.some((eCourse) => course._id === eCourse.courseId._id)
-    );
+  const sameUserCourses = courses
+    && courses.filter((course) => enrolledCourses.some((eCourse) => course._id === eCourse.courseId._id));
 
   return (
     <div>
@@ -58,13 +48,13 @@ const FeaturedCourses = ({
         <div
           className={
             coursesLength > 2
-              ? "mt-3 courses-info pt-2 FRCourses"
-              : "mt-3 courses-info pt-2 featured-courses"
+              ? 'mt-3 courses-info pt-2 FRCourses'
+              : 'mt-3 courses-info pt-2 featured-courses'
           }
         >
           <Slider {...conditionalInfinite}>
-            {courses &&
-              courses.map((course) => (
+            {courses
+              && courses.map((course) => (
                 <FeaturedCourseList
                   showModal={showModal}
                   course={course}
