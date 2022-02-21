@@ -238,11 +238,7 @@ const ActivityDetails = ({
                           fontSize: '17px',
                           width: 'auto',
                           paddingLeft: '10px',
-<<<<<<< HEAD
                           paddingRight: '10px',
-=======
-                          paddingRight: '10px'
->>>>>>> 6fa4c35 (lesson-page)
                         }
                       }
                     >
@@ -258,16 +254,11 @@ const ActivityDetails = ({
               </div>
               {/* Buttons */}
               <div className="d-flex flex-row justify-content-between mb-4">
-<<<<<<< HEAD
                 {/* <button className="lesson-button d-flex flex-row justify-content-center align-items-center p-3" style={{ lineHeight: '20px', border: '1px solid #6938EF', borderRadius: '20px' }}>
-=======
-                <button className="lesson-button d-flex flex-row justify-content-center align-items-center p-3" style={{ lineHeight: '20px', border: '1px solid #6938EF', borderRadius: '20px' }}>
->>>>>>> 6fa4c35 (lesson-page)
                   <FontAwesomeIcon icon={faArrowLeft} style={{ fontSize: '17px', color: 'white' }} className="icon mr-2" />
                   <p style={{ fontSize: '17px', color: 'white' }}>
                     Previous Lesson
                   </p>
-<<<<<<< HEAD
                 </button> */}
                 <div className="d-flex flex-row">
                   <button
@@ -278,23 +269,11 @@ const ActivityDetails = ({
                       lineHeight: '20px', border: '1px solid #6938EF', borderRadius: '20px', background: '#6938EF',
                     }}
                   >
-=======
-                </button>
-                <div className="d-flex flex-row">
-                  <button
-                    type="button"
-                    onClick={() => { (setWatched(true), setIsOpen(true)) }}
-                    className="quiz-button p-3" style={{ lineHeight: '20px', border: '1px solid #6938EF', borderRadius: '20px', background: '#6938EF' }}>
->>>>>>> 6fa4c35 (lesson-page)
                     <p style={{ fontSize: '17px', color: 'white' }}>
                       Take Quiz
                     </p>
                   </button>
-<<<<<<< HEAD
                   {/* <button
-=======
-                  <button
->>>>>>> 6fa4c35 (lesson-page)
                     type="button"
                     onClick={forwardInfo}
                     data-dismiss="modal"
@@ -304,11 +283,7 @@ const ActivityDetails = ({
                       Next Lesson
                     </p>
                     <FontAwesomeIcon icon={faArrowRight} style={{ fontSize: '17px', color: 'white' }} className="icon" />
-<<<<<<< HEAD
                   </button> */}
-=======
-                  </button>
->>>>>>> 6fa4c35 (lesson-page)
                 </div>
               </div>
               <div className="w-100 mb-3 d-flex flex-column mb-3">
