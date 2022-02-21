@@ -72,20 +72,20 @@ export default function Index() {
     }
   }, []);
 
-  useEffect(() => {
-    if (data && submit) {
-      router.push(router.pathname);
-      if (router.pathname === '/auth') {
-        const loginSignUp = document.querySelector(
-          '.card_cardContainer__12vmM',
-        );
-        loginSignUp.style.display = 'none';
-      } else {
-        const loginSignUp = document.querySelector('.create_event');
-        loginSignUp.style.display = 'none';
-      }
-    }
-  }, [data]);
+  // useEffect(() => {
+  //   if (data && submit) {
+  //     router.push(router.pathname);
+  //     if (router.pathname === '/auth') {
+  //       const loginSignUp = document.querySelector(
+  //         '.card_cardContainer__12vmM',
+  //       );
+  //       loginSignUp.style.display = 'none';
+  //     } else {
+  //       const loginSignUp = document.querySelector('.create_event');
+  //       loginSignUp.style.display = 'none';
+  //     }
+  //   }
+  // }, [data]);
 
   const handleLoginSuccess = (res) => {
     googleAuth({ tokenId: res.tokenId })(authDispatch);

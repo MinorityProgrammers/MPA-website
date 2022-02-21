@@ -129,11 +129,7 @@ const ProfileTwo = function ({
 
   const axiosFunc = (url, token, setState) => {
     axios
-      .get(`${process.env.BASE_URI}/${url}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
+      .get(`${process.env.BASE_URI}/${url}`)
       .then((res) => {
         setState(res.data.data);
         setLoading(false);
@@ -144,15 +140,15 @@ const ProfileTwo = function ({
     const userToken = JSON.parse(localStorage.getItem('userInfo'));
     if (userToken !== null) {
       axiosFunc(`learn/user/${userId}`, userToken.token, setEnrolledCourses);
-      axiosFunc('reputation/userReputations', userToken.token, setReputation);
+      axiosFunc(`reputation/user/${userId}`, userToken.token, setReputation);
       axiosFunc(
-        'experience/userExperience',
+        `experience/userExperienceById/${userId}`,
         userToken.token,
         setExperienceCards,
       );
-      axiosFunc('education/userEducation', userToken.token, setEducationCards);
+      axiosFunc(`education/userEducationById/${userId}`, userToken.token, setEducationCards);
       axiosFunc(
-        'personalProject/userPersonalProject',
+        `personalProject/PersonalProjectById/${userId}`,
         userToken.token,
         setProjectCards,
       );

@@ -44,7 +44,7 @@
 }
 
 .saved-job-stub-description:before {
-  content: "";
+  content: '';
   height: 10px;
   width: 10px;
   background: red;
@@ -250,7 +250,7 @@
   border-radius: 10px 10px 0px 0px;
 }
 
-@import "./normalizer.css";
+@import './normalizer.css';
 
 * {
   --mpa-navy: #151371;
@@ -386,7 +386,7 @@
 }
 
 .company-stub-box3-diversity::after {
-  content: "";
+  content: '';
   position: absolute;
   height: 100%;
   width: 50%;
@@ -404,7 +404,7 @@
 }
 
 .company-stub-box3-diversity-score::before {
-  content: "";
+  content: '';
   height: 1.5px;
   width: 100%;
   position: absolute;
@@ -687,7 +687,7 @@
 }
 
 .companyType-custom-checkbox:after {
-  content: "";
+  content: '';
   height: 13px;
   width: 13px;
   border: solid 1px #151371;
@@ -700,7 +700,7 @@
 
 .companyType-custom-checkbox:before {
   display: none;
-  content: "";
+  content: '';
   position: absolute;
   height: 12px;
   width: 6px;
@@ -711,11 +711,11 @@
   transform: rotateZ(40deg);
 }
 
-input[type="date"]::-webkit-calendar-picker-indicator {
+input[type='date']::-webkit-calendar-picker-indicator {
   filter: invert(1);
 }
 
-input[type="time"]::-webkit-calendar-picker-indicator {
+input[type='time']::-webkit-calendar-picker-indicator {
   filter: invert(1);
 }
 
@@ -750,7 +750,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 }
 
 .jobType-custom-checkbox:after {
-  content: "";
+  content: '';
   height: 13px;
   width: 13px;
   border: solid 1px white;
@@ -763,7 +763,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 
 .jobType-custom-checkbox:before {
   display: none;
-  content: "";
+  content: '';
   position: absolute;
   height: 12px;
   width: 6px;
@@ -774,11 +774,11 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   transform: rotateZ(40deg);
 }
 
-input[type="date"]::-webkit-calendar-picker-indicator {
+input[type='date']::-webkit-calendar-picker-indicator {
   filter: invert(1);
 }
 
-input[type="time"]::-webkit-calendar-picker-indicator {
+input[type='time']::-webkit-calendar-picker-indicator {
   filter: invert(1);
 }
 
@@ -810,7 +810,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 
 .job-filter-item-title {
   color: white;
-  font-family: "Red Hat Display";
+  font-family: 'Red Hat Display';
   background: #1c1d37;
   border: 1px solid #8040d2;
   width: 100%;
@@ -947,7 +947,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   display: inline-block;
   color: white;
   font-size: 17px;
-  font-family: "Red Hat Display", sans-serif;
+  font-family: 'Red Hat Display', sans-serif;
   /* padding: 1rem 1rem 1rem 2.5rem; */
   font-size: 0.8rem;
 }
@@ -1004,7 +1004,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   outline: none;
 }
 
-input[type="checkbox"] {
+input[type='checkbox'] {
   margin-right: 6px;
 }
 
@@ -1015,7 +1015,7 @@ input[type="checkbox"] {
   height: 20px;
 }
 
-.jobs-search-switch input[type="checkbox"] {
+.jobs-search-switch input[type='checkbox'] {
   opacity: 0;
   width: 0;
   height: 0;
@@ -1039,7 +1039,7 @@ input[type="checkbox"] {
 
 .jobs-search-slider:before {
   position: absolute;
-  content: "";
+  content: '';
   height: 12px;
   width: 12px;
   left: 4px;
@@ -1049,15 +1049,15 @@ input[type="checkbox"] {
   transition: 0.4s;
 }
 
-input[type="checkbox"]:checked + .jobs-search-slider {
+input[type='checkbox']:checked + .jobs-search-slider {
   background-color: #8040d2;
 }
 
-input[type="checkbox"]:focus + .jobs-search-slider {
+input[type='checkbox']:focus + .jobs-search-slider {
   box-shadow: 0 0 1px #8040d2;
 }
 
-input[type="checkbox"]:checked + .jobs-search-slider:before {
+input[type='checkbox']:checked + .jobs-search-slider:before {
   -webkit-transform: translateX(15px);
   -ms-transform: translateX(15px);
   transform: translateX(15px);
@@ -1284,8 +1284,8 @@ input[type="checkbox"]:checked + .jobs-search-slider:before {
   /* grid-column-gap: 1rem; */
   /* color: black; */
   grid-template-areas:
-    "list job"
-    "pagination job";
+    'list job'
+    'pagination job';
   row-gap: 25px;
 }
 
@@ -1458,7 +1458,7 @@ input[type="checkbox"]:checked + .jobs-search-slider:before {
 }
 
 .current-job-view-box1-companyInfo-diversity::after {
-  content: "";
+  content: '';
   position: absolute;
   height: 100%;
   width: 50%;
@@ -1479,7 +1479,7 @@ input[type="checkbox"]:checked + .jobs-search-slider:before {
 }
 
 .current-job-view-box1-companyInfo-diversity-score::before {
-  content: "";
+  content: '';
   height: 1.5px;
   width: 100%;
   position: absolute;
@@ -1617,8 +1617,8 @@ input[type="checkbox"]:checked + .jobs-search-slider:before {
 }
 
 .current-job-view-box5-container > div:nth-child(2) {
-  border-left: solid 1px #A259FF;
-  border-right: solid 1px #A259FF;
+  border-left: solid 1px #a259ff;
+  border-right: solid 1px #a259ff;
   width: 100%;
   margin: 0px 50px;
 }
@@ -1693,7 +1693,7 @@ input[type="checkbox"]:checked + .jobs-search-slider:before {
 }
 
 .job-stub-description:before {
-  content: "";
+  content: '';
   height: 10px;
   width: 10px;
   background: red;
@@ -1885,33 +1885,118 @@ input[type="checkbox"]:checked + .jobs-search-slider:before {
   padding: 0 15px;
 }
 
-@media screen and (max-width: 1399px) {
-  .careers-wrapper {
-    max-width: 1140px;
+@media screen and (min-width: 1270px) {
+  .top-wrapper {
+    align-items: center;
+    display: grid;
+    grid-gap: 0.5em;
+    padding: 100px;
+    grid-template-columns: 0.5fr 1.2fr;
+    grid-template-areas: 'careerTopText careerTopPic';
+  }
+  .careerTopPic {
+    grid-area: careerTopPic;
+  }
+
+  .careerTopText {
+    grid-area: careerTopText;
+  }
+
+  .careerTopText h1 {
+    color: #33d2ff;
+    width: 471px;
+    height: 230px;
+    font-family: SF Pro Display !important;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 96px;
+    line-height: 115px;
+    letter-spacing: 0.03em;
+  }
+  .careerTopText h2 {
+    width: 461px;
+    height: 72px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 36px;
+    color: #ffffff;
   }
 }
 
-@media screen and (max-width: 1199px) {
-  .careers-wrapper {
-    max-width: 960px;
+@media screen and (min-width: 920px) and (max-width: 1269px) {
+  .top-wrapper {
+    align-items: center;
+    display: grid;
+    grid-gap: 0.5em;
+    padding: 100px;
+    grid-template-columns: 0.5fr 1.2fr;
+    grid-template-areas: 'careerTopText careerTopPic';
+  }
+  .careerTopPic {
+    grid-area: careerTopPic;
+  }
+
+  .careerTopText {
+    grid-area: careerTopText;
+  }
+
+  .careerTopText h1 {
+    color: #33d2ff;
+    width: 275px;
+    height: 150px;
+    font-family: SF Pro Display !important;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 55px;
+    line-height: 70px;
+    letter-spacing: 0.03em;
+  }
+  .careerTopText h2 {
+    width: 275px;
+    height: 52px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 36px;
+    color: #ffffff;
   }
 }
 
-@media screen and (max-width: 991px) {
-  .careers-wrapper {
-    max-width: 720px;
+@media screen and (max-width: 919px) {
+  .top-wrapper {
+    display: grid;
+    grid-gap: 0.25em;
+    padding: 75px;
   }
-}
 
-@media screen and (max-width: 768px) {
-  .careers-wrapper {
-    max-width: 540px;
+  .top-wrapper > div {
+    margin: auto;
+    text-align: center;
   }
-}
 
-@media screen and (max-width: 575px) {
-  .careers-wrapper {
-    max-width: auto;
+  .careerTopText h1 {
+    color: #33d2ff;
+    width: 275px;
+    height: 150px;
+    font-family: SF Pro Display !important;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 55px;
+    line-height: 70px;
+    letter-spacing: 0.03em;
+  }
+  .careerTopText h2 {
+    width: 275px;
+    height: 52px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 36px;
+    color: #ffffff;
   }
 }
 
@@ -1961,7 +2046,7 @@ input[type="checkbox"]:checked + .jobs-search-slider:before {
 }
 
 .saved-job-stub-description:before {
-  content: "";
+  content: '';
   height: 10px;
   width: 10px;
   background: red;
@@ -2142,7 +2227,7 @@ input[type="checkbox"]:checked + .jobs-search-slider:before {
 
 .header_searchbar {
   color: white;
-  font-family: "Red Hat Display", sans-serif;
+  font-family: 'Red Hat Display', sans-serif;
   font-size: 2rem;
   margin-bottom: 1.5rem;
   display: flex;
