@@ -1,19 +1,3 @@
-<<<<<<< HEAD
-import decode from "jwt-decode";
-import { signOut } from "next-auth/client";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import React, { useContext, useEffect, useRef, useState } from "react";
-import { BiMenuAltLeft } from "react-icons/bi";
-import { useMoralis } from "react-moralis";
-import { LOGOUT_USER } from "../../contexts/actions/actionTypes";
-import getProfile from "../../contexts/actions/profile/getProfile";
-import { GlobalContext } from "../../contexts/provider";
-import Account from "../Account";
-import useDetectOutsideClick from "../UseDetectOutsideClick";
-import HomepageNavLoggedin from "./HomepageNavLoggedin";
-import HomepageNavLogin from "./HomepageNavLogin";
-=======
 import decode from 'jwt-decode';
 import { signOut, useSession } from 'next-auth/client';
 import Link from 'next/link';
@@ -30,9 +14,10 @@ import Account from '../Account';
 import useDetectOutsideClick from '../UseDetectOutsideClick';
 import HomepageNavLoggedin from './HomepageNavLoggedin';
 import HomepageNavLogin from './HomepageNavLogin';
->>>>>>> 80f60c2bd87ae99326c5b932f7441df0f44c0087
 
-const HomepageNav = ({ setToken, setData, page, open, setOpen = () => {} }) => {
+const HomepageNav = ({
+  setToken, setData, page, open, setOpen = () => {},
+}) => {
   const dropdownRef = useRef(null);
   const dropdownMobileRef = useRef(null);
   const searchMobileRef = useRef(null);
@@ -42,14 +27,14 @@ const HomepageNav = ({ setToken, setData, page, open, setOpen = () => {} }) => {
   const [isLogin, setIsLogin] = useState(false);
   const router = useRouter();
   const [isActive, setIsActive] = useDetectOutsideClick(dropdownRef, false);
-  const [searchValue, setSearch] = useState("");
+  const [searchValue, setSearch] = useState('');
   const [isActiveMobile, setIsActiveMobile] = useDetectOutsideClick(
     dropdownMobileRef,
-    false
+    false,
   );
   const [isActiveSearch, setIsActiveSearch] = useDetectOutsideClick(
     searchMobileRef,
-    false
+    false,
   );
   const [, setConnect] = useState(false);
   const [session] = useSession();
@@ -64,7 +49,7 @@ const HomepageNav = ({ setToken, setData, page, open, setOpen = () => {} }) => {
 
   const handleSearch = (e) => {
     const regex = /\b\w+/;
-    if (!regex.test(e.target.value) && e.target.value !== "") return;
+    if (!regex.test(e.target.value) && e.target.value !== '') return;
     setSearch(e.target.value);
     router.push({
       pathname: router.pathname,
@@ -75,9 +60,9 @@ const HomepageNav = ({ setToken, setData, page, open, setOpen = () => {} }) => {
   const handleSubmit = () => {
     const regex = /\b\w+/;
     if (!regex.test(searchValue)) return;
-    setSearch("");
+    setSearch('');
     router.push({
-      pathname: "/search",
+      pathname: '/search',
       query: { _q: searchValue },
     });
   };
@@ -102,58 +87,56 @@ const HomepageNav = ({ setToken, setData, page, open, setOpen = () => {} }) => {
   } = useContext(GlobalContext || {});
 
   useEffect(() => {
-    const token =
-      typeof window !== "undefined"
-        ? window.localStorage.getItem("jwtToken")
-        : null;
-    const userInfo =
-      typeof window !== "undefined"
-        ? window.localStorage.getItem("userInfo")
-        : null;
+    const token = typeof window !== 'undefined'
+      ? window.localStorage.getItem('jwtToken')
+      : null;
+    const userInfo = typeof window !== 'undefined'
+      ? window.localStorage.getItem('userInfo')
+      : null;
 
     if (token === null || userInfo === {}) {
       setUserData(null);
       if (
-        page === "MentorshipProgram" ||
-        page === "Consultancy" ||
-        page === "learn" ||
-        page === "About" ||
-        page === "Careers" ||
-        page === "auth" ||
-        page === "Incubator" ||
-        page === "Chat" ||
-        page === "CreateProfile" ||
-        page === "user" ||
-        page === "settings-overview" ||
-        page === "settings-profile" ||
-        page === "settings-security" ||
-        page === "settings-wallet" ||
-        page === "settings-notifications"
+        page === 'MentorshipProgram'
+        || page === 'Consultancy'
+        || page === 'learn'
+        || page === 'About'
+        || page === 'Careers'
+        || page === 'auth'
+        || page === 'Incubator'
+        || page === 'Chat'
+        || page === 'CreateProfile'
+        || page === 'user'
+        || page === 'settings-overview'
+        || page === 'settings-profile'
+        || page === 'settings-security'
+        || page === 'settings-wallet'
+        || page === 'settings-notifications'
       ) {
         setData(null);
       }
     } else {
       getProfile(setUserData)(profileDispatch);
       if (
-        page === "MentorshipProgram" ||
-        page === "Consultancy" ||
-        page === "About" ||
-        page === "Careers" ||
-        page === "learn" ||
-        page === "auth" ||
-        page === "Incubator" ||
-        page === "Chat" ||
-        page === "CreateProfile" ||
-        page === "user" ||
-        page === "settings-overview" ||
-        page === "settings-profile" ||
-        page === "settings-security" ||
-        page === "settings-wallet" ||
-        page === "settings-notifications"
+        page === 'MentorshipProgram'
+        || page === 'Consultancy'
+        || page === 'About'
+        || page === 'Careers'
+        || page === 'learn'
+        || page === 'auth'
+        || page === 'Incubator'
+        || page === 'Chat'
+        || page === 'CreateProfile'
+        || page === 'user'
+        || page === 'settings-overview'
+        || page === 'settings-profile'
+        || page === 'settings-security'
+        || page === 'settings-wallet'
+        || page === 'settings-notifications'
       ) {
         getProfile(setData)(profileDispatch);
       }
-      if (page === "Events") {
+      if (page === 'Events') {
         setToken(token);
       }
     }
@@ -169,15 +152,15 @@ const HomepageNav = ({ setToken, setData, page, open, setOpen = () => {} }) => {
         setSticky(false);
       }
     };
-    document.addEventListener("scroll", handleScroll);
+    document.addEventListener('scroll', handleScroll);
     return () => {
-      document.removeEventListener("scroll", handleScroll);
+      document.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
   const handleLogout = () => {
-    localStorage.removeItem("userInfo");
-    localStorage.removeItem("jwtToken");
+    localStorage.removeItem('userInfo');
+    localStorage.removeItem('jwtToken');
     authDispatch({
       type: LOGOUT_USER,
     });
@@ -187,10 +170,9 @@ const HomepageNav = ({ setToken, setData, page, open, setOpen = () => {} }) => {
   };
 
   useEffect(() => {
-    const token =
-      typeof window !== "undefined"
-        ? window.localStorage.getItem("jwtToken")
-        : null;
+    const token = typeof window !== 'undefined'
+      ? window.localStorage.getItem('jwtToken')
+      : null;
     if (token) {
       const decodedToken = decode(token);
       if (decodedToken.exp * 1000 < new Date().getTime()) handleLogout();
@@ -199,7 +181,7 @@ const HomepageNav = ({ setToken, setData, page, open, setOpen = () => {} }) => {
 
   const showSearchIconMobile = () => (
     <div
-      className={`nav__mobile-search ${sticky ? "sticky" : ""}`}
+      className={`nav__mobile-search ${sticky ? 'sticky' : ''}`}
       ref={searchMobileRef}
     >
       <div className="mobile-searchBox">
@@ -225,7 +207,7 @@ const HomepageNav = ({ setToken, setData, page, open, setOpen = () => {} }) => {
 
   const menuMobile = () => (
     <div
-      className={`nav__mobile ${sticky ? "sticky" : ""}`}
+      className={`nav__mobile ${sticky ? 'sticky' : ''}`}
       ref={dropdownMobileRef}
     >
       {userData !== null && userData !== undefined ? (
@@ -235,7 +217,7 @@ const HomepageNav = ({ setToken, setData, page, open, setOpen = () => {} }) => {
               src={
                 userData.profilePicture
                   ? userData.profilePicture
-                  : "/assets/images/profile.png"
+                  : '/assets/images/profile.png'
               }
               alt="profile"
               className="rounded-circle mb-3"
@@ -319,7 +301,7 @@ const HomepageNav = ({ setToken, setData, page, open, setOpen = () => {} }) => {
             href={`${
               userData.userName
                 ? `/user/${userData.userName}`
-                : "/create-profile"
+                : '/create-profile'
             }`}
             onClick={closeMobileMenu}
           >
@@ -329,7 +311,7 @@ const HomepageNav = ({ setToken, setData, page, open, setOpen = () => {} }) => {
           </a>
         </ul>
       ) : (
-        ""
+        ''
       )}
       <Account />
     </div>
@@ -339,16 +321,16 @@ const HomepageNav = ({ setToken, setData, page, open, setOpen = () => {} }) => {
     <header
       className="homepage__header"
       style={
-        router.pathname === "/auth"
-          ? { top: "0rem", paddingBottom: "28px" }
+        router.pathname === '/auth'
+          ? { top: '0rem', paddingBottom: '28px' }
           : {}
       }
     >
       <nav
         className={` ${
           sticky
-            ? "sticky-menu tw-flex tw-flex-row tw-justify-between tw-w-full"
-            : "tw-flex tw-flex-row tw-justify-between tw-w-full"
+            ? 'sticky-menu tw-flex tw-flex-row tw-justify-between tw-w-full'
+            : 'tw-flex tw-flex-row tw-justify-between tw-w-full'
         }`}
       >
         {isLogin === true && (
@@ -388,45 +370,45 @@ const HomepageNav = ({ setToken, setData, page, open, setOpen = () => {} }) => {
                     </span>
                   </li>
                 ) : (
-                  ""
+                  ''
                 )}
 
                 <li onClick={onClickMobile}>
                   <i
                     className={
                       isActiveMobile
-                        ? "fas fa-times tw-text-blue-700"
-                        : "fas fa-bars tw-text-blue-700"
+                        ? 'fas fa-times tw-text-blue-700'
+                        : 'fas fa-bars tw-text-blue-700'
                     }
                   />
                 </li>
               </ul>
             </div>
-            {isActiveMobile ? menuMobile() : ""}
-            {isActiveSearch ? showSearchIconMobile() : ""}
+            {isActiveMobile ? menuMobile() : ''}
+            {isActiveSearch ? showSearchIconMobile() : ''}
 
             <ul className="nav-menu tw-py-0 md:tw-py-4">
               {userData !== null && userData !== undefined ? (
                 <li
-                  className={open ? "nav-item active-link" : "nav-item"}
+                  className={open ? 'nav-item active-link' : 'nav-item'}
                   onClick={() => setOpen(!open)}
                 >
                   <div
                     className="tw-cursor-pointer"
-                    style={{ display: "flex" }}
+                    style={{ display: 'flex' }}
                   >
                     <BiMenuAltLeft />
                     <a>All</a>
                   </div>
                 </li>
               ) : (
-                ""
+                ''
               )}
               <li
                 className={
-                  router.pathname === "/learn"
-                    ? "nav-item active-link tw-cursor-pointer"
-                    : "nav-item"
+                  router.pathname === '/learn'
+                    ? 'nav-item active-link tw-cursor-pointer'
+                    : 'nav-item'
                 }
               >
                 <Link
@@ -439,9 +421,9 @@ const HomepageNav = ({ setToken, setData, page, open, setOpen = () => {} }) => {
               </li>
               <li
                 className={
-                  router.pathname === "/incubator"
-                    ? "nav-item active-link"
-                    : "nav-item"
+                  router.pathname === '/incubator'
+                    ? 'nav-item active-link'
+                    : 'nav-item'
                 }
               >
                 <Link
@@ -455,9 +437,9 @@ const HomepageNav = ({ setToken, setData, page, open, setOpen = () => {} }) => {
 
               <li
                 className={
-                  router.pathname === "/events"
-                    ? "nav-item active-link"
-                    : "nav-item"
+                  router.pathname === '/events'
+                    ? 'nav-item active-link'
+                    : 'nav-item'
                 }
               >
                 <Link
@@ -470,9 +452,9 @@ const HomepageNav = ({ setToken, setData, page, open, setOpen = () => {} }) => {
               </li>
               <li
                 className={
-                  router.pathname === "/careers"
-                    ? "nav-item active-link"
-                    : "nav-item"
+                  router.pathname === '/careers'
+                    ? 'nav-item active-link'
+                    : 'nav-item'
                 }
               >
                 <Link
@@ -486,10 +468,10 @@ const HomepageNav = ({ setToken, setData, page, open, setOpen = () => {} }) => {
 
               <li
                 className={
-                  router.pathname ===
-                  "https://snapshot.org/#/minorityprogrammers.eth"
-                    ? "nav-item active-link"
-                    : "nav-item"
+                  router.pathname
+                  === 'https://snapshot.org/#/minorityprogrammers.eth'
+                    ? 'nav-item active-link'
+                    : 'nav-item'
                 }
               >
                 <Link
@@ -530,18 +512,6 @@ const HomepageNav = ({ setToken, setData, page, open, setOpen = () => {} }) => {
                   <li>
                     {userData.profilePicture ? (
                       <img
-<<<<<<< HEAD
-                        className="tw-content-center tw-text-center tw-cursor-pointer tw-mt-2 tw-h-9 tw-rounded-full tw-w-9"
-                        onClick={onClick}
-                        src={userData.profilePicture}
-                        alt="profile"
-                      />
-                    ) : (
-                      <i
-                        className="fa-user-circle fas tw-content-center tw-text-center NavIcon tw-cursor-pointer tw-mt-2"
-                        onClick={onClick}
-                      />
-=======
                         className="tw-content-center tw-text-center tw-cursor-pointer tw-h-9 tw-rounded-full tw-w-9"
                         onClick={onClick}
                         src={userData.profilePicture}
@@ -552,7 +522,6 @@ const HomepageNav = ({ setToken, setData, page, open, setOpen = () => {} }) => {
                         className="fa-user-circle fas tw-content-center tw-text-center NavIcon tw-cursor-pointer tw-mt-2"
                         onClick={onClick}
                       />
->>>>>>> 80f60c2bd87ae99326c5b932f7441df0f44c0087
                     )}
 
                     {isActive ? (
@@ -561,7 +530,7 @@ const HomepageNav = ({ setToken, setData, page, open, setOpen = () => {} }) => {
                         userInfo={userData}
                       />
                     ) : (
-                      ""
+                      ''
                     )}
                   </li>
                 </div>
@@ -575,7 +544,7 @@ const HomepageNav = ({ setToken, setData, page, open, setOpen = () => {} }) => {
                   {isActive ? (
                     <HomepageNavLogin onCloseMobileMenu={onClick} />
                   ) : (
-                    ""
+                    ''
                   )}
                 </li>
               )}
