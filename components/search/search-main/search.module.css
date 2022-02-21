@@ -5,8 +5,8 @@
   justify-content: center;
   flex-direction: column;
   padding: 1em;
-  background: white;
-  color: black;
+  background: var(--secondary-main);
+  color: var(--light-main);
 }
 
 .container {
@@ -25,7 +25,7 @@
   margin-right: 3em;
   overflow: auto;
   padding: 1em;
-  box-shadow: 0 0 2px 1px #474BFF;
+  box-shadow: 0 0 2px 1px var(--tertiary-low-contrast);
 }
 
 .searchCategories {
@@ -56,9 +56,8 @@
   margin-bottom: 0.5em;
   margin-right: 0.5em;
   border-radius: 0.2em;
-  color: white;
-  border: 1px solid gray;
-  color: black;
+  border: 1px solid var(--tertiary-main);
+  color: var(--light-main);
   cursor: pointer;
   transition: all 100ms cubic-bezier(0.77, 0, 0.175, 1);
   text-transform: capitalize;
@@ -71,23 +70,23 @@
 
 .tagsItem.clicked,
 .categoriesItem.clicked {
-  color: white;
-  background: #474BFF;
-  border: 1px solid #474BFF;
+  color: var(--light-main);
+  background: var(--tertiary-main);
+  border: 1px solid var(--tertiary-main);
 }
 
 .tagsItem:hover,
 .categoriesItem:hover {
-  color: white;
-  background: #474BFF;
-  border: 1px solid #474BFF;
+  color: var(--light-main);
+  background: var(--tertiary-main);
+  border: 1px solid var(--tertiary-main);
 }
 
 .searchBox {
   padding: 0.2em;
   margin-bottom: 6em;
   display: flex;
-  border-bottom: 4px solid gray;
+  border-bottom: 2.5px solid var(--light-low-contrast);
 }
 
 .searchLabel {
@@ -97,7 +96,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: gray;
+  color: var(--light-low-contrast);
 }
 
 .searchLabel * {
@@ -109,7 +108,8 @@
   font-size: 1.2rem;
   padding-left: 0.5em;
   border: none;
-  color: black;
+  background: var(--secondary-main);
+  color: var(--light-main);
 }
 
 .searchInput:focus{
@@ -118,7 +118,7 @@
 
 .resultSection {
   width: 60%;
-  background-color: white;
+  background-color: var(--secondary-main);
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 2em;
@@ -136,10 +136,10 @@
   position: absolute;
   height: 80vh;
   border-radius: 0.5em;
-  background: #f7f7f7;
+  background: var(--secondary-high-contrast);
   text-align: center;
   padding: 1em;
-  color: black;
+  color: var(--light-low-contrast);
 }
 
 @media screen and (max-width: 1024px) {
@@ -163,7 +163,7 @@
 
   .no_result {
     position: static;
-    background: white;
+    background: var(--secondary-low-contrast);
   }
 }
 
