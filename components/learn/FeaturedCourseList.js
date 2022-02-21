@@ -28,52 +28,50 @@ const FeaturedCourseList = ({
         ))}
       </p>
 
-      <div className="text-cente">
-        {userCoursesId.includes(_id) ? (
-          <>
-            <div className="align-div">
-              <div className="tw-mb-10 " />
-              <button
-                type="button"
-                disabled={enrolledBtn}
-                onClick={() => {
-                  showModal();
-                  handleCourseInfo(course);
-                }}
-                className="btn px-5 banner-btn  tw-ml-10"
-                data-toggle="modal"
-                data-target="#exampleModal"
-              >
-                Enrolled
-              </button>
-            </div>
-          </>
-        ) : !userCoursesId.includes(_id) ? (
-          <div className="course-items-footer">
-            <p className="course-earn-style">
-              Earn
-              {' '}
-              {earn}
-            </p>
+      {userCoursesId.includes(_id) ? (
+        <>
+          <div className="align-div">
+            <div className="tw-mb-10 " />
             <button
               type="button"
+              disabled={enrolledBtn}
               onClick={() => {
                 showModal();
                 handleCourseInfo(course);
               }}
-              className="btn px-3 banner-btn mt-3"
+              className="btn px-5 banner-btn  tw-ml-10"
               data-toggle="modal"
               data-target="#exampleModal"
             >
-              Enroll
-              {' '}
-              <span className="tw-ml-2 enroll-arrow"> &#8594;</span>
+              Enrolled
             </button>
           </div>
-        ) : (
-          ''
-        )}
-      </div>
+        </>
+      ) : !userCoursesId.includes(_id) ? (
+        <div className="course-items-footer">
+          <p className="course-earn-style">
+            Earn
+            {' '}
+            {earn}
+          </p>
+          <button
+            type="button"
+            onClick={() => {
+              showModal();
+              handleCourseInfo(course);
+            }}
+            className="btn px-3 banner-btn mt-3"
+            data-toggle="modal"
+            data-target="#exampleModal"
+          >
+            Enroll
+            {' '}
+            <span className="tw-ml-2 enroll-arrow"> &#8594;</span>
+          </button>
+        </div>
+      ) : (
+        ''
+      )}
     </div>
   );
 };

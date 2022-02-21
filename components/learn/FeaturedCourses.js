@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -11,14 +11,16 @@ const FeaturedCourses = ({
   enrolledBtn,
   showModal,
 }) => {
+  const [sliderRef, setSliderRef] = useState(null);
   const coursesLength = courses.length;
 
   const conditionalInfinite = {
     dots: false,
+    arrows: false,
     speed: 2000,
     slidesToShow: 2,
     infinite: coursesLength > 2,
-    autoplay: false,
+    autoplay: true,
     slidesToScroll: 1,
     responsive: [
       {
@@ -52,7 +54,15 @@ const FeaturedCourses = ({
               : 'mt-3 courses-info pt-2 featured-courses'
           }
         >
-          <Slider {...conditionalInfinite}>
+          <div className="courses-slider-controllers">
+            <div onClick={sliderRef?.slickPrev}>
+              <i className="fas fa-chevron-circle-left" />
+            </div>
+            <div onClick={sliderRef?.slickNext}>
+              <i className="fas fa-chevron-circle-right" />
+            </div>
+          </div>
+          <Slider ref={setSliderRef} {...conditionalInfinite}>
             {courses
               && courses.map((course) => (
                 <FeaturedCourseList

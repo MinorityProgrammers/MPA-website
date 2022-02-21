@@ -8,6 +8,7 @@ const CoursesSkeleton = ({ title }) => {
   const coursesLength = 4;
 
   const conditionalInfinite = {
+    arrows: false,
     dots: false,
     speed: 2000,
     slidesToShow: 2,
