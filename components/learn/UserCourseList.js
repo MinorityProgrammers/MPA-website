@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from "react";
-import Link from "next/link";
-import axios from "axios";
+import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
+import axios from 'axios';
 
-const UserCoursesList = ({ enrolledCourse }) => {
+const UserCoursesList = ({ enrolledCourse, userInfo }) => {
   const [modules, setModules] = useState([]);
   const [userModules, setUserModules] = useState([]);
-  const { name, description, earn, _id, tags } = enrolledCourse.courseId;
+  const {
+    name, description, earn, _id, tags,
+  } = enrolledCourse.courseId;
 
   useEffect(() => {
-    const userToken = JSON.parse(localStorage.getItem("userInfo")).token;
+    const userToken = JSON.parse(localStorage.getItem('userInfo'))?.token;
     axios
       .get(`${process.env.BASE_URI}/course/${_id}/module`, {
         headers: {
@@ -21,9 +23,9 @@ const UserCoursesList = ({ enrolledCourse }) => {
   }, [_id]);
 
   useEffect(() => {
-    const userToken = JSON.parse(localStorage.getItem("userInfo")).token;
+    const userToken = JSON.parse(localStorage.getItem('userInfo')).token;
     axios
-      .get(`${process.env.BASE_URI}/learn/${_id}/userModules`, {
+      .get(`${process.env.BASE_URI}/learn/${_id}/moduleById/${userInfo._id}`, {
         headers: {
           Authorization: `Bearer ${userToken}`,
         },
@@ -33,9 +35,7 @@ const UserCoursesList = ({ enrolledCourse }) => {
       });
   }, [_id]);
 
-  const totalUserModules = userModules.filter((eModule) =>
-    modules.some((module) => eModule.moduleId._id === module._id)
-  );
+  const totalUserModules = userModules.filter((eModule) => modules.some((module) => eModule.moduleId._id === module._id));
   const totalModulesLength = modules.length;
 
   // user progress
@@ -68,14 +68,17 @@ const UserCoursesList = ({ enrolledCourse }) => {
         {!Number.isNaN(userPercentages) && (
           <p
             className="text-center pb-1"
-            style={{ fontSize: "18px", fontWeight: "600" }}
+            style={{ fontSize: '18px', fontWeight: '600' }}
           >
-            {userPercentages}% Completed
+            {userPercentages}
+            % Completed
           </p>
         )}
         <Link href={`/courses/${_id}`}>
           <button type="button" className="btn px-3 banner-btn mt-3">
-            Learn <span className="tw-ml-2"> &#8594;</span>
+            Learn
+            {' '}
+            <span className="tw-ml-2"> &#8594;</span>
           </button>
         </Link>
       </div>
