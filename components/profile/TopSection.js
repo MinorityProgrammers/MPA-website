@@ -70,7 +70,7 @@ function TopSection({
         <div className="tw-my-5">
           <div className="tw-m-8 tw-flex tw-flex-row tw-justify-start tw-w-1/6 lg:tw-w-1/2">
             <img onClick={() => { router.back(); }} className="tw-w-12 tw-h-12 tw-mt-1 xl:tw-w-8 xl:tw-mt-3 tw-cursor-pointer" src="/assets/new/arrow-down-circle.png" alt="back arrow" />
-            <p className="tw-text-white tw-mx-3 tw-mt-3 tw-text-2xl xl:tw-text-xl">My Profile</p>
+            <p className="tw-text-white tw-mx-3 tw-mt-6 tw-text-2xl xl:tw-text-xl">My Profile</p>
           </div>
         </div>
 
@@ -79,7 +79,7 @@ function TopSection({
             <div className="new-bg tw-w-full tw-h-28 tw-flex tw-justify-end tw-p-5 editSection">
               <div onClick={() => router.push('/settings')} className="tw-bg-white tw-rounded-3xl tw-w-1/5 xl:tw-w-1/3 tw-h-14 tw-p-4 md:tw-p-3 tw-flex tw-flex-row tw-justify-center tw-cursor-pointer hover:tw-bg-gray-200">
                 <img className="tw-w-6 tw-h-6" src="/assets/new/edit.png" alt="edit icon" />
-                <p className="newColor tw-mx-3 tw-mt-1 tw-text-md tw-font-medium">Edit Profile</p>
+                <p className="newColor tw-mx-3 tw-mt-0 tw-text-md tw-font-medium">Edit Profile</p>
               </div>
             </div>
             <div className="tw-w-full tw-p-2 tw-py-10">
