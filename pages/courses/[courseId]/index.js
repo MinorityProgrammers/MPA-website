@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import Course from '../../../components/learn/courseDetails/Course';
-import Layout from '../../../components/Layout';
-import HomepageNav from '../../../components/homepage/HomepageNav';
-import Footer from '../../../components/Footer';
-import SkeletonElement from '../../../components/learn/SkeletonElement';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import Course from "../../../components/learn/courseDetails/Course";
+import Layout from "../../../components/Layout";
+import HomepageNav from "../../../components/homepage/HomepageNav";
+import Footer from "../../../components/Footer";
+import SkeletonElement from "../../../components/learn/SkeletonElement";
 
 export async function getServerSideProps(context) {
   return {
@@ -23,12 +23,12 @@ const CoursePage = ({ params }) => {
   const [loading, setLoading] = useState(true);
 
   const redirect = () => {
-    window.location.href = '/learn-page';
+    window.location.href = "/learn";
   };
 
   useEffect(() => {
-    const token = localStorage.getItem('jwtToken');
-    const userInfo = localStorage.getItem('userInfo');
+    const token = localStorage.getItem("jwtToken");
+    const userInfo = localStorage.getItem("userInfo");
 
     if (token === null || userInfo === {}) {
       redirect();
@@ -41,7 +41,7 @@ const CoursePage = ({ params }) => {
   }, []);
 
   useEffect(() => {
-    const userToken = JSON.parse(localStorage.getItem('userInfo'));
+    const userToken = JSON.parse(localStorage.getItem("userInfo"));
     if (userToken !== null) {
       axios
         .get(`${process.env.BASE_URI}/learn/userCourses`, {
@@ -69,7 +69,7 @@ const CoursePage = ({ params }) => {
   }, [singleCourse]);
 
   useEffect(() => {
-    const userToken = JSON.parse(localStorage.getItem('userInfo'));
+    const userToken = JSON.parse(localStorage.getItem("userInfo"));
     if (userToken !== null) {
       axios
         .get(`${process.env.BASE_URI}/course/${courseId}/module`, {
@@ -87,12 +87,12 @@ const CoursePage = ({ params }) => {
     <Layout pageTitle="Course - Minority Programmers Association">
       {loading === true ? (
         <>
-          <HomepageNav page="learn-page" setData={setData} />
+          <HomepageNav page="learn" setData={setData} />
           <SkeletonElement />
         </>
       ) : (
         <>
-          <HomepageNav page="learn-page" setData={setData} />
+          <HomepageNav page="learn" setData={setData} />
           <Course userInfo={data} course={course} modules={modules} />
           <Footer />
         </>

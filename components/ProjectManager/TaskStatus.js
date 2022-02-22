@@ -4,7 +4,7 @@ import { BsThreeDotsVertical } from 'react-icons/bs';
 
 export const UserContext = createContext();
 
-const TaskStatus = function ({ item, handlePriority }) {
+const TaskStatus = ({ item, handlePriority }) => {
   const [creators, setCreators] = useState(false);
   const [open, setOpen] = useState(false);
   const [options, setOptions] = useState(false);
@@ -12,7 +12,6 @@ const TaskStatus = function ({ item, handlePriority }) {
   const [designs, setDesigns] = useState(false);
   const [priority, setPriority] = useState('green');
   const [userCart, setUserCart] = useState([]);
-  // const [removedUser, setRemovedUser] = useState([]);
 
   const handleRemoveUser = (id) => {
     const afterRemovedUser = userCart.filter(

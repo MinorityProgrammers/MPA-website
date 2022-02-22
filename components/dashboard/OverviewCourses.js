@@ -52,9 +52,8 @@ const OverviewCourses = ({ token }) => {
             course.categories = [];
             categories.forEach((category) => {
               course.courseId.tags.some(
-                (tag) =>
-                  category.tags.includes(tag) &&
-                  course.categories.push(category.category)
+                (tag) => category.tags.includes(tag)
+                  && course.categories.push(category.category),
               );
             });
           });
@@ -71,9 +70,8 @@ const OverviewCourses = ({ token }) => {
             course.categories = [];
             categories.forEach((category) => {
               course.courseId.tags.some(
-                (tag) =>
-                  category.tags.includes(tag) &&
-                  course.categories.push(category.category)
+                (tag) => category.tags.includes(tag)
+                  && course.categories.push(category.category),
               );
             });
           });
@@ -112,9 +110,7 @@ const OverviewCourses = ({ token }) => {
   }, []);
 
   const CourseCard = useCallback(() => {
-    const courses = userCourses.filter((course) =>
-      course.categories.includes(currentView)
-    );
+    const courses = userCourses.filter((course) => course.categories.includes(currentView));
 
     return (
       <>
@@ -159,7 +155,9 @@ const OverviewCourses = ({ token }) => {
                       textAlign: 'center',
                     }}
                   >
-                    {course.completionRate}% Completed{' '}
+                    {course.completionRate}
+                    % Completed
+                    {' '}
                   </p>
                   <ProgressBar
                     completionRate={parseInt(course?.completionRate, 10)}

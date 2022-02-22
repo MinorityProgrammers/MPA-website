@@ -5,17 +5,20 @@ import Blockie from '../Blockie';
 
 const styles = {
   address: {
-    height: '36px',
+    height: '50px',
     display: 'flex',
     gap: '5px',
     backgroundColor: 'rgba(255, 255, 255, 0.1)',
     borderRadius: '9px',
     alignItems: 'center',
+    justifyContent: 'center',
   },
 };
 
 const Address = (props) => {
-  const { address: propsAddress, avatar, copyable, size, style } = props;
+  const {
+    address: propsAddress, avatar, copyable, size, style,
+  } = props;
   const { walletAddress } = useMoralisDapp();
   const [address, setAddress] = useState();
   const [isClicked, setIsClicked] = useState(false);
@@ -29,10 +32,10 @@ const Address = (props) => {
   return (
     <div style={{ ...styles.address, ...style }}>
       {avatar === 'left' && <Blockie address={address} size={7} />}
-      <p>{size ? getEllipsisTxt(address, size) : address}</p>
+      <p className="tw-text-white tw-text-center">{size ? getEllipsisTxt(address, size) : address}</p>
       {avatar === 'right' && <Blockie address={address} size={7} />}
-      {copyable &&
-        (isClicked ? (
+      {copyable
+        && (isClicked ? (
           <Check />
         ) : (
           <Copy

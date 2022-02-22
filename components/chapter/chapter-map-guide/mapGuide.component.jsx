@@ -4,8 +4,8 @@ import styles from './mapGuide.module.css';
 const MapGuide = ({ categories }) => (
   <div className={styles.container}>
     <div className={styles.heading}>Chapter Type</div>
-    {categories &&
-      categories.map(({ _id, LocationLogo, chapter_type }) => (
+    {categories
+      && categories.map(({ _id, LocationLogo, chapter_type }) => (
         <div key={_id} className={styles.iconAndName}>
           <div className={styles.icon}>
             <img src={LocationLogo} alt="icon" />

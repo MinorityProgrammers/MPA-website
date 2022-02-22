@@ -1,14 +1,22 @@
 .overviewContent {
   display: flex;
-  margin: 2vw;
+  flex-direction: column;
+  padding: 16px;
   width: 100%;
 }
 
 /* STYLING COMMONS */
 .overviewContent h5 {
   color: white;
-  font-size: 1.3vw;
+  font-size: 20px;
   font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 20px;
+}
+.overviewContent h5 i{
+  cursor: pointer; 
 }
 .overviewContent h6 {
   font-size: 1vw;
@@ -18,40 +26,13 @@
 .fiCompletion button,
 .fIProfile .userContent,
 .fIProfile .quickLink {
-  background-color: white;
   border-radius: 0.5vw;
 }
 /* END STYLING COMMONS */
 
-.fleft {
-  width: 50%;
-  margin-right: 2vw;
-}
-
-.fright {
-  width: 50%;
-}
-
-.fItem {
-  background-color: #393b97;
-  border-radius: 1vw;
-  padding: 1vw;
-}
-
 /* STYLING Completion */
 .fiCompletion {
-  background-color: #226fee;
   display: flex;
-  flex-wrap: wrap;
-  height: 30%;
-}
-.fiCompletion .progress {
-  display: flex;
-  justify-content: space-between;
-  color: white;
-  position: relative;
-  height: 75px;
-  width: 75px;
 }
 .fiCompletion .progress svg {
   height: 75px;
@@ -70,35 +51,35 @@
   height: 100%;
 }
 .fiCompletion .progress svg circle {
-  fill: #377eef;
-  stroke: white;
-  stroke-width: 5;
+  fill: #1C1D37;
+  stroke: #6938EF;
+  stroke-width: 8;
   transform: translate(2.5px, 2.5px);
   stroke-dasharray: 220;
-  /* stroke dashoffset style comes dynamically from component itself */
-  /* stroke-dashoffset: calc(220 - (220 * 75) / 100); */
+  stroke-dashoffset: calc(220 - (220 * 75) / 100);
   stroke-linecap: round;
 }
 .fiCompletion .info {
   color: white;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  margin-left: 20px;
-  width: calc(100% - 100px);
+  margin: auto;
+  width: 50%;
 }
 .fiCompletion .info p {
-  font-size: 1vw;
+  font-size: 20px;
 }
 .fiCompletion .completedProfile,
 .fiCompletion button {
-  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-  color: #226fee;
-  font-size: 1.2vw;
+  background: #6938EF;
+  color: #ffffff;
+  font-size: 20px;
   font-weight: bold;
   margin-top: 10px;
+  border-radius: 100px;
+  width: fit-content;
   width: 100%;
+  padding: .9rem;
 }
 .fiCompletion .completedProfile {
   color: #00aa4f;
@@ -122,28 +103,30 @@
 
 /* STYLING Profile */
 .fIProfile {
-  color: black;
-  margin: 2vw 0;
-  height: calc(45% - 2vw);
+  color: white;
+  margin: 20px 0;
+  border: 1px solid #6938EF;
+  box-shadow: 0px 17px 25px rgb(0 0 0 / 25%);
+  border-radius: 15px;
+  padding-top: 15px;
 }
-.fIProfile h5 {
-  height: 10%;
+.fIProfile h5{
+  padding-left: 50px;
 }
 .fIProfile .userContent {
   display: flex;
-  padding: 0.5vw;
-  margin: 0.5vw 0;
-  height: calc(55% - 1vw);
+  padding-left: 50px;
 }
 .fIProfile .userContent .uCLeft {
   width: 70%;
 }
 .fIProfile .userContent .info {
   display: flex;
-  font-size: 1.5vh;
+  font-size: 16px;
+  font-weight: 500;
+  margin: 10px 0;
 }
 .fIProfile .userContent .info .infoKey {
-  font-weight: bold;
   text-overflow: ellipsis;
   white-space: nowrap;
   width: 35%;
@@ -153,14 +136,28 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   width: 65%;
+  font-weight: 400;
+}
+.infoValue a:hover{
+  color: #6938EF;
+}
+.lineContainer{
+  padding: 0 10px;
+  width: 100%;
+}
+.line{
+  background: rgba(147, 121, 255, 0.52);
+  height: 1px;
+  width: 100%;
+  margin: 11px auto;
 }
 @media only screen and (max-width: 1024px) {
   .fIProfile .userContent .uCLeft {
     margin: 1vw 0;
   }
-  .fIProfile .userContent .info {
+  /* .fIProfile .userContent .info {
     font-size: 1.2vh;
-  }
+  } */
   .fIProfile .userContent .info:not(:last-child) {
     margin-bottom: 1vw;
   }
@@ -332,7 +329,7 @@
   margin-left: 0.5vw;
   width: 1.5vw;
 }
-@media only screen and (max-width: 1024px) {
+/* @media only screen and (max-width: 1024px) {
   .fISecurity .updateAccountLogin {
     flex-wrap: wrap;
     margin-top: 2vw;
@@ -343,7 +340,7 @@
   .fISecurity .updateAccountLogin > div:first-child {
     margin-bottom: 1vw;
   }
-}
+} */
 @media only screen and (max-width: 768px) {
   .fISecurity .updateAccountLogin {
     font-size: 2vw;
@@ -491,3 +488,212 @@
   }
 }
 /* END OF STYLING Notifications */
+
+/* Progress Styleing */
+.progress {
+  width: 110px;
+  height: 110px !important;
+  float: left;
+  line-height: 150px;
+  background: none;
+  margin: 20px 0px 0px 20px;
+  box-shadow: none;
+  position: relative
+}
+
+.progress:after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 20px solid #3E385D;
+  ;
+  position: absolute;
+  top: 0;
+  left: 0
+}
+
+.progress>span {
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  z-index: 1
+}
+
+.progress .progressLeft {
+  left: 0
+}
+
+.progress .progressBar {
+  width: 100%;
+  height: 100%;
+  background: none;
+  border-width:20px;
+  border-style: solid;
+  position: absolute;
+  top: 0
+}
+
+.progress .progressLeft .progressBar {
+  left: 100%;
+  border-top-right-radius: 80px;
+  border-bottom-right-radius: 80px;
+  border-left: 0;
+  -webkit-transform-origin: center left;
+  transform-origin: center left
+}
+
+.progress .progressRight {
+  right: 0
+}
+
+.progress .progressRight .progressBar {
+  left: -100%;
+  border-top-left-radius: 80px;
+  border-bottom-left-radius: 80px;
+  border-right: 0;
+  -webkit-transform-origin: center right;
+  transform-origin: center right;
+}
+
+.progress .progressValue {
+  width: 90%;
+  height: 90%;
+  border-radius: 50%;
+  background: #1C1D37;
+  font-size: 20px;
+  font-weight: bold;
+  color: #fff;
+  line-height: 135px;
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  font-weight: bold;
+}
+
+.progress.blue .progressBar {
+  border-color: #7653FF;
+}
+
+/* Bottom body Items */
+.bodyBottom{
+  display: grid;
+  grid-template-columns: 48% 48%;
+  grid-column-gap:4%;
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+}
+.bottomItem{
+  display: flex;
+  padding: 1rem 0rem;
+  flex-direction: column;
+  background: #1C1D37;
+  border: 1px solid #6938EF;
+  box-sizing: border-box;
+  box-shadow: 0px 32px 41px rgb(0 0 0 / 25%);
+  border-radius: 15px;
+}
+.bottomItem div{
+  padding-left: 50px;
+}
+.lineContainer{
+  padding: 0 10px !important;
+}
+.bottomItem div h2{
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 20px;
+}
+.bottomItem div h2 i{
+ cursor: pointer; 
+}  
+.itemElement{
+  display: flex;
+  justify-content: space-between;
+  padding-right: 2rem;
+}
+.itemElement img{
+  max-height: 24px;
+  cursor: pointer;
+}
+.itemElement p{
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+  .fiCompletion{
+    flex-flow: column;
+    align-items: center;
+  }
+}
+@media only screen and (max-width: 450px) {
+  .overviewContent h5{
+    font-size: 18px;
+  }
+  .infoKey{
+    font-size: 16px;
+  }
+  .bottomItem{
+    margin-bottom: 20px;
+  }
+  .bottomItem div h2{
+    font-size: 18px;
+  }
+  .bottomItem div{
+    padding-left: 20px;
+  }
+  .itemElement{
+    padding-right: 0px;
+  }
+  .userContent{
+    padding-left: 20px !important;
+  }
+  .fIProfile h5{
+    padding-left: 20px;
+  }
+  .walletContainer {
+    padding-left: 5px !important;
+  }
+  .walletRow{
+    width: 100%;
+  }
+  .bodyBottom{
+    grid-template-columns: 100%;
+  }
+  .itemElement img{
+    margin: 0 !important;
+  }
+  .fiCompletion button{
+    font-size: 18px;
+  }
+  .info p{
+    font-size: 16px;
+  }
+  .fIProfile, .userContent, .uCLeft{
+    width: 100% !important;
+  }
+  .fIProfile .userContent .info:nth-child(-n + 2) .infoValue {
+    width: 100% !important;
+  }
+  .walletRow h3{
+    font-size: 14px;
+  }  
+  .walletRow p{
+    font-size: 14px;
+    margin-left: 4px;
+    white-space: nowrap;
+  }  
+  .overviewContent{   
+    padding: 10px;
+  }
+}

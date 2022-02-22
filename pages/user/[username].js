@@ -1,4 +1,6 @@
-import React, { useEffect, useState, useContext, useRef } from 'react';
+import React, {
+  useEffect, useState, useContext, useRef,
+} from 'react';
 import { useRouter } from 'next/router';
 import NotFoundPage from '../404';
 import Layout from '../../components/Layout';
@@ -9,7 +11,6 @@ import { GlobalContext } from '../../contexts/provider';
 import getProfile from '../../contexts/actions/profile/getProfile';
 import links from '../../contexts/utils/links';
 import Footer from '../../components/Footer';
-import ComingSoon from '../../components/ComingSoon';
 import useDetectOutsideClick from '../../components/UseDetectOutsideClick';
 
 const User = ({ user }) => {
@@ -20,13 +21,13 @@ const User = ({ user }) => {
   const [userData, setUserData] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [ownsProfile, setOwnsProfile] = useState(false);
+  const [changeInProfile, setChangeInProfile] = useState(false);
 
   useEffect(() => {
     const timeoutID = setTimeout(
-      () =>
-        !((isLoggedIn && ownsProfile) || user[0]?.profileVisibility) &&
-        setHiddenProfileValidated(true),
-      2000
+      () => !((isLoggedIn && ownsProfile) || user[0]?.profileVisibility)
+        && setHiddenProfileValidated(true),
+      2000,
     );
     return () => {
       clearTimeout(timeoutID);
@@ -50,12 +51,12 @@ const User = ({ user }) => {
     if (window.localStorage.getItem('jwtToken')) {
       getProfile(setUserData)(profileDispatch);
     }
-  }, []);
+  }, [changeInProfile]);
 
   useEffect(() => {
     setOwnsProfile(
-      userData?.userName === user[0]?.userName ||
-        profileData?.userName === user[0]?.userName
+      userData?.userName === user[0]?.userName
+        || profileData?.userName === user[0]?.userName,
     );
   }, [user, userData, profileData]);
 
@@ -84,8 +85,8 @@ const User = ({ user }) => {
 
   return (
     <Layout pageTitle="Profile">
-      {(isLoggedIn && ownsProfile && user?.[0]) ||
-      user[0]?.profileVisibility !== false ? (
+      {(isLoggedIn && ownsProfile && user?.[0])
+      || user[0]?.profileVisibility !== false ? (
         <>
           <HomepageNav
             setData={setUserData}
@@ -106,14 +107,17 @@ const User = ({ user }) => {
             }
             isLoggedIn={isLoggedIn}
             ownsProfile={ownsProfile}
+            profileDispatch={profileDispatch}
+            setChangeInProfile={setChangeInProfile}
+            userId={user[0]?._id}
           />
           <Footer />
         </>
-      ) : hiddenProfileValidated ? (
-        <NotFoundPage />
-      ) : (
-        <></>
-      )}
+        ) : hiddenProfileValidated ? (
+          <NotFoundPage />
+        ) : (
+          <></>
+        )}
     </Layout>
   );
 };

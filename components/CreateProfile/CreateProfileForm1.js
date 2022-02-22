@@ -94,7 +94,6 @@ const CreateProfileQuestions1 = function ({
     if (usernames.includes(state[step].userName)) {
       toggleUsernameWarning(true);
     } else if (/[^\w\-]/.test(state[step].userName)) {
-      console.log(state[step].userName, 'wrong username');
       toggleWrongUsernameWarning(true);
     } else {
       const inputFieldNames = Object.keys(state[step]);
@@ -119,7 +118,6 @@ const CreateProfileQuestions1 = function ({
     if (usernames.includes(state[step].userName)) {
       toggleUsernameWarning(true);
     } else if (/[^\w\-]/.test(state[step].userName)) {
-      console.log(state[step].userName, 'wrong username');
       toggleWrongUsernameWarning(true);
     } else {
       const inputFieldNames = Object.keys(state[step]);

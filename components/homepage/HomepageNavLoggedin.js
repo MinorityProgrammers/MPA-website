@@ -1,12 +1,13 @@
-import { signOut } from 'next-auth/client';
+import { signOut, useSession } from 'next-auth/client';
 import React, { useContext, useState } from 'react';
 import { LOGOUT_USER } from '../../contexts/actions/actionTypes';
 import { GlobalContext } from '../../contexts/provider';
 
-const HomepageNavLoggedin = function ({ onCloseMobileMenu, userInfo }) {
+const HomepageNavLoggedin = ({ onCloseMobileMenu, userInfo }) => {
   const { authDispatch } = useContext(GlobalContext);
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
+  const [session] = useSession();
 
   const handleLogout = () => {
     localStorage.removeItem('userInfo');
@@ -14,12 +15,18 @@ const HomepageNavLoggedin = function ({ onCloseMobileMenu, userInfo }) {
     authDispatch({
       type: LOGOUT_USER,
     });
-    signOut();
+    if (session) {
+      signOut();
+    }
   };
 
   return (
     <div className={click ? 'dropdown-login clicked' : 'dropdown-login right'}>
-      <button type="button" className="dropdown-login-btn-close" onClick={onCloseMobileMenu}>
+      <button
+        type="button"
+        className="dropdown-login-btn-close"
+        onClick={onCloseMobileMenu}
+      >
         <i className="fas fa-times" />
       </button>
       <p className="mb-3">
@@ -46,7 +53,7 @@ const HomepageNavLoggedin = function ({ onCloseMobileMenu, userInfo }) {
         >
           <p className="login-options-profile">Profile</p>
         </a>
-        <a href="/settings/overview" onClick={() => handleClick()}>
+        <a href="/settings" onClick={() => handleClick()}>
           <p className="login-options-setting">Settings</p>
         </a>
       </div>

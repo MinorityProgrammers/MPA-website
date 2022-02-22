@@ -67,7 +67,9 @@ const OverviewProfile = ({ userData }) => {
                 marginBottom: '2%',
               }}
             >
-              {userData.firstName} {userData.lastName}
+              {userData.firstName}
+              {' '}
+              {userData.lastName}
             </p>
             <p style={{ fontSize: '12px', color: 'black', marginBottom: '2%' }}>
               Current Position

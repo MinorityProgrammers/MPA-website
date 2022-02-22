@@ -12,34 +12,26 @@ import {
 import getProfile from '../../../contexts/actions/profile/getProfile';
 import { GlobalContext } from '../../../contexts/provider';
 import Form from '../form/index';
-import styles from './card.module.css';
+import styles from '../../../styles/auth/auth.module.scss';
 
 export default function Index() {
-  // USED FOR SOCIAL AUTHENTICATION
+  const [session] = useSession();
 
-  // const googleClientId = process.env.CLIENT_ID;
-  const [session/* , isLoading */] = useSession();
-
-  // Instead of another page we will set the text to variables
   const [cardText, setCardText] = useState({
     signIn: false,
     h1Title: 'welcome',
     p: (
       <p>
         To keep connecting with us please
-        {' '}
         <br />
-        {' '}
-        register with your personal
-        info
+        register with your personal info
       </p>
     ),
     h2Title: 'sign up',
-    para: 'already have an account?',
+    para: 'already have an account? ',
     link: 'sign in',
   });
 
-  // STATES USED THROUGHOUT THE COMPONENT
   const [submit, setSubmit] = useState(false);
   const [, setSpin] = useState(false);
   const [, setSignedIn] = useState(false);
@@ -47,9 +39,7 @@ export default function Index() {
   const [providers, setPrivders] = useState([]);
   const router = useRouter();
 
-  const {
-    profileDispatch,
-  } = useContext(GlobalContext);
+  const { profileDispatch } = useContext(GlobalContext);
 
   useEffect(() => {
     if (window.localStorage.getItem('jwtToken')) {
@@ -66,28 +56,6 @@ export default function Index() {
     setupProviders();
   }, []);
 
-  // user redirection's
-  // useEffect(() => {
-  //     if (userData?.isUpdated === true) {
-  //         const slug = userData?.userName
-  //         router.push(`/user/${slug}`)
-  //     }
-  //     if (userData?.isUpdated === false) {
-  //         router.push(`/create-profile`)
-  //     }
-  // }, [userData])
-
-  // useEffect(() => {
-  //     if (profileData?.isUpdated === true) {
-  //         const slug = profileData?.userName
-  //         router.push(`/user/${slug}`)
-  //     }
-  //     if (profileData?.isUpdated === false) {
-  //         router.push(`/create-profile`)
-  //     }
-  // }, [profileData])
-
-  // states from global context
   const {
     authDispatch,
     authState: {
@@ -95,44 +63,36 @@ export default function Index() {
     },
   } = useContext(GlobalContext);
 
-  // redirecting the user
   useEffect(() => {
     if (
       window.localStorage.getItem('jwtToken')
       && window.localStorage.getItem('userInfo')
     ) {
-      // UPDATE SIGNIN STATE
       setSignedIn(true);
     }
   }, []);
 
-  useEffect(() => {
-    if (data && submit) {
-      router.push(router.pathname);
-      if (router.pathname === '/auth') {
-        const loginSignUp = document.querySelector(
-          '.card_cardContainer__12vmM',
-        );
-        loginSignUp.style.display = 'none';
-      } else {
-        const loginSignUp = document.querySelector('.create_event');
-        loginSignUp.style.display = 'none';
-      }
-    }
-  }, [data]);
+  // useEffect(() => {
+  //   if (data && submit) {
+  //     router.push(router.pathname);
+  //     if (router.pathname === '/auth') {
+  //       const loginSignUp = document.querySelector(
+  //         '.card_cardContainer__12vmM',
+  //       );
+  //       loginSignUp.style.display = 'none';
+  //     } else {
+  //       const loginSignUp = document.querySelector('.create_event');
+  //       loginSignUp.style.display = 'none';
+  //     }
+  //   }
+  // }, [data]);
 
-  // NEED TO CHECK IF ACCOUNT EXISTS, TRY REQUEST TO SEE IF USER EXISTS
-  // SOCIAL AUTHENTICATION
   const handleLoginSuccess = (res) => {
-    // keep this
     googleAuth({ tokenId: res.tokenId })(authDispatch);
   };
 
-  const handleLoginFailure = (res) => {
-    // console.log(res);
-  };
+  const handleLoginFailure = (res) => {};
 
-  // CHANGES CARD FROM SIGN UP TO SIGN IN
   const handleClick = (event) => {
     event.preventDefault();
 
@@ -141,17 +101,17 @@ export default function Index() {
         signIn: false,
         h1Title: 'register for MPA',
         p: (
-          <p>
+          <span>
             To keep connecting with us please
             {' '}
             <br />
             {' '}
             register with your personal
             info
-          </p>
+          </span>
         ),
         h2Title: 'sign up',
-        para: 'already have an account?',
+        para: 'already have an account? ',
         link: 'sign in',
       });
     } else if (cardText.signIn === false) {
@@ -159,17 +119,17 @@ export default function Index() {
         signIn: true,
         h1Title: 'welcome back',
         p: (
-          <p>
+          <span>
             To keep connecting with us please
             {' '}
             <br />
             {' '}
             sign-in with your personal
             info
-          </p>
+          </span>
         ),
         h2Title: 'sign in',
-        para: 'new to register?',
+        para: 'new to register? ',
         link: 'sign up',
       });
     }
@@ -216,37 +176,17 @@ export default function Index() {
           <h2>{cardText.h2Title}</h2>
           <p>
             {cardText.para}
-            <a href={`#${cardText.link}`} className="tw-text-blue-800" onClick={handleClick}>
-              {' '}
+            <a
+              href={`#${cardText.link}`}
+              className="tw-text-blue-800"
+              onClick={handleClick}
+            >
               {cardText.link}
             </a>
           </p>
         </div>
         <ul className={styles.socialMedia}>
           <li>
-            {/* <GoogleLogin
-              clientId={googleClientId}
-              render={(renderProps) => (
-                <img
-                  src="./assets/images/login-signup/google.png"
-                  alt="icon"
-                  onClick={renderProps.onClick}
-                  disabled={renderProps.disabled}
-                />
-              )}
-              buttonText="Login"
-              onSuccess={handleLoginSuccess}
-              onFailure={handleLoginFailure}
-              cookiePolicy="single_host_origin"
-            /> */}
-            <img
-              onClick={() => signIn(providers.google.id)}
-              src="./assets/images/login-signup/google.png"
-              className="tw-mx-4"
-              alt="icon"
-            />
-          </li>
-          {/* <li>
             <img
               onClick={() => signIn(providers.linkedin.id)}
               src="./assets/images/login-signup/linkin.png"
@@ -261,15 +201,8 @@ export default function Index() {
               src="./assets/images/login-signup/github.png"
               alt="icon"
             />
-          </li> */}
-          <li>
-            <img
-              onClick={() => signIn(providers.facebook.id)}
-              src="./assets/images/login-signup/facebook.png"
-              className="tw-mx-4"
-              alt="icon"
-            />
           </li>
+
         </ul>
         <div className={styles.mid}>
           <div className={styles.line} />

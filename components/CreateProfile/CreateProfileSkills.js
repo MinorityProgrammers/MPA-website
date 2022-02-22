@@ -5,7 +5,7 @@ const CreateProfileSkills = function ({ values, setValue }) {
   const deleteValue = (delValue) => {
     setValue(values.filter((value) => value !== delValue));
   };
-  // console.log(values)
+
   return (
     <div className="cp-skillsContainer">
       {

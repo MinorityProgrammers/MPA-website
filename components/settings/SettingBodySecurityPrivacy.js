@@ -8,7 +8,9 @@ import styles from '../../styles/settings/settingBodySecurityPrivacy.module.css'
 import CreateSettingInput from './CreateSettingInput';
 import SettingBody from './SettingBody';
 
-const SettingBodySecurityPrivacy = function ({ settingsPage, data, userID }) {
+const SettingBodySecurityPrivacy = ({
+  settingsPage, data, userID, inputStates, setInputStates,
+}) => {
   const router = useRouter();
 
   const inputFields = [
@@ -20,17 +22,16 @@ const SettingBodySecurityPrivacy = function ({ settingsPage, data, userID }) {
 
   const initialInputState = {};
 
-  inputFields.forEach(
-    (field) => { initialInputState[field.name] = ''; },
-    // ex. {someInputFieldName: "inputFieldValue", ...}
-  );
+  inputFields.forEach((field) => {
+    initialInputState[field.name] = '';
+  });
 
-  const [inputStates, setInputStates] = useState(initialInputState);
+  // const [inputStates, setInputStates] = useState(initialInputState);
 
   useEffect(() => {
-    inputFields.forEach(
-      (field) => { initialInputState[field.name] = data?.[field.name] || ''; },
-    );
+    inputFields.forEach((field) => {
+      initialInputState[field.name] = data?.[field.name] || '';
+    });
 
     setInputStates(initialInputState);
   }, [data]);
@@ -52,16 +53,19 @@ const SettingBodySecurityPrivacy = function ({ settingsPage, data, userID }) {
     updateProfile(userID, formData)(profileDispatch);
 
     const slug = data?.userName;
-    if (slug) { router.push(`/user/${slug}`); }
+    if (slug) {
+      router.push(`/user/${slug}`);
+    }
   };
 
   const closeProfileSetup = () => {
     // discard changes
     const slug = data?.userName;
-    if (slug) { router.push(`/user/${slug}`); }
+    if (slug) {
+      router.push(`/user/${slug}`);
+    }
   };
 
-  // console.log(inputStates)
   return (
     <SettingBody
       settingsPage={settingsPage}

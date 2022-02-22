@@ -22,7 +22,7 @@ const WeekPage = ({ params }) => {
   const [loading, setLoading] = useState(true);
 
   const redirect = () => {
-    window.location.href = '/learn-page';
+    window.location.href = '/learn';
   };
 
   useEffect(() => {

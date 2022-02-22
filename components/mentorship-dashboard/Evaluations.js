@@ -3,7 +3,6 @@ import stylesD from '../../styles/MentorCSS/Dashboard.module.css';
 import styles from '../../styles/MentorCSS/Course.module.css';
 
 const Evaluations = () => (
-  // const counter = 0;
 
   <div>
     <div className={stylesD.teamImg}>

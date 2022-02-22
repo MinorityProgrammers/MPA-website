@@ -25,7 +25,6 @@ const TaskNameHeader = () => {
     const newUsers = [...userCart, addnew];
     setUserCart(newUsers);
   };
-  console.log(userCart);
 
   const HandleRemoveUser = (id) => {
     const afterRemoveUsers = userCart.filter((remo) => remo.id !== id);
@@ -35,10 +34,8 @@ const TaskNameHeader = () => {
   const handleEditTagsCat = (newtag) => {
     const newEditTags = [...editTagCart, newtag];
     setEditTagCart(newEditTags);
-
-    console.log(newtag.tagName);
   };
-  console.log(editTagCart);
+
   const HandleRemoveEditTag = (id) => {
     const afterRemoveEditTags = editTagCart.filter((remo) => remo.id !== id);
     setEditTagCart(afterRemoveEditTags);
@@ -53,7 +50,7 @@ const TaskNameHeader = () => {
       document.querySelector('#check').style.display = 'none';
     }
   };
-  console.log(piorityFlagCart);
+
   const HandleRemoveFlag = (id) => {
     const afterRemoveFlagCat = piorityFlagCart.filter((remo) => remo.id !== id);
     setPiorityFlagCart(afterRemoveFlagCat);
@@ -70,7 +67,9 @@ const TaskNameHeader = () => {
         <div className="tw-container tw-flex  tw-items-center ">
           <p>In</p>
           <p>Category</p>
-          <RiArrowRightSLine /> <p>Sub Category</p>
+          <RiArrowRightSLine />
+          {' '}
+          <p>Sub Category</p>
           <p className="tw-ml-2">For</p>
           <img
             src="/assets/images/coreteamimg/user.png"
@@ -80,8 +79,8 @@ const TaskNameHeader = () => {
           <div className="gradient tw-rounded-full tw-h-6 tw-w-6 text-center">
             <span className="tw-purple-800 te-p-2">LA</span>
           </div>
-          {userCart.length &&
-            userCart.map((u) => (
+          {userCart.length
+            && userCart.map((u) => (
               <div
                 className="tw-cursor-pointer tw-btn"
                 key={u.id}

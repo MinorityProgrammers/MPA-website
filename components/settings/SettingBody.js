@@ -3,12 +3,12 @@ import { useRouter } from 'next/router';
 import styles from '../../styles/settings/settingBody.module.css';
 import getSpecificSettingsLayoutNavigationList from '../../helpers/getSpecificSettingsLayoutNavigationList';
 
-const SettingBody = function ({
+const SettingBody = ({
   settingsPage,
   children,
   closeProfileSetup,
   handleSubmit,
-}) {
+}) => {
   const router = useRouter();
 
   const settingsSubPage = router.pathname.substring(

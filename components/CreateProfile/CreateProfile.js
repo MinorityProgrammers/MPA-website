@@ -146,7 +146,6 @@ const CreateProfile = function ({ userID, data }) {
   const formData = new FormData();
   Object.values(inputStates).forEach((inputSection) => {
     Object.keys(inputSection).forEach((input) => {
-      // console.log(input, inputSection[input])
       if (input === 'avatarOptions') {
         formData.append(input, JSON.stringify(inputSection[input]));
       } else {
@@ -154,7 +153,7 @@ const CreateProfile = function ({ userID, data }) {
       }
     });
   });
-  // console.log(inputStates)
+
   const handleSubmit = () => {
     // submit all data
     updateProfile(userID, formData)(profileDispatch);
@@ -175,7 +174,7 @@ const CreateProfile = function ({ userID, data }) {
       if (slug) { router.push(`/user/${slug}`); }
     }
   };
-  // console.log(inputStates)
+
   return (
     <div className="cp-container">
       <CreateProfileSidebar

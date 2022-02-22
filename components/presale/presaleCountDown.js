@@ -39,11 +39,8 @@ const presaleCountDown = () => {
     timerComponents.push(
       <span className="interval">
         {timeLeft[interval]}
-        {' '}
         <br />
-        {' '}
         {interval}
-        {' '}
       </span>,
     );
   });

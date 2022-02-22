@@ -1,8 +1,5 @@
-import Portis from '@portis/web3';
-import WalletConnectProvider from '@walletconnect/web3-provider';
-import Fortmatic from 'fortmatic';
 import decode from 'jwt-decode';
-import { signOut } from 'next-auth/client';
+import { signOut, useSession } from 'next-auth/client';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, {
@@ -10,8 +7,6 @@ import React, {
 } from 'react';
 import { BiMenuAltLeft } from 'react-icons/bi';
 import { useMoralis } from 'react-moralis';
-import Web3 from 'web3';
-import Web3Modal from 'web3modal';
 import { LOGOUT_USER } from '../../contexts/actions/actionTypes';
 import getProfile from '../../contexts/actions/profile/getProfile';
 import { GlobalContext } from '../../contexts/provider';
@@ -19,118 +14,6 @@ import Account from '../Account';
 import useDetectOutsideClick from '../UseDetectOutsideClick';
 import HomepageNavLoggedin from './HomepageNavLoggedin';
 import HomepageNavLogin from './HomepageNavLogin';
-
-// the main stylesheet
-import styles from '../module-css/header/home_page_nav.module.css';
-
-// tw-flex tw-flex-row tw-justify-around tw-w-1/4 tw-my-8 navbar__right md:tw-hidden
-
-let web3Modal;
-let selectedAccount = null; // address the use of this variable
-let provider;
-
-/* // address the use of this function
-function copyWalletAddress(text) {
-  const copyText = document.createElement('textarea');
-  document.body.appendChild(copyText);
-  copyText.value = text;
-  copyText.select();
-  document.execCommand('copy');
-  document.body.removeChild(copyText);
-} */
-
-async function fetchAccountData() {
-  // Get a Web3 instance for the wallet
-  const web3 = new Web3(provider);
-
-  // Get list of accounts of the connected wallet
-  const accounts = await web3.eth.getAccounts();
-
-  // MetaMask does not give you all accounts, only the selected account
-  selectedAccount = accounts[0]; // address the use of this variable
-}
-
-/**
- * Fetch account data for UI when
- * - User switches accounts in wallet
- * - User switches networks in wallet
- * - User connects wallet initially
- */
-async function refreshAccountData() {
-  await fetchAccountData(provider);
-}
-
-/**
- * Connect wallet button pressed.
- */
-async function onConnect() {
-  const providerOptions = {
-    portis: {
-      package: Portis, // required
-      options: {
-        id: 'PORTIS_ID', // required
-      },
-    },
-    walletconnect: {
-      package: WalletConnectProvider, // required
-      options: {
-        infuraId: 'INFURA_ID', // required
-      },
-    },
-    fortmatic: {
-      package: Fortmatic, // required
-      options: {
-        key: 'FORTMATIC_KEY', // required
-      },
-    },
-  };
-
-  web3Modal = new Web3Modal({
-    cacheProvider: false, // optional
-    providerOptions, // required
-    disableInjectedProvider: false, // optional. For MetaMask / Brave / Opera.
-  });
-
-  try {
-    provider = await web3Modal.connect();
-  } catch (e) {
-    console.log('Could not get a wallet connection', e);
-    return;
-  }
-
-  // Subscribe to accounts change
-  provider.on('accountsChanged', (/* accounts */) => {
-    fetchAccountData();
-  });
-
-  // Subscribe to chainId change
-  provider.on('chainChanged', (/* chainId */) => {
-    fetchAccountData();
-  });
-
-  // Subscribe to networkId change
-  provider.on('networkChanged', (/* networkId */) => {
-    fetchAccountData();
-  });
-
-  await refreshAccountData();
-}
-
-async function onDisconnect() {
-  // TODO: Which providers have close method?
-  if (provider.close) {
-    await provider.close();
-
-    // If the cached provider is not cleared,
-    // WalletConnect will default to the existing session
-    // and does not allow to re-scan the QR code with a new wallet.
-    // Depending on your use case you may want or want not his behavir.
-    await web3Modal.clearCachedProvider();
-    provider = null;
-  }
-
-  selectedAccount = null; // address the use of this variable
-}
 
 const HomepageNav = ({
   setToken, setData, page, open, setOpen = () => {},
@@ -140,7 +23,6 @@ const HomepageNav = ({
   const searchMobileRef = useRef(null);
   const [userData, setUserData] = useState([]);
   const [click, setClick] = useState(false);
-  const [dropdown, setDropdown] = useState(false);
   const [sticky, setSticky] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
   const router = useRouter();
@@ -155,10 +37,9 @@ const HomepageNav = ({
     false,
   );
   const [, setConnect] = useState(false);
+  const [session] = useSession();
 
-  const {
-    isWeb3Enabled, /* enableWeb3, */ isAuthenticated, isWeb3EnableLoading,
-  } = useMoralis();
+  const { isWeb3Enabled, isAuthenticated, isWeb3EnableLoading } = useMoralis();
 
   useEffect(() => {
     if (isAuthenticated && !isWeb3Enabled && !isWeb3EnableLoading) {
@@ -185,11 +66,6 @@ const HomepageNav = ({
       query: { _q: searchValue },
     });
   };
-
-  /*  // this function is not used check if it is needed before removing it
-  const handleConnect = () => {
-    enableWeb3();
-  }; */
 
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
@@ -223,7 +99,7 @@ const HomepageNav = ({
       if (
         page === 'MentorshipProgram'
         || page === 'Consultancy'
-        || page === 'learn-page'
+        || page === 'learn'
         || page === 'About'
         || page === 'Careers'
         || page === 'auth'
@@ -240,14 +116,13 @@ const HomepageNav = ({
         setData(null);
       }
     } else {
-      // setUserData(Object.values(JSON.parse(userInfo))[1])
       getProfile(setUserData)(profileDispatch);
       if (
         page === 'MentorshipProgram'
         || page === 'Consultancy'
         || page === 'About'
         || page === 'Careers'
-        || page === 'learn-page'
+        || page === 'learn'
         || page === 'auth'
         || page === 'Incubator'
         || page === 'Chat'
@@ -265,7 +140,9 @@ const HomepageNav = ({
         setToken(token);
       }
     }
-  }, [data]);
+  }, [data, typeof window !== 'undefined'
+    ? window.localStorage.getItem('jwtToken')
+    : null]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -287,8 +164,9 @@ const HomepageNav = ({
     authDispatch({
       type: LOGOUT_USER,
     });
-    signOut();
-    // window.location.href = "/";
+    if (session) {
+      signOut();
+    }
   };
 
   useEffect(() => {
@@ -300,16 +178,6 @@ const HomepageNav = ({
       if (decodedToken.exp * 1000 < new Date().getTime()) handleLogout();
     }
   }, []);
-
-  const onMouseEnter = () => {
-    setDropdown(true);
-  };
-
-  const onMouseLeave = () => {
-    setDropdown(false);
-  };
-
-  const extendEle = () => (dropdown ? setDropdown(false) : setDropdown(true));
 
   const showSearchIconMobile = () => (
     <div
@@ -394,7 +262,7 @@ const HomepageNav = ({
       )}
 
       <ul className="nav__mobile-items">
-        <a href="/learn-page" onClick={closeMobileMenu}>
+        <a href="/learn" onClick={closeMobileMenu}>
           <li className="nav-item">
             <div className="nav__mobile-link">
               <p>Learn</p>
@@ -406,14 +274,6 @@ const HomepageNav = ({
           <li className="nav-item ">
             <div className="nav__mobile-link">
               Incubator
-              <i className="fas fa-chevron-right mobile-arrow" />
-            </div>
-          </li>
-        </a>
-        <a href="/mentorshipProgram" onClick={closeMobileMenu}>
-          <li className="nav-item">
-            <div className="nav__mobile-link">
-              Mentorship
               <i className="fas fa-chevron-right mobile-arrow" />
             </div>
           </li>
@@ -434,18 +294,6 @@ const HomepageNav = ({
             </div>
           </li>
         </a>
-        <a href="/consultancy" onClick={extendEle}>
-          <li
-            className="nav-item"
-            onMouseEnter={onMouseEnter}
-            onMouseLeave={onMouseLeave}
-          >
-            <div className="nav__mobile-link">
-              Consultancy
-              <i className="fas fa-chevron-right mobile-arrow" />
-            </div>
-          </li>
-        </a>
       </ul>
       {userData !== null && userData !== undefined ? (
         <ul className="nav__mobile-items">
@@ -461,22 +309,6 @@ const HomepageNav = ({
               <div className="nav__mobile-link">Profile</div>
             </li>
           </a>
-          {/* <a href="#" onClick={closeMobileMenu}>
-            <li className="nav-item">
-              <div className="nav__mobile-link">
-                Messages
-                <p className="mobile__social msg">2</p>
-              </div>
-            </li>
-          </a>
-          <a href="#" onClick={closeMobileMenu}>
-            <li className="nav-item">
-              <div className="nav__mobile-link">
-                Notifications
-                <p className="mobile__social notification">3</p>
-              </div>
-            </li>
-          </a> */}
         </ul>
       ) : (
         ''
@@ -531,10 +363,10 @@ const HomepageNav = ({
                 {userData !== null && userData !== undefined ? (
                   <li onClick={() => setOpen(!open)}>
                     <span
-                      className="tw-cursor-pointer tw-text-blue-700"
-                      style={{ fontSize: '1.8rem' }}
+                      className="tw-cursor-pointer tw-text-blue-700 tw-hover:text-white"
+                      style={{ fontSize: '1.1rem' }}
                     >
-                      <BiMenuAltLeft />
+                      All
                     </span>
                   </li>
                 ) : (
@@ -574,13 +406,13 @@ const HomepageNav = ({
               )}
               <li
                 className={
-                  router.pathname === '/learn-page'
+                  router.pathname === '/learn'
                     ? 'nav-item active-link tw-cursor-pointer'
                     : 'nav-item'
                 }
               >
                 <Link
-                  href="/learn-page"
+                  href="/learn"
                   className="nav-links"
                   onClick={closeMobileMenu}
                 >
@@ -602,21 +434,6 @@ const HomepageNav = ({
                   <a>INCUBATOR</a>
                 </Link>
               </li>
-              <li
-                className={
-                  router.pathname === '/mentorshipProgram'
-                    ? 'nav-item active-link'
-                    : 'nav-item'
-                }
-              >
-                <Link
-                  href="/mentorshipProgram"
-                  className="nav-links"
-                  onClick={closeMobileMenu}
-                >
-                  <a>MENTORSHIP</a>
-                </Link>
-              </li> 
               <li
                 className={
                   router.pathname === '/events'
@@ -648,28 +465,10 @@ const HomepageNav = ({
                 </Link>
               </li>
 
-                <li
-                        className={
-                                router.pathname === '/consultancy_explainer'
-                                ? 'nav-item active-link'
-                                : 'nav-item'
-                        }
-                        onMouseEnter={onMouseEnter}
-                        onMouseLeave={onMouseLeave}
-                >
-                        <Link
-                                href="/consultancy_explainer"
-                                className="nav-links"
-                                onClick={extendEle}
-                        >
-                        <a>CONSULTANCY</a>
-                        </Link>
-                </li> 
-
-              {/*
               <li
                 className={
-                  router.pathname === 'https://snapshot.org/#/minorityprogrammers.eth'
+                  router.pathname
+                  === 'https://snapshot.org/#/minorityprogrammers.eth'
                     ? 'nav-item active-link'
                     : 'nav-item'
                 }
@@ -688,11 +487,11 @@ const HomepageNav = ({
             <ul className="tw-flex tw-flex-row tw-justify-around tw-w-1/4 tw-my-8 navbar__right md:tw-hidden" style={{width: '18%'}}>
                {/**  ** SEARCH FUNCTIONALITY IS COMMENTED
               <li>
-                <div className="tw-flex tw-flex-row tw-w-full tw-border tw-border-gray-700 tw-rounded-md tw-px-1 tw-text-gray-500">
+                {/* <div className="navbar__search tw-flex tw-flex-row tw-w-full tw-border tw-border-white tw-rounded-md tw-px-1 tw-text-white">
                   <input
                     onChange={handleSearch}
                     value={searchValue}
-                    className="searchInput tw-bg-transparent tw-border-0 tw-text-gray-500 tw-py-1 xl:tw-w-10/12 tw-w-full tw-outline-none focus:tw-outline-none"
+                    className="searchInput tw-bg-transparent tw-border-0 tw-text-white tw-py-1 xl:tw-w-10/12 tw-w-full tw-outline-none focus:tw-outline-none"
                     // ${
                     //   searchValue ? "expand" : ""
                     // }`}
@@ -703,7 +502,7 @@ const HomepageNav = ({
                   <button type="submit" onClick={handleSubmit}>
                     <i className="fas fa-search" />
                   </button>
-                </div>
+                </div> */}
               </li>
               */}
               <li>
@@ -713,16 +512,20 @@ const HomepageNav = ({
               </li>
               {userData !== null && userData !== undefined ? (
                 <div className="tw-mx-2">
-                  {/* <li>
-                        <a href="/chat">
-                          <i className="fas fa-envelope NavIcon tw-mt-2" />
-                        </a>
-                      </li> */}
                   <li>
-                    <i
-                      className="fas fa-user-circle tw-content-center tw-text-center NavIcon tw-cursor-pointer tw-mt-2"
-                      onClick={onClick}
-                    />
+                    {userData.profilePicture ? (
+                      <img
+                        className="tw-content-center tw-text-center tw-cursor-pointer tw-h-9 tw-rounded-full tw-w-9"
+                        onClick={onClick}
+                        src={userData.profilePicture}
+                        alt="profile"
+                      />
+                    ) : (
+                      <i
+                        className="fa-user-circle fas tw-content-center tw-text-center NavIcon tw-cursor-pointer tw-mt-2"
+                        onClick={onClick}
+                      />
+                    )}
 
                     {isActive ? (
                       <HomepageNavLoggedin
@@ -749,9 +552,6 @@ const HomepageNav = ({
                   )}
                 </li>
               )}
-              {/* <li>
-              <NativeBalance /> 
-            </li> */}
             </ul>
           </div>
         </div>

@@ -1,7 +1,9 @@
 import React from 'react';
 import SelectTemplate from '../helperFiles/templates/selectTemplate';
 
-const Page4 = ({ step, setstep, questions, setQuestions }) => (
+const Page4 = ({
+  step, setstep, questions, setQuestions,
+}) => (
   <SelectTemplate
     step={step}
     setstep={setstep}

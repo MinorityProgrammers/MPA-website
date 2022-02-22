@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUsers, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faUsers } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import axios from 'axios';
@@ -10,8 +10,11 @@ import UserCourses from './UserCourses';
 import RecommendedCourses from './RecommendedCourses';
 import CoursesSkeleton from './CoursesSkeleton';
 import FeaturedCourses from './FeaturedCourses';
+import Certificates from './Certificates';
 
-const CourseCategories = function ({ user, enrolledCourses, usersCourses }) {
+const CourseCategories = ({
+  user, enrolledCourses, usersCourses, tabsActive,
+}) => {
   const [isActive, setIsActive] = useState(false);
   const [loading, setLoading] = useState(true);
   const [singleCourse, setSingleCourse] = useState({});
@@ -20,6 +23,7 @@ const CourseCategories = function ({ user, enrolledCourses, usersCourses }) {
   const [enrolledCourse, setEnrolledCourse] = useState({});
   const [enrolledBtn, setEnrolledBtn] = useState(false);
   const [disable, setDisable] = useState(false);
+  const [certificate, setCertificate] = useState([]);
   const router = useRouter();
 
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -37,12 +41,17 @@ const CourseCategories = function ({ user, enrolledCourses, usersCourses }) {
   };
 
   useEffect(() => {
-    axios.get(`${process.env.BASE_URI}/course`)
-      .then((res) => {
-        setCourses(res.data.data);
-        setTimeout(() => { setLoading(false); }, 3000);
-      });
-  }, [typeof window !== 'undefined' ? window.localStorage.getItem('jwtToken') : null]);
+    axios.get(`${process.env.BASE_URI}/course`).then((res) => {
+      setCourses(res.data.data);
+      setTimeout(() => {
+        setLoading(false);
+      }, 3000);
+    });
+  }, [
+    typeof window !== 'undefined'
+      ? window.localStorage.getItem('jwtToken')
+      : null,
+  ]);
 
   const handleEnrolledCourse = () => {
     setDisable(true);
@@ -66,9 +75,8 @@ const CourseCategories = function ({ user, enrolledCourses, usersCourses }) {
       });
   };
 
-  const recommendedCourses = courses && courses.filter(
-    (course) => enrolledCourses.every((eCourse) => course._id !== eCourse.courseId._id),
-  );
+  const recommendedCourses = courses
+    && courses.filter((course) => enrolledCourses.every((eCourse) => course._id !== eCourse.courseId._id));
 
   const handleCourseInfo = (course) => {
     setSingleCourse(course);
@@ -85,6 +93,7 @@ const CourseCategories = function ({ user, enrolledCourses, usersCourses }) {
       return null;
     }
     setEnrolledCourse(enrolledCourseId);
+    return null;
   };
 
   const handleSubmit = (e) => {
@@ -95,25 +104,57 @@ const CourseCategories = function ({ user, enrolledCourses, usersCourses }) {
     setIsActive(!isActive);
   };
 
+  console.log(recommendedCourses);
+
   const goToCourseInfo = () => {
     setEnrolledBtn(true);
     const userCourse = `/courses/${singleCourse._id}`;
     router.push(userCourse);
   };
 
+  // Certificates
+  useEffect(() => {
+    const userToken = JSON.parse(localStorage.getItem('userInfo'));
+    if (userToken !== null) {
+      axios
+        .get(`${process.env.BASE_URI}/certificate/getUserCertificate`, {
+          headers: {
+            Authorization: `Bearer ${userToken.token}`,
+          },
+        })
+        .then((res) => {
+          setCertificate(res.data.data);
+          setTimeout(() => {
+            setLoading(false);
+          }, 3000);
+        });
+    }
+  }, [
+    typeof window !== 'undefined'
+      ? window.localStorage.getItem('jwtToken')
+      : null,
+  ]);
+
   return (
     <>
       <div className="courses pb-5">
-        <div className="container">
-          <div className="row">
+        <div className="container tw-mb-32">
+
+          {/* <div className="row">
             <div className="col-md-3" />
             <div className="col-md-6 pb-2">
               <div className="search-items pt-5">
                 <form className="d-flex" onSubmit={handleSubmit}>
                   <div className="input-group">
                     <div className="input-group-append learnSearch-btn">
-                      <input type="text" className="course-search search-input" placeholder="Search Courses" />
-                      <button className="courseSearch-btn"><i className="fas fa-search" /></button>
+                      <input
+                        type="text"
+                        className="course-search search-input"
+                        placeholder="Search Courses"
+                      />
+                      <a className="courseSearch-btn">
+                        <i className="fas fa-search" />
+                      </a>
                     </div>
                   </div>
 
@@ -131,139 +172,194 @@ const CourseCategories = function ({ user, enrolledCourses, usersCourses }) {
               </div>
             </div>
             <div className="col-md-3" />
-          </div>
-          <div className="learn-items mb-5">
+          </div> */}
+          {/* <div className="learn-items mb-5">
             <ul className="tw-flex tw-flex-row tw-justify-center tw-pt-2">
-              <li className={`tw-cursor-pointer ${router.pathname.split('/').length !== 3 ? 'tw-bg-blue-700 tw-w-36 tw-text-center tw-p-2 tw-mx-2 tw-rounded-md tw-shadow-lg' : 'menu tw-text-center'}`}>
-                <Link href="/learn-page">
-                  <p className="learn-item-active hover:tw-text-blue-600">
+              <li
+                className={`tw-cursor-pointer ${
+                  router.pathname.split('/').length !== 3
+                    ? 'tw-bg-blue-700 tw-w-36 tw-text-center tw-p-2 tw-mx-2 tw-rounded-md tw-shadow-lg'
+                    : 'menu tw-text-center'
+                }`}
+              >
+                <Link href="/learn">
+                  <p className="learn-item-active">
                     COURSES
                   </p>
                 </Link>
               </li>
-              {!isActive && user !== null && (
-                <li className={`tw-cursor-pointer ${router.pathname.split('/').length === 3 ? 'tw-bg-blue-700 tw-w-36 tw-text-center tw-p-2 tw-mx-2 tw-rounded-md tw-shadow-lg' : 'menu tw-text-center'}`}>
-                  <Link href="/learn-page/certificates">
-                    <p className="hover:tw-text-blue-600">MY CERTIFICATES</p>
-                  </Link>
-                </li>
-              )}
-
-              {/* <li className="pl-md-5">
-                <Link href="#">
-                  <a>BLOCKCHAIN</a>
-                </Link>
-              </li>
-              <li className="pl-md-5">
-                <Link href="#">
-                  <a>UI / UX DESIGN</a>
-                </Link>
-              </li>
-              <li className="pl-md-5">
-                <Link href="#">
-                  <a>ENTREPRENEURSHIP</a>
-                </Link>
-              </li> */}
             </ul>
-          </div>
-
+          </div> */}
+          {tabsActive.certificates && (
+          <Certificates
+            certificates={certificate}
+            loading={loading}
+          />
+          )}
+          {tabsActive.userCourses && (
           <div className="courses">
-            {
-              loading
-                ? <CoursesSkeleton title="My Courses" />
-                : enrolledCourses.length > 0
-                  ? <UserCourses enrolledCourses={enrolledCourses} user={user} />
-                  : (
-                    <div className="mb-5 pb-3">
-                      <div className="course-category d-flex font-weight-bold">
-                        <h1 className="tw-text-blue-900" style={{ fontSize: '30px' }}>My Courses</h1>
-                      </div>
-                      <div className="mt-3 courses-info">
-                        {user !== null && user !== undefined
-                          ? <h1 className="tw-text-blue-900">No enrolled courses yet</h1>
-                          : <h1 className="tw-text-blue-900">Login to view your courses</h1>}
-                      </div>
-                    </div>
-                  )
-            }
+            {loading ? (
+              <CoursesSkeleton title="My Courses" />
+            ) : enrolledCourses.length > 0 ? (
+              <UserCourses enrolledCourses={enrolledCourses} user={user} />
+            ) : (
+              <div className="mb-5 pb-3">
 
-            {
-              loading
-                ? <CoursesSkeleton title="Recommended Courses" />
-                : recommendedCourses.length > 0
-              && (
+                <div className="course-category d-flex font-weight-bold">
+                  <h1 className="tw-text-white" style={{ fontSize: '30px' }}>
+                    My Courses
+                  </h1>
+                </div>
+                <div className="mt-3 courses-info">
+                  <h1 className="tw-text-white">
+                    No enrolled courses yet
+                  </h1>
+                </div>
+              </div>
+            )}
+
+            {loading ? (
+              <CoursesSkeleton title="Recommended Courses" />
+            ) : (
+              recommendedCourses.length > 0 && (
               <RecommendedCourses
                 showModal={showModal}
                 recommendedCourses={recommendedCourses}
                 handleCourseInfo={handleCourseInfo}
               />
               )
-            }
-
-            {
-              loading
-                ? <CoursesSkeleton title="Featured Courses" />
-                : (
-                  <FeaturedCourses
-                    showModal={showModal}
-                    courses={courses}
-                    enrolledCourses={enrolledCourses}
-                    handleCourseInfo={handleCourseInfo}
-                    enrolledBtn={enrolledBtn}
-                  />
-                )
-            }
+            )}
           </div>
+          )}
+          {tabsActive.courses && (
+          <div className="courses">
+            {loading ? (
+              <CoursesSkeleton title="Recommended Courses" />
+            ) : (
+              recommendedCourses.length > 0 && (
+              <RecommendedCourses
+                showModal={showModal}
+                recommendedCourses={recommendedCourses}
+                handleCourseInfo={handleCourseInfo}
+              />
+              )
+            )}
 
+            {loading ? (
+              <CoursesSkeleton title="Featured Courses" />
+            ) : (
+              <FeaturedCourses
+                showModal={showModal}
+                courses={courses}
+                enrolledCourses={enrolledCourses}
+                handleCourseInfo={handleCourseInfo}
+                enrolledBtn={enrolledBtn}
+              />
+            )}
+            {/* {loading ? (
+              <CoursesSkeleton title="Recommended Courses" />
+            ) : (
+              recommendedCourses.length > 0 && (
+              <RecommendedCourses
+                showModal={showModal}
+                recommendedCourses={recommendedCourses}
+                handleCourseInfo={handleCourseInfo}
+              />
+              )
+            )} */}
+          </div>
+          ) }
         </div>
 
         {/* Modal */}
-        <Modal title="" visible={isModalVisible} onCancel={handleCancel} onOk={handleOk} footer={null} closable={false} wrapClassName="web">
+        <Modal
+          title=""
+          visible={isModalVisible}
+          onCancel={handleCancel}
+          onOk={handleOk}
+          footer={null}
+          closable={false}
+          wrapClassName="web"
+        >
           <div className="modal-dialog activity-modal" role="document">
             <div className="modal-content course-specific-info">
-              <div className="d-flex flex-column justify-content-center align-items-center">
-                <h5 className="mt-4 pb-1" id="exampleModalLabel" style={{ fontSize: '25px', fontWeight: '600' }}>{singleCourse.name}</h5>
+              <div className="d-flex flex-column justify-content-center align-items-center courseModal">
+                <h5
+                  className="mt-4 pb-1"
+                  id="exampleModalLabel"
+                  style={{ fontSize: '25px', fontWeight: '600', color: '#fff' }}
+                >
+                  {singleCourse.name}
+                </h5>
                 <p className="">{singleCourse.description}</p>
                 <div>
                   <ul className="d-flex">
                     <li className="mx-2  mt-3">
-                      <p className="user-enroll"><FontAwesomeIcon icon={faUsers} /></p>
+                      <p className="user-enroll">
+                        <FontAwesomeIcon icon={faUsers} />
+                      </p>
                       <p className="font-weight-bold pt-1">
                         {totalEnrolledCourse.length}
                       </p>
-                      <span style={{ fontSize: '14px', color: '#545353' }}>Enrolled</span>
+                      <span style={{ fontSize: '14px', color: '#545353' }}>
+                        Enrolled
+                      </span>
                     </li>
                   </ul>
                 </div>
 
-                {user !== null && user !== undefined
-                  ? (
-                    <>
-                      {enrolledCourse._id === singleCourse._id
-                        ? (
-                          <button type="button" onClick={goToCourseInfo} data-dismiss="modal" aria-label="Close" className="btn px-5 banner-btn mt-4 pt-2  mb-2">
-                            Learn
-                          </button>
-                        )
-                        : (
-                          <button type="button" disabled={disable} onClick={handleEnrolledCourse} data-dismiss="modal" aria-label="Close" className="btn px-5 banner-btn mt-4 pt-2  mb-2">
-                            Enroll
-                          </button>
-                        )}
-                    </>
-                  )
-                  : (
-                    <button type="button" onClick={onClick} data-dismiss="modal" aria-label="Close" className="btn px-5 banner-btn mt-4 pt-2 font-weight-bold mb-2">
-                      login to access your courses
-                    </button>
-                  )}
+                {user !== null && user !== undefined ? (
+                  <>
+                    {enrolledCourse._id === singleCourse._id ? (
+                      <button
+                        type="button"
+                        onClick={goToCourseInfo}
+                        data-dismiss="modal"
+                        aria-label="Close"
+                        className="btn px-5 banner-btn mt-4 pt-2  mb-2"
+                      >
+                        Learn
+                      </button>
+                    ) : (
+                      <button
+                        type="button"
+                        disabled={disable}
+                        onClick={handleEnrolledCourse}
+                        data-dismiss="modal"
+                        aria-label="Close"
+                        className="btn px-5 banner-btn mt-4 pt-2  mb-2"
+                      >
+                        Enroll
+                      </button>
+                    )}
+                  </>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={onClick}
+                    data-dismiss="modal"
+                    aria-label="Close"
+                    className="btn px-5 banner-btn mt-4 pt-2 font-weight-bold mb-2"
+                  >
+                    login to access your courses
+                  </button>
+                )}
 
-                <p className="pb-4 pt-2 modal-center" onClick={() => { handleCancel(); }}>Cancel</p>
+                <p
+                  className="pb-4 pt-2 modal-center"
+                  onClick={() => {
+                    handleCancel();
+                  }}
+                >
+                  Cancel
+                </p>
               </div>
             </div>
           </div>
         </Modal>
-
+        <div className="tw-relative">
+          <img src="/assets/images/bg-shadow-circle.png" className="tw-absolute" style={{ bottom: '0%', right: '20%' }} alt="background" />
+        </div>
       </div>
 
       {/* Login Modal */}
@@ -273,10 +369,15 @@ const CourseCategories = function ({ user, enrolledCourses, usersCourses }) {
             <div className="create_event-container">
               <LoginModal />
             </div>
-            <i onClick={() => setIsActive(false)} className="close_icon fas fa-times close-icon tw-text-white" />
+            <i
+              onClick={() => setIsActive(false)}
+              className="close_icon fas fa-times close-icon tw-text-white"
+            />
           </div>
         </div>
-      ) : ''}
+      ) : (
+        ''
+      )}
     </>
   );
 };

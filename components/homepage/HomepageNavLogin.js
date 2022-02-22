@@ -1,19 +1,20 @@
-import { Form, Formik } from 'formik';
-import {
-  getProviders, getSession, signIn, useSession,
-} from 'next-auth/client';
-import { useRouter } from 'next/router';
-import React, { useContext, useEffect, useState } from 'react';
-import 'react-toastify/dist/ReactToastify.css';
-import * as Yup from 'yup';
-import { googleAuth, nextAuth } from '../../contexts/actions/auth/googleAuth';
-import login from '../../contexts/actions/auth/login';
-import { GlobalContext } from '../../contexts/provider';
-import TextField from '../TextField';
+/* eslint-disable */
+import axios from "axios";
+import { Form, Formik } from "formik";
+import { getProviders, getSession, signIn, useSession } from "next-auth/client";
+import { useRouter } from "next/router";
+import React, { useContext, useEffect, useState } from "react";
+import "react-toastify/dist/ReactToastify.css";
+import * as Yup from "yup";
+import { googleAuth, nextAuth } from "../../contexts/actions/auth/googleAuth";
+import login from "../../contexts/actions/auth/login";
+import { GlobalContext } from "../../contexts/provider";
+import { successToast, errorToast } from "../../contexts/utils/toasts";
+import TextField from "../TextField";
 
 const HomepageNavLogin = ({ onCloseMobileMenu }) => {
   const router = useRouter();
-  // const googleClientId = process.env.CLIENT_ID;
+  const [switchToReset, setSwitchToReset] = useState(false);
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
   const [, setLoginSubmit] = useState(false);
@@ -27,9 +28,8 @@ const HomepageNavLogin = ({ onCloseMobileMenu }) => {
     },
   } = useContext(GlobalContext);
 
-  // user redirect
   useEffect(() => {
-    const token = window.localStorage.getItem('jwtToken');
+    const token = window.localStorage.getItem("jwtToken");
     let timerId;
     if (data || token !== null) {
       setLoginSubmit(false);
@@ -38,14 +38,10 @@ const HomepageNavLogin = ({ onCloseMobileMenu }) => {
         onCloseMobileMenu();
       }, 2000);
     } else {
-      // router.push('/login')
-      // window.location.href = '/login'
       setLoginSubmit(false);
     }
     return () => timerId && clearTimeout(timerId);
   }, [data]);
-
-  // const { walletAddress, chainId } = useMoralisDapp();
 
   useEffect(() => {
     const setupProviders = async () => {
@@ -67,14 +63,8 @@ const HomepageNavLogin = ({ onCloseMobileMenu }) => {
   }, [session]);
 
   const handleLoginSuccess = (res) => {
-    // keep this
-
     googleAuth({ tokenId: res.tokenId })(authDispatch);
   };
-
-  /* const handleLoginFailure = (res) => {
-    // console.log(res);
-  }; */
 
   const onSubmit = async (e) => {
     setLoginSubmit(true);
@@ -85,17 +75,31 @@ const HomepageNavLogin = ({ onCloseMobileMenu }) => {
     setLoginSubmit(false);
   };
 
+  const onReset = async (e) => {
+    setLoginSubmit(true);
+    try {
+      const request = await axios.post(
+        `${process.env.BASE_URI}/user/forgotPassword`,
+        {
+          email: e.email,
+        }
+      );
+      successToast(request.data.message);
+    } catch (error) {
+      errorToast("User with the given email doesn't exist");
+    }
+  };
+
   return (
-    <div className={click ? 'dropdown-login clicked' : 'dropdown-login'}>
-      <button type="button" className="dropdown-login-btn-close" onClick={onCloseMobileMenu}>
+    <div className={click ? "dropdown-login clicked" : "dropdown-login"}>
+      <button
+        type="button"
+        className="dropdown-login-btn-close"
+        onClick={onCloseMobileMenu}
+      >
         <i className="fas fa-times" />
       </button>
       <div className="dropdown-login-icons">
-        {/* <img
-          onClick={() => signIn(providers.google.id)}
-          src="./assets/images/login-signup/google.png"
-          alt="icon"
-        /> */}
         <div>
           <img
             src="/assets/images/linkedin-white.png"
@@ -108,70 +112,110 @@ const HomepageNavLogin = ({ onCloseMobileMenu }) => {
           <img
             src="/assets/images/github.svg"
             alt="github icon"
-            onClick={() => signIn(providers.github.id, {
-              callbackUrl: 'https://minorityprogrammers.com/auth',
-            })}
+            onClick={() =>
+              signIn(providers.github.id, {
+                callbackUrl: "https://minorityprogrammers.com/auth",
+              })
+            }
           />
         </div>
-        {/* <div>
-          <img
-            src="/assets/images/facebook.svg"
-            alt="facebook icon"
-            onClick={() => signIn(providers.facebook.id)}
-          />
-        </div> */}
       </div>
       <div className="login-form mt-2">
-        <Formik
-          initialValues={{
-            email: '',
-            password: '',
-          }}
-          validationSchema={Yup.object({
-            email: Yup.string().email('Invalid Email').required('Required'),
-            password: Yup.string().required('Required'),
-          })}
-          onSubmit={onSubmit}
-        >
-          {() => (
-            <Form>
-              <div className="form-group login-input">
-                <TextField
-                  label="Email Address"
-                  name="email"
-                  type="email"
-                  placeholder="&#xf0e0; Enter email"
-                  required
-                  textStyle="form-control fas"
-                  alertStyle="form-text dropdown-form-text mb-3 tw-text-red-400"
-                />
-              </div>
-              <div className="form-group login-input">
-                <TextField
-                  label="Password"
-                  name="password"
-                  type="password"
-                  placeholder="&#xf023; Password"
-                  textStyle="form-control fas"
-                  alertStyle="form-text dropdown-form-text mb-3 tw-text-red-400"
-                />
-              </div>
-              <div id="password" className="form-text dropdown-form-text mb-3">
-                {/* <p>Forgot password?</p> */}
-              </div>
-              <button
-                type="submit"
-                className="btn btn-warning btn-dropdown-filled"
-              >
-                {loading ? 'Signing In...' : 'Sign In'}
-              </button>
-            </Form>
-          )}
-        </Formik>
+        {!switchToReset && (
+          <Formik
+            initialValues={{
+              email: "",
+              password: "",
+            }}
+            validationSchema={Yup.object({
+              email: Yup.string().email("Invalid Email").required("Required"),
+              password: Yup.string().required("Required"),
+            })}
+            onSubmit={onSubmit}
+          >
+            {() => (
+              <Form>
+                <div className="form-group login-input">
+                  <TextField
+                    label="Email Address"
+                    name="email"
+                    type="email"
+                    placeholder="&#xf0e0; Enter email"
+                    required
+                    textStyle="form-control fas"
+                    alertStyle="form-text dropdown-form-text mb-3 tw-text-red-400"
+                  />
+                </div>
+                <div className="form-group login-input">
+                  <TextField
+                    label="Password"
+                    name="password"
+                    type="password"
+                    placeholder="&#xf023; Password"
+                    textStyle="form-control fas"
+                    alertStyle="form-text dropdown-form-text mb-3 tw-text-red-400"
+                  />
+                </div>
+                <div
+                  id="password"
+                  className="form-text dropdown-form-text mb-3"
+                >
+                  {/* <p>Forgot password?</p> */}
+                </div>
+                <button
+                  type="submit"
+                  className="btn btn-warning btn-dropdown-filled"
+                >
+                  {loading ? "Signing In..." : "Sign In"}
+                </button>
+              </Form>
+            )}
+          </Formik>
+        )}
+        {switchToReset && (
+          <Formik
+            initialValues={{
+              email: "",
+            }}
+            validationSchema={Yup.object({
+              email: Yup.string().email("Invalid Email").required("Required"),
+            })}
+            onSubmit={onReset}
+          >
+            {() => (
+              <Form>
+                <div className="form-group login-input">
+                  <TextField
+                    label="Email Address"
+                    name="email"
+                    type="email"
+                    placeholder="&#xf0e0; Enter email"
+                    required
+                    textStyle="form-control fas"
+                    alertStyle="form-text dropdown-form-text mb-3 tw-text-red-400"
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className="btn btn-warning btn-dropdown-filled"
+                >
+                  {loading ? "Loading..." : "Reset Password"}
+                </button>
+              </Form>
+            )}
+          </Formik>
+        )}
       </div>
 
       <div className="login-register mt-2">
-        <p className="mb-2">Don&apos;t have an account?</p>
+        <p
+          onClick={() => setSwitchToReset(true)}
+          className="tw-cursor-pointer tw-hover:text-blue-700 tw-mb-4"
+        >
+          Forgot password?
+        </p>
+        <p className="mb-2">Don't have an account?</p>
         <div className="dropdown-login-button">
           <a
             href="/auth"
@@ -192,7 +236,7 @@ HomepageNavLogin.getInitialProps = async (context) => {
 
   if (session && res && session.accessToken) {
     res.writeHead(302, {
-      Location: '/',
+      Location: "/",
     });
     res.end();
     return;

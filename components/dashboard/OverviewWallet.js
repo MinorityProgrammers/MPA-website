@@ -182,7 +182,7 @@ const OverviewWallet = () => {
         </div>
       </div>
     ),
-    []
+    [],
   );
 
   return (
@@ -237,7 +237,8 @@ const OverviewWallet = () => {
               marginBottom: '2%',
             }}
           >
-            Wallet{' '}
+            Wallet
+            {' '}
           </p>
           <div
             className="overview-courses-cards d-flex flex-column justify-content-between align-items-between"

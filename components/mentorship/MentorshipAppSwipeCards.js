@@ -2,23 +2,20 @@
 import React, { useMemo } from 'react';
 import TinderCard from 'react-tinder-card';
 
-// import axios from 'axios';
-// import { successToast, errorToast } from '../../contexts/utils/toasts';
-
 const alreadyRemoved = [];
 
 let swipeClick = 0;
 
 const MentorshipAppSwipeCards = (props) => {
-  // const [childRefs, setChildRefs] = useState([]);
   const childRefs = useMemo(
     () => Array(props.values.length)
       .fill(0)
-      .map((/* i */) => React.createRef()),
+      .map(() => React.createRef()),
     [],
   );
-  // console.log(props.values);
-  const sleep = (milliseconds) => new Promise((resolve) => { setTimeout(resolve, milliseconds); });
+  const sleep = (milliseconds) => new Promise((resolve) => {
+    setTimeout(resolve, milliseconds);
+  });
 
   async function toggleUndo() {
     const activeBtn = document.getElementById('active_replay_button');
@@ -66,16 +63,13 @@ const MentorshipAppSwipeCards = (props) => {
     );
     if (cardsLeft.length) {
       const toBeRemoved = cardsLeft[cardsLeft.length - 1];
-      // console.log(toBeRemoved); // Find the card object to be removed
-      const index = props.values.indexOf(toBeRemoved); // Find the index of which to make the reference to
+      const index = props.values.indexOf(toBeRemoved);
       if (!alreadyRemoved.includes(toBeRemoved)) {
-        alreadyRemoved.push(toBeRemoved); // Make sure the next card gets removed next time if this card do not have time to exit the screen
+        alreadyRemoved.push(toBeRemoved);
       }
-      // console.log("childRefs[index]", childRefs[index]);
       if (childRefs[index]) {
         childRefs[index].current.swipe(dir);
       }
-      // Swipe the card!
     }
   };
 

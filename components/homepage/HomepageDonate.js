@@ -12,21 +12,17 @@ const HomepageDonate = () => {
   const [monthly, setMonthly] = useState(false);
 
   const [succeeded, setSucceeded] = useState(false);
-  // const [paypalErrorMessage, setPaypalErrorMessage] = useState('');
   const [, setOrderID] = useState(false);
   const [billingDetails, setBillingDetails] = useState([]);
   const [, setPayment] = useState([]);
 
-  // get donate amount when click
   const handleValue = (e) => {
-    // dispatch
     donateDispatch({
       type: 'UPDATE_DONATE_AMOUNT',
       amount: e.target.value,
     });
   };
 
-  // creates one time paypal order
   const createOrder = (data, actions) => actions.order
     .create({
       purchase_units: [
@@ -44,28 +40,16 @@ const HomepageDonate = () => {
       setOrderID(orderID);
       return orderID;
     });
+  // const createSubscription = (data, action) => {};
 
-  // create paypal subscription
-  const createSubscription = (data, action) => {
-    // return actions.subscription.create({
-    //     'plan_id': 'P-2UF78835G6983425GLSM44MA'
-    // })
-  };
-
-  // handles when a payment is confirmed for paypal
   const onApprove = (data, actions) => actions.order.capture().then((details) => {
     const { purchase_units } = details;
     setBillingDetails(details);
     setPayment(purchase_units);
     setSucceeded(true);
     setIsDone(true);
-    setCount(count + 1); // Instead of count++ use setCount(count+1)
+    setCount(count + 1);
   });
-
-  // handles payment errors
-  /* const onError = () => {
-    setPaypalErrorMessage('Something went wrong with your payment');
-  }; */
 
   const scrollTo = () => {
     const currentLocation = window.location.href;
@@ -85,20 +69,26 @@ const HomepageDonate = () => {
 
   return (
     <section id="donate" className="homepage__donate">
-      <div className="heading__number">
-        <h3 className="tw-text-blue-900">05</h3>
-      </div>
-      <div className="container donate__container">
-        <h2 className="heading__title mt-5 mb-5 tw-text-blue-900">
-          &lsaquo;Donate/&rsaquo;
-        </h2>
-        <p className="donate__container-subtitle">
-          We rely on donations from everyday people just like you to fund our
-          strategic activism. Please make a recurring donation to our
-          organization so we can continue to fight to bring marginalized
-          communities into the STEM workforce.
-        </p>
-
+      <div className="donate__container">
+        <div className="container">
+          <h2 className="top__part__title">
+            Donate
+          </h2>
+          <div className="tw-flex">
+            <img
+              src="/assets/images/home-page/about-title-icon.svg"
+              style={{ marginTop: '-30px' }}
+              className="donate__header-img"
+              alt="blockchain"
+            />
+            <p className="donate__container-subtitle md:tw-text-base">
+              We rely on donations from everyday people just
+              like you to fund our strategic activism.
+              Please make a recurring donation to our organization so we can continue to fight to
+              bring marginalized communities into the STEM workforce.
+            </p>
+          </div>
+        </div>
         <div className="container">
           <div className="row step__header">
             <div
@@ -109,7 +99,6 @@ const HomepageDonate = () => {
               {isDone && amount !== 0 ? (
                 <i className="far fa-check-circle" />
               ) : null}
-              {' '}
               Amount
             </div>
             <div
@@ -120,7 +109,6 @@ const HomepageDonate = () => {
               {isDone && succeeded ? (
                 <i className="far fa-check-circle" />
               ) : null}
-              {' '}
               Payments
             </div>
             <div
@@ -135,7 +123,34 @@ const HomepageDonate = () => {
             </div>
           </div>
         </div>
+        <div style={{ background: '#1C1D37', padding: '2.5rem 0' }} className="tw-my-20">
+          <div className="container step__payment-monthly">
+            <div className="">
+              <input
+                type="radio"
+                className="step__payment-option"
+                name="month_sub"
+                onClick={() => {
+                  setMonthly(true);
+                }}
+              />
+              <label>Monthly Donation</label>
 
+            </div>
+            <div className="">
+              <input
+                type="radio"
+                className="step__payment-option"
+                name="month_sub"
+                onClick={() => {
+                  setMonthly(false);
+                }}
+              />
+              <label>I want to make a single  donation</label>
+            </div>
+          </div>
+
+        </div>
         <div>
           {count === 1 ? (
             <DonateAmount
@@ -159,7 +174,7 @@ const HomepageDonate = () => {
                 monthly={monthly}
                 createOrder={createOrder}
                 onApprove={onApprove}
-                createSubscription={createSubscription}
+                // createSubscription={createSubscription}
               />
             ) : (
               <DonateCompleted
@@ -183,7 +198,7 @@ const HomepageDonate = () => {
             />
           ) : null}
         </div>
-        <div className="donate__options">
+        {/* <div className="donate__options">
           <h2 className="tw-text-blue-900">Other ways to support us:</h2>
           <div className="donation__option">
             <a
@@ -193,26 +208,11 @@ const HomepageDonate = () => {
             >
               <i className="fab fa-bitcoin" />
             </a>
-            {/* <a href="sponsorship" target="_blank" rel="noreferrer">
-              <i className="fas fa-gift" />
-            </a>
-            <a href="sponsorship" target="_blank" rel="noreferrer">
-              <i className="fas fa-hand-holding-usd" />
-            </a>
-            <a href="sponsorship" target="_blank" rel="noreferrer">
-              <i className="fab fa-twitch" />
-            </a> */}
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );
 };
 
 export default HomepageDonate;
-
-// Paypal subscription
-// https://medium.com/analytics-vidhya/paypal-subscription-in-react-1121c39b26be
-// https://github.com/skydiver/nextjs-paypal-integration
-
-// Stripe subscription

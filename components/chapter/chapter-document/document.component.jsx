@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import styles from './documents.module.css';
 
-const Document = ({ title, subtitle, download_link, id }) => {
+const Document = ({
+  title, subtitle, download_link, id,
+}) => {
   const [blob, setBlob] = useState(null);
 
   useEffect(() => {

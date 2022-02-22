@@ -15,7 +15,6 @@ const TestTaskCard = ({ item, handlePriority }) => {
     const newUsers = [...userCart, addnew];
     setUserCart(newUsers);
   };
-  console.log(userCart);
 
   const HandleRemoveUser = (id) => {
     const afterRemoveUsers = userCart.filter((remo) => remo.id !== id);
@@ -58,8 +57,8 @@ const TestTaskCard = ({ item, handlePriority }) => {
             <div className="gradient tw-rounded-full tw-h-6 tw-w-6 text-center tw-block">
               <span className="tw-purple-800 te-p-2">LA</span>
             </div>
-            {userCart &&
-              userCart.map((u) => (
+            {userCart
+              && userCart.map((u) => (
                 <div
                   className="tw-cursor-pointer tw-btn"
                   key={u.id}
@@ -82,27 +81,19 @@ const TestTaskCard = ({ item, handlePriority }) => {
               <div className="tw-absolute tw-z-24 tw-bg-white">
                 <RiFlag2Fill
                   className="tw-text-red-500 tw-m-1 tw-mt-2 tw-cursor-pointer"
-                  onClick={() =>
-                    handlePriority(setPriority('red'), setOpen(!open))
-                  }
+                  onClick={() => handlePriority(setPriority('red'), setOpen(!open))}
                 />
                 <RiFlag2Fill
                   className="tw-text-pink-500 tw-m-1 tw-mt-2 tw-cursor-pointer"
-                  onClick={() =>
-                    handlePriority(setPriority('pink'), setOpen(!open))
-                  }
+                  onClick={() => handlePriority(setPriority('pink'), setOpen(!open))}
                 />
                 <RiFlag2Fill
                   className="tw-text-yellow-500 tw-m-1 tw-mt-2 tw-cursor-pointer"
-                  onClick={() =>
-                    handlePriority(setPriority('yellow'), setOpen(!open))
-                  }
+                  onClick={() => handlePriority(setPriority('yellow'), setOpen(!open))}
                 />
                 <RiFlag2Fill
                   className="tw-text-gray-500 tw-m-1 tw-mt-2 tw-cursor-pointer"
-                  onClick={() =>
-                    handlePriority(setPriority('gray'), setOpen(!open))
-                  }
+                  onClick={() => handlePriority(setPriority('gray'), setOpen(!open))}
                 />
               </div>
             )}

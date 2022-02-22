@@ -7,10 +7,16 @@ import QuizResult from './QuizResult';
 
 export default function SimpleQuiz() {
   const {
-    singleUserModuleInfo, forwardInfo, course, setWatched, lastAdvancedModules,
+    singleUserModuleInfo,
+    forwardInfo,
+    course,
+    setWatched,
+    lastAdvancedModules,
   } = useContext(QuizContext);
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [questions, setQuestions] = useState(singleUserModuleInfo.moduleId.content.questions);
+  const [questions, setQuestions] = useState(
+    singleUserModuleInfo.moduleId.content.questions,
+  );
   const [correct, setCorrect] = useState(0);
   const [inprogress, setInprogress] = useState(true);
   const [answer, setAnswer] = useState();
@@ -90,18 +96,41 @@ export default function SimpleQuiz() {
           <div className="question-container">
             <p className="question">{questions[currentQuestion].question}</p>
             <form ref={radioRef}>
-              {answer?.map((item, index) => (
-                <div
-                  key={`${index + 1}`}
-                  className={
-                    `option${
-                      questions[currentQuestion].checked && !item.correct
-                        ? ' dim'
-                        : ''
-                    }${questions[currentQuestion].checked && item.correct
+                {answer?.map((item, index) => (
+                <label 
+               htmlFor={`radio-${index}`} 
+                // class="input_radio"
+                key={`${index + 1}`}
+                  className={`option${
+                    questions[currentQuestion].checked && !item.correct
+                      ? ' dim'
+                      : ''
+                  }${
+                    questions[currentQuestion].checked && item.correct
                       ? ' correct'
-                      : ''}`
-                  }
+                      : ''
+                  }`}
+                >
+                <input id={`radio-${index}`}
+                    type="radio"
+                    name="option"
+                    value={item.correct}
+                    disabled={questions[currentQuestion].checked}
+                      onClick={updateAnswer}
+                      className="input_tag"
+                    />
+        <span className="q_main">{item.option}</span></label>
+                /* <div
+                  key={`${index + 1}`}
+                  className={`option${
+                    questions[currentQuestion].checked && !item.correct
+                      ? ' dim'
+                      : ''
+                  }${
+                    questions[currentQuestion].checked && item.correct
+                      ? ' correct'
+                      : ''
+                  }`}
                 >
                   <input
                     id={`radio-${index}`}
@@ -112,16 +141,10 @@ export default function SimpleQuiz() {
                     onClick={updateAnswer}
                   />
                   <label htmlFor={`radio-${index}`}>{item.option}</label>
-                </div>
+                </div> */
               ))}
             </form>
             <div className="bottom">
-              {/*  {
-                questions[currentQuestion].feedback
-                && questions[currentQuestion].checked
-                && <p>{questions[currentQuestion].feedback}</p>
-              } */}
-
               {!questions[currentQuestion].checked && (
                 <button
                   type="button"
@@ -132,7 +155,17 @@ export default function SimpleQuiz() {
                 </button>
               )}
               {currentQuestion + 1 < questions.length
-                && questions[currentQuestion].checked && (
+                  && questions[currentQuestion].checked && (
+                <div className="spread-bottom">
+                    <div className="left_bottom">
+                      <svg className="arrow_circle" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="12" cy="12" r="9" transform="rotate(90 12 12)" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M12 8L8 12" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M16 12L8 12" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M12 16L8 12" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                      <p className="back">back</p>
+                    </div>
                   <button
                     className="fade-in next"
                     type="button"
@@ -142,6 +175,7 @@ export default function SimpleQuiz() {
                     {' '}
                     <i className="fa fa-arrow-right" />
                   </button>
+                </div>
               )}
               {currentQuestion + 1 === questions.length
                 && questions[currentQuestion].checked && (

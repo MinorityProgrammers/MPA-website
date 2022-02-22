@@ -4,14 +4,14 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import RecommendedCoursesListSkeleton from './RecommendedCoursesListSkeleton';
 
-const CoursesSkeleton = function ({ title }) {
+const CoursesSkeleton = ({ title }) => {
   const coursesLength = 4;
 
   const conditionalInfinite = {
     dots: false,
     speed: 2000,
-    slidesToShow: 3,
-    infinite: coursesLength > 3,
+    slidesToShow: 2,
+    infinite: coursesLength > 2,
     autoplay: true,
     slidesToScroll: 1,
     responsive: [
@@ -35,9 +35,7 @@ const CoursesSkeleton = function ({ title }) {
   return (
     <div>
       <div className="mb-5 pb-3">
-        <div className="course-category d-flex font-weight-bold tw-justify-center">
-          <h1 className="courseCategory-title">{title}</h1>
-        </div>
+        <div className="course-category d-flex font-weight-bold tw-justify-center" />
         <div className="mt-3 pt-2 FRCourses">
           <Slider {...conditionalInfinite}>
             <RecommendedCoursesListSkeleton />

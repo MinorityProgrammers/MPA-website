@@ -34,7 +34,6 @@ function basic_number_validation(value, correctLength) {
   const invalid = 'Incorrect entry';
   return try_catch(() => {
     const valid_arr = value.match(/[0-9]/g);
-    console.log(valid_arr, correctLength);
     if (valid_arr) {
       return valid_arr.length === correctLength ? '' : invalid;
     }
@@ -79,7 +78,9 @@ function createDateEntry(e) {
   e.target.selectionEnd = cursor;
 }
 
-const Page10 = ({ step, setstep, questions, setQuestions, data }) => {
+const Page10 = ({
+  step, setstep, questions, setQuestions, data,
+}) => {
   const card_full_name = useRef();
   const card_number = useRef();
   const card_expiry_date = useRef();
@@ -116,7 +117,7 @@ const Page10 = ({ step, setstep, questions, setQuestions, data }) => {
           'Full Name',
           card_full_name,
           'text',
-          basic_text_validation
+          basic_text_validation,
         ),
         new Dependency(
           '* Card Number',
@@ -125,7 +126,7 @@ const Page10 = ({ step, setstep, questions, setQuestions, data }) => {
           'tel',
           basic_number_validation,
           createEntry,
-          16
+          16,
         ),
         new Dependency(
           '* Card Expiry Date',
@@ -134,7 +135,7 @@ const Page10 = ({ step, setstep, questions, setQuestions, data }) => {
           'tel',
           basic_number_validation,
           createDateEntry,
-          6
+          6,
         ),
         new Dependency(
           '* Card Security Code (CVV2)',
@@ -143,9 +144,9 @@ const Page10 = ({ step, setstep, questions, setQuestions, data }) => {
           'tel',
           basic_number_validation,
           createEntry,
-          3
+          3,
         ),
-      ]
+      ],
     ),
     new Radio(
       [
@@ -154,7 +155,7 @@ const Page10 = ({ step, setstep, questions, setQuestions, data }) => {
           <img src="/assets/images/icons/pngaaa 1.png" alt="" />
         </div>,
       ],
-      'paypal'
+      'paypal',
     ),
     new Radio(['Pay in $Minority'], 'minority'),
     new Radio(['Electronic Check'], 'electronic-check'),
@@ -162,7 +163,6 @@ const Page10 = ({ step, setstep, questions, setQuestions, data }) => {
 
   useEffect(() => {
     if (shouldSubmit) {
-      console.log(window.localStorage.getItem('jwtToken'));
       const config = {
         headers: {
           'Content-Type': 'application/json',
@@ -181,8 +181,7 @@ const Page10 = ({ step, setstep, questions, setQuestions, data }) => {
           let feedback = e.response.data.data
             ? e.response.data.data.message
             : e.response.data.message;
-          feedback =
-            typeof feedback === 'string' ? [feedback] : Object.values(feedback);
+          feedback = typeof feedback === 'string' ? [feedback] : Object.values(feedback);
           setServerError(feedback);
         });
     }
@@ -238,7 +237,7 @@ const Page10 = ({ step, setstep, questions, setQuestions, data }) => {
     for (let i = 0; i < dependency_arr.length; i += 1) {
       if (errors.inputs[i][0] === undefined) {
         const validation = dependency_arr[i].validationFxn(
-          dependency_arr[i].ref.current.value
+          dependency_arr[i].ref.current.value,
         );
         if (validation !== '') {
           shouldSubmit = false;
@@ -247,8 +246,7 @@ const Page10 = ({ step, setstep, questions, setQuestions, data }) => {
       } else if (errors.inputs[i][0] !== '') {
         shouldSubmit = false;
       } else {
-        paymentInfo[dependency_arr[i].label.replaceAll('*', '').trim()] =
-          dependency_arr[i].ref.current.value;
+        paymentInfo[dependency_arr[i].label.replaceAll('*', '').trim()] = dependency_arr[i].ref.current.value;
       }
     }
     if (shouldSubmit) {
@@ -282,15 +280,24 @@ const Page10 = ({ step, setstep, questions, setQuestions, data }) => {
           <tbody>
             <tr>
               <th>TOTAL</th>
-              <td>${a}</td>
+              <td>
+                $
+                {a}
+              </td>
             </tr>
             <tr>
               <th>TAXES</th>
-              <td>${b}</td>
+              <td>
+                $
+                {b}
+              </td>
             </tr>
             <tr>
               <th>TOTAL</th>
-              <th>${c}</th>
+              <th>
+                $
+                {c}
+              </th>
             </tr>
           </tbody>
         </table>
@@ -393,18 +400,18 @@ const Page10 = ({ step, setstep, questions, setQuestions, data }) => {
                               validateRegularInputs(
                                 dependency.validationFxn(
                                   dependency.ref.current.value,
-                                  dependency.correctLength
+                                  dependency.correctLength,
                                 ),
-                                index
+                                index,
                               );
                             }
                           }}
                         />
-                        {errors.inputs.length > 0 &&
-                        errors.inputs[index][0] !== undefined &&
-                        errors.inputs[index][0] !== '' ? (
+                        {errors.inputs.length > 0
+                        && errors.inputs[index][0] !== undefined
+                        && errors.inputs[index][0] !== '' ? (
                           <ErrorPrint errors={errors.inputs[index]} red left />
-                        ) : null}
+                          ) : null}
                       </div>
                     ))}
                   </div>

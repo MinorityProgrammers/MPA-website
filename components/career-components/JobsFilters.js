@@ -1,6 +1,10 @@
 import { useRouter } from 'next/router';
 import React, { useEffect, useRef } from 'react';
-import { CancelButton, ExpandButton, ResetButton } from './form/jobs-filters/buttons';
+import {
+  CancelButton,
+  ExpandButton,
+  ResetButton,
+} from './form/jobs-filters/buttons';
 import CheckBoxItem from './form/jobs-filters/CheckBoxItem';
 import jobTypes from './JobTypes.json';
 
@@ -123,36 +127,29 @@ const JobsFilters = ({
   return (
     <>
       <button type="button" className="filters-open-btn " onClick={openFilters}>
-        <i
-          className="fas fa-sort-amount-down"
-          style={{ color: '#ff4fcd', fontSize: '2rem' }}
-        />
+        <span className="filter-button-search">Filter Search</span>
       </button>
 
       <div className="jobFilters">
         <div className="job-filter-item">
           <ExpandButton id="first-item-title" onClick={openFilterForm}>
-            {
-              filter.date_posted === '0'
-                ? 'Date Posted'
-                : `Past ${filter.date_posted
-                  .charAt(0)
-                  .toUpperCase()}${filter.date_posted.slice(1)}`
-            }
+            {filter.date_posted === '0'
+              ? 'Date Posted'
+              : `Past ${filter.date_posted
+                .charAt(0)
+                .toUpperCase()}${filter.date_posted.slice(1)}`}
           </ExpandButton>
           <div className="job-filter-item-form">
             <ul className="job-filter-item-form-list">
-              {
-                Object.keys(datePosted).map((key) => (
-                  <CheckBoxItem
-                    key={key}
-                    name="date_posted"
-                    value={key}
-                    text={datePosted[key]}
-                    onChange={submitAndOffCheckBoxes}
-                  />
-                ))
-              }
+              {Object.keys(datePosted).map((key) => (
+                <CheckBoxItem
+                  key={key}
+                  name="date_posted"
+                  value={key}
+                  text={datePosted[key]}
+                  onChange={submitAndOffCheckBoxes}
+                />
+              ))}
             </ul>
             <CancelButton onClick={closeForm} />
           </div>
@@ -164,8 +161,8 @@ const JobsFilters = ({
           </ExpandButton>
           <div className="job-filter-item-form">
             <ul className="job-filter-item-form-list">
-              {
-                ['Technology', 'Health', 'Education', 'Consultancy'].map((jobIndustry) => (
+              {['Technology', 'Health', 'Education', 'Consultancy'].map(
+                (jobIndustry) => (
                   <CheckBoxItem
                     key={jobIndustry}
                     name="job_industry"
@@ -173,8 +170,8 @@ const JobsFilters = ({
                     text={jobIndustry}
                     onChange={submitAndOffCheckBoxes}
                   />
-                ))
-              }
+                ),
+              )}
             </ul>
             <CancelButton onClick={closeForm} />
           </div>
@@ -186,17 +183,15 @@ const JobsFilters = ({
           </ExpandButton>
           <div className="job-filter-item-form">
             <ul className="job-filter-item-form-list">
-              {
-                Object.keys(payAmount).map((key) => (
-                  <CheckBoxItem
-                    key={key}
-                    name="pay"
-                    value={key === '0' ? '' : key}
-                    text={payAmount[key]}
-                    onChange={submitAndOffCheckBoxes}
-                  />
-                ))
-              }
+              {Object.keys(payAmount).map((key) => (
+                <CheckBoxItem
+                  key={key}
+                  name="pay"
+                  value={key === '0' ? '' : key}
+                  text={payAmount[key]}
+                  onChange={submitAndOffCheckBoxes}
+                />
+              ))}
             </ul>
             <CancelButton onClick={closeForm} />
           </div>
@@ -208,47 +203,46 @@ const JobsFilters = ({
           </ExpandButton>
           <div className="job-filter-item-form">
             <ul className="job-filter-item-form-list">
-              {
-                jobTypes.map((jobType) => (
-                  <CheckBoxItem
-                    key={jobType}
-                    name="job_type"
-                    value={jobType}
-                    text={jobType}
-                    onChange={submitAndOffCheckBoxes}
-                  />
-                ))
-              }
+              {jobTypes.map((jobType) => (
+                <CheckBoxItem
+                  key={jobType}
+                  name="job_type"
+                  value={jobType}
+                  text={jobType}
+                  onChange={submitAndOffCheckBoxes}
+                />
+              ))}
             </ul>
             <CancelButton onClick={closeForm} />
           </div>
         </div>
 
-        <div className="job-filter-item remote-item">
-          <label htmlFor="remote" className="remote-label">
-            {' Remote '}
+        <div className="job-filter-item remote-item mb-2">
+          <span className="tw-mr-2 tw-font-semibold tw-text-white tw-align-middle">
+            Remote
+          </span>
+          <label htmlFor="remote" className="jobs-search-switch">
+            <input
+              className="remote-checkmate"
+              id="remote"
+              type="checkbox"
+              name="remote"
+              ref={remoteCheckbox}
+              onChange={(e) => submitForm(e)}
+            />
+            <span className="jobs-search-slider round" />
           </label>
-          <input
-            className="remote-checkmate"
-            id="remote"
-            type="checkbox"
-            name="remote"
-            ref={remoteCheckbox}
-            onChange={(e) => submitForm(e)}
-          />
         </div>
         <div className="job-filter-item">
-          {
-            filter.pay !== ''
-            || filter.job_type !== ''
-            || filter.date_posted !== ''
-            || filter.remote !== ''
-            || filter.job_industry !== '' ? (
-              <ResetButton onClick={resetFilter} />
-              ) : (
-                <ResetButton onClick={resetFilter} style={{ display: 'none' }} />
-              )
-          }
+          {filter.pay !== ''
+          || filter.job_type !== ''
+          || filter.date_posted !== ''
+          || filter.remote !== ''
+          || filter.job_industry !== '' ? (
+            <ResetButton onClick={resetFilter} />
+            ) : (
+              <ResetButton onClick={resetFilter} style={{ display: 'none' }} />
+            )}
         </div>
       </div>
     </>

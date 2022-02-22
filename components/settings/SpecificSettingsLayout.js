@@ -1,16 +1,30 @@
-import React from 'react';
-import { useRouter } from 'next/router';
+import React, { useEffect } from 'react';
 import styles from '../../styles/settings/specificSettingsLayoutNavigation.module.css';
 import getSpecificSettingsLayoutNavigationList from '../../helpers/getSpecificSettingsLayoutNavigationList';
 
-const SettingsLayout = function ({ settingsPage }) {
-  const router = useRouter();
-
-  const settingsSubPage = router.pathname.substring(
-    router.pathname.lastIndexOf('/') + 1,
-  );
-
+const SettingsLayout = ({ settingsPage, subActive, setSubActive }) => {
   const settingsNameAndList = getSpecificSettingsLayoutNavigationList(settingsPage);
+  const getNavs = (subpath) => {
+    const navs = {};
+    navs[subpath] = true;
+    settingsNameAndList.content.forEach((setting) => {
+      if (setting.subPath !== subpath) navs[setting.subPath] = false;
+    });
+    return navs;
+  };
+  useEffect(() => {
+    if (settingsPage === 'security') {
+      setSubActive({
+        login: true,
+        management: false,
+        privacy: false,
+      });
+    } else if (settingsPage === 'notifications') {
+      setSubActive({
+        notifications: true,
+      });
+    }
+  }, []);
   return (
     <div className={styles.specificSettingsNavigation}>
       <nav>
@@ -20,8 +34,8 @@ const SettingsLayout = function ({ settingsPage }) {
         <ul>
           {settingsNameAndList.content.map((setting) => (
             <li
-              className={`${styles.navHeader} ${
-                settingsSubPage === setting.subPath && styles.activeLi
+              className={`${styles.navHeader} ${subActive[setting.subPath]
+                && styles.activeLi
               }`}
               key={setting.id}
             >
@@ -31,15 +45,11 @@ const SettingsLayout = function ({ settingsPage }) {
                     <img
                       src={setting.icon}
                       alt={`${setting.name} icon`}
-                      onClick={() => router.push(
-                        `/settings/${settingsPage}/${setting.subPath}`,
-                      )}
+                      onClick={() => setSubActive(getNavs(setting.subPath))}
                     />
                   </div>
                   <span
-                    onClick={() => router.push(
-                      `/settings/${settingsPage}/${setting.subPath}`,
-                    )}
+                    onClick={() => setSubActive(getNavs(setting.subPath))}
                   >
                     {setting.name}
                   </span>
@@ -47,9 +57,7 @@ const SettingsLayout = function ({ settingsPage }) {
                     <img
                       src="../../assets/images/settings/arrow-white.svg"
                       alt="arrow icon"
-                      onClick={() => router.push(
-                        `/settings/${settingsPage}/${setting.subPath}`,
-                      )}
+                      onClick={() => setSubActive(getNavs(setting.subPath))}
                     />
                   </div>
                 </h2>

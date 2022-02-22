@@ -90,24 +90,23 @@ const DashboardNavbar = (props) => {
     };
   }, [winSize]);
 
-  const PopulatedNavBar = () =>
-    buttons.map((button) => (
-      <div
-        key={button.buttonText}
-        style={{ width: '100%' }}
-        className={
+  const PopulatedNavBar = () => buttons.map((button) => (
+    <div
+      key={button.buttonText}
+      style={{ width: '100%' }}
+      className={
           button.componentName === currentView
             ? 'sidebar-item tw-items-center dashboard-navbar-button-selected'
             : 'sidebar-item tw-items-center dashboard-navbar-button'
         }
-        onClick={() => {
-          setView(button.componentName);
-        }}
-      >
-        <FontAwesomeIcon icon={button.iconName} className="fa-2x" />
-        <p>{button.buttonText}</p>
-      </div>
-    ));
+      onClick={() => {
+        setView(button.componentName);
+      }}
+    >
+      <FontAwesomeIcon icon={button.iconName} className="fa-2x" />
+      <p>{button.buttonText}</p>
+    </div>
+  ));
 
   return (
     <>

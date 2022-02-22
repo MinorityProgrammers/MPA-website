@@ -61,10 +61,9 @@ const EventMoreInfo = (props) => {
               Accept: 'application/json',
               Authorization: `Bearer ${token}`,
             },
-          }
+          },
         )
-        .then((res) => {
-          console.log('register:', res);
+        .then((/* res */) => {
           setLoading(false);
           successToast('You are registered!');
           getUserSavedEvents();
@@ -90,8 +89,7 @@ const EventMoreInfo = (props) => {
             Authorization: `Bearer ${_token}`,
           },
         })
-        .then((res) => {
-          console.log('cancel:', res);
+        .then((/* res */) => {
           setLoading(false);
           successToast('removed event');
           getUserSavedEvents();
@@ -107,8 +105,8 @@ const EventMoreInfo = (props) => {
     if (val === 'Register') {
       for (let i = 0; i < userSavedEvents.length; i += 1) {
         if (
-          userSavedEvents[i].event_id?._id === data._id ||
-          (userSavedEvents !== null && attended.attending === 'yes')
+          userSavedEvents[i].event_id?._id === data._id
+          || (userSavedEvents !== null && attended.attending === 'yes')
         ) {
           return (
             <button
@@ -124,8 +122,8 @@ const EventMoreInfo = (props) => {
     } else if (val === 'attendance') {
       for (let i = 0; i < userSavedEvents.length; i += 1) {
         if (
-          userSavedEvents[i].event_id._id === data._id ||
-          (userSavedEvents !== null && attended.attending === 'yes')
+          userSavedEvents[i].event_id._id === data._id
+          || (userSavedEvents !== null && attended.attending === 'yes')
         ) {
           return <p> </p>;
         }
@@ -148,7 +146,7 @@ const EventMoreInfo = (props) => {
     savedEventId,
     eventId,
     userId,
-    attendingStatus
+    attendingStatus,
   ) => {
     e.preventDefault();
     const _data = {
@@ -156,7 +154,7 @@ const EventMoreInfo = (props) => {
       user_id: userId,
       attending: `${attendingStatus}`,
     };
-    console.log(savedEventId, eventId, userId, attendingStatus);
+
     axios
       .patch(`${process.env.BASE_URI}/saveEvent/${savedEventId}`, _data, {
         headers: {
@@ -165,8 +163,7 @@ const EventMoreInfo = (props) => {
           Authorization: `Bearer ${_token}`,
         },
       })
-      .then((res) => {
-        console.log('Changed status', res);
+      .then((/* res */) => {
         setLoading(false);
         successToast(`Attending status: ${attendingStatus}`);
         getUserSavedEvents();
@@ -175,7 +172,7 @@ const EventMoreInfo = (props) => {
         console.log(err.response.data);
         setLoading(false);
         errorToast(
-          `Cannot change status to ${attendingStatus} Something went wrong, please contact us.`
+          `Cannot change status to ${attendingStatus} Something went wrong, please contact us.`,
         );
       });
   };
@@ -212,8 +209,8 @@ const EventMoreInfo = (props) => {
     for (let i = 0; i < allsavedEvents.length; i += 1) {
       if (allsavedEvents[i].event_id !== null) {
         if (
-          allsavedEvents[i].attending === 'yes' &&
-          allsavedEvents[i].event_id._id === eventId
+          allsavedEvents[i].attending === 'yes'
+          && allsavedEvents[i].event_id._id === eventId
         ) {
           count += 1;
         }
@@ -295,36 +292,37 @@ const EventMoreInfo = (props) => {
     );
   }
 
-  const getEventDetailPhoto = () =>
-    allEvent
-      .filter((e) => e._id === data._id)
-      .map((n) => (
-        <img
-          src={
+  const getEventDetailPhoto = () => allEvent
+    .filter((e) => e._id === data._id)
+    .map((n) => (
+      <img
+        src={
             n.host.profilePicture
               ? n.host.profilePicture
               : 'https://github.com/MinorityProgrammers/mpa-avatars/blob/main/avatars/mysteryAvatar.png?raw=true'
           }
-          style={{
-            borderRadius: '50%',
-            width: '100px',
-            height: '100px',
-            objectFit: 'cover',
-            marginRight: '20px',
-          }}
-          alt="avatar"
-        />
-      ));
+        style={{
+          borderRadius: '50%',
+          width: '100px',
+          height: '100px',
+          objectFit: 'cover',
+          marginRight: '20px',
+        }}
+        alt="avatar"
+      />
+    ));
 
-  const getEventDetailName = () =>
-    allEvent
-      .filter((e) => e._id === data._id)
-      .map((n) => (
-        <>
-          <p>{n.host.fistName}</p>
-          <p> {n.host.lastName}</p>
-        </>
-      ));
+  const getEventDetailName = () => allEvent
+    .filter((e) => e._id === data._id)
+    .map((n) => (
+      <>
+        <p>{n.host.fistName}</p>
+        <p>
+          {' '}
+          {n.host.lastName}
+        </p>
+      </>
+    ));
 
   Moment.locale('en');
 
@@ -371,7 +369,9 @@ const EventMoreInfo = (props) => {
                   <h4>Host</h4>
                   {data.host.firstName ? (
                     <p>
-                      {data.host.firstName} {data.host.lastName}
+                      {data.host.firstName}
+                      {' '}
+                      {data.host.lastName}
                     </p>
                   ) : (
                     getEventDetailName()
@@ -393,7 +393,8 @@ const EventMoreInfo = (props) => {
                   <p>
                     {userData.firstName
                       ? userData.firstName
-                      : data.host.fistName}{' '}
+                      : data.host.fistName}
+                    {' '}
                     {userData.lastName ? userData.lastName : data.host.lastName}
                   </p>
                 </div>

@@ -25,9 +25,12 @@ const Intro = ({ active }) => {
           <h1 className={styles.heading}>START CHAPTER</h1>
           <p className={styles.text}>
             Start a community of diverse developers today, and get
-            <span className={styles.hideText}>the support of</span> an
+            <span className={styles.hideText}>the support of</span>
+            {' '}
+            an
             international network
-            <span className={styles.showText}>of support!</span>{' '}
+            <span className={styles.showText}>of support!</span>
+            {' '}
             <span className={styles.hideText}>
               of diverse talent here to empower the world!
             </span>

@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import twitterWidget from './twitterWidget';
 
 const TweetEmbed = ({
-  tweetId = '', options = '', loading, setLoading,
+  tweetId = '', options = '', setTweetsLoading, tweetsLoading = null,
 }) => {
+  const [loading, setLoading] = useState(true);
   const [widget, setWidget] = useState();
   const [twt, setTwttr] = useState();
 
-  // Make sure we have a window before attaching the twitter widget
   useEffect(() => {
     if (typeof window !== 'undefined') {
       setWidget(twitterWidget());
@@ -17,7 +17,6 @@ const TweetEmbed = ({
     }
   }, [widget]);
 
-  // Check to make sure the widgets library is loaded
   useEffect(() => {
     if (twt) {
       const interval = setInterval(() => {
@@ -30,28 +29,26 @@ const TweetEmbed = ({
     }
   }, [twt]);
 
-  // Spawn in the actual tweet
   useEffect(() => {
     if (!loading) {
-      // Options for embedding can be found here
-      // https://developer.twitter.com/en/docs/twitter-for-websites/embedded-tweets/guides/embedded-tweet-parameter-reference
-      twt.widgets.createTweetEmbed(
-        tweetId,
-        document.getElementById(tweetId),
-        {
-          theme: 'light',
-          align: 'center',
+      twt.widgets
+        .createTweetEmbed(tweetId, document.getElementById(tweetId), {
+          theme: 'dark',
+          // align: 'center',
           // Min 220px, Max 550px
-          //   width: '350px',
+          width: '350px',
           cards: options.cards,
           conversation: options.conversation,
-        },
-      )
-        .then(() => console.log(`Loaded Tweet ${tweetId} successfully.`))
+        })
+        .then(() => {
+          console.log(`Loaded Tweet ${tweetId} successfully.`);
+          if (tweetsLoading === false) {
+            setTweetsLoading(tweetsLoading);
+          }
+        })
         .catch(() => console.log(`Failed to load Tweet ${tweetId}.`));
     }
   }, [loading]);
-  console.log(loading);
   return (
     <div id={tweetId} />
   );

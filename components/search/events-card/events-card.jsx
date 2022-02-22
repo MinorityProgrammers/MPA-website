@@ -5,7 +5,7 @@ import EventsPopup from './events-popup';
 
 Moment.locale('en');
 
-const EventsCard = function ({ data }) {
+const EventsCard = ({ data }) => {
   const [popup, togglePopup] = useState(false);
   const [isImage, setImage] = useState(false);
 
@@ -19,16 +19,24 @@ const EventsCard = function ({ data }) {
 
   return (
     <div className={styles.wrapper}>
-      <div className={`${styles.popupContainer} ${popup ? styles.show : styles.hide}`}>
+      <div
+        className={`${styles.popupContainer} ${
+          popup ? styles.show : styles.hide
+        }`}
+      >
         <EventsPopup data={data} togglePopup={togglePopup} />
       </div>
 
       <div onClick={handleClick} className={styles.container}>
         <div className={styles.imageContainer}>
-          {
-            !isImage ? <div className={styles.imagePlaceholder} /> : null
-          }
-          <img style={{ display: isImage ? 'inline-block' : 'hidden' }} className={styles.image} src={EventPicture} onLoad={() => setImage(true)} alt="event-banner" />
+          {!isImage ? <div className={styles.imagePlaceholder} /> : null}
+          <img
+            style={{ display: isImage ? 'inline-block' : 'hidden' }}
+            className={styles.image}
+            src={EventPicture}
+            onLoad={() => setImage(true)}
+            alt="event-banner"
+          />
           <div className={styles.catName}>{catName}</div>
         </div>
         <div className={styles.name}>{eventName}</div>

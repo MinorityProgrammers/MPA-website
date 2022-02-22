@@ -5,17 +5,23 @@ export default function QuizProgress(props) {
   return (
     <div>
       <div className="progress">
-        <p className="counter">
-          <span>
-            Question
-            {currentQuestion + 1}
-            {' '}
-            of
+        <div
+          className="progress-bar"
+          style={{
+            width: `${((currentQuestion + 1) / questionLength) * 100}%`,
+          }}
+        />
+      </div>
+      <p className="counter">
+        <span>
+          Question
+          {currentQuestion + 1}
+          <span className="total-questions">
+            /
             {questionLength}
           </span>
-        </p>
-        <div className="progress-bar" style={{ width: `${((currentQuestion + 1) / questionLength) * 100}%` }} />
-      </div>
+        </span>
+      </p>
     </div>
   );
 }

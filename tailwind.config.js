@@ -1,7 +1,9 @@
 const plugin = require('tailwindcss/plugin');
+const colors = require('tailwindcss/colors');
 
 module.exports = {
   purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
+  mode: 'jit',
   darkMode: false, // or 'media' or 'class'
   prefix: 'tw-',
   theme: {
@@ -10,6 +12,7 @@ module.exports = {
         redhat: ['Red Hat Display', 'ui-serif'],
       },
       backgroundColor: {
+        new: 'a159fe',
         main: '#269DF8',
         surface: '#eff6fc',
         dark: '#232B3E',
@@ -50,6 +53,12 @@ module.exports = {
           100: '#151565',
           200: '#FF00B8',
         },
+        black: colors.black,
+        white: colors.white,
+        indigo: colors.indigo,
+        purple: colors.violet,
+        red: colors.rose,
+        yellow: colors.amber,
       },
       borderColor: {
         NavDark: '#151565',
