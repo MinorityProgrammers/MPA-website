@@ -12,13 +12,10 @@ import {
   FaDribbble,
 } from 'react-icons/fa';
 import axios from 'axios';
-import { HiOutlinePencil } from 'react-icons/hi';
 import jwt from 'jsonwebtoken';
 import { useRouter } from 'next/router';
-import { Tooltip, Button, Modal } from 'antd';
+import { Modal } from 'antd';
 import { useMoralis } from 'react-moralis';
-import moment from 'moment';
-import DatePicker from 'react-datepicker';
 import FormData from 'form-data';
 import { errorToast, successToast } from '../contexts/utils/toasts';
 import ProfileTwoGenerateAvatarPopUp from './ProfileTwoGenerateAvatarPopUp';
@@ -109,8 +106,6 @@ const ProfileTwo = function ({
     { nfts: false, userCourses: false, badges: true },
   );
   const [loading, setLoading] = useState(true);
-
-  const router = useRouter();
   const { Moralis, isAuthenticated } = useMoralis();
 
   const getNFTs = async () => {
@@ -128,9 +123,8 @@ const ProfileTwo = function ({
   useEffect(() => {
     getNFTs();
   }, [walletAddress, isAuthenticated, chainId]);
-  console.log(userNfts);
 
-  const axiosFunc = (url, token, setState) => {
+  const axiosFunc = (url, setState) => {
     axios
       .get(`${process.env.BASE_URI}/${url}`)
       .then((res) => {
@@ -140,22 +134,17 @@ const ProfileTwo = function ({
   };
 
   useEffect(() => {
-    const userToken = JSON.parse(localStorage.getItem('userInfo'));
-    if (userToken !== null) {
-      axiosFunc(`learn/user/${userId}`, userToken.token, setEnrolledCourses);
-      axiosFunc(`reputation/user/${userId}`, userToken.token, setReputation);
-      axiosFunc(
-        `experience/userExperienceById/${userId}`,
-        userToken.token,
-        setExperienceCards,
-      );
-      axiosFunc(`education/userEducationById/${userId}`, userToken.token, setEducationCards);
-      axiosFunc(
-        `personalProject/PersonalProjectById/${userId}`,
-        userToken.token,
-        setProjectCards,
-      );
-    }
+    axiosFunc(`learn/user/${userId}`, setEnrolledCourses);
+    axiosFunc(`reputation/user/${userId}`, setReputation);
+    axiosFunc(
+      `experience/userExperienceById/${userId}`,
+      setExperienceCards,
+    );
+    axiosFunc(`education/userEducationById/${userId}`, setEducationCards);
+    axiosFunc(
+      `personalProject/PersonalProjectById/${userId}`,
+      setProjectCards,
+    );
   }, []);
 
   useEffect(() => {
@@ -621,7 +610,7 @@ const ProfileTwo = function ({
             {loading ? (
               <div className="profileTopSection tw-relative tw-z-10">
                 <section className="tw-w-11/12 tw-mx-auto tw-rounded-xl tw-shadow-md topSection tw-py-10 tw-flex tw-flex-col tw-justify-center">
-                  <div className="tw-text-3xl lg:tw-text-xl tw-font-medium tw-text-left tw-px-10 tw-text-gray-600">Earned Badges</div>
+                  <div className="tw-text-3xl lg:tw-text-xl tw-font-medium tw-text-left tw-px-10 tw-text-gray-600">Earned</div>
                   <div className="tw-px-4 tw-my-1">
                     <CoursesSkeleton title="My Badges" />
                   </div>

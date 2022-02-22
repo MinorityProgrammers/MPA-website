@@ -9,7 +9,7 @@
     inset 7px 7px 14px rgba(255, 255, 255, 0.09);
   border-radius: 16px;
   /* height: 250px; */
-  width: 100%;
+  width: 90%;
   margin: 0 !important;
   padding-bottom: 20px;
 }
@@ -45,7 +45,7 @@
 
 @media only screen and (max-width: 700px) {
   .courses-items {
-    /* width: 90%; */
+    width: 95%;
     /* height: 300px !important; */
     /* margin-left: 20px; */
     position: relative;
@@ -60,7 +60,7 @@
     bottom: 20px;
   }
   .course-earn-style {
-    margin-right: 70px;
+    margin-right: 50px;
   }
   .banner-btn {
     padding: 5px 19px !important;
@@ -74,7 +74,7 @@
 }
 @media only screen and (max-width: 500px) {
   .courses-items {
-    /* width: 90%; */
+    width: 95%;
     /* height: 18rem !important; */
     margin-left: 20px;
   }

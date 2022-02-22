@@ -77,9 +77,9 @@ function TopSection({
         <div className="tw-w-11/12 tw-mx-auto tw-rounded-xl tw-shadow-md tw-overflow-hidden md:tw-max-w-3xl topSection">
           <div className="md:tw-flex tw-relative tw-w-full">
             <div className="new-bg tw-w-full tw-h-28 tw-flex tw-justify-end tw-p-5 editSection">
-              <div onClick={() => router.push('/settings')} className="tw-bg-white tw-rounded-3xl tw-w-1/5 xl:tw-w-1/3 tw-h-14 tw-p-4 md:tw-p-3 tw-flex tw-flex-row tw-justify-center tw-cursor-pointer hover:tw-bg-gray-200">
-                <img className="tw-w-6 tw-h-6" src="/assets/new/edit.png" alt="edit icon" />
-                <p className="newColor tw-mx-3 tw-mt-0 tw-text-md tw-font-medium">Edit Profile</p>
+              <div onClick={() => router.push('/settings')} className="tw-bg-white tw-rounded-3xl tw-w-1/5 xl:tw-w-1/3 tw-py-4 tw-h-14 tw-text-center tw-flex tw-flex-row tw-justify-center tw-cursor-pointer hover:tw-bg-gray-200">
+                <img className="tw-w-6 tw-h-6 lg:tw-hidden" src="/assets/new/edit.png" alt="edit icon" />
+                <p className="newColor tw-mx-3 tw-mt-0 tw-text-md tw-font-medium tw-text-center">Edit Profile</p>
               </div>
             </div>
             <div className="tw-w-full tw-p-2 tw-py-10">
@@ -183,7 +183,7 @@ function TopSection({
 
             ) : (
               <>
-                {ownsProfile ? (
+                {ownsProfile && isLoggedIn ? (
                   <div className="tw-p-5 tw-flex tw-flex-col tw-justify-center">
                     <div className="tw-flex tw-flex-row tw-justify-between">
                       <textarea

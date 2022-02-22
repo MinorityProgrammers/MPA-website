@@ -31,8 +31,7 @@
   border-radius: 5px;
 }
 .courses-info .slick-next {
-  top: -13.8%;
-  right: 4.5%;
+  top: -20%;
 }
 .course-tag-style:hover {
   color: black;
@@ -42,7 +41,7 @@
 }
 .courses-info .slick-prev {
   left: 91%;
-  top: -13.8%;
+  top: -20%;
 }
 .banner-btn {
   /* background-image: linear-gradient(to right, #FF00B8 2.65%, #FF655B 51.83%, #FFC700 100%); */
@@ -114,8 +113,8 @@
   border: 1px solid #474bff;
   box-sizing: border-box;
   border-radius: 12px;
-  padding: 10px 14px;
-  width: 110px;
+  padding: 9px 12px;
+  width: 80px;
 }
 
 .course-earn-style:hover {
@@ -262,8 +261,8 @@
   transition: all 0.3s ease !important;
 }
 .courses-items:hover {
-  -webkit-transform: scale(1.025);
-  transform: scale(1.025);
+  -webkit-transform: scale(1);
+  transform: scale(1);
 }
 
 .course-weeks:hover {
@@ -305,10 +304,10 @@
   }
   .courses-info .slick-prev {
     left: 83%;
-    top: -15%;
+    top: -20%;
   }
   .courses-info .slick-next {
-    top: -15%;
+    top: -20%;
   }
   .learn-items ul li {
     margin-bottom: 1rem;
