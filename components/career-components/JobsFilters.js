@@ -38,13 +38,13 @@ const JobsFilters = ({
   // toggles the filters options/buttons when the "filter" button is clicked on small screens
   function openFilters() {
     if (
-      window.getComputedStyle(document.querySelector('.jobFilters')).display
-      === 'none'
+      window.getComputedStyle(document.querySelector('.jobFilters')).display ===
+      'none'
     ) {
       document.querySelector('.jobFilters').style.display = 'flex';
     } else if (
-      window.getComputedStyle(document.querySelector('.jobFilters')).display
-      === 'flex'
+      window.getComputedStyle(document.querySelector('.jobFilters')).display ===
+      'flex'
     ) {
       document.querySelector('.jobFilters').style.display = 'none';
     }
@@ -54,9 +54,9 @@ const JobsFilters = ({
   // show filters when screen size gets bigger than 767px
   function assureFiltersOpen() {
     document.querySelector('.jobFilters');
-    if (window.innerWidth > 768) {
+    if (window.innerWidth > 909) {
       document.querySelector('.jobFilters').style.display = 'flex';
-    } else if (window.innerWidth < 768) {
+    } else if (window.innerWidth < 909) {
       document.querySelector('.jobFilters').style.display = 'none';
     }
   }
@@ -136,8 +136,8 @@ const JobsFilters = ({
             {filter.date_posted === '0'
               ? 'Date Posted'
               : `Past ${filter.date_posted
-                .charAt(0)
-                .toUpperCase()}${filter.date_posted.slice(1)}`}
+                  .charAt(0)
+                  .toUpperCase()}${filter.date_posted.slice(1)}`}
           </ExpandButton>
           <div className="job-filter-item-form">
             <ul className="job-filter-item-form-list">
@@ -170,7 +170,7 @@ const JobsFilters = ({
                     text={jobIndustry}
                     onChange={submitAndOffCheckBoxes}
                   />
-                ),
+                )
               )}
             </ul>
             <CancelButton onClick={closeForm} />
@@ -234,15 +234,15 @@ const JobsFilters = ({
           </label>
         </div>
         <div className="job-filter-item">
-          {filter.pay !== ''
-          || filter.job_type !== ''
-          || filter.date_posted !== ''
-          || filter.remote !== ''
-          || filter.job_industry !== '' ? (
+          {filter.pay !== '' ||
+          filter.job_type !== '' ||
+          filter.date_posted !== '' ||
+          filter.remote !== '' ||
+          filter.job_industry !== '' ? (
             <ResetButton onClick={resetFilter} />
-            ) : (
-              <ResetButton onClick={resetFilter} style={{ display: 'none' }} />
-            )}
+          ) : (
+            <ResetButton onClick={resetFilter} style={{ display: 'none' }} />
+          )}
         </div>
       </div>
     </>
