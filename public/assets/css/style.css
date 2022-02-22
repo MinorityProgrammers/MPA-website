@@ -4057,6 +4057,10 @@ a:visited {
   cursor: pointer;
 }
 
+.form-text {
+  font-size: 12px !important;
+}
+
 .course-details__comment-form input,
 .course-details__comment-form textarea {
   display: block;
@@ -7723,7 +7727,7 @@ html {
 }
 
 .dropdown-login .login-input .form-control {
-  font-weight: 900;
+  font-weight: 500;
 }
 
 .login-register p {

@@ -143,7 +143,7 @@ const HomepageNavLogin = ({ onCloseMobileMenu }) => {
                     placeholder="&#xf0e0; Enter email"
                     required
                     textStyle="form-control fas"
-                    alertStyle="form-text dropdown-form-text mb-3 tw-text-red-400"
+                    alertStyle="form-text dropdown-form-text mb-3 tw-text-red-400 tw-text-md"
                   />
                 </div>
                 <div className="form-group login-input">
@@ -153,7 +153,7 @@ const HomepageNavLogin = ({ onCloseMobileMenu }) => {
                     type="password"
                     placeholder="&#xf023; Password"
                     textStyle="form-control fas"
-                    alertStyle="form-text dropdown-form-text mb-3 tw-text-red-400"
+                    alertStyle="form-text dropdown-form-text mb-3 tw-text-red-400 tw-text-md"
                   />
                 </div>
                 <div
@@ -192,7 +192,7 @@ const HomepageNavLogin = ({ onCloseMobileMenu }) => {
                     placeholder="&#xf0e0; Enter email"
                     required
                     textStyle="form-control fas"
-                    alertStyle="form-text dropdown-form-text mb-3 tw-text-red-400"
+                    alertStyle="form-text dropdown-form-text mb-3 tw-text-red-400 tw-text-md"
                   />
                 </div>
 

@@ -205,8 +205,8 @@ hr {
     display: none;
   }
   .form-control {
-    width: 90% !important;
-    height: 45px !important;
+    width: 100% !important;
+    height: 40px !important;
   }
   .incubator-btn1,
   .incubator-btn2 {
@@ -302,9 +302,9 @@ hr {
 .form-control {
   background: var(--secondary-high-contrast);
   border: 1px solid var(--secondary-high-contrast);
-  width: 70%;
+  width: 100%;
   border-radius: 100px;
-  height: 60px;
+  height: 40px;
 }
 
 .form-control:focus {
