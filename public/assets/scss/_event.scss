@@ -1,4 +1,4 @@
-@import '../../../styles/global-variables.css';
+@import "../../../styles/global-variables.css";
 
 #loadingIcon {
   position: absolute;
@@ -108,6 +108,7 @@
     max-width: 800px;
     margin: 2% auto 3%;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     .input {
       width: 80%;
@@ -136,7 +137,7 @@
       input:hover {
         border-color: #808080;
       }
-      button {
+      i {
         border-radius: 10px;
         background: var(--secondary-high-contrast);
         padding: 10px 20px 10px 10px;
@@ -144,7 +145,7 @@
     }
     .input:focus-within {
       border-color: var(--secondary-accent-1);
-      box-shadow: 0 0 0 .2rem rgba(161, 30, 236, 0.25);
+      box-shadow: 0 0 0 0.2rem rgba(161, 30, 236, 0.25);
     }
   }
   @media only screen and (max-width: 666px) {
@@ -174,33 +175,34 @@
       background-color: var(--secondary-high-contrast);
     }
     &2 {
-      border-color: var(--tertiary-low-contrast);;
+      border-color: var(--tertiary-low-contrast);
     }
-        &2:hover {
-     background-color: var(--secondary-high-contrast);
-      color:white;
+    &2:hover {
+      background-color: var(--secondary-high-contrast);
+      color: white;
     }
     &3 {
-      border-color: var(--tertiary-low-contrast);;
+      border-color: var(--tertiary-low-contrast);
     }
-    &3:hover{
+    &3:hover {
       background-color: var(--secondary-high-contrast);
       color: white;
     }
     &4 {
-      border-color: var(--tertiary-low-contrast);;
+      border-color: var(--tertiary-low-contrast);
     }
-    &4:hover{
+    &4:hover {
       background-color: var(--secondary-high-contrast);
     }
     div {
-      padding: 10px;
+      padding-top: 25px;
       min-width: 200px;
       width: 300px;
       text-align: center;
+
       border-style: solid;
       border-width: 2px;
-      border-radius: 3px;
+      border-radius: 16px;
       margin-right: 20px;
       &:last-child {
         margin-right: 0px;
@@ -304,30 +306,30 @@
     //       background: #f5f5f5;
     //       width: fit-content;
     //     }
-        .swiper-navigation_container {
-          // position: absolute;
-          height: 40px;
-          padding-top: 20px;
-          bottom: 5px;
-          display: flex;
-          justify-content: center;
-          z-index: 50;
-        }
-        .swiper-navigation {
-          display: flex;
-          width: 100px;
-          height: auto;
-          margin-bottom: .7rem;
-          .swiper-button-prev,
-          .swiper-button-next {
-            position: relative;
-            background: none;
-            border: none;
-            color: var(--light-low-contrast);
-            opacity: 0.65;
-          }
-        }
-      // }
+    .swiper-navigation_container {
+      // position: absolute;
+      height: 40px;
+      padding-top: 20px;
+      bottom: 5px;
+      display: flex;
+      justify-content: center;
+      z-index: 50;
+    }
+    .swiper-navigation {
+      display: flex;
+      width: 100px;
+      height: auto;
+      margin-bottom: 0.7rem;
+      .swiper-button-prev,
+      .swiper-button-next {
+        position: relative;
+        background: none;
+        border: none;
+        color: var(--light-low-contrast);
+        opacity: 0.65;
+      }
+    }
+    // }
     // }
   }
 
@@ -372,7 +374,8 @@
           background-size: 150% auto;
           box-shadow: 0 0 20px #eee;
           border-radius: 5px;
-          box-shadow: 0 1px 3px var(--secondary-high-contrast), 0 1px 2px var(--secondary-accent);
+          box-shadow: 0 1px 3px var(--secondary-high-contrast),
+            0 1px 2px var(--secondary-accent);
           outline: none;
 
           position: absolute;
@@ -380,7 +383,8 @@
           left: 0;
           transition: 0.1s;
           &:hover {
-            box-shadow: 0 1px 10px var(--tertiary-accent-3), 0 6px 6px var(--secondary-high-contrast);
+            box-shadow: 0 1px 10px var(--tertiary-accent-3),
+              0 6px 6px var(--secondary-high-contrast);
             background-position: right center;
           }
           &:active {
@@ -537,13 +541,15 @@
       background-size: 150% auto;
       box-shadow: 0 0 20px #eee;
       border-radius: 5px;
-      box-shadow: 0 1px 3px var(--secondary-high-contrast), 0 1px 2px var(--secondary-accent);
+      box-shadow: 0 1px 3px var(--secondary-high-contrast),
+        0 1px 2px var(--secondary-accent);
       outline: 0;
       border: none;
 
       transition: 0.1s;
       &:hover {
-        box-shadow: 0 1px 10px var(--tertiary-accent-3), 0 6px 6px var(--secondary-high-contrast);
+        box-shadow: 0 1px 10px var(--tertiary-accent-3),
+          0 6px 6px var(--secondary-high-contrast);
         background-position: right center;
       }
       &:active,
@@ -691,8 +697,8 @@
   justify-content: center;
   align-items: center;
   overflow-y: scroll;
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
   z-index: 5000;
 
   .create_event-shadow {
@@ -899,8 +905,8 @@
             .column-question {
               width: 100%;
               .datepicker {
-                color: '#fca311';
-                border-radius: '200px';
+                color: "#fca311";
+                border-radius: "200px";
                 border: 1px solid var(--secondary-accent-1);
               }
             }
@@ -932,7 +938,7 @@
             input:focus-visible,
             textarea:focus-visible {
               outline: none;
-              box-shadow: 0 0 0 .2rem rgba(161, 30, 236, 0.25);
+              box-shadow: 0 0 0 0.2rem rgba(161, 30, 236, 0.25);
             }
           }
         }
@@ -962,7 +968,12 @@
     .event_thankyou {
       width: 100%;
       height: 100%;
-      background: linear-gradient(104.61deg, #ff00b8 2.65%, #ff655b 51.83%, #ffc700 100%);
+      background: linear-gradient(
+        104.61deg,
+        #ff00b8 2.65%,
+        #ff655b 51.83%,
+        #ffc700 100%
+      );
       display: flex;
       align-items: center;
       justify-content: center;
@@ -1278,7 +1289,8 @@
             font-weight: bold;
             margin: 20px 0;
           }
-          p, span {
+          p,
+          span {
             color: var(--light-low-contrast);
           }
           .option_buttons {
@@ -1380,13 +1392,13 @@
   }
   @media only screen and (max-width: 768px) {
     .eventmoreinfo_container {
-         &_right {
+      &_right {
         .body {
-             .sidebar {
+          .sidebar {
             h3 {
               font-size: 15px;
             }
-            }
+          }
         }
       }
     }

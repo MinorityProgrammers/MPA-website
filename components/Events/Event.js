@@ -1,19 +1,19 @@
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable max-len */
-import React, { Component } from 'react';
-import axios from 'axios';
-import Swiper from 'swiper';
-import Select from 'react-select';
-import CreateEvent from '../CreateEvent';
-import EventCard from './EventCard';
-import EventCardFeatured from './EventCardFeatured';
-import EventCardSkeleton from './EventCardSkeleton';
-import EventCardFeaturedSkeleton from './EventCardFeaturedSkeleton';
-import 'swiper/css/swiper.min.css';
-import 'swiper/css/swiper.css';
-import EventMoreInfo from './EventMoreInfo';
-import Card from '../login-signup/card/index';
-import EventCategoryFilterButton from './EventCategoryFilterButton';
+import React, { Component } from "react";
+import axios from "axios";
+import Swiper from "swiper";
+import Select from "react-select";
+import CreateEvent from "../CreateEvent";
+import EventCard from "./EventCard";
+import EventCardFeatured from "./EventCardFeatured";
+import EventCardSkeleton from "./EventCardSkeleton";
+import EventCardFeaturedSkeleton from "./EventCardFeaturedSkeleton";
+import "swiper/css/swiper.min.css";
+import "swiper/css/swiper.css";
+import EventMoreInfo from "./EventMoreInfo";
+import Card from "../login-signup/card/index";
+import EventCategoryFilterButton from "./EventCategoryFilterButton";
 
 class Event extends Component {
   constructor(props) {
@@ -30,52 +30,52 @@ class Event extends Component {
       showMoreInfo: false,
       createEventData: {
         step: 0,
-        EventPicture: '',
-        eventName: '',
-        catName: '',
-        catNameOptions: '',
-        EventDescription: '',
-        eventLink: '',
-        Virtual: '',
-        VirtualOptions: '',
-        eventTime: '',
-        eventDate: '',
-        time: '',
+        EventPicture: "",
+        eventName: "",
+        catName: "",
+        catNameOptions: "",
+        EventDescription: "",
+        eventLink: "",
+        Virtual: "",
+        VirtualOptions: "",
+        eventTime: "",
+        eventDate: "",
+        time: "",
         isError: false,
       },
       showCreateEvent: false,
       showMyEvent: false,
-      eventDateTime: '',
+      eventDateTime: "",
       myEvent: false,
       categoryButtons: [
         {
-          category: 'Lectures/Webinars',
-          description: 'On The Hottest Topic',
+          category: "Lectures/Webinars",
+          description: "On The Hottest Topic",
           activebtn: false,
         },
         {
-          category: 'Workshops/Conferences',
-          description: 'Hands on Training',
+          category: "Workshops/Conferences",
+          description: "Hands on Training",
           activebtn: false,
         },
         {
-          category: 'Hackathons',
-          description: 'Compete For Prizes',
+          category: "Hackathons",
+          description: "Compete For Prizes",
           activebtn: false,
         },
         {
-          category: 'Incubators/Accelerators',
-          description: 'Start Your Tech Business',
+          category: "Incubators/Accelerators",
+          description: "Start Your Tech Business",
           activebtn: false,
         },
       ],
       categoryButtonsActiveIndex: -1,
       catergoryFilterLoading: false,
       filter: {
-        event_time: '',
-        catName: '',
-        Virtual: '',
-        Featured: '',
+        event_time: "",
+        catName: "",
+        Virtual: "",
+        Featured: "",
       },
       categories: [],
     };
@@ -99,11 +99,11 @@ class Event extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (prevState.Swiperdata !== this.state.Swiperdata) {
-      const swiper = new Swiper('.swiper-container', {
-        direction: 'horizontal',
+      const swiper = new Swiper(".swiper-container", {
+        direction: "horizontal",
         navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
         },
         centeredSlides: false,
         spaceBetween: 50,
@@ -145,9 +145,9 @@ class Event extends Component {
         AllEvent: response.data.data.filter((event) => {
           const eventTime = new Date(event.time).getTime();
           if (
-            dateNow < eventTime
-            && event.approved !== null
-            && event.approved === true
+            dateNow < eventTime &&
+            event.approved !== null &&
+            event.approved === true
           ) {
             return event;
           }
@@ -168,9 +168,9 @@ class Event extends Component {
           .filter((event) => {
             const eventTime = new Date(event.time).getTime();
             if (
-              dateNow > eventTime
-              && event.approved !== null
-              && event.approved === true
+              dateNow > eventTime &&
+              event.approved !== null &&
+              event.approved === true
             ) {
               return event;
             }
@@ -182,16 +182,16 @@ class Event extends Component {
 
   // fetch SavedEvents data from a user
   getSavedEvents = async () => {
-    const token = window.localStorage.getItem('jwtToken');
+    const token = window.localStorage.getItem("jwtToken");
 
     return axios
       .get(`${process.env.BASE_URI}/saveEvent/`, {
         headers: {
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Methods': 'GET',
-          'Access-Control-Allow-Headers': 'Content-Type',
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "GET",
+          "Access-Control-Allow-Headers": "Content-Type",
           Authorization: `Bearer ${token}`,
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
       })
       .then((res) => {
@@ -202,17 +202,17 @@ class Event extends Component {
   };
 
   getUserSavedEvents = async () => {
-    const token = window.localStorage.getItem('jwtToken');
+    const token = window.localStorage.getItem("jwtToken");
 
     if (token != null) {
       return axios
         .get(`${process.env.BASE_URI}/saveEvent/userEvents`, {
           headers: {
-            'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Methods': 'GET',
-            'Access-Control-Allow-Headers': 'Content-Type',
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "GET",
+            "Access-Control-Allow-Headers": "Content-Type",
             Authorization: `Bearer ${token}`,
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
           },
         })
         .then((res) => {
@@ -230,9 +230,9 @@ class Event extends Component {
       AllEvent: response.data.filter((event) => {
         const eventTime = new Date(event.time).getTime();
         if (
-          dateNow < eventTime
-          && event.approved !== null
-          && event.approved === true
+          dateNow < eventTime &&
+          event.approved !== null &&
+          event.approved === true
         ) {
           return event;
         }
@@ -251,9 +251,9 @@ class Event extends Component {
         .filter((event) => {
           const eventTime = new Date(event.time).getTime();
           if (
-            dateNow > eventTime
-            && event.approved !== null
-            && event.approved === true
+            dateNow > eventTime &&
+            event.approved !== null &&
+            event.approved === true
           ) {
             return event;
           }
@@ -267,7 +267,7 @@ class Event extends Component {
     const { filter } = this.state;
     this.setState({ catergoryFilterLoading: true });
     fetch(
-      `${process.env.BASE_URI}/event/?Virtual=${filter.Virtual}&event_time=${filter.event_time}&catName=${filter.catName}`,
+      `${process.env.BASE_URI}/event/?Virtual=${filter.Virtual}&event_time=${filter.event_time}&catName=${filter.catName}`
     )
       .then((response) => response.json())
       .then((response) => {
@@ -282,9 +282,9 @@ class Event extends Component {
       this.state.userEvents.map((all) => {
         if (all.event_id !== null) {
           if (
-            all.user_id._id === this.props.userData._id
-            && all.event_id.approved !== null
-            && all.event_id.approved === true
+            all.user_id._id === this.props.userData._id &&
+            all.event_id.approved !== null &&
+            all.event_id.approved === true
           ) {
             this.setState({
               userSavedEvents: [...this.state.userSavedEvents, all],
@@ -294,7 +294,7 @@ class Event extends Component {
       });
       this.setState({
         userSavedEvents: this.state.allsavedEvents.filter(
-          (event) => event.user_id._id === this.props.userData._id,
+          (event) => event.user_id._id === this.props.userData._id
         ),
       });
 
@@ -304,31 +304,30 @@ class Event extends Component {
   };
 
   render() {
-    const {
-      userData, active, clickRegister, setClickRegister, token,
-    } = this.props;
+    const { userData, active, clickRegister, setClickRegister, token } =
+      this.props;
     const { userSavedEvents, allsavedEvents } = this.state;
 
     const options = [
       {
-        label: 'Event Location',
+        label: "Event Location",
         options: [
-          { label: 'Virtual Event', value: 'Virtual Event' },
-          { label: 'In-person Event', value: 'In-person Event' },
+          { label: "Virtual Event", value: "Virtual Event" },
+          { label: "In-person Event", value: "In-person Event" },
         ],
       },
       {
-        label: 'happening in',
+        label: "happening in",
         options: [
-          { label: 'Week', value: 'Week' },
-          { label: 'Month', value: 'Month' },
+          { label: "Week", value: "Week" },
+          { label: "Month", value: "Month" },
         ],
       },
       {
-        label: 'Cost',
+        label: "Cost",
         options: [
-          { label: 'Free', value: 'Free' },
-          { label: 'Paid', value: 'Paid' },
+          { label: "Free", value: "Free" },
+          { label: "Paid", value: "Paid" },
         ],
       },
     ];
@@ -339,13 +338,19 @@ class Event extends Component {
       if (e.target.childNodes[0].value) {
         const searchValue = e.target.childNodes[0].value;
         this.setState({
-          AllEvent: [...this.state.AllEvent].filter((event) => event.eventName.toLowerCase().includes(searchValue.toLowerCase())),
+          AllEvent: [...this.state.AllEvent].filter((event) =>
+            event.eventName.toLowerCase().includes(searchValue.toLowerCase())
+          ),
         });
         this.setState({
-          PastEvent: [...this.state.PastEvent].filter((event) => event.eventName.toLowerCase().includes(searchValue.toLowerCase())),
+          PastEvent: [...this.state.PastEvent].filter((event) =>
+            event.eventName.toLowerCase().includes(searchValue.toLowerCase())
+          ),
         });
         this.setState({
-          Swiperdata: [...this.state.Swiperdata].filter((event) => event.eventName.toLowerCase().includes(searchValue.toLowerCase())),
+          Swiperdata: [...this.state.Swiperdata].filter((event) =>
+            event.eventName.toLowerCase().includes(searchValue.toLowerCase())
+          ),
         });
       } else {
         this.filterEvents();
@@ -374,7 +379,7 @@ class Event extends Component {
         const changedState = {
           ...this.state.createEventData,
           step: 0,
-          EventPicture: '',
+          EventPicture: "",
         };
         this.setState({ createEventData: changedState });
       }
@@ -382,7 +387,7 @@ class Event extends Component {
 
     const handleError = (input) => {
       let changedState = { ...this.state.createEventData };
-      if (input === 'isError') {
+      if (input === "isError") {
         if (this.state.createEventData.isError === false) {
           changedState = { ...this.state.createEventData, [input]: true };
         } else {
@@ -402,7 +407,7 @@ class Event extends Component {
     };
 
     const handleCreateEventData = (input) => (e) => {
-      if (input === 'step') {
+      if (input === "step") {
         const { step } = this.state.createEventData;
         const changedState = {
           ...this.state.createEventData,
@@ -412,15 +417,15 @@ class Event extends Component {
         if (step === 2) {
           handleMoreInfo();
         }
-      } else if (input === 'catName' || input === 'Virtual') {
+      } else if (input === "catName" || input === "Virtual") {
         const changedState = {
           ...this.state.createEventData,
           [input]: e.value,
           [`${input}Options`]: e,
         };
         this.setState({ createEventData: changedState });
-      } else if (input === 'eventDate' || input === 'eventTime') {
-        if (input === 'eventDate') {
+      } else if (input === "eventDate" || input === "eventTime") {
+        if (input === "eventDate") {
           if (this.state.createEventData.eventTime.length === 0) {
             const changedState = {
               ...this.state.createEventData,
@@ -436,7 +441,7 @@ class Event extends Component {
             };
             this.setState({ createEventData: changedState });
           }
-        } else if (input === 'eventTime') {
+        } else if (input === "eventTime") {
           if (this.state.createEventData.eventDate.length === 0) {
             const changedState = {
               ...this.state.createEventData,
@@ -474,9 +479,9 @@ class Event extends Component {
       menu: (provided) => ({
         ...provided,
         padding: 10,
-        cursor: 'pointer',
-        backgroundColor: 'var(--secondary-high-contrast)',
-        zIndex: '2',
+        cursor: "pointer",
+        backgroundColor: "var(--secondary-high-contrast)",
+        zIndex: "2",
       }),
       input: (provided) => ({
         ...provided,
@@ -486,14 +491,14 @@ class Event extends Component {
       }),
       container: (provided) => ({
         ...provided,
-        padding: 0,
         height: 50,
         minHeight: 50,
         width: 200,
         minWidth: 200,
-        '@media only screen and (max-width: 666px)': {
-          width: '80%',
-          minWidth: '80%',
+
+        "@media only screen and (max-width: 666px)": {
+          width: "80%",
+          minWidth: "80%",
         },
       }),
       indicatorsContainer: (provided) => ({
@@ -509,37 +514,40 @@ class Event extends Component {
       }),
       control: (base) => ({
         ...base,
-        backgroundColor: 'var(--secondary-high-contrast)',
-        '&:hover': { borderColor: 'var(--tertiary-accent-3)' },
-        border: '1px solid var(--secondary-accent)',
-        boxShadow: 'none',
+        backgroundColor: "var(--secondary-high-contrast)",
+        "&:hover": { borderColor: "#6938EF" },
+        border: "1px solid var(--secondary-accent)",
+        boxShadow: "none",
         padding: 0,
         height: 50,
         minHeight: 50,
+        borderRadius: "50px",
       }),
       option: (provided, state) => ({
         ...provided,
-        backgroundColor: state.isSelected ? 'var(--tertiary-low-contrast)' : 'none',
-        '&:hover': { backgroundColor: 'var(--tertiary-high-contrast)' },
-        '&:focused': { backgroundColor: 'none' },
-        color: '#fff',
-        cursor: 'pointer',
+        backgroundColor: state.isSelected
+          ? "var(--tertiary-low-contrast)"
+          : "none",
+        "&:hover": { backgroundColor: "var(--tertiary-high-contrast)" },
+        "&:focused": { backgroundColor: "none" },
+        color: "#fff",
+        cursor: "pointer",
         padding: 10,
       }),
       placeholder: (base) => ({
         ...base,
-        fontSize: '1em',
-        color: 'var(--light-low-contrast)',
+        fontSize: "1em",
+        color: "var(--light-low-contrast)",
         fontWeight: 500,
       }),
       indicatorSeparator: (base) => ({
         ...base,
-        display: 'none',
+        display: "none",
       }),
       groupHeading: (base) => ({
         ...base,
-        fontSize: '1.02em',
-        color: '#afafaf',
+        fontSize: "1.02em",
+        color: "#afafaf",
         fontWeight: 700,
       }),
     };
@@ -548,18 +556,18 @@ class Event extends Component {
       const dateNow = Date.now();
       const response = await axios.get(`${process.env.BASE_URI}/event`, {
         headers: {
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Methods': 'POST, GET',
-          'Access-Control-Allow-Headers': 'Content-Type',
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "POST, GET",
+          "Access-Control-Allow-Headers": "Content-Type",
         },
       });
       this.setState({
         Swiperdata: response.data.data.filter((event) => {
           const eventTime = new Date(event.time).getTime();
           if (
-            dateNow < eventTime
-            && event.approved !== null
-            && event.approved === true
+            dateNow < eventTime &&
+            event.approved !== null &&
+            event.approved === true
           ) {
             return event.Featured === true;
           }
@@ -569,9 +577,9 @@ class Event extends Component {
         AllEvent: response.data.data.filter((event) => {
           const eventTime = new Date(event.time).getTime();
           if (
-            dateNow < eventTime
-            && event.approved !== null
-            && event.approved === true
+            dateNow < eventTime &&
+            event.approved !== null &&
+            event.approved === true
           ) {
             return event;
           }
@@ -581,9 +589,9 @@ class Event extends Component {
         PastEvent: response.data.data.filter((event) => {
           const eventTime = new Date(event.time).getTime();
           if (
-            dateNow > eventTime
-            && event.approved !== null
-            && event.approved === true
+            dateNow > eventTime &&
+            event.approved !== null &&
+            event.approved === true
           ) {
             return event;
           }
@@ -593,7 +601,7 @@ class Event extends Component {
 
     const onChangeInput = async (value) => {
       if ((await value) != null) {
-        if (value.value === 'Virtual Event') {
+        if (value.value === "Virtual Event") {
           this.setState((prevState) => ({
             filter: {
               ...prevState.filter,
@@ -601,7 +609,7 @@ class Event extends Component {
             },
           }));
         }
-        if (value.value === 'In-person Event') {
+        if (value.value === "In-person Event") {
           this.setState((prevState) => ({
             filter: {
               ...prevState.filter,
@@ -609,19 +617,19 @@ class Event extends Component {
             },
           }));
         }
-        if (value.value === 'Week') {
+        if (value.value === "Week") {
           this.setState((prevState) => ({
             filter: {
               ...prevState.filter,
-              event_time: 'week',
+              event_time: "week",
             },
           }));
         }
-        if (value.value === 'Month') {
+        if (value.value === "Month") {
           this.setState((prevState) => ({
             filter: {
               ...prevState.filter,
-              event_time: 'month',
+              event_time: "month",
             },
           }));
         }
@@ -652,17 +660,17 @@ class Event extends Component {
       if (idx !== -1) {
         if (idx === 0) {
           if (
-            (await this.state.categories.includes('Webinar'))
-            || this.state.categories.includes('Lecture')
+            (await this.state.categories.includes("Webinar")) ||
+            this.state.categories.includes("Lecture")
           ) {
             this.setState({
               categories: [...this.state.categories].filter(
-                (category) => category !== 'Webinar' && category !== 'Lecture',
+                (category) => category !== "Webinar" && category !== "Lecture"
               ),
             });
           } else {
             await this.setState({
-              categories: [...this.state.categories, 'Webinar', 'Lecture'],
+              categories: [...this.state.categories, "Webinar", "Lecture"],
             });
           }
         }
@@ -674,17 +682,18 @@ class Event extends Component {
         }));
         if (idx === 1) {
           if (
-            this.state.categories.includes('Workshop')
-            || this.state.categories.includes('Conference')
+            this.state.categories.includes("Workshop") ||
+            this.state.categories.includes("Conference")
           ) {
             this.setState({
               categories: [...this.state.categories].filter(
-                (category) => category !== 'Workshop' && category !== 'Conference',
+                (category) =>
+                  category !== "Workshop" && category !== "Conference"
               ),
             });
           } else {
             await this.setState({
-              categories: [...this.state.categories, 'Workshop', 'Conference'],
+              categories: [...this.state.categories, "Workshop", "Conference"],
             });
           }
         }
@@ -695,15 +704,15 @@ class Event extends Component {
           },
         }));
         if (idx === 2) {
-          if (this.state.categories.includes('Hackathon')) {
+          if (this.state.categories.includes("Hackathon")) {
             this.setState({
               categories: [...this.state.categories].filter(
-                (category) => category !== 'Hackathon',
+                (category) => category !== "Hackathon"
               ),
             });
           } else {
             await this.setState({
-              categories: [...this.state.categories, 'Hackathon'],
+              categories: [...this.state.categories, "Hackathon"],
             });
           }
         }
@@ -715,20 +724,21 @@ class Event extends Component {
         }));
         if (idx === 3) {
           if (
-            this.state.categories.includes('Incubator')
-            || this.state.categories.includes('Accelerator')
+            this.state.categories.includes("Incubator") ||
+            this.state.categories.includes("Accelerator")
           ) {
             this.setState({
               categories: [...this.state.categories].filter(
-                (category) => category !== 'Incubator' && category !== 'Accelerator',
+                (category) =>
+                  category !== "Incubator" && category !== "Accelerator"
               ),
             });
           } else {
             await this.setState({
               categories: [
                 ...this.state.categories,
-                'Incubator',
-                'Accelerator',
+                "Incubator",
+                "Accelerator",
               ],
             });
           }
@@ -768,29 +778,38 @@ class Event extends Component {
       <div className="event_wrapper">
         <div className="event_container">
           <div className="event_search">
-            <form className="input" onSubmit={(e) => handleSubmit(e)}>
-              <input
-                type="text"
-                className="events_search"
-                placeholder="What event are you looking for?"
-                onChange={(e) => searchNoValue(e)}
-              />
-              <button type="button">
+            <form className="event__form" onSubmit={(e) => handleSubmit(e)}>
+              <div className="input">
                 <i className="fas fa-search tw-text-xl tw-h-auto" />
+                <input
+                  type="text"
+                  className="events_search"
+                  placeholder="What event are you looking for?"
+                  onChange={(e) => searchNoValue(e)}
+                />
+              </div>
+              <button className="event_search_button" type="submit">
+                Search
               </button>
             </form>
-            <Select
-              id="form-filter"
-              instanceId="form-filter"
-              options={options}
-              className="event_Select tw-select-none"
-              placeholder="Filter Search"
-              styles={selectStyles}
-              closeMenuOnSelect
-              isSearchable={false}
-              isClearable
-              onChange={onChangeInput}
-            />
+            <div className="mt-4 tw-flex tw-flex-row event_select_grid">
+              {options.map(({ label, options }) => (
+                <label className="tw-mr-8">
+                  <Select
+                    id="form-filter"
+                    instanceId="form-filter"
+                    options={options}
+                    className="event_Select tw-rounded-full tw-select-none"
+                    placeholder={label}
+                    styles={selectStyles}
+                    closeMenuOnSelect
+                    isSearchable={false}
+                    isClearable
+                    onChange={onChangeInput}
+                  />
+                </label>
+              ))}
+            </div>
           </div>
 
           <div className="event_title_button">
@@ -811,12 +830,12 @@ class Event extends Component {
 
             {[...categoryButtons].filter((button) => button.activebtn === true)
               .length > 0 ? (
-                <button type="button" onClick={() => resetFilter()}>
-                  Reset
-                </button>
-              ) : (
-                ''
-              )}
+              <button type="button" onClick={() => resetFilter()}>
+                Reset
+              </button>
+            ) : (
+              ""
+            )}
           </div>
 
           <div className="event_divide">
@@ -833,7 +852,7 @@ class Event extends Component {
           {/* LOADING SKELETON HERE */}
           <div className="swiper-container">
             {this.state.loading ? (
-              <div className="swiper-wrapper" style={{ width: '100%' }}>
+              <div className="swiper-wrapper" style={{ width: "100%" }}>
                 <div className="swiper-slide">
                   <EventCardFeaturedSkeleton />
                 </div>
@@ -848,7 +867,7 @@ class Event extends Component {
                 </div>
               </div>
             ) : catergoryFilterLoading ? (
-              <div className="swiper-wrapper" style={{ width: '100%' }}>
+              <div className="swiper-wrapper" style={{ width: "100%" }}>
                 <div className="swiper-slide">
                   <EventCardFeaturedSkeleton />
                 </div>
@@ -863,8 +882,8 @@ class Event extends Component {
                 </div>
               </div>
             ) : Swiperdata.length < 1 ? (
-              <div className="swiper-wrapper" style={{ width: '100%' }}>
-                <div className="text-center" style={{ width: '100%' }}>
+              <div className="swiper-wrapper" style={{ width: "100%" }}>
+                <div className="text-center" style={{ width: "100%" }}>
                   Sorry, no events match your filters
                 </div>
               </div>
@@ -996,7 +1015,7 @@ class Event extends Component {
             {userData !== null ? (
               <div className="swiper-container">
                 {this.state.loading ? (
-                  <div className="swiper-wrapper" style={{ width: '100%' }}>
+                  <div className="swiper-wrapper" style={{ width: "100%" }}>
                     <div className="swiper-slide">
                       <EventCardFeaturedSkeleton />
                     </div>
@@ -1011,7 +1030,7 @@ class Event extends Component {
                     </div>
                   </div>
                 ) : catergoryFilterLoading ? (
-                  <div className="swiper-wrapper" style={{ width: '100%' }}>
+                  <div className="swiper-wrapper" style={{ width: "100%" }}>
                     <div className="swiper-slide">
                       <EventCardSkeleton />
                     </div>
@@ -1034,9 +1053,10 @@ class Event extends Component {
                     <div className="swiper-wrapper">
                       {this.state.userEvents
                         .filter(
-                          (e) => (e.attending === 'yes'
-                              || e.attending === 'maybe')
-                            && e.event_id !== null,
+                          (e) =>
+                            (e.attending === "yes" ||
+                              e.attending === "maybe") &&
+                            e.event_id !== null
                         )
                         .map((events, index) => (
                           <div
@@ -1113,7 +1133,7 @@ class Event extends Component {
                 />
               </div>
             ) : (
-              ''
+              ""
             )}
           </div>
 
@@ -1231,7 +1251,7 @@ class Event extends Component {
               />
             </div>
           ) : (
-            ''
+            ""
           )}
         </div>
       </div>

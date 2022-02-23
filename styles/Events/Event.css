@@ -11,26 +11,53 @@
   position: absolute;
   top: 0;
   left: 0;
-  background-color:green;
+  background-color: green;
   padding: 5px 15px;
   color: #fff;
-  border-radius:10px;
+  border-radius: 10px;
 }
 .event-status-yes-detail {
   position: absolute;
   top: 10px;
   left: 10px;
-  background-color:green;
+  background-color: green;
   padding: 5px 15px;
   color: #fff;
-  border-radius:10px;
+  border-radius: 10px;
 }
-.event-status-red{
+.event-status-red {
   position: absolute;
   top: 0;
   left: 0;
-  background-color:red;
+  background-color: red;
   padding: 5px 15px;
   color: #fff;
-  border-radius:10px;
+  border-radius: 10px;
+}
+
+.event_search_button {
+  background: #6938ef;
+  color: white;
+  padding: 0 40px;
+  border: 1px solid #6938ef;
+  border-radius: 100px;
+  font-weight: 500;
+  font-size: 14px;
+}
+.event_search_button:hover {
+  background: none;
+  border-color: white;
+}
+.event__form {
+  display: flex;
+  flex-direction: row;
+}
+
+@media screen and (max-width: 600px) {
+  .event__form {
+    flex-direction: column;
+  }
+  .event_select_button {
+    flex-direction: column;
+  }
 }
