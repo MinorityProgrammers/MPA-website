@@ -44,6 +44,7 @@
     "avataaars": "^2.0.0",
     "axios": "^0.21.1",
     "babel-plugin-styled-components": "^1.13.2",
+    "bcryptjs": "^2.4.3",
     "bitski": "^0.11.0-beta.4",
     "bootstrap": "5.0.2",
     "casper-erc20-js-client": "^0.0.4",
