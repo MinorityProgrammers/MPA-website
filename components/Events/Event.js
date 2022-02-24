@@ -14,6 +14,7 @@ import "swiper/css/swiper.css";
 import EventMoreInfo from "./EventMoreInfo";
 import Card from "../login-signup/card/index";
 import EventCategoryFilterButton from "./EventCategoryFilterButton";
+import SwipeEvent from "./SwipeEvent";
 
 class Event extends Component {
   constructor(props) {
@@ -906,8 +907,21 @@ class Event extends Component {
                 </div>
               </div>
             ) : (
-              <div className="swiper-wrapper">
-                {this.state.Swiperdata.map((event, index) => (
+              <div className="">
+                <SwipeEvent
+                  data={this.state.Swiperdata}
+                  userSavedEvents={userSavedEvents}
+                  handleMoreInfo={handleMoreInfo}
+                  active={active}
+                  setClickRegister={setClickRegister}
+                  userEvent={this.state.userEvents}
+                  clickRegister={clickRegister}
+                  userData={userData}
+                  token={token}
+                  allsavedEvents={allsavedEvents}
+                />
+
+                {/* {this.state.Swiperdata.map((event, index) => (
                   <div
                     className="swiper-slide"
                     key={`${`event_card-ft${index}`}`}
@@ -916,7 +930,7 @@ class Event extends Component {
                       item={event}
                       attended={event}
                       userSavedEvents={userSavedEvents}
-                      /* key={index} */
+                      key={index}
                       handleMoreInfo={handleMoreInfo}
                       active={active}
                       setClickRegister={setClickRegister}
@@ -927,7 +941,7 @@ class Event extends Component {
                       allsavedEvents={allsavedEvents}
                     />
                   </div>
-                ))}
+                ))} */}
               </div>
             )}
           </div>
