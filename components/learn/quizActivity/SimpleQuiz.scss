@@ -169,7 +169,12 @@
       &::before {
         content: "";
         transform: scale(0);
+        // opacity:;
         transition: transform 120ms ease-in-out;
+      }
+      &:not(:checked){
+        // opacity: 0;
+        // transform: scale(0);
       }
 
       &:checked {
@@ -213,6 +218,8 @@
           left: 4px;
           border-radius: 100%;
           transition: all 0.2s ease;
+          opacity: 0;
+          transform: scale(0);
         }
       }
     }
@@ -276,10 +283,8 @@
   input[type="radio"] {
     &::before {
       content: "";
-      transform: scale(0);
       border: 0;
       font-size: 1.2em;
-      transform: scale(1);
       animation: 0.25s roll-in ease;
     }
 
@@ -294,14 +299,30 @@
         transform: scale(1);
         color: #ff1100;
         font-weight: 900;
+        opacity: 0;
       }
     }
 
     &:checked {
       font-family: "Font Awesome 5 Free" !important;
-      content: "\f00d";
+      content: "\f00d" !important;
+      transform: scale(1);
       color: #ff1100;
       font-weight: 900;
+      background-color: #B3AFC4 !important;
+    }
+    &:checked{
+      &::after{
+        font-family: "Font Awesome 5 Free" !important;
+      content: "\f00d" !important;
+      transform: scale(1);
+      color: #ff1100;
+      font-weight: 900;
+      background-color: #B3AFC4 !important;
+      }
+    }
+    &::after{
+      opacity: 1;
     }
   }
 
