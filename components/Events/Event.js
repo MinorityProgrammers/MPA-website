@@ -105,8 +105,12 @@ class Event extends Component {
           nextEl: ".swiper-button-next",
           prevEl: ".swiper-button-prev",
         },
-        centeredSlides: false,
-        spaceBetween: 50,
+        autoplay: {
+          delay: 3000,
+          disableOnInteraction: false,
+        },
+        centeredSlides: true,
+        spaceBetween: 15,
         loop: false,
         reverseDirection: true,
         stopOnLastSlide: false,
@@ -117,7 +121,7 @@ class Event extends Component {
         observer: true,
         breakpoints: {
           // when window width is >= 640px
-          1: {
+          200: {
             slidesPerView: 1,
           },
           // when window width is >= 918px
@@ -126,11 +130,11 @@ class Event extends Component {
           },
           // when window width is >= 1400px
           1400: {
-            slidesPerView: 2.3,
+            slidesPerView: 2,
           },
           // when window width is >= 2400px
           2400: {
-            slidesPerView: 3,
+            slidesPerView: 2,
           },
         },
       });
@@ -780,7 +784,7 @@ class Event extends Component {
           <div className="event_search">
             <form className="event__form" onSubmit={(e) => handleSubmit(e)}>
               <div className="input">
-                <i className="fas fa-search tw-text-xl tw-h-auto" />
+                <i className="fas fa-search tw-text-xl tw-h-auto fas-hide" />
                 <input
                   type="text"
                   className="events_search"
@@ -809,6 +813,20 @@ class Event extends Component {
                   />
                 </label>
               ))}
+            </div>
+            <div className="mobile_event_select">
+              <Select
+                id="form-filter"
+                instanceId="form-filter"
+                options={options}
+                className="event_Select tw-select-none"
+                placeholder="Filter Search"
+                styles={selectStyles}
+                closeMenuOnSelect
+                isSearchable={false}
+                isClearable
+                onChange={onChangeInput}
+              />
             </div>
           </div>
 
@@ -867,7 +885,7 @@ class Event extends Component {
                 </div>
               </div>
             ) : catergoryFilterLoading ? (
-              <div className="swiper-wrapper" style={{ width: "100%" }}>
+              <div className="swiper-wrapper" style={{ width: "80%" }}>
                 <div className="swiper-slide">
                   <EventCardFeaturedSkeleton />
                 </div>
@@ -882,7 +900,7 @@ class Event extends Component {
                 </div>
               </div>
             ) : Swiperdata.length < 1 ? (
-              <div className="swiper-wrapper" style={{ width: "100%" }}>
+              <div className="swiper-wrapper" style={{ width: "80%" }}>
                 <div className="text-center" style={{ width: "100%" }}>
                   Sorry, no events match your filters
                 </div>

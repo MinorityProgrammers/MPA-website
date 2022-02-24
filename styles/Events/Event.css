@@ -42,6 +42,7 @@
   border: 1px solid #6938ef;
   border-radius: 100px;
   font-weight: 500;
+  height: 50px;
   font-size: 14px;
 }
 .event_search_button:hover {
@@ -51,13 +52,40 @@
 .event__form {
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.mobile_event_select {
+  display: none;
 }
 
 @media screen and (max-width: 600px) {
   .event__form {
-    flex-direction: column;
+    flex-direction: row;
+    margin-bottom: 10px;
+  }
+  .input {
+    height: 40px !important;
+  }
+  .fas-hide {
+    display: none;
+  }
+  .event_search_button {
+    padding: 0 3px !important;
+    font-size: 12px;
+    border-radius: 10px;
+    margin-left: 10px;
+    height: 40px !important;
   }
   .event_select_button {
     flex-direction: column;
+  }
+  .mobile_event_select {
+    display: block;
+    width: 80% !important;
+  }
+  .event_select_grid {
+    display: none !important;
   }
 }
