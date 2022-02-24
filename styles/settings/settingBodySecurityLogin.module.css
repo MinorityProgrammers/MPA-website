@@ -210,3 +210,9 @@
 .saveBtn a:active{
   box-shadow: 0 0 2px 2px #6938EF;
 }
+@media only screen and (max-width: 768px) {
+.sectionHeader div{
+  padding: 0px;
+  padding-bottom: 18px;
+}
+}
