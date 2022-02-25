@@ -25,6 +25,8 @@ module.exports = {
         activeOrange: '#FF655B',
         '#F9F9F9': '#F9F9F9',
         '#EAEFF2': '#EAEFF2',
+        popUpDark:'#14152A',
+        popUpDarkLight:'#282836'
       },
       gradientColorStops: {
         FFC700: '#FFC700',
@@ -65,7 +67,7 @@ module.exports = {
         main: '#269df8',
         line: '#FF00B8',
         surface: '#eff6fc',
-        '#B9BCC1': '#B9BCC1',
+        '#B9BCC1': '#B9BCC1'
       },
       gridTemplateRows: {
         main: '4.5em auto 3em',
