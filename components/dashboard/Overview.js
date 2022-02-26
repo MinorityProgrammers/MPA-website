@@ -81,7 +81,7 @@ const DesktopView2 = ({ userData, token }) => (
       className="d-flex flex-row justify-content-between align-items-center "
       style={{ height: '40px', paddingTop: '20px' }}
     >
-      <p className="fs-1" style={{ fontWeight: 700, color: 'black' }}>
+      <p className="fs-1" style={{ fontWeight: 700, color: 'white' }}>
         Dashboard Overview (Desktop)
       </p>
       <button
@@ -95,44 +95,61 @@ const DesktopView2 = ({ userData, token }) => (
     </div>
     <div
       className="tw-grid tw-grid-cols-24 tw-grid-rows-10 tw-gap-4 tw-h-full tw-w-full"
-      style={{ padding: '20px 0px', height: '1260px' }}
+      style={{ padding: '20px 0px', height: '1660px' }}
     >
-      <div className="tw-bg-white tw-p-3 tw-col-span-4 tw-row-span-2 tw-rounded">
-        <OverviewProfile userData={userData} token={token} />
-      </div>
-      <div className="tw-bg-white tw-p-3 tw-col-span-8 tw-row-span-2 tw-rounded">
-        <OverviewCareer userData={userData} token={token} />
-      </div>
-      <div className="tw-bg-white tw-p-3 tw-col-span-6 tw-row-span-2 tw-rounded">
-        <OverviewMentor userData={userData} token={token} />
-      </div>
-      <div className="tw-bg-white tw-p-3 tw-col-span-6 tw-row-span-5 tw-rounded">
-        <OverviewEvents userData={userData} token={token} />
-      </div>
-      <div className="tw-bg-white tw-p-3 tw-col-span-10 tw-row-span-3 tw-rounded">
+      {/* first row */}
+
+      <div className="dashboard-inner-bg tw-p-3 tw-col-span-7 row-custom-span-3 tw-rounded">
         <OverviewProgress userData={userData} token={token} />
       </div>
-      <div className="tw-bg-white tw-p-3 tw-col-span-8 tw-row-span-3 tw-rounded">
+      {/* <div className="dashboard-inner-bg tw-p-3 tw-col-span-10 tw-row-span-2 tw-rounded">
         <OverviewProjects userData={userData} token={token} />
-      </div>
-      <div className="tw-bg-white tw-p-3 tw-col-span-7 tw-row-span-2 tw-rounded">
-        <OverviewMyChatper userData={userData} token={token} />
-      </div>
-      <div className="tw-bg-white tw-p-3 tw-col-span-4 tw-row-span-2 tw-rounded">
+      </div> */}
+      <div className="dashboard-inner-bg tw-p-3 tw-col-span-5 row-custom-span-3 tw-rounded">
         <OverviewWallet userData={userData} token={token} />
       </div>
-      <div className="tw-bg-white tw-p-3 tw-col-span-7 tw-row-span-2 tw-rounded">
+      <div className="dashboard-inner-bg tw-p-3 tw-col-span-7 row-custom-span-3 tw-rounded">
         <OverviewStartups userData={userData} token={token} />
       </div>
-      <div className="tw-bg-white tw-p-3 tw-col-span-6 tw-row-span-5 tw-rounded">
-        <OverviewStatistic userData={userData} token={token} />
+      <div className="dashboard-inner-bg tw-p-3 tw-col-span-5 tw-row-span-4 tw-rounded">
+        <OverviewEvents userData={userData} token={token} />
       </div>
-      <div className="tw-bg-white tw-p-3 tw-col-span-8 tw-row-span-3 tw-rounded">
-        <OverviewMyProposals userData={userData} token={token} />
-      </div>
-      <div className="tw-bg-white tw-p-3 tw-col-span-10 tw-row-span-3 tw-rounded">
+      {/* <div className="dashboard-inner-bg tw-p-3 tw-col-span-8 tw-row-span-2 tw-rounded">
+        <OverviewMentor userData={userData} token={token} />
+      </div> */}
+      {/*  */}
+      {/* second row */}
+      <div className="dashboard-inner-bg tw-p-3 tw-col-span-12 tw-row-span-2 tw-rounded">
         <OverviewCourses userData={userData} token={token} />
       </div>
+      <div className="dashboard-inner-bg tw-p-3 tw-col-span-7 tw-row-span-2 tw-rounded">
+        <OverviewMentor userData={userData} token={token} />
+      </div>
+      {/*  */}
+      {/* <div className="dashboard-inner-bg tw-p-3 tw-col-span-6 tw-row-span-2 tw-rounded">
+        <OverviewProfile userData={userData} token={token} />
+      </div> */}
+      {/* <div className="dashboard-inner-bg tw-p-3 tw-col-span-10 tw-row-span-2 tw-rounded">
+        <OverviewCareer userData={userData} token={token} />
+      </div>
+      <div className="dashboard-inner-bg tw-p-3 tw-col-span-8 tw-row-span-2 tw-rounded">
+        <OverviewMentor userData={userData} token={token} />
+      </div> */}
+      {/*  */}
+
+      {/* <div className="dashboard-inner-bg tw-p-3 tw-col-span-12 tw-row-span-4 tw-rounded">
+        <OverviewStatistic userData={userData} token={token} />
+      </div> */}
+
+      {/* <div className="dashboard-inner-bg tw-p-3 tw-col-span-12 tw-row-span-2 tw-rounded">
+        <OverviewMyChatper userData={userData} token={token} />
+      </div>
+      <div className="dashboard-inner-bg tw-p-3 tw-col-span-12 tw-row-span-2 tw-rounded">
+        <OverviewMyProposals userData={userData} token={token} />
+      </div>
+      <div className="dashboard-inner-bg tw-p-3 tw-col-span-24 tw-row-span-2 tw-rounded">
+        <OverviewCourses userData={userData} token={token} />
+      </div> */}
     </div>
   </div>
 );
@@ -143,7 +160,7 @@ const TabletView2 = ({ userData, token }) => (
       className="d-flex flex-row justify-content-between align-items-center "
       style={{ height: '40px', paddingTop: '20px' }}
     >
-      <p className="fs-1" style={{ fontWeight: 700, color: 'black' }}>
+      <p className="fs-1" style={{ fontWeight: 700, color: 'white' }}>
         Dashboard Overview (Tablet)
       </p>
       <button
@@ -159,40 +176,47 @@ const TabletView2 = ({ userData, token }) => (
       className="tw-grid tw-grid-cols-24 tw-grid-rows-14 tw-gap-5 tw-w-full"
       style={{ padding: '20px 0px', height: '2300px' }}
     >
-      <div className="tw-bg-white tw-p-3 tw-col-span-6 tw-row-span-2 tw-rounded">
+      {/* first row */}
+      <div className="dashboard-inner-bg tw-p-3 tw-col-span-6 tw-row-span-2 tw-rounded">
         <OverviewProfile userData={userData} token={token} />
       </div>
-      <div className="tw-bg-white tw-p-3 tw-col-span-10 tw-row-span-2 tw-rounded">
+      <div className="dashboard-inner-bg tw-p-3 tw-col-span-10 tw-row-span-2 tw-rounded">
         <OverviewCareer userData={userData} token={token} />
       </div>
-      <div className="tw-bg-white tw-p-3 tw-col-span-8 tw-row-span-2 tw-rounded">
+      <div className="dashboard-inner-bg tw-p-3 tw-col-span-8 tw-row-span-2 tw-rounded">
         <OverviewMentor userData={userData} token={token} />
       </div>
-      <div className="tw-bg-white tw-p-3 tw-col-span-14 tw-row-span-2 tw-rounded">
+      {/*  */}
+
+      {/* second row */}
+
+      <div className="dashboard-inner-bg tw-p-3 tw-col-span-14 tw-row-span-2 tw-rounded">
         <OverviewProgress userData={userData} token={token} />
       </div>
-      <div className="tw-bg-white tw-p-3 tw-col-span-10 tw-row-span-2 tw-rounded">
+      <div className="dashboard-inner-bg tw-p-3 tw-col-span-10 tw-row-span-2 tw-rounded">
         <OverviewProjects userData={userData} token={token} />
       </div>
-      <div className="tw-bg-white tw-p-3 tw-col-span-12 tw-row-span-4 tw-rounded">
+      {/*  */}
+
+      <div className="dashboard-inner-bg tw-p-3 tw-col-span-12 tw-row-span-4 tw-rounded">
         <OverviewEvents userData={userData} token={token} />
       </div>
-      <div className="tw-bg-white tw-p-3 tw-col-span-12 tw-row-span-4 tw-rounded">
+      <div className="dashboard-inner-bg tw-p-3 tw-col-span-12 tw-row-span-4 tw-rounded">
         <OverviewStatistic userData={userData} token={token} />
       </div>
-      <div className="tw-bg-white tw-p-3 tw-col-span-16 tw-row-span-2 tw-rounded">
+      <div className="dashboard-inner-bg tw-p-3 tw-col-span-16 tw-row-span-2 tw-rounded">
         <OverviewStartups userData={userData} token={token} />
       </div>
-      <div className="tw-bg-white tw-p-3 tw-col-span-8 tw-row-span-2 tw-rounded">
+      <div className="dashboard-inner-bg tw-p-3 tw-col-span-8 tw-row-span-2 tw-rounded">
         <OverviewWallet userData={userData} token={token} />
       </div>
-      <div className="tw-bg-white tw-p-3 tw-col-span-12 tw-row-span-2 tw-rounded">
+      <div className="dashboard-inner-bg tw-p-3 tw-col-span-12 tw-row-span-2 tw-rounded">
         <OverviewMyChatper userData={userData} token={token} />
       </div>
-      <div className="tw-bg-white tw-p-3 tw-col-span-12 tw-row-span-2 tw-rounded">
+      <div className="dashboard-inner-bg tw-p-3 tw-col-span-12 tw-row-span-2 tw-rounded">
         <OverviewMyProposals userData={userData} token={token} />
       </div>
-      <div className="tw-bg-white tw-p-3 tw-col-span-24 tw-row-span-2 tw-rounded">
+      <div className="dashboard-inner-bg tw-p-3 tw-col-span-24 tw-row-span-2 tw-rounded">
         <OverviewCourses userData={userData} token={token} />
       </div>
     </div>
@@ -216,7 +240,7 @@ const MobileView = ({ userData, token }) => {
         className="d-flex flex-row justify-content-between align-items-center"
         style={{ height: '5%', minHeight: '40px', width: '100%' }}
       >
-        <p className="fs-1" style={{ fontWeight: 700, color: 'black' }}>
+        <p className="fs-1" style={{ fontWeight: 700, color: 'white' }}>
           Dashboard Overview (Mobile)
         </p>
         <button

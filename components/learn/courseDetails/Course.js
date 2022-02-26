@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { useRouter } from "next/router";
-import axios from "axios";
-import CourseSidebar from "./CourseSidebar";
-import MainCourseInfo from "./MainCourseInfo";
+import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+import axios from 'axios';
+import CourseSidebar from './CourseSidebar';
+import MainCourseInfo from './MainCourseInfo';
 
 const Course = ({ userInfo, course, modules }) => {
   const [userModules, setUserModules] = useState([]);
@@ -14,7 +14,7 @@ const Course = ({ userInfo, course, modules }) => {
   }
 
   useEffect(() => {
-    const userToken = JSON.parse(localStorage.getItem("userInfo")).token;
+    const userToken = JSON.parse(localStorage.getItem('userInfo')).token;
     axios
       .get(`${process.env.BASE_URI}/learn/${courseId}/userModules`, {
         headers: {
@@ -25,7 +25,6 @@ const Course = ({ userInfo, course, modules }) => {
         setUserModules(res.data.data);
       });
   }, [courseId]);
-
   return (
     <div className="courses-detail row banner-bg">
       <div className="col-10 course-sidebar-width col-md-3 pr-0 scroll-sidebar">

@@ -1,7 +1,7 @@
 import React from 'react';
+import Link from 'next/link';
 
 const EmptyOverviewComponent = ({
-  btnFunction,
   btnText,
   imgURL,
   description,
@@ -21,14 +21,14 @@ const EmptyOverviewComponent = ({
     >
       {description}
     </p>
-    <button
-      type="button"
-      className="btn btn-primary"
-      style={{ background: '#151371', width: '80%', fontSize: '12px' }}
-      onClick={btnFunction}
-    >
-      {btnText}
-    </button>
+    <Link href="/learn">
+      <a
+        type="button"
+        className="button-more"
+      >
+        {btnText}
+      </a>
+    </Link>
   </div>
 );
 export default EmptyOverviewComponent;

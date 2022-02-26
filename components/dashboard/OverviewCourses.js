@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Skeleton from 'react-loading-skeleton';
-import EmptyOverviewComponent from './EmptyOverviewComponent';
+import CourseCard from './CourseCard';
 
 const categories = [
   {
@@ -36,7 +36,7 @@ const categories = [
   },
 ];
 
-const OverviewCourses = ({ token }) => {
+const OverviewCourses = ({ token, userData }) => {
   const [loading, setLoading] = useState(true);
   const [currentView, setCurrentView] = useState('webdev');
   const [, setAllCourses] = useState([]);
@@ -77,6 +77,7 @@ const OverviewCourses = ({ token }) => {
           });
           setUserCourses(tempUserCoursesData);
           setLoading(false);
+          console.log(tempUserCoursesData);
         })
         .catch((error) => {
           if (error.response) {
@@ -91,121 +92,6 @@ const OverviewCourses = ({ token }) => {
           setLoading(true);
         });
     }
-  }, []);
-
-  const ProgressBar = useCallback((props) => {
-    let value = props.completionRate;
-    if (typeof value === 'number' || typeof value === 'string') {
-      value = props.completionRate;
-    } else {
-      value = 0;
-    }
-    return (
-      <div className="overview-wrapper">
-        <div className="overview-barContainer">
-          <div className="overview-filler" style={{ width: `${value}%` }} />
-        </div>
-      </div>
-    );
-  }, []);
-
-  const CourseCard = useCallback(() => {
-    const courses = userCourses.filter((course) => course.categories.includes(currentView));
-
-    return (
-      <>
-        {courses.length > 0 ? (
-          <div className="overview-courses-cards d-flex flex-column">
-            {courses.map((course) => (
-              <div
-                key={course?.createdAt}
-                className="overview-course-card d-flex flex-row justify-content-between"
-              >
-                {/* First and Second */}
-                <div className="d-flex flex-row" style={{ width: '40%' }}>
-                  {/* First Column - logo */}
-                  <div
-                    className="overview-career-card-image d-flex justify-content-center align-items-center"
-                    style={{ paddingRight: '10px', width: '30%' }}
-                  >
-                    <img alt="company's logo" src={course?.courseId.image} />
-                  </div>
-                  {/* Second Column - Title + Description */}
-                  <div
-                    className="overview-course-card-info d-flex flex-column"
-                    style={{ width: '70%' }}
-                  >
-                    <p className="overview-course-card-info-title">
-                      {course?.courseId?.name}
-                    </p>
-                    <p className="overview-course-card-description">
-                      {course?.courseId?.description}
-                    </p>
-                  </div>
-                </div>
-                {/* Third Column */}
-                <div
-                  className="d-flex flex-column justify-content-center"
-                  style={{ width: '20%', marginRight: '2%' }}
-                >
-                  <p
-                    style={{
-                      fontSize: '12px',
-                      color: 'black',
-                      textAlign: 'center',
-                    }}
-                  >
-                    {course.completionRate}
-                    % Completed
-                    {' '}
-                  </p>
-                  <ProgressBar
-                    completionRate={parseInt(course?.completionRate, 10)}
-                  />
-                </div>
-                {/* Fourth and Fifth Column */}
-                <div className="d-flex flex-row" style={{ width: '40%' }}>
-                  {/* Fourth Column */}
-                  <div
-                    className="overview-course-currency d-flex justify-content-center flex-column align-items-center"
-                    style={{ marginRight: '2%' }}
-                  >
-                    <p style={{ fontSize: '12px' }}>$MINORITY Earned</p>
-                    <p style={{ fontSize: '16px', fontWeight: '700' }}>
-                      $
-                      {parseInt(course.completionRate, 10) !== 100
-                        ? 0
-                        : course?.courseId?.earn}
-                    </p>
-                  </div>
-                  {/* Fifth Column */}
-                  <div className="d-flex justify-content-center align-items-center ">
-                    <a href="#" target="_blank">
-                      <button
-                        type="button"
-                        className="btn btn-primary overview-course-viewcourse-btn"
-                        style={{ fontSize: '0.7rem', background: '#151371' }}
-                      >
-                        View Course
-                      </button>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        ) : (
-          <EmptyOverviewComponent
-            imgURL="https://s3-alpha-sig.figma.com/img/4ee3/cff9/cf0ef958c8ee474d3c466885d8a7acb2?Expires=1639353600&Signature=TUwGQk6amGy9LVngHcQ9lpNszIIYYHcey9eFrtByZlXq4AYii34O9UV9gD6A12kkvefHyADputgq6M3rDcTSa693YyLBsATyREcjTHgqfSE3vIIzXCpyfxnfMQgt-TWTTyHYiGIO0V-6N0rj7Q0LcOK4Bou5G7gmGnbKSlQ1UGy19IXXOuSwtNaM2E1Yil-4DhsxCGDFN6shDvn6CiMzy~DPjAzOw2iLucONYSLAeHBvb4AkRf6T9f3UXtG3xhXG-RY69Yw2MP-NZFGgXYu0fivIn1CDxZf-PdnaSrvKjjg-vxylIHFfY1UviTIlhbj1WorWh~N1Y3d8SIPe~6FhNA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
-            description={`You haven’t  enrolled for any courses in ${currentView} on MPA yet. You can enroll for one in the Courses Section. Remember, you earn $MINORITY tokens when you complete a course.`}
-            btnText="Enroll For Your First Course"
-            btnFunction={() => {
-              setLoading(!loading);
-            }}
-          />
-        )}
-      </>
-    );
   }, []);
 
   return (
@@ -223,7 +109,7 @@ const OverviewCourses = ({ token }) => {
             style={{
               fontSize: '18px',
               fontWeight: '700',
-              color: 'black',
+              color: 'white',
               margin: 0,
             }}
           >
@@ -232,7 +118,7 @@ const OverviewCourses = ({ token }) => {
         </div>
         <div
           className="overview-courses-list d-flex flex-row justify-content-between align-items-center"
-          style={{ maxWidth: '60%', overflowY: 'hidden' }}
+          style={{ overflowY: 'hidden' }}
         >
           <div
             className="d-flex flex-row justify-content-between"
@@ -314,8 +200,8 @@ const OverviewCourses = ({ token }) => {
             <div
               className={
                 currentView === 'all'
-                  ? 'overview-career-button selected'
-                  : 'overview-career-button'
+                  ? 'overview-career-button selected tw-mr-4'
+                  : 'overview-career-button tw-mr-4'
               }
               onClick={() => {
                 setCurrentView('all');
@@ -341,7 +227,14 @@ const OverviewCourses = ({ token }) => {
           <Skeleton count={5} height={50} width={1200} />
         </div>
       ) : (
-        <CourseCard />
+        <CourseCard
+          userCourses={userCourses}
+          loading={loading}
+          setLoading={setLoading}
+          currentView={currentView}
+          userData={userData}
+          token={token}
+        />
       )}
     </div>
   );
