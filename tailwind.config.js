@@ -26,12 +26,12 @@ module.exports = {
         '#F9F9F9': '#F9F9F9',
         '#EAEFF2': '#EAEFF2',
         popUpDark:'#14152A',
-        popUpDarkLight:'#282836'
+        inputColor: '#3a3551'
       },
       gradientColorStops: {
         FFC700: '#FFC700',
         FF655B: '#FF655B',
-        FF00B8: '#FF00B8',
+        FF00B8: '#FF00B8'
       },
       textColor: {
         NavDark: '#151565',
@@ -39,7 +39,7 @@ module.exports = {
         darkGray: '#333333',
         activeOrange: '#FF655B',
         darkBlue: '3E385D',
-        '#222222': '#222222',
+        '#222222': '#222222'
 
       },
       boxShadow: {
