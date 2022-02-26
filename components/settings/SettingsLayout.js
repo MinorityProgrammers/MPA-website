@@ -202,7 +202,7 @@ const SettingsLayout = ({
           </div>
           <div className={`${styles.accountSettings}`}>
             <div className={styles.settingsNavigation}>
-              <div className={`${styles.navContainer} ${tabsActive.profile ? '' : styles.navProfile}`}>
+              <div className={`${styles.navContainer} ${tabsActive.profile || tabsActive.security ? '' : styles.navProfile}`}>
                 <div className={`tw-w-full ${tabsActive.profile ? '' : 'm-auto'}`}>
                   <div className={styles.userDataHeader}>
                     <div className={styles.imgDiv}>

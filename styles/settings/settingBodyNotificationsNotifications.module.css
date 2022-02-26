@@ -1,5 +1,13 @@
 .notificationsContent {
-  margin-bottom: 2vw;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  width: 100%;
+}
+.notificationsContent h2{
+  font-weight: 600;
+  font-size: 20px;
+  margin: 30px 0;
 }
 
 .notificationsContent h5,
@@ -21,4 +29,52 @@
 .inputWrapper img {
   width: 3.5vw;
   height: 3.5vw;
+}
+.checkInput{
+  display: flex;
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+  margin: 26px 0px;
+}
+.checkInput div{
+  border-radius: 2px;
+  border: 3px solid #bbbbbb;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 15px;
+  cursor: pointer;
+}
+.checkInput div i{
+  color: #1C1D37;
+  display: none;
+}  
+.active div{
+  background: #6938EF;
+  border-color:#6938EF ;
+} 
+.active div i {
+  display: initial;
+  font-size: 21px;
+  -webkit-text-stroke: 1px #6938EF;
+}
+.saveBtn{
+  display: flex;
+  justify-content: center;
+  margin-top: auto;
+  margin-bottom: 80px;
+}
+.saveBtn a{
+  color: #FFFFFF !important;
+  border-radius: 44px;
+  font-weight: 600;
+  font-size: 18px;
+  padding: .9rem 5rem;
+  background: #6938EF;
+}
+.saveBtn a:active{
+  box-shadow: 0 0 2px 2px #6938EF;
 }
