@@ -8,6 +8,7 @@ import {
 import { GlobalContext } from '../../contexts/provider';
 import SidebarNav from './SidebarNav';
 import getProfile from '../../contexts/actions/profile/getProfile';
+import getProgressPercentage from '../../contexts/utils/settings/getProgressPercentage';
 
 const SidebarTwo = ({
   links, active, open, setOpen, handleClick,
@@ -62,13 +63,13 @@ const SidebarTwo = ({
           <Link href="/">
             <div className="progressBarContainer">
               <CircularProgressbarWithChildren
-                value={75}
+                value={getProgressPercentage(userData)}
                 className="progressBar"
                 styles={buildStyles({
-                  rotation: 0.25,
+                  rotation: 0,
                   strokeLinecap: 'butt',
-                  pathColor: '#FFC700',
-                  trailColor: '#fff',
+                  pathColor: 'var(--tertiary-main)',
+                  trailColor: 'var(--secondary-low-contrast)',
                 })}
               >
                 <img
