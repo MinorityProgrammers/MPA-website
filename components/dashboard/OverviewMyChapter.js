@@ -42,7 +42,7 @@ const OverviewMyChatper = () => {
                   style={{
                     fontSize: '18px',
                     marginBottom: '5px',
-                    color: 'black',
+                    color: 'white',
                     fontWeight: '700',
                   }}
                 >
@@ -134,7 +134,7 @@ const OverviewMyChatper = () => {
           </div>
           <div
             className="d-flex flex-column justify-content-center align-items-start"
-            style={{ color: 'black', width: '50%' }}
+            style={{ color: 'white', width: '50%' }}
           >
             <p
               className="overview-chapter-card-description"
@@ -196,7 +196,7 @@ const OverviewMyChatper = () => {
             style={{
               fontSize: '18px',
               fontWeight: '700',
-              color: 'black',
+              color: 'white',
               margin: 0,
               marginRight: '5px',
             }}

@@ -195,7 +195,7 @@ const OverviewProjects = ({ token }) => {
                 style={{
                   height: '30%',
                   fontSize: '10px',
-                  color: 'black',
+                  color: 'white',
                   fontWeight: 400,
                 }}
                 className="text-center"
@@ -252,7 +252,7 @@ const OverviewProjects = ({ token }) => {
                 <ProjectTaskCard data={task} key={task} />
               ))
             ) : (
-              <p style={{ fontSize: '12px', color: 'black' }}>
+              <p style={{ fontSize: '12px', color: 'white' }}>
                 Select a Project to View Tasks
               </p>
             )}
@@ -263,11 +263,11 @@ const OverviewProjects = ({ token }) => {
             style={{ width: '100%' }}
           >
             {projectInfo !== undefined ? (
-              <p style={{ fontSize: '12px', color: 'black' }}>
+              <p style={{ fontSize: '12px', color: 'white' }}>
                 {projectInfo.description}
               </p>
             ) : (
-              <p style={{ fontSize: '12px', color: 'black' }}>
+              <p style={{ fontSize: '12px', color: 'white' }}>
                 Select a Project to View Tasks
               </p>
             )}
@@ -292,7 +292,7 @@ const OverviewProjects = ({ token }) => {
             style={{
               fontSize: '18px',
               fontWeight: '700',
-              color: 'black',
+              color: 'white',
               margin: 0,
             }}
           >

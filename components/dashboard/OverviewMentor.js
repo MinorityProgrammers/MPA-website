@@ -63,7 +63,7 @@ const OverviewMentor = ({ token }) => {
           style={{
             fontSize: '18px',
             fontWeight: '700',
-            color: 'black',
+            color: 'white',
             margin: 0,
           }}
         >
@@ -180,7 +180,7 @@ const OverviewComponent = ({ mentorInfo }) => (
           style={{
             fontSize: '14px',
             fontWeight: 700,
-            color: 'black',
+            color: 'white',
             marginBottom: '2%',
           }}
         >
@@ -192,7 +192,7 @@ const OverviewComponent = ({ mentorInfo }) => (
           style={{
             fontSize: '12px',
             fontWeight: 400,
-            color: 'black',
+            color: 'white',
             marginBottom: '2%',
           }}
         >
@@ -207,7 +207,7 @@ const OverviewComponent = ({ mentorInfo }) => (
           style={{
             fontSize: '12px',
             fontWeight: 400,
-            color: 'black',
+            color: 'white',
             marginBottom: '2%',
           }}
         >
@@ -218,7 +218,7 @@ const OverviewComponent = ({ mentorInfo }) => (
           style={{
             fontSize: '12px',
             fontWeight: 400,
-            color: 'black',
+            color: 'white',
             marginBottom: '2%',
           }}
         >
@@ -229,7 +229,7 @@ const OverviewComponent = ({ mentorInfo }) => (
           style={{
             fontSize: '12px',
             fontWeight: 400,
-            color: 'black',
+            color: 'white',
             marginBottom: '2%',
           }}
         >

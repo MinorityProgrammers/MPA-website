@@ -19,7 +19,7 @@ const OverviewWallet = () => {
           style={{
             fontSize: '18px',
             fontWeight: '700',
-            color: 'black',
+            color: 'white',
             height: '13%',
             marginBottom: '2%',
           }}
@@ -31,7 +31,7 @@ const OverviewWallet = () => {
           style={{ height: '85%' }}
         >
           {/* balance 2 columns Balance and Monthly Earned */}
-          <div className="overview-course-card d-flex flex-row justify-content-between align-items-center">
+          <div className="overview-course-card overview-course-card-border-none d-flex flex-row justify-content-between align-items-center">
             {/* Balance column */}
             <div
               className="d-flex flex-column"
@@ -46,7 +46,7 @@ const OverviewWallet = () => {
                   fontSize: '12px',
                   margin: '0',
                   fontWeight: '700',
-                  color: 'black',
+                  color: 'white',
                 }}
               >
                 Balance
@@ -64,7 +64,7 @@ const OverviewWallet = () => {
             </div>
             <div
               className="d-flex flex-column align-items-end overview-courses-list"
-              style={{ textAlign: 'right', color: 'black' }}
+              style={{ textAlign: 'right', color: 'white' }}
             >
               <p style={{ fontSize: '10px', margin: '0', fontWeight: '700' }}>
                 Monthly $MINORITY Earned
@@ -93,20 +93,20 @@ const OverviewWallet = () => {
           </div>
           {/* Minority tracking row */}
           <div
-            className="overview-course-card d-flex flex-row justify-content-between align-items-center"
+            className="overview-course-card overview-course-card-border-none d-flex flex-row justify-content-between align-items-center"
             style={{ padding: '15px 10px' }}
           >
             {/* Logo and Name/Description */}
             <div className="d-flex flex-row" style={{ width: '70%' }}>
-              <img
+              <div
                 style={{
                   width: '30px',
                   height: '30px',
                   borderRadius: '50%',
                   marginRight: '5px',
+                  background: '#CC00FF',
+                  opacity: '0.5',
                 }}
-                src="/assets/images/mpicon.svg"
-                alt="mpicon"
               />
               <div className="d-flex flex-column" style={{ textAlign: 'left' }}>
                 <p
@@ -114,7 +114,7 @@ const OverviewWallet = () => {
                     fontSize: '10px',
                     margin: '0',
                     fontWeight: '700',
-                    color: 'black',
+                    color: 'white',
                   }}
                 >
                   MINORITY ($MINORITY)
@@ -142,7 +142,7 @@ const OverviewWallet = () => {
                   fontSize: '15px',
                   margin: '0',
                   fontWeight: '700',
-                  color: 'black',
+                  color: 'white',
                 }}
               >
                 $0
@@ -187,11 +187,11 @@ const OverviewWallet = () => {
 
   return (
     <div style={{ height: '100%' }}>
-      <p
+      {/* <p
         style={{
           fontSize: '18px',
           fontWeight: '700',
-          color: 'black',
+          color: 'white',
           height: '13%',
           marginBottom: '2%',
         }}
@@ -199,9 +199,10 @@ const OverviewWallet = () => {
         Wallet
       </p>
       <div
-        className="overview-courses-cards d-flex flex-column justify-content-between align-items-between"
+        className="overview-courses-cards d-flex flex-column
+        justify-content-between align-items-between"
         style={{ height: '85%' }}
-      />
+      /> */}
       {loading ? (
         <div
           className="d-flex flex-column justify-content-center align-items-center"
@@ -232,7 +233,7 @@ const OverviewWallet = () => {
             style={{
               fontSize: '18px',
               fontWeight: '700',
-              color: 'black',
+              color: 'white',
               height: '13%',
               marginBottom: '2%',
             }}
@@ -245,7 +246,7 @@ const OverviewWallet = () => {
             style={{ height: '85%' }}
           >
             {/* balance 2 columns Balance and Monthly Earned */}
-            <div className="overview-course-card d-flex flex-row justify-content-between align-items-center">
+            <div className="overview-course-card overview-course-card-border-none  d-flex flex-row justify-content-between align-items-center">
               {/* Balance column */}
               <div
                 className="d-flex flex-column"
@@ -260,7 +261,7 @@ const OverviewWallet = () => {
                     fontSize: '12px',
                     margin: '0',
                     fontWeight: '700',
-                    color: 'black',
+                    color: '#DEDEDE',
                   }}
                 >
                   Balance
@@ -270,7 +271,7 @@ const OverviewWallet = () => {
                     fontSize: '25px',
                     margin: '0',
                     fontWeight: '700',
-                    color: '#151371',
+                    color: '#ffffff',
                   }}
                 >
                   $350
@@ -278,7 +279,7 @@ const OverviewWallet = () => {
               </div>
               <div
                 className="d-flex flex-column align-items-end overview-courses-list"
-                style={{ textAlign: 'right', color: 'black' }}
+                style={{ textAlign: 'right', color: '#DEDEDE' }}
               >
                 <p style={{ fontSize: '10px', margin: '0', fontWeight: '700' }}>
                   Monthly $MINORITY Earned
@@ -306,18 +307,18 @@ const OverviewWallet = () => {
               </div>
             </div>
             {/* Minority tracking row */}
-            <div className="overview-course-card d-flex flex-row justify-content-between align-items-center">
+            <div className="overview-course-card overview-course-card-border-none d-flex flex-row justify-content-between align-items-center">
               {/* Logo and Name/Description */}
               <div className="d-flex flex-row" style={{ width: '70%' }}>
-                <img
+                <div
                   style={{
                     width: '30px',
                     height: '30px',
                     borderRadius: '50%',
                     marginRight: '5px',
+                    background: '#CC00FF',
+                    opacity: '0.5',
                   }}
-                  src="/assets/images/mpicon.svg"
-                  alt="mpicon"
                 />
                 <div
                   className="d-flex flex-column"
@@ -328,7 +329,7 @@ const OverviewWallet = () => {
                       fontSize: '10px',
                       margin: '0',
                       fontWeight: '700',
-                      color: 'black',
+                      color: 'white',
                     }}
                   >
                     MINORITY ($MINORITY)
@@ -356,7 +357,7 @@ const OverviewWallet = () => {
                     fontSize: '15px',
                     margin: '0',
                     fontWeight: '700',
-                    color: 'black',
+                    color: 'white',
                   }}
                 >
                   $0.04
@@ -380,23 +381,14 @@ const OverviewWallet = () => {
             >
               <button
                 type="button"
-                className="btn btn-primary"
-                style={{
-                  background: '#151371',
-                  fontSize: '10px',
-                  width: '45%',
-                }}
+                className="btn btn-primary button-setting-transparent"
+
               >
                 Settings
               </button>
               <button
                 type="button"
-                className="btn btn-primary"
-                style={{
-                  background: '#151371',
-                  fontSize: '10px',
-                  width: '45%',
-                }}
+                className="btn btn-primary button-setting-bg"
               >
                 Manage
               </button>

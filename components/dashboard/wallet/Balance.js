@@ -29,7 +29,7 @@ const CurrencyBalances = (props) => {
         className="d-flex flex-row justify-content-between align-items-start"
         style={{ height: '15%', width: '100%', marginBottom: '15px' }}
       >
-        <p style={{ fontSize: '20px', fontWeight: '700', color: 'black' }}>
+        <p style={{ fontSize: '20px', fontWeight: '700', color: 'white' }}>
           Currency Balances
         </p>
         <button type="button">Add Token</button>
@@ -78,7 +78,7 @@ const CoinsLegend = ({ walletInfo }) => (
       >
         {/* first column name and symbol */}
         <div className="d-flex flex-column justify-content-start">
-          <p style={{ color: 'black', fontWeight: '700' }}>{ownedCoin.name}</p>
+          <p style={{ color: 'white', fontWeight: '700' }}>{ownedCoin.name}</p>
           <p style={{ color: 'gray', fontSize: '10px' }}>{ownedCoin.symbol}</p>
         </div>
         {/* amount owned */}

@@ -57,7 +57,7 @@ const OverviewCareer = ({ token }) => {
             style={{
               fontSize: '18px',
               fontWeight: '700',
-              color: 'black',
+              color: 'white',
               margin: 0,
             }}
           >

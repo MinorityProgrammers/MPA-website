@@ -2,7 +2,8 @@
   .outer-dashboard-container{
     max-width: 1460px;
     padding: 20px;
-    background: #E2DFE2;
+    background: #14152B;
+    color: white;
   }
   .sidebar-item{
     display: flex;
@@ -72,9 +73,11 @@
 }
 
 .inner-dashboard-container{
-  background: #F2F3F5;
+  font-family: 'Poppins', sans-serif;
+  background: #14152B;
   max-width: 1440px !important;
   height: auto;
+
 }
 
 .dashboard-navbar-button{
@@ -157,19 +160,21 @@
 }
 
 .overview-event-card{
-  background: #EFEFEF;
-  border-radius: 5px;
+  box-shadow: 0px 32px 41px rgb(0 0 0 / 25%);
+  border-radius: 8px;
+  background: #24253D;
+  border: 1px solid #6938EF;
   padding: 8px;
   margin-bottom: 10px;
   line-height: 15px;
 }
 .overview-event-card:hover{
-  background: #F3F3F3;
+  background: #6938EF;
 }
 
 .overview-event-thumbnail {
-  width: 60px;
-  height: 60px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
 }
 
@@ -206,32 +211,32 @@
 
 .overview-career-button {
   white-space: nowrap;
-  border-radius: 5px;
+  border-radius: 4px;
+  border: 1px solid #6938EF;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 0px 10px;
   cursor: pointer;
+  margin: 0px 5px;
 }
-
+.overview-career-button:hover {
+  background:#6938EF !important;
+}
 .selected{
-border: 1px solid #565656;
-background: #E0E0E0;
+  border-radius: 4px;
+  border: 1px solid #6938EF;
+  background: #6938EF;
 }
 
 .overview-career-button p{
   font-size: 12px ;
-  font-weight: 700;
-  color:#565656;
+  font-weight: 500;
+  color:#ffffff;
   text-align: center;
   margin: 0;
-  border-top: 1px solid transparent;
-  border-bottom: 1px solid transparent;
 }
 
-.overview-career-button p:hover{
-  border-bottom: 1px solid black;
-}
 
 .overview-career-cards-list{
   padding: 7px 0 ;
@@ -310,7 +315,7 @@ background: #E0E0E0;
 .overview-barContainer {
   flex: 1;
   height: 8px;
-  background: #dfdfe7;
+  background: rgba(82, 85, 141, 0.61);
   border-radius: 12px;
 }
 
@@ -322,8 +327,11 @@ background: #E0E0E0;
 
 .overview-course-card{
   padding: 5px 10px;
-  background: #EFEFEF;
-  border-radius: 10px;
+  background: #24253D;
+  border: 1px solid #6938EF;
+  color: white;
+  box-shadow: 0px 32px 41px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
   width: 100%;
   margin-bottom: 2%;
 }
@@ -338,7 +346,7 @@ background: #E0E0E0;
 } */
 
 .overview-course-card:hover{
-    background: #F3F3F3;
+    background: #6938EF;
 }
 
 .overview-course-card-info p{
@@ -348,15 +356,15 @@ background: #E0E0E0;
 
 
 .overview-course-card-info-title{
-  font-size:14px;
+  font-size:12px;
   font-weight: 700;
-  color: black;
+  color: rgb(255, 255, 255);
   margin: 0;
 }
 
 .overview-course-card-description{
-  font-size: 8px;
-  color: black;
+  font-size: 10px;
+  color: #DEDEDE;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -367,7 +375,7 @@ background: #E0E0E0;
 
 .overview-course-currency p{
   line-height: 20px;
-  color: black;
+  color: #33D2FF;
   margin: 0;
   text-align: center;
 }
@@ -529,4 +537,71 @@ background: #E0E0E0;
   position: absolute;
   background: rgba(196, 196, 196, 0.3);
   backdrop-filter: blur(2px);
+}
+
+.dashboard-inner-bg{
+  background: #1C1D37;
+  border-radius: 20px !important;
+}
+.row-custom-span-3{
+  grid-row: span 2 / span 2 !important;
+}
+.overview-course-card-border-none{
+  border: none;
+  box-shadow: none;
+}
+.button-setting-transparent{
+  background: transparent;
+  font-size: 10px;
+  width: 45%;
+  border-radius: 100px;
+  border: 1px solid #6938EF;
+}
+.button-setting-transparent:hover{
+  background: #6938EF;
+}
+.button-setting-bg {
+  background: #6938EF;
+  font-size: 10px;
+  border-radius: 100px;
+  width: 45%;
+  border: none;
+}
+.button-setting-bg:hover{
+  background-color: #6938EF;
+}
+.chart-inner-text{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 10px;
+}
+.chart-inner-text span{
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+}
+.button-more{
+  background: #6938EF;
+  border-radius: 100px;
+  padding: 10px 30px;
+}
+.button-more:hover{
+  color: white;
+}  
+.view-course{
+  font-size: 12px;
+  padding: 0px 20px;
+  display: flex;
+  align-items: center;
+  height: 80%;
+  margin: auto 0 auto auto;
+}
+.overview-course-card:hover{
+  .view-course{
+    background: white;
+    color: #6938EF;
+  }
 }

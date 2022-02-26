@@ -82,7 +82,7 @@ const OverviewMyProposals = () => {
             style={{
               fontSize: '18px',
               fontWeight: '700',
-              color: 'black',
+              color: 'white',
               margin: 0,
               marginRight: '5px',
             }}
@@ -151,7 +151,7 @@ const OverviewMyProposals = () => {
               fontSize: '12px',
               margin: '0',
               fontWeight: '700',
-              color: 'black',
+              color: 'white',
               padding: '0 10px',
               height: '15%',
             }}

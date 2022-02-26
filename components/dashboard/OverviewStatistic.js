@@ -39,7 +39,7 @@ const OverviewStatistic = () => {
               style={{
                 fontSize: '20px',
                 lineHeight: '20px',
-                color: 'black',
+                color: 'white',
                 fontWeight: '700',
                 color: props.colorText,
               }}
@@ -51,7 +51,7 @@ const OverviewStatistic = () => {
                 fontSize: '8px',
                 lineHeight: '8px',
                 fontWeight: 400,
-                color: 'black',
+                color: 'white',
                 color: props.colorText,
               }}
             >
@@ -84,7 +84,7 @@ const OverviewStatistic = () => {
           <p
             style={{
               fontSize: '12px',
-              color: 'black',
+              color: 'white',
               fontWeight: 700,
               paddingLeft: '5%',
               position: 'relative',
@@ -123,7 +123,7 @@ const OverviewStatistic = () => {
                 width: '100%',
                 textAlign: 'center',
                 fontSize: '14px',
-                color: 'black',
+                color: 'white',
                 fontWeight: 700,
               }}
             >
@@ -140,7 +140,7 @@ const OverviewStatistic = () => {
             }}
           >
             <div className="d-flex flex-column" style={{ height: '50%' }}>
-              <p style={{ fontSize: '10px', color: 'black', fontWeight: 700 }}>
+              <p style={{ fontSize: '10px', color: 'white', fontWeight: 700 }}>
                 Total Amount
               </p>
               <p
@@ -230,7 +230,7 @@ const OverviewStatistic = () => {
         style={{
           fontSize: '18px',
           fontWeight: '700',
-          color: 'black',
+          color: 'white',
           margin: 0,
         }}
       >

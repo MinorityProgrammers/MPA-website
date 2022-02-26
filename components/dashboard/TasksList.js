@@ -4,10 +4,8 @@ import React from 'react';
 const TasksList = () => (
   <div
     className="overview-courses-cards d-flex flex-column"
-    style={{ width: '100%', height: '100%' }}
+    style={{ width: '100%', marginTop: 'auto' }}
   >
-    <TaskCard />
-    <TaskCard />
     <TaskCard />
     <TaskCard />
   </div>
@@ -39,7 +37,7 @@ const TaskCard = () => (
       {/* Second Column - Task Name + Description */}
       <div
         className="overview-course-card-info d-flex flex-column justify-content-center"
-        style={{ width: '78%', marginLeft: '2%', height: '100%' }}
+        style={{ width: '68%', marginLeft: '2%', height: '100%' }}
       >
         <p className="overview-course-card-info-title">Host an Event</p>
         <p className="overview-course-card-description">
@@ -51,25 +49,22 @@ const TaskCard = () => (
     {/* Third and Fourth Column */}
     <div
       className="d-flex flex-row justify-content-between"
-      style={{ width: '30%' }}
+      style={{ width: '40%' }}
     >
       {/* Third Column */}
       <div
         className="overview-course-currency d-flex justify-content-center flex-column align-items-center"
         style={{ marginRight: '2%' }}
       >
-        <p style={{ fontSize: '12px' }}>
-          EARN 15
-          <br />
-          $MINORITY
+        <p style={{ fontSize: '10px' }}>
+          EARN 15 $MINORITY
         </p>
       </div>
       {/* Fourth Column */}
       <div className="d-flex justify-content-center align-items-center ">
         <a href="#" target="_blank">
-          <p style={{ color: '#151371', fontSize: '24px', fontWeight: '700' }}>
-            &gt;
-          </p>
+          <i className="far fa-arrow-alt-circle-right" />
+
         </a>
       </div>
     </div>

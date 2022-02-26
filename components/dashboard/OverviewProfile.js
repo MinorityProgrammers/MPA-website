@@ -26,7 +26,7 @@ const OverviewProfile = ({ userData }) => {
           style={{
             fontSize: '18px',
             fontWeight: '700',
-            color: 'black',
+            color: 'white',
             margin: 0,
           }}
         >
@@ -63,7 +63,7 @@ const OverviewProfile = ({ userData }) => {
               style={{
                 fontSize: '16px',
                 fontWeight: 700,
-                color: 'black',
+                color: 'white',
                 marginBottom: '2%',
               }}
             >
@@ -71,7 +71,7 @@ const OverviewProfile = ({ userData }) => {
               {' '}
               {userData.lastName}
             </p>
-            <p style={{ fontSize: '12px', color: 'black', marginBottom: '2%' }}>
+            <p style={{ fontSize: '12px', color: 'white', marginBottom: '2%' }}>
               Current Position
             </p>
             <a href={`user/${userData.userName}`}>

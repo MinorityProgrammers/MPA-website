@@ -139,7 +139,7 @@ const OverviewStartups = ({ userData, token }) => {
                 <p
                   style={{
                     fontSize: '12px',
-                    color: 'black',
+                    color: 'white',
                     textAlign: 'center',
                     lineHeight: '14px',
                     marginBottom: 0,
@@ -166,8 +166,9 @@ const OverviewStartups = ({ userData, token }) => {
                   <p
                     style={{
                       fontSize: '16px',
-                      fontWeight: '700',
-                      color: '#151371',
+                      fontWeight: '400',
+                      marginRight: '4px',
+                      color: '#ffffff',
                     }}
                   >
                     {startup.percentRaised}
@@ -182,12 +183,13 @@ const OverviewStartups = ({ userData, token }) => {
                   <a href="#" target="_blank">
                     <p
                       style={{
-                        color: '#151371',
+                        color: '#ffffff',
                         fontSize: '24px',
                         fontWeight: '700',
                       }}
                     >
-                      &gt;
+                      <i className="far fa-arrow-alt-circle-right" />
+
                     </p>
                   </a>
                 </div>
@@ -215,7 +217,7 @@ const OverviewStartups = ({ userData, token }) => {
             style={{
               fontSize: '18px',
               fontWeight: '700',
-              color: 'black',
+              color: 'white',
               margin: 0,
               marginRight: '5px',
             }}
