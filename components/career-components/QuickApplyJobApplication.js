@@ -173,7 +173,7 @@ const QuickApplyJobApplication = (props) => {
                   First Name
                   <br />
                   <input
-                    className="tw-h-10 tw-p-3 tw-mt-1 tw-border-2 tw-border-gray-500 tw-bg-white tw-w-full"
+                    className="tw-h-10 tw-p-3 tw-mt-1 tw-border-2 tw-border-purple-800 tw-bg-inputColor tw-w-full"
                     id="firstName"
                     type="text"
                     name="firstName"
@@ -193,7 +193,7 @@ const QuickApplyJobApplication = (props) => {
                   Last Name
                   <br />
                   <input
-                    className="tw-h-10 tw-p-3 tw-mt-1 tw-border-2 tw-border-gray-500 tw-bg-gray-200 tw-w-full"
+                    className="tw-h-10 tw-p-3 tw-mt-1 tw-border-2 tw-border-purple-800 tw-bg-inputColor tw-w-full"
                     id="lastName"
                     type="text"
                     name="lastName"
@@ -215,7 +215,7 @@ const QuickApplyJobApplication = (props) => {
                   Email
                   <br />
                   <input
-                    className="tw-h-10 tw-p-3 tw-mt-1 tw-border-2 tw-border-gray-500 tw-bg-gray-200 tw-w-full"
+                    className="tw-h-10 tw-p-3 tw-mt-1 tw-border-2 tw-border-purple-800 tw-bg-inputColor tw-w-full"
                     id="email"
                     type="text"
                     name="email"
@@ -235,7 +235,7 @@ const QuickApplyJobApplication = (props) => {
                   Country
                   <br />
                   <input
-                    className="tw-h-10 tw-p-3 tw-mt-1 tw-border-2 tw-border-gray-500 tw-bg-gray-200 tw-w-full"
+                    className="tw-h-10 tw-p-3 tw-mt-1 tw-border-2 tw-border-purple-800 tw-bg-inputColor tw-w-full"
                     id="country"
                     type="text"
                     name="country"
@@ -256,7 +256,7 @@ const QuickApplyJobApplication = (props) => {
                   State
                   <br />
                   <input
-                    className="tw-h-10 tw-p-3 tw-mt-1 tw-border-2 tw-border-gray-500 tw-bg-gray-200 tw-w-full"
+                    className="tw-h-10 tw-p-3 tw-mt-1 tw-border-2 tw-border-purple-800 tw-bg-inputColor tw-w-full"
                     id="state"
                     type="text"
                     name="state"
@@ -275,7 +275,7 @@ const QuickApplyJobApplication = (props) => {
                   City
                   <br />
                   <input
-                    className="tw-h-10 tw-p-3 tw-mt-1 tw-border-2 tw-border-gray-500 tw-bg-gray-200 tw-w-full"
+                    className="tw-h-10 tw-p-3 tw-mt-1 tw-border-2 tw-border-purple-800 tw-bg-inputColor tw-w-full"
                     id="city"
                     type="text"
                     name="city"
@@ -299,7 +299,7 @@ const QuickApplyJobApplication = (props) => {
                   Job Title
                   <br />
                   <input
-                    className="tw-h-10 tw-p-3 tw-mt-1 tw-border-2 tw-border-gray-500 tw-bg-gray-200 tw-w-full"
+                    className="tw-h-10 tw-p-3 tw-mt-1 tw-w-full tw-border-2 tw-border-purple-800 tw-bg-inputColor"
                     id="jobTitle"
                     type="text"
                     name="jobTitle"
@@ -315,7 +315,7 @@ const QuickApplyJobApplication = (props) => {
                   Company
                   <br />
                   <input
-                    className="tw-h-10 tw-p-3 tw-mt-1 tw-border-2 tw-border-gray-500 tw-bg-gray-200 tw-w-full"
+                    className="tw-h-10 tw-p-3 tw-mt-1 tw-w-full tw-border-2 tw-border-purple-800 tw-bg-inputColor"
                     id="company"
                     type="text"
                     name="company"
@@ -333,7 +333,7 @@ const QuickApplyJobApplication = (props) => {
               Cover Letter
               <br />
               <textarea
-                className="tw-h-10 tw-p-3 tw-mt-1 tw-border-2 tw-border-gray-500 tw-bg-gray-200 tw-w-full tw-h-40 tw-text-darkGray"
+                className="tw-h-10 tw-p-3 tw-mt-1 tw-w-full tw-h-40 tw-text-white tw-border-2 tw-border-purple-800 tw-bg-inputColor"
                 id="coverLetter"
                 type="text"
                 name="coverLetter"
@@ -342,7 +342,7 @@ const QuickApplyJobApplication = (props) => {
               />
             </label>
 
-            <div className="tw-flex tw-flex-col tw-mb-4">
+            <div className="tw-flex tw-flex-col tw-mb-4 ">
               <h3 className="tw-text-lg tw-mb-1 tw-font-medium">
                 {' '}
                 <span className="tw-text-pink-400">*</span>
@@ -350,7 +350,7 @@ const QuickApplyJobApplication = (props) => {
                 Upload Your Resume
               </h3>
               <input
-                className="quickApplyUpload"
+                className="quickApplyUpload "
                 name="resume"
                 type="file"
                 onChange={handleResumeInput}
