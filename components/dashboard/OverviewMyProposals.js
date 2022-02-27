@@ -19,8 +19,7 @@ const OverviewMyProposals = () => {
     () => (
       <button
         type="button"
-        className="btn btn-primary overview-proposal-button"
-        style={{ background: '#2D761B' }}
+        className="overview-proposal-button"
       >
         Approved
       </button>
@@ -31,8 +30,8 @@ const OverviewMyProposals = () => {
   const ProposalCard = useCallback(
     () => (
       <div
-        className="overview-proposal-card d-flex flex-row justify-content-center align-items-center"
-        style={{ width: '100%' }}
+        className="overview-course-card d-flex flex-row justify-content-center align-items-center"
+        style={{ width: '100%', padding: '10px' }}
       >
         <p className="proposal-card-info" style={{ width: '25%', margin: 0 }}>
           Dog Walkr
@@ -52,12 +51,12 @@ const OverviewMyProposals = () => {
         >
           <img
             style={{
-              height: '24px',
-              width: '24px',
+              height: '30px',
+              width: '30px',
               borderRadius: '50%',
               marginRight: '2px',
             }}
-            src="https://s3-alpha-sig.figma.com/img/8f26/8387/fe7165a279e84bfb08b58534b8aff61a?Expires=1638748800&Signature=EcDi0o7X9EcSh~fF3W21-A~FYI-99XEY-KWaIr862bD7XA2VIxsQEDxsg~0hLgfFk-4lsYjLKPyiQnHwZ13fZy8IN7L0vX81Nb5dKdpfp5Ii-GJ2rNkD6eGSNfL6~zMWygUfBHJzObhrZhPUYzhU45HldQxHCUQRtMMPbqhOJFtGj59GmFAt4YUXfBy3fGbtWoMOZ9v3xEm6X7dDyLCeX5J7IwkvYLlqN4j95N4yo6Nor1PfGAs564wZzNUynl~I3Th6QypIVQz-kG6k0NwsePDlT7RXcQJv8d8~2rk3FpZaCQ5Ud35T3JS6xnw8KCfboJ0pcgL7-w9JfzyXB3rMZg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
+            src="/assets/images/dashboard/proposal1.png"
             alt=""
           />
           <p className="proposal-card-info">Scott Davis</p>
@@ -150,17 +149,19 @@ const OverviewMyProposals = () => {
               width: '100%',
               fontSize: '12px',
               margin: '0',
+              marginBottom: '10px',
               fontWeight: '700',
               color: 'white',
               padding: '0 10px',
-              height: '15%',
+              // height: '15%',
             }}
           >
             {/* 25% each */}
-            <p style={{ width: '25%' }}>Name</p>
-            <p style={{ width: '24%', marginLeft: '1%' }}>Status</p>
-            <p style={{ width: '24%', marginLeft: '1%' }}>Created On</p>
+            <p className="dashboard-proposal-table-title" style={{ width: '25%' }}>Name</p>
+            <p className="dashboard-proposal-table-title" style={{ width: '24%', marginLeft: '1%' }}>Status</p>
+            <p className="dashboard-proposal-table-title" style={{ width: '24%', marginLeft: '1%' }}>Created On</p>
             <p
+              className="dashboard-proposal-table-title"
               style={{
                 maxLines: '1',
                 overflow: 'hidden',
