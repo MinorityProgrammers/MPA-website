@@ -3,16 +3,16 @@ import axios from 'axios';
 import Skeleton from 'react-loading-skeleton';
 import TasksList from './TasksList';
 
-const OverviewMentor = ({ token }) => {
+const OverviewMentor = ({ token, userData }) => {
   const [loading, setLoading] = useState(true);
   const [currentView, setCurrentView] = useState('overview');
   const [mentorInfo, setMentorInfo] = useState();
   const [, setMentors] = useState([]);
 
   useEffect(() => {
-    if (token != null) {
+    if (token != null && (userData.is_mentor || userData.is_mentee)) {
       axios
-        .get(`${process.env.BASE_URI}/mentor/`, {
+        .get(`${process.env.BASE_URI}/${userData.is_mentor ? 'mentor' : 'mentee'}/`, {
           headers: {
             'Access-Control-Allow-Origin': '*',
             'Access-Control-Allow-Methods': 'GET',
@@ -51,7 +51,7 @@ const OverviewMentor = ({ token }) => {
 
   return (
     <div
-      className="d-flex flex-column justify-content-between "
+      className="d-flex flex-column"
       style={{ height: '100%', width: '100%' }}
     >
       {/* First row */}
@@ -175,39 +175,50 @@ const OverviewComponent = ({ mentorInfo }) => (
         }
         alt="avatar"
       />
-      <div className="d-flex flex-column">
-        <p
-          style={{
-            fontSize: '14px',
-            fontWeight: 700,
-            color: 'white',
-            marginBottom: '2%',
-          }}
-        >
-          {mentorInfo?.user_id?.firstName}
-          {' '}
-          {mentorInfo?.user_id?.lastName}
+      <div className="tw-flex tw-justify-between tw-w-full">
+        <div className="d-flex flex-column">
+          <p
+            style={{
+              fontSize: '14px',
+              fontWeight: 700,
+              color: 'white',
+              marginBottom: '2%',
+            }}
+          >
+            {mentorInfo?.user_id?.firstName}
+            {' '}
+            {mentorInfo?.user_id?.lastName}
+          </p>
+          <p
+            style={{
+              fontSize: '12px',
+              fontWeight: 400,
+              color: '#DEDEDE',
+              marginBottom: '2%',
+            }}
+          >
+            {mentorInfo.occupation}
+          </p>
+        </div>
+
+      </div>
+      <div className="tw-text-center">
+        <p className="mentorship-mentee-title">
+          Mentees
         </p>
-        <p
-          style={{
-            fontSize: '12px',
-            fontWeight: 400,
-            color: 'white',
-            marginBottom: '2%',
-          }}
-        >
-          Position
-        </p>
+        <div className="tw-flex tw-justify-center">
+          <p className="mentorship-mentee-count">4</p>
+        </div>
       </div>
     </div>
     {/* second row */}
-    <div className="d-flex flex-row justify-content-between">
+    <div className="d-flex flex-row tw-w-full justify-content-between">
       <div className="d-flex flex-column ">
         <p
           style={{
             fontSize: '12px',
             fontWeight: 400,
-            color: 'white',
+            color: '#DEDEDE',
             marginBottom: '2%',
           }}
         >
@@ -218,37 +229,28 @@ const OverviewComponent = ({ mentorInfo }) => (
           style={{
             fontSize: '12px',
             fontWeight: 400,
-            color: 'white',
+            color: '#DEDEDE',
             marginBottom: '2%',
           }}
         >
           <strong>Mentorship Start Date: </strong>
           3rd March, 2021
         </p>
-        <p
-          style={{
-            fontSize: '12px',
-            fontWeight: 400,
-            color: 'white',
-            marginBottom: '2%',
-          }}
-        >
-          <strong>Number of Mentees: </strong>
-          4
-        </p>
+
       </div>
+
     </div>
     {/* third row */}
     <div
       className="d-flex flex-row justify-content-end"
-      style={{ width: '100%' }}
+      style={{ width: '100%', margin: 'auto 0 10px 0px' }}
     >
       <button
         type="button"
-        className="btn btn-primary"
-        style={{ background: '#151371', fontSize: '12px' }}
+        className="button-more"
       >
         Message
+        {' '}
         {mentorInfo?.user_id?.firstName}
       </button>
     </div>

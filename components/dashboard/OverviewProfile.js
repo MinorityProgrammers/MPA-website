@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 import EmptyOverviewComponent from './EmptyOverviewComponent';
 
 const OverviewProfile = ({ userData }) => {
@@ -72,17 +73,15 @@ const OverviewProfile = ({ userData }) => {
               {userData.lastName}
             </p>
             <p style={{ fontSize: '12px', color: 'white', marginBottom: '2%' }}>
-              Current Position
+              {userData.role}
             </p>
-            <a href={`user/${userData.userName}`}>
-              <button
-                type="button"
-                className="btn btn-primary"
-                style={{ background: '#151371', fontSize: '12px' }}
+            <Link href={`user/${userData.userName}`}>
+              <a
+                className="button-more"
               >
                 View Profile
-              </button>
-            </a>
+              </a>
+            </Link>
           </div>
         )}
       </div>

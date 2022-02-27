@@ -126,56 +126,51 @@ const OverviewMyChatper = () => {
             style={{ width: '50%' }}
           >
             <img
-              src="https://s3-alpha-sig.figma.com/img/617f/6418/32b8d9273c0bc3217256454133a9cd75?Expires=1638748800&Signature=bYu-2ydeD22ONchi0p0WOk48IfTtD4pIkXlpDwDq-PGcYTdQSslzpoOwvdbB1ZrGOIQ3Hs1LD-eQ9pFdSy4RZNN4QGo2JLCE6nL7OmOHaPz9ECd7ICkApB4IjeVv9o1TB61KSSxVtZ4YOccd9tmXdwFAFyLmRscMVSsE36deCOFeIMaJ6ehaY8CXy~E9-NWitoyayIqu4QbmAOqeWdndndKEAVuQucn~BcfQSAGZ6CkPTz8iIVU9Cjk2JTPU8zhgPaDhgpQorV6IEoMIFtfQ137YKa~FCFFyKqQ4HQx~HMiamoT0keVcCtPwSjJaqpNrfeaHQrLZpJAQA~UPkNQAYw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
+              src="/assets/images/dashboard/chapter1.png"
               style={{ width: '80%', height: 'auto', borderRadius: '10px' }}
-              alt=""
+              alt="chapter"
             />
             <p className="overview-chapter-card-description"> Washington DC</p>
           </div>
           <div
             className="d-flex flex-column justify-content-center align-items-start"
-            style={{ color: 'white', width: '50%' }}
+            style={{ color: 'white', width: '50%', height: '100%' }}
           >
             <p
               className="overview-chapter-card-description"
-              style={{ fontSize: '10px', fontWeight: 400 }}
+              style={{ fontSize: '12px', fontWeight: 400 }}
             >
-              <strong>Chapter President:</strong>
+              <span style={{ color: '#DEDEDE', marginRight: '4px' }}>Chapter President:</span>
               Jason Cole
             </p>
             <p
               className="overview-chapter-card-description"
-              style={{ fontSize: '10px', fontWeight: 400 }}
+              style={{ fontSize: '12px', fontWeight: 400 }}
             >
-              <strong>Next Meeting:</strong>
+              <span style={{ color: '#DEDEDE', marginRight: '4px' }}>Next Meeting:</span>
               {' '}
               24th Oct, 2021 @ 5:00pm EST
             </p>
             <p
               className="overview-chapter-card-description"
-              style={{ fontSize: '10px', fontWeight: 400 }}
+              style={{ fontSize: '12px', fontWeight: 400 }}
             >
-              <strong>Member Since:</strong>
+              <span style={{ color: '#DEDEDE', marginRight: '4px' }}>Member Since:</span>
               {' '}
               June 2021
             </p>
+            <a
+              className="button-more"
+              style={{ margin: 'auto auto 0 auto' }}
+            >
+              Chapter Settings
+            </a>
           </div>
         </div>
         {/* third row */}
-        <div style={{ width: '100%' }}>
-          <button
-            type="button"
-            className="btn btn-primary"
-            style={{
-              background: '#151371',
-              fontSize: '10px',
-              width: '80%',
-              margin: '0 10%',
-            }}
-          >
-            Chapter Settings
-          </button>
-        </div>
+        {/* <div className="tw-flex tw-justify-center" style={{ width: '100%' }}>
+
+        </div> */}
       </div>
     ),
     [],
