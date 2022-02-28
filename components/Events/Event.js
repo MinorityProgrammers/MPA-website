@@ -11,9 +11,10 @@ import EventCardFeaturedSkeleton from "./EventCardFeaturedSkeleton";
 import EventMoreInfo from "./EventMoreInfo";
 import Card from "../login-signup/card/index";
 import EventCategoryFilterButton from "./EventCategoryFilterButton";
-import SwipeEvent from "./SwipeEvent";
-import Swiper from "react-id-swiper";
 import PastEventCard from "./PastEventCard";
+import "swiper/css/swiper.min.css";
+import "swiper/css/swiper.css";
+import Swiper from "swiper";
 
 class Event extends Component {
   constructor(props) {
@@ -81,6 +82,45 @@ class Event extends Component {
     };
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.Swiperdata !== this.state.Swiperdata) {
+      const swiper = new Swiper(".swiper-container", {
+        direction: "horizontal",
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        centeredSlides: false,
+        spaceBetween: 50,
+        loop: false,
+        reverseDirection: true,
+        stopOnLastSlide: false,
+        // loopAdditionalSlides: 1000,
+        preloadImages: true,
+        updateOnImagesReady: true,
+        observeParents: true,
+        observer: true,
+        breakpoints: {
+          // when window width is >= 640px
+          1: {
+            slidesPerView: 1,
+          },
+          // when window width is >= 918px
+          918: {
+            slidesPerView: 1.5,
+          },
+          // when window width is >= 1400px
+          1400: {
+            slidesPerView: 2.3,
+          },
+          // when window width is >= 2400px
+          2400: {
+            slidesPerView: 3,
+          },
+        },
+      });
+    }
+  }
   // fetch events when page loaded
   async componentDidMount() {
     Promise.all([
@@ -267,43 +307,6 @@ class Event extends Component {
     const { userData, active, clickRegister, setClickRegister, token } =
       this.props;
     const { userSavedEvents, allsavedEvents } = this.state;
-    const params = {
-      slidesPerView: 2,
-      loop: true,
-      speed: 700,
-      spaceBetween: 25,
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-      },
-      autoplay: {
-        delay: 3000,
-        disableOnInteraction: false,
-      },
-      observeParents: true,
-      observer: true,
-
-      breakpoints: {
-        1440: {
-          slidesPerView: 2,
-        },
-        1025: {
-          slidesPerView: 2,
-        },
-        1024: {
-          slidesPerView: 2,
-        },
-        768: {
-          slidesPerView: 2,
-        },
-        640: {
-          slidesPerView: 2,
-        },
-        320: {
-          slidesPerView: 1,
-        },
-      },
-    };
 
     const options = [
       {
@@ -914,8 +917,10 @@ class Event extends Component {
             ) : (
               <>
                 {this.state.Swiperdata.map((event, index) => (
-                  <div key={`${`event_card-ft${index}`}`}>
-                    {/* <Swiper {...params} grabCursor> */}
+                  <div
+                    className="swiper-slide"
+                    key={`${`event_card-ft${index}`}`}
+                  >
                     <EventCardFeatured
                       item={event}
                       attended={event}
@@ -930,7 +935,6 @@ class Event extends Component {
                       token={token}
                       allsavedEvents={allsavedEvents}
                     />
-                    {/* </Swiper> */}
                   </div>
                 ))}
                 <div className="">
