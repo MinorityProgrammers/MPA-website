@@ -82,6 +82,22 @@ class Event extends Component {
     };
   }
 
+  // fetch events when page loaded
+  async componentDidMount() {
+    Promise.all([
+      this.getEvents(),
+      this.getSavedEvents(),
+      this.findSavedEvents(),
+      this.getUserSavedEvents(),
+    ])
+      .then(() => {
+        setTimeout(() => {
+          this.setState({ loading: false });
+        }, 1500);
+      })
+      .catch((err) => console.error(err));
+  }
+
   componentDidUpdate(prevProps, prevState) {
     if (prevState.Swiperdata !== this.state.Swiperdata) {
       const swiper = new Swiper(".swiper-container", {
@@ -120,21 +136,6 @@ class Event extends Component {
         },
       });
     }
-  }
-  // fetch events when page loaded
-  async componentDidMount() {
-    Promise.all([
-      this.getEvents(),
-      this.getSavedEvents(),
-      this.findSavedEvents(),
-      this.getUserSavedEvents(),
-    ])
-      .then(() => {
-        setTimeout(() => {
-          this.setState({ loading: false });
-        }, 1500);
-      })
-      .catch((err) => console.error(err));
   }
 
   // fetch Event data
