@@ -286,7 +286,10 @@ const EventCardFeatured = (props) => {
           <button
             type="button"
             className="button_info"
-            onClick={() => props.handleMoreInfo(props.item ? props.item : "")}
+            onClick={() => {
+              console.log("clicked");
+              props.handleMoreInfo(props.item ? props.item : "");
+            }}
           >
             {" "}
             Details <i className="fas fa-arrow-right ml-2 tw-h-8" />

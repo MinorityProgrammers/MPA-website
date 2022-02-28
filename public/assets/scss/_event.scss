@@ -178,33 +178,34 @@
     cursor: pointer;
     max-width: 1250px;
     margin: 0 auto 3%;
+
     display: flex;
     align-items: center;
     &1 {
-      border-color: var(--tertiary-low-contrast);
+      border-color: rgba(105, 56, 239, 1);
     }
     &1:hover {
-      background-color: var(--secondary-high-contrast);
+      background-color: rgba(105, 56, 239, 1);
     }
     &2 {
-      border-color: var(--tertiary-low-contrast);
+      border-color: rgba(105, 56, 239, 1);
     }
     &2:hover {
-      background-color: var(--secondary-high-contrast);
+      background-color: rgba(105, 56, 239, 1);
       color: white;
     }
     &3 {
-      border-color: var(--tertiary-low-contrast);
+      border-color: rgba(105, 56, 239, 1);
     }
     &3:hover {
-      background-color: var(--secondary-high-contrast);
+      background-color: rgba(105, 56, 239, 1);
       color: white;
     }
     &4 {
-      border-color: var(--tertiary-low-contrast);
+      border-color: rgba(105, 56, 239, 1);
     }
     &4:hover {
-      background-color: var(--secondary-high-contrast);
+      background-color: rgba(105, 56, 239, 1);
     }
     div {
       height: 80px;
@@ -212,6 +213,7 @@
       width: 300px;
       display: flex;
       align-items: center;
+      transition: all 0.2s ease-in;
       justify-content: center;
       flex-direction: column;
 

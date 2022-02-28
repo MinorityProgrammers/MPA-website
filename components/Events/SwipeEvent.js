@@ -16,13 +16,13 @@ const SwipeEvent = ({
   allsavedEvents,
 }) => {
   const params = {
-    slidesPerView: data.length,
-    loop: data.length >= 3,
+    slidesPerView: 2,
+    loop: true,
     speed: 700,
-    spaceBetween: 15,
+    spaceBetween: 25,
     navigation: {
-      nextEl: data.length >= 3 ? ".swiper-button-next" : "",
-      prevEl: data.length >= 3 ? ".swiper-button-prev" : "",
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
     },
     autoplay: {
       delay: 3000,
@@ -30,22 +30,22 @@ const SwipeEvent = ({
     },
     observeParents: true,
     observer: true,
-    rebuildOnUpdate: true,
+
     breakpoints: {
       1440: {
-        slidesPerView: data.length >= 3 ? 2 : data.length,
+        slidesPerView: 2,
       },
       1025: {
-        slidesPerView: data.length >= 3 ? 2 : data.length,
+        slidesPerView: 2,
       },
       1024: {
-        slidesPerView: data.length >= 2 ? 2 : data.length,
+        slidesPerView: 2,
       },
       768: {
-        slidesPerView: data.length >= 2 ? 2 : data.length,
+        slidesPerView: 2,
       },
       640: {
-        slidesPerView: data.length >= 2 ? 2 : data.length,
+        slidesPerView: 2,
       },
       320: {
         slidesPerView: 1,
@@ -55,7 +55,7 @@ const SwipeEvent = ({
   return (
     <>
       <Swiper {...params} grabCursor>
-        {data.map((event, i) => (
+        {data?.map((event, i) => (
           <div className="item" key={`${i + 1}`}>
             <EventCardFeatured
               item={event}

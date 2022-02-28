@@ -528,11 +528,12 @@ class Event extends Component {
       }),
       option: (provided, state) => ({
         ...provided,
-        backgroundColor: state.isSelected
-          ? "var(--tertiary-low-contrast)"
-          : "none",
-        "&:hover": { backgroundColor: "var(--tertiary-high-contrast)" },
-        "&:focused": { backgroundColor: "none" },
+        backgroundColor: state.isSelected ? "#6938EF" : "none",
+        "&:hover": {
+          backgroundColor: "#6938EF",
+          transition: "all 0.3s ease-in",
+        },
+        "&:focused": { backgroundColor: "#6938EF", color: "#6938EF" },
         color: "#fff",
         cursor: "pointer",
         padding: 10,
@@ -540,7 +541,7 @@ class Event extends Component {
       placeholder: (base) => ({
         ...base,
         fontSize: "1em",
-        color: "var(--light-low-contrast)",
+        color: "#fff",
         fontWeight: 500,
       }),
       indicatorSeparator: (base) => ({
@@ -550,7 +551,7 @@ class Event extends Component {
       groupHeading: (base) => ({
         ...base,
         fontSize: "1.02em",
-        color: "#afafaf",
+        color: "#fff",
         fontWeight: 700,
       }),
     };
@@ -820,6 +821,12 @@ class Event extends Component {
                   />
                 </label>
               ))}
+              <span
+                className="clear-button tw-text-white tw-cursor-pointer tw-text-lg tw-font-semibold tw-mt-2"
+                onClick={() => resetFilter()}
+              >
+                Clear Filter
+              </span>
               <div className="img_position">
                 <img
                   src="/assets/images/home-page/about-title-icon.svg"
@@ -885,31 +892,28 @@ class Event extends Component {
           <div className="swiper-container">
             {this.state.loading ? (
               <div className="swiper-wrapper" style={{ width: "100%" }}>
-                <div className="">
-                  <EventCardFeaturedSkeleton />
+                <div className="mr-4">
+                  <EventCardSkeleton />
                 </div>
                 <div className="">
-                  <EventCardFeaturedSkeleton />
+                  <EventCardSkeleton />
                 </div>
               </div>
             ) : catergoryFilterLoading ? (
-              <div className="swiper-wrapper" style={{ width: "80%" }}>
-                <div className="swiper-slide">
-                  <EventCardFeaturedSkeleton />
+              <div className="swiper-wrapper" style={{ width: "100%" }}>
+                <div className="mr-4">
+                  <EventCardSkeleton />
                 </div>
-                <div className="swiper-slide">
-                  <EventCardFeaturedSkeleton />
-                </div>
-                <div className="swiper-slide">
-                  <EventCardFeaturedSkeleton />
-                </div>
-                <div className="swiper-slide">
-                  <EventCardFeaturedSkeleton />
+                <div className="">
+                  <EventCardSkeleton />
                 </div>
               </div>
             ) : Swiperdata.length < 1 ? (
               <div className="swiper-wrapper" style={{ width: "80%" }}>
-                <div className="text-center" style={{ width: "100%" }}>
+                <div
+                  className="text-center tw-text-white tw-font-bold tw-text-2xl"
+                  style={{ width: "100%" }}
+                >
                   Sorry, no events match your filters
                 </div>
               </div>
@@ -958,7 +962,9 @@ class Event extends Component {
             ) : (
               <div className="cards">
                 {AllEvent.length < 1 && (
-                  <div>Sorry, no events match your filters</div>
+                  <div className="tw-text-2xl tw-font-bold">
+                    Sorry, no events match your filters
+                  </div>
                 )}
                 {this.state.AllEvent.map((events, index) => (
                   <EventCard
@@ -999,7 +1005,9 @@ class Event extends Component {
             ) : (
               <div className="cards">
                 {PastEvent.length < 1 && (
-                  <div>Sorry, no events match your filters</div>
+                  <div className="tw-text-2xl tw-font-bold">
+                    Sorry, no events match your filters
+                  </div>
                 )}
 
                 <PastEventCard

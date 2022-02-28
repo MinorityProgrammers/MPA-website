@@ -39,7 +39,8 @@
   background: #6938ef;
   color: white;
   padding: 0 40px;
-  border: 1px solid #6938ef;
+  transition: all 0.2s ease-in;
+  border: 2px solid #6938ef;
   border-radius: 100px;
   font-weight: 500;
   height: 50px;
@@ -47,7 +48,7 @@
 }
 .event_search_button:hover {
   background: none;
-  border-color: white;
+  border-color: #6938ef;
 }
 .event__form {
   display: flex;
