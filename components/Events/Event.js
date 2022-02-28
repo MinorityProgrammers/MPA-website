@@ -12,6 +12,7 @@ import EventMoreInfo from "./EventMoreInfo";
 import Card from "../login-signup/card/index";
 import EventCategoryFilterButton from "./EventCategoryFilterButton";
 import SwipeEvent from "./SwipeEvent";
+import Swiper from "react-id-swiper";
 import PastEventCard from "./PastEventCard";
 
 class Event extends Component {
@@ -95,50 +96,6 @@ class Event extends Component {
       })
       .catch((err) => console.error(err));
   }
-
-  // componentDidUpdate(prevProps, prevState) {
-  //   if (prevState.Swiperdata !== this.state.Swiperdata) {
-  //     const swiper = new Swiper(".swiper-container", {
-  //       direction: "horizontal",
-  //       navigation: {
-  //         nextEl: ".swiper-button-next",
-  //         prevEl: ".swiper-button-prev",
-  //       },
-  //       autoplay: {
-  //         delay: 3000,
-  //         disableOnInteraction: false,
-  //       },
-  //       centeredSlides: true,
-  //       spaceBetween: 15,
-  //       loop: false,
-  //       reverseDirection: true,
-  //       stopOnLastSlide: false,
-  //       // loopAdditionalSlides: 1000,
-  //       preloadImages: true,
-  //       updateOnImagesReady: true,
-  //       observeParents: true,
-  //       observer: true,
-  //       breakpoints: {
-  //         // when window width is >= 640px
-  //         200: {
-  //           slidesPerView: 1,
-  //         },
-  //         // when window width is >= 918px
-  //         918: {
-  //           slidesPerView: 1.5,
-  //         },
-  //         // when window width is >= 1400px
-  //         1400: {
-  //           slidesPerView: 2,
-  //         },
-  //         // when window width is >= 2400px
-  //         2400: {
-  //           slidesPerView: 2,
-  //         },
-  //       },
-  //     });
-  //   }
-  // }
 
   // fetch Event data
   getEvents = async () => {
@@ -310,6 +267,43 @@ class Event extends Component {
     const { userData, active, clickRegister, setClickRegister, token } =
       this.props;
     const { userSavedEvents, allsavedEvents } = this.state;
+    const params = {
+      slidesPerView: 2,
+      loop: true,
+      speed: 700,
+      spaceBetween: 25,
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+      },
+      observeParents: true,
+      observer: true,
+
+      breakpoints: {
+        1440: {
+          slidesPerView: 2,
+        },
+        1025: {
+          slidesPerView: 2,
+        },
+        1024: {
+          slidesPerView: 2,
+        },
+        768: {
+          slidesPerView: 2,
+        },
+        640: {
+          slidesPerView: 2,
+        },
+        320: {
+          slidesPerView: 1,
+        },
+      },
+    };
 
     const options = [
       {
@@ -919,20 +913,26 @@ class Event extends Component {
               </div>
             ) : (
               <>
-                <div className="">
-                  <SwipeEvent
-                    data={this.state.Swiperdata}
-                    userSavedEvents={userSavedEvents}
-                    handleMoreInfo={handleMoreInfo}
-                    active={active}
-                    setClickRegister={setClickRegister}
-                    userEvent={this.state.userEvents}
-                    clickRegister={clickRegister}
-                    userData={userData}
-                    token={token}
-                    allsavedEvents={allsavedEvents}
-                  />
-                </div>
+                {this.state.Swiperdata.map((event, index) => (
+                  <div key={`${`event_card-ft${index}`}`}>
+                    {/* <Swiper {...params} grabCursor> */}
+                    <EventCardFeatured
+                      item={event}
+                      attended={event}
+                      userSavedEvents={userSavedEvents}
+                      /* key={index} */
+                      handleMoreInfo={handleMoreInfo}
+                      active={active}
+                      setClickRegister={setClickRegister}
+                      userEvent={this.state.userEvents}
+                      clickRegister={clickRegister}
+                      userData={userData}
+                      token={token}
+                      allsavedEvents={allsavedEvents}
+                    />
+                    {/* </Swiper> */}
+                  </div>
+                ))}
                 <div className="">
                   <img
                     src="/assets/images/home-page/about-title-icon.svg"
