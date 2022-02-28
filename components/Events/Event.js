@@ -2,19 +2,17 @@
 /* eslint-disable max-len */
 import React, { Component } from "react";
 import axios from "axios";
-import Swiper from "swiper";
 import Select from "react-select";
 import CreateEvent from "../CreateEvent";
 import EventCard from "./EventCard";
 import EventCardFeatured from "./EventCardFeatured";
 import EventCardSkeleton from "./EventCardSkeleton";
 import EventCardFeaturedSkeleton from "./EventCardFeaturedSkeleton";
-import "swiper/css/swiper.min.css";
-import "swiper/css/swiper.css";
 import EventMoreInfo from "./EventMoreInfo";
 import Card from "../login-signup/card/index";
 import EventCategoryFilterButton from "./EventCategoryFilterButton";
 import SwipeEvent from "./SwipeEvent";
+import PastEventCard from "./PastEventCard";
 
 class Event extends Component {
   constructor(props) {
@@ -98,49 +96,49 @@ class Event extends Component {
       .catch((err) => console.error(err));
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    if (prevState.Swiperdata !== this.state.Swiperdata) {
-      const swiper = new Swiper(".swiper-container", {
-        direction: "horizontal",
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        },
-        autoplay: {
-          delay: 3000,
-          disableOnInteraction: false,
-        },
-        centeredSlides: true,
-        spaceBetween: 15,
-        loop: false,
-        reverseDirection: true,
-        stopOnLastSlide: false,
-        // loopAdditionalSlides: 1000,
-        preloadImages: true,
-        updateOnImagesReady: true,
-        observeParents: true,
-        observer: true,
-        breakpoints: {
-          // when window width is >= 640px
-          200: {
-            slidesPerView: 1,
-          },
-          // when window width is >= 918px
-          918: {
-            slidesPerView: 1.5,
-          },
-          // when window width is >= 1400px
-          1400: {
-            slidesPerView: 2,
-          },
-          // when window width is >= 2400px
-          2400: {
-            slidesPerView: 2,
-          },
-        },
-      });
-    }
-  }
+  // componentDidUpdate(prevProps, prevState) {
+  //   if (prevState.Swiperdata !== this.state.Swiperdata) {
+  //     const swiper = new Swiper(".swiper-container", {
+  //       direction: "horizontal",
+  //       navigation: {
+  //         nextEl: ".swiper-button-next",
+  //         prevEl: ".swiper-button-prev",
+  //       },
+  //       autoplay: {
+  //         delay: 3000,
+  //         disableOnInteraction: false,
+  //       },
+  //       centeredSlides: true,
+  //       spaceBetween: 15,
+  //       loop: false,
+  //       reverseDirection: true,
+  //       stopOnLastSlide: false,
+  //       // loopAdditionalSlides: 1000,
+  //       preloadImages: true,
+  //       updateOnImagesReady: true,
+  //       observeParents: true,
+  //       observer: true,
+  //       breakpoints: {
+  //         // when window width is >= 640px
+  //         200: {
+  //           slidesPerView: 1,
+  //         },
+  //         // when window width is >= 918px
+  //         918: {
+  //           slidesPerView: 1.5,
+  //         },
+  //         // when window width is >= 1400px
+  //         1400: {
+  //           slidesPerView: 2,
+  //         },
+  //         // when window width is >= 2400px
+  //         2400: {
+  //           slidesPerView: 2,
+  //         },
+  //       },
+  //     });
+  //   }
+  // }
 
   // fetch Event data
   getEvents = async () => {
@@ -797,6 +795,14 @@ class Event extends Component {
                 Search
               </button>
             </form>
+            <div>
+              <img
+                src="/assets/images/bg-shadow-circle.png"
+                className="tw-absolute"
+                style={{ top: "4%", left: "1%" }}
+                alt="background"
+              />
+            </div>
             <div className="mt-4 tw-flex tw-flex-row event_select_grid">
               {options.map(({ label, options }) => (
                 <label className="tw-mr-8">
@@ -814,14 +820,20 @@ class Event extends Component {
                   />
                 </label>
               ))}
+              <div className="img_position">
+                <img
+                  src="/assets/images/home-page/about-title-icon.svg"
+                  alt="bg"
+                />
+              </div>
             </div>
+
             <div className="mobile_event_select">
               <Select
                 id="form-filter"
                 instanceId="form-filter"
                 options={options}
                 className="event_Select tw-select-none"
-                placeholder="Filter Search"
                 styles={selectStyles}
                 closeMenuOnSelect
                 isSearchable={false}
@@ -856,32 +868,27 @@ class Event extends Component {
               ""
             )}
           </div>
+          <div>
+            <img
+              src="/assets/images/bg-shadow-circle.png"
+              className="tw-absolute"
+              style={{ top: "9%", left: "50%" }}
+              alt="background"
+            />
+          </div>
 
           <div className="event_divide">
             <h1>Featured&nbsp;Events</h1>
-            <div className="rule" />
-            <div className="swiper-navigation_container">
-              <div className="swiper-navigation">
-                <div className="swiper-button-prev" />
-                <div className="swiper-button-next" />
-              </div>
-            </div>
           </div>
 
           {/* LOADING SKELETON HERE */}
           <div className="swiper-container">
             {this.state.loading ? (
               <div className="swiper-wrapper" style={{ width: "100%" }}>
-                <div className="swiper-slide">
+                <div className="">
                   <EventCardFeaturedSkeleton />
                 </div>
-                <div className="swiper-slide">
-                  <EventCardFeaturedSkeleton />
-                </div>
-                <div className="swiper-slide">
-                  <EventCardFeaturedSkeleton />
-                </div>
-                <div className="swiper-slide">
+                <div className="">
                   <EventCardFeaturedSkeleton />
                 </div>
               </div>
@@ -907,48 +914,33 @@ class Event extends Component {
                 </div>
               </div>
             ) : (
-              <div className="">
-                <SwipeEvent
-                  data={this.state.Swiperdata}
-                  userSavedEvents={userSavedEvents}
-                  handleMoreInfo={handleMoreInfo}
-                  active={active}
-                  setClickRegister={setClickRegister}
-                  userEvent={this.state.userEvents}
-                  clickRegister={clickRegister}
-                  userData={userData}
-                  token={token}
-                  allsavedEvents={allsavedEvents}
-                />
-
-                {/* {this.state.Swiperdata.map((event, index) => (
-                  <div
-                    className="swiper-slide"
-                    key={`${`event_card-ft${index}`}`}
-                  >
-                    <EventCardFeatured
-                      item={event}
-                      attended={event}
-                      userSavedEvents={userSavedEvents}
-                      key={index}
-                      handleMoreInfo={handleMoreInfo}
-                      active={active}
-                      setClickRegister={setClickRegister}
-                      userEvent={this.state.userEvents}
-                      clickRegister={clickRegister}
-                      userData={userData}
-                      token={token}
-                      allsavedEvents={allsavedEvents}
-                    />
-                  </div>
-                ))} */}
-              </div>
+              <>
+                <div className="">
+                  <SwipeEvent
+                    data={this.state.Swiperdata}
+                    userSavedEvents={userSavedEvents}
+                    handleMoreInfo={handleMoreInfo}
+                    active={active}
+                    setClickRegister={setClickRegister}
+                    userEvent={this.state.userEvents}
+                    clickRegister={clickRegister}
+                    userData={userData}
+                    token={token}
+                    allsavedEvents={allsavedEvents}
+                  />
+                </div>
+                <div className="">
+                  <img
+                    src="/assets/images/home-page/about-title-icon.svg"
+                    alt="bg"
+                  />
+                </div>
+              </>
             )}
           </div>
 
           <div className="event_divide event_divide_second">
             <h1>Active&nbsp;Events</h1>
-            <div className="rule" />
           </div>
           {/* LOADING SKELETON HERE */}
           <div className="event_container_section">
@@ -956,12 +948,9 @@ class Event extends Component {
               <div className="cards">
                 <EventCardSkeleton />
                 <EventCardSkeleton />
-                <EventCardSkeleton />
-                <EventCardSkeleton />
               </div>
             ) : catergoryFilterLoading ? (
               <div className="cards">
-                <EventCardSkeleton />
                 <EventCardSkeleton />
                 <EventCardSkeleton />
                 <EventCardSkeleton />
@@ -994,21 +983,16 @@ class Event extends Component {
 
           <div className="event_divide">
             <h1>Past&nbsp;Events</h1>
-            <div className="rule" />
           </div>
           {/* LOADING SKELETON HERE */}
           <div className="event_container_section">
-            {this.state.loading ? (
+            {!this.state.loading ? (
               <div className="cards">
-                <EventCardSkeleton />
-                <EventCardSkeleton />
                 <EventCardSkeleton />
                 <EventCardSkeleton />
               </div>
             ) : catergoryFilterLoading ? (
               <div className="cards">
-                <EventCardSkeleton />
-                <EventCardSkeleton />
                 <EventCardSkeleton />
                 <EventCardSkeleton />
               </div>
@@ -1017,23 +1001,21 @@ class Event extends Component {
                 {PastEvent.length < 1 && (
                   <div>Sorry, no events match your filters</div>
                 )}
-                {this.state.PastEvent.map((events, index) => (
-                  <EventCard
-                    item={events}
-                    attended={userSavedEvents}
-                    userSavedEvents={userSavedEvents}
-                    userEvent={this.state.userEvents}
-                    key={`${`event_card${index}`}`}
-                    handleMoreInfo={handleMoreInfo}
-                    active={active}
-                    setClickRegister={setClickRegister}
-                    clickRegister={clickRegister}
-                    userData={userData}
-                    token={token}
-                    allsavedEvents={allsavedEvents}
-                    getUserSavedEvents={this.getUserSavedEvents}
-                  />
-                ))}
+
+                <PastEventCard
+                  data={this.state.PastEvent}
+                  attended={userSavedEvents}
+                  userSavedEvents={userSavedEvents}
+                  userEvent={this.state.userEvents}
+                  handleMoreInfo={handleMoreInfo}
+                  active={active}
+                  setClickRegister={setClickRegister}
+                  clickRegister={clickRegister}
+                  userData={userData}
+                  token={token}
+                  allsavedEvents={allsavedEvents}
+                  getUserSavedEvents={this.getUserSavedEvents}
+                />
               </div>
             )}
           </div>
@@ -1041,7 +1023,6 @@ class Event extends Component {
           <div className="event_myevent">
             <div className="event_divide">
               <h1>My&nbsp;Events</h1>
-              <div className="rule" />
             </div>
 
             {userData !== null ? (
@@ -1112,6 +1093,14 @@ class Event extends Component {
                             />
                           </div>
                         ))}
+                    </div>
+                    <div>
+                      <img
+                        src="/assets/images/bg-shadow-circle.png"
+                        className="tw-absolute"
+                        style={{ top: "10%" }}
+                        alt="background"
+                      />
                     </div>
                     <div className="swiper-navigation_container">
                       <div className="swiper-navigation">

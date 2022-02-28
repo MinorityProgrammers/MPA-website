@@ -33,6 +33,10 @@
       .swiper-wrapper {
         position: relative;
         width: 100%;
+        flex-direction: row;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         z-index: 1;
         transition-property: transform;
         box-sizing: content-box;
@@ -78,9 +82,9 @@
 
         .eventcard {
           &_container {
-            flex-direction: column !important;
+            flex-direction: row;
             min-width: 280px;
-            width: 350px;
+            width: 450px;
             margin: 17px;
           }
           &_image {
@@ -91,6 +95,10 @@
             width: 100%;
           }
           &_top {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            width: 90%;
             h2 {
               margin-top: 5px;
               display: -webkit-box;
@@ -570,8 +578,8 @@
 
 .eventcard {
   &_container {
-    height: 100%;
-    width: 100%;
+    height: 262px;
+    width: 500px;
     padding: 0 !important;
     display: flex;
     flex-direction: row;
@@ -590,7 +598,7 @@
     height: auto;
     width: 50%;
     position: relative;
-    margin-right: 45px;
+    margin-right: 15px;
 
     img {
       width: 100%;
@@ -625,6 +633,7 @@
   &_content {
     width: 40%;
     display: flex;
+    height: 100%;
     flex-direction: column;
     justify-content: center;
     color: var(--light-low-contrast);
@@ -633,12 +642,13 @@
   &_top {
     h2 {
       font-weight: 500;
-      font-size: 3vh;
+      font-size: 18px;
       text-transform: capitalize;
     }
     .date {
-      display: flex;
-      font-size: 2vh;
+      // display: flex;
+      font-size: 12px;
+      color: linear-gradient(90.87deg, #9379ff -2.84%, #33d2ff 82.04%);
     }
   }
 
@@ -646,7 +656,6 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin-top: 60px;
     .save {
       color: #f700ff !important;
       margin-bottom: 10px;
@@ -660,9 +669,11 @@
       background: linear-gradient(91.39deg, #ff00b8 17.68%, #cc00ff 106.94%);
       border-radius: 35px;
       margin-bottom: 5px;
+      margin-top: 5px;
       margin-left: 20px;
-      width: 100px;
-      padding: 7px;
+      width: 120px;
+      padding: 10px 10px 0 10px;
+      font-weight: 550;
 
       // width: 40%;
     }
@@ -681,11 +692,13 @@
   }
   @media only screen and (max-width: 520px) {
     &_container {
-      flex-direction: column;
+      flex-direction: column !important;
+      height: 100% !important;
+      width: 100%;
     }
     &_image {
       margin-right: 0;
-
+      width: 100%;
       img {
         border-top-right-radius: 16px;
         border-bottom-right-radius: 16px;
@@ -693,7 +706,8 @@
     }
     &_content {
       margin-top: 10px;
-      width: 100%;
+      width: 90%;
+      margin-left: 20px;
     }
     &_bottom {
       margin-top: 10px;

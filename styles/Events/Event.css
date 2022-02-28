@@ -89,3 +89,21 @@
     display: none !important;
   }
 }
+.past_event__container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.img_position {
+  position: absolute;
+  top: 4%;
+  right: 5%;
+}
+
+.eventcard_container_skeleton {
+  width: 100%;
+}

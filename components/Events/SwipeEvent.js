@@ -1,5 +1,6 @@
 import React from "react";
-import Swiper from "swiper";
+import "swiper/css/swiper.css";
+import Swiper from "react-id-swiper";
 import EventCardFeatured from "./EventCard";
 
 const SwipeEvent = ({
@@ -15,10 +16,10 @@ const SwipeEvent = ({
   allsavedEvents,
 }) => {
   const params = {
-    // slidesPerView: data.length,
-    // loop: data.length >= 3,
+    slidesPerView: data.length,
+    loop: data.length >= 3,
     speed: 700,
-    spaceBetween: 0,
+    spaceBetween: 15,
     navigation: {
       nextEl: data.length >= 3 ? ".swiper-button-next" : "",
       prevEl: data.length >= 3 ? ".swiper-button-prev" : "",
@@ -31,21 +32,23 @@ const SwipeEvent = ({
     observer: true,
     rebuildOnUpdate: true,
     breakpoints: {
-      // when window width is >= 640px
-      200: {
+      1440: {
+        slidesPerView: data.length >= 3 ? 2 : data.length,
+      },
+      1025: {
+        slidesPerView: data.length >= 3 ? 2 : data.length,
+      },
+      1024: {
+        slidesPerView: data.length >= 2 ? 2 : data.length,
+      },
+      768: {
+        slidesPerView: data.length >= 2 ? 2 : data.length,
+      },
+      640: {
+        slidesPerView: data.length >= 2 ? 2 : data.length,
+      },
+      320: {
         slidesPerView: 1,
-      },
-      // when window width is >= 918px
-      918: {
-        slidesPerView: 1.5,
-      },
-      // when window width is >= 1400px
-      1400: {
-        slidesPerView: 2,
-      },
-      // when window width is >= 2400px
-      2400: {
-        slidesPerView: 2,
       },
     },
   };

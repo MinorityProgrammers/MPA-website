@@ -1,5 +1,5 @@
-import React from 'react';
-import ContentLoader from 'react-content-loader';
+import React from "react";
+import ContentLoader from "react-content-loader";
 
 const EventCardSkeleton = () => (
   <div className="eventcard_container">
@@ -8,7 +8,7 @@ const EventCardSkeleton = () => (
         viewBox="0 0 350 510"
         speed={1}
         width={350}
-        height={510}
+        height={310}
         backgroundColor="#cbc8c8"
         foregroundColor="#ecebeb"
       >

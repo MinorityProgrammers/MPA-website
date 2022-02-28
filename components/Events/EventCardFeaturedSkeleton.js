@@ -1,14 +1,14 @@
-import React from 'react';
-import ContentLoader from 'react-content-loader';
+import React from "react";
+import ContentLoader from "react-content-loader";
 
 const EventCardFeaturedSkeleton = () => (
-  <div className="eventcard_container">
+  <div className="eventcard_container_skeleton">
     <div className="eventcard_image">
       <ContentLoader
         viewBox="0 0 720 510"
         speed={1}
-        width={720}
-        height={510}
+        width={520}
+        height={210}
         backgroundColor="#cbc8c8"
         foregroundColor="#ecebeb"
       >
