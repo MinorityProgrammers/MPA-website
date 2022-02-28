@@ -106,11 +106,17 @@ class Event extends Component {
           nextEl: ".swiper-button-next",
           prevEl: ".swiper-button-prev",
         },
-        centeredSlides: false,
-        spaceBetween: 50,
-        loop: false,
+        centeredSlides: true,
+        speed: 700,
+        spaceBetween: 20,
+        autoplay: {
+          delay: 2500,
+          disableOnInteraction: false,
+        },
+        // loop: true,
         reverseDirection: true,
-        stopOnLastSlide: false,
+        slideToClickedSlide: true,
+        // loopedSlides: 50,
         // loopAdditionalSlides: 1000,
         preloadImages: true,
         updateOnImagesReady: true,
@@ -123,15 +129,15 @@ class Event extends Component {
           },
           // when window width is >= 918px
           918: {
-            slidesPerView: 1.5,
+            slidesPerView: 2,
           },
           // when window width is >= 1400px
           1400: {
-            slidesPerView: 2.3,
+            slidesPerView: 2,
           },
           // when window width is >= 2400px
           2400: {
-            slidesPerView: 3,
+            slidesPerView: 2,
           },
         },
       });
@@ -775,6 +781,43 @@ class Event extends Component {
       });
       this.filterEvents();
     };
+    const params = {
+      slidesPerView: 2,
+      loop: true,
+      speed: 700,
+      spaceBetween: 25,
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+      },
+      observeParents: true,
+      observer: true,
+
+      breakpoints: {
+        1440: {
+          slidesPerView: 2,
+        },
+        1025: {
+          slidesPerView: 2,
+        },
+        1024: {
+          slidesPerView: 2,
+        },
+        768: {
+          slidesPerView: 2,
+        },
+        640: {
+          slidesPerView: 2,
+        },
+        320: {
+          slidesPerView: 1,
+        },
+      },
+    };
 
     return (
       <div className="event_wrapper">
@@ -917,27 +960,34 @@ class Event extends Component {
               </div>
             ) : (
               <>
-                {this.state.Swiperdata.map((event, index) => (
-                  <div
-                    className="swiper-slide"
-                    key={`${`event_card-ft${index}`}`}
-                  >
-                    <EventCardFeatured
-                      item={event}
-                      attended={event}
-                      userSavedEvents={userSavedEvents}
-                      /* key={index} */
-                      handleMoreInfo={handleMoreInfo}
-                      active={active}
-                      setClickRegister={setClickRegister}
-                      userEvent={this.state.userEvents}
-                      clickRegister={clickRegister}
-                      userData={userData}
-                      token={token}
-                      allsavedEvents={allsavedEvents}
-                    />
+                <div className="swiper-wrapper">
+                  {this.state.Swiperdata.map((event, index) => (
+                    <div
+                      className="swiper-slide"
+                      key={`${`event_card-ft${index}`}`}
+                    >
+                      <EventCardFeatured
+                        item={event}
+                        attended={event}
+                        userSavedEvents={userSavedEvents}
+                        handleMoreInfo={handleMoreInfo}
+                        active={active}
+                        setClickRegister={setClickRegister}
+                        userEvent={this.state.userEvents}
+                        clickRegister={clickRegister}
+                        userData={userData}
+                        token={token}
+                        allsavedEvents={allsavedEvents}
+                      />
+                    </div>
+                  ))}
+                </div>
+                <div className="swiper-navigation_container">
+                  <div className="swiper-navigation">
+                    <div className="swiper-button-prev" />
+                    <div className="swiper-button-next" />
                   </div>
-                ))}
+                </div>
                 <div className="">
                   <img
                     src="/assets/images/home-page/about-title-icon.svg"
