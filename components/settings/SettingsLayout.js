@@ -218,7 +218,7 @@ const SettingsLayout = ({
                         onClick={() => { setIsModalVisible(false); setGenerateAvatarPopUp(true); }}
                         className={styles.editIcon}
                       />
-                      <div onClick={showModal}>View</div>
+                      <div onClick={showModal}><p className="tw-text-sm tw-font-medium">View</p></div>
                     </div>
                     <div className={styles.textDiv}>
                       <p>

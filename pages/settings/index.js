@@ -25,7 +25,10 @@ const index = () => {
     if (data === null) {
       router.push('/auth');
     }
-  }, [data]);
+  }, [data, typeof window !== 'undefined'
+    ? window.localStorage.getItem('jwtToken')
+    : null]);
+
   useEffect(() => {
     if (profileStep && Object.keys(data).length > 0) {
       setTabsActive({
