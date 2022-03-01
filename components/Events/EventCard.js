@@ -292,7 +292,7 @@ const EventCardFeatured = (props) => {
             }}
           >
             {" "}
-            Details <i className="fas fa-arrow-right ml-2 tw-h-8" />
+            Details <i className="fas fa-arrow-right ml-2" />
           </button>
           {/* Check save events Register label */}
           {/* {eventTime < dateNow ? (

@@ -123,21 +123,23 @@ class Event extends Component {
         observeParents: true,
         observer: true,
         breakpoints: {
-          // when window width is >= 640px
-          1: {
+          1440: {
+            slidesPerView: 2.5,
+          },
+          1025: {
+            slidesPerView: 2,
+          },
+          1024: {
+            slidesPerView: 2,
+          },
+          768: {
+            slidesPerView: 2,
+          },
+          640: {
+            slidesPerView: 2,
+          },
+          320: {
             slidesPerView: 1,
-          },
-          // when window width is >= 918px
-          918: {
-            slidesPerView: 2,
-          },
-          // when window width is >= 1400px
-          1400: {
-            slidesPerView: 2,
-          },
-          // when window width is >= 2400px
-          2400: {
-            slidesPerView: 2,
           },
         },
       });
@@ -781,43 +783,6 @@ class Event extends Component {
       });
       this.filterEvents();
     };
-    const params = {
-      slidesPerView: 2,
-      loop: true,
-      speed: 700,
-      spaceBetween: 25,
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-      },
-      autoplay: {
-        delay: 3000,
-        disableOnInteraction: false,
-      },
-      observeParents: true,
-      observer: true,
-
-      breakpoints: {
-        1440: {
-          slidesPerView: 2,
-        },
-        1025: {
-          slidesPerView: 2,
-        },
-        1024: {
-          slidesPerView: 2,
-        },
-        768: {
-          slidesPerView: 2,
-        },
-        640: {
-          slidesPerView: 2,
-        },
-        320: {
-          slidesPerView: 1,
-        },
-      },
-    };
 
     return (
       <div className="event_wrapper">
@@ -863,7 +828,7 @@ class Event extends Component {
                 </label>
               ))}
               <span
-                className="clear-button tw-text-white tw-cursor-pointer tw-text-lg tw-font-semibold tw-mt-2"
+                className="clear-button tw-text-white tw-cursor-pointer tw-text-base tw-font-semibold tw-mt-2"
                 onClick={() => resetFilter()}
               >
                 Clear Filter
@@ -928,6 +893,12 @@ class Event extends Component {
           <div className="event_divide">
             <h1>Featured&nbsp;Events</h1>
           </div>
+          <div className="swiper-navigation_container">
+            <div className="swiper-navigation">
+              <div className="swiper-button-prev" />
+              <div className="swiper-button-next" />
+            </div>
+          </div>
 
           {/* LOADING SKELETON HERE */}
           <div className="swiper-container">
@@ -982,12 +953,7 @@ class Event extends Component {
                     </div>
                   ))}
                 </div>
-                <div className="swiper-navigation_container">
-                  <div className="swiper-navigation">
-                    <div className="swiper-button-prev" />
-                    <div className="swiper-button-next" />
-                  </div>
-                </div>
+
                 <div className="">
                   <img
                     src="/assets/images/home-page/about-title-icon.svg"
@@ -1047,7 +1013,7 @@ class Event extends Component {
           </div>
           {/* LOADING SKELETON HERE */}
           <div className="event_container_section">
-            {!this.state.loading ? (
+            {this.state.loading ? (
               <div className="cards">
                 <EventCardSkeleton />
                 <EventCardSkeleton />

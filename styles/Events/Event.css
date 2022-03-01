@@ -89,6 +89,10 @@
   .event_select_grid {
     display: none !important;
   }
+  .about_footer {
+    height: 10% !important;
+    padding-bottom: 20px;
+  }
 }
 .past_event__container {
   display: flex;
@@ -107,4 +111,59 @@
 
 .eventcard_container_skeleton {
   width: 100%;
+}
+
+.swiper-navigation_container {
+  position: relative;
+  float: right;
+  width: 150px;
+  height: 40px;
+  top: 350px;
+  padding-top: 20px;
+  display: flex;
+  justify-content: center;
+  z-index: 50;
+}
+.swiper-navigation {
+  display: flex;
+  width: 100px;
+  height: auto;
+  margin-bottom: 0.7rem;
+}
+.swiper-button-prev,
+.swiper-button-next {
+  position: relative;
+  background: none;
+  border: none;
+  color: var(--light-low-contrast);
+  opacity: 0.65;
+}
+.clear-button:hover {
+  opacity: 0.6;
+  transition: all 0.3 ease-in-out;
+}
+
+.about_footer {
+  height: 50%;
+}
+.about_body {
+  height: 80%;
+  display: flex;
+  margin-left: 30px;
+  margin-top: 40px;
+  flex-direction: column;
+}
+
+.about_body h3 {
+  color: white;
+  font-size: 24px;
+  font-weight: 600;
+}
+.about_body p {
+  color: white;
+  font-size: 20px;
+  font-weight: 400;
+}
+.clear-button {
+  transition: 0.3s;
 }
