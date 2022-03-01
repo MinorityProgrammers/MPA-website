@@ -2,11 +2,11 @@ import React from 'react';
 import 'chart.js/auto';
 import { Doughnut } from 'react-chartjs-2';
 
-const DonutChartComponent = ({ data }) => {
+const DonutChartComponent = ({ data, winSize }) => {
   const options = {
     responsive: true,
     maintainAspectRatio: true,
-    cutout: 35,
+    cutout: winSize >= 1100 ? 35 : 50,
     layout: {
     //   padding: 5,
     },

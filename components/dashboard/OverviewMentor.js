@@ -106,7 +106,7 @@ const OverviewMentor = ({ token, userData }) => {
           </div>
         </div>
       </div>
-      <div className="" style={{ height: '85%' }}>
+      <div className="tw-flex" style={{ height: '85%' }}>
         {loading ? (
           <div style={{ height: '100%', width: '100%', overflowX: 'hidden' }}>
             <div

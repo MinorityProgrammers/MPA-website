@@ -101,7 +101,7 @@ const OverviewCourses = ({ token, userData }) => {
     >
       {/* First row */}
       <div
-        className="d-flex flex-row justify-content-between align-items-center"
+        className="d-flex dashboard-cards-tab flex-row justify-content-between align-items-center"
         style={{ height: '15%', marginBottom: '2%' }}
       >
         <div>
@@ -121,7 +121,7 @@ const OverviewCourses = ({ token, userData }) => {
           style={{ overflowY: 'hidden' }}
         >
           <div
-            className="d-flex flex-row justify-content-between"
+            className="d-flex overview-course-tabs flex-row justify-content-between"
             style={{ height: '25px' }}
           >
             <div

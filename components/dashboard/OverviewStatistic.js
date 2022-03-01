@@ -4,7 +4,7 @@ import { Chart } from 'react-google-charts';
 import Skeleton from 'react-loading-skeleton';
 import DonutChartComponent from './DonutChartComponent';
 
-const OverviewStatistic = () => {
+const OverviewStatistic = ({ winSize }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -231,18 +231,21 @@ const OverviewStatistic = () => {
           }}
         >
           <DonutChartComponent
+            winSize={winSize}
             data={dummyData1}
             title="Courses Completed"
             centerText="Completed"
             colorText="#6A0C8B"
           />
           <DonutChartComponent
+            winSize={winSize}
             data={dummyData2}
             title="Proposals"
             centerText="Approved"
             colorText="#2D761B"
           />
           <DonutChartComponent
+            winSize={winSize}
             data={dummyData3}
             title="Tasks"
             centerText="Completed"

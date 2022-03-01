@@ -80,7 +80,6 @@
   height: auto;
 
 }
-
 .dashboard-navbar-button{
   padding: 20px 15px;
   cursor: pointer;
@@ -99,7 +98,7 @@
 }
 
 .component-mobile-button{
-  background: #E0E0E0 ;
+  background: #1C1D37 ;
   margin-bottom: 2%;
   border-radius: 5px;
   /* padding-left: 2%; */
@@ -108,15 +107,17 @@
 .hide-mobile-component{
   display: none;
 }
-
 .component-mobile-button p{
+  color: rgb(255, 255, 255);
+} 
+
+.component-mobile-button>div> p{
   font-size: 16px;
-  color: black;
 }
 .open-component-button{
   font-size: 24px;
   line-height: 32px;
-  color: #151371;
+  color: #ffffff;
 }
 /* .open-component-button:active, .open-component-button:focus{
   animation: rotate90 0.2s 1 forwards;
@@ -143,8 +144,10 @@
 
 .dashboard-card{
   border-radius: 5px;
-  background: white;
+  background: #1C1D37;
   padding: 12px 20px;
+  box-shadow: 0px 32px 41px rgba(0, 0, 0, 0.25);
+  // border-radius: 20px;
 }
 
 .missing-api-dashboard-card{
@@ -551,7 +554,7 @@
   border-radius: 20px !important;
 }
 .row-custom-span-3{
-  grid-row: span 2 / span 2 !important;
+  grid-row: span 3 / span 3 !important;
 }
 .row-custom-span-6{
   grid-row: span 6 / span 6 !important;
@@ -617,6 +620,7 @@
   font-weight: 500;
 }
 .button-more{
+  color: white;
   background: #6938EF;
   border-radius: 100px;
   padding: 10px 30px;
@@ -736,5 +740,140 @@
   font-size: 12px;
   line-height: 15px;
   color: #D8D8D8;
-
 }
+.row-custom-6{
+  grid-row: span 6 / span 6 ;
+}
+@media only screen and (max-width: 1440px) {
+  .static-chart-detail .labels{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-gap: 10%;
+  }
+  .static-chart-detail{
+    margin-top: 5px;
+  }
+  .dashboard-chapter-details{
+    margin-bottom: 10px !important;
+    height: 70%;
+  }
+  .dashboard-chapter-details .img-container{
+   height: 100%; 
+  } 
+  .dashboard-chapter-location{
+    margin-bottom: 10px !important;
+  }
+  .dashboard-progress-tasklist{
+    height: 45px;
+    margin-top: auto;
+  }
+  .dashboard-progress-tasklist >div{
+    height: 100%;
+  }
+  .dashboard-pofile-card{
+    flex-direction: row !important;
+    flex-wrap: wrap;
+    justify-content: space-evenly !important;
+  }
+  .mentorship-mentee-title{
+    padding:5px 0;
+    margin: 0;
+  }
+}
+@media only screen and (max-width: 1100px) {
+  .dashboard-pofile-card{
+    flex-direction: column !important;
+    // min-width: 350px;
+    // max-width: 450px;
+    flex-wrap: initial;
+    text-align: center;
+  }
+  .inner-dashboard-container{
+    width: 450px;
+  }
+  .dashboard-progress-tasklist{
+    height: auto;
+  }
+  .dashboard-progress-chart .chart-inner-text{
+    top: 37%;
+  }
+  .dashboard-progress-chart .chart-inner-text p{
+    font-size: 12px;
+    line-height: 16px;
+  }
+  .button-more{
+    margin: 10px 0;
+  }
+  .dashboard-card{
+    color: white;
+  }
+  .dashboard-cards-tab{
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+  .dashboard-cards-tab >div{
+    margin: 10px 0;
+  }
+  .dashboard-static-chart{
+    width: 45%;
+  }
+  .static-chart-detail .labels{
+    display: flex;
+  }
+  .static-card{
+    justify-content: space-evenly;
+  }
+  .dashboard-chapter-location p{
+    color: white;
+  }
+  .overview-startups-card{
+    height: 200px !important;
+  }
+  .overview-course-tabs{
+    flex-wrap: wrap;
+    height: fit-content !important;
+  }
+  .overview-course-tabs div{
+    margin: 5px 0;
+  }
+  .button-more{
+    padding: 5px 0;
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
+  }
+  .overview-course-card-description{
+    display: none;
+  }
+  .overview-course-card-info{
+    justify-content: center;
+  }
+  .overview-course-currency{
+    display: none !important;
+  }
+  .overview-course-detail{
+    width: 100%;
+  }
+  .view-course{
+    width: 100px;
+    padding: 2px 0;
+    height: fit-content;
+    text-align: center;
+    justify-content: center;
+    margin: auto;
+  }
+  .dashboard-projects-thumbnail{
+    height: 200px;
+  }
+  .overview-projects-swiper{
+    height: fit-content !important;
+  }
+}
+@media only screen and (max-width: 460px) {
+  .inner-dashboard-container{
+    width: 100%;
+  }
+  .overview-course-detail{
+    width: 30% !important;
+  }
+}  

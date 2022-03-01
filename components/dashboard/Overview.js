@@ -75,7 +75,7 @@ const Components = [
   },
 ];
 
-const DesktopView2 = ({ userData, token }) => (
+const DesktopView2 = ({ userData, token, winSize }) => (
   <div>
     <div
       className="d-flex flex-row justify-content-between align-items-center "
@@ -90,21 +90,20 @@ const DesktopView2 = ({ userData, token }) => (
       style={{ padding: '20px 0px', height: '1260px', gridTemplateRows: 'repeat(8, minmax(0, 1fr))' }}
     >
       {/* first row */}
-      <div className="dashboard-inner-bg tw-p-3 tw-col-span-7 row-custom-span-3 tw-rounded">
+      <div className="dashboard-inner-bg tw-p-3 tw-col-span-7 tw-row-span-2 tw-rounded">
         <OverviewProgress userData={userData} token={token} />
       </div>
 
-      <div className="dashboard-inner-bg tw-p-3 tw-col-span-5 row-custom-span-3 tw-rounded">
+      <div className="dashboard-inner-bg tw-p-3 tw-col-span-5 tw-row-span-2 tw-rounded">
         <OverviewWallet userData={userData} token={token} />
       </div>
-      <div className="dashboard-inner-bg tw-p-3 tw-col-span-7 row-custom-span-3 tw-rounded">
+      <div className="dashboard-inner-bg tw-p-3 tw-col-span-7 tw-row-span-2 tw-rounded">
         <OverviewStartups userData={userData} token={token} />
       </div>
       <div className="dashboard-inner-bg tw-p-3 tw-col-span-5 tw-row-span-4 tw-rounded">
         <OverviewEvents userData={userData} token={token} />
       </div>
 
-      {/*  */}
       {/* second row */}
       <div className="dashboard-inner-bg tw-p-3 tw-col-span-12 tw-row-span-2 tw-rounded">
         <OverviewCourses userData={userData} token={token} />
@@ -112,7 +111,6 @@ const DesktopView2 = ({ userData, token }) => (
       <div className="dashboard-inner-bg tw-p-3 tw-col-span-7 tw-row-span-2 tw-rounded">
         <OverviewMentor userData={userData} token={token} />
       </div>
-      {/*  */}
       {/* Third Row */}
       <div className="dashboard-inner-bg tw-p-3 tw-col-span-5 tw-row-span-2 tw-rounded">
         <OverviewProfile userData={userData} token={token} />
@@ -124,9 +122,8 @@ const DesktopView2 = ({ userData, token }) => (
         <OverviewCareer userData={userData} token={token} />
       </div>
       <div className="dashboard-inner-bg tw-p-3 tw-col-span-5 tw-row-span-4 tw-rounded">
-        <OverviewStatistic userData={userData} token={token} />
+        <OverviewStatistic winSize={winSize} userData={userData} token={token} />
       </div>
-      {/*  */}
       {/* fourth Row */}
       <div className="dashboard-inner-bg tw-p-3 tw-col-span-9 tw-row-span-2 tw-rounded">
         <OverviewMyProposals userData={userData} token={token} />
@@ -139,7 +136,7 @@ const DesktopView2 = ({ userData, token }) => (
   </div>
 );
 
-const TabletView2 = ({ userData, token }) => (
+const TabletView2 = ({ userData, token, winSize }) => (
   <div>
     <div
       className="d-flex flex-row justify-content-between align-items-center "
@@ -151,7 +148,7 @@ const TabletView2 = ({ userData, token }) => (
     </div>
     <div
       className="tw-grid tw-grid-cols-24 tw-gap-4 tw-h-full tw-w-full"
-      style={{ padding: '20px 0px', height: '1460px', gridTemplateRows: 'repeat(12, minmax(0, 1fr))' }}
+      style={{ padding: '20px 0px', height: '1460px', gridTemplateRows: 'repeat(18, minmax(0, 1fr))' }}
     >
       {/* first row */}
       <div className="dashboard-inner-bg tw-p-3 tw-col-span-9 row-custom-span-3 tw-rounded">
@@ -164,50 +161,47 @@ const TabletView2 = ({ userData, token }) => (
       <div className="dashboard-inner-bg tw-p-3 tw-col-span-9 row-custom-span-3 tw-rounded">
         <OverviewStartups userData={userData} token={token} />
       </div>
-      {/*  */}
       {/* second row */}
 
-      <div className="dashboard-inner-bg tw-p-3 tw-col-span-8 tw-row-span-4 tw-rounded">
+      <div className="dashboard-inner-bg tw-p-3 tw-col-span-8 row-custom-6 tw-rounded">
         <OverviewEvents userData={userData} token={token} />
       </div>
 
-      <div className="dashboard-inner-bg tw-p-3 tw-col-span-16 tw-row-span-2 tw-rounded">
+      <div className="dashboard-inner-bg tw-p-3 tw-col-span-16 row-custom-span-3 tw-rounded">
         <OverviewCourses userData={userData} token={token} />
       </div>
-      {/*  */}
       {/* Third Row */}
 
-      <div className="dashboard-inner-bg tw-p-3 tw-col-span-8 tw-row-span-2 tw-rounded">
+      <div className="dashboard-inner-bg tw-p-3 tw-col-span-8 row-custom-span-3 tw-rounded">
         <OverviewMentor userData={userData} token={token} />
       </div>
-      <div className="dashboard-inner-bg tw-p-3 tw-col-span-8 tw-row-span-2 tw-rounded">
+      <div className="dashboard-inner-bg tw-p-3 tw-col-span-8 row-custom-span-3 tw-rounded">
         <OverviewProfile userData={userData} token={token} />
       </div>
-      {/*  */}
       {/* fourth Row */}
 
-      <div className="dashboard-inner-bg tw-p-3 tw-col-span-16 tw-row-span-2 tw-rounded">
+      <div className="dashboard-inner-bg tw-p-3 tw-col-span-16 row-custom-span-3 tw-rounded">
         <OverviewProjects userData={userData} token={token} />
       </div>
-      <div className="dashboard-inner-bg tw-p-3 tw-col-span-8 tw-row-span-2 tw-rounded">
+      <div className="dashboard-inner-bg tw-p-3 tw-col-span-8 row-custom-span-3 tw-rounded">
         <OverviewCareer userData={userData} token={token} />
       </div>
-      {/*  */}
-      <div className="dashboard-inner-bg tw-p-3 tw-col-span-8 tw-row-span-4 tw-rounded">
-        <OverviewStatistic userData={userData} token={token} />
+      {/* 5th row */}
+      <div className="dashboard-inner-bg tw-p-3 tw-col-span-8 row-custom-6 tw-rounded">
+        <OverviewStatistic winSize={winSize} userData={userData} token={token} />
       </div>
-      {/*  */}
-      <div className="dashboard-inner-bg tw-p-3 tw-col-span-16 tw-row-span-2 tw-rounded">
+      {/* 6th row  */}
+      <div className="dashboard-inner-bg tw-p-3 tw-col-span-16 row-custom-span-3 tw-rounded">
         <OverviewMyChatper userData={userData} token={token} />
       </div>
-      <div className="dashboard-inner-bg tw-p-3 tw-col-span-16 tw-row-span-2 tw-rounded">
+      <div className="dashboard-inner-bg tw-p-3 tw-col-span-16 row-custom-span-3 tw-rounded">
         <OverviewMyProposals userData={userData} token={token} />
       </div>
       {/*  */}
     </div>
   </div>
 );
-const MobileView = ({ userData, token }) => {
+const MobileView = ({ userData, token, winSize }) => {
   const [currentView, setCurrentView] = useState('Profile');
   const handleClick = (compName) => {
     if (currentView === compName) {
@@ -219,28 +213,20 @@ const MobileView = ({ userData, token }) => {
   return (
     <div
       className="d-flex flex-column"
-      style={{ height: '100vh', width: '100%' }}
+      style={{ width: '100%' }}
     >
       <div
         className="d-flex flex-row justify-content-between align-items-center"
         style={{ height: '5%', minHeight: '40px', width: '100%' }}
       >
         <p className="fs-1" style={{ fontWeight: 700, color: 'white' }}>
-          Dashboard Overview (Mobile)
+          Dashboard Overview
         </p>
-        <button
-          type="button"
-          className="btn btn-primary"
-          style={{ background: '#6A0C8B', fontSize: '8px' }}
-        >
-          {' '}
-          Manage Dashboard
-        </button>
       </div>
 
       <div
         className=" d-flex flex-column"
-        style={{ width: '100%', height: '32px' }}
+        style={{ width: '100%' }}
       >
         {Components.map((component) => {
           const CompName = component.component;
@@ -274,9 +260,9 @@ const MobileView = ({ userData, token }) => {
                 onClick={() => {
                   setCurrentView(component.componentName);
                 }}
-                style={{ height: component.height }}
+                style={{ minHeight: component.height }}
               >
-                <CompName userData={userData} token={token} renderMobile />
+                <CompName userData={userData} winSize={winSize} token={token} renderMobile />
               </div>
             </div>
           );
@@ -303,14 +289,14 @@ const Overview = ({ userData, token }) => {
     <>
       {winSize >= 1440 ? (
         window.innerHeight >= 768 ? (
-          <DesktopView2 userData={userData} token={token} />
+          <DesktopView2 winSize={winSize} userData={userData} token={token} />
         ) : (
-          <TabletView2 userData={userData} token={token} />
+          <TabletView2 winSize={winSize} userData={userData} token={token} />
         )
-      ) : winSize >= 768 ? (
-        <TabletView2 userData={userData} token={token} />
+      ) : winSize >= 1100 ? (
+        <TabletView2 winSize={winSize} userData={userData} token={token} />
       ) : (
-        <MobileView userData={userData} token={token} />
+        <MobileView winSize={winSize} userData={userData} token={token} />
       )}
     </>
   );

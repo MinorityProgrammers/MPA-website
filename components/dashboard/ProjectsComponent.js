@@ -99,7 +99,7 @@ const ProjectsComponent = () => {
           {dummyProjectData.map((project) => (
             <div
               key={project.projectId}
-              className="d-flex flex-column justify-content-between align-items-center"
+              className="d-flex flex-column justify-content-between overview-projects-swiper align-items-center"
               onClick={() => {
                 setProjectInfo(project);
               }}
