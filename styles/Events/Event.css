@@ -62,6 +62,9 @@
 }
 
 @media screen and (max-width: 600px) {
+  .swiper-navigation_container {
+    top: 590px !important;
+  }
   .event__form {
     flex-direction: row;
     margin-bottom: 10px;
@@ -85,6 +88,7 @@
   .mobile_event_select {
     display: block;
     width: 80% !important;
+    height: 50px;
   }
   .event_select_grid {
     display: none !important;

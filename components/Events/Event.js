@@ -546,7 +546,7 @@ class Event extends Component {
       }),
       placeholder: (base) => ({
         ...base,
-        fontSize: "1em",
+        fontSize: "12px",
         color: "#fff",
         fontWeight: 500,
       }),
@@ -849,6 +849,7 @@ class Event extends Component {
                 className="event_Select tw-select-none"
                 styles={selectStyles}
                 closeMenuOnSelect
+                placeholder="Filter Search"
                 isSearchable={false}
                 isClearable
                 onChange={onChangeInput}
