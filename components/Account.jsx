@@ -17,13 +17,16 @@ import {
   isConnectedCasper,
 } from "../contexts/actions/signer/index";
 import styles from "../styles/account/account.module.css";
+import walletLogin from "../contexts/actions/auth/walletLogin";
 import ButtonComponent from "./profile/ButtonComponent";
+
 
 const Account = () => {
   const { authenticate, isAuthenticated, logout } = useMoralis();
   const { walletAddress, chainId } = useMoralisDapp();
   const [isModalVisible, setIsModalVisible] = useState(false);
   const {
+    authDispatch,
     showModalState: { showModal },
     setShowModal,
     signerState: {
@@ -112,12 +115,23 @@ const Account = () => {
     changeAuthModal(!showModal)(setShowModal);
   };
 
+
   const metamaskConnectWallet = async () => {
     if (
       chainId === process.env.NEXT_PUBLIC_NETWORK_ID_MAINNET ||
       chainId === process.env.NEXT_PUBLIC_NETWORK_ID_TESTNET
     ) {
-      authenticate({ signingMessage: "connected!" });
+      const userToken = window.localStorage.getItem('jwtToken');
+      const userInfo = window.localStorage.getItem('userInfo');
+
+      authenticate().then(() => {
+          setTimeout(() => {
+            walletLogin(walletAddress, authenticate)(authDispatch);
+          }, 2000);
+        })
+      
+        
+
       if (isConnected === true) {
         await window.casperlabsHelper.disconnectFromSite();
       }
@@ -126,6 +140,8 @@ const Account = () => {
       logout();
     }
   };
+
+
 
   useEffect(async () => {
     if (

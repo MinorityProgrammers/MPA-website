@@ -87,9 +87,18 @@ const SettingsSecurity = ({ data }) => {
       setEmailWarning('This email address is already being used.');
     }
 
+    const checkBcrypt = async () => {
+      if (data.password) {
+        const check = await bcrypt.compare(currentPassword || '', data.password || '');
+        return check;
+      }
+
+      return true;
+    };
+
     // password check
     let passWarning = currentPasswordWarning;
-    bcrypt.compare(currentPassword, data.password).then((res) => {
+    checkBcrypt().then((res) => {
       setCurrentPasswordWarning(res ? '' : 'Password incorrect');
       passWarning = !res;
 
