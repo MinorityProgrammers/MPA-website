@@ -85,7 +85,7 @@ const Course = ({ course, userData, token }) => {
         </div>
       </div>
       {/* Fourth and Fifth Column */}
-      <div className="d-flex flex-row" style={{ width: '40%' }}>
+      <div className="d-flex flex-row overview-course-detail" style={{ width: '40%' }}>
         {/* Fourth Column */}
         <div
           className="overview-course-currency d-flex justify-content-center flex-column align-items-center"

@@ -274,7 +274,7 @@ const OverviewStartups = ({ userData, token }) => {
         </div>
       </div>
       <div
-        className="overview-courses-cards d-flex flex-column"
+        className="overview-courses-cards overview-startups-card d-flex flex-column"
         style={{ height: '85%' }}
       >
         {loading ? (

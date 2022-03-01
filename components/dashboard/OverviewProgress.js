@@ -74,107 +74,67 @@ const OverviewProgress = ({ userData, renderMobile }) => {
   //     ctx.save();
   //   },
   // }];
-  const ProgressMobileComponent = useCallback(
-    () => (
-      <div
-        className="d-flex flex-column"
-        style={{ width: '100%', height: '280px' }}
-      >
-        {/* there are 2 columns: text - images */}
-        <div className="d-flex flex-column" style={{ width: '100%' }}>
-          {/* text area */}
-          <div
-            className="d-flex flex-column justify-content-between align-items-start"
-            style={{ height: '90px', marginBottom: '10px', width: '100%' }}
-          >
-            <p
-              style={{
-                fontSize: ' 20px',
-                color: 'white',
-                marginBottom: '4%',
-                lineHeight: '20px',
-              }}
-            >
-              Welcome back,
-              <strong>{userData.firstName}</strong>
-            </p>
-            <p style={{ fontSize: '14px', color: 'white', lineHeight: '16px' }}>
-              You’ve completed
-              <em
-                style={{
-                  color: '#151371',
-                  fontWeight: '700',
-                  fontStyle: 'normal',
-                }}
-              >
-                30%
-              </em>
-              of the tasks available on Minority Programmers Association.
-              <br style={{ marginTop: '2%', border: '0px' }} />
-              Complete task, earn crypto!
-            </p>
-          </div>
-          {/* list of todo */}
-          <div style={{ height: '80px' }}>
-            <TasksList />
-          </div>
-        </div>
-        <div style={{ width: '100%', height: '110px', position: 'relative' }}>
-          <div
-            className="d-flex flex-column justify-content-center align-items-center"
-            style={{ width: '100%', height: '100%', position: 'absolute' }}
-          >
-            <p
-              className="text-center"
-              style={{
-                fontSize: '16px',
-                color: 'white',
-                fontWeight: '700',
-                marginBottom: '2%',
-                lineHeight: '16px',
-              }}
-            >
-              12
-            </p>
-            <p
-              className="text-center"
-              style={{
-                fontSize: '12px',
-                color: 'white',
-                width: '25%',
-                lineHeight: '12px',
-              }}
-            >
-              of 40 Completed Tasks
-            </p>
-          </div>
-          <div>
-            {/* edit data variable in here when api ready */}
-            {/* <Chart
-              width="200px"
-              height="300px%"
-              chartType="PieChart"
-              loader={<div> Loading Chart</div>}
-              data={[
-                ['Tasks', 'Hours per Day'],
-                ['Completed', 12],
-                ['Remaining', 28],
-              ]}
-              options={{
-                pieHole: 0.8,
-                backgroundColor: 'transparent',
-                slices: [{ color: '#151371' }, { color: '#6A0C8B' }],
-                pieSliceText: 'none',
-                chartArea: { width: '30%', height: '90%' },
-                legend: 'none',
-              }}
-            /> */}
-          </div>
-        </div>
-      </div>
-    ),
-    [],
-  );
+  // const ProgressMobileComponent = useCallback(
+  //   () => (
+  //     <div
+  //       className="d-flex flex-column"
+  //       style={{ width: '100%', height: '280px' }}
+  //     >
+  //       {/* there are 2 columns: text - images */}
+  //       <div className="d-flex flex-column" style={{ width: '100%' }}>
+  //         {/* text area */}
+  //         <div
+  //           className="d-flex flex-column justify-content-between align-items-start"
+  //           style={{ height: '90px', marginBottom: '10px', width: '100%' }}
+  //         >
+  //           <p
+  //             style={{
+  //               fontSize: ' 20px',
+  //               color: 'white',
+  //               marginBottom: '4%',
+  //               lineHeight: '20px',
+  //             }}
+  //           >
+  //             Welcome back,
+  //             <strong>{userData.firstName}</strong>
+  //           </p>
+  //           <p style={{ fontSize: '14px', color: 'white', lineHeight: '16px' }}>
+  //             You’ve completed
+  //             <em
+  //               style={{
+  //                 color: '#151371',
+  //                 fontWeight: '700',
+  //                 fontStyle: 'normal',
+  //               }}
+  //             >
+  //               30%
+  //             </em>
+  //             of the tasks available on Minority Programmers Association.
+  //             <br style={{ marginTop: '2%', border: '0px' }} />
+  //             Complete task, earn crypto!
+  //           </p>
+  //         </div>
+  //         {/* list of todo */}
+  //         <div className="dashboard-progress-tasklist">
+  //           <TasksList />
+  //         </div>
+  //       </div>
+
+  //       <div className="tw-relative">
+  //         <Doughnut options={options} data={data} />
+  //         <div className="chart-inner-text">
+  //           <p>
+  //             <span> 12 </span>
+  //             of 40 task completed
+
+  //           </p>
+
+  //         </div>
+  //       </div>
+  //     </div>
+  //   ),
+  //   [],
+  // );
 
   const ProgressComponent = useCallback(
     () => (
@@ -225,7 +185,7 @@ const OverviewProgress = ({ userData, renderMobile }) => {
                   </span>
                 </p>
               </div>
-              <div className="tw-w-4/12 tw-relative">
+              <div className="tw-w-4/12 tw-relative dashboard-progress-chart">
                 <Doughnut options={options} width="100%" height="100%" data={data} />
                 <div className="chart-inner-text">
                   <p>
@@ -240,7 +200,9 @@ const OverviewProgress = ({ userData, renderMobile }) => {
 
           </div>
           {/* list of todo */}
-          <TasksList />
+          <div className="dashboard-progress-tasklist">
+            <TasksList />
+          </div>
         </div>
       </div>
     ),
@@ -249,7 +211,7 @@ const OverviewProgress = ({ userData, renderMobile }) => {
 
   return (
     <div
-      className="d-flex flex-column justify-content-between "
+      className="d-flex flex-column justify-content-between"
       style={{ height: '100%', width: '100%' }}
     >
       {loading ? (
@@ -294,7 +256,7 @@ const OverviewProgress = ({ userData, renderMobile }) => {
           </div>
         </div>
       ) : renderMobile ? (
-        <ProgressMobileComponent />
+        <ProgressComponent />
       ) : (
         <ProgressComponent />
       )}

@@ -4,7 +4,7 @@ import React from 'react';
 const TasksList = () => (
   <div
     className="overview-courses-cards d-flex flex-column"
-    style={{ width: '100%', marginTop: 'auto' }}
+    style={{ width: '100%' }}
   >
     <TaskCard />
     <TaskCard />

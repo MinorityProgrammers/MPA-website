@@ -52,7 +52,7 @@ const OverviewProjects = ({ token }) => {
     >
       {/* First row */}
       <div
-        className="d-flex flex-row justify-content-between align-items-center"
+        className="dashboard-cards-tab d-flex flex-row justify-content-between align-items-center"
         style={{ height: '13%', marginBottom: '2%' }}
       >
         <div>

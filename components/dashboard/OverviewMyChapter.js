@@ -113,21 +113,21 @@ const OverviewMyChatper = () => {
         style={{ height: '100%', width: '100%' }}
       >
         {/* first row */}
-        <div style={{ width: '100%', marginBottom: '4%' }}>
+        <div className="dashboard-chapter-location" style={{ width: '100%', marginBottom: '4%' }}>
           <p>Washington, DC </p>
         </div>
         {/* second row */}
         <div
-          className="d-flex flex-row align-items-start"
+          className="d-flex flex-row align-items-start dashboard-chapter-details"
           style={{ width: '100%', marginBottom: '4%' }}
         >
           <div
-            className="d-flex flex-column justify-content-center align-items-center"
+            className="d-flex flex-column justify-content-center align-items-center img-container"
             style={{ width: '50%' }}
           >
             <img
               src="/assets/images/dashboard/chapter1.png"
-              style={{ width: '80%', height: 'auto', borderRadius: '10px' }}
+              style={{ width: '80%', height: '100%', borderRadius: '10px' }}
               alt="chapter"
             />
             <p className="overview-chapter-card-description"> Washington DC</p>
