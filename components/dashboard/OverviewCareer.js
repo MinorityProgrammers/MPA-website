@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Skeleton from 'react-loading-skeleton';
+import Link from 'next/link';
 
 const OverviewCareer = ({ token }) => {
   const [loading, setLoading] = useState(true);
@@ -40,7 +41,7 @@ const OverviewCareer = ({ token }) => {
         });
     }
   }, []);
-
+  console.log(allJobs);
   return (
     <div
       className="d-flex flex-column justify-content-between"
@@ -57,7 +58,7 @@ const OverviewCareer = ({ token }) => {
             style={{
               fontSize: '18px',
               fontWeight: '700',
-              color: 'black',
+              color: 'white',
               margin: 0,
             }}
           >
@@ -119,35 +120,33 @@ const OverviewCareer = ({ token }) => {
                 >
                   <div className="d-flex flex-row">
                     <div
-                      className="overview-career-card-image d-flex justify-content-center align-items-center"
-                      style={{ paddingRight: '10px' }}
+                      className="overview-career-all-image d-flex justify-content-center align-items-center"
                     >
-                      <img
-                        alt="company's logo"
-                        src="/assets/images/mpicon.svg"
-                      />
+                      <img alt="company's logo" src="/assets/images/mpicon.svg" />
+
                     </div>
                     <div className="overview-career-card-info d-flex flex-column">
                       <p className="overview-career-card-info-title">
                         {job?.companyId?.company_name}
                       </p>
-                      <p>{job.job_title}</p>
+                      <p style={{ fontWeight: '500', color: '#DEDEDE', fontSize: '10px' }}>
+                        {job.job_title}
+
+                      </p>
                     </div>
                   </div>
 
                   <div className="d-flex flex-row">
-                    <div className="overview-career-card-jobtype">
+                    {/* <div className="overview-career-card-jobtype">
                       <p>{job.job_type}</p>
-                    </div>
+                    </div> */}
                     <div
                       className="d-flex justify-content-center align-items-center"
-                      style={{ width: '32px' }}
+                      style={{ width: '32px', cursor: 'pointer' }}
                     >
-                      <a href="#" target="_blank">
-                        <button type="button" className="more-details-button">
-                          &gt;
-                        </button>
-                      </a>
+                      <Link href="/careers">
+                        <i style={{ fontSize: '22px' }} className="far fa-arrow-alt-circle-right" />
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -176,9 +175,9 @@ const OverviewCareer = ({ token }) => {
                 <div className="d-flex flex-row">
                   <div
                     className="overview-career-card-image d-flex justify-content-center align-items-center"
-                    style={{ paddingRight: '10px' }}
+                    style={{ marginRight: '10px' }}
                   >
-                    <img alt="company's logo" src="/assets/images/mpicon.svg" />
+                    <img style={{ objectFit: 'contain', border: '1px solid #6938EF' }} alt="company's logo" src="/assets/images/mpicon.svg" />
                   </div>
                   <div className="overview-career-card-info d-flex flex-column">
                     <p className="overview-career-card-info-title">
@@ -223,17 +222,13 @@ const OverviewCareer = ({ token }) => {
                 className="d-flex justify-content-center align-items-center"
                 style={{ width: '100%' }}
               >
-                <button
-                  type="button"
-                  className="btn btn-primary"
-                  style={{
-                    background: '#151371',
-                    paddingLeft: '31px',
-                    paddingRight: '31px',
-                  }}
-                >
-                  Apply For Your First Job
-                </button>
+                <Link href="/careers">
+                  <a
+                    className="button-more"
+                  >
+                    Apply For Your First Job
+                  </a>
+                </Link>
               </div>
             </div>
           )}

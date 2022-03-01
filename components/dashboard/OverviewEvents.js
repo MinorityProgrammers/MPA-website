@@ -44,13 +44,27 @@ const OverviewEvents = ({ token }) => {
         });
     }
   }, []);
-
+  // date
+  function formatAMPM(time) {
+    const date = new Date(time);
+    const day = date.toString().split(' ')[0];
+    const month = date.toString().split(' ')[1];
+    const monthDay = date.toString().split(' ')[2];
+    let hours = date.getHours();
+    let minutes = date.getMinutes();
+    const ampm = hours >= 12 ? 'pm' : 'am';
+    hours %= 12;
+    hours = hours || 12; // the hour '0' should be '12'
+    minutes = minutes < 10 ? `0${minutes}` : minutes;
+    const strTime = `${hours}:${minutes} ${ampm} - ${day}, ${month} ${monthDay}th`;
+    return strTime;
+  }
   return loading ? (
     <div
       className="d-flex flex-column justify-content-start h-100"
       style={{ overflowY: 'scroll' }}
     >
-      <p style={{ fontSize: '18px', fontWeight: '700', color: 'black' }}>
+      <p style={{ fontSize: '18px', fontWeight: '700', color: 'white' }}>
         Events
       </p>
       <div
@@ -59,7 +73,7 @@ const OverviewEvents = ({ token }) => {
       >
         <Skeleton count={7} height={20} width={1200} />
       </div>
-      <p style={{ fontSize: '18px', fontWeight: '700', color: 'black' }}>
+      <p style={{ fontSize: '18px', fontWeight: '700', color: 'white' }}>
         Upcoming
       </p>
       <div
@@ -74,19 +88,19 @@ const OverviewEvents = ({ token }) => {
     </div>
   ) : userEvents.length !== 0 ? (
     <div className="d-flex flex-column justify-content-between h-100">
-      <p style={{ fontSize: '18px', fontWeight: '700', color: 'black' }}>
+      <p style={{ fontSize: '18px', fontWeight: '700', color: 'white' }}>
         Events
       </p>
       <Calendar
         maxDetail="month"
-        nextLabel=">>"
+        nextLabel="  >"
         nextAriaLabel="Go to next month"
-        prevLabel="<<"
+        prevLabel="<  "
         prevAriaLabel="Go to prev month"
         next2Label=""
         prev2Label=""
       />
-      <p style={{ fontSize: '24px', fontWeight: '700', color: 'black' }}>
+      <p style={{ fontSize: '16px', fontWeight: '600', color: 'white' }}>
         Upcoming
       </p>
       <div className="d-flex flex-column justify-content-between align-items-center">
@@ -109,34 +123,48 @@ const OverviewEvents = ({ token }) => {
             <div className="overview-event-details" style={{ width: '70%' }}>
               <p
                 style={{
-                  fontSize: '18px',
+                  fontSize: '12px',
                   marginBottom: '5px',
-                  color: 'black',
-                  fontWeight: '700',
+                  color: 'white',
+                  fontWeight: '500',
                 }}
               >
                 {event.eventName}
               </p>
-              <p style={{ fontSize: '12px', marginBottom: '5px' }}>
-                {event.time.toString()}
+              <p style={{ fontSize: '10px', color: ' #DEDEDE', marginBottom: '5px' }}>
+                {formatAMPM(event.time)}
+                {/* {event.time.toString()} */}
               </p>
-              <div className="d-flex justify-content-center align-items-center overview-event-status">
+              {/* <div className="d-flex justify-content-center
+              align-items-center overview-event-status">
                 {event?.eventStatus}
-              </div>
+              </div> */}
             </div>
             <div
               className="d-flex justify-content-center align-items-center"
-              style={{ width: '10%', height: '100%' }}
+              style={{ height: '100%' }}
             >
-              <a
-                href={event?.eventLink?.toString()}
-                target="_blank"
-                rel="noreferrer"
+
+              {/* Third Column */}
+              <div
+                className="overview-course-currency d-flex justify-content-center flex-column align-items-center"
+                style={{ marginRight: '2%' }}
               >
-                <button type="button" className="more-details-button">
-                  &gt;
-                </button>
-              </a>
+                <p style={{ fontSize: '10px', marginRight: '4px' }}>
+                  {event?.eventStatus}
+                </p>
+              </div>
+              {/* Fourth Column */}
+              <div className="d-flex justify-content-center align-items-center ">
+                <a
+                  href={event?.eventLink?.toString()}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <i style={{ fontSize: '20px' }} className="far fa-arrow-alt-circle-right" />
+
+                </a>
+              </div>
             </div>
           </div>
         ))}
@@ -145,24 +173,17 @@ const OverviewEvents = ({ token }) => {
         className="d-flex justify-content-center align-items-center"
         style={{ width: '100%' }}
       >
-        <a href="/events">
-          <button
-            type="button"
-            className="btn btn-primary"
-            style={{
-              background: '#151371',
-              paddingLeft: '31px',
-              paddingRight: '31px',
-            }}
-          >
-            More Events
-          </button>
+        <a
+          className="button-more"
+          href="/events"
+        >
+          More Events
         </a>
       </div>
     </div>
   ) : (
     <div className="d-flex flex-column justify-content-between h-100">
-      <p style={{ fontSize: '18px', fontWeight: '700', color: 'black' }}>
+      <p style={{ fontSize: '18px', fontWeight: '700', color: 'white' }}>
         Events
       </p>
       <EmptyOverviewComponent
