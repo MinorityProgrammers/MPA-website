@@ -45,18 +45,21 @@ const getSpecificSettingsLayoutNavigationList = (settingsPath) => {
             icon: '../../assets/images/settings/details-icon.svg',
             name: 'Account Login',
             subPath: 'login',
+            active: true,
           },
           {
             id: 2,
             icon: '../../assets/images/settings/management-icon.svg',
             name: 'Account Management',
             subPath: 'management',
+            active: false,
           },
           {
             id: 3,
             icon: '../../assets/images/settings/privacy-icon.svg',
             name: 'Privacy',
             subPath: 'privacy',
+            active: false,
           },
         ],
       };
@@ -87,6 +90,7 @@ const getSpecificSettingsLayoutNavigationList = (settingsPath) => {
             icon: '../../assets/images/settings/notifications-icon.svg',
             name: 'Notifications',
             subPath: 'notifications',
+            active: true,
           },
         ],
       };

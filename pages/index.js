@@ -1,16 +1,18 @@
 import React, { useEffect, useRef, useState } from 'react';
 import ComingSoon from '../components/ComingSoon';
 import Footer from '../components/Footer';
-// import HomepageAbout from '../components/homepage/HomepageAbout';
-// import HomepageApp from '../components/homepage/HomepageApp';
+import HomePageNewTopSection from '../components/homepage/HomePageNewTopSection';
+import HomePageAboutUs from '../components/homepage/HomePageAboutUs';
+import HomePageGetStarted from '../components/homepage/HomePageGetStarted';
+import HomePageParteners from '../components/homepage/HomePageParteners';
 import HomepageCore from '../components/homepage/HomepageCore';
+import HomepageExploreMinorityApps from '../components/homepage/HomepageExploreMinorityApps';
 import HomepageDonate from '../components/homepage/HomepageDonate';
 import HomepageNav from '../components/homepage/HomepageNav';
-import HomePageNewTopSection from '../components/homepage/HomePageNewTopSection';
-// import HomepageTeam from '../components/homepage/HomepageTeam';
-import HomepageTestimonials from '../components/homepage/HomepageTestimonials';
-// import HomepageWave from '../components/homepage/HomepageWave';
+// import HomepageTestimonials from '../components/homepage/HomepageTestimonials';
 import HomePageReviews from '../components/homepage/HomePageReviews';
+// import HomePageAboutUs from '../components/homepage/HomePageAboutUs';
+// import HomepageWave from '../components/homepage/HomepageWave';
 import Layout from '../components/Layout';
 import MpaBuilder from '../components/mpa-builder/builder';
 import SidebarTwo from '../components/sidebar/SidebarTwo';
@@ -65,9 +67,16 @@ const HomepageFour = () => {
               />
               {hide === false && <ComingSoon closeClick={handleClick} />}
               <HomePageNewTopSection />
+              <HomePageAboutUs />
+              <HomepageExploreMinorityApps />
+              <HomePageGetStarted />
               <HomepageCore />
-              <HomepageTestimonials />
+              <HomePageParteners />
               <HomePageReviews />
+              {/* <HomepageTestimonials />
+              <HomepageDonate /> */}
+              {/* <HomepageWave /> */}
+              {/* <HomepageTeam /> */}
               <HomepageDonate />
               <Footer />
             </>

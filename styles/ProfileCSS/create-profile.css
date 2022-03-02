@@ -6,13 +6,16 @@
   max-width: 1000px;
   height: 80vh;
   border-radius: 20px;
-  background-color: white;
+  background-color: var(--secondary-high-contrast);
   display: flex;
   flex-direction: row;
+  color: white;
+  border: 1.5px solid var(--secondary-accent-1);
+  box-shadow: -2px 2px 20px rgba(84,48,209,.25);
 }
 /* sidebar styles */
 .cp-sidebar {
-  background-color: #2a232b;
+  background-color: var(--secondary-main);
   width: 35%;
   border-radius: 20px 0 0 20px;
   display: flex;
@@ -32,13 +35,7 @@
 }
 .cp-sidebar li.head-li p {
   cursor: default;
-  background: linear-gradient(to left, #ff00b8 0%, #ff655b 50.8%, #ffc700 100%);
-  background: -webkit-linear-gradient(
-    to left,
-    #ff00b8 0%,
-    #ff655b 50.8%,
-    #ffc700 100%
-  );
+  background: linear-gradient(92.43deg, #68aeff 31.43%, #9379ff 77.17%);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
@@ -48,7 +45,7 @@
   position: absolute;
   display: block;
   height: 100%;
-  border-left: 2px solid #ff655b;
+  border-left: 2px solid var(--secondary-accent-1);
   transform: translateX(-50%);
   left: 0;
 }
@@ -58,12 +55,13 @@
   height: 15px;
   width: 15px;
   border-radius: 50%;
-  background-color: #ff655b;
+  background-color: var(--secondary-accent-1);
+  border: 1px solid var(--secondary-high-contrast);
   left: 0;
   transform: translateX(-50%);
 }
 .cp-dotActive {
-  background-color: #f102b4;
+  background-color: var(--tertiary-accent-4);
   border: 2px solid white;
   box-sizing: content-box;
 }
@@ -104,16 +102,16 @@
   justify-content: center;
 }
 .cp-top-border {
-  border-bottom: 1px solid #676565;
+  border-bottom: 1px solid var(--secondary-accent);
 }
 .cp-top h1 {
   font-size: 26px;
   font-weight: bold;
-  color: black;
+  color: var(--light-low-contrast);
 }
 .cp-top h2 {
   font-size: 24px;
-  color: black;
+  color: var(--light-low-contrast);
 }
 .cp-form {
   width: 100%;
@@ -125,12 +123,12 @@
   font-size: 16px;
   font-weight: bold;
   margin-bottom: 10px;
-  color: black;
+  color: var(--light-low-contrast);
 }
 .cp-form .cp-formFlex button,
 .cp-form .cp-downloadButtonsContainer button {
-  background-color: #2364eb;
-  color: white;
+  background-color: var(--tertiary-accent-4);
+  color: var(--light-low-contrast);
   padding: 10px 20px;
   width: fit-content;
   margin-top: 20px;
@@ -167,7 +165,7 @@
   margin-bottom: 0;
   border-radius: 10px;
   padding: 10px;
-  border: 4px solid #eaeaea;
+  border: 0.4px solid var(--tertiary-accent-4);
   height: fit-content;
 }
 
@@ -198,7 +196,7 @@
   align-items: center;
 }
 .cp-highlight {
-  border: 4px solid #151371;
+  border: 2px solid var(--tertiary-accent-4);
 }
 .cp-multiInput > .cp-input {
   margin-right: 10px;
@@ -226,7 +224,8 @@
 }
 .cp-input input {
   outline: none;
-  color: black;
+  background-color: transparent;
+  color: var(--light-main);
   font-size: medium;
   height: 24px;
 }
@@ -286,7 +285,7 @@
   padding: 10px 20px;
   margin-right: 10px;
   margin-bottom: 5px;
-  background-color: #501c00;
+  background-color: var(--secondary-accent-1);
   color: white;
   font-size: 14px;
   border-radius: 22px;
@@ -304,12 +303,15 @@
   justify-content: flex-end;
 }
 .cp-navButton {
-  background-color: #3c3b88;
+  background-color: var(--secondary-main);
   padding: 10px 20px;
   color: white;
 }
 .cp-navButton:nth-child(2) {
   margin-left: 40px;
+}
+.cp-navButton:hover {
+  background-color: var(--tertiary-accent-4);
 }
 
 /* submit */
@@ -336,7 +338,7 @@
   width: 60%;
 }
 .cp__done--btn > .cp-navButton {
-  background: #00aa4f;
+  background: #01803c;
   width: 150px;
 }
 .cp__profile--done {
@@ -355,7 +357,7 @@
 .react-datepicker__input-container input {
   width: 100%;
   padding: 8px 10px;
-  color: black;
+  color: #fff;
 }
 .cp-stepProgressItem p {
   cursor: pointer;
@@ -366,6 +368,7 @@
 
 .create--profile {
   padding: 130px 0 60px;
+  background: #14152B;
 }
 .delete-skill {
   cursor: pointer;
@@ -389,8 +392,8 @@
   justify-content: center;
   padding: 0px 10px;
   margin: 5px;
-  background-color: #eaeaea;
-  color: black;
+  background-color: var(--secondary-accent-1);
+  color: var(--light-low-contrast);
   height: 40px;
   border-radius: 5px;
 }

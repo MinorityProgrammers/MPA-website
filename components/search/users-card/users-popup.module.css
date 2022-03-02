@@ -4,9 +4,9 @@
   font-size: 1rem;
   cursor: pointer;
   padding: 1em;
-  border: 1px solid rgb(190, 193, 204);
+  border: 1px solid var(--secondary-accent-1);
   border-radius: 0.5em;
-  background: #f7f7f7;
+  background: var(--secondary-high-contrast);
   overflow: hidden;
   position: relative;
   cursor: unset;
@@ -48,7 +48,7 @@
   height: 5em;
   border-radius: 50%;
   margin-right: 2em;
-  border: 1px solid #f7f7f7;
+  border: 1px solid var(--secondary-accent-1);
   overflow: hidden;
 }
 
@@ -101,7 +101,7 @@
   height: 4px;
   -webkit-background-clip: text;
   background-clip: text;
-  background:#474BFF;
+  background:var(--tertiary-main);
   color: transparent;
   bottom: -0.5em;
   left: 0;
@@ -118,15 +118,15 @@
 
 .mentee,
 .mentor {
-  color: gray;
+  color: var(--dark-accent);
   padding: 0.3em 1em;
 }
 
 .isMentee,
 .isMentor {
   border-radius: 0.25em;
-  border: 1px solid #ff0068;
-  color: black;
+  border: 1px solid var(--tertiary-accent);
+  color: var(--light-high-contrast);
 }
 
 .programmingSkills,
@@ -138,7 +138,7 @@
   justify-content: space-between;
   padding: 0 1em;
   margin-bottom: 1em;
-  background: white;
+  background: var(--secondary-main);
 }
 
 .passion {
@@ -165,13 +165,13 @@
 .role,
 .passion,
 .mentorship {
-  background: white;
+  background: var(--secondary-main);;
   padding: 1em;
 }
 
 .closePopup {
-  background: rgb(235, 236, 240);
-  color: #151371;
+  background: var(--secondary-accent-1);
+  color: var(--light-low-contrast);
   border-radius: 50%;
   position: absolute;
   top: 0em;

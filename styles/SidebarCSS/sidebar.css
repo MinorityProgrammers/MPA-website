@@ -22,7 +22,7 @@
   transition: visibility 0s linear 300ms, opacity 300ms;
 }
 .sidebarTwo {
-  background-color: #474BFD;
+  background-color: #14152B;
   color: white;
   width: 20vw;
   z-index: 120;
@@ -32,6 +32,9 @@
   overflow-y: scroll;
   overflow-x: hidden;
   transition: width 0.3s;
+}
+.new-bg{
+  background-color: #a159fe;
 }
 .hide {
   width: 0;
@@ -58,6 +61,8 @@
 }
 .progressBar {
   height: 70px;
+  border: 1px solid var(--secondary-accent);
+  border-radius: 100%;
 }
 .profileImg {
   width: 60px;

@@ -122,8 +122,8 @@ const StartupLeftBar = ({ data }) => {
           <div className="row container">
             <h2 className="left__topic mt-1">Meet the team</h2>
           </div>
+          <hr className="mb-3" />
           <div className="row container d-flex flex-column">
-            <hr className="mb-3" />
             <div className="row container d-flex flex-column">
               <h2 className="left__topic mb-3 mt-1">Tags</h2>
               <div className="tags-container">

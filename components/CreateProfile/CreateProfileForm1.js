@@ -182,10 +182,6 @@ const CreateProfileQuestions1 = function ({
                   ))
               }
             </div>
-            <div className="tw-mt-8 tw-flex tw-flex-col tw-w-80 tw-pl-4 tw-justify-center tw-text-center">
-              <h2>Connect Wallet</h2>
-              <Account />
-            </div>
           </div>
         </CreateProfileForm>
         <div className="cp-navButtonsContainer">

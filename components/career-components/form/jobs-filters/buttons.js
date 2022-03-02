@@ -1,11 +1,7 @@
-import React from 'react';
+import React from "react";
 
 const Button = ({ className, children, ...rest }) => (
-  <button
-    type="button"
-    className={className}
-    {...rest}
-  >
+  <button type="button" className={className} {...rest}>
     {children}
   </button>
 );
@@ -17,7 +13,7 @@ export const ExpandButton = ({ onClick, children, ...rest }) => (
     {...rest}
   >
     {children}
-    <span>&#9660;</span>
+    <i className="tw-ml-3 fas fa-chevron-down"></i>
   </Button>
 );
 
@@ -34,11 +30,7 @@ export const CancelButton = ({ onClick, ...rest }) => (
 );
 
 export const ResetButton = ({ onClick, ...rest }) => (
-  <Button
-    className="job-filter-reset"
-    onClick={() => onClick()}
-    {...rest}
-  >
-    Clear
+  <Button className="job-filter-reset" onClick={() => onClick()} {...rest}>
+    Clear filter
   </Button>
 );

@@ -19,9 +19,15 @@ const MainCourseInfo = ({
   const totalIntermediateLength = intermediateModules.length;
   const totalAdvancedLength = advancedModules.length;
 
-  const specificUBeginnerModules = userModules.filter((eModule) => beginnerModules.some((module) => eModule.moduleId._id === module._id));
-  const specificUIntermediateModules = userModules.filter((eModule) => intermediateModules.some((module) => eModule.moduleId._id === module._id));
-  const specificUAdvancedModules = userModules.filter((eModule) => advancedModules.some((module) => eModule.moduleId._id === module._id));
+  const specificUBeginnerModules = userModules.filter(
+    (eModule) => beginnerModules.some((module) => eModule.moduleId._id === module._id),
+  );
+  const specificUIntermediateModules = userModules.filter(
+    (eModule) => intermediateModules.some((module) => eModule.moduleId._id === module._id),
+  );
+  const specificUAdvancedModules = userModules.filter(
+    (eModule) => advancedModules.some((module) => eModule.moduleId._id === module._id),
+  );
 
   // Beginner level progress
   let beginnerCompletionRate = 0;
@@ -59,11 +65,10 @@ const MainCourseInfo = ({
 
   return (
     <>
-      <div className="user-bannerBG">
-        <UserBanner userInfo={userInfo} userPercentages={userPercentages} />
-      </div>
-
-      <div className="modules-details pt-4">
+      <div className="modules-details">
+        <div className="user-bannerBG">
+          <UserBanner userInfo={userInfo} userPercentages={userPercentages} />
+        </div>
         <div className="menu-items d-md-flex ml-5 pl-3">
           <ul>
             <li>

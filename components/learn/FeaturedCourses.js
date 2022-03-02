@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -11,28 +11,23 @@ const FeaturedCourses = ({
   enrolledBtn,
   showModal,
 }) => {
+  const [sliderRef, setSliderRef] = useState(null);
   const coursesLength = courses.length;
 
   const conditionalInfinite = {
     dots: false,
+    arrows: false,
     speed: 2000,
-    slidesToShow: 3,
-    infinite: coursesLength > 3,
+    slidesToShow: 2,
+    infinite: coursesLength > 2,
     autoplay: true,
     slidesToScroll: 1,
     responsive: [
       {
         breakpoint: 991,
         settings: {
-          slidesToShow: 2,
-          infinite: coursesLength > 2,
-        },
-      },
-      {
-        breakpoint: 768,
-        settings: {
           slidesToShow: 1,
-          infinite: coursesLength >= 1,
+          infinite: coursesLength > 1,
         },
       },
     ],
@@ -42,9 +37,15 @@ const FeaturedCourses = ({
 
   return (
     <div>
-      <div className="mb-5 pb-3">
-        <div className="course-category d-flex font-weight-bold tw-justify-center">
-          <h1 className="courseCategory-title ">Featured Courses</h1>
+      <div className="tw-relative">
+        <div className="bg-circle-featured-top" />
+      </div>
+      <div className="tw-relative">
+        <div className="bg-circle-featured-right" />
+      </div>
+      <div className="">
+        <div className="course-category d-flex font-weight-bold">
+          <h1 className="courseCategory-title">Featured Courses</h1>
         </div>
         <div
           className={
@@ -53,7 +54,15 @@ const FeaturedCourses = ({
               : 'mt-3 courses-info pt-2 featured-courses'
           }
         >
-          <Slider {...conditionalInfinite}>
+          <div className="courses-slider-controllers">
+            <div onClick={sliderRef?.slickPrev}>
+              <i className="fas fa-chevron-circle-left" />
+            </div>
+            <div onClick={sliderRef?.slickNext}>
+              <i className="fas fa-chevron-circle-right" />
+            </div>
+          </div>
+          <Slider ref={setSliderRef} {...conditionalInfinite}>
             {courses
               && courses.map((course) => (
                 <FeaturedCourseList

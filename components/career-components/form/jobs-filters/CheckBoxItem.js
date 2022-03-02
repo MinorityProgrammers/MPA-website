@@ -1,8 +1,6 @@
-import React from 'react';
+import React from "react";
 
-const CheckBoxItem = ({
-  name, value, text, onChange,
-}) => (
+const CheckBoxItem = ({ name, value, text, onChange }) => (
   <li>
     <input
       type="checkbox"

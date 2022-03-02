@@ -2,7 +2,7 @@ import React from 'react';
 import Skeleton from 'react-loading-skeleton';
 
 const RecommendedCoursesListSkeleton = () => (
-  <div className="courses-items px-3 mb-4 mx-2 tw-bg-white tw-shadow-lg">
+  <div className="courses-items px-3 mb-4 mx-2 tw-shadow-lg">
     <div className="pt-3">
       <div className="earn-rate ml-auto d-flex align-items-center">
         <Skeleton />

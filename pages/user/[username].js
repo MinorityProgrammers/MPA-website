@@ -11,7 +11,6 @@ import { GlobalContext } from '../../contexts/provider';
 import getProfile from '../../contexts/actions/profile/getProfile';
 import links from '../../contexts/utils/links';
 import Footer from '../../components/Footer';
-import ComingSoon from '../../components/ComingSoon';
 import useDetectOutsideClick from '../../components/UseDetectOutsideClick';
 
 const User = ({ user }) => {
@@ -22,6 +21,7 @@ const User = ({ user }) => {
   const [userData, setUserData] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [ownsProfile, setOwnsProfile] = useState(false);
+  const [changeInProfile, setChangeInProfile] = useState(false);
 
   useEffect(() => {
     const timeoutID = setTimeout(
@@ -51,7 +51,7 @@ const User = ({ user }) => {
     if (window.localStorage.getItem('jwtToken')) {
       getProfile(setUserData)(profileDispatch);
     }
-  }, []);
+  }, [changeInProfile]);
 
   useEffect(() => {
     setOwnsProfile(
@@ -107,6 +107,9 @@ const User = ({ user }) => {
             }
             isLoggedIn={isLoggedIn}
             ownsProfile={ownsProfile}
+            profileDispatch={profileDispatch}
+            setChangeInProfile={setChangeInProfile}
+            userId={user[0]?._id}
           />
           <Footer />
         </>

@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from './form.module.css';
 import Login from './Login';
 import Signup from './Signup';
 
@@ -8,7 +7,7 @@ export default function Index({
   setSubmit,
 }) {
   return (
-    <div className={styles.container}>
+    <div>
       {signIn === false ? (
         <Signup setSubmit={setSubmit} />
       ) : (

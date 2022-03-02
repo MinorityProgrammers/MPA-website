@@ -116,7 +116,7 @@
   color: #fff;
   display: flex;
   height: 100%;
-  padding: 60px 0 0 0;
+  padding: 40px 0 0 0;
   background-color: #efefef;
 }
 
@@ -144,6 +144,7 @@
   font-weight: 700;
   line-height: 1.2;
   text-align: left;
+  color: #fff;
 }
 
 .incubator__button {

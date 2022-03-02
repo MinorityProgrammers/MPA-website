@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 import EmptyOverviewComponent from './EmptyOverviewComponent';
 
 const OverviewProfile = ({ userData }) => {
@@ -26,7 +27,7 @@ const OverviewProfile = ({ userData }) => {
           style={{
             fontSize: '18px',
             fontWeight: '700',
-            color: 'black',
+            color: 'white',
             margin: 0,
           }}
         >
@@ -45,7 +46,7 @@ const OverviewProfile = ({ userData }) => {
           />
         ) : (
           <div
-            className="d-flex flex-column justify-content-center align-items-center"
+            className="d-flex flex-column justify-content-center align-items-center dashboard-pofile-card"
             style={{ width: '100%', height: '100%' }}
           >
             <img
@@ -59,30 +60,31 @@ const OverviewProfile = ({ userData }) => {
               src={userData?.profilePicture || '/assets/images/profile.png'}
               alt="avatar"
             />
-            <p
-              style={{
-                fontSize: '16px',
-                fontWeight: 700,
-                color: 'black',
-                marginBottom: '2%',
-              }}
-            >
-              {userData.firstName}
-              {' '}
-              {userData.lastName}
-            </p>
-            <p style={{ fontSize: '12px', color: 'black', marginBottom: '2%' }}>
-              Current Position
-            </p>
-            <a href={`user/${userData.userName}`}>
-              <button
-                type="button"
-                className="btn btn-primary"
-                style={{ background: '#151371', fontSize: '12px' }}
+            <div className="personal-info tw-flex-col">
+              <p
+                style={{
+                  fontSize: '16px',
+                  fontWeight: 700,
+                  color: 'white',
+                  marginBottom: '2%',
+                }}
+              >
+                {userData.firstName}
+                {' '}
+                {userData.lastName}
+              </p>
+              <p style={{ fontSize: '12px', color: 'white', marginBottom: '2%' }}>
+                {userData.role}
+              </p>
+
+            </div>
+            <Link href={`user/${userData.userName}`}>
+              <a
+                className="button-more"
               >
                 View Profile
-              </button>
-            </a>
+              </a>
+            </Link>
           </div>
         )}
       </div>

@@ -1,22 +1,17 @@
-import React from 'react';
-import Swiper from 'react-id-swiper';
-import 'swiper/css/swiper.css';
-import FeaturedCard from './FeaturedCard';
+import React from "react";
+import Swiper from "react-id-swiper";
+import "swiper/css/swiper.css";
+import FeaturedCard from "./FeaturedCard";
 
-const FeaturedStartups = ({
-  data,
-  setClickRegister,
-  userData,
-  allfunded,
-}) => {
+const FeaturedStartups = ({ data, setClickRegister, userData, allfunded }) => {
   const params = {
     slidesPerView: 3,
     loop: true,
     speed: 700,
     spaceBetween: 0,
     navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
     },
     autoplay: {
       delay: 3000,
@@ -49,14 +44,11 @@ const FeaturedStartups = ({
   return (
     <section className="featured__wrapper">
       <div className="container">
-        <div className="row">
-          <div className="col-lg-3 featured__text">
+        <div className="">
+          <div className="featured__text">
             <h2 className="featured__title">Featured Startups</h2>
-            <p className="featured__subtitle">
-              Invest in the next billion dollar company today
-            </p>
           </div>
-          <div className="col-lg-9 d-flex align-items-center featured__card">
+          <div className="col-lg-12 d-flex align-items-center featured__card">
             {!data ? (
               <div className="container text-center mt-3 mb-3 featured__card-empty">
                 <h1 className="featured__card-title mb-3">

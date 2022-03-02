@@ -30,7 +30,7 @@ const CoinCard = ({ info, view }) => {
         />
         {/* Name */}
         <div className="d-flex flex-column">
-          <p style={{ color: 'black', fontWeight: '700' }}>{coinInfo.name}</p>
+          <p style={{ color: 'white', fontWeight: '700' }}>{coinInfo.name}</p>
           <p style={{ color: 'gray', fontSize: '10px' }}>{coinInfo.symbol}</p>
         </div>
       </div>

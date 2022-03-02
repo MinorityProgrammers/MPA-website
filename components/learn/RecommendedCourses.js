@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -9,25 +9,27 @@ const RecommendedCourses = ({
   handleCourseInfo,
   showModal,
 }) => {
+  const [sliderRef, setSliderRef] = useState(null);
   const coursesLength = recommendedCourses.length;
 
   const conditionalInfinite = {
     dots: false,
+    arrows: false,
     speed: 2000,
-    slidesToShow: 3,
-    infinite: coursesLength > 3,
+    slidesToShow: 2,
+    infinite: coursesLength > 2,
     autoplay: true,
     slidesToScroll: 1,
     responsive: [
       {
-        breakpoint: 991,
+        breakpoint: 1200,
         settings: {
           slidesToShow: 2,
           infinite: coursesLength > 2,
         },
       },
       {
-        breakpoint: 768,
+        breakpoint: 991,
         settings: {
           slidesToShow: 1,
           infinite: coursesLength >= 1,
@@ -38,9 +40,27 @@ const RecommendedCourses = ({
 
   return (
     <div>
+      <div className="tw-relative">
+        <div className="bg-circle-recomended-left" />
+      </div>
+      <div className="tw-relative">
+        <div className="bg-circle-recomended-right" />
+      </div>
       <div className="mb-5 pb-3">
-        <div className="course-category d-flex font-weight-bold tw-justify-center">
-          <h1 className="courseCategory-title ">Recommended Courses</h1>
+        <div
+          className="course-category d-flex font-weight-bold"
+          style={{ marginLeft: '-80px' }}
+        >
+          <img
+            src="/assets/images/home-page/about-title-icon.svg"
+            style={{ maxWidth: '100px', marginRight: '-20px' }}
+            alt="bg"
+          />
+          <div className=" tw-flex">
+            <h1 className="courseCategory-title" style={{ marginTop: '30%' }}>
+              Recommended Courses
+            </h1>
+          </div>
         </div>
         <div
           className={
@@ -49,7 +69,15 @@ const RecommendedCourses = ({
               : 'mt-3 courses-info pt-2 recommended-courses'
           }
         >
-          <Slider {...conditionalInfinite}>
+          <div className="courses-slider-controllers">
+            <div onClick={sliderRef?.slickPrev}>
+              <i className="fas fa-chevron-circle-left" />
+            </div>
+            <div onClick={sliderRef?.slickNext}>
+              <i className="fas fa-chevron-circle-right" />
+            </div>
+          </div>
+          <Slider ref={setSliderRef} {...conditionalInfinite}>
             {recommendedCourses
               && recommendedCourses.map((course) => (
                 <RecommendedCourseList

@@ -1,5 +1,5 @@
 .profile_container {
-  padding-top: 100px;
+  padding-top: 50px;
 }
 .profile_container a:hover {
   color: inherit;
@@ -250,22 +250,40 @@
   background-color: #151371;
 }
 
-.pp-exp-edu-area .add-exp-edu .addImg {
-  width: 10%;
+.addImg {
+  width: 30%;
 }
-.pp-exp-edu-area .add-exp-edu .addImg label {
+.addImg label {
   cursor: pointer;
 }
-.pp-exp-edu-area .add-exp-edu .addImg label input {
+.addImg label input {
   opacity: 0;
   position: absolute;
   width: 0;
   z-index: -10;
 }
-.pp-exp-edu-area .add-exp-edu .ee-fields {
-  width: 30%;
+.ee-fields {
+  width: 80%;
 }
-.pp-exp-edu-area .add-exp-edu .ee-fields input {
+
+/* .react-datepicker__month-container{
+  background: #14152A;
+}
+
+.react-datepicker__header{
+  background: #14152A !important;
+} */
+/* 
+.react-datepicker__current-month, .react-datepicker-time__header, .react-datepicker-year-header{
+  color: #fff !important;
+}
+
+.react-datepicker__day-name, .react-datepicker__day, .react-datepicker__time-name{
+  color: rgb(168, 167, 167) !important;
+} */
+
+
+/* .pp-exp-edu-area .add-exp-edu .ee-fields input {
   border: 1px solid #8a8a8a;
   color: black;
   text-transform: capitalize;
@@ -278,7 +296,7 @@
 .pp-exp-edu-area .add-exp-edu .ee-rm-btn {
   font-size: 1vw;
   background-color: #fb3f4a;
-}
+} */
 
 .circle {
   width: 25px;
@@ -328,6 +346,52 @@
   font-size: 1rem;
   font-weight: 600;
 }
+
+.profileTopSection {
+  background: #14152b;
+}
+
+.topSection {
+  border: 0.5px solid #9b4fff9b;
+  background: #14152b;
+}
+
+.Biosection {
+  border-bottom: 1px solid #a159fe;
+}
+
+.newColor {
+  color: #a159fe;
+}
+.editSection {
+  margin-right: -800px;
+}
+.absoluteUser {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.colorSecond {
+  color: #ffa959;
+}
+.gradientBg {
+  background: rgba(62, 56, 93, 0.54);
+}
+.mintBTN {
+  border: 1px solid #a159fe;
+}
+
+.mintBTN:hover {
+  background-color: #a159fe;
+}
+
+.careerPic img{
+  border-radius: 30px;
+  border: 5px solid #a159ff6e;
+}
+
 @media screen and (max-width: 950px) {
   .user-data-area .user {
     flex-direction: column;
@@ -451,8 +515,8 @@
   z-index: 99;
 }
 .profile-two-generate-avatar-popup {
-  background: white;
-  color: #81868a;
+  background: #1c1d37;
+  color: #fff;
   position: absolute;
   top: 120px;
   right: 10vw;
@@ -476,6 +540,16 @@
   transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
+.css-1s2u09g-control {
+  background-color: transparent !important;
+}
+
+.css-qc6sy-singleValue {
+  color: hsl(0deg 1% 60%) !important;
+}
+.css-25l3qy-menu {
+  background-color: transparent !important;
+}
 .profile-two-generate-avatar-popup .cp-body .cp-formGrid {
   grid-template-columns: 49% 49%;
   gap: 2%;
@@ -483,6 +557,7 @@
 .profile-two-generate-avatar-popup .cp-body .cp-formGrid .cp-input {
   align-self: center;
   margin: 0;
+  background-color: #1c1d37;
 }
 .profile-two-generate-avatar-popup .cp-body .cp-formGrid .color-picker-toggle {
   display: flex;
@@ -547,14 +622,118 @@
   }
 }
 
-.react-datepicker-wrapper{
+.react-datepicker-wrapper {
   margin-top: 5px;
   margin-bottom: 5px;
   width: 100%;
 }
 
-.pp-exp-edu-area .add-exp-edu .ee-fields input{
+.pp-exp-edu-area .add-exp-edu .ee-fields input {
   height: 30px;
   color: rgb(173, 173, 173);
   font-weight: bold;
+}
+/* Projects Section Swiper */
+.profile__project-card{
+  border: 1px solid #8040D2;
+  border-radius: 15px;
+  padding: 15px;  
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 500px !important;
+}
+.profile__project-card img{
+  border-radius: 15px 15px 0px 0px;
+  margin-bottom: 40px;
+  height: 400px;
+  object-fit: cover;
+  width: 100%;
+}
+.profile__project-card .view-btn{
+  color: white;
+  display: flex;
+  align-items: center;
+}
+.profile__project-card .view-btn a{
+  font-weight: 600;
+  font-size: 18px;
+  border-radius: 100px;
+  border: 1px solid #8040D2;
+  width: 100%;
+  text-align: center;
+  padding: 13px 0;
+  transition: .4s ease;
+}
+.profile__project-card .view-btn a:hover{
+  background: #8040D2;
+}
+.profile__project-card .detail h2{
+  font-size: 20px;
+  font-weight: 600;
+  white-space: nowrap;
+  margin: 8px 0;
+}
+.fraction-p{
+  position: absolute;
+  margin: 0;
+}
+.profile-projects-controllers{
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+.profile-projects-controllers > div {
+  display: flex;
+  height: 50px;
+  justify-content: space-between;
+  width: fit-content;
+  margin-top: 40px;
+  margin-right: 30px;
+}
+.profile-projects-controllers p{
+  color: white;
+  margin: auto 30px;
+  letter-spacing: 2.2px;
+}
+.profile-projects-controllers img{
+  cursor: pointer;
+  transition: opacity .4s ease;
+}
+.profile-projects-controllers img:hover{
+  opacity: 0.8;
+}
+.show-full-projects:hover{
+  color: #8040D2;
+}
+.profile__projects-slider .slick-slide > div{
+  display: flex;
+  justify-content: space-evenly;
+}
+@media screen and (max-width: 680px) {
+  .profile__project-card{
+    width: 400px!important;
+  }
+  .profile-projects-controllers{
+    justify-content: center;
+  }
+  .profile-projects-controllers > div{
+    margin-right:0 ;
+  }
+}
+@media screen and (max-width: 400px) {
+  .profile__project-card{
+    width: 350px!important;
+    margin: 0px 20px;
+  }
+  .profile__project-container{
+    margin: 0;
+    padding: 0;
+  }
+  .profile__project-card .view-btn a{
+    font-size: 16px;
+  }
+  .profile__project-card .detail h2{
+    font-size: 16px;
+  }
 }

@@ -25,26 +25,23 @@ const Course = ({ userInfo, course, modules }) => {
         setUserModules(res.data.data);
       });
   }, [courseId]);
-
   return (
-    <div className="courses-details banner-bg">
-      <div className="row" style={{ backgroundColor: '#474BFF' }}>
-        <div className="col-12 col-md-3 pr-0 scroll-sidebar">
-          <CourseSidebar
-            course={course}
-            courseId={courseId}
-            modules={modules}
-            userModules={userModules}
-          />
-        </div>
-        <div className="col-12 col-md-9 pl-0">
-          <MainCourseInfo
-            courseId={courseId}
-            userInfo={userInfo}
-            modules={modules}
-            userModules={userModules}
-          />
-        </div>
+    <div className="courses-detail row banner-bg">
+      <div className="col-10 course-sidebar-width col-md-3 pr-0 scroll-sidebar">
+        <CourseSidebar
+          course={course}
+          courseId={courseId}
+          modules={modules}
+          userModules={userModules}
+        />
+      </div>
+      <div className="col-12 module-sidebar-width tw-ml-4 col-md-7 pl-0">
+        <MainCourseInfo
+          courseId={courseId}
+          userInfo={userInfo}
+          modules={modules}
+          userModules={userModules}
+        />
       </div>
     </div>
   );

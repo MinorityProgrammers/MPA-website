@@ -2,8 +2,9 @@
 import React, { useState, useEffect } from 'react';
 import { Chart } from 'react-google-charts';
 import Skeleton from 'react-loading-skeleton';
+import DonutChartComponent from './DonutChartComponent';
 
-const OverviewStatistic = () => {
+const OverviewStatistic = ({ winSize }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -13,104 +14,16 @@ const OverviewStatistic = () => {
     };
   }, []);
 
-  const DonutChartComponent = (props) => {
-    const { data } = props;
-
-    return (
-      <div
-        style={{
-          width: '100%',
-          height: '20%',
-          marginBottom: '4%',
-          background: '#EFEFEF',
-          borderRadius: '5px',
-        }}
-      >
-        <div
-          className="d-flex flex-row"
-          style={{ width: '100%', height: '100%', position: 'relative' }}
-        >
-          <div
-            className="d-flex flex-column justify-content-center align-items-center"
-            style={{ width: '40%', height: '100%', position: 'absolute' }}
-          >
-            <p
-              className="text-center"
-              style={{
-                fontSize: '20px',
-                lineHeight: '20px',
-                color: 'black',
-                fontWeight: '700',
-                color: props.colorText,
-              }}
-            >
-              12
-            </p>
-            <p
-              style={{
-                fontSize: '8px',
-                lineHeight: '8px',
-                fontWeight: 400,
-                color: 'black',
-                color: props.colorText,
-              }}
-            >
-              {props.centerText}
-            </p>
-          </div>
-          <div style={{ width: '65%', height: '100%', position: 'absolute' }}>
-            <Chart
-              width="100%"
-              height="100%"
-              chartType="PieChart"
-              loader={<div> Loading Chart</div>}
-              data={data}
-              options={{
-                pieHole: 0.7,
-                backgroundColor: 'transparent',
-                slices: [
-                  { color: '#151371' },
-                  { color: '#6A0C8B' },
-                  { color: '#2D761B' },
-                  { color: '#FFC700' },
-                ],
-                pieSliceText: 'none',
-                chartArea: { width: '100%', height: '80%', right: '0%' },
-                legend: 'right',
-                legend: { alignment: 'center' },
-              }}
-            />
-          </div>
-          <p
-            style={{
-              fontSize: '12px',
-              color: 'black',
-              fontWeight: 700,
-              paddingLeft: '5%',
-              position: 'relative',
-              height: '100%',
-              marginLeft: '40%',
-            }}
-          >
-            {props.title}
-          </p>
-        </div>
-        {/* Legend area */}
-      </div>
-    );
-  };
-
   const LineChart = (props) => {
     const { data } = props;
     const current = props.data.pop();
     return (
       <div
+        className="static-card"
         style={{
           width: '100%',
           height: '24%',
           marginBottom: '1%',
-          background: '#EFEFEF',
-          borderRadius: '5px',
         }}
       >
         <div
@@ -123,7 +36,7 @@ const OverviewStatistic = () => {
                 width: '100%',
                 textAlign: 'center',
                 fontSize: '14px',
-                color: 'black',
+                color: 'white',
                 fontWeight: 700,
               }}
             >
@@ -139,16 +52,33 @@ const OverviewStatistic = () => {
               marginBottom: '5%',
             }}
           >
-            <div className="d-flex flex-column" style={{ height: '50%' }}>
-              <p style={{ fontSize: '10px', color: 'black', fontWeight: 700 }}>
-                Total Amount
-              </p>
-              <p
-                style={{ fontSize: '16px', color: '#151371', fontWeight: 700 }}
-              >
-                $
-                {current[1]}
-              </p>
+            <div className="tw-flex tw-justify-between" style={{ height: '50%' }}>
+
+              <div className="tw-flex-col">
+                <p style={{ fontSize: '10px', color: '#DEDEDE', fontWeight: 600 }}>
+                  Total Amount
+                </p>
+                <p
+                  style={{ fontSize: '18px', color: '#FFFFFF', fontWeight: 600 }}
+                >
+                  $
+                  {current[1]}
+                </p>
+              </div>
+              <div className="tw-flex-col">
+                <p style={{ fontSize: '12px', color: '#16A34A', fontWeight: 600 }}>
+                  <i style={{ transform: 'rotate(45deg)' }} className="fas fa-arrow-up" />
+                  {' '}
+                  1.2m
+                </p>
+                <p
+                  style={{ fontSize: '12px', color: '#D50E0E', fontWeight: 600 }}
+                >
+                  <i style={{ transform: 'rotate(225deg)' }} className="fas fa-arrow-up" />
+                  {' '}
+                  0.1m
+                </p>
+              </div>
             </div>
             <div style={{ position: 'relative', height: '50%', width: '100%' }}>
               <Chart
@@ -158,6 +88,7 @@ const OverviewStatistic = () => {
                 loader={<div>Loading Chart</div>}
                 data={data}
                 options={{
+                  colors: ['#FE8F66'],
                   backgroundColor: 'transparent',
                   hAxis: {
                     baselineColor: 'transparent',
@@ -183,27 +114,60 @@ const OverviewStatistic = () => {
       </div>
     );
   };
+  const dummyData1 = {
+    title: 'Courses Completed',
+    centerText: {
+      text: 'Completed',
+      value: 18,
+    },
+    labels: ['Web Dev', 'UI/UX', 'Entrepreneurship', 'Blockchain'],
+    datasets: [
+      {
+        data: [7, 5, 2, 4],
+        backgroundColor: ['#783EFD', '#FFCC40', '#FD05B3', '#FE8F66'],
+        color: ['#783EFD', '#FFCC40', '#FD05B3', '#FE8F66'],
+        borderColor: ['#24253D', '#24253D', '#24253D', '#24253D'],
+        borderWidth: 1,
+      },
 
-  const dummyData1 = [
-    ['Course Type', 'Courses Completed'],
-    ['Web Dev', 7],
-    ['UI/UX', 5],
-    ['Entrepreneurship', 2],
-    ['Blockchain', 4],
-  ];
+    ],
+  };
+  const dummyData2 = {
+    title: 'Proposals',
+    labels: ['Submitted', 'Under Review', 'Approved'],
+    centerText: {
+      text: 'Approved',
+      value: 3,
+    },
+    datasets: [
+      {
+        data: [5, 4, 3],
+        backgroundColor: ['#783EFD', '#FD05B3', '#FE8F66'],
+        color: ['#783EFD', '#FD05B3', '#FE8F66'],
+        borderColor: ['#24253D', '#24253D', '#24253D'],
+        borderWidth: 1,
+      },
 
-  const dummyData2 = [
-    ['Proposals', 'Amount of Each'],
-    ['Submitted', 5],
-    ['Under Review', 4],
-    ['Approved', 3],
-  ];
+    ],
+  };
+  const dummyData3 = {
+    title: 'Tasks (40)',
+    centerText: {
+      text: 'Completed',
+      value: 12,
+    },
+    labels: ['Completed', 'Ongoing'],
+    datasets: [
+      {
+        data: [12, 4],
+        backgroundColor: ['#783EFD', '#FD05B3'],
+        color: ['#783EFD', '#FD05B3'],
+        borderColor: ['#24253D', '#24253D'],
+        borderWidth: 1,
+      },
 
-  const dummyData3 = [
-    ['Tasks Status', 'Amount of Each'],
-    ['Completed', 12],
-    ['Ongoing', 4],
-  ];
+    ],
+  };
 
   const dummyLineData = [
     ['Month', 'Earning'],
@@ -230,7 +194,7 @@ const OverviewStatistic = () => {
         style={{
           fontSize: '18px',
           fontWeight: '700',
-          color: 'black',
+          color: 'white',
           margin: 0,
         }}
       >
@@ -261,22 +225,27 @@ const OverviewStatistic = () => {
         </div>
       ) : (
         <div
-          className="d-flex flex-column justify-content-center align-items-center overflow-scroll"
-          style={{ width: '100%', height: '100%', padding: '12px' }}
+          className="d-flex flex-column overflow-scroll"
+          style={{
+            width: '100%', height: '100%', padding: '5px', justifyContent: 'flex-end',
+          }}
         >
           <DonutChartComponent
+            winSize={winSize}
             data={dummyData1}
             title="Courses Completed"
             centerText="Completed"
             colorText="#6A0C8B"
           />
           <DonutChartComponent
+            winSize={winSize}
             data={dummyData2}
             title="Proposals"
             centerText="Approved"
             colorText="#2D761B"
           />
           <DonutChartComponent
+            winSize={winSize}
             data={dummyData3}
             title="Tasks"
             centerText="Completed"

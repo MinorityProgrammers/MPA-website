@@ -1,5 +1,6 @@
+/* eslint-disable max-len */
 import decode from 'jwt-decode';
-import { signOut } from 'next-auth/client';
+import { signOut, useSession } from 'next-auth/client';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, {
@@ -37,6 +38,7 @@ const HomepageNav = ({
     false,
   );
   const [, setConnect] = useState(false);
+  const [session] = useSession();
 
   const { isWeb3Enabled, isAuthenticated, isWeb3EnableLoading } = useMoralis();
 
@@ -139,7 +141,9 @@ const HomepageNav = ({
         setToken(token);
       }
     }
-  }, [data]);
+  }, [data, typeof window !== 'undefined'
+    ? window.localStorage.getItem('jwtToken')
+    : null]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -161,7 +165,9 @@ const HomepageNav = ({
     authDispatch({
       type: LOGOUT_USER,
     });
-    signOut();
+    if (session) {
+      signOut();
+    }
   };
 
   useEffect(() => {
@@ -358,10 +364,10 @@ const HomepageNav = ({
                 {userData !== null && userData !== undefined ? (
                   <li onClick={() => setOpen(!open)}>
                     <span
-                      className="tw-cursor-pointer tw-text-blue-700"
-                      style={{ fontSize: '1.8rem' }}
+                      className="tw-cursor-pointer tw-text-blue-700 tw-hover:text-white"
+                      style={{ fontSize: '1.1rem' }}
                     >
-                      <BiMenuAltLeft />
+                      All
                     </span>
                   </li>
                 ) : (
@@ -480,11 +486,14 @@ const HomepageNav = ({
             </ul>
             <ul className="tw-flex tw-flex-row tw-justify-around tw-w-1/4 tw-my-8 navbar__right md:tw-hidden">
               <li>
-                <div className="tw-flex tw-flex-row tw-w-full tw-border tw-border-gray-700 tw-rounded-md tw-px-1 tw-text-gray-500">
+                <div className="navbar__search tw-flex tw-flex-row tw-w-full tw-border tw-border-white tw-rounded-md tw-px-1 tw-text-white">
                   <input
                     onChange={handleSearch}
                     value={searchValue}
-                    className="searchInput tw-bg-transparent tw-border-0 tw-text-gray-500 tw-py-1 xl:tw-w-10/12 tw-w-full tw-outline-none focus:tw-outline-none"
+                    className="searchInput tw-bg-transparent tw-border-0 tw-text-white tw-py-1 xl:tw-w-10/12 tw-w-full tw-outline-none focus:tw-outline-none"
+                    // ${
+                    //   searchValue ? "expand" : ""
+                    // }`}
                     type="text"
                     name=""
                     placeholder="Search..."
@@ -502,10 +511,19 @@ const HomepageNav = ({
               {userData !== null && userData !== undefined ? (
                 <div className="tw-mx-2">
                   <li>
-                    <i
-                      className="fas fa-user-circle tw-content-center tw-text-center NavIcon tw-cursor-pointer tw-mt-2"
-                      onClick={onClick}
-                    />
+                    {userData.profilePicture ? (
+                      <img
+                        className="tw-content-center tw-text-center tw-cursor-pointer tw-h-9 tw-rounded-full tw-w-9"
+                        onClick={onClick}
+                        src={userData.profilePicture}
+                        alt="profile"
+                      />
+                    ) : (
+                      <i
+                        className="fa-user-circle fas tw-content-center tw-text-center NavIcon tw-cursor-pointer tw-mt-2"
+                        onClick={onClick}
+                      />
+                    )}
 
                     {isActive ? (
                       <HomepageNavLoggedin
