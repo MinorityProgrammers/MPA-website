@@ -116,9 +116,9 @@ const QuickApplyJobApplication = (props) => {
       className="tw-z-50 tw-absolute tw-ml-auto tw-mr-auto tw-w-full tw-h-auto tw-bg-black tw-bg-opacity-50 tw--mt-10"
       style={open ? { display: 'block' } : { display: 'none' }}
     >
-      <div className="tw-bg-white tw-w-11/12 2xl:tw-w-3/6 tw-ml-auto tw-mr-auto tw-mt-36 tw-mb-10 tw-rounded-2xl tw-text-darkGray">
+      <div className="tw-bg-popUpDark tw-w-11/12 2xl:tw-w-3/6 tw-ml-auto tw-mr-auto tw-mt-40 tw-mb-10 tw-rounded-2xl tw-text-white tw-border-2 tw-border-purple-800 ">
         <div className="tw-bg-gradient-to-r tw-from-purple-700 tw-to-yellow-300 tw-mb-4 tw-pb-1 tw-rounded-t-2xl">
-          <div className="tw-bg-white tw-pl-10 tw-pr-10 tw-pt-8 tw-rounded-t-2xl">
+          <div className="tw-bg-popUpDark tw-pl-10 tw-pr-10 tw-pt-8 tw-rounded-t-2xl">
             <p>Minority Programmers Association</p>
             <h1 className="tw-font-bold tw-text-2xl">{job?.job_title}</h1>
             <p className="tw-pb-2.5 tw-text-m tw-font-medium tw-italic">
@@ -162,7 +162,7 @@ const QuickApplyJobApplication = (props) => {
             className="tw-flex tw-flex-col"
             id="jobApply"
           >
-            <div className="tw-border-2 tw-border-gray-500 tw-pt-6 tw-pb-2 tw-pl-8 tw-pr-8 tw-flex tw-flex-col tw-mb-10">
+            <div className="tw-border-2 tw-border-purple-800 tw-pt-6 tw-pb-2 tw-pl-8 tw-pr-8 tw-flex tw-flex-col tw-mb-10">
               <div className="sm:tw-flex sm:tw-flex-col">
                 <label
                   className="tw-pb-4 tw-font-medium tw-w-6/12 tw-pr-4 sm:tw-pr-0 sm:tw-w-full"
@@ -173,7 +173,7 @@ const QuickApplyJobApplication = (props) => {
                   First Name
                   <br />
                   <input
-                    className="tw-h-10 tw-p-3 tw-mt-1 tw-border-2 tw-border-gray-500 tw-bg-gray-200 tw-w-full"
+                    className="tw-h-10 tw-p-3 tw-mt-1 tw-border-2 tw-border-purple-800 tw-bg-inputColor tw-w-full"
                     id="firstName"
                     type="text"
                     name="firstName"
@@ -193,7 +193,7 @@ const QuickApplyJobApplication = (props) => {
                   Last Name
                   <br />
                   <input
-                    className="tw-h-10 tw-p-3 tw-mt-1 tw-border-2 tw-border-gray-500 tw-bg-gray-200 tw-w-full"
+                    className="tw-h-10 tw-p-3 tw-mt-1 tw-border-2 tw-border-purple-800 tw-bg-inputColor tw-w-full"
                     id="lastName"
                     type="text"
                     name="lastName"
@@ -215,7 +215,7 @@ const QuickApplyJobApplication = (props) => {
                   Email
                   <br />
                   <input
-                    className="tw-h-10 tw-p-3 tw-mt-1 tw-border-2 tw-border-gray-500 tw-bg-gray-200 tw-w-full"
+                    className="tw-h-10 tw-p-3 tw-mt-1 tw-border-2 tw-border-purple-800 tw-bg-inputColor tw-w-full"
                     id="email"
                     type="text"
                     name="email"
@@ -235,7 +235,7 @@ const QuickApplyJobApplication = (props) => {
                   Country
                   <br />
                   <input
-                    className="tw-h-10 tw-p-3 tw-mt-1 tw-border-2 tw-border-gray-500 tw-bg-gray-200 tw-w-full"
+                    className="tw-h-10 tw-p-3 tw-mt-1 tw-border-2 tw-border-purple-800 tw-bg-inputColor tw-w-full"
                     id="country"
                     type="text"
                     name="country"
@@ -256,7 +256,7 @@ const QuickApplyJobApplication = (props) => {
                   State
                   <br />
                   <input
-                    className="tw-h-10 tw-p-3 tw-mt-1 tw-border-2 tw-border-gray-500 tw-bg-gray-200 tw-w-full"
+                    className="tw-h-10 tw-p-3 tw-mt-1 tw-border-2 tw-border-purple-800 tw-bg-inputColor tw-w-full"
                     id="state"
                     type="text"
                     name="state"
@@ -275,7 +275,7 @@ const QuickApplyJobApplication = (props) => {
                   City
                   <br />
                   <input
-                    className="tw-h-10 tw-p-3 tw-mt-1 tw-border-2 tw-border-gray-500 tw-bg-gray-200 tw-w-full"
+                    className="tw-h-10 tw-p-3 tw-mt-1 tw-border-2 tw-border-purple-800 tw-bg-inputColor tw-w-full"
                     id="city"
                     type="text"
                     name="city"
@@ -287,7 +287,7 @@ const QuickApplyJobApplication = (props) => {
               </div>
             </div>
 
-            <div className="tw-border-2 tw-border-gray-500 tw-pt-6 tw-pb-2 tw-pl-8 tw-pr-8 tw-flex-col tw-mb-8">
+            <div className="tw-border-2 tw-border-purple-800 tw-pt-6 tw-pb-2 tw-pl-8 tw-pr-8 tw-flex-col tw-mb-8">
               <h2 className="tw-font-bold tw-text-xl tw-mb-1">
                 Relevant Experience
               </h2>
@@ -299,7 +299,7 @@ const QuickApplyJobApplication = (props) => {
                   Job Title
                   <br />
                   <input
-                    className="tw-h-10 tw-p-3 tw-mt-1 tw-border-2 tw-border-gray-500 tw-bg-gray-200 tw-w-full"
+                    className="tw-h-10 tw-p-3 tw-mt-1 tw-w-full tw-border-2 tw-border-purple-800 tw-bg-inputColor"
                     id="jobTitle"
                     type="text"
                     name="jobTitle"
@@ -315,7 +315,7 @@ const QuickApplyJobApplication = (props) => {
                   Company
                   <br />
                   <input
-                    className="tw-h-10 tw-p-3 tw-mt-1 tw-border-2 tw-border-gray-500 tw-bg-gray-200 tw-w-full"
+                    className="tw-h-10 tw-p-3 tw-mt-1 tw-w-full tw-border-2 tw-border-purple-800 tw-bg-inputColor"
                     id="company"
                     type="text"
                     name="company"
@@ -333,7 +333,7 @@ const QuickApplyJobApplication = (props) => {
               Cover Letter
               <br />
               <textarea
-                className="tw-h-10 tw-p-3 tw-mt-1 tw-border-2 tw-border-gray-500 tw-bg-gray-200 tw-w-full tw-h-40 tw-text-darkGray"
+                className="tw-h-10 tw-p-3 tw-mt-1 tw-w-full tw-h-40 tw-text-white tw-border-2 tw-border-purple-800 tw-bg-inputColor"
                 id="coverLetter"
                 type="text"
                 name="coverLetter"

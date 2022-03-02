@@ -14,7 +14,7 @@ const SettingBodySecurityManagementModal = ({
       <div className={styles.modalADD}>
         <h1>
           Are you sure you want to
-          {`${modal}`}
+          {` ${modal}`}
           {' '}
           your account?
         </h1>
@@ -28,6 +28,7 @@ const SettingBodySecurityManagementModal = ({
         </p>
         <textarea
           placeholder="Feedback here"
+          rows={5}
           value={feedBack}
           onChange={(e) => setFeedBack(e.target.value)}
         />

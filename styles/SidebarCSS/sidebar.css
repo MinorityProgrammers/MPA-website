@@ -61,6 +61,8 @@
 }
 .progressBar {
   height: 70px;
+  border: 1px solid var(--secondary-accent);
+  border-radius: 100%;
 }
 .profileImg {
   width: 60px;

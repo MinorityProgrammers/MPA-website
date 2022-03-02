@@ -486,7 +486,7 @@ const HomepageNav = ({
             </ul>
             <ul className="tw-flex tw-flex-row tw-justify-around tw-w-1/4 tw-my-8 navbar__right md:tw-hidden">
               <li>
-                {/* <div className="navbar__search tw-flex tw-flex-row tw-w-full tw-border tw-border-white tw-rounded-md tw-px-1 tw-text-white">
+                <div className="navbar__search tw-flex tw-flex-row tw-w-full tw-border tw-border-white tw-rounded-md tw-px-1 tw-text-white">
                   <input
                     onChange={handleSearch}
                     value={searchValue}
@@ -501,7 +501,7 @@ const HomepageNav = ({
                   <button type="submit" onClick={handleSubmit}>
                     <i className="fas fa-search" />
                   </button>
-                </div> */}
+                </div>
               </li>
               <li>
                 <div className="tw-w-full tw-mx-2 tw-cursor-pointer">

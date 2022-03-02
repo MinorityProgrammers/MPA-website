@@ -25,6 +25,8 @@ module.exports = {
         activeOrange: '#FF655B',
         '#F9F9F9': '#F9F9F9',
         '#EAEFF2': '#EAEFF2',
+        popUpDark:'#14152A',
+        inputColor: '#3a3551',
       },
       gradientColorStops: {
         FFC700: '#FFC700',
