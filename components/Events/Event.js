@@ -11,8 +11,10 @@ import EventCardFeaturedSkeleton from "./EventCardFeaturedSkeleton";
 import EventMoreInfo from "./EventMoreInfo";
 import Card from "../login-signup/card/index";
 import EventCategoryFilterButton from "./EventCategoryFilterButton";
-import SwipeEvent from "./SwipeEvent";
 import PastEventCard from "./PastEventCard";
+import "swiper/css/swiper.min.css";
+import "swiper/css/swiper.css";
+import Swiper from "swiper";
 
 class Event extends Component {
   constructor(props) {
@@ -96,49 +98,53 @@ class Event extends Component {
       .catch((err) => console.error(err));
   }
 
-  // componentDidUpdate(prevProps, prevState) {
-  //   if (prevState.Swiperdata !== this.state.Swiperdata) {
-  //     const swiper = new Swiper(".swiper-container", {
-  //       direction: "horizontal",
-  //       navigation: {
-  //         nextEl: ".swiper-button-next",
-  //         prevEl: ".swiper-button-prev",
-  //       },
-  //       autoplay: {
-  //         delay: 3000,
-  //         disableOnInteraction: false,
-  //       },
-  //       centeredSlides: true,
-  //       spaceBetween: 15,
-  //       loop: false,
-  //       reverseDirection: true,
-  //       stopOnLastSlide: false,
-  //       // loopAdditionalSlides: 1000,
-  //       preloadImages: true,
-  //       updateOnImagesReady: true,
-  //       observeParents: true,
-  //       observer: true,
-  //       breakpoints: {
-  //         // when window width is >= 640px
-  //         200: {
-  //           slidesPerView: 1,
-  //         },
-  //         // when window width is >= 918px
-  //         918: {
-  //           slidesPerView: 1.5,
-  //         },
-  //         // when window width is >= 1400px
-  //         1400: {
-  //           slidesPerView: 2,
-  //         },
-  //         // when window width is >= 2400px
-  //         2400: {
-  //           slidesPerView: 2,
-  //         },
-  //       },
-  //     });
-  //   }
-  // }
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.Swiperdata !== this.state.Swiperdata) {
+      const swiper = new Swiper(".swiper-container", {
+        direction: "horizontal",
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        centeredSlides: true,
+        speed: 700,
+        spaceBetween: 20,
+        autoplay: {
+          delay: 2500,
+          disableOnInteraction: false,
+        },
+        // loop: true,
+        reverseDirection: true,
+        slideToClickedSlide: true,
+        // loopedSlides: 50,
+        // loopAdditionalSlides: 1000,
+        preloadImages: true,
+        updateOnImagesReady: true,
+        observeParents: true,
+        observer: true,
+        breakpoints: {
+          1440: {
+            slidesPerView: 2.5,
+          },
+          1025: {
+            slidesPerView: 2,
+          },
+          1024: {
+            slidesPerView: 2,
+          },
+          768: {
+            slidesPerView: 2,
+          },
+          640: {
+            slidesPerView: 2,
+          },
+          320: {
+            slidesPerView: 1,
+          },
+        },
+      });
+    }
+  }
 
   // fetch Event data
   getEvents = async () => {
@@ -528,19 +534,20 @@ class Event extends Component {
       }),
       option: (provided, state) => ({
         ...provided,
-        backgroundColor: state.isSelected
-          ? "var(--tertiary-low-contrast)"
-          : "none",
-        "&:hover": { backgroundColor: "var(--tertiary-high-contrast)" },
-        "&:focused": { backgroundColor: "none" },
+        backgroundColor: state.isSelected ? "#6938EF" : "none",
+        "&:hover": {
+          backgroundColor: "#6938EF",
+          transition: "all 0.3s ease-in",
+        },
+        "&:focused": { backgroundColor: "#6938EF", color: "#6938EF" },
         color: "#fff",
         cursor: "pointer",
         padding: 10,
       }),
       placeholder: (base) => ({
         ...base,
-        fontSize: "1em",
-        color: "var(--light-low-contrast)",
+        fontSize: "12px",
+        color: "#fff",
         fontWeight: 500,
       }),
       indicatorSeparator: (base) => ({
@@ -550,7 +557,7 @@ class Event extends Component {
       groupHeading: (base) => ({
         ...base,
         fontSize: "1.02em",
-        color: "#afafaf",
+        color: "#fff",
         fontWeight: 700,
       }),
     };
@@ -820,6 +827,12 @@ class Event extends Component {
                   />
                 </label>
               ))}
+              <span
+                className="clear-button tw-text-white tw-cursor-pointer tw-text-base tw-font-semibold tw-mt-2"
+                onClick={() => resetFilter()}
+              >
+                Clear Filter
+              </span>
               <div className="img_position">
                 <img
                   src="/assets/images/home-page/about-title-icon.svg"
@@ -836,6 +849,7 @@ class Event extends Component {
                 className="event_Select tw-select-none"
                 styles={selectStyles}
                 closeMenuOnSelect
+                placeholder="Filter Search"
                 isSearchable={false}
                 isClearable
                 onChange={onChangeInput}
@@ -880,55 +894,67 @@ class Event extends Component {
           <div className="event_divide">
             <h1>Featured&nbsp;Events</h1>
           </div>
+          <div className="swiper-navigation_container">
+            <div className="swiper-navigation">
+              <div className="swiper-button-prev" />
+              <div className="swiper-button-next" />
+            </div>
+          </div>
 
           {/* LOADING SKELETON HERE */}
           <div className="swiper-container">
             {this.state.loading ? (
               <div className="swiper-wrapper" style={{ width: "100%" }}>
-                <div className="">
-                  <EventCardFeaturedSkeleton />
+                <div className="mr-4">
+                  <EventCardSkeleton />
                 </div>
                 <div className="">
-                  <EventCardFeaturedSkeleton />
+                  <EventCardSkeleton />
                 </div>
               </div>
             ) : catergoryFilterLoading ? (
-              <div className="swiper-wrapper" style={{ width: "80%" }}>
-                <div className="swiper-slide">
-                  <EventCardFeaturedSkeleton />
+              <div className="swiper-wrapper" style={{ width: "100%" }}>
+                <div className="mr-4">
+                  <EventCardSkeleton />
                 </div>
-                <div className="swiper-slide">
-                  <EventCardFeaturedSkeleton />
-                </div>
-                <div className="swiper-slide">
-                  <EventCardFeaturedSkeleton />
-                </div>
-                <div className="swiper-slide">
-                  <EventCardFeaturedSkeleton />
+                <div className="">
+                  <EventCardSkeleton />
                 </div>
               </div>
             ) : Swiperdata.length < 1 ? (
               <div className="swiper-wrapper" style={{ width: "80%" }}>
-                <div className="text-center" style={{ width: "100%" }}>
+                <div
+                  className="text-center tw-text-white tw-font-bold tw-text-2xl"
+                  style={{ width: "100%" }}
+                >
                   Sorry, no events match your filters
                 </div>
               </div>
             ) : (
               <>
-                <div className="">
-                  <SwipeEvent
-                    data={this.state.Swiperdata}
-                    userSavedEvents={userSavedEvents}
-                    handleMoreInfo={handleMoreInfo}
-                    active={active}
-                    setClickRegister={setClickRegister}
-                    userEvent={this.state.userEvents}
-                    clickRegister={clickRegister}
-                    userData={userData}
-                    token={token}
-                    allsavedEvents={allsavedEvents}
-                  />
+                <div className="swiper-wrapper">
+                  {this.state.Swiperdata.map((event, index) => (
+                    <div
+                      className="swiper-slide"
+                      key={`${`event_card-ft${index}`}`}
+                    >
+                      <EventCardFeatured
+                        item={event}
+                        attended={event}
+                        userSavedEvents={userSavedEvents}
+                        handleMoreInfo={handleMoreInfo}
+                        active={active}
+                        setClickRegister={setClickRegister}
+                        userEvent={this.state.userEvents}
+                        clickRegister={clickRegister}
+                        userData={userData}
+                        token={token}
+                        allsavedEvents={allsavedEvents}
+                      />
+                    </div>
+                  ))}
                 </div>
+
                 <div className="">
                   <img
                     src="/assets/images/home-page/about-title-icon.svg"
@@ -958,7 +984,9 @@ class Event extends Component {
             ) : (
               <div className="cards">
                 {AllEvent.length < 1 && (
-                  <div>Sorry, no events match your filters</div>
+                  <div className="tw-text-2xl tw-font-bold">
+                    Sorry, no events match your filters
+                  </div>
                 )}
                 {this.state.AllEvent.map((events, index) => (
                   <EventCard
@@ -986,7 +1014,7 @@ class Event extends Component {
           </div>
           {/* LOADING SKELETON HERE */}
           <div className="event_container_section">
-            {!this.state.loading ? (
+            {this.state.loading ? (
               <div className="cards">
                 <EventCardSkeleton />
                 <EventCardSkeleton />
@@ -999,7 +1027,9 @@ class Event extends Component {
             ) : (
               <div className="cards">
                 {PastEvent.length < 1 && (
-                  <div>Sorry, no events match your filters</div>
+                  <div className="tw-text-2xl tw-font-bold">
+                    Sorry, no events match your filters
+                  </div>
                 )}
 
                 <PastEventCard
