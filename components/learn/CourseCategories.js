@@ -283,11 +283,11 @@ const CourseCategories = ({
         >
           <div className="modal-dialog activity-modal" role="document">
             <div className="modal-content course-specific-info">
-              <div className="d-flex flex-column justify-content-center align-items-center">
+              <div className="d-flex flex-column justify-content-center align-items-center courseModal">
                 <h5
                   className="mt-4 pb-1"
                   id="exampleModalLabel"
-                  style={{ fontSize: '25px', fontWeight: '600' }}
+                  style={{ fontSize: '25px', fontWeight: '600', color: '#fff' }}
                 >
                   {singleCourse.name}
                 </h5>
