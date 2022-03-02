@@ -20,15 +20,13 @@ const index = () => {
   });
   const [step, setStep] = useState(1);
   const [profileStep, setProfileStep] = useState(router.query.step);
-
   useEffect(() => {
     if (data === null) {
-      router.push('/auth');
+      router.push('/auth', { shallow: true });
     }
   }, [data, typeof window !== 'undefined'
     ? window.localStorage.getItem('jwtToken')
     : null]);
-
   useEffect(() => {
     if (profileStep && Object.keys(data).length > 0) {
       setTabsActive({
@@ -40,7 +38,7 @@ const index = () => {
   }, [data]);
 
   return (
-    <SettingsLayout setData={setData} settingsPage="overview" tabsActive={tabsActive} setTabsActive={setTabsActive}>
+    <SettingsLayout setData={setData} data={data} settingsPage="overview" tabsActive={tabsActive} setTabsActive={setTabsActive}>
       {tabsActive.overview
       && <SettingBodyOverview setTabsActive={setTabsActive} data={data} />}
       {tabsActive.profile
@@ -54,13 +52,12 @@ const index = () => {
       )}
       {tabsActive.notification
       && (
-      <SettingsNotifications data={data} />
+      <SettingsNotifications setData={setData} data={data} />
       )}
       {tabsActive.security
-      && (<SettingsSecurity data={data} />
+      && (<SettingsSecurity data={data} setData={setData} />
       )}
     </SettingsLayout>
   );
 };
-
 export default index;

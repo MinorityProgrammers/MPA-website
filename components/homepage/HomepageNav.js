@@ -168,6 +168,9 @@ const HomepageNav = ({
     if (session) {
       signOut();
     }
+    if (router.pathname === '/settings') {
+      router.push('/auth');
+    }
   };
 
   useEffect(() => {
