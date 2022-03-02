@@ -225,7 +225,7 @@ const SettingsLayout = ({
                     </div>
                     <div className={styles.textDiv}>
                       <p>
-                        <span>{userData.email}</span>
+                        <span>{userData?.email}</span>
                       </p>
                       <h3>
                         {userData?.firstName && userData?.lastName

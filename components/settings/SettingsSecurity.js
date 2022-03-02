@@ -282,6 +282,7 @@ const SettingsSecurity = ({ data, setData }) => {
       <div className={styles.login}>
         {(modal === 'deactivate' || modal === 'delete') && (
         <SettingBodySecurityManagementModal
+          data={data}
           modal={modal}
           goBack={goBack}
           deactivateAccount={deactivateAccount}
@@ -290,11 +291,11 @@ const SettingsSecurity = ({ data, setData }) => {
         )}
         <h2>Update Account Login</h2>
         <div className={styles.deactivatetBtn}>
-          <a onClick={() => openModal('delete')}>Deactivate Account</a>
+          <a onClick={() => openModal('deactivate')}>Deactivate Account</a>
           <p>*Temporarily deactivates your account. Must be reactivated by MPA.</p>
         </div>
         <div className={styles.deleteBtn}>
-          <a onClick={() => openModal('deactivate')}>Delete Account</a>
+          <a onClick={() => openModal('delete')}>Delete Account</a>
           <p>
             *Permanently deletes your account, cannot be reactivated.
           </p>
