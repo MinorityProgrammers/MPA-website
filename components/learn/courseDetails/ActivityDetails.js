@@ -82,15 +82,23 @@ const ActivityDetails = ({
         .then((res) => res.json());
     }
   };
-
-  const nextElementKey = moduleInfo.elementKey + 1;
+  // if this is the last lesson in this level, advance to next level
+  const modLength = specificModules.length;
+  const nextElementKey = moduleInfo.elementKey + 1 >= modLength ? moduleInfo.elementKey : moduleInfo.elementKey + 1; // if it is last lesson skip.
   const nextModuleDetails = specificModules?.find(
     (module) => module.elementKey === nextElementKey,
   );
 
   const forwardInfo = () => {
     const nextModuleId = nextModuleDetails._id;
-    const nextModuleInfo = `/courses/${courseId}/modules/${moduleLevel}/module-details/${nextModuleId}`;
+    let modLevel = '';
+    let nextModuleInfo = '';
+    if (moduleInfo.elementKey + 1 === modLength) {
+      modLevel = moduleLevel === 'beginner' ? 'intermediate' : 'advanced';
+      nextModuleInfo = `/courses/${courseId}/modules/${modLevel}/`;
+    } else {
+      nextModuleInfo = `/courses/${courseId}/modules/${moduleLevel}/module-details/${nextModuleId}`;
+    }
 
     if (userModulesId.includes(nextModuleId)) {
       router.push(nextModuleInfo);
@@ -255,7 +263,7 @@ const ActivityDetails = ({
               </div>
               {/* Buttons */}
               <div className="d-flex flex-row justify-content-between mb-4">
-                <button className="lesson-button d-flex flex-row justify-content-center align-items-center p-3" style={{ lineHeight: '20px', border: '1px solid #6938EF', borderRadius: '20px' }}>
+                <button type="button" className="lesson-button d-flex flex-row justify-content-center align-items-center p-3" style={{ lineHeight: '20px', border: '1px solid #6938EF', borderRadius: '20px' }}>
                   <FontAwesomeIcon icon={faArrowLeft} style={{ fontSize: '17px', color: 'white' }} className="icon mr-2" />
                   <p style={{ fontSize: '17px', color: 'white' }}>
                     Previous Lesson
@@ -264,7 +272,7 @@ const ActivityDetails = ({
                 <div className="d-flex flex-row">
                   <button
                     type="button"
-                    onClick={() => { (setWatched(true), setIsOpen(true)) }}
+                    onClick={() => { (setWatched(true), setIsOpen(true)); }}
                     className="quiz-button p-3" style={{ lineHeight: '20px', border: '1px solid #6938EF', borderRadius: '20px', background: '#6938EF' }}>
                     <p style={{ fontSize: '17px', color: 'white' }}>
                       Take Quiz
