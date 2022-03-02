@@ -1,4 +1,6 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, {
+  useEffect, useState, useContext, useRef,
+} from 'react';
 import HomepageNav from '../components/homepage/HomepageNav';
 import { GlobalContext } from '../contexts/provider';
 import Layout from '../components/Layout';
@@ -6,6 +8,8 @@ import Overview from '../components/dashboard/Overview';
 import SidebarTwo from '../components/sidebar/SidebarTwo';
 import links from '../contexts/utils/links';
 import Footer from '../components/Footer';
+import ComingSoon from '../components/ComingSoon';
+import useDetectOutsideClick from '../components/UseDetectOutsideClick';
 
 const index = () => {
   const [userData, setUserData] = useState({});
@@ -13,6 +17,12 @@ const index = () => {
   const [loading, setLoading] = useState(true);
   const [open, setOpen] = useState(false);
   const [, setData] = useState([]);
+  const dropdownRef = useRef(null);
+  const [hide, setHide] = useDetectOutsideClick(dropdownRef, false);
+
+  const handleClick = () => {
+    setHide(!hide);
+  };
 
   const {
     authState: {
@@ -43,6 +53,7 @@ const index = () => {
   return (
     <Layout pageTitle="Dashboard">
       {/* <DashboardNavbar /> */}
+      {hide === false && <ComingSoon closeClick={handleClick} />}
       <HomepageNav
         open={open}
         setData={setData}

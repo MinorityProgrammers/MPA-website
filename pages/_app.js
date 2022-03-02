@@ -34,7 +34,7 @@ import '../styles/Careers/index.css';
 import '../styles/ChapterCSS/chapter.css';
 import '../styles/Chat/chat.css';
 import '../styles/coreteam/coreteam.css';
-import '../styles/DashboardCSS/dashboard.css';
+import '../styles/DashboardCSS/dashboard.scss';
 import '../styles/Events/Event.css';
 import '../styles/iframes/swap.css';
 import '../styles/incubator-css/incubator.css';

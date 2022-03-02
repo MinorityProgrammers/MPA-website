@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 import FormData from 'form-data';
 import { useRouter } from 'next/router';
 import { GlobalContext } from '../../contexts/provider';
@@ -12,6 +12,8 @@ const SettingBodyNotificationsNotifications = ({
   settingsPage,
   data,
   userID,
+  inputStates,
+  setInputStates,
 }) => {
   const router = useRouter();
 
@@ -28,7 +30,7 @@ const SettingBodyNotificationsNotifications = ({
     initialInputState[field.name] = '';
   });
 
-  const [inputStates, setInputStates] = useState(initialInputState);
+  // const [inputStates, setInputStates] = useState(initialInputState);
 
   useEffect(() => {
     inputFields.forEach((field) => {

@@ -9,9 +9,9 @@
   font-size: 1rem;
   cursor: pointer;
   padding: 1em;
-  border: 1px solid rgb(190, 193, 204);
+  border: 1px solid var(--secondary-accent-1);
   border-radius: 0.5em;
-  background: white;
+  background: var(--secondary-high-contrast);
   overflow: hidden;
   position: relative;
 }

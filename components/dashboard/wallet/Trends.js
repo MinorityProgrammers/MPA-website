@@ -10,7 +10,7 @@ const Trends = ({ data }) => {
     <div className="d-flex flex-column" style={{ width: '100%', height: '100%' }}>
       {/* first row */}
       <div className="d-flex flex-row justify-content-between align-items-center" style={{ height: '30px', width: '100%', marginBottom: '15px' }}>
-        <p style={{ fontSize: '20px', fontWeight: '700', color: 'black' }}> Trends</p>
+        <p style={{ fontSize: '20px', fontWeight: '700', color: 'white' }}> Trends</p>
         <div>
           <button
             type="button"

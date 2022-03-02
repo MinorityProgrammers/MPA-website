@@ -1,6 +1,8 @@
+@import '../../styles/global-variables.css';
+
 .btn--go {
-  background-color: #474bfd !important;
-  background: #474bfd !important;
+  background-color: var(--tertiary-main) !important;
+  background: var(--tertiary-main) !important;
   color: #fff;
 }
 .consultancy__title--h1 {

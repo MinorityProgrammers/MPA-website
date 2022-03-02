@@ -1,3 +1,4 @@
+/* login */
 .loginContent {
   margin-bottom: 2vw;
 }
@@ -15,8 +16,203 @@
 .loginContent label p {
   font-weight: normal;
 }
-
-/* .ualWrap {
+.sectionHeader{
+  color: #646879;
+  font-weight: 600;
+  font-size: 18px;
+  display: flex;
+  padding: 0px 18px;
+  padding-top: 50px;
 }
-.cpWrap {
-} */
+.active{
+  color: #fff;
+}
+.sectionHeader div{
+  cursor: pointer;
+  padding: 0px 12px;
+  padding-bottom: 18px;
+  border-bottom: 6px solid transparent;
+  transition: color .4s ease;
+}
+.sectionHeader div:hover{
+  color: #6938EF;
+}  
+.sectionHeader .active{ 
+  border-bottom-color: #6938EF;
+  transition: none;
+}  
+.active:hover{ 
+  color: #fff !important;
+}  
+.sectionHeader div:not(:last-child){
+  margin-right: 30px;
+}
+.line{
+  height: 2px;
+  width: 100%;
+  background: #6938EF;
+}
+.login{
+  display: flex;
+  flex-direction: column;
+  padding: 0 18px;
+  padding-top: 30px;
+}
+.login h2{
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+.login label {
+  font-weight: bold;
+  font-size: 20px;
+  color: white;
+  margin-top: 20px;
+}
+.login input {
+  background: #24203C;
+  border-radius: 8px;
+  font-size: 20px;
+  outline: none;
+  color: white;
+  padding: 0.7rem 1.6rem;
+  border: 1px solid #7b68b98a;
+  font-weight: 500;
+  margin-bottom: 30px;
+}  
+.passwordDes h3{
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 27px;
+  color: rgba(255, 255, 255, 0.85);
+}
+.passwordDes > div{
+  margin: 10px 0;
+  color: #FFA959;
+  display: flex;
+}
+.passwordDes div div:not(:last-child){
+  margin-right: 30px;
+}   
+.saveBtn{
+  display: flex;
+  justify-content: center;
+  margin: 50px 0;
+  margin-top: 20px;
+}
+.saveBtn a{
+  color: #FFFFFF !important;
+  border-radius: 44px;
+  font-weight: 600;
+  font-size: 18px;
+  padding: .9rem 4rem;
+  background: #6938EF;
+}
+.saveBtn a:active{
+  box-shadow: 0 0 2px 2px #6938EF;
+}
+.warning{
+  color: #eb3730;
+  margin-top: -20px;
+  font-size: 14px;
+}
+/* Account management */
+.deactivatetBtn,.deleteBtn {
+  width: 80%;
+  text-align: center;
+  align-self: center;
+  margin-bottom: 30px;
+}
+.deactivatetBtn a{
+  margin-top: 10px;
+  background: #FB8C00;
+  border-radius: 44px;
+  color: #FFFFFF !important;
+  font-weight: 600;
+  font-size: 20px;
+  padding: 1rem 0rem;
+  width: 100%;
+  display: block;
+}
+.deleteBtn a{
+  color: #FFFFFF !important;
+  background: #DC2626;
+  border-radius: 44px;
+  font-weight: 600;
+  font-size: 20px;
+  padding: 1rem 0rem;
+  width: 100%;
+  display: block;
+}
+.deactivatetBtn p,.deleteBtn p{
+  color: #979797;
+  font-weight: 300;
+  font-size: 14px;
+  margin-top: 8px;
+}
+/* Privacy */
+.notificationsContent {
+  display: flex;
+  flex-direction: column;
+  padding:18px;
+  width: 100%;
+}
+.notificationsContent h2{
+  font-weight: 600;
+  font-size: 20px;
+  margin-top: 40px;
+}
+.checkInput{
+  display: flex;
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+  margin: 26px 0px;
+}
+.checkInput div{
+  border-radius: 2px;
+  border: 3px solid #bbbbbb;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 15px;
+  cursor: pointer;
+}
+.checkInput div i{
+  color: #1C1D37;
+  display: none;
+}  
+.active div{
+  background: #6938EF;
+  border-color:#6938EF ;
+} 
+.active div i {
+  display: initial;
+  font-size: 21px;
+  -webkit-text-stroke: 1px #6938EF;
+}
+.saveBtn{
+  display: flex;
+  justify-content: center;
+  margin-top: auto;
+  margin: 40px 0;
+}
+.saveBtn a{
+  color: #FFFFFF !important;
+  border-radius: 44px;
+  font-weight: 600;
+  font-size: 18px;
+  padding: .9rem 5rem;
+  background: #6938EF;
+}
+.saveBtn a:active{
+  box-shadow: 0 0 2px 2px #6938EF;
+}
+@media only screen and (max-width: 768px) {
+.sectionHeader div{
+  padding: 0px;
+  padding-bottom: 18px;
+}
+}

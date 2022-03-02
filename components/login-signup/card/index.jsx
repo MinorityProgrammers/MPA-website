@@ -12,7 +12,7 @@ import {
 import getProfile from '../../../contexts/actions/profile/getProfile';
 import { GlobalContext } from '../../../contexts/provider';
 import Form from '../form/index';
-import styles from './card.module.css';
+import styles from '../../../styles/auth/auth.module.scss';
 
 export default function Index() {
   const [session] = useSession();
@@ -28,7 +28,7 @@ export default function Index() {
       </p>
     ),
     h2Title: 'sign up',
-    para: 'already have an account?',
+    para: 'already have an account? ',
     link: 'sign in',
   });
 
@@ -72,20 +72,20 @@ export default function Index() {
     }
   }, []);
 
-  useEffect(() => {
-    if (data && submit) {
-      router.push(router.pathname);
-      if (router.pathname === '/auth') {
-        const loginSignUp = document.querySelector(
-          '.card_cardContainer__12vmM',
-        );
-        loginSignUp.style.display = 'none';
-      } else {
-        const loginSignUp = document.querySelector('.create_event');
-        loginSignUp.style.display = 'none';
-      }
-    }
-  }, [data]);
+  // useEffect(() => {
+  //   if (data && submit) {
+  //     router.push(router.pathname);
+  //     if (router.pathname === '/auth') {
+  //       const loginSignUp = document.querySelector(
+  //         '.card_cardContainer__12vmM',
+  //       );
+  //       loginSignUp.style.display = 'none';
+  //     } else {
+  //       const loginSignUp = document.querySelector('.create_event');
+  //       loginSignUp.style.display = 'none';
+  //     }
+  //   }
+  // }, [data]);
 
   const handleLoginSuccess = (res) => {
     googleAuth({ tokenId: res.tokenId })(authDispatch);
@@ -101,17 +101,17 @@ export default function Index() {
         signIn: false,
         h1Title: 'register for MPA',
         p: (
-          <p>
+          <span>
             To keep connecting with us please
             {' '}
             <br />
             {' '}
             register with your personal
             info
-          </p>
+          </span>
         ),
         h2Title: 'sign up',
-        para: 'already have an account?',
+        para: 'already have an account? ',
         link: 'sign in',
       });
     } else if (cardText.signIn === false) {
@@ -119,17 +119,17 @@ export default function Index() {
         signIn: true,
         h1Title: 'welcome back',
         p: (
-          <p>
+          <span>
             To keep connecting with us please
             {' '}
             <br />
             {' '}
             sign-in with your personal
             info
-          </p>
+          </span>
         ),
         h2Title: 'sign in',
-        para: 'new to register?',
+        para: 'new to register? ',
         link: 'sign up',
       });
     }
@@ -146,10 +146,7 @@ export default function Index() {
   }, [session]);
 
   return (
-    <div
-      className={`${styles.cardContainer} overview-courses-list`}
-      style={{ overflowY: 'scroll', borderRadius: '20px' }}
-    >
+    <div className={styles.cardContainer}>
       <ToastContainer limit={3} />
       <div
         className={`${styles.cardLeft} ${
@@ -191,20 +188,21 @@ export default function Index() {
         <ul className={styles.socialMedia}>
           <li>
             <img
-              onClick={() => signIn(providers.google.id)}
-              src="./assets/images/login-signup/google.png"
-              className="tw-mx-4"
+              onClick={() => signIn(providers.linkedin.id)}
+              src="./assets/images/login-signup/linkin.png"
               alt="icon"
             />
           </li>
           <li>
             <img
-              onClick={() => signIn(providers.facebook.id)}
-              src="./assets/images/login-signup/facebook.png"
-              className="tw-mx-4"
+              onClick={() => signIn(providers.github.id, {
+                callbackUrl: 'https://minorityprogrammers.com/auth',
+              })}
+              src="./assets/images/login-signup/github.png"
               alt="icon"
             />
           </li>
+
         </ul>
         <div className={styles.mid}>
           <div className={styles.line} />

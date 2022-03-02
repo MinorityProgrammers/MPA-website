@@ -14,37 +14,18 @@ const StartupRoadmap = ({
     onMouseLeave={() => {
       setHoverRoadMap(-1);
     }}
-    style={{ marginRight: '10px', position: 'relative' }}
+    className="roadmap"
   >
-    <div
-      style={{
-        textAlign: 'center',
-        backgroundColor: 'var(--mpa-pink)',
-        color: 'white',
-      }}
-    >
+    <div className="roadmap-header">
       {item.year}
     </div>
-    <div
-      style={{ border: '1px solid black', marginTop: '10px', padding: '5px' }}
-    >
+    <div className="roadmap-content">
       {item.target}
     </div>
     {hoverRoadMap === index && (
       <>
         {milestones[index] && (
-          <div
-            style={{
-              border: '1px solid black',
-              marginTop: '10px',
-              padding: '5px',
-              position: 'absolute',
-              backgroundColor: 'white',
-              zIndex: '100',
-              width: '300px',
-              fontSize: '12px',
-            }}
-          >
+          <div className="roadmap-hover">
             <div style={{ display: 'flex' }}>
               <div style={{ marginRight: '10px' }}>
                 <div style={{ fontWeight: 'bold' }}>

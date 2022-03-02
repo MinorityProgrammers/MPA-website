@@ -6,8 +6,8 @@
     align-items: center;
     justify-content: center;
     padding: 1em;
-    background: #f7f7f7;
-    border: 1px solid rgb(190, 193, 204);
+    background: var(--secondary-high-contrast);
+    border: 1px solid var(--secondary-accent-1);
     border-radius: 0.5em;    
 }
 
@@ -29,7 +29,7 @@
     font-weight: bold;
     margin-bottom: 1em;
     text-align: center;
-    color: black;
+    color: var(--light-main);
 }
 
 .description {
@@ -63,7 +63,7 @@
 .joinButton {
     padding: 0.3em 1.5em;
     border-radius: 0.3em;
-    background: #474BFF;
+    background: var(--tertiary-main);
     color: white;
     margin-bottom: 1.5em;
     margin-top: 1em;
@@ -94,7 +94,7 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        background: white;
+        background: var(--secondary-high-contrast);
         padding: 1em;
         border-radius: 1em;
     }

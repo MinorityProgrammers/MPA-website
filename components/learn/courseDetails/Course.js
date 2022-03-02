@@ -25,7 +25,6 @@ const Course = ({ userInfo, course, modules }) => {
         setUserModules(res.data.data);
       });
   }, [courseId]);
-
   return (
     <div className="courses-detail row banner-bg">
       <div className="col-10 course-sidebar-width col-md-3 pr-0 scroll-sidebar">

@@ -9,7 +9,7 @@ const MarketChart = () => {
       <div className="d-flex flex-row justify-content-between" style={{ height: '20%', width: '100%' }}>
         <div className="d-flex flex-row align-items-center">
           <p style={{
-            fontSize: '20px', fontWeight: '700', color: 'black', marginRight: '5px',
+            fontSize: '20px', fontWeight: '700', color: 'white', marginRight: '5px',
           }}
           >
             Market Chart

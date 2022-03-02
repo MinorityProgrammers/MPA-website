@@ -7,9 +7,9 @@
   width: 100%;
   font-size: 1rem;
   cursor: pointer;
-  border: 1px solid #d4d4d4;
+  border: 1px solid var(--secondary-accent-1);
   border-radius: 0.5em;
-  background: white;
+  background: var(--secondary-high-contrast);
   overflow: hidden;
   position: relative;
   display: flex;
@@ -17,7 +17,7 @@
   justify-content: flex-start;
   flex-direction: column;
   padding-bottom: 1em;
-  color: rgb(34, 34, 34);
+  color: var(--light-low-contrast);
 }
 
 .popupContainer {

@@ -15,6 +15,7 @@ function TopSection({
   onMint,
   socialLinks,
   walletAddress,
+  isAuthenticated,
   copyText,
   copyWallet,
   profileDispatch,
@@ -39,6 +40,8 @@ function TopSection({
       setAllowUpdate(false);
     }
   }, [bio]);
+
+  console.log(socialLinks);
 
   const handleSubmit = () => {
     setIsSaving(true);
@@ -70,18 +73,21 @@ function TopSection({
         <div className="tw-my-5">
           <div className="tw-m-8 tw-flex tw-flex-row tw-justify-start tw-w-1/6 lg:tw-w-1/2">
             <img onClick={() => { router.back(); }} className="tw-w-12 tw-h-12 tw-mt-1 xl:tw-w-8 xl:tw-mt-3 tw-cursor-pointer" src="/assets/new/arrow-down-circle.png" alt="back arrow" />
-            <p className="tw-text-white tw-mx-3 tw-mt-3 tw-text-2xl xl:tw-text-xl">My Profile</p>
+            <p className="tw-text-white tw-mx-3 tw-mt-2 tw-text-2xl xl:tw-text-xl">My Profile</p>
           </div>
         </div>
 
-        <div className="tw-max-w-6xl tw-mx-auto tw-rounded-xl tw-shadow-md tw-overflow-hidden md:tw-max-w-3xl topSection">
+        <div className="tw-w-11/12 tw-mx-auto tw-rounded-xl tw-shadow-md tw-overflow-hidden md:tw-max-w-3xl topSection">
           <div className="md:tw-flex tw-relative tw-w-full">
+            {isLoggedIn && ownsProfile && (
             <div className="new-bg tw-w-full tw-h-28 tw-flex tw-justify-end tw-p-5 editSection">
-              <div onClick={() => router.push('/settings/profile/details')} className="tw-bg-white tw-rounded-3xl tw-w-1/5 xl:tw-w-1/3 tw-h-14 tw-p-4 md:tw-p-3 tw-flex tw-flex-row tw-justify-center tw-cursor-pointer hover:tw-bg-gray-200">
-                <img className="tw-w-6 tw-h-6" src="/assets/new/edit.png" alt="edit icon" />
-                <p className="newColor tw-mx-3 tw-mt-1 tw-text-md tw-font-medium">Edit Profile</p>
+              <div onClick={() => router.push('/settings')} className="tw-bg-white tw-rounded-3xl tw-w-1/5 xl:tw-w-1/3 tw-py-4 tw-h-14 tw-text-center tw-flex tw-flex-row tw-justify-center tw-cursor-pointer hover:tw-bg-gray-200">
+                <img className="tw-w-6 tw-h-6 lg:tw-hidden" src="/assets/new/edit.png" alt="edit icon" />
+                <p className="newColor tw-mx-3 tw-mt-0 tw-text-md tw-font-medium tw-text-center">Edit Profile</p>
               </div>
             </div>
+            )}
+
             <div className="tw-w-full tw-p-2 tw-py-10">
               <div className="tw-absolute tw-flex tw-justify-center tw-top-10 absoluteUser">
                 <div className="tw-relative tw-border-8 tw-border-gray-900 tw-rounded-full">
@@ -101,13 +107,13 @@ function TopSection({
             </div>
 
           </div>
-          <div className="tw-flex tw-flex-col tw-my-4 tw-py-2 tw-w-full tw-justify-center">
-            <p className="colorSecond tw-text-md tw-text-center">{`@${userData?.userName}`}</p>
-            <p className="tw-text-white tw-text-md tw-text-center">{`${userData?.email}`}</p>
-            <p className="tw-text-white tw-text-xl tw-text-center">{`${userData?.firstName} ${userData?.lastName}`}</p>
+          <div className="tw-flex tw-flex-col tw-my-8 tw-py-2 tw-w-full tw-justify-center">
+            <p className="colorSecond tw-text-md tw-text-center">{`@${userData?.userName || ''}`}</p>
+            <p className="tw-text-white tw-text-md tw-text-center">{`${userData?.email || ''}`}</p>
+            <p className="tw-text-white tw-text-xl tw-text-center">{`${userData?.firstName || ''} ${userData?.lastName || ''}`}</p>
             <div className="sl-wrap">
               <div className="tw-justify-center tw-text-center tw-my-2">
-                {socialLinks.length >= 1 && socialLinks.map((linkSocial) => (
+                {socialLinks.length >= 1 ? socialLinks.map((linkSocial) => (
                   <a
                     key={linkSocial.id}
                     target="_blank"
@@ -116,11 +122,11 @@ function TopSection({
                   >
                     <span className="social">{linkSocial.slink}</span>
                   </a>
-                ))}
+                )) : ''}
               </div>
             </div>
           </div>
-          {isLoggedIn && ownsProfile && walletAddress && (
+          {isLoggedIn && ownsProfile && walletAddress && isAuthenticated && (
           <div className="tw-flex tw-flex-row md:tw-flex-col md:tw-w-full tw-my-4 tw-py-2 tw-w-full tw-justify-center">
             <Tooltip placement="top" title={copyText} color="#a159fe">
               <button type="button" onClick={() => { copyWallet(); }} className="gradientBg tw-w-1/4 md:tw-w-11/12 tw-p-3 tw-rounded-3xl tw-h-12 tw-flex tw-flex-row tw-justify-evenly tw-mx-2">
@@ -183,7 +189,7 @@ function TopSection({
 
             ) : (
               <>
-                {ownsProfile ? (
+                {ownsProfile && isLoggedIn ? (
                   <div className="tw-p-5 tw-flex tw-flex-col tw-justify-center">
                     <div className="tw-flex tw-flex-row tw-justify-between">
                       <textarea

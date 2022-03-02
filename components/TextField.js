@@ -17,6 +17,22 @@ const TextField = ({ label, alertStyle, textStyle, ...props }) => {
   );
 };
 
+export const InputField = ({ label, alertStyle, textStyle, ...props }) => {
+  const [field, meta] = useField(props);
+  return (
+    <>
+      <input
+        {...field}
+        {...props}
+        className={textStyle}
+      />
+      {meta.touched && meta.error ? (
+        <div className={alertStyle}>{meta.error}</div>
+      ) : null}
+    </>
+  );
+};
+
 export const ResetInput = ({ label, textStyle, errorText, ...props }) => {
   const [field, meta] = useField(props);
   return (

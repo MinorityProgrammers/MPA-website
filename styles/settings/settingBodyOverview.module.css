@@ -1,7 +1,7 @@
 .overviewContent {
   display: flex;
   flex-direction: column;
-  margin: 2vw;
+  padding: 16px;
   width: 100%;
 }
 
@@ -52,7 +52,7 @@
 }
 .fiCompletion .progress svg circle {
   fill: #1C1D37;
-  stroke: #8040D2;
+  stroke: #6938EF;
   stroke-width: 8;
   transform: translate(2.5px, 2.5px);
   stroke-dasharray: 220;
@@ -71,7 +71,7 @@
 }
 .fiCompletion .completedProfile,
 .fiCompletion button {
-  background: #8040D2;
+  background: #6938EF;
   color: #ffffff;
   font-size: 20px;
   font-weight: bold;
@@ -105,7 +105,7 @@
 .fIProfile {
   color: white;
   margin: 20px 0;
-  border: 1px solid #8040D2;
+  border: 1px solid #6938EF;
   box-shadow: 0px 17px 25px rgb(0 0 0 / 25%);
   border-radius: 15px;
   padding-top: 15px;
@@ -139,7 +139,7 @@
   font-weight: 400;
 }
 .infoValue a:hover{
-  color: #8040D2;
+  color: #6938EF;
 }
 .lineContainer{
   padding: 0 10px;
@@ -155,9 +155,9 @@
   .fIProfile .userContent .uCLeft {
     margin: 1vw 0;
   }
-  .fIProfile .userContent .info {
+  /* .fIProfile .userContent .info {
     font-size: 1.2vh;
-  }
+  } */
   .fIProfile .userContent .info:not(:last-child) {
     margin-bottom: 1vw;
   }
@@ -329,7 +329,7 @@
   margin-left: 0.5vw;
   width: 1.5vw;
 }
-@media only screen and (max-width: 1024px) {
+/* @media only screen and (max-width: 1024px) {
   .fISecurity .updateAccountLogin {
     flex-wrap: wrap;
     margin-top: 2vw;
@@ -340,7 +340,7 @@
   .fISecurity .updateAccountLogin > div:first-child {
     margin-bottom: 1vw;
   }
-}
+} */
 @media only screen and (max-width: 768px) {
   .fISecurity .updateAccountLogin {
     font-size: 2vw;
@@ -577,7 +577,7 @@
 }
 
 .progress.blue .progressBar {
-  border-color: #A259FF;
+  border-color: #7653FF;
 }
 
 /* Bottom body Items */
@@ -594,7 +594,7 @@
   padding: 1rem 0rem;
   flex-direction: column;
   background: #1C1D37;
-  border: 1px solid #8040D2;
+  border: 1px solid #6938EF;
   box-sizing: border-box;
   box-shadow: 0px 32px 41px rgb(0 0 0 / 25%);
   border-radius: 15px;
@@ -621,10 +621,13 @@
   display: flex;
   justify-content: space-between;
   padding-right: 2rem;
-  cursor: pointer;
 }
 .itemElement img{
   max-height: 24px;
+  cursor: pointer;
+}
+.itemElement p{
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 600px) {
@@ -690,4 +693,7 @@
     margin-left: 4px;
     white-space: nowrap;
   }  
+  .overviewContent{   
+    padding: 10px;
+  }
 }

@@ -1,4 +1,3 @@
-
 /* eslint-disable react/jsx-no-constructed-context-values */
 import React, { useEffect, useState, createContext } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -247,7 +246,7 @@ const ActivityDetails = ({
                           fontSize: '17px',
                           width: 'auto',
                           paddingLeft: '10px',
-                          paddingRight: '10px'
+                          paddingRight: '10px',
                         }
                       }
                     >
@@ -263,22 +262,26 @@ const ActivityDetails = ({
               </div>
               {/* Buttons */}
               <div className="d-flex flex-row justify-content-between mb-4">
-                <button type="button" className="lesson-button d-flex flex-row justify-content-center align-items-center p-3" style={{ lineHeight: '20px', border: '1px solid #6938EF', borderRadius: '20px' }}>
+                {/* <button className="lesson-button d-flex flex-row justify-content-center align-items-center p-3" style={{ lineHeight: '20px', border: '1px solid #6938EF', borderRadius: '20px' }}>
                   <FontAwesomeIcon icon={faArrowLeft} style={{ fontSize: '17px', color: 'white' }} className="icon mr-2" />
                   <p style={{ fontSize: '17px', color: 'white' }}>
                     Previous Lesson
                   </p>
-                </button>
+                </button> */}
                 <div className="d-flex flex-row">
                   <button
                     type="button"
                     onClick={() => { (setWatched(true), setIsOpen(true)); }}
-                    className="quiz-button p-3" style={{ lineHeight: '20px', border: '1px solid #6938EF', borderRadius: '20px', background: '#6938EF' }}>
+                    className="quiz-button p-3"
+                    style={{
+                      lineHeight: '20px', border: '1px solid #6938EF', borderRadius: '20px', background: '#6938EF',
+                    }}
+                  >
                     <p style={{ fontSize: '17px', color: 'white' }}>
                       Take Quiz
                     </p>
                   </button>
-                  <button
+                  {/* <button
                     type="button"
                     onClick={forwardInfo}
                     data-dismiss="modal"
@@ -288,7 +291,7 @@ const ActivityDetails = ({
                       Next Lesson
                     </p>
                     <FontAwesomeIcon icon={faArrowRight} style={{ fontSize: '17px', color: 'white' }} className="icon" />
-                  </button>
+                  </button> */}
                 </div>
               </div>
               <div className="w-100 mb-3 d-flex flex-column mb-3">

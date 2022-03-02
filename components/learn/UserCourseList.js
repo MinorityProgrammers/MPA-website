@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from "react";
-import Link from "next/link";
-import axios from "axios";
+import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
+import axios from 'axios';
 
-const UserCoursesList = ({ enrolledCourse }) => {
+const UserCoursesList = ({ enrolledCourse, userInfo }) => {
   const [modules, setModules] = useState([]);
   const [userModules, setUserModules] = useState([]);
-  const { name, description, earn, _id, tags } = enrolledCourse.courseId;
+  const {
+    name, description, earn, _id, tags,
+  } = enrolledCourse.courseId;
 
   useEffect(() => {
-    const userToken = JSON.parse(localStorage.getItem("userInfo")).token;
+    const userToken = JSON.parse(localStorage.getItem('userInfo'))?.token;
     axios
       .get(`${process.env.BASE_URI}/course/${_id}/module`, {
         headers: {
@@ -21,21 +23,14 @@ const UserCoursesList = ({ enrolledCourse }) => {
   }, [_id]);
 
   useEffect(() => {
-    const userToken = JSON.parse(localStorage.getItem("userInfo")).token;
     axios
-      .get(`${process.env.BASE_URI}/learn/${_id}/userModules`, {
-        headers: {
-          Authorization: `Bearer ${userToken}`,
-        },
-      })
+      .get(`${process.env.BASE_URI}/learn/${_id}/moduleById/${userInfo._id}`)
       .then((res) => {
         setUserModules(res.data.data);
       });
   }, [_id]);
 
-  const totalUserModules = userModules.filter((eModule) =>
-    modules.some((module) => eModule.moduleId._id === module._id)
-  );
+  const totalUserModules = userModules.filter((eModule) => modules.some((module) => eModule.moduleId._id === module._id));
   const totalModulesLength = modules.length;
 
   // user progress
@@ -51,7 +46,7 @@ const UserCoursesList = ({ enrolledCourse }) => {
 
   return (
     <div className="courses-items px-3 mx-2 mb-4 pt-1 tw-shadow-lg">
-      <div className="d-pb-1 ml-2 tw-mt-3 tw-flex tw-justify-between tw-items-center">
+      <div className="d-pb-1 ml-2 tw-mt-3 tw-flex tw-flex-row tw-justify-between tw-items-center lg:tw-flex-col">
         <h3 className="course-name mb-0">{name}</h3>
         <span className="course-earn-style tw-font-semibold tw-text-base">
           <span className="mr-1"> Earn</span>
@@ -59,23 +54,25 @@ const UserCoursesList = ({ enrolledCourse }) => {
         </span>
       </div>
       <p className="course-des ml-2">{description}</p>
-      <p className="tw-flex tw-flex-row tw-mt-2">
+      <p className="tw-flex tw-flex-row tw-mt-2 tw-flex-wrap">
         {tags.map((tag) => (
-          <p className="tw-mr-2 course-tag-style">{tag}</p>
+          <p className="tw-m-2 course-tag-style">{tag}</p>
         ))}
       </p>
-      <div className="text-center  tw-flex tw-flex-row tw-items-center tw-justify-between tw-mt-4">
+      <div className="text-center  tw-flex tw-flex-row tw-items-center tw-justify-between tw-mt-4 lg:tw-flex-col">
         {!Number.isNaN(userPercentages) && (
           <p
-            className="text-center pb-1"
-            style={{ fontSize: "18px", fontWeight: "600" }}
+            className="text-center pb-1 tw-font-medium tw-text-lg"
           >
-            {userPercentages}% Completed
+            {userPercentages}
+            % Completed
           </p>
         )}
         <Link href={`/courses/${_id}`}>
-          <button type="button" className="btn px-3 banner-btn mt-3">
-            Learn <span className="tw-ml-2"> &#8594;</span>
+          <button type="button" className="btn px-3 banner-btn ">
+            Learn
+            {' '}
+            <span className="tw-ml-2"> &#8594;</span>
           </button>
         </Link>
       </div>

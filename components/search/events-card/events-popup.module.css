@@ -1,8 +1,8 @@
 .container {
   width: 100%;
-  border: 1px solid #d4d4d4;
+  border: 1px solid var(--secondary-accent-1);
   border-radius: 0.5em;
-  background: white;
+  background: var(--secondary-high-contrast);
   cursor: unset;
   animation: enter 250ms forwards;
   position: sticky;
@@ -32,8 +32,8 @@
 }
 
 .closePopup {
-  color: #151371;
-  background: rgb(247, 247, 247);
+  color: var(--light-low-contrast);
+  background: var(--secondary-accent-1);
   font-size: 1rem;
   cursor: pointer;
   transition: all 50ms;
@@ -75,7 +75,7 @@
   flex-direction: column;
   align-items: center;
   padding: 1em;
-  border-bottom: 1px solid #d4d4d4;
+  border-bottom: 1px solid var(--secondary-accent);
 }
 
 .theme {
@@ -155,15 +155,16 @@
   margin-top: 1em;
   padding: 0.5em;
   text-align: center;
+  background: var(--tertiary-main);
   border-radius: 1em;
-  border: 1px solid #151371;
-  color: #151371;
+  border: 1px solid var(--tertiary-main);
+  color: var(--light-low-contrast);
   transition: all 150ms;
   cursor: pointer;
 }
 
 .registerButton:hover {
-  background: #151371;
+  background: var(--tertiary-low-contrast);
   color: white;
 }
 
