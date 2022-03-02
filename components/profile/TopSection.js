@@ -15,6 +15,7 @@ function TopSection({
   onMint,
   socialLinks,
   walletAddress,
+  isAuthenticated,
   copyText,
   copyWallet,
   profileDispatch,
@@ -39,6 +40,8 @@ function TopSection({
       setAllowUpdate(false);
     }
   }, [bio]);
+
+  console.log(socialLinks);
 
   const handleSubmit = () => {
     setIsSaving(true);
@@ -105,12 +108,12 @@ function TopSection({
 
           </div>
           <div className="tw-flex tw-flex-col tw-my-8 tw-py-2 tw-w-full tw-justify-center">
-            <p className="colorSecond tw-text-md tw-text-center">{`@${userData?.userName}`}</p>
-            <p className="tw-text-white tw-text-md tw-text-center">{`${userData?.email}`}</p>
-            <p className="tw-text-white tw-text-xl tw-text-center">{`${userData?.firstName} ${userData?.lastName}`}</p>
+            <p className="colorSecond tw-text-md tw-text-center">{`@${userData?.userName || ''}`}</p>
+            <p className="tw-text-white tw-text-md tw-text-center">{`${userData?.email || ''}`}</p>
+            <p className="tw-text-white tw-text-xl tw-text-center">{`${userData?.firstName || ''} ${userData?.lastName || ''}`}</p>
             <div className="sl-wrap">
               <div className="tw-justify-center tw-text-center tw-my-2">
-                {socialLinks.length >= 1 && socialLinks.map((linkSocial) => (
+                {socialLinks.length >= 1 ? socialLinks.map((linkSocial) => (
                   <a
                     key={linkSocial.id}
                     target="_blank"
@@ -119,11 +122,11 @@ function TopSection({
                   >
                     <span className="social">{linkSocial.slink}</span>
                   </a>
-                ))}
+                )) : ''}
               </div>
             </div>
           </div>
-          {isLoggedIn && ownsProfile && walletAddress && (
+          {isLoggedIn && ownsProfile && walletAddress && isAuthenticated && (
           <div className="tw-flex tw-flex-row md:tw-flex-col md:tw-w-full tw-my-4 tw-py-2 tw-w-full tw-justify-center">
             <Tooltip placement="top" title={copyText} color="#a159fe">
               <button type="button" onClick={() => { copyWallet(); }} className="gradientBg tw-w-1/4 md:tw-w-11/12 tw-p-3 tw-rounded-3xl tw-h-12 tw-flex tw-flex-row tw-justify-evenly tw-mx-2">

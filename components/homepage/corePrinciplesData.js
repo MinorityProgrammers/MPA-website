@@ -3,7 +3,7 @@ const CORE_PRINCIPLES = [
     id: '1',
     image: '/assets/images/core1.png',
     icon: '/assets/images/core1.svg',
-    color: 'pink',
+    color: 'blue',
     title: 'Diversity in stem',
     description:
       'Our priority for diversity and collaboration, has urged us to create an environment that fosters inclusivity and diversity of both cultures and perspective',
@@ -22,7 +22,7 @@ const CORE_PRINCIPLES = [
     id: '3',
     image: '/assets/images/core3.png',
     icon: '/assets/images/core3.svg',
-    color: 'yellow',
+    color: 'blue',
     title: 'Entrepreneuship',
     description:
       'We ignite entrepreneurship within minority communities as an avenue for innovation and upward mobility',
@@ -32,7 +32,7 @@ const CORE_PRINCIPLES = [
     id: '4',
     image: '/assets/images/core4.png',
     icon: '/assets/images/core4.svg',
-    color: 'pink',
+    color: 'blue',
     title: 'Interdisciplinary learning',
     description:
       ' We motivate ourselves to learn by making connections between ideas and concepts across different professional and academic disciplines.',
@@ -52,7 +52,7 @@ const CORE_PRINCIPLES = [
     id: '6',
     image: '/assets/images/core6.png',
     icon: '/assets/images/core6.svg',
-    color: 'yellow',
+    color: 'blue',
     title: 'Project-based learning',
     description:
       'We believe in project based learning as the most effective means of delivering professional team driven experiences to students around the world',
@@ -62,7 +62,7 @@ const CORE_PRINCIPLES = [
     id: '7',
     image: '/assets/images/core7.png',
     icon: '/assets/images/core7.svg',
-    color: 'pink',
+    color: 'blue',
     title: 'Professional development',
     description:
       'We provide resources for continual learning and skills enhancement to adapt to the changes in progressive technological advancements.',
@@ -82,7 +82,7 @@ const CORE_PRINCIPLES = [
     id: '9',
     image: '/assets/images/core9.png',
     icon: '/assets/images/core9.svg',
-    color: 'yellow',
+    color: 'blue',
     title: 'Sense of community',
     description:
       'We strive to build a supportive community for developers to engage, share knowledge, motivate and grow into valuable assets.',
@@ -92,7 +92,7 @@ const CORE_PRINCIPLES = [
     id: '10',
     image: '/assets/images/core10.png',
     icon: '/assets/images/core10.svg',
-    color: 'pink',
+    color: 'blue',
     title: 'Training/onboarding',
     description:
       'Our training and onboarding has been meticulously designed to focus on new employees social and performance',
@@ -112,7 +112,7 @@ const CORE_PRINCIPLES = [
     id: '12',
     image: '/assets/images/core11.png',
     icon: '/assets/images/core11.svg',
-    color: 'yellow',
+    color: 'blue',
     title: 'Mentorship',
     description:
       ' Our mentorship program provides learning opportunities, expands your professional network and to gain new perspectives to build a successful career.',

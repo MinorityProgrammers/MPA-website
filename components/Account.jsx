@@ -17,13 +17,17 @@ import {
   isConnectedCasper,
 } from "../contexts/actions/signer/index";
 import styles from "../styles/account/account.module.css";
+import walletLogin from "../contexts/actions/auth/walletLogin";
 import ButtonComponent from "./profile/ButtonComponent";
+
 
 const Account = () => {
   const { authenticate, isAuthenticated, logout } = useMoralis();
   const { walletAddress, chainId } = useMoralisDapp();
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [walletLoginRequest, setWalletLoginRequest] = useState(false);
   const {
+    authDispatch,
     showModalState: { showModal },
     setShowModal,
     signerState: {
@@ -112,20 +116,42 @@ const Account = () => {
     changeAuthModal(!showModal)(setShowModal);
   };
 
+
   const metamaskConnectWallet = async () => {
     if (
       chainId === process.env.NEXT_PUBLIC_NETWORK_ID_MAINNET ||
       chainId === process.env.NEXT_PUBLIC_NETWORK_ID_TESTNET
     ) {
-      authenticate({ signingMessage: "connected!" });
+
+
+      authenticate().then(() => {
+        setWalletLoginRequest(true);
+      })
+      
+        
+
       if (isConnected === true) {
         await window.casperlabsHelper.disconnectFromSite();
       }
     } else {
       errorToast("Wrong Chain, please connect to Polygon chain");
       logout();
+      setWalletLoginRequest(false);
     }
   };
+
+  useEffect(() => {
+    const userToken = window.localStorage.getItem('jwtToken');
+    const userInfo = window.localStorage.getItem('userInfo');
+
+    if (isAuthenticated && walletLoginRequest === true && (!userToken || !userInfo)) {
+      walletLogin(walletAddress, authenticate)(authDispatch);
+    } 
+  },[isAuthenticated, walletLoginRequest, typeof window !== 'undefined'
+  ? window.localStorage.getItem('jwtToken')
+  : null])
+
+
 
   useEffect(async () => {
     if (
@@ -137,6 +163,7 @@ const Account = () => {
 
       try {
         logout();
+        setWalletLoginRequest(false);
       } catch (e) {
         console.log(e);
       }
@@ -320,6 +347,7 @@ const Account = () => {
         <Row className="tw-py-3 tw-justify-center">
         <ButtonComponent className="tw-w-full " text="Disconnect Wallet" func={async () => {
             logout();
+            setWalletLoginRequest(false);
             await window.casperlabsHelper.disconnectFromSite();
             [SIGNER_EVENTS.locked, SIGNER_EVENTS.disconnected].forEach(
               (event) =>

@@ -551,6 +551,7 @@ const ProfileTwo = function ({
       <div className="">
         <TopSection
           userData={userData}
+          isAuthenticated={isAuthenticated}
           isLoggedIn={isLoggedIn}
           ownsProfile={ownsProfile}
           setGenerateAvatarPopUp={setGenerateAvatarPopUp}
@@ -563,7 +564,7 @@ const ProfileTwo = function ({
           profileDispatch={profileDispatch}
           setChangeInProfile={setChangeInProfile}
         />
-        {ownsProfile && (
+        {ownsProfile && isLoggedIn && (
         <ProfileStength
           userData={userData}
           setPsArrowUp={setPsArrowUp}
