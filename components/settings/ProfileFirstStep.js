@@ -18,7 +18,7 @@ const ProfileFirstStep = ({
   const [firstName, setFirstName] = useState(data ? data.firstName : '');
   const [lastName, setLastName] = useState(data ? data.lastName : '');
   const [gender, setGender] = useState({ label: data ? data.Gender : '', value: data ? data.Gender : '' });
-  const [phoneNumber, setPhoneNumber] = useState(data ? `${data.phoneNumber}` : '');
+  const [phoneNumber, setPhoneNumber] = useState(data ? data.phoneNumber : '');
   const [nationality, setNationality] = useState(
     { label: data ? data.Nationality : '', value: data ? data.Nationality : '' },
   );
@@ -38,7 +38,7 @@ const ProfileFirstStep = ({
     setFirstName(data.firstName);
     setLastName(data.lastName);
     setGender({ label: data.Gender, value: data.Gender });
-    setPhoneNumber(`+${data.phoneNumber}`);
+    setPhoneNumber(data.phoneNumber);
     setNationality({ label: data.Nationality, value: data.Nationality });
     setEthnicity(data.Ethnicity);
   };
@@ -47,7 +47,7 @@ const ProfileFirstStep = ({
     const inputStates = {
       ...(firstName && { firstName }),
       ...(lastName && { lastName }),
-      ...(phoneNumber && phoneNumber !== '+' && { phoneNumber }),
+      ...(phoneNumber && { phoneNumber }),
       ...(gender.label && { Gender: gender.label }),
       ...(ethnicity.length > 0 && { Ethnicity: ethnicity }),
       ...(startDate.toDateString() !== new Date().toDateString() && { birthday: startDate }),
