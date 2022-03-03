@@ -2,7 +2,7 @@ import React from "react";
 import ContentLoader from "react-content-loader";
 
 const EventCardSkeleton = () => (
-  <div className="eventcard_container">
+  <div className="event_skeleton">
     <div className="eventcard_image">
       <ContentLoader
         viewBox="0 0 350 510"

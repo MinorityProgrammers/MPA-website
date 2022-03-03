@@ -171,3 +171,22 @@
 .clear-button {
   transition: 0.3s;
 }
+
+.clear-button:focus {
+  outline: none;
+}
+
+.event_skeleton {
+  height: 262px;
+  width: 500px;
+  padding: 0 !important;
+  display: flex;
+  opacity: 0.8;
+  flex-direction: row;
+  justify-content: center;
+  /* background: #d6d4d4; */
+  box-shadow: inset -7px -7px 24px rgba(255, 255, 255, 0.04),
+    inset 7px 7px 14px rgba(255, 255, 255, 0.09);
+  border-radius: 16px;
+  margin-right: 30px;
+}

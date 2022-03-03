@@ -141,6 +141,7 @@
         border-radius: 10px;
         width: 100%;
         text-indent: 10px;
+        color: white;
         font-size: 1rem;
         background: var(--secondary-high-contrast);
       }
@@ -647,9 +648,11 @@
   &_top {
     margin-top: 40px;
     margin-left: -20px;
+    padding-right: 10px;
     h2 {
       margin-bottom: 7px;
       font-weight: 500;
+
       font-size: 18px;
       text-transform: capitalize;
     }

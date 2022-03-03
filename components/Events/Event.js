@@ -822,7 +822,6 @@ class Event extends Component {
                     styles={selectStyles}
                     closeMenuOnSelect
                     isSearchable={false}
-                    isClearable
                     onChange={onChangeInput}
                   />
                 </label>
@@ -851,7 +850,6 @@ class Event extends Component {
                 closeMenuOnSelect
                 placeholder="Filter Search"
                 isSearchable={false}
-                isClearable
                 onChange={onChangeInput}
               />
             </div>
@@ -875,7 +873,11 @@ class Event extends Component {
 
             {[...categoryButtons].filter((button) => button.activebtn === true)
               .length > 0 ? (
-              <button type="button" onClick={() => resetFilter()}>
+              <button
+                className="clear-button tw-text-white tw-cursor-pointer tw-text-base tw-font-semibold tw-mt-2"
+                type="button"
+                onClick={() => resetFilter()}
+              >
                 Reset
               </button>
             ) : (
@@ -984,7 +986,10 @@ class Event extends Component {
             ) : (
               <div className="cards">
                 {AllEvent.length < 1 && (
-                  <div className="tw-text-2xl tw-font-bold">
+                  <div
+                    className="text-center tw-text-white tw-font-bold tw-text-2xl"
+                    style={{ width: "100%" }}
+                  >
                     Sorry, no events match your filters
                   </div>
                 )}
@@ -1027,7 +1032,10 @@ class Event extends Component {
             ) : (
               <div className="cards">
                 {PastEvent.length < 1 && (
-                  <div className="tw-text-2xl tw-font-bold">
+                  <div
+                    className="text-center tw-text-white tw-font-bold tw-text-2xl"
+                    style={{ width: "100%" }}
+                  >
                     Sorry, no events match your filters
                   </div>
                 )}
