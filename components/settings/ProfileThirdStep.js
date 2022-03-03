@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import Select from 'react-select';
 import DropdownIndicator from './DropdownIndicator';
 import {
@@ -13,11 +13,11 @@ const ProfileThirdStep = ({
   data, setStep, step, setData, customStyles,
 }) => {
   const [passion, setPassion] = useState('');
-  const [passions, setPassions] = useState(data.passions);
-  const [softSkills, setSoftSkills] = useState(data.softSkills);
+  const [passions, setPassions] = useState(data ? data.passions : []);
+  const [softSkills, setSoftSkills] = useState(data ? data.softSkills : []);
   const [currentSoftSkills, setCurrentSoftSkills] = useState(softSkillsList[0]);
   const [currentSoftProficiency, setCurrentSoftProficiency] = useState(proficiencies[0]);
-  const [programmingSkills, setProgrammingSkills] = useState(data.programmingSkills);
+  const [programmingSkills, setProgrammingSkills] = useState(data ? data.programmingSkills : []);
   const [currentProgrammingSkill, setCurrentProgrammingSkill] = useState(programmingLanguages[0]);
   const [currentProgrammingProficiency,
     setCurrentProgrammingProficiency] = useState(proficiencies[0]);
@@ -43,11 +43,12 @@ const ProfileThirdStep = ({
       softSkills,
       programmingSkills,
     };
-      // submit data
-    updateProfileJSON(
+    // submit data
+    const updatedUser = updateProfileJSON(
       data._id,
       JSON.stringify(inputStates),
     )(profileDispatch);
+    updatedUser.then((res) => setData(res));
     setStep(step === 4 ? 4 : step + 1);
   };
 
@@ -71,11 +72,6 @@ const ProfileThirdStep = ({
     setPassions([passion, ...passions]);
     setPassion('');
   };
-  useEffect(() => {
-    const userInfo = JSON.parse(localStorage.getItem('userInfo')).user;
-    setData(userInfo);
-    // discard(userInfo);
-  }, [step]);
   return (
     <>
       <div className={styles.title}>

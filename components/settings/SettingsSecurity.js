@@ -9,9 +9,9 @@ import updateProfileJSON from '../../contexts/actions/profile/updateProfileJSON'
 
 const bcrypt = require('bcryptjs');
 
-const SettingsSecurity = ({ data }) => {
-  const [email, setEmail] = useState(data.email || '');
-  const [userName, setUserName] = useState(data.userName || '');
+const SettingsSecurity = ({ data, setData }) => {
+  const [email, setEmail] = useState(data?.email || '');
+  const [userName, setUserName] = useState(data?.userName || '');
   const [currentPassword, setCurrentPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmtPassword, setConfirmPassword] = useState('');
@@ -30,10 +30,10 @@ const SettingsSecurity = ({ data }) => {
   // Account Management
   const [modal, openModal] = useState('');
   // Privacy
-  const [profileVisibility, setProfileVisibility] = useState(data.profileVisibility);
-  const [locationVisibility, setLocationVisibility] = useState(data.locationVisibility);
-  const [birthdayVisibility, setBirthdayVisibility] = useState(data.birthdayVisibility);
-  const [emailVisibility, setEmailVisibility] = useState(data.emailVisibility);
+  const [profileVisibility, setProfileVisibility] = useState(data?.profileVisibility);
+  const [locationVisibility, setLocationVisibility] = useState(data?.locationVisibility);
+  const [birthdayVisibility, setBirthdayVisibility] = useState(data?.birthdayVisibility);
+  const [emailVisibility, setEmailVisibility] = useState(data?.emailVisibility);
   // update profile
   const { profileDispatch } = useContext(GlobalContext);
 
@@ -130,7 +130,11 @@ const SettingsSecurity = ({ data }) => {
         formData.append('userName', userName);
         formData.append('email', email);
         formData.append('password', hashPass);
-        updateProfile(data._id, formData)(profileDispatch);
+        const updatedUser = updateProfile(data._id, formData)(profileDispatch);
+        updatedUser.then((userInfo) => setData(userInfo));
+        setNewPassword('');
+        setConfirmPassword('');
+        setCurrentPassword('');
       }
     });
   };
@@ -154,10 +158,11 @@ const SettingsSecurity = ({ data }) => {
       emailVisibility,
     };
     // submit data
-    updateProfileJSON(
+    const updatedUser = updateProfileJSON(
       data._id,
       JSON.stringify(inputStates),
     )(profileDispatch);
+    updatedUser.then((res) => setData(res));
   };
   return (
     <div className="tw-w-full">
@@ -277,6 +282,7 @@ const SettingsSecurity = ({ data }) => {
       <div className={styles.login}>
         {(modal === 'deactivate' || modal === 'delete') && (
         <SettingBodySecurityManagementModal
+          data={data}
           modal={modal}
           goBack={goBack}
           deactivateAccount={deactivateAccount}
@@ -285,11 +291,11 @@ const SettingsSecurity = ({ data }) => {
         )}
         <h2>Update Account Login</h2>
         <div className={styles.deactivatetBtn}>
-          <a onClick={() => openModal('delete')}>Deactivate Account</a>
+          <a onClick={() => openModal('deactivate')}>Deactivate Account</a>
           <p>*Temporarily deactivates your account. Must be reactivated by MPA.</p>
         </div>
         <div className={styles.deleteBtn}>
-          <a onClick={() => openModal('deactivate')}>Delete Account</a>
+          <a onClick={() => openModal('delete')}>Delete Account</a>
           <p>
             *Permanently deletes your account, cannot be reactivated.
           </p>

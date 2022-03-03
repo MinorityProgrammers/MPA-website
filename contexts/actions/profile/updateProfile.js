@@ -7,7 +7,7 @@ import {
 } from '../actionTypes';
 import { successToast, errorToast } from '../../utils/toasts';
 
-const updateProfile = (id, body) => (dispatch) => {
+const updateProfile = (id, body) => async (dispatch) => {
   dispatch({
     type: UPDATE_PROFILE_LOADING,
   });
@@ -15,7 +15,7 @@ const updateProfile = (id, body) => (dispatch) => {
   // axios post request
   const token = window.localStorage.getItem('jwtToken');
 
-  axios
+  const data = await axios
     .patch(`${process.env.BASE_URI}/user/updateProfile/${id}`, body, {
       headers: {
         'Content-type': 'multipart/form-data',
@@ -37,6 +37,7 @@ const updateProfile = (id, body) => (dispatch) => {
         payload: res.data,
       });
       successToast('successfully updated profile');
+      return res.data.data;
     })
     .catch((err) => {
       console.log(err.response?.data);
@@ -46,6 +47,7 @@ const updateProfile = (id, body) => (dispatch) => {
         payload: err.response ? err.response.data : 'COULD NOT CONNECT',
       });
     });
+  return data;
 };
 
 export default updateProfile;

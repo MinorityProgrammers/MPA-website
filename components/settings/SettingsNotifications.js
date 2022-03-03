@@ -3,18 +3,18 @@ import styles from '../../styles/settings/settingBodyNotificationsNotifications.
 import { GlobalContext } from '../../contexts/provider';
 import updateProfileJSON from '../../contexts/actions/profile/updateProfileJSON';
 
-const SettingsNotifications = ({ data }) => {
+const SettingsNotifications = ({ data, setData }) => {
   const [message, setMessage] = useState(
-    data.notifyMessages || false,
+    data?.notifyMessages || false,
   );
   const [job, setJob] = useState(
-    data.notifyJobAlerts || false,
+    data?.notifyJobAlerts || false,
   );
   const [events, setEvents] = useState(
-    data.notifyEvents || false,
+    data?.notifyEvents || false,
   );
   const [activity, setActivity] = useState(
-    data.notifyAccountActivity || false,
+    data?.notifyAccountActivity || false,
   );
 
   // update userData
@@ -27,10 +27,11 @@ const SettingsNotifications = ({ data }) => {
       notifyAccountActivity: activity,
     };
     // submit data
-    updateProfileJSON(
+    const updatedUser = updateProfileJSON(
       data._id,
       JSON.stringify(inputStates),
     )(profileDispatch);
+    updatedUser.then((res) => setData(res));
   };
   return (
     <div className={styles.notificationsContent}>
