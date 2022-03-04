@@ -10,50 +10,40 @@ const CoinCard = ({ info, view }) => {
 
   return (
     <div
-      className="d-flex flex-row justify-content-between align-items-center"
-      style={{
-        height: '64px',
-        width: '100%',
-        padding: '4px 12px',
-        borderBottom: '1px solid rgba(0, 0, 0, 0.12)',
-      }}
+      className="d-flex flex-row justify-content-between align-items-center coin-row"
     >
       {/* Logo */}
       <div className="d-flex flex-row">
-        <div
-          style={{
-            height: '54px',
-            width: '54px',
-            background: '#A474FD59',
-            marginRight: '4px',
-          }}
-        />
+        <img src={coinInfo.src} alt={coinInfo.name} />
         {/* Name */}
-        <div className="d-flex flex-column">
+        <div className="d-flex flex-column tw-justify-center">
           <p style={{ color: 'white', fontWeight: '700' }}>{coinInfo.name}</p>
-          <p style={{ color: 'gray', fontSize: '10px' }}>{coinInfo.symbol}</p>
+          <p style={{ color: '#A7AEF9', fontSize: '10px' }}>{coinInfo.symbol}</p>
         </div>
       </div>
       {/* Value */}
       <div
-        className="d-flex flex-column justify-content-start align-items-end"
-        style={{ height: '100%' }}
+        className="d-flex flex-column tw-justify-center align-items-end"
+        style={{ height: '100%', margin: 'auto', textAlign: 'center' }}
       >
         <p
           style={{
             margin: 0,
             fontWeight: '500',
-            color: 'gray',
+            color: '#FFFFFF',
             fontSize: '12px',
           }}
         >
-          $
           {coinInfo.price.toFixed(2)}
+          {' '}
+          USD
         </p>
         <p
           style={{
             fontSize: '10px',
-            color: coinInfo[localCurrentView] >= 0 ? '#2DB632' : '#ED5959',
+            width: '100%',
+            textAlign: 'left',
+            color: coinInfo[localCurrentView] >= 0 ? '#16A34A' : '#ED5959',
           }}
         >
           {coinInfo[localCurrentView] >= 0 ? '+' : ''}
