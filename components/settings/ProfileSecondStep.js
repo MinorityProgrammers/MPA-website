@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import DatePicker from 'react-datepicker';
 import Select from 'react-select';
 import DropdownIndicator from './DropdownIndicator';
@@ -12,10 +12,10 @@ import updateProfileJSON from '../../contexts/actions/profile/updateProfileJSON'
 const ProfileSecondStep = ({
   data, setStep, step, setData, dates, customStyles,
 }) => {
-  const [schoolName, setSchoolName] = useState(data.schoolName);
-  const [degree, setDegree] = useState(data.degree);
+  const [schoolName, setSchoolName] = useState(data?.schoolName);
+  const [degree, setDegree] = useState(data?.degree);
   const [studentStatus, setStudentStatus] = useState(
-    { label: data.studentStatus, value: data.studentStatus },
+    { label: data ? data.studentStatus : '', value: data ? data.studentStatus : '' },
   );
   const [enteredHighSchoolYear, setEnteredHighSchoolYear] = useState(
     dates.HighSchoolYear,
@@ -37,24 +37,22 @@ const ProfileSecondStep = ({
   const submitHandler = async (e) => {
     e.preventDefault();
     const inputStates = {
-      schoolName,
-      degree,
-      enteredHighSchoolYear,
-      expectedGraduationYear,
-      studentStatus: studentStatus.label,
+      ...(schoolName && { schoolName }),
+      ...(degree && { degree }),
+      ...(enteredHighSchoolYear.toDateString()
+          !== new Date().toDateString() && { enteredHighSchoolYear }),
+      ...(expectedGraduationYear.toDateString()
+          !== new Date().toDateString() && { expectedGraduationYear }),
+      ...(studentStatus.label && { studentStatus: studentStatus.label }),
     };
-      // submit data
-    updateProfileJSON(
+    // submit data
+    const updatedUser = updateProfileJSON(
       data._id,
       JSON.stringify(inputStates),
     )(profileDispatch);
+    updatedUser.then((res) => setData(res));
     setStep(step === 4 ? 4 : step + 1);
   };
-  useEffect(() => {
-    const userInfo = JSON.parse(localStorage.getItem('userInfo')).user;
-    setData(userInfo);
-  }, [step]);
-  // Add link Dropdown options
 
   return (
     <>

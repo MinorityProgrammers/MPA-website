@@ -11,14 +11,19 @@ const SettingSetup = ({
   data, setData, step, setStep, completeStep,
 }) => {
   const dates = {
-    HighSchoolYear: data.enteredHighSchoolYear ? new Date(data.enteredHighSchoolYear) : new Date(),
-    birthdayDate: data.birthday ? new Date(data.birthday) : new Date(),
-    GraduationYear: data.expectedGraduationYear
+    HighSchoolYear: data?.enteredHighSchoolYear ? new Date(data.enteredHighSchoolYear) : new Date(),
+    birthdayDate: data?.birthday ? new Date(data.birthday) : new Date(),
+    GraduationYear: data?.expectedGraduationYear
       ? new Date(data.expectedGraduationYear)
       : new Date(),
   };
   useEffect(() => {
-    setData(JSON.parse(localStorage.getItem('userInfo')).user);
+    const token = typeof window !== 'undefined'
+      ? window.localStorage.getItem('jwtToken')
+      : null;
+    if (token) {
+      setData(JSON.parse(localStorage.getItem('userInfo')).user);
+    }
   }, [step]);
   const customStyles = {
     option: (provided, state) => ({

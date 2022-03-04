@@ -13,16 +13,16 @@ import { GlobalContext } from '../../contexts/provider';
 import updateProfileJSON from '../../contexts/actions/profile/updateProfileJSON';
 
 const ProfileFirstStep = ({
-  data, setStep, step, dates, customStyles,
+  data, setStep, step, dates, customStyles, setData,
 }) => {
-  const [firstName, setFirstName] = useState(data.firstName);
-  const [lastName, setLastName] = useState(data.lastName);
-  const [gender, setGender] = useState({ label: data.Gender, value: data.Gender });
-  const [phoneNumber, setPhoneNumber] = useState(`+${data.phoneNumber}`);
+  const [firstName, setFirstName] = useState(data ? data.firstName : '');
+  const [lastName, setLastName] = useState(data ? data.lastName : '');
+  const [gender, setGender] = useState({ label: data ? data.Gender : '', value: data ? data.Gender : '' });
+  const [phoneNumber, setPhoneNumber] = useState(data ? data.phoneNumber : '');
   const [nationality, setNationality] = useState(
-    { label: data.Nationality, value: data.Nationality },
+    { label: data ? data.Nationality : '', value: data ? data.Nationality : '' },
   );
-  const [ethnicity, setEthnicity] = useState(data.Ethnicity);
+  const [ethnicity, setEthnicity] = useState(data ? data.Ethnicity : []);
   const [startDate, setStartDate] = useState(dates.birthdayDate);
   // update userData
   const { profileDispatch } = useContext(GlobalContext);
@@ -38,26 +38,28 @@ const ProfileFirstStep = ({
     setFirstName(data.firstName);
     setLastName(data.lastName);
     setGender({ label: data.Gender, value: data.Gender });
-    setPhoneNumber(`+${data.phoneNumber}`);
+    setPhoneNumber(data.phoneNumber);
     setNationality({ label: data.Nationality, value: data.Nationality });
     setEthnicity(data.Ethnicity);
   };
   const submitHandler = (e) => {
     e.preventDefault();
     const inputStates = {
-      firstName,
-      lastName,
-      phoneNumber,
-      birthday: startDate,
-      Ethnicity: ethnicity,
-      Nationality: nationality.label,
-      Gender: gender.label,
+      ...(firstName && { firstName }),
+      ...(lastName && { lastName }),
+      ...(phoneNumber && { phoneNumber }),
+      ...(gender.label && { Gender: gender.label }),
+      ...(ethnicity.length > 0 && { Ethnicity: ethnicity }),
+      ...(startDate.toDateString() !== new Date().toDateString() && { birthday: startDate }),
+      ...(nationality.label && { Nationality: nationality.label }),
     };
-      // submit data
-    updateProfileJSON(
+
+    // submit data
+    const updatedUser = updateProfileJSON(
       data._id,
       JSON.stringify(inputStates),
     )(profileDispatch);
+    updatedUser.then((res) => setData(res));
     setStep(step === 4 ? 4 : step + 1);
   };
   return (
@@ -93,7 +95,7 @@ const ProfileFirstStep = ({
                 isSearchable
                 onChange={(newValue) => setGender(newValue)}
                 options={genders}
-                placeholder="Select  Nationality"
+                placeholder="Select  Gender"
                 value={gender}
               />
             </div>

@@ -19,7 +19,7 @@ import getProgressPercentage from '../../contexts/utils/settings/getProgressPerc
 import styles from '../../styles/settings/settingsLayout.module.scss';
 
 const SettingsLayout = ({
-  setData, children, settingsPage, setTabsActive, tabsActive,
+  setData, children, settingsPage, setTabsActive, tabsActive, data,
 }) => {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef(null);
@@ -75,6 +75,9 @@ const SettingsLayout = ({
       setIsLoggedIn(true);
     }
   }, [userData]);
+  useEffect(() => {
+    setUserData(data);
+  }, [data]);
 
   useEffect(() => {
     if (window.localStorage.getItem('jwtToken')) {
@@ -222,7 +225,7 @@ const SettingsLayout = ({
                     </div>
                     <div className={styles.textDiv}>
                       <p>
-                        <span>{userData.email}</span>
+                        <span>{userData?.email}</span>
                       </p>
                       <h3>
                         {userData?.firstName && userData?.lastName

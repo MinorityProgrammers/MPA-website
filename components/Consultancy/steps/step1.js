@@ -17,7 +17,7 @@ const Page1 = ({ setstep, setClickRegister, data }) => (
         type="button"
         onClick={() => {
           if (data === null) {
-            setClickRegister(true);
+            // setClickRegister(true);
           } else {
             setstep(1);
           }
