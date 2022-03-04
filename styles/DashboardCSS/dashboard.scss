@@ -752,8 +752,14 @@
   line-height: 15px;
   color: #D8D8D8;
 }
+.dashboard-progress-tasklist{
+  margin-top: auto;
+}  
 .row-custom-6{
   grid-row: span 6 / span 6 ;
+}
+.dashboard-progress-chart{
+  height: fit-content;
 }
 .wallet-dashboard-container{
   .wallet-grid{
