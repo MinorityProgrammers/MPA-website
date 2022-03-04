@@ -212,7 +212,7 @@ const Account = () => {
             <div className={styles.modalHeader}>
               <div />
               <div className={styles.modalWrapper}>
-                <div className={styles.modalImage}>
+                  <div className={styles.modalImage}>
                   <img src="/assets/images/mpicon.svg" alt="logo" />
                 </div>
                 <h2 className="tw-flex-1 tw-text-white tw-text-center tw-w-full tw-font-bold tw-text-lg">
