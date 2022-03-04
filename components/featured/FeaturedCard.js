@@ -92,7 +92,7 @@ const FeaturedCard = ({ data, setClickRegister, userData, allfunded }) => {
 
           <div className="card__button-container md:tw-flex-col">
             {/* Add popup when button is clicked */}
-            {!allfunded.includes(data._id) && (
+            {/* {!allfunded.includes(data._id) && (
               <button
                 type="button"
                 style={{ outline: "none" }}
@@ -105,7 +105,7 @@ const FeaturedCard = ({ data, setClickRegister, userData, allfunded }) => {
               >
                 Fund Startup
               </button>
-            )}
+            )} */}
             <Link href={`/startup/${data._id}`}>
               <a className="button btn-outline">Learn More</a>
             </Link>
