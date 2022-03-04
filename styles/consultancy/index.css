@@ -1,0 +1,11 @@
+.consultancy-container {
+  width: 100%;
+  background: #14152A;
+  padding-top: 9em;
+}
+
+@media screen and (max-width: 1200px) {
+  .consultancy-container {
+    padding-top: 7em;
+  }
+}

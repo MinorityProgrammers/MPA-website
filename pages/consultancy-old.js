@@ -1,6 +1,3 @@
-import Connect from '../components/consultancy-new/connect/connect';
-import Header from '../components/consultancy-new/header/header';
-import Services from '../components/consultancy-new/services/services';
 import React, { useState, useRef, useEffect } from 'react';
 import HomepageNav from '../components/homepage/HomepageNav';
 import ComingSoon from '../components/ComingSoon';
@@ -50,10 +47,13 @@ const consultancy = () => {
           handleClick={handleClick}
         />
         {hide === false && <ComingSoon closeClick={handleClick} />}
-        <section className='consultancy-container'>
-          <Header />
-          <Services />
-          <Connect />
+        <section className="home-section">
+          <Consultancy
+            data={data}
+            setClickRegister={setClickRegister}
+            active={active}
+            clickRegister={clickRegister}
+          />
         </section>
         <Footer />
       </Layout>

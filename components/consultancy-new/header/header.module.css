@@ -1,0 +1,174 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1440px;
+  margin: 0 auto;
+  margin-bottom: 6em;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  color: white;
+  position: relative;
+  padding: 0 2em;
+}
+
+.content {
+  width: 100%;
+  max-width: 52em;
+}
+
+/* rgba(151, 196, 245, 1)
+rgba(51, 210, 255, 1) */
+
+.content h1 {
+  font-size: 2.8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #97c4f5;
+  margin-bottom: 1em;
+}
+
+.content p {
+  font-size: 1.4rem;
+  margin-bottom: 2em;
+}
+
+.content button {
+  padding: 1em 2em;
+  border-radius: 2rem;
+  background: #6938EF;
+  color: white;
+  border: none;
+  font-size: 1rem;
+  font-family: sans-serif;
+  transition: background 300ms;
+}
+
+.content button:hover {
+  background: hsla(256, 85%, 58%, 0.8);
+}
+
+.banner {
+  width: 38%;
+  display: block;
+  z-index: 10;
+}
+
+.elipse {
+  width: 20%;
+  position: absolute;
+  right: 4em;
+  bottom: -10em;
+  border-radius: 50%;
+  transform: rotate(-30deg);
+  z-index: 0;
+}
+
+@media screen and (max-width: 1200px) {
+  .content {
+    max-width: 42em;
+  }
+
+  .content h1 {
+    font-size: 2.2rem;
+  }
+
+  .content p {
+    font-size: 1.2rem;
+  }
+}
+
+@media screen and (max-width: 1064px) {
+  .content {
+    max-width: 36em;
+  }
+
+  .content h1 {
+    font-size: 1.8rem;
+  }
+
+  .content p {
+    font-size: 1rem;
+  }
+
+  .banner {
+    width: 40%;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .content {
+    max-width: 28em;
+  }
+
+  .content h1 {
+    font-size: 1.5rem;
+  }
+
+  .content p {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    flex-direction: column-reverse;
+  }
+
+  .content {
+    max-width: 36em;
+  }
+
+  .content h1 {
+    font-size: 1.8rem;
+  }
+
+  .content p {
+    font-size: 1rem;
+  }
+
+  .banner {
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .container {
+    padding: 0 1em;
+  }
+
+  .content h1 {
+    font-size: 1.2rem;
+  }
+
+  .content p {
+    font-size: 1rem;
+  }
+
+  .content button {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    margin-bottom: 3em;
+  }
+
+  .content h1 {
+    font-size: 1rem;
+  }
+
+  .content p {
+    font-size: 0.75rem;
+  }
+
+  .content button {
+    font-size: 0.75rem;
+  }
+
+  .banner {
+    width: 80%;
+  }
+}
