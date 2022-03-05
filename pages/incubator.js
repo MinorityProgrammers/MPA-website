@@ -16,6 +16,7 @@ import Layout from "../components/Layout";
 import SidebarTwo from "../components/sidebar/SidebarTwo";
 import useDetectOutsideClick from "../components/UseDetectOutsideClick";
 import links from "../contexts/utils/links";
+import ComingSoon from "../components/ComingSoon";
 
 const IncubatorPage = () => {
   const [startups, setStartups] = useState([]);
@@ -64,7 +65,11 @@ const IncubatorPage = () => {
       .catch((err) => {
         console.log("error fetching startup data", err);
       });
-  }, []);
+  }, [
+    typeof window !== "undefined"
+      ? window.localStorage.getItem("jwtToken")
+      : null,
+  ]);
 
   return (
     <Layout pageTitle="MPA - Incubator">
@@ -82,6 +87,7 @@ const IncubatorPage = () => {
         active="Home"
         handleClick={handleClick}
       />
+      {hide === false && <ComingSoon closeClick={handleClick} />}
       <IncubatorHero />
       {loading ? (
         <section className="section__incubator">

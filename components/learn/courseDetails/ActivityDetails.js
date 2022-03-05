@@ -265,6 +265,13 @@ const ActivityDetails = ({
                         paddingLeft: "10px",
                         paddingRight: "10px",
                       }}
+                      style={{
+                        textAlign: "center",
+                        fontSize: "17px",
+                        width: "auto",
+                        paddingLeft: "10px",
+                        paddingRight: "10px",
+                      }}
                     >
                       <span>{completionStatus}</span>
                     </p>

@@ -83,21 +83,21 @@ const SettingBodyOverview = ({ data, setTabsActive }) => {
             <div className={styles.uCLeft}>
               <div className={styles.info}>
                 <div className={styles.infoKey}>Role</div>
-                <div className={styles.infoValue}>{data.role}</div>
+                <div className={styles.infoValue}>{data?.role}</div>
               </div>
               <div className={styles.info}>
                 <div className={styles.infoKey}>Username</div>
-                <div className={styles.infoValue}>{data.userName}</div>
+                <div className={styles.infoValue}>{data?.userName}</div>
               </div>
               <div className={styles.info}>
                 <div className={styles.infoKey}>Email</div>
                 <div className={styles.infoValue}>
                   <a
                     target="_blank"
-                    href={`mailto:${data.email}`}
+                    href={`mailto:${data?.email}`}
                     rel="noreferrer"
                   >
-                    {data.email}
+                    {data?.email}
                   </a>
                 </div>
               </div>

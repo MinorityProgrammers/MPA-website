@@ -1,16 +1,18 @@
-/* eslint-disable */
-import axios from "axios";
-import { Form, Formik } from "formik";
-import { getProviders, getSession, signIn, useSession } from "next-auth/client";
-import { useRouter } from "next/router";
-import React, { useContext, useEffect, useState } from "react";
-import "react-toastify/dist/ReactToastify.css";
-import * as Yup from "yup";
-import { googleAuth, nextAuth } from "../../contexts/actions/auth/googleAuth";
-import login from "../../contexts/actions/auth/login";
-import { GlobalContext } from "../../contexts/provider";
-import { successToast, errorToast } from "../../contexts/utils/toasts";
-import TextField from "../TextField";
+import axios from 'axios';
+import { Form, Formik } from 'formik';
+import {
+  getProviders, getSession, signIn, useSession,
+} from 'next-auth/client';
+import { useRouter } from 'next/router';
+import React, { useContext, useEffect, useState } from 'react';
+import 'react-toastify/dist/ReactToastify.css';
+import * as Yup from 'yup';
+import { googleAuth, nextAuth } from '../../contexts/actions/auth/googleAuth';
+import login from '../../contexts/actions/auth/login';
+import { GlobalContext } from '../../contexts/provider';
+import { successToast, errorToast } from '../../contexts/utils/toasts';
+import TextField from '../TextField';
+import updateProfileJSON from '../../contexts/actions/profile/updateProfileJSON';
 
 const HomepageNavLogin = ({ onCloseMobileMenu }) => {
   const router = useRouter();
@@ -23,13 +25,14 @@ const HomepageNavLogin = ({ onCloseMobileMenu }) => {
 
   const {
     authDispatch,
+    profileDispatch,
     authState: {
       auth: { loading, data },
     },
   } = useContext(GlobalContext);
 
   useEffect(() => {
-    const token = window.localStorage.getItem("jwtToken");
+    const token = window.localStorage.getItem('jwtToken');
     let timerId;
     if (data || token !== null) {
       setLoginSubmit(false);
@@ -71,7 +74,14 @@ const HomepageNavLogin = ({ onCloseMobileMenu }) => {
     login({
       email: e.email,
       password: e.password,
-    })(authDispatch);
+    })(authDispatch).then((res) => {
+      if (res?.user.isDeactivated === true) {
+        updateProfileJSON(
+          res.user._id,
+          JSON.stringify({ isDeactivated: false }),
+        )(profileDispatch).then(() => successToast('successfully activated your account'));
+      }
+    });
     setLoginSubmit(false);
   };
 
@@ -82,7 +92,7 @@ const HomepageNavLogin = ({ onCloseMobileMenu }) => {
         `${process.env.BASE_URI}/user/forgotPassword`,
         {
           email: e.email,
-        }
+        },
       );
       successToast(request.data.message);
     } catch (error) {
@@ -91,7 +101,7 @@ const HomepageNavLogin = ({ onCloseMobileMenu }) => {
   };
 
   return (
-    <div className={click ? "dropdown-login clicked" : "dropdown-login"}>
+    <div className={click ? 'dropdown-login clicked' : 'dropdown-login'}>
       <button
         type="button"
         className="dropdown-login-btn-close"
@@ -112,11 +122,9 @@ const HomepageNavLogin = ({ onCloseMobileMenu }) => {
           <img
             src="/assets/images/github.svg"
             alt="github icon"
-            onClick={() =>
-              signIn(providers.github.id, {
-                callbackUrl: "https://minorityprogrammers.com/auth",
-              })
-            }
+            onClick={() => signIn(providers.github.id, {
+              callbackUrl: 'https://minorityprogrammers.com/auth',
+            })}
           />
         </div>
       </div>
@@ -124,12 +132,12 @@ const HomepageNavLogin = ({ onCloseMobileMenu }) => {
         {!switchToReset && (
           <Formik
             initialValues={{
-              email: "",
-              password: "",
+              email: '',
+              password: '',
             }}
             validationSchema={Yup.object({
-              email: Yup.string().email("Invalid Email").required("Required"),
-              password: Yup.string().required("Required"),
+              email: Yup.string().email('Invalid Email').required('Required'),
+              password: Yup.string().required('Required'),
             })}
             onSubmit={onSubmit}
           >
@@ -143,7 +151,7 @@ const HomepageNavLogin = ({ onCloseMobileMenu }) => {
                     placeholder="&#xf0e0; Enter email"
                     required
                     textStyle="form-control fas"
-                    alertStyle="form-text dropdown-form-text mb-3 tw-text-red-400"
+                    alertStyle="form-text dropdown-form-text mb-3 tw-text-red-400 tw-text-md"
                   />
                 </div>
                 <div className="form-group login-input">
@@ -153,7 +161,7 @@ const HomepageNavLogin = ({ onCloseMobileMenu }) => {
                     type="password"
                     placeholder="&#xf023; Password"
                     textStyle="form-control fas"
-                    alertStyle="form-text dropdown-form-text mb-3 tw-text-red-400"
+                    alertStyle="form-text dropdown-form-text mb-3 tw-text-red-400 tw-text-md"
                   />
                 </div>
                 <div
@@ -166,7 +174,7 @@ const HomepageNavLogin = ({ onCloseMobileMenu }) => {
                   type="submit"
                   className="btn btn-warning btn-dropdown-filled"
                 >
-                  {loading ? "Signing In..." : "Sign In"}
+                  {loading ? 'Signing In...' : 'Sign In'}
                 </button>
               </Form>
             )}
@@ -175,10 +183,10 @@ const HomepageNavLogin = ({ onCloseMobileMenu }) => {
         {switchToReset && (
           <Formik
             initialValues={{
-              email: "",
+              email: '',
             }}
             validationSchema={Yup.object({
-              email: Yup.string().email("Invalid Email").required("Required"),
+              email: Yup.string().email('Invalid Email').required('Required'),
             })}
             onSubmit={onReset}
           >
@@ -192,7 +200,7 @@ const HomepageNavLogin = ({ onCloseMobileMenu }) => {
                     placeholder="&#xf0e0; Enter email"
                     required
                     textStyle="form-control fas"
-                    alertStyle="form-text dropdown-form-text mb-3 tw-text-red-400"
+                    alertStyle="form-text dropdown-form-text mb-3 tw-text-red-400 tw-text-md"
                   />
                 </div>
 
@@ -200,7 +208,7 @@ const HomepageNavLogin = ({ onCloseMobileMenu }) => {
                   type="submit"
                   className="btn btn-warning btn-dropdown-filled"
                 >
-                  {loading ? "Loading..." : "Reset Password"}
+                  {loading ? 'Loading...' : 'Reset Password'}
                 </button>
               </Form>
             )}
@@ -236,7 +244,7 @@ HomepageNavLogin.getInitialProps = async (context) => {
 
   if (session && res && session.accessToken) {
     res.writeHead(302, {
-      Location: "/",
+      Location: '/',
     });
     res.end();
     return;

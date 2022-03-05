@@ -5,10 +5,13 @@ import login from '../../../contexts/actions/auth/login';
 import { GlobalContext } from '../../../contexts/provider';
 import { InputField } from '../../TextField';
 import styles from '../../../styles/auth/auth.module.scss';
+import updateProfileJSON from '../../../contexts/actions/profile/updateProfileJSON';
+import { successToast } from '../../../contexts/utils/toasts';
 
 const Login = ({ setSubmit }) => {
   const {
     authDispatch,
+    profileDispatch,
     authState: {
       auth: { loading },
     },
@@ -24,7 +27,14 @@ const Login = ({ setSubmit }) => {
     login({
       email: e.email,
       password: e.password,
-    })(authDispatch);
+    })(authDispatch).then((res) => {
+      if (res?.user.isDeactivated === true) {
+        updateProfileJSON(
+          res.user._id,
+          JSON.stringify({ isDeactivated: false }),
+        )(profileDispatch).then(() => successToast('successfully activated your account'));
+      }
+    });
   };
 
   return (

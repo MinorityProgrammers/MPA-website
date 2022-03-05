@@ -1074,10 +1074,7 @@ input[type='checkbox']:checked + .jobs-search-slider:before {
 
 .filters-open-btn {
   display: none;
-  /* background: rgb(235, 235, 235); */
   color: black;
-  /* padding: 10px; */
-  /* margin-top: 12px; */
 }
 
 .remote-item {
@@ -1096,7 +1093,7 @@ input[type='checkbox']:checked + .jobs-search-slider:before {
   margin-right: 10px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 909px) {
   .filters-open-btn {
     display: block;
     position: relative;
@@ -1969,7 +1966,7 @@ input[type='checkbox']:checked + .jobs-search-slider:before {
   .top-wrapper {
     display: grid;
     grid-gap: 0.25em;
-    padding: 75px;
+    padding: 15px;
   }
 
   .top-wrapper > div {

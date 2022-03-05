@@ -4,9 +4,9 @@ import styles from './styles/tabs.module.css';
 const Tabs = ({ tabsActive, setTabsActive }) => (
   <section className="incubator-wrapper">
     <div className="tw-flex tw-justify-center container">
-      <div className="row tw-w-full" style={{ paddingTop: '100px' }}>
+      <div className="tw-flex tw-flex-row tw-w-full" style={{ paddingTop: '100px' }}>
 
-        {/* <div className="col-4" style={{ padding: '0' }}>
+        {/* <div className="tw-w-1/2" style={{ padding: '0' }}>
           <div
             className={styles.alliesHeader}
             onClick={() => setTabsActive(
@@ -17,7 +17,7 @@ const Tabs = ({ tabsActive, setTabsActive }) => (
             <div className={`${styles.line} ${tabsActive.nfts ? styles.lineActive : ''}`} />
           </div>
         </div> */}
-        <div className="col-4" style={{ padding: '0' }}>
+        <div className="tw-w-1/2" style={{ padding: '0' }}>
           <div
             className={styles.alliesHeader}
             onClick={() => setTabsActive(
@@ -30,7 +30,7 @@ const Tabs = ({ tabsActive, setTabsActive }) => (
           </div>
 
         </div>
-        <div className="col-4" style={{ padding: '0' }}>
+        <div className="tw-w-1/2" style={{ padding: '0' }}>
           <div
             className={styles.alliesHeader}
             onClick={() => setTabsActive(

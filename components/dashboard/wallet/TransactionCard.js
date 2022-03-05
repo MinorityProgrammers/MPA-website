@@ -41,7 +41,7 @@ const TransactionCard = ({ info }) => {
 
         {/* Transaction basic info */}
         <div className="d-flex flex-column justify-content-start align-items center">
-          <p className="trans-card-text" style={{ color: 'black', fontWeight: '500' }}>{transactionInfo.type.charAt(0).toUpperCase() + transactionInfo.type.slice(1)}</p>
+          <p className="trans-card-text" style={{ color: 'white', fontWeight: '500' }}>{transactionInfo.type.charAt(0).toUpperCase() + transactionInfo.type.slice(1)}</p>
           <p className="trans-card-text" style={{ color: 'rgba(0, 0, 0, 0.47)' }}>Metamask Wallet</p>
         </div>
       </div>

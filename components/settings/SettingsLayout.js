@@ -19,7 +19,7 @@ import getProgressPercentage from '../../contexts/utils/settings/getProgressPerc
 import styles from '../../styles/settings/settingsLayout.module.scss';
 
 const SettingsLayout = ({
-  setData, children, settingsPage, setTabsActive, tabsActive,
+  setData, children, settingsPage, setTabsActive, tabsActive, data,
 }) => {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef(null);
@@ -75,6 +75,9 @@ const SettingsLayout = ({
       setIsLoggedIn(true);
     }
   }, [userData]);
+  useEffect(() => {
+    setUserData(data);
+  }, [data]);
 
   useEffect(() => {
     if (window.localStorage.getItem('jwtToken')) {
@@ -202,7 +205,7 @@ const SettingsLayout = ({
           </div>
           <div className={`${styles.accountSettings}`}>
             <div className={styles.settingsNavigation}>
-              <div className={`${styles.navContainer} ${tabsActive.profile ? '' : styles.navProfile}`}>
+              <div className={`${styles.navContainer} ${tabsActive.profile || tabsActive.security ? '' : styles.navProfile}`}>
                 <div className={`tw-w-full ${tabsActive.profile ? '' : 'm-auto'}`}>
                   <div className={styles.userDataHeader}>
                     <div className={styles.imgDiv}>
@@ -218,11 +221,11 @@ const SettingsLayout = ({
                         onClick={() => { setIsModalVisible(false); setGenerateAvatarPopUp(true); }}
                         className={styles.editIcon}
                       />
-                      <div onClick={showModal}>View</div>
+                      <div onClick={showModal}><p className="tw-text-sm tw-font-medium">View</p></div>
                     </div>
                     <div className={styles.textDiv}>
                       <p>
-                        <span>{userData.email}</span>
+                        <span>{userData?.email}</span>
                       </p>
                       <h3>
                         {userData?.firstName && userData?.lastName

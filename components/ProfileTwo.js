@@ -12,13 +12,10 @@ import {
   FaDribbble,
 } from 'react-icons/fa';
 import axios from 'axios';
-import { HiOutlinePencil } from 'react-icons/hi';
 import jwt from 'jsonwebtoken';
 import { useRouter } from 'next/router';
-import { Tooltip, Button, Modal } from 'antd';
+import { Modal } from 'antd';
 import { useMoralis } from 'react-moralis';
-import moment from 'moment';
-import DatePicker from 'react-datepicker';
 import FormData from 'form-data';
 import { errorToast, successToast } from '../contexts/utils/toasts';
 import ProfileTwoGenerateAvatarPopUp from './ProfileTwoGenerateAvatarPopUp';
@@ -32,6 +29,7 @@ import UserCourses from './learn/UserCourses';
 import NoDataFound from './learn/NoDataFound';
 import Experience from './profile/Experience';
 import Education from './profile/Education';
+import Projects from './profile/Projects';
 
 function countDown(mintedURL, tx) {
   let secondsToGo = 30;
@@ -75,22 +73,26 @@ const ProfileTwo = function ({
   const [expLocationInput, setExpLocationInput] = useState('');
   const { walletAddress, chainId } = useMoralisDapp();
   const [educationCards, setEducationCards] = useState([]);
-  const [projectCards, setProjectCards] = useState([]);
   const [eduAddMode, setEduAddMode] = useState(false);
-  const [proAddMode, setProAddMode] = useState(false);
-  const [eduEditMode, setEduEditMode] = useState(false);
   const [proEditMode, setProEditMode] = useState(false);
   const [uploadedEduImg, setUploadedEduImg] = useState('');
-  const [uploadedProImg, setUploadedProImg] = useState('');
   const [eduTitleInput, setEduTitleInput] = useState('');
-  const [proTitleInput, setProTitleInput] = useState('');
   const [eduDateInput, setEduDateInput] = useState('');
-  const [ProDateInput, setProDateInput] = useState('');
   const [EducationMajor, setEducationMajor] = useState('');
-  const [ProjectRole, setProjectRole] = useState('');
   const [copyText, setCopyText] = useState('Click to copy');
   const [isMinting, setIsMinting] = useState(false);
   const [, setDoneMinting] = useState(false);
+  // project
+  const [eduEditMode, setEduEditMode] = useState(false);
+  const [proAddMode, setProAddMode] = useState(false);
+  const [uploadedProImg, setUploadedProImg] = useState('');
+  const [projectCards, setProjectCards] = useState([]);
+  const [ProjectRole, setProjectRole] = useState('');
+  const [ProDateInput, setProDateInput] = useState('');
+  const [proTitleInput, setProTitleInput] = useState('');
+  const [ProIMG, setProIMG] = useState('');
+  const [project, setProject] = useState('');
+
   // const [mintedURL, setMintedURl] = useState('');
   const [reputation, setReputation] = useState([]);
   const [enrolledCourses, setEnrolledCourses] = useState([]);
@@ -100,14 +102,10 @@ const ProfileTwo = function ({
   const [eduDateGrad, setEduDateGrad] = useState('');
   const [University, setUniversity] = useState('');
   const [UnIMG, setUnIMG] = useState('');
-  const [project, setProject] = useState('');
-  const [ProIMG, setProIMG] = useState('');
   const [tabsActive, setTabsActive] = useState(
     { nfts: false, userCourses: false, badges: true },
   );
   const [loading, setLoading] = useState(true);
-
-  const router = useRouter();
   const { Moralis, isAuthenticated } = useMoralis();
 
   const getNFTs = async () => {
@@ -125,9 +123,8 @@ const ProfileTwo = function ({
   useEffect(() => {
     getNFTs();
   }, [walletAddress, isAuthenticated, chainId]);
-  console.log(userNfts);
 
-  const axiosFunc = (url, token, setState) => {
+  const axiosFunc = (url, setState) => {
     axios
       .get(`${process.env.BASE_URI}/${url}`)
       .then((res) => {
@@ -137,22 +134,17 @@ const ProfileTwo = function ({
   };
 
   useEffect(() => {
-    const userToken = JSON.parse(localStorage.getItem('userInfo'));
-    if (userToken !== null) {
-      axiosFunc(`learn/user/${userId}`, userToken.token, setEnrolledCourses);
-      axiosFunc(`reputation/user/${userId}`, userToken.token, setReputation);
-      axiosFunc(
-        `experience/userExperienceById/${userId}`,
-        userToken.token,
-        setExperienceCards,
-      );
-      axiosFunc(`education/userEducationById/${userId}`, userToken.token, setEducationCards);
-      axiosFunc(
-        `personalProject/PersonalProjectById/${userId}`,
-        userToken.token,
-        setProjectCards,
-      );
-    }
+    axiosFunc(`learn/user/${userId}`, setEnrolledCourses);
+    axiosFunc(`reputation/user/${userId}`, setReputation);
+    axiosFunc(
+      `experience/userExperienceById/${userId}`,
+      setExperienceCards,
+    );
+    axiosFunc(`education/userEducationById/${userId}`, setEducationCards);
+    axiosFunc(
+      `personalProject/PersonalProjectById/${userId}`,
+      setProjectCards,
+    );
   }, []);
 
   useEffect(() => {
@@ -559,6 +551,7 @@ const ProfileTwo = function ({
       <div className="">
         <TopSection
           userData={userData}
+          isAuthenticated={isAuthenticated}
           isLoggedIn={isLoggedIn}
           ownsProfile={ownsProfile}
           setGenerateAvatarPopUp={setGenerateAvatarPopUp}
@@ -571,7 +564,7 @@ const ProfileTwo = function ({
           profileDispatch={profileDispatch}
           setChangeInProfile={setChangeInProfile}
         />
-        {ownsProfile && (
+        {ownsProfile && isLoggedIn && (
         <ProfileStength
           userData={userData}
           setPsArrowUp={setPsArrowUp}
@@ -618,7 +611,7 @@ const ProfileTwo = function ({
             {loading ? (
               <div className="profileTopSection tw-relative tw-z-10">
                 <section className="tw-w-11/12 tw-mx-auto tw-rounded-xl tw-shadow-md topSection tw-py-10 tw-flex tw-flex-col tw-justify-center">
-                  <div className="tw-text-3xl lg:tw-text-xl tw-font-medium tw-text-left tw-px-10 tw-text-gray-600">Enrolled courses</div>
+                  <div className="tw-text-3xl lg:tw-text-xl tw-font-medium tw-text-left tw-px-10 tw-text-gray-600">Earned</div>
                   <div className="tw-px-4 tw-my-1">
                     <CoursesSkeleton title="My Badges" />
                   </div>
@@ -628,11 +621,7 @@ const ProfileTwo = function ({
             ) : reputation.length > 0 ? (
               <Reputation reputation={reputation} reputationBadge={reputationBadge} />
             ) : (
-              <div className="mb-5 pb-3">
-                <div className="courses-info tw-px-10">
-                  <NoDataFound title="Badges" isActionable={false} action="" textAction="" description={`${ownsProfile ? 'You will see your badges here as activity reward!' : 'This User has not Earned a Badge yet!'}`} />
-                </div>
-              </div>
+              <NoDataFound title="Badges" isActionable={false} action="" textAction="" description={`${ownsProfile ? 'You will see your badges here as activity reward!' : 'This User has not Earned a Badge yet!'}`} />
             )}
 
           </div>
@@ -674,6 +663,7 @@ const ProfileTwo = function ({
           setEduEditMode={setEduEditMode}
           removeEdu={removeEdu}
           eduAddMode={eduAddMode}
+          setEduAddMode={setEduAddMode}
           eduDateGrad={eduDateGrad}
           eduDateInput={eduDateInput}
           eduTitleInput={eduTitleInput}
@@ -686,10 +676,40 @@ const ProfileTwo = function ({
           handleEduImgUpload={handleEduImgUpload}
           uploadedEduImg={uploadedEduImg}
           setUniversity={setUniversity}
-          setEduAddMode={setEduAddMode}
           University={University}
           clearEduAdd={clearEduAdd}
           completeEduAdd={completeEduAdd}
+        />
+        <Projects
+          // project data
+          projectCards={projectCards}
+          isLoggedIn={isLoggedIn}
+          ownsProfile={ownsProfile}
+          // remove project
+          removePro={removePro}
+          // edit project toggle
+          setProEditMode={setProEditMode}
+          proEditMode={proEditMode}
+          // Add project toggle
+          proAddMode={proAddMode}
+          setProAddMode={setProAddMode}
+          // project form
+          uploadedProImg={uploadedProImg}
+          proTitleInput={proTitleInput}
+          setProTitleInput={setProTitleInput}
+          ProDateInput={ProDateInput}
+          setProDateInput={setProDateInput}
+          ProjectRole={ProjectRole}
+          setProjectRole={setProjectRole}
+          project={project}
+          setProject={setProject}
+          // create project
+          handleProImgUpload={handleProImgUpload}
+          completeProAdd={completeProAdd}
+          // discard  changes
+          clearProAdd={clearProAdd}
+          // project Cover
+          setProIMG={setProIMG}
         />
 
       </div>
