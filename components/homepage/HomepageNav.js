@@ -215,8 +215,8 @@ const HomepageNav = ({
       ref={dropdownMobileRef}
     >
       {userData !== null && userData !== undefined ? (
-        <div className="nav__mobile-profile tw:z-10">
-          <div className="nav__mobile-img">
+        <div style={{border:"1px solid red"}} className="nav__mobile-profile tw:z-10">
+          <div style={{border:"1px solid red"}} className="nav__mobile-img">
             <img
               src={
                 userData.profilePicture
@@ -300,7 +300,7 @@ const HomepageNav = ({
         </a>
       </ul>
       {userData !== null && userData !== undefined ? (
-        <ul className="nav__mobile-items">
+        <ul className="nav__mobile-items" >
           <a
             href={`${
               userData.userName
@@ -309,7 +309,7 @@ const HomepageNav = ({
             }`}
             onClick={closeMobileMenu}
           >
-            <li className="nav-item">
+            <li style={{border:"1px solid red"}} className="nav-item" > 
               <div className="nav__mobile-link">Profile</div>
             </li>
           </a>
@@ -512,8 +512,8 @@ const HomepageNav = ({
                 </div>
               </li>
               {userData !== null && userData !== undefined ? (
-                <div style={{border:"1px solid green"}} className=" tw-w-1/12 tw-pt-8">
-                  <li style={{border:"1px solid green"}}>
+                <div className=" tw-w-1/12 tw-pt-8">
+                  <li>
                     {userData.profilePicture ? (
                       <img
                         className="tw-content-center tw-text-center tw-cursor-pointer tw-h-9 tw-rounded-full tw-w-9"
@@ -523,8 +523,8 @@ const HomepageNav = ({
                       />
                     ) : (
                       <i
-                      style={{border:"2px solid green"}}
-                        className="fa-user-circle fas tw-content-center tw-text-center NavIcon tw-cursor-pointer tw-mt-8"
+                      
+                        className=" fa-user-circle fas tw-content-center tw-text-center NavIcon tw-cursor-pointer tw-mt-8"
                         onClick={onClick}
                       />
                     )}
@@ -540,10 +540,10 @@ const HomepageNav = ({
                   </li>
                 </div>
               ) : (
-                <li className="">
-                  <i
+                <li >
+                  <i 
                     aria-hidden
-                    className="fas fa-user-circle tw-content-center tw-text-center NavIcon tw-cursor-pointer tw-mt-2"
+                    className="fa-user-circle fas fa-5x tw-content-center tw-text-center NavIcon tw-cursor-pointer tw-mt-8"
                     onClick={onClick}
                   />
                   {isActive ? (
