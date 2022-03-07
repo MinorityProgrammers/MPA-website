@@ -1,4 +1,4 @@
-import Connect from '../components/consultancy-new/connect/connect';
+import Connect from '../components/consultancy-new/network/network';
 import Header from '../components/consultancy-new/header/header';
 import Services from '../components/consultancy-new/services/services';
 import React, { useState, useRef, useEffect } from 'react';
@@ -9,7 +9,6 @@ import Layout from '../components/Layout';
 import Footer from '../components/Footer';
 import SidebarTwo from '../components/sidebar/SidebarTwo';
 import links from '../contexts/utils/links';
-import Consultancy from '../components/Consultancy/consultancy_Home';
 
 const consultancy = () => {
   const [open, setOpen] = useState(false);

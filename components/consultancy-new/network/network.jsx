@@ -1,4 +1,4 @@
-import styles from "./connect.module.css";
+import styles from "./network.module.css";
 
 const Connect = () => {
   return (
