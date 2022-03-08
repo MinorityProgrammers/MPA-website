@@ -52,19 +52,39 @@ const HomepageNav = ({
     const regex = /\b\w+/;
     if (!regex.test(e.target.value) && e.target.value !== '') return;
     setSearch(e.target.value);
-    router.push({
+    /*router.push({
       pathname: router.pathname,
       query: { _q: encodeURI(e.target.value) },
-    });
+    });*/
   };
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      console.log('Enter is pressed !');
+      router.push({
+        pathname: router.pathname,
+        query: { _q: encodeURI(searchValue) },
+      });
+    }
+  }
+
+  const handleSearchIconSubmit = () => {
+    console.log(router.pathname)
+    console.log(searchValue)
+    router.push({
+      pathname: router.pathname,
+      query: { _q: encodeURI(searchValue) },
+    });
+  }
+
 
   const handleSubmit = () => {
     const regex = /\b\w+/;
     if (!regex.test(searchValue)) return;
     setSearch('');
     router.push({
-      pathname: '/search',
-      query: { _q: searchValue },
+      pathname: router.pathname,
+      query: { _q: encodeURI(searchValue) },
     });
   };
 
@@ -191,6 +211,7 @@ const HomepageNav = ({
       <div className="mobile-searchBox">
         <input
           onChange={handleSearch}
+          onKeyDown={handleKeyDown}
           value={searchValue}
           className="mobile-searchInput"
           type="text"
@@ -200,8 +221,8 @@ const HomepageNav = ({
         <button
           type="button"
           className="mobile-searchButton"
-          href="#"
-          onClick={onClickSearch}
+          onClick={handleSearchIconSubmit}
+          
         >
           <i className="fas fa-search" />
         </button>
@@ -320,6 +341,8 @@ const HomepageNav = ({
       <Account />
     </div>
   );
+
+
 
   return (
     <header
@@ -492,6 +515,7 @@ const HomepageNav = ({
                 <div className="tw-flex tw-flex-row tw-h-9 tw-mt-8 tw-bg-inputColor tw-border-2 tw-border-purple-800 tw-rounded-full tw-px-1 tw-text-white">
                   <input
                     onChange={handleSearch}
+                    onKeyDown={handleKeyDown}
                     value={searchValue}
                     className="searchInput tw-text-sm tw-border-0 tw-text-white tw-p-4 xl:tw-w-9/12 tw-w-4/5 tw-outline-none focus:tw-outline-none"
                     // ${
@@ -501,7 +525,7 @@ const HomepageNav = ({
                     name=""
                     placeholder="Search..."
                   />
-                  <button type="submit" onClick={handleSubmit}>
+                  <button type="submit" onClick={handleSearchIconSubmit}>
                     <i className="fas fa-search tw-ml-2" />
                   </button>
                 </div>
