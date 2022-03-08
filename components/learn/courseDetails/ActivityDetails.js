@@ -138,20 +138,15 @@ const ActivityDetails = ({
   const lastAdvancedModules = advancedModules[advancedModules.length - 1];
 
   return (
-    <div className="banner-bg activity-pad">
+    <div
+      className={watched
+        ? 'banner-bg activity-pad blur-background'
+        : 'banner-bg activity-pad'}
+    >
       <div
         className="activity-styles d-flex flex-column justify-content-start align-items-center w-100"
         style={{ backgroundColor: '#1C1D37' }}
       >
-        {/* <div className="col-12 col-md-3 pr-0 scroll-sidebar">
-          <CourseSidebar
-            course={course}
-            courseId={courseId}
-            modules={modules}
-            userModules={userModules}
-          />
-        </div> */}
-
         <div className="d-flex flex-column justify-content-center align-items-center mb-4 mt-4" style={{ width: '80%' }}>
           <div className="d-flex flew-row mb-2 align-items-center justify-content-start" style={{ height: '48px', textAlign: 'center', width: '100%' }}>
             <button className="ml-3 mr-3" type="button" onClick={() => router.back()}>
@@ -164,8 +159,10 @@ const ActivityDetails = ({
 
           </div>
           {/* youtube player */}
-          <div className="banner-bg d-flex justify-content-center" style={{ borderRadius: '30px', width: '100%' }}>
-            <div className="player-wrapper" style={{ width: '95%' }}>
+          <div
+            className="banner-bg d-flex justify-content-center"
+            style={{ borderRadius: '30px', width: '100%', height: '100%' }}>
+            <div className="player-wrapper" style={{ width: '95%', height: '100%' }}>
               <ReactPlayer
                 url={moduleInfo.url}
                 controls
@@ -262,16 +259,13 @@ const ActivityDetails = ({
               </div>
               {/* Buttons */}
               <div className="d-flex flex-row justify-content-between mb-4">
-                {/* <button className="lesson-button d-flex flex-row justify-content-center align-items-center p-3" style={{ lineHeight: '20px', border: '1px solid #6938EF', borderRadius: '20px' }}>
-                  <FontAwesomeIcon icon={faArrowLeft} style={{ fontSize: '17px', color: 'white' }} className="icon mr-2" />
-                  <p style={{ fontSize: '17px', color: 'white' }}>
-                    Previous Lesson
-                  </p>
-                </button> */}
-                <div className="d-flex flex-row">
+                <div className="d-flex flex-row justify-content-center align-items-center">
                   <button
                     type="button"
-                    onClick={() => { (setWatched(true), setIsOpen(true)); }}
+                    onClick={() => {
+                      setWatched(!watched);
+                      setIsOpen(true);
+                    }}
                     className="quiz-button p-3"
                     style={{
                       lineHeight: '20px', border: '1px solid #6938EF', borderRadius: '20px', background: '#6938EF',
@@ -281,21 +275,10 @@ const ActivityDetails = ({
                       Take Quiz
                     </p>
                   </button>
-                  {/* <button
-                    type="button"
-                    onClick={forwardInfo}
-                    data-dismiss="modal"
-                    aria-label="Close"
-                    className="lesson-button d-flex flex-row justify-content-center p-3 ml-5 align-items-center" style={{ lineHeight: '20px', border: '1px solid #6938EF', borderRadius: '20px' }}>
-                    <p className="mr-2" style={{ fontSize: '17px', color: 'white' }}>
-                      Next Lesson
-                    </p>
-                    <FontAwesomeIcon icon={faArrowRight} style={{ fontSize: '17px', color: 'white' }} className="icon" />
-                  </button> */}
                 </div>
               </div>
-              <div className="w-100 mb-3 d-flex flex-column mb-3">
-                <p style={{ fontSize: '28px', color: 'white' }}>Addtional Resources</p>
+              <div className="w-100 mb-3 d-flex flex-column">
+                {/* <p style={{ fontSize: '28px', color: 'white' }}>Addtional Resources</p> */}
               </div>
             </div>
           </div>

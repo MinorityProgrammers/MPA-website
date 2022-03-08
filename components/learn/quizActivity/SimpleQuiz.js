@@ -99,17 +99,15 @@ export default function SimpleQuiz() {
               {answer?.map((item, index) => (
                 <label
                   htmlFor={`radio-${index}`}
-                // class="input_radio"
+                  // class="input_radio"
                   key={`${index + 1}`}
-                  className={`option${
-                    questions[currentQuestion].checked && !item.correct
-                      ? ' dim'
-                      : ''
-                  }${
-                    questions[currentQuestion].checked && item.correct
+                  className={`option${questions[currentQuestion].checked && !item.correct
+                    ? ' dim'
+                    : ''
+                    }${questions[currentQuestion].checked && item.correct
                       ? ' correct'
                       : ''
-                  }`}
+                    }`}
                 >
                   <input
                     id={`radio-${index}`}
@@ -147,28 +145,35 @@ export default function SimpleQuiz() {
                 </div> */
               ))}
             </form>
-            <div className="bottom">
+            <div className="bottom tw-w-100">
               {!questions[currentQuestion].checked && (
-                <button
-                  type="button"
-                  disabled={!('answerCorrect' in questions[currentQuestion])}
-                  onClick={checkAnswer}
-                >
-                  Check Answer
-                </button>
+                <div className="spread-bottom d-flex flex-row justify-content-between tw-w-100">
+                  <button
+                    className="fade-in next"
+                    type="button"
+                    onClick={() => { setWatched(false); }}
+                  >
+                    Close Quiz
+                  </button>
+                  <button
+                    type="button"
+                    disabled={!('answerCorrect' in questions[currentQuestion])}
+                    onClick={checkAnswer}
+                  >
+                    Check Answer
+                  </button>
+                </div>
               )}
               {currentQuestion + 1 < questions.length
-                  && questions[currentQuestion].checked && (
-                  <div className="spread-bottom">
-                    <div className="left_bottom">
-                      <svg className="arrow_circle" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="12" cy="12" r="9" transform="rotate(90 12 12)" stroke="white" strokeLinecap="round" strokeLinejoin="round" />
-                        <path d="M12 8L8 12" stroke="white" strokeLinecap="round" strokeLinejoin="round" />
-                        <path d="M16 12L8 12" stroke="white" strokeLinecap="round" strokeLinejoin="round" />
-                        <path d="M12 16L8 12" stroke="white" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                      <p className="back">back</p>
-                    </div>
+                && questions[currentQuestion].checked && (
+                  <div className="spread-bottom d-flex flex-row justify-content-between tw-w-100">
+                    <button
+                      className="fade-in next"
+                      type="button"
+                      onClick={() => { setWatched(false); }}
+                    >
+                      Close Quiz
+                    </button>
                     <button
                       className="fade-in next"
                       type="button"
@@ -179,7 +184,7 @@ export default function SimpleQuiz() {
                       <i className="fa fa-arrow-right" />
                     </button>
                   </div>
-              )}
+                )}
               {currentQuestion + 1 === questions.length
                 && questions[currentQuestion].checked && (
                   <button
@@ -189,7 +194,7 @@ export default function SimpleQuiz() {
                   >
                     Get Result
                   </button>
-              )}
+                )}
             </div>
           </div>
         </div>
