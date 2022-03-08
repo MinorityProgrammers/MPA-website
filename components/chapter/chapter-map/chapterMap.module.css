@@ -52,13 +52,24 @@
 }
 
 .title {
-    font-size: 1.4rem;
+    font-weight: 600;
+    font-size: 61px;
     text-align: center;
+    background: linear-gradient(90.87deg, #97C4F5 -2.84%, #33D2FF 82.04%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 15px;
 }
 
 .text {
     text-align: center;
-    margin-bottom: 2em;
+    padding: 0 3em;
+    color: white;
+    font-weight: normal;
+    font-size: 30px;
 }
 
 .navbar {

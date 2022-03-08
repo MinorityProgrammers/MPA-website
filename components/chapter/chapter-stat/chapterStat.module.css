@@ -1,7 +1,5 @@
 .wrapper {
-    background: white;
     margin-bottom: 1em;
-    clip-path: polygon(0% 0%, 97% 0, 100% 50%, 97% 100%, 0% 100%);
     padding: 0.3em;
     padding-right: 0.5em;
 }
@@ -31,9 +29,10 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1em 2em;
-    clip-path: polygon(0% 0%, 97.5% 0, 100% 50%, 97.5% 100%, 0% 100%);
-    z-index: 5;
+    height: 100px;
+    background: #1C1D37;
+    border: 1px solid #6938EF;
+    border-radius: 10px;
 }
 
 .container.grad2{
@@ -45,17 +44,40 @@
 }
 
 .number {
-    margin-right: 2em;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    width: 100px;
+    justify-content: center;
+    background: linear-gradient(91.39deg, #FF00B8 17.68%, #CC00FF 106.94%);
+    border-radius: 10px 1px 1px 10px;
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 48px;
+    margin-right: 4%;
+    font-family: 'SF Pro Display', sans-serif;
 }
 
 .nameAndLocation {
-    flex: 1 1 auto;
     word-wrap: break-word;
+    margin-right: auto;
+    text-align: left;
+    /* padding: 1em 2em; */
 }
 
 .amount,
 .name {
-    color: #FFC700;
+    font-weight: bold;
+    font-size: 26px;
+    line-height: 31px;
+    text-align: center;
+    letter-spacing: 0.03em;
+    color: #FFFFFF;
+    font-family: 'SF Pro Display', sans-serif;
+}
+.amount{
+    font-weight: 500;
+    margin-right: 10px;
 }
 
 .number,
@@ -65,7 +87,11 @@
 .time {
     color: white;
 }
-
+.location{
+    font-size: 18px;
+    text-transform: capitalize;
+    font-weight: normal;
+}
 .timeAndPoints {
     width: auto;
 }

@@ -1,11 +1,13 @@
 import React, {
   useState, useRef, useEffect, useContext,
 } from 'react';
+import axios from 'axios';
 import HomepageNav from '../../components/homepage/HomepageNav';
 import Layout from '../../components/Layout';
 import Footer from '../../components/Footer';
 import Intro from '../../components/chapter/chapter-intro/intro.component';
 import ChapterToolkit from '../../components/chapter/chapter-toolkit-menu/chapterToolkit.component';
+import ChapterSlider from '../../components/chapter/chapter-slider/ChapterSlider';
 import ChapterMap from '../../components/chapter/chapter-map/chapterMap.component';
 import SidebarTwo from '../../components/sidebar/SidebarTwo';
 import links from '../../contexts/utils/links';
@@ -14,11 +16,37 @@ import ChapterWrapper from '../../components/chapter/chapter-wrapper/ChapterWrap
 import useDetectOutsideClick from '../../components/UseDetectOutsideClick';
 import { GlobalContext } from '../../contexts/provider';
 
+function formatDate(dateStr) {
+  const MONTHS = [
+    'Jan',
+    'Feb',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'Sept',
+    'Oct',
+    'Nov',
+    'Dec',
+  ];
+  const d = new Date(dateStr);
+  const year = d.getFullYear();
+  const month = MONTHS[d.getMonth()];
+  const date = d.getDate();
+
+  return `${month} ${date} ${year}`;
+}
+
 const index = () => {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState('');
   const [userData, setUserData] = useState([]);
   const [token, setToken] = useState(null);
+  // map
+  const [locations, setLocations] = useState([]);
+  const [filteredLocations, setFilteredLocations] = useState([]);
 
   const {
     authState: {
@@ -39,6 +67,22 @@ const index = () => {
     }
   }, [data]);
 
+  useEffect(() => {
+    axios
+      .get(`${process.env.BASE_URI}/location`)
+      .then((res) => res.data)
+      .then((msg) => msg.data)
+      .then((res) => {
+        const newData = res.map((d) => ({
+          ...d,
+          date_founded: formatDate(d.date_founded),
+        }));
+        console.log(newData);
+        setLocations(newData);
+        setFilteredLocations(newData);
+      })
+      .catch((err) => console.error(err));
+  }, []);
   const dropdownRef = useRef(null);
   const [hide, setHide] = useDetectOutsideClick(dropdownRef, true);
   const handleClick = () => {
@@ -71,7 +115,9 @@ const index = () => {
 
         <Leaderboard />
 
-        <ChapterMap token={token} />
+        <ChapterSlider locations={locations} />
+
+        <ChapterMap filteredLocations={filteredLocations} locations={locations} token={token} />
 
         <Footer />
       </ChapterWrapper>

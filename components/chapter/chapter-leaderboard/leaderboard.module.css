@@ -4,19 +4,17 @@
     justify-content: center;
     align-items: center;
     padding-bottom: 4em;
-    background: linear-gradient(180deg, #151371 0%, rgba(21, 19, 113, 0) 100%);
 }
 
 .container {
-    border: 1px solid white;
     width: 100%;
-    max-width: 64em;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 2em 0;
     position: relative;
+    text-align: center;
 }
 
 .heading {
@@ -42,18 +40,31 @@
 }
 
 .title {
-    font-size: 1.4rem;
-    text-align: left;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 61px;
+    text-align: center;
+    background: linear-gradient(90.87deg, #97C4F5 -2.84%, #33D2FF 82.04%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 15px;
 }
 
 .text {
-    text-align: left;
+    text-align: center;
+    padding: 0 3em;
+    color: white;
+    font-weight: normal;
+    font-size: 30px;
 }
 
 .navbar {
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: flex-start;
     padding: 0 4em;
     margin-bottom: 2em;
@@ -91,7 +102,6 @@
 
 .stats {
     width: 100%;
-    padding: 0 2em;
 }
 
 .loadButtonContainer {
@@ -111,7 +121,83 @@
     background: #151371;
     color: white;
 }
+.LeadboardCards{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    text-align: center;
+    letter-spacing: 0.03em;
+    color: #FFFFFF;
+    height: 530px;
+    margin-bottom: 90px;
+    margin-top: 40px;
+}
+.LeadboardCards >div{
+    background: #1C1D37;
+    border: 1px solid #6938EF;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0px 0px 18.4694px rgb(0 0 0 / 10%);
+    border-radius: 18.4694px;
+}    
+.gold{
+    height: 100%;
+}
+.bronze{
+    height: 87%;
+    margin-top: auto;
+}
+.silver{
+    height: 92%;
+    margin-top: auto;
+}
+.detail{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: auto;
+}
+.detail h2{
+    font-weight: bold;
+    font-size: 36px;
+    text-align: center;
+    text-transform: capitalize;
+    letter-spacing: 0.03em;
+    font-family: 'SF Pro Display', sans-serif;
+}
+.detail h3{
+    font-size: 20px;
+    display: flex;
+    text-align: center;
+    text-transform: capitalize;
+    color: #FFFFFF;
+    font-weight: normal;
+    margin-top: 10px;
+}   
+.detail p{
+    font-weight: 600;
+    font-size: 18px;
+    display: flex;
+    text-align: center;
+    color: #FFFFFF;
+    margin: 30px 0 10px;
+}  
+.viewBtn{
+    margin-bottom: 20px;
+} 
 
+.viewBtn a{
+    background: #6938EF;
+    border-radius: 100px;
+    padding: 18px 30px;
+    display: block;
+    font-weight: 600;
+    font-size: 18px;
+    text-align: center;
+    color: #FFFFFF;
+}
 @media screen and (max-width: 1024px) {
     .container {
         width: 48em;

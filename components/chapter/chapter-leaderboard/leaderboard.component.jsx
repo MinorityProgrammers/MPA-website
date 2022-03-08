@@ -3,25 +3,14 @@ import axios from 'axios';
 import Select from '../chapter-select/select.component';
 import styles from './leaderboard.module.css';
 import ChapterStat from '../chapter-stat/chapterStat.component';
+import LeadboardCards from './LeadboardCards';
 
 const Leaderboard = () => {
   const [stats, setStats] = useState([]);
   const [filteredStats, setFilteredStats] = useState([]);
   const [selectItems, setItems] = useState([]);
-  const [pageStart, setPageStart] = useState(0);
-  const [pageEnd, setPageEnd] = useState(5);
   const [toggle, toggleDropdown] = useState(false);
-  const [pageToDisplay, setPageToDisplay] = useState();
-  const [currentPage, setCurrentPage] = useState(1);
-  const pageNumDisplay = 5;
-
-  const [startView, setStartView] = useState();
-  const [endView, setEndView] = useState();
-  const [currentView, setCurrentView] = useState(0);
-  const [viewToDisplay, setViewToDisplay] = useState([]);
-  const [pageLink, setPageLink] = useState([]);
-  const [pointer, setPointer] = useState(1);
-  const view = 3;
+  const [topChapter, setTopChapter] = useState([]);
 
   useEffect(() => {
     axios
@@ -30,64 +19,25 @@ const Leaderboard = () => {
       .then((msg) => msg.data)
       .then((data) => {
         const newData = data.map((d, idx) => ({ ...d, number: idx + 1 }));
-        setStats(newData);
-        setFilteredStats(newData);
+        const items = newData;
+        items.sort((a, b) => b.amount - a.amount);
+        setStats(items);
+        setFilteredStats(items);
         const categories = new Set();
         newData.forEach((val) => {
           categories.add(val.category);
         });
-        const select = [...categories].map((c) => ({ [c]: false }));
-        setItems([...select, { all: false }]);
+        const arrayUniqueByKey = [...new Map(items.map(
+          (item) => [item.name, item],
+        )).values()];
+        setTopChapter(arrayUniqueByKey.slice(0, 3));
+        setItems([{ monthly: false }, { weekly: false }, { all: false }]);
       })
       .catch((err) => console.error(err));
   }, []);
 
-  useEffect(() => {
-    const pLink = [];
-    for (
-      let i = 0;
-      i < Math.ceil(filteredStats.length / pageNumDisplay);
-      i += 1
-    ) {
-      pLink.push(i + 1);
-    }
-    setPageLink(pLink);
-    setStartView(currentView);
-    setEndView(currentView + view);
-    setViewToDisplay(pLink.slice(startView, endView));
-  }, [currentView, startView, endView, filteredStats]);
-
-  useEffect(() => {
-    setPageEnd(currentPage * pageNumDisplay);
-    setPageStart(currentPage * pageNumDisplay - pageNumDisplay);
-    setPageToDisplay(filteredStats.slice(pageStart, pageEnd));
-  }, [pageStart, pageEnd, currentPage, filteredStats]);
-
-  const handlePage = (num) => {
-    setCurrentPage(num);
-    setPointer(num);
-  };
-
   const handleClick = () => {
     toggleDropdown(!toggle);
-  };
-
-  const handlePrev = () => {
-    if (currentPage === 1) return;
-    setCurrentPage((c) => c - 1);
-    setPointer((p) => p - 1);
-    if (pointer === viewToDisplay[0]) {
-      setCurrentView((c) => c - 1);
-    }
-  };
-
-  const handleNext = () => {
-    if (currentPage === pageLink.length) return;
-    setCurrentPage((c) => c + 1);
-    setPointer((p) => p + 1);
-    if (pointer === viewToDisplay[viewToDisplay.length - 1]) {
-      setCurrentView((c) => c + 1);
-    }
   };
 
   const handleChange = (val) => {
@@ -95,61 +45,39 @@ const Leaderboard = () => {
       .filter((stat) => (val === 'all' ? stat : stat.category === val))
       .map((stat, idx) => ({ ...stat, number: idx + 1 }));
     setFilteredStats(newStats);
-    setCurrentPage(1);
-    setCurrentView(0);
-    setPointer(1);
+    const items = newStats;
+    items.sort((a, b) => b.amount - a.amount);
+    const arrayUniqueByKey = [...new Map(items.map(
+      (item) => [item.name, item],
+    )).values()];
+    setTopChapter(arrayUniqueByKey.slice(0, 3));
   };
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.container}>
+      <div className={`${styles.container} container`}>
         <div className={styles.heading}>
           <div className={styles.title}>CHAPTER LEADERBOARD</div>
-          <div className={styles.text}>Total points from programs</div>
-        </div>
-        <div className={styles.tag}>03</div>
-        <div className={styles.navbar}>
-          <div className={styles.paginate}>
-            <div onClick={handlePrev} className={styles.pageSelector}>
-              <i className="fas fa-chevron-left " />
-            </div>
-            {viewToDisplay.map((link) => (
-              <div
-                key={link}
-                onClick={() => handlePage(link)}
-                className={styles.pageSelector}
-                style={{
-                  borderBottom: pointer === link ? '2px solid white' : '',
-                }}
-              >
-                P
-                {link}
-              </div>
-            ))}
-            {pageLink.length !== viewToDisplay[viewToDisplay.length - 1] && (
-              <div className={styles.pageLengthInfo}>
-                ...P
-                {pageLink.length}
-              </div>
-            )}
-            <div onClick={handleNext} className={styles.pageSelector}>
-              <i className="fas fa-chevron-right" />
-            </div>
+          <div className={styles.text}>
+            Top programs with the most points
+
           </div>
+        </div>
+        <div className={styles.navbar}>
 
           <Select
             onClick={handleClick}
             onChange={handleChange}
             toggle={toggle}
             items={selectItems}
-            defaultValue="category"
+            defaultValue="all"
             setItems={setItems}
           />
         </div>
-
+        {topChapter.length > 0 && <LeadboardCards topChapter={topChapter} />}
         <div className={styles.stats}>
-          {pageToDisplay
-            && pageToDisplay.map((stat, idx) => (
+          {filteredStats.length > 0
+            && filteredStats.slice(0, 4).map((stat, idx) => (
               <ChapterStat key={stat._id} {...stat} idx={idx} />
             ))}
         </div>

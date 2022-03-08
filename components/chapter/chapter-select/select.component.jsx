@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styles from './select.module.css';
 
 const Select = ({
@@ -6,70 +6,41 @@ const Select = ({
   setItems,
   onClick,
   onChange,
-  toggle,
   defaultValue,
 }) => {
   const [heading, setHeading] = useState(defaultValue);
-  const [list, setList] = useState([]);
-
-  useEffect(() => {
-    const arr = [];
-    if (items) {
-      items.forEach((item) => {
-        if (Object.values(item)[0] === true) {
-          setHeading(Object.keys(item)[0]);
-        } else {
-          arr.push(Object.keys(item)[0]);
-        }
-      });
-    }
-    setList(arr);
-  }, [items]);
+  const [list] = useState([
+    { category: 'weekly', text: 'week' }, { category: 'monthly', text: 'Month' }, { category: 'all', text: 'All Time' },
+  ]);
 
   const handleSelect = (active) => {
-    const arr = [];
     const arr2 = [];
     items.forEach((item) => {
       const i = Object.keys(item)[0];
-      if (i === active) {
+      if (i === active.category) {
         setHeading(i);
         arr2.push({ [i]: true });
       } else {
-        arr.push(i);
         arr2.push({ [i]: false });
       }
     });
-    setList(arr);
     setItems(arr2);
-    onChange(active);
+    onChange(active.category);
     onClick();
   };
 
   return (
     <div className={styles.selectContainer}>
-      <div onClick={onClick} className={styles.selectHeading}>
-        {heading}
-        <i
-          style={{
-            transform: toggle ? 'rotate(180deg)' : 'rotate(0deg)',
-            transition: 'transform 0.2s',
-            marginLeft: '0.5em',
-          }}
-          className="fas fa-angle-down"
-        />
-      </div>
-      <div className={`${styles.selectList} ${toggle && styles.toggle}`}>
-        {list
+      {list
           && list.map((item, idx) => (
             <div
               key={`${idx + 1}`}
               onClick={() => handleSelect(item)}
-              className={styles.selectItem}
+              className={`${styles.selectItem} ${heading === item.category && styles.toggle}`}
             >
-              {item}
+              {item.text}
             </div>
           ))}
-      </div>
     </div>
   );
 };
