@@ -5,7 +5,7 @@ import Layout from '../../components/Layout';
 import Footer from '../../components/Footer';
 import HomepageNav from '../../components/homepage/HomepageNav';
 import useDetectOutsideClick from '../../components/UseDetectOutsideClick';
-import ChapterHeader from '../../components/chapterHeader/chapterHeader.component';
+// import ChapterHeader from '../../components/chapterHeader/chapterHeader.component';
 import ChapterDirectory from '../../components/ChapterDirectory/ChapterDirectory.component';
 import SidebarTwo from '../../components/sidebar/SidebarTwo';
 import links from '../../contexts/utils/links';
@@ -32,6 +32,7 @@ const Chapter = () => {
       setActive(false);
     } else {
       setUserData(Object.values(JSON.parse(userInfo))[1]);
+      setToken(userToken);
       setActive(true);
     }
   }, [data]);
@@ -62,7 +63,6 @@ const Chapter = () => {
         handleClick={handleClick}
       />
 
-      <ChapterHeader />
       <ChapterDirectory token={token} userData={userData} active={active} />
       <Footer />
     </Layout>

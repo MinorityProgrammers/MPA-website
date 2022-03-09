@@ -14,12 +14,13 @@
 .formContainer {
   width: 100%;
   max-width: 64em;
+  padding: 3em 8em;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  border-radius: 0.5em;
-  background-color: white;
+  border-radius: 16px;
+  background-color: #1C1D37;
   position: relative;
 }
 
@@ -27,7 +28,7 @@
   width: 100%;
   padding: 1em;
   text-align: center;
-  background-color:#151371;
+  background-color:#ffffff;
   color: white;
   text-transform: uppercase;
   font-size: 1.2rem;
@@ -38,7 +39,6 @@
 .form {
   width: 100%;
   min-height: 20em;
-  padding: 3em 8em;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -47,7 +47,7 @@
 
 .buttonWrapper {
   width: 100%;
-  padding: 0 1em;
+  /* padding: 0 1em; */
 }
 
 .buttonContainer {
@@ -61,7 +61,7 @@
 
 .button {
   cursor: pointer;
-  position: absolute;
+  /* position: absolute; */
   top: 0;
 }
 
@@ -81,31 +81,45 @@
 
 .next {
   right: 0;
-  border-radius: 0.2em;
-  color: #151371;
-  background-color: #ffa500;
+  margin-left: auto;
+  color: #ffffff;
   padding: 0.3em 0.8em;
   text-transform: capitalize;
+  background: #6938EF;
+  border-radius: 100px;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 12px 30px;
 }
 
 .prev {
+  font-size: 18px;
+  font-weight: 500;
   left: 0;
-  color: #151371;
+  color: #ffffff;
   text-transform: capitalize;
 }
 
 .stepperWrapper {
   width: 100%;
-  max-width: 28em;
-  margin-bottom: 4em;
+  height: 10px;
+  margin-top: 2rem;
+  background: rgba(82, 85, 141, 0.61);
+  border-radius: 17px;
 }
-
+.questionNum{
+  font-weight: normal;
+  font-size: 20px;
+  color: #CFCFCF;
+  margin-right: auto;
+  margin-bottom: 40px;
+  margin-top: 5px;
+}
 .stepperContainer {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
+  width: 14.2857%;
+  background: linear-gradient(270deg, #FD05B3 1.84%, rgba(253, 5, 179, 0.15) 100%);
+  border-radius: 17px;
+  height: 100%;
 }
 
 .stepperLine {
@@ -138,11 +152,10 @@
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  padding-top: 6em;
-  min-height: 24rem;
+  /* min-height: 24rem; */
   font-size: 1rem;
   font-weight: 500;
-  color: #151371;
+  color: #ffffff;
   text-transform: uppercase;
 }
 
@@ -194,8 +207,8 @@
   margin-top: 1em;
   width: 100%;
   border-radius: 0.2em;
-  color: #151371;
-  border: 1px solid #151371;
+  color: #ffffff;
+  border: 1px solid #ffffff;
   text-align: center;
   cursor: pointer;
   padding: 4px;
@@ -204,7 +217,7 @@
 }
 
 .select {
-  width: 80%;
+  width: 100%;
 }
 
 .select * {
@@ -232,30 +245,38 @@
 
 .numberInput {
   width: 6em;
-  background: white;
-  color: black;
+  color: white;
   font-size: 1.2rem;
   padding: 0.2em 0.5em;
-  border: 1px solid gray;
-  border-radius: 0.1em;
+  background: #1C1D37;
+  border: 1px solid #6938EF;
+  border-radius: 16px;  
 }
 
-.numberInput:focus {
-  outline: auto #ee8ad2;
-  border: none;
-  border-radius: 10px;
+.numberInputContainer{
+  position: relative;
+  width: fit-content;
 }
+.numberInputContainer div{
+  position: absolute;
+  top: 20%;
+  right: 10%;
+}
+.numberInputContainer div img{
+  cursor: pointer;
+}  
 
 .textareaInput {
   resize: none;
   width: 100%;
-  height: 6em;
+  height: 10em;
   border-radius: 0.2em;
-  background: white;
-  color: black;
-  padding: 0.5em;
+  background: transparent;
+  color: rgb(255, 255, 255);
+  padding: 1rem;
   font-size: 1rem;
-  border: 1px solid gray;
+  border: 1px solid #6938EF;
+  border-radius: 16px;
 }
 
 .textareaInput:focus {
@@ -267,13 +288,14 @@
 }
 
 .textInput {
-  width: 60%;
+  width: 100%;
   border-radius: 0.2em;
-  background: white;
-  color: black;
+  background: transparent;
+  color: white;
   padding: 0.5em;
   font-size: 1rem;
-  border: 1px solid gray;
+  border: 1px solid rgba(71, 75, 255, 0.5);
+  border-radius: 16px;
 }
 
 .textInput:focus {
@@ -285,18 +307,19 @@
 }
 
 .label{
-  font-size: 1rem;
+  font-size: 22px;
+  font-weight: normal;
   font-weight: 400;
   margin-bottom: 1em;
-  color: #151371;
+  color: #ffffff;
   display: block;
 }
 
 .innerLabel {
-  color: #151371;
+  color: #ffffff;
   font-size: 0.9rem;
   font-weight: 400;
-  margin-bottom: 0.5em;
+  margin: 0.8em 0;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -312,45 +335,82 @@
   background: white;
   width: 1px;
   height: 1px;
+  cursor: pointer;
+  margin-right: 20px;
+  margin-left: 10px;
 }
 
 .radio::after {
   content: '';
   position: absolute;
-  width: 10px;
-  height: 10px;
-  background: white;
+  width: 20px;
+  height: 20px;
+  background: #B3AFC3;
   border-radius: 50%;
 }
 
 .radio::before {
-  content: '';
+  /* content: ''; */
   position: absolute;
   width: 14px;
   height: 14px;
-  border: 1px solid #151371;
+  border: 1px solid #ffffff;
   border-radius: 50%;
 }
 
 .radio:checked::after {
-  background: #ffa500;
+  background: #6938EF;
 }
 
 .submit {
   position: absolute;
   right: 0;
   border-radius: 0.2em;
-  background: #151371;
+  background: #ffffff;
   color: white;
   padding: 0.5em 1.4em;
   transition: background 0.3s;
 }
 
 .submit:hover {
-  background: rgb(21, 19, 113, 0.8);
+  background: rgba(255, 255, 255, 0.8);
 }
-
-
+.professionLabel{
+  display: flex;
+  justify-content: space-between;
+}
+.professionLabel .innerLabel{
+  background: #1C1D37;
+  border: 1px solid #474BFF;
+  border-radius: 12px;
+  flex-direction: column;
+  padding-top: 2rem;
+  overflow: hidden;
+  cursor: pointer;
+}
+.professionLabel .innerLabel img{
+  margin-bottom: 2rem;
+}  
+.professionLabel .innerLabel div{
+  display: flex;
+  justify-content: center;
+  height: 50px;
+  margin-top: 1rem;
+  width: 250px;
+  background: #272948;
+  border-top: 1px solid #474BFF;
+  padding-top: 5px;
+  font-weight: bold;
+  font-size: 22px;
+  letter-spacing: 0.03em;
+  color: #CFCFCF;
+  margin-top: auto;
+}
+.radioField{
+  border: 1px solid rgba(71, 75, 255, 0.5);
+  border-radius: 16px;
+  padding: 1rem;
+}
 @media screen and (max-width: 1024px) {
   .formContainer {
     max-width: 48em;
