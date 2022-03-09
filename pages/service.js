@@ -1,5 +1,5 @@
-import Connect from '../components/consultancy-Service/network/network';
-import Header from '../components/consultancy-Service/header/header';
+import Connect from '../components/consultancy-service/network/network';
+import Header from '../components/consultancy-service/header/header';
 import Services from '../components/consultancy-Service/services/services';
 import React, { useState, useRef, useEffect } from 'react';
 import HomepageNav from '../components/homepage/HomepageNav';
