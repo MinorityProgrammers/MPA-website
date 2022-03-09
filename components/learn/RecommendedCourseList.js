@@ -1,7 +1,9 @@
-import React from "react";
+import React from 'react';
 
 const RecommendedCourseList = ({ course, handleCourseInfo, showModal }) => {
-  const { earn, name, description, tags } = course;
+  const {
+    earn, name, description, tags,
+  } = course;
   return (
     <div className="courses-items px-3 mb-4 mx-2 tw-shadow-lg ">
       <div className="pt-3" />
@@ -16,7 +18,7 @@ const RecommendedCourseList = ({ course, handleCourseInfo, showModal }) => {
       </p>
 
       <div className="course-items-footer">
-        <p className="course-earn-style">Earn {earn}</p>
+        {/* <p className="course-earn-style">Earn {earn}</p> */}
         <button
           type="button"
           onClick={() => {
@@ -27,7 +29,9 @@ const RecommendedCourseList = ({ course, handleCourseInfo, showModal }) => {
           data-target="#exampleModal"
           className=" px-3 banner-btn tw-mt-4 tw-mr-3"
         >
-          Enroll <span className="tw-ml-2 enroll-arrow"> &#8594;</span>
+          Enroll
+          {' '}
+          <span className="tw-ml-2 enroll-arrow"> &#8594;</span>
         </button>
       </div>
     </div>

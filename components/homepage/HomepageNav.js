@@ -488,12 +488,12 @@ const HomepageNav = ({
               </li>
             </ul>
             <ul className="tw-flex tw-flex-row tw-justify-around tw-w-1/4 tw-my-8 navbar__right md:tw-hidden">
-              <li>
+              <li className="tw-flex tw-items-center">
                 <div className="navbar__search tw-flex tw-flex-row tw-w-full tw-border tw-border-white tw-rounded-md tw-px-1 tw-text-white">
                   <input
                     onChange={handleSearch}
                     value={searchValue}
-                    className="searchInput tw-bg-transparent tw-border-0 tw-text-white tw-py-1 xl:tw-w-10/12 tw-w-full tw-outline-none focus:tw-outline-none"
+                    className="searchInput tw-h-8 tw-bg-transparent tw-border-0 tw-text-white tw-py-1 xl:tw-w-10/12 tw-w-full tw-outline-none focus:tw-outline-none"
                     // ${
                     //   searchValue ? "expand" : ""
                     // }`}
@@ -506,14 +506,14 @@ const HomepageNav = ({
                   </button>
                 </div>
               </li>
-              <li>
+              <li className="tw-flex tw-items-center">
                 <div className="tw-w-full tw-mx-2 tw-cursor-pointer">
                   <Account />
                 </div>
               </li>
               {userData !== null && userData !== undefined ? (
                 <div className="tw-mx-2">
-                  <li>
+                  <li className="tw-flex tw-h-full tw-items-center">
                     {userData.profilePicture ? (
                       <img
                         className="tw-content-center tw-text-center tw-cursor-pointer tw-h-9 tw-rounded-full tw-w-9"

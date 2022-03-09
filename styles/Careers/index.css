@@ -1888,6 +1888,7 @@ input[type='checkbox']:checked + .jobs-search-slider:before {
     display: grid;
     grid-gap: 0.5em;
     padding: 100px;
+    font-family: 'Poppins', sans-serif;
     grid-template-columns: 0.5fr 1.2fr;
     grid-template-areas: 'careerTopText careerTopPic';
   }
@@ -1903,10 +1904,9 @@ input[type='checkbox']:checked + .jobs-search-slider:before {
     color: #33d2ff;
     width: 471px;
     height: 230px;
-    font-family: SF Pro Display !important;
     font-style: normal;
     font-weight: bold;
-    font-size: 96px;
+    font-size: 64px;
     line-height: 115px;
     letter-spacing: 0.03em;
   }
@@ -1943,7 +1943,6 @@ input[type='checkbox']:checked + .jobs-search-slider:before {
     color: #33d2ff;
     width: 275px;
     height: 150px;
-    font-family: SF Pro Display !important;
     font-style: normal;
     font-weight: bold;
     font-size: 55px;
@@ -1978,7 +1977,6 @@ input[type='checkbox']:checked + .jobs-search-slider:before {
     color: #33d2ff;
     width: 275px;
     height: 150px;
-    font-family: SF Pro Display !important;
     font-style: normal;
     font-weight: bold;
     font-size: 55px;

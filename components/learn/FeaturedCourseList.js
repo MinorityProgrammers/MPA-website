@@ -49,11 +49,11 @@ const FeaturedCourseList = ({
         </>
       ) : !userCoursesId.includes(_id) ? (
         <div className="course-items-footer">
-          <p className="course-earn-style">
+          {/* <p className="course-earn-style">
             Earn
             {' '}
             {earn}
-          </p>
+          </p> */}
           <button
             type="button"
             onClick={() => {
