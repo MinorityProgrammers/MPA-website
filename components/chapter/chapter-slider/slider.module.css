@@ -27,6 +27,9 @@
 }
 .universityName img{
     margin-right: 10px;
+    border-radius: 5.89px;
+    background: #fff;
+    padding: 2px;
 }   
 .description{
     padding: 0 10px 0px 20px;
