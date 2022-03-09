@@ -46,7 +46,7 @@
   color: white;
 }
 
-.content button {
+.content .link {
   padding: 1em 2em;
   border-radius: 2em;
   color: white;
@@ -57,7 +57,7 @@
   transition: background 300ms;
 }
 
-.content button:hover {
+.content .link:hover {
   background: hsla(256, 85%, 58%, 0.2);
 }
 
@@ -112,7 +112,7 @@
     text-align: center;
   }
 
-  .content button {
+  .content .link {
     font-size: 0.75rem;
   }
 }

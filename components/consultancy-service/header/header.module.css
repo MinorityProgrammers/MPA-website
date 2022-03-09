@@ -34,7 +34,7 @@ rgba(51, 210, 255, 1) */
   margin-bottom: 2em;
 }
 
-.content button {
+.content .link {
   padding: 1em 2em;
   border-radius: 2rem;
   background: #6938EF;
@@ -45,7 +45,7 @@ rgba(51, 210, 255, 1) */
   transition: background 300ms;
 }
 
-.content button:hover {
+.content .link:hover {
   background: hsla(256, 85%, 58%, 0.8);
 }
 
@@ -146,7 +146,7 @@ rgba(51, 210, 255, 1) */
     font-size: 1rem;
   }
 
-  .content button {
+  .content .link {
     font-size: 1rem;
   }
 }
@@ -164,7 +164,7 @@ rgba(51, 210, 255, 1) */
     font-size: 0.75rem;
   }
 
-  .content button {
+  .content .link {
     font-size: 0.75rem;
   }
 

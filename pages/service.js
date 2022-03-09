@@ -1,6 +1,6 @@
-import Connect from '../components/consultancy-new/network/network';
-import Header from '../components/consultancy-new/header/header';
-import Services from '../components/consultancy-new/services/services';
+import Connect from '../components/consultancy-Service/network/network';
+import Header from '../components/consultancy-Service/header/header';
+import Services from '../components/consultancy-Service/services/services';
 import React, { useState, useRef, useEffect } from 'react';
 import HomepageNav from '../components/homepage/HomepageNav';
 import ComingSoon from '../components/ComingSoon';
@@ -10,7 +10,7 @@ import Footer from '../components/Footer';
 import SidebarTwo from '../components/sidebar/SidebarTwo';
 import links from '../contexts/utils/links';
 
-const consultancy = () => {
+const Service = () => {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef(null);
   const [hide, setHide] = useDetectOutsideClick(dropdownRef, false);
@@ -60,4 +60,4 @@ const consultancy = () => {
   );
 };
 
-export default consultancy;
+export default Service;
