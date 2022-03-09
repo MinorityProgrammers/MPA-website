@@ -1903,7 +1903,7 @@ input[type='checkbox']:checked + .jobs-search-slider:before {
     color: #33d2ff;
     width: 471px;
     height: 230px;
-    font-family: SF Pro Display !important;
+    font-family: 'SF Pro Display', sans-serif !important;
     font-style: normal;
     font-weight: bold;
     font-size: 96px;
@@ -1943,7 +1943,7 @@ input[type='checkbox']:checked + .jobs-search-slider:before {
     color: #33d2ff;
     width: 275px;
     height: 150px;
-    font-family: SF Pro Display !important;
+    font-family: 'SF Pro Display', sans-serif !important;
     font-style: normal;
     font-weight: bold;
     font-size: 55px;
@@ -1978,7 +1978,7 @@ input[type='checkbox']:checked + .jobs-search-slider:before {
     color: #33d2ff;
     width: 275px;
     height: 150px;
-    font-family: SF Pro Display !important;
+    font-family: 'SF Pro Display', sans-serif !important;
     font-style: normal;
     font-weight: bold;
     font-size: 55px;
