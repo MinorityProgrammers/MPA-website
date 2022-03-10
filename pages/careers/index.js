@@ -501,11 +501,6 @@ const JobsMain = () => {
       getAppliedJobs={getAppliedJobs}
     >
       <Layout pageTitle="MPA - Careers">
-        <link
-          href="http://fonts.cdnfonts.com/css/sf-pro-display"
-          rel="stylesheet"
-        />
-
         <HomepageNav open={open} setOpen={setOpen} page="Employers Page" />
         <SidebarTwo
           open={open}
