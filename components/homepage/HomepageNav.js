@@ -236,8 +236,8 @@ const HomepageNav = ({
       ref={dropdownMobileRef}
     >
       {userData !== null && userData !== undefined ? (
-        <div style={{border:"1px solid red"}} className="nav__mobile-profile tw:z-10">
-          <div style={{border:"1px solid red"}} className="nav__mobile-img">
+        <div className="nav__mobile-profile tw:z-10">
+          <div className="nav__mobile-img">
             <img
               src={
                 userData.profilePicture
