@@ -3,11 +3,11 @@ export const services = [
     icon: '/assets/consultancy/services-icon-1.svg',
     title: "Design Services",
     list: [
-      "UI/UX, Prototypes & proof of concept",
-      "System Architecture & Design",
-      "Website  and landing Pages",
+      "UI/UX, prototypes & proof of concept",
+      "System architecture & design",
+      "Website  and landing pages",
       "Graphics designs and  NFT arts",
-      "Toknomics and DAO Desings",
+      "Toknomics and DAO desings",
       "Content creation"
     ]
   },
@@ -17,26 +17,26 @@ export const services = [
     list: [
       "Software consulting",
       "Mobile first web app.",
-      "Dev Ops",
+      "Dev ops",
       "Blockchain infrastructure",
-      "Wallet Onboarding ",
+      "Wallet onboarding ",
       "NFT lunchs",
-      "Education and Training",
+      "Education and training",
       "Quality assurance",
       "Metaverse AR/VR integration"
     ]
   },
   {
     icon: '/assets/consultancy/services-icon-3.svg',
-    title: "Business services",
+    title: "Business Services",
     list: [
-      "Business Analytics",
+      "Business analytics",
       "Marketing and branding  strategy",
       "SEO",
-      "White papers & pitch Decks",
-      "Proposal Writing",
+      "White papers & pitch decks",
+      "Proposal writing",
       "Community management & ecosystem growth",
-      "Keynotes and speaking Engagement",
+      "Keynotes and speaking engagement",
       "Event organising with emphasis on wellness"
     ]
   }
