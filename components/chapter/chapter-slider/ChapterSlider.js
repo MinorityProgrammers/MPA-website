@@ -53,7 +53,6 @@ const ChapterSlider = ({ locations: data }) => {
     );
     setLocations(filterLocation);
   };
-  console.log(locations);
   return (
     <div className="container">
       <div className={styles.title}>
