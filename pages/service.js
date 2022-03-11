@@ -3,7 +3,6 @@ import Header from '../components/consultancy-service/header/header';
 import Services from '../components/consultancy-service/services/services';
 import React, { useState, useRef, useEffect } from 'react';
 import HomepageNav from '../components/homepage/HomepageNav';
-import ComingSoon from '../components/ComingSoon';
 import useDetectOutsideClick from '../components/UseDetectOutsideClick';
 import Layout from '../components/Layout';
 import Footer from '../components/Footer';
@@ -48,8 +47,7 @@ const Service = () => {
           active="Home"
           handleClick={handleClick}
         />
-        {hide === false && <ComingSoon closeClick={handleClick} />}
-        <section className='consultancy-container'>
+        <section className="consultancy-container">
           <Header />
           <Services />
           <Connect />
