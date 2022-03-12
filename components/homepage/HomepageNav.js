@@ -507,8 +507,8 @@ const HomepageNav = ({
               </li>
             </ul>
             <ul className="tw-flex tw-flex-row tw-justify-end tw-w-5/12 navbar__right md:tw-hidden tw-h-full ">
-              <li  className="tw-h-full tw-w-4/12 border">
-                <div className="tw-flex tw-flex-row tw-h-9 tw-mt-8 focus:border-purple-800 tw-bg-inputColor tw-outline-black tw-rounded-full tw-px-1 tw-text-white">
+              <li  className="tw-h-full tw-w-5/12">
+                <div className="tw-flex tw-flex-row tw-h-9 tw-mt-8  tw-bg-inputColor tw-outline-black tw-rounded-full tw-px-1 tw-text-white">
                   <input
                     onChange={handleSearch}
                     onKeyDown={handleKeyDown}
@@ -520,11 +520,11 @@ const HomepageNav = ({
                   />
                   
                   <button type="submit" onClick={handleSearchIconSubmit}>
-                    <i className="fas fa-search tw-ml-2" />
+                    <i className="fas fa-search fa-1x tw-ml-2" />
                   </button>
                 </div>
               </li>
-              <li className="tw-h-full tw-ml-5 tw-w-5/12 tw-pt-8">
+              <li className="tw-h-full tw-ml-5 tw-w-5/12 tw-pt-8 " >
                 <div  className="tw-cursor-pointer tw-pl-1">
                   <Account />
                 </div>
