@@ -52,10 +52,6 @@ const HomepageNav = ({
     const regex = /\b\w+/;
     if (!regex.test(e.target.value) && e.target.value !== '') return;
     setSearch(e.target.value);
-    /*router.push({
-      pathname: router.pathname,
-      query: { _q: encodeURI(e.target.value) },
-    });*/
   };
 
   const handleKeyDown = (e) => {
@@ -511,20 +507,18 @@ const HomepageNav = ({
               </li>
             </ul>
             <ul className="tw-flex tw-flex-row tw-justify-end tw-w-5/12 navbar__right md:tw-hidden tw-h-full ">
-              <li  className="tw-h-full tw-w-4/12">
-                <div className="tw-flex tw-flex-row tw-h-9 tw-mt-8 tw-bg-inputColor tw-border-2 tw-border-purple-800 tw-rounded-full tw-px-1 tw-text-white">
+              <li  className="tw-h-full tw-w-4/12 border">
+                <div className="tw-flex tw-flex-row tw-h-9 tw-mt-8 focus:border-purple-800 tw-bg-inputColor tw-outline-black tw-rounded-full tw-px-1 tw-text-white">
                   <input
                     onChange={handleSearch}
                     onKeyDown={handleKeyDown}
                     value={searchValue}
-                    className="searchInput tw-text-sm tw-border-0 tw-text-white tw-p-4 xl:tw-w-9/12 tw-w-4/5 tw-outline-none focus:tw-outline-none"
-                    // ${
-                    //   searchValue ? "expand" : ""
-                    // }`}
+                    className="searchInput tw-text-xs tw-text-white tw-p-5 xl:tw-w-9/12 tw-w-4/5 tw-outline-none"
                     type="text"
                     name=""
                     placeholder="Search..."
                   />
+                  
                   <button type="submit" onClick={handleSearchIconSubmit}>
                     <i className="fas fa-search tw-ml-2" />
                   </button>
