@@ -189,7 +189,7 @@ const Account = () => {
             openAuthModal();
           }}
         >
-          <p className="tw-text-sm">Connect Wallet</p>
+          <p className="tw-text-xs">Connect Wallet</p>
         </div>
         <div>
           <Modal
