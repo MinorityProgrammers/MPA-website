@@ -6,8 +6,8 @@ const Layout = ({ pageTitle, children }) => (
     <Head>
       <title>{pageTitle}</title>
       <meta
-        name="facebook-domain-verification"
-        content="zqzl2e8e5d36a5deejlx4414qaenkl"
+        name="description"
+        content="Minority Programmers Association is an international network of developers unifying together to build socially impactful projects and spread STEM education to marginalized communities"
       />
       <meta charSet="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
