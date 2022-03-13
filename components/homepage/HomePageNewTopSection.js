@@ -32,7 +32,7 @@ const HomepageNewTopSection = () => (
           <div className="tw-w-full">
             {' '}
             <a href="https://snapshot.org/#/minorityprogrammers.eth">
-              <button type="button" className="md:tw-w-11/12 md:tw-my-2 mintBTN tw-outline-none focus:tw-ring-offset-0 focus:tw-border-opacity-0 tw-ring-offset-0 tw-transition tw-ease-in-out tw-delay-150 duration-300 tw-w-10/12 tw-p-3 tw-rounded-3xl tw-h-12 tw-flex tw-flex-row tw-justify-center tw-mx-2">
+              <button type="button" className="md:tw-w-11/12 md:tw-my-2 transition ease-in-out delay-150  mintBTN tw-outline-none focus:tw-ring-offset-0 focus:tw-border-opacity-0 tw-ring-offset-0 tw-transition tw-ease-in-out tw-delay-150 duration-300 tw-w-10/12 tw-p-3 tw-rounded-3xl tw-h-12 tw-flex tw-flex-row tw-justify-center tw-mx-2">
                 <p className="tw-text-white tw-text-md tw-text-center ">
                   Join Us
                 </p>
@@ -42,7 +42,7 @@ const HomepageNewTopSection = () => (
           <div>
             {' '}
             <a href="https://docs.metamask.io/guide/" target="_blank" rel="noreferrer">
-              <button type="button" className="md:tw-w-11/12 md:tw-my-2 mintBTN tw-outline-none focus:tw-ring-offset-0 focus:tw-border-opacity-0 tw-ring-offset-0 tw-transition tw-ease-in-out tw-delay-150 duration-300 tw-w-10/12 tw-p-3 tw-rounded-3xl tw-h-12 tw-flex tw-flex-row tw-justify-center tw-mx-2">
+              <button type="button" className="md:tw-w-11/12 md:tw-my-2 transition mintBTN tw-outline-none focus:tw-ring-offset-0 focus:tw-border-opacity-0 tw-ring-offset-0 tw-transition tw-ease-in-out tw-delay-150 duration-300 tw-w-10/12 tw-p-3 tw-rounded-3xl tw-h-12 tw-flex tw-flex-row tw-justify-center tw-mx-2">
                 <p className="tw-text-white tw-text-md tw-text-center ">
                   Learn how to connect
                 </p>

@@ -48,6 +48,7 @@
     "bcryptjs": "^2.4.3",
     "bitski": "^0.11.0-beta.4",
     "bootstrap": "5.0.2",
+    "caniuse-lite": "^1.0.30001315",
     "casper-erc20-js-client": "^0.0.4",
     "casper-js-sdk": "^2.7.4",
     "chart.js": "^3.7.1",
