@@ -326,7 +326,7 @@ const HomepageNav = ({
             }`}
             onClick={closeMobileMenu}
           >
-            <li style={{border:"1px solid red"}} className="nav-item" > 
+            <li className="nav-item" > 
               <div className="nav__mobile-link">Profile</div>
             </li>
           </a>
@@ -530,7 +530,7 @@ const HomepageNav = ({
                 </div>
               </li>
               {userData !== null && userData !== undefined ? (
-                <div className=" tw-w-3/12 tw-pt-8 ">
+                <div className=" tw-w-1/12 tw-pt-8 ">
                   <li>
                     {userData.profilePicture ? (
                       <img
@@ -561,7 +561,7 @@ const HomepageNav = ({
                 <li >
                   <i 
                     aria-hidden
-                    className="fa-user-circle fas fa-5x tw-content-center tw-text-center NavIcon tw-cursor-pointer tw-mt-8"
+                    className="fa-user-circle fas fa-5x tw-content-center tw-text-center NavIcon tw-cursor-pointer tw-mt-8 tw-pt-1 "
                     onClick={onClick}
                   />
                   {isActive ? (
