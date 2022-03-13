@@ -82,6 +82,10 @@ const index = () => {
         setFilteredLocations(newData);
       })
       .catch((err) => console.error(err));
+    const userToken = typeof window !== 'undefined'
+      ? window.localStorage.getItem('jwtToken')
+      : null;
+    setToken(userToken);
   }, []);
   const dropdownRef = useRef(null);
   const [hide, setHide] = useDetectOutsideClick(dropdownRef, true);
@@ -115,7 +119,7 @@ const index = () => {
 
         <Leaderboard />
 
-        <ChapterSlider locations={locations} />
+        <ChapterSlider token={token} locations={locations} />
 
         <ChapterMap filteredLocations={filteredLocations} locations={locations} token={token} />
 

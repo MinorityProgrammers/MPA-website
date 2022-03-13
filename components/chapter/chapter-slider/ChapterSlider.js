@@ -2,12 +2,17 @@ import React, { useState, useEffect } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import axios from 'axios';
+import { useRouter } from 'next/router';
 import styles from './slider.module.css';
+import { errorToast, successToast } from '../../../contexts/utils/toasts';
 
-const ChapterSlider = ({ locations: data }) => {
+const ChapterSlider = ({ locations: data, token }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [sliderRef, setSliderRef] = useState(null);
   const [locations, setLocations] = useState(data);
+
+  const router = useRouter();
 
   useEffect(() => {
     setLocations(data);
@@ -52,6 +57,37 @@ const ChapterSlider = ({ locations: data }) => {
       ,
     );
     setLocations(filterLocation);
+  };
+
+  const handleJoin = (location) => {
+    if (token) {
+      axios
+        .post(
+          `${process.env.BASE_URI}/joinChapter`,
+          {
+            chapterLocation_id: location._id,
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          },
+        )
+        .then(() => {
+          successToast('You have successfully joined a chapter');
+          setTimeout(location.reload(true), 2000);
+        })
+        .catch((err) => {
+          try {
+            // errorToast(err.response.data.data.message.msg);
+            console.log(err);
+          } catch (error) {
+            errorToast('Network Error');
+          }
+        });
+    } else {
+      errorToast('Please login to continue');
+    }
   };
   return (
     <div className="container">
@@ -102,8 +138,10 @@ const ChapterSlider = ({ locations: data }) => {
                     </div>
                   </div>
                   <div className={styles.btnRow}>
-                    <a>Join Chapter</a>
-                    <p>Learn More</p>
+                    <a onClick={() => handleJoin(location)}>Join Chapter</a>
+                    <p onClick={() => router.push(`chapter/${location._id}`)}>
+                      Learn More
+                    </p>
                   </div>
                 </div>
               ),
