@@ -508,12 +508,12 @@ const HomepageNav = ({
             </ul>
             <ul className="tw-flex tw-flex-row tw-justify-end tw-w-5/12 navbar__right md:tw-hidden tw-h-full ">
               <li  className="tw-h-full tw-w-5/12">
-                <div className="tw-flex tw-flex-row tw-h-9 tw-mt-8  tw-bg-inputColor tw-outline-black tw-rounded-full tw-px-1 tw-text-white">
+                <div className="tw-flex tw-flex-row tw-h-8 tw-mt-8 tw-bg-inputColor tw-rounded-full tw-px-1 tw-text-white">
                   <input
                     onChange={handleSearch}
                     onKeyDown={handleKeyDown}
                     value={searchValue}
-                    className="searchInput tw-text-xs tw-text-white tw-p-5 xl:tw-w-9/12 tw-w-4/5 tw-outline-none"
+                    className="searchInput tw-text-xs tw-text-white tw-pt-1 tw-pl-3 xl:tw-w-9/12 tw-w-4/5 tw-outline-none"
                     type="text"
                     name=""
                     placeholder="Search..."
@@ -524,17 +524,17 @@ const HomepageNav = ({
                   </button>
                 </div>
               </li>
-              <li className="tw-h-full tw-ml-5 tw-w-5/12 tw-pt-8 " >
-                <div  className="tw-cursor-pointer tw-pl-1">
+              <li className="tw-h-full tw-mx-1 tw-w-4/12 tw-pt-8 " >
+                <div  className="tw-cursor-pointer tw-pl-1 " >
                   <Account />
                 </div>
               </li>
               {userData !== null && userData !== undefined ? (
-                <div className=" tw-w-1/12 tw-pt-8">
+                <div className=" tw-w-3/12 tw-pt-8 ">
                   <li>
                     {userData.profilePicture ? (
                       <img
-                        className="tw-content-center tw-text-center tw-cursor-pointer tw-h-9 tw-rounded-full tw-w-9"
+                        className="tw-content-center tw-text-center tw-cursor-pointer tw-h-8 tw-rounded-full tw-w-8 tw-ml-2"
                         onClick={onClick}
                         src={userData.profilePicture}
                         alt="profile"
