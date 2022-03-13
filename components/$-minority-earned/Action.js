@@ -24,7 +24,7 @@ const Action = ({ actions }) => (
           <div className="right-side">
             <p className="points">
               <span className="number__of__pts">{action.amount}</span>
-              $MINORITY
+              {/* $MINORITY */}
             </p>
             <i className="fas fa-chevron-right mobile-arrow" />
           </div>
