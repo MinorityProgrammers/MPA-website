@@ -315,7 +315,9 @@ const HomepageNav = ({
       ) : (
         ''
       )}
-      <Account />
+      <div className='tw-mb-8 tw-text-sm'>  
+        <Account />
+      </div>
     </div>
   );
 
@@ -504,8 +506,8 @@ const HomepageNav = ({
                   </button>
                 </div>
               </li>
-              <li className="tw-h-full tw-mx-1 tw-w-4/12 tw-pt-8 " >
-                <div  className="tw-cursor-pointer tw-pl-1 " >
+              <li className="tw-h-full tw-mx-1 tw-w-4/12 tw-pt-8">
+                <div  className="tw-cursor-pointer tw-pl-1 tw-text-xs" >
                   <Account />
                 </div>
               </li>

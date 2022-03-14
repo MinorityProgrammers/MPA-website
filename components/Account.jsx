@@ -184,12 +184,12 @@ const Account = () => {
     return (
       <>
         <div
-          className="tw-text-white tw-text-center tw-font-bold  tw-p-2 tw-w-full tw-h-8 tw-cursor-pointer connect__button"
+          className="tw-text-white tw-text-center tw-font-bold tw-mx-auto tw-w-full tw-h-8 tw-cursor-pointer connect__button"
           onClick={() => {
             openAuthModal();
           }}
         >
-          <p className="tw-text-xs">Connect Wallet</p>
+          <p>Connect Wallet</p>
         </div>
         <div>
           <Modal
