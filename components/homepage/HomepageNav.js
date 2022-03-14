@@ -489,9 +489,11 @@ const HomepageNav = ({
                 </Link>
               </li>
             </ul>
-            <ul className="tw-flex tw-flex-row tw-justify-end tw-w-5/12 navbar__right md:tw-hidden tw-h-full ">
+            <ul className="tw-flex tw-flex-row tw-justify-end tw-w-5/12 navbar__right md:tw-hidden tw-h-full">
               <li  className="tw-h-full tw-w-5/12">
-                <div className="tw-flex tw-flex-row tw-h-8 tw-mt-8 tw-bg-inputColor tw-rounded-full tw-px-1 tw-text-white">
+              {/* SearchBox   
+              
+              <div className="tw-flex tw-flex-row tw-h-8 tw-mt-8 tw-bg-inputColor tw-rounded-full tw-px-1 tw-text-white">
                   <input
                     onChange={handleSearch}
                     value={searchValue}
@@ -504,7 +506,7 @@ const HomepageNav = ({
                   <button type="submit">
                     <i className="fas fa-search fa-1x tw-ml-2" />
                   </button>
-                </div>
+                </div>*/}
               </li>
               <li className="tw-h-full tw-mx-1 tw-w-4/12 tw-pt-8">
                 <div  className="tw-cursor-pointer tw-pl-1 tw-text-xs" >
