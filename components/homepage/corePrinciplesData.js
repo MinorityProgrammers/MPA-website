@@ -43,7 +43,7 @@ const CORE_PRINCIPLES = [
     image: '/assets/images/core5.png',
     icon: '/assets/images/core5.svg',
     color: 'blue',
-    title: 'Innovations',
+    title: 'Innovation',
     description:
       'We nurture new ideas and encourage our employees to think out of the box. There is no one solution to all problems',
     url: '#',
