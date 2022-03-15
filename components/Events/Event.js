@@ -810,7 +810,7 @@ class Event extends Component {
                 alt="background"
               />
             </div>
-            <div className="mt-4 tw-flex tw-flex-row event_select_grid">
+            <div className="mt-4 tw-flex tw-flex-row tw-justify-center tw-items-center event_select_grid">
               {options.map(({ label, options }) => (
                 <label className="tw-mr-8">
                   <Select
@@ -827,7 +827,7 @@ class Event extends Component {
                 </label>
               ))}
               <span
-                className="clear-button tw-text-white tw-cursor-pointer tw-text-base tw-font-semibold tw-mt-2"
+                className="clear-button tw-text-white tw-cursor-pointer tw-text-sm tw-font-semibold "
                 onClick={() => resetFilter()}
               >
                 Clear Filter

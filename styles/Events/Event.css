@@ -169,6 +169,7 @@
   font-weight: 400;
 }
 .clear-button {
+  width: 100px;
   transition: 0.3s;
 }
 
