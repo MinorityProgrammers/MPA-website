@@ -203,7 +203,7 @@ const HomepageNav = ({
         >
           <i className="fas fa-search" />
         </button>
-      </div>
+    </div>
     </div>
   );
 
@@ -391,7 +391,7 @@ const HomepageNav = ({
               </ul>
             </div>
             {isActiveMobile ? menuMobile() : ''}
-            {isActiveSearch ? showSearchIconMobile() : ''}
+            {/*isActiveSearch ? showSearchIconMobile() : ''*/}
 
             <ul className="nav-menu tw-py-0 md:tw-py-4">
               {userData !== null && userData !== undefined ? (
