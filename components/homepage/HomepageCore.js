@@ -18,7 +18,7 @@ const HomepageCore = () => {
     slidesPerView: 3,
     loop: true,
     speed: 1000,
-    spaceBetween: 30,
+    spaceBetween: 20,
     autoplay: {
       delay: 3000,
       disableOnInteraction: false,
@@ -27,7 +27,10 @@ const HomepageCore = () => {
       el: '.swiper-pagination',
       clickable: true,
     },
-
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
     // Responsive breakpoints
     breakpoints: {
       1024: {
