@@ -22,7 +22,7 @@
     background-color: var(--secondary-main);
     padding-top: 40px;
     .swiper-container {
-      width: 90%;
+      width: 71%;
       position: relative;
       display: flex;
       justify-content: center;
@@ -37,6 +37,7 @@
         position: relative;
         width: 100%;
         flex-direction: row;
+        margin-left: 40px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -44,30 +45,27 @@
         transition-property: transform;
         box-sizing: content-box;
       }
-      // .swiper-navigation_container {
-      //   position: absolute;
-      //   height: 40px;
-      //   padding-top: 20px;
-      //   bottom: 5px;
-      //   display: flex;
-      //   justify-content: center;
-      //   z-index: 9999;
-      // }
-      // .swiper-navigation {
-      //   display: flex;
-      //   width: 100px;
-      //   height: auto;
-      //   .swiper-button-prev,
-      //   .swiper-button-next {
-      //     position: relative;
-      //     background: none;
-      //     border: no
-      //     ne;
-      //     color: #ff00b8;
-      //   }
-      // }
+
       .swiper-slide {
         height: auto !important;
+      }
+    }
+    @media only screen and (max-width: 1400px) {
+      .swiper-container {
+        width: 90% !important;
+        margin-left: 100px;
+      }
+    }
+    @media only screen and (max-width: 1200px) {
+      .swiper-container {
+        width: 100% !important;
+        margin-left: 40px;
+      }
+    }
+    @media only screen and (max-width: 700px) {
+      .swiper-container {
+        width: 100% !important;
+        margin-left: 0 !important;
       }
     }
     &_section {
@@ -290,6 +288,7 @@
       font-size: 40px;
       font-weight: 700;
       float: right;
+      margin-top: 20px;
       background-size: 100%;
       background: var(--light-low-contrast);
       -webkit-background-clip: text;

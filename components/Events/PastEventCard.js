@@ -21,7 +21,7 @@ const PastEventCard = ({
   const perPage = 4;
   const pagesVisited = pageNumber * perPage;
 
-  const pageCount = Math.ceil(data.length / perPage);
+  const pageCount = Math.ceil(data?.length / perPage);
 
   const changePage = ({ selected }) => {
     setPageNumber(selected);
@@ -30,7 +30,7 @@ const PastEventCard = ({
   return (
     <div className="container">
       <div className="past_event__container">
-        {data.slice(pagesVisited, pagesVisited + perPage).map((d, i) => (
+        {data?.slice(pagesVisited, pagesVisited + perPage).map((d, i) => (
           <EventCard
             item={d}
             attended={attended}

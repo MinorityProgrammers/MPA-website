@@ -62,8 +62,12 @@
 }
 
 @media screen and (max-width: 600px) {
+  .no-filters {
+    font-size: 16px !important;
+  }
   .swiper-navigation_container {
-    top: 590px !important;
+    top: 34rem !important;
+    right: 0 !important;
   }
   .event__form {
     flex-direction: row;
@@ -123,6 +127,7 @@
   width: 150px;
   height: 40px;
   top: 350px;
+  right: 15%;
   padding-top: 20px;
   display: flex;
   justify-content: center;

@@ -272,14 +272,16 @@ const EventCardFeatured = (props) => {
               )}
             </p>
           )}
-          <button
-            type="button"
-            className="button_info"
-            onClick={() => props.handleMoreInfo(props.item)}
-          >
-            {" "}
-            Details <i className="fas fa-arrow-right ml-2" />
-          </button>
+          {props.item && (
+            <button
+              type="button"
+              className="button_info"
+              onClick={() => props.handleMoreInfo(props.item)}
+            >
+              {" "}
+              Details <i className="fas fa-arrow-right ml-2" />
+            </button>
+          )}
           {/* Check save events Register label */}
           {/* {eventTime < dateNow ? (
             <button type="button" className="button_register">
