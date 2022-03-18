@@ -48,7 +48,7 @@
 .settings-phone-field .react-tel-input input:focus{
   border: 1px solid #6938EF;
   background: #fff;
-  color: #1C1D37;
+  color:  var(--div-background-color);;
 }
 .settings-phone-field .react-tel-input input:hover{
   border: 1px solid #6938EF;
@@ -105,7 +105,7 @@
   background: #fff !important;
   box-shadow: none;
   .css-1rhbuit-multiValue{
-    background: #1C1D37 !important;
+    background:  var(--div-background-color); !important;
   }
   .css-12jo7m5{
     color: #fff;

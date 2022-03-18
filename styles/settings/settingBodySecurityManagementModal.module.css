@@ -13,7 +13,7 @@
 
 .modalADD {
   color: rgb(255, 255, 255);
-  background-color: #1C1D37;
+  background-color: var(--div-background-color);
   border-radius: 1vw;
   box-shadow: 1vw 2vw 2vw -2vw #000;
   font-weight: bold;
@@ -36,7 +36,7 @@
 
 .modalADD textarea {
   margin-top: 10px;
-  background-color: #24203C;
+  background-color: #24203c;
   border: 1px solid #7b68b98a;
   border-radius: 8px;
   padding: 14px;
@@ -63,31 +63,32 @@
   width: 47%;
 }
 .goBack {
-  background-color: #6938EF;
+  background-color: #6938ef;
   color: white;
 }
 
-.actionBtns .delete,.actionBtns .deactivate {
+.actionBtns .delete,
+.actionBtns .deactivate {
   background-color: #eb3730;
   color: white;
-  font-size: 14px ;
+  font-size: 14px;
   font-weight: bold;
   display: flex;
-  align-items: center ;
+  align-items: center;
   justify-content: center;
-  border-radius: 0.5vw ;
-  text-transform: capitalize ;
-  height: 5vh ;
+  border-radius: 0.5vw;
+  text-transform: capitalize;
+  height: 5vh;
   padding: 0;
   border: none;
   width: 47%;
 }
 .actionBtns .deactivate {
-  background-color: #FB8C00;
+  background-color: #fb8c00;
   color: rgb(255, 255, 255);
 }
- input.note {
-  color: #FB8C00 !important;
+input.note {
+  color: #fb8c00 !important;
 }
 .ps span.warn {
   color: #eb3730;

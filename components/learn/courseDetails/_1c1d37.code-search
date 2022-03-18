@@ -1,0 +1,230 @@
+# Query: #1c1d37
+# ContextLines: 1
+
+51 results - 22 files
+
+global-styles.css:
+  1  :root {
+  2:   --div-background-color: #1c1d37; 
+  3  }
+
+components/Account.jsx:
+  196              style={{
+  197:               background: "#1c1d37",
+  198                border: "1px solid #A259FF",
+
+  202                marginTop: "30px",
+  203:               background: "#1c1d37",
+  204              }}
+
+  283          style={{
+  284:           background: "#1c1d37",
+  285            border: "1px solid #A259FF",
+
+  289            marginTop: "30px",
+  290:           background: "#1c1d37",
+  291          }}
+
+components/CreateProfile/CreateProfileInput.js:
+  52    const colourStyles = {
+  53:     control: (styles) => ({ ...styles, backgroundColor: '#1C1D37' }),
+  54      option: (styles, {
+
+  57        ...styles,
+  58:       backgroundColor: '#1C1D37',
+  59        color: '#ddd',
+
+components/donate/DonateAmount.js:
+  56      </div>
+  57:     <div style={{ background: '#1C1D37', padding: '2.5rem 0' }} className="mt-5">
+  58        <div className="container step__bottom">
+
+components/homepage/HomepageDonate.js:
+  125          </div>
+  126:         <div style={{ background: '#1C1D37', padding: '2.5rem 0' }} className="tw-my-20">
+  127            <div className="container step__payment-monthly">
+
+components/learn/SkeletonElement.js:
+  8        className="row tw-pt-10"
+  9:       style={{ backgroundColor: "#1c1d37", height: "100vh", width: "100vw" }}
+  10      >
+
+components/learn/courseDetails/ActivityDetails.js:
+  135          className="activity-styles d-flex flex-column justify-content-start align-items-center w-100"
+  136:         style={{ backgroundColor: '#1C1D37' }}
+  137        >
+
+components/learn/courseDetails/coursesDetails.css:
+    7  .course-sidebar {
+    8:   background-color: var(--div-background-color);
+    9    color: #fff;
+
+   83    margin-bottom: 2rem;
+   84:   background: #1c1d37;
+   85  }
+
+  167  .course-weeks {
+  168:   background: #1C1D37;
+  169    box-shadow: inset -7px -7px 24px rgba(255, 255, 255, 0.04),
+
+  186  .modules-details {
+  187:   background-color: #1c1d37;
+  188    border: 1px solid #a259ff;
+
+components/settings/ProfileFourthStep.js:
+  140        border: state.isSelected ? '2px solid #6938EF' : state.isFocused ? '2px solid #6938EF' : '2px solid transparent',
+  141:       background: '#1C1D37',
+  142        borderRadius: '8px',
+
+  147          ...styles[':active'],
+  148:         background: '#1C1D37',
+  149        },
+
+  159        // borderBottom: '1px dotted pink',
+  160:       background: '#1C1D37',
+  161        padding: 5,
+
+  518                  components={{ DropdownIndicator }}
+  519:                 menuColor="#1C1D37"
+  520                  isClearable={false}
+
+components/settings/SettingSetup.js:
+  33        border: state.isSelected ? '2px solid #6938EF' : state.isFocused ? '2px solid #6938EF' : '2px solid transparent',
+  34:       background: '#1C1D37',
+  35        borderRadius: '8px',
+
+  42          ...styles[':active'],
+  43:         background: '#1C1D37',
+  44        },
+
+  54        // borderBottom: '1px dotted pink',
+  55:       background: '#1C1D37',
+  56        padding: 5,
+
+public/assets/css/style.css:
+  7608  
+  7609:   background-color: #1c1d37;
+  7610    color: #fff;
+
+  9469  .site-footer {
+  9470:   background-color: #1c1d37;
+  9471    overflow: hidden;
+
+public/assets/scss/_homepage.scss:
+   50    background: #fff;
+   51:   color: #1C1D37;
+   52  }
+
+  107    .css-1rhbuit-multiValue{
+  108:     background: #1C1D37 !important;
+  109    }
+
+styles/global-variables.css:
+  32      --secondary-low-contrast: #10111f;
+  33:     --secondary-high-contrast: #1c1d37;
+  34      --secondary-accent: rgba(196, 196, 196, 0.08);
+
+styles/Careers/index.css:
+   813    font-family: 'Red Hat Display';
+   814:   background: #1c1d37;
+   815    border: 1px solid #8040d2;
+
+   836    color: white;
+   837:   background: #1c1d37;
+   838    margin-top: 8px;
+
+  1131      color: white;
+  1132:     background: #1c1d37;
+  1133    }
+
+  1184  .jobsMain-search {
+  1185:   background-color: #1c1d37;
+  1186    padding-top: 20px;
+
+  1349  .jobs-main-container-single {
+  1350:   background: #1c1d37;
+  1351    box-shadow: 0px 32px 41px rgba(0, 0, 0, 0.25);
+
+  1637  .job-stub {
+  1638:   background: #1c1d37;
+  1639    box-shadow: 0px 32px 41px rgba(0, 0, 0, 0.25);
+
+  1642    cursor: pointer;
+  1643:   border: 3px solid #1c1d37;
+  1644    margin: 20px 0;
+
+  2137    .jobs-main-container-single {
+  2138:     background: #1c1d37;
+  2139    }
+
+styles/DashboardCSS/dashboard.scss:
+  100  .component-mobile-button{
+  101:   background: #1C1D37 ;
+  102    margin-bottom: 2%;
+
+  146    border-radius: 5px;
+  147:   background: #1C1D37;
+  148    padding: 12px 20px;
+
+  262    .overview-career-all-image{
+  263:     background: #1C1D37;
+  264    }
+
+  552  .dashboard-inner-bg{
+  553:   background: #1C1D37;
+  554    border-radius: 20px !important;
+
+styles/ProfileCSS/profile.css:
+  517  .profile-two-generate-avatar-popup {
+  518:   background: #1c1d37;
+  519    color: #fff;
+
+  559    margin: 0;
+  560:   background-color: #1c1d37;
+  561  }
+
+styles/settings/settingBodyNotificationsNotifications.module.css:
+  51  .checkInput div i{
+  52:   color: #1C1D37;
+  53    display: none;
+
+styles/settings/settingBodyOverview.module.css:
+   53  .fiCompletion .progress svg circle {
+   54:   fill: #1C1D37;
+   55    stroke: #6938EF;
+
+  564    border-radius: 50%;
+  565:   background: #1C1D37;
+  566    font-size: 20px;
+
+  595    flex-direction: column;
+  596:   background: #1C1D37;
+  597    border: 1px solid #6938EF;
+
+styles/settings/settingBodySecurityLogin.module.css:
+  183  .checkInput div i{
+  184:   color: #1C1D37;
+  185    display: none;
+
+styles/settings/settingBodySecurityManagementModal.module.css:
+  15    color: rgb(255, 255, 255);
+  16:   background-color: #1C1D37;
+  17    border-radius: 1vw;
+
+styles/settings/settingSetup.module.scss:
+  163      background: #fff;
+  164:     color: #1C1D37;
+  165  }
+
+styles/settings/settingsLayout.module.scss:
+   40  .settingsNavigation > div{
+   41:   background: #1C1D37;
+   42    border: 1px solid #6938EF
+
+  213    /* width: 66%; */
+  214:   background: #1C1D37;
+  215    border: 1px solid #6938EF
+
+  352    border-radius: 50%;
+  353:   background: #1C1D37;
+  354    font-size: 20px;

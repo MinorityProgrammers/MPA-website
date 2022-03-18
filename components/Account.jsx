@@ -20,7 +20,6 @@ import styles from "../styles/account/account.module.css";
 import walletLogin from "../contexts/actions/auth/walletLogin";
 import ButtonComponent from "./profile/ButtonComponent";
 
-
 const Account = () => {
   const { authenticate, isAuthenticated, logout } = useMoralis();
   const { walletAddress, chainId } = useMoralisDapp();
@@ -116,19 +115,14 @@ const Account = () => {
     changeAuthModal(!showModal)(setShowModal);
   };
 
-
   const metamaskConnectWallet = async () => {
     if (
       chainId === process.env.NEXT_PUBLIC_NETWORK_ID_MAINNET ||
       chainId === process.env.NEXT_PUBLIC_NETWORK_ID_TESTNET
     ) {
-
-
       authenticate().then(() => {
         setWalletLoginRequest(true);
-      })
-      
-        
+      });
 
       if (isConnected === true) {
         await window.casperlabsHelper.disconnectFromSite();
@@ -141,17 +135,23 @@ const Account = () => {
   };
 
   useEffect(() => {
-    const userToken = window.localStorage.getItem('jwtToken');
-    const userInfo = window.localStorage.getItem('userInfo');
+    const userToken = window.localStorage.getItem("jwtToken");
+    const userInfo = window.localStorage.getItem("userInfo");
 
-    if (isAuthenticated && walletLoginRequest === true && (!userToken || !userInfo)) {
+    if (
+      isAuthenticated &&
+      walletLoginRequest === true &&
+      (!userToken || !userInfo)
+    ) {
       walletLogin(walletAddress, authenticate)(authDispatch);
-    } 
-  },[isAuthenticated, walletLoginRequest, typeof window !== 'undefined'
-  ? window.localStorage.getItem('jwtToken')
-  : null])
-
-
+    }
+  }, [
+    isAuthenticated,
+    walletLoginRequest,
+    typeof window !== "undefined"
+      ? window.localStorage.getItem("jwtToken")
+      : null,
+  ]);
 
   useEffect(async () => {
     if (
@@ -194,13 +194,13 @@ const Account = () => {
         <div>
           <Modal
             style={{
-              background: "#1c1d37",
+              background: " var(--div-background-color);",
               border: "1px solid #A259FF",
               borderRadius: "20px",
             }}
             bodyStyle={{
               marginTop: "30px",
-              background: "#1c1d37",
+              background: " var(--div-background-color);",
             }}
             title={false}
             footer={false}
@@ -281,38 +281,41 @@ const Account = () => {
         footer={false}
         onCancel={() => setIsModalVisible(false)}
         style={{
-          background: "#1c1d37",
+          background: " var(--div-background-color);",
           border: "1px solid #A259FF",
           borderRadius: "20px",
         }}
         bodyStyle={{
           marginTop: "30px",
-          background: "#1c1d37",
+          background: " var(--div-background-color);",
         }}
         closable={false}
         width="700px"
       >
         <div className={styles.modalHeader}>
-              <div />
-              <div className={styles.modalWrapper}>
-                <div className={styles.modalImage}>
-                  <img src="/assets/images/mpicon.svg" alt="logo" />
-                </div>
-                <h2 className="tw-flex-1 tw-text-white tw-text-center tw-w-full tw-font-bold tw-text-lg">
-                 Connected Account
-                </h2>
-              </div>
-              <h1
-                className="tw-text-white tw-font-bold tw-text-2xl hover:tw-text-gray-500 tw-cursor-pointer"
-                onClick={() => setIsModalVisible(false)}
-              >
-                X
-              </h1>
+          <div />
+          <div className={styles.modalWrapper}>
+            <div className={styles.modalImage}>
+              <img src="/assets/images/mpicon.svg" alt="logo" />
             </div>
-            <Row className="tw-mb-5">
-              <Col span={4} className="flex-1"></Col>
-            </Row>
-          <Row justify="center" className="tw-flex tw-flex-col tw-p-3 tw-text-center">
+            <h2 className="tw-flex-1 tw-text-white tw-text-center tw-w-full tw-font-bold tw-text-lg">
+              Connected Account
+            </h2>
+          </div>
+          <h1
+            className="tw-text-white tw-font-bold tw-text-2xl hover:tw-text-gray-500 tw-cursor-pointer"
+            onClick={() => setIsModalVisible(false)}
+          >
+            X
+          </h1>
+        </div>
+        <Row className="tw-mb-5">
+          <Col span={4} className="flex-1"></Col>
+        </Row>
+        <Row
+          justify="center"
+          className="tw-flex tw-flex-col tw-p-3 tw-text-center"
+        >
           <Address
             avatar="left"
             size={6}
@@ -320,7 +323,10 @@ const Account = () => {
             style={{ fontSize: "20px" }}
             address={activeKey}
           />
-          <div className="tw-text-center" style={{ marginTop: "10px", padding: "0 10px" }}>
+          <div
+            className="tw-text-center"
+            style={{ marginTop: "10px", padding: "0 10px" }}
+          >
             {!isConnected && activeKey === null ? (
               <a
                 href={`${process.env.NETWORK_URL}/address/${walletAddress}`}
@@ -335,8 +341,8 @@ const Account = () => {
               <a
                 href={`${process.env.CASPER_URL}/account/${activeKey}`}
                 target="_blank"
-                  rel="noreferrer"
-                  className="tw-text-white"
+                rel="noreferrer"
+                className="tw-text-white"
               >
                 <SelectOutlined style={{ marginRight: "5px" }} />
                 View on CSPR live
@@ -345,17 +351,21 @@ const Account = () => {
           </div>
         </Row>
         <Row className="tw-py-3 tw-justify-center">
-        <ButtonComponent className="tw-w-full " text="Disconnect Wallet" func={async () => {
-            logout();
-            setWalletLoginRequest(false);
-            await window.casperlabsHelper.disconnectFromSite();
-            [SIGNER_EVENTS.locked, SIGNER_EVENTS.disconnected].forEach(
-              (event) =>
-                window.addEventListener(event, dispatchDisconnectedSinger)
-            );
-            setIsModalVisible(false);
-          }} />
-          </Row>
+          <ButtonComponent
+            className="tw-w-full "
+            text="Disconnect Wallet"
+            func={async () => {
+              logout();
+              setWalletLoginRequest(false);
+              await window.casperlabsHelper.disconnectFromSite();
+              [SIGNER_EVENTS.locked, SIGNER_EVENTS.disconnected].forEach(
+                (event) =>
+                  window.addEventListener(event, dispatchDisconnectedSinger)
+              );
+              setIsModalVisible(false);
+            }}
+          />
+        </Row>
       </Modal>
     </>
   );

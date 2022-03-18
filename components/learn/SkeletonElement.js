@@ -6,7 +6,11 @@ const SkeletonElement = () => (
   <div className="courses-details banner-bg ">
     <div
       className="row tw-pt-10"
-      style={{ backgroundColor: "#1c1d37", height: "100vh", width: "100vw" }}
+      style={{
+        backgroundColor: " var(--div-background-color);",
+        height: "100vh",
+        width: "100vw",
+      }}
     >
       <div className="col-10 col-md-5 pr-0">
         {/* Course Sidebar */}

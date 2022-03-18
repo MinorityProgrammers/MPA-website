@@ -1,120 +1,119 @@
 @media only screen and (min-width: 768px) {
-  .outer-dashboard-container{
+  .outer-dashboard-container {
     max-width: 1460px;
     padding: 20px;
-    background: #14152B;
+    background: #14152b;
     color: white;
   }
-  .sidebar-item{
+  .sidebar-item {
     display: flex;
     flex-direction: column;
   }
-  .dashboard-overall-container{
+  .dashboard-overall-container {
     justify-content: center;
     max-width: 1540px;
     width: 100%;
   }
-  .dashboard-navbar-div{
+  .dashboard-navbar-div {
     width: 100%;
   }
-  .dashboard-navbar{
+  .dashboard-navbar {
     width: 80px;
   }
-  .navbar-dashboard-div{
+  .navbar-dashboard-div {
     height: 100%;
   }
 }
 @media only screen and (max-width: 767px) {
-  .sidebar-item{
+  .sidebar-item {
     display: flex;
     flex-direction: row;
   }
-  .show-sidebar-container{
-    background:rgba(0, 0, 0, 0.5);
+  .show-sidebar-container {
+    background: rgba(0, 0, 0, 0.5);
   }
-  .inner-dashboard-container{
+  .inner-dashboard-container {
     height: 100vh;
     width: 100vw;
   }
-  .outer-dashboard-container{
+  .outer-dashboard-container {
     width: 100%;
   }
-  .dashboard-navbar{
+  .dashboard-navbar {
     height: 100vh;
   }
-  .navbar-dashboard-div{
+  .navbar-dashboard-div {
     height: 100vh;
     position: fixed;
     overflow-y: scroll;
     overflow-x: hidden;
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
     z-index: 2;
   }
   .navbar-dashboard-div::-webkit-scrollbar {
-  display: none;
-}
-  .dashboard-overall-container{
+    display: none;
+  }
+  .dashboard-overall-container {
     padding: 0 !important;
     width: 100% !important;
   }
-  .navbar-dashboard-button{
+  .navbar-dashboard-button {
     background: #ff3587;
     border-radius: 2px;
     color: white;
   }
-  .navbar-dashboard-button-selected{
+  .navbar-dashboard-button-selected {
     background: white;
     color: #ff3587;
     border-radius: 2px;
   }
 }
-.navbar-dashboard-div{
-   background: #151371;
+.navbar-dashboard-div {
+  background: #151371;
 }
 
-.inner-dashboard-container{
-  font-family: 'Poppins', sans-serif;
-  background: #14152B;
+.inner-dashboard-container {
+  font-family: "Poppins", sans-serif;
+  background: #14152b;
   max-width: 1440px !important;
   height: auto;
-
 }
-.dashboard-navbar-button{
+.dashboard-navbar-button {
   padding: 20px 15px;
   cursor: pointer;
   color: white;
 }
 
-.dashboard-navbar-button:hover{
-  background: #6A0C8B;
+.dashboard-navbar-button:hover {
+  background: #6a0c8b;
 }
 
-.dashboard-navbar-button-selected{
+.dashboard-navbar-button-selected {
   background: white;
-  color: #6A0C8B;
+  color: #6a0c8b;
   padding: 20px 15px;
   cursor: pointer;
 }
 
-.component-mobile-button{
-  background: #1C1D37 ;
+.component-mobile-button {
+  background: var(--div-background-color);
   margin-bottom: 2%;
   border-radius: 5px;
   /* padding-left: 2%; */
   line-height: 32px;
 }
-.hide-mobile-component{
+.hide-mobile-component {
   display: none;
 }
-.component-mobile-button p{
+.component-mobile-button p {
   color: rgb(255, 255, 255);
-} 
+}
 
-.component-mobile-button>div> p{
+.component-mobile-button > div > p {
   font-size: 16px;
 }
-.open-component-button{
+.open-component-button {
   font-size: 24px;
   line-height: 32px;
   color: #ffffff;
@@ -141,39 +140,38 @@
   }
 }
 
-
-.dashboard-card{
+.dashboard-card {
   border-radius: 5px;
-  background: #1C1D37;
+  background: var(--div-background-color);
   padding: 12px 20px;
   box-shadow: 0px 32px 41px rgba(0, 0, 0, 0.25);
   // border-radius: 20px;
 }
 
-.missing-api-dashboard-card{
+.missing-api-dashboard-card {
   border: 0.5px solid yellow;
   border-radius: 5px;
   background: white;
   padding: 12px 20px;
 }
 
-.marked-date{
-  color:white;
+.marked-date {
+  color: white;
   font-weight: 500;
   background: #151371;
 }
 
-.overview-event-card{
+.overview-event-card {
   box-shadow: 0px 32px 41px rgb(0 0 0 / 25%);
   border-radius: 8px;
-  background: #24253D;
-  border: 1px solid #6938EF;
+  background: #24253d;
+  border: 1px solid #6938ef;
   padding: 8px;
   margin-bottom: 10px;
   line-height: 15px;
 }
-.overview-event-card:hover{
-  background: #6938EF;
+.overview-event-card:hover {
+  background: #6938ef;
 }
 
 .overview-event-thumbnail {
@@ -182,7 +180,7 @@
   border-radius: 50%;
 }
 
-.overview-event-status{
+.overview-event-status {
   line-height: 20px;
   font-size: 12px;
   font-weight: 700;
@@ -192,18 +190,18 @@
   max-width: 100px;
 }
 
-.more-details-button{
+.more-details-button {
   font-size: 32px;
   line-height: 32px;
   color: #151371;
 }
 
-.empty-events{
+.empty-events {
   width: 70px;
   height: 70px;
 }
 
-.empty-events-description{
+.empty-events-description {
   margin-bottom: 5px;
   text-align: center;
   line-height: 16px;
@@ -217,7 +215,7 @@
 .overview-career-button {
   white-space: nowrap;
   border-radius: 4px;
-  border: 1px solid #6938EF;
+  border: 1px solid #6938ef;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -226,67 +224,65 @@
   margin: 0px 5px;
 }
 .overview-career-button:hover {
-  background:#6938EF !important;
+  background: #6938ef !important;
 }
-.selected{
+.selected {
   border-radius: 4px;
-  border: 1px solid #6938EF;
-  background: #6938EF;
+  border: 1px solid #6938ef;
+  background: #6938ef;
 }
 
-.overview-career-button p{
-  font-size: 12px ;
+.overview-career-button p {
+  font-size: 12px;
   font-weight: 500;
-  color:#ffffff;
+  color: #ffffff;
   text-align: center;
   margin: 0;
 }
 
-
-.overview-career-cards-list{
-  padding: 7px 0 ;
-
+.overview-career-cards-list {
+  padding: 7px 0;
 }
 
 .overview-career-card {
   padding: 5px 10px;
   background: transparent;
   border-radius: 8px;
-  border: 1px solid #6938EF;
+  border: 1px solid #6938ef;
   width: 100%;
   height: 30%;
 }
 
-.overview-career-card:hover{
-  background: #6938EF;
-  .overview-career-all-image{
-    background: #1C1D37;
+.overview-career-card:hover {
+  background: #6938ef;
+  .overview-career-all-image {
+    background: var(--div-background-color);
   }
 }
 
-.overview-career-card-image img{
+.overview-career-card-image img {
   width: 35px;
   height: 35px;
   border-radius: 50%;
 }
 
-.overview-career-card-info{
+.overview-career-card-info {
   justify-content: center;
   align-items: flex-start;
 }
-.overview-career-card-info-title{
-  font-size:12px;
+.overview-career-card-info-title {
+  font-size: 12px;
   font-weight: 600;
   color: rgb(255, 255, 255);
   margin: 0;
 }
 
-.overview-career-card-info p{
+.overview-career-card-info p {
   font-size: 12px;
   margin: 0;
   white-space: normal;
 }
-.overview-career-card-jobtype> p{
+.overview-career-card-jobtype > p {
   padding: 2px 7px;
   font-size: 10px;
   background: #565656;
@@ -296,24 +292,21 @@
 }
 
 .overview-career-card-jobtype {
-
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
 }
 
-
-
 /* COURSES */
 .overview-courses-list::-webkit-scrollbar {
   display: none;
 }
 
-.overview-courses-list{
+.overview-courses-list {
   /* cursor: grab; */
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 .overview-wrapper {
@@ -331,13 +324,18 @@
 .overview-filler {
   height: 100%;
   border-radius: inherit;
-  background: linear-gradient(90deg, #151371 0%, #AD079F 53.03%, #D304AB 70.87%);;
+  background: linear-gradient(
+    90deg,
+    #151371 0%,
+    #ad079f 53.03%,
+    #d304ab 70.87%
+  );
 }
 
-.overview-course-card{
+.overview-course-card {
   padding: 5px 10px;
-  background: #24253D;
-  border: 1px solid #6938EF;
+  background: #24253d;
+  border: 1px solid #6938ef;
   color: white;
   box-shadow: 0px 32px 41px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
@@ -345,7 +343,7 @@
   margin-bottom: 2%;
 }
 
-.overview-courses-cards{
+.overview-courses-cards {
   overflow-x: hidden; /* Hide horizontal scrollbar */
   overflow-y: scroll;
 }
@@ -354,47 +352,45 @@
   display: none;
 } */
 
-.overview-course-card:hover{
-    background: #6938EF;
+.overview-course-card:hover {
+  background: #6938ef;
 }
 
-.overview-course-card-info p{
+.overview-course-card-info p {
   font-size: 12px;
   line-height: 16px;
 }
 
-
-.overview-course-card-info-title{
-  font-size:12px;
+.overview-course-card-info-title {
+  font-size: 12px;
   font-weight: 700;
   color: rgb(255, 255, 255);
   margin: 0;
 }
 
-.overview-course-card-description{
+.overview-course-card-description {
   font-size: 10px;
-  color: #DEDEDE;
+  color: #dedede;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: 2; /* number of lines to show */
-  line-clamp: 2; 
+  line-clamp: 2;
   -webkit-box-orient: vertical;
 }
 
-.overview-course-currency p{
+.overview-course-currency p {
   line-height: 20px;
-  color: #33D2FF;
+  color: #33d2ff;
   margin: 0;
   text-align: center;
 }
 
-
 /* Startups Component */
 
-.overview-startup-card{
+.overview-startup-card {
   padding: 5px 10px;
-  background: #EFEFEF;
+  background: #efefef;
   border-radius: 10px;
   width: 100%;
   margin-bottom: 2%;
@@ -402,7 +398,7 @@
 
 /* Proposals */
 
-.proposal-card-info{
+.proposal-card-info {
   font-size: 12px;
   font-weight: 500;
   color: rgb(255, 255, 255);
@@ -411,25 +407,25 @@
   text-overflow: ellipsis;
 }
 
-.overview-proposal-card{
-  background: #EFEFEF;
+.overview-proposal-card {
+  background: #efefef;
   border-radius: 12px;
   width: 100%;
   margin-bottom: 2%;
   padding: 10px 10px;
 }
 
-.overview-proposal-cards{
+.overview-proposal-cards {
   overflow-y: scroll;
-    -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 .overview-proposal-cards::-webkit-scrollbar {
   display: none;
 }
 
-.overview-proposal-button{
+.overview-proposal-button {
   font-size: 8px;
   font-weight: 700;
   line-height: 10px;
@@ -438,7 +434,7 @@
 
 /* Chapter Component */
 
-.overview-chapter-card-description{
+.overview-chapter-card-description {
   font-size: 10px;
   color: rgb(255, 255, 255);
   line-height: 16px;
@@ -446,7 +442,7 @@
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: 2; /* number of lines to show */
-  line-clamp: 2; 
+  line-clamp: 2;
   -webkit-box-orient: vertical;
   margin: 5px 0;
 }
@@ -463,7 +459,7 @@
   cursor: pointer;
 }
 
-.project-button-selected{
+.project-button-selected {
   font-size: 10px;
   font-style: normal;
   font-weight: 700;
@@ -475,26 +471,25 @@
   border-bottom: 1px solid #151371;
 }
 
-
 /* WALLET DASHBOARD */
-.total-balance-card-dashboard-wallet{
-  background: #474BFF;
+.total-balance-card-dashboard-wallet {
+  background: #474bff;
   border-radius: 20px;
   width: 100%;
   height: 200px;
 }
 
-.inner-total-balance-card-dashboard-wallet{
+.inner-total-balance-card-dashboard-wallet {
   width: 90%;
   height: 100%;
-  border-bottom-right-radius: 20px ;
+  border-bottom-right-radius: 20px;
   border-top-right-radius: 20px;
   background: white;
   margin-left: 10%;
   padding: 20px;
 }
 
-.wallet-dashboard-button{
+.wallet-dashboard-button {
   border-radius: 50%;
   width: 70px;
   height: 70px;
@@ -504,8 +499,8 @@
   align-items: center;
 }
 
-.trans-card{
-  background: #F8F9FD;
+.trans-card {
+  background: #f8f9fd;
   /* background: green; */
   border-radius: 4px;
   padding: 20px;
@@ -514,76 +509,76 @@
   cursor: pointer;
 }
 
-.trans-card:hover{
+.trans-card:hover {
   background: #d0d7f2;
 }
 
-.trans-card-text{
+.trans-card-text {
   margin: 0;
   line-height: 18px;
 }
 
-.trends-button{
-  background: #C4C4C480;
+.trends-button {
+  background: #c4c4c480;
   border: 0px solid transparent;
   font-weight: 700;
   color: black;
 }
 
-.trends-button:hover{
+.trends-button:hover {
   background: #f8f9fd;
   border: 0px solid transparent;
 }
 
-.trends-button-selected{
-  background: #CFD0F6;
+.trends-button-selected {
+  background: #cfd0f6;
   border: 0px solid transparent;
   font-weight: 700;
-  color: #474BFF;
+  color: #474bff;
 }
 
-.wallet-transaction-form{
+.wallet-transaction-form {
   display: none;
   position: absolute;
   background: rgba(196, 196, 196, 0.3);
   backdrop-filter: blur(2px);
 }
 
-.dashboard-inner-bg{
-  background: #1C1D37;
+.dashboard-inner-bg {
+  background: var(--div-background-color);
   border-radius: 20px !important;
 }
-.row-custom-span-3{
+.row-custom-span-3 {
   grid-row: span 3 / span 3 !important;
 }
-.row-custom-span-6{
+.row-custom-span-6 {
   grid-row: span 6 / span 6 !important;
 }
-.overview-course-card-border-none{
+.overview-course-card-border-none {
   border: none;
   box-shadow: none;
 }
-.button-setting-transparent{
+.button-setting-transparent {
   background: transparent;
   font-size: 10px;
   width: 45%;
   border-radius: 100px;
-  border: 1px solid #6938EF;
+  border: 1px solid #6938ef;
 }
-.button-setting-transparent:hover{
-  background: #6938EF;
+.button-setting-transparent:hover {
+  background: #6938ef;
 }
 .button-setting-bg {
-  background: #6938EF;
+  background: #6938ef;
   font-size: 10px;
   border-radius: 100px;
   width: 45%;
   border: none;
 }
-.button-setting-bg:hover{
-  background-color: #6938EF;
+.button-setting-bg:hover {
+  background-color: #6938ef;
 }
-.chart-inner-text{
+.chart-inner-text {
   position: absolute;
   left: 50%;
   top: 50%;
@@ -591,22 +586,22 @@
   text-align: center;
   font-size: 10px;
 }
-.chart-static-text{
+.chart-static-text {
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
   font-size: 10px;
-  color: #DEDEDE;
+  color: #dedede;
 }
-.chart-static-text span{
-  color: #FFFFFF;
+.chart-static-text span {
+  color: #ffffff;
   font-weight: 600;
   font-size: 16px;
   display: block;
-}  
-.chart-static-title{
+}
+.chart-static-title {
   position: absolute;
   font-weight: 600;
   color: white;
@@ -614,21 +609,21 @@
   top: 20%;
   white-space: nowrap;
 }
-.chart-inner-text span{
+.chart-inner-text span {
   display: block;
   font-size: 14px;
   font-weight: 500;
 }
-.button-more{
+.button-more {
   color: white;
-  background: #6938EF;
+  background: #6938ef;
   border-radius: 100px;
   padding: 10px 30px;
 }
-.button-more:hover{
+.button-more:hover {
   color: white;
-}  
-.view-course{
+}
+.view-course {
   font-size: 12px;
   padding: 0px 20px;
   display: flex;
@@ -636,16 +631,16 @@
   height: 80%;
   margin: auto 0 auto auto;
 }
-.overview-course-card:hover{
-  .view-course{
+.overview-course-card:hover {
+  .view-course {
     background: white;
-    color: #6938EF;
+    color: #6938ef;
   }
 }
-.mentorship-mentee-count{
+.mentorship-mentee-count {
   font-weight: bold;
   font-size: 24px;
-  background: #FE8F66;
+  background: #fe8f66;
   border-radius: 50%;
   height: 50px;
   width: 50px;
@@ -653,18 +648,18 @@
   align-items: center;
   justify-content: center;
 }
-.mentorship-mentee-title{
+.mentorship-mentee-title {
   margin: 20px 0;
   font-size: 16px;
   font-weight: bold;
 }
-.dashboard-projects-thumbnail:hover{
-  border:4px solid #78129E;
+.dashboard-projects-thumbnail:hover {
+  border: 4px solid #78129e;
 }
-.dashboard-projects-thumbnail-active{
-  border:4px solid #78129E;
+.dashboard-projects-thumbnail-active {
+  border: 4px solid #78129e;
 }
-.overview-career-all-image{
+.overview-career-all-image {
   width: 40px;
   height: 35px;
   background: rgb(105, 56, 239);
@@ -672,60 +667,60 @@
   border-radius: 50%;
   padding: 4px;
 }
-.overview-career-all-image img{
+.overview-career-all-image img {
   object-fit: contain;
 }
-.statistics-card{
-  background: #24253D;
-  border: 1px solid #6938EF;
+.statistics-card {
+  background: #24253d;
+  border: 1px solid #6938ef;
   box-shadow: 0px 32px 41px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
   width: 100%;
   height: 20%;
   margin-bottom: 4%;
 }
-.statistics-charts{
+.statistics-charts {
   width: 100%;
   height: 20%;
   margin-bottom: 20px;
 }
-.static-card{
-  background: #24253D;
-  border: 1px solid #6938EF;
+.static-card {
+  background: #24253d;
+  border: 1px solid #6938ef;
   box-shadow: 0px 32px 41px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
 }
-.dashboard-static-chart{
+.dashboard-static-chart {
   display: flex;
   align-items: center;
   margin: 0px 10px;
 }
-.static-chart-detail{
+.static-chart-detail {
   margin-top: 5%;
 }
-.static-chart-detail h2{
+.static-chart-detail h2 {
   font-size: 12px;
   font-weight: 600;
 }
-.static-chart-detail .labels{
-  color: #DEDEDE;
+.static-chart-detail .labels {
+  color: #dedede;
   font-weight: 500;
   font-size: 10px;
   display: flex;
   flex-direction: column;
   margin-top: 10px;
 }
-.static-chart-detail .labels .tag div{
+.static-chart-detail .labels .tag div {
   width: 15px;
   height: 15px;
   margin-right: 3px;
   border-radius: 2px;
 }
-.static-chart-detail .labels .tag{
+.static-chart-detail .labels .tag {
   display: flex;
   margin-bottom: 3px;
 }
-.overview-proposal-button{
+.overview-proposal-button {
   background: rgba(21, 147, 57, 0.65);
   border-radius: 6px;
   padding: 8px;
@@ -733,128 +728,128 @@
   font-weight: 500;
   letter-spacing: 0.5px;
   font-size: 12px;
-} 
-.dashboard-proposal-table-title{
+}
+.dashboard-proposal-table-title {
   font-style: normal;
   font-weight: 600;
   font-size: 12px;
   line-height: 15px;
-  color: #D8D8D8;
+  color: #d8d8d8;
 }
-.row-custom-6{
-  grid-row: span 6 / span 6 ;
+.row-custom-6 {
+  grid-row: span 6 / span 6;
 }
 @media only screen and (max-width: 1440px) {
-  .static-chart-detail .labels{
+  .static-chart-detail .labels {
     display: grid;
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns: repeat(2, 1fr);
     grid-gap: 10%;
   }
-  .static-chart-detail{
+  .static-chart-detail {
     margin-top: 5px;
   }
-  .dashboard-chapter-details{
+  .dashboard-chapter-details {
     margin-bottom: 10px !important;
     height: 70%;
   }
-  .dashboard-chapter-details .img-container{
-   height: 100%; 
-  } 
-  .dashboard-chapter-location{
+  .dashboard-chapter-details .img-container {
+    height: 100%;
+  }
+  .dashboard-chapter-location {
     margin-bottom: 10px !important;
   }
-  .dashboard-progress-tasklist{
+  .dashboard-progress-tasklist {
     height: 45px;
     margin-top: auto;
   }
-  .dashboard-progress-tasklist >div{
+  .dashboard-progress-tasklist > div {
     height: 100%;
   }
-  .dashboard-pofile-card{
+  .dashboard-pofile-card {
     flex-direction: row !important;
     flex-wrap: wrap;
     justify-content: space-evenly !important;
   }
-  .mentorship-mentee-title{
-    padding:5px 0;
+  .mentorship-mentee-title {
+    padding: 5px 0;
     margin: 0;
   }
 }
 @media only screen and (max-width: 1100px) {
-  .dashboard-pofile-card{
+  .dashboard-pofile-card {
     flex-direction: column !important;
     // min-width: 350px;
     // max-width: 450px;
     flex-wrap: initial;
     text-align: center;
   }
-  .inner-dashboard-container{
+  .inner-dashboard-container {
     width: 450px;
   }
-  .dashboard-progress-tasklist{
+  .dashboard-progress-tasklist {
     height: auto;
   }
-  .dashboard-progress-chart .chart-inner-text{
+  .dashboard-progress-chart .chart-inner-text {
     top: 37%;
   }
-  .dashboard-progress-chart .chart-inner-text p{
+  .dashboard-progress-chart .chart-inner-text p {
     font-size: 12px;
     line-height: 16px;
   }
-  .button-more{
+  .button-more {
     margin: 10px 0;
   }
-  .dashboard-card{
+  .dashboard-card {
     color: white;
   }
-  .dashboard-cards-tab{
+  .dashboard-cards-tab {
     flex-direction: column !important;
     align-items: flex-start !important;
   }
-  .dashboard-cards-tab >div{
+  .dashboard-cards-tab > div {
     margin: 10px 0;
   }
-  .dashboard-static-chart{
+  .dashboard-static-chart {
     width: 45%;
   }
-  .static-chart-detail .labels{
+  .static-chart-detail .labels {
     display: flex;
   }
-  .static-card{
+  .static-card {
     justify-content: space-evenly;
   }
-  .dashboard-chapter-location p{
+  .dashboard-chapter-location p {
     color: white;
   }
-  .overview-startups-card{
+  .overview-startups-card {
     height: 200px !important;
   }
-  .overview-course-tabs{
+  .overview-course-tabs {
     flex-wrap: wrap;
     height: fit-content !important;
   }
-  .overview-course-tabs div{
+  .overview-course-tabs div {
     margin: 5px 0;
   }
-  .button-more{
+  .button-more {
     padding: 5px 0;
     width: 100%;
     text-align: center;
     font-size: 12px;
   }
-  .overview-course-card-description{
+  .overview-course-card-description {
     display: none;
   }
-  .overview-course-card-info{
+  .overview-course-card-info {
     justify-content: center;
   }
-  .overview-course-currency{
+  .overview-course-currency {
     display: none !important;
   }
-  .overview-course-detail{
+  .overview-course-detail {
     width: 100%;
   }
-  .view-course{
+  .view-course {
     width: 100px;
     padding: 2px 0;
     height: fit-content;
@@ -862,18 +857,18 @@
     justify-content: center;
     margin: auto;
   }
-  .dashboard-projects-thumbnail{
+  .dashboard-projects-thumbnail {
     height: 200px;
   }
-  .overview-projects-swiper{
+  .overview-projects-swiper {
     height: fit-content !important;
   }
 }
 @media only screen and (max-width: 460px) {
-  .inner-dashboard-container{
+  .inner-dashboard-container {
     width: 100%;
   }
-  .overview-course-detail{
+  .overview-course-detail {
     width: 30% !important;
   }
-}  
+}

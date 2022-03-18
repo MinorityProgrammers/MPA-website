@@ -1,36 +1,36 @@
-.setupContainer{
-    width: 100%;
-    padding: 60px 30px;
+.setupContainer {
+  width: 100%;
+  padding: 60px 30px;
 }
 // Steps
 .stepperWrapper {
-    margin-top: auto;
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
 }
 .stepperItem {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
 
-@media (max-width: 768px) {
+  @media (max-width: 768px) {
     font-size: 12px;
+  }
 }
-}
-  
+
 .stepperItem::before {
-    position: absolute;
-    content: "";
-    border-bottom: 6px solid #3E385D;
-    width: 100%;
-    top: 30px;
-    left: -50%;
-    z-index: 2;
+  position: absolute;
+  content: "";
+  border-bottom: 6px solid #3e385d;
+  width: 100%;
+  top: 30px;
+  left: -50%;
+  z-index: 2;
 }
-  
+
 // .stepperItem::after {
 // position: absolute;
 // content: "";
@@ -40,303 +40,308 @@
 // left: 50%;
 // z-index: 2;
 // }
-  
+
 .stepperItem .stepCounter {
-    position: relative;
-    z-index: 5;
-    display: flex;
-    justify-content: center;
-    // align-items: center;
-    width: 60px;
-    height: 60px;
-    padding: 10px;
-    border-radius: 50%;
-    background: rgba(62, 56, 93, 0.87);
-    margin-bottom: 6px;
-    color: #979797;
-    font-size: 20px;
-    font-weight: 800;
-    cursor: pointer;
+  position: relative;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  // align-items: center;
+  width: 60px;
+  height: 60px;
+  padding: 10px;
+  border-radius: 50%;
+  background: rgba(62, 56, 93, 0.87);
+  margin-bottom: 6px;
+  color: #979797;
+  font-size: 20px;
+  font-weight: 800;
+  cursor: pointer;
 }
-.stepperItem .stepCounter img{
-    width: 100%;
-    height: 100%;
+.stepperItem .stepCounter img {
+  width: 100%;
+  height: 100%;
 }
-.stepperItem.active .stepCounter{
-    font-weight: bold;
-    background: #fff;
+.stepperItem.active .stepCounter {
+  font-weight: bold;
+  background: #fff;
 }
 
 .stepperItem.completed .stepCounter {
-    background: #6938EF;
-    img{
-        background: white;
-        border-radius: 50%;
-    }
+  background: #6938ef;
+  img {
+    background: white;
+    border-radius: 50%;
+  }
 }
-.completed{
-    .stepName,.stepNameEven{
+.completed {
+  .stepName,
+  .stepNameEven {
     color: #fff;
-    }
+  }
 }
 .stepperItem.completed::after {
-    position: absolute;
-    content: "";
-    border-bottom: 6px solid #6938EF;
-    width: 100%;
-    top: 30px;
-    left: 50%;
-    z-index: 3;
+  position: absolute;
+  content: "";
+  border-bottom: 6px solid #6938ef;
+  width: 100%;
+  top: 30px;
+  left: 50%;
+  z-index: 3;
 }
 
 .stepperItem:first-child::before {
-content: none;
+  content: none;
 }
 .stepperItem:last-child::after {
-content: none;
+  content: none;
 }
-.stepName,.stepNameEven{
-    position: absolute;
-    color: #696969;
-    font-weight: 700;
-    font-size: 18px;
+.stepName,
+.stepNameEven {
+  position: absolute;
+  color: #696969;
+  font-weight: 700;
+  font-size: 18px;
 }
-.active .stepName,.active .stepNameEven{
-    color: #fff;
+.active .stepName,
+.active .stepNameEven {
+  color: #fff;
 }
-.stepName{
-    top: -50%;
+.stepName {
+  top: -50%;
 }
-  .stepNameEven{
-    bottom: -50%;
+.stepNameEven {
+  bottom: -50%;
 }
 // Input Fields
-.nameRow div input,.nameRow div select{
-    background: #24203B;
-    border-radius: 8px;
-    border: 1px solid #6938EF;
-    // height: 60px;
-    width: 100%;
-    color: rgb(255, 255, 255);
-    padding: 1rem;
-    outline: none;
-    font-size: 18px;
-    font-weight: 500;
+.nameRow div input,
+.nameRow div select {
+  background: #24203b;
+  border-radius: 8px;
+  border: 1px solid #6938ef;
+  // height: 60px;
+  width: 100%;
+  color: rgb(255, 255, 255);
+  padding: 1rem;
+  outline: none;
+  font-size: 18px;
+  font-weight: 500;
 }
 .nameRow div select {
-    option {
-        font-size: 18px;
-        font-weight: 700;
-    }
-    option:checked {  
-        border: 3px solid #6938EF;
-        background: #6938EF;
-    }
-    option:hover {  
-        border: 3px solid #6938EF;
-        box-shadow: 0 0 10px 100px #2c3235 inset;
-    }
-}    
-.nameRow div select,.nameRow .DatePicker input{
-    -moz-appearance:none; /* Firefox */
-    -webkit-appearance:none; /* Safari and Chrome */
-    appearance:none;
-    background-image: url("/assets/images/settings/arrow-down.svg");
-    background-repeat: no-repeat;
-    background-position-x: 96%;
-    background-position-y: 10px;
-    cursor: pointer;
+  option {
+    font-size: 18px;
+    font-weight: 700;
+  }
+  option:checked {
+    border: 3px solid #6938ef;
+    background: #6938ef;
+  }
+  option:hover {
+    border: 3px solid #6938ef;
+    box-shadow: 0 0 10px 100px #2c3235 inset;
+  }
 }
-.DatePicker .react-datepicker-wrapper{
-    padding: 0;
+.nameRow div select,
+.nameRow .DatePicker input {
+  -moz-appearance: none; /* Firefox */
+  -webkit-appearance: none; /* Safari and Chrome */
+  appearance: none;
+  background-image: url("/assets/images/settings/arrow-down.svg");
+  background-repeat: no-repeat;
+  background-position-x: 96%;
+  background-position-y: 10px;
+  cursor: pointer;
+}
+.DatePicker .react-datepicker-wrapper {
+  padding: 0;
 }
 .nameRow {
-    margin: 20px 0;
+  margin: 20px 0;
 }
-.nameRow div label{
-    font-weight: bold;
-    color: #FFFFFF;
-    font-size: 20px;
+.nameRow div label {
+  font-weight: bold;
+  color: #ffffff;
+  font-size: 20px;
 }
-.nameRow div input:focus{
-    border: 1px solid #6938EF;
-    background: #fff;
-    color: #1C1D37;
+.nameRow div input:focus {
+  border: 1px solid #6938ef;
+  background: #fff;
+  color: var(--div-background-color);
 }
-.title h2{
-    color: white;
-    font-size: 24px;
-    font-weight: 600;
-    margin: 50px 0;
-    padding-left: 15px;
+.title h2 {
+  color: white;
+  font-size: 24px;
+  font-weight: 600;
+  margin: 50px 0;
+  padding-left: 15px;
 }
-.submitRow{
-    margin: 60px auto;
-    width: 80%;
+.submitRow {
+  margin: 60px auto;
+  width: 80%;
 }
-.submitRow > div{
-    display: flex;
-    justify-content: space-between;
-    width: 50%;
+.submitRow > div {
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
 }
-.submitRow div a{
-    outline: none;
-    color: #FFFFFF!important;
-    background: transparent;
-    border-radius: 44px;
-    border: 1px solid #6938EF;
-    font-weight: 600;
-    font-size: 18px;
-    padding: 1rem 2rem;
-    transition: background .4s ease;
+.submitRow div a {
+  outline: none;
+  color: #ffffff !important;
+  background: transparent;
+  border-radius: 44px;
+  border: 1px solid #6938ef;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 1rem 2rem;
+  transition: background 0.4s ease;
 }
-.submitRow div a:hover{
-    background: #6938EF;
+.submitRow div a:hover {
+  background: #6938ef;
 }
-.submitRow div input{
-    outline: none;
-    color: #FFFFFF;
-    border-radius: 44px;
-    font-weight: 600;
-    font-size: 18px;
-    padding: 1rem 2rem;
-    background: #6938EF;
-    min-width: 200px;
+.submitRow div input {
+  outline: none;
+  color: #ffffff;
+  border-radius: 44px;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 1rem 2rem;
+  background: #6938ef;
+  min-width: 200px;
 }
 // Third Step
-.skillsList{
-    display: flex;
-    flex-wrap: wrap;
-    padding: 20px 15px;
-    width: 100%;
+.skillsList {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px 15px;
+  width: 100%;
 }
-.skillsList div{
-    background: #6938EF;
-    border-radius: 44px;
-    padding: 10px 16px;
-    color: #FFFFFF;
-    font-weight: bold;
-    font-size: 16px;
-    margin: 10px;
-    display: flex;
-    align-items: center;
+.skillsList div {
+  background: #6938ef;
+  border-radius: 44px;
+  padding: 10px 16px;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 16px;
+  margin: 10px;
+  display: flex;
+  align-items: center;
 }
-.skillsList div img{
-    max-height: 30px;
-    margin-left: 12px;
-    cursor: pointer;
+.skillsList div img {
+  max-height: 30px;
+  margin-left: 12px;
+  cursor: pointer;
 }
-.addButton{
-    display: flex;
-    align-items: flex-end;
+.addButton {
+  display: flex;
+  align-items: flex-end;
 }
-.addButton a{
-    background: #24203B;
-    border-radius: 8px;
-    border: 1px solid #6938EF;
-    height: 60px;
-    width: 100%;
-    color: white !important;
-    padding: 1rem;
-    outline: none;
-    font-size: 18px;
-    text-align: center;
-    transition: 0.3s ease;
+.addButton a {
+  background: #24203b;
+  border-radius: 8px;
+  border: 1px solid #6938ef;
+  height: 60px;
+  width: 100%;
+  color: white !important;
+  padding: 1rem;
+  outline: none;
+  font-size: 18px;
+  text-align: center;
+  transition: 0.3s ease;
 }
 
-.addButton a:hover{
-    background: #6938EF;
+.addButton a:hover {
+  background: #6938ef;
 }
 // Fourth Step
-.socialRow{
-    margin: 20px 0;
+.socialRow {
+  margin: 20px 0;
 }
-.socialRow{
-    margin: 20px 0;
+.socialRow {
+  margin: 20px 0;
 }
 .socialCol {
-    background: #24203B;
-    border-radius: 8px;
-    border: 1px solid #6938EF;
-    height: 60px;
-    width: 100%;
-    color: white;
-    padding: 1rem;
-    outline: none;
-    font-size: 18px;
-    font-weight: 500;
-    margin: 0 15px;
-    display: flex;
+  background: #24203b;
+  border-radius: 8px;
+  border: 1px solid #6938ef;
+  height: 60px;
+  width: 100%;
+  color: white;
+  padding: 1rem;
+  outline: none;
+  font-size: 18px;
+  font-weight: 500;
+  margin: 0 15px;
+  display: flex;
 }
-.socialCol> div {
-    margin: 0 1.7rem 0 1rem;
+.socialCol > div {
+  margin: 0 1.7rem 0 1rem;
 }
 .socialCol img {
-    cursor: pointer;
+  cursor: pointer;
 }
-.socialCol input{
-    background: transparent;
-    border-radius: 8px;
-    height: 100%;
-    width: 100%;
-    color: white;
-    outline: none;
-    font-size: 18px;
-    font-weight: 500;
+.socialCol input {
+  background: transparent;
+  border-radius: 8px;
+  height: 100%;
+  width: 100%;
+  color: white;
+  outline: none;
+  font-size: 18px;
+  font-weight: 500;
 }
 .socialCol input:disabled {
-    color: #979797;
+  color: #979797;
 }
-.addLinkBtn{
-    padding: 6px;
-    min-width: 52px;
-    margin: auto;
+.addLinkBtn {
+  padding: 6px;
+  min-width: 52px;
+  margin: auto;
 }
-.addLinkBtn img{
-    border: 1px solid #6938EF;
-    border-radius: 50%;
-    padding: 5px;
+.addLinkBtn img {
+  border: 1px solid #6938ef;
+  border-radius: 50%;
+  padding: 5px;
 }
-.add-socail-links .addLinkBtn{
-    margin: 0;
+.add-socail-links .addLinkBtn {
+  margin: 0;
 }
-.newSocialLink{
-    max-height: 30px;
-    margin: auto;
-    margin-right: 15px;
+.newSocialLink {
+  max-height: 30px;
+  margin: auto;
+  margin-right: 15px;
 }
-.socailAdd{
-    background: #6938EF;
+.socailAdd {
+  background: #6938ef;
 }
-.socailAddBtn img{
-    border-color: #fff;
-    transform: rotate(135deg);
-    transition: .4s ease;
+.socailAddBtn img {
+  border-color: #fff;
+  transform: rotate(135deg);
+  transition: 0.4s ease;
 }
-.socialAddLink{
-    margin: 20px 0;
-    padding: 0 15px;
+.socialAddLink {
+  margin: 20px 0;
+  padding: 0 15px;
 }
-.socialAddLink .socialCol{
-    margin: 0;
+.socialAddLink .socialCol {
+  margin: 0;
 }
-.socialAddLink .socialCol >div{
-    margin: 0;
+.socialAddLink .socialCol > div {
+  margin: 0;
 }
-.submitLinkBtn{
-    transition:  .4s ease;
-    cursor: pointer;
-    padding: 1rem 5px;
+.submitLinkBtn {
+  transition: 0.4s ease;
+  cursor: pointer;
+  padding: 1rem 5px;
 }
-.submitLinkBtn:hover{
-    background: #6938EF;
+.submitLinkBtn:hover {
+  background: #6938ef;
 }
-.selectRow{
-    margin:0;
+.selectRow {
+  margin: 0;
 }
-.selectRow >div{
-    padding: 0px;
+.selectRow > div {
+  padding: 0px;
 }
-.selectRow .socialCol{
-    margin: 5px 0;
+.selectRow .socialCol {
+  margin: 5px 0;
 }
