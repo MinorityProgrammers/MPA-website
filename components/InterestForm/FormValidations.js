@@ -10,11 +10,9 @@ const validateSection_2 = (values) => {
 };
 
 const validateSection_3 = (values) => {
-  if (values.school.length === 0) return { school: 'Please tell us the name of your school' };
+  if (values.location.length === 0 || values.country.length === 0 || values.city.length === 0) return { school: 'Please fill in the missing fields' };
   return {};
 };
-// 4
-// 5
 
 const validateSection_4 = (values) => {
   if (values.interest.length === 0) return { interest: 'Please pick atleast one of your interests' };
@@ -25,12 +23,12 @@ const validateSection_5 = (values) => {
   return {};
 };
 const validateSection_6 = (values) => {
-  if (values.reasons.length === 0) return { reasons: 'Please tell us your reasons' };
+  if (values.description.length === 0) return { reasons: 'Please fill in the missing fields' };
   return {};
 };
 
 const validateSection_7 = (values) => {
-  if (values.support.length === 0) return { support: 'Please tells us how we may support you' };
+  if (values.mission.length === 0) return { support: 'Please fill in the missing fields' };
   return {};
 };
 
@@ -45,7 +43,7 @@ const validateSection_9 = (values) => {
 };
 
 export const validateField = ({
-  section_1, section_2, section_3, section_4, section_5, section_7, section_8, section_6,
+  section_1, section_2, section_3, section_4, section_5, section_7, section_6,
 }, values) => {
   if (section_1) {
     return validateSection_1(values);
@@ -97,7 +95,6 @@ export const validateStepper = (sections, values, nextStep) => {
 
 export const validateForm = (values) => {
   if (Object.entries(validateSection_1(values)).length !== 0) return validateSection_1(values);
-  if (Object.entries(validateSection_2(values)).length !== 0) return validateSection_2(values);
   if (Object.entries(validateSection_3(values)).length !== 0) return validateSection_3(values);
   if (Object.entries(validateSection_4(values)).length !== 0) return validateSection_4(values);
   if (Object.entries(validateSection_5(values)).length !== 0) return validateSection_5(values);

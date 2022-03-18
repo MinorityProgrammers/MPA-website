@@ -63,7 +63,7 @@ const ChapterSlider = ({ locations: data, token }) => {
     if (token) {
       axios
         .post(
-          `${process.env.BASE_URI}/joinChapter`,
+          'http://localhost:5000/api/v1/joinChapter',
           {
             chapterLocation_id: location._id,
           },
@@ -79,7 +79,7 @@ const ChapterSlider = ({ locations: data, token }) => {
         })
         .catch((err) => {
           try {
-            // errorToast(err.response.data.data.message.msg);
+            errorToast(err.response.data.data.message.msg);
             console.log(err);
           } catch (error) {
             errorToast('Network Error');
@@ -111,7 +111,8 @@ const ChapterSlider = ({ locations: data, token }) => {
               (location) => (
                 <div key={location._id} className={styles.cardContainer}>
                   <div className={styles.imgWrapper}>
-                    <img src="/assets/images/chapter/locationDemo.png" alt="location-img" />
+                    {location.LocationLogo && <img src={location.LocationLogo} alt="location-img" />}
+                    {!location.LocationLogo && <div src={location.LocationLogo} alt="location-img" />}
                   </div>
                   <div className={styles.universityName}>
                     <img src="/assets/images/chapter/mpa-logo.png" alt="MPA logo" />

@@ -1,6 +1,7 @@
 import React, {
   useState, useRef, useEffect, useContext,
 } from 'react';
+import { geocodeByAddress, getLatLng } from 'react-google-places-autocomplete';
 import Layout from '../../components/Layout';
 import Footer from '../../components/Footer';
 import HomepageNav from '../../components/homepage/HomepageNav';

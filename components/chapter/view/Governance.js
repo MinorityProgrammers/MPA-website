@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Select from 'react-select';
 import styles from './chapter.module.scss';
+import Categories from './CategoriesIcons';
 
 const DropdownIndicator = () => (
   <img
@@ -11,6 +12,9 @@ const DropdownIndicator = () => (
 );
 
 const Governance = () => {
+  const [active, setActice] = useState(true);
+  const [currentCategory, setCatergory] = useState('');
+
   const customStyles = {
     option: (provided, state) => ({
       ...provided,
@@ -116,11 +120,12 @@ const Governance = () => {
       </div>
       <div className={styles.grid}>
         <div className={styles.left}>
-          <div>New Proposal</div>
-          <div>Proposals</div>
+          <div className={!active ? styles.active : ''} onClick={() => setActice(false)}>New Proposal</div>
+          <div className={active ? styles.active : ''} onClick={() => setActice(true)}>Proposals</div>
         </div>
         <div className={styles.right}>
-          <div>
+          {active && (
+          <div className={styles.proposalCard}>
             <div>
               <img src="/assets/images/chapter/mpa-logo.png" alt="MPA Logo" />
               <div className={styles.detail}>
@@ -131,28 +136,45 @@ const Governance = () => {
             </div>
             <p>Implement 3 box implementation into MPA platform.</p>
           </div>
-          <div>
-            <div>
-              <img src="/assets/images/chapter/mpa-logo.png" alt="MPA Logo" />
-              <div className={styles.detail}>
-                <h2>ThreeBox Integration </h2>
-                <p>Type: Enhancement | Category: Incubator</p>
-              </div>
-              <div className={styles.approved}>Approved</div>
+          ) }
+          {!active && (
+          <div className={styles.newProposal}>
+            <label> Title Of Proposal</label>
+            <input type="text" />
+            <label> Description Of Proposal</label>
+            <input type="text" />
+            <label> Choose a Category</label>
+            <div className={styles.categoryContainer}>
+              {Categories.map((category) => (
+
+                <div onClick={() => setCatergory(category.text)} className={category.text === currentCategory ? styles.activeCard : ''} key={category.id}>
+                  {category.icon}
+                  <p>
+                    {category.text}
+                  </p>
+                </div>
+              ))}
+
             </div>
-            <p>Implement 3 box implementation into MPA platform.</p>
-          </div>
-          <div>
-            <div>
-              <img src="/assets/images/chapter/mpa-logo.png" alt="MPA Logo" />
-              <div className={styles.detail}>
-                <h2>ThreeBox Integration </h2>
-                <p>Type: Enhancement | Category: Incubator</p>
-              </div>
-              <div className={styles.approved}>Approved</div>
+            <label> Proposal Type</label>
+            <div style={{ height: '2px', marginBottom: '10px' }} className={styles.line} />
+            <p>Would you like to add a poll to your proposal?</p>
+            <p>
+              {`Start Date - ${new Date().toDateString()}`}
+            </p>
+            <label> Pool Question</label>
+            <input type="text" />
+            <label>Choice 1</label>
+            <input type="text" />
+            <label className="tw-cursor-pointer">+ Add Choice</label>
+            <div className={styles.buttons}>
+              <a>Discard Changes</a>
+              <p>Save & Continue </p>
+
             </div>
-            <p>Implement 3 box implementation into MPA platform.</p>
           </div>
+          ) }
+
         </div>
       </div>
     </div>

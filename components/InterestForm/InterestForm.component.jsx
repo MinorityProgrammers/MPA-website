@@ -1,10 +1,14 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import Select from 'react-select';
+import Geocode from 'react-geocode';
 import { errorToast, successToast } from '../../contexts/utils/toasts';
 import { validateField, validateForm } from './FormValidations';
 import styles from './InterestForm.module.css';
 import DropdownIndicator from '../settings/DropdownIndicator';
+import {
+  countries, passionOptions, interestOptions, countriesLoaction,
+} from './Options';
 
 const customStyles = {
   option: (provided, state) => ({
@@ -41,12 +45,12 @@ const customStyles = {
   }),
   container: (provided) => ({
     ...provided,
-    height: '45px',
+    height: '60px',
     margin: '0 !important',
     cursor: 'pointer',
     paddingLeft: '8px',
     border: '1px solid #6938EF',
-    borderRadius: '100px',
+    borderRadius: '16px',
   }),
   multiValueLabel: (provided) => ({
     ...provided,
@@ -78,54 +82,29 @@ const customStyles = {
   },
 };
 
-const interestOptions = [
-  { label: 'Development', value: 'development' },
-  { label: 'Design', value: 'design' },
-  { label: 'Frontend', value: 'frontend' },
-  { label: 'Backend', value: 'backend' },
-  { label: 'Research', value: 'research' },
-  { label: 'Marketing', value: 'marketing' },
-  { label: 'Intructing', value: 'intructing' },
-  { label: 'Project Management', value: 'Project management' },
-];
-
-const passionOptions = [
-  { label: 'Technology', value: 'technology' },
-  { label: 'Nature', value: 'nature' },
-  { label: 'Music', value: 'music' },
-  { label: 'Sports', value: 'sports' },
-  { label: 'Entreprenuership', value: 'entreprenuership' },
-  { label: 'Reading', value: 'reading' },
-  { label: 'Volunteering', value: 'volunteering' },
-  { label: 'Arts', value: 'arts' },
-  { label: 'Dancing', value: 'dancing' },
-  { label: 'Comedy', value: 'comedy' },
-  { label: 'Gaming', value: 'gaming' },
-  { label: 'Cooking', value: 'cooking' },
-  { label: 'Animals', value: 'animals' },
-  { label: 'Travel', value: 'travel' },
-];
-
-const InterestForm = function ({ token }) {
+const InterestForm = ({ token, userData }) => {
   const [values, setValues] = useState({
     status: 'pending',
     interest: [],
     passion: [],
     profession: '',
     level: '',
-    school: '',
-    reasons: '',
-    support: '',
+    location: '',
+    description: '',
+    mission: '',
     contact: '',
     phone: '',
     email: '',
+    country: '',
+    lat: '',
+    lon: '',
+    city: '',
     interestedMembers: 0,
   });
 
   const [submitError, setSubmitError] = useState('');
   const [errors, setErrors] = useState({});
   const [isSubmit, toggleSubmit] = useState(false);
-  const [activeButton, setActiveButton] = useState('section_1');
   const [sections, setSections] = useState({
     section_1: true,
     section_2: false,
@@ -137,6 +116,8 @@ const InterestForm = function ({ token }) {
     section_8: false,
     section_9: false,
   });
+
+  Geocode.setApiKey('AIzaSyAj-BtIthMo51RCnyjesNP11pF_R07qbMA&callback');
 
   const handleChange = (event) => {
     const { name } = event.target;
@@ -163,9 +144,28 @@ const InterestForm = function ({ token }) {
     const result = (validateField(sections, values));
     handleError(result);
     if (Object.keys(result).length === 0) {
-      const newSections = { ...sections };
-      const newSectionsArray = Object.keys(newSections);
+      let newSections = { ...sections };
+      let newSectionsArray = Object.keys(newSections);
+      if (values.profession === 'Professional') {
+        newSectionsArray = newSectionsArray.filter((e) => e !== 'section_2');
+        delete newSections.section_2;
+      } else if (values.profession === 'student' && newSections.section_1) {
+        newSections = {
+          section_1: true,
+          section_2: false,
+          section_3: false,
+          section_4: false,
+          section_5: false,
+          section_6: false,
+          section_7: false,
+          section_8: false,
+          section_9: false,
+        };
+        newSectionsArray = Object.keys(newSections);
+      }
       let id = null;
+      setSections(newSections);
+
       newSectionsArray.forEach((_, idx, arr) => {
         if (newSections[arr[idx]]) {
           id = idx;
@@ -173,8 +173,31 @@ const InterestForm = function ({ token }) {
       });
       newSections[newSectionsArray[id]] = false;
       newSections[newSectionsArray[id + 1]] = true;
-      setActiveButton(newSectionsArray[id + 1]);
       setSections(newSections);
+    }
+    if (sections.section_4 === true) {
+      // Get latitude & longitude from address.
+      Geocode.setRegion(values.country.value.toLowerCase());
+      Geocode.fromAddress(values.location).then(
+        (response) => {
+          const { lat, lng } = response.results[0].geometry.location;
+          const newValue = values;
+          newValue.lat = lat;
+          newValue.lon = lng;
+          setValues(newValue);
+        },
+        (error) => {
+          countriesLoaction.forEach((country) => {
+            if (country.code === values.country.value) {
+              const newValue = values;
+              newValue.lat = country.latitude;
+              newValue.lon = country.longitude;
+              setValues(newValue);
+            }
+          });
+          console.error(error);
+        },
+      );
     }
   };
 
@@ -190,7 +213,6 @@ const InterestForm = function ({ token }) {
     });
     newSections[newSectionsArray[id]] = false;
     newSections[newSectionsArray[id - 1]] = true;
-    setActiveButton(newSectionsArray[id - 1]);
     setSections(newSections);
   };
   const getWidth = (stats) => {
@@ -203,6 +225,7 @@ const InterestForm = function ({ token }) {
   };
   const handleSubmit = () => {
     setErrors({});
+    console.log(values);
     const result = (validateForm(values));
     if (Object.keys(result).length === 0) {
       let _values = { ...values };
@@ -220,14 +243,36 @@ const InterestForm = function ({ token }) {
       });
 
       if (token) {
-        axios.post(`${process.env.BASE_URI}/chapter`, {
-          ..._values,
-        }, {
+        console.log(_values);
+        toggleSubmit(true);
+
+        // Main St, Harrisonburg, US
+        const inputs = {
+          location: _values.location,
+          LocationName: `${_values.city}, ${_values.country.value}`,
+          chapter_leader: `${userData.firstName} ${userData.lastName}`,
+          description: _values.description,
+          mission: _values.mission,
+          latitude: _values.lat,
+          longitude: _values.longitude,
+          member_size: '1',
+          phone: _values.phone,
+          email: _values.email,
+          interestedMembers: _values.interestedMembers,
+          profession: _values.profession,
+          passion: _values.passion,
+          interest: _values.interest,
+          // eslint-disable-next-line new-cap
+          date_founded: new Date().toDateString(),
+        };
+        setSubmitError('');
+        axios.post('http://localhost:5000/api/v1/location', inputs, {
           headers: {
             Authorization: ` Bearer ${token}`,
           },
         })
-          .then(() => {
+          .then((res) => {
+            console.log(res.data.data);
             setSubmitError('');
             successToast('Your chapter was successfully created');
             toggleSubmit(true);
@@ -245,7 +290,6 @@ const InterestForm = function ({ token }) {
       handleError(result);
     }
   };
-
   return (
     <div className={styles.formWrapper}>
       <div className={styles.formContainer}>
@@ -294,7 +338,7 @@ const InterestForm = function ({ token }) {
                       </div>
                       <div
                         className={styles.innerLabel}
-                        onClick={() => { setValues({ ...values, school: '', level: '' }); handleChange({ target: { name: 'profession', value: 'Professional' } }); }}
+                        onClick={() => { setValues({ ...values, location: '', level: '' }); handleChange({ target: { name: 'profession', value: 'Professional' } }); }}
                       >
                         <img
                           src="/assets/images/chapter/pro.png"
@@ -339,16 +383,38 @@ const InterestForm = function ({ token }) {
                     </div>
                   </section>
                   <section className={styles.question} style={{ display: sections.section_3 ? 'block' : 'none' }}>
-                    <label className={styles.label} htmlFor="school">Please Enter the name of your school.</label>
+                    <label className={styles.label} htmlFor="location">Please enter the location name?</label>
                     <input
-                      name="school"
+                      name="location"
                       type="text"
                       placeholder="School Name (e.g University Of Miami)..."
-                      value={values.school}
+                      value={values.location}
                       onChange={handleChange}
                       onBlur={handleBlur}
                       className={styles.textInput}
                     />
+                    <label style={{ marginTop: '30px' }} className={styles.label} htmlFor="country">Please Select country?</label>
+                    <div className={styles.select}>
+                      <Select
+                        styles={customStyles}
+                        components={{ DropdownIndicator }}
+                        style={{ zIndex: 10 }}
+                        name="country"
+                        value={values.country}
+                        options={countries}
+                        onChange={(e) => handleChange({ target: { name: 'country', value: e } })}
+                      />
+                      <label style={{ marginTop: '30px' }} className={styles.label} htmlFor="city">Please enter the city?</label>
+                      <input
+                        name="city"
+                        type="text"
+                        placeholder="Harrisonburg"
+                        value={values.city}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        className={styles.textInput}
+                      />
+                    </div>
                     {errors.school && (
                     <div className={styles.inputFeedback}>{errors.school}</div>
                     )}
@@ -395,12 +461,13 @@ const InterestForm = function ({ token }) {
 
                   <section className={styles.question} style={{ display: sections.section_6 ? 'block' : 'none' }}>
                     <label className={styles.label}>
-                      What is your reason for wanting to start a chapter?
+                      Please give a brief description for the chapter?
+
                     </label>
                     <textarea
-                      name="reasons"
+                      name="description"
                       placeholder="The reason I’d like to start a chapter is..."
-                      value={values.reasons}
+                      value={values.description}
                       onChange={handleChange}
                       onBlur={handleBlur}
                       className={styles.textareaInput}
@@ -412,11 +479,11 @@ const InterestForm = function ({ token }) {
 
                   <section className={styles.question} style={{ display: sections.section_7 ? 'block' : 'none' }}>
                     <label className={styles.label}>
-                      What kind of support would you like for starting a chapter?
+                      What is your reason for wanting to start a chapter?
                     </label>
                     <textarea
-                      name="support"
-                      value={values.support}
+                      name="mission"
+                      value={values.mission}
                       onChange={handleChange}
                       onBlur={handleBlur}
                       className={styles.textareaInput}

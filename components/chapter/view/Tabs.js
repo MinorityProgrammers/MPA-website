@@ -26,8 +26,11 @@ const Tabs = ({ active, setActive }) => {
           {' '}
           <div />
         </div>
-        <div onClick={() => updateActive('governance')} className={active.governance ? styles.active : ''}>
-          <p> Governance</p>
+        <div
+        //  onClick={() => updateActive('governance')}
+          className={active.governance ? styles.active : ''}
+        >
+          <p><a href="https://snapshot.org/#/minorityprogrammers.eth"> Governance</a></p>
           <div />
         </div>
         <div onClick={() => updateActive('members')} className={active.members ? styles.active : ''}>

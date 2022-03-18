@@ -292,9 +292,9 @@
   border-radius: 0.2em;
   background: transparent;
   color: white;
-  padding: 0.5em;
+  padding: 1em;
   font-size: 1rem;
-  border: 1px solid rgba(71, 75, 255, 0.5);
+  border: 1px solid #6938EF;
   border-radius: 16px;
 }
 

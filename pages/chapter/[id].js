@@ -1,5 +1,6 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useRouter } from 'next/router';
+import axios from 'axios';
 import ComingSoon from '../../components/ComingSoon';
 import Footer from '../../components/Footer';
 import HomepageNav from '../../components/homepage/HomepageNav';
@@ -16,6 +17,28 @@ import Resources from '../../components/chapter/view/Resources';
 import Governance from '../../components/chapter/view/Governance';
 import styles from '../../components/chapter/view/chapter.module.scss';
 
+function formatDate(dateStr) {
+  const MONTHS = [
+    'Jan',
+    'Feb',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'Sept',
+    'Oct',
+    'Nov',
+    'Dec',
+  ];
+  const d = new Date(dateStr);
+  const year = d.getFullYear();
+  const month = MONTHS[d.getMonth()];
+  const date = d.getDate();
+
+  return `${month} ${date} ${year}`;
+}
 const Index = () => {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef(null);
@@ -27,6 +50,8 @@ const Index = () => {
     resources: false,
   });
   const [hide, setHide] = useDetectOutsideClick(dropdownRef, false);
+  const [token, setToken] = useState(null);
+  const [location, setLocation] = useState({});
 
   const router = useRouter();
   const { id } = router.query;
@@ -40,7 +65,25 @@ const Index = () => {
       setHide(true);
     }, 60000);
   }
-
+  useEffect(() => {
+    const userToken = window.localStorage.getItem('jwtToken');
+    setToken(userToken);
+    console.log(id);
+    if (id) {
+      axios
+        .get(`http://localhost:5000/api/v1/location/${id}`)
+        .then((res) => {
+          const d = res.data.data;
+          const newData = {
+            ...d,
+            date_founded: formatDate(d.date_founded),
+          };
+          console.log(newData);
+          setLocation(newData);
+        })
+        .catch((err) => console.error(err));
+    }
+  }, []);
   return (
     <Layout pageTitle="Chapter - MPA">
       <HomepageNav open={open} setOpen={setOpen} page="Chapter-toolkit" />
@@ -57,11 +100,11 @@ const Index = () => {
       <section>
         <div className={`container ${styles.bodyContainer}`}>
           { active.overview
-          && <Overview />}
+          && <Overview location={location} token={token} />}
           { active.events
           && <Events />}
           { active.members
-          && <Members />}
+          && <Members location={location} token={token} />}
           { active.resources
           && <Resources />}
           { active.governance

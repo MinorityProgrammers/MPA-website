@@ -42,13 +42,12 @@ const ChapterDirectory = ({
         );
     setStartedAChapter(result);
   }, [locationDetails]);
-
   return (
     <div className={styles.chapterDirectory}>
       {startedAChapter ? (
         <ChapterMenu userData={userData} active={active} />
       ) : (
-        <InterestForm setOpen={setOpen} token={token} />
+        <InterestForm setOpen={setOpen} userData={userData} token={token} />
       )}
       <div className={styles.joinWrapper}>
         <div className={styles.joinOuterContainer}>

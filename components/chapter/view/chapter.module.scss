@@ -186,7 +186,7 @@
     margin-top: 20px;
     text-align: center;
     > div {
-      border: 1px solid #6938ef;
+      border: 3px solid #6938ef;
       border-radius: 24px;
       display: flex;
       flex-direction: column;
@@ -225,7 +225,7 @@
           font-size: 21px;
           cursor: pointer;
           transition: color 0.3s ease;
-          &:not(:last-child) {
+          &:first-child {
             margin-right: 10px;
           }
           &:hover {
@@ -260,9 +260,28 @@
     font-weight: 600;
     font-size: 14px;
   }
-  // Overview
-  .overviewSection {
+  .buttons{
+    display: flex;
+    justify-content: space-evenly;
+    a{
+      font-weight: 600;
+      font-size: 18px;
+      border: 1px solid #6938EF;
+      padding: 12px 2rem;
+      border-radius: 44px;
+    }
+    p{
+      font-weight: 600;
+      font-size: 18px;
+      border: 1px solid #6938EF;
+      background: #6938EF;
+      padding: 12px 2rem;
+      border-radius: 44px;
+    }
   }
+  // Overview
+  // .overviewSection {
+  // }
   // Events
   .events {
     > div {
@@ -465,7 +484,7 @@
           cursor: pointer;
         }
       }
-      .right > div {
+      .right > .proposalCard {
         border: 1.85449px solid #6938ef;
         box-shadow: 0px 34.9424px 44.7699px rgb(0 0 0 / 25%);
         border-radius: 16.3792px;
@@ -507,5 +526,69 @@
         }
       }
     }
+    .activeCard{
+      p{
+        color: #6938EF;
+      }
+      path{
+        fill: #6938EF;
+      }
+    }
+    .active {
+      background: #6938ef !important;
+    }
   }
-  
+  .newProposal{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    label{
+      font-size: 20px;
+      font-weight: bold;
+      margin-top: 40px;
+    }
+    input{
+      font-size: 20px;
+      font-weight: 500;
+      background: #24203B;
+      border: 1px solid #6938EF;
+      box-shadow: 1px -1px 5px #A259FF;
+      border-radius: 8px;
+      padding: 16px;
+      margin-top: 16px;
+      &:focus{
+        border: 1px solid #6938EF;
+        outline: none;
+      }
+    }
+    .categoryContainer{
+      display: flex;
+      flex-wrap: wrap;
+      >div{
+        background: #24203B;
+        border: 0.729825px solid #6938EF;
+        box-shadow: 0.729825px -0.729825px 3.64912px #a259ff;
+        border-radius: 5.8386px;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        width: 130px;
+        align-items: center;
+        margin-right: 20px;
+        margin-top: 20px;
+        cursor: pointer;
+        text-align: center;
+        p{
+          margin-top: 20px;
+        }
+        &:hover{
+          p{
+            color: #6938EF;
+          }
+          path{
+            fill: #6938EF;
+          }
+        }
+      }
+    }
+  }
