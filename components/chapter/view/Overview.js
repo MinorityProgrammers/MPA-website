@@ -13,16 +13,11 @@ const Overview = ({ location }) => {
     <div className={styles.overviewSection}>
       <h2>About Chapter</h2>
       <p>
-        {location.description}
+        {location?.description}
       </p>
       <h2>Mission</h2>
       <p>
-        We are an international network of developers
-        unifying together to build socially impactful
-        projects & spread STEM education to marginalized
-        communities. MPA Miami Chapter was created to Empowering
-        all young people, who need us most, to reach their full
-        potential as caring, productive, and  responsible citizens.
+        {location?.mission}
       </p>
       <h2>Chapter Officers</h2>
       <div className={styles.cardContainer}>

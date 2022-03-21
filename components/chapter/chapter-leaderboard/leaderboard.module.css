@@ -198,20 +198,35 @@
     text-align: center;
     color: #FFFFFF;
 }
-@media screen and (max-width: 1024px) {
-    .container {
-        width: 48em;
+@media screen and (max-width: 992px) {
+    .detail h2{
+        font-size: 26px;
     }
+    .detail h3{
+        font-size: 14px;
+    }
+    .detail p{
+        font-size: 16px;
+    }
+    .viewBtn{
+        width: 100%;
+    }
+    .viewBtn a{
+        font-size: 16px;
+        max-width: 90%;
+        padding: 18px 0px;
+        margin: auto;
+    } 
 }
 
 @media screen and (max-width: 768px) {
+    .LeadboardCards{
+        padding: 0 10px;
+    }
     .wrapper {
         padding: 0 0.5em;
     }
 
-    .container {
-        width: 36em;
-    }
     .stats {
         padding:  1rem;
     }
@@ -236,36 +251,24 @@
 }
 
 @media screen and (max-width: 480px) {
-    .container {
-        padding: 1em 0;
+    .title{
+        font-size: 40px;
     }
-
+    .text{
+        padding: 0;
+        font-size: 24px;
+    }
+    .heading,
     .navbar {
         padding: 0 1em;
     }
-
-    .loadButtonContainer {
-        padding: 0 1em;
+    .LeadboardCards{
+        height: fit-content;
+        flex-direction: column;
     }
-    
-    .loadButton {
-        padding: 0.3em 1em;
-    }
-
-    .heading{
-        padding: 0 1em;
-        font-size: 1rem;
-    }
-
-    .tag {
-        right: 1em;
-        font-size: 0.8em;
-    }
-
-    .pageLengthInfo,
-    .pageSelector {
-        padding: 0.3em 0.6em;
-        font-size: 12px;
+    .LeadboardCards >div {
+        width: 100%;
+        margin-bottom: 20px;
     }
 }
 

@@ -1,17 +1,16 @@
 // Hero Section
 .HeroContanier {
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.67), rgba(0, 0, 0, 0.67)),
-      url(/assets/images/chapter/locationDemo.png);
     border-radius: 15px;
     border: 1px solid #6938ef;
     box-shadow: 0px 32px 41px rgb(0 0 0 / 25%);
     height: 315px;
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
     display: flex;
     color: white;
     align-items: center;
     text-align: center;
+    position: relative;
     > div {
       height: 100%;
       display: flex;
@@ -27,6 +26,14 @@
       font-weight: bold;
       font-size: 30px;
       text-align: left;
+      i{
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        font-size: 24px;
+        color: #6938ef;
+        cursor: pointer;
+      }
       a {
         background: #6938ef;
         border-radius: 100px;
@@ -279,6 +286,81 @@
       border-radius: 44px;
     }
   }
+  .approveBtn{
+    font-weight: 500;
+    background: #16a34a;
+    border-radius: 100px;
+    padding: 4px 10px;
+    margin-top: 4%;
+    margin-right: auto;
+    margin-left: 4%;
+  }
+  .editModel >div{
+    background: #24203B;
+    border-radius: 15px;
+    color: white;
+    // height: 500px;
+    overflow-y: scroll;
+    &::-webkit-scrollbar {
+      width: 6px;              
+    }
+    &::-webkit-scrollbar-track{
+      background: #20213F;
+    }
+    &::-webkit-scrollbar-thumb{
+      background: #3E385D;
+    }
+    >div{
+      // height: 100%;
+    }
+    .modalBody{
+      display: flex;
+      flex-direction: column;
+      
+      height: 100%;
+      label{
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 10px;
+      }
+      >input{
+        background: #24203B;
+        border-radius: 8px;
+        border: 1px solid #6938EF;
+        width: 100%;
+        color: white;
+        padding: 0.6rem 1rem;
+        outline: none;
+        font-size: 18px;
+        font-weight: 500;
+        margin-bottom: 20px;
+      }
+      >textarea{
+        background: #1c1d37;
+        border-radius: 15px;
+        color: white;
+        font-size: 16px;
+        padding: 10px;
+        border: 1px solid #6938EF;
+        margin-bottom: 20px;
+        &:focus{
+          outline: none;
+          border: 1px solid #6938EF;
+        }
+      }
+    }
+  }
+  .imgInput{
+    background: #1c1d37 !important;
+    border: 1px dashed #6938EF !important;
+    border-radius: 15px !important;
+    p{
+    color: white !important;
+   }
+   span{
+     color: #6938EF !important;
+   }
+  }
   // Overview
   // .overviewSection {
   // }
@@ -307,16 +389,19 @@
         padding: 10px 20px;
         cursor: pointer;
         color: #ffffff;
+        transition: background 0.3s ease;
+        &:hover{
+          background: #6938ef;
+        }
       }
       p {
         margin-right: 15px;
-        background: #6938ef;
       }
     }
     .eventsCard {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      grid-gap: 2%;
+      grid-gap: 30px;
       > div {
         border: 1.85449px solid #6938ef;
         box-shadow: 0px 34.9424px 44.7699px rgb(0 0 0 / 25%);
@@ -331,6 +416,9 @@
         }
         .detail {
           padding: 16px;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
           > h2 {
             font-weight: 600;
             font-size: 22px;
@@ -339,11 +427,12 @@
           > p {
             font-weight: 400;
             font-size: 16px;
+            margin-bottom: 10px;
           }
           .date {
             display: flex;
             justify-content: space-between;
-            margin-top: 10px;
+            margin-top: auto;
             div,
             p {
               letter-spacing: 0.03em;
@@ -369,6 +458,10 @@
               color: #ffffff;
               min-width: 40%;
               text-align: center;
+              transition: background 0.3s ease;
+              &:hover{
+                background: #6938ef;
+              }
             }
             p {
               background: #6938ef;
@@ -377,6 +470,22 @@
         }
       }
     }
+  }
+  .submitBtn{
+    border: 1px solid #6938ef;
+              box-sizing: border-box;
+              border-radius: 42.3946px;
+              padding: 10px 0px;
+              cursor: pointer;
+              color: #ffffff;
+              min-width: 40%;
+              text-align: center;
+              transition: background 0.3s ease;
+              margin-top: 20px;
+          
+              &:hover{
+                background: #6938ef;
+              }
   }
   // Members
   .members {

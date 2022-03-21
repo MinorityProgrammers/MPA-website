@@ -11,17 +11,53 @@ const ChapterSlider = ({ locations: data, token }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [sliderRef, setSliderRef] = useState(null);
   const [locations, setLocations] = useState(data);
-
+  const [winSize, setWinSize] = useState();
+  const [pagination, setPagination] = useState(1);
   const router = useRouter();
-
+  // Slider Settings
+  let slidesToShow = 3;
+  const slidesPerRow = 2;
+  let totalSlides = slidesToShow * slidesPerRow;
   useEffect(() => {
     setLocations(data);
   }, [data]);
-  // Slider Settings
-  const slidesToShow = 3;
-  const slidesPerRow = 2;
-  const totalSlides = slidesToShow * slidesPerRow;
-  const pagination = Math.ceil(locations.length / totalSlides);
+  useEffect(() => {
+    if (window.innerWidth > 1180) {
+      slidesToShow = 3;
+    }
+    if (window.innerWidth <= 1180) {
+      slidesToShow = 2;
+    }
+    if (window.innerWidth <= 768) {
+      slidesToShow = 1;
+    }
+
+    totalSlides = (slidesToShow * slidesPerRow) - 2;
+    const pag = Math.ceil(locations.length / totalSlides);
+    setPagination(pag);
+  }, [locations]);
+  useEffect(() => {
+    const handleResize = () => {
+      setWinSize(window.innerWidth);
+      if (winSize <= 1180) {
+        slidesToShow = 2;
+        totalSlides = slidesToShow * slidesPerRow;
+        const pag = Math.ceil(locations.length / totalSlides);
+        setPagination(pag);
+      }
+      if (winSize <= 768) {
+        slidesToShow = 1;
+        totalSlides = slidesToShow * slidesPerRow;
+        const pag = Math.ceil(locations.length / totalSlides);
+        setPagination(pag);
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [winSize]);
+
   const conditionalInfinite = {
     arrows: false,
     dots: false,
@@ -43,6 +79,13 @@ const ChapterSlider = ({ locations: data, token }) => {
       },
       {
         breakpoint: 1180,
+        settings: {
+          slidesToShow: 2,
+          infinite: locations.length > 2,
+        },
+      },
+      {
+        breakpoint: 768,
         settings: {
           slidesToShow: 1,
           infinite: locations.length > 1,
@@ -112,7 +155,7 @@ const ChapterSlider = ({ locations: data, token }) => {
                 <div key={location._id} className={styles.cardContainer}>
                   <div className={styles.imgWrapper}>
                     {location.LocationLogo && <img src={location.LocationLogo} alt="location-img" />}
-                    {!location.LocationLogo && <div src={location.LocationLogo} alt="location-img" />}
+                    {!location.LocationLogo && <img src="/assets/images/favicons/android-chrome-512x512.png" className={styles.noImg} alt="location-img" />}
                   </div>
                   <div className={styles.universityName}>
                     <img src="/assets/images/chapter/mpa-logo.png" alt="MPA logo" />

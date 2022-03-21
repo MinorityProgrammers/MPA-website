@@ -3,8 +3,10 @@ import axios from 'axios';
 import styles from './chapter.module.scss';
 import { errorToast } from '../../../contexts/utils/toasts';
 
-const Members = ({ token, location }) => {
-  const [members, setMembers] = useState([]);
+const Members = ({ token, location, data }) => {
+  const [approvedMembers, setApprovedMembers] = useState([]);
+  const [totalMembers, setTotalMembers] = useState([]);
+  const [update, setUpdate] = useState(false);
 
   const searchHandler = () => {
     // const filterLocation = data.filter(
@@ -13,6 +15,21 @@ const Members = ({ token, location }) => {
     //   ,
     // );
     // setLocations(filterLocation);
+  };
+  const acceptReq = (id) => {
+    axios
+      .post(`http://localhost:5000/api/v1/joinChapter/accept/${id}`, { location: location._id }, {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then(() => {
+        setUpdate(!update);
+      })
+      .catch(() => {
+        errorToast('Network Error');
+      });
   };
   function getUniqueListBy(arr, key) {
     return [...new Map(arr.map((item) => [item[key], item])).values()];
@@ -25,7 +42,6 @@ const Members = ({ token, location }) => {
   };
   useEffect(() => {
     if (token && location._id) {
-      console.log(location._id);
       axios
         .get(`http://localhost:5000/api/v1/joinChapter/location/${location._id}`, {
           headers: {
@@ -40,7 +56,9 @@ const Members = ({ token, location }) => {
               const newMember = {
                 name: `${member.user_id.firstName} ${member.user_id.lastName}`,
                 id: member.user_id._id,
+                member_id: member._id,
                 role: member.role,
+                approved: member.approved,
                 date: dataFormat(member),
                 facebook: member.user_id.FacebookLink,
                 profilePicture: member.user_id.profilePicture,
@@ -51,7 +69,11 @@ const Members = ({ token, location }) => {
           });
           // const results = users.filter((element) => element !== null);
           const unique = getUniqueListBy(arr, '_id');
-          setMembers(unique);
+          const approved = unique.filter((e) => (
+            e.approved
+          ));
+          setApprovedMembers(approved);
+          setTotalMembers(unique);
         })
         .catch(() => {
           errorToast('Network Error');
@@ -59,16 +81,15 @@ const Members = ({ token, location }) => {
     } else {
       errorToast('Please login to continue');
     }
-  }, []);
-  console.log(members);
+  }, [update]);
   return (
-    <div className={styles.members}>
+    <div className={styles.approvedMembers}>
       <div className={styles.titleContainer}>
         <h2>Chapter Members</h2>
         <h2 style={{ fontWeight: '500' }}>
           Total:
           {' '}
-          {members.length}
+          {approvedMembers.length}
         </h2>
       </div>
       <div className={styles.serchBar}>
@@ -79,23 +100,33 @@ const Members = ({ token, location }) => {
       </div>
       <div className={styles.cardContainer}>
 
-        {members.map((member) => (
-          <div>
-            <img src={member?.profilePicture} alt="profile-img" />
-            <h2>{member?.name}</h2>
-            <h3>{member?.role}</h3>
-            <p>{member?.date}</p>
-            <div className="">
-              <a href={member?.linkedin}>
-                {' '}
-                <i className="fab fa-linkedin" />
-              </a>
-              {/* <i className="fab fa-twitter-square" /> */}
-              <a href={member?.facebook}>
-                <i className="fab fa-facebook-square" />
-              </a>
+        {(location?.added_by._id === data?._id
+          ? totalMembers : approvedMembers).map((member) => (
+            <div key={member?.id}>
+              {(location?.added_by._id === data?._id && !member.approved)
+             && (
+             <a
+               onClick={() => acceptReq(member?.member_id)}
+               className={styles.approveBtn}
+             >
+               approve
+             </a>
+             )}
+              <img src={member?.profilePicture} alt="profile-img" />
+              <h2>{member?.name}</h2>
+              <h3>{member?.role}</h3>
+              <p>{member?.date}</p>
+              <div className={styles}>
+                <a href={member?.linkedin}>
+                  {' '}
+                  <i className="fab fa-linkedin" />
+                </a>
+                {/* <i className="fab fa-twitter-square" /> */}
+                <a href={member?.facebook}>
+                  <i className="fab fa-facebook-square" />
+                </a>
+              </div>
             </div>
-          </div>
         ))}
 
       </div>

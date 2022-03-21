@@ -108,30 +108,22 @@
     .wrapper {
         padding: 0.3em;
     }
-
-    .container {
-        padding: 1em;
-    }
 }
 
 @media screen and (max-width: 480px) {
     .nameAndLocation,
     .timeAndPoints,
     .number {
-        font-size: 12px;
+        font-size: 20px;
     }
-    .number {
-        margin-right: 1em;
+    .name{
+        font-size: 20px;
     }
-    .wrapper {
-        padding: 0.2em 0.3em;
+    .amount{
+        font-size: 16px;
     }
-
-    .points {
-        display: none;
-    }
-    .pts {
-        display: inline-block;
+    .number{
+        width: 70px;
     }
 }
 
