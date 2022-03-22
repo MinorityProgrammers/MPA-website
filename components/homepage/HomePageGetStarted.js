@@ -32,7 +32,7 @@ const HomePageGetStarted = () => (
                 MPA is one of the fastest-growing Web3 learning platforms.
                 We’re proud that the helpfulness of the platform and a wealth of
                 online resources are frequently cited as reasons our students
-                love learning with us. Get started with our hackathon, courses, or meetups today!
+                love learning with us. Get started with our hackathons, courses, or meetups today!
               </p>
               <div className="">
                 <a href="/learn">
