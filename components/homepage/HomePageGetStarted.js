@@ -32,8 +32,7 @@ const HomePageGetStarted = () => (
                 MPA is one of the fastest-growing Blockchain learning platforms.
                 We’re proud that the helpfulness of the platform and a wealth of
                 online resources are frequently cited as reasons our students
-                love learning with us. There are 80+ web3 courses and
-                Hackathons.
+                love learning with us. Get started with our hackathon, courses, or meetups today!
               </p>
               <div className="">
                 <a href="/learn">
