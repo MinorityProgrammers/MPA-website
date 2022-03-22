@@ -65,6 +65,9 @@
   .no-filters {
     font-size: 16px !important;
   }
+  .background-icons {
+    display: none;
+  }
   .swiper-navigation_container {
     top: 34rem !important;
     right: 0 !important;

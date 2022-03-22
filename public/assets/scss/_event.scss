@@ -22,7 +22,6 @@
     background-color: var(--secondary-main);
     padding-top: 40px;
     .swiper-container {
-      width: 71%;
       position: relative;
       display: flex;
       justify-content: center;
@@ -728,14 +727,15 @@
       img {
         border-top-right-radius: 16px;
         // border-bottom-right-radius: 16px;
+        height: 150px;
         border-bottom-left-radius: 0 !important;
       }
     }
     &_content {
-      margin-top: 10px;
       width: 90%;
       padding-left: 20px;
       margin-left: 20px;
+      padding-bottom: 20px;
     }
     &_bottom {
       margin-top: 10px;

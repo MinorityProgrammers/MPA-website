@@ -111,6 +111,8 @@ const Event = (props) => {
     },
   ];
 
+  const router = useRouter();
+
   useEffect(() => {
     Promise.all([
       getEvents(),
@@ -223,7 +225,7 @@ const Event = (props) => {
       response?.data?.filter((event) => {
         const eventTime = new Date(event.time).getTime();
         if (event.approved !== null && event.approved === true) {
-          return event.Featured === true;
+          return event.Featured;
         }
       })
     );
@@ -347,7 +349,33 @@ const Event = (props) => {
     }
   };
 
-  console.log(Swiperdata);
+  const conditionalInfinite = {
+    arrows: false,
+    dots: false,
+    speed: 2000,
+    slidesToShow: 2,
+    infinite: Swiperdata?.length > 2,
+    autoplay: true,
+    slidesToScroll: 1,
+    className: "profile__projects-slider",
+    afterChange: (current) => setCurrentIndex(current),
+    responsive: [
+      {
+        breakpoint: 1755,
+        settings: {
+          slidesToShow: 2,
+          infinite: Swiperdata?.length > 2,
+        },
+      },
+      {
+        breakpoint: 1180,
+        settings: {
+          slidesToShow: 1,
+          infinite: Swiperdata?.length > 1,
+        },
+      },
+    ],
+  };
 
   const handleEventDateTime = (inputDateTime) => {
     setEventDateTime(inputDateTime.toISOString());
@@ -369,7 +397,7 @@ const Event = (props) => {
       }
     } else if (input === "catName" || input === "Virtual") {
       if (input === "eventDate") {
-        if (createEventData.eventTime.length === 0) {
+        if (createEventData?.eventTime?.length === 0) {
           const changedState = {
             ...createEventData,
             [input]: e.target.value,
@@ -380,7 +408,7 @@ const Event = (props) => {
           const changedState = {
             ...createEventData,
             [input]: e.target.value,
-            time: `${e.target.value}T${createEventData.eventTime}:00.000Z`,
+            time: `${e.target.value}T${createEventData?.eventTime}:00.000Z`,
           };
           createEventData(changedState);
         }
@@ -553,6 +581,7 @@ const Event = (props) => {
     } else {
       fetchEvents();
     }
+    filterEvents();
   };
 
   const categoryFilter = async (idx) => {
@@ -563,7 +592,7 @@ const Event = (props) => {
       setCategoryButtonsActiveIndex(-1);
     }
     if (idx !== -1) {
-      if (idx == 0) {
+      if (idx === 0) {
         if (categories.includes("Webinar") || categories.includes("Lecture")) {
           setCategories((current) =>
             [...current].filter(
@@ -636,6 +665,13 @@ const Event = (props) => {
     filterEvents();
   };
 
+  const clearFilters = () => [
+    getEvents(),
+    getSavedEvents(),
+    getUserSavedEvents(),
+    filterEvents(),
+  ];
+
   return (
     <div className="event_wrapper">
       <div className="event_container">
@@ -654,7 +690,7 @@ const Event = (props) => {
               Search
             </button>
           </form>
-          <div>
+          <div className="background-icons">
             <img
               src="/assets/images/bg-shadow-circle.png"
               className="tw-absolute"
@@ -681,7 +717,7 @@ const Event = (props) => {
             ))}
             <span
               className="clear-button tw-text-white tw-cursor-pointer tw-text-sm tw-font-semibold "
-              onClick={() => resetFilter()}
+              onClick={() => clearFilters()}
             >
               Clear Filter
             </span>
@@ -692,7 +728,7 @@ const Event = (props) => {
               />
             </div>
           </div>
-
+          /**MIGHT BE NEEDED LATER ON */
           {/* <div className="mobile_event_select">
             <Select
               id="form-filter"
@@ -737,11 +773,11 @@ const Event = (props) => {
             ""
           )}
         </div>
-        <div>
+        <div className="background-icons">
           <img
             src="/assets/images/bg-shadow-circle.png"
             className="tw-absolute"
-            style={{ top: "9%", left: "50%" }}
+            style={{ top: "9%", left: "80%" }}
             alt="background"
           />
         </div>
@@ -749,12 +785,6 @@ const Event = (props) => {
         <div className="event_divide">
           <h1>Featured&nbsp;Events</h1>
         </div>
-        {/* <div className="swiper-navigation_container">
-          <div className="swiper-navigation">
-            <div className="swiper-button-prev" />
-            <div className="swiper-button-next" />
-          </div>
-        </div> */}
 
         {/* LOADING SKELETON HERE */}
         <div className="swiper-container">
@@ -786,10 +816,8 @@ const Event = (props) => {
           ) : (
             <>
               <div className="container">
-                <Slider>
+                <Slider ref={setSliderRef} {...conditionalInfinite}>
                   {Swiperdata?.map((event, index) => (
-                    // <div className="wiper-slide" key={`${index + 1}`}>
-                    // <SwiperSlide>
                     <EventCardFeatured
                       item={event}
                       attended={event}
@@ -803,10 +831,28 @@ const Event = (props) => {
                       token={token}
                       allsavedEvents={allsavedEvents}
                     />
-                    // </SwiperSlide>
-                    // </div>
                   ))}
                 </Slider>
+                <div className="profile-projects-controllers">
+                  <div>
+                    <img
+                      onClick={sliderRef?.slickPrev}
+                      style={{ transform: "rotate(180deg)" }}
+                      src="/assets/images/arrow-righ-circle.svg"
+                      alt="control"
+                    />
+                    <p>
+                      {Swiperdata?.length > 2
+                        ? `${currentIndex + 1}/${Swiperdata?.length}`
+                        : "1/1"}
+                    </p>
+                    <img
+                      onClick={sliderRef?.slickNext}
+                      src="/assets/images/arrow-righ-circle.svg"
+                      alt="control"
+                    />
+                  </div>
+                </div>
               </div>
 
               <div className="">
@@ -831,7 +877,6 @@ const Event = (props) => {
             </div>
           ) : categoryFilterLoading ? (
             <div className="cards">
-              <EventCardSkeleton />
               <EventCardSkeleton />
               <EventCardSkeleton />
             </div>
@@ -928,9 +973,9 @@ const Event = (props) => {
                   <div className="swiper-slide">
                     <EventCardFeaturedSkeleton />
                   </div>
-                  <div className="swiper-slide">
+                  {/* <div className="swiper-slide">
                     <EventCardFeaturedSkeleton />
-                  </div>
+                  </div> */}
                 </div>
               ) : catergoryFilterLoading ? (
                 <div className="swiper-wrapper" style={{ width: "100%" }}>
