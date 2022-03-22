@@ -77,7 +77,7 @@ const HomepageExploreMinorityApps = () => {
               borderRadius: '40px',
             }}
           >
-            <img src="/assets/images/GenadropLogo_White.svg" alt="gdl" />
+            <img src="/assets/images/GenadropLogo_White.svg" alt="GenaDrop logo" />
           </div>
           <div
             className="d-flex flex-column justify-content-between align-items-center tw-w-2/5 lg:tw-w-full"
@@ -95,7 +95,7 @@ const HomepageExploreMinorityApps = () => {
               The no code NFT generative art creator tool & minter.
             </p>
             <a
-              href="https://genadrop.vercel.app/"
+              href="https://genadrop.com/"
               target="_blank"
               rel="noreferrer"
             >
