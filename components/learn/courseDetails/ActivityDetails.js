@@ -134,7 +134,7 @@ const ActivityDetails = ({
     <div className="banner-bg activity-pad">
       <div
         className="activity-styles d-flex flex-column justify-content-start align-items-center w-100"
-        style={{ backgroundColor: " var(--div-background-color);" }}
+        style={{ backgroundColor: "--div-background-color" }}
       >
         {/* <div className="col-12 col-md-3 pr-0 scroll-sidebar">
           <CourseSidebar

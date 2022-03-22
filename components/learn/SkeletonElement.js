@@ -7,7 +7,7 @@ const SkeletonElement = () => (
     <div
       className="row tw-pt-10"
       style={{
-        backgroundColor: " var(--div-background-color);",
+        backgroundColor: "var(--div-background-color)",
         height: "100vh",
         width: "100vw",
       }}

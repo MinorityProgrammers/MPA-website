@@ -36,7 +36,7 @@ const SettingSetup = ({ data, setData, step, setStep, completeStep }) => {
         : state.isFocused
         ? "2px solid #6938EF"
         : "2px solid transparent",
-      background: " var(--div-background-color);",
+      background: "var(--div-background-color)",
       borderRadius: "8px",
       padding: 20,
       marginTop: 8,
@@ -45,7 +45,7 @@ const SettingSetup = ({ data, setData, step, setStep, completeStep }) => {
       fontWeight: "bold",
       ":active": {
         ...styles[":active"],
-        background: " var(--div-background-color);",
+        background: "var(--div-background-color)",
       },
     }),
     control: () => ({
@@ -57,7 +57,7 @@ const SettingSetup = ({ data, setData, step, setStep, completeStep }) => {
     menu: (provided) => ({
       ...provided,
       // borderBottom: '1px dotted pink',
-      background: " var(--div-background-color);",
+      background: "var(--div-background-color)",
       padding: 5,
       border: "1px solid #6938EF",
     }),

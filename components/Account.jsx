@@ -194,13 +194,13 @@ const Account = () => {
         <div>
           <Modal
             style={{
-              background: " var(--div-background-color);",
+              background: "var(--div-background-color)",
               border: "1px solid #A259FF",
               borderRadius: "20px",
             }}
             bodyStyle={{
               marginTop: "30px",
-              background: " var(--div-background-color);",
+              background: "var(--div-background-color)",
             }}
             title={false}
             footer={false}
@@ -281,13 +281,13 @@ const Account = () => {
         footer={false}
         onCancel={() => setIsModalVisible(false)}
         style={{
-          background: " var(--div-background-color);",
+          background: "var(--div-background-color)",
           border: "1px solid #A259FF",
           borderRadius: "20px",
         }}
         bodyStyle={{
           marginTop: "30px",
-          background: " var(--div-background-color);",
+          background: "var(--div-background-color)",
         }}
         closable={false}
         width="700px"

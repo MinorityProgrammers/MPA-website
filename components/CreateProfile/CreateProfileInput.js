@@ -64,11 +64,11 @@ const CreateProfileInput = function ({
   const colourStyles = {
     control: (styles) => ({
       ...styles,
-      backgroundColor: " var(--div-background-color);",
+      backgroundColor: "var(--div-background-color)",
     }),
     option: (styles, { data, isDisabled, isFocused, isSelected }) => ({
       ...styles,
-      backgroundColor: " var(--div-background-color);",
+      backgroundColor: "var(--div-background-color)",
       color: "#ddd",
       cursor: isDisabled ? "not-allowed" : "default",
     }),
