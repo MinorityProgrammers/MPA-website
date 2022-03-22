@@ -18,7 +18,7 @@ const HomepageNewTopSection = () => (
         </div>
         <div className="tw-mt-4 tw-font-medium">
           <p className="tw-text-xl tw-pr-32 md:tw-text-base tw-text-white sm:tw-pr-0">
-            Join an international network of developers unifying together
+            Join the international network of developers unifying together
             to build socially impactful projects & spread STEM education
             to marginalized communities
             <br />
