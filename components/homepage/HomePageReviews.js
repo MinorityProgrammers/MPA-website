@@ -75,7 +75,7 @@ const HomePageReviews = () => {
           See what people are saying
         </h2>
         <p className="tw-text-2xl tw-text-center md:tw-w-full tw-mt-5 tw-mx-auto md:tw-text-base tw-mb-16 tw-text-white">
-          Still not sure ? Learn from other People how MPA is a big impact
+          Still not sure ? Learn from other People how MPA is making a big impact
         </p>
         {tweetsLoading && (
           <Swiper
