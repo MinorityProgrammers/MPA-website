@@ -212,7 +212,7 @@ const HeroSection = ({
     if (location.mission) {
       const newValues = values;
       newValues.location = location.LocationName;
-      newValues.advisor = location.advisor ? location.advisor : '';
+      newValues.advisor = location.advisor ? `${location.advisor.firstName} ${location.advisor.lastName}` : '';
       newValues.title = location.location;
       newValues.type = { label: location.chapter_type, value: location.chapter_type };
       newValues.about = location.description;
@@ -321,7 +321,10 @@ const HeroSection = ({
             components={{ DropdownIndicator }}
             isSearchable={false}
             closeMenuOnSelect
-            defaultValue={{ label: location?.advisor, value: location?.advisor }}
+            defaultValue={{
+              label: location.advisor?.firstName,
+              value: location.advisor?.lastName,
+            }}
             onChange={(e) => handelChange('advisor', e)}
             options={approvedMembers}
           />

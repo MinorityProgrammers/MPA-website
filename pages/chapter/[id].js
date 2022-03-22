@@ -150,7 +150,6 @@ const Index = () => {
   useEffect(() => {
     const userToken = window.localStorage.getItem('jwtToken');
     setToken(userToken);
-    console.log(id);
     if (id) {
       axios
         .get(`http://localhost:5000/api/v1/location/${id}`)
@@ -160,7 +159,6 @@ const Index = () => {
             ...d,
             date_founded: formatDate(d.date_founded),
           };
-          console.log(newData);
           setLocation(newData);
         })
         .catch((err) => console.error(err));
@@ -196,7 +194,7 @@ const Index = () => {
         token={token}
       />
       <Tabs active={active} setActive={setActive} />
-      <section>
+      <section className={styles.detailsSection}>
         <div className={`container ${styles.bodyContainer}`}>
           { active.overview
           && <Overview location={location} token={token} />}
