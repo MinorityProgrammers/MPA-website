@@ -7,8 +7,8 @@ const HomePageGetStarted = () => (
         <img src="/assets/images/home-page/about-us-bg.svg" alt="about-us bg" />
       </div>
       <div className="container top-part tw-mb-36">
-        <h2 className="top__part__title">Become a blockchain developer</h2>
-        <p className="tw-text-2xl tw-text-center md:tw-w-full tw-mt-5 tw-mx-auto md:tw-text-base tw-text-white">
+        <h2 className="top__part__title">Become a Web3 professional</h2>
+        <p className="tw-text-2xl tw-text-center mdprofessional:tw-w-full tw-mt-5 tw-mx-auto md:tw-text-base tw-text-white">
           Learn the hottest skills in Blockchain and Web3. Earn NFT credentials
           that recruiters from the top technology companies will see through our
           decentralized talent sourcing system.
@@ -29,7 +29,7 @@ const HomePageGetStarted = () => (
                 Learn without limits
               </h3>
               <p className="tw-text-xl lg:tw-text-lg tw-pr-32 md:tw-pr-0 sm:tw-text-base">
-                MPA is one of the fastest-growing Blockchain learning platforms.
+                MPA is one of the fastest-growing Web3 learning platforms.
                 We’re proud that the helpfulness of the platform and a wealth of
                 online resources are frequently cited as reasons our students
                 love learning with us. Get started with our hackathon, courses, or meetups today!
