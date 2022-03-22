@@ -8,10 +8,11 @@ const ConsultancyHero = () => (
           <div>
             <h1 className="consultancyHero-title">Consultancy</h1>
             <p className="consultancyHero-txt">
-              Get your idea turned into a complete web application ready for
-              market with our transparent task-based escrow system that gives
-              you as client, the control over how your product is being built.
-              {' '}
+              A one stop shop; we work with clients to reach optimal product
+              market fit, all the while building scalable applications ready for
+              users in both the traditional Web2 space and the emerging Web3
+              markets. A diversity focused organization; we build sustainably
+              w/wellness ingrained into our company culture.
             </p>
             <div className="incubator__button">
               <div className="button btn-gradient">Get Quote</div>

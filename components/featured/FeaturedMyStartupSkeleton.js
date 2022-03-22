@@ -1,6 +1,6 @@
-import React from "react";
-import Swiper from "react-id-swiper";
-import FeaturedMyCardSkeleton from "./FeaturedMyCardSkeleton";
+import React from 'react';
+import Swiper from 'react-id-swiper';
+import FeaturedMyCardSkeleton from './FeaturedMyCardSkeleton';
 
 const FeaturedMyStartupSkeleton = () => {
   const params = {
@@ -9,8 +9,8 @@ const FeaturedMyStartupSkeleton = () => {
     speed: 700,
     spaceBetween: 0,
     navigation: {
-      nextEl: 4 ? ".swiper-button-next" : "",
-      prevEl: 4 ? ".swiper-button-prev" : "",
+      nextEl: 4 ? '.swiper-button-next' : '',
+      prevEl: 4 ? '.swiper-button-prev' : '',
     },
     autoplay: {
       delay: 3000,
