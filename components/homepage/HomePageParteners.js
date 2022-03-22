@@ -29,8 +29,8 @@ const HomePageParteners = () => {
             <div>
               <h3 className="tw-text-4xl rw tw-mb-6 tw-mt-10 tw-font-bold tw-text-white">Partner with MPA</h3>
               <p className="tw-text-2xl rw-my-5">
-                If your goal is to Invest in Minority Startup, or hire talent
-                to build your product and more, consider partnering with us.
+                If your goal is to support minority startups, or hire talent
+                to build your product, partner with us!
               </p>
               <a href="/partner">
                 <button type="button" className="md:tw-w-11/12 md:tw-my-2 mintBTN tw-outline-none focus:tw-ring-offset-0 focus:tw-border-opacity-0 tw-ring-offset-0 tw-transition tw-ease-in-out tw-delay-150 duration-300 tw-w-10/12 tw-p-3 tw-rounded-3xl tw-h-12 tw-flex tw-flex-row tw-justify-center tw-my-4">
