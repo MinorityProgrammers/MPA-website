@@ -92,7 +92,7 @@ const HomepageExploreMinorityApps = () => {
                 marginTop: '20px',
               }}
             >
-              The no code NFT generative art creator tool & minter.
+              The no code, multi-chain NFT generative art creator tool, minter, & marketplace.
             </p>
             <a
               href="https://genadrop.com/"
