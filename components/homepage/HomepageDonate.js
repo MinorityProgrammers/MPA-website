@@ -71,9 +71,7 @@ const HomepageDonate = () => {
     <section id="donate" className="homepage__donate">
       <div className="donate__container">
         <div className="container">
-          <h2 className="top__part__title">
-            Donate
-          </h2>
+          <h2 className="top__part__title">Donate</h2>
           <div className="tw-flex">
             <img
               src="/assets/images/home-page/about-title-icon.svg"
@@ -82,10 +80,10 @@ const HomepageDonate = () => {
               alt="blockchain"
             />
             <p className="donate__container-subtitle md:tw-text-base">
-              We rely on donations from everyday people just
-              like you to fund our strategic activism.
-              Please make a recurring donation to our organization so we can continue to fight to
-              bring marginalized communities into the STEM workforce.
+              We rely on donations from everyday people just like you to fund
+              our strategic activism. Please make a recurring donation to our
+              organization so we can continue to fight to bring marginalized
+              communities into the STEM workforce.
             </p>
           </div>
         </div>
@@ -123,7 +121,13 @@ const HomepageDonate = () => {
             </div>
           </div>
         </div>
-        <div style={{ background: '#1C1D37', padding: '2.5rem 0' }} className="tw-my-20">
+        <div
+          style={{
+            background: 'var(--div-background-color)',
+            padding: '2.5rem 0',
+          }}
+          className="tw-my-20"
+        >
           <div className="container step__payment-monthly">
             <div className="">
               <input
@@ -135,7 +139,6 @@ const HomepageDonate = () => {
                 }}
               />
               <label>Monthly Donation</label>
-
             </div>
             <div className="">
               <input
@@ -146,10 +149,9 @@ const HomepageDonate = () => {
                   setMonthly(false);
                 }}
               />
-              <label>I want to make a single  donation</label>
+              <label>I want to make a single donation</label>
             </div>
           </div>
-
         </div>
         <div>
           {count === 1 ? (
@@ -198,18 +200,6 @@ const HomepageDonate = () => {
             />
           ) : null}
         </div>
-        {/* <div className="donate__options">
-          <h2 className="tw-text-blue-900">Other ways to support us:</h2>
-          <div className="donation__option">
-            <a
-              href="https://commerce.coinbase.com/charges/ZT33MCJR"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <i className="fab fa-bitcoin" />
-            </a>
-          </div>
-        </div> */}
       </div>
     </section>
   );

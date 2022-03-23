@@ -11,7 +11,9 @@ const SettingSetup = ({
   data, setData, step, setStep, completeStep,
 }) => {
   const dates = {
-    HighSchoolYear: data?.enteredHighSchoolYear ? new Date(data.enteredHighSchoolYear) : new Date(),
+    HighSchoolYear: data?.enteredHighSchoolYear
+      ? new Date(data.enteredHighSchoolYear)
+      : new Date(),
     birthdayDate: data?.birthday ? new Date(data.birthday) : new Date(),
     GraduationYear: data?.expectedGraduationYear
       ? new Date(data.expectedGraduationYear)
@@ -30,8 +32,12 @@ const SettingSetup = ({
       ...provided,
       // borderBottom: '1px dotted pink',
       color: 'white',
-      border: state.isSelected ? '2px solid #6938EF' : state.isFocused ? '2px solid #6938EF' : '2px solid transparent',
-      background: '#1C1D37',
+      border: state.isSelected
+        ? '2px solid #6938EF'
+        : state.isFocused
+          ? '2px solid #6938EF'
+          : '2px solid transparent',
+      background: 'var(--div-background-color)',
       borderRadius: '8px',
       padding: 20,
       marginTop: 8,
@@ -40,7 +46,7 @@ const SettingSetup = ({
       fontWeight: 'bold',
       ':active': {
         ...styles[':active'],
-        background: '#1C1D37',
+        background: 'var(--div-background-color)',
       },
     }),
     control: () => ({
@@ -52,10 +58,9 @@ const SettingSetup = ({
     menu: (provided) => ({
       ...provided,
       // borderBottom: '1px dotted pink',
-      background: '#1C1D37',
+      background: 'var(--div-background-color)',
       padding: 5,
       border: '1px solid #6938EF',
-
     }),
     container: (provided) => ({
       ...provided,
@@ -74,141 +79,137 @@ const SettingSetup = ({
       const transition = 'opacity 300ms';
 
       return {
-        ...provided, opacity, transition, color,
+        ...provided,
+        opacity,
+        transition,
+        color,
       };
     },
   };
   return (
     <div className={styles.setupContainer}>
       <div className={styles.stepperWrapper}>
-        <div className={`${styles.stepperItem} ${step === 1 && styles.active} ${step > 1 && styles.completed}`}>
-
+        <div
+          className={`${styles.stepperItem} ${step === 1 && styles.active} ${
+            step > 1 && styles.completed
+          }`}
+        >
           {step === 1 && (
             <div onClick={() => setStep(1)} className={styles.stepCounter}>
-              <img
-                src="/assets/images/settings/profile-step1.svg"
-                alt="step"
-              />
+              <img src="/assets/images/settings/profile-step1.svg" alt="step" />
             </div>
           )}
           {step > 1 && (
             <div onClick={() => setStep(1)} className={styles.stepCounter}>
-              <img
-                src="/assets/images/settings/check.svg"
-                alt="step"
-              />
+              <img src="/assets/images/settings/check.svg" alt="step" />
             </div>
           )}
           <div className={styles.stepName}>1</div>
         </div>
-        <div className={`${styles.stepperItem} ${step === 2 && styles.active} ${step > 2 && styles.completed}`}>
+        <div
+          className={`${styles.stepperItem} ${step === 2 && styles.active} ${
+            step > 2 && styles.completed
+          }`}
+        >
           {step === 2 && (
-          <div onClick={() => setStep(2)} className={styles.stepCounter}>
-            <img
-              src="/assets/images/settings/profile-step1.svg"
-              alt="step"
-            />
-          </div>
+            <div onClick={() => setStep(2)} className={styles.stepCounter}>
+              <img src="/assets/images/settings/profile-step1.svg" alt="step" />
+            </div>
           )}
           {step > 2 && (
             <div onClick={() => setStep(2)} className={styles.stepCounter}>
-              <img
-                src="/assets/images/settings/check.svg"
-                alt="step"
-              />
+              <img src="/assets/images/settings/check.svg" alt="step" />
             </div>
           )}
           {step < 2 && (
-            <div onClick={() => setStep(2)} className={styles.stepCounter}>. . .</div>
+            <div onClick={() => setStep(2)} className={styles.stepCounter}>
+              . . .
+            </div>
           )}
           <div className={styles.stepNameEven}>2</div>
         </div>
-        <div className={`${styles.stepperItem} ${step === 3 && styles.active} ${step > 3 && styles.completed}`}>
+        <div
+          className={`${styles.stepperItem} ${step === 3 && styles.active} ${
+            step > 3 && styles.completed
+          }`}
+        >
           {step === 3 && (
-          <div onClick={() => setStep(3)} className={styles.stepCounter}>
-            <img
-              src="/assets/images/settings/profile-step1.svg"
-              alt="step"
-            />
-          </div>
+            <div onClick={() => setStep(3)} className={styles.stepCounter}>
+              <img src="/assets/images/settings/profile-step1.svg" alt="step" />
+            </div>
           )}
           {step > 3 && (
             <div onClick={() => setStep(3)} className={styles.stepCounter}>
-              <img
-                src="/assets/images/settings/check.svg"
-                alt="step"
-              />
+              <img src="/assets/images/settings/check.svg" alt="step" />
             </div>
           )}
           {step < 3 && (
-            <div onClick={() => setStep(3)} className={styles.stepCounter}>. . .</div>
+            <div onClick={() => setStep(3)} className={styles.stepCounter}>
+              . . .
+            </div>
           )}
           <div className={styles.stepName}>3</div>
         </div>
-        <div className={`${styles.stepperItem} ${step === 4 && styles.active} ${step > 4 && styles.completed}`}>
+        <div
+          className={`${styles.stepperItem} ${step === 4 && styles.active} ${
+            step > 4 && styles.completed
+          }`}
+        >
           {step === 4 && (
-          <div onClick={() => setStep(4)} className={styles.stepCounter}>
-            <img
-              src="/assets/images/settings/profile-step1.svg"
-              alt="step"
-            />
-          </div>
+            <div onClick={() => setStep(4)} className={styles.stepCounter}>
+              <img src="/assets/images/settings/profile-step1.svg" alt="step" />
+            </div>
           )}
           {step > 4 && (
             <div onClick={() => setStep(4)} className={styles.stepCounter}>
-              <img
-                src="/assets/images/settings/check.svg"
-                alt="step"
-              />
+              <img src="/assets/images/settings/check.svg" alt="step" />
             </div>
           )}
           {step < 4 && (
-            <div onClick={() => setStep(4)} className={styles.stepCounter}>. . .</div>
+            <div onClick={() => setStep(4)} className={styles.stepCounter}>
+              . . .
+            </div>
           )}
           <div className={styles.stepNameEven}>4</div>
         </div>
       </div>
-      {step === 1
-      && (
-      <ProfileFirstStep
-        setData={setData}
-        data={data}
-        step={step}
-        setStep={setStep}
-        dates={dates}
-        completeStep={completeStep}
-        customStyles={customStyles}
-      />
+      {step === 1 && (
+        <ProfileFirstStep
+          setData={setData}
+          data={data}
+          step={step}
+          setStep={setStep}
+          dates={dates}
+          completeStep={completeStep}
+          customStyles={customStyles}
+        />
       )}
-      {step === 2
-      && (
-      <ProfileSecondStep
-        setData={setData}
-        data={data}
-        step={step}
-        setStep={setStep}
-        dates={dates}
-        customStyles={customStyles}
-      />
+      {step === 2 && (
+        <ProfileSecondStep
+          setData={setData}
+          data={data}
+          step={step}
+          setStep={setStep}
+          dates={dates}
+          customStyles={customStyles}
+        />
       )}
-      {step === 3
-      && (
-      <ProfileThirdStep
-        setData={setData}
-        data={data}
-        step={step}
-        setStep={setStep}
-        customStyles={customStyles}
-      />
+      {step === 3 && (
+        <ProfileThirdStep
+          setData={setData}
+          data={data}
+          step={step}
+          setStep={setStep}
+          customStyles={customStyles}
+        />
       )}
-      {step === 4
-      && (
-      <ProfileFourthStep
-        setData={setData}
-        data={data}
-        step={step}
-        setStep={setStep}
-      />
+      {step === 4 && (
+        <ProfileFourthStep
+          setData={setData}
+          data={data}
+          step={step}
+          setStep={setStep}
+        />
       )}
     </div>
   );

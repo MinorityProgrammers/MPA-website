@@ -5,7 +5,14 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
 const CreateProfileInput = function ({
-  label, type, name, options, required, value, setValue, className,
+  label,
+  type,
+  name,
+  options,
+  required,
+  value,
+  setValue,
+  className,
 }) {
   const [colorPickerVisibility, setColorPickerVisibility] = useState(false);
 
@@ -40,22 +47,29 @@ const CreateProfileInput = function ({
     }
   };
 
-  const handleSwitchChange = () => (setValue ? {
-    value: options.find((option) => option.label === value),
-    onChange: (e) => { setValue(e.value); },
-  } : {});
+  const handleSwitchChange = () => (setValue
+    ? {
+      value: options.find((option) => option.label === value),
+      onChange: (e) => {
+        setValue(e.value);
+      },
+    }
+    : {});
 
   const handleColorChange = (color) => {
     setValue(color.hex);
   };
 
   const colourStyles = {
-    control: (styles) => ({ ...styles, backgroundColor: '#1C1D37' }),
+    control: (styles) => ({
+      ...styles,
+      backgroundColor: 'var(--div-background-color)',
+    }),
     option: (styles, {
       data, isDisabled, isFocused, isSelected,
     }) => ({
       ...styles,
-      backgroundColor: '#1C1D37',
+      backgroundColor: 'var(--div-background-color)',
       color: '#ddd',
       cursor: isDisabled ? 'not-allowed' : 'default',
     }),
@@ -101,15 +115,19 @@ const CreateProfileInput = function ({
             <div
               className="cpt-btn"
               onClick={() => setColorPickerVisibility(!colorPickerVisibility)}
-              style={colorPickerVisibility ? { backgroundColor: '#a159fe' } : { backgroundColor: '#a159fe' }}
+              style={
+                colorPickerVisibility
+                  ? { backgroundColor: '#a159fe' }
+                  : { backgroundColor: '#a159fe' }
+              }
             >
               {!colorPickerVisibility ? 'Pick a Color' : 'Close Color Picker'}
             </div>
           </div>
           {colorPickerVisibility && (
-          <div className="react-color">
-            <ChromePicker color={value} onChange={handleColorChange} />
-          </div>
+            <div className="react-color">
+              <ChromePicker color={value} onChange={handleColorChange} />
+            </div>
           )}
         </label>
       );
@@ -127,7 +145,9 @@ const CreateProfileInput = function ({
             className="datepicker"
             value={value}
             selected={value}
-            onChange={(date) => { setValue(date); }}
+            onChange={(date) => {
+              setValue(date);
+            }}
             dateFormat="MM/dd/yyyy"
             placeholder="mm/dd/yyyy"
             required

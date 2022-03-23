@@ -15,8 +15,8 @@
   justify-content: space-between;
   padding-right: 20px;
 }
-.overviewContent h5 i{
-  cursor: pointer; 
+.overviewContent h5 i {
+  cursor: pointer;
 }
 .overviewContent h6 {
   font-size: 1vw;
@@ -51,8 +51,8 @@
   height: 100%;
 }
 .fiCompletion .progress svg circle {
-  fill: #1C1D37;
-  stroke: #6938EF;
+  fill: var(--div-background-color);
+  stroke: #6938ef;
   stroke-width: 8;
   transform: translate(2.5px, 2.5px);
   stroke-dasharray: 220;
@@ -71,7 +71,7 @@
 }
 .fiCompletion .completedProfile,
 .fiCompletion button {
-  background: #6938EF;
+  background: #6938ef;
   color: #ffffff;
   font-size: 20px;
   font-weight: bold;
@@ -79,7 +79,7 @@
   border-radius: 100px;
   width: fit-content;
   width: 100%;
-  padding: .9rem;
+  padding: 0.9rem;
 }
 .fiCompletion .completedProfile {
   color: #00aa4f;
@@ -105,12 +105,12 @@
 .fIProfile {
   color: white;
   margin: 20px 0;
-  border: 1px solid #6938EF;
+  border: 1px solid #6938ef;
   box-shadow: 0px 17px 25px rgb(0 0 0 / 25%);
   border-radius: 15px;
   padding-top: 15px;
 }
-.fIProfile h5{
+.fIProfile h5 {
   padding-left: 50px;
 }
 .fIProfile .userContent {
@@ -138,14 +138,14 @@
   width: 65%;
   font-weight: 400;
 }
-.infoValue a:hover{
-  color: #6938EF;
+.infoValue a:hover {
+  color: #6938ef;
 }
-.lineContainer{
+.lineContainer {
   padding: 0 10px;
   width: 100%;
 }
-.line{
+.line {
   background: rgba(147, 121, 255, 0.52);
   height: 1px;
   width: 100%;
@@ -498,7 +498,7 @@
   background: none;
   margin: 20px 0px 0px 20px;
   box-shadow: none;
-  position: relative
+  position: relative;
 }
 
 .progress:after {
@@ -506,34 +506,33 @@
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  border: 20px solid #3E385D;
-  ;
+  border: 20px solid #3e385d;
   position: absolute;
   top: 0;
-  left: 0
+  left: 0;
 }
 
-.progress>span {
+.progress > span {
   width: 50%;
   height: 100%;
   overflow: hidden;
   position: absolute;
   top: 0;
-  z-index: 1
+  z-index: 1;
 }
 
 .progress .progressLeft {
-  left: 0
+  left: 0;
 }
 
 .progress .progressBar {
   width: 100%;
   height: 100%;
   background: none;
-  border-width:20px;
+  border-width: 20px;
   border-style: solid;
   position: absolute;
-  top: 0
+  top: 0;
 }
 
 .progress .progressLeft .progressBar {
@@ -542,11 +541,11 @@
   border-bottom-right-radius: 80px;
   border-left: 0;
   -webkit-transform-origin: center left;
-  transform-origin: center left
+  transform-origin: center left;
 }
 
 .progress .progressRight {
-  right: 0
+  right: 0;
 }
 
 .progress .progressRight .progressBar {
@@ -562,7 +561,7 @@
   width: 90%;
   height: 90%;
   border-radius: 50%;
-  background: #1C1D37;
+  background: var(--div-background-color);
   font-size: 20px;
   font-weight: bold;
   color: #fff;
@@ -571,41 +570,41 @@
   top: 5%;
   left: 5%;
   display: flex;
-  justify-content: center; 
+  justify-content: center;
   align-items: center;
   font-weight: bold;
 }
 
 .progress.blue .progressBar {
-  border-color: #7653FF;
+  border-color: #7653ff;
 }
 
 /* Bottom body Items */
-.bodyBottom{
+.bodyBottom {
   display: grid;
   grid-template-columns: 48% 48%;
-  grid-column-gap:4%;
+  grid-column-gap: 4%;
   color: white;
   font-size: 16px;
   font-weight: 500;
 }
-.bottomItem{
+.bottomItem {
   display: flex;
   padding: 1rem 0rem;
   flex-direction: column;
-  background: #1C1D37;
-  border: 1px solid #6938EF;
+  background: var(--div-background-color);
+  border: 1px solid #6938ef;
   box-sizing: border-box;
   box-shadow: 0px 32px 41px rgb(0 0 0 / 25%);
   border-radius: 15px;
 }
-.bottomItem div{
+.bottomItem div {
   padding-left: 50px;
 }
-.lineContainer{
+.lineContainer {
   padding: 0 10px !important;
 }
-.bottomItem div h2{
+.bottomItem div h2 {
   color: white;
   font-size: 20px;
   font-weight: bold;
@@ -614,86 +613,88 @@
   justify-content: space-between;
   padding-right: 20px;
 }
-.bottomItem div h2 i{
- cursor: pointer; 
-}  
-.itemElement{
+.bottomItem div h2 i {
+  cursor: pointer;
+}
+.itemElement {
   display: flex;
   justify-content: space-between;
   padding-right: 2rem;
 }
-.itemElement img{
+.itemElement img {
   max-height: 24px;
   cursor: pointer;
 }
-.itemElement p{
+.itemElement p {
   cursor: pointer;
 }
 
 @media only screen and (max-width: 600px) {
-  .fiCompletion{
+  .fiCompletion {
     flex-flow: column;
     align-items: center;
   }
 }
 @media only screen and (max-width: 450px) {
-  .overviewContent h5{
+  .overviewContent h5 {
     font-size: 18px;
   }
-  .infoKey{
+  .infoKey {
     font-size: 16px;
   }
-  .bottomItem{
+  .bottomItem {
     margin-bottom: 20px;
   }
-  .bottomItem div h2{
+  .bottomItem div h2 {
     font-size: 18px;
   }
-  .bottomItem div{
+  .bottomItem div {
     padding-left: 20px;
   }
-  .itemElement{
+  .itemElement {
     padding-right: 0px;
   }
-  .userContent{
+  .userContent {
     padding-left: 20px !important;
   }
-  .fIProfile h5{
+  .fIProfile h5 {
     padding-left: 20px;
   }
   .walletContainer {
     padding-left: 5px !important;
   }
-  .walletRow{
+  .walletRow {
     width: 100%;
   }
-  .bodyBottom{
+  .bodyBottom {
     grid-template-columns: 100%;
   }
-  .itemElement img{
+  .itemElement img {
     margin: 0 !important;
   }
-  .fiCompletion button{
+  .fiCompletion button {
     font-size: 18px;
   }
-  .info p{
+  .info p {
     font-size: 16px;
   }
-  .fIProfile, .userContent, .uCLeft{
+  .fIProfile,
+  .userContent,
+  .uCLeft {
     width: 100% !important;
   }
   .fIProfile .userContent .info:nth-child(-n + 2) .infoValue {
     width: 100% !important;
   }
-  .walletRow h3{
+  .walletRow h3 {
     font-size: 14px;
-  }  
-  .walletRow p{
+  }
+  .walletRow p {
     font-size: 14px;
     margin-left: 4px;
     white-space: nowrap;
-  }  
-  .overviewContent{   
+  }
+  .overviewContent {
     padding: 10px;
   }
 }
