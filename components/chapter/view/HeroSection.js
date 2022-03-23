@@ -113,7 +113,7 @@ const customStyles = {
 };
 
 const HeroSection = ({
-  location, token, DropdownIndicator, setUpdate, update,
+  location, token, DropdownIndicator, setUpdate, update, data,
 }) => {
   const { Dragger } = Upload;
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -209,18 +209,6 @@ const HeroSection = ({
     setValues(newValues);
   };
   useEffect(() => {
-    if (location.mission) {
-      const newValues = values;
-      newValues.location = location.LocationName;
-      newValues.advisor = location.advisor ? `${location.advisor.firstName} ${location.advisor.lastName}` : '';
-      newValues.title = location.location;
-      newValues.type = { label: location.chapter_type, value: location.chapter_type };
-      newValues.about = location.description;
-      newValues.mission = location.mission;
-      setValues(newValues);
-    }
-  }, [location]);
-  useEffect(() => {
     if (token) {
       if (location._id) {
         axios
@@ -295,11 +283,11 @@ const HeroSection = ({
           <label>
             Title
           </label>
-          <input defaultValue={values.title} onChange={(e) => handelChange('title', e.target.value)} type="text" />
+          <input defaultValue={location?.location} onChange={(e) => handelChange('title', e.target.value)} type="text" />
           <label>
             Location
           </label>
-          <input defaultValue={values.location} onChange={(e) => handelChange('location', e.target.value)} type="text" />
+          <input defaultValue={location?.LocationName} onChange={(e) => handelChange('location', e.target.value)} type="text" />
           <label>
             Type
           </label>
@@ -331,11 +319,11 @@ const HeroSection = ({
           <label>
             About
           </label>
-          <textarea defaultValue={values.about} onChange={(e) => handelChange('about', e.target.value)} cols="30" rows="6" />
+          <textarea defaultValue={location?.description} onChange={(e) => handelChange('about', e.target.value)} cols="30" rows="6" />
           <label>
             Mission
           </label>
-          <textarea defaultValue={values.mission} onChange={(e) => handelChange('mission', e.target.value)} cols="30" rows="6" />
+          <textarea defaultValue={location?.mission} onChange={(e) => handelChange('mission', e.target.value)} cols="30" rows="6" />
           <label>
             Cover
           </label>
@@ -367,7 +355,7 @@ const HeroSection = ({
 
           </div>
           <div className={styles.right}>
-            <i onClick={(() => setIsModalVisible(true))} className="fas fa-edit" />
+            {location.added_by?._id === data?._id && <i onClick={(() => setIsModalVisible(true))} className="fas fa-edit" />}
             {location.advisor && (
             <p>
               Advisor:

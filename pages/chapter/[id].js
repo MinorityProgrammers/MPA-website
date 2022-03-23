@@ -187,6 +187,7 @@ const Index = () => {
       {hide === false && <ComingSoon closeClick={handleClick} />}
       <HeroSection
         DropdownIndicator={DropdownIndicator}
+        data={data}
         customStyles={customStyles}
         location={location}
         update={update}
