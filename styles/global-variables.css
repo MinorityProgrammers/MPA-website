@@ -8,6 +8,7 @@
   /* -------------------- Color Palettes -------------------- */
 
   /* Dark colors */
+  --div-background-color: #1c1d37;
   --dark-main: #141414;
   --dark-low-contrast: #000000;
   --dark-high-contrast: #3d3d3d;
@@ -30,7 +31,7 @@
   /* Secondary colors */
   --secondary-main: #14152b;
   --secondary-low-contrast: #10111f;
-  --secondary-high-contrast: var(--div-background-color);
+  --secondary-high-contrast: #1c1d37;
   --secondary-accent: rgba(196, 196, 196, 0.08);
   --secondary-accent-1: #3e385d;
 

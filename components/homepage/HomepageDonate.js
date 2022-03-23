@@ -1,9 +1,9 @@
-import React, { useContext, useState } from "react";
-import { GlobalContext } from "../../contexts/provider";
-import DonateAmount from "../donate/DonateAmount";
-import DonateCompleted from "../donate/DonateCompleted";
-import DonateDetails from "../donate/DonateDetails";
-import DonatePayment from "../donate/DonatePayment";
+import React, { useContext, useState } from 'react';
+import { GlobalContext } from '../../contexts/provider';
+import DonateAmount from '../donate/DonateAmount';
+import DonateCompleted from '../donate/DonateCompleted';
+import DonateDetails from '../donate/DonateDetails';
+import DonatePayment from '../donate/DonatePayment';
 
 const HomepageDonate = () => {
   const { amount, donateDispatch } = useContext(GlobalContext);
@@ -18,51 +18,49 @@ const HomepageDonate = () => {
 
   const handleValue = (e) => {
     donateDispatch({
-      type: "UPDATE_DONATE_AMOUNT",
+      type: 'UPDATE_DONATE_AMOUNT',
       amount: e.target.value,
     });
   };
 
-  const createOrder = (data, actions) =>
-    actions.order
-      .create({
-        purchase_units: [
-          {
-            amount: {
-              value: amount,
-            },
+  const createOrder = (data, actions) => actions.order
+    .create({
+      purchase_units: [
+        {
+          amount: {
+            value: amount,
           },
-        ],
-        application_context: {
-          shipping_preference: "NO_SHIPPING",
         },
-      })
-      .then((orderID) => {
-        setOrderID(orderID);
-        return orderID;
-      });
+      ],
+      application_context: {
+        shipping_preference: 'NO_SHIPPING',
+      },
+    })
+    .then((orderID) => {
+      setOrderID(orderID);
+      return orderID;
+    });
   // const createSubscription = (data, action) => {};
 
-  const onApprove = (data, actions) =>
-    actions.order.capture().then((details) => {
-      const { purchase_units } = details;
-      setBillingDetails(details);
-      setPayment(purchase_units);
-      setSucceeded(true);
-      setIsDone(true);
-      setCount(count + 1);
-    });
+  const onApprove = (data, actions) => actions.order.capture().then((details) => {
+    const { purchase_units } = details;
+    setBillingDetails(details);
+    setPayment(purchase_units);
+    setSucceeded(true);
+    setIsDone(true);
+    setCount(count + 1);
+  });
 
   const scrollTo = () => {
     const currentLocation = window.location.href;
-    const hasAnchor = currentLocation.includes("/#");
+    const hasAnchor = currentLocation.includes('/#');
     if (hasAnchor) {
       const anchorId = `${currentLocation.substring(
-        currentLocation.indexOf("#") + 1
+        currentLocation.indexOf('#') + 1,
       )}`;
       const anchor = document.getElementById(anchorId);
       if (anchor) {
-        anchor.scrollIntoView({ behavior: "smooth" });
+        anchor.scrollIntoView({ behavior: 'smooth' });
       }
     }
   };
@@ -77,7 +75,7 @@ const HomepageDonate = () => {
           <div className="tw-flex">
             <img
               src="/assets/images/home-page/about-title-icon.svg"
-              style={{ marginTop: "-30px" }}
+              style={{ marginTop: '-30px' }}
               className="donate__header-img"
               alt="blockchain"
             />
@@ -93,8 +91,8 @@ const HomepageDonate = () => {
           <div className="row step__header">
             <div
               className={`col step__header-item ${
-                count === 1 ? "step-active" : ""
-              } ${isDone ? "step-done" : ""}`}
+                count === 1 ? 'step-active' : ''
+              } ${isDone ? 'step-done' : ''}`}
             >
               {isDone && amount !== 0 ? (
                 <i className="far fa-check-circle" />
@@ -103,8 +101,8 @@ const HomepageDonate = () => {
             </div>
             <div
               className={`col step__header-item ${
-                count === 2 ? "step-active" : ""
-              } ${isDone && succeeded ? "step-done" : ""}`}
+                count === 2 ? 'step-active' : ''
+              } ${isDone && succeeded ? 'step-done' : ''}`}
             >
               {isDone && succeeded ? (
                 <i className="far fa-check-circle" />
@@ -113,7 +111,7 @@ const HomepageDonate = () => {
             </div>
             <div
               className={`col step__header-item ${
-                count === 3 ? "step-done" : ""
+                count === 3 ? 'step-done' : ''
               }`}
             >
               {isDone && succeeded ? (
@@ -125,8 +123,8 @@ const HomepageDonate = () => {
         </div>
         <div
           style={{
-            background: "var(--div-background-color)",
-            padding: "2.5rem 0",
+            background: 'var(--div-background-color)',
+            padding: '2.5rem 0',
           }}
           className="tw-my-20"
         >
@@ -202,18 +200,6 @@ const HomepageDonate = () => {
             />
           ) : null}
         </div>
-        {/* <div className="donate__options">
-          <h2 className="tw-text-blue-900">Other ways to support us:</h2>
-          <div className="donation__option">
-            <a
-              href="https://commerce.coinbase.com/charges/ZT33MCJR"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <i className="fab fa-bitcoin" />
-            </a>
-          </div>
-        </div> */}
       </div>
     </section>
   );

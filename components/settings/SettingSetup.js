@@ -1,13 +1,15 @@
-import React, { useEffect } from "react";
-import styles from "../../styles/settings/settingSetup.module.scss";
-import "react-datepicker/dist/react-datepicker.css";
-import "react-phone-input-2/lib/material.css";
-import ProfileFirstStep from "./ProfileFirstStep";
-import ProfileSecondStep from "./ProfileSecondStep";
-import ProfileThirdStep from "./ProfileThirdStep";
-import ProfileFourthStep from "./ProfileFourthStep";
+import React, { useEffect } from 'react';
+import styles from '../../styles/settings/settingSetup.module.scss';
+import 'react-datepicker/dist/react-datepicker.css';
+import 'react-phone-input-2/lib/material.css';
+import ProfileFirstStep from './ProfileFirstStep';
+import ProfileSecondStep from './ProfileSecondStep';
+import ProfileThirdStep from './ProfileThirdStep';
+import ProfileFourthStep from './ProfileFourthStep';
 
-const SettingSetup = ({ data, setData, step, setStep, completeStep }) => {
+const SettingSetup = ({
+  data, setData, step, setStep, completeStep,
+}) => {
   const dates = {
     HighSchoolYear: data?.enteredHighSchoolYear
       ? new Date(data.enteredHighSchoolYear)
@@ -18,64 +20,63 @@ const SettingSetup = ({ data, setData, step, setStep, completeStep }) => {
       : new Date(),
   };
   useEffect(() => {
-    const token =
-      typeof window !== "undefined"
-        ? window.localStorage.getItem("jwtToken")
-        : null;
+    const token = typeof window !== 'undefined'
+      ? window.localStorage.getItem('jwtToken')
+      : null;
     if (token) {
-      setData(JSON.parse(localStorage.getItem("userInfo")).user);
+      setData(JSON.parse(localStorage.getItem('userInfo')).user);
     }
   }, [step]);
   const customStyles = {
     option: (provided, state) => ({
       ...provided,
       // borderBottom: '1px dotted pink',
-      color: "white",
+      color: 'white',
       border: state.isSelected
-        ? "2px solid #6938EF"
+        ? '2px solid #6938EF'
         : state.isFocused
-        ? "2px solid #6938EF"
-        : "2px solid transparent",
-      background: "var(--div-background-color)",
-      borderRadius: "8px",
+          ? '2px solid #6938EF'
+          : '2px solid transparent',
+      background: 'var(--div-background-color)',
+      borderRadius: '8px',
       padding: 20,
       marginTop: 8,
-      width: "100%",
-      cursor: "pointer",
-      fontWeight: "bold",
-      ":active": {
-        ...styles[":active"],
-        background: "var(--div-background-color)",
+      width: '100%',
+      cursor: 'pointer',
+      fontWeight: 'bold',
+      ':active': {
+        ...styles[':active'],
+        background: 'var(--div-background-color)',
       },
     }),
     control: () => ({
       // none of react-select's styles are passed to <Control />
       // width: ,
-      display: "flex",
-      height: "100%",
+      display: 'flex',
+      height: '100%',
     }),
     menu: (provided) => ({
       ...provided,
       // borderBottom: '1px dotted pink',
-      background: "var(--div-background-color)",
+      background: 'var(--div-background-color)',
       padding: 5,
-      border: "1px solid #6938EF",
+      border: '1px solid #6938EF',
     }),
     container: (provided) => ({
       ...provided,
-      height: "100%",
-      margin: "0 !important",
-      cursor: "pointer",
-      paddingLeft: "8px",
+      height: '100%',
+      margin: '0 !important',
+      cursor: 'pointer',
+      paddingLeft: '8px',
     }),
     indicatorSeparator: (provided) => ({
       ...provided,
-      display: "none",
+      display: 'none',
     }),
     singleValue: (provided) => {
       const opacity = 1;
-      const color = "#fff";
-      const transition = "opacity 300ms";
+      const color = '#fff';
+      const transition = 'opacity 300ms';
 
       return {
         ...provided,

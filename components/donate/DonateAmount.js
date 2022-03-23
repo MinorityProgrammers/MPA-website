@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const DonateAmount = ({
   handleValue,
@@ -55,8 +55,8 @@ const DonateAmount = ({
     </div>
     <div
       style={{
-        background: "var(--div-background-color)",
-        padding: "2.5rem 0",
+        background: 'var(--div-background-color)',
+        padding: '2.5rem 0',
       }}
       className="mt-5"
     >

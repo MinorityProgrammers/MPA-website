@@ -1,15 +1,15 @@
-import React from "react";
-import Skeleton from "react-loading-skeleton";
-import "./learn-css/Skeleton.module.css";
+import React from 'react';
+import Skeleton from 'react-loading-skeleton';
+import './learn-css/Skeleton.module.css';
 
 const SkeletonElement = () => (
   <div className="courses-details banner-bg ">
     <div
       className="row tw-pt-10"
       style={{
-        backgroundColor: "var(--div-background-color)",
-        height: "100vh",
-        width: "100vw",
+        backgroundColor: 'var(--div-background-color)',
+        height: '100vh',
+        width: '100vw',
       }}
     >
       <div className="col-10 col-md-5 pr-0">
@@ -17,7 +17,7 @@ const SkeletonElement = () => (
         <div className="pb-5 lg:pt-5">
           <div className="ml-md-4 mb-3 mt-4">
             <Skeleton
-              style={{ backgroundColor: "#dcdcdc" }}
+              style={{ backgroundColor: '#dcdcdc' }}
               width={0}
               height={10}
             />
@@ -27,14 +27,14 @@ const SkeletonElement = () => (
             <Skeleton
               width={150}
               height={15}
-              style={{ backgroundColor: "#dcdcdc" }}
+              style={{ backgroundColor: '#dcdcdc' }}
             />
             <div className="mt-4 pt-3">
               <h5 className="mb-3">
                 <Skeleton
                   width={170}
                   height={20}
-                  style={{ backgroundColor: "#dcdcdc" }}
+                  style={{ backgroundColor: '#dcdcdc' }}
                 />
               </h5>
               <div className="mb-2 d-flex align-items-center">
@@ -42,12 +42,12 @@ const SkeletonElement = () => (
                   className="mr-2"
                   width={25}
                   height={25}
-                  style={{ borderRadius: "50%", backgroundColor: "#dcdcdc" }}
+                  style={{ borderRadius: '50%', backgroundColor: '#dcdcdc' }}
                 />
                 <Skeleton
                   width={160}
                   height={13}
-                  style={{ backgroundColor: "#dcdcdc" }}
+                  style={{ backgroundColor: '#dcdcdc' }}
                 />
               </div>
               <div className="mb-2 d-flex align-items-center">
@@ -55,12 +55,12 @@ const SkeletonElement = () => (
                   className="mr-2"
                   width={25}
                   height={25}
-                  style={{ borderRadius: "50%", backgroundColor: "#dcdcdc" }}
+                  style={{ borderRadius: '50%', backgroundColor: '#dcdcdc' }}
                 />
                 <Skeleton
                   width={160}
                   height={13}
-                  style={{ backgroundColor: "#dcdcdc" }}
+                  style={{ backgroundColor: '#dcdcdc' }}
                 />
               </div>
             </div>
@@ -70,7 +70,7 @@ const SkeletonElement = () => (
                 <Skeleton
                   width={170}
                   height={20}
-                  style={{ backgroundColor: "#dcdcdc" }}
+                  style={{ backgroundColor: '#dcdcdc' }}
                 />
               </h5>
               <div className="mb-2 d-flex align-items-center">
@@ -78,12 +78,12 @@ const SkeletonElement = () => (
                   className="mr-2"
                   width={25}
                   height={25}
-                  style={{ borderRadius: "50%", backgroundColor: "#dcdcdc" }}
+                  style={{ borderRadius: '50%', backgroundColor: '#dcdcdc' }}
                 />
                 <Skeleton
                   width={160}
                   height={13}
-                  style={{ backgroundColor: "#dcdcdc" }}
+                  style={{ backgroundColor: '#dcdcdc' }}
                 />
               </div>
               <div className="mb-2 d-flex align-items-center">
@@ -91,12 +91,12 @@ const SkeletonElement = () => (
                   className="mr-2"
                   width={25}
                   height={25}
-                  style={{ borderRadius: "50%", backgroundColor: "#dcdcdc" }}
+                  style={{ borderRadius: '50%', backgroundColor: '#dcdcdc' }}
                 />
                 <Skeleton
                   width={160}
                   height={13}
-                  style={{ backgroundColor: "#dcdcdc" }}
+                  style={{ backgroundColor: '#dcdcdc' }}
                 />
               </div>
             </div>
@@ -106,7 +106,7 @@ const SkeletonElement = () => (
                 <Skeleton
                   width={170}
                   height={20}
-                  style={{ backgroundColor: "#dcdcdc" }}
+                  style={{ backgroundColor: '#dcdcdc' }}
                 />
               </h5>
               <div className="mb-2 d-flex align-items-center">
@@ -114,12 +114,12 @@ const SkeletonElement = () => (
                   className="mr-2"
                   width={25}
                   height={25}
-                  style={{ borderRadius: "50%", backgroundColor: "#dcdcdc" }}
+                  style={{ borderRadius: '50%', backgroundColor: '#dcdcdc' }}
                 />
                 <Skeleton
                   width={160}
                   height={13}
-                  style={{ backgroundColor: "#dcdcdc" }}
+                  style={{ backgroundColor: '#dcdcdc' }}
                 />
               </div>
               <div className="mb-2 d-flex align-items-center">
@@ -127,12 +127,12 @@ const SkeletonElement = () => (
                   className="mr-2"
                   width={25}
                   height={25}
-                  style={{ borderRadius: "50%", backgroundColor: "#dcdcdc" }}
+                  style={{ borderRadius: '50%', backgroundColor: '#dcdcdc' }}
                 />
                 <Skeleton
                   width={160}
                   height={13}
-                  style={{ backgroundColor: "#dcdcdc" }}
+                  style={{ backgroundColor: '#dcdcdc' }}
                 />
               </div>
             </div>
@@ -150,24 +150,24 @@ const SkeletonElement = () => (
                 <Skeleton
                   width={170}
                   height={20}
-                  style={{ backgroundColor: "#dcdcdc" }}
+                  style={{ backgroundColor: '#dcdcdc' }}
                 />
               </h1>
               <Skeleton
-                style={{ backgroundColor: "#dcdcdc" }}
+                style={{ backgroundColor: '#dcdcdc' }}
                 width={70}
                 height={10}
               />
               <div className=" mt-2 mb-2">
                 <Skeleton
                   height={6}
-                  style={{ backgroundColor: "#dcdcdc", width: "100%" }}
+                  style={{ backgroundColor: '#dcdcdc', width: '100%' }}
                 />
               </div>
               <div className=" mt-2 mb-2">
                 <Skeleton
                   height={6}
-                  style={{ backgroundColor: "#dcdcdc", width: "100%" }}
+                  style={{ backgroundColor: '#dcdcdc', width: '100%' }}
                 />
               </div>
             </div>
@@ -179,12 +179,12 @@ const SkeletonElement = () => (
             <Skeleton
               height={10}
               width={22}
-              style={{ backgroundColor: "#dcdcdc" }}
+              style={{ backgroundColor: '#dcdcdc' }}
             />
             <Skeleton
               height={10}
               width={22}
-              style={{ backgroundColor: "#dcdcdc" }}
+              style={{ backgroundColor: '#dcdcdc' }}
             />
           </div>
 
@@ -196,8 +196,8 @@ const SkeletonElement = () => (
                     <Skeleton
                       className="ml-3"
                       style={{
-                        backgroundColor: "#dcdcdc",
-                        borderRadius: "15px",
+                        backgroundColor: '#dcdcdc',
+                        borderRadius: '15px',
                       }}
                       width={70}
                       height={15}
@@ -209,19 +209,19 @@ const SkeletonElement = () => (
                     <Skeleton
                       width={170}
                       height={14}
-                      style={{ backgroundColor: "#dcdcdc" }}
+                      style={{ backgroundColor: '#dcdcdc' }}
                     />
                   </h4>
                 </div>
-                <div className="mb-1" style={{ padding: "0px 115px" }}>
+                <div className="mb-1" style={{ padding: '0px 115px' }}>
                   <div className="mt-1">
                     <Skeleton
                       className="mr-5"
                       height={6}
                       style={{
-                        backgroundColor: "#dcdcdc",
-                        width: "90%",
-                        marginLeft: "4rem",
+                        backgroundColor: '#dcdcdc',
+                        width: '90%',
+                        marginLeft: '4rem',
                       }}
                     />
                   </div>
@@ -230,9 +230,9 @@ const SkeletonElement = () => (
                       className="mr-5"
                       height={6}
                       style={{
-                        backgroundColor: "#dcdcdc",
-                        width: "90%",
-                        marginLeft: "4rem",
+                        backgroundColor: '#dcdcdc',
+                        width: '90%',
+                        marginLeft: '4rem',
                       }}
                     />
                   </div>

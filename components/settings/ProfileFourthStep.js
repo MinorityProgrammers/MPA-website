@@ -1,13 +1,13 @@
-import React, { useState, useContext, useEffect } from "react";
-import Select from "react-select";
-import { useRouter } from "next/router";
-import styles from "../../styles/settings/settingSetup.module.scss";
-import { GlobalContext } from "../../contexts/provider";
-import updateProfileJSON from "../../contexts/actions/profile/updateProfileJSON";
+import React, { useState, useContext, useEffect } from 'react';
+import Select from 'react-select';
+import { useRouter } from 'next/router';
+import styles from '../../styles/settings/settingSetup.module.scss';
+import { GlobalContext } from '../../contexts/provider';
+import updateProfileJSON from '../../contexts/actions/profile/updateProfileJSON';
 
 const DropdownIndicator = () => (
   <img
-    style={{ maxWidth: "20px", marginRight: "10px" }}
+    style={{ maxWidth: '20px', marginRight: '10px' }}
     src="/assets/images/settings/link-drop-down.svg"
     alt="link"
   />
@@ -22,9 +22,9 @@ const ProfileFourthStep = ({ data, step, setData }) => {
   const [githubLink, setGithubLink] = useState(data?.GithubLink);
   const [dribbleLink, setDribbleLink] = useState(data?.DribbleLink);
   // website
-  const [link, setLink] = useState("");
+  const [link, setLink] = useState('');
   // new Link
-  const [newLink, setNewLink] = useState("");
+  const [newLink, setNewLink] = useState('');
 
   const [addActive, setAddActive] = useState(false);
   const [edit, setEdit] = useState({
@@ -38,13 +38,13 @@ const ProfileFourthStep = ({ data, step, setData }) => {
   });
   const [show, setShow] = useState(true);
   const [missingLinks, setMissingLinks] = useState([
-    { label: facebookLink ? "" : "Facebook", value: "facebook" },
-    { label: figmaLink ? "" : "Figma", value: "figma" },
-    { label: clickupLink ? "" : "Click up", value: "clickup" },
-    { label: linkedinLink ? "" : "LinkedIn", value: "linkedin" },
-    { label: githubLink ? "" : "Github", value: "github" },
-    { label: dribbleLink ? "" : "Dribble", value: "dribble" },
-    { label: googleLink ? "" : "Google", value: "google" },
+    { label: facebookLink ? '' : 'Facebook', value: 'facebook' },
+    { label: figmaLink ? '' : 'Figma', value: 'figma' },
+    { label: clickupLink ? '' : 'Click up', value: 'clickup' },
+    { label: linkedinLink ? '' : 'LinkedIn', value: 'linkedin' },
+    { label: githubLink ? '' : 'Github', value: 'github' },
+    { label: dribbleLink ? '' : 'Dribble', value: 'dribble' },
+    { label: googleLink ? '' : 'Google', value: 'google' },
   ]);
 
   // const [update, setUpdate] = useState(false);
@@ -78,7 +78,7 @@ const ProfileFourthStep = ({ data, step, setData }) => {
     // submit data
     const updatedUser = updateProfileJSON(
       data._id,
-      JSON.stringify(inputStates)
+      JSON.stringify(inputStates),
     )(profileDispatch);
     updatedUser.then((res) => setData(res));
     const slug = data?.userName;
@@ -89,98 +89,98 @@ const ProfileFourthStep = ({ data, step, setData }) => {
   //   Add new Link
   const addHandler = () => {
     switch (link.value) {
-      case "google":
+      case 'google':
         setGoogleLink(newLink);
         break;
-      case "facebook":
+      case 'facebook':
         setFacebookLink(newLink);
         break;
-      case "linkedin":
+      case 'linkedin':
         setLinkedinLink(newLink);
         break;
-      case "github":
+      case 'github':
         setGithubLink(newLink);
         break;
-      case "figma":
+      case 'figma':
         setFigmaLink(newLink);
         break;
-      case "dribble":
+      case 'dribble':
         setDribbleLink(newLink);
         break;
-      case "clickup":
+      case 'clickup':
         setClickupLink(newLink);
         break;
       default:
         break;
     }
     const updatedLinks = missingLinks.filter(
-      (item) => item.value !== link.value
+      (item) => item.value !== link.value,
     );
     setMissingLinks(updatedLinks);
     if (
-      facebookLink &&
-      linkedinLink &&
-      dribbleLink &&
-      figmaLink &&
-      clickupLink &&
-      githubLink &&
-      googleLink
+      facebookLink
+      && linkedinLink
+      && dribbleLink
+      && figmaLink
+      && clickupLink
+      && githubLink
+      && googleLink
     ) {
       setShow(false);
     }
-    setLink("");
-    setNewLink("");
+    setLink('');
+    setNewLink('');
   };
   // //  Add link Dropdown options
   const customStyles = {
     option: (provided, state) => ({
       ...provided,
       // borderBottom: '1px dotted pink',
-      color: "white",
+      color: 'white',
       border: state.isSelected
-        ? "2px solid #6938EF"
+        ? '2px solid #6938EF'
         : state.isFocused
-        ? "2px solid #6938EF"
-        : "2px solid transparent",
-      background: " var(--div-background-color);",
-      borderRadius: "8px",
+          ? '2px solid #6938EF'
+          : '2px solid transparent',
+      background: ' var(--div-background-color);',
+      borderRadius: '8px',
       padding: 20,
-      width: "100%",
-      cursor: "pointer",
-      ":active": {
-        ...styles[":active"],
-        background: " var(--div-background-color);",
+      width: '100%',
+      cursor: 'pointer',
+      ':active': {
+        ...styles[':active'],
+        background: ' var(--div-background-color);',
       },
     }),
     control: () => ({
       // none of react-select's styles are passed to <Control />
       // width: ,
-      display: "flex",
-      height: "100%",
+      display: 'flex',
+      height: '100%',
     }),
     menu: (provided) => ({
       ...provided,
       // borderBottom: '1px dotted pink',
-      background: " var(--div-background-color);",
+      background: ' var(--div-background-color);',
       padding: 5,
-      border: "1px solid #6938EF",
+      border: '1px solid #6938EF',
     }),
     container: (provided) => ({
       ...provided,
-      cursor: "pointer",
+      cursor: 'pointer',
     }),
     placeholder: (provided) => ({
       ...provided,
-      color: "#fff",
+      color: '#fff',
     }),
     indicatorSeparator: (provided) => ({
       ...provided,
-      display: "none",
+      display: 'none',
     }),
     singleValue: (provided) => {
       const opacity = 1;
-      const color = "#fff";
-      const transition = "opacity 300ms";
+      const color = '#fff';
+      const transition = 'opacity 300ms';
 
       return {
         ...provided,
@@ -192,7 +192,7 @@ const ProfileFourthStep = ({ data, step, setData }) => {
   };
   //   update the data upon submitting
   useEffect(() => {
-    const userInfo = JSON.parse(localStorage.getItem("userInfo")).user;
+    const userInfo = JSON.parse(localStorage.getItem('userInfo')).user;
     setData(userInfo);
   }, [step]);
 
@@ -205,7 +205,7 @@ const ProfileFourthStep = ({ data, step, setData }) => {
         <div className={`row ${styles.socialRow}`}>
           <div className={`col ${styles.socialCol}`}>
             <div>
-              {" "}
+              {' '}
               <i className="fab fa-google" />
             </div>
             <input
@@ -218,44 +218,40 @@ const ProfileFourthStep = ({ data, step, setData }) => {
               <img
                 src="/assets/images/settings/edit.svg"
                 alt="edit"
-                onClick={() =>
-                  setEdit({
-                    googleLink: false,
-                    figmaLink: true,
-                    clickupLink: true,
-                    facebookLink: true,
-                    linkedinLink: true,
-                    githubLink: true,
-                    dribbleLink: true,
-                  })
-                }
+                onClick={() => setEdit({
+                  googleLink: false,
+                  figmaLink: true,
+                  clickupLink: true,
+                  facebookLink: true,
+                  linkedinLink: true,
+                  githubLink: true,
+                  dribbleLink: true,
+                })}
               />
             )}
             {!edit.googleLink && (
               <img
                 src="/assets/images/settings/white-check.svg"
                 alt="edit"
-                onClick={() =>
-                  setEdit({
-                    googleLink: true,
-                    figmaLink: true,
-                    clickupLink: true,
-                    facebookLink: true,
-                    linkedinLink: true,
-                    githubLink: true,
-                    dribbleLink: true,
-                  })
-                }
+                onClick={() => setEdit({
+                  googleLink: true,
+                  figmaLink: true,
+                  clickupLink: true,
+                  facebookLink: true,
+                  linkedinLink: true,
+                  githubLink: true,
+                  dribbleLink: true,
+                })}
               />
             )}
           </div>
         </div>
       )}
-      {(facebookLink || facebookLink === "") && (
+      {(facebookLink || facebookLink === '') && (
         <div className={`row ${styles.socialRow}`}>
           <div className={`col ${styles.socialCol}`}>
             <div>
-              {" "}
+              {' '}
               <i className="fab fa-facebook-f" />
             </div>
             <input
@@ -268,40 +264,36 @@ const ProfileFourthStep = ({ data, step, setData }) => {
               <img
                 src="/assets/images/settings/edit.svg"
                 alt="edit"
-                onClick={() =>
-                  setEdit({
-                    googleLink: true,
-                    figmaLink: true,
-                    clickupLink: true,
-                    facebookLink: false,
-                    linkedinLink: true,
-                    githubLink: true,
-                    dribbleLink: true,
-                  })
-                }
+                onClick={() => setEdit({
+                  googleLink: true,
+                  figmaLink: true,
+                  clickupLink: true,
+                  facebookLink: false,
+                  linkedinLink: true,
+                  githubLink: true,
+                  dribbleLink: true,
+                })}
               />
             )}
             {!edit.facebookLink && (
               <img
                 src="/assets/images/settings/white-check.svg"
                 alt="edit"
-                onClick={() =>
-                  setEdit({
-                    googleLink: true,
-                    figmaLink: true,
-                    clickupLink: true,
-                    facebookLink: true,
-                    linkedinLink: true,
-                    githubLink: true,
-                    dribbleLink: true,
-                  })
-                }
+                onClick={() => setEdit({
+                  googleLink: true,
+                  figmaLink: true,
+                  clickupLink: true,
+                  facebookLink: true,
+                  linkedinLink: true,
+                  githubLink: true,
+                  dribbleLink: true,
+                })}
               />
             )}
           </div>
         </div>
       )}
-      {(linkedinLink || linkedinLink === "") && (
+      {(linkedinLink || linkedinLink === '') && (
         <div className={`row ${styles.socialRow}`}>
           <div className={`col ${styles.socialCol}`}>
             <div>
@@ -317,40 +309,36 @@ const ProfileFourthStep = ({ data, step, setData }) => {
               <img
                 src="/assets/images/settings/edit.svg"
                 alt="edit"
-                onClick={() =>
-                  setEdit({
-                    googleLink: true,
-                    figmaLink: true,
-                    clickupLink: true,
-                    facebookLink: true,
-                    linkedinLink: false,
-                    githubLink: true,
-                    dribbleLink: true,
-                  })
-                }
+                onClick={() => setEdit({
+                  googleLink: true,
+                  figmaLink: true,
+                  clickupLink: true,
+                  facebookLink: true,
+                  linkedinLink: false,
+                  githubLink: true,
+                  dribbleLink: true,
+                })}
               />
             )}
             {!edit.linkedinLink && (
               <img
                 src="/assets/images/settings/white-check.svg"
                 alt="edit"
-                onClick={() =>
-                  setEdit({
-                    googleLink: true,
-                    figmaLink: true,
-                    clickupLink: true,
-                    facebookLink: true,
-                    linkedinLink: true,
-                    githubLink: true,
-                    dribbleLink: true,
-                  })
-                }
+                onClick={() => setEdit({
+                  googleLink: true,
+                  figmaLink: true,
+                  clickupLink: true,
+                  facebookLink: true,
+                  linkedinLink: true,
+                  githubLink: true,
+                  dribbleLink: true,
+                })}
               />
             )}
           </div>
         </div>
       )}
-      {(githubLink || githubLink === "") && (
+      {(githubLink || githubLink === '') && (
         <div className={`row ${styles.socialRow}`}>
           <div className={`col ${styles.socialCol}`}>
             <div>
@@ -366,40 +354,36 @@ const ProfileFourthStep = ({ data, step, setData }) => {
               <img
                 src="/assets/images/settings/edit.svg"
                 alt="edit"
-                onClick={() =>
-                  setEdit({
-                    googleLink: true,
-                    figmaLink: true,
-                    clickupLink: true,
-                    facebookLink: true,
-                    linkedinLink: true,
-                    githubLink: false,
-                    dribbleLink: true,
-                  })
-                }
+                onClick={() => setEdit({
+                  googleLink: true,
+                  figmaLink: true,
+                  clickupLink: true,
+                  facebookLink: true,
+                  linkedinLink: true,
+                  githubLink: false,
+                  dribbleLink: true,
+                })}
               />
             )}
             {!edit.githubLink && (
               <img
                 src="/assets/images/settings/white-check.svg"
                 alt="edit"
-                onClick={() =>
-                  setEdit({
-                    googleLink: true,
-                    figmaLink: true,
-                    clickupLink: true,
-                    facebookLink: true,
-                    linkedinLink: true,
-                    githubLink: true,
-                    dribbleLink: true,
-                  })
-                }
+                onClick={() => setEdit({
+                  googleLink: true,
+                  figmaLink: true,
+                  clickupLink: true,
+                  facebookLink: true,
+                  linkedinLink: true,
+                  githubLink: true,
+                  dribbleLink: true,
+                })}
               />
             )}
           </div>
         </div>
       )}
-      {(figmaLink || figmaLink === "") && (
+      {(figmaLink || figmaLink === '') && (
         <div className={`row ${styles.socialRow}`}>
           <div className={`col ${styles.socialCol}`}>
             <div>
@@ -415,40 +399,36 @@ const ProfileFourthStep = ({ data, step, setData }) => {
               <img
                 src="/assets/images/settings/edit.svg"
                 alt="edit"
-                onClick={() =>
-                  setEdit({
-                    googleLink: true,
-                    figmaLink: false,
-                    clickupLink: true,
-                    facebookLink: true,
-                    linkedinLink: true,
-                    githubLink: true,
-                    dribbleLink: true,
-                  })
-                }
+                onClick={() => setEdit({
+                  googleLink: true,
+                  figmaLink: false,
+                  clickupLink: true,
+                  facebookLink: true,
+                  linkedinLink: true,
+                  githubLink: true,
+                  dribbleLink: true,
+                })}
               />
             )}
             {!edit.figmaLink && (
               <img
                 src="/assets/images/settings/white-check.svg"
                 alt="edit"
-                onClick={() =>
-                  setEdit({
-                    googleLink: true,
-                    figmaLink: true,
-                    clickupLink: true,
-                    facebookLink: true,
-                    linkedinLink: true,
-                    githubLink: true,
-                    dribbleLink: true,
-                  })
-                }
+                onClick={() => setEdit({
+                  googleLink: true,
+                  figmaLink: true,
+                  clickupLink: true,
+                  facebookLink: true,
+                  linkedinLink: true,
+                  githubLink: true,
+                  dribbleLink: true,
+                })}
               />
             )}
           </div>
         </div>
       )}
-      {(dribbleLink || dribbleLink === "") && (
+      {(dribbleLink || dribbleLink === '') && (
         <div className={`row ${styles.socialRow}`}>
           <div className={`col ${styles.socialCol}`}>
             <div>
@@ -464,46 +444,42 @@ const ProfileFourthStep = ({ data, step, setData }) => {
               <img
                 src="/assets/images/settings/edit.svg"
                 alt="edit"
-                onClick={() =>
-                  setEdit({
-                    googleLink: true,
-                    figmaLink: true,
-                    clickupLink: true,
-                    facebookLink: true,
-                    linkedinLink: true,
-                    githubLink: true,
-                    dribbleLink: false,
-                  })
-                }
+                onClick={() => setEdit({
+                  googleLink: true,
+                  figmaLink: true,
+                  clickupLink: true,
+                  facebookLink: true,
+                  linkedinLink: true,
+                  githubLink: true,
+                  dribbleLink: false,
+                })}
               />
             )}
             {!edit.dribbleLink && (
               <img
                 src="/assets/images/settings/white-check.svg"
                 alt="edit"
-                onClick={() =>
-                  setEdit({
-                    googleLink: true,
-                    figmaLink: true,
-                    clickupLink: true,
-                    facebookLink: true,
-                    linkedinLink: true,
-                    githubLink: true,
-                    dribbleLink: true,
-                  })
-                }
+                onClick={() => setEdit({
+                  googleLink: true,
+                  figmaLink: true,
+                  clickupLink: true,
+                  facebookLink: true,
+                  linkedinLink: true,
+                  githubLink: true,
+                  dribbleLink: true,
+                })}
               />
             )}
           </div>
         </div>
       )}
-      {(clickupLink || clickupLink === "") && (
+      {(clickupLink || clickupLink === '') && (
         <div className={`row ${styles.socialRow}`}>
           <div className={`col ${styles.socialCol}`}>
             <div>
               <img
                 src="/assets/images/settings/clickup-icon.svg"
-                style={{ maxHeight: "22px" }}
+                style={{ maxHeight: '22px' }}
                 alt="clickup-icon"
               />
             </div>
@@ -517,34 +493,30 @@ const ProfileFourthStep = ({ data, step, setData }) => {
               <img
                 src="/assets/images/settings/edit.svg"
                 alt="edit"
-                onClick={() =>
-                  setEdit({
-                    googleLink: true,
-                    figmaLink: true,
-                    clickupLink: false,
-                    facebookLink: true,
-                    linkedinLink: true,
-                    githubLink: true,
-                    dribbleLink: true,
-                  })
-                }
+                onClick={() => setEdit({
+                  googleLink: true,
+                  figmaLink: true,
+                  clickupLink: false,
+                  facebookLink: true,
+                  linkedinLink: true,
+                  githubLink: true,
+                  dribbleLink: true,
+                })}
               />
             )}
             {!edit.clickupLink && (
               <img
                 src="/assets/images/settings/white-check.svg"
                 alt="edit"
-                onClick={() =>
-                  setEdit({
-                    googleLink: true,
-                    figmaLink: true,
-                    clickupLink: true,
-                    facebookLink: true,
-                    linkedinLink: true,
-                    githubLink: true,
-                    dribbleLink: true,
-                  })
-                }
+                onClick={() => setEdit({
+                  googleLink: true,
+                  figmaLink: true,
+                  clickupLink: true,
+                  facebookLink: true,
+                  linkedinLink: true,
+                  githubLink: true,
+                  dribbleLink: true,
+                })}
               />
             )}
           </div>
@@ -572,7 +544,7 @@ const ProfileFourthStep = ({ data, step, setData }) => {
             </div>
             <input
               type="button"
-              style={{ cursor: "default" }}
+              style={{ cursor: 'default' }}
               value="Add a Social Links"
             />
           </div>
@@ -591,7 +563,7 @@ const ProfileFourthStep = ({ data, step, setData }) => {
             </div>
             <div className="col-1" />
             <div
-              style={{ padding: "0" }}
+              style={{ padding: '0' }}
               className={`col-4 ${styles.socialCol}`}
             >
               <Select
@@ -601,7 +573,7 @@ const ProfileFourthStep = ({ data, step, setData }) => {
                 isClearable={false}
                 isSearchable={false}
                 onChange={(newValue) => setLink(newValue)}
-                options={missingLinks.filter((item) => item.label !== "")}
+                options={missingLinks.filter((item) => item.label !== '')}
                 placeholder="Website"
                 value={link}
               />
