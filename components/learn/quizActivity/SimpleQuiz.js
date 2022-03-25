@@ -18,10 +18,11 @@ export default function SimpleQuiz() {
     singleUserModuleInfo.moduleId.content.questions,
   );
   const [correct, setCorrect] = useState(0);
+  const [checkingAnswer, setCheckingAnswer] = useState(false);
   const [inprogress, setInprogress] = useState(true);
   const [answer, setAnswer] = useState();
   const radioRef = useRef();
-
+  // for options type of answer
   const updateAnswer = (e) => {
     const userinput = e.target.value;
     const upDateQuestion = [...questions];
@@ -32,9 +33,20 @@ export default function SimpleQuiz() {
     const updatedQuestion = [...questions];
     updatedQuestion[currentQuestion].checked = true;
     setQuestions(updatedQuestion);
+    setCheckingAnswer(true);
+  };
+  // for text answer
+  const updateTextAnswer = (e) => {
+    const userinput = e.target.value.toLowerCase();
+    const upDateQuestion = [...questions];
+    userinput !== questions[currentQuestion].answer
+      ? upDateQuestion[currentQuestion].answerCorrect = false
+      : upDateQuestion[currentQuestion].answerCorrect = true;
+    setQuestions(upDateQuestion);
   };
   const nextQuestion = () => {
     setCurrentQuestion(currentQuestion + 1);
+    setCheckingAnswer(false);
     radioRef.current.reset();
   };
   const getResult = () => {
@@ -75,7 +87,7 @@ export default function SimpleQuiz() {
   }, [currentQuestion]);
 
   return (
-    <section className="quiz fade-in" aria-live="polite">
+    <section className="quiz fade-in d-flex justify-content-center align-items-center" aria-live="polite">
       {!inprogress ? (
         <QuizResult
           singleUserModuleInfo={singleUserModuleInfo}
@@ -88,14 +100,16 @@ export default function SimpleQuiz() {
           lastAdvancedModules={lastAdvancedModules}
         />
       ) : (
-        <div>
+        <div className="">
           <QuizProgress
             currentQuestion={currentQuestion}
             questionLength={questions.length}
           />
+          {/* question and answer containerr */}
           <div className="question-container">
             <p className="question">{questions[currentQuestion].question}</p>
-            <form ref={radioRef}>
+            {/* answer area radio buttons */}
+            <form className="d-flex flex-column" ref={radioRef}>
               {answer?.map((item, index) => (
                 <label
                   htmlFor={`radio-${index}`}
@@ -106,45 +120,34 @@ export default function SimpleQuiz() {
                     : ''
                     }${questions[currentQuestion].checked && item.correct
                       ? ' correct'
-                      : ''
+                      : ' incorrect'
                     }`}
                 >
                   <input
                     id={`radio-${index}`}
-                    type="radio"
+                    type={questions[currentQuestion].checked && item.correct ? 'checkbox' : 'radio'}
+                    checked={questions[currentQuestion].checked && item.correct && 'checked'}
                     name="option"
                     value={item.correct}
-                    disabled={questions[currentQuestion].checked}
+                    // disabled={questions[currentQuestion].checked}
                     onClick={updateAnswer}
                     className="input_tag"
                   />
                   <span className="q_main">{item.option}</span>
 
                 </label>
-                /* <div
-                  key={`${index + 1}`}
-                  className={`option${
-                    questions[currentQuestion].checked && !item.correct
-                      ? ' dim'
-                      : ''
-                  }${
-                    questions[currentQuestion].checked && item.correct
-                      ? ' correct'
-                      : ''
-                  }`}
-                >
-                  <input
-                    id={`radio-${index}`}
-                    type="radio"
-                    name="option"
-                    value={item.correct}
-                    disabled={questions[currentQuestion].checked}
-                    onClick={updateAnswer}
-                  />
-                  <label htmlFor={`radio-${index}`}>{item.option}</label>
-                </div> */
+
               ))}
+              {/* Uncomment this input when text answer required */}
+              {/* <input
+                className="quiz-text-input"
+                onChange={updateTextAnswer}
+                type="text"
+                disabled={checkingAnswer}
+                pattern="worlde"
+              /> */}
             </form>
+
             <div className="bottom tw-w-100">
               {!questions[currentQuestion].checked && (
                 <div className="spread-bottom d-flex flex-row justify-content-between tw-w-100">
@@ -156,6 +159,7 @@ export default function SimpleQuiz() {
                     Close Quiz
                   </button>
                   <button
+                    className="fade-in next"
                     type="button"
                     disabled={!('answerCorrect' in questions[currentQuestion])}
                     onClick={checkAnswer}

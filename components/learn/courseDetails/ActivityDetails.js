@@ -163,33 +163,33 @@ const ActivityDetails = ({
             className="banner-bg d-flex justify-content-center"
             style={{ borderRadius: '30px', width: '100%', height: '100%' }}>
             <div className="player-wrapper" style={{ width: '95%', height: '100%' }}>
-              <ReactPlayer
-                url={moduleInfo.url}
-                controls
-                width="100%"
-                height="700px"
-                style={{ height: '100%', maxWidth: '100%', overflowX: 'hidden' }}
-                onStart={onStart}
-                onEnded={handleWatch}
-              />
+              <div style={{ pointerEvents: (watched && isOpen) && 'none' }}>
+                <ReactPlayer
+                  url={moduleInfo.url}
+                  controls
+                  width="100%"
+                  height="700px"
+                  style={{ height: '100%', maxWidth: '100%', overflowX: 'hidden' }}
+                  onStart={onStart}
+                  onEnded={handleWatch}
+                />
+              </div>
               {watched && isOpen && (
-                <>
-                  {completed !== true && (
-                    <QuizContext.Provider
-                      value={{
-                        isOpen,
-                        setIsOpen,
-                        setWatched,
-                        singleUserModuleInfo,
-                        forwardInfo,
-                        course,
-                        lastAdvancedModules,
-                      }}
-                    >
-                      <QuizModal />
-                    </QuizContext.Provider>
-                  )}
-                </>
+                <div>
+                  <QuizContext.Provider
+                    value={{
+                      isOpen,
+                      setIsOpen,
+                      setWatched,
+                      singleUserModuleInfo,
+                      forwardInfo,
+                      course,
+                      lastAdvancedModules,
+                    }}
+                  >
+                    <QuizModal />
+                  </QuizContext.Provider>
+                </div>
               )}
             </div>
           </div>
@@ -247,7 +247,7 @@ const ActivityDetails = ({
                         }
                       }
                     >
-                      <span>{completionStatus}</span>
+                      <span>{completionStatus.toUpperCase()}</span>
                     </p>
                   </div>
                   <div className="text-white activity-details">
