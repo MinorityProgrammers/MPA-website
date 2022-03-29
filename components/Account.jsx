@@ -184,12 +184,12 @@ const Account = () => {
     return (
       <>
         <div
-          className="tw-text-white  tw-text-center tw-font-bold tw-py-2 tw-px-5 tw-w-11/12 tw-cursor-pointer connect__button"
+          className="tw-text-white tw-text-center tw-font-bold tw-mx-auto tw-w-full tw-h-8 tw-cursor-pointer connect__button"
           onClick={() => {
             openAuthModal();
           }}
         >
-          <p className="tw-text-sm">Connect Wallet</p>
+          <p>Connect Wallet</p>
         </div>
         <div>
           <Modal
@@ -212,7 +212,7 @@ const Account = () => {
             <div className={styles.modalHeader}>
               <div />
               <div className={styles.modalWrapper}>
-                <div className={styles.modalImage}>
+                  <div className={styles.modalImage}>
                   <img src="/assets/images/mpicon.svg" alt="logo" />
                 </div>
                 <h2 className="tw-flex-1 tw-text-white tw-text-center tw-w-full tw-font-bold tw-text-lg">
