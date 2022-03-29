@@ -58,7 +58,10 @@ const WeeklyActivities = ({ enrolledCourses, modules, userModules }) => {
 
   return (
     <div className="courses-details banner-bg">
-      <div className="row week-row" style={{ backgroundColor: "#14152b" }}>
+      <div
+        className="row week-row"
+        style={{ backgroundColor: "‘var(—div-background-color)’," }}
+      >
         <div className="col-10 course-sidebar-width col-md-3 pr-0 scroll-sidebar">
           <CourseSidebar
             course={course}
