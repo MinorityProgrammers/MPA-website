@@ -67,12 +67,12 @@ const HomePageParteners = () => {
                   key={`${`sponsor${i}`}`}
                 >
                   <a
-                    href={sponsor.sponsorLink}
+                    href={sponsor.allyLink}
                     target="_blank"
                     rel="noreferrer"
                   >
                     <div className="item sponsor-item">
-                      <img src={sponsor.imgSrc} alt={sponsor.sponsorLink} />
+                      <img src={sponsor.imgSrc} alt={sponsor.allyLink} />
                     </div>
                   </a>
                 </div>

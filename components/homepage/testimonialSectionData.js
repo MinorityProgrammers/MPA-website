@@ -95,6 +95,14 @@ export const sponsors = [
 
 export const allies = [
   {
+    allyLink: 'https://www.herdrop.com/',
+    imgSrc: 'assets/images/sponsorship/MinorityDropLogo.png',
+  },
+  {
+    allyLink: 'https://dropoutdao.xyz/',
+    imgSrc: 'assets/images/sponsorship/dropout.png',
+  },
+  {
     allyLink: 'https://www.blockchainedu.org/',
     imgSrc: 'assets/images/ben.png',
   },
