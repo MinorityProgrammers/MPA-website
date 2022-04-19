@@ -11,7 +11,6 @@ import Footer from '../components/Footer';
 import ComingSoon from '../components/ComingSoon';
 import useDetectOutsideClick from '../components/UseDetectOutsideClick';
 
-
 const index = () => {
   const [userData, setUserData] = useState({});
   const [token, setToken] = useState('');
@@ -65,8 +64,8 @@ const index = () => {
         className="container dashboard-overall-container d-flex"
         style={{ padding: 0 }}
       >
-        <div className="outer-dashboard-container">
-          <div className="container inner-dashboard-container  tw-mt-28 tw-mb-10">
+        <div style={{ width: '100%' }} className="outer-dashboard-container">
+          <div className="container inner-wallet-dashboard-container  tw-mt-28 tw-mb-10">
             {loading ? (
               <></>
             ) : (

@@ -37,7 +37,7 @@ const OverviewProfile = ({ userData }) => {
       <div className="" style={{ height: '85%' }}>
         {loading ? (
           <EmptyOverviewComponent
-            imgURL="https://s3-alpha-sig.figma.com/img/1976/b39a/4a68697e58613b2b3abf46ed288c9fde?Expires=1638748800&Signature=dsRmuqGXpRcdYk4fxff2ov0f-HROtzNJttNSlsInzruZNZuWwLo56Ddwdt6JyBo-pyoCEgDi7EMxeEsuUF5mtQVnZZ3yPHoE2whR7YCw2A3EcNx~ErncNhoWRv2bX~XTPVPe0AnqWyNCi0kfmUqjOcpc4c5L3iW~1VngnsiqWgD7DzEx2hpXraw3UhOSN7pO1~1JpwA5KypjHx13vAc2nyooWcunAcMpbrw6Xs~LyO9rjZxll0HfiI3umXYp6cNUD~08Ej3l-pefgyMiGC1SazPjv03S~ElKgLrhZyENoLWZzPwS9pFvD3ZU0UEJSp9WmuwoCWGf5qX67Fz-NQOZRg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
+            imgURL="assets/images/dashboard/profile.png"
             description="Oops, you must be logged in to view your profile."
             btnText="Login"
             btnFunction={() => {

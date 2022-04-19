@@ -187,7 +187,7 @@ const OverviewEvents = ({ token }) => {
         Events
       </p>
       <EmptyOverviewComponent
-        imgURL="https://s3-alpha-sig.figma.com/img/31fc/7c17/7233f396628b579fecdc6e84671283fd?Expires=1638748800&Signature=X2QnrrzjRAUkj~YcRv3an4O3YWJYSQUhuhX2AnEVa~FHseg-cm1synSLvaBOYEOzBmVM3gMf9pgowYDgSmCzwH78i0fithM2iTSCUMglNtSB1V8lniyGYSm7l3kDl8kRIaIdsoNjheCPrjP97m2i8T099fHhjK0cKgHmxzgl39i8Mo9QhhVzbfrCU8QOJYVbYthKPeGFs4p7zNUEtGVwmaVM4axtHPk38aYX0BvpKHv6MhhUU3OsxDCZ2-2mM8y50MGtB5UFpZj-UMb9MvCgUD5Rs49i6YdnmiDbYXGqAJRsjGkkh9ezQj2fsHNvCPMi1fGPa3rPyARYVdgd-plZew__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
+        imgURL="assets/images/dashboard/event.png"
         description="You haven’t registered for any events yet. MPA has tons of events going on right now. Check them out in the Events Section."
         btnText="Schedule Your First Event"
         btnFunction={() => {

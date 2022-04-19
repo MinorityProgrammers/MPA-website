@@ -56,7 +56,7 @@ const OverviewStartups = ({ userData, token }) => {
   const EmptyStartupComponent = useCallback(
     () => (
       <EmptyOverviewComponent
-        imgURL="https://s3-alpha-sig.figma.com/img/e964/1331/6f840dad9adc11eb036d0b485ebb0233?Expires=1639353600&Signature=RXwGa6MBpBjiVeurYUQh0TJw2fUop~2fEHntjng0YwETQ~oMj-FkgjSFj1DgcM8btl~fK~jWHK-Sy6v6e7AJ3ymEpHu0jfGhkN7q2aziZ77EqcAFCfFE6rM352S-1lVIryJxBfF0L~v6ATChxxKtJpFv5Fn1nkp37OWdkx4PCR4SqElXgKGPPihF~SMq4ZJUgqeFhg9gDfPCYGEWrSb9nA3vy3~BLrqsjrvyfffxQ5duVTKVLURVZtY-oBdbD09LVHnDm~8VzLyAjv-rcBn3z74ndOFojz7N7L1Zcj9dKQcn7WvR-qEH~CeByULnNEPCaZZfQ-ELHeKXCDRl~unXrA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
+        imgURL="assets/images/dashboard/startup.png"
         description="You currently have no stakes or founded any of the startups yet. To explore your options, go to the Startups Section."
         btnText="Try your first Stake in"
         btnFunction={() => {
