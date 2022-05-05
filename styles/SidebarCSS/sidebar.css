@@ -22,7 +22,7 @@
   transition: visibility 0s linear 300ms, opacity 300ms;
 }
 .sidebarTwo {
-  background-color: #14152B;
+  background-color: ‘var(—div-background-color) ’;
   color: white;
   width: 20vw;
   z-index: 120;
@@ -33,7 +33,7 @@
   overflow-x: hidden;
   transition: width 0.3s;
 }
-.new-bg{
+.new-bg {
   background-color: #a159fe;
 }
 .hide {

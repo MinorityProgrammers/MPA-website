@@ -11,7 +11,7 @@
   flex-direction: row;
   color: white;
   border: 1.5px solid var(--secondary-accent-1);
-  box-shadow: -2px 2px 20px rgba(84,48,209,.25);
+  box-shadow: -2px 2px 20px rgba(84, 48, 209, 0.25);
 }
 /* sidebar styles */
 .cp-sidebar {
@@ -173,11 +173,7 @@
   display: flex;
   justify-content: center;
 }
-.create--profile
-  .cp-body
-  .cp-formGrid
-  .color-picker-toggle
-  .cpt-btn {
+.create--profile .cp-body .cp-formGrid .color-picker-toggle .cpt-btn {
   cursor: pointer;
   display: inline-block;
   color: #fff;
@@ -368,7 +364,7 @@
 
 .create--profile {
   padding: 130px 0 60px;
-  background: #14152B;
+  background: ‘var(—div-background-color) ’;
 }
 .delete-skill {
   cursor: pointer;

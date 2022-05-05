@@ -13,31 +13,31 @@
   margin: 0 !important;
   padding-bottom: 20px;
 }
-.FRCourses .slick-slide{
+.FRCourses .slick-slide {
   display: flex;
 }
-.FRCourses .slick-slide >div {
+.FRCourses .slick-slide > div {
   display: flex;
   padding-right: 40px;
 }
-.courses-slider-controllers{
+.courses-slider-controllers {
   display: flex;
   justify-content: flex-end;
   position: relative;
 }
-.courses-slider-controllers div{
-  margin:15px 15px 20px 0;
+.courses-slider-controllers div {
+  margin: 15px 15px 20px 0;
   cursor: pointer;
 }
-.courses-slider-controllers div i{
+.courses-slider-controllers div i {
   color: #fff;
-  font-size: 18px
+  font-size: 18px;
 }
-.courses-slider-controllers div i:hover{
+.courses-slider-controllers div i:hover {
   color: rgb(165, 165, 165);
 }
 @media only screen and (max-width: 1200px) {
-  .FRCourses .slick-slide >div {
+  .FRCourses .slick-slide > div {
     display: flex;
     padding-right: 25px;
   }
@@ -68,7 +68,7 @@
   .enroll-arrow {
     display: none;
   }
-  .FRCourses .slick-slide >div{
+  .FRCourses .slick-slide > div {
     padding-right: 0;
   }
 }
@@ -81,12 +81,12 @@
   .courses-width {
     width: 100%;
   }
-  .FRCourses .slick-slide >div{
+  .FRCourses .slick-slide > div {
     padding: 0 20px;
   }
 }
 .earn-rate {
-  background-color: #8040D2;
+  background-color: "var(—-div-background-color);"
   border-radius: 10px;
   color: #000;
   width: 100px;
@@ -103,6 +103,6 @@
   height: 0.75rem !important;
   width: 100%;
   margin-top: 1.65rem;
-  background: #14152A;
+  background: #14152a;
   border-radius: 17px;
 }

@@ -650,7 +650,7 @@ const JobsMain = () => {
                       <div className="apply__section">
                         <div
                           style={{
-                            borderBottom: '1px solid #8040d2',
+                            borderBottom: '1px solid ‘var(—div-background-color),'',
                             paddingBottom: '1rem',
                           }}
                         >
