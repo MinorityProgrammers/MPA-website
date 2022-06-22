@@ -41,9 +41,22 @@
   animation: fade 0.75s ease;
 }
 .quiz {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  opacity: 1;
+  width: 40%;
+  height: 50%;
+  border: 1px solid #6938EF;
+  border-radius: 16px;
+  padding: 90px;
+  background: #1C1D37;
   margin: 2em auto;
   min-height: 40vh;
   font-size: 16px;
+  z-index: 999;
 }
 .quiz .progress {
   position: relative;
@@ -54,6 +67,18 @@
   width: 100%;
   height: 2em;
   font-family: "Open Sans", "Helvetica", "Arial", sans-serif;
+}
+.counter{
+  margin-bottom: 32px;
+}
+.quiz-text-input{
+  color: black;
+}
+.quiz-text-input:input:valid{
+  border: 1px solid green;
+}
+.quiz-text-input:input:invalid{
+  border: 1px solid red;
 }
 
 .quiz .progress .progress-bar {
@@ -75,8 +100,8 @@
   justify-content: center;
 }
 .quiz form {
-  width: 90%;
-  margin: 1.5em auto;
+  width: 100%;
+  margin-bottom: 5%;
 }
 .quiz .img-fluid {
   margin: 2em auto;
@@ -96,7 +121,8 @@
 .quiz button {
   padding: 0.75em;
   font-family: "Open Sans", "Helvetica", "Arial", sans-serif;
-  background-color: #1d77cc;
+  background-color: #6938EF;
+  border-radius: 20px;
   border: 0;
   color: #fff;
   font-size: 1em;
@@ -112,8 +138,7 @@
   opacity: 0.5;
 }
 .quiz input[type="radio"] {
-  position: absolute;
-  left: -9999px;
+  margin-right: 3px;
 }
 .quiz input[type="radio"] + label {
   position: relative;
@@ -157,6 +182,10 @@
 .quiz .correct input[type="radio"] + label::after {
   display: none;
 }
+.quiz .incorrect input[type="radio"] + label::after {
+  display: none;
+  color: red;
+}
 .quiz .correct input[type="radio"] + label:before {
   font-family: "Font Awesome 5 Free" !important;
   content: '\f00C';
@@ -183,12 +212,10 @@
   opacity: 0.5;
 }
 .quiz .bottom {
-  width: 90%;
-  margin: 0 auto;
+  width: 100%;
   display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: flex-end;
 }
 .quiz .bottom div {
   flex: 1 1 70%;
@@ -196,13 +223,14 @@
 }
 .quiz .bottom .next {
   flex: 0 1 10%;
-  margin-left: 3em;
 }
-@media (max-width: 600px) {
-  .quiz .bottom div,
-  .quiz .bottom .next {
-    flex-basis: 100%;
+@media (max-width: 768px) {
+  .quiz{
+    width: 90%;
+    height: 50%;
+    padding: 20px;
   }
+  .quiz .bottom div,
   .quiz .bottom .next {
     margin-left: 0;
   }
