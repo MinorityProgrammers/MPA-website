@@ -1,58 +1,110 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import Select from 'react-select';
+import Geocode from 'react-geocode';
 import { errorToast, successToast } from '../../contexts/utils/toasts';
-import { validateField, validateForm, validateStepper } from './FormValidations';
+import { validateField, validateForm } from './FormValidations';
 import styles from './InterestForm.module.css';
+import DropdownIndicator from '../settings/DropdownIndicator';
+import {
+  countries, passionOptions, interestOptions, countriesLoaction,
+} from './Options';
 
-const interestOptions = [
-  { label: 'Development', value: 'development' },
-  { label: 'Design', value: 'design' },
-  { label: 'Frontend', value: 'frontend' },
-  { label: 'Backend', value: 'backend' },
-  { label: 'Research', value: 'research' },
-  { label: 'Marketing', value: 'marketing' },
-  { label: 'Intructing', value: 'intructing' },
-  { label: 'Project Management', value: 'Project management' },
-];
+const customStyles = {
+  option: (provided, state) => ({
+    ...provided,
+    color: 'white',
+    border: state.isSelected ? '2px solid #6938EF' : state.isFocused ? '2px solid #6938EF' : '2px solid transparent',
+    background: '#1C1D37',
+    borderRadius: '8px',
+    padding: 20,
+    marginTop: 8,
+    width: '100%',
+    cursor: 'pointer',
+    fontWeight: 'bold',
+    ':active': {
+      // ...styles[':active'],
+      background: '#1C1D37',
+    },
+  }),
+  control: () => ({
+    // none of react-select's styles are passed to <Control />
+    // width: ,
+    display: 'flex',
+    height: '100%',
+  }),
+  menu: (provided) => ({
+    ...provided,
+    // borderBottom: '1px dotted pink',
+    background: '#1C1D37',
+    padding: 5,
+    border: '1px solid #6938EF',
+    width: '100%',
+    textAlign: 'center',
+    // marginLeft: '-70px',
+  }),
+  container: (provided) => ({
+    ...provided,
+    height: '60px',
+    margin: '0 !important',
+    cursor: 'pointer',
+    paddingLeft: '8px',
+    border: '1px solid #6938EF',
+    borderRadius: '16px',
+  }),
+  multiValueLabel: (provided) => ({
+    ...provided,
+    color: 'white',
+  }),
+  multiValue: (provided) => ({
+    ...provided,
+    border: '1px solid #6938EF',
+    borderRadius: '100px',
+    background: 'transparent',
+    padding: '5px',
+  }),
+  multiValueRemove: (provided) => ({
+    ...provided,
+    color: 'white',
+  }),
+  indicatorSeparator: (provided) => ({
+    ...provided,
+    display: 'none',
+  }),
+  singleValue: (provided) => {
+    const opacity = 1;
+    const color = '#fff';
+    const transition = 'opacity 300ms';
 
-const passionOptions = [
-  { label: 'Technology', value: 'technology' },
-  { label: 'Nature', value: 'nature' },
-  { label: 'Music', value: 'music' },
-  { label: 'Sports', value: 'sports' },
-  { label: 'Entreprenuership', value: 'entreprenuership' },
-  { label: 'Reading', value: 'reading' },
-  { label: 'Volunteering', value: 'volunteering' },
-  { label: 'Arts', value: 'arts' },
-  { label: 'Dancing', value: 'dancing' },
-  { label: 'Comedy', value: 'comedy' },
-  { label: 'Gaming', value: 'gaming' },
-  { label: 'Cooking', value: 'cooking' },
-  { label: 'Animals', value: 'animals' },
-  { label: 'Travel', value: 'travel' },
-];
+    return {
+      ...provided, opacity, transition, color,
+    };
+  },
+};
 
-const InterestForm = function ({ token }) {
+const InterestForm = ({ token, userData }) => {
   const [values, setValues] = useState({
     status: 'pending',
     interest: [],
     passion: [],
     profession: '',
     level: '',
-    school: '',
-    reasons: '',
-    support: '',
+    location: '',
+    description: '',
+    mission: '',
     contact: '',
     phone: '',
     email: '',
+    country: '',
+    lat: '',
+    lon: '',
+    city: '',
     interestedMembers: 0,
   });
 
   const [submitError, setSubmitError] = useState('');
   const [errors, setErrors] = useState({});
   const [isSubmit, toggleSubmit] = useState(false);
-  const [activeButton, setActiveButton] = useState('section_1');
   const [sections, setSections] = useState({
     section_1: true,
     section_2: false,
@@ -61,7 +113,11 @@ const InterestForm = function ({ token }) {
     section_5: false,
     section_6: false,
     section_7: false,
+    section_8: false,
+    section_9: false,
   });
+
+  Geocode.setApiKey('AIzaSyAj-BtIthMo51RCnyjesNP11pF_R07qbMA&callback');
 
   const handleChange = (event) => {
     const { name } = event.target;
@@ -88,9 +144,28 @@ const InterestForm = function ({ token }) {
     const result = (validateField(sections, values));
     handleError(result);
     if (Object.keys(result).length === 0) {
-      const newSections = { ...sections };
-      const newSectionsArray = Object.keys(newSections);
+      let newSections = { ...sections };
+      let newSectionsArray = Object.keys(newSections);
+      if (values.profession === 'Professional') {
+        newSectionsArray = newSectionsArray.filter((e) => e !== 'section_2');
+        delete newSections.section_2;
+      } else if (values.profession === 'student' && newSections.section_1) {
+        newSections = {
+          section_1: true,
+          section_2: false,
+          section_3: false,
+          section_4: false,
+          section_5: false,
+          section_6: false,
+          section_7: false,
+          section_8: false,
+          section_9: false,
+        };
+        newSectionsArray = Object.keys(newSections);
+      }
       let id = null;
+      setSections(newSections);
+
       newSectionsArray.forEach((_, idx, arr) => {
         if (newSections[arr[idx]]) {
           id = idx;
@@ -98,8 +173,31 @@ const InterestForm = function ({ token }) {
       });
       newSections[newSectionsArray[id]] = false;
       newSections[newSectionsArray[id + 1]] = true;
-      setActiveButton(newSectionsArray[id + 1]);
       setSections(newSections);
+    }
+    if (sections.section_4 === true) {
+      // Get latitude & longitude from address.
+      Geocode.setRegion(values.country.value.toLowerCase());
+      Geocode.fromAddress(values.location).then(
+        (response) => {
+          const { lat, lng } = response.results[0].geometry.location;
+          const newValue = values;
+          newValue.lat = lat;
+          newValue.lon = lng;
+          setValues(newValue);
+        },
+        (error) => {
+          countriesLoaction.forEach((country) => {
+            if (country.code === values.country.value) {
+              const newValue = values;
+              newValue.lat = country.latitude;
+              newValue.lon = country.longitude;
+              setValues(newValue);
+            }
+          });
+          console.error(error);
+        },
+      );
     }
   };
 
@@ -115,12 +213,19 @@ const InterestForm = function ({ token }) {
     });
     newSections[newSectionsArray[id]] = false;
     newSections[newSectionsArray[id - 1]] = true;
-    setActiveButton(newSectionsArray[id - 1]);
     setSections(newSections);
   };
-
+  const getWidth = (stats) => {
+    let step = 0;
+    const arr = Object.values(stats);
+    step = arr.indexOf(true);
+    step /= (arr.length - 1);
+    step = `${step * 100}%`;
+    return step;
+  };
   const handleSubmit = () => {
     setErrors({});
+    console.log(values);
     const result = (validateForm(values));
     if (Object.keys(result).length === 0) {
       let _values = { ...values };
@@ -138,14 +243,36 @@ const InterestForm = function ({ token }) {
       });
 
       if (token) {
-        axios.post(`${process.env.BASE_URI}/chapter`, {
-          ..._values,
-        }, {
+        console.log(_values);
+        toggleSubmit(true);
+
+        // Main St, Harrisonburg, US
+        const inputs = {
+          location: _values.location,
+          LocationName: `${_values.city}, ${_values.country.value}`,
+          chapter_leader: `${userData.firstName} ${userData.lastName}`,
+          description: _values.description,
+          mission: _values.mission,
+          latitude: _values.lat,
+          longitude: _values.longitude,
+          member_size: '1',
+          phone: _values.phone,
+          email: _values.email,
+          interestedMembers: _values.interestedMembers,
+          profession: _values.profession,
+          passion: _values.passion,
+          interest: _values.interest,
+          // eslint-disable-next-line new-cap
+          date_founded: new Date().toDateString(),
+        };
+        setSubmitError('');
+        axios.post('http://localhost:5000/api/v1/location', inputs, {
           headers: {
             Authorization: ` Bearer ${token}`,
           },
         })
-          .then(() => {
+          .then((res) => {
+            console.log(res.data.data);
             setSubmitError('');
             successToast('Your chapter was successfully created');
             toggleSubmit(true);
@@ -163,45 +290,6 @@ const InterestForm = function ({ token }) {
       handleError(result);
     }
   };
-
-  const handleStepperClick = (step) => {
-    const result = (validateStepper(sections, values, step));
-    if (Object.keys(result).length === 0) {
-      const newSections = { ...sections };
-      Object.keys(newSections).forEach((section_key) => {
-        if (section_key === step) {
-          newSections[section_key] = true;
-          setActiveButton(section_key);
-        } else {
-          newSections[section_key] = false;
-        }
-      });
-      setSections(newSections);
-    } else {
-      // handleError(result)
-    }
-  };
-
-  const getButtonStatus = (button) => {
-    const sectionsToArray = Object.keys(sections);
-    if (sectionsToArray.indexOf(activeButton) > sectionsToArray.indexOf(button)) {
-      return { background: 'pink' };
-    } if (sectionsToArray.indexOf(activeButton) < sectionsToArray.indexOf(button)) {
-      return { background: '#d1d3d1' };
-    }
-    return { background: '#ff00b8' };
-  };
-
-  const getLineStatus = (button) => {
-    const sectionsToArray = Object.keys(sections);
-    if (sectionsToArray.indexOf(activeButton) > sectionsToArray.indexOf(button)) {
-      return { background: 'pink' };
-    } if (sectionsToArray.indexOf(activeButton) < sectionsToArray.indexOf(button)) {
-      return { background: '#d1d3d1' };
-    }
-    return { background: 'pink' };
-  };
-
   return (
     <div className={styles.formWrapper}>
       <div className={styles.formContainer}>
@@ -219,95 +307,125 @@ const InterestForm = function ({ token }) {
             </div>
           </div>
           )}
-        <div className={styles.title}>Interest Form</div>
         {
           !isSubmit
             ? (
               <>
+                <div className={styles.stepperWrapper}>
+                  <div style={{ width: getWidth(sections) }} className={styles.stepperContainer} />
+                </div>
+                <div className={styles.questionNum}>
+                  {' '}
+                  {`Question ${(Object.values(sections).indexOf(true)) + 1}`}
+                </div>
                 <form onSubmit={(handleSubmit)} className={styles.form}>
+
                   <section className={styles.question} style={{ display: sections.section_1 ? 'block' : 'none' }}>
-                    <label className={styles.label}>1. Are you a student or a professional?</label>
-                    <div>
-                      <div className={styles.innerLabel}>
-                        <input
-                          type="radio"
-                          name="profession"
-                          value="student"
-                          className={styles.radio}
-                          onChange={handleChange}
+                    <label className={styles.label}>Who are you?</label>
+                    <div className={`${styles.professionLabel}`}>
+                      <div
+                        className={`${styles.innerLabel}`}
+                        onClick={() => handleChange({ target: { name: 'profession', value: 'student' } })}
+                      >
+                        <img
+                          src="/assets/images/chapter/student.png"
+                          style={{ mixBlendMode: values.profession !== 'student' ? 'luminosity' : 'unset' }}
+                          alt="student"
                         />
-                        <span>Student</span>
+                        <div>
+                          Student
+                        </div>
                       </div>
-                      <div className={styles.innerLabel}>
-                        <input
-                          type="radio"
-                          name="profession"
-                          value="Professional"
-                          className={styles.radio}
-                          onChange={(e) => { setValues({ ...values, school: '', level: '' }); handleChange(e); }}
+                      <div
+                        className={styles.innerLabel}
+                        onClick={() => { setValues({ ...values, location: '', level: '' }); handleChange({ target: { name: 'profession', value: 'Professional' } }); }}
+                      >
+                        <img
+                          src="/assets/images/chapter/pro.png"
+                          style={{ mixBlendMode: values.profession !== 'Professional' ? 'luminosity' : 'unset' }}
+                          alt="Professional"
                         />
-                        <span>Professional</span>
+                        <div>
+                          Professional
+                        </div>
                       </div>
                       {errors.profession && (
-                      <div className={styles.inputFeedback}>{errors.profession}</div>
+                        <div className={styles.inputFeedback}>{errors.profession}</div>
                       )}
                     </div>
                   </section>
-
-                  {
-                  values.profession === 'student' ? (
-                    <>
-                      <section className={styles.question} style={{ display: sections.section_1 ? 'block' : 'none' }}>
-                        <label className={`${styles.label}`}>1-1. Are you a high school or college student?</label>
-                        <div>
-                          <div className={styles.innerLabel}>
-                            <input
-                              type="radio"
-                              name="level"
-                              value="high school student"
-                              className={styles.radio}
-                              onChange={handleChange}
-                            />
-                            <span>High School Student</span>
-                          </div>
-                          <div className={styles.innerLabel}>
-                            <input
-                              type="radio"
-                              name="level"
-                              value="college student"
-                              className={styles.radio}
-                              onChange={handleChange}
-                            />
-                            <span>College Student</span>
-                          </div>
-                          {errors.level && (
-                            <div className={styles.inputFeedback}>{errors.level}</div>
-                          )}
-                        </div>
-                      </section>
-
-                      <section className={styles.question} style={{ display: sections.section_1 ? 'block' : 'none' }}>
-                        <label className={styles.label} htmlFor="school">1-2. Please Enter the name of your school.</label>
-                        <input
-                          name="school"
-                          type="text"
-                          value={values.school}
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                          className={styles.textInput}
-                        />
-                        {errors.school && (
-                          <div className={styles.inputFeedback}>{errors.school}</div>
-                        )}
-                      </section>
-                    </>
-                  ) : null
-                }
-
                   <section className={styles.question} style={{ display: sections.section_2 ? 'block' : 'none' }}>
-                    <label className={styles.label}>2. What are your fields of interest?</label>
+                    <label className={`${styles.label}`}>Are you a high school or college student?</label>
+                    <div>
+                      <div className={`${styles.innerLabel} ${styles.radioField}`}>
+                        <input
+                          type="radio"
+                          name="level"
+                          value="high school student"
+                          className={styles.radio}
+                          onChange={handleChange}
+                        />
+                        <span>High School Student</span>
+                      </div>
+                      <div className={`${styles.innerLabel} ${styles.radioField}`}>
+                        <input
+                          type="radio"
+                          name="level"
+                          value="college student"
+                          className={styles.radio}
+                          onChange={handleChange}
+                        />
+                        <span>College Student</span>
+                      </div>
+                      {errors.level && (
+                        <div className={styles.inputFeedback}>{errors.level}</div>
+                      )}
+                    </div>
+                  </section>
+                  <section className={styles.question} style={{ display: sections.section_3 ? 'block' : 'none' }}>
+                    <label className={styles.label} htmlFor="location">Please enter the location name?</label>
+                    <input
+                      name="location"
+                      type="text"
+                      placeholder="School Name (e.g University Of Miami)..."
+                      value={values.location}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      className={styles.textInput}
+                    />
+                    <label style={{ marginTop: '30px' }} className={styles.label} htmlFor="country">Please Select country?</label>
                     <div className={styles.select}>
                       <Select
+                        styles={customStyles}
+                        components={{ DropdownIndicator }}
+                        style={{ zIndex: 10 }}
+                        name="country"
+                        value={values.country}
+                        options={countries}
+                        onChange={(e) => handleChange({ target: { name: 'country', value: e } })}
+                      />
+                      <label style={{ marginTop: '30px' }} className={styles.label} htmlFor="city">Please enter the city?</label>
+                      <input
+                        name="city"
+                        type="text"
+                        placeholder="Harrisonburg"
+                        value={values.city}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        className={styles.textInput}
+                      />
+                    </div>
+                    {errors.school && (
+                    <div className={styles.inputFeedback}>{errors.school}</div>
+                    )}
+                  </section>
+
+                  <section className={styles.question} style={{ display: sections.section_4 ? 'block' : 'none' }}>
+                    <label className={styles.label}>What are your fields of interest?</label>
+                    <div className={styles.select}>
+                      <Select
+                        styles={customStyles}
+                        components={{ DropdownIndicator }}
                         style={{ zIndex: 10 }}
                         closeMenuOnSelect={false}
                         name="interest"
@@ -322,10 +440,12 @@ const InterestForm = function ({ token }) {
                     )}
                   </section>
 
-                  <section className={styles.question} style={{ display: sections.section_3 ? 'block' : 'none' }}>
-                    <label className={styles.label}>3. What are you passionate about?</label>
+                  <section className={styles.question} style={{ display: sections.section_5 ? 'block' : 'none' }}>
+                    <label className={styles.label}>What are you passionate about?</label>
                     <div className={styles.select}>
                       <Select
+                        styles={customStyles}
+                        components={{ DropdownIndicator }}
                         closeMenuOnSelect={false}
                         name="passion"
                         value={values.passion}
@@ -339,13 +459,15 @@ const InterestForm = function ({ token }) {
                     )}
                   </section>
 
-                  <section className={styles.question} style={{ display: sections.section_4 ? 'block' : 'none' }}>
+                  <section className={styles.question} style={{ display: sections.section_6 ? 'block' : 'none' }}>
                     <label className={styles.label}>
-                      4. What is your reason for wanting to start a chapter?
+                      Please give a brief description for the chapter?
+
                     </label>
                     <textarea
-                      name="reasons"
-                      value={values.reasons}
+                      name="description"
+                      placeholder="The reason I’d like to start a chapter is..."
+                      value={values.description}
                       onChange={handleChange}
                       onBlur={handleBlur}
                       className={styles.textareaInput}
@@ -355,13 +477,13 @@ const InterestForm = function ({ token }) {
                     )}
                   </section>
 
-                  <section className={styles.question} style={{ display: sections.section_5 ? 'block' : 'none' }}>
+                  <section className={styles.question} style={{ display: sections.section_7 ? 'block' : 'none' }}>
                     <label className={styles.label}>
-                      5. What kind of support would you like for starting a chapter?
+                      What is your reason for wanting to start a chapter?
                     </label>
                     <textarea
-                      name="support"
-                      value={values.support}
+                      name="mission"
+                      value={values.mission}
                       onChange={handleChange}
                       onBlur={handleBlur}
                       className={styles.textareaInput}
@@ -371,23 +493,45 @@ const InterestForm = function ({ token }) {
                     )}
                   </section>
 
-                  <section className={styles.question} style={{ display: sections.section_6 ? 'block' : 'none' }}>
+                  <section className={styles.question} style={{ display: sections.section_8 ? 'block' : 'none' }}>
                     <label className={styles.label}>
-                      6. How many interested members do you have right now?
+                      How many interested members do you have right now?
                     </label>
-                    <input
-                      name="interestedMembers"
-                      type="number"
-                      min="0"
-                      value={values.interestedMembers}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      className={styles.numberInput}
-                    />
+                    <div className={styles.numberInputContainer}>
+                      <input
+                        name="interestedMembers"
+                        type="text"
+                        min="0"
+                        value={values.interestedMembers}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        className={styles.numberInput}
+                      />
+                      <div>
+                        <img
+                          src="/assets/images/chapter/arrow-top.svg"
+                          onClick={() => setValues((prevValues) => ({
+                            ...prevValues,
+                            interestedMembers: values.interestedMembers + 1,
+                          }))}
+                          alt="arrow"
+                        />
+                        <img
+                          src="/assets/images/chapter/arrow-down.svg"
+                          onClick={() => setValues((prevValues) => ({
+                            ...prevValues,
+                            interestedMembers:
+                             values.interestedMembers === 0
+                               ? values.interestedMembers : values.interestedMembers - 1,
+                          }))}
+                          alt="arrow"
+                        />
+                      </div>
+                    </div>
                   </section>
 
-                  <section className={styles.question} style={{ display: sections.section_7 ? 'block' : 'none' }}>
-                    <label className={styles.label}>7. Best way of contacting you</label>
+                  <section className={styles.question} style={{ display: sections.section_9 ? 'block' : 'none' }}>
+                    <label className={styles.label}> Best way of contacting you</label>
                     <div>
                       <div className={styles.innerLabel}>
                         <input
@@ -407,7 +551,7 @@ const InterestForm = function ({ token }) {
                           type="email"
                           name="email"
                           placeholder="enter your email address"
-                          className={styles.emailInput}
+                          className={styles.textInput}
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
@@ -432,7 +576,7 @@ const InterestForm = function ({ token }) {
                           type="tel"
                           name="phone"
                           placeholder="enter your phone number"
-                          className={styles.phoneInput}
+                          className={styles.textInput}
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
@@ -452,39 +596,22 @@ const InterestForm = function ({ token }) {
                         {' '}
                         Back
                       </div>
-                      <div style={{ display: sections.section_7 ? 'none' : 'block' }} className={`${styles.button} ${styles.next}`} onClick={handleNext}>
+                      <div style={{ display: sections.section_9 ? 'none' : 'block' }} className={`${styles.button} ${styles.next}`} onClick={handleNext}>
                         Next
-                        <i className="fas fa-angle-right" />
                       </div>
-                      <div style={{ display: sections.section_7 ? 'block' : 'none' }} className={`${styles.button} ${styles.submit}`} onClick={handleSubmit}>Submit</div>
+                      <div style={{ display: sections.section_9 ? 'block' : 'none' }} className={`${styles.button} ${styles.next}`} onClick={handleSubmit}>Submit</div>
                     </div>
                   </div>
                 </form>
-                <div className={styles.stepperWrapper}>
-                  <div className={styles.stepperContainer}>
-                    <div className={styles.stepperButtons}>
-                      <div className={styles.stepperButton} style={getButtonStatus('section_1')} onClick={() => handleStepperClick('section_1')}>1</div>
-                      <div className={styles.stepperLine} style={getLineStatus('section_2')} />
-                      <div className={styles.stepperButton} style={getButtonStatus('section_2')} onClick={() => handleStepperClick('section_2')}>2</div>
-                      <div className={styles.stepperLine} style={getLineStatus('section_3')} />
-                      <div className={styles.stepperButton} style={getButtonStatus('section_3')} onClick={() => handleStepperClick('section_3')}>3</div>
-                      <div className={styles.stepperLine} style={getLineStatus('section_4')} />
-                      <div className={styles.stepperButton} style={getButtonStatus('section_4')} onClick={() => handleStepperClick('section_4')}>4</div>
-                      <div className={styles.stepperLine} style={getLineStatus('section_5')} />
-                      <div className={styles.stepperButton} style={getButtonStatus('section_5')} onClick={() => handleStepperClick('section_5')}>5</div>
-                      <div className={styles.stepperLine} style={getLineStatus('section_6')} />
-                      <div className={styles.stepperButton} style={getButtonStatus('section_6')} onClick={() => handleStepperClick('section_6')}>6</div>
-                      <div className={styles.stepperLine} style={getLineStatus('section_7')} />
-                      <div className={styles.stepperButton} style={getButtonStatus('section_7')} onClick={() => handleStepperClick('section_7')}>7</div>
-                    </div>
-                    {/* <div className={styles.stepperLine} /> */}
-                  </div>
-                </div>
+
               </>
             )
             : (
               <section className={styles.thankyouSection}>
-                Thank you for submitting!
+                <img
+                  src="/assets/images/chapter/finished.png"
+                  alt="submitted"
+                />
               </section>
             )
         }

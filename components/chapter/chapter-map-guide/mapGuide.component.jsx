@@ -5,8 +5,8 @@ const MapGuide = ({ categories }) => (
   <div className={styles.container}>
     <div className={styles.heading}>Chapter Type</div>
     {categories
-      && categories.map(({ _id, LocationLogo, chapter_type }) => (
-        <div key={_id} className={styles.iconAndName}>
+      && categories.map(({ id, LocationLogo, chapter_type }) => (
+        <div key={id} className={styles.iconAndName}>
           <div className={styles.icon}>
             <img src={LocationLogo} alt="icon" />
           </div>

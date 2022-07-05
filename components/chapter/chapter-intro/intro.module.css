@@ -3,10 +3,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: none;
   padding: 1em 0;
   padding-bottom: 4em;
   position: relative;
+  overflow-x: clip;
 }
 
 .tag {
@@ -23,17 +23,19 @@
 
 .introContainer {
   width: 100%;
-  max-width: 64em;
+  /* max-width: 64em; */
   display: flex;
-  align-items: flex-start;
+  flex-direction: column;
+  align-items: center;
   justify-content: space-between;
   padding: 3em;
   margin-top: 8em;
-  background: rgb(0,0,0,0.2);
+  /* background: rgb(0,0,0,0.2); */
 }
 
 .contentContainer {
-  width: 26em;
+  /* width: 26em; */
+  margin-top: 70px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -42,17 +44,26 @@
 }
 
 .heading {
-  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 61px;
   text-align: center;
+  background: linear-gradient(90.87deg, #97C4F5 -2.84%, #33D2FF 82.04%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
   padding: 0;
   margin: 0;
-  margin-bottom: 1em;
+  margin-bottom: 38px;
 }
 
 .text {
   text-align: center;
   font-size: 1.2rem;
   margin-bottom: 1em;
+  font-weight: normal;
+  font-size: 30px;
+  padding: 0 3rem;
 }
 
 .showText {
@@ -61,17 +72,20 @@
 
 .button {
   padding: 0.8em 3em;
-  background: #151371;
-  color: white;
+  font-weight: 600;
+  font-size: 30px;
+  background: #6938EF;
+  border-radius: 100px;  color: white;
   cursor: pointer;
+  margin-bottom: 38px;
 }
 
-.button:hover {
+/* .button:hover {
   background: #100e5a;
-}
+} */
 
 .globeContainer {
-  width: 20em;
+  /* width: 20em; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -94,128 +108,94 @@
     justify-content: center;
     border-radius: 50%;
 }
-
+.imgText{
+  background: #1C1D37;
+  border-radius: 29px;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 2rem;
+  margin-top: -50px;
+  position: relative;
+  z-index: 20;
+}
+.imgText p{
+  color: #FFFFFF;
+  font-weight: normal;
+  font-size: 30px;
+  text-align: center;
+  margin: 20px 0;
+}
+.imgText div{
+  width: fit-content;
+  margin: auto;
+  margin-bottom: 20px;
+}
+.bgBlue{
+  position: absolute;
+  width: 160.95px;
+  height: 170.28px;
+  background: #584ae6;
+  border-radius: 50%;
+  mix-blend-mode: hard-light;
+  box-shadow: inset 0px 4px 4px rgb(0 0 0 / 25%);
+  filter: blur(140.94px);
+  right: 10%;
+  top: 30%;
+}
+.bgImg{
+  position: absolute;
+  right: -90rem;
+  top: 60rem;
+  mix-blend-mode: color-dodge;
+}
 @media screen and (max-width: 1024px) {
-  .introContainer {
+  /* .introContainer {
     max-width: 48em;
-  }
+  } */
 
   .contentContainer {
-    width: 24em;
+    /* width: 24em; */
   }
 
   .heading {
-    font-size: 1.4em;
+    /* font-size: 1.4em; */
   }
 
   .text {
-    font-size: 1rem;
+    /* font-size: 1rem; */
   }
 
   .globeContainer {
-    width: 16em;
+    /* width: 16em; */
   }
 }
 
 @media screen and (max-width: 768px) {
-
-  .tag {
-    width: auto;
-    position: absolute;
-    top: 0;
-    left: 2em;
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 90%, 0 100%);
-    background: #151371;
-    color: white;    
-    padding-top: 1em;
-    padding-bottom: 1em;
-    padding-right: 0.5em;
-    padding-left: 0.5em;
-  }
-
-  .introWrapper {
-    position: static;
-  }
-
-  .introContainer {
-    max-width: 36em;
-    padding: 3em 1em;
-    margin-top: 6em;
-    position: relative;
-  }
-
-  .contentContainer {
-    width: 20em;
-  }
-
-  .heading {
-    font-size: 1.2em;
-  }
-
   .text {
-    font-size: 0.9rem;
-  }
-
-  .globeContainer {
-    width: 12em;
-  }
-
-  .button {
-      padding: 0.6em 3em;
-  }
-
-  .playIcon {
-      width: 3em;
-      height: 3em;
+    padding: 0;
   }
 }
 
 
 @media screen and (max-width: 480px) {  
-  .introContainer {
-    max-width: 100%;
+  .heading{
+    font-size: 40px;
   }
-
-  .tag {
-    left: 1em;
-    font-size: 0.8em;
+  .text{
+    padding: 0;
+    font-size: 24px;
   }
-
-  .contentContainer {
-    width: 16em;
+  .button{
+    font-size: 20px;
   }
-
-  .showText {
-    display: inline;
+  .imgText p{
+    font-size: 24px;
   }
-
-  .hideText {
-    display: none;
+  .imgText{
+    padding: 1rem 0rem;
   }
-
-  .playIcon {
-      width: 2em;
-      height: 2em;
-  }
-
-  .playIcon > * {
-      font-size: 0.8em;
-  }
-
-  .heading {
-    font-size: 1.2em;
-  }
-
-  .text {
-    font-size: 0.8rem;
-  }
-
-  .button {
-    padding: 0.5em 2em;
-  }
-
-  .globeContainer {
-    width: 10em;
+  .introContainer{
+    padding: 1em;
   }
 }
 

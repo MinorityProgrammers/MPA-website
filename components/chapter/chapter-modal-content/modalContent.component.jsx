@@ -37,7 +37,8 @@ const ModalContent = ({
         })
         .catch((err) => {
           try {
-            errorToast(err.response.data.data.message.msg);
+            // errorToast(err.response.data.data.message.msg);
+            console.log(err);
           } catch (error) {
             errorToast('Network Error');
           }

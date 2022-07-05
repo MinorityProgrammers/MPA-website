@@ -18,11 +18,12 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    background: white;
+    background: #1C1D37;
     padding: 0 4em;
     padding-bottom: 4em;
     padding-top: 6em;
     position: relative;
+    color: white;
 }
 
 .linkContainer {    
@@ -58,8 +59,8 @@
     width: 4em;
     height: 2.7em;
     cursor: pointer;
-    background: #ffc700;
-    color: #151371;
+    background: #8040d2;
+    color: #ffffff;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -70,7 +71,7 @@
     margin-bottom: 0.5em;
     text-align: center;
     font-size: 2rem;
-    color: #151371;
+    color: #ffffff;
 }
 
 .subtitle {
@@ -93,7 +94,7 @@
     width: 100%;
     text-align: start;
     font-size: 1.6em;
-    color: #151371;
+    color: #ffffff;
 }
 
 @media screen and (max-width: 1024px) {

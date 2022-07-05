@@ -4,8 +4,8 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  padding: 4em 0.5em 3em 0.5em;
-  background: linear-gradient(90deg, #ff00b8 0%, #ff655b 50.8%, #ffc700 100%);
+  padding: 10em 0.5em 3em 0.5em;
+  font-family: 'Poppins', sans-serif;
 }
 
 .joinWrapper {
@@ -18,13 +18,12 @@
 
 .joinOuterContainer {
   width: 100%;
-  border: 2px solid rgb(255, 255, 255, 0.5);
-  padding: 1em;
 }
 
 .joinContainer {
   width: 100%;
-  background: rgba(255, 255, 255, 0.7);
+  border-radius: 16px;
+  background-color: #1C1D37;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -42,23 +41,24 @@
   margin-bottom: 1em;
   font-size: 1.2rem;
   font-weight: 500;
-  color: black;
+  color: rgb(255, 255, 255);
 }
 
 .joinButton {
-  background: #151371;
-  padding: 8px 24px;
-  border-radius: 8px;
-  cursor: pointer;
-  color: white;
+  color: #ffffff;
+  padding: 0.3em 0.8em;
   text-transform: capitalize;
-  transition: all 350ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  background: #6938EF;
+  border-radius: 100px;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 12px 30px;
 }
 
 .joinButton:hover {
-  background: white;
-  border: 2px solid #151371;
-  color: #151371;
+  /* background: white;
+  border: 2px solid #151371; */
+  color: #fff; 
 }
 
 @media screen and (max-width: 1024px) {

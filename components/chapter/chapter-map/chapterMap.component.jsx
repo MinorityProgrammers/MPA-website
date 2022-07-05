@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 import axios from 'axios';
 import styles from './chapterMap.module.css';
-import Dropdown from '../chapter-dropdown/dropdown.component';
+// import Dropdown from '../chapter-dropdown/dropdown.component';
 import ModalContent from '../chapter-modal-content/modalContent.component';
 import MapGuide from '../chapter-map-guide/mapGuide.component';
 
@@ -10,36 +10,47 @@ const mapStyles = {
   width: '100%',
 };
 
-function formatDate(dateStr) {
-  const MONTHS = [
-    'Jan',
-    'Feb',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'Sept',
-    'Oct',
-    'Nov',
-    'Dec',
-  ];
-  const d = new Date(dateStr);
-  const year = d.getFullYear();
-  const month = MONTHS[d.getMonth()];
-  const date = d.getDate();
+const categories = [
+  {
+    id: '1',
+    LocationLogo: '/assets/images/chapter/pre-collage.svg',
+    chapter_type: 'Pre-College',
+  },
+  {
+    id: '2',
+    LocationLogo: '/assets/images/chapter/continental.svg',
+    chapter_type: 'Continental',
+  },
+  {
+    id: '3',
+    LocationLogo: '/assets/images/chapter/national.svg',
+    chapter_type: 'National',
+  },
+  {
+    id: '4',
+    LocationLogo: '/assets/images/chapter/university.svg',
+    chapter_type: 'University',
+  },
+  {
+    id: '5',
+    LocationLogo: '/assets/images/chapter/professional.svg',
+    chapter_type: 'Professional',
+  },
+  {
+    id: '6',
+    LocationLogo: '/assets/images/chapter/regional.svg',
+    chapter_type: 'Regional',
+  },
+];
 
-  return `${month} ${date} ${year}`;
-}
-
-const ChapterMap = ({ google, token }) => {
-  const [active, setActiveDropdown] = useState({});
+const ChapterMap = ({
+  google, token, locations, filteredLocations,
+}) => {
+  // const [active, setActiveDropdown] = useState({});
   const [modalIsOpen, setIsOpen] = useState(false);
   const [modalDetails, setModalDetails] = useState({});
   const [activeArea, setActive] = useState();
-  const [locations, setLocations] = useState([]);
-  const [filteredLocations, setFilteredLocations] = useState([]);
+
   const [joinRequests, setJoinRequests] = useState([]);
 
   const location = new Set();
@@ -63,22 +74,6 @@ const ChapterMap = ({ google, token }) => {
   const userJoinRequests = findrequests(joinRequests);
 
   useEffect(() => {
-    axios
-      .get(`${process.env.BASE_URI}/location`)
-      .then((res) => res.data)
-      .then((msg) => msg.data)
-      .then((data) => {
-        const newData = data.map((d) => ({
-          ...d,
-          date_founded: formatDate(d.date_founded),
-        }));
-        setLocations(newData);
-        setFilteredLocations(newData);
-      })
-      .catch((err) => console.error(err));
-  }, []);
-
-  useEffect(() => {
     if (token) {
       axios
         .get(`${process.env.BASE_URI}/joinChapter/userJoinedRequests`, {
@@ -88,24 +83,26 @@ const ChapterMap = ({ google, token }) => {
         })
         .then((data) => {
           setJoinRequests(data.data.data);
+          console.log(data.data.data);
         })
         .catch((err) => console.error(err));
     }
   }, []);
 
-  const handlePlaces = (val, category) => {
-    const getNumFromStr = (str) => {
-      const result = str.match(/\d+/);
-      return parseInt(result[0]);
-    };
-    const newLocations = locations.filter((_location) => {
-      if (category === 'all') return _location;
-      if (category === 'member_size') return getNumFromStr(_location.member_size) >= getNumFromStr(val);
-      return _location[category] === val || _location[category] === val;
-    });
-    setFilteredLocations(newLocations);
-    setActiveDropdown({});
-  };
+  // const handlePlaces = (val, category) => {
+  //   const getNumFromStr = (str) => {
+  //     const result = str.match(/\d+/);
+  //     return parseInt(result[0]);
+  //   };
+  //   const newLocations = locations.filter((_location) => {
+  //     if (category === 'all') return _location;
+  //     if (category === 'member_size') return
+  //  getNumFromStr(_location.member_size) >= getNumFromStr(val);
+  //     return _location[category] === val || _location[category] === val;
+  //   });
+  //   setFilteredLocations(newLocations);
+  //   setActiveDropdown({});
+  // };
 
   const handleLocation = (details) => {
     setModalDetails(details);
@@ -115,27 +112,34 @@ const ChapterMap = ({ google, token }) => {
     }
   };
 
-  const handleClick = (key) => {
-    if (Object.keys(active)[0] === key) {
-      setActiveDropdown({});
-    } else {
-      setActiveDropdown({ [key]: true });
-    }
-  };
+  // const handleClick = (key) => {
+  //   if (Object.keys(active)[0] === key) {
+  //     setActiveDropdown({});
+  //   } else {
+  //     setActiveDropdown({ [key]: true });
+  //   }
+  // };
 
-  const handleMapClick = () => {
-    setActiveDropdown({});
-  };
+  // const handleMapClick = () => {
+  //   setActiveDropdown({});
+  // };
 
+  const getMarkerImg = (type) => {
+    let url = '';
+
+    categories.forEach((category) => {
+      if (type.toLowerCase() === category.chapter_type.toLowerCase()) url = category.LocationLogo;
+    });
+    return url;
+  };
   return (
     <div className={styles.wrapper}>
-      <div className={styles.tag}>04</div>
       <div className={styles.headingContainer}>
         <div className={styles.title}>CHAPTER MAP</div>
         <div className={styles.text}>
-          Checkout chapter locations accross the globe
+          View chapter locations across the globe
         </div>
-        <div className={styles.navbar}>
+        {/* <div className={styles.navbar}>
           <div className={styles.resetButtonContainer}>
             <button
               type="button"
@@ -173,7 +177,7 @@ const ChapterMap = ({ google, token }) => {
             heading="Member Size"
             list={[...memberSize]}
           />
-        </div>
+        </div> */}
       </div>
 
       <div id="map" className={styles.mapContainer}>
@@ -188,14 +192,14 @@ const ChapterMap = ({ google, token }) => {
           zoom={2}
           style={mapStyles}
           initialCenter={{ lat: 47.444, lng: -122.176 }}
-          onClick={handleMapClick}
+          // onClick={handleMapClick}
         >
           {filteredLocations
             && filteredLocations.map((place) => (
               <Marker
                 key={place._id}
                 onClick={() => handleLocation({ ...place })}
-                icon={{ url: place.LocationLogo }}
+                icon={{ url: getMarkerImg(place.chapter_type) }}
                 name={place.LocationName}
                 title={place.LocationName}
                 position={{ lat: place.latitude, lng: place.longitude }}
@@ -203,7 +207,7 @@ const ChapterMap = ({ google, token }) => {
             ))}
         </Map>
 
-        <MapGuide categories={locations} />
+        <MapGuide categories={categories} />
 
         {modalIsOpen && (
           <div className={styles.modal} onClick={() => setIsOpen(!!activeArea)}>

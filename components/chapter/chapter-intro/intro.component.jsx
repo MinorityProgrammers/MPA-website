@@ -1,12 +1,9 @@
-import React, { useState } from 'react';
-import { FaPlay } from 'react-icons/fa';
-import ModalVideo from 'react-modal-video';
+import React from 'react';
 import { useRouter } from 'next/router';
 import styles from './intro.module.css';
 import { errorToast } from '../../../contexts/utils/toasts';
 
 const Intro = ({ active }) => {
-  const [isOpen, setOpen] = useState(false);
   const router = useRouter();
 
   const handleStart = () => {
@@ -18,10 +15,12 @@ const Intro = ({ active }) => {
   };
 
   return (
-    <div className={styles.introWrapper}>
-      <div className={styles.introContainer}>
-        <div className={styles.tag}>01</div>
+    <div className={`${styles.introWrapper}`}>
+      <div className={`container ${styles.introContainer}`}>
         <div className={styles.contentContainer}>
+          <div onClick={handleStart} className={styles.button}>
+            Chapters
+          </div>
           <h1 className={styles.heading}>START CHAPTER</h1>
           <p className={styles.text}>
             Start a community of diverse developers today, and get
@@ -35,25 +34,24 @@ const Intro = ({ active }) => {
               of diverse talent here to empower the world!
             </span>
           </p>
-          <div onClick={handleStart} className={styles.button}>
-            Start Today
-          </div>
         </div>
         <div className={styles.globeContainer}>
-          <img src="/assets/images/chapter/world.png" alt="map" />
-          <div onClick={() => setOpen(true)} className={styles.playIcon}>
-            <FaPlay />
+          <img src="/assets/images/chapter/hero.svg" alt="map" />
+        </div>
+        <div className={styles.imgText}>
+          <p>
+            Join the Coding revolution! Learn, code, and build socially
+            impactiful projects with other creative minorities
+          </p>
+          <div onClick={handleStart} className={styles.button}>
+            Start Now
           </div>
         </div>
-
-        <ModalVideo
-          channel="youtube"
-          autoplay
-          isOpen={isOpen}
-          videoId="VZmd8EOj3UA"
-          onClose={() => setOpen(false)}
-        />
       </div>
+      <div className={styles.bgImg}>
+        <img src="/assets/images/home-page/about-us-bg.svg" alt="" />
+      </div>
+      <div className={styles.bgBlue} />
     </div>
   );
 };
