@@ -56,8 +56,7 @@ const DonateAmount = ({
     </div>
     <div style={{ background: '#1C1D37', padding: '2.5rem 0' }} className="mt-5">
       <div className="container step__bottom">
-        <p>or donate a cusotm ammount</p>
-
+        <p>or donate a custom amount</p>
         <div className="step__amount-custom">
           <span>$</span>
           <input
