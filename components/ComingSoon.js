@@ -26,7 +26,7 @@ const ComingSoon = ({ closeClick }) => {
             className="CS-img"
           />
         </div>
-        <p className="CS-text">MPA-Website</p>
+        <p className="CS-text">Coming Soon</p>
         <div className="dropdown-login-button">
           <button
             type="button"

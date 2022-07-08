@@ -13,7 +13,7 @@ const FeaturedAdvice = () => (
         <div className="col-xl-4 col-lg-4">
           <div className="img__container">
             <img src="/assets/images/advice3.png" alt="advice3" />
-            <a className="btn">Join Minority Ventures Cohort</a>
+            <a href="https://www.minorityventure.com/#home" target="_blanck" className="btn">Join Minority Ventures Cohort</a>
           </div>
         </div>
         <div className="col-xl-4 col-lg-4">
