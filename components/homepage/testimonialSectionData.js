@@ -93,6 +93,7 @@ export const sponsors = [
   },
   {
     sponsorLink: 'https://www.unitmasters.org/',
+
     imgSrc: 'assets/images/sponsorship/unitmasters.png',
   },
 ];
