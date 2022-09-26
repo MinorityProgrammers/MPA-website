@@ -91,6 +91,10 @@ export const sponsors = [
     sponsorLink: 'https://celocommunityfund.org/',
     imgSrc: 'assets/images/sponsorship/CeloCommunityFUnd.jpg',
   },
+  {
+    sponsorLink: 'https://www.unitmasters.org/',
+    imgSrc: 'assets/images/sponsorship/unitmasters.png',
+  },
 ];
 
 export const allies = [
