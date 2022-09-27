@@ -1,33 +1,36 @@
 /*eslint-disable */
-import React, { useState } from "react";
-import Swiper from "react-id-swiper";
-import "swiper/css/swiper.css";
-import CORE_PRINCIPLES from "./corePrinciplesData";
+import React, { useState } from 'react';
+import Swiper from 'react-id-swiper';
+import 'swiper/css/swiper.css';
+import CORE_PRINCIPLES from './corePrinciplesData';
 
 const HomepageCore = () => {
   const [popupInfo, setPopupInfo] = useState({
-    id: "",
-    image: "",
-    icon: "",
-    title: "",
-    url: "",
-    description: "",
+    id: '',
+    image: '',
+    icon: '',
+    title: '',
+    url: '',
+    description: '',
   });
 
   const params = {
     slidesPerView: 3,
     loop: true,
     speed: 1000,
-    spaceBetween: 30,
+    spaceBetween: 20,
     autoplay: {
       delay: 3000,
       disableOnInteraction: false,
     },
     pagination: {
-      el: ".swiper-pagination",
+      el: '.swiper-pagination',
       clickable: true,
     },
-
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
     // Responsive breakpoints
     breakpoints: {
       1024: {
@@ -46,21 +49,21 @@ const HomepageCore = () => {
   };
 
   const handlePopup = (info) => {
-    document.querySelector(".popup_wrapper-core").classList.add("show");
+    document.querySelector('.popup_wrapper-core').classList.add('show');
     setPopupInfo(info);
-    document.querySelector(".popup-core").classList.add("popup_show-core");
+    document.querySelector('.popup-core').classList.add('popup_show-core');
   };
 
   const handleTogglePopup = () => {
     document
-      .querySelector(".popup-core")
-      .classList.replace("popup_show-core", "popup_hide-core");
-    document.querySelector(".popup-core").onanimationend = (e) => {
-      if (e.animationName === "hide") {
+      .querySelector('.popup-core')
+      .classList.replace('popup_show-core', 'popup_hide-core');
+    document.querySelector('.popup-core').onanimationend = (e) => {
+      if (e.animationName === 'hide') {
         document
-          .querySelector(".popup-core")
-          .classList.remove("popup_hide-core");
-        document.querySelector(".popup_wrapper-core").classList.remove("show");
+          .querySelector('.popup-core')
+          .classList.remove('popup_hide-core');
+        document.querySelector('.popup_wrapper-core').classList.remove('show');
       }
     };
   };

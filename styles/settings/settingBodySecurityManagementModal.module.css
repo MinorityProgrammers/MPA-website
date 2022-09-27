@@ -66,17 +66,28 @@
   background-color: #6938EF;
   color: white;
 }
-.deactivate {
+
+.actionBtns .delete,.actionBtns .deactivate {
+  background-color: #eb3730;
+  color: white;
+  font-size: 14px ;
+  font-weight: bold;
+  display: flex;
+  align-items: center ;
+  justify-content: center;
+  border-radius: 0.5vw ;
+  text-transform: capitalize ;
+  height: 5vh ;
+  padding: 0;
+  border: none;
+  width: 47%;
+}
+.actionBtns .deactivate {
   background-color: #FB8C00;
   color: rgb(255, 255, 255);
 }
-.delete {
-  background-color: #eb3730;
-  color: white;
-}
-
-.ps span.note {
-  color: #FB8C00;
+ input.note {
+  color: #FB8C00 !important;
 }
 .ps span.warn {
   color: #eb3730;

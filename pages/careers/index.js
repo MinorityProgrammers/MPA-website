@@ -83,9 +83,11 @@ const JobsMain = () => {
 
   useEffect(() => {
     fetchData();
-  }, [typeof window !== 'undefined'
-    ? window.localStorage.getItem('jwtToken')
-    : null]);
+  }, [
+    typeof window !== 'undefined'
+      ? window.localStorage.getItem('jwtToken')
+      : null,
+  ]);
 
   const openModal = () => {
     if (window.innerWidth <= 550) setShowModal(!showModal);
@@ -95,7 +97,7 @@ const JobsMain = () => {
     setLoading(true);
     setJobs([]);
     fetch(
-      `${process.env.BASE_URI}/job?pay=${filter.pay}&remote=${filter.remote}&job_type=${filter.job_type}&date_posted=${filter.date_posted}&job_industry=${filter.job_industry}`,
+      `${process.env.BASE_URI}/job?pay=${filter.pay}&remote=${filter.remote}&job_type=${filter.job_type}&date_posted=${filter.date_posted}&job_industry=${filter.job_industry}`
     )
       .then((response) => response.json())
       .then((response) => {
@@ -193,19 +195,19 @@ const JobsMain = () => {
   function containerReset() {
     if (window.innerWidth > 991 && document.querySelector('.jobsMain')) {
       document.getElementsByClassName(
-        'jobs-main-container-list',
+        'jobs-main-container-list'
       )[0].style.display = 'block';
       document.getElementsByClassName(
-        'jobs-main-container-single',
+        'jobs-main-container-single'
       )[0].style.display = 'block';
 
       winSize.current = 'large';
     } else if (
-      winSize.current === 'large'
-      && document.querySelector('.jobsMain')
+      winSize.current === 'large' &&
+      document.querySelector('.jobsMain')
     ) {
       document.getElementsByClassName(
-        'jobs-main-container-single',
+        'jobs-main-container-single'
       )[0].style.display = 'none';
       winSize.current = 'small';
     }
@@ -219,26 +221,30 @@ const JobsMain = () => {
     setActiveJobIndex(idx);
     changeCurrentJob((/* prevJob */) => currJob);
     if (window.innerWidth <= 991) {
-      document.getElementsByClassName('jobsMain-search')[0].style.display = 'none';
+      document.getElementsByClassName('jobsMain-search')[0].style.display =
+        'none';
       document.getElementsByClassName(
-        'jobs-main-container-list',
+        'jobs-main-container-list'
       )[0].style.display = 'none';
-      document.getElementsByClassName('jobs-main-filters')[0].style.display = 'none';
+      document.getElementsByClassName('jobs-main-filters')[0].style.display =
+        'none';
       document.getElementsByClassName(
-        'jobs-main-container-single',
+        'jobs-main-container-single'
       )[0].style.display = 'block';
     }
   }
 
   function closeSingle() {
-    document.getElementsByClassName('jobsMain-search')[0].style.display = 'block';
-    document.getElementsByClassName('jobs-main-filters')[0].style.display = 'block';
+    document.getElementsByClassName('jobsMain-search')[0].style.display =
+      'block';
+    document.getElementsByClassName('jobs-main-filters')[0].style.display =
+      'block';
     document.getElementsByClassName(
-      'jobs-main-container-single',
+      'jobs-main-container-single'
     )[0].style.display = 'none';
     document.getElementsByClassName('jobsMain')[0].style.height = 'auto';
     document.getElementsByClassName(
-      'jobs-main-container-list',
+      'jobs-main-container-list'
     )[0].style.display = 'block';
   }
 
@@ -258,13 +264,15 @@ const JobsMain = () => {
     }
   }
 
-  const token = typeof window !== 'undefined'
-    ? window.localStorage.getItem('jwtToken')
-    : null;
+  const token =
+    typeof window !== 'undefined'
+      ? window.localStorage.getItem('jwtToken')
+      : null;
 
-  const userInfo = typeof window !== 'undefined'
-    ? window.localStorage.getItem('userInfo')
-    : null;
+  const userInfo =
+    typeof window !== 'undefined'
+      ? window.localStorage.getItem('userInfo')
+      : null;
 
   const fetchSavedJobs = () => {
     if (token) {
@@ -292,7 +300,7 @@ const JobsMain = () => {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        },
+        }
       )
       .then((/* response */) => {
         successToast('Job Saved Successfully!');
@@ -324,15 +332,17 @@ const JobsMain = () => {
   useEffect(() => {
     fetchSavedJobs();
     getAppliedJobs();
-  }, [typeof window !== 'undefined'
-    ? window.localStorage.getItem('jwtToken')
-    : null]);
+  }, [
+    typeof window !== 'undefined'
+      ? window.localStorage.getItem('jwtToken')
+      : null,
+  ]);
 
   const savedJobsId = savedJobs.map(
-    (singleSavedJob) => singleSavedJob?.job_id?._id,
+    (singleSavedJob) => singleSavedJob?.job_id?._id
   );
   const appliedJobsId = appliedJobs.map(
-    (singleAppliedJob) => singleAppliedJob?.job_id?._id,
+    (singleAppliedJob) => singleAppliedJob?.job_id?._id
   );
 
   const authPlease = () => {
@@ -343,93 +353,96 @@ const JobsMain = () => {
   const jobsPerPage = 5;
   const pagesVisited = pageNumber * jobsPerPage;
 
-  const jobStubs = jobs?.length > 0 ? (
-    jobs.slice(pagesVisited, pagesVisited + jobsPerPage).map((job, idx) => (
-      <div
-        className={idx === activeJobIndex ? 'job-stub active' : 'job-stub'}
-        key={job._id}
-        onClick={(e) => changeJobAndColor(e, job, idx)}
-      >
-        <div className="job-stub-header">
-          <div className="job-stub-title">{job.job_title}</div>
-          <div className="job-stub-company tw-mb-2 tw-flex tw-flex-row tw-items-center">
-            <img src="/assets/images/c-build.svg" alt="career" width={23} />
-            <span className="tw-text-white tw-ml-3 tw-font-medium">
-              {job?.companyId?.company_name}
-            </span>
-          </div>
-          <div>
-            {job?.remote && (
-            <div className="tw-flex tw-mb-2 tw-flex-row  tw-items-center">
+  const jobStubs =
+    jobs?.length > 0 ? (
+      jobs.slice(pagesVisited, pagesVisited + jobsPerPage).map((job, idx) => (
+        <div
+          className={idx === activeJobIndex ? 'job-stub active' : 'job-stub'}
+          key={job._id}
+          onClick={(e) => changeJobAndColor(e, job, idx)}
+        >
+          <div className="job-stub-header">
+            <div className="job-stub-title">{job.job_title}</div>
+            <div className="job-stub-company tw-mb-2 tw-flex tw-flex-row tw-items-center">
+              <img src="/assets/images/c-build.svg" alt="career" width={23} />
+              <span className="tw-text-white tw-ml-3 tw-font-medium">
+                {job?.companyId?.company_name}
+              </span>
+            </div>
+            <div>
+              {job?.remote && (
+                <div className="tw-flex tw-mb-2 tw-flex-row  tw-items-center">
+                  <img
+                    src="/assets/images/career-pin.svg"
+                    alt="career"
+                    width={23}
+                  />
+                  <span className="tw-text-white tw-font-medium tw-ml-3">
+                    Fully Remote
+                  </span>
+                </div>
+              )}
+            </div>
+            <div className="tw-flex tw-flex-row tw-items-center">
               <img
-                src="/assets/images/career-pin.svg"
+                src="/assets/images/career-business.svg"
                 alt="career"
                 width={23}
               />
               <span className="tw-text-white tw-font-medium tw-ml-3">
-                Fully Remote
+                Full time
               </span>
             </div>
-            )}
           </div>
-          <div className="tw-flex tw-flex-row tw-items-center">
-            <img
-              src="/assets/images/career-business.svg"
-              alt="career"
-              width={23}
-            />
-            <span className="tw-text-white tw-font-medium tw-ml-3">
-              Full time
-            </span>
-          </div>
-        </div>
-        <div className="job-stub-footer">
-          <div className="job-stub-postDate">
-            Posted:
-            {' '}
-            {new Date(job.updatedAt).toDateString().substr(3)}
-          </div>
-          {userInfo !== null ? (
-            savedJobsId.includes(job._id) ? (
-              <button type="button" disabled className="job-stub-saved">
-                Saved
-              </button>
+          <div className="job-stub-footer">
+            <div className="job-stub-postDate">
+              Posted: {new Date(job.updatedAt).toDateString().substr(3)}
+            </div>
+            {userInfo !== null ? (
+              savedJobsId.includes(job._id) ? (
+                <button type="button" disabled className="job-stub-saved">
+                  Saved
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  className="job-stub-saveLink"
+                  onClick={() => saveJob(job)}
+                >
+                  Save Job
+                </button>
+              )
             ) : (
               <button
                 type="button"
                 className="job-stub-saveLink"
-                onClick={() => saveJob(job)}
+                onClick={authPlease}
               >
                 Save Job
               </button>
-            )
-          ) : (
-            <button
-              type="button"
-              className="job-stub-saveLink"
-              onClick={authPlease}
-            >
-              Save Job
-            </button>
-          )}
+            )}
+          </div>
         </div>
+      ))
+    ) : (
+      <div>
+        <h3>No Jobs Available</h3>
       </div>
-    ))
-  ) : (
-    <div>
-      <h3>No Jobs Available</h3>
-    </div>
-  );
+    );
   function inputSearchSubmit(e) {
     e.preventDefault();
     let blank = true;
     if (e.target.childNodes[0].value) {
       queryObj.search = e.target.childNodes[0].value;
       blank = false;
-      const filterJobsByTitle = allJobs.filter((job) => job.job_title.toLowerCase().includes(queryObj.search.toLowerCase()));
-      const filterJobsByDes = allJobs.filter((job) => job.job_description
-        .toLowerCase()
-        .includes(queryObj.search.toLowerCase()));
+      const filterJobsByTitle = allJobs.filter((job) =>
+        job.job_title.toLowerCase().includes(queryObj.search.toLowerCase())
+      );
+      const filterJobsByDes = allJobs.filter((job) =>
+        job.job_description
+          .toLowerCase()
+          .includes(queryObj.search.toLowerCase())
+      );
       const requirements = (reqs) => {
         const arr = reqs.map((item) => {
           if (item.skill) return item.skill;
@@ -503,12 +516,7 @@ const JobsMain = () => {
 
           <div className="top-wrapper">
             <div className="careerTopPic">
-              <img
-                src="/assets/images/career-1.png"
-                alt="careerTop1"
-                // width={941}
-                // height={528}
-              />
+              <img src="/assets/images/career-1.png" alt="careerTop1" />
             </div>
             <div className="careerTopText">
               <h1>Let's get you hired!</h1>
@@ -666,24 +674,23 @@ const JobsMain = () => {
                                 <div>
                                   {currentJob.min_requirements
                                     ? currentJob.min_requirements.map(
-                                      (skill, index) => (
-                                        <ul key={`${index + 1}`}>
-                                          <li className="list-style-square">
-                                            <span className="tw-text-white">
-                                              {skill.years}
-                                              {' '}
-                                              {skill.years === 1
-                                                ? 'year '
-                                                : 'years '}
-                                            </span>
-                                            <span className="tw-text-gray-300 skill">
-                                              {' '}
-                                              {skill.skill}
-                                            </span>
-                                          </li>
-                                        </ul>
-                                      ),
-                                    )
+                                        (skill, index) => (
+                                          <ul key={`${index + 1}`}>
+                                            <li className="list-style-square">
+                                              <span className="tw-text-white">
+                                                {skill.years}{' '}
+                                                {skill.years === 1
+                                                  ? 'year '
+                                                  : 'years '}
+                                              </span>
+                                              <span className="tw-text-gray-300 skill">
+                                                {' '}
+                                                {skill.skill}
+                                              </span>
+                                            </li>
+                                          </ul>
+                                        )
+                                      )
                                     : ''}
                                 </div>
                               )}

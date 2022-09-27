@@ -3,12 +3,12 @@ import axiosInstance from '../../../helpers/axiosInstance';
 import { LOGIN_LOADING, LOGIN_SUCCESS, LOGIN_ERROR } from '../actionTypes';
 import { successToast, errorToast } from '../../utils/toasts';
 
-const login = (body) => (dispatch) => {
+const login = (body) => async (dispatch) => {
   dispatch({
     type: LOGIN_LOADING,
   });
 
-  axiosInstance()
+  const data = axiosInstance()
     .post('/user/login', body)
     .then((res) => {
       const { token } = res.data.data;
@@ -27,7 +27,7 @@ const login = (body) => (dispatch) => {
         type: LOGIN_SUCCESS,
         payload: res.data,
       });
-      // Router.reload();
+      return res.data.data;
     })
     .catch((err) => {
       errorToast(
@@ -41,6 +41,7 @@ const login = (body) => (dispatch) => {
         payload: err.response ? err.response.data : 'COULD NOT CONNECT',
       });
     });
+  return data;
 };
 
 export default login;

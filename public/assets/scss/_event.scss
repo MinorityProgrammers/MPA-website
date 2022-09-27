@@ -32,6 +32,7 @@
       min-height: 100px;
       .swiper-wrapper {
         color: #f5f5f5;
+
         width: fit-content;
       }
       // .swiper-navigation_container {
@@ -144,7 +145,7 @@
     }
     .input:focus-within {
       border-color: var(--secondary-accent-1);
-      box-shadow: 0 0 0 .2rem rgba(161, 30, 236, 0.25);
+      box-shadow: 0 0 0 0.2rem rgba(161, 30, 236, 0.25);
     }
   }
   @media only screen and (max-width: 666px) {
@@ -174,23 +175,23 @@
       background-color: var(--secondary-high-contrast);
     }
     &2 {
-      border-color: var(--tertiary-low-contrast);;
+      border-color: var(--tertiary-low-contrast);
     }
-        &2:hover {
-     background-color: var(--secondary-high-contrast);
-      color:white;
+    &2:hover {
+      background-color: var(--secondary-high-contrast);
+      color: white;
     }
     &3 {
-      border-color: var(--tertiary-low-contrast);;
+      border-color: var(--tertiary-low-contrast);
     }
-    &3:hover{
+    &3:hover {
       background-color: var(--secondary-high-contrast);
       color: white;
     }
     &4 {
-      border-color: var(--tertiary-low-contrast);;
+      border-color: var(--tertiary-low-contrast);
     }
-    &4:hover{
+    &4:hover {
       background-color: var(--secondary-high-contrast);
     }
     div {
@@ -304,30 +305,30 @@
     //       background: #f5f5f5;
     //       width: fit-content;
     //     }
-        .swiper-navigation_container {
-          // position: absolute;
-          height: 40px;
-          padding-top: 20px;
-          bottom: 5px;
-          display: flex;
-          justify-content: center;
-          z-index: 50;
-        }
-        .swiper-navigation {
-          display: flex;
-          width: 100px;
-          height: auto;
-          margin-bottom: .7rem;
-          .swiper-button-prev,
-          .swiper-button-next {
-            position: relative;
-            background: none;
-            border: none;
-            color: var(--light-low-contrast);
-            opacity: 0.65;
-          }
-        }
-      // }
+    .swiper-navigation_container {
+      // position: absolute;
+      height: 40px;
+      padding-top: 20px;
+      bottom: 5px;
+      display: flex;
+      justify-content: center;
+      z-index: 50;
+    }
+    .swiper-navigation {
+      display: flex;
+      width: 100px;
+      height: auto;
+      margin-bottom: 0.7rem;
+      .swiper-button-prev,
+      .swiper-button-next {
+        position: relative;
+        background: none;
+        border: none;
+        color: var(--light-low-contrast);
+        opacity: 0.65;
+      }
+    }
+    // }
     // }
   }
 
@@ -360,7 +361,7 @@
         position: relative;
         width: 100%;
         .gradient-button {
-          font-family: "Arial Black", Gadget, sans-serif;
+          font-family: 'Arial Black', Gadget, sans-serif;
           font-size: 20px;
           text-align: center;
           text-transform: uppercase;
@@ -372,7 +373,8 @@
           background-size: 150% auto;
           box-shadow: 0 0 20px #eee;
           border-radius: 5px;
-          box-shadow: 0 1px 3px var(--secondary-high-contrast), 0 1px 2px var(--secondary-accent);
+          box-shadow: 0 1px 3px var(--secondary-high-contrast),
+            0 1px 2px var(--secondary-accent);
           outline: none;
 
           position: absolute;
@@ -380,7 +382,8 @@
           left: 0;
           transition: 0.1s;
           &:hover {
-            box-shadow: 0 1px 10px var(--tertiary-accent-3), 0 6px 6px var(--secondary-high-contrast);
+            box-shadow: 0 1px 10px var(--tertiary-accent-3),
+              0 6px 6px var(--secondary-high-contrast);
             background-position: right center;
           }
           &:active {
@@ -524,7 +527,7 @@
     }
 
     &_gradient-button {
-      font-family: "Arial Black", Gadget, sans-serif;
+      font-family: 'Arial Black', Gadget, sans-serif;
       font-size: 16px;
       text-align: center;
       text-transform: uppercase;
@@ -537,13 +540,15 @@
       background-size: 150% auto;
       box-shadow: 0 0 20px #eee;
       border-radius: 5px;
-      box-shadow: 0 1px 3px var(--secondary-high-contrast), 0 1px 2px var(--secondary-accent);
+      box-shadow: 0 1px 3px var(--secondary-high-contrast),
+        0 1px 2px var(--secondary-accent);
       outline: 0;
       border: none;
 
       transition: 0.1s;
       &:hover {
-        box-shadow: 0 1px 10px var(--tertiary-accent-3), 0 6px 6px var(--secondary-high-contrast);
+        box-shadow: 0 1px 10px var(--tertiary-accent-3),
+          0 6px 6px var(--secondary-high-contrast);
         background-position: right center;
       }
       &:active,
@@ -691,8 +696,8 @@
   justify-content: center;
   align-items: center;
   overflow-y: scroll;
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
   z-index: 5000;
 
   .create_event-shadow {
@@ -738,7 +743,7 @@
           display: none;
         }
         &::before {
-          content: "Upload Image";
+          content: 'Upload Image';
           display: inline-block;
           outline: none;
           white-space: nowrap;
@@ -785,7 +790,7 @@
         right: 0;
         z-index: 400;
 
-        background: url("https://cdn.britannica.com/26/162626-050-3534626F/Koala.jpg");
+        background: url('https://cdn.britannica.com/26/162626-050-3534626F/Koala.jpg');
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
@@ -932,7 +937,7 @@
             input:focus-visible,
             textarea:focus-visible {
               outline: none;
-              box-shadow: 0 0 0 .2rem rgba(161, 30, 236, 0.25);
+              box-shadow: 0 0 0 0.2rem rgba(161, 30, 236, 0.25);
             }
           }
         }
@@ -962,7 +967,12 @@
     .event_thankyou {
       width: 100%;
       height: 100%;
-      background: linear-gradient(104.61deg, #ff00b8 2.65%, #ff655b 51.83%, #ffc700 100%);
+      background: linear-gradient(
+        104.61deg,
+        #ff00b8 2.65%,
+        #ff655b 51.83%,
+        #ffc700 100%
+      );
       display: flex;
       align-items: center;
       justify-content: center;
@@ -1278,7 +1288,8 @@
             font-weight: bold;
             margin: 20px 0;
           }
-          p, span {
+          p,
+          span {
             color: var(--light-low-contrast);
           }
           .option_buttons {
@@ -1380,13 +1391,13 @@
   }
   @media only screen and (max-width: 768px) {
     .eventmoreinfo_container {
-         &_right {
+      &_right {
         .body {
-             .sidebar {
+          .sidebar {
             h3 {
               font-size: 15px;
             }
-            }
+          }
         }
       }
     }

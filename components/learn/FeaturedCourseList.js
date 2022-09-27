@@ -7,9 +7,7 @@ const FeaturedCourseList = ({
   enrolledBtn,
   showModal,
 }) => {
-  const {
-    earn, name, description, _id, tags,
-  } = course;
+  const { earn, name, description, _id, tags } = course;
 
   const userCoursesId = [];
   sameUserCourses.forEach((userCourse) => {
@@ -49,11 +47,11 @@ const FeaturedCourseList = ({
         </>
       ) : !userCoursesId.includes(_id) ? (
         <div className="course-items-footer">
-          <p className="course-earn-style">
+          {/* <p className="course-earn-style">
             Earn
             {' '}
             {earn}
-          </p>
+          </p> */}
           <button
             type="button"
             onClick={() => {
@@ -64,9 +62,7 @@ const FeaturedCourseList = ({
             data-toggle="modal"
             data-target="#exampleModal"
           >
-            Enroll
-            {' '}
-            <span className="tw-ml-2 enroll-arrow"> &#8594;</span>
+            Enroll <span className="tw-ml-2 enroll-arrow"> &#8594;</span>
           </button>
         </div>
       ) : (

@@ -16,13 +16,13 @@ const DropdownIndicator = () => (
 const ProfileFourthStep = ({
   data, step, setData,
 }) => {
-  const [googleLink, setGoogleLink] = useState(data.GoogleLink);
-  const [figmaLink, setFigmaLink] = useState(data.FigmaLink);
-  const [clickupLink, setClickupLink] = useState(data.ClickupLink);
-  const [facebookLink, setFacebookLink] = useState(data.FacebookLink);
-  const [linkedinLink, setLinkedinLink] = useState(data.LinkedinLink);
-  const [githubLink, setGithubLink] = useState(data.GithubLink);
-  const [dribbleLink, setDribbleLink] = useState(data.DribbleLink);
+  const [googleLink, setGoogleLink] = useState(data?.GoogleLink);
+  const [figmaLink, setFigmaLink] = useState(data?.FigmaLink);
+  const [clickupLink, setClickupLink] = useState(data?.ClickupLink);
+  const [facebookLink, setFacebookLink] = useState(data?.FacebookLink);
+  const [linkedinLink, setLinkedinLink] = useState(data?.LinkedinLink);
+  const [githubLink, setGithubLink] = useState(data?.GithubLink);
+  const [dribbleLink, setDribbleLink] = useState(data?.DribbleLink);
   // website
   const [link, setLink] = useState('');
   // new Link
@@ -58,32 +58,33 @@ const ProfileFourthStep = ({
   const router = useRouter();
   // Discard Changes
   const discard = () => {
-    setGoogleLink(data.GoogleLink);
-    setFigmaLink(data.FigmaLink);
-    setClickupLink(data.ClickupLink);
-    setFacebookLink(data.FacebookLink);
-    setLinkedinLink(data.LinkedinLink);
-    setGithubLink(data.GithubLink);
-    setDribbleLink(data.DribbleLink);
+    setGoogleLink(data?.GoogleLink);
+    setFigmaLink(data?.FigmaLink);
+    setClickupLink(data?.ClickupLink);
+    setFacebookLink(data?.FacebookLink);
+    setLinkedinLink(data?.LinkedinLink);
+    setGithubLink(data?.GithubLink);
+    setDribbleLink(data?.DribbleLink);
   };
   //   Handlers
   // Update Profile
   const submitHandler = async (e) => {
     e.preventDefault();
     const inputStates = {
-      GoogleLink: googleLink,
-      FacebookLink: facebookLink,
-      GithubLink: githubLink,
-      DribbleLink: dribbleLink,
-      FigmaLink: figmaLink,
-      ClickupLink: clickupLink,
-      LinkedinLink: linkedinLink,
+      ...(googleLink && { GoogleLink: googleLink }),
+      ...(facebookLink && { FacebookLink: facebookLink }),
+      ...(githubLink && { GithubLink: githubLink }),
+      ...(dribbleLink && { DribbleLink: dribbleLink }),
+      ...(figmaLink && { FigmaLink: figmaLink }),
+      ...(clickupLink && { ClickupLink: clickupLink }),
+      ...(linkedinLink && { LinkedinLink: linkedinLink }),
     };
-      // submit data
-    updateProfileJSON(
+    // submit data
+    const updatedUser = updateProfileJSON(
       data._id,
       JSON.stringify(inputStates),
     )(profileDispatch);
+    updatedUser.then((res) => setData(res));
     const slug = data?.userName;
     if (slug) {
       router.push(`/user/${slug}`);

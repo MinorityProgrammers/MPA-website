@@ -1,7 +1,7 @@
-import React from "react";
-import Swiper from "react-id-swiper";
-import "swiper/css/swiper.css";
-import FeaturedCard from "./FeaturedCard";
+import React from 'react';
+import Swiper from 'react-id-swiper';
+import 'swiper/css/swiper.css';
+import FeaturedCard from './FeaturedCard';
 
 const FeaturedStartups = ({ data, setClickRegister, userData, allfunded }) => {
   const params = {
@@ -10,8 +10,8 @@ const FeaturedStartups = ({ data, setClickRegister, userData, allfunded }) => {
     speed: 700,
     spaceBetween: 0,
     navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
     },
     autoplay: {
       delay: 3000,

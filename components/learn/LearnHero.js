@@ -9,15 +9,20 @@ const LearnHero = () => {
       <div className="mentorshipP-header">
         <div className="container tw-relative">
           <div>
-            <img src="/assets/images/bg-shadow-circle.png" className="tw-absolute" style={{ top: '10%' }} alt="background" />
+            <img
+              src="/assets/images/bg-shadow-circle.png"
+              className="tw-absolute"
+              style={{ top: '10%' }}
+              alt="background"
+            />
           </div>
           <div className="consultancyHero-container">
             <div>
               <h1 className="consultancyHero-title">Learn</h1>
               <p className="consultancyHero-txt">
-                Learn the hottest skills in blockchain, earn NFT credentials
-                that recruiters from the top technology companies will see
-                through our decentralized talent sourcing system.
+                Learn the hottest skills in software + Web3. Earn NFT
+                credentials that recruiters from the top technology companies
+                will see through our decentralized talent sourcing system.
               </p>
               <div className="incubator__button">
                 <div
