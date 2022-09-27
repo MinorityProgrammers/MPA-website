@@ -80,16 +80,28 @@ export const sponsors = [
     imgSrc: 'assets/images/sponsorship/sponsor17.png',
   },
   {
-    sponsorLink: 'https://casper.network/en/network',
-    imgSrc: 'assets/images/sponsorship/sponsor18.png',
-  },
-  {
     sponsorLink: 'https://algorand.foundation/',
     imgSrc: 'assets/images/sponsorship/sponsor13.png',
   },
   {
     sponsorLink: 'https://celocommunityfund.org/',
     imgSrc: 'assets/images/sponsorship/CeloCommunityFUnd.jpg',
+  },
+  {
+    sponsorLink: 'https://www.unitmasters.org/',
+    imgSrc: 'assets/images/sponsorship/unitmasters.png',
+  },
+  {
+    sponsorLink: 'https://www.banyan.gg/',
+    imgSrc: 'assets/images/sponsorship/banyan-collective.png',
+  },
+  {
+    sponsorLink: 'https://www.genadrop.com/',
+    imgSrc: 'assets/images/sponsorship/genadrop.png',
+  },
+  {
+    sponsorLink: 'https://www.bluntdao.com/',
+    imgSrc: 'assets/images/sponsorship/bluntdao.png',
   },
 ];
 
