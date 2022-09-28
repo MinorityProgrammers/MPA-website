@@ -10,13 +10,25 @@ const HomePageParteners = () => {
 
         <div className="row">
           <div className="col-lg-6" style={{ padding: '0' }}>
-            <div className="allies-header" onClick={() => setActive({ parteners: true, allies: false })}>
+            <div
+              className="allies-header"
+              onClick={() => {
+                setActive({ parteners: true, allies: false });
+                setIndex(index === 8 ? 8 : sponsors.length);
+              }}
+            >
               <h2 className={`top__part__title ${active.parteners ? '' : 'inactive'}`}>Our Partners</h2>
               <div className={`line ${active.parteners ? 'line-active' : ''}`} />
             </div>
           </div>
           <div className="col-lg-6" style={{ padding: '0' }}>
-            <div className="allies-header" onClick={() => setActive({ parteners: false, allies: true })}>
+            <div
+              className="allies-header"
+              onClick={() => {
+                setActive({ parteners: false, allies: true });
+                setIndex(index === 8 ? 8 : allies.length);
+              }}
+            >
               <h2 className={`top__part__title ${active.allies ? '' : 'inactive'}`}>Allies</h2>
               <div className={`line ${active.allies ? 'line-active' : ''}`} />
 
@@ -78,7 +90,7 @@ const HomePageParteners = () => {
                 </div>
               ))}
             </div>
-            <p className="tw-text-xl see-all" onClick={() => setIndex(index === 8 ? sponsors.length : 8)}>
+            <p className="tw-text-xl see-all" onClick={() => setIndex(index === 8 ? active.parteners ? sponsors.length : allies.length : 8)}>
               <span className="see-all__line" />
               See
               {index === 8 ? ' All' : ' Less'}

@@ -165,16 +165,12 @@ export const allies = [
     allyLink: 'https://www.echelondigital.com/',
     imgSrc: 'assets/images/echelon-logo.png',
   },
-  // {
-  //   allyLink: 'https://montech.io/',
-  //   imgSrc: 'assets/images/sponsorship/sponsor10.png',
-  // },
   {
     allyLink: 'https://www.questbook.app/',
     imgSrc: 'assets/images/sponsorship/sponsor21.svg',
   },
   {
     allyLink: 'https://tell.ie/40acres/t2EARilY58XN',
-    imgSrc: 'assets/images/sponsorship/40acers.svg',
+    imgSrc: 'assets/images/sponsorship/40acers.png',
   },
 ];
