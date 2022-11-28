@@ -63,8 +63,8 @@ const HomepageNav = ({
     if (!regex.test(searchValue)) return;
     setSearch('');
     router.push({
-      pathname: '/search',
-      query: { _q: searchValue },
+      pathname: router.pathname,
+      query: { _q: encodeURI(searchValue) },
     });
   };
 
@@ -200,12 +200,10 @@ const HomepageNav = ({
         <button
           type="button"
           className="mobile-searchButton"
-          href="#"
-          onClick={onClickSearch}
         >
           <i className="fas fa-search" />
         </button>
-      </div>
+    </div>
     </div>
   );
 
@@ -300,7 +298,7 @@ const HomepageNav = ({
         </a>
       </ul>
       {userData !== null && userData !== undefined ? (
-        <ul className="nav__mobile-items">
+        <ul className="nav__mobile-items" >
           <a
             href={`${
               userData.userName
@@ -309,7 +307,7 @@ const HomepageNav = ({
             }`}
             onClick={closeMobileMenu}
           >
-            <li className="nav-item">
+            <li className="nav-item" > 
               <div className="nav__mobile-link">Profile</div>
             </li>
           </a>
@@ -317,9 +315,13 @@ const HomepageNav = ({
       ) : (
         ''
       )}
-      <Account />
+      <div className='tw-mb-8 tw-text-sm'>  
+        <Account />
+      </div>
     </div>
   );
+
+
 
   return (
     <header
@@ -338,7 +340,7 @@ const HomepageNav = ({
         }`}
       >
         {isLogin === true && (
-          <div
+          <div 
             className="hamburger-icon tw-cursor-pointer"
             onClick={() => setOpen(!open)}
           >
@@ -389,7 +391,7 @@ const HomepageNav = ({
               </ul>
             </div>
             {isActiveMobile ? menuMobile() : ''}
-            {isActiveSearch ? showSearchIconMobile() : ''}
+            {/*isActiveSearch ? showSearchIconMobile() : ''*/}
 
             <ul className="nav-menu tw-py-0 md:tw-py-4">
               {userData !== null && userData !== undefined ? (
@@ -487,43 +489,44 @@ const HomepageNav = ({
                 </Link>
               </li>
             </ul>
-            <ul className="tw-flex tw-flex-row tw-justify-around tw-w-1/4 tw-my-8 navbar__right md:tw-hidden">
-              <li>
-                <div className="navbar__search tw-flex tw-flex-row tw-w-full tw-border tw-border-white tw-rounded-md tw-px-1 tw-text-white">
+            <ul className="tw-flex tw-flex-row tw-justify-end tw-w-5/12 navbar__right md:tw-hidden tw-h-full">
+              <li  className="tw-h-full tw-w-5/12">
+              {/* SearchBox   
+              
+              <div className="tw-flex tw-flex-row tw-h-8 tw-mt-8 tw-bg-inputColor tw-rounded-full tw-px-1 tw-text-white">
                   <input
                     onChange={handleSearch}
                     value={searchValue}
-                    className="searchInput tw-bg-transparent tw-border-0 tw-text-white tw-py-1 xl:tw-w-10/12 tw-w-full tw-outline-none focus:tw-outline-none"
-                    // ${
-                    //   searchValue ? "expand" : ""
-                    // }`}
+                    className="searchInput tw-text-xs tw-text-white tw-pt-1 tw-pl-3 xl:tw-w-9/12 tw-w-4/5 tw-outline-none"
                     type="text"
                     name=""
                     placeholder="Search..."
                   />
-                  <button type="submit" onClick={handleSubmit}>
-                    <i className="fas fa-search" />
+                  
+                  <button type="submit">
+                    <i className="fas fa-search fa-1x tw-ml-2" />
                   </button>
-                </div>
+                </div>*/}
               </li>
-              <li>
-                <div className="tw-w-full tw-mx-2 tw-cursor-pointer">
+              <li className="tw-h-full tw-mx-1 tw-w-4/12 tw-pt-8">
+                <div  className="tw-cursor-pointer tw-pl-1 tw-text-xs" >
                   <Account />
                 </div>
               </li>
               {userData !== null && userData !== undefined ? (
-                <div className="tw-mx-2">
+                <div className=" tw-w-1/12 tw-pt-8 ">
                   <li>
                     {userData.profilePicture ? (
                       <img
-                        className="tw-content-center tw-text-center tw-cursor-pointer tw-h-9 tw-rounded-full tw-w-9"
+                        className="tw-content-center tw-text-center tw-cursor-pointer tw-h-8 tw-rounded-full tw-w-8 tw-ml-2"
                         onClick={onClick}
                         src={userData.profilePicture}
                         alt="profile"
                       />
                     ) : (
                       <i
-                        className="fa-user-circle fas tw-content-center tw-text-center NavIcon tw-cursor-pointer tw-mt-2"
+                      
+                        className=" fa-user-circle fas tw-content-center tw-text-center NavIcon tw-cursor-pointer tw-mt-8"
                         onClick={onClick}
                       />
                     )}
@@ -539,10 +542,10 @@ const HomepageNav = ({
                   </li>
                 </div>
               ) : (
-                <li className="">
-                  <i
+                <li >
+                  <i 
                     aria-hidden
-                    className="fas fa-user-circle tw-content-center tw-text-center NavIcon tw-cursor-pointer tw-mt-2"
+                    className="fa-user-circle fas fa-5x tw-content-center tw-text-center NavIcon tw-cursor-pointer tw-mt-8 tw-pt-1 "
                     onClick={onClick}
                   />
                   {isActive ? (
