@@ -165,6 +165,11 @@ export const allies = [
     allyLink: 'https://dropoutdao.xyz/',
     imgSrc: 'assets/images/sponsorship/dropout.png',
   },
+      {
+    allyLink: 'https://blockchainatfiu.club/',
+    imgSrc: 'assets/images/sponsorship/dropout.png',
+  },
+
 //   {
 //     allyLink: 'https://www.echelondigital.com/',
 //     imgSrc: 'assets/images/echelon-logo.png',
