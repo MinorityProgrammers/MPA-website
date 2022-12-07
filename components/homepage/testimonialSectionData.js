@@ -107,12 +107,12 @@ export const sponsors = [
 
 export const allies = [
   {
-    allyLink: 'https://www.herdrop.com/',
+    allyLink: 'https://www.her-dao.xyz/',
     imgSrc: 'assets/images/sponsorship/MinorityDropLogo.png',
   },
-  {
-    allyLink: 'https://dropoutdao.xyz/',
-    imgSrc: 'assets/images/sponsorship/dropout.png',
+    {
+    allyLink: 'https://tell.ie/40acres/t2EARilY58XN',
+    imgSrc: 'assets/images/sponsorship/40acers.png',
   },
   {
     allyLink: 'https://www.blockchainedu.org/',
@@ -161,16 +161,16 @@ export const allies = [
     allyLink: 'https://www.democracylab.org/',
     imgSrc: 'assets/images/sponsorship/sponsor15.png',
   },
-  {
-    allyLink: 'https://www.echelondigital.com/',
-    imgSrc: 'assets/images/echelon-logo.png',
+    {
+    allyLink: 'https://dropoutdao.xyz/',
+    imgSrc: 'assets/images/sponsorship/dropout.png',
   },
+//   {
+//     allyLink: 'https://www.echelondigital.com/',
+//     imgSrc: 'assets/images/echelon-logo.png',
+//   },
   {
     allyLink: 'https://www.questbook.app/',
     imgSrc: 'assets/images/sponsorship/sponsor21.svg',
-  },
-  {
-    allyLink: 'https://tell.ie/40acres/t2EARilY58XN',
-    imgSrc: 'assets/images/sponsorship/40acers.png',
   },
 ];
