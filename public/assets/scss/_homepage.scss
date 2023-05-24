@@ -1,3 +1,4 @@
+@import url(//db.onlinewebfonts.com/c/0b51833ff62e4af8acb5fd3e2bf59e97?family=SF+Pro+Display);
 .site-footer__social a svg:hover{
     path,rect,circle{
       stroke: #8040D2;
@@ -121,33 +122,14 @@
 .add-socail-links{
   padding: 0 !important;
 }
-// .add-socail-links > div{
-//   margin: 0 !important;
-//   display: flex;
-//   align-items: center;
-// }
-// .add-socail-links div .ant-dropdown-trigger{
-//   margin: 0 1rem;
-// }
-// .add-socail-links div .ant-dropdown-trigger img{
-//   border: 1px solid #6938EF;
-//   border-radius: 50%;
-//   padding: 5px 5px 3px;
-// }
-// .settings_socail-links-contaner ul{
-//   background: #24203B;
-//   color: #fff;
-// }
-// .settings_socail-links-contaner li{
-//   color: #fff;
-// }
-// .settings_socail-links-contaner{
-//   color: #fff;
-// }
-// .settings_socail-links-contaner ul .ant-dropdown-menu-item:hover {
-//   background: #6938EF;
-// }
 .add-socail-links input{
   text-align: left;
   font-weight: bold !important;
+}
+
+// Chapter Page
+.chapter__slick-slider .slick-slide >div{
+  flex-direction: column;
+  width: 95% !important;
+  display: flex;
 }

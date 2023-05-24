@@ -11,8 +11,9 @@ const ToolkitItem = ({ name, image, slug }) => (
       }}
     >
       <a>
-        <div className={styles.overlay} />
-        <img src={image} alt="icon" />
+        <div className={styles.imgContainer}>
+          <img src={image} alt="icon" />
+        </div>
         <div className={styles.name}>{name}</div>
       </a>
     </Link>

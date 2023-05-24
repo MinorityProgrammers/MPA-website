@@ -17,7 +17,9 @@ const ChapterMenu = () => (
           />
           <div className={styles.text}>Find Advisor</div>
         </div>
-        <meter className={styles.meter} value="5" min="0" max="10" />
+        <div className={styles.meter}>
+          <div />
+        </div>
       </section>
 
       <section className={styles.item3}>
@@ -30,7 +32,9 @@ const ChapterMenu = () => (
           />
           <div className={styles.text}>Hold An Interest Meeting</div>
         </div>
-        <meter className={styles.meter} value="5" min="0" max="10" />
+        <div className={styles.meter}>
+          <div />
+        </div>
       </section>
 
       <section className={styles.item4}>
@@ -42,7 +46,9 @@ const ChapterMenu = () => (
           />
           <div className={styles.text}>Sign Chapter Agreement Form</div>
         </div>
-        <meter className={styles.meter} value="5" min="0" max="10" />
+        <div className={styles.meter}>
+          <div />
+        </div>
       </section>
 
       <section className={styles.item5}>
@@ -54,7 +60,9 @@ const ChapterMenu = () => (
           />
           <div className={styles.text}>Find Your Team</div>
         </div>
-        <meter className={styles.meter} value="5" min="0" max="10" />
+        <div className={styles.meter}>
+          <div />
+        </div>
       </section>
 
       <section className={styles.item6}>
@@ -66,7 +74,9 @@ const ChapterMenu = () => (
           />
           <div className={styles.text}>Get On Technologes</div>
         </div>
-        <meter className={styles.meter} value="5" min="0" max="10" />
+        <div className={styles.meter}>
+          <div />
+        </div>
       </section>
 
       <section className={styles.item7}>
@@ -78,7 +88,9 @@ const ChapterMenu = () => (
           />
           <div className={styles.text}>Develop Socially Impactful Project</div>
         </div>
-        <meter className={styles.meter} value="5" min="0" max="10" />
+        <div className={styles.meter}>
+          <div />
+        </div>
       </section>
 
       <section className={styles.item8}>
@@ -92,7 +104,9 @@ const ChapterMenu = () => (
             Host Meetings Workshops Carreer Development
           </div>
         </div>
-        <meter className={styles.meter} value="5" min="0" max="10" />
+        <div className={styles.meter}>
+          <div />
+        </div>
       </section>
     </div>
   </div>

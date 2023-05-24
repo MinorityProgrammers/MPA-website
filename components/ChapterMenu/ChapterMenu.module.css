@@ -8,8 +8,16 @@
 
 .meter {
   width: 100%;
+  height: 8px;
+  background: rgba(82, 85, 141, 0.61);
+  border-radius: 17px;
+  display: flex;
 }
-
+.meter div{
+  border-radius: 17px;
+  height: 100%;
+  background: linear-gradient(270deg, #FD05B3 1.84%, rgba(253, 5, 179, 0.15) 100%);
+}
 .menuContainer {
   width: 100%;
   max-width: 64em;
@@ -26,11 +34,11 @@
   flex-direction: column;
   text-align: center;
   border-radius: 0.5em;
-  background: #282828;
+  background: #1C1D37;
 }
 
 .menuContainer > section:first-child {
-  background: #ffc700;
+  background: #6938EF;
 }
 
 .iconAndTextContainer {
@@ -52,8 +60,9 @@
 .item1 {
   padding: 1em 0;
   text-transform: uppercase;
+  font-size: 18px;
   font-weight: 500;
-  color: #151371;
+  color: #fff;
 }
 
 .item4,
@@ -106,10 +115,6 @@
   grid-row: 5/8;
 }
 
-.meter::-webkit-meter-optimum-value {
-  background: #ff655b;
-  height: 50px;
-}
 
 @media screen and (max-width: 1024px) {
   .menuContainer {
