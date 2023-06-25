@@ -1,25 +1,26 @@
-/* eslint-disable max-len */
-/* eslint-disable */
-import React, { useState, useEffect, useContext, useCallback } from "react";
-import { useMoralis } from "react-moralis";
-import { Button, Card, Modal, Row, Col } from "antd";
-import { SelectOutlined } from "@ant-design/icons";
-import { Signer } from "casper-js-sdk";
-import { GlobalContext } from "../contexts/provider";
-import { useMoralisDapp } from "../MoralisDappProvider/MoralisDappProvider";
-import { getEllipsisTxt } from "../helpers/formatters";
-import Address from "./Address/Address";
-import { errorToast } from "../contexts/utils/toasts";
-import changeAuthModal from "../contexts/actions/authModal/index";
+import React, {
+  useState, useEffect, useContext, useCallback,
+} from 'react';
+import { useMoralis } from 'react-moralis';
+import {
+  Modal, Row, Col,
+} from 'antd';
+import { SelectOutlined } from '@ant-design/icons';
+import { Signer } from 'casper-js-sdk';
+import { GlobalContext } from '../contexts/provider';
+import { useMoralisDapp } from '../MoralisDappProvider/MoralisDappProvider';
+import { getEllipsisTxt } from '../helpers/formatters';
+import Address from './Address/Address';
+import { errorToast } from '../contexts/utils/toasts';
+import changeAuthModal from '../contexts/actions/authModal/index';
 import {
   handleLockSigner,
   handleUnlockSigner,
   isConnectedCasper,
-} from "../contexts/actions/signer/index";
-import styles from "../styles/account/account.module.css";
-import walletLogin from "../contexts/actions/auth/walletLogin";
-import ButtonComponent from "./profile/ButtonComponent";
-
+} from '../contexts/actions/signer/index';
+import styles from '../styles/account/account.module.css';
+import walletLogin from '../contexts/actions/auth/walletLogin';
+import ButtonComponent from './profile/ButtonComponent';
 
 const Account = () => {
   const { authenticate, isAuthenticated, logout } = useMoralis();
@@ -37,19 +38,19 @@ const Account = () => {
   } = useContext(GlobalContext);
 
   const SIGNER_EVENTS = {
-    connected: "signer:connected",
-    disconnected: "signer:disconnected",
-    tabUpdated: "signer:tabUpdated",
-    activeKeyChanged: "signer:activeKeyChanged",
-    locked: "signer:locked",
-    unlocked: "signer:unlocked",
+    connected: 'signer:connected',
+    disconnected: 'signer:disconnected',
+    tabUpdated: 'signer:tabUpdated',
+    activeKeyChanged: 'signer:activeKeyChanged',
+    locked: 'signer:locked',
+    unlocked: 'signer:unlocked',
   };
 
   const dispatchUnlockSinger = useCallback(
     (event) => {
       handleUnlockSigner(event.detail)(setSignerState);
     },
-    [isConnected, setSignerState]
+    [isConnected, setSignerState],
   );
 
   const dispatchDisconnectedSinger = useCallback(() => {
@@ -62,8 +63,8 @@ const Account = () => {
       SIGNER_EVENTS.activeKeyChanged,
       SIGNER_EVENTS.connected,
     ].forEach((event) => window.addEventListener(event, dispatchUnlockSinger));
-    [SIGNER_EVENTS.locked, SIGNER_EVENTS.disconnected].forEach((event) =>
-      window.addEventListener(event, dispatchDisconnectedSinger)
+    [SIGNER_EVENTS.locked, SIGNER_EVENTS.disconnected].forEach(
+      (event) => window.addEventListener(event, dispatchDisconnectedSinger),
     );
 
     return () => {
@@ -71,11 +72,9 @@ const Account = () => {
         SIGNER_EVENTS.unlocked,
         SIGNER_EVENTS.activeKeyChanged,
         SIGNER_EVENTS.connected,
-      ].forEach((event) =>
-        window.removeEventListener(event, dispatchUnlockSinger)
-      );
-      [SIGNER_EVENTS.locked, SIGNER_EVENTS.disconnected].forEach((event) =>
-        window.removeEventListener(event, dispatchDisconnectedSinger)
+      ].forEach((event) => window.removeEventListener(event, dispatchUnlockSinger));
+      [SIGNER_EVENTS.locked, SIGNER_EVENTS.disconnected].forEach(
+        (event) => window.removeEventListener(event, dispatchDisconnectedSinger),
       );
     };
   });
@@ -86,9 +85,7 @@ const Account = () => {
         SIGNER_EVENTS.unlocked,
         SIGNER_EVENTS.activeKeyChanged,
         SIGNER_EVENTS.connected,
-      ].forEach((event) =>
-        window.addEventListener(event, dispatchUnlockSinger)
-      );
+      ].forEach((event) => window.addEventListener(event, dispatchUnlockSinger));
     });
     if (error) {
       errorToast(error);
@@ -97,14 +94,14 @@ const Account = () => {
 
   const wallets = [
     {
-      icon: "/assets/images/metamask.png",
-      label: "MetaMask",
-      id: "MetaMask",
+      icon: '/assets/images/metamask.png',
+      label: 'MetaMask',
+      id: 'MetaMask',
     },
     {
-      icon: "/assets/images/casper.png",
-      label: "Casper",
-      id: "Casper",
+      icon: '/assets/images/casper.png',
+      label: 'Casper',
+      id: 'Casper',
     },
   ];
 
@@ -116,25 +113,20 @@ const Account = () => {
     changeAuthModal(!showModal)(setShowModal);
   };
 
-
   const metamaskConnectWallet = async () => {
     if (
-      chainId === process.env.NEXT_PUBLIC_NETWORK_ID_MAINNET ||
-      chainId === process.env.NEXT_PUBLIC_NETWORK_ID_TESTNET
+      chainId === process.env.NEXT_PUBLIC_NETWORK_ID_MAINNET
+      || chainId === process.env.NEXT_PUBLIC_NETWORK_ID_TESTNET
     ) {
-
-
       authenticate().then(() => {
         setWalletLoginRequest(true);
-      })
-      
-        
+      });
 
       if (isConnected === true) {
         await window.casperlabsHelper.disconnectFromSite();
       }
     } else {
-      errorToast("Wrong Chain, please connect to Polygon chain");
+      errorToast('Wrong Chain, please connect to Polygon chain');
       logout();
       setWalletLoginRequest(false);
     }
@@ -144,22 +136,28 @@ const Account = () => {
     const userToken = window.localStorage.getItem('jwtToken');
     const userInfo = window.localStorage.getItem('userInfo');
 
-    if (isAuthenticated && walletLoginRequest === true && (!userToken || !userInfo)) {
+    if (
+      isAuthenticated
+      && walletLoginRequest === true
+      && (!userToken || !userInfo)
+    ) {
       walletLogin(walletAddress, authenticate)(authDispatch);
-    } 
-  },[isAuthenticated, walletLoginRequest, typeof window !== 'undefined'
-  ? window.localStorage.getItem('jwtToken')
-  : null])
-
-
+    }
+  }, [
+    isAuthenticated,
+    walletLoginRequest,
+    typeof window !== 'undefined'
+      ? window.localStorage.getItem('jwtToken')
+      : null,
+  ]);
 
   useEffect(async () => {
     if (
-      chainId !== process.env.NEXT_PUBLIC_NETWORK_ID_MAINNET &&
-      chainId !== process.env.NEXT_PUBLIC_NETWORK_ID_TESTNET &&
-      showModal === true
+      chainId !== process.env.NEXT_PUBLIC_NETWORK_ID_MAINNET
+      && chainId !== process.env.NEXT_PUBLIC_NETWORK_ID_TESTNET
+      && showModal === true
     ) {
-      errorToast("Wrong Chain, please connect to Polygon chain");
+      errorToast('Wrong Chain, please connect to Polygon chain');
 
       try {
         logout();
@@ -194,20 +192,20 @@ const Account = () => {
         <div>
           <Modal
             style={{
-              background: "#1c1d37",
-              border: "1px solid #A259FF",
-              borderRadius: "20px",
+              background: 'var(--div-background-color)',
+              border: '1px solid #A259FF',
+              borderRadius: '20px',
             }}
             bodyStyle={{
-              marginTop: "30px",
-              background: "#1c1d37",
+              marginTop: '30px',
+              background: 'var(--div-background-color)',
             }}
             title={false}
             footer={false}
             visible={showModal}
             onCancel={closeAuthModal}
             closable={false}
-            width={"700px"}
+            width="700px"
           >
             <div className={styles.modalHeader}>
               <div />
@@ -227,22 +225,20 @@ const Account = () => {
               </h1>
             </div>
             <Row className="tw-mb-5">
-              <Col span={4} className="flex-1"></Col>
+              <Col span={4} className="flex-1" />
             </Row>
             <Row justify="center">
               {wallets.map((wallet) => (
                 <div
                   key={wallet.id}
                   className={`${styles.account} tw-py-3 tw-cursor-pointer tw-mr-6 hover:tw-shadow-xl tw-transition-all tw-duration-500 tw-mb-10`}
-                  onClick={() =>
-                    wallet.id === "MetaMask"
-                      ? metamaskConnectWallet()
-                      : casperConnectWallet()
-                  }
+                  onClick={() => (wallet.id === 'MetaMask'
+                    ? metamaskConnectWallet()
+                    : casperConnectWallet())}
                 >
                   <img
                     alt="wallet"
-                    className={`tw-w-32 tw-h-32`}
+                    className="tw-w-32 tw-h-32"
                     src={wallet.icon}
                   />
                   <div className="tw-mt-2 tw-text-white tw-font-bold">
@@ -253,7 +249,8 @@ const Account = () => {
             </Row>
             <div className="tw-text-center tw-font-bold tw-pt-2">
               <span className=" tw-text-white  tw-transition-all tw-duration-500">
-                Dont have a wallet? Sign up using{"  "}
+                Dont have a wallet? Sign up using
+                {'  '}
                 <span className="tw-text-blue-600">Email</span>
               </span>
             </div>
@@ -281,46 +278,52 @@ const Account = () => {
         footer={false}
         onCancel={() => setIsModalVisible(false)}
         style={{
-          background: "#1c1d37",
-          border: "1px solid #A259FF",
-          borderRadius: "20px",
+          background: 'var(--div-background-color)',
+          border: '1px solid #A259FF',
+          borderRadius: '20px',
         }}
         bodyStyle={{
-          marginTop: "30px",
-          background: "#1c1d37",
+          marginTop: '30px',
+          background: 'var(--div-background-color)',
         }}
         closable={false}
         width="700px"
       >
         <div className={styles.modalHeader}>
-              <div />
-              <div className={styles.modalWrapper}>
-                <div className={styles.modalImage}>
-                  <img src="/assets/images/mpicon.svg" alt="logo" />
-                </div>
-                <h2 className="tw-flex-1 tw-text-white tw-text-center tw-w-full tw-font-bold tw-text-lg">
-                 Connected Account
-                </h2>
-              </div>
-              <h1
-                className="tw-text-white tw-font-bold tw-text-2xl hover:tw-text-gray-500 tw-cursor-pointer"
-                onClick={() => setIsModalVisible(false)}
-              >
-                X
-              </h1>
+          <div />
+          <div className={styles.modalWrapper}>
+            <div className={styles.modalImage}>
+              <img src="/assets/images/mpicon.svg" alt="logo" />
             </div>
-            <Row className="tw-mb-5">
-              <Col span={4} className="flex-1"></Col>
-            </Row>
-          <Row justify="center" className="tw-flex tw-flex-col tw-p-3 tw-text-center">
+            <h2 className="tw-flex-1 tw-text-white tw-text-center tw-w-full tw-font-bold tw-text-lg">
+              Connected Account
+            </h2>
+          </div>
+          <h1
+            className="tw-text-white tw-font-bold tw-text-2xl hover:tw-text-gray-500 tw-cursor-pointer"
+            onClick={() => setIsModalVisible(false)}
+          >
+            X
+          </h1>
+        </div>
+        <Row className="tw-mb-5">
+          <Col span={4} className="flex-1" />
+        </Row>
+        <Row
+          justify="center"
+          className="tw-flex tw-flex-col tw-p-3 tw-text-center"
+        >
           <Address
             avatar="left"
             size={6}
             copyable
-            style={{ fontSize: "20px" }}
+            style={{ fontSize: '20px' }}
             address={activeKey}
           />
-          <div className="tw-text-center" style={{ marginTop: "10px", padding: "0 10px" }}>
+          <div
+            className="tw-text-center"
+            style={{ marginTop: '10px', padding: '0 10px' }}
+          >
             {!isConnected && activeKey === null ? (
               <a
                 href={`${process.env.NETWORK_URL}/address/${walletAddress}`}
@@ -328,34 +331,37 @@ const Account = () => {
                 rel="noreferrer"
                 className="tw-text-white"
               >
-                <SelectOutlined style={{ marginRight: "5px" }} />
+                <SelectOutlined style={{ marginRight: '5px' }} />
                 View on Explorer
               </a>
             ) : (
               <a
                 href={`${process.env.CASPER_URL}/account/${activeKey}`}
                 target="_blank"
-                  rel="noreferrer"
-                  className="tw-text-white"
+                rel="noreferrer"
+                className="tw-text-white"
               >
-                <SelectOutlined style={{ marginRight: "5px" }} />
+                <SelectOutlined style={{ marginRight: '5px' }} />
                 View on CSPR live
               </a>
             )}
           </div>
         </Row>
         <Row className="tw-py-3 tw-justify-center">
-        <ButtonComponent className="tw-w-full " text="Disconnect Wallet" func={async () => {
-            logout();
-            setWalletLoginRequest(false);
-            await window.casperlabsHelper.disconnectFromSite();
-            [SIGNER_EVENTS.locked, SIGNER_EVENTS.disconnected].forEach(
-              (event) =>
-                window.addEventListener(event, dispatchDisconnectedSinger)
-            );
-            setIsModalVisible(false);
-          }} />
-          </Row>
+          <ButtonComponent
+            className="tw-w-full "
+            text="Disconnect Wallet"
+            func={async () => {
+              logout();
+              setWalletLoginRequest(false);
+              await window.casperlabsHelper.disconnectFromSite();
+              [SIGNER_EVENTS.locked, SIGNER_EVENTS.disconnected].forEach(
+                (event) => window.addEventListener(event, dispatchDisconnectedSinger),
+              );
+              setIsModalVisible(false);
+            }}
+          />
+        </Row>
       </Modal>
     </>
   );

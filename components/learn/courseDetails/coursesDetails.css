@@ -5,7 +5,7 @@
   color: #fff;
 }
 .course-sidebar {
-  background-color: #1c1d37;
+  background-color: var(--div-background-color);
   color: #fff;
   padding-bottom: 8rem;
   border: 1px solid #a259ff;
@@ -53,12 +53,12 @@
   border: 1px solid rgb(223, 222, 222);
   color: rgb(61, 61, 61) !important;
 }
-.lesson-button:hover{
-  background: #6938EF;
+.lesson-button:hover {
+  background: #6938ef;
 }
-.quiz-button:hover{
+.quiz-button:hover {
   background: white;
-  color: #6938EF;
+  color: #6938ef;
 }
 
 /* User Banner */
@@ -81,7 +81,7 @@
   border: 1px solid #a259ff;
   border-radius: 16px;
   margin-bottom: 2rem;
-  background: #1c1d37;
+  background: var(--div-background-color);
 }
 
 .progress-circle {
@@ -165,12 +165,12 @@
   color: rgb(204, 203, 203);
 }
 .course-weeks {
-  background: #1C1D37;
+  background: var(--div-background-color);
   box-shadow: inset -7px -7px 24px rgba(255, 255, 255, 0.04),
     inset 7px 7px 14px rgba(255, 255, 255, 0.09);
   border-radius: 16px;
   cursor: pointer;
-  border: 3px solid #6938EF;
+  border: 3px solid #6938ef;
   padding: 20px 0;
 }
 .course-weeks .progress {
@@ -184,7 +184,7 @@
   background: #14152b;
 }
 .modules-details {
-  background-color: #1c1d37;
+  background-color: var(--div-background-color);
   border: 1px solid #a259ff;
   border-radius: 16px;
   margin-bottom: 2rem;
