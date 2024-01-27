@@ -250,7 +250,7 @@ const OverviewMyChatper = () => {
       <div className="" style={{ height: '85%' }}>
         {loading ? (
           <EmptyOverviewComponent
-            imgURL="https://s3-alpha-sig.figma.com/img/19e3/44e7/4ec198df3b7bfd4e806f340dbcfd3bd3?Expires=1638748800&Signature=G4VB-qMqAue8RqTkOPa5kvXQDzQg-mGi6CSAmCvSDXe5Vy-2rQPyeHKf-uHFmgc9dherDLlcSfhNJx~5GtILjwwSROJhEUjujHn7DOuH43lB1fjiZor-DmLuxjQjREAo3hKEYi3KeU0qpR9-4FJFGfcwPZKy0UszzeOLdUzcDjxs0WIJDuWM6LfYw2SR4ls4g8lLZqEs8Z0rY-C95HBUCu5r~OKbiOerp~r90-m5~Vx3wIg9lisIQOLcZ87U2fY5IQULhPHJ0dfh7aT7sWN~CPuHhntEvfb6VA4Y5uVSvbcNHfu2DoHqycSDbpDcVsMUPfTgXgktO8t-MVGSfytXkA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
+            imgURL="assets/images/dashboard/chapter.png"
             description="You don’t belong to any chapters yet. You can find chapters to join in the Chapter Section."
             btnText="Join Your First Chapter"
             btnFunction={() => {

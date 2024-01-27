@@ -5,7 +5,7 @@ const TransactionsHistory = ({ data }) => {
   const TransactionsList = data;
 
   return (
-    <div className="d-flex flex-column justify-content-between" style={{ height: '420px', width: '100%', overflowY: 'scroll' }}>
+    <div className="d-flex flex-column justify-content-between" style={{ height: '420px', width: '100%' }}>
       {TransactionsList.map((transaction) => (
         <TransactionCard info={transaction} />
       ))}

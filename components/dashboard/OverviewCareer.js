@@ -159,7 +159,7 @@ const OverviewCareer = ({ token }) => {
                 <img
                   className="empty-events"
                   alt="empty"
-                  src="https://s3-alpha-sig.figma.com/img/1246/595d/4a0da69c016851ce633343ee4f30313d?Expires=1639353600&Signature=EJMuUjTc9G61ydW6x2nU~hpJLuXYU8MfNm2x8OtLhmikkWVFKQEepE4zR0xBOZprHcbOwJcH4WmD5e3ugNYd3m4wqqBKhvTbuAjqIVhiSWIXM2WiNo3cZgDe1hHGoocFzHSWcnseBvgqafwvABhbZBjUeogeU0UPFEhb-7D2HzKUxGwrc4kkvCLz7~IQjQCy1sAGxLhqgRa0RD-p~VNtcgemF5N1qpiDe-cwFQL58kHg1v3tZMpGZagi7PC6ryl-i8-PBWVY20znzZ9iaUs2WdcBRqHYuopxGe9Oq4~tyIKsfdOOT05~sDFvwqA33c8YaNc8uhE8-kiu5g~NLGVbKg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
+                  src="assets/images/dashboard/career.png"
                 />
                 <p className="empty-events-description">
                   No Jobs Available At The Moment
@@ -212,7 +212,7 @@ const OverviewCareer = ({ token }) => {
               <img
                 className="empty-events"
                 alt="empty"
-                src="https://s3-alpha-sig.figma.com/img/1246/595d/4a0da69c016851ce633343ee4f30313d?Expires=1639353600&Signature=EJMuUjTc9G61ydW6x2nU~hpJLuXYU8MfNm2x8OtLhmikkWVFKQEepE4zR0xBOZprHcbOwJcH4WmD5e3ugNYd3m4wqqBKhvTbuAjqIVhiSWIXM2WiNo3cZgDe1hHGoocFzHSWcnseBvgqafwvABhbZBjUeogeU0UPFEhb-7D2HzKUxGwrc4kkvCLz7~IQjQCy1sAGxLhqgRa0RD-p~VNtcgemF5N1qpiDe-cwFQL58kHg1v3tZMpGZagi7PC6ryl-i8-PBWVY20znzZ9iaUs2WdcBRqHYuopxGe9Oq4~tyIKsfdOOT05~sDFvwqA33c8YaNc8uhE8-kiu5g~NLGVbKg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
+                src="assets/images/dashboard/career.png"
               />
               <p className="empty-events-description">
                 You haven’t applied for any jobs on MPA yet. You can do that in

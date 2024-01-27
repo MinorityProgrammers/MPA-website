@@ -7,7 +7,9 @@ const ComingSoon = ({ closeClick }) => {
       setDelay(false);
     }, 6000);
 
-    return () => { clearTimeout(timeoutID); };
+    return () => {
+      clearTimeout(timeoutID);
+    };
   }, [1]);
 
   if (delay) {
@@ -24,7 +26,7 @@ const ComingSoon = ({ closeClick }) => {
             className="CS-img"
           />
         </div>
-        <p className="CS-text">Coming soon...</p>
+        <p className="CS-text">Coming Soon</p>
         <div className="dropdown-login-button">
           <button
             type="button"

@@ -59,7 +59,7 @@ const Footer = () => (
                     </li>
                     <li>
                       <a
-                        href="https://winter.devpost.com/"
+                        href="https://www.defisummer.org/"
                         target="_blank"
                         rel="noreferrer"
                       >

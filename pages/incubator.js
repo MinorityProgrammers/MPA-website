@@ -58,7 +58,7 @@ const IncubatorPage = () => {
             .then((response) => {
               setFunded(response.data.data);
               setTimeout(setLoading(false), 3000);
-            });
+          });
         }
         setTimeout(setLoading(false), 3000);
       })

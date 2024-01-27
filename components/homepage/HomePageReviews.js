@@ -16,7 +16,6 @@ const HomePageReviews = () => {
     { tweetId: '1484447708668649475' },
     { tweetId: '1484833789058633729' },
     { tweetId: '1484692573713276935', loading: false },
-
   ];
   const params = {
     slidesPerView: 3,
@@ -73,24 +72,40 @@ const HomePageReviews = () => {
     <section className="homepage__Reviews">
       <div className="container">
         <h2 style={{ textAlign: 'center' }} className="top__part__title">
-          See what people are saying”
+          See what people are saying
         </h2>
         <p className="tw-text-2xl tw-text-center md:tw-w-full tw-mt-5 tw-mx-auto md:tw-text-base tw-mb-16 tw-text-white">
-          Still not sure ?  Learn from other People how MPA is a big impact
+          Still not sure ? Learn from other People how MPA is making a big impact
         </p>
-        {tweetsLoading
-          && (
-            <Swiper containerClass="swiper-container skelton-container" wrapperClass="swiper-wrapper skelton-wrapper" slidesPerView={skeltonCount()} {...params} observer={false} grabCursor>
-              {
-              Array.apply(0, Array(skeltonCount())).map((element) => (
-                <TweetSkeltonLoader key={element} />))
-              }
-            </Swiper>
-          )}
+        {tweetsLoading && (
+          <Swiper
+            containerClass="swiper-container skelton-container"
+            wrapperClass="swiper-wrapper skelton-wrapper"
+            slidesPerView={skeltonCount()}
+            {...params}
+            observer={false}
+            grabCursor
+          >
+            {Array.apply(0, Array(skeltonCount())).map((element) => (
+              <TweetSkeltonLoader key={element} />
+            ))}
+          </Swiper>
+        )}
 
-        <Swiper containerClass={`${!tweetsLoading ? 'swiper-container' : 'swiper-container swiper-container-unloaded'}`} {...params}>
-          { data.map((tweet) => (
-            <div className="item tweet__card" id={`tweet-${tweet.tweetId}`} key={tweet.tweetId}>
+        <Swiper
+          containerClass={`${
+            !tweetsLoading
+              ? 'swiper-container'
+              : 'swiper-container swiper-container-unloaded'
+          }`}
+          {...params}
+        >
+          {data.map((tweet) => (
+            <div
+              className="item tweet__card"
+              id={`tweet-${tweet.tweetId}`}
+              key={tweet.tweetId}
+            >
               <div className="card card__container homepage__comment">
                 <TweetEmbed
                   tweetId={tweet.tweetId}
