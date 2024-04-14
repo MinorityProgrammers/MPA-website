@@ -27,7 +27,7 @@
   width: 100%;
   padding-left: 4em;
   padding-top: 4em;
-  background: linear-gradient(180deg, #8040D2 0%, rgba(30, 32, 73, 0) 100%);
+  background: linear-gradient(180deg, ‘var(—div-background-color),' 0%, rgba(30, 32, 73, 0) 100%);
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 

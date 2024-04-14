@@ -5,49 +5,48 @@
     -accent - Brighter/Highlighted version of color in the palette
 */
 :root {
-    /* -------------------- Color Palettes -------------------- */
+  /* -------------------- Color Palettes -------------------- */
 
-    /* Dark colors */
-    --dark-main: #141414;
-    --dark-low-contrast: #000000;
-    --dark-high-contrast: #3D3D3D;
-    --dark-accent: #666666;
+  /* Dark colors */
+  --dark-main: #141414;
+  --dark-low-contrast: #000000;
+  --dark-high-contrast: #3d3d3d;
+  --dark-accent: #666666;
 
-    /* Light colors */
-    --light-main: #ffffff;
-    --light-low-contrast: #efefef;
-    --light-high-contrast: #FAFAFA;
-    --light-accent: #F5F5F5;
+  /* Light colors */
+  --light-main: #ffffff;
+  --light-low-contrast: #efefef;
+  --light-high-contrast: #fafafa;
+  --light-accent: #f5f5f5;
 
-    /* Primary colors */
-    --primary-main: #474bff;
-    --primary-low-contrast: rgba(20,20,113,.9);
-    --primary-high-contrast: rgb(37, 99, 235);
-    --primary-accent: #151371;
-    --primary-accent-1: #21175f;
-    --primary-accent-2: #431e8d;
+  /* Primary colors */
+  --primary-main: #474bff;
+  --primary-low-contrast: rgba(20, 20, 113, 0.9);
+  --primary-high-contrast: rgb(37, 99, 235);
+  --primary-accent: #151371;
+  --primary-accent-1: #21175f;
+  --primary-accent-2: #431e8d;
 
-    /* Secondary colors */
-    --secondary-main: #14152b;
-    --secondary-low-contrast: #10111f;
-    --secondary-high-contrast: #1c1d37;
-    --secondary-accent: rgba(196, 196, 196, 0.08);
-    --secondary-accent-1: #3e385d;
+  /* Secondary colors */
+  --secondary-main: ‘var(—div-background-color) ’;
+  --secondary-low-contrast: #10111f;
+  --secondary-high-contrast: #1c1d37;
+  --secondary-accent: rgba(196, 196, 196, 0.08);
+  --secondary-accent-1: #3e385d;
 
-    /* Tertiary colors */
-    --tertiary-main: #8040d2;
-    --tertiary-low-contrast: #6B38AD;
-    --tertiary-high-contrast: #9379ff;
-    --tertiary-accent: #ff47a7;
-    --tertiary-accent-1: #d56ee6;
-    --tertiary-accent-2: #461B7E;
-    --tertiary-accent-3: #3E256C;
-    --tertiary-accent-4: #6938ef;
+  /* Tertiary colors */
+  --tertiary-main: #8040d2;
+  --tertiary-low-contrast: #6b38ad;
+  --tertiary-high-contrast: #9379ff;
+  --tertiary-accent: #ff47a7;
+  --tertiary-accent-1: #d56ee6;
+  --tertiary-accent-2: #461b7e;
+  --tertiary-accent-3: #3e256c;
+  --tertiary-accent-4: #6938ef;
 
+  /* -------------------- Border Highlight -------------------- */
 
-    /* -------------------- Border Highlight -------------------- */
-
-    --border-thin: 1px solid var(--tertiary-main);
-    --border: 1.5px solid var(--tertiary-main);
-    --border-thick: 2px solid var(--tertiary-main);
+  --border-thin: 1px solid var(--tertiary-main);
+  --border: 1.5px solid var(--tertiary-main);
+  --border-thick: 2px solid var(--tertiary-main);
 }

@@ -1,6 +1,6 @@
 .settingsContainer {
-  font-family: 'Poppins', sans-serif;
-  background: #14152b;
+  font-family: "Poppins", sans-serif;
+  background: ‘var(—div-background-color) ’;
   padding-top: 120px;
   overflow-x: clip;
 }
@@ -15,7 +15,7 @@
   grid-column-gap: 50px;
   position: relative;
 }
-.backgroundShdow div{
+.backgroundShdow div {
   top: 400px;
   right: -70px;
   height: 320px;
@@ -27,7 +27,7 @@
   position: absolute;
   border-radius: 50%;
 }
-.backgroundShdow img{
+.backgroundShdow img {
   top: 400px;
   right: -100px;
   position: absolute;
@@ -35,24 +35,23 @@
 
 .settingsNavigation {
   display: flex;
-  flex-direction: column;  
+  flex-direction: column;
 }
-.settingsNavigation > div{
-  background: #1C1D37;
-  border: 1px solid #6938EF
-;
+.settingsNavigation > div {
+  background: #1c1d37;
+  border: 1px solid #6938ef;
   box-sizing: border-box;
   box-shadow: 0px 32px 41px rgba(0, 0, 0, 0.25);
   border-radius: 15px;
   padding: 1.5rem 0;
   // height: 100%;
-} 
-.navContainer{
+}
+.navContainer {
   // margin: auto 0;
   width: 100%;
   margin-bottom: 20px;
 }
-.navProfile{
+.navProfile {
   height: 100%;
   margin-bottom: 0;
   display: flex;
@@ -73,7 +72,7 @@
   position: relative;
   height: 200px;
 }
-.settingsNavigation .userDataHeader .imgDiv div{
+.settingsNavigation .userDataHeader .imgDiv div {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -88,16 +87,16 @@
   align-items: center;
   justify-content: center;
   opacity: 0;
-  transition: opacity .2s ease-out;
+  transition: opacity 0.2s ease-out;
 }
-.settingsNavigation .userDataHeader .imgDiv:hover{
-  div{
-  opacity: 1; 
+.settingsNavigation .userDataHeader .imgDiv:hover {
+  div {
+    opacity: 1;
   }
   .profileImg {
     opacity: 0.7;
   }
-} 
+}
 .settingsNavigation .userDataHeader .imgDiv .profileImg {
   cursor: pointer;
   border-radius: 100%;
@@ -106,7 +105,7 @@
   // max-width: 170px;
   opacity: 1;
   cursor: pointer;
-  transition: opacity .2s ease-out;
+  transition: opacity 0.2s ease-out;
 }
 
 .settingsNavigation .userDataHeader .textDiv {
@@ -128,7 +127,7 @@
   margin: 3px 0;
 }
 .settingsNavigation .userDataHeader .textDiv h4 {
-  color: #FFA959;
+  color: #ffa959;
   font-weight: bold;
   font-size: 20px;
 
@@ -156,11 +155,11 @@
 }
 
 .settingsNavigation nav .navHeader.activeLi h2 {
-  background: #6938EF;
+  background: #6938ef;
   border-radius: 44px;
 }
 .settingsNavigation nav .navHeader h2:hover {
-  border-color: #6938EF;
+  border-color: #6938ef;
   border-radius: 44px;
 }
 
@@ -211,31 +210,30 @@
 .specificSettings {
   display: flex;
   /* width: 66%; */
-  background: #1C1D37;
-  border: 1px solid #6938EF
-;
+  background: #1c1d37;
+  border: 1px solid #6938ef;
   box-sizing: border-box;
   box-shadow: 0px 32px 41px rgb(0 0 0 / 25%);
   border-radius: 15px;
 }
-.headerSection{
-  display: flex;  
+.headerSection {
+  display: flex;
   margin: 30px 0;
   width: fit-content;
-  background: linear-gradient(90.87deg, #9379FF -2.84%, #33D2FF 82.04%);
+  background: linear-gradient(90.87deg, #9379ff -2.84%, #33d2ff 82.04%);
   -webkit-background-clip: text;
-  background-clip:text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-.headerSection p{
+.headerSection p {
   display: flex;
-  justify-content: center; 
+  justify-content: center;
   align-items: center;
   color: #ffffff;
   font-size: 28px;
   font-weight: 600;
 }
-.headerSection img{
+.headerSection img {
   max-width: 40px;
   margin-right: 30px;
   cursor: pointer;
@@ -249,17 +247,17 @@ img.editIcon {
   cursor: pointer;
   object-fit: contain;
 }
-.lineContainer{
+.lineContainer {
   padding: 0 10px;
   width: 100%;
 }
-.line{
+.line {
   background: rgba(147, 121, 255, 0.52);
   height: 1px;
   width: 90%;
   margin: 11px auto;
 }
-.btnSignOut{
+.btnSignOut {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -270,15 +268,14 @@ img.editIcon {
   width: fit-content;
 }
 .btnSignOut:hover {
-  color: #6938EF
-;
+  color: #6938ef;
 }
 @media only screen and (max-width: 992px) {
   .accountSettings {
     grid-template-columns: 100%;
     grid-row-gap: 20px;
   }
-}  
+}
 /* Progress Styleing */
 .progress {
   width: 130px;
@@ -287,7 +284,7 @@ img.editIcon {
   line-height: 130px;
   background: none;
   box-shadow: none;
-  position: relative
+  position: relative;
 }
 
 .progress:after {
@@ -295,33 +292,33 @@ img.editIcon {
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  border: 25px solid #3E385D;
+  border: 25px solid #3e385d;
   position: absolute;
   top: 0;
-  left: 0
+  left: 0;
 }
 
-.progress>span {
+.progress > span {
   width: 50%;
   height: 100%;
   overflow: hidden;
   position: absolute;
   top: 0;
-  z-index: 1
+  z-index: 1;
 }
 
 .progress .progressLeft {
-  left: 0
+  left: 0;
 }
 
 .progress .progressBar {
   width: 100%;
   height: 100%;
   background: none;
-  border-width:25px;
+  border-width: 25px;
   border-style: solid;
   position: absolute;
-  top: 0
+  top: 0;
 }
 
 .progress .progressLeft .progressBar {
@@ -330,11 +327,11 @@ img.editIcon {
   border-bottom-right-radius: 80px;
   border-left: 0;
   -webkit-transform-origin: center left;
-  transform-origin: center left
+  transform-origin: center left;
 }
 
 .progress .progressRight {
-  right: 0
+  right: 0;
 }
 
 .progress .progressRight .progressBar {
@@ -350,7 +347,7 @@ img.editIcon {
   width: 90%;
   height: 90%;
   border-radius: 50%;
-  background: #1C1D37;
+  background: #1c1d37;
   font-size: 20px;
   font-weight: bold;
   color: #fff;
@@ -359,26 +356,26 @@ img.editIcon {
   top: 5%;
   left: 5%;
   display: flex;
-  justify-content: center; 
+  justify-content: center;
   align-items: center;
   font-weight: bold;
 }
-.progress .progressValue p{
+.progress .progressValue p {
   font-size: 24px;
 }
 .progress.blue .progressBar {
-  border-color: #6938EF;
+  border-color: #6938ef;
 }
-.layoutProgress{
+.layoutProgress {
   display: flex;
   padding: 1rem;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
-.layoutProgress >p{
+.layoutProgress > p {
   font-size: 24px;
   font-weight: 700;
   color: white;
-  margin: 50px 0 10px; 
-} 
+  margin: 50px 0 10px;
+}
