@@ -46,14 +46,14 @@ const FeaturedUpcoming = ({ data, setClickRegister, userData, allfunded }) => {
         <div className="row">
           <div className="col-lg-12 featured__text">
             <h2 className="featured__title mb-4">All Startups</h2>
-            <div className="tw-flex tw-flex-row tw-justify-around tw-items-center">
+            <div className="tw-flex tw-flex-row tw-justify-center tw-items-center">
               <Form.Control
                 className="search__bar"
                 placeholder="Search Startup"
                 onChange={(e) => setSearch(e.target.value)}
               />
               <div>
-                <button className="searchBtn" type="submit">
+                <button className="searchBtn ml-4" type="submit">
                   Search
                 </button>
               </div>
